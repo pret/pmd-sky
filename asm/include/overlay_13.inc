@@ -11,6 +11,7 @@
 .public CreateSimpleMenuFromStringIds
 .public CreateTextBox
 .public Debug_GetDebugFlag
+.public DrawPersonalityTestDebug
 .public FemaleToMaleForm
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
@@ -37,8 +38,7 @@
 .public ov11_023039D4
 .public ov11_02303D80
 .public ov11_0230D71C
-.public ov13_0238BE6C
-.public OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+.public PERSONALITY_TEST_PTR
 .public PORTRAIT_ATTRIBUTES
 .public QUIZ_ANSWER_POINTS
 .public QUIZ_ANSWER_STRINGS

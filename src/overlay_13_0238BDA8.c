@@ -1,6 +1,6 @@
 #include "overlay_13_0238BDA8.h"
 
-extern struct Overlay13Main *OVERLAY13_UNKNOWN_POINTER__NA_238CEA0;
+extern struct Overlay13Main *PERSONALITY_TEST_PTR;
 
 s32 GetPersonality(void) {
     s32 index;
@@ -8,7 +8,7 @@ s32 GetPersonality(void) {
     s32 ret = 0;
     for(index = 0; index < 0x10; index++)
     {
-        s32 temp = (OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk34[index] + OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk44[index]);
+        s32 temp = (PERSONALITY_TEST_PTR->unk34[index] + PERSONALITY_TEST_PTR->unk44[index]);
 
         if(uVar2 < temp)
         {

@@ -1,9 +1,9 @@
 #include "overlay_13_0238BE4C.h"
 #include "overlay_13_0238BDA8.h"
 
-extern struct Overlay13Main *OVERLAY13_UNKNOWN_POINTER__NA_238CEA0;
+extern struct Overlay13Main *PERSONALITY_TEST_PTR;
 
 void WaitForNextStep(s32 state) {
-    OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk20 = 0x3A;
-    OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk30 = state;
+    PERSONALITY_TEST_PTR->unk20 = 0x3A;
+    PERSONALITY_TEST_PTR->unk30 = state;
 }

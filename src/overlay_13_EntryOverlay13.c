@@ -7,7 +7,7 @@ void InitMenu(const u8 *);
 extern void ov11_022E6E8C(u32);
 void ov11_022E6E68(void);
 BOOL ov11_022E6EC8(void);
-void Overlay13SwitchFunctionNa238A574(void);
+void PersonalityTestMainManager(void);
 
 struct Overlay13Main
 {
@@ -22,150 +22,150 @@ struct Overlay13Main
     u16 unk426;
 };
 
-extern struct Overlay13Main *OVERLAY13_UNKNOWN_POINTER__NA_238CEA0;
+extern struct Overlay13Main *PERSONALITY_TEST_PTR;
 
-extern const u8 OVERLAY13_UNKNOWN_STRUCT__NA_238C024[];
+extern const u8 OVERLAY13_LOAD_ENTRY[];
 
 void EntryOverlay13(void)
 {
     sub_0201F2E4();
-    OVERLAY13_UNKNOWN_POINTER__NA_238CEA0 = MemAlloc(sizeof(struct Overlay13Main), 8);
-    OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0;
-    OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk20 = 0;
-    OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk6 = 0xFE;
-    InitMenu(OVERLAY13_UNKNOWN_STRUCT__NA_238C024);
+    PERSONALITY_TEST_PTR = MemAlloc(sizeof(struct Overlay13Main), 8);
+    PERSONALITY_TEST_PTR->unk0 = 0;
+    PERSONALITY_TEST_PTR->unk20 = 0;
+    PERSONALITY_TEST_PTR->unk6 = 0xFE;
+    InitMenu(OVERLAY13_LOAD_ENTRY);
 }
 
 void ExitOverlay13(void)
 {
-    if(OVERLAY13_UNKNOWN_POINTER__NA_238CEA0)
+    if(PERSONALITY_TEST_PTR)
     {
         sub_0201F2E4();
-        MemFree(OVERLAY13_UNKNOWN_POINTER__NA_238CEA0);
-        OVERLAY13_UNKNOWN_POINTER__NA_238CEA0 = NULL;
+        MemFree(PERSONALITY_TEST_PTR);
+        PERSONALITY_TEST_PTR = NULL;
     }
 }
 
-u32 Overlay13SwitchFunctionNa238A1C8(void) {
-    switch(OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0)
+u32 PersonalityTestFrameUpdate(void) {
+    switch(PERSONALITY_TEST_PTR->unk0)
     {
         case 0:
             ov11_022E6E68();
-            OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xD;
+            PERSONALITY_TEST_PTR->unk0 = 0xD;
             break;
         case 1:
             if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(1);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 2:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x19);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0xF:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x1d);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0xE:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x1c);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0x11:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x1f);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0x12:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x20);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 3:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x18);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
        case 8:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x15);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
         case 9:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x16);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
         case 7:
              if(ov11_022E6EC8())
             {
-                ov11_022E6E8C(OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk426 + 0x5);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                ov11_022E6E8C(PERSONALITY_TEST_PTR->unk426 + 0x5);
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
        case 4:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x2);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0x10:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x1e);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 5:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x3);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
         case 6:
              if(ov11_022E6EC8())
             {
                 ov11_022E6E8C(0x4);
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = 0xC;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
         case 12:
             if(ov11_022E6EC8())
             {
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1;
-                OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
+                PERSONALITY_TEST_PTR->unk0 = PERSONALITY_TEST_PTR->unk1;
+                PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 10:
@@ -173,7 +173,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
         case 11:
             break;
         case 0xD:
-            Overlay13SwitchFunctionNa238A574();
+            PersonalityTestMainManager();
             break;
         case 0x13:
             ov11_022E6E8C(-1);

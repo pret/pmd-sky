@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov13_0238BE6C
-ov13_0238BE6C: ; 0x0238BE6C
+	arm_func_start DrawPersonalityTestDebug
+DrawPersonalityTestDebug: ; 0x0238BE6C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x54
 	sub sp, sp, #0x400
@@ -13,7 +13,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	bl InitPreprocessorArgs
 	mov r0, r4
 	bl sub_02027B1C
-	ldr r0, _0238BFFC ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238BFFC ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238C000 ; =0x000006CA
 	ldr lr, [r0]
 	add r5, sp, #4
@@ -35,7 +35,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	mov r2, #0
 	add r3, sp, #0x54
 	bl DrawTextInWindow
-	ldr r0, _0238BFFC ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238BFFC ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238C008 ; =0x000006CB
 	ldr lr, [r0]
 	add r0, sp, #0x54
@@ -57,7 +57,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	add r3, sp, #0x54
 	bl DrawTextInWindow
 #ifdef JAPAN
-	ldr r0, _0238BFFC ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238BFFC ; =PERSONALITY_TEST_PTR
 	mov ip, r5
 	ldr r5, [r0]
 	ldr r2, _0238D570 ; =0x000031C8
@@ -66,7 +66,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	mov r1, #0x400
 #else
 	mov r1, #0x400
-	ldr r0, _0238BFFC ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238BFFC ; =PERSONALITY_TEST_PTR
 	mov ip, r5
 	ldr r5, [r0]
 	add r0, sp, #0x54
@@ -88,7 +88,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	mov r2, #0x18
 	add r3, sp, #0x54
 	bl DrawTextInWindow
-	ldr r0, _0238BFFC ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238BFFC ; =PERSONALITY_TEST_PTR
 	ldr r3, _0238C004 ; =0x0000C402
 	ldr r2, [r0]
 	add ip, sp, #4
@@ -121,7 +121,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 #else
 #define OV13_0238BE6C_OFFSET 0
 #endif
-_0238BFFC: .word OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+_0238BFFC: .word PERSONALITY_TEST_PTR
 _0238C000: .word 0x000006CA + OV13_0238BE6C_OFFSET
 _0238C004: .word 0x0000C402
 _0238C008: .word 0x000006CB + OV13_0238BE6C_OFFSET
@@ -129,7 +129,7 @@ _0238C008: .word 0x000006CB + OV13_0238BE6C_OFFSET
 _0238D570: .word 0x000031C8
 #endif
 _0238C00C: .word 0x000006CD + OV13_0238BE6C_OFFSET
-	arm_func_end ov13_0238BE6C
+	arm_func_end DrawPersonalityTestDebug
 	; 0x0238C010
 
 	.rodata
@@ -143,11 +143,11 @@ PORTRAIT_ATTRIBUTES:
 QUIZ_MALE_FEMALE_BOOST_TABLE:
 	.byte 0x07, 0x08, 0x0A, 0x10
 	.byte 0x03, 0x0A, 0x10, 0x00
-	.global OVERLAY13_UNKNOWN_STRUCT__NA_238C024
-OVERLAY13_UNKNOWN_STRUCT__NA_238C024:
+	.global OVERLAY13_LOAD_ENTRY
+OVERLAY13_LOAD_ENTRY:
 	.byte 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word ExitOverlay13
-	.word Overlay13SwitchFunctionNa238A1C8
+	.word PersonalityTestFrameUpdate
 	.global QUIZ_WINDOW_PARAMS_1
 QUIZ_WINDOW_PARAMS_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFD, 0x00, 0x00
@@ -422,8 +422,8 @@ ov13_0238CE70:
 	.byte 0x53, 0x45, 0x54, 0x3A, 0x32, 0x38, 0x5D, 0x5B, 0x6B, 0x69, 0x6E, 0x64, 0x3A, 0x30, 0x5D, 0x00
 
 	.data
-	.global OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
-OVERLAY13_UNKNOWN_POINTER__NA_238CEA0:
+	.global PERSONALITY_TEST_PTR
+PERSONALITY_TEST_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global QUIZ_WINDOW_PARAMS_5
 QUIZ_WINDOW_PARAMS_5:

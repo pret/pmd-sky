@@ -12,9 +12,9 @@
 .public IsMissionValid
 .public IsStorableItem
 .public IsThrownItem
-.public MISSION_DELIVER_LIST_PTR
 .public MemAlloc
 .public MemFree
+.public MISSION_DELIVER_LIST_PTR
 .public RandInt
 .public RandIntSafe
 .public sub_02051134

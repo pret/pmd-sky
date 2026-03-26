@@ -2,8 +2,8 @@
 .public DrawTextInWindow
 .public ExitOverlay13
 .public InitPreprocessorArgs
-.public OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
-.public Overlay13SwitchFunctionNa238A1C8
+.public PERSONALITY_TEST_PTR
+.public PersonalityTestFrameUpdate
 .public PreprocessStringFromId
 .public sub_02027B1C
 .public UpdateWindow

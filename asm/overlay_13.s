@@ -4,17 +4,17 @@
 	.text
 
 ; https://decomp.me/scratch/Vph2k
-	arm_func_start Overlay13SwitchFunctionNa238A574
-Overlay13SwitchFunctionNa238A574: ; 0x0238A574
+	arm_func_start PersonalityTestMainManager
+PersonalityTestMainManager: ; 0x0238A574
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x178
 	add r0, sp, #0xb0
 	bl GetReleasedStylus
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl InitPortraitParams
-	ldr r2, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r2, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r2]
 	ldr r1, [r0, #0x20]
 	cmp r1, #0x41
@@ -95,20 +95,20 @@ _0238A6B4:
 	add r0, sp, #0x14
 	bl sub_0204A198
 	ldrb r1, [sp, #0x19]
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	and r1, r1, #0xf
 	b _0238A6F4
 _0238A6E0:
 	add r0, sp, #0xd4
 	bl GetDsFirmwareUserSettingsVeneer
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldrb r1, [sp, #0xd5]
 	ldr r0, [r0]
 _0238A6F4:
 	add r0, r0, #0x400
 	strh r1, [r0, #0x26]
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r3, #0xe
 	ldr r1, [r0]
 	mov r2, #0
@@ -127,7 +127,7 @@ _0238A6F4:
 _0238A73C:
 	ldr r0, _0238B4FC ; =QUIZ_WINDOW_PARAMS_4
 	bl CreateDialogueBox
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r3, #2
 	ldr r4, [r1]
 	mov r2, #0xa
@@ -139,7 +139,7 @@ _0238A73C:
 	str r2, [sp, #0x20]
 	ldmia r1, {r1, r2}
 	bl sub_02028770
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 #ifdef JAPAN
 	ldr r2, _0238CA60 ; =0x000031C4
 	ldr r0, [r0]
@@ -161,17 +161,17 @@ _0238A79C:
 	ldr r0, [r2]
 	ldrsb r0, [r0, #2]
 	bl sub_0202836C
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl CloseDialogueBox
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, _0238B500 ; =QUIZ_WINDOW_PARAMS_1
 	ldr r1, [r1]
 	mvn r2, #1
 	strb r2, [r1, #2]
 	bl CreateDialogueBox
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r3, #0
 	ldr r2, [r1]
 	mov sb, r3
@@ -189,7 +189,7 @@ _0238A800:
 	add r3, r3, #1
 	cmp r3, #0x10
 	blt _0238A800
-	ldr sl, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr sl, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r5, #1
 	mov r4, #4
 	mov r8, #0x10
@@ -211,7 +211,7 @@ _0238A830:
 	strb r2, [r0, #0x55]
 	cmp sb, #8
 	blt _0238A830
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r3, #0x41
 	ldr r1, [r0]
 	mov r2, #0x40
@@ -223,9 +223,9 @@ _0238A830:
 	cmp r0, #0
 	beq _0238BD74
 	ldr r0, _0238B504 ; =QUIZ_WINDOW_PARAMS_3
-	ldr r1, _0238B508 ; =ov13_0238BE6C
+	ldr r1, _0238B508 ; =DrawPersonalityTestDebug
 	bl CreateTextBox
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #6]
 	b _0238BD74
@@ -238,7 +238,7 @@ _0238A8B8:
 	str r2, [sp, #0x20]
 	ldmia r1, {r1, r2}
 	bl sub_02028770
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r3, _0238B50C ; =QUIZ_QUESTION_ANSWER_ASSOCIATIONS
 	ldr r7, [r0]
 	mov r2, #0
@@ -262,7 +262,7 @@ _0238A8B8:
 	add r0, r0, #0x6c
 	bl GetStringFromFileVeneer
 	mov r0, r5, asr #8
-	ldr r4, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r4, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	and r1, r0, #0xff
 	ldr r2, [r4]
 	mov r7, #0
@@ -293,7 +293,7 @@ _0238A968:
 _0238A9A4:
 	cmp r7, r8
 	bne _0238A968
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, _0238B514 ; =QUIZ_DEBUG_MENU_ITEMS
 	mov r2, r8, lsl #3
 	mov r3, #0
@@ -301,14 +301,14 @@ _0238A9A4:
 	strh r3, [r1, r2]
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #4
 	ldr r2, [r0]
 	mov r3, #0
 	ldrsb r0, [r2, #2]
 	ldrh r2, [r2, #0x60]
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -319,7 +319,7 @@ _0238AA00:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -335,7 +335,7 @@ _0238AA28:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, [r1]
 	strb r0, [r2, #3]
 	ldr r1, [r1]
@@ -348,11 +348,11 @@ _0238AA6C:
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl GetSimpleMenuResult__0202B870
-	ldr r3, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r3, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, [r3]
 	ldr r1, [r2, #0x24]
 	cmp r1, #9
@@ -382,7 +382,7 @@ _0238AAEC:
 	bne _0238AAC0
 _0238AAF4:
 	mov r4, #0
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r3, r4
 	mov r2, r4
 _0238AB04:
@@ -397,7 +397,7 @@ _0238AB04:
 	movlt r4, r1
 	cmp r3, #0x10
 	blt _0238AB04
-	ldr r6, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r6, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r5, #0
 	mov r7, #0x14
 _0238AB3C:
@@ -453,15 +453,15 @@ _0238ABD4:
 	strb r0, [r4, #0x34]
 	blt _0238ABD4
 _0238ABF8:
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	cmp r0, r1
 	beq _0238AC14
-	bl ov13_0238BE6C
+	bl DrawPersonalityTestDebug
 _0238AC14:
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -470,11 +470,11 @@ _0238AC14:
 _0238AC2C:
 	ldrsb r0, [r0, #2]
 	bl sub_02027B1C
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl CloseSimpleMenu
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mvn r1, #1
 	ldr r2, [r0]
 	strb r1, [r2, #3]
@@ -497,7 +497,7 @@ _0238AC2C:
 	cmp r0, r1
 	beq _0238BD74
 	bl CloseTextBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #6]
@@ -510,7 +510,7 @@ _0238ACC0:
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
 	bl GetPersonality
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	add r0, r0, r0, lsl #1
 	ldr r3, [r1]
 	mov r2, r0, lsl #1
@@ -528,7 +528,7 @@ _0238AD00:
 	mov r1, #3
 	mov r2, #1
 	bl CreatePortraitBox
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, [r1]
 	strb r0, [r2, #5]
 	ldr r4, [r1]
@@ -541,26 +541,26 @@ _0238AD00:
 	mov r2, r2, lsl #1
 	ldrsh r1, [r1, r2]
 	bl InitPortraitParamsWithMonsterId
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitEmotion
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitLayout
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
 	bl ShowPortraitInPortraitBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r4, [r0]
 	bl GetPersonality
 	add r0, r0, r0, lsl #1
@@ -580,7 +580,7 @@ _0238AD00:
 _0238ADD4:
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl HidePortraitBox
@@ -592,7 +592,7 @@ _0238ADF8:
 	bl sub_0202F2C4
 	mov r0, #0xb4
 	bl sub_02017B7C
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -601,11 +601,11 @@ _0238ADF8:
 _0238AE20:
 	ldrsb r0, [r0, #2]
 	bl sub_0202836C
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl CloseDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mvn r3, #1
 	ldr r2, [r0]
 	mov r1, #0xf
@@ -626,12 +626,12 @@ _0238AE78:
 	mov r1, #4
 	strb r1, [r0]
 _0238AE80:
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202F2C4
 _0238AE90:
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -640,15 +640,15 @@ _0238AE90:
 _0238AEA8:
 	ldrsb r0, [r0, #2]
 	bl sub_0202F2C4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl HidePortraitBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl ClosePortraitBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #5]
@@ -660,11 +660,11 @@ _0238AEA8:
 _0238AEF4:
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl sub_0202F2C4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r3, [r0]
 	ldr r2, [r3, #0x30]
 	sub r1, r2, #1
@@ -682,14 +682,14 @@ _0238AF38:
 _0238AF44:
 	ldr r0, _0238B534 ; =0x00002208
 	bl sub_02017CB4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r2, #3
 	ldr r1, [r0]
 	strb r2, [r1]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202F2C4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -698,7 +698,7 @@ _0238AF44:
 _0238AF80:
 	ldrsb r0, [r0, #4]
 	bl sub_0202F2C4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -715,14 +715,14 @@ _0238AFA0:
 _0238AFBC:
 	ldr r0, _0238B534 ; =0x00002208
 	bl sub_02017CB4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r2, #2
 	ldr r1, [r0]
 	strb r2, [r1]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202F2C4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -731,11 +731,11 @@ _0238AFBC:
 _0238AFF8:
 	ldrsb r0, [r0, #4]
 	bl CloseDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 #ifdef JAPAN
 	mov r1, #8
 	ldr r0, [r0]
@@ -758,20 +758,20 @@ _0238B038:
 	bl SetBothScreensWindowsColor
 	ldr r0, _0238B540 ; =QUIZ_WINDOW_PARAMS_2
 	bl CreateDialogueBox
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, [r1]
 	strb r0, [r2, #4]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238B544 ; =0x000006AD
 	ldr r0, [r0]
 	mov r1, #8
 	ldrsb r0, [r0, #4]
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r2, #0x11
 	ldr r1, [r0]
 	strb r2, [r1]
@@ -791,14 +791,14 @@ _0238B0A8:
 _0238B0C4:
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238B548 ; =0x000006AE
 	ldr r0, [r0]
 	mov r1, #8
 	ldrsb r0, [r0, #4]
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -807,14 +807,14 @@ _0238B0C4:
 _0238B100:
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238B54C ; =0x000006AF
 	ldr r0, [r0]
 	mov r1, #8
 	ldrsb r0, [r0, #4]
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -823,7 +823,7 @@ _0238B100:
 _0238B13C:
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 #ifdef JAPAN
 	ldr r2, _0238CAB0 ; =0x000031AC
 	ldr r0, [r0]
@@ -836,7 +836,7 @@ _0238B13C:
 	ldrsb r0, [r0, #4]
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -845,14 +845,14 @@ _0238B13C:
 _0238B178:
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238B550 ; =0x000006B1
 	ldr r0, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r0, #4]
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -861,7 +861,7 @@ _0238B178:
 _0238B1B4:
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #8
 	ldr r4, [r0]
 	mov r3, #0
@@ -878,7 +878,7 @@ _0238B1B4:
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -890,7 +890,7 @@ _0238B204:
 	mov r1, #0x218
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -901,7 +901,7 @@ _0238B230:
 	ldrsh r1, [r0, #0x24]
 	add r0, sp, #0x70
 	bl GetNameRaw
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	add r1, sp, #0x70
 	ldr r0, [r0]
 	add r0, r0, #0x3e4
@@ -910,7 +910,7 @@ _0238B230:
 #else
 	bl StrcpyName
 #endif
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	add r1, sp, #0x70
 	ldr r0, [r0]
 	add r0, r0, #4
@@ -920,7 +920,7 @@ _0238B230:
 #else
 	bl StrcpyName
 #endif
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r0, #3
 	ldr r3, [r1]
 	mov r2, #0
@@ -928,7 +928,7 @@ _0238B230:
 	add r3, r3, #4
 	add r3, r3, #0x400
 	bl ShowKeyboard
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -939,19 +939,19 @@ _0238B2A4:
 	cmp r0, #3
 	bne _0238BD74
 	bl GetKeyboardStringResult
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, r4
 	add r0, r0, #0x3c4
 	mov r2, #0x10
 	bl StrncpySimpleNoPadSafe
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, r4
 	ldr r0, [r0]
 	add r0, r0, #0x3e4
 	bl StrcpySimple
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -961,7 +961,7 @@ _0238B2FC:
 	bl sub_02037468
 	cmp r0, #0
 	beq _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, [r0]
 	ldr r1, [r2, #0x20]
 	add r1, r1, #1
@@ -973,13 +973,13 @@ _0238B2FC:
 _0238B32C:
 	bl sub_0203931C
 	cmp r0, #0
-	ldreq r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldreq r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	moveq r1, #0x34
 	ldreq r0, [r0]
 	streq r1, [r0, #0x20]
 	beq _0238BD74
 	cmp r0, #1
-	ldreq r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldreq r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	moveq r1, #0x35
 	ldreq r0, [r0]
 	streq r1, [r0, #0x20]
@@ -990,7 +990,7 @@ _0238B360:
 	beq _0238BD74
 	add r0, sp, #0x34
 	bl sub_02048764
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r4, [r0]
 	bl GetPersonality
 	ldrb r3, [r4, #0x5f]
@@ -1009,7 +1009,7 @@ _0238B360:
 	bl StrcpySimple
 	add r0, sp, #0x34
 	bl sub_02048794
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #0x36
 	ldr r0, [r0]
 	str r1, [r0, #0x20]
@@ -1018,7 +1018,7 @@ _0238B3D4:
 	bl sub_02039218
 	cmp r0, #0
 	beq _0238BD74
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r3, #0x31
 	ldr r2, [r1]
 	mov r0, #3
@@ -1035,7 +1035,7 @@ _0238B410:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1046,15 +1046,15 @@ _0238B438:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202F2C4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r3, #0xc
 	ldr r2, [r0]
 	mov r1, #1
@@ -1067,11 +1067,11 @@ _0238B488:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1082,11 +1082,11 @@ _0238B4C0:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1098,14 +1098,14 @@ _0238B4C0:
 #else
 #define OV13_238A574_OFFSET 0
 #endif
-_0238B4F8: .word OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+_0238B4F8: .word PERSONALITY_TEST_PTR
 _0238B4FC: .word QUIZ_WINDOW_PARAMS_4
 #ifdef JAPAN
 _0238CA60: .word 0x000031C4
 #endif
 _0238B500: .word QUIZ_WINDOW_PARAMS_1
 _0238B504: .word QUIZ_WINDOW_PARAMS_3
-_0238B508: .word ov13_0238BE6C
+_0238B508: .word DrawPersonalityTestDebug
 _0238B50C: .word QUIZ_QUESTION_ANSWER_ASSOCIATIONS
 _0238B510: .word QUIZ_QUESTION_STRINGS
 _0238B514: .word QUIZ_DEBUG_MENU_ITEMS
@@ -1140,11 +1140,11 @@ _0238B558:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1154,7 +1154,7 @@ _0238B5A4:
 	add r1, sp, #8
 	mov r0, #0
 	bl GetPressedButtons
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r2, #0x3c
 	ldr r0, [r0]
 	add r1, sp, #0xc
@@ -1164,7 +1164,7 @@ _0238B5A4:
 	ldrh r0, [sp, #0xb0]
 	tst r0, #1
 	beq _0238BD74
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r3, #5
 	ldr r2, [r1]
 	ldr r0, _0238B534 ; =0x00002208
@@ -1184,7 +1184,7 @@ _0238B608:
 	ldrh r0, [sp, #0xb0]
 	tst r0, #1
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1198,7 +1198,7 @@ _0238B63C:
 	bne _0238BD74
 	ldrsb r0, [r0, #4]
 	bl sub_0202F2C4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1207,14 +1207,14 @@ _0238B63C:
 _0238B670:
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238BD7C ; =0x000006C2
 	ldr r0, [r0]
 	mov r1, #8
 	ldrsb r0, [r0, #2]
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1223,14 +1223,14 @@ _0238B670:
 _0238B6AC:
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238BD80 ; =0x000006C3
 	ldr r0, [r0]
 	mov r1, #4
 	ldrsb r0, [r0, #2]
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1239,7 +1239,7 @@ _0238B6AC:
 _0238B6E8:
 	add r0, sp, #0x128
 	bl InitPreprocessorArgs
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r0, #4]
 	add r0, r1, r0, lsl #1
@@ -1248,7 +1248,7 @@ _0238B6E8:
 	str r0, [sp, #0x128]
 	ldrsb r0, [r1, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 #ifdef JAPAN
 	add r3, sp, #0x128
 	ldr r0, [r0]
@@ -1263,7 +1263,7 @@ _0238B6E8:
 	add r2, r1, #0x6c0
 #endif
 	bl ShowStringIdInDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #0x3b
 	ldr r0, [r0]
 	str r1, [r0, #0x20]
@@ -1271,7 +1271,7 @@ _0238B6E8:
 _0238B744:
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238BD84 ; =0x000006C5
 	ldr r0, [r0]
 	mov r1, #8
@@ -1293,7 +1293,7 @@ _0238B774:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, [r1]
 	strb r0, [r2, #3]
 	ldr r1, [r1]
@@ -1310,26 +1310,26 @@ _0238B7C0:
 	beq _0238B848
 	b _0238BD74
 _0238B7DC:
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl sub_0202F2C4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl CloseSimpleMenu
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #3]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl ClosePortraitBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mvn r3, #1
 	ldr r2, [r0]
 	mov r1, #0x30
@@ -1338,11 +1338,11 @@ _0238B7DC:
 	str r1, [r0, #0x20]
 	b _0238BD74
 _0238B848:
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl CloseSimpleMenu
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mvn r3, #1
 	ldr r2, [r0]
 	mov r1, #0x2a
@@ -1354,7 +1354,7 @@ _0238B878:
 	mov r0, #0x1f
 	str r0, [r2, #8]
 	bl GetPersonality
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, _0238B530 ; =STARTERS_HERO_IDS
 	ldr r1, [r1]
 	ldrb r1, [r1, #0x5f]
@@ -1369,7 +1369,7 @@ _0238B878:
 	bl FemaleToMaleForm
 	mov r4, r0
 _0238B8BC:
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r0, r4
 	ldr r2, [r1]
 	mov r1, #0
@@ -1387,7 +1387,7 @@ _0238B8BC:
 	bl RandInt
 	ldr fp, _0238BD94 ; =STARTERS_PARTNER_IDS
 	ldr r5, _0238BD90 ; =STARTERS_TYPE_INCOMPATIBILITY_TABLE
-	ldr r4, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r4, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r6, r0
 	mov r7, #0
 _0238B910:
@@ -1419,7 +1419,7 @@ _0238B970:
 	add r7, r7, #1
 	cmp r7, #0x15
 	blt _0238B910
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, _0238BD98 ; =QUIZ_WINDOW_PARAMS_6
 	ldr r2, [r1]
 	ldr r1, _0238BD9C ; =0x00001011
@@ -1430,7 +1430,7 @@ _0238B970:
 	mov r2, #0
 	str r4, [sp, #4]
 	bl CreateAdvancedMenu
-	ldr r2, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r2, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r2]
 	strb r0, [r1, #3]
 	ldr r4, [r2]
@@ -1448,11 +1448,11 @@ _0238B970:
 	mov r1, #3
 	mov r2, #1
 	bl CreatePortraitBox
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #5]
 _0238B9FC:
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, [r0]
 	ldr r1, [r0, #4]
 	add r0, r2, #0x3b4
@@ -1460,22 +1460,22 @@ _0238B9FC:
 	add r1, r1, #0x300
 	ldrsh r1, [r1, #0x74]
 	bl InitPortraitParamsWithMonsterId
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitEmotion
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitLayout
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, _0238BDA4 ; =PORTRAIT_ATTRIBUTES
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitOffset
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
@@ -1487,13 +1487,13 @@ _0238BA70:
 	bl GetAdvancedMenuCurrentOption
 	cmp r4, r0
 	beq _0238BB10
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #0
 	str r1, [r0, #8]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl GetAdvancedMenuCurrentOption
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	str r0, [r1, #4]
 	ldr r2, [r1]
 	add r0, r2, r0, lsl #1
@@ -1501,29 +1501,29 @@ _0238BA70:
 	ldrsh r1, [r0, #0x74]
 	add r0, r2, #0x3b4
 	bl InitPortraitParamsWithMonsterId
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitEmotion
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitLayout
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, _0238BDA4 ; =PORTRAIT_ATTRIBUTES
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitOffset
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
 	bl ShowPortraitInPortraitBox
 	b _0238BB98
 _0238BB10:
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0, #8]
 	cmp r1, #0x20
 	addne r1, r1, #1
@@ -1537,34 +1537,34 @@ _0238BB10:
 	ldrsh r1, [r0, #0x74]
 	add r0, r2, #0x3b4
 	bl InitPortraitParamsWithMonsterId
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitEmotion
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitLayout
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, _0238BDA4 ; =PORTRAIT_ATTRIBUTES
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitOffset
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
 	bl ShowPortraitInPortraitBox
 _0238BB98:
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl IsAdvancedMenuActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r4, [r0]
 	ldrsb r0, [r4, #3]
 	bl GetAdvancedMenuResult
@@ -1572,20 +1572,20 @@ _0238BB98:
 	add r0, r0, #0x300
 	ldrsh r2, [r0, #0x74]
 	add r0, r4, #0x400
-	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r1, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	strh r2, [r0, #0x24]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #2]
 	bl ShowDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl sub_02027B1C
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl sub_0202F2C4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r2, [r0]
 	ldr r1, [r0, #4]
 	add r0, r2, #0x3b4
@@ -1593,32 +1593,32 @@ _0238BB98:
 	add r1, r1, #0x300
 	ldrsh r1, [r1, #0x74]
 	bl InitPortraitParamsWithMonsterId
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitEmotion
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitLayout
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, _0238BDA4 ; =PORTRAIT_ATTRIBUTES
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitOffset
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
 	bl ShowPortraitInPortraitBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl CloseAdvancedMenu
 	mvn r2, #1
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	strb r2, [r1, #3]
 	ldr r1, [r0]
@@ -1629,7 +1629,7 @@ _0238BB98:
 _0238BCA8:
 	ldrsb r0, [r0, #2]
 	bl sub_0202836C
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1640,11 +1640,11 @@ _0238BCC8:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl sub_02027B1C
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x30]
 	str r0, [r1, #0x20]
@@ -1652,7 +1652,7 @@ _0238BCC8:
 _0238BCFC:
 	mov r0, #1
 	bl ov11_023039D4
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -1663,18 +1663,18 @@ _0238BD1C:
 	mvn r1, #0
 	cmp r0, r1
 	bne _0238BD74
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mov r2, #0x39
 	ldr r1, [r0]
 	str r2, [r1, #0x20]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl sub_0202836C
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl CloseDialogueBox
-	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r0, _0238B4F8 ; =PERSONALITY_TEST_PTR
 	mvn r3, #1
 	ldr r2, [r0]
 	mov r1, #2
@@ -1696,4 +1696,4 @@ _0238BD98: .word QUIZ_WINDOW_PARAMS_6
 _0238BD9C: .word 0x00001011
 _0238BDA0: .word GetOptionStringFromID
 _0238BDA4: .word PORTRAIT_ATTRIBUTES
-	arm_func_end Overlay13SwitchFunctionNa238A574
+	arm_func_end PersonalityTestMainManager
