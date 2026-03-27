@@ -1,5 +1,6 @@
 #include "main_0202593C.h"
 #include "main_02025788.h"
+#include "main_0200330C.h"
 #include "file_rom.h"
 
 u8* strcpy(u8* dest, u8* src);
@@ -7,6 +8,37 @@ u8* strncpy(u8* dest, u8* src, u32 n);
 
 extern u16 _022A59B8[];
 extern u8 _022A5A08[];
+
+extern s8 GetLanguage(); 
+extern s8 _020AFCEC;
+extern const char * _020AFCF0[10];
+extern struct file_stream _022A59C0;
+
+void FileClose(struct file_stream* file);
+
+void sub_020257FC(void)
+{
+    MemZero((u8 *)_022A59B8, 8);
+    LoadStringFile();
+}
+
+void LoadStringFile(void) 
+{
+    s8 temp_r0;
+
+    temp_r0 = GetLanguage();
+    if (_020AFCEC == temp_r0) {
+        return;
+    }
+    FileRom_InitDataTransfer();
+    if (_020AFCEC != -1) {
+        FileClose(&_022A59C0);
+    }
+    _020AFCEC = temp_r0;
+    FileRom_Veneer_FileInit(&_022A59C0);
+    FileRom_HandleOpen(&_022A59C0, _020AFCF0[temp_r0]);
+    FileRom_StopDataTransfer();
+}
 
 u8* AllocateTemp1024ByteBufferFromPool(void)
 {
