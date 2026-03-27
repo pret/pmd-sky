@@ -1,6 +1,9 @@
 #ifndef PMDSKY_MAIN_0202593C_H
 #define PMDSKY_MAIN_0202593C_H
 
+void sub_020257FC(void);
+void LoadStringFile(void);
+
 // return: Pointer to byte buffer
 u8* AllocateTemp1024ByteBufferFromPool(void);
 // Likely a linker-generated veneer for GetStringFromFile.
