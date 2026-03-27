@@ -1260,7 +1260,8 @@
                   17](SprintfStatic__0200E990,func) found in local item_util_1.o
                  16](LoadScriptVariableValueString,func) found in global script_variable.o
                   17](LoadScriptVariableValueBytes,func) found in global script_variable.o
-                 16](LoadStringFile,func) found in global main_020257FC.o
+                 16](LoadStringFile,func) found in global main_0202593C.o
+                 16](sub_020257FC,func) found in global main_0202593C.o
                  16](DirectoryFileMngr_LoadDirectoryFile,func) found in global directory_file_mngr.o
                  16](FileGetSize,func) found in global main_02008254.o
                14](Memset32,func) found in global main_0200330C.o
@@ -4217,13 +4218,12 @@
   02025788 00000000 .text   $a	(main_02025788.o)
   02025788 00000074 .text   GetStringFromFile	(main_02025788.o)
   020257F8 00000000 .text   $d	(main_02025788.o)
-  020257FC 0000008C .text   .text	(main_020257FC.o)
-  020257FC 0000001C .text   sub_020257FC	(main_020257FC.o)
-  020257FC 00000000 .text   $a	(main_020257FC.o)
-  02025814 00000000 .text   $d	(main_020257FC.o)
-  02025818 00000000 .text   $a	(main_020257FC.o)
-  02025818 00000070 .text   LoadStringFile	(main_020257FC.o)
-  0202587C 00000000 .text   $d	(main_020257FC.o)
+  020257FC 00000000 .text   $a	(main_0202593C.o)
+  020257FC 0000001C .text   sub_020257FC	(main_0202593C.o)
+  02025814 00000000 .text   $d	(main_0202593C.o)
+  02025818 00000000 .text   $a	(main_0202593C.o)
+  02025818 00000070 .text   LoadStringFile	(main_0202593C.o)
+  0202587C 00000000 .text   $d	(main_0202593C.o)
   02025888 00000000 .text   $a	(main_0202593C.o)
   02025888 00000030 .text   AllocateTemp1024ByteBufferFromPool	(main_0202593C.o)
   020258B0 00000000 .text   $d	(main_0202593C.o)
@@ -41371,5 +41371,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Mar 26 01:40:58 2026
-# Link end time: Thu Mar 26 01:40:59 2026
+# Link start time: Fri Mar 27 21:29:37 2026
+# Link end time: Fri Mar 27 21:29:38 2026
