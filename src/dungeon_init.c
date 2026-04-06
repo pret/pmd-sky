@@ -3,6 +3,7 @@
 #include "enums.h"
 #include "game_mode.h"
 #include "main_0205BD14.h"
+#include "nitro/types.h"
 #include "progression.h"
 #include "script_variable.h"
 
@@ -268,7 +269,7 @@ s32 IsNoLossPenaltyDungeon(s16 dungeon_id) {
             return_val = TRUE;
             break;
         case DUNGEON_DEEP_STAR_CAVE_TEAM_ROGUE:
-            if(LoadScriptVariableValue(NULL, DUNGEON_STEAM_CAVE_PEAK) == 0) {
+            if(LoadScriptVariableValue(NULL, VAR_SIDE01_BOSS2ND) == 0) {
                 return_val = TRUE;
             }
             break;
@@ -277,4 +278,12 @@ s32 IsNoLossPenaltyDungeon(s16 dungeon_id) {
     }
 
     return return_val;
+}
+
+void sub_0204F024(s32 value) {
+   PENDING_DUNGEON_ID.field_0xE = value;
+}
+
+s8 sub_0204F034(void) {
+   return LoadScriptVariableValue(NULL, VAR_DUNGEON_ENTER_MODE);
 }
