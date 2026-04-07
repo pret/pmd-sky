@@ -1,13 +1,13 @@
 #pragma once
 .public ARM9_UNKNOWN_TABLE__NA_209E12C
+.public BitstreamDebug
 .public CopyBitsFrom
+.public InitBitstreamForRead
+.public InitBitstreamForWrite
 .public MemcpySimple
 .public sub_0204DA2C
 .public sub_0204E02C
 .public sub_0204E0A0
-.public sub_02050974
-.public sub_02050990
-.public sub_020509BC
 .public sub_0205C2A4
 .public sub_0205C548
 .public WONDER_MAIL_BITS_MAP

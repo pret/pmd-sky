@@ -7,10 +7,10 @@ extern struct team_member_table *TEAM_MEMBER_TABLE_PTR;
 
 extern s32 GetLanguageType(void);
 extern void StrncpySimpleNoPadSafe(u8* dest, const u8* src, u32 n);
-extern void sub_02050990(struct WriteMonsterInfoToSave_struct *ptr, void *start_addr, u32 total_len);
+extern void InitBitstreamForRead(struct WriteMonsterInfoToSave_struct *ptr, void *start_addr, u32 total_len);
 extern void WriteMonsterToSave(struct WriteMonsterInfoToSave_struct *write_info, struct ground_monster *monster);
 extern void CopyBitsTo(void *ctx, void *src, s32 nbits);
-extern void sub_020509BC(struct WriteMonsterInfoToSave_struct *ptr);
+extern void BitstreamDebug(struct WriteMonsterInfoToSave_struct *ptr);
 
 void GetExplorerMazeTeamName(u8 *dest)
 {
@@ -55,7 +55,7 @@ s32 WriteMonsterInfoToSave(void* start_addr, u32 total_len)
 {
     struct WriteMonsterInfoToSave_struct local_struct;
 
-    sub_02050990(&local_struct, start_addr, total_len);
+    InitBitstreamForRead(&local_struct, start_addr, total_len);
 
     for (s32 i = 0; i < MAX_GROUND_TEAM_MEMBERS; i++)
     {
@@ -72,7 +72,7 @@ s32 WriteMonsterInfoToSave(void* start_addr, u32 total_len)
         WriteMonsterToSave(&local_struct, &TEAM_MEMBER_TABLE_PTR->explorer_maze_monsters[i]);
     }
 
-    sub_020509BC(&local_struct);
+    BitstreamDebug(&local_struct);
 
     return local_struct.result;
 }

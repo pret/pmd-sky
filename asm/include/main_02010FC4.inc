@@ -25,6 +25,7 @@
 .public _s32_div_f
 .public ApplyExclusiveItemStatBoosts
 .public BAG_ITEMS_PTR_MIRROR
+.public BitstreamDebug
 .public CALCIUM_STAT_BOOST
 .public ConvertStorageItemAtIdxToBulkItem
 .public CopyBitsFrom
@@ -62,6 +63,8 @@
 .public GINSENG_CHANCE_3
 .public GUMMI_STAT_BOOST
 .public HasMonsterBeenAttackedInDungeons
+.public InitBitstreamForRead
+.public InitBitstreamForWrite
 .public InitBulkItem
 .public IQ_GUMMI_GAIN_TABLE
 .public IRON_STAT_BOOST
@@ -95,9 +98,6 @@
 .public sub_0200D1F0
 .public sub_02010044
 .public sub_0201007C
-.public sub_02050974
-.public sub_02050990
-.public sub_020509BC
 .public sub_02054FB8
 .public sub_02054FEC
 .public sub_02055020

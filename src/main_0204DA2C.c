@@ -3,9 +3,9 @@
 
 extern u8 ARM9_UNKNOWN_TABLE__NA_209E164[];
 
-extern void sub_02050990(u8*, u8*, s32);
+extern void InitBitstreamForRead(u8*, u8*, s32);
 extern void CopyBitsTo(u8* write_info, void* buf_write, s32 nbits);
-extern void sub_020509BC(u8*);
+extern void BitstreamDebug(u8*);
 
 s32 sub_0204DA2C(u8* arg0, void* arg1, u8 arg2)
 {
@@ -28,13 +28,13 @@ s32 sub_0204DA2C(u8* arg0, void* arg1, u8 arg2)
 
     s32 v1 = arg2 * 5;
     s32 v2 = (v1 & 7) + 7;
-    sub_02050990(tmp3, tmp1, (v1 >> 3) + (v2 >> 3));
+    InitBitstreamForRead(tmp3, tmp1, (v1 >> 3) + (v2 >> 3));
 
     for (int i = 0; i < arg2; i++) {
         CopyBitsTo(tmp3, &tmp2[i], 5);
     }
 
-    sub_020509BC(tmp3);
+    BitstreamDebug(tmp3);
     MemcpySimple(arg1, tmp1, (v1 >> 3) + (v2 >> 3));
     return 1;
 }

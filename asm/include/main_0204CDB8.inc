@@ -3,6 +3,7 @@
 .public _0209E010
 .public _0209E011
 .public ARM9_UNKNOWN_TABLE__NA_209E164
+.public BitstreamDebug
 .public CopyBitsFrom
 .public CopyBitsTo
 .public Debug_Print0
@@ -17,6 +18,8 @@
 .public GetDexNumber
 .public GetGameMode
 .public GLOBAL_PROGRESS_PTR
+.public InitBitstreamForRead
+.public InitBitstreamForWrite
 .public KAOMADO_FILEPATH
 .public KAOMADO_STREAM
 .public LoadScriptVariableValue
@@ -29,8 +32,5 @@
 .public SCENARIO_FLAG_BACKUP_DEBUG_MSG
 .public SCENARIO_FLAG_RESUME_DEBUG_MSG
 .public SetAdventureLogCompleted
-.public sub_02050974
-.public sub_02050990
-.public sub_020509BC
 .public VERSION_EXCLUSIVE_MONSTERS
 .public ZeroInitScriptVariable

@@ -7,6 +7,7 @@
 .public AllocateTemp1024ByteBufferFromPool
 .public ArrayCopy32
 .public BAG_ITEMS_PTR_MIRROR
+.public BitstreamDebug
 .public CardBackupError
 .public CheckParentMenuField0x1A0
 .public CheckSimpleMenuField0x1A0
@@ -81,6 +82,8 @@
 .public GetWindowIdSelectedItemOnPage
 .public InitAnimationControl
 .public InitAnimationControlWithSet__0201C0B0
+.public InitBitstreamForRead
+.public InitBitstreamForWrite
 .public InitMenu
 .public InitPreprocessorArgs
 .public IsAdvancedMenuActive
@@ -354,9 +357,6 @@
 .public sub_0204E644
 .public sub_0204E6A4
 .public sub_0204F9E0
-.public sub_02050974
-.public sub_02050990
-.public sub_020509BC
 .public sub_02050CD0
 .public sub_02052060
 .public sub_020547C8

@@ -8,9 +8,9 @@ extern u8 _0209E264[];
 extern u8 sub_0204DA2C(u8(*)[34], UnkStruct_WonderMailPasswordToMission*, s32);
 extern void sub_0204E0A0(u8, u8*, s32);
 extern s32 sub_02004F80(u8*, s32);
-extern void sub_02050974(u8*, u8*, s32);
+extern void InitBitstreamForWrite(u8*, u8*, s32);
 extern void sub_0205FD88(u8*, u32, s32);
-extern void sub_020509BC(u8*);
+extern void BitstreamDebug(u8*);
 
 s32 WonderMailPasswordToMission(u8* param_1, u32 param_2)
 {
@@ -41,9 +41,9 @@ s32 WonderMailPasswordToMission(u8* param_1, u32 param_2)
 		s32 uVar2 = sub_02004F80(ctx.auStack_20, 0x11);
 		Debug_Print0(_0209E264, uVar2, ctx.y);
 		if (ctx.x == uVar2) {
-			sub_02050974(auStack_78, ctx.auStack_20, 0x11);
+			InitBitstreamForWrite(auStack_78, ctx.auStack_20, 0x11);
 			sub_0205FD88(auStack_78, param_2, 1);
-			sub_020509BC(auStack_78);
+			BitstreamDebug(auStack_78);
 			ret = 1;
 		} else {
 			ret = 0;

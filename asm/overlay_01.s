@@ -5087,7 +5087,7 @@ ov01_0232D3C4: ; 0x0232D3C4
 	orr r7, r7, ip
 	orr r3, r3, r7
 	str r3, [r6, #0x24]
-	bl sub_02050990
+	bl InitBitstreamForRead
 	cmp r4, #0
 	add r0, sp, #4
 	beq _0232D4E0
@@ -5109,7 +5109,7 @@ _0232D4E0:
 	bl CopyBitsTo
 _0232D4F4:
 	add r0, sp, #4
-	bl sub_020509BC
+	bl BitstreamDebug
 	add r0, r6, #0x68
 	add r1, r5, #0x32
 	mov r2, #0x12
@@ -5183,7 +5183,7 @@ ov01_0232D5C4: ; 0x0232D5C4
 	add r0, sp, #4
 	add r1, r6, #0x50
 	mov r2, #0x40
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	add r0, sp, #4
 	add r1, sp, #0
 	mov r2, #1
@@ -5213,7 +5213,7 @@ ov01_0232D5C4: ; 0x0232D5C4
 	bl ov01_0232E58C
 _0232D650:
 	add r0, sp, #4
-	bl sub_020509BC
+	bl BitstreamDebug
 	mov r0, r4
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -5520,7 +5520,7 @@ ov01_0232DA1C: ; 0x0232DA1C
 	add r1, r7, #0xc
 	add r0, sp, #0xc
 	mov r2, #0x100
-	bl sub_02050990
+	bl InitBitstreamForRead
 	add r0, sp, #2
 	mov r1, #0
 	bl sub_02057030
@@ -5528,7 +5528,7 @@ ov01_0232DA1C: ; 0x0232DA1C
 	tst r0, #0xff
 	add r0, sp, #0xc
 	bne _0232DADC
-	bl sub_020509BC
+	bl BitstreamDebug
 	mov r0, #0
 	b _0232DB8C
 _0232DADC:
@@ -5579,7 +5579,7 @@ _0232DB74:
 	blt _0232DAFC
 _0232DB80:
 	add r0, sp, #0xc
-	bl sub_020509BC
+	bl BitstreamDebug
 	mov r0, r4
 _0232DB8C:
 	add sp, sp, #0x68
@@ -5758,7 +5758,7 @@ _0232DD2C:
 	add r1, sl, #0x24
 	add r0, sp, #4
 	mov r2, #0x100
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	add r0, sp, #4
 	add r1, sp, #0
 	mov r2, #3
@@ -5788,7 +5788,7 @@ _0232DE50:
 	cmp r3, #4
 	blt _0232DE44
 	add r0, sp, #4
-	bl sub_020509BC
+	bl BitstreamDebug
 	add sb, sb, #1
 _0232DE64:
 	cmp sb, r5
@@ -5898,7 +5898,7 @@ ov01_0232DF18: ; 0x0232DF18
 	add r0, sp, #4
 	add r1, r5, #0x24
 	mov r2, #0x100
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	add r0, sp, #4
 	add r1, sp, #0
 	mov r2, #3
@@ -5929,7 +5929,7 @@ _0232E020:
 	cmp r3, #4
 	blt _0232E014
 	add r0, sp, #4
-	bl sub_020509BC
+	bl BitstreamDebug
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end ov01_0232DF18
@@ -6017,7 +6017,7 @@ ov01_0232E0A4: ; 0x0232E0A4
 	add r0, sp, #4
 	add r1, r5, #0x24
 	mov r2, #0x100
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	add r0, sp, #4
 	add r1, sp, #0
 	mov r2, #3
@@ -6048,7 +6048,7 @@ _0232E1AC:
 	cmp r3, #4
 	blt _0232E1A0
 	add r0, sp, #4
-	bl sub_020509BC
+	bl BitstreamDebug
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end ov01_0232E0A4

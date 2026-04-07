@@ -1,6 +1,7 @@
 #pragma once
 .public AddMissionToJobList
 .public AlreadyHaveMission
+.public BitstreamDebug
 .public CanSendItem
 .public CountJobListMissions
 .public CreateJobSummary
@@ -13,6 +14,7 @@
 .public GetLanguageType
 .public GetMainTeamNameWithCheck
 .public GetReleasedStylus
+.public InitBitstreamForWrite
 .public IsMissionSuspendedAndValid
 .public IsMissionTypeSpecialEpisode
 .public IsSpecialEpisodeOpen
@@ -73,8 +75,6 @@
 .public sub_0204A018
 .public sub_0204A1CC
 .public sub_0204E210
-.public sub_02050974
-.public sub_020509BC
 .public sub_0205B440
 .public sub_0205D1F4
 .public sub_0205F5A8
