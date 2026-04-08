@@ -71,7 +71,7 @@ jobs:
         run: make -j${nproc}
 
       - name: Webhook
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && env.CALCROM_WEBHOOK_URL != '' }}
         run: |
           sudo chmod 755 $GITHUB_WORKSPACE/.github/calcrom/webhook.sh
           $GITHUB_WORKSPACE/.github/calcrom/webhook.sh pmdsky "$CALCROM_WEBHOOK_URL"
