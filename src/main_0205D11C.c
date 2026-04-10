@@ -9,6 +9,8 @@ extern const char _020A3AF4[];
 extern const char _020A3B18[];
 
 extern bool8 IsItemValidVeneer(s16 item_id);
+extern bool8 IsMissionValid(struct mission *mission);
+
 
 bool8 sub_0205D11C(u32 r0, u32 r1, s16 r2)
 {
@@ -38,4 +40,11 @@ bool8 sub_0205D11C(u32 r0, u32 r1, s16 r2)
 
     Debug_Print0(_020A3B18, r2);
     return FALSE;
+}
+
+bool8 sub_0205D1F4(struct mission *mission) {
+    if (!IsMissionValid(mission) || ((mission->status >= NUM_MISSIONS_STATUS))) {
+        return FALSE;
+    }
+    return TRUE; 
 }
