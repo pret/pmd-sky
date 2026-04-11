@@ -150,7 +150,8 @@
                                            42](IsRecruitingAllowed,func) found in global dungeon_recruitment_2.o
                                            42](GetMaxMembersAllowed,func) found in global dungeon_recruitment_2.o
                                            42](SECONDARY_TERRAIN_TYPES,object) found in global secondary_terrain_types.o
-                                           42](sub_0204CEE0,func) found in global main_0204CDB8.o
+                                           42](sub_0204CEE0,func) found in global script_variable_2.o
+                                           42](GetDungeonMode,func) found in global main_0204CDB8.o
                                            42](DungeonSwapIdToIdx,func) found in global dungeon_init_2.o
                                            42](GetDungeonModeSpecial,func) found in global dungeon_init_2.o
                                            42](IsMoneyAllowed,func) found in global dungeon_recruitment_2.o
@@ -159,8 +160,6 @@
                                            42](LoadScriptVariableValue,func) found in global script_variable.o
                                             43](GetDebugSpecialEpisodeNumber,func) found in global special_episode.o
                                             43](GetSpecialEpisodeType,func) found in global special_episode.o
-                                          41](ZeroInitScriptVariable,func) found in global script_variable.o
-                                          41](SaveScriptVariableValue,func) found in global script_variable.o
                                          40](GetStringFromFileVeneer,func) found in global main_0202593C.o
                                         39](GetColorCodePaletteOffset,func) found in global main_020265C4.o
                                         39](RandInt,func) found in global main_0200224C.o
@@ -168,7 +167,8 @@
                                       37](StrncpySimpleNoPad,func) found in global main_020251AC.o
                                       37](Copy16BitsFrom,func) found in global main_02051504.o
                                       37](SetResolvedPerformanceProgressFlag,func) found in global progression.o
-                                      37](IsItemValidVeneer,func) found in global main_0200EB30.o
+                                      37](IsItemValidVeneer,func) found in global item_util_1.o
+                                     36](IsItemInTimeDarkness,func) found in global item_util_1.o
                                      36](IsTreasureBox,func) found in global item_util_4.o
                                      36](GetCurrentBagCapacity,func) found in global main_0200EDC0.o
                                       37](GetExecuteSpecialEpisodeType,func) found in global special_episode.o
@@ -179,6 +179,7 @@
                                      36](IsStorableItem,func) found in global item_util_4.o
                                      36](GetItemCategoryVeneer,func) found in global item_util.o
                                   33](IsNoLossPenaltyDungeon,func) found in global dungeon_init.o
+                                 32](SaveScriptVariableValue,func) found in global script_variable.o
                                  32](GetSosMailCount,func) found in global main_0205B80C.o
                                   33](sub_0205B560,func) found in global main_0205B554.o
                                   33](sub_0205B7C8,func) found in global main_0205B77C.o
@@ -190,10 +191,10 @@
                                    34](GetMaxPp,func) found in global moves.o
                                     35](MULTITALENT_PP_BOOST_AMOUNT,notype) found in global main_rodata_020A1894.o
                                     35](EXCLUSIVE_ITEM_PP_BOOST_AMOUNT,notype) found in global main_rodata_020A18BC.o
-                                   34](Is2TurnsMove,func) found in global main_02013C30.o
-                                    35](GetInfoMoveGround,func) found in global moves_1.o
+                                   34](Is2TurnsMove,func) found in global main_02014CEC.o
                                    34](ZInit8,func) found in global main_0200330C.o
                                    34](GetType,func) found in global main_0205283C.o
+                                   34](ReturnEggExclusiveItem,func) found in global main_0200EB30.o
                                    34](GetExclusiveItem,func) found in global main_02052B28.o
                                    34](RandRange,func) found in global main_0200224C.o
                                    34](GetBaseFormCastformDeoxysCherrim,func) found in global main_02054C24.o
@@ -660,6 +661,8 @@
                                                                                                     99](DseMem_Quit,func) found in global main_0206C98C.o
                                                                                                     99](CosAbs4096,func) found in global main_020018D0.o
                                                                                                     99](sub_0206A7CC,func) found in global main_0206A750.o
+                                                                                                   98](sub_0204CE00,func) found in global script_variable_2.o
+                                                                                                   98](sub_0204CDCC,func) found in global script_variable_2.o
                                                                                                    98](GetTopScreenOption,func) found in global options.o
                                                                                                    98](InitMenu,func) found in global main_020348E4.o
                                                                                                    98](EntryOverlay13,func) found in global overlay_13_EntryOverlay13.o
@@ -676,8 +679,11 @@
                                                                                                      100](ExitOverlay13,func) found in global overlay_13_EntryOverlay13.o
                                                                                                    98](GetExclusiveItemType,func) found in global item_util_1.o
                                                                                                     99](GetExclusiveItemOffsetEnsureValid,func) found in local item_util_1.o
+                                                                                                   98](GetInfoMoveGround,func) found in global moves_1.o
+                                                                                                   98](DungeonMoveToGroundMove,func) found in global main_02013C30.o
                                                                                                    98](SaveScriptVariableValueBytes,func) found in global script_variable.o
                                                                                                    98](sub_0200CF6C,func) found in global item_util_4.o
+                                                                                                   98](sub_0204CF0C,func) found in global script_variable_2.o
                                                                                                    98](sub_0206A84C,func) found in global main_0206A84C.o
                                                                                                    98](Debug_GetLogFlag,func) found in global debug.o
                                                                                                    98](GetSpriteIndex__02052724,func) found in global main_020526EC.o
@@ -712,7 +718,9 @@
                                                                                                    98](sub_0205D11C,func) found in global main_0205D11C.o
                                                                                                     99](IsValidTargetItem,func) found in global item_util_4.o
                                                                                                    98](sub_0205D008,func) found in global main_0205C934.o
-                                                                                                 96](sub_0204F024,func) found in global main_0204EFE0.o
+                                                                                                 96](ZeroInitScriptVariable,func) found in global script_variable.o
+                                                                                                 96](sub_0204F024,func) found in global dungeon_init.o
+                                                                                                 96](sub_0204F034,func) found in global dungeon_init.o
                                                                                                  96](CalcAndUpdateScriptVarWithOtherValue,func) found in global script_variable.o
                                                                                                   97](CalcScriptVariables,func) found in global script_variable.o
                                                                                                    98](.rodata,section) found in local script_variable.o
@@ -737,6 +745,8 @@
                                                                                                      100](ov28_0238A184,func) found in global overlay_28.o
                                                                                                  96](CompareScriptVariablesVeneer,func) found in global script_variable.o
                                                                                                   97](CompareScriptVariables,func) found in global script_variable.o
+                                                                                                 96](sub_0204CE48,func) found in global script_variable_2.o
+                                                                                                 96](sub_0204CDE8,func) found in global script_variable_2.o
                                                                                                  96](CalcScriptVariablesVeneer,func) found in global script_variable.o
                                                                                                  96](IsStoryAfterPoint,func) found in global story_progress.o
                                                                                                  96](IsStoryAtOrAfterPoint,func) found in global story_progress.o
@@ -1070,6 +1080,7 @@
                                                                                        86](IsFutureDungeon,func) found in global main_020514CC.o
                                                                                     83](GetItemSpriteId,func) found in global item_util_1.o
                                                                                 79](ov29_023383A8,func) found in global overlay_29_0233836C.o
+                                                                                79](GetMoveMessageFromId,func) found in global moves_3.o
                                                                              76](EntityIsValid__0234987C,func) found in global overlay_29_0234987C.o
                                                                              76](GetMonsterPreEvolution,func) found in global main_0205283C.o
                                                                              76](IsCherrim,func) found in global main_02054AD4.o
@@ -1124,9 +1135,11 @@
                                   33](sub_0205C548,func) found in global main_0205C548.o
                                   33](sub_0205C2A4,func) found in global main_0205C2A4.o
                                   33](sub_0204DA2C,func) found in global main_0204DA2C.o
+                               30](GetNbMoves,func) found in global moves_3.o
                                30](DexNumbersEqual,func) found in global main_02054DC4.o
                               29](sub_0205C8E0,func) found in global main_0205C73C.o
                               29](sub_0205C870,func) found in global main_0205C73C.o
+                           26](sub_0205D1F4,func) found in global main_0205D11C.o
                            26](ov01_02337B3C,func) found in global overlay_01.o
                             27](.rodata,section) found in local overlay_01.o
                              28](ov07_0233F758,func) found in global overlay_07.o
@@ -1185,7 +1198,10 @@
                              28](ov03_0233CB94,func) found in global overlay_03_0233CA98.o
                               29](.data,section) found in local overlay_03_0233CA98.o
                                30](.rodata,section) found in local overlay_03_0233CA98.o
+                              29](ov03_0233CAD8,func) found in global overlay_03_0233CA80.o
+                               30](ov03_02346BE0,object) found in global overlay_03_0233CA80.o
                               29](sub_0205BD5C,func) found in global main_0205BD14.o
+                              29](ov03_0233CAB8,func) found in global overlay_03_0233CA80.o
                               29](sub_0205BC30,func) found in global main_0205BBFC.o
                               29](sub_0205BCC4,func) found in global main_0205BCC4.o
                               29](sub_0205B738,func) found in global main_0205B738.o
@@ -1196,10 +1212,14 @@
                               29](sub_0205B794,func) found in global main_0205B77C.o
                               29](sub_0205B554,func) found in global main_0205B554.o
                               29](SetQuestionMarks,func) found in global main_020251AC.o
+                              29](ov03_0233CAE8,func) found in global overlay_03_0233CA80.o
+                              29](ov03_0233CAC8,func) found in global overlay_03_0233CA80.o
+                              29](ov03_0233CAA8,func) found in global overlay_03_0233CA80.o
                               29](sub_0205B9C8,func) found in global main_0205B9C8.o
                               29](.bss,section) found in local overlay_03_0233CA98.o
+                              29](ov03_0233CAF8,func) found in global overlay_03_0233CA80.o
+                              29](ov03_0233CA98,func) found in global overlay_03_0233CA80.o
                               29](ov03_0233CA80,func) found in global overlay_03_0233CA80.o
-                               30](ov03_02346BE0,object) found in global overlay_03_0233CA80.o
                             27](.bss,section) found in local overlay_01.o
                             27](CardBackupError,func) found in global main_02003D2C.o
                             27](sub_0205B5A8,func) found in global main_0205B5A8.o
@@ -1217,6 +1237,7 @@
                            26](InitScriptVariableValues,func) found in global script_variable.o
                             27](InitScenarioProgressScriptVars,func) found in global script_variable.o
                             27](InitWorldMapScriptVars,func) found in global script_variable_2.o
+                            27](InitDungeonListScriptVars,func) found in global script_variable_2.o
                            26](sub_0205B44C,func) found in global main_0205B440.o
                            26](sub_0205C73C,func) found in global main_0205C73C.o
                            26](InitOptionsVeneer,func) found in global options.o
@@ -1247,6 +1268,7 @@
                      20](EventFlagResume,func) found in global script_variable.o
                       21](ScenarioFlagRestore,func) found in global scenario_flag.o
                      20](SetSpecialEpisodeOpenOld,func) found in global special_episode.o
+                     20](sub_0204CDB8,func) found in global script_variable_2.o
                      20](DebugPrintEventFlagSize,func) found in global script_variable.o
                      20](GetMoveRangeId,func) found in global moves_3.o
                      20](GetNextIqSkill,func) found in global main_02058F24.o
@@ -2540,13 +2562,13 @@
   0200EAA0 00000000 .text   $a	(item_util_1.o)
   0200EAA0 00000090 .text   TestItemAiFlag	(item_util_1.o)
   0200EB2C 00000000 .text   $d	(item_util_1.o)
-  0200EB30 00000028 .text   IsItemInTimeDarkness	(main_0200EB30.o)
-  0200EB30 00000000 .text   $a	(main_0200EB30.o)
-  0200EB30 0000009C .text   .text	(main_0200EB30.o)
-  0200EB54 00000000 .text   $d	(main_0200EB30.o)
-  0200EB58 00000000 .text   $a	(main_0200EB30.o)
-  0200EB58 0000000C .text   IsItemValidVeneer	(main_0200EB30.o)
-  0200EB60 00000000 .text   $d	(main_0200EB30.o)
+  0200EB30 00000000 .text   $a	(item_util_1.o)
+  0200EB30 00000028 .text   IsItemInTimeDarkness	(item_util_1.o)
+  0200EB54 00000000 .text   $d	(item_util_1.o)
+  0200EB58 00000000 .text   $a	(item_util_1.o)
+  0200EB58 0000000C .text   IsItemValidVeneer	(item_util_1.o)
+  0200EB60 00000000 .text   $d	(item_util_1.o)
+  0200EB64 00000068 .text   .text	(main_0200EB30.o)
   0200EB64 0000002C .text   sub_0200EB64	(main_0200EB30.o)
   0200EB64 00000000 .text   $a	(main_0200EB30.o)
   0200EB88 00000000 .text   $d	(main_0200EB30.o)
@@ -3093,23 +3115,24 @@
   02013C04 00000000 .text   $a	(moves_3.o)
   02013C04 0000002C .text   IsMoveRangeStringUser	(moves_3.o)
   02013C2C 00000000 .text   $d	(moves_3.o)
-  02013C30 00000000 .text   $a	(main_02013C30.o)
-  02013C30 00000034 .text   GetMoveMessageFromId	(main_02013C30.o)
-  02013C30 000010BC .text   .text	(main_02013C30.o)
-  02013C5C 00000000 .text   $d	(main_02013C30.o)
-  02013C64 00000000 .text   $a	(main_02013C30.o)
-  02013C64 00000048 .text   GetNbMoves	(main_02013C30.o)
+  02013C30 00000000 .text   $a	(moves_3.o)
+  02013C30 00000034 .text   GetMoveMessageFromId	(moves_3.o)
+  02013C5C 00000000 .text   $d	(moves_3.o)
+  02013C64 00000048 .text   GetNbMoves	(moves_3.o)
+  02013C64 00000000 .text   $a	(moves_3.o)
+  02013CAC 00000FB8 .text   .text	(main_02013C30.o)
   02013CAC 0000005C .text   GetMovesetIdx__02013CAC	(main_02013C30.o)
+  02013CAC 00000000 .text   $a	(main_02013C30.o)
   02013D08 0000001C .text   IsReflectedByMagicCoat	(main_02013C30.o)
   02013D20 00000000 .text   $d	(main_02013C30.o)
   02013D24 00000000 .text   $a	(main_02013C30.o)
   02013D24 0000001C .text   CanBeSnatched	(main_02013C30.o)
   02013D3C 00000000 .text   $d	(main_02013C30.o)
-  02013D40 00000000 .text   $a	(main_02013C30.o)
   02013D40 0000001C .text   FailsWhileMuzzled	(main_02013C30.o)
+  02013D40 00000000 .text   $a	(main_02013C30.o)
   02013D58 00000000 .text   $d	(main_02013C30.o)
-  02013D5C 000000B8 .text   IsSoundMove	(main_02013C30.o)
   02013D5C 00000000 .text   $a	(main_02013C30.o)
+  02013D5C 000000B8 .text   IsSoundMove	(main_02013C30.o)
   02013E10 00000000 .text   $d	(main_02013C30.o)
   02013E14 00000040 .text   IsRecoilMove	(main_02013C30.o)
   02013E14 00000000 .text   $a	(main_02013C30.o)
@@ -3143,8 +3166,9 @@
   02014B74 0000003C .text   sub_02014B74	(main_02013C30.o)
   02014BB0 00000070 .text   sub_02014BB0	(main_02013C30.o)
   02014C20 00000044 .text   sub_02014C20	(main_02013C30.o)
-  02014C64 00000088 .text   Is2TurnsMove	(main_02013C30.o)
-  02014CE8 00000000 .text   $d	(main_02013C30.o)
+  02014C64 00000000 .text   $a	(main_02014CEC.o)
+  02014C64 00000088 .text   Is2TurnsMove	(main_02014CEC.o)
+  02014CE8 00000000 .text   $d	(main_02014CEC.o)
   02014CEC 00000000 .text   $a	(main_02014CEC.o)
   02014CEC 0000002C .text   IsRegularAttackOrProjectile	(main_02014CEC.o)
   02014D14 00000000 .text   $d	(main_02014CEC.o)
@@ -6491,24 +6515,30 @@
   0204CD84 00000000 .text   $d	(scenario_flag.o)
   0204CD88 00000030 .text   InitWorldMapScriptVars	(script_variable_2.o)
   0204CD88 00000000 .text   $a	(script_variable_2.o)
-  0204CDB8 00000014 .text   sub_0204CDB8	(main_0204CDB8.o)
-  0204CDB8 00000000 .text   $a	(main_0204CDB8.o)
-  0204CDB8 00000C74 .text   .text	(main_0204CDB8.o)
-  0204CDC8 00000000 .text   $d	(main_0204CDB8.o)
-  0204CDCC 00000000 .text   $a	(main_0204CDB8.o)
-  0204CDCC 0000001C .text   sub_0204CDCC	(main_0204CDB8.o)
-  0204CDE8 00000018 .text   sub_0204CDE8	(main_0204CDB8.o)
-  0204CDFC 00000000 .text   $d	(main_0204CDB8.o)
-  0204CE00 00000000 .text   $a	(main_0204CDB8.o)
-  0204CE00 00000048 .text   sub_0204CE00	(main_0204CDB8.o)
-  0204CE48 00000048 .text   sub_0204CE48	(main_0204CDB8.o)
-  0204CE90 00000050 .text   InitDungeonListScriptVars	(main_0204CDB8.o)
-  0204CEE0 0000002C .text   sub_0204CEE0	(main_0204CDB8.o)
-  0204CF0C 0000002C .text   sub_0204CF0C	(main_0204CDB8.o)
+  0204CDB8 00000000 .text   $a	(script_variable_2.o)
+  0204CDB8 00000014 .text   sub_0204CDB8	(script_variable_2.o)
+  0204CDC8 00000000 .text   $d	(script_variable_2.o)
+  0204CDCC 0000001C .text   sub_0204CDCC	(script_variable_2.o)
+  0204CDCC 00000000 .text   $a	(script_variable_2.o)
+  0204CDE8 00000000 .text   $a	(script_variable_2.o)
+  0204CDE8 00000018 .text   sub_0204CDE8	(script_variable_2.o)
+  0204CDFC 00000000 .text   $d	(script_variable_2.o)
+  0204CE00 00000048 .text   sub_0204CE00	(script_variable_2.o)
+  0204CE00 00000000 .text   $a	(script_variable_2.o)
+  0204CE48 00000048 .text   sub_0204CE48	(script_variable_2.o)
+  0204CE48 00000000 .text   $a	(script_variable_2.o)
+  0204CE90 00000050 .text   InitDungeonListScriptVars	(script_variable_2.o)
+  0204CE90 00000000 .text   $a	(script_variable_2.o)
+  0204CEE0 0000002C .text   sub_0204CEE0	(script_variable_2.o)
+  0204CEE0 00000000 .text   $a	(script_variable_2.o)
+  0204CF0C 0000002C .text   sub_0204CF0C	(script_variable_2.o)
+  0204CF0C 00000000 .text   $a	(script_variable_2.o)
+  0204CF38 00000000 .text   $a	(main_0204CDB8.o)
   0204CF38 00000064 .text   SetDungeonConquest	(main_0204CDB8.o)
+  0204CF38 00000AF4 .text   .text	(main_0204CDB8.o)
   0204CF98 00000000 .text   $d	(main_0204CDB8.o)
-  0204CF9C 0000007C .text   GetDungeonMode	(main_0204CDB8.o)
   0204CF9C 00000000 .text   $a	(main_0204CDB8.o)
+  0204CF9C 0000007C .text   GetDungeonMode	(main_0204CDB8.o)
   0204D018 000000F0 .text   sub_0204D018	(main_0204CDB8.o)
   0204D108 00000028 .text   GlobalProgressAlloc	(main_0204CDB8.o)
   0204D12C 00000000 .text   $d	(main_0204CDB8.o)
@@ -6518,14 +6548,14 @@
   0204D14C 0000003C .text   SetMonsterFlag1	(main_0204CDB8.o)
   0204D14C 00000000 .text   $a	(main_0204CDB8.o)
   0204D184 00000000 .text   $d	(main_0204CDB8.o)
-  0204D188 00000000 .text   $a	(main_0204CDB8.o)
   0204D188 0000003C .text   GetMonsterFlag1	(main_0204CDB8.o)
+  0204D188 00000000 .text   $a	(main_0204CDB8.o)
   0204D1C0 00000000 .text   $d	(main_0204CDB8.o)
   0204D1C4 00000044 .text   SetMonsterFlag2	(main_0204CDB8.o)
   0204D1C4 00000000 .text   $a	(main_0204CDB8.o)
   0204D204 00000000 .text   $d	(main_0204CDB8.o)
-  0204D208 00000000 .text   $a	(main_0204CDB8.o)
   0204D208 00000048 .text   HasMonsterBeenAttackedInDungeons	(main_0204CDB8.o)
+  0204D208 00000000 .text   $a	(main_0204CDB8.o)
   0204D24C 00000000 .text   $d	(main_0204CDB8.o)
   0204D250 00000000 .text   $a	(main_0204CDB8.o)
   0204D250 00000040 .text   SetDungeonTipShown	(main_0204CDB8.o)
@@ -6533,8 +6563,8 @@
   0204D290 00000000 .text   $a	(main_0204CDB8.o)
   0204D290 0000004C .text   GetDungeonTipShown	(main_0204CDB8.o)
   0204D2D8 00000000 .text   $d	(main_0204CDB8.o)
-  0204D2DC 00000000 .text   $a	(main_0204CDB8.o)
   0204D2DC 0000001C .text   SetMaxReachedFloor	(main_0204CDB8.o)
+  0204D2DC 00000000 .text   $a	(main_0204CDB8.o)
   0204D2F4 00000000 .text   $d	(main_0204CDB8.o)
   0204D2F8 00000000 .text   $a	(main_0204CDB8.o)
   0204D2F8 00000020 .text   GetMaxReachedFloor	(main_0204CDB8.o)
@@ -6545,19 +6575,19 @@
   0204D34C 00000000 .text   $a	(main_0204CDB8.o)
   0204D34C 00000014 .text   GetNbAdventures	(main_0204CDB8.o)
   0204D35C 00000000 .text   $d	(main_0204CDB8.o)
-  0204D360 00000000 .text   $a	(main_0204CDB8.o)
   0204D360 00000008 .text   CanMonsterSpawn	(main_0204CDB8.o)
+  0204D360 00000000 .text   $a	(main_0204CDB8.o)
   0204D368 00000058 .text   IncrementExclusiveMonsterCounts	(main_0204CDB8.o)
   0204D3B8 00000000 .text   $d	(main_0204CDB8.o)
-  0204D3C0 00000188 .text   CopyProgressInfoTo	(main_0204CDB8.o)
   0204D3C0 00000000 .text   $a	(main_0204CDB8.o)
+  0204D3C0 00000188 .text   CopyProgressInfoTo	(main_0204CDB8.o)
   0204D538 00000000 .text   $d	(main_0204CDB8.o)
-  0204D548 00000038 .text   CopyProgressInfoFromScratchTo	(main_0204CDB8.o)
   0204D548 00000000 .text   $a	(main_0204CDB8.o)
+  0204D548 00000038 .text   CopyProgressInfoFromScratchTo	(main_0204CDB8.o)
   0204D580 000001C8 .text   CopyProgressInfoFrom	(main_0204CDB8.o)
   0204D740 00000000 .text   $d	(main_0204CDB8.o)
-  0204D748 00000038 .text   CopyProgressInfoFromScratchFrom	(main_0204CDB8.o)
   0204D748 00000000 .text   $a	(main_0204CDB8.o)
+  0204D748 00000038 .text   CopyProgressInfoFromScratchFrom	(main_0204CDB8.o)
   0204D780 0000001C .text   InitKaomadoStream	(main_0204CDB8.o)
   0204D798 00000000 .text   $d	(main_0204CDB8.o)
   0204D79C 00000000 .text   $a	(main_0204CDB8.o)
@@ -6676,12 +6706,11 @@
   0204EF98 00000000 .text   $d	(dungeon_init.o)
   0204EFE0 00000044 .text   IsNoLossPenaltyDungeon	(dungeon_init.o)
   0204EFE0 00000000 .text   $a	(dungeon_init.o)
-  0204F024 00000010 .text   sub_0204F024	(main_0204EFE0.o)
-  0204F024 00000000 .text   $a	(main_0204EFE0.o)
-  0204F024 0000002C .text   .text	(main_0204EFE0.o)
-  0204F030 00000000 .text   $d	(main_0204EFE0.o)
-  0204F034 0000001C .text   sub_0204F034	(main_0204EFE0.o)
-  0204F034 00000000 .text   $a	(main_0204EFE0.o)
+  0204F024 00000000 .text   $a	(dungeon_init.o)
+  0204F024 00000010 .text   sub_0204F024	(dungeon_init.o)
+  0204F030 00000000 .text   $d	(dungeon_init.o)
+  0204F034 0000001C .text   sub_0204F034	(dungeon_init.o)
+  0204F034 00000000 .text   $a	(dungeon_init.o)
   0204F050 00000050 .text   sub_0204F050	(main_0204F050.o)
   0204F050 00000000 .text   $a	(main_0204F050.o)
   0204F0A0 00000000 .text   $a	(main_0204F0A0.o)
@@ -7998,10 +8027,11 @@
   0205D11C 00000000 .text   $a	(main_0205D11C.o)
   0205D11C 000000D8 .text   sub_0205D11C	(main_0205D11C.o)
   0205D1E8 00000000 .text   $d	(main_0205D11C.o)
-  0205D1F4 00000000 .text   $a	(main_0205D1F4.o)
-  0205D1F4 00000030 .text   sub_0205D1F4	(main_0205D1F4.o)
-  0205D1F4 00000E28 .text   .text	(main_0205D1F4.o)
+  0205D1F4 00000030 .text   sub_0205D1F4	(main_0205D11C.o)
+  0205D1F4 00000000 .text   $a	(main_0205D11C.o)
   0205D224 00000D88 .text   GenerateMission	(main_0205D1F4.o)
+  0205D224 00000000 .text   $a	(main_0205D1F4.o)
+  0205D224 00000DF8 .text   .text	(main_0205D1F4.o)
   0205DFA4 00000000 .text   $d	(main_0205D1F4.o)
   0205DFAC 00000070 .text   sub_0205DFAC	(main_0205D1F4.o)
   0205DFAC 00000000 .text   $a	(main_0205D1F4.o)
@@ -25534,30 +25564,30 @@
   0233CA80 00000000 .text   $a	(overlay_03_0233CA80.o)
   0233CA80 00000018 .text   ov03_0233CA80	(overlay_03_0233CA80.o)
   0233CA90 00000000 .text   $d	(overlay_03_0233CA80.o)
-  0233CA98 00009CA0 .text   .text	(overlay_03_0233CA98.o)
-  0233CA98 00000010 .text   ov03_0233CA98	(overlay_03_0233CA98.o)
-  0233CA98 00000000 .text   $a	(overlay_03_0233CA98.o)
-  0233CAA4 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233CAA8 00000000 .text   $a	(overlay_03_0233CA98.o)
-  0233CAA8 00000010 .text   ov03_0233CAA8	(overlay_03_0233CA98.o)
-  0233CAB4 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233CAB8 00000000 .text   $a	(overlay_03_0233CA98.o)
-  0233CAB8 00000010 .text   ov03_0233CAB8	(overlay_03_0233CA98.o)
-  0233CAC4 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233CAC8 00000000 .text   $a	(overlay_03_0233CA98.o)
-  0233CAC8 00000010 .text   ov03_0233CAC8	(overlay_03_0233CA98.o)
-  0233CAD4 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233CAD8 00000010 .text   ov03_0233CAD8	(overlay_03_0233CA98.o)
-  0233CAD8 00000000 .text   $a	(overlay_03_0233CA98.o)
-  0233CAE4 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233CAE8 00000000 .text   $a	(overlay_03_0233CA98.o)
-  0233CAE8 00000010 .text   ov03_0233CAE8	(overlay_03_0233CA98.o)
-  0233CAF4 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233CAF8 00000000 .text   $a	(overlay_03_0233CA98.o)
-  0233CAF8 00000010 .text   ov03_0233CAF8	(overlay_03_0233CA98.o)
-  0233CB04 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233CB08 00000000 .text   $a	(overlay_03_0233CA98.o)
+  0233CA98 00000000 .text   $a	(overlay_03_0233CA80.o)
+  0233CA98 00000010 .text   ov03_0233CA98	(overlay_03_0233CA80.o)
+  0233CAA4 00000000 .text   $d	(overlay_03_0233CA80.o)
+  0233CAA8 00000000 .text   $a	(overlay_03_0233CA80.o)
+  0233CAA8 00000010 .text   ov03_0233CAA8	(overlay_03_0233CA80.o)
+  0233CAB4 00000000 .text   $d	(overlay_03_0233CA80.o)
+  0233CAB8 00000000 .text   $a	(overlay_03_0233CA80.o)
+  0233CAB8 00000010 .text   ov03_0233CAB8	(overlay_03_0233CA80.o)
+  0233CAC4 00000000 .text   $d	(overlay_03_0233CA80.o)
+  0233CAC8 00000000 .text   $a	(overlay_03_0233CA80.o)
+  0233CAC8 00000010 .text   ov03_0233CAC8	(overlay_03_0233CA80.o)
+  0233CAD4 00000000 .text   $d	(overlay_03_0233CA80.o)
+  0233CAD8 00000000 .text   $a	(overlay_03_0233CA80.o)
+  0233CAD8 00000010 .text   ov03_0233CAD8	(overlay_03_0233CA80.o)
+  0233CAE4 00000000 .text   $d	(overlay_03_0233CA80.o)
+  0233CAE8 00000000 .text   $a	(overlay_03_0233CA80.o)
+  0233CAE8 00000010 .text   ov03_0233CAE8	(overlay_03_0233CA80.o)
+  0233CAF4 00000000 .text   $d	(overlay_03_0233CA80.o)
+  0233CAF8 00000000 .text   $a	(overlay_03_0233CA80.o)
+  0233CAF8 00000010 .text   ov03_0233CAF8	(overlay_03_0233CA80.o)
+  0233CB04 00000000 .text   $d	(overlay_03_0233CA80.o)
   0233CB08 00000008 .text   ov03_0233CB08	(overlay_03_0233CA98.o)
+  0233CB08 00000000 .text   $a	(overlay_03_0233CA98.o)
+  0233CB08 00009C30 .text   .text	(overlay_03_0233CA98.o)
   0233CB10 0000002C .text   ov03_0233CB10	(overlay_03_0233CA98.o)
   0233CB3C 00000058 .text   ov03_0233CB3C	(overlay_03_0233CA98.o)
   0233CB90 00000000 .text   $d	(overlay_03_0233CA98.o)
@@ -25567,27 +25597,27 @@
   0233CDD8 0000000C .text   ov03_0233CDD8	(overlay_03_0233CA98.o)
   0233CDE4 000001B8 .text   ov03_0233CDE4	(overlay_03_0233CA98.o)
   0233CF74 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233CF9C 00000038 .text   ov03_0233CF9C	(overlay_03_0233CA98.o)
   0233CF9C 00000000 .text   $a	(overlay_03_0233CA98.o)
+  0233CF9C 00000038 .text   ov03_0233CF9C	(overlay_03_0233CA98.o)
   0233CFD0 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233CFD4 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233CFD4 00000044 .text   ov03_0233CFD4	(overlay_03_0233CA98.o)
+  0233CFD4 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233D018 00000044 .text   ov03_0233D018	(overlay_03_0233CA98.o)
   0233D058 00000000 .text   $d	(overlay_03_0233CA98.o)
   0233D05C 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233D05C 0000002C .text   ov03_0233D05C	(overlay_03_0233CA98.o)
   0233D084 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233D088 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233D088 000005EC .text   ov03_0233D088	(overlay_03_0233CA98.o)
+  0233D088 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233D630 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233D674 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233D674 00000044 .text   ov03_0233D674	(overlay_03_0233CA98.o)
+  0233D674 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233D6B4 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233D6B8 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233D6B8 0000002C .text   ov03_0233D6B8	(overlay_03_0233CA98.o)
+  0233D6B8 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233D6E0 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233D6E4 000006BC .text   ov03_0233D6E4	(overlay_03_0233CA98.o)
   0233D6E4 00000000 .text   $a	(overlay_03_0233CA98.o)
+  0233D6E4 000006BC .text   ov03_0233D6E4	(overlay_03_0233CA98.o)
   0233D964 00000000 .text   ov03_0233D964	(overlay_03_0233CA98.o)
   0233DD50 00000000 .text   $d	(overlay_03_0233CA98.o)
   0233DDA0 00000048 .text   ov03_0233DDA0	(overlay_03_0233CA98.o)
@@ -25604,8 +25634,8 @@
   0233EE08 00000000 .text   $d	(overlay_03_0233CA98.o)
   0233EE98 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233F2D0 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0233F310 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233F310 00000068 .text   ov03_0233F310	(overlay_03_0233CA98.o)
+  0233F310 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233F374 00000000 .text   $d	(overlay_03_0233CA98.o)
   0233F378 00000000 .text   $a	(overlay_03_0233CA98.o)
   0233F378 0000002C .text   ov03_0233F378	(overlay_03_0233CA98.o)
@@ -25619,14 +25649,14 @@
   023406DC 0000034C .text   ov03_023406DC	(overlay_03_0233CA98.o)
   02340A28 00000100 .text   ov03_02340A28	(overlay_03_0233CA98.o)
   02340B1C 00000000 .text   $d	(overlay_03_0233CA98.o)
-  02340B28 00000000 .text   $a	(overlay_03_0233CA98.o)
   02340B28 00000174 .text   ov03_02340B28	(overlay_03_0233CA98.o)
+  02340B28 00000000 .text   $a	(overlay_03_0233CA98.o)
   02340C94 00000000 .text   $d	(overlay_03_0233CA98.o)
   02340C9C 00000000 .text   $a	(overlay_03_0233CA98.o)
   02340C9C 0000003C .text   ov03_02340C9C	(overlay_03_0233CA98.o)
   02340CD4 00000000 .text   $d	(overlay_03_0233CA98.o)
-  02340CD8 00000000 .text   $a	(overlay_03_0233CA98.o)
   02340CD8 000000DC .text   ov03_02340CD8	(overlay_03_0233CA98.o)
+  02340CD8 00000000 .text   $a	(overlay_03_0233CA98.o)
   02340DAC 00000000 .text   $d	(overlay_03_0233CA98.o)
   02340DB4 00000000 .text   $a	(overlay_03_0233CA98.o)
   02340DB4 000033EC .text   ov03_02340DB4	(overlay_03_0233CA98.o)
@@ -25640,15 +25670,15 @@
   023441A0 0000004C .text   ov03_023441A0	(overlay_03_0233CA98.o)
   023441A0 00000000 .text   $a	(overlay_03_0233CA98.o)
   023441E8 00000000 .text   $d	(overlay_03_0233CA98.o)
-  023441EC 000000E4 .text   ov03_023441EC	(overlay_03_0233CA98.o)
   023441EC 00000000 .text   $a	(overlay_03_0233CA98.o)
+  023441EC 000000E4 .text   ov03_023441EC	(overlay_03_0233CA98.o)
   023442D0 00000030 .text   ov03_023442D0	(overlay_03_0233CA98.o)
   023442F8 00000000 .text   $d	(overlay_03_0233CA98.o)
-  02344300 0000012C .text   ov03_02344300	(overlay_03_0233CA98.o)
   02344300 00000000 .text   $a	(overlay_03_0233CA98.o)
+  02344300 0000012C .text   ov03_02344300	(overlay_03_0233CA98.o)
   02344420 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0234442C 00000000 .text   $a	(overlay_03_0233CA98.o)
   0234442C 00000038 .text   ov03_0234442C	(overlay_03_0233CA98.o)
+  0234442C 00000000 .text   $a	(overlay_03_0233CA98.o)
   02344460 00000000 .text   $d	(overlay_03_0233CA98.o)
   02344464 00000000 .text   $a	(overlay_03_0233CA98.o)
   02344464 0000029C .text   ov03_02344464	(overlay_03_0233CA98.o)
@@ -25656,14 +25686,14 @@
   02344700 00000000 .text   $a	(overlay_03_0233CA98.o)
   02344700 0000002C .text   ov03_02344700	(overlay_03_0233CA98.o)
   02344728 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0234472C 00000000 .text   $a	(overlay_03_0233CA98.o)
   0234472C 00000060 .text   ov03_0234472C	(overlay_03_0233CA98.o)
+  0234472C 00000000 .text   $a	(overlay_03_0233CA98.o)
   02344788 00000000 .text   $d	(overlay_03_0233CA98.o)
-  0234478C 00000000 .text   $a	(overlay_03_0233CA98.o)
   0234478C 0000002C .text   ov03_0234478C	(overlay_03_0233CA98.o)
+  0234478C 00000000 .text   $a	(overlay_03_0233CA98.o)
   023447B4 00000000 .text   $d	(overlay_03_0233CA98.o)
-  023447B8 00000000 .text   $a	(overlay_03_0233CA98.o)
   023447B8 0000019C .text   ov03_023447B8	(overlay_03_0233CA98.o)
+  023447B8 00000000 .text   $a	(overlay_03_0233CA98.o)
   02344934 00000000 .text   $d	(overlay_03_0233CA98.o)
   02344954 00000000 .text   $a	(overlay_03_0233CA98.o)
   02344954 0000001C .text   ov03_02344954	(overlay_03_0233CA98.o)
@@ -41371,5 +41401,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Apr 08 22:15:51 2026
-# Link end time: Wed Apr 08 22:15:52 2026
+# Link start time: Sat Apr 11 05:21:40 2026
+# Link end time: Sat Apr 11 05:21:40 2026
