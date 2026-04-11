@@ -3,6 +3,7 @@
 
 #include "move.h"
 #include "util.h"
+#include "dungeon_mode.h"
 
 bool8 IsThawingMove(struct move *move);
 // Returns true if the given move can be used while the user is affected by Taunt, or false if the move cannot be used while taunted.
@@ -12,7 +13,8 @@ u16 GetMoveRangeId(struct move *move);
 s32 GetMoveActualAccuracy(s32 move_id);
 s16 GetMoveBasePowerFromId(s32 move_id);
 bool32 IsMoveRangeStringUser(struct move *move);
-
+u8 *GetMoveMessageFromId(s32 move_id);
+s32 GetNbMoves(struct moves *moves);
 
 
 #endif //PMDSKY_MOVES_3_H

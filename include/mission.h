@@ -15,6 +15,7 @@ enum mission_status {
     MISSION_STATUS_DONE = 6,
     MISSION_STATUS_UNK_7 = 7, // Shows up as "accepted"
     MISSION_STATUS_UNK_8 = 8, // Shows up as "accepted"
+    NUM_MISSIONS_STATUS
 };
 
 // Different types of rewards that a mission can have

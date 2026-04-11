@@ -217,3 +217,16 @@ bool8 TestItemAiFlag(s16 item_id, s32 flag)
         return TRUE;
     return FALSE;
 }
+
+bool8 IsItemInTimeDarkness(s16 item_id)
+{
+    if ((ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_IN_TIME_DARKNESS)) {
+        return TRUE;
+    }
+    else return FALSE;
+}
+
+bool8 IsItemValidVeneer(s16 item_id)
+{
+    return IsItemValid(item_id);
+}

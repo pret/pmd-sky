@@ -3,52 +3,6 @@
 
 	.text
 
-	arm_func_start GetMoveMessageFromId
-GetMoveMessageFromId: ; 0x02013C30
-	ldr r2, _02013C5C ; =DUNGEON_MOVE_TABLES
-	mov r1, #0x1a
-	ldr r2, [r2, #8]
-	ldr ip, _02013C60 ; =StringFromId
-	mla r1, r0, r1, r2
-	ldrh r0, [r1, #0x18]
-#ifdef JAPAN
-	add r0, r0, #0x13c
-	add r0, r0, #0x1400
-#else
-	add r0, r0, #0x314
-	add r0, r0, #0xc00
-#endif
-	mov r0, r0, lsl #0x10
-	mov r0, r0, lsr #0x10
-	bx ip
-	.align 2, 0
-_02013C5C: .word DUNGEON_MOVE_TABLES
-_02013C60: .word StringFromId
-	arm_func_end GetMoveMessageFromId
-
-	arm_func_start GetNbMoves
-GetNbMoves: ; 0x02013C64
-	stmdb sp!, {r4, lr}
-	mov r4, #0
-	mov lr, r4
-	mov r2, r4
-	mov r3, #1
-	mov r1, #6
-_02013C7C:
-	mul ip, lr, r1
-	ldrb ip, [r0, ip]
-	add lr, lr, #1
-	tst ip, #1
-	movne ip, r3
-	moveq ip, r2
-	tst ip, #0xff
-	addne r4, r4, #1
-	cmp lr, #4
-	blt _02013C7C
-	mov r0, r4
-	ldmia sp!, {r4, pc}
-	arm_func_end GetNbMoves
-
 	arm_func_start GetMovesetIdx__02013CAC
 GetMovesetIdx__02013CAC: ; 0x02013CAC
 	stmdb sp!, {r3, r4, r5, lr}
@@ -1289,42 +1243,3 @@ _02014C30:
 	bl CopyBitsFrom
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_02014C20
-
-	arm_func_start Is2TurnsMove
-Is2TurnsMove: ; 0x02014C64
-	cmp r0, #0x97
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x64
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x3c
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x4b
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x15c
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x99
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0xcd
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x9c
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #8
-	moveq r0, #1
-	bxeq lr
-	ldr r1, _02014CE8 ; =0x000001DD
-	cmp r0, r1
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_02014CE8: .word 0x000001DD
-	arm_func_end Is2TurnsMove
