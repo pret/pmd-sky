@@ -117,6 +117,13 @@
 .public ov01_02339988
 .public ov01_0233C1B4
 .public ov03_0233CA80
+.public ov03_0233CA98
+.public ov03_0233CAA8
+.public ov03_0233CAB8
+.public ov03_0233CAC8
+.public ov03_0233CAD8
+.public ov03_0233CAE8
+.public ov03_0233CAF8
 .public ov03_02346738
 .public ov03_0234673C
 .public ov03_0234674C

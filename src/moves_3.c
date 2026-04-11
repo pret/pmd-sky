@@ -1,5 +1,6 @@
 #include "moves_3.h"
 #include "move_data.h"
+#include "main_0202593C.h"
 
 extern struct move_data_table_outer DUNGEON_MOVE_TABLES;
 
@@ -51,3 +52,38 @@ bool32 IsMoveRangeStringUser(struct move *move)
     return DUNGEON_MOVE_TABLES.moves->moves[move->id].range_string_idx == MOVE_RANGE_STRING_USER;
 }
 
+u8 *GetMoveMessageFromId(s32 move_id)
+{
+
+#ifdef JAPAN
+    #define MESSAGE_ID 0x153C
+#else
+    #define MESSAGE_ID 0xF14  
+#endif
+    
+    return StringFromId((u16)(DUNGEON_MOVE_TABLES.moves->moves[move_id].message_string_idx + MESSAGE_ID));
+}
+
+#define GET_BIT(BYTE, N) ((u8)(BYTE & (1 << N) ? 1 : 0))
+
+s32 GetNbMoves(struct moves *moves)
+{
+    s32 index;
+    s32 num_moves;
+
+    num_moves = 0;
+
+    for(index = 0; index < 4; index++)
+    {
+        // struct move needs to be size 0x6 for this to match
+        //u8 flag = moves->moves[index].flags0 & 1;
+        
+        // fake
+        u8 flag = *(u8*)((u32)moves + (index * 6));
+
+        if(GET_BIT(flag, 0))
+            num_moves++;
+        
+    }
+    return num_moves;
+}

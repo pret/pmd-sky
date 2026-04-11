@@ -1452,6 +1452,7 @@ enum item_target_flag {
 
 enum item_data_flag {
     ITEM_DATA_FLAG_VALID = 1 << 0,
+    ITEM_DATA_IN_TIME_DARKNESS = 1 << 1,
     ITEM_DATA_FLAG_THROWABLE_AT_ENEMY = 1 << 5,
     ITEM_DATA_FLAG_THROWABLE_AT_ALLY = 1 << 6,
     ITEM_DATA_FLAG_CONSUMABLE = 1 << 7,

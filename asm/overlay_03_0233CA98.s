@@ -3,69 +3,6 @@
 
 	.text
 
-	arm_func_start ov03_0233CA98
-ov03_0233CA98: ; 0x0233CA98
-	ldr r1, _0233CAA4 ; =ov03_02346BE0
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-_0233CAA4: .word ov03_02346BE0
-	arm_func_end ov03_0233CA98
-
-	arm_func_start ov03_0233CAA8
-ov03_0233CAA8: ; 0x0233CAA8
-	ldr r1, _0233CAB4 ; =ov03_02346BE0
-	str r0, [r1, #4]
-	bx lr
-	.align 2, 0
-_0233CAB4: .word ov03_02346BE0
-	arm_func_end ov03_0233CAA8
-
-	arm_func_start ov03_0233CAB8
-ov03_0233CAB8: ; 0x0233CAB8
-	ldr r0, _0233CAC4 ; =ov03_02346BE0
-	ldr r0, [r0, #4]
-	bx lr
-	.align 2, 0
-_0233CAC4: .word ov03_02346BE0
-	arm_func_end ov03_0233CAB8
-
-	arm_func_start ov03_0233CAC8
-ov03_0233CAC8: ; 0x0233CAC8
-	ldr r1, _0233CAD4 ; =ov03_02346BE0
-	str r0, [r1, #8]
-	bx lr
-	.align 2, 0
-_0233CAD4: .word ov03_02346BE0
-	arm_func_end ov03_0233CAC8
-
-	arm_func_start ov03_0233CAD8
-ov03_0233CAD8: ; 0x0233CAD8
-	ldr r0, _0233CAE4 ; =ov03_02346BE0
-	ldr r0, [r0, #8]
-	bx lr
-	.align 2, 0
-_0233CAE4: .word ov03_02346BE0
-	arm_func_end ov03_0233CAD8
-
-	arm_func_start ov03_0233CAE8
-ov03_0233CAE8: ; 0x0233CAE8
-	ldr r1, _0233CAF4 ; =ov03_02346BE0
-	str r0, [r1, #0xc]
-	bx lr
-	.align 2, 0
-_0233CAF4: .word ov03_02346BE0
-	arm_func_end ov03_0233CAE8
-
-	arm_func_start ov03_0233CAF8
-ov03_0233CAF8: ; 0x0233CAF8
-	ldr r0, _0233CB04 ; =ov03_02346BE0
-	ldr r0, [r0, #0xc]
-	bx lr
-	.align 2, 0
-_0233CB04: .word ov03_02346BE0
-	arm_func_end ov03_0233CAF8
-
 	arm_func_start ov03_0233CB08
 ov03_0233CB08: ; 0x0233CB08
 	stmdb sp!, {r3, lr}

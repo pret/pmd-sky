@@ -3,34 +3,6 @@
 
 	.text
 
-; https://decomp.me/scratch/juWhM
-	arm_func_start IsItemInTimeDarkness
-IsItemInTimeDarkness: ; 0x0200EB30
-	ldr r1, _0200EB54 ; =ITEM_DATA_TABLE_PTRS
-#ifdef EUROPE
-	ldr r1, [r1]
-#else
-	ldr r1, [r1, #4]
-#endif
-	add r0, r1, r0, lsl #4
-	ldrb r0, [r0, #0xe]
-	tst r0, #2
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_0200EB54: .word ITEM_DATA_TABLE_PTRS
-	arm_func_end IsItemInTimeDarkness
-
-	arm_func_start IsItemValidVeneer
-IsItemValidVeneer: ; 0x0200EB58
-	ldr ip, _0200EB60 ; =IsItemValid
-	bx ip
-	.align 2, 0
-_0200EB60: .word IsItemValid
-	arm_func_end IsItemValidVeneer
-
 	arm_func_start sub_0200EB64
 sub_0200EB64: ; 0x0200EB64
 	ldr r1, _0200EB88 ; =ITEM_DATA_TABLE_PTRS
