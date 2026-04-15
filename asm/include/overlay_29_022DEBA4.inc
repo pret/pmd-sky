@@ -159,7 +159,7 @@
 .public ov29_023369F8
 .public ov29_0233781C
 .public ov29_0233785C
-.public ov29_0233845C
+.public ResetVictoryCounter
 .public ov29_0233873C
 .public ov29_023389C4
 .public ov29_02338A4C

@@ -763,7 +763,7 @@ _022DF660:
 	bl ov29_022E12F8
 	cmp r5, #0
 	bne _022DF68C
-	bl ov29_0233845C
+	bl ResetVictoryCounter
 	bl GenerateFloor
 	ldrb r0, [sb, #0x748]
 	bl GetTurnLimit
