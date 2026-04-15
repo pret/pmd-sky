@@ -845,7 +845,7 @@
                                                                                                        102](EntityIsValid__0234DDD0,func) found in global overlay_29_0234DDD0.o
                                                                                                        102](ov29_022F5DC0,func) found in global overlay_29_022F59C4.o
                                                                                                         103](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
-                                                                                                        103](RevealAttackedTile,func) found in global overlay_29_023383A8.o
+                                                                                                        103](RevealAttackedTile,func) found in global overlay_29_023383a8_0.o
                                                                                                         103](UpdateMovePp,func) found in global overlay_29_02324BE8.o
                                                                                                         103](ShouldUsePp,func) found in global overlay_29_0231A7A0.o
                                                                                                         103](AreMovesEnabled,func) found in global fixed_room_data.o
@@ -948,6 +948,7 @@
                                                                                                     99](CategoryIsNotPhysical,func) found in global overlay_29_0231EA04.o
                                                                                                      100](EntityIsValid__0231EDD8,func) found in global overlay_29_0231EDD8.o
                                                                                                     99](ApplyDamage,func) found in global overlay_29_02308FE0.o
+                                                                                                     100](ov29_0233847C,func) found in global overlay_29_023383A8.o
                                                                                                      100](TryRecruit,func) found in global overlay_29_0230E064.o
                                                                                                       101](ov29_0230E5FC,func) found in global overlay_29_0230E5A8.o
                                                                                                        102](GetRandomMovementChance,func) found in global dungeon_recruitment_2.o
@@ -1036,6 +1037,7 @@
                                                                                                  96](SpawnTeam,func) found in global overlay_29_022FBE58.o
                                                                                                   97](EntityIsValid__022FC99C,func) found in global overlay_29_022FC99C.o
                                                                                                   97](InitMoveCheckId,func) found in global moves_1.o
+                                                                                                 96](ResetVictoryCounter,func) found in global overlay_29_023383a8_0.o
                                                                                                  96](ov29_022EF738,func) found in global overlay_29_022EE36C.o
                                                                                                  96](ov29_022FBB1C,func) found in global overlay_29_022FBB1C.o
                                                                                                  96](InitDungeonRng,func) found in global overlay_29_022EA9EC.o
@@ -39122,12 +39124,13 @@
   02339780 00000000 .text   $a	(overlay_29_0233836C.o)
   02339780 00000074 .text   TryActivateGravity	(overlay_29_0233836C.o)
   023397E8 00000000 .text   $d	(overlay_29_0233836C.o)
-  023397F4 0000002C .text   RevealAttackedTile	(overlay_29_023383A8.o)
-  023397F4 00000090 .text   .text	(overlay_29_023383A8.o)
-  023397F4 00000000 .text   $a	(overlay_29_023383A8.o)
-  02339820 00000020 .text   ov29_0233845C	(overlay_29_023383A8.o)
-  02339838 00000000 .text   $d	(overlay_29_023383A8.o)
+  023397F4 0000002C .text   RevealAttackedTile	(overlay_29_023383a8_0.o)
+  023397F4 00000000 .text   $a	(overlay_29_023383a8_0.o)
+  02339820 00000000 .text   $a	(overlay_29_023383a8_0.o)
+  02339820 00000020 .text   ResetVictoryCounter	(overlay_29_023383a8_0.o)
+  02339838 00000000 .text   $d	(overlay_29_023383a8_0.o)
   02339840 00000000 .text   $a	(overlay_29_023383A8.o)
+  02339840 00000044 .text   .text	(overlay_29_023383A8.o)
   02339840 00000044 .text   ov29_0233847C	(overlay_29_023383A8.o)
   0233987C 00000000 .text   $d	(overlay_29_023383A8.o)
   02339884 00000000 .text   $a	(overlay_29_02338548.o)
@@ -41642,5 +41645,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Apr 11 05:25:05 2026
-# Link end time: Sat Apr 11 05:25:06 2026
+# Link start time: Wed Apr 15 04:50:20 2026
+# Link end time: Wed Apr 15 04:50:21 2026
