@@ -69,11 +69,10 @@
                           25](MainLoop,func) found in global main_0205EDA4.o
                            26](AlreadyHaveMission,func) found in global main_0205EC98.o
                             27](sub_0205E01C,func) found in global main_0205E01C.o
-                             28](sub_0205E258,func) found in global main_0205E090.o
+                             28](sub_0205E258,func) found in global main_0205E288.o
                             27](IsMissionSuspendedAndValid,func) found in global main_0205C73C.o
-                             28](IsMissionValid,func) found in global main_0205C934.o
+                             28](IsMissionValid,func) found in global main_0205CA40.o
                               29](IsMonsterMissionAllowed,func) found in global main_0205EDA4.o
-                              29](GetBodySize,func) found in global main_020527A8.o
                               29](GetBaseForm,func) found in global main_02052B44.o
                                30](GetNameRaw,func) found in global main_02052060.o
                                 31](StringFromId,func) found in global main_0202593C.o
@@ -157,6 +156,7 @@
                                            42](IsMoneyAllowed,func) found in global dungeon_recruitment_2.o
                                            42](GetMaxItemsAllowed,func) found in global dungeon_recruitment_2.o
                                            42](IsLevelResetDungeon,func) found in global dungeon_recruitment_2.o
+                                           42](GetBodySize,func) found in global main_020527A8.o
                                            42](LoadScriptVariableValue,func) found in global script_variable.o
                                             43](GetDebugSpecialEpisodeNumber,func) found in global special_episode.o
                                             43](GetSpecialEpisodeType,func) found in global special_episode.o
@@ -715,9 +715,12 @@
                                                                                                   97](sub_0205EB28,func) found in global main_0205EB00.o
                                                                                                   97](sub_0205E9A8,func) found in global main_0205E984.o
                                                                                                   97](GenerateMission,func) found in global main_0205D1F4.o
+                                                                                                   98](sub_0205E090,func) found in global main_0205E090.o
                                                                                                    98](sub_0205D11C,func) found in global main_0205D11C.o
                                                                                                     99](IsValidTargetItem,func) found in global item_util_4.o
-                                                                                                   98](sub_0205D008,func) found in global main_0205C934.o
+                                                                                                   98](sub_0205D008,func) found in global main_0205D11C.o
+                                                                                                   98](sub_0205E1E8,func) found in global main_0205E288.o
+                                                                                                   98](sub_0205CF58,func) found in global main_0205D11C.o
                                                                                                  96](ZeroInitScriptVariable,func) found in global script_variable.o
                                                                                                  96](sub_0204F024,func) found in global dungeon_init.o
                                                                                                  96](sub_0204F034,func) found in global dungeon_init.o
@@ -1140,9 +1143,11 @@
                                   33](sub_0204DA2C,func) found in global main_0204DA2C.o
                                30](GetNbMoves,func) found in global moves_3.o
                                30](DexNumbersEqual,func) found in global main_02054DC4.o
-                              29](sub_0205C8E0,func) found in global main_0205C73C.o
-                              29](sub_0205C870,func) found in global main_0205C73C.o
+                            27](AreMissionsEquivalent,func) found in global main_0205C73C.o
+                             28](sub_0205C870,func) found in global main_0205C73C.o
+                             28](sub_0205C8E0,func) found in global main_0205C73C.o
                            26](sub_0205D1F4,func) found in global main_0205D11C.o
+                           26](IsMissionTypeSpecialEpisode,func) found in global main_0205E288.o
                            26](ov01_02337B3C,func) found in global overlay_01.o
                             27](.rodata,section) found in local overlay_01.o
                              28](ov07_0233F758,func) found in global overlay_07.o
@@ -8034,17 +8039,18 @@
   0205CBEC 00000000 .text   $a	(main_0205C73C.o)
   0205CC5C 00000054 .text   sub_0205C8E0	(main_0205C73C.o)
   0205CC5C 00000000 .text   $a	(main_0205C73C.o)
-  0205CCB0 00000000 .text   $a	(main_0205C934.o)
-  0205CCB0 000007E8 .text   .text	(main_0205C934.o)
-  0205CCB0 0000010C .text   AreMissionsEquivalent	(main_0205C934.o)
-  0205CDBC 00000518 .text   IsMissionValid	(main_0205C934.o)
-  0205D28C 00000000 .text   $d	(main_0205C934.o)
-  0205D2D4 00000000 .text   $a	(main_0205C934.o)
-  0205D2D4 000000B0 .text   sub_0205CF58	(main_0205C934.o)
-  0205D378 00000000 .text   $d	(main_0205C934.o)
-  0205D384 00000114 .text   sub_0205D008	(main_0205C934.o)
-  0205D384 00000000 .text   $a	(main_0205C934.o)
-  0205D480 00000000 .text   $d	(main_0205C934.o)
+  0205CCB0 0000010C .text   AreMissionsEquivalent	(main_0205C73C.o)
+  0205CCB0 00000000 .text   $a	(main_0205C73C.o)
+  0205CDBC 00000000 .text   $a	(main_0205CA40.o)
+  0205CDBC 00000518 .text   .text	(main_0205CA40.o)
+  0205CDBC 00000518 .text   IsMissionValid	(main_0205CA40.o)
+  0205D28C 00000000 .text   $d	(main_0205CA40.o)
+  0205D2D4 00000000 .text   $a	(main_0205D11C.o)
+  0205D2D4 000000B0 .text   sub_0205CF58	(main_0205D11C.o)
+  0205D378 00000000 .text   $d	(main_0205D11C.o)
+  0205D384 00000000 .text   $a	(main_0205D11C.o)
+  0205D384 00000114 .text   sub_0205D008	(main_0205D11C.o)
+  0205D480 00000000 .text   $d	(main_0205D11C.o)
   0205D498 00000000 .text   $a	(main_0205D11C.o)
   0205D498 000000D8 .text   sub_0205D11C	(main_0205D11C.o)
   0205D564 00000000 .text   $d	(main_0205D11C.o)
@@ -8058,16 +8064,17 @@
   0205E328 00000000 .text   $a	(main_0205D1F4.o)
   0205E398 00000074 .text   sub_0205E01C	(main_0205E01C.o)
   0205E398 00000000 .text   $a	(main_0205E01C.o)
-  0205E40C 00000158 .text   sub_0205E090	(main_0205E090.o)
-  0205E40C 000001F8 .text   .text	(main_0205E090.o)
   0205E40C 00000000 .text   $a	(main_0205E090.o)
+  0205E40C 00000158 .text   .text	(main_0205E090.o)
+  0205E40C 00000158 .text   sub_0205E090	(main_0205E090.o)
   0205E560 00000000 .text   $d	(main_0205E090.o)
-  0205E564 00000000 .text   $a	(main_0205E090.o)
-  0205E564 00000050 .text   sub_0205E1E8	(main_0205E090.o)
-  0205E5B0 00000000 .text   $d	(main_0205E090.o)
-  0205E5B4 00000000 .text   $a	(main_0205E090.o)
-  0205E5B4 00000020 .text   IsMissionTypeSpecialEpisode	(main_0205E090.o)
-  0205E5D4 00000030 .text   sub_0205E258	(main_0205E090.o)
+  0205E564 00000000 .text   $a	(main_0205E288.o)
+  0205E564 00000050 .text   sub_0205E1E8	(main_0205E288.o)
+  0205E5B0 00000000 .text   $d	(main_0205E288.o)
+  0205E5B4 00000020 .text   IsMissionTypeSpecialEpisode	(main_0205E288.o)
+  0205E5B4 00000000 .text   $a	(main_0205E288.o)
+  0205E5D4 00000030 .text   sub_0205E258	(main_0205E288.o)
+  0205E5D4 00000000 .text   $a	(main_0205E288.o)
   0205E604 00000030 .text   sub_0205E288	(main_0205E288.o)
   0205E604 00000000 .text   $a	(main_0205E288.o)
   0205E634 00000000 .text   $a	(main_0205E288.o)
@@ -41438,5 +41445,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Apr 15 04:48:40 2026
-# Link end time: Wed Apr 15 04:48:41 2026
+# Link start time: Thu Apr 16 17:15:34 2026
+# Link end time: Thu Apr 16 17:15:35 2026
