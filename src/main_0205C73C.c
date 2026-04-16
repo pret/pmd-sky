@@ -53,7 +53,7 @@ bool8 IsMissionSuspendedAndValid(struct mission *mission)
     return IsMissionValid(mission);
 }
 
-u8 sub_0205C870(u32 type, s16 *ptr1, s16 *ptr2)
+bool8 sub_0205C870(enum mission_reward_type type, enum item_id* item1, enum item_id* item2)
 {
     switch (type)
     {
@@ -62,11 +62,11 @@ u8 sub_0205C870(u32 type, s16 *ptr1, s16 *ptr2)
         case 2:
         case 3:
         case 4:
-            return *ptr1 == *ptr2;
+            return (s16) *item1 == (s16) *item2;
         case 5:
             return TRUE;
         case 6:
-            return *ptr1 == *ptr2;
+            return (s16) *item1 == (s16) *item2;
         default:
             return FALSE;
     }
@@ -92,4 +92,57 @@ bool8 sub_0205C8E0(struct unkStruct_0205C8E0 *p1, struct unkStruct_0205C8E0 *p2)
     }
 
     return TRUE;
+}
+
+bool8 AreMissionsEquivalent(struct mission* mission1, struct mission* mission2)
+{
+    if (mission1->type != mission2->type) {
+        return FALSE;
+    }
+    
+    if (mission1->subtype.other != mission2->subtype.other) {
+        return FALSE;
+    }
+    
+    if (mission1->dungeon_id != mission2->dungeon_id) {
+       return FALSE;
+    }
+    
+    if (mission1->floor != mission2->floor) {
+       return FALSE;
+    }
+    
+    if (mission1->description_id != mission2->description_id) {
+        return FALSE;
+    }
+    
+    if (*(s16*)&mission1->client != *(s16*)&mission2->client) {
+        return FALSE;
+    }
+    
+    if (*(s16*)&mission1->target != *(s16*)&mission2->target) {
+        return FALSE;
+    }
+    
+    if (*(s16*)&mission1->outlaw_backup_species != *(s16*)&mission2->outlaw_backup_species) {
+        return FALSE;
+    }
+    
+    if (*(s16*)&mission1->item_wanted != *(s16*)&mission2->item_wanted) {
+        return FALSE;
+    }
+    
+    if (mission1->reward_type != mission2->reward_type) {
+        return FALSE;
+    }
+    
+    if (sub_0205C870(mission1->reward_type, &mission1->item_reward, &mission2->item_reward) == 0) {
+        return FALSE;
+    }
+    
+    if (sub_0205C8E0((struct unkStruct_0205C8E0*)&mission1->restriction_type, (struct unkStruct_0205C8E0*)&mission2->restriction_type) != 0) {
+        return TRUE;
+    }
+    
+    return FALSE;
 }

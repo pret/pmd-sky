@@ -182,6 +182,7 @@ struct mission {
     enum mission_status status; // 0x0
     enum mission_type type;     // 0x1
     union mission_subtype subtype;  // 0x2
+    u8 field_0x3;                // 0x3
     enum dungeon_id dungeon_id; // 0x4
     u8 floor;                  // 0x5
     // 0x8: A random value determined by FUN_0205146C [EU], which is used to
