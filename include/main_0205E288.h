@@ -3,6 +3,9 @@
 
 #include "mission.h"
 
+bool8 sub_0205E1E8(struct mission* mission);
+bool8 IsMissionTypeSpecialEpisode(struct mission* mission);
+bool8 sub_0205E258(struct mission* mission);
 struct unkStruct_0205E3F8 {
     u32 data[8];
 };

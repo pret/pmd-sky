@@ -2,6 +2,31 @@
 
 extern struct mission_deliver_list MISSION_DELIVER_LIST_PTR;
 
+bool8 sub_0205E1E8(struct mission* mission)
+{
+    return mission->type != MISSION_RESCUE_TARGET &&
+           mission->type != MISSION_ESCORT_TO_TARGET &&
+           mission->type != MISSION_SEARCH_FOR_TARGET &&
+           mission->type != MISSION_TAKE_ITEM_FROM_OUTLAW &&
+           mission->type != MISSION_ARREST_OUTLAW &&
+           mission->type != MISSION_TYPE_CONSUMABLE &&
+           (mission->type != MISSION_CHALLENGE_REQUEST || mission->subtype.challenge != MISSION_CHALLENGE_NORMAL);
+}
+
+bool8 IsMissionTypeSpecialEpisode(struct mission* mission)
+{
+    return mission->type == MISSION_TYPE_CONSUMABLE && mission->subtype.consumable == MISSION_SPECIAL_EPISODE;
+}
+
+bool8 sub_0205E258(struct mission* mission)
+{
+    return mission->type == MISSION_ESCORT_TO_TARGET ||
+           mission->type == MISSION_EXPLORE_WITH_CLIENT ||
+           mission->type == MISSION_PROSPECT_WITH_CLIENT ||
+           mission->type == MISSION_GUIDE_CLIENT ||
+           mission->type == MISSION_ARREST_OUTLAW && mission->subtype.outlaw == MISSION_OUTLAW_ESCORT;
+}
+
 bool8 sub_0205E288(struct mission *mission, u32 val, u8 *ptr2)
 {
     if (mission->status == MISSION_STATUS_INVALID)

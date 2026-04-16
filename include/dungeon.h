@@ -1848,7 +1848,7 @@ struct dungeon_restriction {
 
 // A common structure for pairs of dungeon/floor values
 struct dungeon_floor_pair {
-    u8 dungeon_id;
+    enum dungeon_id dungeon_id;
     u8 floor_id;
 };
 
