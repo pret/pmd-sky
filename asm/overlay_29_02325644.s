@@ -549,7 +549,7 @@ ov29_02325D7C: ; 0x02325D7C
 	ldmeqia sp!, {r4, pc}
 	mov r0, #5
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #0x5c
 	bl AdvanceFrame
 	ldmia sp!, {r4, pc}

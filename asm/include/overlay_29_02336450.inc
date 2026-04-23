@@ -1,4 +1,5 @@
 #pragma once
+.public CanSeePosition
 .public Debug_Print0
 .public DEFAULT_TILE
 .public DetermineMonsterShadow
@@ -24,7 +25,6 @@
 .public ov10_022C26A0
 .public ov10_022C2720
 .public ov29_022DE0EC
-.public ov29_022E2930
 .public ov29_022E66C4
 .public ov29_022E9F80
 .public ov29_022FF958

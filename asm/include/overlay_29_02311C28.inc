@@ -12,6 +12,7 @@
 .public GetTile
 .public GetTileAtEntity
 .public GetTreatmentBetweenMonstersIgnoreStatus
+.public INGRAIN_TURN_RANGE
 .public IsProtectedFromNegativeStatus
 .public IsProtectedFromSleepClassStatus
 .public ItemIsActive__02311BF8
@@ -26,8 +27,6 @@
 .public ov10_022C4880
 .public ov10_022C4898
 .public ov10_022C48A0
-.public ov10_022C48AC
-.public ov10_022C48B8
 .public ov29_022E41F0
 .public ov29_022E4290
 .public ov29_022E4294
@@ -54,3 +53,4 @@
 .public SubstitutePlaceholderStringTags
 .public TryActivateQuickFeet
 .public UpdateStatusIconFlags
+.public WRAP_TURN_RANGE

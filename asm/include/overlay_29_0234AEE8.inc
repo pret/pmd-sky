@@ -24,7 +24,6 @@
 .public ov29_022E2CA0
 .public ov29_022E68F0
 .public ov29_022E9FC0
-.public ov29_022EA428
 .public ov29_022EAEFC
 .public ov29_022EAF34
 .public ov29_022F2FE4
@@ -48,3 +47,4 @@
 .public sub_02048240
 .public sub_0204833C
 .public sub_02048360
+.public UnkMapRelatedFunc

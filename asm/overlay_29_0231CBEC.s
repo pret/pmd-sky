@@ -339,8 +339,8 @@ ApplyBlastSeedEffect: ; 0x0231CF84
 	ldr r7, [r5, #0xb4]
 	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
-	ldrne r0, _0231D0A8 ; =ov10_022C45D8
-	ldreq r0, _0231D0AC ; =ov10_022C45D4
+	ldrne r0, _0231D0A8 ; =THROWN_BLAST_SEED_DAMAGE_BOSS
+	ldreq r0, _0231D0AC ; =THROWN_BLAST_SEED_DAMAGE_NORMAL
 	ldrsh r4, [r0]
 	ldrb r0, [r7, #0xc4]
 	cmp r0, #1
@@ -380,8 +380,8 @@ _0231D034:
 	ldr r7, [r4, #0xb4]
 	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
-	ldrne r0, _0231D0B8 ; =ov10_022C45DC
-	ldreq r0, _0231D0BC ; =ov10_022C44E8
+	ldrne r0, _0231D0B8 ; =EATEN_BLAST_SEED_DAMAGE_BOSS
+	ldreq r0, _0231D0BC ; =EATEN_BLAST_SEED_DAMAGE_NORMAL
 	ldrsh r5, [r0]
 	ldrb r0, [r7, #0xc4]
 	cmp r0, #1
@@ -409,16 +409,16 @@ _0231D0A0:
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_0231D0A8: .word ov10_022C45D8
-_0231D0AC: .word ov10_022C45D4
+_0231D0A8: .word THROWN_BLAST_SEED_DAMAGE_BOSS
+_0231D0AC: .word THROWN_BLAST_SEED_DAMAGE_NORMAL
 _0231D0B0: .word 0x00000255
 #ifdef JAPAN
 _0231D0B4: .word 0x00000931
 #else
 _0231D0B4: .word 0x00000BF2
 #endif
-_0231D0B8: .word ov10_022C45DC
-_0231D0BC: .word ov10_022C44E8
+_0231D0B8: .word EATEN_BLAST_SEED_DAMAGE_BOSS
+_0231D0BC: .word EATEN_BLAST_SEED_DAMAGE_NORMAL
 	arm_func_end ApplyBlastSeedEffect
 
 	arm_func_start ApplyGummiBoostsDungeonMode
@@ -1539,7 +1539,7 @@ _0231DEB0:
 	bne _0231DF1C
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	b _0231DFF4
 _0231DF00:
 	mov r0, #0
@@ -1561,7 +1561,7 @@ _0231DF34:
 	bne _0231DF60
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	add r0, r4, #0x4a
 	bl ov31_02386204
 	mov r0, #1
@@ -1573,7 +1573,7 @@ _0231DF60:
 	bne _0231DF8C
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	add r0, r4, #0x4a
 	mov r1, #0
 	bl ov31_02386308
@@ -1585,7 +1585,7 @@ _0231DF8C:
 	bne _0231DFB0
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	add r0, r4, #0x4a
 	mov r1, #0
 	bl ov31_023860A4
@@ -1595,7 +1595,7 @@ _0231DFB0:
 	bne _0231DFD4
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	add r0, r4, #0x4a
 	mov r1, #0
 	bl ov31_023860A4
@@ -1605,7 +1605,7 @@ _0231DFD4:
 	bne _0231DE6C
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	add r0, r4, #0x4a
 	bl ov31_0238619C
 	b _0231DE6C

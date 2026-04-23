@@ -18,6 +18,8 @@
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public DungeonTmLearnMove
+.public EATEN_BLAST_SEED_DAMAGE_BOSS
+.public EATEN_BLAST_SEED_DAMAGE_NORMAL
 .public EndBurnClassStatus
 .public EndFrozenClassStatus
 .public EntityIsValid__0231CBC8
@@ -50,10 +52,6 @@
 .public LowerOffensiveStat
 .public MusicTableIdxToMusicId
 .public ov10_022C44CC
-.public ov10_022C44E8
-.public ov10_022C45D4
-.public ov10_022C45D8
-.public ov10_022C45DC
 .public ov10_022C45E4
 .public ov10_022C4680
 .public ov10_022C47E0
@@ -64,7 +62,6 @@
 .public ov29_022E5AE4
 .public ov29_022E5BD8
 .public ov29_022EA370
-.public ov29_022EA428
 .public ov29_022EAF20
 .public ov29_022EAF34
 .public ov29_022EB668
@@ -103,6 +100,8 @@
 .public sub_02050FF8
 .public sub_02053D1C
 .public SubstitutePlaceholderStringTags
+.public THROWN_BLAST_SEED_DAMAGE_BOSS
+.public THROWN_BLAST_SEED_DAMAGE_NORMAL
 .public TryDecreaseBelly
 .public TryIncreaseBelly
 .public TryInflictBurnStatus
@@ -111,6 +110,7 @@
 .public TryInflictPoisonedStatus
 .public TryInflictShadowHoldStatus
 .public TryWarp
+.public UnkMapRelatedFunc
 .public UnloadFile
 .public UpdateMinimap
 .public WONDER_GUMMI_IQ_GAIN

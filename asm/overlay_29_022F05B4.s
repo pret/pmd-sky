@@ -227,12 +227,12 @@ _022F0844: .word DUNGEON_PTR
 
 	arm_func_start ov29_022F0848
 ov29_022F0848: ; 0x022F0848
-	ldr ip, _022F0858 ; =ov29_022EA428
+	ldr ip, _022F0858 ; =UnkMapRelatedFunc
 	mov r0, #0
 	mov r1, r0
 	bx ip
 	.align 2, 0
-_022F0858: .word ov29_022EA428
+_022F0858: .word UnkMapRelatedFunc
 	arm_func_end ov29_022F0848
 
 	arm_func_start ov29_022F085C
@@ -622,7 +622,7 @@ _022F0D24:
 	beq _022F0D44
 	mov r0, #0xc
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _022F0D44:
 	bl ov29_023391C0
 	mov sb, r0
@@ -704,7 +704,7 @@ _022F0E44:
 	beq _022F0E64
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _022F0E64:
 	mov r0, sb
 	mov r1, #0
@@ -2642,7 +2642,7 @@ _022F2A00:
 	bl ov29_0233A248
 	mov r0, #1
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	ldrb r0, [sp, #0xb9]
 	cmp r0, #0
 	beq _022F2A70
@@ -3869,7 +3869,7 @@ ov29_022F3AFC: ; 0x022F3AFC
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r6
 	mov r1, r4
-	bl ov29_022E28D4
+	bl IsValidTargetEntity
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}

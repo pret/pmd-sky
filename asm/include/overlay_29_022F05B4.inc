@@ -66,6 +66,7 @@
 .public IsGoldenChamber
 .public IsSecretBazaarNpc
 .public IsTextLogOnTopScreen
+.public IsValidTargetEntity
 .public ItemZInit
 .public LEADER_PTR
 .public LogItemBlockedByEmbargo
@@ -87,13 +88,11 @@
 .public ov29_022E0C9C
 .public ov29_022E0DD8
 .public ov29_022E0DF0
-.public ov29_022E28D4
 .public ov29_022E2CA0
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
 .public ov29_022EA3B4
-.public ov29_022EA428
 .public ov29_022EB568
 .public ov29_022EB594
 .public ov29_022EB944
@@ -198,6 +197,7 @@
 .public TryPointCameraToMonster
 .public TryTriggerMonsterHouse
 .public TryTriggerTrap
+.public UnkMapRelatedFunc
 .public UpdateAiTargetPos
 .public UpdateMinimap
 .public UpdateTrapsVisibility

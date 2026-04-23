@@ -245,7 +245,7 @@ _022E1908:
 	mov r0, r7
 	mov r1, r5
 	mov r2, r2, asr #0x10
-	bl ov29_022E8270
+	bl DisplayTeamStatsSprite
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
 	mov r5, r0, asr #0x10

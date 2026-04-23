@@ -38,7 +38,7 @@ OpenMenu: ; 0x0234DDF4
 	bl AdvanceFrame
 	mov r0, #2
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #2
 	mov r1, #0x1d
 	bl ov29_022EA370
@@ -55,7 +55,7 @@ _0234DE78:
 	bl ov29_0234B1A4
 	mov r0, #2
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #1
 	bl ResetLeaderActionFields
 	ldr r0, _0234E8EC ; =ov29_02382804
@@ -730,7 +730,7 @@ _0234E800:
 	bne _0234E834
 	mov r0, #2
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	bl OthersMenu
 	cmp r0, #0
 	bne _0234E890
@@ -771,13 +771,13 @@ _0234E890:
 	bl AdvanceFrame
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	b _0234E8C0
 _0234E8B0:
 	bl AdvanceFrame
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _0234E8C0:
 #ifdef EUROPE
 	mov r0, #0

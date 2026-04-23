@@ -52,7 +52,7 @@ extern struct struct_1* GetSimpleMenuResult__0202AEA4(s8);
 extern void CloseTextBox(s8);
 extern void CloseParentMenu(s8);
 
-extern void ov29_022EA428(u32, u32);
+extern void UnkMapRelatedFunc(u32, u32);
 extern void AdvanceFrame(u8);
 extern u32 GetLeaderActionId(void);
 extern void ov29_022E0C2C(u32);
@@ -247,7 +247,7 @@ struct struct_1* ov31_02382E08(void)
 
 void StairsMenu(struct entity* arg_1, u32 arg_2)
 {
-    ov29_022EA428(6, 0);
+    UnkMapRelatedFunc(6, 0);
     AdvanceFrame(0x62);
     AdvanceFrame(0x62);
     CreateStairsMenuState(arg_1);
@@ -259,11 +259,11 @@ void StairsMenu(struct entity* arg_1, u32 arg_2)
     AdvanceFrame(0x62);
 
     if (GetLeaderActionId()) {
-        ov29_022EA428(11, 0);
+        UnkMapRelatedFunc(11, 0);
     } else if (arg_2) {
-        ov29_022EA428(11, 0);
+        UnkMapRelatedFunc(11, 0);
     } else {
-        ov29_022EA428(0, 0);
+        UnkMapRelatedFunc(0, 0);
     }
     ov29_022E0C2C(1);
 }

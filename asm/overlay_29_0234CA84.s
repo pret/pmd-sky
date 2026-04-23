@@ -640,7 +640,7 @@ DisplayMessage: ; 0x0234D258
 	bl DisplayMessageInternal
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end DisplayMessage
@@ -666,7 +666,7 @@ DisplayMessage2: ; 0x0234D2AC
 	bl DisplayMessageInternal
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end DisplayMessage2
@@ -761,7 +761,7 @@ _0234D41C:
 _0234D440:
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	add sp, sp, #0x58
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0

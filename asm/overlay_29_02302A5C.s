@@ -1821,7 +1821,7 @@ _0230422C:
 	bl ov29_022ECB38
 	cmp r0, #0
 	beq _023042B0
-	ldr r0, _023046D8 ; =ov29_0237C850
+	ldr r0, _023046D8 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	tst r0, #1
 	mvnne r0, #1
@@ -1842,7 +1842,7 @@ _023042D8:
 	ldrb r0, [r5, #0x173 + OV29_02303F18_OFFSET]
 	cmp r0, #0
 	beq _023042FC
-	ldr r0, _023046D8 ; =ov29_0237C850
+	ldr r0, _023046D8 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	tst r0, #4
 	movne r0, #1
@@ -1950,7 +1950,7 @@ _02304458:
 	bl ov29_02338988
 	cmp r0, #0
 	beq _02304498
-	ldr r0, _023046D8 ; =ov29_0237C850
+	ldr r0, _023046D8 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	tst r0, #1
 	beq _023044B8
@@ -1970,7 +1970,7 @@ _023044B8:
 	add r0, r7, #0x2c
 	orr r2, r2, #0x20
 	strh r2, [r7, #0x2e]
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	ldrb r0, [r5, #6]
 	cmp r0, #0
 	ldrneb r0, [r5, #0xd8]
@@ -2005,7 +2005,7 @@ _02304510:
 	cmpne r0, #4
 	cmpne r1, #2
 	bne _02304558
-	ldr r0, _023046D8 ; =ov29_0237C850
+	ldr r0, _023046D8 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	and r0, r0, #2
 	add r0, r8, r0
@@ -2021,7 +2021,7 @@ _02304558:
 _02304570:
 	cmp r0, #1
 	bne _02304590
-	ldr r0, _023046D8 ; =ov29_0237C850
+	ldr r0, _023046D8 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	tst r0, #1
 	beq _02304590
@@ -2058,7 +2058,7 @@ _02304590:
 	bl ov29_022ECB38
 	cmp r0, #0
 	beq _02304628
-	ldr r0, _023046D8 ; =ov29_0237C850
+	ldr r0, _023046D8 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	tst r0, #1
 	mvnne r0, #1
@@ -2116,7 +2116,7 @@ _023046C8: .word DUNGEON_PTR
 _023046CC: .word ov29_02352810
 _023046D0: .word 0x00000229
 _023046D4: .word 0x0001A224 + OV29_02303F18_OFFSET_2
-_023046D8: .word ov29_0237C850
+_023046D8: .word DUNGEON_FRAMES_PASSED
 _023046DC: .word ov29_0235280C
 _023046E0: .word 0x0000F3FF
 _023046E4: .word 0xFFFFFE5D

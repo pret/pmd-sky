@@ -734,7 +734,7 @@ _022DF5E4:
 	bl ov29_02338F38
 	mov r0, #4
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #0
 	bl ov29_0234B1A4
 	mov r0, r5
@@ -860,7 +860,7 @@ _022DF7B4:
 	bl ov29_0233904C
 	mov r0, #1
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #1
 	bl ov29_0233A15C
 	bl GetTopScreenOption
@@ -908,7 +908,7 @@ _022DF82C:
 	bl ov29_02338F48
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	ldr r0, [sp]
 	mov r1, #0
 	str r1, [sb, #0xc4]
@@ -1149,7 +1149,7 @@ _022DFBE4:
 	bl ov29_02338F38
 	mov r0, #1
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #0
 	bl SetMinimapDataE447
 	ldr r0, _022DFF40 ; =DUNGEON_PTR

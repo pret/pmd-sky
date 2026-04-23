@@ -681,7 +681,7 @@ _0234A1CC:
 _0234A1D4:
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	ldr r0, _0234A200 ; =ov29_023537C8
 	ldr r0, [r0]
 	cmp r0, #0
@@ -984,7 +984,7 @@ _0234A570:
 	bl ov29_0234AF34
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _0234A5A8:
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -1109,7 +1109,7 @@ _0234A6B8:
 	bl ov29_0234AF34
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _0234A738:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1229,7 +1229,7 @@ _0234A890:
 _0234A898:
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _0234A8A4:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1301,7 +1301,7 @@ _0234A958:
 	bl ov29_02348888
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 #ifdef JAPAN
@@ -1377,7 +1377,7 @@ _0234A9DC:
 	bl ov29_0234AF34
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _0234AA78:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
@@ -1470,7 +1470,7 @@ _0234AAC4:
 	bl ov29_0234AF34
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _0234AB94:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
@@ -1557,7 +1557,7 @@ _0234AC68:
 _0234AC70:
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 #ifdef JAPAN

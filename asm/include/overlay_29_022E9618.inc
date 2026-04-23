@@ -9,6 +9,7 @@
 .public DISPLACEMENTS_WITHIN_3
 .public DisplayUi
 .public DUNGEON_BUTTON_INPUT
+.public DUNGEON_FRAMES_PASSED
 .public DUNGEON_PRNG_STATE
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -46,7 +47,6 @@
 .public ov29_023517A2
 .public ov29_02353540
 .public ov29_02353560
-.public ov29_0237C850
 .public ov29_0237C888
 .public RenderWeather3D
 .public sub_0201BAC8

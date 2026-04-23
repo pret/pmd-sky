@@ -72,7 +72,7 @@ _0231B27C:
 	beq _0231B2F0
 	mov r0, sl
 	mov r1, sb
-	bl ov29_022E28D4
+	bl IsValidTargetEntity
 	cmp r0, #0
 	cmpne sl, sb
 	beq _0231B2F0

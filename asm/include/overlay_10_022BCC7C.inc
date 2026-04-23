@@ -15,6 +15,7 @@
 .public DirectoryFileMngr_GetDirectoryFileSize
 .public DrawTextInWindow
 .public EFFECT_ANIMATION_INFO
+.public FillOamAttributeInfo
 .public GendersEqual
 .public GetBgRegionArea
 .public GetBodySize
@@ -87,7 +88,6 @@
 .public ov11_02306C64
 .public ov11_02306C9C
 .public ov29_022DD83C
-.public ov29_022EA428
 .public ov29_0234C584
 .public ov29_0234C5EC
 .public PlaySeByIdVolumeWrapper
@@ -117,7 +117,6 @@
 .public sub_0201CF80
 .public sub_0201D034
 .public sub_0201D0F8
-.public sub_0201D110
 .public sub_0201D12C
 .public sub_0201D198
 .public sub_0201D1B0
@@ -177,6 +176,7 @@
 .public SwitchAnimationControlToNextFrame
 .public TEAM_MEMBER_TABLE_PTR
 .public TRAP_ANIMATION_INFO
+.public UnkMapRelatedFunc
 .public UpdateWindow
 .public vsprintf
 .public WAN_TABLE

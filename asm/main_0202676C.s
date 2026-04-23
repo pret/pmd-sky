@@ -4933,7 +4933,7 @@ _02029C64:
 	ldrh r2, [r0, #2]
 	orr r2, r2, #0x20
 	strh r2, [r0, #2]
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	ldr r1, [r4, #8]
 	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	sub r1, r1, #4
@@ -4952,7 +4952,7 @@ _02029CF0:
 	ldrh r2, [r0, #2]
 	orr r2, r2, #0x20
 	strh r2, [r0, #2]
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	ldr r1, [r4, #8]
 	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	sub r1, r1, #4
@@ -5034,7 +5034,7 @@ _02029DEC:
 	ldrh r2, [r0, #2]
 	orr r2, r2, #0x20
 	strh r2, [r0, #2]
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	ldr r1, [r4, #8]
 	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	sub r1, r1, #4
@@ -5053,7 +5053,7 @@ _02029E6C:
 	ldrh r2, [r0, #2]
 	orr r2, r2, #0x20
 	strh r2, [r0, #2]
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	ldr r1, [r4, #8]
 	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	sub r1, r1, #4

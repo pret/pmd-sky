@@ -1304,7 +1304,7 @@ ov10_022BDCBC: ; 0x022BDCBC
 	cmp r1, #0
 	bne _022BDD30
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _022BDD30:
 	add r0, r4, #0xe8
 	bl sub_0206423C
@@ -1486,7 +1486,7 @@ ov10_022BDF34: ; 0x022BDF34
 	cmp r0, #0
 	bne _022BDF90
 	mov r0, #0xd
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _022BDF90:
 	ldr r1, [r4]
 	mov r0, #2
@@ -3186,7 +3186,7 @@ _022BF648:
 	bge _022BF6D4
 	add r0, r6, #0x68
 	add r1, r6, #0x30
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	strh r4, [r6, #0x84]
 	strh r7, [r6, #0x86]
 	add r0, r6, #0x68
@@ -4229,7 +4229,7 @@ _022C034C:
 	bne _022C0364
 	mov r0, #5
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _022C0364:
 	ldr r0, [r4]
 	cmp r0, #0

@@ -109,6 +109,7 @@
 .public FileRom_InitDataTransfer
 .public FileRom_StopDataTransfer
 .public FileRom_Veneer_FileInit
+.public FillOamAttributeInfo
 .public GetHeldButtons
 .public GetPressedButtons
 .public GetReleasedStylus
@@ -163,7 +164,6 @@
 .public sub_0201C028
 .public sub_0201C108
 .public sub_0201CF5C
-.public sub_0201D110
 .public sub_0201D9C8
 .public sub_0201E12C
 .public sub_0201F2A0

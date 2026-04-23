@@ -1,6 +1,7 @@
 #pragma once
 .public AdvanceFrame
 .public AQUA_RING_BONUS_REGEN
+.public AQUA_RING_HEALING_COUNTDOWN
 .public CalcStatusDuration
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -15,7 +16,6 @@
 .public IsProtectedFromNegativeStatus
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
-.public ov10_022C4620
 .public ov10_022C4764
 .public ov10_022C4768
 .public ov10_022C4774

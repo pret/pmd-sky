@@ -39,6 +39,7 @@
 .public DrawTextInWindow
 .public EnableIrqFlag
 .public FemaleToMaleForm
+.public FillOamAttributeInfo
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
 .public GetAdventureLogCompleted
@@ -287,7 +288,6 @@
 .public sub_0201C000
 .public sub_0201C138
 .public sub_0201CF5C
-.public sub_0201D110
 .public sub_0201D12C
 .public sub_0202065C
 .public sub_0202380C_EU

@@ -71,7 +71,6 @@
 .public ov29_022E2CA0
 .public ov29_022E5474
 .public ov29_022E6D68
-.public ov29_022EA428
 .public ov29_02318BBC
 .public ov29_02318D58
 .public ov29_02332F18
@@ -124,6 +123,7 @@
 .public TryInflictWhifferStatus
 .public TryInflictYawningStatus
 .public TryResetStatChanges
+.public UnkMapRelatedFunc
 .public WATER_SPOUT_DAMAGE_MULT_TABLE
 .public WEATHER_BALL_DAMAGE_MULT_TABLE
 .public WEATHER_BALL_TYPE_TABLE

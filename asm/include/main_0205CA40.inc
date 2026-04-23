@@ -1,11 +1,4 @@
 #pragma once
-.public Debug_Print0
-.public GetBaseForm
-.public GetMaxItemsAllowed
-.public IsItemValidVeneer
-.public IsMonsterIllegalForMissions
-.public IsMonsterMissionAllowed
-.public IsStorableItem
 .public _020A3728
 .public _020A373C
 .public _020A3764
@@ -23,6 +16,13 @@
 .public _020A3918
 .public _020A3954
 .public _020A3984
+.public Debug_Print0
+.public GetBaseForm
+.public GetMaxItemsAllowed
+.public IsItemValidVeneer
+.public IsMonsterIllegalForMissions
+.public IsMonsterMissionAllowed
+.public IsStorableItem
 .public sub_0205CF58
 .public sub_0205D008
 .public sub_0205D11C

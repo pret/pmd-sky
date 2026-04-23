@@ -8,6 +8,7 @@
 .public CeilFixedPoint
 .public Conversion2IsActive
 .public DetermineMonsterShadow
+.public DUNGEON_FRAMES_PASSED
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonGoesUp
@@ -33,7 +34,6 @@
 .public ov29_02352B4C
 .public ov29_0235371C
 .public ov29_02353720
-.public ov29_0237C850
 .public ov29_0237CA8C
 .public ov29_0237CA90
 .public ov29_0237CA96

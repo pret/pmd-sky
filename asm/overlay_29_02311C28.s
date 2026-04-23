@@ -1632,7 +1632,7 @@ _0231316C:
 	ldrb r0, [r4, #0xc4]
 	cmp r0, #5
 	beq _023131CC
-	ldr r1, _023131E8 ; =ov10_022C48B8
+	ldr r1, _023131E8 ; =INGRAIN_TURN_RANGE
 	mov r3, #5
 	mov r0, r5
 	mov r2, #0
@@ -1659,7 +1659,7 @@ _023131DC:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023131E8: .word ov10_022C48B8
+_023131E8: .word INGRAIN_TURN_RANGE
 #ifdef JAPAN
 _023131EC: .word 0x00000A69
 _023131F0: .word 0x00000A6A
@@ -1709,7 +1709,7 @@ TryInflictWrappedStatus: ; 0x023131F4
 	mov r0, #0x7f
 	strb r0, [r4, #0xcc]
 	mov r2, #0
-	ldr r1, _023133DC ; =ov10_022C48AC
+	ldr r1, _023133DC ; =WRAP_TURN_RANGE
 	mov r0, r6
 	strb r2, [r4, #0xcd]
 	mov r3, #4
@@ -1809,7 +1809,7 @@ _023133D0:
 #else
 #define TRY_INFLICT_WRAPPED_STATUS_DATA_OFFSET 0
 #endif
-_023133DC: .word ov10_022C48AC
+_023133DC: .word WRAP_TURN_RANGE
 _023133E0: .word DUNGEON_PTR
 _023133E4: .word 0x00000D2B + TRY_INFLICT_WRAPPED_STATUS_DATA_OFFSET
 _023133E8: .word 0x00000D2C + TRY_INFLICT_WRAPPED_STATUS_DATA_OFFSET

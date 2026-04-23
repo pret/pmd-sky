@@ -300,7 +300,7 @@ DungeonModeSetupAndShowNameKeyboard: ; 0x0234F008
 	mov r1, r4
 	mov r0, #8
 	mov r5, r2
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	ldr r0, _0234F1D8 ; =ov29_0235352C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x24]
@@ -419,7 +419,7 @@ _0234F1A0:
 	beq _0234F1CC
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _0234F1CC:
 	mov r0, #1
 	add sp, sp, #0x40

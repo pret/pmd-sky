@@ -64,6 +64,7 @@
 .public EuclideanNorm__020050B0
 .public EVENTS
 .public FemaleToMaleForm
+.public FillOamAttributeInfo
 .public FuncThatCallsRunNextOpcode
 .public FX_Atan2Idx
 .public GetAcceptedMission
@@ -836,7 +837,6 @@
 .public sub_0201CF5C
 .public sub_0201CF90
 .public sub_0201D100
-.public sub_0201D110
 .public sub_0201D18C
 .public sub_0201D1B0
 .public sub_0201DF38

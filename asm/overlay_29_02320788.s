@@ -522,7 +522,7 @@ _02320E20:
 	cmp r0, #0
 	beq _02320EA4
 	ldrb sl, [r5, #0x4c]
-	ldr fp, _023210FC ; =ov29_0237C850
+	ldr fp, _023210FC ; =DUNGEON_FRAMES_PASSED
 _02320E60:
 	ldr r0, [r8, #0x1c]
 	add r0, r0, #0x800
@@ -669,7 +669,7 @@ _02321008:
 	beq _023210A0
 	ldrb sl, [r5, #0x4c]
 	mov r0, #0xa000
-	ldr r6, _023210FC ; =ov29_0237C850
+	ldr r6, _023210FC ; =DUNGEON_FRAMES_PASSED
 	str r0, [r8, #0x1c]
 	mov fp, #0x22
 _0232105C:
@@ -723,7 +723,7 @@ _023210EC: .word DUNGEON_PTR
 _023210F0: .word 0x00000E72 + TRY_WARP_DATA_OFFSET
 _023210F4: .word 0x00000E73 + TRY_WARP_DATA_OFFSET
 _023210F8: .word 0x00000E71 + TRY_WARP_DATA_OFFSET
-_023210FC: .word ov29_0237C850
+_023210FC: .word DUNGEON_FRAMES_PASSED
 _02321100: .word 0x00000E75 + TRY_WARP_DATA_OFFSET
 	arm_func_end TryWarp
 

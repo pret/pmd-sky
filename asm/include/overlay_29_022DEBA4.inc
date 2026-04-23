@@ -104,7 +104,6 @@
 .public ov29_022EA370
 .public ov29_022EA3F8
 .public ov29_022EA418
-.public ov29_022EA428
 .public ov29_022EAD68
 .public ov29_022EAEAC
 .public ov29_022EAF34
@@ -159,7 +158,6 @@
 .public ov29_023369F8
 .public ov29_0233781C
 .public ov29_0233785C
-.public ResetVictoryCounter
 .public ov29_0233873C
 .public ov29_023389C4
 .public ov29_02338A4C
@@ -214,6 +212,7 @@
 .public ReevaluateSnatchMonster
 .public RefillTeam
 .public ResetGravity
+.public ResetVictoryCounter
 .public RunFractionalTurn
 .public SetBaseStatsMovesGroundMonster
 .public SetBothScreensWindowColorToDefault
@@ -254,6 +253,7 @@
 .public TryForcedLoss
 .public TryInflictBurnStatusWholeTeam
 .public TrySpawnDoughSeedPoke
+.public UnkMapRelatedFunc
 .public UpdateMinimap
 .public UpdateShouldBoostHiddenStairsSpawnChance
 .public UpdateShouldBoostKecleonShopSpawnChance

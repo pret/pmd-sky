@@ -8656,7 +8656,7 @@ ov01_02330224: ; 0x02330224
 	ldr r1, [r0]
 	add r0, r1, #0x94
 	add r1, r1, #0x84
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	ldr r0, _02330584 ; =ov01_0233C164
 	ldr r1, [r0]
 	add r0, r1, #0x94
@@ -8696,7 +8696,7 @@ ov01_02330224: ; 0x02330224
 	ldr r1, [r1]
 	add r0, r1, #0x110
 	add r1, r1, #0x84
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	ldr r0, _02330584 ; =ov01_0233C164
 	ldr r0, [r0]
 	ldrsh r1, [r0, #0x90]
@@ -8740,7 +8740,7 @@ ov01_02330224: ; 0x02330224
 	ldr r1, [r1]
 	add r0, r1, #0x18c
 	add r1, r1, #0x84
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	ldr r0, _02330584 ; =ov01_0233C164
 	ldr r1, [r0]
 	add r0, r1, #0x18c
