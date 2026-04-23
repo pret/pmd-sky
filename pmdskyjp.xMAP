@@ -135,7 +135,7 @@
                                           41](.bss,section) found in local options.o
                                          40](InitPortraitParams,func) found in global main_0204CDB8.o
                                           41](FileRom_HandleOpen,func) found in global main_02008210.o
-                                          41](sub_020509BC,func) found in global main_0204FE58.o
+                                          41](BitstreamDebug,func) found in global main_0204FE58.o
                                           41](VERSION_EXCLUSIVE_MONSTERS,notype) found in global main_rodata_020A190C.o
                                           41](GetDexNumber,func) found in global main_020526EC.o
                                           41](FemaleToMaleForm,func) found in global main_02054BE0.o
@@ -485,7 +485,7 @@
                                                                                          88](GetCheckDirectionOption,func) found in global options.o
                                                                                          88](ResetTriggerFlags,func) found in global overlay_29_022FBA70.o
                                                                                          88](ov29_023009CC,func) found in global overlay_29_023009A0.o
-                                                                                         88](ov29_022E28D4,func) found in global overlay_29_022E28D4.o
+                                                                                         88](IsValidTargetEntity,func) found in global overlay_29_022E28D4.o
                                                                                          88](CanMonsterMoveInDirection,func) found in global dungeon_capabilities_3.o
                                                                                           89](DIRECTIONAL_BIT_MASKS__02352798,object) found in global directional_bit_masks.o
                                                                                          88](TryTriggerTrap,func) found in global overlay_29_022EDCBC.o
@@ -3792,7 +3792,7 @@
   0201D158 00000010 .text   sub_0201D100	(main_02014D18.o)
   0201D164 00000000 .text   $d	(main_02014D18.o)
   0201D168 00000000 .text   $a	(main_02014D18.o)
-  0201D168 0000001C .text   sub_0201D110	(main_02014D18.o)
+  0201D168 0000001C .text   FillOamAttributeInfo	(main_02014D18.o)
   0201D184 00000044 .text   sub_0201D12C	(main_02014D18.o)
   0201D1C4 00000000 .text   $d	(main_02014D18.o)
   0201D1C8 0000001C .text   AnimationControlGetAllocForMaxFrame	(main_02014D18.o)
@@ -6934,12 +6934,12 @@
   02050C9C 00000014 .text   GetTypeStringId	(main_0204FE58.o)
   02050CB0 00000010 .text   GetConversion2ConvertToType	(main_0204FE58.o)
   02050CBC 00000000 .text   $d	(main_0204FE58.o)
-  02050CC0 0000001C .text   sub_02050974	(main_0204FE58.o)
+  02050CC0 0000001C .text   InitBitstreamForWrite	(main_0204FE58.o)
   02050CC0 00000000 .text   $a	(main_0204FE58.o)
-  02050CDC 0000002C .text   sub_02050990	(main_0204FE58.o)
+  02050CDC 0000002C .text   InitBitstreamForRead	(main_0204FE58.o)
   02050D04 00000000 .text   $d	(main_0204FE58.o)
   02050D08 00000000 .text   $a	(main_0204FE58.o)
-  02050D08 00000004 .text   sub_020509BC	(main_0204FE58.o)
+  02050D08 00000004 .text   BitstreamDebug	(main_0204FE58.o)
   02050D0C 00000080 .text   CopyBitsTo	(main_0204FE58.o)
   02050D8C 0000008C .text   CopyBitsFrom	(main_0204FE58.o)
   02050E18 00000048 .text   StoreDefaultTeamData	(main_0204FE58.o)
@@ -27468,7 +27468,7 @@
   022C5BC4 00000000 .rodata SPAWN_COOLDOWN	(overlay_10_022C4394.o)
   022C5BC8 00000000 .rodata MIST_BALL_LOWER_SPECIAL_ATTACK_CHANCE	(overlay_10_022C4394.o)
   022C5BCC 00000000 .rodata PITFALL_TRAP_DAMAGE	(overlay_10_022C4394.o)
-  022C5BD0 00000000 .rodata ov10_022C44E8	(overlay_10_022C4394.o)
+  022C5BD0 00000000 .rodata EATEN_BLAST_SEED_DAMAGE_NORMAL	(overlay_10_022C4394.o)
   022C5BD4 00000000 .rodata ov10_022C44EC	(overlay_10_022C4394.o)
   022C5BD8 00000000 .rodata CHARGE_BEAM_BOOST_SPECIAL_ATTACK_CHANCE	(overlay_10_022C4394.o)
   022C5BDC 00000000 .rodata ORAN_BERRY_FULL_HP_BOOST	(overlay_10_022C4394.o)
@@ -27529,9 +27529,9 @@
   022C5CB0 00000000 .rodata ov10_022C45C8	(overlay_10_rodata_022C4584.o)
   022C5CB4 00000000 .rodata ov10_022C45CC	(overlay_10_rodata_022C4584.o)
   022C5CB8 00000000 .rodata WRAP_DAMAGE	(overlay_10_rodata_022C4584.o)
-  022C5CBC 00000000 .rodata ov10_022C45D4	(overlay_10_rodata_022C4584.o)
-  022C5CC0 00000000 .rodata ov10_022C45D8	(overlay_10_rodata_022C4584.o)
-  022C5CC4 00000000 .rodata ov10_022C45DC	(overlay_10_rodata_022C4584.o)
+  022C5CBC 00000000 .rodata THROWN_BLAST_SEED_DAMAGE_NORMAL	(overlay_10_rodata_022C4584.o)
+  022C5CC0 00000000 .rodata THROWN_BLAST_SEED_DAMAGE_BOSS	(overlay_10_rodata_022C4584.o)
+  022C5CC4 00000000 .rodata EATEN_BLAST_SEED_DAMAGE_BOSS	(overlay_10_rodata_022C4584.o)
   022C5CC8 00000000 .rodata TYPE_ADVANTAGE_MASTER_CRIT_RATE	(overlay_10_rodata_022C4584.o)
   022C5CCC 00000000 .rodata ov10_022C45E4	(overlay_10_rodata_022C4584.o)
   022C5CD0 00000000 .rodata INGRAIN_BONUS_REGEN_COOLDOWN	(overlay_10_rodata_022C4584.o)
@@ -27548,7 +27548,7 @@
   022C5CFC 00000000 .rodata ov10_022C4614	(overlay_10_rodata_022C4584.o)
   022C5D00 00000000 .rodata ov10_022C4618	(overlay_10_rodata_022C4584.o)
   022C5D04 00000000 .rodata SHADOW_BALL_LOWER_SPECIAL_DEFENSE_CHANCE	(overlay_10_rodata_022C4584.o)
-  022C5D08 00000000 .rodata ov10_022C4620	(overlay_10_rodata_022C4584.o)
+  022C5D08 00000000 .rodata AQUA_RING_HEALING_COUNTDOWN	(overlay_10_rodata_022C4584.o)
   022C5D0C 00000000 .rodata STICK_POWER	(overlay_10_rodata_022C4584.o)
   022C5D10 00000000 .rodata AQUA_RING_BONUS_REGEN	(overlay_10_rodata_022C4584.o)
   022C5D14 00000000 .rodata BUBBLE_LOWER_SPEED_CHANCE	(overlay_10_rodata_022C4584.o)
@@ -27713,10 +27713,10 @@
   022C5F88 00000000 .rodata ov10_022C48A0	(overlay_10_rodata_022C464C.o)
   022C5F8C 00000000 .rodata SOLARBEAM_DAMAGE_MULTIPLIER	(overlay_10_rodata_022C464C.o)
   022C5F90 00000000 .rodata SKY_ATTACK_DAMAGE_MULTIPLIER	(overlay_10_rodata_022C464C.o)
-  022C5F94 00000000 .rodata ov10_022C48AC	(overlay_10_rodata_022C464C.o)
+  022C5F94 00000000 .rodata WRAP_TURN_RANGE	(overlay_10_rodata_022C464C.o)
   022C5F98 00000000 .rodata RAZOR_WIND_DAMAGE_MULTIPLIER	(overlay_10_rodata_022C464C.o)
   022C5F9C 00000000 .rodata FOCUS_PUNCH_DAMAGE_MULTIPLIER	(overlay_10_rodata_022C464C.o)
-  022C5FA0 00000000 .rodata ov10_022C48B8	(overlay_10_rodata_022C464C.o)
+  022C5FA0 00000000 .rodata INGRAIN_TURN_RANGE	(overlay_10_rodata_022C464C.o)
   022C5FA4 00000000 .rodata SKULL_BASH_DAMAGE_MULTIPLIER	(overlay_10_rodata_022C464C.o)
   022C5FA8 00000000 .rodata FLY_DAMAGE_MULTIPLIER	(overlay_10_rodata_022C464C.o)
   022C5FAC 00000000 .rodata ov10_022C48C4	(overlay_10_rodata_022C464C.o)
@@ -35150,9 +35150,9 @@
   022E3EA4 000000C4 .text   CanTargetEntity	(dungeon_visibility.o)
   022E3EA4 00000000 .text   $a	(dungeon_visibility.o)
   022E3F68 00000000 .text   $a	(overlay_29_022E28D4.o)
-  022E3F68 0000005C .text   ov29_022E28D4	(overlay_29_022E28D4.o)
+  022E3F68 0000005C .text   IsValidTargetEntity	(overlay_29_022E28D4.o)
   022E3F68 00000080 .text   .text	(overlay_29_022E28D4.o)
-  022E3FC4 00000024 .text   ov29_022E2930	(overlay_29_022E28D4.o)
+  022E3FC4 00000024 .text   CanSeePosition	(overlay_29_022E28D4.o)
   022E3FE8 00000024 .text   CanTargetPosition	(dungeon_util_2.o)
   022E3FE8 00000000 .text   $a	(dungeon_util_2.o)
   022E400C 0000094C .text   .text	(overlay_29_022E2978.o)
@@ -35651,7 +35651,7 @@
   022E98AC 0000002C .text   ov29_022E8244	(overlay_29_022E37DC.o)
   022E98AC 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E98D4 00000000 .text   $d	(overlay_29_022E37DC.o)
-  022E98D8 0000019C .text   ov29_022E8270	(overlay_29_022E37DC.o)
+  022E98D8 0000019C .text   DisplayTeamStatsSprite	(overlay_29_022E37DC.o)
   022E98D8 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E9A64 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E9A74 00000070 .text   ov29_022E840C	(overlay_29_022E37DC.o)
@@ -35851,7 +35851,7 @@
   022EBA80 00000000 .text   $a	(overlay_29_022E9618.o)
   022EBA8C 00000000 .text   $d	(overlay_29_022E9618.o)
   022EBA90 00000000 .text   $a	(overlay_29_022E9618.o)
-  022EBA90 00000204 .text   ov29_022EA428	(overlay_29_022E9618.o)
+  022EBA90 00000204 .text   UnkMapRelatedFunc	(overlay_29_022E9618.o)
   022EBC88 00000000 .text   $d	(overlay_29_022E9618.o)
   022EBC94 00000000 .text   $a	(overlay_29_022E9618.o)
   022EBC94 00000020 .text   ov29_022EA62C	(overlay_29_022E9618.o)
@@ -40813,7 +40813,7 @@
   0237D9D4 00000000 .bss    ov29_0237C754	(overlay_29_bss_02353860.o)
   0237DA1C 00000000 .bss    ov29_0237C79C	(overlay_29_bss_02353860.o)
   0237DACC 00000000 .bss    ov29_0237C84C	(overlay_29_bss_02353860.o)
-  0237DAD0 00000000 .bss    ov29_0237C850	(overlay_29_bss_02353860.o)
+  0237DAD0 00000000 .bss    DUNGEON_FRAMES_PASSED	(overlay_29_bss_02353860.o)
   0237DAE4 00000000 .bss    ov29_0237C864	(overlay_29_bss_02353860.o)
   0237DB08 00000000 .bss    ov29_0237C888	(overlay_29_bss_02353860.o)
   0237DB0A 00000000 .bss    ov29_0237C88A	(overlay_29_bss_02353860.o)
@@ -41652,5 +41652,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Apr 16 17:17:15 2026
-# Link end time: Thu Apr 16 17:17:16 2026
+# Link start time: Thu Apr 23 03:51:11 2026
+# Link end time: Thu Apr 23 03:51:12 2026
