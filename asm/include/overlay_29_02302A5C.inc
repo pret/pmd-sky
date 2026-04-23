@@ -5,11 +5,13 @@
 .public DIRECTIONS_XY
 .public DisplayMessage
 .public DisplayMessage2
+.public DUNGEON_FRAMES_PASSED
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonRandInt
 .public EntityIsValid__02302A38
 .public EntityIsValid__023047B8
+.public FillOamAttributeInfo
 .public FormatMoveString
 .public GetEncodedHalfword
 .public GetIdleAnimationId
@@ -62,7 +64,6 @@
 .public ov29_0235280C
 .public ov29_02352810
 .public ov29_023535C8
-.public ov29_0237C850
 .public ov29_0237C888
 .public ov29_0237C9C4
 .public ov29_0237C9C5
@@ -85,7 +86,6 @@
 .public sub_0201B9F8
 .public sub_0201CF5C
 .public sub_0201D034
-.public sub_0201D110
 .public sub_0201D198
 .public sub_0201D1B0
 .public sub_0204F610

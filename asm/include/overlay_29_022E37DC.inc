@@ -11,6 +11,7 @@
 .public DIRECTIONS_XY
 .public DisplayAnimatedNumbers
 .public DrawTextInWindow
+.public DUNGEON_FRAMES_PASSED
 .public DUNGEON_PTR
 .public DungeonFloorToGroupFloor
 .public DungeonGetSpriteIndex
@@ -123,7 +124,6 @@
 .public ov29_0235352C
 .public ov29_0235354C
 .public ov29_02353558
-.public ov29_0237C850
 .public PlayEffectAnimationEntity
 .public PlaySeByIdIfNotSilence
 .public RandIntSafe

@@ -628,7 +628,7 @@ _023241B8:
 	beq _02324238
 	mov r0, sb
 	mov r1, r7
-	bl ov29_022E28D4
+	bl IsValidTargetEntity
 	cmp r0, #0
 	beq _02324238
 	cmp r7, sb

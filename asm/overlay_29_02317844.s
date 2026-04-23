@@ -934,13 +934,13 @@ SetAquaRingHealingCountdownTo4: ; 0x023183C0
 	mov r4, r0
 	bl EntityIsValid__02315118
 	cmp r0, #0
-	ldrne r0, _023183E4 ; =ov10_022C4620
+	ldrne r0, _023183E4 ; =AQUA_RING_HEALING_COUNTDOWN
 	ldrne r1, [r4, #0xb4]
 	ldrnesh r0, [r0]
 	strneb r0, [r1, #0xd7]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_023183E4: .word ov10_022C4620
+_023183E4: .word AQUA_RING_HEALING_COUNTDOWN
 	arm_func_end SetAquaRingHealingCountdownTo4
 
 	arm_func_start ApplyAquaRingHealing

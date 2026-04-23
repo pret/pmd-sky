@@ -6107,8 +6107,8 @@ ov29_022E8244: ; 0x022E8244
 _022E826C: .word TOP_SCREEN_STATUS_PTR
 	arm_func_end ov29_022E8244
 
-	arm_func_start ov29_022E8270
-ov29_022E8270: ; 0x022E8270
+	arm_func_start DisplayTeamStatsSprite
+DisplayTeamStatsSprite: ; 0x022E8270
 #ifdef JAPAN
 #define OV29_022E8270_OFFSET -0xA4
 #else
@@ -6199,7 +6199,7 @@ _022E8368:
 	cmpne r0, #4
 	cmpne r1, #2
 	bne _022E83A4
-	ldr r0, _022E8408 ; =ov29_0237C850
+	ldr r0, _022E8408 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	and r0, r0, #2
 	add r0, r6, r0
@@ -6233,8 +6233,8 @@ _022E83F4:
 _022E83FC: .word TOP_SCREEN_STATUS_PTR
 _022E8400: .word DUNGEON_PTR
 _022E8404: .word 0x00000229
-_022E8408: .word ov29_0237C850
-	arm_func_end ov29_022E8270
+_022E8408: .word DUNGEON_FRAMES_PASSED
+	arm_func_end DisplayTeamStatsSprite
 
 	arm_func_start ov29_022E840C
 ov29_022E840C: ; 0x022E840C

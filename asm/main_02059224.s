@@ -11,7 +11,7 @@ ReadMonsterInfoFromSave: ; 0x02059224
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	ldr r6, _0205932C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r5, _02059330 ; =0x0000022B
 	mov r8, #0
@@ -68,7 +68,7 @@ _020592F0:
 	cmp r7, #4
 	blt _020592F0
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	bl sub_0205523C
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10

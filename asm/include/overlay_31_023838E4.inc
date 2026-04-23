@@ -142,7 +142,6 @@
 .public ov29_022E1620
 .public ov29_022E2A78
 .public ov29_022EA370
-.public ov29_022EA428
 .public ov29_022EA62C
 .public ov29_022EAC78
 .public ov29_022EB2C8
@@ -286,6 +285,7 @@
 .public sub_020585B4
 .public TeamMemberHasEnabledIqSkill
 .public TryPointCameraToMonster
+.public UnkMapRelatedFunc
 .public UpdateMapSurveyorFlag
 .public UpdateWindow
 .public vsprintf

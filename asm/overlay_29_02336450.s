@@ -1254,7 +1254,7 @@ _02337544:
 	bne _023375DC
 	ldr r0, [sp, #0x20]
 	add r1, sp, #0x28
-	bl ov29_022E2930
+	bl CanSeePosition
 	cmp r0, #0
 	beq _023375DC
 	mov r0, #0
@@ -1370,7 +1370,7 @@ _023376A8:
 	bne _0233772C
 	ldr r0, [sp, #0x20]
 	add r1, sp, #0x28
-	bl ov29_022E2930
+	bl CanSeePosition
 	cmp r0, #0
 	beq _0233772C
 	mov r0, #0

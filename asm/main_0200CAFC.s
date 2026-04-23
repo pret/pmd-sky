@@ -832,7 +832,7 @@ WriteItemsToSave: ; 0x0200D95C
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050990
+	bl InitBitstreamForRead
 	mov r8, #0
 	ldr r6, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	mov fp, r8
@@ -1015,7 +1015,7 @@ _0200DB24:
 	add r1, r1, #0x1300
 	bl CopyBitsTo
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -1031,7 +1031,7 @@ ReadItemsFromSave: ; 0x0200DC44
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	mov r8, #0
 	ldr r6, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	mov fp, r8
@@ -1214,7 +1214,7 @@ _0200DE0C:
 	add r1, r1, #0x1300
 	bl CopyBitsFrom
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

@@ -2637,7 +2637,7 @@ sub_02013190: ; 0x02013190
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	ldr r5, _020131EC ; =_022A4BD8
 	mov r7, #0
 	add r6, sp, #0
@@ -2651,7 +2651,7 @@ _020131BC:
 	cmp r7, #8
 	blt _020131BC
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -2667,7 +2667,7 @@ sub_020131F0: ; 0x020131F0
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050990
+	bl InitBitstreamForRead
 	ldr r5, _0201324C ; =_022A4BD8
 	mov r7, #0
 	add r6, sp, #0
@@ -2681,7 +2681,7 @@ _0201321C:
 	cmp r7, #8
 	blt _0201321C
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}

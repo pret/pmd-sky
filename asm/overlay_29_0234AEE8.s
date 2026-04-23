@@ -312,7 +312,7 @@ _0234B1C4:
 	ldmeqia sp!, {r4, pc}
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #0xb
 	bl AdvanceFrame
 	ldmia sp!, {r4, pc}
@@ -930,7 +930,7 @@ _0234B9C8:
 	bl ov29_0234B768
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234BA14: .word MESSAGE_LOG_INFO
@@ -1073,7 +1073,7 @@ OpenMessageLog: ; 0x0234BB5C
 	mov r6, r1
 	mov r0, #6
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	cmp r4, #0
 	bne _0234BB84
 	mov r0, #0
@@ -1097,7 +1097,7 @@ _0234BB9C:
 	beq _0234BBCC
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _0234BBCC:
 	cmp r5, #1
 	moveq r0, #1

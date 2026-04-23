@@ -43,7 +43,6 @@
 .public ov29_022E8834
 .public ov29_022E8848
 .public ov29_022EA370
-.public ov29_022EA428
 .public ov29_022F0C98
 .public ov29_022F9C34
 .public ov29_02347100
@@ -105,3 +104,4 @@
 .public sub_0205B77C
 .public sub_02061DC8
 .public sub_02061F44
+.public UnkMapRelatedFunc

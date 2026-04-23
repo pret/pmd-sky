@@ -131,7 +131,7 @@ _02383A74:
 	bl ov31_023837C8
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #1
 	b _0238511C
 _02383AC4:
@@ -825,7 +825,7 @@ _02384490:
 	bne _023844AC
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r5, #1
 	b _023850D8
 _023844AC:
@@ -837,7 +837,7 @@ _023844AC:
 	bl ov29_022EBBE8
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r5, #0
 	b _023850D8
 _023844D8:
@@ -847,7 +847,7 @@ _023844D8:
 	bl ov29_022EBB68
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r5, #0
 	b _023850D8
 _023844FC:
@@ -1538,7 +1538,7 @@ _02384E30:
 	bne _02384E90
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r5, #1
 	b _023850D8
 _02384E90:
@@ -1552,7 +1552,7 @@ _02384E90:
 	mov r0, #0xb
 	mov r1, #0
 	strb r2, [r7, #0x4e]
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r5, #0
 	b _023850D8
 _02384EC4:
@@ -1606,13 +1606,13 @@ _02384F34:
 	mov r0, #0
 	mov r1, r0
 	strb r2, [r7, #0x54]
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r5, #0
 	b _023850D8
 _02384F88:
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #1
 	bl ResetLeaderActionFields
 	b _02383B08
@@ -1695,20 +1695,20 @@ _02385028:
 #else
 	strb r2, [r7, #0x23c]
 #endif
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r5, #0
 	b _023850D8
 _023850B0:
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #1
 	bl ResetLeaderActionFields
 	b _02383B08
 _023850C8:
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r5, #0
 _023850D8:
 	ldr r0, _023848A8 ; =DUNGEON_PTR
@@ -1864,7 +1864,7 @@ _0238529C:
 	bne _023852CC
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	bl GetLeaderAction
 	mov r1, #0
 	bl ov31_023860A4
@@ -1877,7 +1877,7 @@ _023852CC:
 	bne _023852FC
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	bl GetLeaderAction
 	mov r1, #0
 	bl ov31_023860A4
@@ -1890,7 +1890,7 @@ _023852FC:
 	bne _02385328
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	bl GetLeaderAction
 	bl ov31_0238619C
 	mov r0, #1
@@ -1902,7 +1902,7 @@ _02385328:
 	bne _02385354
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	bl GetLeaderAction
 	bl ov31_02386204
 	mov r0, #1
@@ -1914,7 +1914,7 @@ _02385354:
 	bne _02385380
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	bl GetLeaderAction
 	mov r1, #1
 	bl ov31_02386308
@@ -2194,7 +2194,7 @@ _023856D0:
 	bl ov29_022EBC2C
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #8
 	mov r1, #0x1b
 	bl ov29_022EA370
@@ -3410,7 +3410,7 @@ ov31_0238647C: ; 0x0238647C
 _023864B4:
 	mov r0, #6
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	ldr r0, _02386B10 ; =ov29_0235352C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x24]
@@ -3532,7 +3532,7 @@ _02386674:
 	bl sub_020407C0
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #2
 	mov r1, #0x1b
 	bl ov29_022EA370
@@ -3637,7 +3637,7 @@ _023867A0:
 _023867F8:
 	mov r0, #6
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, r4
 	bl SetAdvancedTextBoxState5
 _0238680C:
@@ -4114,7 +4114,7 @@ _02386E3C:
 	bl CloseScrollBox
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _02386E68:
 	mov r6, #2
 	b _02386EBC
@@ -4157,7 +4157,7 @@ _02386EBC:
 _02386EF8:
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	add sp, sp, #0xf4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
@@ -4647,7 +4647,7 @@ _023875D8:
 _023875F0:
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	bl ov31_02386F2C
 	mov r0, #0x1b
 	bl AdvanceFrame
@@ -4774,7 +4774,7 @@ _0238775C:
 _0238776C:
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, sb
 	bl ov29_023021F0
 	add sp, sp, #0x78
@@ -5459,7 +5459,7 @@ _02387FEC:
 _0238800C:
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #4
 	mov r1, #0x3e
 	bl ov29_022EA370
@@ -8127,7 +8127,7 @@ _02389D1C:
 	bl CloseScrollBox
 	mov r0, #0xb
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #4
 	mov r1, #0x3e
 	bl ov29_022EA370

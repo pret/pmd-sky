@@ -7,6 +7,7 @@
 .public CannotStandOnTile
 .public DetermineTileWalkableNeighbors
 .public DiscoverMinimap
+.public DUNGEON_FRAMES_PASSED
 .public DUNGEON_PTR
 .public EntityIsValid__02320764
 .public EntityIsValid__02321438
@@ -40,7 +41,6 @@
 .public ov29_02336694
 .public ov29_023529B8
 .public ov29_02353700
-.public ov29_0237C850
 .public RemoveGroundItem
 .public ShouldDisplayEntityWrapper
 .public sub_01FFB62C

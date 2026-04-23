@@ -836,7 +836,7 @@ _02336498:
 	moveq sb, #1
 	cmp r7, #0
 	beq _02336564
-	ldr r0, _02335F38 ; =ov29_0237C850
+	ldr r0, _02335F38 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	tst r0, #0x10
 	beq _02336550
@@ -857,7 +857,7 @@ _02336564:
 _0233656C:
 	cmp sb, #0
 	beq _023365A8_EU
-	ldr r0, _02335F38 ; =ov29_0237C850
+	ldr r0, _02335F38 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	ands r0, r0, #0x10
 	movne r8, #0x30
@@ -1280,7 +1280,7 @@ _02335A4C:
 	moveq fp, #1
 	cmp r6, #0
 	beq _02335B18
-	ldr r0, _02335F38 ; =ov29_0237C850
+	ldr r0, _02335F38 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	tst r0, #0x10
 	beq _02335B04
@@ -1301,7 +1301,7 @@ _02335B18:
 _02335B20:
 	cmp fp, #0
 	beq _02335B5C
-	ldr r0, _02335F38 ; =ov29_0237C850
+	ldr r0, _02335F38 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0]
 	ands r0, r0, #0x10
 	movne sl, #0x30
@@ -1581,7 +1581,7 @@ _02335F24:
 _02335F2C: .word DUNGEON_PTR
 _02335F30: .word ov29_0237CA8C
 _02335F34: .word 0x000003E7
-_02335F38: .word ov29_0237C850
+_02335F38: .word DUNGEON_FRAMES_PASSED
 _02335F3C: .word _020AFC70
 	arm_func_end DisplayUi
 

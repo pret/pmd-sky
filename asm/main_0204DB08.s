@@ -15,7 +15,7 @@ sub_0204DB08: ; 0x0204DB08
 	mov r5, r0
 	add r0, sp, #0x38
 	add r2, r2, r3, asr #3
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	mov sb, #0
 	add r8, sp, #0x38
 	add r7, sp, #0
@@ -31,7 +31,7 @@ _0204DB5C:
 	cmp sb, r4
 	blt _0204DB48
 	add r0, sp, #0x38
-	bl sub_020509BC
+	bl BitstreamDebug
 	mov r3, #0
 	add r2, sp, #0
 	ldr r1, _0204DB9C ; =WONDER_MAIL_BITS_MAP
@@ -111,12 +111,12 @@ _0204DC3C:
 	add r0, sp, #0
 	add r1, sp, #0x7d
 	mov r2, #0x20
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	add r0, sp, #0
 	mov r1, r5
 	bl sub_0205C2A4
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	mov r0, #1
 _0204DC94:
 	add sp, sp, #0xa0
@@ -143,12 +143,12 @@ _0204DCC0:
 	add r0, sp, #0
 	add r1, sp, #0x7d
 	mov r2, #0x20
-	bl sub_02050990
+	bl InitBitstreamForRead
 	add r0, sp, #0
 	mov r1, r6
 	bl sub_0205C548
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	mov r3, #1
 	add r2, sp, #0x7c
 _0204DCFC:

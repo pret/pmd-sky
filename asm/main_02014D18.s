@@ -10592,8 +10592,8 @@ sub_0201D100: ; 0x0201D100
 _0201D10C: .word sub_0201DC4C
 	arm_func_end sub_0201D100
 
-	arm_func_start sub_0201D110
-sub_0201D110: ; 0x0201D110
+	arm_func_start FillOamAttributeInfo
+FillOamAttributeInfo: ; 0x0201D110
 	add r3, r0, #0x10
 	mov r2, #6
 _0201D118:
@@ -10602,7 +10602,7 @@ _0201D118:
 	strh r0, [r3], #2
 	bne _0201D118
 	bx lr
-	arm_func_end sub_0201D110
+	arm_func_end FillOamAttributeInfo
 
 	arm_func_start sub_0201D12C
 sub_0201D12C: ; 0x0201D12C

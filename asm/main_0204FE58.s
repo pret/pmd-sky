@@ -888,8 +888,8 @@ GetConversion2ConvertToType: ; 0x02050964
 _02050970: .word _020A192C
 	arm_func_end GetConversion2ConvertToType
 
-	arm_func_start sub_02050974
-sub_02050974: ; 0x02050974
+	arm_func_start InitBitstreamForWrite
+InitBitstreamForWrite: ; 0x02050974
 	str r1, [r0]
 	mov r3, #0
 	str r3, [r0, #8]
@@ -897,10 +897,10 @@ sub_02050974: ; 0x02050974
 	add r1, r1, r2
 	str r1, [r0, #4]
 	bx lr
-	arm_func_end sub_02050974
+	arm_func_end InitBitstreamForWrite
 
-	arm_func_start sub_02050990
-sub_02050990: ; 0x02050990
+	arm_func_start InitBitstreamForRead
+InitBitstreamForRead: ; 0x02050990
 	str r1, [r0]
 	mov r3, #0
 	str r3, [r0, #8]
@@ -913,12 +913,12 @@ sub_02050990: ; 0x02050990
 	bx ip
 	.align 2, 0
 _020509B8: .word MemZero
-	arm_func_end sub_02050990
+	arm_func_end InitBitstreamForRead
 
-	arm_func_start sub_020509BC
-sub_020509BC: ; 0x020509BC
+	arm_func_start BitstreamDebug
+BitstreamDebug: ; 0x020509BC
 	bx lr
-	arm_func_end sub_020509BC
+	arm_func_end BitstreamDebug
 
 	arm_func_start CopyBitsTo
 CopyBitsTo: ; 0x020509C0
@@ -1249,7 +1249,7 @@ sub_02050CF8: ; 0x02050CF8
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050990
+	bl InitBitstreamForRead
 	ldr r1, _02050D70 ; =TEAM_NAME
 	add r0, sp, #0
 #ifdef JAPAN
@@ -1277,7 +1277,7 @@ sub_02050CF8: ; 0x02050CF8
 	mov r2, #1
 	bl CopyBitsTo
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
@@ -1297,7 +1297,7 @@ sub_02050D84: ; 0x02050D84
 	mov r2, r1
 	add r0, sp, #4
 	mov r1, r3
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	ldr r1, _02050DFC ; =TEAM_NAME
 	add r0, sp, #4
 #ifdef JAPAN
@@ -1325,7 +1325,7 @@ sub_02050D84: ; 0x02050D84
 #else
 	strb r2, [r1, #0x10]
 #endif
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #0xc]
 	add sp, sp, #0x14
 	ldmia sp!, {pc}

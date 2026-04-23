@@ -9011,7 +9011,7 @@ _022F5768:
 	add r0, r5, #0xc
 	orr r2, r2, #0x20
 	strh r2, [r5, #0xe]
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	add r0, r5, #0xc
 	bl sub_0201CF5C
 	mov r0, #0
@@ -9047,7 +9047,7 @@ _022F5808:
 	add r0, r5, #0xc
 	orr r2, r2, #0x20
 	strh r2, [r5, #0xe]
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	add r0, r5, #0xc
 	bl sub_0201CF5C
 	mov r0, #0
@@ -9083,7 +9083,7 @@ _022F5870:
 	add r0, r5, #0xc
 	orr r2, r2, #0x20
 	strh r2, [r5, #0xe]
-	bl sub_0201D110
+	bl FillOamAttributeInfo
 	add r0, r5, #0xc
 	bl sub_0201CF5C
 	mov r0, #0

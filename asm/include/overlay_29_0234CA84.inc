@@ -18,7 +18,6 @@
 .public LoadOverlay
 .public LoadScriptVariableValue
 .public LogMessageByIdQuiet
-.public ov29_022EA428
 .public ov29_022EACBC
 .public ov29_0231ADA8
 .public ov29_02337EE8
@@ -65,5 +64,6 @@
 .public SetDungeonTipShown
 .public StringFromId
 .public sub_02025784
+.public UnkMapRelatedFunc
 .public UnloadOverlay
 .public WriteQuicksaveData

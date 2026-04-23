@@ -16968,7 +16968,7 @@ sub_0204A1DC: ; 0x0204A1DC
 	mov r2, r1
 	add r0, sp, #4
 	mov r1, r3
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	ldr r1, _0204A3E0 ; =_020AFF6C
 	add r0, sp, #4
 	ldr r1, [r1]
@@ -17107,7 +17107,7 @@ _0204A298:
 	moveq r2, #0
 	add r0, sp, #4
 	strb r2, [r1, #0x1ed + SUB_0204A1DC_OFFSET]
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #0xc]
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
@@ -17132,7 +17132,7 @@ sub_0204A3E4: ; 0x0204A3E4
 	mov r1, r5
 	strb r4, [sp, #1]
 	strb r3, [sp]
-	bl sub_02050990
+	bl InitBitstreamForRead
 	ldr r1, _0204A5CC ; =_020AFF6C
 	add r0, sp, #4
 	ldr r1, [r1]
@@ -17260,7 +17260,7 @@ _0204A4AC:
 	add r0, sp, #4
 	bl CopyBitsTo
 	add r0, sp, #4
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #0xc]
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}

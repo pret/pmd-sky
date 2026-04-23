@@ -1712,7 +1712,7 @@ _0233E07C:
 	ldr r2, [sp, #8]
 	add r1, r7, #0x20
 	add r0, sp, #0x30
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	ldr r1, [r4]
 	add r0, sp, #0x30
 	add r1, r1, #0x18
@@ -1721,7 +1721,7 @@ _0233E07C:
 	mov r2, #0
 	bl sub_0205FD88
 	add r0, sp, #0x30
-	bl sub_020509BC
+	bl BitstreamDebug
 	mov r0, r7
 	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0

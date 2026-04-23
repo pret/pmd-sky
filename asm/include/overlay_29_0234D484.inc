@@ -18,7 +18,6 @@
 .public MemZero
 .public ov29_022E0B44
 .public ov29_022EA370
-.public ov29_022EA428
 .public ov29_022F2FE4
 .public ov29_02339148
 .public ov29_0234B1A4
@@ -36,4 +35,5 @@
 .public sub_0202AB94
 .public sub_0202F334
 .public sub_0202F474
+.public UnkMapRelatedFunc
 .public UnloadOverlay

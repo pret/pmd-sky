@@ -1054,7 +1054,7 @@ sub_0205FAB0: ; 0x0205FAB0
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	mov r7, #0
 	ldr r4, _0205FC1C ; =MISSION_DELIVER_LIST_PTR
 	add r6, sp, #0
@@ -1137,7 +1137,7 @@ _0205FBAC:
 	cmp r8, #0x10
 	blt _0205FBAC
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	bl Rand16Bit
 	bl sub_020634F4
 	ldr r0, [sp, #8]
@@ -1155,7 +1155,7 @@ sub_0205FC20: ; 0x0205FC20
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050990
+	bl InitBitstreamForRead
 	mov r7, #0
 	ldr r4, _0205FD84 ; =MISSION_DELIVER_LIST_PTR
 	add r6, sp, #0
@@ -1238,7 +1238,7 @@ _0205FD1C:
 	cmp r8, #0x10
 	blt _0205FD1C
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}

@@ -42,7 +42,6 @@
 .public MusicTableIdxToMusicId
 .public ov29_022E550C
 .public ov29_022E8244
-.public ov29_022EA428
 .public ov29_022EAC8C
 .public ov29_022EACE4
 .public ov29_022EAEFC
@@ -73,4 +72,5 @@
 .public sub_02017C10
 .public SubstitutePlaceholderStringTags
 .public TeleportFleeingOutlaw
+.public UnkMapRelatedFunc
 .public YesNoMenu

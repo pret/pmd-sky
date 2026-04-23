@@ -66,6 +66,7 @@
 .public _s32_div_f
 .public AlreadyHaveMission
 .public ARM9_UNKNOWN_TABLE__NA_20A68BC
+.public BitstreamDebug
 .public BulkItemToItem
 .public CAFE_MISSION_REWARD_TYPE_WEIGHTS
 .public CloseCollectionMenu
@@ -128,6 +129,8 @@
 .public GlobalProgressAlloc
 .public HandleSir0TranslationVeneer
 .public HasMonsterBeenAttackedInDungeons
+.public InitBitstreamForRead
+.public InitBitstreamForWrite
 .public InitKaomadoStream
 .public InitOptionsVeneer
 .public InitPreprocessorArgs
@@ -313,9 +316,6 @@
 .public sub_0204F1B4
 .public sub_0204F7A8
 .public sub_0204F9B8
-.public sub_02050974
-.public sub_02050990
-.public sub_020509BC
 .public sub_02052C3C
 .public sub_02052E2C
 .public sub_02055410

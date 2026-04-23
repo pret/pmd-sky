@@ -20,13 +20,13 @@ _0204DE98:
 	add r0, sp, #0
 	add r1, sp, #0x58
 	mov r2, #0x11
-	bl sub_02050990
+	bl InitBitstreamForRead
 	add r0, sp, #0
 	mov r1, r5
 	mov r2, #1
 	bl sub_0205FE80
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	add r0, sp, #0x58
 	mov r1, #0x11
 	bl sub_02004F80
@@ -251,7 +251,7 @@ sub_0204E154: ; 0x0204E154
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050990
+	bl InitBitstreamForRead
 	add r0, sp, #0
 	bl SaveOptionsToCtx
 	add r0, sp, #0
@@ -259,7 +259,7 @@ sub_0204E154: ; 0x0204E154
 	add r0, sp, #0
 	bl CopyLogTo
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
@@ -273,7 +273,7 @@ sub_0204E19C: ; 0x0204E19C
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	add r0, sp, #0
 	bl LoadOptionsFromCtx
 	add r0, sp, #0
@@ -281,7 +281,7 @@ sub_0204E19C: ; 0x0204E19C
 	add r0, sp, #0
 	bl CopyLogFrom
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}

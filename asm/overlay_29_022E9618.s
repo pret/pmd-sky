@@ -522,7 +522,7 @@ _022E9CB4: .word ov29_023517A2
 	arm_func_start ov29_022E9CB8
 ov29_022E9CB8: ; 0x022E9CB8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r1, _022E9F04 ; =ov29_0237C850
+	ldr r1, _022E9F04 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, _022E9F08 ; =0xFFFF000F
 	ldrh r2, [r1, #0x1a]
 	mov lr, #0
@@ -671,7 +671,7 @@ _022E9DD4:
 	blt _022E9DA0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_022E9F04: .word ov29_0237C850
+_022E9F04: .word DUNGEON_FRAMES_PASSED
 _022E9F08: .word 0xFFFF000F
 _022E9F0C: .word ov29_0237C888
 _022E9F10: .word ov29_02351628
@@ -682,7 +682,7 @@ _022E9F14: .word ov29_02351658
 ov29_022E9F18: ; 0x022E9F18
 	stmdb sp!, {r3, lr}
 	ldr r0, _022E9F70 ; =0x000003E7
-	ldr r1, _022E9F74 ; =ov29_0237C850
+	ldr r1, _022E9F74 ; =DUNGEON_FRAMES_PASSED
 	mov r2, #0
 	str r0, [r1, #4]
 	ldr r0, _022E9F78 ; =ov29_02353560
@@ -693,7 +693,7 @@ ov29_022E9F18: ; 0x022E9F18
 	ldr r2, _022E9F7C ; =DUNGEON_PTR
 	mov r3, #1
 	ldr r0, [r2]
-	ldr r1, _022E9F74 ; =ov29_0237C850
+	ldr r1, _022E9F74 ; =DUNGEON_FRAMES_PASSED
 	add r0, r0, #0x1a000
 #ifdef JAPAN
 	strb r3, [r0, #0x1a8]
@@ -712,7 +712,7 @@ ov29_022E9F18: ; 0x022E9F18
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E9F70: .word 0x000003E7
-_022E9F74: .word ov29_0237C850
+_022E9F74: .word DUNGEON_FRAMES_PASSED
 _022E9F78: .word ov29_02353560
 _022E9F7C: .word DUNGEON_PTR
 	arm_func_end ov29_022E9F18
@@ -855,7 +855,7 @@ _022EA0F8:
 	cmp r0, #0x64
 	addlt r0, r0, #1
 	strlth r0, [r1, #0x1c]
-	ldr r0, _022EA29C ; =ov29_0237C850
+	ldr r0, _022EA29C ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	cmpne r0, #3
@@ -955,7 +955,7 @@ _022EA260:
 #endif
 	bl ov29_022DD8B4
 _022EA27C:
-	ldr r0, _022EA29C ; =ov29_0237C850
+	ldr r0, _022EA29C ; =DUNGEON_FRAMES_PASSED
 	ldr r1, [r0]
 	add r1, r1, #1
 	str r1, [r0]
@@ -964,7 +964,7 @@ _022EA27C:
 _022EA290: .word DUNGEON_PTR
 _022EA294: .word ov29_02353560
 _022EA298: .word 0x0001A224 + OV29_022EA008_OFFSET
-_022EA29C: .word ov29_0237C850
+_022EA29C: .word DUNGEON_FRAMES_PASSED
 _022EA2A0: .word 0x0001A21C + OV29_022EA008_OFFSET
 	arm_func_end ov29_022EA008
 
@@ -981,7 +981,7 @@ _022EA2C0:
 	ldr r0, _022EA31C ; =ov29_02353560
 	ldrb r0, [r0, #6]
 	cmp r0, #0
-	ldrne r0, _022EA320 ; =ov29_0237C850
+	ldrne r0, _022EA320 ; =DUNGEON_FRAMES_PASSED
 	ldrne r1, [r0, #0x10]
 	addne r1, r1, #1
 	strne r1, [r0, #0x10]
@@ -999,7 +999,7 @@ _022EA2C0:
 	ldr r0, _022EA31C ; =ov29_02353560
 	ldrb r0, [r0, #6]
 	cmp r0, #0
-	ldrne r0, _022EA320 ; =ov29_0237C850
+	ldrne r0, _022EA320 ; =DUNGEON_FRAMES_PASSED
 	ldrne r1, [r0, #0x10]
 	subne r1, r1, #1
 	strne r1, [r0, #0x10]
@@ -1007,7 +1007,7 @@ _022EA2C0:
 	.align 2, 0
 _022EA318: .word DUNGEON_PTR
 _022EA31C: .word ov29_02353560
-_022EA320: .word ov29_0237C850
+_022EA320: .word DUNGEON_FRAMES_PASSED
 	arm_func_end ov29_022EA2A4
 
 	arm_func_start ov29_022EA324
@@ -1016,7 +1016,7 @@ ov29_022EA324: ; 0x022EA324
 	ldr r0, _022EA368 ; =ov29_02353560
 	ldrb r0, [r0, #6]
 	cmp r0, #0
-	ldrne r0, _022EA36C ; =ov29_0237C850
+	ldrne r0, _022EA36C ; =DUNGEON_FRAMES_PASSED
 	ldrne r1, [r0, #0x10]
 	addne r1, r1, #1
 	strne r1, [r0, #0x10]
@@ -1024,14 +1024,14 @@ ov29_022EA324: ; 0x022EA324
 	ldr r0, _022EA368 ; =ov29_02353560
 	ldrb r0, [r0, #6]
 	cmp r0, #0
-	ldrne r0, _022EA36C ; =ov29_0237C850
+	ldrne r0, _022EA36C ; =DUNGEON_FRAMES_PASSED
 	ldrne r1, [r0, #0x10]
 	subne r1, r1, #1
 	strne r1, [r0, #0x10]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022EA368: .word ov29_02353560
-_022EA36C: .word ov29_0237C850
+_022EA36C: .word DUNGEON_FRAMES_PASSED
 	arm_func_end ov29_022EA324
 
 	arm_func_start ov29_022EA370
@@ -1096,11 +1096,11 @@ _022EA404: .word ov29_022DE638
 
 	arm_func_start ov29_022EA408
 ov29_022EA408: ; 0x022EA408
-	ldr r0, _022EA414 ; =ov29_0237C850
+	ldr r0, _022EA414 ; =DUNGEON_FRAMES_PASSED
 	ldr r0, [r0, #4]
 	bx lr
 	.align 2, 0
-_022EA414: .word ov29_0237C850
+_022EA414: .word DUNGEON_FRAMES_PASSED
 	arm_func_end ov29_022EA408
 
 	arm_func_start ov29_022EA418
@@ -1112,10 +1112,10 @@ ov29_022EA418: ; 0x022EA418
 _022EA424: .word ov29_02353560
 	arm_func_end ov29_022EA418
 
-	arm_func_start ov29_022EA428
-ov29_022EA428: ; 0x022EA428
+	arm_func_start UnkMapRelatedFunc
+UnkMapRelatedFunc: ; 0x022EA428
 	stmdb sp!, {r4, lr}
-	ldr r1, _022EA620 ; =ov29_0237C850
+	ldr r1, _022EA620 ; =DUNGEON_FRAMES_PASSED
 	mov r4, r0
 	ldr r0, [r1, #4]
 	cmp r4, r0
@@ -1252,25 +1252,25 @@ _022EA5FC:
 	mov r0, #0
 	bl ov29_0234B1A4
 _022EA614:
-	ldr r0, _022EA620 ; =ov29_0237C850
+	ldr r0, _022EA620 ; =DUNGEON_FRAMES_PASSED
 	str r4, [r0, #4]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EA620: .word ov29_0237C850
+_022EA620: .word DUNGEON_FRAMES_PASSED
 _022EA624: .word 0x000003E7
 _022EA628: .word ov29_02353560
-	arm_func_end ov29_022EA428
+	arm_func_end UnkMapRelatedFunc
 
 	arm_func_start ov29_022EA62C
 ov29_022EA62C: ; 0x022EA62C
-	ldr r1, _022EA644 ; =ov29_0237C850
+	ldr r1, _022EA644 ; =DUNGEON_FRAMES_PASSED
 	mov r2, #0xa
 	ldr ip, _022EA648 ; =ov29_0234B1A4
 	mov r0, #0
 	str r2, [r1, #4]
 	bx ip
 	.align 2, 0
-_022EA644: .word ov29_0237C850
+_022EA644: .word DUNGEON_FRAMES_PASSED
 _022EA648: .word ov29_0234B1A4
 	arm_func_end ov29_022EA62C
 
@@ -1278,19 +1278,19 @@ _022EA648: .word ov29_0234B1A4
 ov29_022EA64C: ; 0x022EA64C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
-	ldr r0, _022EA708 ; =ov29_0237C850
+	ldr r0, _022EA708 ; =DUNGEON_FRAMES_PASSED
 	mov r2, #0
 	ldr r1, [r0, #8]
 	adds r1, r1, #1
 	str r1, [r0, #8]
 	movmi r1, #0
 	strmi r1, [r0, #8]
-	ldr r0, _022EA708 ; =ov29_0237C850
+	ldr r0, _022EA708 ; =DUNGEON_FRAMES_PASSED
 	ldr r1, [r0, #8]
 	cmp r1, #0xc
 	movge r1, #0
 	strge r1, [r0, #8]
-	ldr r0, _022EA708 ; =ov29_0237C850
+	ldr r0, _022EA708 ; =DUNGEON_FRAMES_PASSED
 	mov r1, #0xb
 	ldr r3, [r0, #8]
 	mov r0, r3, asr #1
@@ -1324,7 +1324,7 @@ ov29_022EA64C: ; 0x022EA64C
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EA708: .word ov29_0237C850
+_022EA708: .word DUNGEON_FRAMES_PASSED
 _022EA70C: .word ov29_02353540
 _022EA710: .word _020AFC4C
 _022EA714: .word 0x000001EA
@@ -1350,7 +1350,7 @@ DisplayAnimatedNumbers: ; 0x022EA718
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r6, #0
 	mov fp, #0x29
-	ldr r5, _022EA800 ; =ov29_0237C850
+	ldr r5, _022EA800 ; =DUNGEON_FRAMES_PASSED
 	ldr r4, _022EA804 ; =ov29_02353560
 	b _022EA78C
 _022EA75C:
@@ -1372,7 +1372,7 @@ _022EA78C:
 	cmp r6, #0x14
 	blt _022EA75C
 _022EA794:
-	ldr r1, _022EA800 ; =ov29_0237C850
+	ldr r1, _022EA800 ; =DUNGEON_FRAMES_PASSED
 	mov r0, #0x3c
 	str sl, [r1, #0x20]
 	strb r8, [r1, #0x24]
@@ -1401,7 +1401,7 @@ _022EA7F4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022EA7FC: .word DUNGEON_PTR
-_022EA800: .word ov29_0237C850
+_022EA800: .word DUNGEON_FRAMES_PASSED
 _022EA804: .word ov29_02353560
 _022EA808: .word 0xFFFFFC19
 	arm_func_end DisplayAnimatedNumbers
@@ -1410,7 +1410,7 @@ _022EA808: .word 0xFFFFFC19
 ov29_022EA80C: ; 0x022EA80C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
-	ldr r0, _022EA95C ; =ov29_0237C850
+	ldr r0, _022EA95C ; =DUNGEON_FRAMES_PASSED
 	ldrsh r1, [r0, #0x1c]
 	cmp r1, #0
 	beq _022EA954
@@ -1425,11 +1425,11 @@ ov29_022EA80C: ; 0x022EA80C
 	and r0, r0, #0xff
 _022EA848:
 	cmp r0, #0
-	ldreq r0, _022EA95C ; =ov29_0237C850
+	ldreq r0, _022EA95C ; =DUNGEON_FRAMES_PASSED
 	moveq r1, #0
 	streqh r1, [r0, #0x1c]
 	beq _022EA954
-	ldr r3, _022EA95C ; =ov29_0237C850
+	ldr r3, _022EA95C ; =DUNGEON_FRAMES_PASSED
 	ldr r5, [r3, #0x28]
 	ldr r1, [r3, #0x2c]
 	ldrh r0, [r5, #0x26]
@@ -1480,7 +1480,7 @@ _022EA848:
 	mov r1, #0x1f
 	bl _s32_div_f
 _022EA910:
-	ldr ip, _022EA95C ; =ov29_0237C850
+	ldr ip, _022EA95C ; =DUNGEON_FRAMES_PASSED
 	mov r1, r4, lsl #0x10
 	ldrh r4, [ip, #0x1e]
 	mov r2, r5, lsl #0x10
@@ -1501,7 +1501,7 @@ _022EA954:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_022EA95C: .word ov29_0237C850
+_022EA95C: .word DUNGEON_FRAMES_PASSED
 _022EA960: .word DUNGEON_PTR
 #ifdef JAPAN
 _022EA964: .word 0x0001A180

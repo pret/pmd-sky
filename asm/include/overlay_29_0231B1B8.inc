@@ -4,7 +4,7 @@
 .public EntityIsValid__0231B194
 .public IsMonster__0231B318
 .public IsMonsterSleeping
+.public IsValidTargetEntity
 .public ov10_022C4530
-.public ov29_022E28D4
 .public SetPreprocessorArgsIdVal
 .public TryEndPetrifiedOrSleepStatus

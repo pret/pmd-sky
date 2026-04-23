@@ -163,7 +163,7 @@ sub_020597B0: ; 0x020597B0
 	mov r2, r1
 	add r0, sp, #8
 	mov r1, r3
-	bl sub_02050990
+	bl InitBitstreamForRead
 	add r0, sp, #8
 	mov r1, #0
 	bl sub_0205956C
@@ -174,7 +174,7 @@ sub_020597B0: ; 0x020597B0
 	mov r1, #2
 	bl sub_0205956C
 	add r0, sp, #8
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r1, _02059820 ; =_020A3498
 	add r0, sp, #0
 	ldr r2, [r1, #0x10]

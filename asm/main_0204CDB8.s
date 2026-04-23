@@ -501,11 +501,11 @@ CopyProgressInfoFromScratchTo: ; 0x0204D548
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050990
+	bl InitBitstreamForRead
 	add r0, sp, #0
 	bl CopyProgressInfoTo
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
@@ -647,11 +647,11 @@ CopyProgressInfoFromScratchFrom: ; 0x0204D748
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_02050974
+	bl InitBitstreamForWrite
 	add r0, sp, #0
 	bl CopyProgressInfoFrom
 	add r0, sp, #0
-	bl sub_020509BC
+	bl BitstreamDebug
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}

@@ -8,6 +8,7 @@
 .public _s32_div_f
 .public ApplyLevelUpBoostsToGroundMonster
 .public ARM9_UNKNOWN_TABLE__NA_209E280
+.public BitstreamDebug
 .public CLIENT_LEVEL_TABLE
 .public CopyLogFrom
 .public CopyLogTo
@@ -16,6 +17,8 @@
 .public GetGameMode
 .public GetResolvedPerformanceProgressFlag
 .public GetSosMailCount
+.public InitBitstreamForRead
+.public InitBitstreamForWrite
 .public InitDungeonInit
 .public LoadOptionsFromCtx
 .public LoadScriptVariableValue
@@ -33,9 +36,6 @@
 .public sub_0204F7A8
 .public sub_0204F9F4
 .public sub_0204FA0C
-.public sub_02050974
-.public sub_02050990
-.public sub_020509BC
 .public sub_0205633C
 .public sub_02056360
 .public sub_0205BB7C

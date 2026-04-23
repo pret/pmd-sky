@@ -9,14 +9,14 @@
 extern union unkStruct_020B0A54_union _020B0A54;
 extern u32 _022B57BC;
 
-extern void sub_02050974(void *v0, u32 v1, u32 v2);
+extern void InitBitstreamForWrite(void *v0, u32 v1, u32 v2);
 extern void CopyBitsFrom(void *read_info, void *buf_read, s32 nbits);
 extern void* memset(void *s, s32 c, u32 n);
 extern void Copy16BitsFrom(void *read_info, void *buf_read);
 extern void CopyMovesetFrom(struct WriteMonsterInfoToSave_struct *read_info, void *dst);
-extern void sub_020509BC(struct WriteMonsterInfoToSave_struct *write_info);
+extern void BitstreamDebug(struct WriteMonsterInfoToSave_struct *write_info);
 extern void sub_020634F4(void);
-extern void sub_02050990(struct WriteMonsterInfoToSave_struct *write_info, u32 p1, u32 p2);
+extern void InitBitstreamForRead(struct WriteMonsterInfoToSave_struct *write_info, u32 p1, u32 p2);
 extern void CopyBitsTo(void *write_info, void* buf_write, s32 nbits);
 extern void Copy16BitsTo(void *write_info, void *buf_write);
 extern void CopyMovesetTo(struct WriteMonsterInfoToSave_struct *write_info, void *buffer_write);
@@ -55,7 +55,7 @@ u32 sub_0205BD9C(u32 arg0, u32 arg1)
 {
     struct WriteMonsterInfoToSave_struct temp;
 
-    sub_02050974(&temp, arg0, arg1);
+    InitBitstreamForWrite(&temp, arg0, arg1);
     CopyBitsFrom(&temp, &_022B57BC, 32);
 
     for (s32 i = 0; i < 32; i++)
@@ -96,7 +96,7 @@ u32 sub_0205BD9C(u32 arg0, u32 arg1)
         CopyBitsFrom(&temp, _020B0A54.fp[1] + 4 + (i * 8), 64);
     }
 
-    sub_020509BC(&temp);
+    BitstreamDebug(&temp);
     Rand16Bit();
     sub_020634F4();
 
@@ -107,7 +107,7 @@ u32 sub_0205BFB0(u32 p0, u32 p1)
 {
     struct WriteMonsterInfoToSave_struct stack_var;
 
-    sub_02050990(&stack_var, p0, p1);
+    InitBitstreamForRead(&stack_var, p0, p1);
     CopyBitsTo(&stack_var, &_022B57BC, 32);
 
     for (s32 i = 0; i < 32; i++)
@@ -145,7 +145,7 @@ u32 sub_0205BFB0(u32 p0, u32 p1)
         CopyBitsTo(&stack_var, _020B0A54.fp[1] + 4 + (i * 8), 64);
     }
 
-    sub_020509BC(&stack_var);
+    BitstreamDebug(&stack_var);
 
     return stack_var.result;
 }

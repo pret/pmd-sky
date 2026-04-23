@@ -159,6 +159,7 @@
 .public Arm9LoadUnkFieldNa0x2029EC8
 .public Arm9StoreUnkFieldNa0x2029ED8
 .public BAG_ITEMS_PTR_MIRROR
+.public BitstreamDebug
 .public CanMonsterUseMove
 .public CARD_Init
 .public CardBackupError
@@ -270,6 +271,8 @@
 .public GetWindowIdPageStart
 .public GetWindowIdSelectedItemOnPage
 .public HidePortraitBox
+.public InitBitstreamForRead
+.public InitBitstreamForWrite
 .public InitMenu
 .public InitMenuWithWindowExtraInfo
 .public InitMove
@@ -473,9 +476,6 @@
 .public sub_0204E154
 .public sub_0204E19C
 .public sub_0204F9B8
-.public sub_02050974
-.public sub_02050990
-.public sub_020509BC
 .public sub_02050C10
 .public sub_02050CF8
 .public sub_02050D84

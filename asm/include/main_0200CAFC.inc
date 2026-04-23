@@ -16,6 +16,7 @@
 .public _020A18BC
 .public AVAILABLE_ITEMS_IN_GROUP_TABLE
 .public BAG_ITEMS_PTR_MIRROR
+.public BitstreamDebug
 .public CopyBitsFrom
 .public CopyBitsTo
 .public GetDungeonGroup
@@ -28,6 +29,8 @@
 .public GetItemPaletteId
 .public GetItemSellPrice
 .public GetThrownItemQuantityLimit
+.public InitBitstreamForRead
+.public InitBitstreamForWrite
 .public InitItem
 .public IsAuraBow
 .public IsItemValid
@@ -43,7 +46,4 @@
 .public strncpy
 .public sub_0200EB64
 .public sub_020238E0
-.public sub_02050974
-.public sub_02050990
-.public sub_020509BC
 .public vsprintf

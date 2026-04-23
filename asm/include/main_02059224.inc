@@ -1,7 +1,7 @@
 #pragma once
+.public BitstreamDebug
 .public CopyBitsFrom
+.public InitBitstreamForWrite
 .public ReadMonsterFromSave
-.public sub_02050974
-.public sub_020509BC
 .public sub_0205523C
 .public TEAM_MEMBER_TABLE_PTR

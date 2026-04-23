@@ -75,7 +75,7 @@ ov29_0234D558: ; 0x0234D558
 	mov r4, r0
 	mov r0, #2
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	cmp r4, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, #0
@@ -115,7 +115,7 @@ ov29_0234D5D0: ; 0x0234D5D0
 	mov r1, #0
 	mov r5, r2
 	mov r4, r3
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #1
 	bl ov29_0234B4CC
 	bl ov29_0234DB58
@@ -139,7 +139,7 @@ ov29_0234D630: ; 0x0234D630
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 	mov r0, #1
 	bl ov29_0234B4CC
 	bl ov29_0234DB58
@@ -427,7 +427,7 @@ _0234D994:
 	beq _0234D9A8
 	mov r0, #0
 	mov r1, r0
-	bl ov29_022EA428
+	bl UnkMapRelatedFunc
 _0234D9A8:
 	bl sub_02006B70
 	bl ov29_022E0B44

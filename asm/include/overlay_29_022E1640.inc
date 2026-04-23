@@ -1,10 +1,10 @@
 #pragma once
+.public DisplayTeamStatsSprite
 .public DUNGEON_PTR
 .public EntityIsValid__022E1A1C
 .public InitAnimationControlWithSet__0201C0CC
 .public ov29_022DD7D8
 .public ov29_022E3A40
-.public ov29_022E8270
 .public ov29_022ED9D0
 .public ov29_02303F18
 .public ov29_023046E8
