@@ -835,10 +835,9 @@ struct mission_destination_info {
 // Contains data about a monster that spawns in a dungeon
 struct monster_spawn_entry {
     u16 level_mult_512; // 0x0: Spawn level << 9
-    // 0x2: Incremental spawn weight of this entry for normal spawns
-    u16 incremental_spawn_weight;
-    // 0x4: Incremental spawn weight of this entry for monster house spawns
-    u16 incremental_spawn_weight_monster_house;
+    // 0x2: Incremental spawn weights for this entry.
+    // [0] = normal spawn weight, [1] = monster house spawn weight
+    u16 incremental_spawn_weight[2];
     // 0x6: Monster id. Depending on where this struct is used, it can have values above 600
     // to list secondary gender entries.
     enum monster_id id;
