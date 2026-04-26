@@ -905,8 +905,8 @@ struct floor_properties {
     // 255 still means HIDDEN_STAIRS_RANDOM_SECRET_BAZAAR_OR_SECRET_ROOM.
     u8 hidden_stairs_type;
     u8 hidden_stairs_spawn_chance; // 0x1B
-    u8 enemy_iq;                   // 0x1C: IQ stat of enemies
-    u8 iq_booster_value; // 0x1E: IQ increase from the IQ booster item upon entering the floor
+    s16 enemy_iq;                   // 0x1C: IQ stat of enemies
+    s16 iq_booster_value; // 0x1E: IQ increase from the IQ booster item upon entering the floor
 };
 
 // Contains the data required to display a tile on the minimap

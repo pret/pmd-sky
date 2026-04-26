@@ -6,6 +6,22 @@
 extern s32 GetMonsterIdFromSpawnEntry(struct monster_spawn_entry *);
 extern s32 GetMonsterLevelFromSpawnEntry(struct monster_spawn_entry *);
 
+s32 IsOnMonsterSpawnList(s32 monster_id) {
+    for(s32 i = 0; i < 16; i++) {
+        s32 entity_monster_id = GetMonsterIdFromSpawnEntry(
+            &DUNGEON_PTR[0]->spawn_entries_master[i]);
+        
+        if(entity_monster_id == 0) {
+            break;
+        }
+        
+        if(entity_monster_id == monster_id) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 s32 GetMonsterIdToSpawn(s32 weight_type_idx)
 {
     s32 rand = DungeonRandInt(10000);
