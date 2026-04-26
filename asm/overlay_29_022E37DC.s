@@ -5652,37 +5652,3 @@ ov29_022E7CFC: ; 0x022E7CFC
 	.align 2, 0
 _022E7D48: .word DUNGEON_PTR
 	arm_func_end ov29_022E7CFC
-
-	arm_func_start IsOnMonsterSpawnList
-IsOnMonsterSpawnList: ; 0x022E7D4C
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r6, r0
-	mov r5, #0
-	ldr r4, _022E7D9C ; =DUNGEON_PTR
-	b _022E7D8C
-_022E7D60:
-	ldr r0, [r4]
-#ifdef JAPAN
-	add r0, r0, #0x8c0
-	add r0, r0, #0x2c000
-#else
-	add r0, r0, #0x164
-	add r0, r0, #0x2c800
-#endif
-	add r0, r0, r5, lsl #3
-	bl GetMonsterIdFromSpawnEntry
-	cmp r0, #0
-	beq _022E7D94
-	cmp r0, r6
-	moveq r0, #1
-	ldmeqia sp!, {r4, r5, r6, pc}
-	add r5, r5, #1
-_022E7D8C:
-	cmp r5, #0x10
-	blt _022E7D60
-_022E7D94:
-	mov r0, #0
-	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
-_022E7D9C: .word DUNGEON_PTR
-	arm_func_end IsOnMonsterSpawnList
