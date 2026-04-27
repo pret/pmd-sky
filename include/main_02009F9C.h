@@ -1,0 +1,6 @@
+#ifndef PMDSKY_MAIN_02009F9C_H
+#define PMDSKY_MAIN_02009F9C_H
+
+void sub_02009F9C(s32 arg0);
+
+#endif //PMDSKY_MAIN_02009F9C_H
