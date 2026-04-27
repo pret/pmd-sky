@@ -1067,7 +1067,7 @@
 .public sub_0200B8D4
 .public sub_0200BB60
 .public sub_0200BB74
-.public sub_0200BC54
+.public HandleFadesVeneer
 .public sub_0200BD14
 .public sub_02017A68
 .public sub_02017A80

@@ -1,0 +1,6 @@
+#ifndef PMDSKY_MAIN_0202A388_H
+#define PMDSKY_MAIN_0202A388_H
+
+void sub_0202A388(void);
+
+#endif //PMDSKY_MAIN_0202A388_H

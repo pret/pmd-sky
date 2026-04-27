@@ -6407,6 +6407,7 @@ _0207A358:
 	bx lr
 	arm_func_end OSi_WaitVCount0
 
+; https://decomp.me/scratch/EcUDd
 	arm_func_start OS_Init
 OS_Init: ; 0x0207A36C
 	stmdb sp!, {r3, lr}

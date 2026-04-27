@@ -32,6 +32,18 @@ Static main
 	Object asm/main_020082C4.o
 	Object src/main_02008BD4.o
 	Object asm/main_02008BF4.o
+	Object src/main_0200961C.o
+	Object asm/main_02009648.o
+	Object src/main_02009D48.o
+	Object asm/main_02009DCC.o
+	Object src/main_02009F9C.o
+	Object asm/main_0200A124.o
+	Object src/main_0200B330.o
+	Object asm/main_0200B33C.o
+	Object src/main_0200BC54.o
+	Object asm/main_0200BC60.o
+	Object src/main_0200BD2C.o
+	Object asm/main_0200BD50.o
 	Object src/debug.o
 	Object src/directory_file_mngr.o
 	Object src/directory_file.o
@@ -63,6 +75,10 @@ Static main
 	Object asm/main_0202598C.o
 	Object src/main_020265C4.o
 	Object asm/main_0202676C.o
+	Object src/main_02029A50.o
+	Object asm/main_02029A68.o
+	Object src/main_0202A388.o
+	Object asm/main_0202A3E4.o
 	Object src/main_020348E4.o
 	Object asm/main_02034974.o
 	Object src/main_0203C760.o
@@ -764,6 +780,8 @@ Overlay OVY_34
 {
 	After OVY_10
 	Object asm/overlay_34.o
+	Object src/overlay_34_022DCB98.o
+	Object asm/overlay_34_022DCBCC.o
 }
 Overlay OVY_35
 {

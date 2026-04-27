@@ -2811,7 +2811,7 @@ ov00_022BE774: ; 0x022BE774
 	b _022BE7C8
 _022BE7B8:
 	ldr r0, _022BE860 ; =ov00_0231E2FC
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	movne r4, #0
 _022BE7C8:
@@ -2831,7 +2831,7 @@ _022BE7C8:
 	b _022BE810
 _022BE800:
 	ldr r0, _022BE864 ; =ov00_0231E2B8
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	movne r4, #0
 _022BE810:
@@ -2845,12 +2845,12 @@ _022BE810:
 	ldmia sp!, {r4, pc}
 _022BE830:
 	ldr r0, _022BE860 ; =ov00_0231E2FC
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	ldr r0, _022BE860 ; =ov00_0231E2FC
 	ldrsh r0, [r0, #0x14]
 	bl ov00_022BE868
 	ldr r0, _022BE864 ; =ov00_0231E2B8
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	ldr r0, _022BE864 ; =ov00_0231E2B8
 	ldrsh r0, [r0, #0x14]
 	bl ov00_022BE89C
