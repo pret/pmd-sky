@@ -1,0 +1,9 @@
+#pragma once
+.public HandleFades
+.public sub_0200A29C
+.public sub_0200A37C
+.public sub_0200A3A8
+.public sub_0200A3DC
+.public sub_0200A410
+.public sub_0200A444
+.public sub_0200A590

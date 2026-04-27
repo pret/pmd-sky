@@ -34,6 +34,8 @@ Static main
 	Object asm/main_02008BF4.o
 	Object src/main_0200BC54.o
 	Object asm/main_0200BC60.o
+	Object src/main_0200BD2C.o
+	Object asm/main_0200BD50.o
 	Object src/debug.o
 	Object src/directory_file_mngr.o
 	Object src/directory_file.o
