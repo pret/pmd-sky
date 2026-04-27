@@ -44,10 +44,6 @@
 .public _022A37A0
 .public _022A37A4
 .public _022A37AC
-.public _022A37AD
-.public _022A37AE
-.public _022A37AF
-.public _022A37B0
 .public _022A37B6
 .public _022A37B7
 .public _022A37B8
@@ -89,5 +85,8 @@
 .public sub_0200846C
 .public sub_02008980
 .public sub_02008A84
+.public sub_02009D48
+.public sub_02009DCC
+.public sub_02009E70
 .public sub_02009F9C
 .public sub_02082420

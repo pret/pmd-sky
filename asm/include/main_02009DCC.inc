@@ -1,0 +1,14 @@
+#pragma once
+.public G2x_SetBlendAlpha_
+.public _022A37AC
+.public _022A37AD
+.public _022A37AE
+.public _022A37AF
+.public _022A37B0
+.public _022A37B6
+.public _022A37B7
+.public _022A37B8
+.public _022A37B9
+.public _022A37BA
+.public _022A37BC
+.public _022A37BE
