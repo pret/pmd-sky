@@ -1,9 +1,9 @@
 #pragma once
-.public Debug_GetDebugFlag
 .public G3X_Reset
 .public GetFadeStatus
 .public HandleMenus
 .public OVERLAY34_UNKNOWN_POINTER__NA_22DD080
+.public ov34_022DCB64
 .public ov34_022DCB98
 .public ov34_022DCBCC
 .public ov34_022DCDCC

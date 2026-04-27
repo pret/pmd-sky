@@ -758,21 +758,3 @@ _022DCB58: .word ov34_022DD0B0
 _022DCB5C: .word ov34_022DD104
 _022DCB60: .word ov34_022DD0C0
 	arm_func_end ov34_022DCA70
-
-	arm_func_start ov34_022DCB64
-ov34_022DCB64: ; 0x022DCB64
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	mov r0, #1
-	bl Debug_GetDebugFlag
-	cmp r0, #0
-	mov r0, #0
-	beq _022DCB8C
-	mov r1, r0
-	bl sub_02008F3C
-	ldmia sp!, {r4, pc}
-_022DCB8C:
-	mov r1, r4
-	bl sub_02008F3C
-	ldmia sp!, {r4, pc}
-	arm_func_end ov34_022DCB64
