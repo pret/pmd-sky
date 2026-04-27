@@ -709,7 +709,7 @@ ov34_022DCA70: ; 0x022DCA70
 	b _022DCAC4
 _022DCAB4:
 	ldr r0, _022DCB5C ; =ov34_022DD104
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	movne r4, #0
 _022DCAC4:
@@ -729,7 +729,7 @@ _022DCAC4:
 	b _022DCB0C
 _022DCAFC:
 	ldr r0, _022DCB60 ; =ov34_022DD0C0
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	movne r4, #0
 _022DCB0C:
@@ -743,12 +743,12 @@ _022DCB0C:
 	ldmia sp!, {r4, pc}
 _022DCB2C:
 	ldr r0, _022DCB5C ; =ov34_022DD104
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	ldr r0, _022DCB5C ; =ov34_022DD104
 	ldrsh r0, [r0, #0x14]
 	bl ov34_022DCB64
 	ldr r0, _022DCB60 ; =ov34_022DD0C0
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	ldr r0, _022DCB60 ; =ov34_022DD0C0
 	ldrsh r0, [r0, #0x14]
 	bl ov34_022DCB98

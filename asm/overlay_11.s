@@ -16453,7 +16453,7 @@ ov11_022EA0BC: ; 0x022EA0BC
 	cmp r1, #0
 	beq _022EA300
 	ldr r0, _022EA7F8 ; =ov11_0238905C
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	ldr r0, _022EA7F8 ; =ov11_0238905C
 	movne r4, #0
@@ -16472,7 +16472,7 @@ ov11_022EA0BC: ; 0x022EA0BC
 	b _022EA1B4
 _022EA12C:
 	ldr r0, _022EA7FC ; =ov11_02389128
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	movne r4, #0
 	bne _022EA1B4
@@ -16522,7 +16522,7 @@ _022EA1B4:
 	b _022EA264
 _022EA1EC:
 	ldr r0, _022EA800 ; =ov11_02389018
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	movne r4, #0
 	bne _022EA264
@@ -16596,7 +16596,7 @@ _022EA300:
 	cmp r0, #0
 	beq _022EA398
 	ldr r0, _022EA7F8 ; =ov11_0238905C
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	ldr r0, _022EA7F8 ; =ov11_0238905C
 	movne r4, #0
@@ -16615,7 +16615,7 @@ _022EA300:
 	b _022EA364
 _022EA354:
 	ldr r0, _022EA7FC ; =ov11_02389128
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	movne r4, #0
 _022EA364:
@@ -16623,7 +16623,7 @@ _022EA364:
 	ldrsh r0, [r0, #0x14]
 	bl ov11_022EA8A0
 	ldr r0, _022EA800 ; =ov11_02389018
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	ldr r0, _022EA800 ; =ov11_02389018
 	ldrsh r0, [r0, #0x14]
 	bl ov11_022EA8D4
@@ -16634,17 +16634,17 @@ _022EA364:
 	b _022EA3D4
 _022EA398:
 	ldr r0, _022EA7F8 ; =ov11_0238905C
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	ldr r0, _022EA7F8 ; =ov11_0238905C
 	ldrsh r0, [r0, #0x14]
 	bl ov11_022EA80C
 	ldr r0, _022EA7FC ; =ov11_02389128
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	ldr r0, _022EA7FC ; =ov11_02389128
 	ldrsh r0, [r0, #0x14]
 	bl ov11_022EA8A0
 	ldr r0, _022EA800 ; =ov11_02389018
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	ldr r0, _022EA800 ; =ov11_02389018
 	ldrsh r0, [r0, #0x14]
 	bl ov11_022EA8D4
@@ -16662,7 +16662,7 @@ _022EA3EC:
 	beq _022EA7DC
 	mla r7, r8, sl, r5
 	mov r0, r7
-	bl sub_0200BC54
+	bl HandleFadesVeneer
 	cmp r0, #0
 	beq _022EA6B8
 	and sb, r8, #0xff
