@@ -36,6 +36,8 @@ Static main
 	Object asm/main_02009DCC.o
 	Object src/main_02009F9C.o
 	Object asm/main_0200A124.o
+	Object src/main_0200B330.o
+	Object asm/main_0200B33C.o
 	Object src/main_0200BC54.o
 	Object asm/main_0200BC60.o
 	Object src/main_0200BD2C.o
