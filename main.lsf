@@ -222,6 +222,10 @@ Static main
 	Object asm/main_02075600.o
     Object lib/NitroSDK/asm/mtx.o
     Object lib/NitroSDK/asm/fx_cp.o
+    Object lib/NitroSDK/asm/fx_vec.o
+    Object lib/NitroSDK/asm/gx.o
+    Object lib/NitroSDK/asm/gx_bgcnt.o
+    Object lib/NitroSDK/asm/g2.o
 	Object src/main_0207B848.o
 	Object asm/main_0207B854.o
 	Object src/main_0207B860.o
