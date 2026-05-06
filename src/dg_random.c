@@ -1,8 +1,7 @@
 #include "dg_random.h"
+#include "overlay_29_022EA9EC.h"
 
 // file starts at 0x022ea968
-
-extern s16 DungeonRand16Bit(void);
 
 s32 DungeonRandInt(s32 end)
 {

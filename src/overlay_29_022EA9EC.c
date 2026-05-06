@@ -15,7 +15,7 @@ void InitDungeonRng(u32 seed) {
     } while (scratch_0<5);
 }
 
-u32 DungeonRand16Bit(void) {
+u16 DungeonRand16Bit(void) {
     u32 mult = DUNGEON_PRNG_LCG_MULTIPLIER;
 
     if (DUNGEON_PRNG_STATE.use_secondary) {
