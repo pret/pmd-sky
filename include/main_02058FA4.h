@@ -11,13 +11,6 @@ struct unkStruct_02058FCC {
     const u8 field_0x18[4][0x4c];
 };
 
-struct WriteMonsterInfoToSave_struct {
-    u32 unk0;
-    u32 unk4;
-    s32 result;
-    u32 unkC;
-};
-
 bool8 ExplorerMazeMonsterExists(void);
 void sub_02058FCC(struct unkStruct_02058FCC *ptr);
 // Returns the name of the explorer maze team. If the language of the team name is different from the
