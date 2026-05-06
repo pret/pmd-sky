@@ -1,4 +1,4 @@
-#include "main_0207B848.h"
+#include <nitro.h>
 
 asm u8 ClearIrqFlag()
 {

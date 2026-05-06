@@ -1,5 +1,5 @@
 #include "main_02000C6C.h"
-#include "nitro/types.h"
+#include <nitro.h>
 
 extern u32 _02092448;
 extern u32 _02092460;
@@ -33,7 +33,6 @@ extern void sub_0207F3BC(u32);
 extern void sub_02008DAC();
 extern void sub_020833F8(u32);
 extern void sub_020845D8(void (*));
-extern void ClearIrqFlag(u32, u32);
 extern void Debug_Init();
 extern void Debug_Print0(u32*, u32, u32);
 extern void InitMemAllocTableVeneer();

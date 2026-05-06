@@ -1,5 +1,5 @@
-#ifndef PMDSKY_MAIN_0207B848_H
-#define PMDSKY_MAIN_0207B848_H
+#ifndef NITRO_OS_SYSTEM_H_
+#define NITRO_OS_SYSTEM_H_
 
 // Enables processor interrupts by clearing the i flag in the program status register (cpsr).
 // return: Old value of cpsr & 0x80 (0x80 if interrupts were disabled, 0x0 if they were already enabled)
@@ -26,4 +26,4 @@ u8 GetIrqFlag();
 // return: cpsr & 0x1f (the cpsr mode bits M4-M0)
 u8 GetProcessorMode();
 
-#endif //PMDSKY_MAIN_0207B848_H
+#endif //NITRO_OS_SYSTEM_H_
