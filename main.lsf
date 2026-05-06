@@ -233,8 +233,12 @@ Static main
     Object lib/NitroSDK/asm/gx_load2d.o
     Object lib/NitroSDK/asm/gx_load3d.o
     Object lib/NitroSDK/asm/gx_asm.o
-    Object asm/OS_interrupt.o
+    Object lib/NitroSDK/asm/os_interrupt.o
+    Object lib/NitroSDK/asm/os_spinlock.o
     Object lib/NitroSDK/asm/os_thread.o
+    Object lib/NitroSDK/asm/os_cache.o
+    Object lib/NitroSDK/asm/os_init.o
+    Object lib/NitroSDK/asm/os_arena.o
 	Object src/main_0207B848.o
 	Object asm/main_0207B854.o
 	Object src/main_0207B860.o

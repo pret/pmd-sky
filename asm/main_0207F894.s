@@ -5368,7 +5368,7 @@ sub_02083E9C: ; 0x02083E9C
 _02083ED4:
 	cmp r1, #0
 	beq _02083F28
-	bl sub_0207AACC
+	bl OS_GetDTCMAddress
 	ldr r1, _02084018 ; =CopyAndInterleave
 	add r3, sb, r5
 	cmp r3, r1
@@ -6279,7 +6279,7 @@ sub_02084A04: ; 0x02084A04
 	movne r1, #0x1000
 	moveq r1, #0x5000
 	mov r0, #0xf000
-	bl sub_0207AB00
+	bl OS_SetDPermissionsForProtectionRegion
 _02084A3C:
 	mov r0, r4
 	bl SetIrqFlag

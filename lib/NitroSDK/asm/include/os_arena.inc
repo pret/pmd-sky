@@ -134,6 +134,4 @@
 .public WaitForever2
 .public WaitForInterrupt
 
-.public sub_0207B1E8
-.public sub_0207B040
-.public sub_0207B17C
+.public sub_02079DA0

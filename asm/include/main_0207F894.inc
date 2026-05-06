@@ -90,8 +90,8 @@
 .public sub_0207A300
 .public sub_0207A324
 .public sub_0207A330
-.public sub_0207AACC
-.public sub_0207AB00
+.public OS_GetDTCMAddress
+.public OS_SetDPermissionsForProtectionRegion
 .public sub_0207ADCC
 .public sub_0207B854
 .public sub_0207C750
