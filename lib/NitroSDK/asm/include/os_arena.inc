@@ -35,7 +35,7 @@
 .public _022B98F8
 .public _022B991C
 .public _022B999C
-.public _022B99A0
+.public OSi_UseTick
 .public _022B99B0
 .public _022B99BC
 .public _ll_sdiv
@@ -99,6 +99,8 @@
 .public OS_ResetRequestIrqMask
 .public OS_SetIrqStackChecker
 .public OS_SetIrqFunction
+.public OS_SetProtectionRegion1
+.public OS_SetProtectionRegion2
 .public OS_EnableIrqMask
 .public OS_DisableIrqMask
 .public OSi_InitVramExclusive

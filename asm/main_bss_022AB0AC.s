@@ -270,8 +270,8 @@ _022B991C:
 	.global _022B999C
 _022B999C:
 	.space 0x4
-	.global _022B99A0
-_022B99A0:
+	.global OSi_UseTick
+OSi_UseTick:
 	.space 0x8
 	.global _022B99A8
 _022B99A8:
