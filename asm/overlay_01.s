@@ -6245,7 +6245,7 @@ ov01_0232E334: ; 0x0232E334
 	bl sub_0200DFE4
 	mov r0, r7
 	add r1, r6, #0x2a
-	bl CopyMovesetTo
+	bl CopyMovesetToStream
 	add r0, sp, #0xc
 	mov r1, #0x18
 	bl MemZero
@@ -6411,7 +6411,7 @@ ov01_0232E58C: ; 0x0232E58C
 	mov r0, r6
 	add r1, r5, #0x2a
 	strh r2, [r5, #0x28]
-	bl CopyMovesetFrom
+	bl CopyMovesetFromStream
 	add r1, sp, #0
 	mov r0, r6
 	mov r2, #0xa0

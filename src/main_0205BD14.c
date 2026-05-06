@@ -13,13 +13,13 @@ extern void InitBitstreamForWrite(struct bitstream *stream, u32 v1, u32 v2);
 extern void CopyBitsFrom(struct bitstream *stream, void *buf_read, s32 nbits);
 extern void* memset(void *s, s32 c, u32 n);
 extern void Copy16BitsFrom(struct bitstream *stream, void *buf_read);
-extern void CopyMovesetFrom(struct bitstream *stream, void *dst);
+extern void CopyMovesetFromStream(struct bitstream *stream, void *dst);
 extern void BitstreamDebug(struct bitstream *stream);
 extern void sub_020634F4(void);
 extern void InitBitstreamForRead(struct bitstream *stream, u32 p1, u32 p2);
 extern void CopyBitsTo(struct bitstream *stream, void* buf_write, s32 nbits);
 extern void Copy16BitsTo(struct bitstream *stream, void *buf_write);
-extern void CopyMovesetTo(struct bitstream *stream, void *buffer_write);
+extern void CopyMovesetToStream(struct bitstream *stream, void *buffer_write);
 
 void sub_0205BD14(u32 *dest, s32 index)
 {
@@ -81,7 +81,7 @@ u32 sub_0205BD9C(u32 arg0, u32 arg1)
     CopyBitsFrom(&stream, &monster->exp, 24);
     CopyBitsFrom(&stream, &monster->iq_skill_flags, 69);
     CopyBitsFrom(&stream, &monster->tactic, 4);
-    CopyMovesetFrom(&stream, monster->moves);
+    CopyMovesetFromStream(&stream, monster->moves);
     CopyBitsFrom(&stream, monster->name, 80);
 
     struct unkStruct_020B0A54_unk8_inner *inner = _020B0A54.struct1.unk8.unk8;
@@ -131,7 +131,7 @@ u32 sub_0205BFB0(u32 p0, u32 p1)
     CopyBitsTo(&stream, &monster->exp, 24);
     CopyBitsTo(&stream, &monster->iq_skill_flags, 69);
     CopyBitsTo(&stream, &monster->tactic, 4);
-    CopyMovesetTo(&stream, monster->moves);
+    CopyMovesetToStream(&stream, monster->moves);
     CopyBitsTo(&stream, monster->name, 80);
 
     struct unkStruct_020B0A54_unk8_inner *inner = _020B0A54.struct1.unk8.unk8;

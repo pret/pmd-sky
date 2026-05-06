@@ -1,41 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02014ABC.inc"
+	.include "main_02014B1C.inc"
 
 	.text
-
-	arm_func_start CopyMovesetTo
-CopyMovesetTo: ; 0x02014ABC
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	mov r6, r1
-	mov r5, #0
-	mov r4, #6
-_02014AD0:
-	mla r1, r5, r4, r6
-	mov r0, r7
-	bl CopyMoveToStream
-	add r5, r5, #1
-	cmp r5, #4
-	blt _02014AD0
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end CopyMovesetTo
-
-	arm_func_start CopyMovesetFrom
-CopyMovesetFrom: ; 0x02014AEC
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	mov r6, r1
-	mov r5, #0
-	mov r4, #6
-_02014B00:
-	mla r1, r5, r4, r6
-	mov r0, r7
-	bl CopyMoveFromStream
-	add r5, r5, #1
-	cmp r5, #4
-	blt _02014B00
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end CopyMovesetFrom
 
 	arm_func_start sub_02014B1C
 sub_02014B1C: ; 0x02014B1C

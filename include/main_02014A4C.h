@@ -5,5 +5,7 @@
 
 void CopyMoveToStream(struct bitstream * stream, struct ground_move * move );
 void CopyMoveFromStream(struct bitstream * stream, struct ground_move * move );
+void CopyMovesetToStream(struct bitstream * stream, struct ground_move * src);
+void CopyMovesetFromStream(struct bitstream * stream, struct ground_move * dst);
 
 #endif //PMDSKY_MAIN_02014A4C_H
