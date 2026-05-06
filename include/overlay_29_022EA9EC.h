@@ -12,5 +12,6 @@ typedef struct prng_state {
 } prng_state;
 
 void InitDungeonRng(u32 seed);
+u32 DungeonRand16Bit(void);
 
 #endif //PMDSKY_OVERLAY_29_022EA9EC_H
