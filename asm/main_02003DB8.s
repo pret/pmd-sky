@@ -309,7 +309,7 @@ _020041A4:
 	bl Debug_FatalError
 _020041C4:
 	bl FileRom_InitDataTransfer
-	bl sub_0207A324
+	bl IC_InvalidateAll
 	bl DC_FlushAll
 	cmp r4, #0x24
 	addls pc, pc, r4, lsl #2

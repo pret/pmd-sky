@@ -2048,11 +2048,11 @@ _01FF990C:
 	ldr sl, [r0, #0x1c]
 	bl EnableIrqFlag
 	mov fp, r0
-	bl sub_0207A244
-	bl sub_0207A238
+	bl DC_StoreAll
+	bl DC_InvalidateAll
 	mov r0, fp
 	bl SetIrqFlag
-	bl sub_0207A324
+	bl IC_InvalidateAll
 	bl sub_0207A300
 	add r5, r5, r4
 	cmp r5, #0x8000

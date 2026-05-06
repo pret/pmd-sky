@@ -2,15 +2,15 @@
 
 	.text
 
-    arm_func_start sub_0207A238
-sub_0207A238: ; 0x0207A238
+    arm_func_start DC_InvalidateAll
+DC_InvalidateAll: ; 0x0207A238
 	mov r0, #0
 	mcr p15, 0, r0, c7, c6, 0
 	bx lr
-	arm_func_end sub_0207A238
+	arm_func_end DC_InvalidateAll
 
-	arm_func_start sub_0207A244
-sub_0207A244: ; 0x0207A244
+	arm_func_start DC_StoreAll
+DC_StoreAll: ; 0x0207A244
 	mov r1, #0
 _0207A248:
 	mov r0, #0
@@ -24,7 +24,7 @@ _0207A24C:
 	cmp r1, #0
 	bne _0207A248
 	bx lr
-	arm_func_end sub_0207A244
+	arm_func_end DC_StoreAll
 
 	arm_func_start DC_FlushAll
 DC_FlushAll: ; 0x0207A270
@@ -100,15 +100,15 @@ sub_0207A30C: ; 0x0207A30C
 	bx lr
 	arm_func_end sub_0207A30C
 
-	arm_func_start sub_0207A324
-sub_0207A324: ; 0x0207A324
+	arm_func_start IC_InvalidateAll
+IC_InvalidateAll: ; 0x0207A324
 	mov r0, #0
 	mcr p15, 0, r0, c7, c5, 0
 	bx lr
-	arm_func_end sub_0207A324
+	arm_func_end IC_InvalidateAll
 
-	arm_func_start sub_0207A330
-sub_0207A330: ; 0x0207A330
+	arm_func_start IC_InvalidateRange
+IC_InvalidateRange: ; 0x0207A330
 	add r1, r1, r0
 	bic r0, r0, #0x1f
 _0207A338:
@@ -117,5 +117,5 @@ _0207A338:
 	cmp r0, r1
 	blt _0207A338
 	bx lr
-	arm_func_end sub_0207A330
+	arm_func_end IC_InvalidateRange
 

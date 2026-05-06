@@ -227,7 +227,7 @@ sub_0207FB40: ; 0x0207FB40
 	add r6, r5, r1
 	mov r0, r4
 	mov r1, r6
-	bl sub_0207A330
+	bl IC_InvalidateRange
 	mov r0, r4
 	mov r1, r6
 	bl DC_InvalidateRange
@@ -5417,10 +5417,10 @@ _02083F44:
 	bhs _02083F94
 	mov r0, sb
 	mov r1, r5
-	bl sub_0207A330
+	bl IC_InvalidateRange
 	b _02083F98
 _02083F94:
-	bl sub_0207A324
+	bl IC_InvalidateAll
 _02083F98:
 	ldr r0, [r4, #0x11c]
 	cmp r5, r0

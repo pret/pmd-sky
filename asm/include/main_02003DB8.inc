@@ -101,7 +101,7 @@
 .public sub_0200B76C
 .public sub_020184A8
 .public sub_02078900
-.public sub_0207A324
+.public IC_InvalidateAll
 .public sub_0207BE6C
 .public sub_0207BF04
 .public sub_0207BFA4

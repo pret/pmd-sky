@@ -88,8 +88,8 @@
 .public sub_02079A64
 .public sub_0207A2C0
 .public sub_0207A300
-.public sub_0207A324
-.public sub_0207A330
+.public IC_InvalidateAll
+.public IC_InvalidateRange
 .public OS_GetDTCMAddress
 .public OS_SetDPermissionsForProtectionRegion
 .public sub_0207ADCC
