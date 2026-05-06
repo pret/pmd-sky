@@ -3,6 +3,16 @@
 
 #include "util.h"
 
+typedef struct prng_state {
+    bool8 use_secondary;
+    u32 seq_num_primary;
+    u32 preseed;
+    u32 last_value_primary;
+    s32 idx_secondary;
+} prng_state;
+
+void InitDungeonRng(u32 seed);
+u16 DungeonRand16Bit(void);
 // Compute a pseudorandom integer under a given maximum value using the dungeon PRNG.
 // pseudorandom integer on the interval [0, end - 1]
 s32 DungeonRandInt(s32 end);
