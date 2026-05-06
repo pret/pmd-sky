@@ -220,13 +220,21 @@ Static main
 	Object lib/DSE/asm/dc_lfo_1.o
 	Object lib/DSE/src/dc_lfo_2.o
 	Object asm/main_02075600.o
+
+    ### NitroSDK ###
     Object lib/NitroSDK/asm/mtx.o
     Object lib/NitroSDK/asm/fx_cp.o
     Object lib/NitroSDK/asm/fx_vec.o
     Object lib/NitroSDK/asm/gx.o
     Object lib/NitroSDK/asm/gx_bgcnt.o
     Object lib/NitroSDK/asm/g2.o
+    Object lib/NitroSDK/asm/g3imm.o
+    Object lib/NitroSDK/asm/g3x.o
+    Object lib/NitroSDK/asm/gx_load2d.o
+    Object lib/NitroSDK/asm/gx_load3d.o
+    Object lib/NitroSDK/asm/gx_asm.o
     Object asm/OS_interrupt.o
+    Object lib/NitroSDK/asm/os_thread.o
 	Object src/main_0207B848.o
 	Object asm/main_0207B854.o
 	Object src/main_0207B860.o

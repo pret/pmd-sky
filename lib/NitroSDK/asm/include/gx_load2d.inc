@@ -86,13 +86,14 @@
 .public G2_GetBG1CharPtr
 .public G2_GetBG2CharPtr
 .public G2_GetBG3CharPtr
+.public G3_LoadMtx43
+.public G3_LoadMtx44
 .public MI_DmaCopy16
 .public MI_Init
 .public MTX_LookAt
 .public MTX_OrthoW
 .public OS_InitReset
 .public OS_IRQTable
-.public OS_SleepThread
 .public OSi_InitVramExclusive
 .public PM_Init
 .public PXI_Init
@@ -124,4 +125,3 @@
 .public THREAD_INFO_STRUCT
 .public WaitForever2
 .public WaitForInterrupt
-
