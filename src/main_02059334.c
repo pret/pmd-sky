@@ -1,13 +1,12 @@
 #include "main_02059334.h"
 #include "save.h"
+#include "main_02014A4C.h"
 
 extern void CopyBitsTo(void *ctx, void *src, s32 nbits);
 extern void Copy16BitsTo(void *stream, void *buf_write);
-extern void CopyMovesetToStream(struct bitstream *stream, void *buffer_write);
 extern void* memset(void *s, s32 c, u32 n);
 extern void CopyBitsFrom(void *stream, void *buf_read, s32 nbits);
 extern void Copy16BitsFrom(void *stream, void *buf_read);
-extern void CopyMovesetFromStream(struct bitstream *stream, void *dst);
 
 void WriteMonsterToSave(struct bitstream *stream, struct ground_monster *monster)
 {
@@ -26,7 +25,7 @@ void WriteMonsterToSave(struct bitstream *stream, struct ground_monster *monster
     CopyBitsTo(stream, &monster->exp, 24);
     CopyBitsTo(stream, &monster->iq_skill_flags, 69);
     CopyBitsTo(stream, &monster->tactic, 4);
-    CopyMovesetToStream(stream, &monster->moves);
+    CopyMovesetToStream(stream, (struct ground_move*)&monster->moves);
     CopyBitsTo(stream, &monster->name, 80);
 }
 
@@ -48,6 +47,6 @@ void ReadMonsterFromSave(struct bitstream *stream, struct ground_monster *monste
     CopyBitsFrom(stream, &monster->exp, 24);
     CopyBitsFrom(stream, &monster->iq_skill_flags, 69);
     CopyBitsFrom(stream, &monster->tactic, 4);
-    CopyMovesetFromStream(stream, &monster->moves);
+    CopyMovesetFromStream(stream, (struct ground_move*)&monster->moves);
     CopyBitsFrom(stream, &monster->name, 80);
 }

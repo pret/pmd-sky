@@ -2,6 +2,7 @@
 #include "common.h"
 #include "save.h"
 #include "main_0200224C.h"
+#include "main_02014A4C.h"
 #include "main_02059A74.h"
 #include "main_0205B690.h"
 #include "main_0205C440.h"
@@ -13,13 +14,11 @@ extern void InitBitstreamForWrite(struct bitstream *stream, u32 v1, u32 v2);
 extern void CopyBitsFrom(struct bitstream *stream, void *buf_read, s32 nbits);
 extern void* memset(void *s, s32 c, u32 n);
 extern void Copy16BitsFrom(struct bitstream *stream, void *buf_read);
-extern void CopyMovesetFromStream(struct bitstream *stream, void *dst);
 extern void BitstreamDebug(struct bitstream *stream);
 extern void sub_020634F4(void);
 extern void InitBitstreamForRead(struct bitstream *stream, u32 p1, u32 p2);
 extern void CopyBitsTo(struct bitstream *stream, void* buf_write, s32 nbits);
 extern void Copy16BitsTo(struct bitstream *stream, void *buf_write);
-extern void CopyMovesetToStream(struct bitstream *stream, void *buffer_write);
 
 void sub_0205BD14(u32 *dest, s32 index)
 {
