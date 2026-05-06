@@ -231,7 +231,7 @@
                                        38](CalcRecoilDamageFixed,func) found in global overlay_29_0230BBAC.o
                                        38](DungeonRandOutcomeUserAction,func) found in global overlay_29_02324698.o
                                         39](DungeonRandOutcome__022EAB50,func) found in global dg_random.o
-                                         40](DungeonRand16Bit,func) found in global overlay_29_022EAA20.o
+                                         40](DungeonRand16Bit,func) found in global dg_random.o
                                         39](AbilityIsActiveVeneer,func) found in global dungeon_pokemon_attributes.o
                                          40](AbilityIsActive,func) found in global dungeon_pokemon_attributes.o
                                           41](IsMonster__02301A60,func) found in global overlay_29_02301A60.o
@@ -1068,7 +1068,7 @@
                                                                                 79](ResetGravity,func) found in global overlay_29_0233836C.o
                                                                                 79](ResetVictoryCounter,func) found in global overlay_29_023383a8_0.o
                                                                                 79](ov29_022FBB1C,func) found in global overlay_29_022FBB1C.o
-                                                                                79](InitDungeonRng,func) found in global overlay_29_022EA9EC.o
+                                                                                79](InitDungeonRng,func) found in global dg_random.o
                                                                                 79](ov29_022E1640,func) found in global overlay_29_022E1640.o
                                                                                 79](ov29_022DEB40,func) found in global overlay_29_022DEAB0.o
                                                                                 79](ov29_022DEADC,func) found in global overlay_29_022DEAB0.o
@@ -35918,13 +35918,12 @@
   022EC044 00000000 .text   $a	(overlay_29_022E9618.o)
   022EC044 00000010 .text   SetDungeonRngPreseed	(overlay_29_022E9618.o)
   022EC050 00000000 .text   $d	(overlay_29_022E9618.o)
-  022EC054 00000000 .text   $a	(overlay_29_022EA9EC.o)
-  022EC054 00000034 .text   InitDungeonRng	(overlay_29_022EA9EC.o)
-  022EC080 00000000 .text   $d	(overlay_29_022EA9EC.o)
-  022EC088 00000000 .text   $a	(overlay_29_022EAA20.o)
-  022EC088 00000078 .text   .text	(overlay_29_022EAA20.o)
-  022EC088 00000078 .text   DungeonRand16Bit	(overlay_29_022EAA20.o)
-  022EC0F0 00000000 .text   $d	(overlay_29_022EAA20.o)
+  022EC054 00000000 .text   $a	(dg_random.o)
+  022EC054 00000034 .text   InitDungeonRng	(dg_random.o)
+  022EC080 00000000 .text   $d	(dg_random.o)
+  022EC088 00000000 .text   $a	(dg_random.o)
+  022EC088 00000078 .text   DungeonRand16Bit	(dg_random.o)
+  022EC0F0 00000000 .text   $d	(dg_random.o)
   022EC100 00000028 .text   DungeonRandInt	(dg_random.o)
   022EC100 00000000 .text   $a	(dg_random.o)
   022EC128 00000060 .text   DungeonRandRange	(dg_random.o)
@@ -41697,5 +41696,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Apr 27 03:52:27 2026
-# Link end time: Mon Apr 27 03:52:28 2026
+# Link start time: Wed May 06 23:52:09 2026
+# Link end time: Wed May 06 23:52:09 2026
