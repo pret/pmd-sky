@@ -253,7 +253,7 @@ Static main
 	Object lib/NitroSDK/src/os_terminate_proc.o
     Object lib/NitroSDK/asm/mi_wram.o
     Object lib/NitroSDK/asm/mi_dma.o
-	Object asm/main_0207BC3C.o
+	Object lib/NitroSDK/asm/mi_memory.o
     Object lib/NitroSDK/asm/mi_uncompress.o
     Object lib/NitroSDK/asm/mi_dma_card.o
     Object lib/NitroSDK/asm/mi_init.o
