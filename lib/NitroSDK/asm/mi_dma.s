@@ -1,5 +1,5 @@
 	.include "asm/macros.inc"
-	.include "main_0207BC3C.inc"
+	.include "include/mi_memory.inc"
 
 	.text
 
