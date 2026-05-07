@@ -60,3 +60,21 @@ asm u8 GetProcessorMode()
 	and r0, r0, #0x1f
 	bx lr
 }
+
+asm void sub_0207B854(u32 cycles) // OS_SpinWait
+{
+    @loop
+	subs r0, r0, #4
+	bhs @loop
+	bx lr
+}
+
+void SVC_WaitByLoop(s32);
+void sub_02078900(s32, s32);
+
+void sub_0207B860(void) // OS_WaitVBlankIntr
+{
+    SVC_WaitByLoop(1);
+    sub_02078900(1, 1);
+}
+

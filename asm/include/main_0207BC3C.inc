@@ -35,4 +35,9 @@
 .public sub_0207A0CC
 .public sub_0207A2C0
 .public sub_0207B854
+.public sub_0207C1E0
 .public WaitForever2
+.public MI_SetWramBank
+.public MIi_CheckDma0SourceAddress
+.public MI_StopDma
+.public MemcpyFast

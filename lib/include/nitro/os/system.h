@@ -26,4 +26,7 @@ u8 GetIrqFlag();
 // return: cpsr & 0x1f (the cpsr mode bits M4-M0)
 u8 GetProcessorMode();
 
+void sub_0207B854(u32 cycles); // OS_SpinWait
+void sub_0207B860(void); // OS_WaitVBlankIntr
+
 #endif //NITRO_OS_SYSTEM_H_

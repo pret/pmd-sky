@@ -1,6 +1,0 @@
-#ifndef PMDSKY_MAIN_0207B860_H
-#define PMDSKY_MAIN_0207B860_H
-
-void sub_0207B860();
-
-#endif //PMDSKY_MAIN_0207B860_H
