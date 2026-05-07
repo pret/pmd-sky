@@ -1,5 +1,6 @@
 #include "main_02058FA4.h"
 #include "common.h"
+#include "save.h"
 #include "main_0202593C.h"
 #include "main_02058FA4.h"
 
@@ -7,10 +8,10 @@ extern struct team_member_table *TEAM_MEMBER_TABLE_PTR;
 
 extern s32 GetLanguageType(void);
 extern void StrncpySimpleNoPadSafe(u8* dest, const u8* src, u32 n);
-extern void InitBitstreamForRead(struct WriteMonsterInfoToSave_struct *ptr, void *start_addr, u32 total_len);
-extern void WriteMonsterToSave(struct WriteMonsterInfoToSave_struct *write_info, struct ground_monster *monster);
+extern void InitBitstreamForRead(struct bitstream *ptr, void *start_addr, u32 total_len);
+extern void WriteMonsterToSave(struct bitstream *stream, struct ground_monster *monster);
 extern void CopyBitsTo(void *ctx, void *src, s32 nbits);
-extern void BitstreamDebug(struct WriteMonsterInfoToSave_struct *ptr);
+extern void BitstreamDebug(struct bitstream *ptr);
 
 void GetExplorerMazeTeamName(u8 *dest)
 {
@@ -53,26 +54,26 @@ struct ground_monster* GetExplorerMazeMonster(s16 entry_number)
 
 s32 WriteMonsterInfoToSave(void* start_addr, u32 total_len)
 {
-    struct WriteMonsterInfoToSave_struct local_struct;
+    struct bitstream stream;
 
-    InitBitstreamForRead(&local_struct, start_addr, total_len);
+    InitBitstreamForRead(&stream, start_addr, total_len);
 
     for (s32 i = 0; i < MAX_GROUND_TEAM_MEMBERS; i++)
     {
-        WriteMonsterToSave(&local_struct, &TEAM_MEMBER_TABLE_PTR->members[i]);
+        WriteMonsterToSave(&stream, &TEAM_MEMBER_TABLE_PTR->members[i]);
     }
 
-    CopyBitsTo(&local_struct, &TEAM_MEMBER_TABLE_PTR->field_0x9878, 64);
-    CopyBitsTo(&local_struct, &TEAM_MEMBER_TABLE_PTR->explorer_maze_team_native_language, 4);
-    CopyBitsTo(&local_struct, &TEAM_MEMBER_TABLE_PTR->field_0x9881, 4);
-    CopyBitsTo(&local_struct, &TEAM_MEMBER_TABLE_PTR->explorer_maze_team_name, 80);
+    CopyBitsTo(&stream, &TEAM_MEMBER_TABLE_PTR->field_0x9878, 64);
+    CopyBitsTo(&stream, &TEAM_MEMBER_TABLE_PTR->explorer_maze_team_native_language, 4);
+    CopyBitsTo(&stream, &TEAM_MEMBER_TABLE_PTR->field_0x9881, 4);
+    CopyBitsTo(&stream, &TEAM_MEMBER_TABLE_PTR->explorer_maze_team_name, 80);
 
     for (s32 i = 0; i < 4; i++)
     {
-        WriteMonsterToSave(&local_struct, &TEAM_MEMBER_TABLE_PTR->explorer_maze_monsters[i]);
+        WriteMonsterToSave(&stream, &TEAM_MEMBER_TABLE_PTR->explorer_maze_monsters[i]);
     }
 
-    BitstreamDebug(&local_struct);
+    BitstreamDebug(&stream);
 
-    return local_struct.result;
+    return stream.bit_idx;
 }

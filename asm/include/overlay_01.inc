@@ -23,8 +23,8 @@
 .public Copy16BitsTo
 .public CopyBitsFrom
 .public CopyBitsTo
-.public CopyMovesetFrom
-.public CopyMovesetTo
+.public CopyMovesetFromStream
+.public CopyMovesetToStream
 .public CreateAdvancedMenu
 .public CreateAdvancedTextBox
 .public CreateControlsChart

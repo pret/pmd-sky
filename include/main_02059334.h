@@ -2,9 +2,9 @@
 #define PMDSKY_MAIN_02059334_H
 
 #include "common.h"
-#include "main_02058FA4.h"
+#include "save.h"
 
-void WriteMonsterToSave(struct WriteMonsterInfoToSave_struct *write_info, struct ground_monster *monster);
-void ReadMonsterFromSave(struct WriteMonsterInfoToSave_struct *read_info, struct ground_monster *monster);
+void WriteMonsterToSave(struct bitstream *stream, struct ground_monster *monster);
+void ReadMonsterFromSave(struct bitstream *stream, struct ground_monster *monster);
 
 #endif //PMDSKY_MAIN_02059334_H
