@@ -240,7 +240,7 @@ Static main
     Object lib/NitroSDK/asm/os_init.o
     Object lib/NitroSDK/asm/os_arena.o
     ### Object lib/NitroSDK/asm/os_alloc.o ###
-    Object lib/NitroSDK/asm/os_tcm.o
+    Object lib/NitroSDK/src/os_tcm.o
     Object lib/NitroSDK/asm/os_protectionUnit.o
     Object lib/NitroSDK/asm/os_protectionRegion.o
     Object lib/NitroSDK/asm/os_exception.o

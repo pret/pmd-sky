@@ -3,15 +3,15 @@
 
 	.text
 
-    arm_func_start CountLeadingZeros
-CountLeadingZeros: ; 0x0207BA8C
+    arm_func_start OsCountZeroBits
+OsCountZeroBits: ; 0x0207BA8C
 	clz r0, r0
 	bx lr
-	arm_func_end CountLeadingZeros
+	arm_func_end OsCountZeroBits
 
 	arm_func_start OSi_InitVramExclusive
 OSi_InitVramExclusive: ; 0x0207BA94
-	ldr r0, _0207BAC0 ; =_022B99D4
+	ldr r0, _0207BAC0 ; =OSi_vramExclusive
 	mov r3, #0
 	str r3, [r0]
 	ldr r0, _0207BAC4 ; =_022B99D8
@@ -24,17 +24,17 @@ _0207BAA8:
 	blt _0207BAA8
 	bx lr
 	.align 2, 0
-_0207BAC0: .word _022B99D4
+_0207BAC0: .word OSi_vramExclusive
 _0207BAC4: .word _022B99D8
 	arm_func_end OSi_InitVramExclusive
 
-	arm_func_start sub_0207BAC8
-sub_0207BAC8: ; 0x0207BAC8
+	arm_func_start OSi_UnlockVram
+OSi_UnlockVram: ; 0x0207BAC8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r5, r0
 	mov sl, r1
 	bl EnableIrqFlag
-	ldr r4, _0207BB44 ; =_022B99D4
+	ldr r4, _0207BB44 ; =OSi_vramExclusive
 	ldr r1, _0207BB48 ; =0x000001FF
 	ldr r2, [r4]
 	mov sb, r0
@@ -45,7 +45,7 @@ sub_0207BAC8: ; 0x0207BAC8
 	mov r5, #0
 _0207BAFC:
 	mov r0, r8
-	bl CountLeadingZeros
+	bl OsCountZeroBits
 	rsbs r2, r0, #0x1f
 	bmi _0207BB38
 	mov r1, r2, lsl #1
@@ -64,8 +64,8 @@ _0207BB38:
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0207BB44: .word _022B99D4
+_0207BB44: .word OSi_vramExclusive
 _0207BB48: .word 0x000001FF
 _0207BB4C: .word _022B99D8
-	arm_func_end sub_0207BAC8
+	arm_func_end OSi_UnlockVram
 

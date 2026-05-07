@@ -1415,7 +1415,7 @@ disableBankForX_: ; 0x020771BC
 	mov r0, r4, lsl #0x10
 	ldrh r1, [r1]
 	mov r0, r0, lsr #0x10
-	bl sub_0207BAC8
+	bl OSi_UnlockVram
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0

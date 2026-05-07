@@ -120,7 +120,6 @@
 .public sub_0206FD88
 .public sub_0206FDE0
 .public sub_02078BF4
-.public sub_0207BAC8
 .public sub_0207BC4C
 .public sub_0207BCCC
 .public sub_0207BDA8

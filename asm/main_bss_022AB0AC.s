@@ -285,8 +285,8 @@ _022B99BC:
 	.global _022B99D0
 _022B99D0:
 	.space 0x4
-	.global _022B99D4
-_022B99D4:
+	.global OSi_vramExclusive
+OSi_vramExclusive:
 	.space 0x4
 	.global _022B99D8
 _022B99D8:

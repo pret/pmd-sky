@@ -40,7 +40,7 @@
 //#include <nitro/os/cache.h>
 //#include <nitro/os/protectionRegion.h>
 //#include <nitro/os/protectionUnit.h>
-//#include <nitro/os/tcm.h>
+#include <nitro/os/tcm.h>
 //#include <nitro/os/ARM9/vramExclusive.h>
 //#endif //SDK_ARM9
 

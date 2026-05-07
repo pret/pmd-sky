@@ -1,7 +1,7 @@
 #pragma once
 .public _022B99A8
 .public _022B99D0
-.public _022B99D4
+.public OSi_vramExclusive
 .public _022B99D8
 .public ArrayCopy16
 .public EnableIrqFlag
