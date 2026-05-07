@@ -267,8 +267,8 @@ _022B98F8:
 	.global _022B991C
 _022B991C:
 	.space 0x80
-	.global _022B999C
-_022B999C:
+	.global OSi_TimerReserved
+OSi_TimerReserved:
 	.space 0x4
 	.global OSi_UseTick
 OSi_UseTick:

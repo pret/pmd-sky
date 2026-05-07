@@ -34,7 +34,7 @@
 .public _022B98F4
 .public _022B98F8
 .public _022B991C
-.public _022B999C
+.public OSi_TimerReserved
 .public OSi_UseTick
 .public _022B99B0
 .public _022B99BC

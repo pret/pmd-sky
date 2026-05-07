@@ -16,6 +16,7 @@
 //#include <nitro/os/valarm.h>
 //#include <nitro/os/emulator.h>
 //#include <nitro/os/tick.h>
+#include <nitro/os/timer.h>
 //#include <nitro/os/alarm.h>
 //#include <nitro/os/ownerInfo.h>
 //#include <nitro/os/context.h>
@@ -38,8 +39,8 @@
 
 //#ifdef SDK_ARM9
 //#include <nitro/os/cache.h>
-//#include <nitro/os/protectionRegion.h>
-//#include <nitro/os/protectionUnit.h>
+#include <nitro/os/protectionRegion.h>
+#include <nitro/os/protectionUnit.h>
 #include <nitro/os/tcm.h>
 //#include <nitro/os/ARM9/vramExclusive.h>
 //#endif //SDK_ARM9

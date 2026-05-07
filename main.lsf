@@ -241,10 +241,10 @@ Static main
     Object lib/NitroSDK/asm/os_arena.o
     ### Object lib/NitroSDK/asm/os_alloc.o ###
     Object lib/NitroSDK/src/os_tcm.o
-    Object lib/NitroSDK/asm/os_protectionUnit.o
-    Object lib/NitroSDK/asm/os_protectionRegion.o
+    Object lib/NitroSDK/src/os_protectionUnit.o
+    Object lib/NitroSDK/src/os_protectionRegion.o
     Object lib/NitroSDK/asm/os_exception.o
-    Object lib/NitroSDK/asm/os_timer.o
+    Object lib/NitroSDK/src/os_timer.o
     Object lib/NitroSDK/asm/os_tick.o
     Object lib/NitroSDK/asm/os_alarm.o
     Object lib/NitroSDK/asm/os_valarm.o
