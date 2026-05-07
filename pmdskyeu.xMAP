@@ -1266,7 +1266,11 @@
                             27](IsSpecialEpisodeOpenOld,func) found in global special_episode.o
                             27](IsSpecialEpisodeOpenMismatch,func) found in global special_episode.o
                              28](ScriptVariablesEqual,func) found in global script_variable.o
+                            27](CopyMovesetFromStream,func) found in global main_02014A4C.o
+                             28](CopyMoveFromStream,func) found in global main_02014A4C.o
                             27](sub_02059AE8,func) found in global main_02059A74.o
+                            27](CopyMovesetToStream,func) found in global main_02014A4C.o
+                             28](CopyMoveToStream,func) found in global main_02014A4C.o
                             27](sub_02059AF8,func) found in global main_02059A74.o
                            26](sub_0205EAE8,func) found in global main_0205EAC8.o
                            26](sub_0205E970,func) found in global main_0205E954.o
@@ -1292,6 +1296,7 @@
                       21](sub_0205C19C,func) found in global main_0205BD14.o
                      20](sub_02059A74,func) found in global main_02059A74.o
                       21](sub_02059824,func) found in global main_0205956C.o
+                       22](sub_02014C20,func) found in global main_02014B1C.o
                      20](ReadMonsterInfoFromSave,func) found in global main_02059224.o
                       21](ReadMonsterFromSave,func) found in global main_02059334.o
                      20](RestoreScriptVariableValues,func) found in global script_variable.o
@@ -3173,7 +3178,7 @@
   02013D04 00000000 .text   $d	(moves_3.o)
   02013D0C 00000048 .text   GetNbMoves	(moves_3.o)
   02013D0C 00000000 .text   $a	(moves_3.o)
-  02013D54 00000FB8 .text   .text	(main_02013C30.o)
+  02013D54 00000DA0 .text   .text	(main_02013C30.o)
   02013D54 0000005C .text   GetMovesetIdx__02013CAC	(main_02013C30.o)
   02013D54 00000000 .text   $a	(main_02013C30.o)
   02013DB0 0000001C .text   IsReflectedByMagicCoat	(main_02013C30.o)
@@ -3181,8 +3186,8 @@
   02013DCC 00000000 .text   $a	(main_02013C30.o)
   02013DCC 0000001C .text   CanBeSnatched	(main_02013C30.o)
   02013DE4 00000000 .text   $d	(main_02013C30.o)
-  02013DE8 0000001C .text   FailsWhileMuzzled	(main_02013C30.o)
   02013DE8 00000000 .text   $a	(main_02013C30.o)
+  02013DE8 0000001C .text   FailsWhileMuzzled	(main_02013C30.o)
   02013E00 00000000 .text   $d	(main_02013C30.o)
   02013E04 00000000 .text   $a	(main_02013C30.o)
   02013E04 000000B8 .text   IsSoundMove	(main_02013C30.o)
@@ -3211,14 +3216,20 @@
   02014908 0000004C .text   FindFirstFreeMovesetIdx	(main_02013C30.o)
   02014954 00000114 .text   LearnMoves	(main_02013C30.o)
   02014A68 0000008C .text   sub_020149C0	(main_02013C30.o)
-  02014AF4 00000038 .text   CopyMoveTo	(main_02013C30.o)
-  02014B2C 00000038 .text   CopyMoveFrom	(main_02013C30.o)
-  02014B64 00000030 .text   CopyMovesetTo	(main_02013C30.o)
-  02014B94 00000030 .text   CopyMovesetFrom	(main_02013C30.o)
-  02014BC4 00000058 .text   sub_02014B1C	(main_02013C30.o)
-  02014C1C 0000003C .text   sub_02014B74	(main_02013C30.o)
-  02014C58 00000070 .text   sub_02014BB0	(main_02013C30.o)
-  02014CC8 00000044 .text   sub_02014C20	(main_02013C30.o)
+  02014AF4 00000038 .text   CopyMoveToStream	(main_02014A4C.o)
+  02014AF4 00000000 .text   $a	(main_02014A4C.o)
+  02014B2C 00000038 .text   CopyMoveFromStream	(main_02014A4C.o)
+  02014B2C 00000000 .text   $a	(main_02014A4C.o)
+  02014B64 00000030 .text   CopyMovesetToStream	(main_02014A4C.o)
+  02014B64 00000000 .text   $a	(main_02014A4C.o)
+  02014B94 00000030 .text   CopyMovesetFromStream	(main_02014A4C.o)
+  02014B94 00000000 .text   $a	(main_02014A4C.o)
+  02014BC4 00000148 .text   .text	(main_02014B1C.o)
+  02014BC4 00000000 .text   $a	(main_02014B1C.o)
+  02014BC4 00000058 .text   sub_02014B1C	(main_02014B1C.o)
+  02014C1C 0000003C .text   sub_02014B74	(main_02014B1C.o)
+  02014C58 00000070 .text   sub_02014BB0	(main_02014B1C.o)
+  02014CC8 00000044 .text   sub_02014C20	(main_02014B1C.o)
   02014D0C 00000000 .text   $a	(main_02014CEC.o)
   02014D0C 00000088 .text   Is2TurnsMove	(main_02014CEC.o)
   02014D90 00000000 .text   $d	(main_02014CEC.o)
@@ -41497,5 +41508,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed May 06 23:50:20 2026
-# Link end time: Wed May 06 23:50:21 2026
+# Link start time: Thu May 07 01:33:57 2026
+# Link end time: Thu May 07 01:33:58 2026
