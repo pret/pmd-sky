@@ -288,8 +288,8 @@ _022B99D0:
 	.global OSi_vramExclusive
 OSi_vramExclusive:
 	.space 0x4
-	.global _022B99D8
-_022B99D8:
+	.global OSi_vramLockId
+OSi_vramLockId:
 	.space 0x14
 	.global _022B99EC
 _022B99EC:

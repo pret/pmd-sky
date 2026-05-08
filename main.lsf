@@ -236,8 +236,8 @@ Static main
     Object lib/NitroSDK/asm/os_interrupt.o
     Object lib/NitroSDK/asm/os_spinlock.o
     Object lib/NitroSDK/asm/os_thread.o
-    Object lib/NitroSDK/asm/os_cache.o
-    Object lib/NitroSDK/asm/os_init.o
+    Object lib/NitroSDK/src/os_cache.o
+    Object lib/NitroSDK/src/os_init.o
     Object lib/NitroSDK/asm/os_arena.o
     ### Object lib/NitroSDK/asm/os_alloc.o ###
     Object lib/NitroSDK/src/os_tcm.o
@@ -251,7 +251,7 @@ Static main
 	Object lib/NitroSDK/src/os_system.o
 	object lib/nitrosdk/asm/os_reset.o
 	object lib/nitrosdk/asm/os_ownerinfo.o
-	Object lib/NitroSDK/asm/os_vramExclusive.o
+	Object lib/NitroSDK/src/os_vramExclusive.o
 	Object lib/NitroSDK/asm/os_entropy.o
 	Object lib/NitroSDK/src/os_terminate_proc.o
     Object lib/NitroSDK/asm/mi_wram.o

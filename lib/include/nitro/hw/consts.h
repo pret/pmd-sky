@@ -6,6 +6,24 @@
 #include <nitro/hw/io_reg.h>
 #include <nitro/os/systemWork.h>
 
+#define HW_C1_ITCM_LOAD_MODE       0x00080000
+#define HW_C1_DTCM_LOAD_MODE       0x00020000
+#define HW_C1_ITCM_ENABLE          0x00040000
+#define HW_C1_DTCM_ENABLE          0x00010000
+#define HW_C1_LD_INTERWORK_DISABLE 0x00008000
+#define HW_C1_CACHE_ROUND_ROBIN    0x00004000
+#define HW_C1_CACHE_PSEUDO_RANDOM  0x00000000
+#define HW_C1_EXCEPT_VEC_UPPER     0x00002000
+#define HW_C1_EXCEPT_VEC_LOWER     0x00000000
+#define HW_C1_ICACHE_ENABLE        0x00001000
+#define HW_C1_DCACHE_ENABLE        0x00000004
+#define HW_C1_LITTLE_ENDIAN        0x00000000
+#define HW_C1_BIG_ENDIAN           0x00000080
+#define HW_C1_PROTECT_UNIT_ENABLE  0x00000001
+
+#define HW_C1_ICACHE_ENABLE_SHIFT 12
+#define HW_C1_DCACHE_ENABLE_SHIFT 2
+
 #define HW_C5_PERMIT_MASK          0xf
 
 #define HW_C5_PERMIT_RO            5

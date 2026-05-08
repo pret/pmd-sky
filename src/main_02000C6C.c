@@ -19,8 +19,6 @@ extern void sub_0204A5D0();
 extern void sub_02076070();
 extern void sub_02079C14();
 extern void sub_0207A220();
-extern void sub_0207A30C();
-extern void OS_Init();
 extern u32 sub_0207A524(u32);
 extern u32 sub_0207A538(u32);
 extern u32 OS_SetArenaLo(u32, u32);
@@ -59,7 +57,7 @@ void NitroMain(void)
   sub_02076070();
   sub_0207F3BC(0xffffffff);
   sub_0207A220();
-  sub_0207A30C();
+  IC_Enable();
   uVar2 = sub_0207A524(0);
   uVar3 = sub_0207A538(0);
   Debug_Print0(&_02092448,uVar3,uVar2);

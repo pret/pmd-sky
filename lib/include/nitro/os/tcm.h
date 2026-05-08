@@ -5,7 +5,7 @@
 #ifndef NITRO_OS_TCM_H
 #define NITRO_OS_TCM_H
 
-//#include <nitro/hw/consts.h>
+#include <nitro/hw/consts.h>
 
 u32 OS_GetDTCMAddress(void);
 
