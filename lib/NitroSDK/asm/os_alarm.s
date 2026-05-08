@@ -3,8 +3,8 @@
 
 	.text
 
-    arm_func_start sub_0207AF64
-sub_0207AF64: ; 0x0207AF64
+    arm_func_start OSi_SetTimer
+OSi_SetTimer: ; 0x0207AF64
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	bl sub_0207AE44
@@ -15,7 +15,7 @@ sub_0207AF64: ; 0x0207AF64
 	ldr r3, [r4, #0x10]
 	subs r5, ip, r0
 	sbc r4, r3, r1
-	ldr r1, _0207AFE4 ; =sub_0207B270
+	ldr r1, _0207AFE4 ; =OSi_AlarmHandler
 	mov r0, #1
 	bl sub_02078BF4
 	subs r0, r5, #0
@@ -39,10 +39,10 @@ _0207AFC4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0207AFE0: .word 0x04000106
-_0207AFE4: .word sub_0207B270
+_0207AFE4: .word OSi_AlarmHandler
 _0207AFE8: .word 0x0000FFFE
 _0207AFEC: .word 0x04000104
-	arm_func_end sub_0207AF64
+	arm_func_end OSi_SetTimer
 
 	arm_func_start sub_0207AFF0
 sub_0207AFF0: ; 0x0207AFF0
@@ -65,25 +65,25 @@ sub_0207AFF0: ; 0x0207AFF0
 _0207B02C: .word _022B99B0
 	arm_func_end sub_0207AFF0
 
-	arm_func_start sub_0207B030
-sub_0207B030: ; 0x0207B030
+	arm_func_start OS_IsAlarmAvailable
+OS_IsAlarmAvailable: ; 0x0207B030
 	ldr r0, _0207B03C ; =_022B99B0
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
 _0207B03C: .word _022B99B0
-	arm_func_end sub_0207B030
+	arm_func_end OS_IsAlarmAvailable 
 
-	arm_func_start sub_0207B040
-sub_0207B040: ; 0x0207B040
+	arm_func_start OS_CreateAlarm
+OS_CreateAlarm: ; 0x0207B040
 	mov r1, #0
 	str r1, [r0]
 	str r1, [r0, #8]
 	bx lr
-	arm_func_end sub_0207B040
+	arm_func_end OS_CreateAlarm
 
-	arm_func_start sub_0207B050
-sub_0207B050: ; 0x0207B050
+	arm_func_start OS_InsertAlarm
+OS_InsertAlarm: ; 0x0207B050
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	ldr r0, [r8, #0x20]
@@ -141,7 +141,7 @@ _0207B0E4:
 	ldr r1, _0207B178 ; =_022B99B0
 	mov r0, r8
 	str r8, [r1, #4]
-	bl sub_0207AF64
+	bl OSi_SetTimer
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207B134:
 	ldr r5, [r5, #0x18]
@@ -160,11 +160,11 @@ _0207B140:
 	str r8, [r1, #8]
 	mov r0, r8
 	str r8, [r1, #4]
-	bl sub_0207AF64
+	bl OSi_SetTimer
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0207B178: .word _022B99B0
-	arm_func_end sub_0207B050
+	arm_func_end OS_InsertAlarm
 
 	arm_func_start sub_0207B17C
 sub_0207B17C: ; 0x0207B17C
@@ -193,7 +193,7 @@ _0207B1A4:
 	adc r2, r4, r1
 	mov r0, r6
 	mov r1, r3
-	bl sub_0207B050
+	bl OS_InsertAlarm
 	mov r0, r7
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -228,7 +228,7 @@ _0207B22C:
 	cmp r0, #0
 	str r0, [r1, #4]
 	beq _0207B250
-	bl sub_0207AF64
+	bl OSi_SetTimer
 _0207B250:
 	mov r1, #0
 	str r1, [r5]
@@ -241,16 +241,16 @@ _0207B250:
 _0207B26C: .word _022B99B0
 	arm_func_end sub_0207B1E8
 
-	arm_func_start sub_0207B270
-sub_0207B270: ; 0x0207B270
+	arm_func_start OSi_AlarmHandler
+OSi_AlarmHandler: ; 0x0207B270
 	stmdb sp!, {r0, lr}
-	bl sub_0207B280
+	bl OSi_ArrangeTimer
 	ldmia sp!, {r0, lr}
 	bx lr
-	arm_func_end sub_0207B270
+	arm_func_end OSi_AlarmHandler
 
-	arm_func_start sub_0207B280
-sub_0207B280: ; 0x0207B280
+	arm_func_start OSi_ArrangeTimer
+OSi_ArrangeTimer: ; 0x0207B280
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _0207B364 ; =0x04000106
 	mov r2, #0
@@ -273,7 +273,7 @@ sub_0207B280: ; 0x0207B280
 	cmpeq r0, ip
 	bhs _0207B2E0
 	mov r0, r4
-	bl sub_0207AF64
+	bl OSi_SetTimer
 	ldmia sp!, {r3, r4, r5, pc}
 _0207B2E0:
 	ldr r1, [r4, #0x18]
@@ -303,18 +303,18 @@ _0207B324:
 	mov r0, r4
 	mov r2, r1
 	str r5, [r4]
-	bl sub_0207B050
+	bl OS_InsertAlarm
 _0207B34C:
 	ldr r0, _0207B36C ; =_022B99B0
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	bl sub_0207AF64
+	bl OSi_SetTimer
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0207B364: .word 0x04000106
 _0207B368: .word OS_IRQTable
 _0207B36C: .word _022B99B0
-	arm_func_end sub_0207B280
+	arm_func_end OSi_ArrangeTimer
 
 

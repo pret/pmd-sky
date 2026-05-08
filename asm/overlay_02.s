@@ -10470,7 +10470,7 @@ _02330270:
 	b _02330388
 _02330284:
 	add r0, sp, #0x18
-	bl sub_0207B040
+	bl OS_CreateAlarm
 	mov r0, #0x13
 	str r0, [sp]
 	ldr r1, _023303A0 ; =0x003FEC42
@@ -10696,7 +10696,7 @@ _02330438:
 	mov r0, #0
 	str r0, [sp, #8]
 	add r0, sp, #0x14
-	bl sub_0207B040
+	bl OS_CreateAlarm 
 	mov r0, #0x12
 	str r0, [sp]
 	ldr r1, _02330568 ; =0x003FEC42
@@ -12890,7 +12890,7 @@ _0233147E:
 	pop {r3, r4, r5, r6, r7, pc}
 _02331492:
 	add r0, sp, #4
-	bl sub_0207B040
+	bl OS_CreateAlarm
 	mov r0, #0x12
 	str r0, [sp]
 	ldr r1, _02331574 ; =0x003FEC42
@@ -13358,7 +13358,7 @@ _023317F4:
 	b _02331A12
 _02331816:
 	add r0, sp, #0x24
-	bl sub_0207B040
+	bl OS_CreateAlarm
 	mov r0, #0x13
 	str r0, [sp]
 	ldr r1, _02331A38 ; =0x000FFB10
@@ -24321,7 +24321,7 @@ ov02_023389D8: ; 0x023389D8
 	bne _02338A10
 	bl WaitForever2
 _02338A10:
-	bl sub_0207B030
+	bl OS_IsAlarmAvailable
 	cmp r0, #0
 	bne _02338A20
 	bl WaitForever2

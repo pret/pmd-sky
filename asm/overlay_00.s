@@ -29218,7 +29218,7 @@ _022D4ADC:
 	bne _022D4B50
 	bl sub_0207AD54
 _022D4B50:
-	bl sub_0207B030
+	bl OS_IsAlarmAvailable
 	cmp r0, #0
 	bne _022D4B60
 	bl sub_0207AFF0
@@ -29227,7 +29227,7 @@ _022D4B60:
 	ldr r0, [r0]
 	add r0, r0, #0x2cc
 	add r0, r0, #0x2000
-	bl sub_0207B040
+	bl OS_CreateAlarm
 	mov r0, r4
 	bl SetIrqFlag
 	mov r0, #0

@@ -134,5 +134,5 @@
 .public WaitForInterrupt
 
 .public sub_0207B1E8
-.public sub_0207B040
+.public OS_CreateAlarm
 .public sub_0207B17C

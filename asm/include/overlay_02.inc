@@ -195,8 +195,8 @@
 .public sub_0207A2C0
 .public sub_0207ADCC
 .public sub_0207AE44
-.public sub_0207B030
-.public sub_0207B040
+.public OS_IsAlarmAvailable
+.public OS_CreateAlarm
 .public sub_0207B17C
 .public sub_0207B1E8
 .public sub_0207B854

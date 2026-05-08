@@ -805,7 +805,7 @@ sub_02079B14: ; 0x02079B14
 	sub sp, sp, #0x34
 	mov r4, r0
 	add r0, sp, #8
-	bl sub_0207B040
+	bl OS_CreateAlarm
 	ldr r0, _02079BB0 ; =THREAD_INFO_STRUCT
 	ldr r0, [r0, #8]
 	ldr r0, [r0]
