@@ -262,8 +262,8 @@
 .public _022A5970
 .public _s32_div_f
 .public _u32_div_f
-.public ArrayCopy32
-.public ArrayFill32
+.public MTi_CpuCopy32
+.public MTi_CpuClear32
 .public AUDIO_COMMANDS_BUFFER
 .public BagHasExclusiveItemTypeForMonster
 .public CopyAndInterleave
@@ -467,7 +467,7 @@
 .public sub_0206F5C8
 .public sub_0207C9C4
 .public sub_0207C9E4
-.public sub_0207CC10
+.public SND_Init
 .public TEAM_MEMBER_TABLE_PTR
 .public UnloadFile
 .public vsprintf

@@ -13,9 +13,9 @@
 .public GetPressedButtons
 .public InitPreprocessorArgs
 .public MemAlloc
-.public MemcpyFast
+.public MI_CpuCopy8
 .public MemFree
-.public MemsetFast
+.public MI_CpuFill8
 .public MemZero
 .public ov00_022BF2C4
 .public ov00_022BF640
@@ -63,7 +63,7 @@
 .public sub_02046BE8
 .public sub_02046C78
 .public sub_02046D20
-.public sub_0207B9EC
+.public OS_GetMacAddress
 .public sub_0207F6C4
 .public sub_0207F70C
 .public WaitForever2

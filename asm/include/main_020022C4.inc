@@ -36,7 +36,7 @@
 .public sub_0207A048
 .public sub_0207A0CC
 .public sub_0207A164
-.public sub_0207B930
+.public OS_ResetSystem
 .public sub_02083434
 .public sub_02083450
 .public sub_0208346C

@@ -1,5 +1,5 @@
 #pragma once
-.public ArrayFill32Fast
+.public MTi_CpuClearFast
 .public CART_REMOVED_IMG_DATA
 .public DC_FlushRange
 .public DecompressAtFromMemoryPointer

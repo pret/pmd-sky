@@ -171,24 +171,24 @@ sub_02008DAC: ; 0x02008DAC
 	mov r0, #0
 	mov r1, #0x6800000
 	mov r2, #0xa4000
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	bl GX_DisableBankForLCDC
 	mov r0, #0xc0
 	mov r1, #0x7000000
 	mov r2, #0x400
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r0, #0
 	mov r1, #0x5000000
 	mov r2, #0x400
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r0, #0xc0
 	ldr r1, _02008EC4 ; =0x07000400
 	mov r2, #0x400
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r0, #0
 	ldr r1, _02008EC8 ; =0x05000400
 	mov r2, #0x400
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r1, #0x100
 	ldr r0, _02008ECC ; =_022A37A0
 	str r1, [r0, #4]

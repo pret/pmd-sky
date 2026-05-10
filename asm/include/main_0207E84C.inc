@@ -3,8 +3,8 @@
 .public _022BB5F8
 .public EnableIrqFlag
 .public FileInit
-.public MemcpyFast
-.public MemsetFast
+.public MI_CpuCopy8
+.public MI_CpuFill8
 .public OS_SleepThread
 .public SetIrqFlag
 .public sub_020798D8

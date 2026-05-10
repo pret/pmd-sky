@@ -5,7 +5,7 @@
 .public _u32_div_f
 .public _ull_mod
 .public AllocateTemp1024ByteBufferFromPool
-.public ArrayCopy32
+.public MTi_CpuCopy32
 .public BAG_ITEMS_PTR_MIRROR
 .public BitstreamDebug
 .public CardBackupError

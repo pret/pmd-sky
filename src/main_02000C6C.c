@@ -1,5 +1,5 @@
 #include "main_02000C6C.h"
-#include "nitro/types.h"
+#include <nitro.h>
 
 extern u32 _02092448;
 extern u32 _02092460;
@@ -19,21 +19,18 @@ extern void sub_0204A5D0();
 extern void sub_02076070();
 extern void sub_02079C14();
 extern void sub_0207A220();
-extern void sub_0207A30C();
-extern void OS_Init();
 extern u32 sub_0207A524(u32);
 extern u32 sub_0207A538(u32);
 extern u32 OS_SetArenaLo(u32, u32);
 extern void sub_0207A95C(u32, u32);
 extern u32 sub_0207A98C(u32, u32, u32, u32);
 extern u32 sub_0207AA34(u32, u32, u32);
-extern void sub_0207AD54();
-extern void sub_0207B9EC(u8(*)[6]);
+extern void OS_InitTick();
+extern void OS_GetMacAddress(u8(*)[6]);
 extern void sub_0207F3BC(u32);
 extern void sub_02008DAC();
 extern void sub_020833F8(u32);
 extern void sub_020845D8(void (*));
-extern void ClearIrqFlag(u32, u32);
 extern void Debug_Init();
 extern void Debug_Print0(u32*, u32, u32);
 extern void InitMemAllocTableVeneer();
@@ -51,16 +48,16 @@ void NitroMain(void)
   u32 old_ime;
 
 
-  u8 stack[6];
+  u8 macAddr[6];
 
   OS_Init();
   sub_020833F8(0x12);
   sub_020845D8(sub_020024D4);
-  sub_0207AD54();
+  OS_InitTick();
   sub_02076070();
   sub_0207F3BC(0xffffffff);
   sub_0207A220();
-  sub_0207A30C();
+  IC_Enable();
   uVar2 = sub_0207A524(0);
   uVar3 = sub_0207A538(0);
   Debug_Print0(&_02092448,uVar3,uVar2);
@@ -77,10 +74,10 @@ void NitroMain(void)
   reg_OS_IME = 1;
   ClearIrqFlag(1,old_ime);
   sub_02008DAC();
-  sub_0207B9EC(&stack);
-  sub_02002228(stack[0] * stack[1] +
-               stack[2] * stack[3] +
-               stack[4] * stack[5]);
+  OS_GetMacAddress(&macAddr);
+  sub_02002228(macAddr[0] * macAddr[1] +
+               macAddr[2] * macAddr[3] +
+               macAddr[4] * macAddr[5]);
   sub_020024E4();
   sub_020028AC();
   sub_0200294C();

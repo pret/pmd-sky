@@ -17,8 +17,8 @@
 .public GeomSetVertexCoord16
 .public GetAllBaseForms
 .public GetWindow
-.public MemcpyFast
-.public MemsetFast
+.public MI_CpuCopy8
+.public MI_CpuFill8
 .public MONSTER_DATA_TABLE_PTR
 .public OS_IRQTable
 .public ov29_02353530
@@ -30,10 +30,10 @@
 .public sub_0201BD80
 .public sub_0202760C
 .public sub_0202796C_JP
-.public sub_0207A238
-.public sub_0207A244
-.public sub_0207A300
-.public sub_0207A324
+.public DC_InvalidateAll
+.public DC_StoreAll
+.public DC_WaitWriteBufferEmpty
+.public IC_InvalidateAll
 .public sub_02080EF0
 .public sub_02080F30
 .public TRIG_TABLE

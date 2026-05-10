@@ -267,17 +267,17 @@ _022B98F8:
 	.global _022B991C
 _022B991C:
 	.space 0x80
-	.global _022B999C
-_022B999C:
+	.global OSi_TimerReserved
+OSi_TimerReserved:
 	.space 0x4
-	.global _022B99A0
-_022B99A0:
+	.global OSi_UseTick
+OSi_UseTick:
 	.space 0x8
 	.global _022B99A8
 _022B99A8:
 	.space 0x8
-	.global _022B99B0
-_022B99B0:
+	.global OSi_UseAlarm
+OSi_UseAlarm:
 	.space 0xC
 	.global _022B99BC
 _022B99BC:
@@ -285,11 +285,11 @@ _022B99BC:
 	.global _022B99D0
 _022B99D0:
 	.space 0x4
-	.global _022B99D4
-_022B99D4:
+	.global OSi_vramExclusive
+OSi_vramExclusive:
 	.space 0x4
-	.global _022B99D8
-_022B99D8:
+	.global OSi_vramLockId
+OSi_vramLockId:
 	.space 0x14
 	.global _022B99EC
 _022B99EC:

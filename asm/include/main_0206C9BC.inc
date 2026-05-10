@@ -26,7 +26,7 @@
 .public _fmul
 .public _s32_div_f
 .public _u32_div_f
-.public ArrayFill32Fast
+.public MTi_CpuClearFast
 .public DC_FlushRange
 .public DRIVER_WORK
 .public Dse_SetError
@@ -56,7 +56,7 @@
 .public DseVoice_UpdateHardware
 .public DseVoice_UpdateParameters
 .public FileInit
-.public GetTimer0Control
+.public OS_GetTickLo
 .public OS_SleepThread
 .public OS_WakeupThreadDirect
 .public SMD_EVENTS_FUN_TABLE
@@ -67,7 +67,7 @@
 .public sub_02072BB8
 .public sub_02079800
 .public sub_02079B14
-.public sub_0207A300
+.public DC_WaitWriteBufferEmpty
 .public sub_0207C8B8
 .public sub_0207C8E0
 .public sub_0207C944

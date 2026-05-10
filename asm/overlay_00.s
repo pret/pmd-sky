@@ -15,7 +15,7 @@ ov00_022BCA80: ; 0x022BCA80
 	strgt r0, [r1, #8]
 	movgt r0, #0
 	ldmgtia sp!, {r4, r5, r6, pc}
-	bl sub_0207AFF0
+	bl OS_InitAlarm
 	mov r0, #0x720
 	mov r1, #8
 	bl MemAlloc
@@ -3068,7 +3068,7 @@ _022BEB08:
 	mov r1, sb
 	add r0, sl, r6, lsl #8
 	strh r4, [sl, r2]
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	mov r0, r8
 	mov r2, r7
 	add r1, sl, r6, lsl #8
@@ -3197,7 +3197,7 @@ _022BEC98:
 _022BECB4:
 	mov r0, r4
 	mov r1, #0x100
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	mov r1, r4
 	mov r0, #0xa
 	mov r2, #0
@@ -3229,10 +3229,10 @@ ov00_022BED00: ; 0x022BED00
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r5
 	mov r1, r4
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	mov r1, r5
 	mov r0, #0xa
 	mov r2, #0
@@ -3506,7 +3506,7 @@ _022BF0A4:
 	mov r1, #0
 	mov r2, #0x44
 	strh r7, [r3, #0x50]
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr ip, _022BF210 ; =ov00_0231E340
 	mov r1, #0x82
 	strh r1, [ip, #0x50]
@@ -3527,18 +3527,18 @@ _022BF0A4:
 	ldr r1, _022BF21C ; =ov00_0231E3A4
 	mov r2, #6
 	strh r3, [ip, #0x8c]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	cmp fp, #0
 	mov r2, #0x18
 	beq _022BF15C
 	ldr r1, _022BF220 ; =ov00_0231E3B4
 	mov r0, fp
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	b _022BF168
 _022BF15C:
 	ldr r1, _022BF220 ; =ov00_0231E3B4
 	mov r0, #0
-	bl ArrayFill16
+	bl MTi_CpuClear16
 _022BF168:
 	cmp r7, #0
 	moveq r1, r8
@@ -3582,7 +3582,7 @@ _022BF1D0:
 	mov r1, #0x100
 	orr r2, r2, #0x8000
 	strh r2, [sl]
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -3686,7 +3686,7 @@ ov00_022BF308: ; 0x022BF308
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x44
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r3, #0
 	ldr r1, _022BF3DC ; =0x0000FFFF
 	mov r7, #0x82
@@ -3702,7 +3702,7 @@ ov00_022BF308: ; 0x022BF308
 	strh r1, [sp, #0x1a]
 	str r4, [sp, #0x1c]
 	strh r3, [sp, #0x12]
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 _022BF370:
 	bl EnableIrqFlag
 	mov r8, r0
@@ -3755,7 +3755,7 @@ ov00_022BF3E0: ; 0x022BF3E0
 	ldr r0, [r4, #4]
 	mov r1, r5
 	mov r2, #0x7d0
-	bl ArrayCopy32Fast
+	bl MTi_CpuCopy32Fast
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_022BF3E0
@@ -3969,7 +3969,7 @@ ov00_022BF6F0: ; 0x022BF6F0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 	mov r2, #0
 	add r3, sp, #0
 	mov r1, r2
@@ -4011,7 +4011,7 @@ ov00_022BF780: ; 0x022BF780
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 	mov r1, #0
 	add r3, sp, #0
 	mov r2, r1
@@ -4414,12 +4414,12 @@ _022BFCA0:
 	bl ov00_022BEBE4
 	mov r0, r4
 	mov r1, #0x40
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	ldrh r1, [r4, #4]
 	cmp r1, #0
 	beq _022BFCD4
 	ldr r0, [r4]
-	bl sub_0207A2C0
+	bl DC_StoreRange
 _022BFCD4:
 	mov r2, r4
 	mov r0, #7
@@ -4648,7 +4648,7 @@ _022BFFA0:
 	strh r3, [sp, #8]
 	ldrh r3, [r4, #8]
 	strh r3, [sp, #0xa]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrh r2, [r4, #0x10]
 	add r1, sp, #0x16
 	add r0, r4, #0x14
@@ -4658,7 +4658,7 @@ _022BFFA0:
 	strh r3, [sp, #0x36]
 	ldrh r3, [r4, #0x12]
 	strh r3, [sp, #0x14]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, sp, #0
 	mov r1, #0x3c
 	bl ov00_022BED00
@@ -4709,7 +4709,7 @@ ov00_022C0068: ; 0x022C0068
 	ldrh r1, [r6]
 	mov r0, r6
 	mov r1, r1, lsl #1
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	bl ov00_022BED70
 	add r1, r0, #0x100
 	mov r2, #0
@@ -4726,12 +4726,12 @@ ov00_022C0068: ; 0x022C0068
 	beq _022C0100
 	add r1, sp, #8
 	mov r0, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022C010C
 _022C0100:
 	add r0, sp, #8
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 _022C010C:
 	ldrh r2, [sp, #0x40]
 	add r0, sp, #0
@@ -4882,7 +4882,7 @@ _022C0314:
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0x40
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r4, r6, lsr #1
 	ldrh r3, [sp, #0x60]
 	mov r6, #0xe
@@ -4894,11 +4894,11 @@ _022C0314:
 	str r4, [sp, #8]
 	str r5, [sp, #0xc]
 	str r3, [sp, #0x10]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldr r0, [sp, #0x64]
 	add r1, sp, #0x30
 	mov r2, #0x10
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	add r0, sp, #0
 	mov r1, #0x40
 	bl ov00_022BED00
@@ -4920,7 +4920,7 @@ ov00_022C038C: ; 0x022C038C
 	mov r2, #0x10
 	mov r5, r3
 	ldr r4, [sp, #0x34]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldr r1, [sp, #0x48]
 	ldrh ip, [sp, #0x38]
 	ldr r0, [sp, #0x44]
@@ -4965,7 +4965,7 @@ ov00_022C0430: ; 0x022C0430
 	mov r0, #0
 	mov r2, #0x10
 	mov r4, r3
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldrh ip, [sp, #0x34]
 	mov r0, #3
 	str r0, [sp, #8]
@@ -5045,7 +5045,7 @@ _022C0518:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
 	mov r1, r6
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	ldrh r2, [sp, #0x30]
 	ldrh r1, [sp, #0x34]
 	ldrh r0, [sp, #0x38]
@@ -5127,7 +5127,7 @@ ov00_022C0638: ; 0x022C0638
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
 	mov r1, r5
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	mov r1, r7
 	mov r0, #0x11
 	bl ov00_022BEBE4
@@ -5174,14 +5174,14 @@ ov00_022C06D8: ; 0x022C06D8
 	ldmhiia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r5
 	mov r1, r4
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	mov r1, r7
 	mov r0, #0x12
 	bl ov00_022BEBE4
 	add r1, sp, #8
 	mov r0, r6
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	str r5, [sp]
 	str r4, [sp, #4]
 	ldr r2, [sp, #8]
@@ -5265,7 +5265,7 @@ _022C088C:
 	mov r1, sl
 	mov r0, #0
 	mov r2, #0x820
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	add r0, sl, #0x800
 	mov r2, #0
 	strh r2, [r0, #8]
@@ -5518,7 +5518,7 @@ _022C0C08:
 	strh r3, [sl, r5]
 	ldrh r0, [r0, #0xc]
 	add r0, sl, r0, lsl #9
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	add r1, sl, #0x800
 	ldrh r0, [r1, #0xc]
 	mov r5, #1
@@ -5582,7 +5582,7 @@ _022C0CE4:
 	mov r1, r8
 	add r0, sl, r2
 	mov r2, #0x200
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	add r2, sl, #0x800
 	ldrh r1, [r2, #0xc]
 	mov r0, #1
@@ -5604,7 +5604,7 @@ _022C0D64:
 	mov r0, sb
 	add r6, sl, r1, lsl #9
 	add r1, r6, #0x20
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	add r3, sl, #0x800
 	ldrh r1, [r3, #0xe]
 	mov r4, #1
@@ -5832,7 +5832,7 @@ _022C1080:
 	mov r0, r7
 	mov r2, r5
 	add r1, r4, r1, lsl #9
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	add r1, r4, #0x800
 	ldrh r0, [r1, #8]
 	ldrh r2, [r8, #0x1a]
@@ -5890,11 +5890,11 @@ _022C1150:
 	ldrh r2, [r0, #0x10]
 	beq _022C1180
 	mov r0, r5
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	b _022C1188
 _022C1180:
 	mov r0, #0
-	bl ArrayFill16
+	bl MTi_CpuClear16
 _022C1188:
 	bl EnableIrqFlag
 	mov r4, r4, lsl #9
@@ -5938,7 +5938,7 @@ ov00_022C11B8: ; 0x022C11B8
 	add r1, sl, r8, lsl #9
 	mov r0, #0
 	mov r2, #0x200
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	add r0, sl, #0x800
 	ldrh r3, [r0, #0xe]
 	orr r2, r7, #1
@@ -6081,7 +6081,7 @@ ov00_022C13B8: ; 0x022C13B8
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r4
 	mov r1, #0x50
-	bl sub_0207A2C0
+	bl DC_StoreRange
 _022C1400:
 	mov r1, r6
 	mov r0, #0x14
@@ -6116,7 +6116,7 @@ ov00_022C142C: ; 0x022C142C
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r4
 	mov r1, #0x50
-	bl sub_0207A2C0
+	bl DC_StoreRange
 _022C1478:
 	mov r1, r7
 	mov r0, #0x27
@@ -6158,10 +6158,10 @@ ov00_022C14A8: ; 0x022C14A8
 	ldr r1, _022C155C ; =ov00_0231EDE0
 	mov r0, r6
 	mov r2, r5
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldr r0, _022C155C ; =ov00_0231EDE0
 	mov r1, r5
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	mov r1, r7
 	mov r0, #0x18
 	bl ov00_022BEBE4
@@ -6315,7 +6315,7 @@ ov00_022C16D4: ; 0x022C16D4
 	mov r2, r0
 	mov r0, r4
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov00_022C16D4
 
@@ -6338,7 +6338,7 @@ ov00_022C1730: ; 0x022C1730
 	movhi r2, r0
 	mov r0, r3
 	add r1, r1, ip
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r2, [r7, #0x10]
 	mov r0, #1
 	ldr r1, [r2, r6, lsl #2]
@@ -6783,11 +6783,11 @@ _022C1D0C:
 	bne _022C1DAC
 	add r0, sb, #0xc
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	b _022C1DB4
 _022C1DAC:
 	add r1, sb, #0xc
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022C1DB4:
 	add r0, r8, #0xc
 	str r0, [sp, #0xc]
@@ -6841,11 +6841,11 @@ _022C1DC8:
 	bne _022C1E88
 	add r0, sb, #0xc
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	b _022C1E90
 _022C1E88:
 	add r1, sb, #0xc
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022C1E90:
 	add r0, r7, #0xc
 	str r0, [sp, #0xc]
@@ -6997,7 +6997,7 @@ _022C2078:
 	add r1, r5, #5
 	mov r2, #9
 	strb r3, [r5, #4]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #0xe
 _022C20B4:
 	mov r0, r1
@@ -7404,7 +7404,7 @@ _022C2638:
 	strhib r0, [r5, #0x2d]
 	ldrb r2, [r5, #0x2d]
 	add r0, ip, #5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [r5, #0x30c]
 	orr r0, r0, r6, lsl r4
 	str r0, [r5, #0x30c]
@@ -7622,11 +7622,11 @@ ov00_022C2948: ; 0x022C2948
 	add r0, r5, #0x10
 	mov r2, #0x9c
 	str r1, [r5, #0x30c]
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, r5, #0xac
 	mov r1, #0
 	mov r2, #0x240
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r5
 	mov r1, r4
 	bl ov00_022C29B0
@@ -7831,12 +7831,12 @@ _022C2C20:
 	mov r2, #0x20
 	bne _022C2C50
 	add r0, r4, #8
-	bl MemsetFast
+	bl MI_CpuFill8
 	b _022C2C5C
 _022C2C50:
 	mov r0, r6
 	add r1, r4, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022C2C5C:
 	ldr r0, [sp, #0x18]
 	mov r1, #0
@@ -7951,7 +7951,7 @@ ov00_022C2D60: ; 0x022C2D60
 	mov r1, #0
 	mov r2, #0x148
 	str r5, [r3, #0x16c]
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, #2
 	sub r2, r0, #1
 	ldr r3, _022C2E14 ; =ov00_0231EE8C
@@ -8003,7 +8003,7 @@ ov00_022C2E1C: ; 0x022C2E1C
 	mov r1, #0
 	mov r2, #0x148
 	str r5, [r3, #0x16c]
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, #2
 	sub r2, r0, #1
 	ldr r3, _022C2EA8 ; =ov00_0231EE8C
@@ -8309,7 +8309,7 @@ _022C31FC:
 	str r3, [r4, #0x14]
 	add r1, r4, #0x18
 	strb r2, [r4, #0x21]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov ip, #0xa
 	ldr r0, _022C3248 ; =ov00_0231EFD4
 	mov r1, r4
@@ -8403,7 +8403,7 @@ ov00_022C32E4: ; 0x022C32E4
 	mla r0, r1, r2, r0
 	add r1, r3, #0x72
 	add r1, r1, #0x1700
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r4
 	bl SetIrqFlag
 	ldr r0, _022C3364 ; =ov00_0232502C
@@ -8628,7 +8628,7 @@ _022C35C4:
 	sub r0, r2, #1
 	add r0, r3, r0, lsl #2
 	mov r2, #4
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022C39A8 ; =ov00_0232502C
 	ldrh r1, [r4, #0x10]
 	ldr r0, [r0]
@@ -8637,7 +8637,7 @@ _022C35C4:
 	sub r1, r1, #1
 	mla r0, r1, r2, r0
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldrh r0, [r4, #0x10]
 	bl ov00_022C7E70
 	ldrh r1, [r4, #0x10]
@@ -8865,7 +8865,7 @@ _022C3960:
 	mov r2, #0x7d00
 	add r3, r1, #0x1000
 	ldr r4, [r3, #0x4e4]
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	ldr r1, _022C39A8 ; =ov00_0232502C
 	mov r0, #0
 	str r0, [r1]
@@ -8926,7 +8926,7 @@ _022C3A3C:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	add r1, sp, #0
 	mov r2, #0x1d
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r2, _022C3E88 ; =ov00_0232502C
 	sub r0, r6, #1
 	ldr r1, [r2]
@@ -8944,7 +8944,7 @@ _022C3A3C:
 	add r1, r1, #0x1340
 	mla r1, r0, r2, r1
 	add r0, sp, #4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022C3E88 ; =ov00_0232502C
 	sub r2, r6, #1
 	ldr r3, [r0]
@@ -9295,7 +9295,7 @@ ov00_022C3F80: ; 0x022C3F80
 	mov r1, r5
 	mov r2, #0x10
 	mvn r4, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, _022C410C ; =ov00_0232502C
 	mov r0, #1
 	ldr r1, [r1]
@@ -9385,7 +9385,7 @@ _022C40A0:
 	add r0, r0, #0x388
 	add r0, r0, #0x1400
 	mla r0, r4, r3, r0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022C40F0:
 	ldr r0, _022C410C ; =ov00_0232502C
 	mov r1, r5
@@ -9633,7 +9633,7 @@ ov00_022C4458: ; 0x022C4458
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0xa
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	mov r3, #1
 	ldr r0, _022C45D0 ; =ov00_0232502C
 	mov r4, r3
@@ -9907,7 +9907,7 @@ _022C4790:
 	mov r1, sb
 	mov r2, #0x160
 	add sl, sp, #0x24
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [sb, #0x60]
 	orr r0, r0, #0x6000
 	orr r0, r0, #0x400000
@@ -9957,7 +9957,7 @@ _022C48A0:
 	mov r0, r8
 	mov r2, r7
 	add r1, r6, #0x10
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	str r7, [r6, #0x14]
 	str r8, [r6, #0x18]
 	b _022C48C0
@@ -10177,7 +10177,7 @@ ov00_022C4B90: ; 0x022C4B90
 	sub r2, r2, lr
 	add r0, r0, lr
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r3, pc}
 _022C4BEC:
 	ldr r3, [r0, #4]
@@ -10185,7 +10185,7 @@ _022C4BEC:
 	add r0, r3, lr
 	add r1, r1, lr
 	sub r2, r2, lr
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_022C4B90
 
@@ -10262,7 +10262,7 @@ _022C4CCC:
 	add r0, r8, #0x1c
 	add r1, sb, #0xc4
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022C4E8C ; =ov00_0232502C
 	mov r1, sb
 	ldr r0, [r0]
@@ -10395,7 +10395,7 @@ _022C4ECC:
 	add r0, r4, #0x160
 	add r1, r5, #0x3c
 	mov r2, #0x88
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022C4F08: .word ov00_0231812C
@@ -10746,7 +10746,7 @@ ov00_022C537C: ; 0x022C537C
 	mov r0, r4
 	bic r1, r2, #0x1f
 	bl DC_FlushRange
-	bl sub_0207A300
+	bl DC_WaitWriteBufferEmpty
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5
@@ -10789,7 +10789,7 @@ ov00_022C5400: ; 0x022C5400
 	mov r1, r6
 	mov r0, #0
 	mov r2, #0x4c0
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	mov r0, #0
 	strb r0, [r6, #0x4b2]
 	ldr r0, [r5, #0xc]
@@ -10813,7 +10813,7 @@ ov00_022C5400: ; 0x022C5400
 	mov r0, #0
 	mov r2, #0x220
 	strb r3, [r6, #0x4b2]
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 _022C5480:
 	ldr r0, [r5, #0x14]
 	cmp r4, #0
@@ -10822,7 +10822,7 @@ _022C5480:
 	mov r0, r4
 	add r1, r6, #0x220
 	mov r2, #0x16
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 _022C54A0:
 	ldrb r0, [r5, #0x18]
 	strb r0, [r6, #0x236]
@@ -10832,11 +10832,11 @@ _022C54A0:
 	ldr r0, [r5, #4]
 	add r1, r6, #0x238
 	mov r2, r2, lsr #0x10
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldr r0, [r5, #8]
 	add r1, r6, #0x298
 	mov r2, #0xc0
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	mov r1, #1
 	strb r1, [r6, #0x358]
 	add r0, r6, #0x300
@@ -10902,7 +10902,7 @@ ov00_022C5590: ; 0x022C5590
 	ldr r2, _022C55FC ; =0x0000014A
 	mov r4, r3
 	mov r7, #1
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	mov r2, #0
 	mov r1, #2
 _022C55C0:
@@ -11140,13 +11140,13 @@ ov00_022C583C: ; 0x022C583C
 	add r1, r0, r1
 	mov r0, #0
 	strb r7, [r3, #0x4c]
-	bl ArrayFill16
+	bl MTi_CpuClear16
 _022C5894:
 	ldr r0, _022C5990 ; =ov00_0231F580
 	ldr r1, _022C5994 ; =ov00_0231F5CE
 	ldrb r2, [r0, #0x4c]
 	ldr r0, [r0, #0x20]
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldr r2, _022C5990 ; =ov00_0231F580
 	ldr r0, _022C5998 ; =ov00_0231F5C8
 	ldrb r7, [r2, #0x27]
@@ -11299,7 +11299,7 @@ _022C5AB8:
 	ldr r1, _022C5C30 ; =ov00_0231F5D0
 	mov r0, #0
 	mov r2, #0x58
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	ldr r5, _022C5C28 ; =ov00_0231F580
 	mov sl, #0
 	ldr r1, [r5, #0x1c]
@@ -11326,7 +11326,7 @@ _022C5B0C:
 	mov r0, #0x16
 	mla r0, sb, r0, r2
 	mov r2, #0x16
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldr r0, [r5, #0x1c]
 	add sl, sl, #1
 	add r0, r0, #0x400
@@ -12361,7 +12361,7 @@ _022C697C:
 	add r1, r1, #0xc0
 	mov r2, #0xb8
 	strh r7, [r3, #0xe0]
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	add r1, r4, #0x600
 	mov r0, #0x180
 	mla r0, r5, r0, r1
@@ -12711,7 +12711,7 @@ ov00_022C6E94: ; 0x022C6E94
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 	mov r1, #0
 	add r2, sp, #0
 	mov r3, r1
@@ -12782,11 +12782,11 @@ _022C6F50:
 	mov r0, #0
 	mov r2, #0x1e00
 	str r5, [r3, #0xc]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r1, r5
 	mov r0, #0
 	mov r2, #0x1340
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	ldrb r0, [sb, #1]
 	add r2, r4, #0x530
 	mov r1, #0
@@ -12820,7 +12820,7 @@ _022C701C:
 	mov r0, sb
 	add r1, r5, #0x1300
 	mov r2, #0x16
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrb r0, [sb, #1]
 	cmp r0, #0xa
 	bhs _022C7048
@@ -13031,7 +13031,7 @@ ov00_022C72BC: ; 0x022C72BC
 	add r1, r5, #0x1000
 	ldr r6, [r1, #0x4e4]
 	add r1, r5, #0x1340
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	mov r0, r6
 	bl ov00_022C3270
 	ldr r1, _022C748C ; =ov00_02325020
@@ -13075,14 +13075,14 @@ _022C7360:
 	ldr r1, [r3, #0xc]
 	add r1, r1, #0x388
 	add r1, r1, #0x1400
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	ldr r0, _022C748C ; =ov00_02325020
 	mov r1, #0
 	ldr r0, [r0, #0xc]
 	mov r2, #0x1e
 	add r0, r0, #0x354
 	add r0, r0, #0x1400
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, _022C748C ; =ov00_02325020
 	mov r2, #1
 	ldr r0, [r1, #8]
@@ -13269,14 +13269,14 @@ ov00_022C75D8: ; 0x022C75D8
 	add r0, r0, #0xa8
 	add r0, r0, #0x1400
 	add r0, r0, r4, lsl #2
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022C775C ; =ov00_02325020
 	mov r2, #0x16
 	ldr r0, [r0, #0xc]
 	mov r1, #0
 	add r0, r0, #0x1340
 	mla r0, r4, r2, r0
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r5
 	bl ov00_022C7E70
 	ldr ip, _022C775C ; =ov00_02325020
@@ -13533,12 +13533,12 @@ _022C797C: .word ov00_02325020
 
 	arm_func_start ov00_022C7980
 ov00_022C7980: ; 0x022C7980
-	ldr ip, _022C7990 ; =MemsetFast
+	ldr ip, _022C7990 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x70
 	bx ip
 	.align 2, 0
-_022C7990: .word MemsetFast
+_022C7990: .word MI_CpuFill8
 	arm_func_end ov00_022C7980
 
 	arm_func_start ov00_022C7994
@@ -13604,7 +13604,7 @@ _022C7A2C:
 	mov r1, r7
 	mov r2, r6
 	add r0, r3, r0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #0
 	str r0, [sb]
 	mov r4, #1
@@ -13754,12 +13754,12 @@ _022C7C44: .word ov00_02325060
 
 	arm_func_start ov00_022C7C48
 ov00_022C7C48: ; 0x022C7C48
-	ldr ip, _022C7C58 ; =MemsetFast
+	ldr ip, _022C7C58 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x20
 	bx ip
 	.align 2, 0
-_022C7C58: .word MemsetFast
+_022C7C58: .word MI_CpuFill8
 	arm_func_end ov00_022C7C48
 
 	arm_func_start ov00_022C7C5C
@@ -13921,14 +13921,14 @@ _022C7E4C: .word ov00_02325064
 	arm_func_start ov00_022C7E50
 ov00_022C7E50: ; 0x022C7E50
 	ldr r3, _022C7E68 ; =ov00_02325064
-	ldr ip, _022C7E6C ; =MemsetFast
+	ldr ip, _022C7E6C ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x21c
 	str r0, [r3, #4]
 	bx ip
 	.align 2, 0
 _022C7E68: .word ov00_02325064
-_022C7E6C: .word MemsetFast
+_022C7E6C: .word MI_CpuFill8
 	arm_func_end ov00_022C7E50
 
 	arm_func_start ov00_022C7E70
@@ -13942,7 +13942,7 @@ ov00_022C7E70: ; 0x022C7E70
 	add r0, r1, r4, lsl #5
 	mov r1, #0
 	mov r2, #0x1e
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022C7EB0 ; =ov00_02325064
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -14030,7 +14030,7 @@ _022C7F90:
 	ldr r2, [r0, #8]
 	add r0, r6, #2
 	add r1, r5, #3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r5
 	mov r1, r4
 	bl ov00_022C8054
@@ -14061,7 +14061,7 @@ _022C7FF8:
 	strh r2, [r5, #2]
 	ldr r2, [r1, #8]
 	add r1, r5, #4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022C8050 ; =ov00_02325064
 	ldr r0, [r0, #8]
 	add r4, r4, r0
@@ -14095,7 +14095,7 @@ ov00_022C8054: ; 0x022C8054
 	add r1, r3, r4, lsl #5
 	mla r1, r5, r2, r1
 	add r0, r0, #3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022C80DC ; =ov00_02325064
 	mov r1, #1
 	ldr r2, [r0, #4]
@@ -14165,7 +14165,7 @@ ov00_022C8134: ; 0x022C8134
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, _022C822C ; =ov00_023250F8
 	mov r2, #0x60
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022C8230 ; =_022B966C
 	ldr r6, [r0, #8]
 	cmp r6, #0
@@ -14271,7 +14271,7 @@ ov00_022C826C: ; 0x022C826C
 	str r1, [r0, #0x7c]
 	b _022C82F4
 _022C82C4:
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022C8468 ; =ov00_02325078
 	ldr r3, _022C846C ; =0x6C078965
 	str r0, [r2, #0x68]
@@ -14349,7 +14349,7 @@ _022C8324:
 	str r5, [r2, #0x6c]
 	add r1, r4, #0x400
 	strh r1, [r2, #8]
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 	ldr r0, _022C8468 ; =ov00_02325078
 	mov r2, #0
 	strb r2, [r0, #1]
@@ -14710,7 +14710,7 @@ ov00_022C8824: ; 0x022C8824
 	add r1, r7, #6
 	mov r2, #6
 	mov r4, r3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r7
 	mov r3, r5
 	add r1, r7, #6
@@ -14824,7 +14824,7 @@ _022C89C0:
 	ldr r1, [ip, #0x28]
 	add r1, r3, r1
 	add r1, r1, #2
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022C8A68 ; =ov00_02325078
 	mov r0, r7
 	ldr r3, [r1, #0x58]
@@ -14832,7 +14832,7 @@ _022C89C0:
 	mov r2, #6
 	add r1, r3, r1
 	add r1, r1, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022C8A68 ; =ov00_02325078
 	add r0, r6, #6
 	ldr r3, [r1, #0x58]
@@ -14840,7 +14840,7 @@ _022C89C0:
 	sub r2, r5, #6
 	add r1, r3, r1
 	add r1, r1, #0xe
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
 	ldrne r2, [sp, #0x1c]
@@ -14852,7 +14852,7 @@ _022C89C0:
 	add r1, r3, r1
 	add r1, r1, #8
 	add r1, r1, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022C8A5C:
 	ldr r0, _022C8A68 ; =ov00_02325078
 	str r4, [r0, #0x28]
@@ -15000,7 +15000,7 @@ _022C8C30:
 	ldr r0, [r1]
 	cmp r5, r0
 	bne _022C8C68
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r2, #0xc
 	mul r3, r6, r2
 	ldr r2, _022C8C98 ; =ov00_023250F8
@@ -15038,15 +15038,15 @@ ov00_022C8CA0: ; 0x022C8CA0
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x2a
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, sp, #0
 	mov r1, #0xff
 	mov r2, #6
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022C8D8C ; =ov00_02325560
 	add r1, sp, #6
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #1
 	ldr r1, _022C8D90 ; =0x00000608
 	strb r0, [sp, #0xf]
@@ -15059,7 +15059,7 @@ ov00_022C8CA0: ; 0x022C8CA0
 	ldr r0, _022C8D8C ; =ov00_02325560
 	add r1, sp, #0x16
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022C8D98 ; =ov00_02325078
 	mov r1, r4, lsr #0x10
 	ldr r3, [r0, #0x50]
@@ -15153,7 +15153,7 @@ ov00_022C8E0C: ; 0x022C8E0C
 	bl ov00_022C8764
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	mov r0, r0, lsl #0x10
@@ -15173,7 +15173,7 @@ _022C8E70:
 	add r1, r1, #4
 	mov r2, #6
 	strh r4, [r3, r5]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022C8EA8:
 	add r1, r1, #1
@@ -15210,7 +15210,7 @@ _022C8F08:
 	add r1, r1, #4
 	mov r2, #6
 	str r6, [r3, r5]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022C8F44 ; =ov00_02325102
 	strh r4, [r0, r5]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -15251,7 +15251,7 @@ _022C8FA4:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	sub r1, r8, #0xe
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022C8FEC
 _022C8FBC:
 	mov r0, #1
@@ -15270,7 +15270,7 @@ _022C8FEC:
 	ldr r0, _022C9014 ; =ov00_02325560
 	sub r1, r8, #8
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r2, r6
 	mov r3, r5
 	sub r0, r8, #0xe
@@ -15341,7 +15341,7 @@ _022C90EC:
 	ldr r0, _022C9138 ; =ov00_02318850
 	sub r1, r8, #0x1c
 	mov r2, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	bl EnableIrqFlag
 	mov r4, r0
 	ldr r0, _022C913C ; =ov00_02325560
@@ -15805,11 +15805,11 @@ ov00_022C9798: ; 0x022C9798
 	add r1, r4, #0x12
 	mov r2, #0xa
 	strh r3, [r4, #6]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022C9838 ; =ov00_02325560
 	add r1, r4, #8
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r3, _022C983C ; =ov00_02325078
 	add r0, r4, #0x12
 	ldr r2, [r3, #0x50]
@@ -15827,11 +15827,11 @@ ov00_022C9798: ; 0x022C9798
 	mov r3, ip, lsl #8
 	orr r3, r3, ip, asr #8
 	strh r3, [r4, #0x10]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022C9838 ; =ov00_02325560
 	sub r1, r4, #8
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	sub r0, r4, #0xe
 	mov r1, #0x2a
 	mov r2, #0
@@ -16044,7 +16044,7 @@ _022C9A90:
 	ldr r1, [r4, #0x40]
 	ldr r2, [r4, #0x44]
 	add r0, r7, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [r4, #4]
 	cmp r0, #3
 	bne _022C9B58
@@ -16402,7 +16402,7 @@ ov00_022C9F80: ; 0x022C9F80
 	mov r1, #0
 	mov r2, #0x64
 	mov r5, r3
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldrh r3, [r7, #2]
 	ldr r0, _022CA0B4 ; =ov00_02325178
 	ldr r2, _022CA0B8 ; =ov00_02325078
@@ -16484,7 +16484,7 @@ ov00_022CA0BC: ; 0x022CA0BC
 	mov r6, r0
 	mov r5, r1
 	strb r2, [r4, #8]
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	str r0, [r4, #0x10]
@@ -16825,7 +16825,7 @@ _022CA554:
 	mov r2, r8
 	add r0, sb, r1, asr #2
 	add r1, ip, r3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, [r5, #0x44]
 	mov r0, r4
 	add r1, r1, r8
@@ -17197,7 +17197,7 @@ _022CAAB4:
 	ldr r1, [r4, #0x40]
 	ldr r2, [r4, #0x44]
 	add r0, r7, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [r4, #4]
 	cmp r0, #3
 	bne _022CAB04
@@ -17319,7 +17319,7 @@ _022CAC5C:
 	str sb, [r6]
 	strh r4, [r6, #6]
 	strh r0, [r6, #8]
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	str r0, [r6, #0x2c]
@@ -17331,7 +17331,7 @@ _022CAC5C:
 	ldr r1, [r6, #0x34]
 	mov r2, r5
 	add r1, r1, #0xe
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022CACC8:
 	ldrh r0, [r7, #4]
 	cmp r0, #8
@@ -17369,7 +17369,7 @@ _022CAD00:
 	strh r1, [r7, #4]
 	ldr r1, [r7, #0x30]
 	add r1, r1, fp, lsl #3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrh r4, [r7, #8]
 	cmp r4, #0
 	addeq sp, sp, #0xc
@@ -17794,7 +17794,7 @@ ov00_022CB278: ; 0x022CB278
 _022CB29C:
 	str r8, [sl, #0x28]
 	strb r6, [sl, #8]
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	str r0, [sl, #0x10]
@@ -17916,7 +17916,7 @@ ov00_022CB3F8: ; 0x022CB3F8
 	mov r0, r4
 	bl ov00_022D2B0C
 _022CB424:
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r6, r0, lsr #0x10
 	orr r6, r6, r1, lsl #16
 	ldr r5, _022CB47C ; =ov00_02325078
@@ -17930,7 +17930,7 @@ _022CB43C:
 	ldrneb r0, [r4, #8]
 	cmpne r0, #0
 	beq _022CB46C
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	sub r0, r0, r6
@@ -18197,7 +18197,7 @@ ov00_022CB77C: ; 0x022CB77C
 	str r3, [sp, #8]
 	mov r6, r4
 	str r0, [r8, #0x34]
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	str r0, [sp, #0xc]
@@ -18211,7 +18211,7 @@ _022CB7C0:
 	mov r2, sb
 	str r6, [sp, #4]
 	bl ov00_022CB740
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r5, r0, lsr #0x10
 	ldr r4, _022CB980 ; =ov00_02325078
 	orr r5, r5, r1, lsl #16
@@ -18228,7 +18228,7 @@ _022CB7F0:
 	ldr r0, [r8, #0x30]
 	cmp r1, r0
 	beq _022CB848
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	sub r0, r0, r5
@@ -18250,7 +18250,7 @@ _022CB848:
 	add r0, r0, r5
 	str r0, [sp, #0x10]
 	beq _022CB884
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	str r0, [sp, #0xc]
@@ -18265,7 +18265,7 @@ _022CB884:
 	bne _022CB908
 	cmp r6, #0
 	bne _022CB90C
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r7, r0, lsr #0x10
 	orr r7, r7, r1, lsl #16
 	ldr r4, _022CB980 ; =ov00_02325078
@@ -18280,7 +18280,7 @@ _022CB8D0:
 	blx r0
 	cmp r0, #0
 	beq _022CB8F8
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	sub r0, r0, r7
@@ -18314,7 +18314,7 @@ _022CB934:
 	ldrb r0, [r8, #8]
 	cmp r0, #4
 	bne _022CB974
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r2, r0, lsr #0x10
 	ldr r0, [sp, #0xc]
 	orr r2, r2, r1, lsl #16
@@ -18516,7 +18516,7 @@ ov00_022CBBA0: ; 0x022CBBA0
 	ldr r0, _022CBC3C ; =ov00_02325078
 	ldr r0, [r0, #0x50]
 	bl ov00_022C8CA0
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r6, r0, lsr #0x10
 	orr r6, r6, r1, lsl #16
 	mov r5, #0x64
@@ -18537,7 +18537,7 @@ _022CBC10:
 	blx r0
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	sub r0, r0, r6
@@ -18556,7 +18556,7 @@ ov00_022CBC40: ; 0x022CBC40
 	ldr r0, _022CBF94 ; =ov00_02325158
 	mov r2, #0x64
 	str r1, [r3, #0x44]
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, _022CBF90 ; =ov00_02325078
 	mov r3, #0x180
 	ldr r0, _022CBF98 ; =ov00_02325724
@@ -18580,7 +18580,7 @@ _022CBC9C:
 	ldr r1, [r0, #0x44]
 	cmp r1, #0
 	bne _022CBF70
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022CBF90 ; =ov00_02325078
 	mov r5, r0, lsr #0x10
 	ldr r0, [r2, #0x48]
@@ -18803,7 +18803,7 @@ ov00_022CBFB0: ; 0x022CBFB0
 	mov r1, #0
 	mov r2, #0xec
 	mov r6, r0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022CC120 ; =0x00000101
 	mov r1, #6
 	strh r0, [r6]
@@ -18852,7 +18852,7 @@ ov00_022CBFB0: ; 0x022CBFB0
 	orr r3, r2, r3, asr #8
 	mov r2, #6
 	strh r3, [r6, #0xe]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022CC12C ; =0x00008263
 	ldr r1, _022CC130 ; =0x00006353
 	strh r0, [r6, #0xec]
@@ -18869,14 +18869,14 @@ ov00_022CBFB0: ; 0x022CBFB0
 	add r1, r6, #0xf6
 	mov r2, #6
 	strb r3, [r6, #0xf5]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #0xc
 	strb r1, [r6, #0xfc]
 	mov r2, #0xa
 	ldr r0, _022CC138 ; =ov00_0231885C
 	add r1, r6, #0xfe
 	strb r2, [r6, #0xfd]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #0x37
 	strb r1, [r6, #0x108]
 	mov r2, #3
@@ -18910,7 +18910,7 @@ ov00_022CC13C: ; 0x022CC13C
 	mov r0, r5
 	mov r1, ip
 	mov r2, r4
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r5, r5, r4
 _022CC168:
 	mov r0, r5
@@ -19051,7 +19051,7 @@ ov00_022CC33C: ; 0x022CC33C
 	add r1, r1, #1
 	str r0, [sp]
 	rsb fp, r1, r1, lsl #4
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0, lsr #0x10
 	orr r4, r4, r1, lsl #16
 	mov r5, #0
@@ -19264,7 +19264,7 @@ _022CC644:
 	beq _022CC678
 	cmp r5, #0
 	bne _022CC678
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	sub r0, r0, r4
@@ -19503,7 +19503,7 @@ _022CC944:
 	strb r3, [r2, #4]
 	bl ov00_022CBA58
 	mov r4, #0
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r5, r0, lsr #0x10
 	orr r5, r5, r1, lsl #16
 	b _022CCADC
@@ -19587,7 +19587,7 @@ _022CCAA4:
 	bhi _022CCAD4
 	mov r1, fp
 	add r0, r0, #0xa
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r4, #1
 	b _022CCAD4
 _022CCAC4:
@@ -19606,7 +19606,7 @@ _022CCADC:
 	beq _022CCB10
 	cmp r4, #0
 	bne _022CCB10
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	sub r0, r0, r5
@@ -19801,8 +19801,10 @@ _022CCD88: .word ov00_02325078
 _022CCD8C: .word ov00_023250D8
 	arm_func_end ov00_022CCC58
 
-	arm_func_start ov00_022CCD90
-ov00_022CCD90: ; 0x022CCD90
+    ; NitroWiFi: libsoc.a
+
+	arm_func_start SOCL_Startup
+SOCL_Startup: ; 0x022CCD90
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _022CCDC4 ; =_02000BF4
@@ -19819,7 +19821,7 @@ ov00_022CCD90: ; 0x022CCD90
 	.align 2, 0
 _022CCDC4: .word _02000BF4
 _022CCDC8: .word ov00_02318868
-	arm_func_end ov00_022CCD90
+	arm_func_end SOCL_Startup
 
 	arm_func_start ov00_022CCDCC
 ov00_022CCDCC: ; 0x022CCDCC
@@ -19852,7 +19854,7 @@ ov00_022CCE0C: ; 0x022CCE0C
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x30
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, [r5, #0x18]
 	ldr r0, _022CCF48 ; =ov00_023268C0
 	ldr r2, _022CCF4C ; =ov00_022CCFEC
@@ -20344,7 +20346,7 @@ ov00_022CD3E8: ; 0x022CD3E8
 	beq _022CD43C
 	mov r2, r4
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r5
 	mov r1, r7
 	bl ov00_022CD4F8
@@ -20905,7 +20907,7 @@ ov00_022CDB1C: ; 0x022CDB1C
 	mov r1, r8
 	mov r2, r7
 	movne r5, r7
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, [sb, #0x64]
 	ldrsb r0, [r1, #0xfe]
 	cmp r0, #0
@@ -21062,7 +21064,7 @@ _022CDD78:
 	movhi sl, r1
 	ldr r1, [sp, #0xc]
 	mov r2, sl
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, sl
 	bl ov00_022CB644
 	add sp, sp, #0x14
@@ -21205,7 +21207,7 @@ _022CDF68:
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	add r0, r7, #0xc
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	cmp fp, #0
 	ldrneh r0, [r7, #6]
 	ldr r1, [sp, #0x30]
@@ -21278,7 +21280,7 @@ ov00_022CE010: ; 0x022CE010
 	strh r3, [r5, #6]
 	ldr r3, [r7, #0x1c]
 	str r3, [r5, #8]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [r4, #0x100]
 	cmp r0, #0
 	ldrne r0, [r4, #0x100]
@@ -21573,12 +21575,12 @@ _022CE46C:
 	ldr r1, [r5, #0x18]
 	mov r2, r7
 	add r0, r6, r0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022CE498:
 	ldr r1, [r5, #0x10]
 	ldr r2, [r5, #0x14]
 	mov r0, r6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, r4, #0x100
 	ldrh r6, [r0]
 	strh r7, [r5, #0x20]
@@ -21788,7 +21790,7 @@ _022CE75C:
 	ldr r0, [r6, #0x10]
 	mov r1, r7
 	mov r2, r4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [r6, #0x10]
 	add r0, r0, r4
 	str r0, [r6, #0x10]
@@ -21801,7 +21803,7 @@ _022CE78C:
 	ldr r0, [r6, #0x18]
 	mov r2, r5
 	add r1, r7, r4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [r6, #0x18]
 	add r0, r0, r5
 	str r0, [r6, #0x18]
@@ -22309,7 +22311,7 @@ ov00_022CEDE0: ; 0x022CEDE0
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x64
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, r4, #0x368
 	add r2, r0, #0x800
 	ldr r3, _022CEE88 ; =0x00000B68
@@ -22809,7 +22811,7 @@ ov00_022CF3D4: ; 0x022CF3D4
 	ldr r0, _022CF47C ; =ov00_023269BC
 	ldr r2, _022CF480 ; =0x00000101
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022CF47C ; =ov00_023269BC
 	ldr r2, _022CF480 ; =0x00000101
 	mov r1, r5
@@ -23000,8 +23002,8 @@ ov00_022CF648: ; 0x022CF648
 _022CF670: .word ov00_02326934
 	arm_func_end ov00_022CF648
 
-	arm_func_start ov00_022CF674
-ov00_022CF674: ; 0x022CF674
+	arm_func_start SOC_Startup
+SOC_Startup: ; 0x022CF674
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, [r0, #0xc]
 	ldr ip, _022CF7D8 ; =ov00_022CF61C
@@ -23089,14 +23091,14 @@ ov00_022CF674: ; 0x022CF674
 	ldr r2, [r0, #0x30]
 	ldr r0, _022CF7E4 ; =ov00_02326974
 	str r2, [r1, #0x74]
-	bl ov00_022CCD90
+	bl SOCL_Startup
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022CF7D8: .word ov00_022CF61C
 _022CF7DC: .word ov00_02326934
 _022CF7E0: .word ov00_022CF648
 _022CF7E4: .word ov00_02326974
-	arm_func_end ov00_022CF674
+	arm_func_end SOC_Startup
 
 	arm_func_start ov00_022CF7E8
 ov00_022CF7E8: ; 0x022CF7E8
@@ -23163,7 +23165,7 @@ ov00_022CF874: ; 0x022CF874
 	mov r0, r1
 	add r1, sp, #0x10
 	mov r2, #4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [sp, #0x10]
 	add r1, sp, #0xc
 	bl ov00_022CF8F8
@@ -23368,7 +23370,7 @@ _022CFB0C:
 	mov r1, r7
 	add r0, r6, #0x20
 	mov r2, #0x30
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #1
 	strb r0, [r7, #0x30]
 	b _022CFB70
@@ -23408,12 +23410,12 @@ _022CFBA4:
 	mov r0, r5
 	add r1, r8, #0x74
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, r8
 	add r0, r5, #0x20
 	mov r2, #0x30
-	bl MemcpyFast
-	bl sub_0207AE44
+	bl MI_CpuCopy8
+	bl OS_GetTick
 	mov r0, r0, lsr #0x10
 	orr r0, r0, r1, lsl #16
 	str r0, [r5, #0x50]
@@ -23441,7 +23443,7 @@ ov00_022CFC20: ; 0x022CFC20
 	mov r6, r2
 	bl EnableIrqFlag
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr sb, _022CFD08 ; =ov00_02326AC8
 	mov r5, r0, lsr #0x10
 	mov r2, #0
@@ -23484,11 +23486,11 @@ _022CFCC8:
 	mov r1, sb
 	add r0, r8, #0x74
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r8
 	add r1, sb, #0x20
 	mov r2, #0x30
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	str r5, [sb, #0x50]
 	mov r0, #1
 	strb r0, [sb, #0x5a]
@@ -23832,7 +23834,7 @@ _022D0100:
 	add r1, sb, #0x94
 	mov r2, r4
 	add r1, r1, #0x400
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	str r4, [sb, #0x594]
 	b _022D0198
 _022D0120:
@@ -23868,7 +23870,7 @@ _022D017C:
 	add r1, sb, #0x198
 	mov r2, r4
 	add r1, r1, #0x400
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	str r4, [sb, #0x5a0]
 _022D0198:
 	ldr r0, [sp, #4]
@@ -23974,7 +23976,7 @@ _022D02C0:
 	ldr r0, [sp, #4]
 	mov r2, r4
 	add r1, sb, #0x7b0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, sb, r4
 	mov r1, #0
 	strb r1, [r0, #0x7b0]
@@ -24498,7 +24500,7 @@ ov00_022D0A1C: ; 0x022D0A1C
 	add r0, r5, #2
 	add r1, r6, #0x54
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrb r7, [r6, #0x30]
 	ldrb r4, [r5, #0x22]
 	add r5, r5, #0x23
@@ -24526,7 +24528,7 @@ _022D0A84:
 	mov r0, r5
 	add r1, r6, #0x74
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #1
 _022D0AA4:
 	strb r0, [r6, #0x30]
@@ -24645,17 +24647,17 @@ ov00_022D0B8C: ; 0x022D0B8C
 	add r0, r6, r4
 	add r1, r7, #0x34
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022D0C44
 _022D0C24:
 	add r0, r7, #0x34
 	rsb r2, r5, #0x20
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r1, r7, #0x54
 	mov r2, r5
 	add r0, r6, r4
 	sub r1, r1, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022D0C44:
 	mov r0, #1
 	strb r0, [r7, #0x455]
@@ -24677,7 +24679,7 @@ ov00_022D0C54: ; 0x022D0C54
 	add r0, r6, #2
 	add r1, r4, #0x34
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrb r5, [r6, #0x22]
 	add r6, r6, #0x23
 	cmp r5, #0x20
@@ -24687,7 +24689,7 @@ ov00_022D0C54: ; 0x022D0C54
 	mov r0, r6
 	add r1, r4, #0x74
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r4
 	bl ov00_022CFAEC
 _022D0CB4:
@@ -24922,7 +24924,7 @@ ov00_022D0FCC: ; 0x022D0FCC
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x30
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add sp, sp, #0x30
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -25104,7 +25106,7 @@ _022D1270:
 	add r0, sp, #0
 	mov r1, #0x36
 	mov r2, #0x30
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r1, sp, #0
 	add r0, r5, #0x3a4
 	mov r2, #0x30
@@ -25121,7 +25123,7 @@ _022D1270:
 	add r0, sp, #0
 	mov r1, #0x5c
 	mov r2, #0x30
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, r5, #0x3a4
 	add r1, sp, #0
 	mov r2, #0x30
@@ -25166,7 +25168,7 @@ _022D134C:
 	add r0, sp, #0
 	mov r1, #0x36
 	mov r2, #0x28
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r1, sp, #0
 	add r0, r5, #0x2ec
 	mov r2, #0x28
@@ -25183,7 +25185,7 @@ _022D134C:
 	add r0, sp, #0
 	mov r1, #0x5c
 	mov r2, #0x28
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, r5, #0x2ec
 	add r1, sp, #0
 	mov r2, #0x28
@@ -25211,7 +25213,7 @@ ov00_022D13EC: ; 0x022D13EC
 	add r0, r5, #0x3a4
 	add r1, r5, #0x3fc
 	mov r2, #0x58
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r1, sp, #0
 	mov r0, r5
 	mov r2, #1
@@ -25219,7 +25221,7 @@ ov00_022D13EC: ; 0x022D13EC
 	add r0, r5, #0x3fc
 	add r1, r5, #0x3a4
 	mov r2, #0x58
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r1, sp, #0
 	mov r0, r4
 	mov r2, #0x10
@@ -25232,7 +25234,7 @@ ov00_022D13EC: ; 0x022D13EC
 	add r0, r5, #0x2ec
 	add r1, r5, #0x348
 	mov r2, #0x5c
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r1, sp, #0
 	mov r0, r5
 	mov r2, #1
@@ -25240,7 +25242,7 @@ ov00_022D13EC: ; 0x022D13EC
 	add r0, r5, #0x348
 	add r1, r5, #0x2ec
 	mov r2, #0x5c
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r1, sp, #0
 	add r0, r4, #0x10
 	mov r2, #0x14
@@ -25310,7 +25312,7 @@ _022D1528:
 	add r0, sp, #0
 	mov r1, #0x36
 	mov r2, #0x30
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r1, sp, #0
 	add r0, r7, #0x3fc
 	mov r2, #0x30
@@ -25339,7 +25341,7 @@ _022D1528:
 	add r0, sp, #0
 	mov r1, #0x5c
 	mov r2, #0x30
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, r7, #0x3fc
 	add r1, sp, #0
 	mov r2, #0x30
@@ -25367,7 +25369,7 @@ _022D1608:
 	add r0, sp, #0
 	mov r1, #0x36
 	mov r2, #0x28
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r1, sp, #0
 	add r0, r7, #0x348
 	mov r2, #0x28
@@ -25396,7 +25398,7 @@ _022D1608:
 	add r0, sp, #0
 	mov r1, #0x5c
 	mov r2, #0x28
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, r7, #0x348
 	add r1, sp, #0
 	mov r2, #0x28
@@ -25451,7 +25453,7 @@ _022D1750:
 	add r0, sp, #0
 	mov r1, #0x36
 	mov r2, #0x30
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r1, sp, #0
 	add r0, r5, #0x3fc
 	mov r2, #0x30
@@ -25480,7 +25482,7 @@ _022D1750:
 	add r0, sp, #0
 	mov r1, #0x5c
 	mov r2, #0x30
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, r5, #0x3fc
 	add r1, sp, #0
 	mov r2, #0x30
@@ -25504,7 +25506,7 @@ _022D1820:
 	add r0, sp, #0
 	mov r1, #0x36
 	mov r2, #0x28
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r1, sp, #0
 	add r0, r5, #0x348
 	mov r2, #0x28
@@ -25533,7 +25535,7 @@ _022D1820:
 	add r0, sp, #0
 	mov r1, #0x5c
 	mov r2, #0x28
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, r5, #0x348
 	add r1, sp, #0
 	mov r2, #0x28
@@ -25580,7 +25582,7 @@ _022D1930:
 	strhi r6, [sp]
 	ldr r2, [sp]
 	mov r1, r7
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [sp]
 	mov r1, r5
 	bl ov00_022CB5B4
@@ -25672,7 +25674,7 @@ _022D1A74:
 	add r0, sb, #0x2e4
 	mov r1, #0
 	mov r2, #8
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, #7
 	strb r0, [sb, #0x455]
 	b _022D1C1C
@@ -26056,7 +26058,7 @@ ov00_022D1F74: ; 0x022D1F74
 	add r0, r5, #0x1cc
 	mov r2, #8
 	strb r3, [r4, #5]
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, #0x16
 	strb r0, [r4, #6]
 	mov r0, #3
@@ -26075,7 +26077,7 @@ ov00_022D1F74: ; 0x022D1F74
 	add r1, r5, #0x3fc
 	mov r2, #0x58
 	strb r3, [r4, #0xe]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r5
 	add r1, r4, #0xf
 	mov r2, #0
@@ -26083,11 +26085,11 @@ ov00_022D1F74: ; 0x022D1F74
 	add r0, r5, #0x3fc
 	add r1, r5, #0x3a4
 	mov r2, #0x58
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, r5, #0x2ec
 	add r1, r5, #0x348
 	mov r2, #0x5c
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r5
 	add r1, r4, #0x1f
 	mov r2, #0
@@ -26095,7 +26097,7 @@ ov00_022D1F74: ; 0x022D1F74
 	add r0, r5, #0x348
 	add r1, r5, #0x2ec
 	mov r2, #0x5c
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r5
 	add r1, r4, #0xb
 	mov r2, #0x28
@@ -26151,7 +26153,7 @@ ov00_022D20CC: ; 0x022D20CC
 	add r0, r4, #0x34
 	add r1, r5, #0xb
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrh r2, [r7, #0x18]
 	ldr r1, [r7, #0x1c]
 	mov r0, r4
@@ -26166,7 +26168,7 @@ ov00_022D20CC: ; 0x022D20CC
 	add r0, r4, #0x74
 	add r1, r5, #0x2c
 	strb r2, [r5, #0x2b]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, r5, #0x4c
 _022D2184:
 	mov r6, #0
@@ -26278,7 +26280,7 @@ _022D2294:
 	sub r1, r1, #0x30
 	mov r2, #0x30
 	strb r5, [r8, r3]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022D2518 ; =ov00_0232508C
 	mov r0, r7, lsl #3
 	ldr r1, [r1]
@@ -26669,7 +26671,7 @@ _022D2844:
 	ldr r2, [sp]
 	add r1, r3, r1
 	movlo r6, #0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [sp]
 	mov r1, r5
 	bl ov00_022CB5B4
@@ -26768,14 +26770,14 @@ _022D298C:
 	add r1, r4, #5
 	mov r2, r7
 	sub fp, r6, r7
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r1, r4, #5
 	mov r0, r8
 	add r1, r1, r7
 	mov r2, fp
 	add sl, sl, r7
 	sub sb, sb, r7
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #0x17
 	strb r0, [r4]
 	mov r0, #3
@@ -26960,36 +26962,36 @@ _022D2C50: .word _022B966C
 
 	arm_func_start ov00_022D2C54
 ov00_022D2C54: ; 0x022D2C54
-	ldr ip, _022D2C68 ; =MemsetFast
+	ldr ip, _022D2C68 ; =MI_CpuFill8
 	ldr r0, _022D2C6C ; =ov00_02326AC8
 	mov r1, #0
 	mov r2, #0x170
 	bx ip
 	.align 2, 0
-_022D2C68: .word MemsetFast
+_022D2C68: .word MI_CpuFill8
 _022D2C6C: .word ov00_02326AC8
 	arm_func_end ov00_022D2C54
 
 	arm_func_start ov00_022D2C70
 ov00_022D2C70: ; 0x022D2C70
-	ldr ip, _022D2C84 ; =MemcpyFast
+	ldr ip, _022D2C84 ; =MI_CpuCopy8
 	mov r3, r0
 	mov r0, r1
 	mov r1, r3
 	bx ip
 	.align 2, 0
-_022D2C84: .word MemcpyFast
+_022D2C84: .word MI_CpuCopy8
 	arm_func_end ov00_022D2C70
 
 	arm_func_start ov00_022D2C88
 ov00_022D2C88: ; 0x022D2C88
-	ldr ip, _022D2C9C ; =MemcpyFast
+	ldr ip, _022D2C9C ; =MI_CpuCopy8
 	mov r3, r0
 	mov r0, r1
 	mov r1, r3
 	bx ip
 	.align 2, 0
-_022D2C9C: .word MemcpyFast
+_022D2C9C: .word MI_CpuCopy8
 	arm_func_end ov00_022D2C88
 
 	arm_func_start ov00_022D2CA0
@@ -27270,7 +27272,7 @@ ov00_022D30BC: ; 0x022D30BC
 	mov r1, #0
 	mov r2, #0x58
 	mov r4, r0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, _022D30F4 ; =0x67452301
 	ldr r0, _022D30F8 ; =0xEFCDAB89
 	str r1, [r4]
@@ -27312,7 +27314,7 @@ ov00_022D3104: ; 0x022D3104
 	mov r0, r7
 	mov r2, r5
 	add r1, r1, r4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r8
 	add r1, r8, #0x18
 	mov r4, #0
@@ -27336,7 +27338,7 @@ _022D31A4:
 	add r0, r7, r5
 	add r1, r1, r4
 	sub r2, r6, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end ov00_022D3104
 
@@ -27870,7 +27872,7 @@ ov00_022D397C: ; 0x022D397C
 	mov r1, #0
 	mov r2, #0x5c
 	mov r4, r0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022D39BC ; =0x67452301
 	ldr r1, _022D39C0 ; =0xEFCDAB89
 	str r0, [r4]
@@ -27915,7 +27917,7 @@ ov00_022D39D0: ; 0x022D39D0
 	mov r0, r7
 	mov r2, r5
 	add r1, r1, r4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r8
 	add r1, r8, #0x1c
 	mov r4, #0
@@ -27939,7 +27941,7 @@ _022D3A70:
 	add r0, r7, r5
 	add r1, r1, r4
 	sub r2, r6, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end ov00_022D39D0
 
@@ -28133,7 +28135,7 @@ _022D3CD0:
 	add r0, r8, r3, lsl #1
 	mov r2, r1, lsl #1
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end ov00_022D3C58
 
@@ -28236,7 +28238,7 @@ _022D3E1C:
 	add r0, r8, r3, lsl #1
 	mov r2, r1, lsl #1
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end ov00_022D3D98
 
@@ -28322,7 +28324,7 @@ ov00_022D3F14: ; 0x022D3F14
 	mov r2, r8, lsl #1
 	mov r1, #0
 	str r0, [sp]
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, sl
 	mov r1, r8
 	bl ov00_022D3C00
@@ -28394,7 +28396,7 @@ _022D4010:
 	mov r2, r1, lsl #1
 	add r0, r7, ip, lsl #1
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov00_022D3FC0
 
@@ -28415,7 +28417,7 @@ ov00_022D4038: ; 0x022D4038
 	add r0, sl, r0, lsl #1
 	mov r2, r1, lsl #1
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 _022D4078:
 	cmp fp, #0
 	mov r4, #0
@@ -28538,7 +28540,7 @@ ov00_022D41B8: ; 0x022D41B8
 	mov r1, #0
 	str r3, [sp, #8]
 	add r7, r6, sb, lsl #1
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, [sp, #4]
 	mov r1, sb
 	bl ov00_022D3C00
@@ -28558,13 +28560,13 @@ ov00_022D41B8: ; 0x022D41B8
 	ldr r0, [sp, #4]
 	mov r1, r7
 	mov r2, sb, lsl #1
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022D4350
 _022D4244:
 	ldr r0, [sp, #4]
 	add r1, r6, r4, lsl #1
 	mov r2, fp, lsl #1
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	cmp r5, #2
 	ble _022D4278
 	add r0, sl, r5, lsl #1
@@ -28640,7 +28642,7 @@ _022D4350:
 	ldr r1, [sp]
 	mov r0, r6
 	mov r2, sb, lsl #1
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022D436C:
 	ldr r0, [sp, #8]
 	cmp r0, #0
@@ -28649,7 +28651,7 @@ _022D436C:
 	ldr r1, [sp, #8]
 	mov r0, r7
 	mov r2, sb, lsl #1
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -28677,7 +28679,7 @@ ov00_022D4398: ; 0x022D4398
 	mov r2, r1, lsl #1
 	mov r1, #0
 	add r5, r4, r8, lsl #1
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r2, #1
 	mov r0, sb
 	mov r1, r8
@@ -28698,7 +28700,7 @@ _022D4410:
 	ldr r0, [sp, #8]
 	mov r1, sl
 	mov r2, r8, lsl #1
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r6, r6, #1
 	b _022D444C
 _022D4440:
@@ -28717,7 +28719,7 @@ _022D4458:
 	mov r0, r4
 	mov r1, sl
 	mov r2, fp
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	cmp r7, #0
 	beq _022D449C
 	str r8, [sp]
@@ -28743,7 +28745,7 @@ _022D449C:
 	mov r0, r4
 	mov r1, sl
 	mov r2, fp
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	cmp r7, #0
 	beq _022D4500
 	str r8, [sp]
@@ -28788,11 +28790,11 @@ ov00_022D452C: ; 0x022D452C
 	str r2, [sp, #0xc]
 	mov r1, sb
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [sp, #0xc]
 	mov r1, r4
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #1
 	strh r0, [r4, r8]
 	mov r0, sb
@@ -28812,11 +28814,11 @@ _022D45A0:
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r7
 	mov r1, sb
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r7
 	mov r1, fp
 	mov r2, r5
@@ -28830,11 +28832,11 @@ _022D45A0:
 	mov r0, r5
 	mov r1, r6
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r7
 	mov r1, r5
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, sb
 	mov r1, sl
 	bl ov00_022D3C28
@@ -28868,7 +28870,7 @@ ov00_022D4678: ; 0x022D4678
 	mov r7, r0
 	mov sb, r1
 	ldr r5, [sp, #0x20]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	cmp r8, #1
 	bne _022D46B8
 	mov r0, r7
@@ -28896,7 +28898,7 @@ _022D46D4:
 	mov r2, r8
 	add r0, r0, r5, lsl #1
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x30]
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x24]
@@ -28915,7 +28917,7 @@ _022D46D4:
 	sub r0, r0, r5, lsl #1
 	mov r2, r5, lsl #1
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r7
 	ldr r1, [sp, #0x24]
 	mov r2, r6
@@ -28929,7 +28931,7 @@ _022D4774:
 	mov r0, r7
 	mov r2, r4
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _022D4788:
 	ldr r2, [sp, #0x24]
@@ -28961,7 +28963,7 @@ ov00_022D47A0: ; 0x022D47A0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r2, r4
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, [sp, #0x28]
 	mov r1, sl
 	add r6, r0, sl, lsl #1
@@ -29087,7 +29089,7 @@ ov00_022D49AC: ; 0x022D49AC
 	mov r2, r3, lsl #1
 	mov r1, #0
 	mov r4, r0
-	bl MemsetFast
+	bl MI_CpuFill8
 	sub r0, r5, #1
 	cmp r5, #1
 	add r6, r6, r0
@@ -29213,21 +29215,21 @@ _022D4ADC:
 	strh r0, [r1, #0xf8]
 	bl ov00_022D59D4
 	bl ov00_022D705C
-	bl sub_0207ADCC
+	bl OS_IsTickAvailable
 	cmp r0, #0
 	bne _022D4B50
-	bl sub_0207AD54
+	bl OS_InitTick
 _022D4B50:
-	bl sub_0207B030
+	bl OS_IsAlarmAvailable
 	cmp r0, #0
 	bne _022D4B60
-	bl sub_0207AFF0
+	bl OS_InitAlarm
 _022D4B60:
 	ldr r0, _022D4B84 ; =ov00_02326C4C
 	ldr r0, [r0]
 	add r0, r0, #0x2cc
 	add r0, r0, #0x2000
-	bl sub_0207B040
+	bl OS_CreateAlarm
 	mov r0, r4
 	bl SetIrqFlag
 	mov r0, #0
@@ -29727,25 +29729,25 @@ _022D51C0:
 	bne _022D51FC
 	add r0, r1, #0x2200
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	b _022D521C
 _022D51FC:
 	add r0, r6, #2
 	add r1, r1, #0x2200
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022D521C
 _022D520C:
 	add r0, ip, #0x2200
 	mov r1, #0
 	mov r2, #0x52
-	bl MemsetFast
+	bl MI_CpuFill8
 _022D521C:
 	ldr r1, _022D5308 ; =ov00_02326C4C
 	mov r0, r7
 	ldr r1, [r1]
 	mov r2, #0xc0
 	add r1, r1, #0x2140
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022D5308 ; =ov00_02326C4C
 	mov r0, r5
 	ldr r1, [r1]
@@ -30188,7 +30190,7 @@ _022D57C4:
 	add r2, r0, #0x2000
 	ldr r0, [r2, #0x270]
 	ldr r2, [r2, #0x274]
-	bl MemsetFast
+	bl MI_CpuFill8
 _022D5810:
 	ldr r0, _022D5838 ; =ov00_02326C4C
 	ldr r1, [r5, #0xc]
@@ -30258,7 +30260,7 @@ _022D58B0:
 	ldr r1, [r1]
 	add r1, r1, #0x92
 	add r1, r1, #0x2200
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022D5924
 _022D590C:
 	ldr r1, _022D59C8 ; =ov00_02326C4C
@@ -30266,7 +30268,7 @@ _022D590C:
 	ldr r1, [r1]
 	add r1, r1, #0x92
 	add r1, r1, #0x2200
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022D5924:
 	cmp r4, #0
 	ldrne r0, _022D59D0 ; =ov00_02318160
@@ -30278,7 +30280,7 @@ _022D5924:
 	ldr r1, [r1]
 	add r1, r1, #0x29c
 	add r1, r1, #0x2000
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022D59C8 ; =ov00_02326C4C
 	mov r1, #0
 	ldr r0, [r0]
@@ -30291,7 +30293,7 @@ _022D5968:
 	ldr r1, [r1]
 	add r1, r1, #0x29c
 	add r1, r1, #0x2000
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #0
 _022D5984:
 	ldrb r0, [r4]
@@ -30457,7 +30459,7 @@ _022D5B58:
 	add r0, r0, #0x2cc
 	ldr r3, _022D5BB0 ; =ov00_022D5C28
 	add r0, r0, #0x2000
-	bl sub_0207B17C
+	bl OS_SetAlarm
 _022D5B9C:
 	mov r0, r4
 	bl SetIrqFlag
@@ -30491,7 +30493,7 @@ ov00_022D5BB4: ; 0x022D5BB4
 	ldr r3, _022D5C24 ; =ov00_022D5C28
 	add r0, r0, #0x2000
 	str r2, [sp]
-	bl sub_0207B17C
+	bl OS_SetAlarm
 _022D5C0C:
 	mov r0, r4
 	bl SetIrqFlag
@@ -31680,7 +31682,7 @@ _022D6C00:
 	cmp r2, #0
 	ble _022D6C24
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 _022D6C24:
 	mov r0, r4
 	bl SetIrqFlag
@@ -31816,7 +31818,7 @@ _022D6DC0:
 	add r1, r7, #0x10
 	mov r2, #0xc0
 	strh r4, [r7, #2]
-	bl ArrayCopy32Fast
+	bl MTi_CpuCopy32Fast
 	mov r0, r7
 	bl ov00_022D6FA0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -32192,14 +32194,14 @@ _022D729C:
 	mov r0, sb
 	mov r2, r8
 	add r1, r7, #0xf00
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r2, [sp, #0x20]
 	cmp r2, #0
 	ble _022D72C8
 	add r1, r7, #0xf00
 	mov r0, r6
 	add r1, r1, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022D72C8:
 	ldr r1, [sp, #0x20]
 	ldr r0, _022D7380 ; =ov00_022D738C
@@ -32474,7 +32476,7 @@ ov00_022D75EC: ; 0x022D75EC
 	mov r0, #0
 	mov r2, #0x24
 	str r1, [r3, #0xc]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldr r0, _022D778C ; =ov00_02326C90
 	ldr r1, [r4]
 	ldr r3, [r0, #0xc]
@@ -32508,22 +32510,22 @@ ov00_022D75EC: ; 0x022D75EC
 	str r0, [r1, #8]
 	ldr r1, [r1, #0x10]
 	mov r0, #0
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r0, #0
 	ldr r1, _022D778C ; =ov00_02326C90
 	mov r2, #0x2300
 	ldr r1, [r1]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r0, #0
 	ldr r1, _022D778C ; =ov00_02326C90
 	mov r2, #0x58
 	ldr r1, [r1, #4]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r0, #0
 	ldr r1, _022D778C ; =ov00_02326C90
 	mov r2, #0xc
 	ldr r1, [r1, #8]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldr r1, _022D778C ; =ov00_02326C90
 	ldrb r2, [r4, #8]
 	ldr r0, [r1, #0x10]
@@ -32705,7 +32707,7 @@ ov00_022D7900: ; 0x022D7900
 	mov r1, r5
 	add r0, r2, #0x18
 	mov r2, #0xa
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r4, #1
 _022D794C:
 	mov r0, r4
@@ -32749,12 +32751,12 @@ ov00_022D7994: ; 0x022D7994
 	beq _022D79D0
 	mov r0, r5
 	add r1, r4, #0x18
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022D79DC
 _022D79D0:
 	add r0, r4, #0x18
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 _022D79DC:
 	ldr r3, [sp, #0x18]
 	mov r0, r8
@@ -32780,7 +32782,7 @@ ov00_022D79F8: ; 0x022D79F8
 	bic r3, r3, #0xf
 	orr r3, r3, #1
 	strb r3, [r4, #0xd0c]
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r2, #0
 _022D7A34:
 	ldrb r1, [r7, r2]
@@ -32809,7 +32811,7 @@ _022D7A70:
 _022D7A88:
 	mov r0, r6
 	add r1, r4, #0x80
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrb r1, [r4, #0xe6]
 	and r0, r5, #0xff
 	and r0, r0, #3
@@ -32830,7 +32832,7 @@ ov00_022D7AB0: ; 0x022D7AB0
 	mov r0, r4
 	add r1, r1, r5, lsl #8
 	mov r2, #0xf0
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_022D7AB0
 
@@ -33096,7 +33098,7 @@ _022D7E2C:
 	add r0, r3, #0x18
 	mov r1, #0
 	mov r2, #0xa
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r4, pc}
 _022D7E40:
 	add r1, r1, #1
@@ -33487,7 +33489,7 @@ ov00_022D8314: ; 0x022D8314
 	add r1, r3, #0xbf0
 	mov r2, #0xc0
 	strb lr, [ip, #0x403]
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_022D8314
 
@@ -33519,7 +33521,7 @@ _022D83B8:
 	mov r0, r1
 	add r1, r3, ip
 	mov r2, #0xc0
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_022D8360
 
@@ -33547,30 +33549,30 @@ _022D83FC:
 	mov r0, sb
 	mov r1, fp
 	mov r2, #4
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	add r5, r7, r4, lsl #2
 	mov r0, r5
 	mov r1, sb
 	mov r2, #4
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	mov r1, r5
 	mov r0, fp
 	mov r2, #4
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	mov r0, sl
 	add r1, sp, #4
 	mov r2, #0xc0
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	mov r0, #0xc0
 	mul r5, r4, r0
 	add r0, r8, r5
 	mov r1, sl
 	mov r2, #0xc0
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	add r1, r8, r5
 	add r0, sp, #4
 	mov r2, #0xc0
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	mov r4, r6
 	sub sb, sb, #4
 	sub sl, sl, #0xc0
@@ -33580,11 +33582,11 @@ _022D8494:
 	add r1, r7, #0x28
 	mov r0, #0
 	mov r2, #4
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	add r1, r8, #0x780
 	mov r0, #0
 	mov r2, #0xc0
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	add sp, sp, #0xc4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end ov00_022D83CC
@@ -33671,7 +33673,7 @@ ov00_022D858C: ; 0x022D858C
 	add r0, r1, #0xc00
 	mov r1, #0
 	mov r2, #0x52
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r2, r5, #0xb8
 	ldrb r1, [r5, #0xd0d]
 	mov r0, r5
@@ -33806,7 +33808,7 @@ _022D8794:
 	bne _022D87B8
 	mov r0, #0
 	strb r0, [r7, #0xd15]
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r7, #0xcb0]
 	str r1, [r7, #0xcb4]
 	mov r0, #0xa
@@ -33986,7 +33988,7 @@ _022D89D8:
 	mov r3, r2, lsr #0x1e
 	mov r2, #0x10
 	strb r3, [r4]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022D8A6C
 _022D89FC:
 	add r0, r0, #0x100
@@ -33998,7 +34000,7 @@ _022D8A04:
 	add r1, r4, #2
 	mov r2, #5
 	strb r3, [r4]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022D8A6C
 _022D8A20:
 	mov r1, #2
@@ -34320,7 +34322,7 @@ _022D8DFC:
 	add r1, r4, #0x300
 	mov r0, #0
 	mov r2, #0x144
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r0, r4
 	bl ov00_022D8EAC
 	strb r0, [r4, #0xd10]
@@ -34336,7 +34338,7 @@ _022D8E34:
 	add r1, r4, #0x300
 	mov r0, #0
 	mov r2, #0x144
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r1, #0
 	mov r0, r4
 	strb r1, [r4, #0xd0f]
@@ -34389,7 +34391,7 @@ ov00_022D8EAC: ; 0x022D8EAC
 	ldr r0, _022D8F08 ; =ov00_02318188
 	add r1, r4, #4
 	mov r2, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #8
 	strb r1, [r4, #3]
 	add r0, r5, #1
@@ -34419,7 +34421,7 @@ ov00_022D8F0C: ; 0x022D8F0C
 	ldr r0, _022D8FEC ; =ov00_02318AF4
 	add r1, r5, #4
 	mov r2, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #8
 	add r0, r4, #1
 	strb r1, [r5, #3]
@@ -34436,7 +34438,7 @@ _022D8F68:
 	ldr r0, _022D8FF0 ; =ov00_02318180
 	add r1, r5, #4
 	mov r2, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #8
 	add r0, r4, #1
 	strb r1, [r5, #3]
@@ -34453,7 +34455,7 @@ _022D8FA8:
 	ldr r0, _022D8FF4 ; =ov00_02318190
 	add r1, r5, #4
 	mov r2, #0xb
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #0xb
 	add r0, r4, #1
 	strb r1, [r5, #3]
@@ -34803,7 +34805,7 @@ ov00_022D9410: ; 0x022D9410
 	beq _022D94B4
 	ldmia sp!, {r3, r4, r5, pc}
 _022D9440:
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
@@ -34814,7 +34816,7 @@ _022D9440:
 	bl ov00_022D9A5C
 	ldmia sp!, {r3, r4, r5, pc}
 _022D9468:
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	ldrb r2, [r4, #0xd0f]
@@ -34834,7 +34836,7 @@ _022D9468:
 	bl ov00_022D9A5C
 	ldmia sp!, {r3, r4, r5, pc}
 _022D94B4:
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	ldrb r3, [r4, #0xd0f]
@@ -34856,12 +34858,12 @@ _022D94EC: .word ov00_02318160
 ov00_022D94F0: ; 0x022D94F0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	mov r0, #0
 	strb r0, [r4, #0xd11]
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
@@ -34881,7 +34883,7 @@ _022D953C: .word ov00_02318160
 ov00_022D9540: ; 0x022D9540
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, [r4, #0xcb0]
 	ldr r2, [r4, #0xcb4]
 	subs r3, r0, r3
@@ -34907,7 +34909,7 @@ ov00_022D9540: ; 0x022D9540
 	bl ov00_022D9874
 	ldmia sp!, {r4, pc}
 _022D95AC:
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	add r0, r4, #0xd00
@@ -34951,7 +34953,7 @@ ov00_022D95E4: ; 0x022D95E4
 ov00_022D962C: ; 0x022D962C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, [r4, #0xcb0]
 	ldr r2, [r4, #0xcb4]
 	subs r3, r0, r3
@@ -35006,7 +35008,7 @@ _022D96E0:
 	bl ov00_022D9874
 	ldmia sp!, {r4, pc}
 _022D9700:
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	ldrb r2, [r4, #0xd0f]
@@ -35035,7 +35037,7 @@ _022D9750: .word 0x000082EA
 ov00_022D9754: ; 0x022D9754
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, [r4, #0xcb0]
 	ldr r2, [r4, #0xcb4]
 	subs r3, r0, r3
@@ -35092,7 +35094,7 @@ _022D980C:
 	bl ov00_022D9874
 	ldmia sp!, {r4, pc}
 _022D9834:
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xcb0]
 	str r1, [r4, #0xcb4]
 	ldrb r3, [r4, #0xd0f]
@@ -35411,7 +35413,7 @@ ov00_022D9C04: ; 0x022D9C04
 	mov r2, #4
 	mov r0, r4
 	str r2, [r1]
-	bl ov00_022CF674
+	bl SOC_Startup
 	cmp r0, #0
 	moveq r0, #0xc
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -35440,7 +35442,7 @@ ov00_022D9C68: ; 0x022D9C68
 	movne r0, #0xd
 	ldmia sp!, {r4, pc}
 _022D9CA0:
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, [r4, #0xcb0]
 	ldr r2, [r4, #0xcb4]
 	subs r3, r0, r3
@@ -35547,7 +35549,7 @@ ov00_022D9DD4: ; 0x022D9DD4
 	ldr r0, _022D9E90 ; =ov00_023181D0
 	mov r1, r4
 	mov r2, #0x58
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [r6]
 	str r0, [r4, #4]
 	ldr r0, [r6, #4]
@@ -35732,7 +35734,7 @@ ov00_022DA024: ; 0x022DA024
 	add r0, sp, #8
 	mov r1, r4
 	mov r2, #0xa
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add sp, sp, #0x18
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -35856,7 +35858,7 @@ ov00_022DA1A8: ; 0x022DA1A8
 	add r0, sp, #3
 	mov r1, r4
 	mov r2, #0xd
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add sp, sp, #0x6c
 	ldmia sp!, {r4, r5, pc}
 	arm_func_end ov00_022DA1A8
@@ -35909,7 +35911,7 @@ _022DA274:
 	add r1, sp, #0
 	mov r0, r4
 	mov r2, #0xd
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r3, _022DA398 ; =ov00_02318244
 	add r2, sp, #0
 	mov ip, #0
@@ -36188,17 +36190,17 @@ _022DA63C:
 	ldr r3, [r3, #0xa8c]
 	add r1, r1, #0x1000
 	mla r1, r3, r2, r1
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022DA874 ; =ov00_02318264
 	add r1, sp, #0
 	mov r2, #4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, r6, r5, lsl #2
 	ldr r0, [r0, #0x10]
 	add r1, sp, #4
 	add r0, r0, #6
 	mov r2, #4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022DA86C ; =ov00_02326CA4
 	add r1, sp, #0
 	ldr r0, [r0]
@@ -36257,7 +36259,7 @@ _022DA63C:
 	add r0, r0, #0x1000
 	add r0, r0, r3
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	b _022DA820
 _022DA784:
 	add r0, r6, r5, lsl #2
@@ -36349,7 +36351,7 @@ ov00_022DA884: ; 0x022DA884
 	mov r2, r0
 	ldr r0, [r1]
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r2, _022DA914 ; =ov00_02326CA4
 	mov r3, #0
 	ldr r0, [r2]
@@ -36432,7 +36434,7 @@ ov00_022DA95C: ; 0x022DA95C
 	ldr r0, [r3]
 	add r0, r0, #0xa
 	add r0, r0, #0x1300
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r2, _022DAA1C ; =ov00_02326CA4
 	mov r3, #1
 	ldr r1, [r2]
@@ -36496,7 +36498,7 @@ _022DAAA0:
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x78
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, #1
 	ldr r3, _022DAAF4 ; =ov00_02326CA4
 	str r0, [r4]
@@ -36511,7 +36513,7 @@ _022DAAA0:
 	add r0, r0, #0x348
 	add r0, r0, #0x1000
 	mla r0, r5, r2, r0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -36531,7 +36533,7 @@ ov00_022DAAF8: ; 0x022DAAF8
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r1, #0
 	mov r2, #0x780
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, #0
 	mov r1, r5
 	mov r4, r0
@@ -36585,7 +36587,7 @@ ov00_022DAB9C: ; 0x022DAB9C
 	mov r1, #0
 	str r0, [r2]
 	ldr r2, _022DAC08 ; =0x00000794
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, _022DAC04 ; =ov00_02326CA8
 	mov r2, #0
 	ldr r3, [r1]
@@ -36654,7 +36656,7 @@ _022DAC9C:
 	cmp r0, #0
 	cmpeq r1, #0
 	bne _022DAF1C
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022DAF24 ; =ov00_02326CA8
 	ldr r2, [r2]
 	stmib r2, {r0, r1}
@@ -36665,7 +36667,7 @@ _022DACE4:
 	str r1, [r0, #8]
 	b _022DAF1C
 _022DACF4:
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, _022DAF24 ; =ov00_02326CA8
 	ldr r2, _022DAF30 ; =0x000082EA
 	ldr r4, [r3]
@@ -36769,7 +36771,7 @@ _022DAE54:
 	mla r0, r2, r0, r1
 	ldr r1, [r3]
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022DAF24 ; =ov00_02326CA8
 	mov r0, #0x78
 	ldr r4, [r1]
@@ -36779,7 +36781,7 @@ _022DAE54:
 	add r4, r4, #0x56
 	mla r0, r3, r0, r4
 	add r1, r1, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022DAF24 ; =ov00_02326CA8
 	mov r0, #0x78
 	ldr r4, [r1]
@@ -36795,7 +36797,7 @@ _022DAE54:
 	add r4, r4, #0x32
 	mla r0, r3, r0, r4
 	add r1, r1, #0x44
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r6, #2
 	b _022DAF1C
 _022DAEF0:
@@ -37437,7 +37439,7 @@ ov00_022DB5B8: ; 0x022DB5B8
 	mov r1, #0
 	mov r2, #0x40
 	mov r5, r0
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, #0x40
 	str r0, [r5]
 	mov r0, #0
@@ -37814,7 +37816,7 @@ ov00_022DBA1C: ; 0x022DBA1C
 	mov r6, r0
 	mov r1, #0
 	mov r2, #0xc
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
@@ -37833,7 +37835,7 @@ ov00_022DBA58: ; 0x022DBA58
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0xc
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r5
 	bl ov00_022DB77C
 	cmp r0, #0
@@ -37857,7 +37859,7 @@ ov00_022DBAAC: ; 0x022DBAAC
 	mov r5, r0
 	mov r1, #0
 	mov r2, #0xc
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r5
 	mov r1, r4
 	bl ov00_022DB188
@@ -38034,7 +38036,7 @@ ov00_022DBCA4: ; 0x022DBCA4
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r2, _022DBDC0 ; =0x000013F4
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r3, _022DBDB8 ; =ov00_02326CB4
 	mov r1, #0
 	ldr r0, [r3, #8]
@@ -38045,7 +38047,7 @@ ov00_022DBCA4: ; 0x022DBCA4
 	ldr r0, [r3, #8]
 	add r0, r0, #8
 	add r0, r0, #0x1000
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, _022DBDB8 ; =ov00_02326CB4
 	ldr r2, _022DBDC4 ; =0x00004E84
 	ldr r0, [r1, #8]
@@ -38263,7 +38265,7 @@ ov00_022DBFDC: ; 0x022DBFDC
 	bne _022DC000
 	mov r1, #0
 	mov r2, #0x1c4
-	bl MemsetFast
+	bl MI_CpuFill8
 _022DC000:
 	ldr r0, _022DC058 ; =ov00_02326CB4
 	mov r1, r4
@@ -38271,7 +38273,7 @@ _022DC000:
 	mov r2, #0x1c4
 	add r0, r0, #8
 	add r0, r0, #0x1000
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, [r4]
 	ldr r0, _022DC05C ; =0x00004E20
 	cmp r1, r0
@@ -38466,10 +38468,10 @@ _022DC2B0:
 	add r8, r8, #1
 	str r0, [sp]
 _022DC2BC:
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov sb, r0
 	mov sl, r1
-	bl sub_0207AE44
+	bl OS_GetTick
 	subs r2, r0, sb
 	sbc r0, r1, sl
 	mov r1, r0, lsl #6
@@ -38512,7 +38514,7 @@ _022DC358:
 	bl sub_0207A0CC
 	mov r0, r7
 	bl sub_02079B14
-	bl sub_0207AE44
+	bl OS_GetTick
 	subs r2, r0, sb
 	sbc r0, r1, sl
 	mov r1, r0, lsl #6
@@ -39046,7 +39048,7 @@ ov00_022DCAE0: ; 0x022DCAE0
 	mov r1, #0
 	mov r2, #0x94
 	mov r4, r0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia r6, {r3, r5}
 	cmp r5, #0
 	cmpeq r3, #0
@@ -39079,7 +39081,7 @@ _022DCB64:
 	ldr r0, _022DCD78 ; =0x027FFE0C
 	add r1, r4, #0x15
 	mov r2, #4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022DCD7C ; =0x027FFE10
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -39089,11 +39091,11 @@ _022DCB88:
 	ldr r0, _022DCD7C ; =0x027FFE10
 	add r1, r4, #0x1a
 	mov r2, #2
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #0x30
 	add r0, sp, #0x16
 	strb r1, [r4, #0x1d]
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 	ldr r5, _022DCD80 ; =ov00_02318D08
 	add r7, sp, #0x16
 	add r8, r4, #0x1f
@@ -39121,7 +39123,7 @@ _022DCBB8:
 	add r0, sp, #0x3c
 	add r1, r4, #0x7e
 	mov r2, #0x14
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrb r1, [sp, #0x3b]
 	ldr r2, _022DCD84 ; =ov00_02318D10
 	add r0, r4, #0x2f
@@ -39206,7 +39208,7 @@ _022DCD44:
 	mov r0, r5
 	add r1, r4, #0x4e
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, r4, #0x72
 	bl ov00_022D7900
 	mov r0, r6
@@ -39450,7 +39452,7 @@ ov00_022DD0DC: ; 0x022DD0DC
 	mov r6, r0
 	ldr r4, [r5, #0xc]
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r1, r6, #4
 	add r0, r6, #0x1000
 	mvn r2, #0
@@ -39688,7 +39690,7 @@ ov00_022DD420: ; 0x022DD420
 	add r0, r0, #0x1000
 	mov r1, #0
 	mov r2, #0x64
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022DD470 ; =0x00000B68
 	add r1, r4, #0x1000
 	str r0, [r1, #0x174]
@@ -39815,7 +39817,7 @@ ov00_022DD574: ; 0x022DD574
 	mov r0, r5
 	mov r1, #0
 	mov r2, #0x830
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, _022DD880 ; =ov00_022DDC74
 	add r0, sl, #0x1000
 	str r1, [r5, #0x810]
@@ -39874,7 +39876,7 @@ _022DD6BC:
 	ldr r0, [r7, #0xc]
 	add r0, r1, r0
 	str r0, [r7, #8]
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [sp, #8]
 	add r0, sl, #0x234
 	str r1, [sp, #4]
@@ -39896,7 +39898,7 @@ _022DD710:
 	cmp r0, #0
 	blt _022DD840
 	ble _022DD7C4
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [sp, #8]
 	add r0, sp, #0x10
 	str r1, [sp, #4]
@@ -39910,7 +39912,7 @@ _022DD710:
 	cmp sb, r2
 	movge sb, r2
 	mov r2, sb
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [r7, #4]
 	cmp fp, #1
 	add r1, r0, sb
@@ -39945,7 +39947,7 @@ _022DD7C4:
 	ldrge r0, [r4, #0xa34]
 	cmpge r0, r1
 	bge _022DD840
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, [sp, #8]
 	mov r3, #0
 	subs r2, r0, r2
@@ -40041,7 +40043,7 @@ _022DD924:
 	ldr r2, _022DD940 ; =0x00001C14
 	mov r0, r5
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022DD938: .word ov00_02318EA0
@@ -40326,7 +40328,7 @@ _022DDD00:
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x10
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022DDD14: .word ov00_02318F74
@@ -40353,7 +40355,7 @@ ov00_022DDD18: ; 0x022DDD18
 	ldr r0, [r6]
 	ldr r2, [r6, #0xc]
 	mov r1, r4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, [r6]
 	ldr r0, _022DDDBC ; =ov00_02318F74
 	mov r2, #0
@@ -40579,7 +40581,7 @@ ov00_022DE068: ; 0x022DE068
 	str r0, [sp, #4]
 	str r3, [sp, #8]
 	str r1, [sp, #0xc]
-	bl MemsetFast
+	bl MI_CpuFill8
 	add r0, r4, #0x1000
 	ldr r5, [r0, #0xa08]
 	ldr r1, _022DE2E8 ; =ov00_02318E6C
@@ -40884,7 +40886,7 @@ ov00_022DE47C: ; 0x022DE47C
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r2, _022DE54C ; =0x000011F4
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr ip, _022DE544 ; =ov00_02326CD8
 	ldr r1, _022DE550 ; =0xFFFE7961
 	ldr r0, [ip]
@@ -42342,7 +42344,7 @@ _022DF940:
 _022DF970:
 	ldr r2, _022DF9A4 ; =0x00001C20
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, _022DF998 ; =ov00_02326D68
 	mov r0, #1
 	ldr r2, [r1]
@@ -42393,7 +42395,7 @@ ov00_022DF9F4: ; 0x022DF9F4
 	str r1, [r2, #0xc1c]
 	mov r1, #0
 	mov r2, #0x174
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022DFC38 ; =ov00_02326D68
 	ldr r1, [r0]
 	add r0, r1, #0x1000
@@ -42808,11 +42810,11 @@ _022DFFC8:
 	add r0, sp, #4
 	mov r1, #0
 	mov r2, #3
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, sl
 	add r1, sp, #4
 	mov r2, sb
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrb r0, [sp, #4]
 	ldr r1, [r5]
 	cmp r6, #2
@@ -43209,7 +43211,7 @@ ov00_022E0484: ; 0x022E0484
 	mov r0, r7
 	mov r1, r4
 	mov r2, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r8
 	mov r1, r7
 	mov r2, r6
@@ -43274,7 +43276,7 @@ ov00_022E054C: ; 0x022E054C
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r1, #0
 	mov r2, #0x64
-	bl MemsetFast
+	bl MI_CpuFill8
 	strh r6, [r4, #8]
 	mov r0, #1
 	strh r0, [r4, #0xa]
@@ -43346,7 +43348,7 @@ ov00_022E0618: ; 0x022E0618
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0xc
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022E06BC ; =ov00_02326D7C
 	ldr r3, _022E06C0 ; =ov00_022E03F0
 	ldr lr, [r0, #4]
@@ -43788,7 +43790,7 @@ ov00_022E0BF8: ; 0x022E0BF8
 	mov r1, #0
 	mov r2, #0x3c
 	mov r4, r0
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, #0xff
 	str r0, [r4, #4]
 	bl ov00_022E089C
@@ -43826,7 +43828,7 @@ _022E0C8C:
 	mov r0, r5
 	add r1, r4, #0x33
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [r4]
 	cmp r0, #0
 	blt _022E0CF0
@@ -43848,7 +43850,7 @@ _022E0CE0:
 	ldrh r2, [sp]
 	mov r0, r5
 	add r1, r4, #0x12
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022E0CF0:
 	mov r0, r6
 	bl SetIrqFlag
@@ -43870,7 +43872,7 @@ _022E0D20:
 	add r1, r4, #8
 	mov r2, #9
 	str r3, [r4, #4]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	b _022E0D4C
 _022E0D44:
 	mov r0, #0xff
@@ -44235,7 +44237,7 @@ ov00_022E1178: ; 0x022E1178
 	str r1, [r0, #0x48]
 	ldr r0, [r2]
 	mov r2, #0xa80
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022E1284 ; =ov00_02326D84
 	mov r1, r5
 	ldr r3, [r0]
@@ -44360,7 +44362,7 @@ ov00_022E1334: ; 0x022E1334
 	mul r2, r4, r0
 	mov r0, r6
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
@@ -44530,8 +44532,8 @@ ov00_022E1544: ; 0x022E1544
 	cmpeq r1, r0
 	bne _022E1608
 	add r0, sp, #0
-	bl sub_0207B9EC
-	bl sub_0207AE44
+	bl OS_GetMacAddress
+	bl OS_GetTick
 	mov r2, r1, lsl #0x18
 	ldr ip, [sp]
 	ldr r3, [sp, #4]
@@ -44737,7 +44739,7 @@ _022E1894:
 	ldr r1, _022E1908 ; =ov00_02328A18
 	mov r0, r4
 	mov r2, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [sp, #0x20]
 	ldr r1, _022E1908 ; =ov00_02328A18
 	mov r2, #0
@@ -44753,7 +44755,7 @@ _022E18D0:
 	ldr r0, [sp, #0x20]
 	ldr r1, _022E190C ; =ov00_02328B18
 	mov r2, r4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022E190C ; =ov00_02328B18
 	mov r1, #0
 	strb r1, [r0, r4]
@@ -45081,7 +45083,7 @@ _022E1D44:
 	mov r0, #0
 	add r1, r1, #0x2e
 	mov r2, #0x34
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	mov r0, r4
 	bl ov00_022E1664
 	cmp r0, #0x19
@@ -45096,7 +45098,7 @@ _022E1D98:
 	ldr r1, [r1]
 	mov r2, r5, lsl #1
 	add r1, r1, #0x2e
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 _022E1DB0:
 	ldr r0, _022E1E04 ; =ov00_02326DA0
 	mov r1, #0
@@ -45402,11 +45404,11 @@ ov00_022E2154: ; 0x022E2154
 	ldr r1, _022E217C ; =ov00_02326DA8
 	mov r0, #0
 	mov r2, #0x80
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldr r1, _022E2180 ; =ov00_02326E28
 	mov r0, #0
 	mov r2, #0x100
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E217C: .word ov00_02326DA8
@@ -46143,7 +46145,7 @@ ov00_022E2AA4: ; 0x022E2AA4
 	mov r2, #0x280
 	mov r4, r3
 	str r0, [ip, #4]
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022E2B24 ; =ov00_02326F28
 	mov r2, #0
 	ldr r1, [r0, #4]
@@ -46229,7 +46231,7 @@ _022E2BD0:
 	ldr r0, [r0, #0x30]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, _022E2C48 ; =ov00_02326F28
 	ldr r2, _022E2C4C ; =0x000082EA
 	ldr ip, [r3, #4]
@@ -46499,7 +46501,7 @@ ov00_022E2F0C: ; 0x022E2F0C
 	bl strcpy
 	ldr r0, _022E2FA4 ; =ov00_02326F28
 	ldr r6, [r0, #4]
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r6, #0x34]
 	str r1, [r6, #0x38]
 	mov r3, #1
@@ -46533,7 +46535,7 @@ ov00_022E2FA8: ; 0x022E2FA8
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x48
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022E3158 ; =ov00_02326F28
 	str r5, [r0, #8]
 	str r4, [r0]
@@ -46579,7 +46581,7 @@ _022E305C:
 	bl ov00_022DB634
 	b _022E30A4
 _022E3070:
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022E315C ; =0x6C078965
 	ldr r3, _022E3160 ; =0x5D588B65
 	umull ip, r4, r0, r2
@@ -46610,7 +46612,7 @@ _022E30BC:
 	add r2, r2, #2
 	ldr r0, [r1, #0x10]
 	add r1, sp, #0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022E3158 ; =ov00_02326F28
 	add r0, sp, #0x34
 	ldr r1, [r1, #4]
@@ -46629,7 +46631,7 @@ _022E30BC:
 	mov r4, r0
 	ldr r0, [r1, #4]
 	str r4, [r0, #0x24]
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022E3158 ; =ov00_02326F28
 	ldr r2, [r2, #4]
 	str r0, [r2, #0x28]
@@ -46709,7 +46711,7 @@ _022E3244:
 	cmp r0, #0
 	addeq sp, sp, #0x3d0
 	ldmeqia sp!, {r3, pc}
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, _022E3364 ; =ov00_02326F28
 	ldr r2, _022E336C ; =0x000082EA
 	ldr ip, [r3, #4]
@@ -46749,7 +46751,7 @@ _022E32E0:
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x48
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022E3364 ; =ov00_02326F28
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x10]
@@ -46760,7 +46762,7 @@ _022E32E0:
 	add r2, r2, #2
 	ldr r0, [r1, #0x10]
 	add r1, sp, #0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022E3364 ; =ov00_02326F28
 	add r0, sp, #0x34
 	ldr r1, [r1, #4]
@@ -47046,7 +47048,7 @@ _022E36FC:
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0xc
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022E3710: .word ov00_02326F34
@@ -47579,7 +47581,7 @@ ov00_022E3E1C: ; 0x022E3E1C
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
 	str r0, [r1, #8]
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022E3E50 ; =ov00_02326F34
 	ldr r2, [r2, #0xc]
 	str r0, [r2, #0xc]
@@ -47700,7 +47702,7 @@ ov00_022E3FA4: ; 0x022E3FA4
 	ldr r0, _022E4028 ; =ov00_02326F34
 	mov r4, #0
 	ldr r5, [r0, #0xc]
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, [r5, #0xc]
 	ldr r2, [r5, #0x10]
 	subs r3, r0, r3
@@ -47722,7 +47724,7 @@ ov00_022E3FA4: ; 0x022E3FA4
 	ldr r0, [r0, #4]
 	bl ov00_022FEF74
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022E4028 ; =ov00_02326F34
 	ldr r2, [r2, #0xc]
 	str r0, [r2, #0xc]
@@ -47979,7 +47981,7 @@ ov00_022E4368: ; 0x022E4368
 	mov r2, #0xc
 	mla r0, r5, r2, r0
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022E43BC ; =ov00_02326F34
 	ldr r0, [r0, #0xc]
 	ldr r3, [r0, #0x3c]
@@ -49007,7 +49009,7 @@ ov00_022E50A8: ; 0x022E50A8
 	add r0, r0, #0x304
 	mov r1, #0
 	mov r2, #0x40
-	bl MemsetFast
+	bl MI_CpuFill8
 	bl ov00_022EC1C0
 	mov r1, #0
 	str r1, [r0, #0x344]
@@ -49274,7 +49276,7 @@ _022E554C:
 	ldr r0, [r0, #0x1c8]
 	cmp r0, #0
 	beq _022E5638
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r6, r0
 	mov r7, r1
 	bl ov00_022EC1C0
@@ -49342,7 +49344,7 @@ _022E5638:
 	mul r0, r1, r0
 	add r0, r0, #0x3b8
 	add r5, r0, #0x800
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r6, r1
 	bl ov00_022EC1C0
@@ -49391,7 +49393,7 @@ _022E5704:
 	moveq r5, #0x3e8
 	ldrne r5, _022E5EE8 ; =0x00000BB8
 _022E5718:
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r6, r1
 	bl ov00_022EC1C0
@@ -49426,7 +49428,7 @@ _022E5788:
 	cmp r1, #0
 	cmpeq r0, #0
 	beq _022E5814
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -49460,7 +49462,7 @@ _022E5814:
 	ldrb r0, [r0, #0x3cc]
 	cmp r0, #6
 	bne _022E5C18
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -49528,7 +49530,7 @@ _022E590C:
 	ldrb r0, [r0, #0x15]
 	cmp r0, #0
 	bne _022E5974
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -49551,7 +49553,7 @@ _022E5974:
 	ldrb r0, [r0, #0x15]
 	cmp r0, #0
 	beq _022E5C18
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -49588,7 +49590,7 @@ _022E5A00:
 	ldrb r0, [r0, #0x3cc]
 	cmp r0, #8
 	bne _022E5C18
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -49662,7 +49664,7 @@ _022E5B20:
 	bl ov00_022E1FC0
 	cmp r0, #5
 	bne _022E5C18
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -49715,7 +49717,7 @@ _022E5BA0:
 	strb r1, [r0, #0x1ad]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022E5EFC ; =0xFF403B3A
 	mvn r3, #0
 	adds r0, r0, r2
@@ -49738,7 +49740,7 @@ _022E5C38:
 	cmp r1, #0
 	cmpeq r0, #0
 	beq _022E5CB0
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -49800,7 +49802,7 @@ _022E5D04:
 	cmp r1, #0
 	cmpeq r0, #0
 	beq _022E5D70
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -49844,7 +49846,7 @@ _022E5DD4:
 	ldr r0, [r0, #0x1a0]
 	cmp r0, #0x12
 	bne _022E5E3C
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -49938,7 +49940,7 @@ ov00_022E5F0C: ; 0x022E5F0C
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #8
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r1, r6, asr #8
 	mov r0, r6, lsl #8
 	mov r2, #2
@@ -50665,7 +50667,7 @@ _022E6954:
 	bl ov00_022EC1D0
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1f0]
 	str r1, [r4, #0x1f4]
 	b _022E698C
@@ -50897,7 +50899,7 @@ ov00_022E6C64: ; 0x022E6C64
 	ldr r0, _022E6D04 ; =ov00_02326F68
 	mov r1, #0
 	mov r2, #0x20
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r5, #0
 	bl ov00_022EC1C0
 	ldrb r0, [r0, #0xe]
@@ -51109,7 +51111,7 @@ ov00_022E6E68: ; 0x022E6E68
 	add r1, r0, #0x3cc
 	mov r0, #0
 	mov r2, #0x98
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	cmp r4, #2
 	bne _022E6FD4
 	bl ov00_022EC1C0
@@ -51189,42 +51191,42 @@ _022E6FD4:
 	add r1, r0, #0x24
 	mov r0, #0
 	mov r2, #0x80
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	bl ov00_022EC1C0
 	add r1, r0, #0xa4
 	mov r0, #0
 	mov r2, #0x40
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	bl ov00_022EC1C0
 	add r1, r0, #0xf4
 	mov r0, #0
 	mov r2, #0x80
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	bl ov00_022EC1C0
 	add r1, r0, #0x194
 	mov r0, #0
 	mov r2, #0xc
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	bl ov00_022EC1C0
 	add r1, r0, #0x210
 	mov r0, #0
 	mov r2, #0x80
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	bl ov00_022EC1C0
 	add r1, r0, #0x290
 	mov r0, #0
 	mov r2, #0x40
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	bl ov00_022EC1C0
 	add r0, r0, #0x2d0
 	mov r1, #0
 	mov r2, #0x20
-	bl MemsetFast
+	bl MI_CpuFill8
 	bl ov00_022EC1C0
 	add r1, r0, #0x348
 	mov r0, #0
 	mov r2, #0x84
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	cmp r4, #1
 	bne _022E7184
 	bl ov00_022EC1C0
@@ -51447,7 +51449,7 @@ _022E7450:
 	bne _022E7478
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022E7498 ; =0x00EFB5F7
 	adds r0, r0, r2
 	str r0, [r4, #0x174]
@@ -51818,7 +51820,7 @@ _022E7960:
 	mov r0, r5
 	add r1, fp, r6
 	mov r2, r4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r7, r7, #1
 	add r6, r6, r4
 	cmp r7, r8
@@ -51859,7 +51861,7 @@ _022E79EC:
 	str r8, [r0, #0x458]
 	bl ov00_022EC1C0
 	mov r5, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r5, #0x45c]
 	cmp sb, #0
 	str r1, [r5, #0x460]
@@ -51870,7 +51872,7 @@ _022E79EC:
 	mov r0, sb
 	add r1, r1, #0x3d4
 	mov r2, r8, lsl #2
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 _022E7A5C:
 	mov r0, r4
 	add sp, sp, #0x220
@@ -51897,7 +51899,7 @@ ov00_022E7A70: ; 0x022E7A70
 	add r1, sp, #0x18
 	mov r0, r3
 	mov r2, r5, lsl #2
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 _022E7AB0:
 	ldr r2, _022E7B84 ; =ov00_0231A2A4
 	mov r0, r5, lsl #2
@@ -51995,7 +51997,7 @@ ov00_022E7B88: ; 0x022E7B88
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #0
 	strb r0, [r6, r5]
 _022E7C24:
@@ -52050,7 +52052,7 @@ _022E7CA4:
 	mov r0, sb
 	mov r1, r4
 	mov r2, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, #0
 	mov r0, r5
 	strb r1, [r4, r5]
@@ -52418,7 +52420,7 @@ _022E820C:
 	bne _022E8BB8
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1cc]
 	str r1, [r4, #0x1d0]
 	bl ov00_022EC1C0
@@ -52440,7 +52442,7 @@ _022E8270:
 	str r1, [r0, #0x1bc]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1c0]
 	str r1, [r4, #0x1c4]
 	bl ov00_022EC1C0
@@ -52470,7 +52472,7 @@ _022E82B4:
 	str r1, [r0, #0xe8]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xec]
 	str r1, [r4, #0xf0]
 	b _022E8BB8
@@ -52903,7 +52905,7 @@ _022E8934:
 	ldrneb r0, [r4]
 	cmpne r0, #0
 	beq _022E8990
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, [r4, #0x10]
 	ldr r2, [r4, #0x14]
 	subs r3, r0, r3
@@ -53448,7 +53450,7 @@ ov00_022E90B8: ; 0x022E90B8
 	add r0, r5, #4
 	add r1, r1, #0x350
 	mov r2, r2, lsl #2
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 _022E90F0:
 	bl ov00_022EC1C0
 	sub r1, r4, #1
@@ -53495,7 +53497,7 @@ _022E9168:
 	str r1, [r0, #0x1bc]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1c0]
 	str r1, [r4, #0x1c4]
 	bl ov00_022EC1C0
@@ -53563,7 +53565,7 @@ _022E9268:
 	str r1, [r0, #0x1c8]
 	bl ov00_022EC1C0
 	mov r6, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r6, #0x1cc]
 	str r1, [r6, #0x1d0]
 	bl ov00_022EC1C0
@@ -53654,7 +53656,7 @@ _022E9398:
 	str r1, [r0, #0x1c8]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1cc]
 	str r1, [r4, #0x1d0]
 	bl ov00_022EC1C0
@@ -53800,7 +53802,7 @@ ov00_022E95B8: ; 0x022E95B8
 	strb r1, [r0, #0x1a7]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1cc]
 	str r1, [r4, #0x1d0]
 	bl ov00_022EC1C0
@@ -53958,7 +53960,7 @@ _022E97F0:
 	str r1, [r0, #0xe8]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xec]
 	str r1, [r4, #0xf0]
 	b _022E98F8
@@ -54320,7 +54322,7 @@ _022E9CE0:
 	str r1, [r0, #0xe8]
 	bl ov00_022EC1C0
 	mov r6, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r6, #0xec]
 	str r1, [r6, #0xf0]
 	b _022E9DD0
@@ -55119,7 +55121,7 @@ _022EA818:
 	bl ov00_022EC4F0
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1e0]
 	str r1, [r4, #0x1e4]
 	add sp, sp, #4
@@ -55142,7 +55144,7 @@ ov00_022EA848: ; 0x022EA848
 	cmp r0, #0x11
 	bne _022EA8C0
 _022EA87C:
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -55243,7 +55245,7 @@ _022EA9B8:
 	strb r1, [r0, #0x1ab]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1e0]
 	str r1, [r4, #0x1e4]
 	b _022EAAA8
@@ -55330,7 +55332,7 @@ _022EAAE4:
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1e8]
 	str r1, [r4, #0x1ec]
 	mov r0, #1
@@ -55377,7 +55379,7 @@ _022EABB0:
 	ldr r0, [r0, #0x1a0]
 	cmp r0, #0xe
 	bne _022EAD1C
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -55506,7 +55508,7 @@ ov00_022EAD5C: ; 0x022EAD5C
 	cmp r0, #0xf
 	bne _022EADD4
 _022EAD90:
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r4, r0
 	mov r5, r1
 	bl ov00_022EC1C0
@@ -55577,7 +55579,7 @@ _022EAE30:
 	strb r1, [r0, #0x1ac]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1e8]
 	str r1, [r4, #0x1ec]
 	b _022EAF4C
@@ -55656,7 +55658,7 @@ _022EAF88:
 	ldr r1, _022EAFAC ; =ov00_02326F88
 	ldr r2, _022EAFB0 ; =0x00000738
 	mov r0, #0
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022EAFAC: .word ov00_02326F88
@@ -55806,7 +55808,7 @@ ov00_022EB15C: ; 0x022EB15C
 	strb r1, [r0, #0x1ad]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x1f8]
 	str r1, [r4, #0x1fc]
 	ldmia sp!, {r4, pc}
@@ -55828,14 +55830,14 @@ ov00_022EB184: ; 0x022EB184
 	str r2, [r0, #0xc]
 	ldr r0, [r1]
 	strb r2, [r0, #2]
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022EB1F0 ; =ov00_02326F48
 	cmp r4, #0
 	ldr r2, [r2]
 	str r0, [r2, #0x18]
 	str r1, [r2, #0x1c]
 	ldmneia sp!, {r4, pc}
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, _022EB1F0 ; =ov00_02326F48
 	ldr r2, [r2]
 	str r0, [r2, #0x10]
@@ -55896,7 +55898,7 @@ ov00_022EB1F4: ; 0x022EB1F4
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _022EB2B4:
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r5, #0x18]
 	str r1, [r5, #0x1c]
 	mov r0, #0
@@ -55912,7 +55914,7 @@ _022EB2B4:
 	str r1, [r0, #0xe8]
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0xec]
 	add sp, sp, #8
 	str r1, [r4, #0xf0]
@@ -55928,7 +55930,7 @@ _022EB308:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _022EB328:
 	ldrb r4, [r5, #2]
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, [r5, #0x18]
 	ldr r2, [r5, #0x1c]
 	subs r3, r0, r3
@@ -56030,7 +56032,7 @@ _022EB474:
 	bne _022EB4E8
 	ldr r0, _022EB614 ; =ov00_02326F48
 	ldr r4, [r0]
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, [r4, #0x10]
 	ldr r2, [r4, #0x14]
 	subs r3, r0, r3
@@ -56052,7 +56054,7 @@ _022EB4E8:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	ldr r0, _022EB614 ; =ov00_02326F48
 	ldr r4, [r0]
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, [r4, #0x18]
 	ldr r2, [r4, #0x1c]
 	subs r3, r0, r3
@@ -56118,7 +56120,7 @@ _022EB590:
 _022EB5F0:
 	ldr r0, _022EB614 ; =ov00_02326F48
 	ldr r4, [r0]
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x18]
 	str r1, [r4, #0x1c]
 	mov r0, #1
@@ -56688,7 +56690,7 @@ _022EBCC0:
 	mov r0, sl
 	mov r1, r7
 	mov r2, r6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r7
 	mov r1, r5
 	mov r2, fp
@@ -56701,7 +56703,7 @@ _022EBCC0:
 	ldrb r2, [sp, #0x11]
 	mov r1, r4
 	add r0, sl, #0x14
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	str r4, [sp]
 	ldrb r0, [sp, #0x11]
 	mov r0, r0, asr #2
@@ -56873,7 +56875,7 @@ _022EBF28:
 _022EBF6C:
 	bl ov00_022EC1C0
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x18c]
 	mov r0, #7
 	str r1, [r4, #0x190]
@@ -56934,7 +56936,7 @@ _022EC02C:
 _022EC050:
 	bl ov00_022EC1C0
 	mov r5, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r5, #0x184]
 	cmp r6, #1
 	str r1, [r5, #0x188]
@@ -57252,7 +57254,7 @@ _022EC414:
 	ldr r1, [r4]
 	mov r2, r5
 	ldr r1, [r1, #4]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022EC458 ; =ov00_023276C0
 	mov r0, #1
 	ldr r2, [r1, #4]
@@ -57408,7 +57410,7 @@ ov00_022EC640: ; 0x022EC640
 	sub sp, sp, #8
 	add r1, sp, #0
 	mov r2, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022EC678 ; =ov00_0231A2C0
 	add r0, sp, #6
 	mov r2, #2
@@ -57442,7 +57444,7 @@ ov00_022EC69C: ; 0x022EC69C
 	ldr r2, _022EC6D4 ; =0x00000614
 	mov r1, #0
 	str r0, [r3]
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _022EC6D0 ; =ov00_023276C8
 	ldr r1, _022EC6D8 ; =0x000005B9
 	ldr r0, [r0]
@@ -57530,7 +57532,7 @@ _022EC78C:
 	ldrne r0, [r6, #0x2c]
 	cmpne r0, #0
 	beq _022EC824
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov sl, r1
 	ldr r2, [r6, #0x24]
 	mov r5, r0
@@ -57839,7 +57841,7 @@ _022ECBB4:
 	ldrne r0, [r4, #0x2c]
 	cmpne r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x24]
 	str r1, [r4, #0x28]
 	ldmia sp!, {r4, r5, r6, pc}
@@ -57878,7 +57880,7 @@ _022ECC38:
 	add r1, sp, #0
 	mov r0, r7
 	mov r2, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, [sp]
 	mov r0, #0
 	str r1, [r4, #0x18]
@@ -57934,7 +57936,7 @@ _022ECCFC:
 	mov r0, r6
 	mov r2, r5
 	add r1, r1, r3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _022ECD10:
 	ldr r0, [r4, #0x10]
 	add r0, r0, r5
@@ -57963,7 +57965,7 @@ _022ECD5C:
 	ldrne r0, [r4, #0x2c]
 	cmpne r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [r4, #0x24]
 	str r1, [r4, #0x28]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -58531,7 +58533,7 @@ ov00_022ED468: ; 0x022ED468
 	ldr r0, _022ED528 ; =ov00_023276E0
 	mov r1, r4
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _022ED52C ; =0x000007FF
 	ldr r3, [r4]
 	sub r0, r1, #0x800
@@ -58543,7 +58545,7 @@ ov00_022ED468: ; 0x022ED468
 	ldr r0, _022ED530 ; =ov00_023276E5
 	add r1, r4, #8
 	mov r2, #6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, [r4, #8]
 	ldr r0, [r4, #0xc]
 	mov r1, r1, lsr #3
@@ -58561,7 +58563,7 @@ ov00_022ED468: ; 0x022ED468
 	ldr r0, _022ED534 ; =ov00_023276EA
 	add r1, r4, #0x10
 	mov r2, #2
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrh r1, [r4, #0x10]
 	ldr r3, _022ED538 ; =0x000003FF
 	ldr r0, _022ED53C ; =ov00_023276EC
@@ -58572,7 +58574,7 @@ ov00_022ED468: ; 0x022ED468
 	mov r2, #2
 	and r3, ip, r3
 	strh r3, [r4, #0x10]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022ED528: .word ov00_023276E0
@@ -58613,7 +58615,7 @@ _022ED59C:
 	mov r0, r6
 	mov r2, fp
 	add r1, sl, #0xf0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r1, sl
 	mov r2, #0xfe
 	add r0, sl, #0x200
@@ -58772,12 +58774,12 @@ _022ED7A4: .word ov00_023276D4
 
 	arm_func_start ov00_022ED7A8
 ov00_022ED7A8: ; 0x022ED7A8
-	ldr ip, _022ED7B8 ; =MemcpyFast
+	ldr ip, _022ED7B8 ; =MI_CpuCopy8
 	ldr r1, _022ED7BC ; =ov00_023276E0
 	mov r2, #0xe
 	bx ip
 	.align 2, 0
-_022ED7B8: .word MemcpyFast
+_022ED7B8: .word MI_CpuCopy8
 _022ED7BC: .word ov00_023276E0
 	arm_func_end ov00_022ED7A8
 
@@ -58850,11 +58852,11 @@ ov00_022ED85C: ; 0x022ED85C
 	add r1, sp, #4
 	mov r0, r5
 	mov r2, #4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r1, sp, #0
 	mov r0, r4
 	mov r2, #4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	mvn r0, r0
@@ -59046,7 +59048,7 @@ _022EDAD8:
 	movlt r6, #0
 	movge r6, #1
 _022EDB64:
-	bl sub_0207AE44
+	bl OS_GetTick
 	str r0, [sp, #0x34]
 	mov fp, r1
 	b _022ED9D0
@@ -59144,7 +59146,7 @@ _022EDCAC:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	tst r0, #0x20
 	bne _022EDD08
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r2, [sp, #0x34]
 	mov ip, r6
 	subs sb, r0, r2
@@ -59252,7 +59254,7 @@ _022EDE00:
 	bl PXI_SetFifoRecvCallback
 	mov r0, r6
 	mov r1, r7
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	mov r4, #0x40000
 	mov r5, #2
 _022EDE34:
@@ -59358,7 +59360,7 @@ ov00_022EDF4C: ; 0x022EDF4C
 	str r2, [sp, #4]
 	str r3, [sp]
 	mov r2, #5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r2, [sp]
 	ldr r1, [sp, #4]
 	mov ip, r2, lsr #5
@@ -59376,7 +59378,7 @@ ov00_022EDF4C: ; 0x022EDF4C
 	str ip, [sp]
 	str r3, [sp, #4]
 	mov r2, #4
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrh r0, [r4, #0x10]
 	ldr r1, [sp, #4]
 	ldr r3, _022EE000 ; =ov00_023276E0
@@ -59390,7 +59392,7 @@ ov00_022EDF4C: ; 0x022EDF4C
 	mov r4, r2, asr #2
 	mov r2, #2
 	strb r4, [r3, #0xb]
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, _022EE000 ; =ov00_023276E0
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
@@ -59415,7 +59417,7 @@ ov00_022EE018: ; 0x022EE018
 	mov r8, r0
 	mov r1, #0
 	mov r2, #0x700
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r8
 	bl ov00_022ED61C
 	cmp r0, #0
@@ -59434,7 +59436,7 @@ ov00_022EE018: ; 0x022EE018
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #0x10
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r6, r8
 	mov r7, r8
 	mov r5, #0
@@ -59543,7 +59545,7 @@ _022EE1F4:
 	add r0, r8, #0x1f0
 	add r1, r8, #0xf0
 	mov r2, #0xe
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrb r0, [r8, #0x1ef]
 	strb r0, [r8, #0xef]
 	b _022EE254
@@ -59557,7 +59559,7 @@ _022EE224:
 	add r0, r8, #0xf0
 	add r1, r8, #0x1f0
 	mov r2, #0xe
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrb r0, [r8, #0xef]
 	strb r0, [r8, #0x1ef]
 _022EE254:
@@ -59576,7 +59578,7 @@ _022EE274:
 	add r1, r8, #0x300
 	mov r0, #0
 	mov r2, #0x100
-	bl ArrayFill16
+	bl MTi_CpuClear16
 _022EE290:
 	mov r4, #0
 	mov r5, r4
@@ -59698,7 +59700,7 @@ ov00_022EE420: ; 0x022EE420
 	mov r1, r7
 	mov r0, #0
 	mov r2, #0x400
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	mov r2, #0
 	mov r1, #0xff
 _022EE444:
@@ -59718,7 +59720,7 @@ _022EE474:
 	mov r0, r5
 	mov r2, r4
 	add r1, r7, #0xf0
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r6, r6, #1
 	cmp r6, #2
 	add r7, r7, #0x100
@@ -59736,7 +59738,7 @@ ov00_022EE4A0: ; 0x022EE4A0
 	add r1, r5, r4, lsl #8
 	mov r0, #0
 	mov r2, #0x100
-	bl ArrayFill16
+	bl MTi_CpuClear16
 	add r0, r5, r4, lsl #8
 	mov r1, #0xff
 	strb r1, [r0, #0xe7]
@@ -59795,7 +59797,7 @@ _022EE554:
 	add r0, sp, #8
 	add r1, sp, #0
 	mov r2, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r4, _022EE64C ; =ov00_0231826C
 	add r3, sp, #0
 	mov r5, #0
@@ -59877,14 +59879,14 @@ ov00_022EE650: ; 0x022EE650
 	sbcs r2, r1, r0
 	addlt sp, sp, #0x24
 	ldmltia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_0207ADCC
+	bl OS_IsTickAvailable
 	cmp r0, #0
 	beq _022EE6CC
-	ldr r0, _022EE81C ; =sub_0207AE44
+	ldr r0, _022EE81C ; =OS_GetTick
 	adds r4, r4, r0
 _022EE6CC:
 	add r0, sp, #0
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 	ldrb r0, [sp, #1]
 	ldr r5, _022EE820 ; =0x5D588B65
 	ldr r6, _022EE824 ; =0x00269EC3
@@ -59974,7 +59976,7 @@ _022EE810:
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EE81C: .word sub_0207AE44
+_022EE81C: .word OS_GetTick
 _022EE820: .word 0x5D588B65
 _022EE824: .word 0x00269EC3
 _022EE828: .word 0x000009BF
@@ -60061,14 +60063,14 @@ ov00_022EE8C0: ; 0x022EE8C0
 	sbcs r2, r1, r0
 	addlt sp, sp, #0x24
 	ldmltia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_0207ADCC
+	bl OS_IsTickAvailable
 	cmp r0, #0
 	beq _022EE95C
-	ldr r0, _022EEA50 ; =sub_0207AE44
+	ldr r0, _022EEA50 ; =OS_GetTick
 	adds r4, r4, r0
 _022EE95C:
 	add r0, sp, #0
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 	ldrb r0, [sp, #1]
 	ldr r5, _022EEA54 ; =0x5D588B65
 	ldr r6, _022EEA58 ; =0x00269EC3
@@ -60133,7 +60135,7 @@ _022EEA44:
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EEA50: .word sub_0207AE44
+_022EEA50: .word OS_GetTick
 _022EEA54: .word 0x5D588B65
 _022EEA58: .word 0x00269EC3
 _022EEA5C: .word 0x000009BF
@@ -63010,7 +63012,7 @@ ov00_022F10EC: ; 0x022F10EC
 	sub sp, sp, #0x14
 	mov sb, r0
 	add r0, sp, #0
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 	mov r6, #0
 	add r7, sp, #0
 	mov r8, r6
@@ -63051,23 +63053,23 @@ _022F1160: .word sub_020852F8
 
 	arm_func_start ov00_022F1164
 ov00_022F1164: ; 0x022F1164
-	ldr ip, _022F1174 ; =MemsetFast
+	ldr ip, _022F1174 ; =MI_CpuFill8
 	mov r2, r1
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_022F1174: .word MemsetFast
+_022F1174: .word MI_CpuFill8
 	arm_func_end ov00_022F1164
 
 	arm_func_start ov00_022F1178
 ov00_022F1178: ; 0x022F1178
-	ldr ip, _022F118C ; =MemcpyFast
+	ldr ip, _022F118C ; =MI_CpuCopy8
 	mov r3, r0
 	mov r0, r1
 	mov r1, r3
 	bx ip
 	.align 2, 0
-_022F118C: .word MemcpyFast
+_022F118C: .word MI_CpuCopy8
 	arm_func_end ov00_022F1178
 
 	arm_func_start ov00_022F1190
@@ -65176,23 +65178,23 @@ _022F2C30: .word sub_020852A4
 
 	arm_func_start ov00_022F2C34
 ov00_022F2C34: ; 0x022F2C34
-	ldr ip, _022F2C44 ; =MemsetFast
+	ldr ip, _022F2C44 ; =MI_CpuFill8
 	mov r2, r1
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_022F2C44: .word MemsetFast
+_022F2C44: .word MI_CpuFill8
 	arm_func_end ov00_022F2C34
 
 	arm_func_start ov00_022F2C48
 ov00_022F2C48: ; 0x022F2C48
-	ldr ip, _022F2C5C ; =MemcpyFast
+	ldr ip, _022F2C5C ; =MI_CpuCopy8
 	mov r3, r0
 	mov r0, r1
 	mov r1, r3
 	bx ip
 	.align 2, 0
-_022F2C5C: .word MemcpyFast
+_022F2C5C: .word MI_CpuCopy8
 	arm_func_end ov00_022F2C48
 
 	arm_func_start ov00_022F2C60
@@ -68208,7 +68210,7 @@ _022F5464:
 ov00_022F5478: ; 0x022F5478
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r1, r1, lsl #6
 	orr r1, r1, r0, lsr #26
 	ldr r2, _022F54A8 ; =0x01FF6210
@@ -68317,7 +68319,7 @@ ov00_022F5590: ; 0x022F5590
 	arm_func_start ov00_022F5594
 ov00_022F5594: ; 0x022F5594
 	stmdb sp!, {r3, lr}
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r1, r1, lsl #6
 	orr r1, r1, r0, lsr #26
 	ldr r2, _022F55B8 ; =0x000082EA
@@ -68332,7 +68334,7 @@ _022F55B8: .word 0x000082EA
 	arm_func_start ov00_022F55BC
 ov00_022F55BC: ; 0x022F55BC
 	stmdb sp!, {r3, lr}
-	bl sub_0207AE44
+	bl OS_GetTick
 	mov r2, #0xfa00
 	umull ip, r3, r0, r2
 	mla r3, r1, r2, r3

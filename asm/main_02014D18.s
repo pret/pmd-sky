@@ -5464,7 +5464,7 @@ InitSoundSystem: ; 0x02018C28
 	ldr r0, _02018E44 ; =_020AFB28
 	mov r1, #4
 	bl sub_02002CAC
-	bl sub_0207CC10
+	bl SND_Init
 	ldr r0, _02018E48 ; =0x0000FFFF
 	mov r1, #0
 	bl sub_0207C9C4
@@ -7715,7 +7715,7 @@ ExecuteCopyToFlatVramCommand: ; 0x0201AB0C
 	mov r0, r1
 	ldr r1, [ip, #8]
 	ldr r2, [ip]
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r3, pc}
 _0201AB40:
 	cmp r0, #1
@@ -7738,7 +7738,7 @@ _0201AB7C:
 	ldr r1, [ip, #8]
 	ldr r2, [ip]
 	mov r0, #0
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldmia sp!, {r3, pc}
 	arm_func_end ExecuteCopyToFlatVramCommand
 

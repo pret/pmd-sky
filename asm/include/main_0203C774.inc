@@ -514,7 +514,7 @@
 .public sub_0205FC20
 .public sub_0206637C
 .public sub_02079094
-.public sub_0207B9EC
+.public OS_GetMacAddress
 .public sub_0208346C
 .public sub_0208347C
 .public sub_02083A18

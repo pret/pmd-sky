@@ -91,7 +91,7 @@
 .public sub_020756E8
 .public sub_0207A7EC
 .public sub_0207A8F4
-.public sub_0207AD54
-.public sub_0207AEF4
-.public sub_0207AFF0
+.public OS_InitTick
+.public OS_SetTick
+.public OS_InitAlarm
 .public WAN_TABLE
