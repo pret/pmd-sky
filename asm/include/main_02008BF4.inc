@@ -1,5 +1,5 @@
 #pragma once
-.public ArrayFill32Fast
+.public MTi_CpuClearFast
 .public Debug_Print0
 .public G3X_ClearFifo
 .public G3X_Init

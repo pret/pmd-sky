@@ -276,8 +276,8 @@ OSi_UseTick:
 	.global _022B99A8
 _022B99A8:
 	.space 0x8
-	.global _022B99B0
-_022B99B0:
+	.global OSi_UseAlarm
+OSi_UseAlarm:
 	.space 0xC
 	.global _022B99BC
 _022B99BC:

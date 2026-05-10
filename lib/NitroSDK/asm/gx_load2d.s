@@ -24,7 +24,7 @@ _02077D34:
 	mov r0, r4
 	mov r2, r3
 	add r1, lr, #0x5000000
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02077D48: .word GXi_DmaId
@@ -52,7 +52,7 @@ _02077D88:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x5000000
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02077DA0: .word GXi_DmaId
@@ -80,7 +80,7 @@ _02077DE0:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x5000000
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02077DF8: .word GXi_DmaId
@@ -108,7 +108,7 @@ _02077E38:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x5000000
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02077E50: .word GXi_DmaId
@@ -135,7 +135,7 @@ _02077E90:
 	mov r0, r4
 	mov r2, r3
 	add r1, lr, #0x7000000
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02077EA4: .word GXi_DmaId
@@ -163,7 +163,7 @@ _02077EE4:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x7000000
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02077EFC: .word GXi_DmaId
@@ -191,7 +191,7 @@ _02077F40:
 	mov r0, r4
 	mov r2, r3
 	add r1, ip, lr
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02077F54: .word GXi_DmaId
@@ -219,7 +219,7 @@ _02077F98:
 	mov r0, r4
 	mov r2, r3
 	add r1, ip, lr
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02077FAC: .word GXi_DmaId
@@ -249,7 +249,7 @@ _02077FF8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207800C: .word GXi_DmaId
@@ -279,7 +279,7 @@ _02078058:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207806C: .word GXi_DmaId
@@ -309,7 +309,7 @@ _020780B8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020780CC: .word GXi_DmaId
@@ -339,7 +339,7 @@ _02078118:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207812C: .word GXi_DmaId
@@ -369,7 +369,7 @@ _02078178:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207818C: .word GXi_DmaId
@@ -399,7 +399,7 @@ _020781D8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020781EC: .word GXi_DmaId
@@ -429,7 +429,7 @@ _02078238:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207824C: .word GXi_DmaId
@@ -459,7 +459,7 @@ _02078298:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020782AC: .word GXi_DmaId
@@ -489,7 +489,7 @@ _020782F8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207830C: .word GXi_DmaId
@@ -519,7 +519,7 @@ _02078358:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207836C: .word GXi_DmaId
@@ -549,7 +549,7 @@ _020783B8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020783CC: .word GXi_DmaId

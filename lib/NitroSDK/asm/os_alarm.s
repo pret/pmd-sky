@@ -7,7 +7,7 @@
 OSi_SetTimer: ; 0x0207AF64
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r3, _0207AFE0 ; =0x04000106
 	mov r2, #0
 	strh r2, [r3]
@@ -44,17 +44,17 @@ _0207AFE8: .word 0x0000FFFE
 _0207AFEC: .word 0x04000104
 	arm_func_end OSi_SetTimer
 
-	arm_func_start sub_0207AFF0
-sub_0207AFF0: ; 0x0207AFF0
+	arm_func_start OS_InitAlarm
+OS_InitAlarm: ; 0x0207AFF0
 	stmdb sp!, {r3, lr}
-	ldr r1, _0207B02C ; =_022B99B0
+	ldr r1, _0207B02C ; =OSi_UseAlarm
 	ldrh r0, [r1]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #1
 	strh r0, [r1]
 	bl OSi_SetTimerReserved
-	ldr r1, _0207B02C ; =_022B99B0
+	ldr r1, _0207B02C ; =OSi_UseAlarm
 	mov r2, #0
 	str r2, [r1, #4]
 	mov r0, #0x10
@@ -62,16 +62,16 @@ sub_0207AFF0: ; 0x0207AFF0
 	bl OS_DisableIrqMask
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0207B02C: .word _022B99B0
-	arm_func_end sub_0207AFF0
+_0207B02C: .word OSi_UseAlarm
+	arm_func_end OS_InitAlarm
 
 	arm_func_start OS_IsAlarmAvailable
 OS_IsAlarmAvailable: ; 0x0207B030
-	ldr r0, _0207B03C ; =_022B99B0
+	ldr r0, _0207B03C ; =OSi_UseAlarm
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
-_0207B03C: .word _022B99B0
+_0207B03C: .word OSi_UseAlarm
 	arm_func_end OS_IsAlarmAvailable 
 
 	arm_func_start OS_CreateAlarm
@@ -93,7 +93,7 @@ OS_InsertAlarm: ; 0x0207B050
 	mov r6, r2
 	cmpeq r3, #0
 	beq _0207B0C4
-	bl sub_0207AE44
+	bl OS_GetTick
 	ldr r6, [r8, #0x28]
 	ldr r7, [r8, #0x24]
 	cmp r6, r1
@@ -115,7 +115,7 @@ OS_InsertAlarm: ; 0x0207B050
 	adc r6, r6, r1
 _0207B0C4:
 	str r7, [r8, #0xc]
-	ldr r0, _0207B178 ; =_022B99B0
+	ldr r0, _0207B178 ; =OSi_UseAlarm
 	str r6, [r8, #0x10]
 	ldr r5, [r0, #4]
 	cmp r5, #0
@@ -138,7 +138,7 @@ _0207B0E4:
 	cmp r0, #0
 	strne r8, [r0, #0x18]
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
-	ldr r1, _0207B178 ; =_022B99B0
+	ldr r1, _0207B178 ; =OSi_UseAlarm
 	mov r0, r8
 	str r8, [r1, #4]
 	bl OSi_SetTimer
@@ -148,7 +148,7 @@ _0207B134:
 	cmp r5, #0
 	bne _0207B0E4
 _0207B140:
-	ldr r1, _0207B178 ; =_022B99B0
+	ldr r1, _0207B178 ; =OSi_UseAlarm
 	mov r0, #0
 	str r0, [r8, #0x18]
 	ldr r0, [r1, #8]
@@ -163,11 +163,11 @@ _0207B140:
 	bl OSi_SetTimer
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0207B178: .word _022B99B0
+_0207B178: .word OSi_UseAlarm
 	arm_func_end OS_InsertAlarm
 
-	arm_func_start sub_0207B17C
-sub_0207B17C: ; 0x0207B17C
+	arm_func_start OS_SetAlarm
+OS_SetAlarm: ; 0x0207B17C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	movs r6, r0
 	mov r5, r1
@@ -188,7 +188,7 @@ _0207B1A4:
 	ldr r1, [sp, #0x18]
 	mov r7, r0
 	str r1, [r6, #4]
-	bl sub_0207AE44
+	bl OS_GetTick
 	adds r3, r5, r0
 	adc r2, r4, r1
 	mov r0, r6
@@ -197,7 +197,7 @@ _0207B1A4:
 	mov r0, r7
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_0207B17C
+	arm_func_end OS_SetAlarm
 
 	arm_func_start sub_0207B1E8
 sub_0207B1E8: ; 0x0207B1E8
@@ -217,14 +217,14 @@ _0207B20C:
 	strne r1, [r0, #0x14]
 	bne _0207B22C
 	ldr r2, [r5, #0x14]
-	ldr r1, _0207B26C ; =_022B99B0
+	ldr r1, _0207B26C ; =OSi_UseAlarm
 	str r2, [r1, #8]
 _0207B22C:
 	ldr r1, [r5, #0x14]
 	cmp r1, #0
 	strne r0, [r1, #0x18]
 	bne _0207B250
-	ldr r1, _0207B26C ; =_022B99B0
+	ldr r1, _0207B26C ; =OSi_UseAlarm
 	cmp r0, #0
 	str r0, [r1, #4]
 	beq _0207B250
@@ -238,7 +238,7 @@ _0207B250:
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0207B26C: .word _022B99B0
+_0207B26C: .word OSi_UseAlarm
 	arm_func_end sub_0207B1E8
 
 	arm_func_start OSi_AlarmHandler
@@ -262,8 +262,8 @@ OSi_ArrangeTimer: ; 0x0207B280
 	ldr r1, [r0, #0xff8]
 	orr r1, r1, #0x10
 	str r1, [r0, #0xff8]
-	bl sub_0207AE44
-	ldr r2, _0207B36C ; =_022B99B0
+	bl OS_GetTick
+	ldr r2, _0207B36C ; =OSi_UseAlarm
 	ldr r4, [r2, #4]
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -305,7 +305,7 @@ _0207B324:
 	str r5, [r4]
 	bl OS_InsertAlarm
 _0207B34C:
-	ldr r0, _0207B36C ; =_022B99B0
+	ldr r0, _0207B36C ; =OSi_UseAlarm
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -314,7 +314,7 @@ _0207B34C:
 	.align 2, 0
 _0207B364: .word 0x04000106
 _0207B368: .word OS_IRQTable
-_0207B36C: .word _022B99B0
+_0207B36C: .word OSi_UseAlarm
 	arm_func_end OSi_ArrangeTimer
 
 

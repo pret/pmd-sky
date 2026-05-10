@@ -73,7 +73,7 @@ _0206CA5C:
 	mov r1, r4
 	mov r2, lr
 	strh ip, [r5]
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -165,7 +165,7 @@ _0206CB9C:
 	mov r1, r4
 	mov r2, r6
 	strh ip, [r3]
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -4036,7 +4036,7 @@ sub_0206FE5C: ; 0x0206FE5C
 	ldr r1, [r5, #0xc]
 	ldr r2, [r5]
 	mov r0, #0
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5]
 	bl DC_FlushRange
@@ -4881,7 +4881,7 @@ _020709B4:
 	mov r0, r8
 	mov r1, sl
 	bl DC_FlushRange
-	bl sub_0207A300
+	bl DC_WaitWriteBufferEmpty
 	cmp r7, #0
 	moveq r0, fp
 	movne r0, #0
@@ -5348,7 +5348,7 @@ _02071030:
 	ldrsb r0, [r5, #0xd0]
 	cmp r0, #1
 	bne _020710D0
-	bl GetTimer0Control
+	bl OS_GetTickLo
 	ldr r2, [r8, #0xec8]
 	ldr r1, [r8, #0xecc]
 	sub sl, r0, r2
@@ -5411,7 +5411,7 @@ _02071118:
 	ldrsb r0, [r5, #0xd0]
 	cmp r0, #1
 	bne _02071030
-	bl GetTimer0Control
+	bl OS_GetTickLo
 	str r0, [r8, #0xecc]
 	b _02071030
 _02071148:

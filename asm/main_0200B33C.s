@@ -409,23 +409,23 @@ sub_0200B76C: ; 0x0200B76C
 	mov r0, #0
 	mov r1, #0x6800000
 	mov r2, #0xa4000
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r0, #0xc0
 	mov r1, #0x7000000
 	mov r2, #0x400
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r0, #0
 	mov r1, #0x5000000
 	mov r2, #0x400
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r0, #0xc0
 	ldr r1, _0200B87C ; =0x07000400
 	mov r2, #0x400
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	mov r0, #0
 	ldr r1, _0200B880 ; =0x05000400
 	mov r2, #0x400
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	bl sub_02019304
 	mov r4, r0
 	ldr r1, _0200B884 ; =CART_REMOVED_IMG_DATA

@@ -893,7 +893,7 @@ EnqueueRender3dTexture: ; 0x01FF8CAC
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x28
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #3
 	strh r0, [r4]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -909,7 +909,7 @@ EnqueueRender3dTiling: ; 0x01FF8CDC
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x34
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #2
 	strh r0, [r4]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -924,7 +924,7 @@ NewRender3dRectangle: ; 0x01FF8D0C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x26
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r4]
@@ -940,7 +940,7 @@ NewRender3dQuadrilateral: ; 0x01FF8D3C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x26
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r1, #1
 	mov r0, r4
 	strh r1, [r4]
@@ -956,7 +956,7 @@ NewRender3dTexture: ; 0x01FF8D6C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x28
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r1, #3
 	mov r0, r4
 	strh r1, [r4]
@@ -972,7 +972,7 @@ NewRender3dTiling: ; 0x01FF8D9C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x34
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r1, #2
 	mov r0, r4
 	strh r1, [r4]
@@ -2053,7 +2053,7 @@ _01FF990C:
 	mov r0, fp
 	bl SetIrqFlag
 	bl IC_InvalidateAll
-	bl sub_0207A300
+	bl DC_WaitWriteBufferEmpty
 	add r5, r5, r4
 	cmp r5, #0x8000
 	bhs _01FF9964

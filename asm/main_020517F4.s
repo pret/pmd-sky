@@ -368,7 +368,7 @@ _02051CE4:
 	bne _02051D10
 	ldr r1, [r2, #8]
 	ldr r2, [r2]
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	b _02051D30
 _02051D10:
 	cmp r1, #1
@@ -379,7 +379,7 @@ _02051D20:
 	ldr r1, [r2, #8]
 	ldr r2, [r2]
 	mov r0, r8
-	bl ArrayFill32
+	bl MTi_CpuClear32
 _02051D30:
 	add r0, r6, #1
 	mov r0, r0, lsl #0x10

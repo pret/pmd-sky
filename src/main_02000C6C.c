@@ -25,8 +25,8 @@ extern u32 OS_SetArenaLo(u32, u32);
 extern void sub_0207A95C(u32, u32);
 extern u32 sub_0207A98C(u32, u32, u32, u32);
 extern u32 sub_0207AA34(u32, u32, u32);
-extern void sub_0207AD54();
-extern void sub_0207B9EC(u8(*)[6]);
+extern void OS_InitTick();
+extern void OS_GetMacAddress(u8(*)[6]);
 extern void sub_0207F3BC(u32);
 extern void sub_02008DAC();
 extern void sub_020833F8(u32);
@@ -48,12 +48,12 @@ void NitroMain(void)
   u32 old_ime;
 
 
-  u8 stack[6];
+  u8 macAddr[6];
 
   OS_Init();
   sub_020833F8(0x12);
   sub_020845D8(sub_020024D4);
-  sub_0207AD54();
+  OS_InitTick();
   sub_02076070();
   sub_0207F3BC(0xffffffff);
   sub_0207A220();
@@ -74,10 +74,10 @@ void NitroMain(void)
   reg_OS_IME = 1;
   ClearIrqFlag(1,old_ime);
   sub_02008DAC();
-  sub_0207B9EC(&stack);
-  sub_02002228(stack[0] * stack[1] +
-               stack[2] * stack[3] +
-               stack[4] * stack[5]);
+  OS_GetMacAddress(&macAddr);
+  sub_02002228(macAddr[0] * macAddr[1] +
+               macAddr[2] * macAddr[3] +
+               macAddr[4] * macAddr[5]);
   sub_020024E4();
   sub_020028AC();
   sub_0200294C();

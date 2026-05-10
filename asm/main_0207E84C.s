@@ -37,7 +37,7 @@ sub_0207E8A4: ; 0x0207E8A4
 	ldr r0, [r0, #0x28]
 	add r0, r0, r2
 	mov r2, r3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207E8A4
@@ -49,7 +49,7 @@ sub_0207E8C0: ; 0x0207E8C0
 	mov r0, r1
 	add r1, ip, r2
 	mov r2, r3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207E8C0
@@ -59,7 +59,7 @@ sub_0207E8E0: ; 0x0207E8E0
 	stmdb sp!, {r3, lr}
 	mov r0, r2
 	mov r2, r3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207E8E0
@@ -397,7 +397,7 @@ sub_0207ED88: ; 0x0207ED88
 	mov r1, #0
 	mov r2, #0x5c
 	mov r4, r0
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, #0
 	str r0, [r4, #0x10]
 	str r0, [r4, #0xc]
@@ -648,7 +648,7 @@ sub_0207F05C: ; 0x0207F05C
 	ldr r2, [r7, #0x30]
 	mov r0, r5
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 _0207F0E8:
 	add r0, sp, #4
 	bl sub_0207F70C
@@ -675,7 +675,7 @@ _0207F0F0:
 	ldr r2, [r7, #0x38]
 	mov r0, r5
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 _0207F14C:
 	add r0, sp, #4
 	bl sub_0207F70C

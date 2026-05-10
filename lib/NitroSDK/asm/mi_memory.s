@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ArrayFill16
-ArrayFill16: ; 0x0207C2B8
+	arm_func_start MTi_CpuClear16
+MTi_CpuClear16: ; 0x0207C2B8
 	mov r3, #0
 _0207C2BC:
 	cmp r3, r2
@@ -20,10 +20,10 @@ _0207C2D4:
 _0207C2D8:
 	blt _0207C2BC
 	bx lr
-	arm_func_end ArrayFill16
+	arm_func_end MTi_CpuClear16
 
-	arm_func_start ArrayCopy16
-ArrayCopy16: ; 0x0207C2E0
+	arm_func_start MTi_CpuCopy16
+MTi_CpuCopy16: ; 0x0207C2E0
 	mov ip, #0
 _0207C2E4:
 	cmp ip, r2
@@ -44,10 +44,10 @@ _0207C308:
 _0207C30C:
 	blt _0207C2E4
 	bx lr
-	arm_func_end ArrayCopy16
+	arm_func_end MTi_CpuCopy16
 
-	arm_func_start ArrayFill32
-ArrayFill32: ; 0x0207C314
+	arm_func_start MTi_CpuClear32
+MTi_CpuClear32: ; 0x0207C314
 	add ip, r1, r2
 _0207C318:
 	cmp r1, ip
@@ -58,10 +58,10 @@ _0207C324:
 _0207C328:
 	blt _0207C318
 	bx lr
-	arm_func_end ArrayFill32
+	arm_func_end MTi_CpuClear32
 
-	arm_func_start ArrayCopy32
-ArrayCopy32: ; 0x0207C330
+	arm_func_start MTi_CpuCopy32
+MTi_CpuCopy32: ; 0x0207C330
 	add ip, r1, r2
 _0207C334:
 	cmp r1, ip
@@ -77,10 +77,10 @@ _0207C34C:
 _0207C350:
 	blt _0207C334
 	bx lr
-	arm_func_end ArrayCopy32
+	arm_func_end MTi_CpuCopy32
 
-	arm_func_start ArrayFill32Fast
-ArrayFill32Fast: ; 0x0207C358
+	arm_func_start MTi_CpuClearFast
+MTi_CpuClearFast: ; 0x0207C358
 	stmdb sp!, {r4, r5, r6, r7, r8, sb}
 	add sb, r1, r2
 	mov ip, r2, lsr #5
@@ -110,10 +110,10 @@ _0207C3A8:
 	blt _0207C398
 	ldmia sp!, {r4, r5, r6, r7, r8, sb}
 	bx lr
-	arm_func_end ArrayFill32Fast
+	arm_func_end MTi_CpuClearFast
 
-	arm_func_start ArrayCopy32Fast
-ArrayCopy32Fast: ; 0x0207C3B4
+	arm_func_start MTi_CpuCopy32Fast
+MTi_CpuCopy32Fast: ; 0x0207C3B4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl}
 	add sl, r1, r2
 	mov ip, r2, lsr #5
@@ -146,10 +146,10 @@ _0207C400:
 	blt _0207C3E4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl}
 	bx lr
-	arm_func_end ArrayCopy32Fast
+	arm_func_end MTi_CpuCopy32Fast
 
-	arm_func_start MemsetFast
-MemsetFast: ; 0x0207C40C
+	arm_func_start MI_CpuFill8
+MI_CpuFill8: ; 0x0207C40C
 	cmp r2, #0
 	beq _0207C418
 	b _0207C41C
@@ -209,10 +209,10 @@ _0207C4B0:
 	orr r1, r1, r3
 	strh r1, [r0]
 	bx lr
-	arm_func_end MemsetFast
+	arm_func_end MI_CpuFill8
 
-	arm_func_start MemcpyFast
-MemcpyFast: ; 0x0207C4C8
+	arm_func_start MI_CpuCopy8
+MI_CpuCopy8: ; 0x0207C4C8
 	cmp r2, #0
 	beq _0207C4D4
 	b _0207C4D8
@@ -336,7 +336,7 @@ _0207C62C:
 	orr r0, r2, r0
 	strh r0, [r1]
 	bx lr
-	arm_func_end MemcpyFast
+	arm_func_end MI_CpuCopy8
 
 	arm_func_start AtomicExchange
 AtomicExchange: ; 0x0207C648

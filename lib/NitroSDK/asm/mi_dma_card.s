@@ -6,8 +6,8 @@
     .public MIi_CheckDma0SourceAddress
     .public InitDmaTransfer_Standard
 
-    arm_func_start sub_0207C750 ; MTi_CardDmaCopy32
-sub_0207C750: ; 0x0207C750
+    arm_func_start MTi_CardDmaCopy32 ;
+MTi_CardDmaCopy32: ; 0x0207C750
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r1
 	mov r6, r0
@@ -39,5 +39,5 @@ _0207C79C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0207C7C0: .word 0xAF000001
-	arm_func_end sub_0207C750
+	arm_func_end MTi_CardDmaCopy32
 

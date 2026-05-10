@@ -2,20 +2,20 @@
 
 	.text
 
-    .public MemcpyFast
-    .public ArrayCopy16
+    .public MI_CpuCopy8
+    .public MTi_CpuCopy16
 
-    arm_func_start sub_0207B9EC ; OS_GetMacAddress
-sub_0207B9EC: ; 0x0207B9EC
-	ldr ip, _0207BA00 ; =MemcpyFast
+    arm_func_start OS_GetMacAddress
+OS_GetMacAddress: ; 0x0207B9EC
+	ldr ip, _0207BA00 ; =MI_CpuCopy8
 	mov r1, r0
 	ldr r0, _0207BA04 ; =0x027FFCF4
 	mov r2, #6
 	bx ip
 	.align 2, 0
-_0207BA00: .word MemcpyFast
+_0207BA00: .word MI_CpuCopy8
 _0207BA04: .word 0x027FFCF4
-	arm_func_end sub_0207B9EC
+	arm_func_end OS_GetMacAddress
 
 	arm_func_start GetDsFirmwareUserSettings ; OS_GetOwnerInfo
 GetDsFirmwareUserSettings: ; 0x0207BA08
@@ -41,12 +41,12 @@ GetDsFirmwareUserSettings: ; 0x0207BA08
 	strh r3, [r4, #0x1a]
 	ldrb r3, [ip, #0x50]
 	strh r3, [r4, #0x52]
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	ldr r0, _0207BA88 ; =0x027FFC80
 	add r1, r4, #0x1c
 	add r0, r0, #0x1c
 	mov r2, #0x34
-	bl ArrayCopy16
+	bl MTi_CpuCopy16
 	mov r0, #0
 	strh r0, [r4, #0x18]
 	strh r0, [r4, #0x50]

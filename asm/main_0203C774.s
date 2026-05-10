@@ -16921,10 +16921,10 @@ sub_0204A190: ; 0x0204A190
 
 	arm_func_start sub_0204A198
 sub_0204A198: ; 0x0204A198
-	ldr ip, _0204A1A0 ; =sub_0207B9EC
+	ldr ip, _0204A1A0 ; =OS_GetMacAddress
 	bx ip
 	.align 2, 0
-_0204A1A0: .word sub_0207B9EC
+_0204A1A0: .word OS_GetMacAddress
 	arm_func_end sub_0204A198
 
 	arm_func_start sub_0204A1A4

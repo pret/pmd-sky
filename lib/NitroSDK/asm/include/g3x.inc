@@ -1,5 +1,5 @@
 #pragma once
-.public ArrayFill32
+.public MTi_CpuClear32
 .public GXi_DmaId
 .public GXi_VRamLockId
 .public G3_LoadMtx43

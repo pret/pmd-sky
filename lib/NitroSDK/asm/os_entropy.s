@@ -2,7 +2,7 @@
 
 	.text
 
-    .public GetTimer0Control
+    .public OS_GetTickLo
     .public _022B99A8
 
     arm_func_start sub_0207BB50
@@ -12,7 +12,7 @@ sub_0207BB50: ; 0x0207BB50
 	mov r5, r0
 	ldrh r6, [r1]
 	ldr r4, _0207BC14 ; =0x027FFC00
-	bl GetTimer0Control
+	bl OS_GetTickLo
 	orr r0, r0, r6, lsl #16
 	str r0, [r5]
 	ldr r1, _0207BC18 ; =_022B99A8

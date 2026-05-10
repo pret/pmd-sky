@@ -372,7 +372,7 @@ StartThread: ; 0x02079560
 	add r1, r5, #4
 	mov r0, #0
 	sub r2, r2, #8
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r1, #0
 	str r1, [r8, #0x84]
 	str r1, [r8, #0x88]
@@ -385,7 +385,7 @@ StartThread: ; 0x02079560
 	add r1, r8, #0xa4
 	mov r2, #0xc
 	str r0, [r8, #0x7c]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	mov r1, #0
 	mov r0, r4
 	str r1, [r8, #0xb0]
@@ -826,7 +826,7 @@ sub_02079B14: ; 0x02079B14
 	mov r2, r3, lsr #6
 	orr r1, r1, r3, lsl #26
 	ldr r3, _02079BB8 ; =sub_02079BBC
-	bl sub_0207B17C
+	bl OS_SetAlarm
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	beq _02079BA0

@@ -2067,11 +2067,11 @@ _0206C410:
 	mvn r0, #0x1d
 	ldmia sp!, {r4, pc}
 _0206C430:
-	bl sub_0207AD54
+	bl OS_InitTick
 	mov r0, #0
 	mov r1, r0
-	bl sub_0207AEF4
-	bl sub_0207AFF0
+	bl OS_SetTick
+	bl OS_InitAlarm
 	ldr r0, _0206C5F8 ; =DRIVER_WORK
 	mov r3, #0
 	strh r3, [r0, #2]

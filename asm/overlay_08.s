@@ -511,7 +511,7 @@ _0233CF8C:
 	strb r3, [r4, #0x15]
 	add r1, r4, #0x16
 	mov r2, r3, lsl #1
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldrb r1, [r4, #0x14]
 	ldr r0, _0233D0E0 ; =ov08_0233EC28
 	mov r3, #0
@@ -1139,7 +1139,7 @@ ov08_0233D788: ; 0x0233D788
 	mov r2, #0x16
 	ldr r1, [r1, #4]
 	add r1, r1, #0x34
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _0233D7FC:
 	ldr r0, _0233D814 ; =ov08_0233EC28
 	ldr r1, [r0, #4]
@@ -1534,7 +1534,7 @@ ov08_0233DC98: ; 0x0233DC98
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
-	bl sub_0207B9EC
+	bl OS_GetMacAddress
 	ldr r1, _0233DD44 ; =0x027FFC3C
 	ldrh r0, [sp]
 	ldr r2, [r1]
@@ -1811,15 +1811,15 @@ ov08_0233DFF8: ; 0x0233DFF8
 	ldr r0, _0233E0E4 ; =ov08_0234AE00
 	mov r2, #0x400
 	strh r1, [r3, #4]
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _0233E0E8 ; =ov08_0234AD40
 	mov r1, #0
 	mov r2, #0xc0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _0233E0EC ; =ov08_0234ACD4
 	mov r1, #0
 	mov r2, #0x18
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r1, _0233E0E0 ; =ov08_0234AC80
 	mov r2, #0
 	mov r0, #3

@@ -3,8 +3,8 @@
 
 	.text
 
-    arm_func_start sub_0207AD54
-sub_0207AD54: ; 0x0207AD54
+    arm_func_start OS_InitTick
+OS_InitTick: ; 0x0207AD54
 	stmdb sp!, {r3, lr}
 	ldr r1, _0207ADC0 ; =OSi_UseTick
 	ldrh r0, [r1]
@@ -20,7 +20,7 @@ sub_0207AD54: ; 0x0207AD54
 	ldr r3, _0207ADC4 ; =0x04000102
 	str r2, [r0, #0xc]
 	strh r2, [r3]
-	ldr r1, _0207ADC8 ; =sub_0207ADDC
+	ldr r1, _0207ADC8 ; =OSi_CountUpTick
 	strh r2, [r3, #-2]
 	mov r2, #0xc1
 	mov r0, #8
@@ -35,20 +35,20 @@ sub_0207AD54: ; 0x0207AD54
 	.align 2, 0
 _0207ADC0: .word OSi_UseTick
 _0207ADC4: .word 0x04000102
-_0207ADC8: .word sub_0207ADDC
-	arm_func_end sub_0207AD54
+_0207ADC8: .word OSi_CountUpTick
+	arm_func_end OS_InitTick
 
-	arm_func_start sub_0207ADCC
-sub_0207ADCC: ; 0x0207ADCC
+	arm_func_start OS_IsTickAvailable
+OS_IsTickAvailable: ; 0x0207ADCC
 	ldr r0, _0207ADD8 ; =OSi_UseTick
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
 _0207ADD8: .word OSi_UseTick
-	arm_func_end sub_0207ADCC
+	arm_func_end OS_IsTickAvailable
 
-	arm_func_start sub_0207ADDC
-sub_0207ADDC: ; 0x0207ADDC
+	arm_func_start OSi_CountUpTick
+OSi_CountUpTick: ; 0x0207ADDC
 	ldr r0, _0207AE34 ; =OSi_UseTick
 	mov r3, #0
 	ldr r2, [r0, #8]
@@ -69,18 +69,18 @@ sub_0207ADDC: ; 0x0207ADDC
 _0207AE20:
 	ldr ip, _0207AE3C ; =sub_02078BF4
 	mov r0, #0
-	ldr r1, _0207AE40 ; =sub_0207ADDC
+	ldr r1, _0207AE40 ; =OSi_CountUpTick
 	mov r2, r0
 	bx ip
 	.align 2, 0
 _0207AE34: .word OSi_UseTick
 _0207AE38: .word 0x04000102
 _0207AE3C: .word sub_02078BF4
-_0207AE40: .word sub_0207ADDC
-	arm_func_end sub_0207ADDC
+_0207AE40: .word OSi_CountUpTick
+	arm_func_end OSi_CountUpTick
 
-	arm_func_start sub_0207AE44
-sub_0207AE44: ; 0x0207AE44
+	arm_func_start OS_GetTick
+OS_GetTick: ; 0x0207AE44
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	bl EnableIrqFlag
@@ -123,19 +123,19 @@ _0207AEB0:
 _0207AED8: .word 0x04000100
 _0207AEDC: .word 0x0000FFFF
 _0207AEE0: .word OSi_UseTick
-	arm_func_end sub_0207AE44
+	arm_func_end OS_GetTick
 
-	arm_func_start GetTimer0Control
-GetTimer0Control: ; 0x0207AEE4
+	arm_func_start OS_GetTickLo
+OS_GetTickLo: ; 0x0207AEE4
 	ldr r0, _0207AEF0 ; =0x04000100
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
 _0207AEF0: .word 0x04000100
-	arm_func_end GetTimer0Control
+	arm_func_end OS_GetTickLo
 
-	arm_func_start sub_0207AEF4
-sub_0207AEF4: ; 0x0207AEF4
+	arm_func_start OS_SetTick
+OS_SetTick: ; 0x0207AEF4
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r1
@@ -165,5 +165,5 @@ sub_0207AEF4: ; 0x0207AEF4
 _0207AF58: .word 0x04000214
 _0207AF5C: .word OSi_UseTick
 _0207AF60: .word 0x04000102
-	arm_func_end sub_0207AEF4
+	arm_func_end OS_SetTick
 

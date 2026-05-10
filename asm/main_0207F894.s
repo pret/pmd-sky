@@ -234,7 +234,7 @@ sub_0207FB40: ; 0x0207FB40
 	add r0, r4, r5
 	sub r2, r6, r5
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_0207FB40
 
@@ -340,7 +340,7 @@ GetOverlayInfo: ; 0x0207FC9C
 	mov r1, r5
 	add r0, ip, r3
 	mov r2, #0x20
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, sp, #0x18
 	str r4, [r5, #0x20]
 	bl FileInit
@@ -440,11 +440,11 @@ sub_0207FE28: ; 0x0207FE28
 	add r0, sp, #0x44
 	mov r1, #0
 	mov r2, #0x14
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r2, _0207FEB8 ; =_020B2BB8
 	add r1, sp, #4
 	ldmia r2, {r0, r2}
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r3, _0207FEB8 ; =_020B2BB8
 	mov r1, r6
 	ldr ip, [r3, #4]
@@ -510,7 +510,7 @@ _0207FF2C:
 	ldr r0, [r5, #4]
 	mov r2, r4
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 	bl WaitForever2
 	ldmia sp!, {r3, r4, r5, pc}
 _0207FF4C:
@@ -695,14 +695,14 @@ MD5_Update: ; 0x0208013C
 	add r1, r6, #0x18
 	mov r0, r5
 	add r1, r1, ip
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02080190:
 	add r1, r6, #0x18
 	mov r0, r5
 	mov r2, r7
 	add r1, r1, ip
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r6
 	bl sub_020802BC
 	sub r4, r4, r7
@@ -715,7 +715,7 @@ _020801C4:
 	mov r0, r7
 	mov r2, r5
 	add r1, r6, #0x18
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r6
 	add r7, r7, #0x40
 	bl sub_020802BC
@@ -727,7 +727,7 @@ _020801EC:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r7
 	add r1, r6, #0x18
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end MD5_Update
 
@@ -753,7 +753,7 @@ MD5_Digest: ; 0x02080204
 	bhs _02080268
 	add r0, r4, #0x18
 	add r0, r0, r3
-	bl MemsetFast
+	bl MI_CpuFill8
 	mov r0, r4
 	bl sub_020802BC
 	mov r3, #0
@@ -765,7 +765,7 @@ _02080268:
 	add r0, r0, r3
 	sub r2, r2, #8
 	mov r1, #0
-	bl MemsetFast
+	bl MI_CpuFill8
 _02080284:
 	str r7, [r4, #0x50]
 	mov r0, r4
@@ -774,11 +774,11 @@ _02080284:
 	mov r0, r4
 	mov r1, r5
 	mov r2, #0x10
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x58
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020802B8: .word _020B2BC0
@@ -1083,7 +1083,7 @@ sub_020806C0: ; 0x020806C0
 	mov r0, sb
 	mov r2, r4
 	add r1, r6, r1
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r1, _02080810 ; =_020B2D88
 	mov r0, sl
 	ldr r3, [r1]
@@ -1099,7 +1099,7 @@ _02080758:
 	mov r0, sb
 	mov r2, r8
 	add r1, r6, r1
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r0, [sl, #0x1c]
 	add r0, r0, r8
 	str r0, [sl, #0x1c]
@@ -1127,7 +1127,7 @@ _020807BC:
 	mov r0, sb
 	mov r1, r6
 	mov r2, r5
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r3, [r4]
 	mov r0, sl
 	mov r1, r6
@@ -1144,7 +1144,7 @@ _020807F0:
 	mov r0, sb
 	mov r1, r6
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02080810: .word _020B2D88
@@ -1281,7 +1281,7 @@ _020808D4:
 	add r1, sp, #0x10
 	mov r2, #4
 	str r0, [r3, #0x1c]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldmia sp!, {r4, r5, r6, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -3047,7 +3047,7 @@ sub_020820E8: ; 0x020820E8
 	ldr r0, _02082314 ; =0x003FFFFF
 	bl OS_DisableIrqMask
 	str r0, [sp, #4]
-	bl sub_0207ADCC
+	bl OS_IsTickAvailable
 	cmp r0, #0
 	movne r0, #8
 	moveq r0, r4
@@ -4409,7 +4409,7 @@ CARDi_InitCommon: ; 0x02083248
 	str r0, [r4, #0xc]
 	str r0, [r4, #0x18]
 	str r1, [r4]
-	bl ArrayFill32Fast
+	bl MTi_CpuClearFast
 	ldr r0, _02083340 ; =_022BB780
 	mov r1, #0x60
 	bl DC_FlushRange
@@ -4426,7 +4426,7 @@ CARDi_InitCommon: ; 0x02083248
 	ldr r0, _02083348 ; =0x027FFE00
 	mov r2, #0x160
 	sub r1, r0, #0x380
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _020832BC:
 	mov r2, #0
 	mov r0, #4
@@ -4611,7 +4611,7 @@ sub_020834A4: ; 0x020834A4
 	mov r1, #0
 	add r0, r4, #0x18
 	mov r2, #0x48
-	bl MemsetFast
+	bl MI_CpuFill8
 	ldr r0, _0208380C ; =0x0000203F
 	str r5, [r4, #4]
 	str r0, [r4, #0x58]
@@ -4913,11 +4913,11 @@ _020838F0:
 	ldr r0, [sb, #0x1c]
 	mov r1, r6
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	mov r0, r6
 	mov r1, r8
 	bl DC_FlushRange
-	bl sub_0207A300
+	bl DC_WaitWriteBufferEmpty
 	ldr r0, [sb]
 	str r6, [r0, #0xc]
 	ldr r1, [sb, #0x20]
@@ -4953,7 +4953,7 @@ _0208397C:
 	ldr r1, [sb, #0x20]
 	mov r0, r6
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 _02083994:
 	ldr r0, [sb, #0x1c]
 	add r0, r0, r8
@@ -5214,7 +5214,7 @@ CARDi_ReadFromCache: ; 0x02083C8C
 	ldr r1, [r4, #0x20]
 	mov r2, r5
 	add r0, r0, r3
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	ldr r2, [r4, #0x1c]
 	ldr r1, [r4, #0x20]
 	ldr r0, [r4, #0x24]
@@ -5273,7 +5273,7 @@ sub_02083D78: ; 0x02083D78
 	ldr r2, [r4, #0x20]
 	mov r3, #0x200
 	ldr r5, _02083DC4 ; =_022BBE20
-	bl sub_0207C750
+	bl MTi_CardDmaCopy32
 	ldr r1, [r4, #0x1c]
 	mov r0, r1, lsr #8
 	orr r0, r0, #0xb7000000
@@ -5430,16 +5430,16 @@ _02083F98:
 	sub sb, sb, sl
 	mov r0, sb
 	mov r1, #0x20
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	add r0, sb, r5
 	mov r1, #0x20
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	add r5, r5, #0x20
 _02083FCC:
 	mov r0, sb
 	mov r1, r5
 	bl DC_InvalidateRange
-	bl sub_0207A300
+	bl DC_WaitWriteBufferEmpty
 	b _02083FE4
 _02083FE0:
 	bl DC_FlushAll
@@ -5811,7 +5811,7 @@ _02084478:
 	ldr r0, [sl]
 	mov r1, #0x60
 	bl DC_FlushRange
-	bl sub_0207A300
+	bl DC_WaitWriteBufferEmpty
 	mov r7, #0xb
 	mov r6, #1
 	mov r5, r7
@@ -6436,7 +6436,7 @@ _02084C60:
 	ldr r0, _02084CEC ; =0xFFFF0020
 	ldr r1, _02084CF0 ; =_022BC084
 	mov r2, #0x9c
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	bl DC_FlushAll
 	ldr r0, _02084CDC ; =_022BC080
 	add r0, r0, #0xfe000000
@@ -6585,12 +6585,12 @@ _02084E2C: .word _022BC650
 
 	arm_func_start sub_02084E30
 sub_02084E30: ; 0x02084E30
-	ldr ip, _02084E40 ; =MemsetFast
+	ldr ip, _02084E40 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x24
 	bx ip
 	.align 2, 0
-_02084E40: .word MemsetFast
+_02084E40: .word MI_CpuFill8
 	arm_func_end sub_02084E30
 
 	arm_func_start sub_02084E44
@@ -6608,7 +6608,7 @@ _02084E68:
 	mov r0, r6
 	mov r1, r5
 	mov r2, fp
-	bl MemsetFast
+	bl MI_CpuFill8
 	bl EnableIrqFlag
 	ldr r1, [r8, #0xc0]
 	mov r7, r0
@@ -6895,10 +6895,10 @@ sub_020851AC: ; 0x020851AC
 	add r1, sp, #0
 	add r0, r4, #0x50
 	mov r2, #8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, sp, #0
 	mov r1, #8
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
 	bne _02085230
@@ -7443,7 +7443,7 @@ _020858D0:
 	mov r7, sl
 	mov fp, sl
 	str r3, [sp, #8]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldrsb r0, [r8, #1]!
 	cmp r0, #0x5e
 	moveq r0, sl

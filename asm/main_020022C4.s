@@ -167,7 +167,7 @@ sub_02002448: ; 0x02002448
 	str r2, [r3]
 	bl Debug_Print0
 	mov r0, r4
-	bl sub_0207B930
+	bl OS_ResetSystem
 	bl sub_02079C14
 _02002490:
 	bl WaitForInterrupt

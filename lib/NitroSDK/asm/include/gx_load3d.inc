@@ -1,6 +1,6 @@
 #pragma once
-.public ArrayCopy16
-.public ArrayCopy32
+.public MTi_CpuCopy16
+.public MTi_CpuCopy32
 .public GXi_DmaId
 .public GX_ResetBankForTex
 .public GX_SetBankForTex

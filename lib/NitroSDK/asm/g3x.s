@@ -253,11 +253,11 @@ G3X_InitTable: ; 0x02077AB4
 _02077B04:
 	mov r0, #0
 	mov r2, #0x10
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldr r1, _02077B4C ; =0x04000360
 	mov r0, #0
 	mov r2, #0x60
-	bl ArrayFill32
+	bl MTi_CpuClear32
 _02077B20:
 	mov r2, #0
 	ldr r0, _02077B50 ; =0x040004D0

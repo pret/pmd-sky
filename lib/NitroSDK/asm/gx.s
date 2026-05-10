@@ -63,13 +63,13 @@ _02076140:
 	mov r0, r2
 	add r1, r3, #8
 	mov r2, #0x60
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldr r3, _020761B0 ; =0x0400006C
 	mov r0, #0
 	ldr r1, _020761B4 ; =0x04001000
 	mov r2, #0x70
 	strh r0, [r3]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 _02076168:
 	ldr r0, _020761B8 ; =0x04000020
 	mov r2, #0x100

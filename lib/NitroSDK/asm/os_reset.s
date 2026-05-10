@@ -21,17 +21,17 @@ _0207B8A4:
 	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _0207B8A4
-	ldr r1, _0207B8CC ; =sub_0207B8D0
+	ldr r1, _0207B8CC ; =OSi_CommonCallback
 	mov r0, #0xc
 	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0207B8C8: .word _022B99D0
-_0207B8CC: .word sub_0207B8D0
+_0207B8CC: .word OSi_CommonCallback
 	arm_func_end OS_InitReset
 
-	arm_func_start sub_0207B8D0 ; OSi_CommonCallback
-sub_0207B8D0: ; 0x0207B8D0
+	arm_func_start OSi_CommonCallback ; OSi_CommonCallback
+OSi_CommonCallback: ; 0x0207B8D0
 	stmdb sp!, {r3, lr}
 	and r0, r1, #0x7f00
 	mov r0, r0, lsl #8
@@ -47,10 +47,10 @@ _0207B8F8:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207B900: .word _022B99D0
-	arm_func_end sub_0207B8D0
+	arm_func_end OSi_CommonCallback
 
-	arm_func_start sub_0207B904 ; Osi_SendToPxi
-sub_0207B904: ; 0x0207B904
+	arm_func_start OSi_SendToPxi ; Osi_SendToPxi
+OSi_SendToPxi: ; 0x0207B904
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0, lsl #8
 	mov r5, #0xc
@@ -63,10 +63,10 @@ _0207B914:
 	cmp r0, #0
 	bne _0207B914
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0207B904
+	arm_func_end OSi_SendToPxi
 
-	arm_func_start sub_0207B930 ; OS_ResetSystem
-sub_0207B930: ; 0x0207B930
+	arm_func_start OS_ResetSystem ; OS_ResetSystem
+OS_ResetSystem: ; 0x0207B930
 	stmdb sp!, {r4, lr}
 	ldr r1, _0207B9C0 ; =0x027FFC40
 	mov r4, r0
@@ -97,7 +97,7 @@ _0207B958:
 	ldr r1, _0207B9DC ; =0x027FFC20
 	ldr r0, _0207B9E0 ; =0x00000010
 	str r4, [r1]
-	bl sub_0207B904
+	bl OSi_SendToPxi
 	ldr r0, _0207B9E4 ; =0x027E3F80
 	ldr r1, _0207B9E8 ; =0x00000800
 	sub r0, r0, r1
@@ -116,5 +116,5 @@ _0207B9DC: .word 0x027FFC20
 _0207B9E0: .word 0x00000010
 _0207B9E4: .word 0x027E3F80
 _0207B9E8: .word 0x00000800
-	arm_func_end sub_0207B930
+	arm_func_end OS_ResetSystem
 

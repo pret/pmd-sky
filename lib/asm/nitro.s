@@ -11,7 +11,7 @@ sub_0207C7DC: ; 0x0207C7DC
 	mov r3, r2
 	mov r0, #1
 	str r2, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207C7DC
 
@@ -25,7 +25,7 @@ sub_0207C7FC: ; 0x0207C7FC
 	mov r2, lr
 	mov r3, ip
 	mov r0, #2
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207C7FC
 
@@ -37,7 +37,7 @@ sub_0207C824: ; 0x0207C824
 	mov r3, r2
 	mov r0, #3
 	str r2, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207C824
 
@@ -84,7 +84,7 @@ sub_0207C890: ; 0x0207C890
 	mov r2, lr
 	mov r0, #9
 	str ip, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207C890
 
@@ -98,7 +98,7 @@ sub_0207C8B8: ; 0x0207C8B8
 	mov r2, lr
 	mov r3, ip
 	mov r0, #0xc
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207C8B8
 
@@ -131,7 +131,7 @@ _0207C928:
 	mov r3, r7
 	mov r0, #0xd
 	str r6, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end sub_0207C8E0
 
@@ -151,7 +151,7 @@ sub_0207C944: ; 0x0207C944
 	orr r3, r0, ip, lsl #27
 	mov r0, #0x11
 	str lr, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207C944
 
@@ -170,7 +170,7 @@ sub_0207C984: ; 0x0207C984
 	mov r2, r5
 	mov r3, r4
 	mov r0, #0x12
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	arm_func_end sub_0207C984
@@ -183,7 +183,7 @@ sub_0207C9C4: ; 0x0207C9C4
 	mov r1, r0
 	mov r0, #0x1a
 	str r3, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207C9C4
 
@@ -195,7 +195,7 @@ sub_0207C9E4: ; 0x0207C9E4
 	mov r1, r0
 	mov r0, #0x1b
 	str r3, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207C9E4
 
@@ -207,7 +207,7 @@ sub_0207CA04: ; 0x0207CA04
 	mov r1, r0
 	mov r0, #0x13
 	str r3, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207CA04
 
@@ -221,7 +221,7 @@ sub_0207CA24: ; 0x0207CA24
 	mov r2, lr
 	mov r0, #0x14
 	str ip, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207CA24
 
@@ -233,7 +233,7 @@ sub_0207CA4C: ; 0x0207CA4C
 	mov r1, r0
 	mov r0, #0x15
 	str r3, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207CA4C
 
@@ -256,7 +256,7 @@ sub_0207CA6C: ; 0x0207CA6C
 	orr r3, ip, r3
 	mov r0, #0xe
 	str r4, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0207CA6C
 
@@ -270,7 +270,7 @@ sub_0207CAB8: ; 0x0207CAB8
 	mov r1, r0
 	orr r3, ip, lr, lsl #8
 	mov r0, #0xf
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207CAB8
 
@@ -286,7 +286,7 @@ sub_0207CAE0: ; 0x0207CAE0
 	orr r3, ip, r3, lsl #8
 	mov r0, #0x10
 	str lr, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end sub_0207CAE0
@@ -299,7 +299,7 @@ sub_0207CB14: ; 0x0207CB14
 	mov r1, r0
 	mov r0, #0x1f
 	str r3, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207CB14
 
@@ -311,7 +311,7 @@ sub_0207CB34: ; 0x0207CB34
 	mov r1, r0
 	mov r0, #0x20
 	str r3, [sp]
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207CB34
 
@@ -325,7 +325,7 @@ sub_0207CB54: ; 0x0207CB54
 	mov r2, lr
 	mov r3, ip
 	mov r0, #0x19
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207CB54
 
@@ -339,7 +339,7 @@ sub_0207CB7C: ; 0x0207CB7C
 	mov r2, lr
 	mov r3, ip
 	mov r0, #6
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207CB7C
 
@@ -353,12 +353,12 @@ sub_0207CBA4: ; 0x0207CBA4
 	orr r1, r0, ip, lsl #24
 	mov r3, lr
 	mov r0, #7
-	bl sub_0207CBCC
+	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207CBA4
 
-	arm_func_start sub_0207CBCC
-sub_0207CBCC: ; 0x0207CBCC
+	arm_func_start PushCommand_impl
+PushCommand_impl: ; 0x0207CBCC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r0, #1
@@ -376,10 +376,10 @@ sub_0207CBCC: ; 0x0207CBCC
 	str r1, [r0, #0x14]
 	bl sub_0207CEDC
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_0207CBCC
+	arm_func_end PushCommand_impl
 
-	arm_func_start sub_0207CC10
-sub_0207CC10: ; 0x0207CC10
+	arm_func_start SND_Init
+SND_Init: ; 0x0207CC10
 	stmdb sp!, {r3, lr}
 	ldr r1, _0207CC40 ; =_022B99EC
 	ldr r0, [r1]
@@ -389,13 +389,13 @@ sub_0207CC10: ; 0x0207CC10
 	mov r2, #1
 	str r2, [r1]
 	bl OS_InitMutex
-	bl sub_0207CC70
+	bl SND_CommandInit
 	bl sub_0207D380
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207CC40: .word _022B99EC
 _0207CC44: .word _022B99F0
-	arm_func_end sub_0207CC10
+	arm_func_end SND_Init
 
 	arm_func_start sub_0207CC48
 sub_0207CC48: ; 0x0207CC48
@@ -417,8 +417,8 @@ _0207CC68: .word sub_0207A0CC
 _0207CC6C: .word _022B99F0
 	arm_func_end sub_0207CC5C
 
-	arm_func_start sub_0207CC70
-sub_0207CC70: ; 0x0207CC70
+	arm_func_start SND_CommandInit
+SND_CommandInit: ; 0x0207CC70
 	stmdb sp!, {r4, lr}
 	bl sub_0207D270
 	ldr lr, _0207CD2C ; =_022B9D00
@@ -475,7 +475,7 @@ _0207CD34: .word _022BAA20
 _0207CD38: .word _022BB4E8
 _0207CD3C: .word _022B9A80
 _0207CD40: .word _022BB560
-	arm_func_end sub_0207CC70
+	arm_func_end SND_CommandInit
 
 	arm_func_start sub_0207CD44
 sub_0207CD44: ; 0x0207CD44
@@ -1190,7 +1190,7 @@ _0207D5E4:
 	mov r1, #0x3c
 	str r0, [r2, #0x18]
 	ldr r0, [r3, #0x18]
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	b _0207D640
 _0207D610:
 	cmp r0, #0
@@ -1206,7 +1206,7 @@ _0207D62C:
 	ldr r2, [r1, #0x1c]
 	mov r1, #8
 	str r2, [r0, #4]
-	bl sub_0207A2C0
+	bl DC_StoreRange
 _0207D640:
 	add r0, r6, #0x18
 	ldr r1, [r4, #0x18]
@@ -1218,10 +1218,10 @@ _0207D640:
 	bl sub_0207CC5C
 	mov r0, r6
 	mov r1, #0x3c
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	mov r0, r4
 	mov r1, #0x3c
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_0207D5B0
 
@@ -1245,7 +1245,7 @@ _0207D698:
 	ldr r2, [r1, #0x1c]
 	mov r1, r4
 	str r2, [r0, #0x18]
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	b _0207D6FC
 _0207D6C8:
 	cmp r3, #0
@@ -1262,7 +1262,7 @@ _0207D6E4:
 	mov r0, r3
 	mov r1, r8
 	str r2, [r3, #4]
-	bl sub_0207A2C0
+	bl DC_StoreRange
 _0207D6FC:
 	add r6, r6, #1
 	cmp r6, #4
@@ -1287,7 +1287,7 @@ _0207D734:
 	mov r1, r4
 	str r5, [r0]
 	str r5, [r0, #4]
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	mov r0, r6
 	cmp r6, #0
 	bne _0207D734
@@ -1450,7 +1450,7 @@ sub_0207D934: ; 0x0207D934
 	add r0, r0, r5, lsl #2
 	mov r1, #4
 	str r4, [r2, #0x3c]
-	bl sub_0207A2C0
+	bl DC_StoreRange
 	bl sub_0207CC5C
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_0207D934
@@ -2417,12 +2417,12 @@ _0207E624:
 	ldr r0, [sp]
 	mov r1, r5
 	mov r2, r8
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r1, r7, r8
 	ldr r0, _0207E798 ; =_020B2BB0
 	add r1, r5, r1
 	mov r2, #2
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	add r0, sp, #4
 	mov r1, sb
 	bl sub_0207DFBC
@@ -2457,7 +2457,7 @@ _0207E6B0:
 	add r0, sp, #0x60
 	mov r2, r6
 	sub r1, r1, r6
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	sub r4, r4, r6
 	b _0207E6E4
 _0207E6D4:
@@ -2499,7 +2499,7 @@ _0207E734:
 	add r0, sp, #0x60
 	mov r2, sb
 	sub r1, r1, sb
-	bl MemcpyFast
+	bl MI_CpuCopy8
 	sub r4, r4, sb
 	b _0207E780
 _0207E76C:

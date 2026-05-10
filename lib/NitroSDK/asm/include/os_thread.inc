@@ -36,15 +36,15 @@
 .public _022B991C
 .public OSi_TimerReserved
 .public OSi_UseTick
-.public _022B99B0
+.public OSi_UseAlarm
 .public _022B99BC
 .public _ll_sdiv
 .public _ll_udiv
 .public _s32_div_f
 .public _secure
-.public ArrayCopy16
-.public ArrayCopy32
-.public ArrayFill32
+.public MTi_CpuCopy16
+.public MTi_CpuCopy32
+.public MTi_CpuClear32
 .public AtomicExchange
 .public CARD_Init
 .public ClearIrqFlag
@@ -135,4 +135,4 @@
 
 .public sub_0207B1E8
 .public OS_CreateAlarm
-.public sub_0207B17C
+.public OS_SetAlarm

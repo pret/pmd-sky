@@ -52,7 +52,7 @@ asm void DC_InvalidateRange(register void * startAddr, register u32 nBytes) {
 }
 
 
-asm void sub_0207A2C0(register void * startAddr, register u32 nBytes) { // DC_StoreRange
+asm void DC_StoreRange(register void * startAddr, register u32 nBytes) {
     add r1, r1, r0
     bic r0, r0, #HW_CACHE_LINE_SIZE - 1
 @loop:
@@ -76,7 +76,7 @@ asm void DC_FlushRange(register void * startAddr, register u32 nBytes) {
     bx lr
 }
 
-asm void sub_0207A300(void) { // DC_WaitWriteBufferEmpty
+asm void DC_WaitWriteBufferEmpty(void) {
 	mov r0, #0
 	mcr p15, 0, r0, c7, c10, 4
 	bx lr

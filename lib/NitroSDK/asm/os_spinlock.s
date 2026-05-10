@@ -37,7 +37,7 @@ _02078D80:
 	mov r0, #0
 	mov r2, #0x28
 	str r3, [ip, #4]
-	bl ArrayFill32
+	bl MTi_CpuClear32
 	ldr ip, _02078DF0 ; =0x04000204
 	ldr r1, _02078DE8 ; =0x027FFFF0
 	ldrh r3, [ip]

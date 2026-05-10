@@ -1,7 +1,7 @@
 #pragma once
 .public _020B09B0
-.public ArrayCopy32
-.public ArrayFill32
+.public MTi_CpuCopy32
+.public MTi_CpuClear32
 .public MemAlloc
 .public MemFree
 .public MemZero

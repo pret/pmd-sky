@@ -72,7 +72,7 @@ _020786DC:
 	mov r0, r7
 	mov r2, r5
 	add r1, lr, ip
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 _020786EC:
 	ldr r0, _0207878C ; =GXi_DmaId
 	mvn r1, #0
@@ -92,7 +92,7 @@ _02078724:
 	mov r1, r4
 	add r0, r7, r5
 	sub r2, r6, r5
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0207873C:
@@ -113,7 +113,7 @@ _02078770:
 	mov r1, r2
 	mov r0, r7
 	mov r2, r6
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -189,7 +189,7 @@ GX_LoadTexPltt: ; 0x02078810
 	ldmia sp!, {r4, r5, r6, pc}
 _02078864:
 	add r1, lr, r5
-	bl ArrayCopy32
+	bl MTi_CpuCopy32
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
