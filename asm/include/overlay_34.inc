@@ -1,8 +1,8 @@
 #pragma once
 .public G3X_Reset
 .public GetFadeStatus
+.public HandleFadesVeneer
 .public HandleMenus
-.public OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 .public ov34_022DCB64
 .public ov34_022DCB98
 .public ov34_022DCBCC
@@ -13,6 +13,7 @@
 .public ov34_022DD0B0
 .public ov34_022DD0C0
 .public ov34_022DD104
+.public OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 .public sub_02002878
 .public sub_0200383C
 .public sub_020038D8
@@ -32,7 +33,6 @@
 .public sub_0200B8D4
 .public sub_0200BB60
 .public sub_0200BB74
-.public HandleFadesVeneer
 .public sub_0200BD14
 .public sub_02017A68
 .public sub_02017A80

@@ -25,8 +25,8 @@
 .public ov29_0234B73C
 .public ov29_0234D304
 .public ov29_02353398
-.public ov29_02382800
 .public OverlayIsLoaded
+.public SECRET_BAZAAR_DIALOGUE_INFO_PTR
 .public ShowPortraitInPortraitBox
 .public ShowStringInDialogueBox
 .public StringFromId

@@ -137,8 +137,8 @@ _02349A68: .word 0x000001C1
 _02349A6C: .word 0x00000418
 	arm_func_end GenerateMissionEggMonster
 
-	arm_func_start ov29_02349A70
-ov29_02349A70: ; 0x02349A70
+	arm_func_start GetFirstExperienceLockedTeamMember
+GetFirstExperienceLockedTeamMember: ; 0x02349A70
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, #0
 	ldr r4, _02349AD0 ; =DUNGEON_PTR
@@ -172,7 +172,7 @@ _02349AC0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02349AD0: .word DUNGEON_PTR
-	arm_func_end ov29_02349A70
+	arm_func_end GetFirstExperienceLockedTeamMember
 
 	arm_func_start ov29_02349AD4
 ov29_02349AD4: ; 0x02349AD4

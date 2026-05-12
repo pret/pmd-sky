@@ -364,10 +364,10 @@ _023491B4: .word DUNGEON_PTR
 
 	arm_func_start ov29_023491B8
 ov29_023491B8: ; 0x023491B8
-	ldr ip, _023491C0 ; =ov29_02349A70
+	ldr ip, _023491C0 ; =GetFirstExperienceLockedTeamMember
 	bx ip
 	.align 2, 0
-_023491C0: .word ov29_02349A70
+_023491C0: .word GetFirstExperienceLockedTeamMember
 	arm_func_end ov29_023491B8
 
 	arm_func_start IsOutlawOrChallengeRequestFloor

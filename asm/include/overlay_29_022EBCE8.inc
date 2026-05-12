@@ -1,5 +1,6 @@
 #pragma once
 .public abs
+.public ActivateEndOfTurnEffects
 .public AdvanceFrame
 .public CalcSpeedStageWrapper
 .public ChangeLeader
@@ -14,7 +15,6 @@
 .public IsFloorOver
 .public ov29_022E81F8
 .public ov29_022EF9C8
-.public ov29_0230FC24
 .public ov29_02348FD8
 .public ov29_023522B6
 .public RunMonsterAi

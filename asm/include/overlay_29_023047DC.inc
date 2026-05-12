@@ -1,5 +1,6 @@
 #pragma once
 .public _s32_div_f
+.public ActivateEndOfTurnEffects
 .public AdvanceFrame
 .public CheckLeaderTile
 .public CheckNonLeaderTile
@@ -27,7 +28,6 @@
 .public ov29_022F9C74
 .public ov29_02305814
 .public ov29_02307DD0
-.public ov29_0230FC24
 .public ov29_02346888
 .public ov29_0234AD10
 .public ov29_0235173C

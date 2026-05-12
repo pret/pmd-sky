@@ -51,7 +51,6 @@
 .public ov10_022C464C
 .public ov10_022C4650
 .public ov10_022C4664
-.public ov10_022C46A0
 .public ov10_022C4A5C
 .public ov10_022C4BBC
 .public ov10_022C4BE4
@@ -75,6 +74,7 @@
 .public POISON_DAMAGE
 .public POISON_DAMAGE_COOLDOWN
 .public SetPreprocessorArgsIdVal
+.public SHED_SKIN_ACTIVATION_CHANCE
 .public SpawnDroppedItemWrapper
 .public SPEED_BOOST_TURNS
 .public sub_02050FF8

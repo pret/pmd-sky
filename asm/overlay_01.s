@@ -12370,7 +12370,7 @@ _02333534:
 	cmp r0, #1
 	cmpne r0, #4
 	beq _023335C4
-	ldr r6, _02333674 ; =ov01_0233B764
+	ldr r6, _02333674 ; =CLEAR_MARK_PERFORMANCE_PROGRESS_FLAGS
 	mov r5, #0xe
 	mvn r4, #1
 _02333580:
@@ -12405,7 +12405,7 @@ _023335D0:
 	mov r1, r8
 	mov r2, r6
 	mov r3, r5
-	bl sub_0202A40C
+	bl PrintSpecialEpisodeClearMark
 	ldr r1, [r4]
 	add r8, r8, #2
 	add r1, r1, r7
@@ -12462,7 +12462,7 @@ _02333664: .word 0x00000215 + PROCESS_CONTINUE_SCREEN_CONTENTS_OFFSET
 _02333668: .word 0x00002710
 _0233366C: .word 0x05F5E100
 _02333670: .word 0x00000217 + PROCESS_CONTINUE_SCREEN_CONTENTS_OFFSET
-_02333674: .word ov01_0233B764
+_02333674: .word CLEAR_MARK_PERFORMANCE_PROGRESS_FLAGS
 	arm_func_end ProcessContinueScreenContents
 
 	arm_func_start ov01_02333678
@@ -22852,8 +22852,8 @@ MAIN_MENU_ITEMS_CONFIRM:
 	.byte 0xF7, 0x01, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xF8, 0x01, 0x00, 0x00
 #endif
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov01_0233B764
-ov01_0233B764:
+	.global CLEAR_MARK_PERFORMANCE_PROGRESS_FLAGS
+CLEAR_MARK_PERFORMANCE_PROGRESS_FLAGS:
 	.byte 0x0C, 0x00, 0x00, 0x00
 	.byte 0x0D, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 	.byte 0x11, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x1A, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00

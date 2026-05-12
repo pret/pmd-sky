@@ -13,6 +13,7 @@
 .public GetAcceptedMission
 .public GetBgRegionArea
 .public GetCurrentHiddenStairsType
+.public GetFirstExperienceLockedTeamMember
 .public GetForcedLossReason
 .public GetItemToRetrieve
 .public GetLeader
@@ -39,7 +40,6 @@
 .public ov29_023496EC
 .public ov29_023497C8
 .public ov29_02349818
-.public ov29_02349A70
 .public ov29_02349AD4
 .public ov29_0234C738
 .public ov29_023537C4

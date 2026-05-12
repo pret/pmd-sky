@@ -1,4 +1,8 @@
 #pragma once
+.public _0209AE20
+.public _020AFDA0
+.public _020AFDA8
+.public _022AAC68
 .public ALERT_ANIMATION_CONTROL
 .public ALERT_SPRITE_ID
 .public CURSOR_16_ANIMATION_CONTROL
@@ -10,11 +14,6 @@
 .public MemAlloc
 .public SetAnimationForAnimationControl
 .public SetSpriteIdForAnimationControl
-.public WAN_TABLE
-.public _0209AE20
-.public _020AFDA0
-.public _020AFDA8
-.public _022AAC68
 .public sub_0201C028
 .public sub_0201CF5C
 .public sub_02025D90
@@ -23,3 +22,4 @@
 .public sub_020335A8
 .public sub_02033BC0
 .public sub_02034360
+.public WAN_TABLE

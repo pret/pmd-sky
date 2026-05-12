@@ -919,7 +919,7 @@ _02348B9C: .word 0x00000E44
 ov29_02348BA0: ; 0x02348BA0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl ov29_02349A70
+	bl GetFirstExperienceLockedTeamMember
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -943,7 +943,7 @@ _02348BE0:
 ov29_02348BE8: ; 0x02348BE8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
-	bl ov29_02349A70
+	bl GetFirstExperienceLockedTeamMember
 	movs r4, r0
 	beq _02348C50
 	ldr r1, [r4, #0xb4]

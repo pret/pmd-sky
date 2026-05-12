@@ -83,6 +83,7 @@
 .public GetTeamMember
 .public GetType
 .public GROUND_MEMORY_ARENA_1
+.public HandleFadesVeneer
 .public HandleMenus
 .public IncrementNbBigTreasureWins
 .public IncrementNbDungeonsCleared
@@ -569,7 +570,6 @@
 .public sub_0200BB74
 .public sub_0200BB88
 .public sub_0200BBF8
-.public HandleFadesVeneer
 .public sub_0200BC60
 .public sub_0200BCB0
 .public sub_0200BD14

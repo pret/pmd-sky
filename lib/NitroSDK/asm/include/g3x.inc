@@ -1,10 +1,10 @@
 #pragma once
-.public MTi_CpuClear32
-.public GXi_DmaId
-.public GXi_VRamLockId
 .public G3_LoadMtx43
 .public G3_LoadMtx44
+.public GXi_DmaId
+.public GXi_VRamLockId
+.public MTi_CpuClear32
 .public MTX_LookAt
 .public MTX_OrthoW
-.public sub_0207BDA8
 .public sub_0207BC4C
+.public sub_0207BDA8

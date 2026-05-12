@@ -11,11 +11,11 @@
 .public IsParentMenuActive
 .public MemAlloc
 .public MemFree
+.public ov34_022DC718
 .public OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 .public OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 .public OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
 .public OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
-.public START_MENU_ITEMS_CONFIRM
 .public ShowStringIdInDialogueBox
-.public ov34_022DC718
+.public START_MENU_ITEMS_CONFIRM
 .public sub_0202F334

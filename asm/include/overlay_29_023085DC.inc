@@ -2,6 +2,7 @@
 .public abs
 .public ApplyDamage
 .public ApplyDamageAndEffectsWrapper
+.public ARENA_TRAP_ACTIVATION_CHANCE
 .public ATK_STAT_IDX
 .public BoostOffensiveStat
 .public CategoryIsNotPhysical
@@ -18,20 +19,18 @@
 .public IqSkillIsEnabled
 .public LevitateIsActive
 .public LogMessageByIdWithPopupCheckUserTarget
+.public MAGNET_PULL_ACTIVATION_CHANCE
 .public MonsterIsType
 .public ov10_022C442C
-.public ov10_022C4460
 .public ov10_022C4464
 .public ov10_022C44C0
 .public ov10_022C4550
-.public ov10_022C4564
 .public ov10_022C45AC
 .public ov10_022C45B0
 .public ov10_022C45B4
 .public ov10_022C45C0
 .public ov10_022C4638
 .public ov10_022C467C
-.public ov10_022C468C
 .public ov29_022E3F24
 .public ov29_022E40C0
 .public ov29_022E45D0
@@ -44,5 +43,6 @@
 .public ov29_023535DC
 .public RAPID_SPIN_BINDING_REMOVAL
 .public ResetDamageData
+.public SHADOW_TAG_ACTIVATION_CHANCE
 .public TryHurl
 .public UpdateAiTargetPos

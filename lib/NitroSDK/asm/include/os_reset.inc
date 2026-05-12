@@ -1,12 +1,12 @@
 #pragma once
 .public _022B99A8
 .public _022B99D0
-.public MTi_CpuCopy16
 .public EnableIrqFlag
-.public OS_GetTickLo
 .public MI_CpuCopy8
 .public MI_StopDma
+.public MTi_CpuCopy16
 .public OS_GetLockID
+.public OS_GetTickLo
 .public OS_ResetRequestIrqMask
 .public OS_SetIrqMask
 .public PXI_Init

@@ -1134,7 +1134,7 @@ TryInflictHealBlockStatus: ; 0x023185A8
 	mov r1, r5
 	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	mov r3, #5
-	ldr r1, _023186C0 ; =ov10_022C4774
+	ldr r1, _023186C0 ; =HEAL_BLOCK_TURN_RANGE
 	mov r0, r5
 	mov r2, #1
 	strb r3, [r7, #0xd8]
@@ -1165,7 +1165,7 @@ _023186B0:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_023186C0: .word ov10_022C4774
+_023186C0: .word HEAL_BLOCK_TURN_RANGE
 #ifdef JAPAN
 _023186C4: .word 0x00000AC1
 _023186C8: .word 0x00000AC2

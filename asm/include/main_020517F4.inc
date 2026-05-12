@@ -1,10 +1,10 @@
 #pragma once
 .public _020B09B0
-.public MTi_CpuCopy32
-.public MTi_CpuClear32
 .public MemAlloc
 .public MemFree
 .public MemZero
+.public MTi_CpuClear32
+.public MTi_CpuCopy32
 .public RANK_UP_TABLE
 .public sub_0200302C
 .public sub_020030FC

@@ -881,11 +881,11 @@ GetTypeStringId: ; 0x02050950
 
 	arm_func_start GetConversion2ConvertToType
 GetConversion2ConvertToType: ; 0x02050964
-	ldr r1, _02050970 ; =_020A192C
+	ldr r1, _02050970 ; =CONVERSION2_TYPE_TABLE
 	ldrb r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_02050970: .word _020A192C
+_02050970: .word CONVERSION2_TYPE_TABLE
 	arm_func_end GetConversion2ConvertToType
 
 	arm_func_start InitBitstreamForWrite

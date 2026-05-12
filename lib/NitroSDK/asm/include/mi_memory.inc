@@ -16,9 +16,14 @@
 .public ARM9_UNKNOWN_TABLE__NA_20AE924
 .public DC_FlushRange
 .public DC_InvalidateRange
+.public DC_StoreRange
 .public EnableIrqFlag
 .public FileInit
 .public InitDmaTransfer_Standard
+.public MI_CpuCopy8
+.public MI_SetWramBank
+.public MI_StopDma
+.public MIi_CheckDma0SourceAddress
 .public OS_EnableIrqMask
 .public OS_InitMutex
 .public OS_ResetRequestIrqMask
@@ -33,11 +38,6 @@
 .public sub_02079D98
 .public sub_0207A048
 .public sub_0207A0CC
-.public DC_StoreRange
 .public sub_0207B854
 .public sub_0207C1E0
 .public WaitForever2
-.public MI_SetWramBank
-.public MIi_CheckDma0SourceAddress
-.public MI_StopDma
-.public MI_CpuCopy8
