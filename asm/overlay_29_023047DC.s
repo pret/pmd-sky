@@ -969,7 +969,7 @@ _0230547C:
 	mov r0, #0
 	bl TryForcedLoss
 	mov r0, sb
-	bl ov29_0230FC24
+	bl ActivateEndOfTurnEffects
 	mov r0, sb
 	bl EntityIsValid__0230558C
 	cmp r0, #0

@@ -262,8 +262,6 @@
 .public _022A5970
 .public _s32_div_f
 .public _u32_div_f
-.public MTi_CpuCopy32
-.public MTi_CpuClear32
 .public AUDIO_COMMANDS_BUFFER
 .public BagHasExclusiveItemTypeForMonster
 .public CopyAndInterleave
@@ -370,6 +368,8 @@
 .public MemZero32
 .public MOVE_ACCURACY_STARS_TABLE
 .public MOVE_POWER_STARS_TABLE
+.public MTi_CpuClear32
+.public MTi_CpuCopy32
 .public MultiplyByFixedPoint
 .public NewRender3dQuadrilateral
 .public NewRender3dRectangle
@@ -385,6 +385,7 @@
 .public RENDER_3D_FUNCTIONS_64
 .public ResumeBgm
 .public Rgb8ToRgb5
+.public SND_Init
 .public sprintf
 .public strcat
 .public strcmp
@@ -467,7 +468,6 @@
 .public sub_0206F5C8
 .public sub_0207C9C4
 .public sub_0207C9E4
-.public SND_Init
 .public TEAM_MEMBER_TABLE_PTR
 .public UnloadFile
 .public vsprintf

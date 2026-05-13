@@ -255,7 +255,7 @@ _022EC038:
 	cmpne r0, #0
 	beq _022EC088
 	mov r0, r7
-	bl ov29_0230FC24
+	bl ActivateEndOfTurnEffects
 	mov r0, r7
 	bl EntityIsValid__022EC608
 	cmp r0, #0
@@ -368,7 +368,7 @@ _022EC1E0:
 	cmpne r0, #0
 	beq _022EC230
 	mov r0, r7
-	bl ov29_0230FC24
+	bl ActivateEndOfTurnEffects
 	mov r0, r7
 	bl EntityIsValid__022EC608
 	cmp r0, #0

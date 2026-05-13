@@ -52,6 +52,9 @@
 .public MemFree
 .public MemZero
 .public MultiplyByFixedPoint
+.public OS_InitAlarm
+.public OS_InitTick
+.public OS_SetTick
 .public ov10_022C2340
 .public ov10_022C23B0
 .public ov10_022C23EC
@@ -91,7 +94,4 @@
 .public sub_020756E8
 .public sub_0207A7EC
 .public sub_0207A8F4
-.public OS_InitTick
-.public OS_SetTick
-.public OS_InitAlarm
 .public WAN_TABLE

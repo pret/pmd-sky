@@ -5,7 +5,6 @@
 .public _u32_div_f
 .public _ull_mod
 .public AllocateTemp1024ByteBufferFromPool
-.public MTi_CpuCopy32
 .public BAG_ITEMS_PTR_MIRROR
 .public BitstreamDebug
 .public CardBackupError
@@ -112,6 +111,7 @@
 .public MemFree
 .public MemsetSimple
 .public MemZero
+.public MTi_CpuCopy32
 .public NoteSaveBase
 .public ov00_022BCA80
 .public ov00_022BCBAC
@@ -248,6 +248,7 @@
 .public PreprocessString
 .public PreprocessStringFromId
 .public PrintClearMark
+.public PrintSpecialEpisodeClearMark
 .public RandInt
 .public ResumeAdvancedMenu
 .public ResumeParentMenu
@@ -304,7 +305,6 @@
 .public sub_02029F88
 .public sub_02029FBC
 .public sub_0202A2A4
-.public sub_0202A40C
 .public sub_0202B0A4
 .public sub_0202BC28
 .public sub_0202BC60

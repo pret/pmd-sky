@@ -1,4 +1,5 @@
 #pragma once
+
 .public _0200002B
 .public _0207AD0C
 .public _020B2B9C
@@ -34,17 +35,11 @@
 .public _022B98F4
 .public _022B98F8
 .public _022B991C
-.public OSi_TimerReserved
-.public OSi_UseTick
-.public OSi_UseAlarm
 .public _022B99BC
 .public _ll_sdiv
 .public _ll_udiv
 .public _s32_div_f
 .public _secure
-.public MTi_CpuCopy16
-.public MTi_CpuCopy32
-.public MTi_CpuClear32
 .public AtomicExchange
 .public CARD_Init
 .public ClearIrqFlag
@@ -62,11 +57,17 @@
 .public GXi_VRamLockId
 .public MI_DmaCopy16
 .public MI_Init
+.public MTi_CpuClear32
+.public MTi_CpuCopy16
+.public MTi_CpuCopy32
 .public MTX_LookAt
 .public MTX_OrthoW
 .public OS_InitReset
 .public OS_IRQTable
 .public OSi_InitVramExclusive
+.public OSi_TimerReserved
+.public OSi_UseAlarm
+.public OSi_UseTick
 .public PM_Init
 .public PXI_Init
 .public sClrImg
@@ -96,4 +97,3 @@
 .public THREAD_INFO_STRUCT
 .public WaitForever2
 .public WaitForInterrupt
-

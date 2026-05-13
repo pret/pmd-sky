@@ -118,7 +118,7 @@ ov29_0234D5D0: ; 0x0234D5D0
 	bl UnkMapRelatedFunc
 	mov r0, #1
 	bl ov29_0234B4CC
-	bl ov29_0234DB58
+	bl InitSecretBazaarDialogueInfo
 	mov r0, r5
 	bl ov29_0234DBE0
 	mov r0, r7
@@ -142,7 +142,7 @@ ov29_0234D630: ; 0x0234D630
 	bl UnkMapRelatedFunc
 	mov r0, #1
 	bl ov29_0234B4CC
-	bl ov29_0234DB58
+	bl InitSecretBazaarDialogueInfo
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_0234D630
 
@@ -165,7 +165,7 @@ _0234D664: .word ov29_0234DBE0
 	arm_func_start ov29_0234D668
 ov29_0234D668: ; 0x0234D668
 	stmdb sp!, {r3, lr}
-	ldr r0, _0234D68C ; =ov29_02382800
+	ldr r0, _0234D68C ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x12]
@@ -174,7 +174,7 @@ ov29_0234D668: ; 0x0234D668
 	bl HidePortraitBox
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234D68C: .word ov29_02382800
+_0234D68C: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	arm_func_end ov29_0234D668
 
 	arm_func_start ov29_0234D690
@@ -261,13 +261,13 @@ ov29_0234D750: ; 0x0234D750
 	mov r3, #0
 	bl ov29_0234DC3C
 	bl ov29_0234D9C0
-	ldr r0, _0234D7BC ; =ov29_02382800
+	ldr r0, _0234D7BC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x46c]
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_0234D7BC: .word ov29_02382800
+_0234D7BC: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	arm_func_end ov29_0234D750
 
 	arm_func_start ov29_0234D7C0
@@ -296,19 +296,19 @@ ov29_0234D7C0: ; 0x0234D7C0
 	mov r3, #0
 	bl ov29_0234DC3C
 	bl ov29_0234D9C0
-	ldr r0, _0234D834 ; =ov29_02382800
+	ldr r0, _0234D834 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x46c]
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_0234D834: .word ov29_02382800
+_0234D834: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	arm_func_end ov29_0234D7C0
 
 	arm_func_start ov29_0234D838
 ov29_0234D838: ; 0x0234D838
 	stmdb sp!, {r3, lr}
-	ldr r0, _0234D85C ; =ov29_02382800
+	ldr r0, _0234D85C ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x10]
@@ -317,7 +317,7 @@ ov29_0234D838: ; 0x0234D838
 	bl sub_0202F334
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234D85C: .word ov29_02382800
+_0234D85C: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	arm_func_end ov29_0234D838
 
 	arm_func_start ov29_0234D860
@@ -332,22 +332,22 @@ ov29_0234D860: ; 0x0234D860
 
 	arm_func_start ov29_0234D878
 ov29_0234D878: ; 0x0234D878
-	ldr r1, _0234D888 ; =ov29_02382800
+	ldr r1, _0234D888 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r1, [r1]
 	str r0, [r1, #0x474]
 	bx lr
 	.align 2, 0
-_0234D888: .word ov29_02382800
+_0234D888: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	arm_func_end ov29_0234D878
 
 	arm_func_start ov29_0234D88C
 ov29_0234D88C: ; 0x0234D88C
-	ldr r0, _0234D89C ; =ov29_02382800
+	ldr r0, _0234D89C ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x46c]
 	bx lr
 	.align 2, 0
-_0234D89C: .word ov29_02382800
+_0234D89C: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	arm_func_end ov29_0234D88C
 
 	arm_func_start ov29_0234D8A0
@@ -363,7 +363,7 @@ _0234D8B0: .word ov29_0234D8B4
 	arm_func_start ov29_0234D8B4
 ov29_0234D8B4: ; 0x0234D8B4
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _0234D9BC ; =ov29_02382800
+	ldr r2, _0234D9BC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mov r5, r0
 	ldr r0, [r2]
 	mov r4, r1
@@ -375,14 +375,14 @@ ov29_0234D8B4: ; 0x0234D8B4
 	beq _0234D8E4
 	bl HidePortraitBox
 _0234D8E4:
-	ldr r0, _0234D9BC ; =ov29_02382800
+	ldr r0, _0234D9BC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x10]
 	bl sub_0202F334
 	mov r0, #8
 	mov r1, #0x62
 	bl ov29_022EA370
-	ldr r0, _0234D9BC ; =ov29_02382800
+	ldr r0, _0234D9BC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x11]
@@ -390,26 +390,26 @@ _0234D8E4:
 	beq _0234D91C
 	bl CloseParentMenu
 _0234D91C:
-	ldr r0, _0234D9BC ; =ov29_02382800
+	ldr r0, _0234D9BC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x12]
 	cmp r0, r1
 	beq _0234D948
 	bl ClosePortraitBox
-	ldr r0, _0234D9BC ; =ov29_02382800
+	ldr r0, _0234D9BC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x12]
 _0234D948:
-	ldr r0, _0234D9BC ; =ov29_02382800
+	ldr r0, _0234D9BC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x10]
 	bl CloseDialogueBox
-	ldr r0, _0234D9BC ; =ov29_02382800
+	ldr r0, _0234D9BC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0234D9BC ; =ov29_02382800
+	ldr r0, _0234D9BC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mov r1, #0
 	str r1, [r0]
 _0234D970:
@@ -435,7 +435,7 @@ _0234D9A8:
 	bl ov29_0234B4CC
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0234D9BC: .word ov29_02382800
+_0234D9BC: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	arm_func_end ov29_0234D8B4
 
 	arm_func_start ov29_0234D9C0
@@ -443,7 +443,7 @@ ov29_0234D9C0: ; 0x0234D9C0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mvn r8, #1
 	mov r7, #0
-	ldr r6, _0234DB50 ; =ov29_02382800
+	ldr r6, _0234DB50 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	sub r5, r8, #3
 	sub r4, r8, #2
 	mov sb, #1
@@ -547,28 +547,28 @@ _0234DB44:
 	beq _0234D9E0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0234DB50: .word ov29_02382800
+_0234DB50: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 _0234DB54: .word ov29_02353398
 	arm_func_end ov29_0234D9C0
 
-	arm_func_start ov29_0234DB58
-ov29_0234DB58: ; 0x0234DB58
+	arm_func_start InitSecretBazaarDialogueInfo
+InitSecretBazaarDialogueInfo: ; 0x0234DB58
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234DBD8 ; =0x00000478
 	mov r1, #8
 	bl MemAlloc
-	ldr r2, _0234DBDC ; =ov29_02382800
+	ldr r2, _0234DBDC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r1, _0234DBD8 ; =0x00000478
 	str r0, [r2]
 	bl MemZero
-	ldr r0, _0234DBDC ; =ov29_02382800
+	ldr r0, _0234DBDC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mvn r2, #0
 	ldr r1, [r0]
 	str r2, [r1, #0x46c]
 	ldr r0, [r0]
 	add r0, r0, #0x14
 	bl InitPreprocessorArgs
-	ldr r1, _0234DBDC ; =ov29_02382800
+	ldr r1, _0234DBDC ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mov r3, #0
 	ldr r0, [r1]
 	sub r2, r3, #2
@@ -587,15 +587,15 @@ ov29_0234DB58: ; 0x0234DB58
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234DBD8: .word 0x00000478
-_0234DBDC: .word ov29_02382800
-	arm_func_end ov29_0234DB58
+_0234DBDC: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
+	arm_func_end InitSecretBazaarDialogueInfo
 
 	arm_func_start ov29_0234DBE0
 ov29_0234DBE0: ; 0x0234DBE0
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	ldmeqia sp!, {r4, pc}
-	ldr r1, _0234DC38 ; =ov29_02382800
+	ldr r1, _0234DC38 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mvn r0, #1
 	ldr r1, [r1]
 	ldrsb r1, [r1, #0x12]
@@ -605,24 +605,24 @@ ov29_0234DBE0: ; 0x0234DBE0
 	mov r1, #3
 	mov r2, #1
 	bl CreatePortraitBox
-	ldr r1, _0234DC38 ; =ov29_02382800
+	ldr r1, _0234DC38 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x12]
 _0234DC20:
-	ldr r0, _0234DC38 ; =ov29_02382800
+	ldr r0, _0234DC38 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mov r1, r4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x12]
 	bl ShowPortraitInPortraitBox
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0234DC38: .word ov29_02382800
+_0234DC38: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	arm_func_end ov29_0234DBE0
 
 	arm_func_start ov29_0234DC3C
 ov29_0234DC3C: ; 0x0234DC3C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r4, _0234DD88 ; =ov29_02382800
+	ldr r4, _0234DD88 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mvn ip, #1
 	ldr r4, [r4]
 	mov r7, r0
@@ -634,7 +634,7 @@ ov29_0234DC3C: ; 0x0234DC3C
 	bne _0234DC8C
 	mov r0, #0
 	bl CreateDialogueBox
-	ldr r2, _0234DD88 ; =ov29_02382800
+	ldr r2, _0234DD88 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mov r1, #0
 	ldr r3, [r2]
 	strb r0, [r3, #0x10]
@@ -642,7 +642,7 @@ ov29_0234DC3C: ; 0x0234DC3C
 	ldrsb r0, [r0, #0x10]
 	bl sub_0202F474
 _0234DC8C:
-	ldr r0, _0234DD88 ; =ov29_02382800
+	ldr r0, _0234DD88 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mov r8, r6
 	ldr sb, [r0]
 	mov ip, #5
@@ -657,7 +657,7 @@ _0234DCA0:
 	strh r1, [r0, #0x64]
 	cmp r4, #0
 	beq _0234DCDC
-	ldr r0, _0234DD88 ; =ov29_02382800
+	ldr r0, _0234DD88 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x400
 	ldrh r1, [r0, #0x64]
@@ -669,7 +669,7 @@ _0234DCDC:
 	beq _0234DD24
 	cmp r5, #0
 	beq _0234DD0C
-	ldr r0, _0234DD88 ; =ov29_02382800
+	ldr r0, _0234DD88 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x400
 	ldrh r1, [r0, #0x64]
@@ -677,7 +677,7 @@ _0234DCDC:
 	strh r1, [r0, #0x64]
 	b _0234DD24
 _0234DD0C:
-	ldr r0, _0234DD88 ; =ov29_02382800
+	ldr r0, _0234DD88 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x400
 	ldrh r1, [r0, #0x64]
@@ -686,7 +686,7 @@ _0234DD0C:
 _0234DD24:
 	cmp r5, #0
 	beq _0234DD64
-	ldr r1, _0234DD88 ; =ov29_02382800
+	ldr r1, _0234DD88 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mov r2, #1
 	ldr r0, [r1]
 	strb r2, [r0, #0x466]
@@ -701,7 +701,7 @@ _0234DD24:
 	ldr r0, [r1]
 	str r2, [r0, #0x470]
 _0234DD64:
-	ldr r0, _0234DD88 ; =ov29_02382800
+	ldr r0, _0234DD88 ; =SECRET_BAZAAR_DIALOGUE_INFO_PTR
 	mov r2, r7
 	ldr r0, [r0]
 	mov r3, r6
@@ -711,7 +711,7 @@ _0234DD64:
 	bl ShowStringInDialogueBox
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0234DD88: .word ov29_02382800
+_0234DD88: .word SECRET_BAZAAR_DIALOGUE_INFO_PTR
 _0234DD8C: .word 0x00001004
 	arm_func_end ov29_0234DC3C
 

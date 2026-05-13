@@ -10,6 +10,9 @@
 .public _022A88FC
 .public _022B966C
 .public _022B99D0
+.public DC_InvalidateAll
+.public DC_StoreAll
+.public DC_WaitWriteBufferEmpty
 .public DTCM_BSS
 .public EnableIrqFlag
 .public G3_MultMtx43
@@ -17,6 +20,7 @@
 .public GeomSetVertexCoord16
 .public GetAllBaseForms
 .public GetWindow
+.public IC_InvalidateAll
 .public MI_CpuCopy8
 .public MI_CpuFill8
 .public MONSTER_DATA_TABLE_PTR
@@ -30,10 +34,6 @@
 .public sub_0201BD80
 .public sub_0202760C
 .public sub_0202796C_JP
-.public DC_InvalidateAll
-.public DC_StoreAll
-.public DC_WaitWriteBufferEmpty
-.public IC_InvalidateAll
 .public sub_02080EF0
 .public sub_02080F30
 .public TRIG_TABLE

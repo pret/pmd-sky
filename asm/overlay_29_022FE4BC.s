@@ -625,7 +625,7 @@ _022FF77C:
 	bl EnsureCanStandCurrentTile
 _022FF784:
 	mov r0, r6
-	bl ov29_0230FC24
+	bl ActivateEndOfTurnEffects
 	mov r0, r6
 	bl EnemyEvolution
 _022FF794:
@@ -1291,7 +1291,7 @@ _022FED50:
 	bl EnsureCanStandCurrentTile
 _022FED58:
 	mov r0, sb
-	bl ov29_0230FC24
+	bl ActivateEndOfTurnEffects
 	mov r0, sb
 	bl EnemyEvolution
 _022FED68:

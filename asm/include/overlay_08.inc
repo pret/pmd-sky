@@ -13,10 +13,11 @@
 .public GetPressedButtons
 .public InitPreprocessorArgs
 .public MemAlloc
-.public MI_CpuCopy8
 .public MemFree
-.public MI_CpuFill8
 .public MemZero
+.public MI_CpuCopy8
+.public MI_CpuFill8
+.public OS_GetMacAddress
 .public ov00_022BF2C4
 .public ov00_022BF640
 .public ov00_022BFB14
@@ -63,7 +64,6 @@
 .public sub_02046BE8
 .public sub_02046C78
 .public sub_02046D20
-.public OS_GetMacAddress
 .public sub_0207F6C4
 .public sub_0207F70C
 .public WaitForever2

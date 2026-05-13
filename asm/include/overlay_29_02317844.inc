@@ -13,12 +13,12 @@
 .public GetMobilityType
 .public GravityIsActive
 .public HasTypeAffectedByGravity
+.public HEAL_BLOCK_TURN_RANGE
 .public IsProtectedFromNegativeStatus
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
 .public ov10_022C4764
 .public ov10_022C4768
-.public ov10_022C4774
 .public ov10_022C4778
 .public ov10_022C477C
 .public ov10_022C4780

@@ -3,6 +3,7 @@ from typing import List
 
 # Some symbol names in the decomp do not match pmdsky-debug because of naming convention differences.
 # Map these symbol names between the two projects to avoid changes when syncing the projects.
+# Format is decomp name : pmdsky-debug name
 NONMATCHING_SYMBOLS_ARM9 = {
     '_secure': 'SECURE',
     '_start_AutoloadDoneCallback': 'StartAutoloadDoneCallback',
@@ -99,6 +100,13 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'INITi_CpuClear32': 'InitI_CpuClear32',
     'MTX_LookAt': 'Mtx_LookAt',
     'MTX_OrthoW': 'Mtx_OrthoW',
+    'OS_GetDTCMAddress': 'OS_GetDtcmAddress',
+    'OSi_TimerReserved': 'OSI_TIMER_RESERVED',
+    'OSi_UseAlarm': 'OSI_USE_ALARM',
+    'OSi_UseTick': 'OSI_USE_TICK',
+    'OSi_vramExclusive': 'OSI_VRAM_EXCLUSIVE',
+    'OSi_vramLockId': 'OSI_VRAM_LOCK_ID',
+    'PushCommand_impl': 'PushCommand_Impl',
     'PXI_Init': 'Pxi_Init',
     'PXI_InitFifo': 'Pxi_InitFifo',
     'PXI_IsCallbackReady': 'Pxi_IsCallbackReady',
@@ -109,6 +117,10 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'sClrImg': 'CLR_IMG',
     'sDispMode': 'DISP_MODE',
     'sIsDispOn': 'IS_DISP_ON',
+    'SND_CommandInit': 'Snd_CommandInit',
+    'SND_Init': 'Snd_Init',
+    'SOC_Startup': 'Soc_Startup',
+    'SOCL_Startup': 'Socl_Startup',
     'sSubBGExtPltt': 'SUB_BG_EXT_PLTT',
     'sTexPlttStartAddrTable': 'TEX_PLTT_START_ADDR_TABLE',
     'sTexStartAddrTable': 'TEX_START_ADDR_TABLE',

@@ -1,11 +1,12 @@
 #pragma once
+
+.public GX_ResetBankForTex
+.public GX_ResetBankForTexPltt
+.public GX_SetBankForTex
+.public GX_SetBankForTexPltt
+.public GXi_DmaId
 .public MTi_CpuCopy16
 .public MTi_CpuCopy32
-.public GXi_DmaId
-.public GX_ResetBankForTex
-.public GX_SetBankForTex
-.public GX_ResetBankForTexPltt
-.public GX_SetBankForTexPltt
 .public PM_Init
 .public PXI_Init
 .public sClrImg
@@ -24,4 +25,3 @@
 .public sub_02080EF0
 .public sub_02080F30
 .public sub_02085BD4
-

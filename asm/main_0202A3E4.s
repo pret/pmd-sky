@@ -17,8 +17,8 @@ PrintClearMark: ; 0x0202A3E4
 	ldmia sp!, {r3, pc}
 	arm_func_end PrintClearMark
 
-	arm_func_start sub_0202A40C
-sub_0202A40C: ; 0x0202A40C
+	arm_func_start PrintSpecialEpisodeClearMark
+PrintSpecialEpisodeClearMark: ; 0x0202A40C
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, r2
@@ -29,7 +29,7 @@ sub_0202A40C: ; 0x0202A40C
 	mov r0, #1
 	bl PrintMark
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202A40C
+	arm_func_end PrintSpecialEpisodeClearMark
 
 	arm_func_start PrintBadgeMark
 PrintBadgeMark: ; 0x0202A434

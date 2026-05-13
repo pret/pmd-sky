@@ -3,6 +3,7 @@
 .public DUNGEON_PTR
 .public EntityIsValid__0234987C
 .public GetAcceptedMission
+.public GetFirstExperienceLockedTeamMember
 .public GetSpriteFileSize
 .public IsItemInBag
 .public IsItemWithFlagsInBag
@@ -11,7 +12,6 @@
 .public ov29_02348ABC
 .public ov29_02348B28
 .public ov29_02348BA0
-.public ov29_02349A70
 .public ov29_02349AD4
 .public ov29_0234A244
 .public ov29_0234A790

@@ -1,5 +1,6 @@
 #pragma once
 .public AbilityIsActiveVeneer
+.public ActivateEndOfTurnEffects
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public CanMonsterMoveInDirection
@@ -52,7 +53,6 @@
 .public ov29_0230F140
 .public ov29_0230F14C
 .public ov29_0230F158
-.public ov29_0230FC24
 .public ov29_02318D58
 .public ov29_0231A8A0
 .public ov29_0231A9F8

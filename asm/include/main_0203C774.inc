@@ -317,6 +317,7 @@
 .public NOTIFY_NOTE
 .public OPTIONS
 .public OS_GetLockID
+.public OS_GetMacAddress
 .public ov11_023061CC
 .public ov11_023061E4
 .public ov11_02306C64
@@ -514,7 +515,6 @@
 .public sub_0205FC20
 .public sub_0206637C
 .public sub_02079094
-.public OS_GetMacAddress
 .public sub_0208346C
 .public sub_0208347C
 .public sub_02083A18
