@@ -665,7 +665,7 @@
                                                                                  80](EntityIsValid__022F7364,func) found in global overlay_29_022F7364.o
                                                                                  80](ov29_0231B4AC,func) found in global overlay_29_0231B33C.o
                                                                                  80](LoadMissionMonsterSprites,func) found in global overlay_29_02348D3C.o
-                                                                                  81](ov29_02349A70,func) found in global overlay_29_023498A0.o
+                                                                                  81](GetFirstExperienceLockedTeamMember,func) found in global overlay_29_023498A0.o
                                                                                    82](TeleportFleeingOutlaw,func) found in global overlay_29_0234AEA4.o
                                                                                     83](FindMonsterWithBehavior,func) found in global overlay_29_022FBBEC.o
                                                                                     83](ShouldMonsterHeadToStairs,func) found in global overlay_29_022FA430.o
@@ -872,7 +872,7 @@
                                                                                                     99](ov29_02337D68,func) found in global overlay_29_02337CCC.o
                                                                                                   97](ov29_022EBCE8,func) found in global overlay_29_022EBCE8.o
                                                                                                    98](ExecuteMonsterAction,func) found in global overlay_29_022FE4BC.o
-                                                                                                    99](ov29_0230FC24,func) found in global overlay_29_0230F9A4.o
+                                                                                                    99](ActivateEndOfTurnEffects,func) found in global overlay_29_0230F9A4.o
                                                                                                      100](ov29_02322374,func) found in global overlay_29_0232145C.o
                                                                                                      100](MonsterCannotAttack,func) found in global dungeon_capabilities_3.o
                                                                                                      100](TryIncreaseHp,func) found in global overlay_29_0231516C.o
@@ -4768,7 +4768,7 @@
   0202A3E4 00000028 .text   PrintClearMark	(main_0202A3E4.o)
   0202A3E4 0000A500 .text   .text	(main_0202A3E4.o)
   0202A3E4 00000000 .text   $a	(main_0202A3E4.o)
-  0202A40C 00000028 .text   sub_0202A40C	(main_0202A3E4.o)
+  0202A40C 00000028 .text   PrintSpecialEpisodeClearMark	(main_0202A3E4.o)
   0202A434 00000028 .text   PrintBadgeMark	(main_0202A3E4.o)
   0202A45C 00000170 .text   PrintMark	(main_0202A3E4.o)
   0202A5C0 00000000 .text   $d	(main_0202A3E4.o)
@@ -10361,25 +10361,25 @@
   0207BC3C 00000010 .text   .text	(mi_wram.o)
   0207BC3C 00000010 .text   MI_SetWramBank	(mi_wram.o)
   0207BC48 00000000 .text   $d	(mi_wram.o)
+  0207BC4C 0000066C .text   .text	(mi_dma.o)
   0207BC4C 00000000 .text   $a	(mi_dma.o)
   0207BC4C 00000080 .text   sub_0207BC4C	(mi_dma.o)
-  0207BC4C 0000066C .text   .text	(mi_dma.o)
   0207BCCC 00000070 .text   sub_0207BCCC	(mi_dma.o)
   0207BD3C 0000006C .text   MI_DmaCopy16	(mi_dma.o)
   0207BDA8 000000C4 .text   sub_0207BDA8	(mi_dma.o)
   0207BE6C 00000098 .text   sub_0207BE6C	(mi_dma.o)
   0207BF04 000000A0 .text   sub_0207BF04	(mi_dma.o)
   0207BFA0 00000000 .text   $d	(mi_dma.o)
-  0207BFA4 00000098 .text   sub_0207BFA4	(mi_dma.o)
   0207BFA4 00000000 .text   $a	(mi_dma.o)
+  0207BFA4 00000098 .text   sub_0207BFA4	(mi_dma.o)
   0207C03C 000000A0 .text   sub_0207C03C	(mi_dma.o)
   0207C0D8 00000000 .text   $d	(mi_dma.o)
   0207C0DC 00000000 .text   $a	(mi_dma.o)
   0207C0DC 00000020 .text   sub_0207C0DC	(mi_dma.o)
   0207C0FC 00000068 .text   sub_0207C0FC	(mi_dma.o)
   0207C160 00000000 .text   $d	(mi_dma.o)
-  0207C164 0000007C .text   MI_StopDma	(mi_dma.o)
   0207C164 00000000 .text   $a	(mi_dma.o)
+  0207C164 0000007C .text   MI_StopDma	(mi_dma.o)
   0207C1DC 00000000 .text   $d	(mi_dma.o)
   0207C1E0 00000084 .text   sub_0207C1E0	(mi_dma.o)
   0207C1E0 00000000 .text   $a	(mi_dma.o)
@@ -12369,7 +12369,7 @@
   020A190C 0000000C .rodata TACTICS_FOLLOW_LEADER	(tactics_data.o)
   020A1918 00000000 .rodata FORBIDDEN_FORGOT_MOVE_LIST	(main_rodata_020A190C.o)
   020A1918 00000144 .rodata .rodata	(main_rodata_020A190C.o)
-  020A192C 00000000 .rodata _020A192C	(main_rodata_020A190C.o)
+  020A192C 00000000 .rodata CONVERSION2_TYPE_TABLE	(main_rodata_020A190C.o)
   020A1940 00000000 .rodata TACTICS_UNLOCK_LEVEL_TABLE	(main_rodata_020A190C.o)
   020A1958 00000000 .rodata _020A1958	(main_rodata_020A190C.o)
   020A1978 00000000 .rodata CLIENT_LEVEL_TABLE	(main_rodata_020A190C.o)
@@ -20938,7 +20938,7 @@
   0233B72C 00000000 .rodata MAIN_MENU_WINDOW_PARAMS_6	(overlay_01.o)
   0233B73C 00000000 .rodata MAIN_MENU_WINDOW_PARAMS_7	(overlay_01.o)
   0233B74C 00000000 .rodata MAIN_MENU_ITEMS_CONFIRM	(overlay_01.o)
-  0233B764 00000000 .rodata ov01_0233B764	(overlay_01.o)
+  0233B764 00000000 .rodata CLEAR_MARK_PERFORMANCE_PROGRESS_FLAGS	(overlay_01.o)
   0233B798 00000000 .rodata ov01_0233B798	(overlay_01.o)
   0233B7BC 00000000 .rodata ov01_0233B7BC	(overlay_01.o)
   0233B7C4 00000000 .rodata ov01_0233B7C4	(overlay_01.o)
@@ -27310,7 +27310,7 @@
   022C4454 00000000 .rodata ov10_022C4454	(overlay_10_022C4394.o)
   022C4458 00000000 .rodata HURL_DAMAGE	(overlay_10_022C4394.o)
   022C445C 00000000 .rodata TRAP_BUSTER_ACTIVATION_CHANCE	(overlay_10_022C4394.o)
-  022C4460 00000000 .rodata ov10_022C4460	(overlay_10_022C4394.o)
+  022C4460 00000000 .rodata MAGNET_PULL_ACTIVATION_CHANCE	(overlay_10_022C4394.o)
   022C4464 00000000 .rodata ov10_022C4464	(overlay_10_022C4394.o)
   022C4468 00000000 .rodata FOREWARN_FORCED_MISS_CHANCE	(overlay_10_022C4394.o)
   022C446C 00000000 .rodata ov10_022C446C	(overlay_10_022C4394.o)
@@ -27375,7 +27375,7 @@
   022C4558 00000000 .rodata ov10_022C4558	(overlay_10_022C4394.o)
   022C455C 00000000 .rodata TECHNICIAN_MOVE_POWER_THRESHOLD	(overlay_10_022C4394.o)
   022C4560 00000000 .rodata ov10_022C4560	(overlay_10_022C4394.o)
-  022C4564 00000000 .rodata ov10_022C4564	(overlay_10_022C4394.o)
+  022C4564 00000000 .rodata ARENA_TRAP_ACTIVATION_CHANCE	(overlay_10_022C4394.o)
   022C4568 00000000 .rodata SONICBOOM_FIXED_DAMAGE	(overlay_10_022C4394.o)
   022C456C 00000000 .rodata ov10_022C456C	(overlay_10_022C4394.o)
   022C4570 00000000 .rodata ov10_022C4570	(overlay_10_022C4394.o)
@@ -27453,12 +27453,12 @@
   022C4680 00000000 .rodata ov10_022C4680	(overlay_10_rodata_022C464C.o)
   022C4684 00000000 .rodata FLARE_BLITZ_BURN_CHANCE	(overlay_10_rodata_022C464C.o)
   022C4688 00000000 .rodata FLAME_WHEEL_BURN_CHANCE	(overlay_10_rodata_022C464C.o)
-  022C468C 00000000 .rodata ov10_022C468C	(overlay_10_rodata_022C464C.o)
+  022C468C 00000000 .rodata SHADOW_TAG_ACTIVATION_CHANCE	(overlay_10_rodata_022C464C.o)
   022C4690 00000000 .rodata PSYBEAM_CONFUSE_CHANCE	(overlay_10_rodata_022C464C.o)
   022C4694 00000000 .rodata TRI_ATTACK_STATUS_CHANCE	(overlay_10_rodata_022C464C.o)
   022C4698 00000000 .rodata MIRACLE_CHEST_EXP_BOOST	(overlay_10_rodata_022C464C.o)
   022C469C 00000000 .rodata WONDER_CHEST_EXP_BOOST	(overlay_10_rodata_022C464C.o)
-  022C46A0 00000000 .rodata ov10_022C46A0	(overlay_10_rodata_022C464C.o)
+  022C46A0 00000000 .rodata SHED_SKIN_ACTIVATION_CHANCE	(overlay_10_rodata_022C464C.o)
   022C46A4 00000000 .rodata SPAWN_CAP_WITH_MONSTER_HOUSE	(overlay_10_rodata_022C464C.o)
   022C46A8 00000000 .rodata POISON_DAMAGE_COOLDOWN	(overlay_10_rodata_022C464C.o)
   022C46AC 00000000 .rodata LEECH_SEED_DAMAGE_COOLDOWN	(overlay_10_rodata_022C464C.o)
@@ -27511,7 +27511,7 @@
   022C4768 00000000 .rodata ov10_022C4768	(overlay_10_rodata_022C464C.o)
   022C476C 00000000 .rodata GASTRO_ACID_TURN_RANGE	(overlay_10_rodata_022C464C.o)
   022C4770 00000000 .rodata ov10_022C4770	(overlay_10_rodata_022C464C.o)
-  022C4774 00000000 .rodata ov10_022C4774	(overlay_10_rodata_022C464C.o)
+  022C4774 00000000 .rodata HEAL_BLOCK_TURN_RANGE	(overlay_10_rodata_022C464C.o)
   022C4778 00000000 .rodata ov10_022C4778	(overlay_10_rodata_022C464C.o)
   022C477C 00000000 .rodata ov10_022C477C	(overlay_10_rodata_022C464C.o)
   022C4780 00000000 .rodata ov10_022C4780	(overlay_10_rodata_022C464C.o)
@@ -37302,7 +37302,7 @@
   0230FB90 00000000 .text   $a	(overlay_29_0230F9A4.o)
   0230FC20 00000000 .text   $d	(overlay_29_0230F9A4.o)
   0230FC24 00000000 .text   $a	(overlay_29_0230F9A4.o)
-  0230FC24 000013EC .text   ov29_0230FC24	(overlay_29_0230F9A4.o)
+  0230FC24 000013EC .text   ActivateEndOfTurnEffects	(overlay_29_0230F9A4.o)
   02310A6C 00000000 .text   $d	(overlay_29_0230F9A4.o)
   02310AF8 00000000 .text   $a	(overlay_29_0230F9A4.o)
   02310FFC 00000000 .text   $d	(overlay_29_0230F9A4.o)
@@ -39745,7 +39745,7 @@
   023498A0 00001604 .text   .text	(overlay_29_023498A0.o)
   02349A5C 00000000 .text   $d	(overlay_29_023498A0.o)
   02349A70 00000000 .text   $a	(overlay_29_023498A0.o)
-  02349A70 00000064 .text   ov29_02349A70	(overlay_29_023498A0.o)
+  02349A70 00000064 .text   GetFirstExperienceLockedTeamMember	(overlay_29_023498A0.o)
   02349AD0 00000000 .text   $d	(overlay_29_023498A0.o)
   02349AD4 00000000 .text   $a	(overlay_29_023498A0.o)
   02349AD4 000001B0 .text   ov29_02349AD4	(overlay_29_023498A0.o)
@@ -40063,7 +40063,7 @@
   0234D9C0 00000198 .text   ov29_0234D9C0	(overlay_29_0234D484.o)
   0234D9C0 00000000 .text   $a	(overlay_29_0234D484.o)
   0234DB50 00000000 .text   $d	(overlay_29_0234D484.o)
-  0234DB58 00000088 .text   ov29_0234DB58	(overlay_29_0234D484.o)
+  0234DB58 00000088 .text   InitSecretBazaarDialogueInfo	(overlay_29_0234D484.o)
   0234DB58 00000000 .text   $a	(overlay_29_0234D484.o)
   0234DBD8 00000000 .text   $d	(overlay_29_0234D484.o)
   0234DBE0 0000005C .text   ov29_0234DBE0	(overlay_29_0234D484.o)
@@ -40784,7 +40784,7 @@
   0237CFC0 00000000 .bss    ov29_0237CFC0	(overlay_29_bss_0237CA18.o)
   0237CFFC 00000000 .bss    ov29_0237CFFC	(overlay_29_bss_0237CA18.o)
   0237D000 00000000 .bss    ov29_0237D000	(overlay_29_bss_0237CA18.o)
-  02382800 00000000 .bss    ov29_02382800	(overlay_29_bss_0237CA18.o)
+  02382800 00000000 .bss    SECRET_BAZAAR_DIALOGUE_INFO_PTR	(overlay_29_bss_0237CA18.o)
   02382804 00000000 .bss    ov29_02382804	(overlay_29_bss_0237CA18.o)
   0238280C 00000000 .bss    ov29_0238280C	(overlay_29_bss_0237CA18.o)
 #>02382820          SDK_OVERLAY.OVY_29.BSS_END (linker command file)
@@ -41569,5 +41569,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun May 10 20:13:57 2026
-# Link end time: Sun May 10 20:13:57 2026
+# Link start time: Wed May 13 00:16:46 2026
+# Link end time: Wed May 13 00:16:47 2026
