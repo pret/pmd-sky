@@ -2,7 +2,7 @@
 
 	.text
 
-    .public sub_0207C1E0
+    .public MIi_CheckAnotherAutoDma
     .public MIi_CheckDma0SourceAddress
     .public InitDmaTransfer_Standard
 
@@ -14,7 +14,7 @@ MTi_CardDmaCopy32: ; 0x0207C750
 	mov r7, r3
 	mvn r1, #0
 	mov r4, r2
-	bl sub_0207C1E0
+	bl MIi_CheckAnotherAutoDma
 	mov r0, r6
 	mov r1, r5
 	mov r2, r7

@@ -17276,18 +17276,18 @@ sub_0204A5D0: ; 0x0204A5D0
 	mov r4, r0
 	mov r0, r4, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208346C
+	bl Card_LockBackup
 	ldr r0, _0204A61C ; =0x00001101
-	bl sub_02083B3C
-	bl sub_02083B14
+	bl Card_IdentifyBackup
+	bl Card_GetBackupTotalSize
 	ldr r2, _0204A620 ; =_022AB09C
 	mov r1, r4, lsl #0x10
 	str r0, [r2]
 	mov r0, r1, lsr #0x10
-	bl sub_0208347C
+	bl Card_UnlockBackup
 	mov r0, r4, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02079094
+	bl OS_ReleaseLockId
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0204A61C: .word 0x00001101
@@ -17299,7 +17299,7 @@ sub_0204A624: ; 0x0204A624
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	sub sp, sp, #0x400
-	bl sub_02083B00
+	bl Card_GetCurrentBackupType
 	and r0, r0, #0xff
 	cmp r0, #1
 	bne _0204A720
@@ -17324,7 +17324,7 @@ _0204A670:
 	mov r4, r0
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208346C
+	bl Card_LockBackup
 	mov r0, r4
 	mov r1, #0x13
 	bl sub_020027F8
@@ -17341,17 +17341,17 @@ _0204A670:
 	mov r1, sb
 	mov r2, #0x400
 	mov r3, fp
-	bl sub_02083A18
+	bl Cardi_RequestStreamCommand
 	mov r1, sl
 	mov sl, r0
 	mov r0, r4
 	bl sub_020027F8
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208347C
+	bl Card_UnlockBackup
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02079094
+	bl OS_ReleaseLockId
 	cmp sl, #0
 	bne _0204A714
 	mov r0, #0
@@ -17378,7 +17378,7 @@ sub_0204A72C: ; 0x0204A72C
 	mov r0, #0x400
 	bl RandInt
 	str r0, [sp, #0x14]
-	bl sub_02083B00
+	bl Card_GetCurrentBackupType
 	and r0, r0, #0xff
 	cmp r0, #1
 	bne _0204A8D4
@@ -17405,7 +17405,7 @@ _0204A78C:
 	mov r7, r0
 	mov r0, r6, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208346C
+	bl Card_LockBackup
 	mov r0, r7
 	mov r1, #0x13
 	bl sub_020027F8
@@ -17423,7 +17423,7 @@ _0204A78C:
 	add r1, sp, #0x18
 	mov r2, #0x400
 	mov r3, #0
-	bl sub_02083A18
+	bl Cardi_RequestStreamCommand
 	cmp r0, #0
 	beq _0204A820
 	mov r0, r7
@@ -17431,10 +17431,10 @@ _0204A78C:
 	bl sub_020027F8
 	mov r0, r6, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208347C
+	bl Card_UnlockBackup
 	mov r0, r6, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02079094
+	bl OS_ReleaseLockId
 	b _0204A8C8
 _0204A820:
 	ldr r0, [sp, #0x14]
@@ -17463,17 +17463,17 @@ _0204A84C:
 	mov r1, r8
 	mov r2, #0x400
 	mov r3, #0
-	bl sub_02083A18
+	bl Cardi_RequestStreamCommand
 	mov sl, r0
 	mov r1, fp
 	mov r0, r7
 	bl sub_020027F8
 	mov r0, r6, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208347C
+	bl Card_UnlockBackup
 	mov r0, r6, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02079094
+	bl OS_ReleaseLockId
 	cmp sl, #0
 	bne _0204A8C8
 	mov r0, #0
@@ -17499,7 +17499,7 @@ sub_0204A8E0: ; 0x0204A8E0
 	mov r4, r0
 	mov sb, r1
 	mov r8, r2
-	bl sub_02083B00
+	bl Card_GetCurrentBackupType
 	and r0, r0, #0xff
 	cmp r0, #1
 	movne r0, #3
@@ -17515,7 +17515,7 @@ _0204A918:
 	mov r4, r0
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208346C
+	bl Card_LockBackup
 	mov r0, r4
 	mov r1, #0x13
 	bl sub_020027F8
@@ -17531,17 +17531,17 @@ _0204A918:
 	mov r2, r8
 	mov r3, fp
 	str fp, [sp, #0x10]
-	bl sub_02083A18
+	bl Cardi_RequestStreamCommand
 	mov r1, sl
 	mov sl, r0
 	mov r0, r4
 	bl sub_020027F8
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208347C
+	bl Card_UnlockBackup
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02079094
+	bl OS_ReleaseLockId
 	cmp sl, #0
 	movne r0, #0
 	bne _0204A9C0
@@ -17564,7 +17564,7 @@ sub_0204A9C8: ; 0x0204A9C8
 	mov r4, r0
 	mov sb, r1
 	mov r8, r2
-	bl sub_02083B00
+	bl Card_GetCurrentBackupType
 	and r0, r0, #0xff
 	cmp r0, #1
 	movne r0, #3
@@ -17583,7 +17583,7 @@ _0204AA00:
 	mov sl, r0
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208346C
+	bl Card_LockBackup
 	mov r0, #0
 	str r0, [sp]
 	stmib sp, {r0, fp}
@@ -17595,7 +17595,7 @@ _0204AA00:
 	add r1, sp, #0x14
 	mov r2, #0x80
 	mov r3, #0
-	bl sub_02083A18
+	bl Cardi_RequestStreamCommand
 	cmp r0, #0
 	bne _0204AA8C
 	mov r0, r4
@@ -17603,10 +17603,10 @@ _0204AA00:
 	bl sub_020027F8
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208347C
+	bl Card_UnlockBackup
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02079094
+	bl OS_ReleaseLockId
 	mov r0, #4
 	b _0204AB10
 _0204AA8C:
@@ -17623,17 +17623,17 @@ _0204AA8C:
 	mov r1, r7
 	mov r2, r8
 	mov r3, #0
-	bl sub_02083A18
+	bl Cardi_RequestStreamCommand
 	mov r1, sl
 	mov sl, r0
 	mov r0, r4
 	bl sub_020027F8
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0208347C
+	bl Card_UnlockBackup
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02079094
+	bl OS_ReleaseLockId
 	cmp sl, #0
 	movne r0, #0
 	bne _0204AB10

@@ -204,7 +204,7 @@ sub_02008DAC: ; 0x02008DAC
 	mov r4, #1
 _02008E98:
 	mov r0, r4
-	bl sub_02082420
+	bl PM_SetLcdPower
 	cmp r0, #0
 	beq _02008E98
 	ldmia sp!, {r4, pc}

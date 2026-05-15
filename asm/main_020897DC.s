@@ -1998,8 +1998,8 @@ _0208B290: .word sub_020895F4
 _0208B294: .word _022BCA70
 	arm_func_end sub_0208B200
 
-	arm_func_start sub_0208B298
-sub_0208B298: ; 0x0208B298
+	arm_func_start strtol
+strtol: ; 0x0208B298
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x20
 	mov r5, r0
@@ -2054,17 +2054,17 @@ _0208B348:
 	.align 2, 0
 _0208B358: .word sub_020895F4
 _0208B35C: .word _022BCA70
-	arm_func_end sub_0208B298
+	arm_func_end strtol
 
-	arm_func_start sub_0208B360
-sub_0208B360: ; 0x0208B360
-	ldr ip, _0208B370 ; =sub_0208B298
+	arm_func_start atoi
+atoi: ; 0x0208B360
+	ldr ip, _0208B370 ; =strtol
 	mov r1, #0
 	mov r2, #0xa
 	bx ip
 	.align 2, 0
-_0208B370: .word sub_0208B298
-	arm_func_end sub_0208B360
+_0208B370: .word strtol
+	arm_func_end atoi
 
 	arm_func_start sub_0208B374
 sub_0208B374: ; 0x0208B374

@@ -57,7 +57,7 @@ _02003E60:
 	bne _02003E84
 	mov r0, r6
 	mov r1, r6
-	bl sub_02078900
+	bl OS_WaitIrq
 	add r7, r7, #1
 _02003E7C:
 	cmp r7, #0x12c
@@ -75,7 +75,7 @@ _02003E9C:
 	mov r0, #0
 	bl sub_0200B76C
 _02003EAC:
-	bl sub_020845F8
+	bl Card_TerminateForPulledOut
 	mov r0, #0
 	bl sub_020025F8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -905,7 +905,7 @@ _02004998: ; jump table
 _02004A2C:
 	ldr r1, _02004EE4 ; =0x00000000
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -914,7 +914,7 @@ _02004A2C:
 _02004A4C:
 	ldr r1, _02004EE8 ; =0x0000000A
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -923,7 +923,7 @@ _02004A4C:
 _02004A6C:
 	ldr r1, _02004EEC ; =0x00000023
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -932,7 +932,7 @@ _02004A6C:
 _02004A8C:
 	ldr r1, _02004EF0 ; =0x00000001
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -941,7 +941,7 @@ _02004A8C:
 _02004AAC:
 	ldr r1, _02004EF4 ; =0x00000002
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -950,7 +950,7 @@ _02004AAC:
 _02004ACC:
 	ldr r1, _02004EF8 ; =0x00000003
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -959,7 +959,7 @@ _02004ACC:
 _02004AEC:
 	ldr r1, _02004EFC ; =0x00000006
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -968,7 +968,7 @@ _02004AEC:
 _02004B0C:
 	ldr r1, _02004F00 ; =0x00000004
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -977,7 +977,7 @@ _02004B0C:
 _02004B2C:
 	ldr r1, _02004F04 ; =0x00000005
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -986,7 +986,7 @@ _02004B2C:
 _02004B4C:
 	ldr r1, _02004F08 ; =0x00000007
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -995,7 +995,7 @@ _02004B4C:
 _02004B6C:
 	ldr r1, _02004F0C ; =0x00000008
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1004,7 +1004,7 @@ _02004B6C:
 _02004B8C:
 	ldr r1, _02004F10 ; =0x00000009
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1013,7 +1013,7 @@ _02004B8C:
 _02004BAC:
 	ldr r1, _02004F14 ; =0x0000000B
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1022,7 +1022,7 @@ _02004BAC:
 _02004BCC:
 	ldr r1, _02004F18 ; =0x0000001D
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1031,7 +1031,7 @@ _02004BCC:
 _02004BEC:
 	ldr r1, _02004F1C ; =0x00000022
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1040,7 +1040,7 @@ _02004BEC:
 _02004C0C:
 	ldr r1, _02004F20 ; =0x0000000C
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1049,7 +1049,7 @@ _02004C0C:
 _02004C2C:
 	ldr r1, _02004F24 ; =0x0000000D
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1058,7 +1058,7 @@ _02004C2C:
 _02004C4C:
 	ldr r1, _02004F28 ; =0x0000000E
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1067,7 +1067,7 @@ _02004C4C:
 _02004C6C:
 	ldr r1, _02004F2C ; =0x0000000F
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1076,7 +1076,7 @@ _02004C6C:
 _02004C8C:
 	ldr r1, _02004F30 ; =0x00000010
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1085,7 +1085,7 @@ _02004C8C:
 _02004CAC:
 	ldr r1, _02004F34 ; =0x00000011
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1094,7 +1094,7 @@ _02004CAC:
 _02004CCC:
 	ldr r1, _02004F38 ; =0x00000012
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1103,7 +1103,7 @@ _02004CCC:
 _02004CEC:
 	ldr r1, _02004F3C ; =0x00000013
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1112,7 +1112,7 @@ _02004CEC:
 _02004D0C:
 	ldr r1, _02004F40 ; =0x00000014
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1121,7 +1121,7 @@ _02004D0C:
 _02004D2C:
 	ldr r1, _02004F44 ; =0x00000015
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1130,7 +1130,7 @@ _02004D2C:
 _02004D4C:
 	ldr r1, _02004F48 ; =0x00000016
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1139,7 +1139,7 @@ _02004D4C:
 _02004D6C:
 	ldr r1, _02004F4C ; =0x00000017
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1148,7 +1148,7 @@ _02004D6C:
 _02004D8C:
 	ldr r1, _02004F50 ; =0x00000018
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1157,7 +1157,7 @@ _02004D8C:
 _02004DAC:
 	ldr r1, _02004F54 ; =0x00000019
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1166,7 +1166,7 @@ _02004DAC:
 _02004DCC:
 	ldr r1, _02004F58 ; =0x0000001A
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1175,7 +1175,7 @@ _02004DCC:
 _02004DEC:
 	ldr r1, _02004F5C ; =0x0000001B
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1184,7 +1184,7 @@ _02004DEC:
 _02004E0C:
 	ldr r1, _02004F60 ; =0x0000001C
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1193,7 +1193,7 @@ _02004E0C:
 _02004E2C:
 	ldr r1, _02004F64 ; =0x0000001E
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1202,7 +1202,7 @@ _02004E2C:
 _02004E4C:
 	ldr r1, _02004F68 ; =0x0000001F
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1211,7 +1211,7 @@ _02004E4C:
 _02004E6C:
 	ldr r1, _02004F6C ; =0x00000020
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1220,7 +1220,7 @@ _02004E6C:
 _02004E8C:
 	ldr r1, _02004F70 ; =0x00000021
 	mov r0, #0
-	bl sub_020800B0
+	bl FS_UnloadOverlay
 	cmp r0, #0
 	bne _02004ECC
 	mov r0, #1
@@ -1300,11 +1300,11 @@ sub_02004F80: ; 0x02004F80
 	bl MemAlloc
 	ldr r1, _02004FC8 ; =0xEDB88320
 	mov r5, r0
-	bl sub_020850B4
+	bl Mathi_Crc32InitTable
 	mov r0, r5
 	mov r1, r6
 	mov r2, r4
-	bl sub_02085180
+	bl Math_CalcCrc32
 	mov r4, r0
 	mov r0, r5
 	bl MemFree
@@ -2223,7 +2223,7 @@ _02005BD0:
 	ldr r1, [r6, #8]
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
-	bl sub_0207BFA4
+	bl MI_DmaCopy16Async
 	b _02005CE0
 _02005BF4:
 	ldr r0, [r4, #0xb8]
@@ -2233,7 +2233,7 @@ _02005BF4:
 	ldr r1, [r6, #8]
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
-	bl sub_0207BE6C
+	bl MI_DmaCopy32Async
 	b _02005CE0
 _02005C18:
 	ldr r0, [r4, #0xb8]
@@ -2243,7 +2243,7 @@ _02005C18:
 	ldr r1, [r6, #8]
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
-	bl sub_0207C03C
+	bl MI_DmaSend16Async
 	b _02005CE0
 _02005C3C:
 	ldr r0, [r4, #0xb8]
@@ -2253,7 +2253,7 @@ _02005C3C:
 	ldr r1, [r6, #8]
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
-	bl sub_0207BF04
+	bl MI_DmaSend32Async
 	b _02005CE0
 _02005C60:
 	bl GX_BeginLoadBGExtPltt
@@ -2264,7 +2264,7 @@ _02005C60:
 	ldr r1, [r6, #8]
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
-	bl sub_0207BE6C
+	bl MI_DmaCopy32Async
 	bl GX_EndLoadBGExtPltt
 	b _02005CE0
 _02005C8C:
@@ -2276,7 +2276,7 @@ _02005C8C:
 	ldr r1, [r6, #8]
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
-	bl sub_0207BE6C
+	bl MI_DmaCopy32Async
 	bl GX_EndLoadOBJExtPltt
 	b _02005CE0
 _02005CB8:
@@ -2288,7 +2288,7 @@ _02005CB8:
 	ldr r1, [r6, #8]
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
-	bl sub_0207BE6C
+	bl MI_DmaCopy32Async
 	bl GXS_EndLoadBGExtPltt
 _02005CE0:
 	ldr r0, _02005D0C ; =_020AF240
@@ -2340,7 +2340,7 @@ sub_02005D30: ; 0x02005D30
 	ldmia sp!, {r4, pc}
 _02005D74:
 	mov r0, r4
-	bl sub_0207C0DC
+	bl MI_IsDmaBusy
 	cmp r0, #0
 	bne _02005D74
 	ldmia sp!, {r4, pc}
@@ -2367,7 +2367,7 @@ sub_02005D90: ; 0x02005D90
 	ldmia sp!, {r3, r4, r5, pc}
 _02005DC8:
 	mov r0, r5
-	bl sub_0207C0DC
+	bl MI_IsDmaBusy
 	cmp r0, #0
 	bne _02005DC8
 	ldmia sp!, {r3, r4, r5, pc}
@@ -2385,7 +2385,7 @@ sub_02005DE0: ; 0x02005DE0
 	tst r1, #0x200
 	movne r0, #1
 	ldmneia sp!, {r3, pc}
-	bl sub_0207C0DC
+	bl MI_IsDmaBusy
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -2946,13 +2946,13 @@ _02006500: .word 0x00000F0F
 sub_02006504: ; 0x02006504
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	bl sub_020811EC
+	bl TP_Init
 	add r0, sp, #0
-	bl sub_02081264
+	bl TP_GetUserInfo
 	cmp r0, #0
 	beq _02006528
 	add r0, sp, #0
-	bl sub_020812F8
+	bl TP_SetCalibrateParam
 _02006528:
 	ldr r0, _0200655C ; =_020AF288
 	bl sub_02002C40
@@ -3000,9 +3000,9 @@ _020065A8: .word _022A3614
 sub_020065AC: ; 0x020065AC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x40
-	bl sub_02081420
+	bl TP_RequestSamplingAsync
 	add r0, sp, #0x20
-	bl sub_02081500
+	bl TP_WaitCalibratedResult
 	cmp r0, #0
 	bne _02006B34
 	ldr r0, _02006B3C ; =_020AF288
@@ -3697,7 +3697,7 @@ sub_02006ED4: ; 0x02006ED4
 DebugPrintSystemClock: ; 0x02006EF8
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x3c
-	bl sub_0208266C
+	bl Rtc_Init
 	add r0, sp, #0x20
 	bl GetSystemClock
 	add r0, sp, #0x20
@@ -3737,7 +3737,7 @@ GetSystemClock: ; 0x02006F68
 	mov r4, r0
 	add r0, sp, #0x18
 	add r1, sp, #0xc
-	bl sub_020828A8
+	bl Rtc_GetDateTime
 	ldr r1, [sp, #0xc]
 	mov r0, r4
 	str r1, [sp]
@@ -4949,7 +4949,7 @@ sub_02007EDC: ; 0x02007EDC
 	stmdb sp!, {r4, lr}
 	ldr r0, _02007F08 ; =_020AF368
 	bl sub_02002CB4
-	bl sub_020845E8
+	bl Card_IsPulledOut
 	and r4, r0, #0xff
 	ldr r0, _02007F08 ; =_020AF368
 	bl sub_02002E98
@@ -4976,7 +4976,7 @@ sub_02007F0C: ; 0x02007F0C
 	bl sub_0200733C
 	add r1, sp, #0
 	add r0, r5, #0x40
-	bl sub_0207F6C4
+	bl FS_OpenFile
 	cmp r0, #0
 	bne _02007F64
 	mov r0, #1
@@ -5034,7 +5034,7 @@ sub_02007FCC: ; 0x02007FCC
 _02008000:
 	mov r1, r7
 	add r0, r5, #0x40
-	bl sub_0207F6C4
+	bl FS_OpenFile
 	cmp r0, #0
 	bne _02008020
 	mov r0, r6
@@ -5072,7 +5072,7 @@ _0200807C: .word _020AF368
 sub_02008080: ; 0x02008080
 	stmdb sp!, {r3, lr}
 	add r0, r0, #0x40
-	bl sub_0207F70C
+	bl FS_CloseFile
 	cmp r0, #0
 	bne _0200809C
 	mov r0, #1
@@ -5116,7 +5116,7 @@ _020080F0:
 	add r0, r4, #0x40
 	add r1, r8, r6
 	sub r2, r7, r6
-	bl sub_0207F818
+	bl FS_ReadFile
 	cmp r0, #0
 	addge r6, r6, r0
 	bge _02008114
@@ -5141,7 +5141,7 @@ sub_02008138: ; 0x02008138
 	add r0, r0, #0x40
 	mov r1, r1, lsl #0xb
 	mov r2, #0
-	bl sub_0207F828
+	bl FS_SeekFile
 	cmp r0, #0
 	bne _02008160
 	mov r0, #1

@@ -62,7 +62,7 @@ asm OSProcMode GetProcessorMode()
 	bx lr
 }
 
-asm void sub_0207B854(u32 cycles) // OS_SpinWait
+asm void OS_SpinWait(u32 cycles) // OS_SpinWait
 {
     @loop
 	subs r0, r0, #4
@@ -71,11 +71,11 @@ asm void sub_0207B854(u32 cycles) // OS_SpinWait
 }
 
 void SVC_WaitByLoop(s32);
-void sub_02078900(BOOL, s32);
+void OS_WaitIrq(BOOL, s32);
 
-void sub_0207B860(void) // OS_WaitVBlankIntr
+void OS_WaitVBlankIntr(void) // OS_WaitVBlankIntr
 {
     SVC_WaitByLoop(1);
-    sub_02078900(TRUE, OS_IE_VBLANK);
+    OS_WaitIrq(TRUE, OS_IE_VBLANK);
 }
 

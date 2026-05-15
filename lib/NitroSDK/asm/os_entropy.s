@@ -5,8 +5,8 @@
     .public OS_GetTickLo
     .public _022B99A8
 
-    arm_func_start sub_0207BB50
-sub_0207BB50: ; 0x0207BB50
+    arm_func_start OS_GetLowEntropyData
+OS_GetLowEntropyData: ; 0x0207BB50
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _0207BC10 ; =0x04000006
 	mov r5, r0
@@ -60,4 +60,4 @@ _0207BC10: .word 0x04000006
 _0207BC14: .word 0x027FFC00
 _0207BC18: .word _022B99A8
 _0207BC1C: .word 0x04000600
-	arm_func_end sub_0207BB50
+	arm_func_end OS_GetLowEntropyData

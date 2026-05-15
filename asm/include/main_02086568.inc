@@ -27,12 +27,12 @@
 .public _ll_udiv
 .public _u32_div_f
 .public _ull_mod
+.public OS_LockMutex
+.public OS_TryLockMutex
+.public OS_UnlockMutex
 .public strchr
 .public strlen
 .public strncpy
-.public sub_0207A048
-.public sub_0207A0CC
-.public sub_0207A164
 .public sub_02086468
 .public sub_020864F4
 .public sub_0208B374

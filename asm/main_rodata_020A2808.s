@@ -11263,15 +11263,15 @@ ARM9_UNKNOWN_TABLE__NA_20AE924:
 	.byte 0x7C, 0x7D, 0x7E, 0x7F
 	.global _020AEBF8
 _020AEBF8:
-	.word sub_0207DFF0
-	.word sub_0207E01C
-	.word sub_0207E048
-	.word sub_0207E0E0
-	.word sub_0207E20C
-	.word sub_0207E3F0
-	.word sub_0207E79C
-	.word sub_0207E81C
-	.word sub_0207E844
+	.word FSi_ReadFileCommand
+	.word FSi_WriteFileCommand
+	.word FSi_SeekDirCommand
+	.word FSi_ReadDirCommand
+	.word FSi_FindPathCommand
+	.word FSi_GetPathCommand
+	.word FSi_OpenFileFastCommand
+	.word FSi_OpenFileDirectCommand
+	.word FSi_CloseFileCommand
 	.global _020AEC1C
 _020AEC1C:
 	.byte 0x21, 0x06, 0xC0, 0xDE, 0xBA, 0x98, 0xCE, 0x3F
@@ -13755,7 +13755,7 @@ _020B2D84:
 	.byte 0x61, 0x00, 0x00, 0x00
 	.global _020B2D88
 _020B2D88:
-	.word sub_02080C70
+	.word Dgt_Hash2Transform
 	.word _020B2DF0
 	.word _020B2E08
 	.word _020B2DC0

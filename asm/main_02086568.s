@@ -124,7 +124,7 @@ sub_020866B4: ; 0x020866B4
 	mov sb, r1
 	add r0, r5, r4
 	mov r8, r2
-	bl sub_0207A164
+	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _02086718
 	ldr r0, _020867B4 ; =_022B966C
@@ -151,7 +151,7 @@ _02086718:
 	b _02086770
 _02086748:
 	add r0, r5, r4
-	bl sub_0207A048
+	bl OS_LockMutex
 	ldr r0, _020867B4 ; =_022B966C
 	ldr r2, _020867B8 ; =_022BC650
 	ldr r1, [r0, #4]
@@ -173,7 +173,7 @@ _02086770:
 	str r0, [r1, r6, lsl #2]
 	bne _020867A4
 	add r0, r5, r4
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 _020867A4:
 	mov r0, r7
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -619,7 +619,7 @@ _02086DA0:
 	mul r4, r6, r0
 	ldr r5, _02086E74 ; =_022BC698
 	add r0, r5, r4
-	bl sub_0207A164
+	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _02086DE0
 	ldr r0, _02086E78 ; =_022B966C
@@ -646,7 +646,7 @@ _02086DE0:
 	b _02086E38
 _02086E10:
 	add r0, r5, r4
-	bl sub_0207A048
+	bl OS_LockMutex
 	ldr r0, _02086E78 ; =_022B966C
 	ldr r2, _02086E7C ; =_022BC650
 	ldr r1, [r0, #4]
@@ -665,7 +665,7 @@ _02086E38:
 	str r0, [r1, r6, lsl #2]
 	bne _02086E60
 	add r0, r5, r4
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 _02086E60:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -838,7 +838,7 @@ _020870AC:
 	mul r4, r6, r0
 	ldr r5, _02087188 ; =_022BC698
 	add r0, r5, r4
-	bl sub_0207A164
+	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020870EC
 	ldr r0, _0208718C ; =_022B966C
@@ -865,7 +865,7 @@ _020870EC:
 	b _02087144
 _0208711C:
 	add r0, r5, r4
-	bl sub_0207A048
+	bl OS_LockMutex
 	ldr r0, _0208718C ; =_022B966C
 	ldr r2, _02087190 ; =_022BC650
 	ldr r1, [r0, #4]
@@ -886,7 +886,7 @@ _02087144:
 	str r0, [r1, r6, lsl #2]
 	bne _02087174
 	add r0, r5, r4
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 _02087174:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}

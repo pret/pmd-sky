@@ -10,6 +10,8 @@
 .public _022A88FC
 .public _022B966C
 .public _022B99D0
+.public CP_SaveContext
+.public CPi_RestoreContext
 .public DC_InvalidateAll
 .public DC_StoreAll
 .public DC_WaitWriteBufferEmpty
@@ -34,8 +36,6 @@
 .public sub_0201BD80
 .public sub_0202760C
 .public sub_0202796C_JP
-.public sub_02080EF0
-.public sub_02080F30
 .public TRIG_TABLE
 .public UpdateWindow
 .public WINDOW_LIST

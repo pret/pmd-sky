@@ -67,7 +67,7 @@ OSi_CountUpTick: ; 0x0207ADDC
 	strh r1, [r2]
 	str r3, [r0, #4]
 _0207AE20:
-	ldr ip, _0207AE3C ; =sub_02078BF4
+	ldr ip, _0207AE3C ; =OSi_EnterTimerCallback
 	mov r0, #0
 	ldr r1, _0207AE40 ; =OSi_CountUpTick
 	mov r2, r0
@@ -75,7 +75,7 @@ _0207AE20:
 	.align 2, 0
 _0207AE34: .word OSi_UseTick
 _0207AE38: .word 0x04000102
-_0207AE3C: .word sub_02078BF4
+_0207AE3C: .word OSi_EnterTimerCallback
 _0207AE40: .word OSi_CountUpTick
 	arm_func_end OSi_CountUpTick
 

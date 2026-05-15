@@ -90,7 +90,7 @@ OS_InitArenaEx: ; 0x0207A4B8
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0207A504
-	bl sub_02079DA0
+	bl OS_GetConsoleType
 	and r0, r0, #3
 	cmp r0, #1
 	ldmneia sp!, {r3, pc}
@@ -106,23 +106,23 @@ _0207A51C: .word _0200002B
 _0207A520: .word 0x023E0021
 	arm_func_end OS_InitArenaEx
 
-	arm_func_start sub_0207A524
-sub_0207A524: ; 0x0207A524
+	arm_func_start OS_GetArenaHi
+OS_GetArenaHi: ; 0x0207A524
 	mov r0, r0, lsl #2
 	add r0, r0, #0x2700000
 	add r0, r0, #0xff000
 	ldr r0, [r0, #0xdc4]
 	bx lr
-	arm_func_end sub_0207A524
+	arm_func_end OS_GetArenaHi
 
-	arm_func_start sub_0207A538
-sub_0207A538: ; 0x0207A538
+	arm_func_start OS_GetArenaLo
+OS_GetArenaLo: ; 0x0207A538
 	mov r0, r0, lsl #2
 	add r0, r0, #0x2700000
 	add r0, r0, #0xff000
 	ldr r0, [r0, #0xda0]
 	bx lr
-	arm_func_end sub_0207A538
+	arm_func_end OS_GetArenaLo
 
 	arm_func_start OS_GetInitArenaHi
 OS_GetInitArenaHi: ; 0x0207A54C
@@ -146,7 +146,7 @@ _0207A580:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0207A5A0
-	bl sub_02079DA0
+	bl OS_GetConsoleType
 	and r0, r0, #3
 	cmp r0, #1
 	bne _0207A5A8
@@ -219,7 +219,7 @@ _0207A664:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0207A684
-	bl sub_02079DA0
+	bl OS_GetConsoleType
 	and r0, r0, #3
 	cmp r0, #1
 	bne _0207A68C
@@ -283,8 +283,8 @@ sub_0207A700: ; 0x0207A700
 	bx lr
 	arm_func_end sub_0207A700
 
-	arm_func_start sub_0207A71C
-sub_0207A71C: ; 0x0207A71C
+	arm_func_start OS_AllocFromArenaLo
+OS_AllocFromArenaLo: ; 0x0207A71C
 	ldr r3, [r1, #4]
 	cmp r3, #0
 	ldrne r2, [r1]
@@ -295,7 +295,7 @@ sub_0207A71C: ; 0x0207A71C
 	ldrne r1, [r1, #4]
 	strne r1, [r2, #4]
 	bx lr
-	arm_func_end sub_0207A71C
+	arm_func_end OS_AllocFromArenaLo
 
 	arm_func_start sub_0207A744
 sub_0207A744: ; 0x0207A744
@@ -394,7 +394,7 @@ _0207A87C:
 	cmp r1, #0x40
 	bhs _0207A89C
 	mov r1, r5
-	bl sub_0207A71C
+	bl OS_AllocFromArenaLo
 	str r0, [r4, #4]
 	b _0207A8D0
 _0207A89C:
@@ -442,7 +442,7 @@ sub_0207A8F4: ; 0x0207A8F4
 	sub r5, r5, #0x20
 	ldr r0, [r7, #8]
 	mov r1, r5
-	bl sub_0207A71C
+	bl OS_AllocFromArenaLo
 	str r0, [r7, #8]
 	ldr r0, [r7, #4]
 	mov r1, r5

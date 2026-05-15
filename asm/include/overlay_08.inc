@@ -8,6 +8,8 @@
 .public Debug_Print0
 .public DS_DOWNLOAD_TEAMS
 .public FileInit
+.public FS_CloseFile
+.public FS_OpenFile
 .public GetDsFirmwareUserSettings
 .public GetLanguage
 .public GetPressedButtons
@@ -18,13 +20,6 @@
 .public MI_CpuCopy8
 .public MI_CpuFill8
 .public OS_GetMacAddress
-.public ov00_022BF2C4
-.public ov00_022BF640
-.public ov00_022BFB14
-.public ov00_022BFB9C
-.public ov00_022BFBD4
-.public ov00_022C0A64
-.public ov00_022C1610
 .public ov00_022C3270
 .public ov00_022C329
 .public ov00_022C3298
@@ -64,6 +59,11 @@
 .public sub_02046BE8
 .public sub_02046C78
 .public sub_02046D20
-.public sub_0207F6C4
-.public sub_0207F70C
 .public WaitForever2
+.public WM_End
+.public WM_EndDataSharing__022C1278
+.public WM_GetAllowedChannel
+.public WM_InitializeEx
+.public WM_MeasureChannel
+.public WM_Reset
+.public WM_SetIndCallback

@@ -3,8 +3,8 @@
 
 	.text
 
-    arm_func_start sub_0207C7DC
-sub_0207C7DC: ; 0x0207C7DC
+    arm_func_start Snd_StopSeq
+Snd_StopSeq: ; 0x0207C7DC
 	stmdb sp!, {r3, lr}
 	mov r2, #0
 	mov r1, r0
@@ -13,10 +13,10 @@ sub_0207C7DC: ; 0x0207C7DC
 	str r2, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C7DC
+	arm_func_end Snd_StopSeq
 
-	arm_func_start sub_0207C7FC
-sub_0207C7FC: ; 0x0207C7FC
+	arm_func_start Snd_PrepareSeq
+Snd_PrepareSeq: ; 0x0207C7FC
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, r2
@@ -27,10 +27,10 @@ sub_0207C7FC: ; 0x0207C7FC
 	mov r0, #2
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C7FC
+	arm_func_end Snd_PrepareSeq
 
-	arm_func_start sub_0207C824
-sub_0207C824: ; 0x0207C824
+	arm_func_start Snd_StartPreparedSeq
+Snd_StartPreparedSeq: ; 0x0207C824
 	stmdb sp!, {r3, lr}
 	mov r2, #0
 	mov r1, r0
@@ -39,43 +39,43 @@ sub_0207C824: ; 0x0207C824
 	str r2, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C824
+	arm_func_end Snd_StartPreparedSeq
 
-	arm_func_start sub_0207C844
-sub_0207C844: ; 0x0207C844
-	ldr ip, _0207C858 ; =sub_0207CB7C
+	arm_func_start Snd_SetPlayerTempoRatio
+Snd_SetPlayerTempoRatio: ; 0x0207C844
+	ldr ip, _0207C858 ; =Sndi_SetPlayerParam
 	mov r2, r1
 	mov r1, #6
 	mov r3, #2
 	bx ip
 	.align 2, 0
-_0207C858: .word sub_0207CB7C
-	arm_func_end sub_0207C844
+_0207C858: .word Sndi_SetPlayerParam
+	arm_func_end Snd_SetPlayerTempoRatio
 
-	arm_func_start sub_0207C85C
-sub_0207C85C: ; 0x0207C85C
-	ldr ip, _0207C870 ; =sub_0207CB7C
+	arm_func_start Snd_SetPlayerVolume
+Snd_SetPlayerVolume: ; 0x0207C85C
+	ldr ip, _0207C870 ; =Sndi_SetPlayerParam
 	mov r2, r1
 	mov r1, #4
 	mov r3, #1
 	bx ip
 	.align 2, 0
-_0207C870: .word sub_0207CB7C
-	arm_func_end sub_0207C85C
+_0207C870: .word Sndi_SetPlayerParam
+	arm_func_end Snd_SetPlayerVolume
 
-	arm_func_start sub_0207C874
-sub_0207C874: ; 0x0207C874
+	arm_func_start Snd_SetTrackPan
+Snd_SetTrackPan: ; 0x0207C874
 	stmdb sp!, {r3, lr}
 	mov r3, r2
 	mov ip, #2
 	mov r2, #0xc
 	str ip, [sp]
-	bl sub_0207CBA4
+	bl Sndi_SetTrackParam
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C874
+	arm_func_end Snd_SetTrackPan
 
-	arm_func_start sub_0207C890
-sub_0207C890: ; 0x0207C890
+	arm_func_start Snd_SetTrackAllocatableChannel
+Snd_SetTrackAllocatableChannel: ; 0x0207C890
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov r3, r2
@@ -86,10 +86,10 @@ sub_0207C890: ; 0x0207C890
 	str ip, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C890
+	arm_func_end Snd_SetTrackAllocatableChannel
 
-	arm_func_start sub_0207C8B8
-sub_0207C8B8: ; 0x0207C8B8
+	arm_func_start Snd_StartTimer
+Snd_StartTimer: ; 0x0207C8B8
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, r2
@@ -100,10 +100,10 @@ sub_0207C8B8: ; 0x0207C8B8
 	mov r0, #0xc
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C8B8
+	arm_func_end Snd_StartTimer
 
-	arm_func_start sub_0207C8E0
-sub_0207C8E0: ; 0x0207C8E0
+	arm_func_start Snd_StopTimer
+Snd_StopTimer: ; 0x0207C8E0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r2
 	mov sb, r0
@@ -116,7 +116,7 @@ _0207C900:
 	tst r5, #1
 	beq _0207C910
 	mov r0, r4
-	bl sub_0207D3B0
+	bl Sndi_IncAlarmId
 _0207C910:
 	add r4, r4, #1
 	mov r5, r5, lsr #1
@@ -133,10 +133,10 @@ _0207C928:
 	str r6, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_0207C8E0
+	arm_func_end Snd_StopTimer
 
-	arm_func_start sub_0207C944
-sub_0207C944: ; 0x0207C944
+	arm_func_start Snd_SetupCapture
+Snd_SetupCapture: ; 0x0207C944
 	stmdb sp!, {r3, lr}
 	mov r1, r1, lsl #0x1e
 	orr r0, r1, r0, lsl #31
@@ -153,10 +153,10 @@ sub_0207C944: ; 0x0207C944
 	str lr, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C944
+	arm_func_end Snd_SetupCapture
 
-	arm_func_start sub_0207C984
-sub_0207C984: ; 0x0207C984
+	arm_func_start Snd_SetupAlarm
+Snd_SetupAlarm: ; 0x0207C984
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r4, r2
@@ -164,7 +164,7 @@ sub_0207C984: ; 0x0207C984
 	ldr r2, [sp, #0x18]
 	mov r6, r0
 	mov r1, r3
-	bl sub_0207D3D0
+	bl Sndi_SetAlarmHandler
 	str r0, [sp]
 	mov r1, r6
 	mov r2, r5
@@ -173,10 +173,10 @@ sub_0207C984: ; 0x0207C984
 	bl PushCommand_impl
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end sub_0207C984
+	arm_func_end Snd_SetupAlarm
 
-	arm_func_start sub_0207C9C4
-sub_0207C9C4: ; 0x0207C9C4
+	arm_func_start Snd_LockChannel
+Snd_LockChannel: ; 0x0207C9C4
 	stmdb sp!, {r3, lr}
 	mov r2, r1
 	mov r3, #0
@@ -185,10 +185,10 @@ sub_0207C9C4: ; 0x0207C9C4
 	str r3, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C9C4
+	arm_func_end Snd_LockChannel
 
-	arm_func_start sub_0207C9E4
-sub_0207C9E4: ; 0x0207C9E4
+	arm_func_start Snd_UnlockChannel
+Snd_UnlockChannel: ; 0x0207C9E4
 	stmdb sp!, {r3, lr}
 	mov r2, r1
 	mov r3, #0
@@ -197,10 +197,10 @@ sub_0207C9E4: ; 0x0207C9E4
 	str r3, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C9E4
+	arm_func_end Snd_UnlockChannel
 
-	arm_func_start sub_0207CA04
-sub_0207CA04: ; 0x0207CA04
+	arm_func_start Snd_SetChannelTimer
+Snd_SetChannelTimer: ; 0x0207CA04
 	stmdb sp!, {r3, lr}
 	mov r2, r1
 	mov r3, #0
@@ -209,10 +209,10 @@ sub_0207CA04: ; 0x0207CA04
 	str r3, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207CA04
+	arm_func_end Snd_SetChannelTimer
 
-	arm_func_start sub_0207CA24
-sub_0207CA24: ; 0x0207CA24
+	arm_func_start Snd_SetChannelVolume
+Snd_SetChannelVolume: ; 0x0207CA24
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov r3, r2
@@ -223,10 +223,10 @@ sub_0207CA24: ; 0x0207CA24
 	str ip, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207CA24
+	arm_func_end Snd_SetChannelVolume
 
-	arm_func_start sub_0207CA4C
-sub_0207CA4C: ; 0x0207CA4C
+	arm_func_start Snd_SetChannelPan
+Snd_SetChannelPan: ; 0x0207CA4C
 	stmdb sp!, {r3, lr}
 	mov r2, r1
 	mov r3, #0
@@ -235,10 +235,10 @@ sub_0207CA4C: ; 0x0207CA4C
 	str r3, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207CA4C
+	arm_func_end Snd_SetChannelPan
 
-	arm_func_start sub_0207CA6C
-sub_0207CA6C: ; 0x0207CA6C
+	arm_func_start Snd_SetupChannelPcm
+Snd_SetupChannelPcm: ; 0x0207CA6C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, [sp, #0x1c]
 	mov r1, r1, lsl #0x18
@@ -258,10 +258,10 @@ sub_0207CA6C: ; 0x0207CA6C
 	str r4, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207CA6C
+	arm_func_end Snd_SetupChannelPcm
 
-	arm_func_start sub_0207CAB8
-sub_0207CAB8: ; 0x0207CAB8
+	arm_func_start Snd_SetupChannelPsg
+Snd_SetupChannelPsg: ; 0x0207CAB8
 	stmdb sp!, {r3, lr}
 	ldr lr, [sp, #8]
 	ldr ip, [sp, #0xc]
@@ -272,10 +272,10 @@ sub_0207CAB8: ; 0x0207CAB8
 	mov r0, #0xf
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207CAB8
+	arm_func_end Snd_SetupChannelPsg
 
-	arm_func_start sub_0207CAE0
-sub_0207CAE0: ; 0x0207CAE0
+	arm_func_start Snd_SetupChannelNoise
+Snd_SetupChannelNoise: ; 0x0207CAE0
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr ip, [sp, #0x10]
@@ -289,10 +289,10 @@ sub_0207CAE0: ; 0x0207CAE0
 	bl PushCommand_impl
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end sub_0207CAE0
+	arm_func_end Snd_SetupChannelNoise
 
-	arm_func_start sub_0207CB14
-sub_0207CB14: ; 0x0207CB14
+	arm_func_start Snd_InvalidateSeqData
+Snd_InvalidateSeqData: ; 0x0207CB14
 	stmdb sp!, {r3, lr}
 	mov r2, r1
 	mov r3, #0
@@ -301,10 +301,10 @@ sub_0207CB14: ; 0x0207CB14
 	str r3, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207CB14
+	arm_func_end Snd_InvalidateSeqData
 
-	arm_func_start sub_0207CB34
-sub_0207CB34: ; 0x0207CB34
+	arm_func_start Snd_InvalidateBankData
+Snd_InvalidateBankData: ; 0x0207CB34
 	stmdb sp!, {r3, lr}
 	mov r2, r1
 	mov r3, #0
@@ -313,10 +313,10 @@ sub_0207CB34: ; 0x0207CB34
 	str r3, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207CB34
+	arm_func_end Snd_InvalidateBankData
 
-	arm_func_start sub_0207CB54
-sub_0207CB54: ; 0x0207CB54
+	arm_func_start Snd_SetOutputSelector
+Snd_SetOutputSelector: ; 0x0207CB54
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, r2
@@ -327,10 +327,10 @@ sub_0207CB54: ; 0x0207CB54
 	mov r0, #0x19
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207CB54
+	arm_func_end Snd_SetOutputSelector
 
-	arm_func_start sub_0207CB7C
-sub_0207CB7C: ; 0x0207CB7C
+	arm_func_start Sndi_SetPlayerParam
+Sndi_SetPlayerParam: ; 0x0207CB7C
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, r2
@@ -341,10 +341,10 @@ sub_0207CB7C: ; 0x0207CB7C
 	mov r0, #6
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207CB7C
+	arm_func_end Sndi_SetPlayerParam
 
-	arm_func_start sub_0207CBA4
-sub_0207CBA4: ; 0x0207CBA4
+	arm_func_start Sndi_SetTrackParam
+Sndi_SetTrackParam: ; 0x0207CBA4
 	stmdb sp!, {r3, lr}
 	ldr ip, [sp, #8]
 	mov lr, r2
@@ -355,7 +355,7 @@ sub_0207CBA4: ; 0x0207CBA4
 	mov r0, #7
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207CBA4
+	arm_func_end Sndi_SetTrackParam
 
 	arm_func_start PushCommand_impl
 PushCommand_impl: ; 0x0207CBCC
@@ -365,7 +365,7 @@ PushCommand_impl: ; 0x0207CBCC
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_0207CE54
+	bl Snd_AllocCommand
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	str r7, [r0, #4]
@@ -374,7 +374,7 @@ PushCommand_impl: ; 0x0207CBCC
 	ldr r1, [sp, #0x18]
 	str r4, [r0, #0x10]
 	str r1, [r0, #0x14]
-	bl sub_0207CEDC
+	bl Snd_PushCommand
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end PushCommand_impl
 
@@ -390,37 +390,37 @@ SND_Init: ; 0x0207CC10
 	str r2, [r1]
 	bl OS_InitMutex
 	bl SND_CommandInit
-	bl sub_0207D380
+	bl Snd_AlarmInit
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207CC40: .word _022B99EC
 _0207CC44: .word _022B99F0
 	arm_func_end SND_Init
 
-	arm_func_start sub_0207CC48
-sub_0207CC48: ; 0x0207CC48
-	ldr ip, _0207CC54 ; =sub_0207A048
+	arm_func_start Sndi_LockMutex
+Sndi_LockMutex: ; 0x0207CC48
+	ldr ip, _0207CC54 ; =OS_LockMutex
 	ldr r0, _0207CC58 ; =_022B99F0
 	bx ip
 	.align 2, 0
-_0207CC54: .word sub_0207A048
+_0207CC54: .word OS_LockMutex
 _0207CC58: .word _022B99F0
-	arm_func_end sub_0207CC48
+	arm_func_end Sndi_LockMutex
 
-	arm_func_start sub_0207CC5C
-sub_0207CC5C: ; 0x0207CC5C
-	ldr ip, _0207CC68 ; =sub_0207A0CC
+	arm_func_start Sndi_UnlockMutex
+Sndi_UnlockMutex: ; 0x0207CC5C
+	ldr ip, _0207CC68 ; =OS_UnlockMutex
 	ldr r0, _0207CC6C ; =_022B99F0
 	bx ip
 	.align 2, 0
-_0207CC68: .word sub_0207A0CC
+_0207CC68: .word OS_UnlockMutex
 _0207CC6C: .word _022B99F0
-	arm_func_end sub_0207CC5C
+	arm_func_end Sndi_UnlockMutex
 
 	arm_func_start SND_CommandInit
 SND_CommandInit: ; 0x0207CC70
 	stmdb sp!, {r4, lr}
-	bl sub_0207D270
+	bl InitPxi
 	ldr lr, _0207CD2C ; =_022B9D00
 	ldr r0, _0207CD30 ; =_022B9A20
 	mov r4, #0
@@ -454,9 +454,9 @@ _0207CCA8:
 	ldr r1, _0207CD40 ; =_022BB560
 	str r3, [r2, #4]
 	str r0, [r1]
-	bl sub_0207D4C4
+	bl Sndi_InitSharedWork
 	mov r0, #1
-	bl sub_0207CE54
+	bl Snd_AllocCommand
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r2, #0x1d
@@ -464,9 +464,9 @@ _0207CCA8:
 	str r2, [r0, #4]
 	ldr r1, [r1]
 	str r1, [r0, #8]
-	bl sub_0207CEDC
+	bl Snd_PushCommand
 	mov r0, #1
-	bl sub_0207CF14
+	bl Snd_FlushCommand
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207CD2C: .word _022B9D00
@@ -477,15 +477,15 @@ _0207CD3C: .word _022B9A80
 _0207CD40: .word _022BB560
 	arm_func_end SND_CommandInit
 
-	arm_func_start sub_0207CD44
-sub_0207CD44: ; 0x0207CD44
+	arm_func_start Snd_RecvCommandReply
+Snd_RecvCommandReply: ; 0x0207CD44
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	bl EnableIrqFlag
 	mov r4, r0
 	tst r5, #1
 	beq _0207CDA0
-	bl sub_0207D49C
+	bl Sndi_GetFinishedCommandTag
 	ldr r5, _0207CE4C ; =_022B9A20
 	ldr r1, [r5, #4]
 	cmp r1, r0
@@ -495,16 +495,16 @@ _0207CD74:
 	mov r0, r4
 	bl SetIrqFlag
 	mov r0, r6
-	bl sub_0207B854
+	bl OS_SpinWait
 	bl EnableIrqFlag
 	mov r4, r0
-	bl sub_0207D49C
+	bl Sndi_GetFinishedCommandTag
 	ldr r1, [r5, #4]
 	cmp r1, r0
 	beq _0207CD74
 	b _0207CDC4
 _0207CDA0:
-	bl sub_0207D49C
+	bl Sndi_GetFinishedCommandTag
 	ldr r1, _0207CE4C ; =_022B9A20
 	ldr r1, [r1, #4]
 	cmp r1, r0
@@ -553,52 +553,52 @@ _0207CE08:
 	.align 2, 0
 _0207CE4C: .word _022B9A20
 _0207CE50: .word _022B9A44
-	arm_func_end sub_0207CD44
+	arm_func_end Snd_RecvCommandReply
 
-	arm_func_start sub_0207CE54
-sub_0207CE54: ; 0x0207CE54
+	arm_func_start Snd_AllocCommand
+Snd_AllocCommand: ; 0x0207CE54
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0207D340
+	bl IsCommandAvailable
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl sub_0207D2F8
+	bl AllocCommand
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	tst r4, #1
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl sub_0207D230
+	bl Snd_CountWaitingCommand
 	cmp r0, #0
 	ble _0207CEB4
 	mov r4, #0
 _0207CE94:
 	mov r0, r4
-	bl sub_0207CD44
+	bl Snd_RecvCommandReply
 	cmp r0, #0
 	bne _0207CE94
-	bl sub_0207D2F8
+	bl AllocCommand
 	cmp r0, #0
 	beq _0207CEBC
 	ldmia sp!, {r4, pc}
 _0207CEB4:
 	mov r0, #1
-	bl sub_0207CF14
+	bl Snd_FlushCommand
 _0207CEBC:
-	bl sub_0207D2D0
+	bl RequestCommandProc
 	mov r4, #1
 _0207CEC4:
 	mov r0, r4
-	bl sub_0207CD44
-	bl sub_0207D2F8
+	bl Snd_RecvCommandReply
+	bl AllocCommand
 	cmp r0, #0
 	beq _0207CEC4
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0207CE54
+	arm_func_end Snd_AllocCommand
 
-	arm_func_start sub_0207CEDC
-sub_0207CEDC: ; 0x0207CEDC
+	arm_func_start Snd_PushCommand
+Snd_PushCommand: ; 0x0207CEDC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EnableIrqFlag
@@ -614,10 +614,10 @@ sub_0207CEDC: ; 0x0207CEDC
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207CF10: .word _022B9A20
-	arm_func_end sub_0207CEDC
+	arm_func_end Snd_PushCommand
 
-	arm_func_start sub_0207CF14
-sub_0207CF14: ; 0x0207CF14
+	arm_func_start Snd_FlushCommand
+Snd_FlushCommand: ; 0x0207CF14
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	bl EnableIrqFlag
@@ -642,7 +642,7 @@ _0207CF60:
 	mov r5, #1
 _0207CF64:
 	mov r0, r5
-	bl sub_0207CD44
+	bl Snd_RecvCommandReply
 	ldr r0, [r4, #0x1c]
 	cmp r0, #8
 	bge _0207CF64
@@ -683,7 +683,7 @@ _0207CFF4:
 	mov r0, sb
 	bl SetIrqFlag
 	mov r0, r8
-	bl sub_0207CD44
+	bl Snd_RecvCommandReply
 	bl EnableIrqFlag
 	mov sb, r0
 	mov r0, r7
@@ -731,7 +731,7 @@ _0207D058:
 	bl SetIrqFlag
 	tst sl, #2
 	beq _0207D0BC
-	bl sub_0207D2D0
+	bl RequestCommandProc
 _0207D0BC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -739,43 +739,43 @@ _0207D0BC:
 _0207D0C4: .word _022B9A20
 _0207D0C8: .word _022B9D00
 _0207D0CC: .word _022B9A44
-	arm_func_end sub_0207CF14
+	arm_func_end Snd_FlushCommand
 
-	arm_func_start sub_0207D0D0
-sub_0207D0D0: ; 0x0207D0D0
+	arm_func_start Snd_WaitForCommandProc
+Snd_WaitForCommandProc: ; 0x0207D0D0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_0207D168
+	bl Snd_IsFinishedCommandTag
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r4, #0
 _0207D0E8:
 	mov r0, r4
-	bl sub_0207CD44
+	bl Snd_RecvCommandReply
 	cmp r0, #0
 	bne _0207D0E8
 	mov r0, r5
-	bl sub_0207D168
+	bl Snd_IsFinishedCommandTag
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	bl sub_0207D2D0
+	bl RequestCommandProc
 	mov r0, r5
-	bl sub_0207D168
+	bl Snd_IsFinishedCommandTag
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r4, #1
 _0207D120:
 	mov r0, r4
-	bl sub_0207CD44
+	bl Snd_RecvCommandReply
 	mov r0, r5
-	bl sub_0207D168
+	bl Snd_IsFinishedCommandTag
 	cmp r0, #0
 	beq _0207D120
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207D0D0
+	arm_func_end Snd_WaitForCommandProc
 
-	arm_func_start sub_0207D13C
-sub_0207D13C: ; 0x0207D13C
+	arm_func_start Snd_GetCurrentCommandTag
+Snd_GetCurrentCommandTag: ; 0x0207D13C
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
 	ldr r1, _0207D164 ; =_022B9A20
@@ -788,10 +788,10 @@ sub_0207D13C: ; 0x0207D13C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207D164: .word _022B9A20
-	arm_func_end sub_0207D13C
+	arm_func_end Snd_GetCurrentCommandTag
 
-	arm_func_start sub_0207D168
-sub_0207D168: ; 0x0207D168
+	arm_func_start Snd_IsFinishedCommandTag
+Snd_IsFinishedCommandTag: ; 0x0207D168
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EnableIrqFlag
@@ -815,10 +815,10 @@ _0207D1A8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207D1B4: .word _022B9A20
-	arm_func_end sub_0207D168
+	arm_func_end Snd_IsFinishedCommandTag
 
-	arm_func_start sub_0207D1B8
-sub_0207D1B8: ; 0x0207D1B8
+	arm_func_start Snd_CountFreeCommand
+Snd_CountFreeCommand: ; 0x0207D1B8
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
 	ldr r1, _0207D1F0 ; =_022B9A20
@@ -837,10 +837,10 @@ _0207D1E4:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207D1F0: .word _022B9A20
-	arm_func_end sub_0207D1B8
+	arm_func_end Snd_CountFreeCommand
 
-	arm_func_start sub_0207D1F4
-sub_0207D1F4: ; 0x0207D1F4
+	arm_func_start Snd_CountReservedCommand
+Snd_CountReservedCommand: ; 0x0207D1F4
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
 	ldr r1, _0207D22C ; =_022B9A20
@@ -859,39 +859,39 @@ _0207D220:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207D22C: .word _022B9A20
-	arm_func_end sub_0207D1F4
+	arm_func_end Snd_CountReservedCommand
 
-	arm_func_start sub_0207D230
-sub_0207D230: ; 0x0207D230
+	arm_func_start Snd_CountWaitingCommand
+Snd_CountWaitingCommand: ; 0x0207D230
 	stmdb sp!, {r4, lr}
-	bl sub_0207D1B8
+	bl Snd_CountFreeCommand
 	mov r4, r0
-	bl sub_0207D1F4
+	bl Snd_CountReservedCommand
 	rsb r1, r4, #0x100
 	sub r0, r1, r0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0207D230
+	arm_func_end Snd_CountWaitingCommand
 
-	arm_func_start sub_0207D24C
-sub_0207D24C: ; 0x0207D24C
+	arm_func_start PxiFifoCallback
+PxiFifoCallback: ; 0x0207D24C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	bl EnableIrqFlag
 	mov r4, r0
 	mov r0, r5
-	bl sub_0207D400
+	bl Sndi_CallAlarmHandler
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207D24C
+	arm_func_end PxiFifoCallback
 
-	arm_func_start sub_0207D270
-sub_0207D270: ; 0x0207D270
+	arm_func_start InitPxi
+InitPxi: ; 0x0207D270
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _0207D2CC ; =sub_0207D24C
+	ldr r1, _0207D2CC ; =PxiFifoCallback
 	mov r0, #7
 	bl PXI_SetFifoRecvCallback
-	bl sub_0207D340
+	bl IsCommandAvailable
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, #7
@@ -904,7 +904,7 @@ sub_0207D270: ; 0x0207D270
 	mov r4, #1
 _0207D2AC:
 	mov r0, r6
-	bl sub_0207B854
+	bl OS_SpinWait
 	mov r0, r5
 	mov r1, r4
 	bl PXI_IsCallbackReady
@@ -912,11 +912,11 @@ _0207D2AC:
 	beq _0207D2AC
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0207D2CC: .word sub_0207D24C
-	arm_func_end sub_0207D270
+_0207D2CC: .word PxiFifoCallback
+	arm_func_end InitPxi
 
-	arm_func_start sub_0207D2D0
-sub_0207D2D0: ; 0x0207D2D0
+	arm_func_start RequestCommandProc
+RequestCommandProc: ; 0x0207D2D0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #7
 	mov r4, #0
@@ -928,10 +928,10 @@ _0207D2DC:
 	cmp r0, #0
 	blt _0207D2DC
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207D2D0
+	arm_func_end RequestCommandProc
 
-	arm_func_start sub_0207D2F8
-sub_0207D2F8: ; 0x0207D2F8
+	arm_func_start AllocCommand
+AllocCommand: ; 0x0207D2F8
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
 	ldr r1, _0207D33C ; =_022B9A20
@@ -952,12 +952,12 @@ _0207D31C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207D33C: .word _022B9A20
-	arm_func_end sub_0207D2F8
+	arm_func_end AllocCommand
 
-	arm_func_start sub_0207D340
-sub_0207D340: ; 0x0207D340
+	arm_func_start IsCommandAvailable
+IsCommandAvailable: ; 0x0207D340
 	stmdb sp!, {r4, lr}
-	bl sub_02079D98
+	bl OS_IsRunOnEmulator
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
@@ -973,10 +973,10 @@ sub_0207D340: ; 0x0207D340
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207D37C: .word 0x04FFF200
-	arm_func_end sub_0207D340
+	arm_func_end IsCommandAvailable
 
-	arm_func_start sub_0207D380
-sub_0207D380: ; 0x0207D380
+	arm_func_start Snd_AlarmInit
+Snd_AlarmInit: ; 0x0207D380
 	mov r1, #0
 	ldr r2, _0207D3AC ; =_022BB500
 	mov r0, r1
@@ -991,10 +991,10 @@ _0207D38C:
 	bx lr
 	.align 2, 0
 _0207D3AC: .word _022BB500
-	arm_func_end sub_0207D380
+	arm_func_end Snd_AlarmInit
 
-	arm_func_start sub_0207D3B0
-sub_0207D3B0: ; 0x0207D3B0
+	arm_func_start Sndi_IncAlarmId
+Sndi_IncAlarmId: ; 0x0207D3B0
 	ldr r2, _0207D3CC ; =_022BB500
 	mov r1, #0xc
 	mla r1, r0, r1, r2
@@ -1004,10 +1004,10 @@ sub_0207D3B0: ; 0x0207D3B0
 	bx lr
 	.align 2, 0
 _0207D3CC: .word _022BB500
-	arm_func_end sub_0207D3B0
+	arm_func_end Sndi_IncAlarmId
 
-	arm_func_start sub_0207D3D0
-sub_0207D3D0: ; 0x0207D3D0
+	arm_func_start Sndi_SetAlarmHandler
+Sndi_SetAlarmHandler: ; 0x0207D3D0
 	mov r3, #0xc
 	mul r3, r0, r3
 	ldr r0, _0207D3FC ; =_022BB500
@@ -1021,10 +1021,10 @@ sub_0207D3D0: ; 0x0207D3D0
 	bx lr
 	.align 2, 0
 _0207D3FC: .word _022BB500
-	arm_func_end sub_0207D3D0
+	arm_func_end Sndi_SetAlarmHandler
 
-	arm_func_start sub_0207D400
-sub_0207D400: ; 0x0207D400
+	arm_func_start Sndi_CallAlarmHandler
+Sndi_CallAlarmHandler: ; 0x0207D400
 	stmdb sp!, {r3, lr}
 	ldr r3, _0207D440 ; =_022BB500
 	and r2, r0, #0xff
@@ -1043,10 +1043,10 @@ sub_0207D400: ; 0x0207D400
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207D440: .word _022BB500
-	arm_func_end sub_0207D400
+	arm_func_end Sndi_CallAlarmHandler
 
-	arm_func_start sub_0207D444
-sub_0207D444: ; 0x0207D444
+	arm_func_start Snd_GetPlayerStatus
+Snd_GetPlayerStatus: ; 0x0207D444
 	stmdb sp!, {r3, lr}
 	ldr r0, _0207D46C ; =_022BB560
 	mov r1, #4
@@ -1059,10 +1059,10 @@ sub_0207D444: ; 0x0207D444
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207D46C: .word _022BB560
-	arm_func_end sub_0207D444
+	arm_func_end Snd_GetPlayerStatus
 
-	arm_func_start sub_0207D470
-sub_0207D470: ; 0x0207D470
+	arm_func_start Snd_GetChannelStatus
+Snd_GetChannelStatus: ; 0x0207D470
 	stmdb sp!, {r3, lr}
 	ldr r0, _0207D498 ; =_022BB560
 	mov r1, #2
@@ -1075,10 +1075,10 @@ sub_0207D470: ; 0x0207D470
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207D498: .word _022BB560
-	arm_func_end sub_0207D470
+	arm_func_end Snd_GetChannelStatus
 
-	arm_func_start sub_0207D49C
-sub_0207D49C: ; 0x0207D49C
+	arm_func_start Sndi_GetFinishedCommandTag
+Sndi_GetFinishedCommandTag: ; 0x0207D49C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0207D4C0 ; =_022BB560
 	mov r1, #4
@@ -1090,10 +1090,10 @@ sub_0207D49C: ; 0x0207D49C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207D4C0: .word _022BB560
-	arm_func_end sub_0207D49C
+	arm_func_end Sndi_GetFinishedCommandTag
 
-	arm_func_start sub_0207D4C4
-sub_0207D4C4: ; 0x0207D4C4
+	arm_func_start Sndi_InitSharedWork
+Sndi_InitSharedWork: ; 0x0207D4C4
 	stmdb sp!, {r4, lr}
 	mov ip, #0
 	str ip, [r0, #4]
@@ -1128,10 +1128,10 @@ _0207D51C:
 	mov r1, #0x280
 	bl DC_FlushRange
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0207D4C4
+	arm_func_end Sndi_InitSharedWork
 
-	arm_func_start sub_0207D540
-sub_0207D540: ; 0x0207D540
+	arm_func_start Snd_CalcChannelVolume
+Snd_CalcChannelVolume: ; 0x0207D540
 	ldr r1, _0207D5A8 ; =0xFFFFFD2D
 	cmp r0, r1
 	movlt r0, r1
@@ -1163,22 +1163,22 @@ _0207D598:
 	.align 2, 0
 _0207D5A8: .word 0xFFFFFD2D
 _0207D5AC: .word ARM9_UNKNOWN_TABLE__NA_20AE924
-	arm_func_end sub_0207D540
+	arm_func_end Snd_CalcChannelVolume
 
-	arm_func_start sub_0207D5B0
-sub_0207D5B0: ; 0x0207D5B0
+	arm_func_start Snd_AssignWaveArc
+Snd_AssignWaveArc: ; 0x0207D5B0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_0207CC48
+	bl Sndi_LockMutex
 	add r3, r6, r5, lsl #3
 	ldr r2, [r3, #0x18]
 	cmp r2, #0
 	beq _0207D640
 	cmp r4, r2
 	bne _0207D5E4
-	bl sub_0207CC5C
+	bl Sndi_UnlockMutex
 	ldmia sp!, {r4, r5, r6, pc}
 _0207D5E4:
 	add r1, r6, #0x18
@@ -1215,7 +1215,7 @@ _0207D640:
 	add r0, r6, r5, lsl #3
 	str r1, [r0, #0x1c]
 	str r4, [r0, #0x18]
-	bl sub_0207CC5C
+	bl Sndi_UnlockMutex
 	mov r0, r6
 	mov r1, #0x3c
 	bl DC_StoreRange
@@ -1223,13 +1223,13 @@ _0207D640:
 	mov r1, #0x3c
 	bl DC_StoreRange
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0207D5B0
+	arm_func_end Snd_AssignWaveArc
 
-	arm_func_start sub_0207D67C
-sub_0207D67C: ; 0x0207D67C
+	arm_func_start Snd_DestroyBank
+Snd_DestroyBank: ; 0x0207D67C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r0
-	bl sub_0207CC48
+	bl Sndi_LockMutex
 	add r5, r7, #0x18
 	mov r6, #0
 	mov r8, #8
@@ -1268,15 +1268,15 @@ _0207D6FC:
 	cmp r6, #4
 	add r5, r5, #8
 	blt _0207D698
-	bl sub_0207CC5C
+	bl Sndi_UnlockMutex
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0207D67C
+	arm_func_end Snd_DestroyBank
 
-	arm_func_start sub_0207D714
-sub_0207D714: ; 0x0207D714
+	arm_func_start Snd_DestroyWaveArc
+Snd_DestroyWaveArc: ; 0x0207D714
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
-	bl sub_0207CC48
+	bl Sndi_LockMutex
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
 	beq _0207D754
@@ -1292,12 +1292,12 @@ _0207D734:
 	cmp r6, #0
 	bne _0207D734
 _0207D754:
-	bl sub_0207CC5C
+	bl Sndi_UnlockMutex
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0207D714
+	arm_func_end Snd_DestroyWaveArc
 
-	arm_func_start sub_0207D75C
-sub_0207D75C: ; 0x0207D75C
+	arm_func_start Snd_GetFirstInstDataPos
+Snd_GetFirstInstDataPos: ; 0x0207D75C
 	sub sp, sp, #8
 	mov r1, #0
 	str r1, [r0]
@@ -1306,10 +1306,10 @@ sub_0207D75C: ; 0x0207D75C
 	str r1, [r0, #4]
 	add sp, sp, #8
 	bx lr
-	arm_func_end sub_0207D75C
+	arm_func_end Snd_GetFirstInstDataPos
 
-	arm_func_start sub_0207D77C
-sub_0207D77C: ; 0x0207D77C
+	arm_func_start Snd_GetNextInstData
+Snd_GetNextInstData: ; 0x0207D77C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, [r2]
 	ldr r3, [r0, #0x38]
@@ -1430,37 +1430,37 @@ _0207D908:
 _0207D924:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207D77C
+	arm_func_end Snd_GetNextInstData
 
-	arm_func_start sub_0207D92C
-sub_0207D92C: ; 0x0207D92C
+	arm_func_start Snd_GetWaveDataCount
+Snd_GetWaveDataCount: ; 0x0207D92C
 	ldr r0, [r0, #0x38]
 	bx lr
-	arm_func_end sub_0207D92C
+	arm_func_end Snd_GetWaveDataCount
 
-	arm_func_start sub_0207D934
-sub_0207D934: ; 0x0207D934
+	arm_func_start Snd_SetWaveDataAddress
+Snd_SetWaveDataAddress: ; 0x0207D934
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl sub_0207CC48
+	bl Sndi_LockMutex
 	add r0, r6, #0x3c
 	add r2, r6, r5, lsl #2
 	add r0, r0, r5, lsl #2
 	mov r1, #4
 	str r4, [r2, #0x3c]
 	bl DC_StoreRange
-	bl sub_0207CC5C
+	bl Sndi_UnlockMutex
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0207D934
+	arm_func_end Snd_SetWaveDataAddress
 
-	arm_func_start sub_0207D968
-sub_0207D968: ; 0x0207D968
+	arm_func_start Snd_GetWaveDataAddress
+Snd_GetWaveDataAddress: ; 0x0207D968
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_0207CC48
+	bl Sndi_LockMutex
 	add r0, r5, r4, lsl #2
 	ldr r4, [r0, #0x3c]
 	cmp r4, #0
@@ -1471,10 +1471,10 @@ sub_0207D968: ; 0x0207D968
 _0207D994:
 	mov r4, #0
 _0207D998:
-	bl sub_0207CC5C
+	bl Sndi_UnlockMutex
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207D968
+	arm_func_end Snd_GetWaveDataAddress
 
 	arm_func_start PXI_Init
 PXI_Init: ; 0x0207D9A4
@@ -1721,8 +1721,8 @@ _0207DCB8: .word 0x04000184
 _0207DCBC: .word _022BB568
 	arm_func_end PXIi_HandlerRecvFifoNotEmpty
 
-	arm_func_start sub_0207DCC0
-sub_0207DCC0: ; 0x0207DCC0
+	arm_func_start FSi_ReleaseCommand
+FSi_ReleaseCommand: ; 0x0207DCC0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r1
@@ -1742,14 +1742,14 @@ sub_0207DCC0: ; 0x0207DCC0
 	bic r1, r1, #0x4f
 	str r1, [r5, #0xc]
 	str r4, [r5, #0x14]
-	bl sub_020798D8
+	bl OS_WakeupThread
 	mov r0, r6
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0207DCC0
+	arm_func_end FSi_ReleaseCommand
 
-	arm_func_start sub_0207DD1C
-sub_0207DD1C: ; 0x0207DD1C
+	arm_func_start FSi_TranslateCommand
+FSi_TranslateCommand: ; 0x0207DD1C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	ldr r0, [r8, #0xc]
@@ -1850,7 +1850,7 @@ _0207DE5C:
 	bic r2, r1, #0x100
 	mov r1, r4
 	str r2, [r5, #0x1c]
-	bl sub_0207DCC0
+	bl FSi_ReleaseCommand
 	b _0207DEA0
 _0207DE90:
 	ldr r0, [r5, #0x1c]
@@ -1862,10 +1862,10 @@ _0207DEA0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0207DEA8: .word _020AEBF8
-	arm_func_end sub_0207DD1C
+	arm_func_end FSi_TranslateCommand
 
-	arm_func_start sub_0207DEAC
-sub_0207DEAC: ; 0x0207DEAC
+	arm_func_start FSi_StrNiCmp
+FSi_StrNiCmp: ; 0x0207DEAC
 	stmdb sp!, {r3, lr}
 	cmp r2, #0
 	mov lr, #0
@@ -1888,10 +1888,10 @@ _0207DEBC:
 _0207DEF4:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207DEAC
+	arm_func_end FSi_StrNiCmp
 
-	arm_func_start sub_0207DEFC
-sub_0207DEFC: ; 0x0207DEFC
+	arm_func_start FSi_ReadTable
+FSi_ReadTable: ; 0x0207DEFC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r0
 	ldr r4, [r7]
@@ -1945,16 +1945,16 @@ _0207DFAC:
 	add r1, r1, r6
 	str r1, [r7, #4]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_0207DEFC
+	arm_func_end FSi_ReadTable
 
-	arm_func_start sub_0207DFBC
-sub_0207DFBC: ; 0x0207DFBC
+	arm_func_start FSi_SeekDirDirect
+FSi_SeekDirDirect: ; 0x0207DFBC
 	ldr r3, [r0, #0xc]
 	mov r2, #0
 	orr r3, r3, #4
 	str r3, [r0, #0xc]
 	ldr r3, [r0, #8]
-	ldr ip, _0207DFEC ; =sub_0207DD1C
+	ldr ip, _0207DFEC ; =FSi_TranslateCommand
 	str r3, [r0, #0x30]
 	str r2, [r0, #0x38]
 	strh r2, [r0, #0x36]
@@ -1962,11 +1962,11 @@ sub_0207DFBC: ; 0x0207DFBC
 	mov r1, #2
 	bx ip
 	.align 2, 0
-_0207DFEC: .word sub_0207DD1C
-	arm_func_end sub_0207DFBC
+_0207DFEC: .word FSi_TranslateCommand
+	arm_func_end FSi_SeekDirDirect
 
-	arm_func_start sub_0207DFF0
-sub_0207DFF0: ; 0x0207DFF0
+	arm_func_start FSi_ReadFileCommand
+FSi_ReadFileCommand: ; 0x0207DFF0
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0x2c]
 	ldr r3, [r0, #0x38]
@@ -1978,10 +1978,10 @@ sub_0207DFF0: ; 0x0207DFF0
 	mov r0, lr
 	blx ip
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207DFF0
+	arm_func_end FSi_ReadFileCommand
 
-	arm_func_start sub_0207E01C
-sub_0207E01C: ; 0x0207E01C
+	arm_func_start FSi_WriteFileCommand
+FSi_WriteFileCommand: ; 0x0207E01C
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0x2c]
 	ldr r3, [r0, #0x38]
@@ -1993,10 +1993,10 @@ sub_0207E01C: ; 0x0207E01C
 	mov r0, lr
 	blx ip
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207E01C
+	arm_func_end FSi_WriteFileCommand
 
-	arm_func_start sub_0207E048
-sub_0207E048: ; 0x0207E048
+	arm_func_start FSi_SeekDirCommand
+FSi_SeekDirCommand: ; 0x0207E048
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	mov r6, r0
@@ -2010,7 +2010,7 @@ sub_0207E048: ; 0x0207E048
 	add r1, sp, #8
 	mov r2, #8
 	str r3, [sp, #4]
-	bl sub_0207DEFC
+	bl FSi_ReadTable
 	movs r3, r0
 	bne _0207E0D0
 	add ip, r6, #0x20
@@ -2038,10 +2038,10 @@ _0207E0D0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207E0DC: .word 0x00000FFF
-	arm_func_end sub_0207E048
+	arm_func_end FSi_SeekDirCommand
 
-	arm_func_start sub_0207E0E0
-sub_0207E0E0: ; 0x0207E0E0
+	arm_func_start FSi_ReadDirCommand
+FSi_ReadDirCommand: ; 0x0207E0E0
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	mov r5, r0
@@ -2053,7 +2053,7 @@ sub_0207E0E0: ; 0x0207E0E0
 	add r1, sp, #0
 	mov r2, #1
 	str r3, [sp, #8]
-	bl sub_0207DEFC
+	bl FSi_ReadTable
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, pc}
@@ -2073,7 +2073,7 @@ sub_0207E0E0: ; 0x0207E0E0
 	bne _0207E180
 	add r0, sp, #4
 	add r1, r4, #0x14
-	bl sub_0207DEFC
+	bl FSi_ReadTable
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, pc}
@@ -2093,7 +2093,7 @@ _0207E18C:
 	add r0, sp, #4
 	add r1, sp, #2
 	mov r2, #2
-	bl sub_0207DEFC
+	bl FSi_ReadTable
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {r4, r5, pc}
@@ -2122,17 +2122,17 @@ _0207E1F8:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _0207E208: .word 0x00000FFF
-	arm_func_end sub_0207E0E0
+	arm_func_end FSi_ReadDirCommand
 
-	arm_func_start sub_0207E20C
-sub_0207E20C: ; 0x0207E20C
+	arm_func_start FSi_FindPathCommand
+FSi_FindPathCommand: ; 0x0207E20C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x94
 	mov sb, r0
 	ldr r5, [sb, #0x3c]
 	mov r1, #2
 	ldr r6, [sb, #0x40]
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	ldrb r3, [r5]
 	cmp r3, #0
 	beq _0207E3C4
@@ -2178,7 +2178,7 @@ _0207E248:
 	beq _0207E2D4
 	ldr r1, [sb, #0x2c]
 	mov r0, sb
-	bl sub_0207DFBC
+	bl FSi_SeekDirDirect
 _0207E2D4:
 	add r5, r5, #2
 	b _0207E3A8
@@ -2196,7 +2196,7 @@ _0207E2DC:
 _0207E304:
 	mov r0, sb
 	mov r1, r4
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	addne sp, sp, #0x94
 	movne r0, #1
@@ -2209,7 +2209,7 @@ _0207E304:
 	mov r0, r5
 	mov r1, sl
 	mov r2, r8
-	bl sub_0207DEAC
+	bl FSi_StrNiCmp
 	cmp r0, #0
 	bne _0207E304
 	cmp r7, #0
@@ -2221,7 +2221,7 @@ _0207E304:
 	mov r0, sb
 	mov r1, #2
 	add r5, r5, r8
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	b _0207E3A8
 _0207E378:
 	cmp r6, #0
@@ -2256,10 +2256,10 @@ _0207E3C4:
 	mov r0, #0
 	add sp, sp, #0x94
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end sub_0207E20C
+	arm_func_end FSi_FindPathCommand
 
-	arm_func_start sub_0207E3F0
-sub_0207E3F0: ; 0x0207E3F0
+	arm_func_start FSi_GetPathCommand
+FSi_GetPathCommand: ; 0x0207E3F0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xe0
 	mov sl, r0
@@ -2291,7 +2291,7 @@ sub_0207E3F0: ; 0x0207E3F0
 _0207E460:
 	mov r0, r5
 	mov r1, r7
-	bl sub_0207DFBC
+	bl FSi_SeekDirDirect
 	mov r2, #1
 	cmp r7, #0
 	mov r0, r5
@@ -2299,7 +2299,7 @@ _0207E460:
 	ldreq r8, [sp, #0x30]
 	str fp, [sp, #0x34]
 	str r2, [sp, #0x38]
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	bne _0207E4C0
 _0207E494:
@@ -2311,7 +2311,7 @@ _0207E494:
 	beq _0207E4C0
 	mov r0, r5
 	mov r1, r4
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	beq _0207E494
 _0207E4C0:
@@ -2351,20 +2351,20 @@ _0207E520:
 	beq _0207E5C8
 	add r0, sp, #4
 	mov r1, sb
-	bl sub_0207DFBC
+	bl FSi_SeekDirDirect
 	add r5, sp, #4
 	mov r4, #3
 	add fp, sp, #0x4c
 _0207E554:
 	ldr r1, [sp, #0x30]
 	mov r0, r5
-	bl sub_0207DFBC
+	bl FSi_SeekDirDirect
 	mov r1, #1
 	str r1, [sp, #0x38]
 	mov r0, r5
 	mov r1, #3
 	str fp, [sp, #0x34]
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	bne _0207E5BC
 _0207E580:
@@ -2381,7 +2381,7 @@ _0207E580:
 _0207E5A8:
 	mov r0, r5
 	mov r1, r4
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	beq _0207E580
 _0207E5BC:
@@ -2425,7 +2425,7 @@ _0207E624:
 	bl MI_CpuCopy8
 	add r0, sp, #4
 	mov r1, sb
-	bl sub_0207DFBC
+	bl FSi_SeekDirDirect
 	cmp r6, #0x10000
 	beq _0207E6D4
 	add r3, sp, #0x4c
@@ -2434,7 +2434,7 @@ _0207E624:
 	mov r1, #3
 	str r3, [sp, #0x34]
 	str r2, [sp, #0x38]
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	bne _0207E6B0
 	add r8, sp, #4
@@ -2447,7 +2447,7 @@ _0207E688:
 	beq _0207E6B0
 	mov r0, r8
 	mov r1, r7
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	beq _0207E688
 _0207E6B0:
@@ -2476,7 +2476,7 @@ _0207E6E4:
 _0207E700:
 	ldr r1, [sp, #0x30]
 	mov r0, sl
-	bl sub_0207DFBC
+	bl FSi_SeekDirDirect
 	add r1, r5, r4
 	str r8, [sp, #0x34]
 	str r7, [sp, #0x38]
@@ -2484,7 +2484,7 @@ _0207E700:
 	mov r0, sl
 	mov r1, #3
 	sub r4, r4, #1
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	bne _0207E780
 _0207E734:
@@ -2505,7 +2505,7 @@ _0207E734:
 _0207E76C:
 	mov r0, sl
 	mov r1, r6
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	cmp r0, #0
 	beq _0207E734
 _0207E780:
@@ -2518,10 +2518,10 @@ _0207E78C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0207E798: .word _020B2BB0
-	arm_func_end sub_0207E3F0
+	arm_func_end FSi_GetPathCommand
 
-	arm_func_start sub_0207E79C
-sub_0207E79C: ; 0x0207E79C
+	arm_func_start FSi_OpenFileFastCommand
+FSi_OpenFileFastCommand: ; 0x0207E79C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	mov r5, r0
@@ -2540,7 +2540,7 @@ sub_0207E79C: ; 0x0207E79C
 	add r1, sp, #8
 	mov r2, #8
 	str r3, [sp, #4]
-	bl sub_0207DEFC
+	bl FSi_ReadTable
 	cmp r0, #0
 	addne sp, sp, #0x10
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -2551,8 +2551,8 @@ sub_0207E79C: ; 0x0207E79C
 	mov r1, #7
 	str r2, [r5, #0x34]
 	str r4, [r5, #0x38]
-	bl sub_0207DD1C
+	bl FSi_TranslateCommand
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207E79C
+	arm_func_end FSi_OpenFileFastCommand
 

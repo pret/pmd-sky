@@ -49,7 +49,7 @@ _020760E8:
 	beq _02076140
 	add r1, r3, #8
 	mov r3, #0x60
-	bl sub_0207BC4C
+	bl MI_DmaFill32
 	ldr r1, _020761B0 ; =0x0400006C
 	mov r2, #0
 	ldr r0, _020761AC ; =sIsDispOn
@@ -57,7 +57,7 @@ _020760E8:
 	ldr r0, [r0, #4]
 	ldr r1, _020761B4 ; =0x04001000
 	mov r3, #0x70
-	bl sub_0207BC4C
+	bl MI_DmaFill32
 	b _02076168
 _02076140:
 	mov r0, r2

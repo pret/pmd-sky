@@ -1,12 +1,20 @@
 #pragma once
 
+.public CP_SaveContext
+.public CPi_RestoreContext
 .public GX_ResetBankForTex
 .public GX_ResetBankForTexPltt
 .public GX_SetBankForTex
 .public GX_SetBankForTexPltt
 .public GXi_DmaId
+.public MI_DmaCopy32
+.public MI_DmaCopy32Async
+.public MI_DmaFill32
+.public MI_DmaFill32Async
+.public MI_WaitDma
 .public MTi_CpuCopy16
 .public MTi_CpuCopy32
+.public OS_VsNPrintfEx
 .public PM_Init
 .public PXI_Init
 .public sClrImg
@@ -17,11 +25,3 @@
 .public sub_0206F808
 .public sub_0206FD88
 .public sub_0206FDE0
-.public sub_0207BC4C
-.public sub_0207BCCC
-.public sub_0207BDA8
-.public sub_0207BE6C
-.public sub_0207C0FC
-.public sub_02080EF0
-.public sub_02080F30
-.public sub_02085BD4

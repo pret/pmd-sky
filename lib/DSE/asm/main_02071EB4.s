@@ -3020,12 +3020,12 @@ _02074414:
 	mov r2, r0
 	mov r3, r0
 	str lr, [ip, #0xd08]
-	bl sub_0207C8B8
+	bl Snd_StartTimer
 	ldr r0, _02074488 ; =0x0000FFFF
 	mov r3, #0
 	mov r1, r0
 	mov r2, r0
-	bl sub_0207C8E0
+	bl Snd_StopTimer
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207447C: .word _022B7A30
@@ -3107,7 +3107,7 @@ _02074578: .word _022B8330
 DseVoice_Cleanup: ; 0x0207457C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r6, _02074610 ; =_022B7A6C
-	bl sub_0207D470
+	bl Snd_GetChannelStatus
 	ldr r4, _02074614 ; =_022B7A30
 	mov r0, r0, lsl #0x10
 	ldrh r2, [r4, #0x30]
@@ -3524,7 +3524,7 @@ _02074AD0:
 	str r0, [sp, #0x14]
 	ldrh r0, [r7, #8]
 	ldr r2, [r7, #0x30]
-	bl sub_0207CA6C
+	bl Snd_SetupChannelPcm
 	b _02074B50
 _02074B0C:
 	ldr r0, [r7, #0x13c]
@@ -3535,7 +3535,7 @@ _02074B0C:
 	ldrh r0, [r7, #8]
 	ldrb r1, [r7, #0x25]
 	ldr r2, [r7, #0x140]
-	bl sub_0207CAB8
+	bl Snd_SetupChannelPsg
 	b _02074B50
 _02074B34:
 	ldr r0, [r7, #0x144]
@@ -3544,7 +3544,7 @@ _02074B34:
 	ldrh r0, [r7, #8]
 	ldr r1, [r7, #0x140]
 	ldr r3, [r7, #0x13c]
-	bl sub_0207CAE0
+	bl Snd_SetupChannelNoise
 _02074B50:
 	mov r0, r7
 	bl DseVoice_FlagForActivation
@@ -3560,20 +3560,20 @@ _02074B70:
 	beq _02074B84
 	ldrh r0, [r7, #0xa]
 	ldr r1, [r7, #0x13c]
-	bl sub_0207CA04
+	bl Snd_SetChannelTimer
 _02074B84:
 	tst sb, #0x20
 	beq _02074B9C
 	ldrh r0, [r7, #0xa]
 	ldr r1, [r7, #0x140]
 	mov r2, #0
-	bl sub_0207CA24
+	bl Snd_SetChannelVolume
 _02074B9C:
 	tst sb, #0x40
 	beq _02074BB0
 	ldrh r0, [r7, #0xa]
 	ldr r1, [r7, #0x144]
-	bl sub_0207CA4C
+	bl Snd_SetChannelPan
 _02074BB0:
 	strh r5, [r7, #6]
 _02074BB4:
@@ -3593,7 +3593,7 @@ _02074BC8:
 	orrs r3, r2, r3
 	beq _02074C0C
 	mov r3, #0
-	bl sub_0207C8B8
+	bl Snd_StartTimer
 	ldr r1, _02074C6C ; =DRIVER_WORK
 	mov r2, #0
 	strb r2, [r1, #0x738]
@@ -3613,7 +3613,7 @@ _02074C0C:
 	addeq sp, sp, #0x18
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r3, #0
-	bl sub_0207C8E0
+	bl Snd_StopTimer
 	ldr r1, _02074C6C ; =DRIVER_WORK
 	mov r2, #0
 	strb r2, [r1, #0x739]

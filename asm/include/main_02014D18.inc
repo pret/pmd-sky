@@ -386,6 +386,8 @@
 .public ResumeBgm
 .public Rgb8ToRgb5
 .public SND_Init
+.public Snd_LockChannel
+.public Snd_UnlockChannel
 .public sprintf
 .public strcat
 .public strcmp
@@ -466,8 +468,6 @@
 .public sub_0206C6BC
 .public sub_0206C754
 .public sub_0206F5C8
-.public sub_0207C9C4
-.public sub_0207C9E4
 .public TEAM_MEMBER_TABLE_PTR
 .public UnloadFile
 .public vsprintf
