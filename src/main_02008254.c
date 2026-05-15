@@ -11,7 +11,7 @@ u32 FileGetSize(struct file_stream* file)
 s32 FileRom_HandleRead(struct file_stream* file, void* buf, s32 size) {
     s32 total_bytes_read = 0;
     while (size>total_bytes_read) {
-        s32 bytes_read = sub_0207F818(file,buf,size-total_bytes_read);
+        s32 bytes_read = FS_ReadFile(file,buf,size-total_bytes_read);
         if (bytes_read < 0) {
             CardPullOutWithStatus(1);
         } else {
@@ -24,7 +24,7 @@ s32 FileRom_HandleRead(struct file_stream* file, void* buf, s32 size) {
 
 u32 FileRom_HandleSeek(struct file_stream* file, s32 offset, s32 whence)
 {
-    u32 res = sub_0207F828(file,offset,whence);
+    u32 res = FS_SeekFile(file,offset,whence);
     if (res != 0) {
         return res;
     } else {

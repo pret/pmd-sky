@@ -758,7 +758,7 @@ _0233D318:
 	bl FileInit
 	ldr r1, [r8]
 	add r0, sp, #0x58
-	bl sub_0207F6C4
+	bl FS_OpenFile
 	cmp r0, #0
 	beq _0233D3D4
 	ldr r0, _0233D404 ; =0x00020100
@@ -793,7 +793,7 @@ _0233D3D4:
 	cmp r0, #0
 	beq _0233D3F4
 	add r0, sp, #0x58
-	bl sub_0207F70C
+	bl FS_CloseFile
 _0233D3F4:
 	mov r0, r7
 _0233D3F8:
@@ -1587,7 +1587,7 @@ ov08_0233DD50: ; 0x0233DD50
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
-	bl ov00_022BF640
+	bl WM_GetAllowedChannel
 	cmp r0, #0x8000
 	bne _0233DD80
 	mov r0, #3
@@ -1625,7 +1625,7 @@ _0233DDC0:
 	mov r1, #3
 	mov r2, #0x11
 	str ip, [sp]
-	bl ov00_022C1610
+	bl WM_MeasureChannel
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 _0233DDF0:
@@ -1828,7 +1828,7 @@ ov08_0233DFF8: ; 0x0233DFF8
 	ldr r0, _0233E0F0 ; =ov08_0234BA20
 	ldr r1, _0233E0F4 ; =ov08_0233E118
 	mov r2, #2
-	bl ov00_022BFB14
+	bl WM_InitializeEx
 	cmp r0, #2
 	moveq r0, #1
 	beq _0233E0BC
@@ -1880,7 +1880,7 @@ ov08_0233E118: ; 0x0233E118
 _0233E138:
 	ldr r0, _0233E168 ; =ov08_0233EC30
 	ldr r0, [r0, #0x18]
-	bl ov00_022BF2C4
+	bl WM_SetIndCallback
 	cmp r0, #0
 	beq _0233E15C
 	bl ov08_0233DBE0
@@ -1903,7 +1903,7 @@ ov08_0233E16C: ; 0x0233E16C
 	cmp r0, #5
 	bne _0233E194
 	ldr r0, _0233E1D0 ; =ov08_0234B200
-	bl ov00_022C0A64
+	bl WM_EndDataSharing__022C1278
 	cmp r0, #0
 	beq _0233E194
 	bl ov08_0233DBE0
@@ -1911,7 +1911,7 @@ _0233E194:
 	mov r0, #3
 	bl ov08_0233DB60
 	ldr r0, _0233E1D4 ; =ov08_0233DC04
-	bl ov00_022BFB9C
+	bl WM_Reset
 	cmp r0, #2
 	moveq r0, #1
 	beq _0233E1B8
@@ -1941,7 +1941,7 @@ _0233E1F0:
 	mov r0, #3
 	bl ov08_0233DB60
 	ldr r0, _0233E22C ; =ov08_0233DC50
-	bl ov00_022BFBD4
+	bl WM_End
 	cmp r0, #2
 	ldreq r0, _0233E228 ; =ov08_0233EC30
 	moveq r1, #0

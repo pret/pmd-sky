@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start sub_0207F40C
-sub_0207F40C: ; 0x0207F40C
+	arm_func_start FSi_FindPath
+FSi_FindPath: ; 0x0207F40C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	mov r7, r1
@@ -40,7 +40,7 @@ _0207F46C:
 	bne _0207F4F0
 	mov r0, r7
 	mov r1, r4
-	bl sub_0207EDB4
+	bl FS_FindArchive
 	cmp r0, #0
 	addeq sp, sp, #0xc
 	moveq r0, #0
@@ -87,16 +87,16 @@ _0207F4FC:
 _0207F538:
 	mov r0, r8
 	mov r1, #4
-	bl sub_0207EBE4
+	bl FSi_SendCommand
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0207F54C: .word _022BB5EC
-	arm_func_end sub_0207F40C
+	arm_func_end FSi_FindPath
 
 ; https://decomp.me/scratch/ioqaD
-	arm_func_start sub_0207F550
-sub_0207F550: ; 0x0207F550
+	arm_func_start FSi_ReadFileCore
+FSi_ReadFileCore: ; 0x0207F550
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldr r4, [r7, #0x2c]
@@ -117,11 +117,11 @@ sub_0207F550: ; 0x0207F550
 	orreq r0, r0, #4
 	streq r0, [r7, #0xc]
 	mov r0, r7
-	bl sub_0207EBE4
+	bl FSi_SendCommand
 	cmp r5, #0
 	bne _0207F5C4
 	mov r0, r7
-	bl sub_0207F748
+	bl FS_WaitAsync
 	cmp r0, #0
 	ldrne r0, [r7, #0x2c]
 	subne r6, r0, r4
@@ -129,10 +129,10 @@ sub_0207F550: ; 0x0207F550
 _0207F5C4:
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_0207F550
+	arm_func_end FSi_ReadFileCore
 
-	arm_func_start sub_0207F5CC
-sub_0207F5CC: ; 0x0207F5CC
+	arm_func_start FS_ConvertPathToFileID
+FS_ConvertPathToFileID: ; 0x0207F5CC
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x48
 	mov r5, r0
@@ -143,16 +143,16 @@ sub_0207F5CC: ; 0x0207F5CC
 	mov r1, r4
 	mov r2, r5
 	mov r3, #0
-	bl sub_0207F40C
+	bl FSi_FindPath
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207F5CC
+	arm_func_end FS_ConvertPathToFileID
 
-	arm_func_start sub_0207F60C
-sub_0207F60C: ; 0x0207F60C
+	arm_func_start FS_OpenFileDirect
+FS_OpenFileDirect: ; 0x0207F60C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	str r1, [r4, #8]
@@ -161,7 +161,7 @@ sub_0207F60C: ; 0x0207F60C
 	str ip, [r4, #0x38]
 	str r2, [r4, #0x30]
 	str r3, [r4, #0x34]
-	bl sub_0207EBE4
+	bl FSi_SendCommand
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -171,10 +171,10 @@ sub_0207F60C: ; 0x0207F60C
 	bic r1, r1, #0x20
 	str r1, [r4, #0xc]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0207F60C
+	arm_func_end FS_OpenFileDirect
 
-	arm_func_start sub_0207F654
-sub_0207F654: ; 0x0207F654
+	arm_func_start FS_OpenFileFast
+FS_OpenFileFast: ; 0x0207F654
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, lr}
 	ldr r1, [sp, #0xc]
@@ -189,7 +189,7 @@ sub_0207F654: ; 0x0207F654
 	ldr r2, [sp, #0x10]
 	mov r1, #6
 	str r2, [r4, #0x34]
-	bl sub_0207EBE4
+	bl FSi_SendCommand
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, lr}
@@ -203,21 +203,21 @@ sub_0207F654: ; 0x0207F654
 	ldmia sp!, {r4, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end sub_0207F654
+	arm_func_end FS_OpenFileFast
 
-	arm_func_start sub_0207F6C4
-sub_0207F6C4: ; 0x0207F6C4
+	arm_func_start FS_OpenFile
+FS_OpenFile: ; 0x0207F6C4
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	mov r4, r0
 	add r0, sp, #0
-	bl sub_0207F5CC
+	bl FS_ConvertPathToFileID
 	cmp r0, #0
 	beq _0207F700
 	add r1, sp, #0
 	mov r0, r4
 	ldmia r1, {r1, r2}
-	bl sub_0207F654
+	bl FS_OpenFileFast
 	cmp r0, #0
 	addne sp, sp, #8
 	movne r0, #1
@@ -226,14 +226,14 @@ _0207F700:
 	mov r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0207F6C4
+	arm_func_end FS_OpenFile
 
-	arm_func_start sub_0207F70C
-sub_0207F70C: ; 0x0207F70C
+	arm_func_start FS_CloseFile
+FS_CloseFile: ; 0x0207F70C
 	stmdb sp!, {r4, lr}
 	mov r1, #8
 	mov r4, r0
-	bl sub_0207EBE4
+	bl FSi_SendCommand
 	cmp r0, #0
 	mov r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -245,10 +245,10 @@ sub_0207F70C: ; 0x0207F70C
 	bic r1, r1, #0x30
 	str r1, [r4, #0xc]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0207F70C
+	arm_func_end FS_CloseFile
 
-	arm_func_start sub_0207F748
-sub_0207F748: ; 0x0207F748
+	arm_func_start FS_WaitAsync
+FS_WaitAsync: ; 0x0207F748
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
 	mov r5, #0
@@ -294,7 +294,7 @@ _0207F7D8:
 	cmp r5, #0
 	beq _0207F7F4
 	mov r0, r6
-	bl sub_0207EBA0
+	bl FSi_ExecuteSyncCommand
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207F7F4:
 	ldr r0, [r6, #0x14]
@@ -302,13 +302,13 @@ _0207F7F4:
 	moveq r0, #1
 	movne r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0207F748
+	arm_func_end FS_WaitAsync
 
-	arm_func_start sub_0207F808
-sub_0207F808: ; 0x0207F808
-	ldr ip, _0207F814 ; =sub_0207F550
+	arm_func_start FS_ReadFileAsync
+FS_ReadFileAsync: ; 0x0207F808
+	ldr ip, _0207F814 ; =FSi_ReadFileCore
 	mov r3, #1
 	bx ip
 	.align 2, 0
-_0207F814: .word sub_0207F550
-	arm_func_end sub_0207F808
+_0207F814: .word FSi_ReadFileCore
+	arm_func_end FS_ReadFileAsync

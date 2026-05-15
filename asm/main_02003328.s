@@ -28,13 +28,13 @@ TaskProcBoot: ; 0x02003328
 	bl sub_020027E8
 	bl OS_InitVAlarm
 	ldr r0, _020035EC ; =_0229B220
-	bl sub_0207B4A4
+	bl OS_CreateVAlarm
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, _020035EC ; =_0229B220
 	mov r2, #0x64
 	ldr r3, _020035F0 ; =sub_02003754
-	bl sub_0207B4B8
+	bl OS_SetPeriodicVAlarm
 	mov r0, #1
 	ldr r1, _020035F4 ; =sub_02003704
 	bl OS_SetIrqFunction
@@ -168,7 +168,7 @@ _02003584:
 	cmp r0, #0
 	bne _0200343C
 	mov r0, #0
-	bl sub_02082420
+	bl PM_SetLcdPower
 	cmp r0, #0
 	movne r0, #1
 	strne r0, [r4, #0x14]
@@ -178,7 +178,7 @@ _020035A8:
 	cmp r0, #0
 	beq _0200343C
 	mov r0, #1
-	bl sub_02082420
+	bl PM_SetLcdPower
 	cmp r0, #0
 	movne r0, #0
 	strne r0, [r4, #0x14]

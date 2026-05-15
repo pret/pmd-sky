@@ -197,7 +197,7 @@ _02003B10:
 _02003B30:
 	bl DisableAllInterrupts
 	ldr r0, _02003B58 ; =_0229B220
-	bl sub_0207B584
+	bl OS_CancelVAlarm
 	mov r0, #1
 	mov r1, #0
 	bl OS_SetIrqFunction

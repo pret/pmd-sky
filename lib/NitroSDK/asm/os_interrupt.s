@@ -3,8 +3,8 @@
 
 	.text
 
-    arm_func_start sub_02078900
-sub_02078900: ; 0x02078900
+    arm_func_start OS_WaitIrq
+OS_WaitIrq: ; 0x02078900
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r1
@@ -37,15 +37,15 @@ _02078954:
 	.align 2, 0
 _0207896C: .word OS_IRQTable
 _02078970: .word DTCM_BSS
-	arm_func_end sub_02078900
+	arm_func_end OS_WaitIrq
 
-	arm_func_start sub_02078974
-sub_02078974: ; 0x02078974
+	arm_func_start OS_IrqDummy
+OS_IrqDummy: ; 0x02078974
 	bx lr
-	arm_func_end sub_02078974
+	arm_func_end OS_IrqDummy
 
-	arm_func_start sub_02078978
-sub_02078978: ; 0x02078978
+	arm_func_start OSi_IrqCallback
+OSi_IrqCallback: ; 0x02078978
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #0xc
 	mul r5, r0, r1
@@ -82,79 +82,79 @@ _020789F0: .word _020B2B9C
 _020789F4: .word _022B95EC
 _020789F8: .word OS_IRQTable
 _020789FC: .word _022B95E8
-	arm_func_end sub_02078978
+	arm_func_end OSi_IrqCallback
 
-	arm_func_start sub_02078A00
-sub_02078A00: ; 0x02078A00
-	ldr ip, _02078A0C ; =sub_02078978
+	arm_func_start OSi_IrqDma0
+OSi_IrqDma0: ; 0x02078A00
+	ldr ip, _02078A0C ; =OSi_IrqCallback
 	mov r0, #0
 	bx ip
 	.align 2, 0
-_02078A0C: .word sub_02078978
-	arm_func_end sub_02078A00
+_02078A0C: .word OSi_IrqCallback
+	arm_func_end OSi_IrqDma0
 
-	arm_func_start sub_02078A10
-sub_02078A10: ; 0x02078A10
-	ldr ip, _02078A1C ; =sub_02078978
+	arm_func_start OSi_IrqDma1
+OSi_IrqDma1: ; 0x02078A10
+	ldr ip, _02078A1C ; =OSi_IrqCallback
 	mov r0, #1
 	bx ip
 	.align 2, 0
-_02078A1C: .word sub_02078978
-	arm_func_end sub_02078A10
+_02078A1C: .word OSi_IrqCallback
+	arm_func_end OSi_IrqDma1
 
-	arm_func_start sub_02078A20
-sub_02078A20: ; 0x02078A20
-	ldr ip, _02078A2C ; =sub_02078978
+	arm_func_start OSi_IrqDma2
+OSi_IrqDma2: ; 0x02078A20
+	ldr ip, _02078A2C ; =OSi_IrqCallback
 	mov r0, #2
 	bx ip
 	.align 2, 0
-_02078A2C: .word sub_02078978
-	arm_func_end sub_02078A20
+_02078A2C: .word OSi_IrqCallback
+	arm_func_end OSi_IrqDma2
 
-	arm_func_start sub_02078A30
-sub_02078A30: ; 0x02078A30
-	ldr ip, _02078A3C ; =sub_02078978
+	arm_func_start OSi_IrqDma3
+OSi_IrqDma3: ; 0x02078A30
+	ldr ip, _02078A3C ; =OSi_IrqCallback
 	mov r0, #3
 	bx ip
 	.align 2, 0
-_02078A3C: .word sub_02078978
-	arm_func_end sub_02078A30
+_02078A3C: .word OSi_IrqCallback
+	arm_func_end OSi_IrqDma3
 
-	arm_func_start sub_02078A40
-sub_02078A40: ; 0x02078A40
-	ldr ip, _02078A4C ; =sub_02078978
+	arm_func_start OSi_IrqTimer0
+OSi_IrqTimer0: ; 0x02078A40
+	ldr ip, _02078A4C ; =OSi_IrqCallback
 	mov r0, #4
 	bx ip
 	.align 2, 0
-_02078A4C: .word sub_02078978
-	arm_func_end sub_02078A40
+_02078A4C: .word OSi_IrqCallback
+	arm_func_end OSi_IrqTimer0
 
-	arm_func_start sub_02078A50
-sub_02078A50: ; 0x02078A50
-	ldr ip, _02078A5C ; =sub_02078978
+	arm_func_start OSi_IrqTimer1
+OSi_IrqTimer1: ; 0x02078A50
+	ldr ip, _02078A5C ; =OSi_IrqCallback
 	mov r0, #5
 	bx ip
 	.align 2, 0
-_02078A5C: .word sub_02078978
-	arm_func_end sub_02078A50
+_02078A5C: .word OSi_IrqCallback
+	arm_func_end OSi_IrqTimer1
 
-	arm_func_start sub_02078A60
-sub_02078A60: ; 0x02078A60
-	ldr ip, _02078A6C ; =sub_02078978
+	arm_func_start OSi_IrqTimer2
+OSi_IrqTimer2: ; 0x02078A60
+	ldr ip, _02078A6C ; =OSi_IrqCallback
 	mov r0, #6
 	bx ip
 	.align 2, 0
-_02078A6C: .word sub_02078978
-	arm_func_end sub_02078A60
+_02078A6C: .word OSi_IrqCallback
+	arm_func_end OSi_IrqTimer2
 
-	arm_func_start sub_02078A70
-sub_02078A70: ; 0x02078A70
-	ldr ip, _02078A7C ; =sub_02078978
+	arm_func_start OSi_IrqTimer3
+OSi_IrqTimer3: ; 0x02078A70
+	ldr ip, _02078A7C ; =OSi_IrqCallback
 	mov r0, #7
 	bx ip
 	.align 2, 0
-_02078A7C: .word sub_02078978
-	arm_func_end sub_02078A70
+_02078A7C: .word OSi_IrqCallback
+	arm_func_end OSi_IrqTimer3
 
     arm_func_start OS_InitIrqTable
 OS_InitIrqTable: ; 0x02078A80
@@ -211,8 +211,8 @@ _02078B18: .word OS_IRQTable
 _02078B1C: .word _022B95E4
 	arm_func_end OS_SetIrqFunction
 
-	arm_func_start sub_02078B20
-sub_02078B20: ; 0x02078B20
+	arm_func_start OS_GetIrqFunction
+OS_GetIrqFunction: ; 0x02078B20
 	ldr r2, _02078BA4 ; =OS_IRQTable
 	mov r1, #0
 _02078B28:
@@ -253,10 +253,10 @@ _02078B88:
 	.align 2, 0
 _02078BA4: .word OS_IRQTable
 _02078BA8: .word _022B95E4
-	arm_func_end sub_02078B20
+	arm_func_end OS_GetIrqFunction
 
-	arm_func_start sub_02078BAC
-sub_02078BAC: ; 0x02078BAC
+	arm_func_start OSi_EnterDmaCallback
+OSi_EnterDmaCallback: ; 0x02078BAC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r3, #0xc
 	mul r6, r0, r3
@@ -276,10 +276,10 @@ sub_02078BAC: ; 0x02078BAC
 _02078BE8: .word _022B95E4
 _02078BEC: .word _022B95EC
 _02078BF0: .word _022B95E8
-	arm_func_end sub_02078BAC
+	arm_func_end OSi_EnterDmaCallback
 
-	arm_func_start sub_02078BF4
-sub_02078BF4: ; 0x02078BF4
+	arm_func_start OSi_EnterTimerCallback
+OSi_EnterTimerCallback: ; 0x02078BF4
 	stmdb sp!, {r4, lr}
 	mov r3, #0xc
 	mul r4, r0, r3
@@ -299,7 +299,7 @@ sub_02078BF4: ; 0x02078BF4
 _02078C30: .word _022B9614
 _02078C34: .word _022B961C
 _02078C38: .word _022B9618
-	arm_func_end sub_02078BF4
+	arm_func_end OSi_EnterTimerCallback
 
 	arm_func_start OS_SetIrqMask
 OS_SetIrqMask: ; 0x02078C3C

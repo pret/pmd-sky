@@ -242,13 +242,13 @@ G3X_InitTable: ; 0x02077AB4
 	str r2, [sp]
 	mov r3, #0x10
 	str r2, [sp, #4]
-	bl sub_0207BDA8
+	bl MI_DmaFill32Async
 	ldr r0, _02077B44 ; =GXi_DmaId
 	ldr r1, _02077B4C ; =0x04000360
 	ldr r0, [r0]
 	mov r2, #0
 	mov r3, #0x60
-	bl sub_0207BC4C
+	bl MI_DmaFill32
 	b _02077B20
 _02077B04:
 	mov r0, #0

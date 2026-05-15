@@ -1,6 +1,7 @@
 #pragma once
 .public _022B99A8
 .public _022B99D0
+.public Card_LockRom
 .public EnableIrqFlag
 .public MI_CpuCopy8
 .public MI_StopDma
@@ -9,11 +10,10 @@
 .public OS_GetTickLo
 .public OS_ResetRequestIrqMask
 .public OS_SetIrqMask
+.public OSi_DoResetSystem
 .public PXI_Init
 .public PXI_IsCallbackReady
 .public PXI_SendWordByFifo
 .public PXI_SetFifoRecvCallback
 .public SetIrqFlag
-.public sub_01FF97CC
-.public sub_02083434
 .public WaitForever2

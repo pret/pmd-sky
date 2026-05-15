@@ -65,7 +65,7 @@ ov01_02329590: ; 0x02329590
 	mov r1, #3
 	mov r2, #0x11
 	str ip, [sp]
-	bl ov00_022C1610
+	bl WM_MeasureChannel
 	cmp r0, #2
 	moveq r0, #1
 	movne r0, #0
@@ -107,7 +107,7 @@ _02329618: .word ov01_0233C240
 ov01_0232961C: ; 0x0232961C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov00_022BF640
+	bl WM_GetAllowedChannel
 	mov r2, #1
 	b _02329640
 _02329630:
@@ -241,7 +241,7 @@ _02329760:
 	mov r1, #2
 	add r0, r0, #0x1f
 	bic r0, r0, #0x1f
-	bl ov00_022BE964
+	bl WM_Init
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02329828: .word ov01_0233C0C0
@@ -254,13 +254,13 @@ ov01_02329830: ; 0x02329830
 	mov r1, #0
 	mov r2, r1
 	mov r0, #0xd
-	bl ov00_022BF308
+	bl WM_SetPortCallback
 	ldr r0, _023298E0 ; =ov01_0233C240
 	ldr r0, [r0, #0x7c]
 	cmp r0, #0
 	cmpne r0, #2
 	ldmneia sp!, {r3, pc}
-	bl ov00_022BEB74
+	bl WM_Finish
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _023298E0 ; =ov01_0233C240
@@ -308,7 +308,7 @@ ov01_023298E8: ; 0x023298E8
 	mov r5, r0
 	mov r4, r1
 	str r3, [r2, #0x10]
-	bl ov00_022BF96C
+	bl WM_GetNextTgid
 	ldr r2, _02329998 ; =ov01_0233C240
 	ldr r1, _02329994 ; =ov01_0233C0C0
 	strh r0, [r2, #2]
@@ -564,7 +564,7 @@ ov01_02329BC8: ; 0x02329BC8
 	ldrh r1, [r0, #6]
 	ldr r0, [r0, #0x20]
 	strh r1, [r0, #0x32]
-	bl ov00_022BF6F0
+	bl WM_GetDispersionBeaconPeriod
 	ldr r2, _02329C2C ; =ov01_0233C240
 	ldr r1, _02329C30 ; =ov01_0233C0C0
 	ldr r3, [r2, #0x20]
@@ -595,7 +595,7 @@ ov01_02329C34: ; 0x02329C34
 	ldr r0, [r0, #0x28]
 	ldrh r1, [r1, #0x32]
 	strh r1, [r0, #4]
-	bl ov00_022BF780
+	bl WM_GetDispersionScanPeriod
 	ldr r1, _02329CA4 ; =ov01_0233C240
 	mov r2, #0xff
 	ldr r3, [r1, #0x28]
@@ -621,7 +621,7 @@ _02329CA4: .word ov01_0233C240
 	arm_func_start ov01_02329CA8
 ov01_02329CA8: ; 0x02329CA8
 	stmdb sp!, {r3, lr}
-	bl ov00_022BF640
+	bl WM_GetAllowedChannel
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -1034,7 +1034,7 @@ _0232A1DC:
 	b _0232A234
 _0232A1E4:
 	ldr r0, _0232A244 ; =ov01_0232A24C
-	bl ov00_022BFD9C
+	bl WM_StartParent
 	cmp r0, #2
 	beq _0232A234
 	ldr r0, _0232A240 ; =ov01_0233C240
@@ -1499,7 +1499,7 @@ _0232A7C0:
 	ldrh r3, [r3, #0x36]
 	ldr r0, [r0, #0x50]
 	mov r1, #0xc
-	bl ov00_022C0810
+	bl WM_StartDataSharing
 	cmp r0, #0
 	movne r1, #0
 	ldreq r0, _0232A8B4 ; =ov01_0233C240
@@ -1554,7 +1554,7 @@ ov01_0232A8B8: ; 0x0232A8B8
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	ldr r0, _0232A8D8 ; =ov01_0232A8DC
-	bl ov00_022C1688
+	bl WM_InitWirelessCounter
 	cmp r0, #2
 	moveq r0, #1
 	movne r0, #0
@@ -1701,7 +1701,7 @@ _0232AA88: .word ov01_0233C240
 ov01_0232AA8C: ; 0x0232AA8C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232AAB4 ; =ov01_02329D2C
-	bl ov00_022BF9E0
+	bl WM_Enable
 	cmp r0, #2
 	ldrne r0, _0232AAB8 ; =ov01_0233C240
 	movne r1, #2
@@ -1718,7 +1718,7 @@ _0232AAB8: .word ov01_0233C240
 ov01_0232AABC: ; 0x0232AABC
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232AAE4 ; =ov01_02329DAC
-	bl ov00_022BFA54
+	bl WM_Disable
 	cmp r0, #2
 	ldrne r0, _0232AAE8 ; =ov01_0233C240
 	movne r1, #2
@@ -1738,7 +1738,7 @@ ov01_0232AAEC: ; 0x0232AAEC
 	mov r2, #1
 	ldr r0, _0232AB24 ; =ov01_02329E64
 	str r2, [r1, #0x68]
-	bl ov00_022BFA94
+	bl WM_PowerOn
 	cmp r0, #2
 	ldrne r0, _0232AB20 ; =ov01_0233C240
 	movne r1, #2
@@ -1755,7 +1755,7 @@ _0232AB24: .word ov01_02329E64
 ov01_0232AB28: ; 0x0232AB28
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232AB50 ; =ov01_02329FC8
-	bl ov00_022BFAD4
+	bl WM_PowerOff
 	cmp r0, #2
 	ldrne r0, _0232AB54 ; =ov01_0233C240
 	movne r1, #2
@@ -1772,7 +1772,7 @@ _0232AB54: .word ov01_0233C240
 ov01_0232AB58: ; 0x0232AB58
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232AB80 ; =ov01_0232A048
-	bl ov00_022BF2C4
+	bl WM_SetIndCallback
 	cmp r0, #0
 	ldrne r0, _0232AB84 ; =ov01_0233C240
 	movne r1, #2
@@ -1793,7 +1793,7 @@ ov01_0232AB88: ; 0x0232AB88
 	cmp r1, #0
 	beq _0232ABBC
 	ldr r0, [r0, #0x50]
-	bl ov00_022C0A64
+	bl WM_EndDataSharing__022C1278
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
@@ -1808,7 +1808,7 @@ _0232ABBC:
 	movne r1, #3
 	strne r1, [r0, #0x7c]
 	ldr r0, _0232ABFC ; =sub_0232A078
-	bl ov00_022BFB9C
+	bl WM_Reset
 	cmp r0, #2
 	ldrne r0, _0232ABF8 ; =ov01_0233C240
 	movne r1, #2
@@ -1827,7 +1827,7 @@ ov01_0232AC00: ; 0x0232AC00
 	ldr r1, _0232AC24 ; =ov01_0233C240
 	ldr r0, _0232AC28 ; =ov01_0232A194
 	ldr r1, [r1, #0x20]
-	bl ov00_022BFC14
+	bl WM_SetParentParameter
 	cmp r0, #2
 	moveq r0, #1
 	movne r0, #0
@@ -1843,7 +1843,7 @@ ov01_0232AC2C: ; 0x0232AC2C
 	ldr r1, _0232AC50 ; =ov01_0233C240
 	ldr r0, _0232AC54 ; =ov01_0232A380
 	ldr r1, [r1, #0x28]
-	bl ov00_022BFDEC
+	bl WM_StartScan
 	cmp r0, #2
 	moveq r0, #1
 	movne r0, #0
@@ -1857,7 +1857,7 @@ _0232AC54: .word ov01_0232A380
 ov01_0232AC58: ; 0x0232AC58
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232AC74 ; =ov01_0232A52C
-	bl ov00_022C0028
+	bl WM_EndScan
 	cmp r0, #2
 	moveq r0, #1
 	movne r0, #0
@@ -1879,13 +1879,13 @@ ov01_0232AC78: ; 0x0232AC78
 	str r2, [sp]
 	ldr r1, [r0, #0x6c]
 	ldr r0, _0232ACD4 ; =ov01_0232A5E0
-	bl ov00_022C0068
+	bl WM_StartConnectEx
 	b _0232ACBC
 _0232ACAC:
 	str r2, [sp]
 	ldr r1, [r0, #0x10]
 	ldr r0, _0232ACD4 ; =ov01_0232A5E0
-	bl ov00_022C0068
+	bl WM_StartConnectEx
 _0232ACBC:
 	cmp r0, #2
 	movne r0, #0
@@ -1908,7 +1908,7 @@ ov01_0232ACD8: ; 0x0232ACD8
 	ldr r1, _0232AD58 ; =ov01_0232A974
 	mov r0, #0xd
 	mov r2, #0
-	bl ov00_022BF308
+	bl WM_SetPortCallback
 	cmp r0, #0
 	movne r0, #0
 	bne _0232AD4C
@@ -1925,7 +1925,7 @@ _0232AD0C:
 	mov r2, r2, lsl #0x10
 	ldr r3, [r3, #0x3c]
 	mov r2, r2, lsr #0x10
-	bl ov00_022C0430
+	bl WM_StartMP
 	cmp r0, #2
 	movne r0, #0
 	moveq r0, #1
@@ -1952,7 +1952,7 @@ ov01_0232AD60: ; 0x0232AD60
 	ldr r0, _0232ADB8 ; =ov01_0232A934
 	mov r1, #0
 	str ip, [sp, #8]
-	bl ov00_022C0498
+	bl WM_SetMpDataToPortEx
 	cmp r0, #2
 	ldrne r0, _0232ADBC ; =ov01_0233C240
 	movne r1, #1
@@ -2418,7 +2418,7 @@ ov01_0232B26C: ; 0x0232B26C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x7d0
 	add r0, sp, #0
-	bl ov00_022BF3E0
+	bl WM_ReadStatus
 	ldr r0, _0232B2C8 ; =ov01_0233C0D8
 #ifdef EUROPE
 	ldr r0, [r0, #4]
@@ -2514,7 +2514,7 @@ _0232B37C: .word 0x0000044C
 	arm_func_start ov01_0232B380
 ov01_0232B380: ; 0x0232B380
 	stmdb sp!, {r3, lr}
-	bl ov00_022BF660
+	bl WM_GetLinkLevel
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _0232B3C4

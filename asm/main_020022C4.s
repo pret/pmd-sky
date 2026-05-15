@@ -143,7 +143,7 @@ _02002428:
 	arm_func_start WaitForever
 WaitForever: ; 0x02002438
 	stmdb sp!, {r3, lr}
-	bl sub_02079C14
+	bl OS_DisableScheduler
 _02002440:
 	bl WaitForInterrupt
 	b _02002440
@@ -157,7 +157,7 @@ sub_02002448: ; 0x02002448
 	bl sub_02002580
 	mov r1, #1
 	bl sub_020027F8
-	bl sub_02079C14
+	bl OS_DisableScheduler
 	bl GX_DispOff
 	ldr r3, _02002498 ; =0x04001000
 	ldr r0, _0200249C ; =_02092464
@@ -168,7 +168,7 @@ sub_02002448: ; 0x02002448
 	bl Debug_Print0
 	mov r0, r4
 	bl OS_ResetSystem
-	bl sub_02079C14
+	bl OS_DisableScheduler
 _02002490:
 	bl WaitForInterrupt
 	b _02002490
@@ -188,20 +188,20 @@ _020024AC: .word 0x027FFC20
 
 	arm_func_start sub_020024B0
 sub_020024B0: ; 0x020024B0
-	ldr ip, _020024BC ; =sub_020845D8
+	ldr ip, _020024BC ; =Card_SetPulledOutCallback
 	mov r0, #0
 	bx ip
 	.align 2, 0
-_020024BC: .word sub_020845D8
+_020024BC: .word Card_SetPulledOutCallback
 	arm_func_end sub_020024B0
 
 	arm_func_start sub_020024C0
 sub_020024C0: ; 0x020024C0
-	ldr ip, _020024CC ; =sub_020845D8
+	ldr ip, _020024CC ; =Card_SetPulledOutCallback
 	ldr r0, _020024D0 ; =sub_020024D4
 	bx ip
 	.align 2, 0
-_020024CC: .word sub_020845D8
+_020024CC: .word Card_SetPulledOutCallback
 _020024D0: .word sub_020024D4
 	arm_func_end sub_020024C0
 
@@ -219,7 +219,7 @@ sub_020024E4: ; 0x020024E4
 	ldr r0, _0200256C ; =_0229AFCC
 	bl OS_InitMutex
 	ldr r0, _0200256C ; =_0229AFCC
-	bl sub_0207A048
+	bl OS_LockMutex
 	mov r1, #0
 	ldr r0, _02002570 ; =_0229AFE4
 	mov r2, r1
@@ -233,7 +233,7 @@ _02002504:
 	str r2, [r1]
 	str r2, [r1, #4]
 	str r2, [r1, #8]
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 	ldr r1, _02002578 ; =_022B966C
 	ldr r0, _0200257C ; =_0229B004
 	ldr r1, [r1, #4]
@@ -248,7 +248,7 @@ _02002504:
 	ldr r0, _02002578 ; =_022B966C
 	mov r1, #7
 	ldr r0, [r0, #4]
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0200256C: .word _0229AFCC
@@ -264,7 +264,7 @@ sub_02002580: ; 0x02002580
 	ldr r1, _020025E8 ; =_022B966C
 	ldr r0, _020025EC ; =_0229AFCC
 	ldr r4, [r1, #4]
-	bl sub_0207A048
+	bl OS_LockMutex
 	ldr r0, _020025F0 ; =_0229AFC0
 	mov r1, #0
 	ldr r3, [r0]
@@ -276,7 +276,7 @@ _020025A8:
 	cmp r0, r4
 	bne _020025C4
 	ldr r0, _020025EC ; =_0229AFCC
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 	b _020025E0
 _020025C4:
 	add r1, r1, #1
@@ -285,7 +285,7 @@ _020025CC:
 	cmp r1, r3
 	blt _020025A8
 	ldr r0, _020025EC ; =_0229AFCC
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 	mov r5, #0
 _020025E0:
 	mov r0, r5
@@ -305,7 +305,7 @@ sub_020025F8: ; 0x020025F8
 	beq _02002614
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02079844
+	bl OS_SleepThreadDirect
 	ldmia sp!, {r4, pc}
 _02002614:
 	mov r4, #0
@@ -328,11 +328,11 @@ sub_02002628: ; 0x02002628
 	ldr r0, [r2, #4]
 	mov r4, r1
 	str r0, [r5]
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	str r0, [r5, #4]
 	ldr r0, [r5]
 	mov r1, r4
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02002658: .word _022B966C
@@ -340,12 +340,12 @@ _02002658: .word _022B966C
 
 	arm_func_start sub_0200265C
 sub_0200265C: ; 0x0200265C
-	ldr ip, _0200266C ; =sub_02079A64
+	ldr ip, _0200266C ; =OS_SetThreadPriority
 	mov r1, r0
 	ldmia r1, {r0, r1}
 	bx ip
 	.align 2, 0
-_0200266C: .word sub_02079A64
+_0200266C: .word OS_SetThreadPriority
 	arm_func_end sub_0200265C
 
 	arm_func_start sub_02002670
@@ -354,13 +354,13 @@ sub_02002670: ; 0x02002670
 	ldr r0, _020026AC ; =_022B966C
 	ldr r5, [r0, #4]
 	mov r0, r5
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	mov r4, r0
 	mov r0, r5
 	mov r1, #7
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	ldr r0, _020026B0 ; =_0229AFCC
-	bl sub_0207A048
+	bl OS_LockMutex
 	ldr r0, _020026B4 ; =_020AEF30
 	str r5, [r0]
 	str r4, [r0, #4]
@@ -377,10 +377,10 @@ sub_020026B8: ; 0x020026B8
 	ldr r1, _020026DC ; =_020AEF30
 	ldr r0, _020026E0 ; =_0229AFCC
 	ldmia r1, {r4, r5}
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 	mov r0, r4
 	mov r1, r5
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020026DC: .word _020AEF30
@@ -394,13 +394,13 @@ sub_020026E4: ; 0x020026E4
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	mov r4, r0
 	mov r0, r5
 	mov r1, #7
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	ldr r0, _0200276C ; =_0229AFCC
-	bl sub_0207A048
+	bl OS_LockMutex
 	ldr r0, _02002770 ; =_0229AFC0
 	ldr r3, [r0]
 	cmp r3, #8
@@ -418,10 +418,10 @@ sub_020026E4: ; 0x020026E4
 	strgt r1, [r0, #8]
 _02002750:
 	ldr r0, _0200276C ; =_0229AFCC
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 	mov r0, r5
 	mov r1, r4
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02002768: .word _022B966C
@@ -477,11 +477,11 @@ sub_020027F8: ; 0x020027F8
 	mov r6, r0
 	ldr r0, [r6]
 	mov r5, r1
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	mov r4, r0
 	ldr r0, [r6]
 	mov r1, r5
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020027F8
@@ -493,11 +493,11 @@ sub_02002824: ; 0x02002824
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	mov r4, r0
 	mov r0, r5
 	mov r1, r6
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -549,7 +549,7 @@ sub_020028B0: ; 0x020028B0
 	mov r4, r0
 	bl OS_InitMutex
 	mov r0, r4
-	bl sub_0207A048
+	bl OS_LockMutex
 	bl sub_02002670
 	ldr r0, _020028F4 ; =_0229B0E0
 	ldr r1, [r0]
@@ -568,25 +568,25 @@ _020028F4: .word _0229B0E0
 
 	arm_func_start sub_020028F8
 sub_020028F8: ; 0x020028F8
-	ldr ip, _02002900 ; =sub_0207A0CC
+	ldr ip, _02002900 ; =OS_UnlockMutex
 	bx ip
 	.align 2, 0
-_02002900: .word sub_0207A0CC
+_02002900: .word OS_UnlockMutex
 	arm_func_end sub_020028F8
 
 	arm_func_start sub_02002904
 sub_02002904: ; 0x02002904
-	ldr ip, _0200290C ; =sub_0207A048
+	ldr ip, _0200290C ; =OS_LockMutex
 	bx ip
 	.align 2, 0
-_0200290C: .word sub_0207A048
+_0200290C: .word OS_LockMutex
 	arm_func_end sub_02002904
 
 	arm_func_start sub_02002910
 sub_02002910: ; 0x02002910
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0207A164
+	bl OS_TryLockMutex
 	tst r0, #0xff
 	beq _02002944
 	ldr r0, [r4, #0xc]
@@ -594,7 +594,7 @@ sub_02002910: ; 0x02002910
 	movle r0, #1
 	ldmleia sp!, {r4, pc}
 	mov r0, r4
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 _02002944:
@@ -615,7 +615,7 @@ sub_02002950: ; 0x02002950
 	add r0, r3, #8
 	mov r2, #1
 	str r1, [r3]
-	bl sub_02079DB8
+	bl OS_InitMessageQueue
 	bl sub_02002670
 	ldr r0, _0200299C ; =_0229B0E8
 	ldr r1, [r0]
@@ -634,13 +634,13 @@ _0200299C: .word _0229B0E8
 
 	arm_func_start sub_020029A0
 sub_020029A0: ; 0x020029A0
-	ldr ip, _020029B4 ; =sub_02079DE0
+	ldr ip, _020029B4 ; =OS_SendMessage
 	mov r1, #0
 	mov r2, r1
 	add r0, r0, #8
 	bx ip
 	.align 2, 0
-_020029B4: .word sub_02079DE0
+_020029B4: .word OS_SendMessage
 	arm_func_end sub_020029A0
 
 	arm_func_start sub_020029B8
@@ -651,11 +651,11 @@ sub_020029B8: ; 0x020029B8
 	ldr sb, [r1, #4]
 	mov r7, #0
 	mov r0, sb
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	mov r8, r0
 	mov r0, sb
 	mov r1, #7
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	mov r5, r7
 	b _020029F0
 _020029EC:
@@ -664,7 +664,7 @@ _020029F0:
 	mov r1, r5
 	mov r2, r5
 	add r0, r4, #8
-	bl sub_02079DE0
+	bl OS_SendMessage
 	cmp r0, #0
 	bne _020029EC
 	add r6, sp, #0
@@ -673,13 +673,13 @@ _02002A10:
 	mov r1, r6
 	mov r2, r5
 	add r0, r4, #8
-	bl sub_02079E74
+	bl OS_ReceiveMessage
 	cmp r0, #0
 	subne r7, r7, #1
 	bne _02002A10
 	mov r0, sb
 	mov r1, r8
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -694,18 +694,18 @@ sub_02002A44: ; 0x02002A44
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	mov r4, r0
 	mov r0, r5
 	mov r1, #6
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	add r1, sp, #0
 	add r0, r6, #8
 	mov r2, #1
-	bl sub_02079E74
+	bl OS_ReceiveMessage
 	mov r0, r5
 	mov r1, r4
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
@@ -727,7 +727,7 @@ sub_02002A9C: ; 0x02002A9C
 	str r1, [r6]
 	ldr r2, [r6, #0xa4]
 	add r0, r6, #0x84
-	bl sub_02079DB8
+	bl OS_InitMessageQueue
 	mov r5, #0
 	mov r4, r5
 	b _02002AE0
@@ -735,7 +735,7 @@ _02002ACC:
 	mov r1, r4
 	mov r2, r4
 	add r0, r6, #0x84
-	bl sub_02079DE0
+	bl OS_SendMessage
 	add r5, r5, #1
 _02002AE0:
 	ldr r0, [r6, #0xa8]
@@ -759,24 +759,24 @@ _02002B1C: .word _0229B0F0
 
 	arm_func_start sub_02002B20
 sub_02002B20: ; 0x02002B20
-	ldr ip, _02002B34 ; =sub_02079DE0
+	ldr ip, _02002B34 ; =OS_SendMessage
 	mov r1, #0
 	mov r2, r1
 	add r0, r0, #0x84
 	bx ip
 	.align 2, 0
-_02002B34: .word sub_02079DE0
+_02002B34: .word OS_SendMessage
 	arm_func_end sub_02002B20
 
 	arm_func_start sub_02002B38
 sub_02002B38: ; 0x02002B38
-	ldr ip, _02002B4C ; =sub_02079DE0
+	ldr ip, _02002B4C ; =OS_SendMessage
 	mov r1, #0
 	mov r2, r1
 	add r0, r0, #0x84
 	bx ip
 	.align 2, 0
-_02002B4C: .word sub_02079DE0
+_02002B4C: .word OS_SendMessage
 	arm_func_end sub_02002B38
 
 	arm_func_start sub_02002B50
@@ -789,7 +789,7 @@ sub_02002B50: ; 0x02002B50
 	mov r1, #0
 	mov r2, r1
 	add r0, r0, #0x84
-	bl sub_02079DE0
+	bl OS_SendMessage
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02002B50
@@ -802,18 +802,18 @@ sub_02002B7C: ; 0x02002B7C
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	mov r4, r0
 	mov r0, r5
 	mov r1, #6
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	add r1, sp, #0
 	add r0, r6, #0x84
 	mov r2, #1
-	bl sub_02079E74
+	bl OS_ReceiveMessage
 	mov r0, r5
 	mov r1, r4
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
@@ -828,19 +828,19 @@ sub_02002BD0: ; 0x02002BD0
 	mov r5, r0
 	ldr r6, [r1, #4]
 	mov r0, r6
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	mov r4, r0
 	mov r0, r6
 	mov r1, #6
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	add r1, sp, #0
 	add r0, r5, #0x84
 	mov r2, #0
-	bl sub_02079E74
+	bl OS_ReceiveMessage
 	and r5, r0, #0xff
 	mov r0, r6
 	mov r1, r4
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	mov r0, r5
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -865,13 +865,13 @@ sub_02002C40: ; 0x02002C40
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	mov r4, r0
 	mov r0, r5
 	mov r1, #7
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	ldr r0, _02002CA8 ; =_0229B0F8
-	bl sub_0207A048
+	bl OS_LockMutex
 	mov r0, r6
 	bl sub_020028B0
 	bl sub_02002580
@@ -880,10 +880,10 @@ sub_02002C40: ; 0x02002C40
 	str r0, [r6, #0x20]
 	str r0, [r6, #0x1c]
 	ldr r0, _02002CA8 ; =_0229B0F8
-	bl sub_0207A0CC
+	bl OS_UnlockMutex
 	mov r0, r5
 	mov r1, r4
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02002CA4: .word _022B966C
@@ -903,7 +903,7 @@ sub_02002CB4: ; 0x02002CB4
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	ldr r1, [r6, #0x20]
 	mov r4, r0
 	cmp r1, #0
@@ -912,7 +912,7 @@ sub_02002CB4: ; 0x02002CB4
 	movhs r4, #0
 	bhs _02002CF8
 	mov r0, r5
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	b _02002CF8
 _02002CF4:
 	mov r4, #0
@@ -935,7 +935,7 @@ sub_02002D14: ; 0x02002D14
 	ldr r5, [r2, #4]
 	mov r6, r1
 	mov r0, r5
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	ldr r1, [r7, #0x20]
 	mov r4, r0
 	cmp r1, #0
@@ -944,7 +944,7 @@ sub_02002D14: ; 0x02002D14
 	movhs r4, #0
 	bhs _02002D5C
 	mov r0, r5
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	b _02002D5C
 _02002D58:
 	mov r4, #0
@@ -969,7 +969,7 @@ sub_02002D80: ; 0x02002D80
 	bl sub_02002580
 	mov r4, r0
 	ldr r0, [r4]
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	ldr r1, [r7, #0x20]
 	mov r5, r0
 	cmp r1, #0
@@ -978,7 +978,7 @@ sub_02002D80: ; 0x02002D80
 	movhs r5, #0
 	bhs _02002DC8
 	ldr r0, [r4]
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	b _02002DC8
 _02002DC4:
 	mov r5, #0
@@ -1012,7 +1012,7 @@ sub_02002E10: ; 0x02002E10
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
-	bl sub_02079B0C
+	bl OS_GetThreadPriority
 	ldr r1, [r6, #0x20]
 	mov r4, r0
 	cmp r1, #0
@@ -1021,7 +1021,7 @@ sub_02002E10: ; 0x02002E10
 	movhs r4, #0
 	bhs _02002E54
 	mov r0, r5
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 	b _02002E54
 _02002E50:
 	mov r4, #0
@@ -1040,7 +1040,7 @@ _02002E78:
 	beq _02002E8C
 	mov r0, r5
 	mov r1, r4
-	bl sub_02079A64
+	bl OS_SetThreadPriority
 _02002E8C:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
@@ -1115,7 +1115,7 @@ sub_02002F34: ; 0x02002F34
 	ldr r1, [r5, #0x20]
 	mov r0, r5
 	mov r2, r4
-	bl sub_02079DB8
+	bl OS_InitMessageQueue
 	ldr r0, _02002F78 ; =_020AEF58
 	bl sub_02002E98
 	ldmia sp!, {r3, r4, r5, pc}
@@ -1129,7 +1129,7 @@ sub_02002F7C: ; 0x02002F7C
 	cmp r2, #0
 	movne r2, #1
 	moveq r2, #0
-	bl sub_02079DE0
+	bl OS_SendMessage
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02002F7C
@@ -1140,7 +1140,7 @@ sub_02002F98: ; 0x02002F98
 	cmp r2, #0
 	movne r2, #1
 	moveq r2, #0
-	bl sub_02079E74
+	bl OS_ReceiveMessage
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02002F98
@@ -1222,11 +1222,11 @@ _02003054:
 	b _020030B0
 _0200309C:
 	ldrh r0, [r5, #0x28]
-	bl sub_02083434
+	bl Card_LockRom
 	b _020030B0
 _020030A8:
 	ldrh r0, [r5, #0x28]
-	bl sub_0208346C
+	bl Card_LockBackup
 _020030B0:
 	add r6, r6, #1
 	add r5, r5, #0x2c
@@ -1288,11 +1288,11 @@ _02003130:
 	b _02003168
 _02003154:
 	ldrh r0, [r6, #0x28]
-	bl sub_02083450
+	bl Card_UnlockRom
 	b _02003168
 _02003160:
 	ldrh r0, [r6, #0x28]
-	bl sub_0208347C
+	bl Card_UnlockBackup
 _02003168:
 	bl InterruptMasterDisable
 	ldrh r0, [r5]

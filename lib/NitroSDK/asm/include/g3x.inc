@@ -3,8 +3,8 @@
 .public G3_LoadMtx44
 .public GXi_DmaId
 .public GXi_VRamLockId
+.public MI_DmaFill32
+.public MI_DmaFill32Async
 .public MTi_CpuClear32
 .public MTX_LookAt
 .public MTX_OrthoW
-.public sub_0207BC4C
-.public sub_0207BDA8

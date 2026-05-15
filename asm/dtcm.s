@@ -9,25 +9,25 @@ DTCM_BSS:
 	.section .dtcm,4,1,4
 	.global OS_IRQTable
 OS_IRQTable:
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078A40
-	.word sub_02078A50
-	.word sub_02078A60
-	.word sub_02078A70
-	.word sub_02078974
-	.word sub_02078A00
-	.word sub_02078A10
-	.word sub_02078A20
-	.word sub_02078A30
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078974
-	.word sub_02078974
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OSi_IrqTimer0
+	.word OSi_IrqTimer1
+	.word OSi_IrqTimer2
+	.word OSi_IrqTimer3
+	.word OS_IrqDummy
+	.word OSi_IrqDma0
+	.word OSi_IrqDma1
+	.word OSi_IrqDma2
+	.word OSi_IrqDma3
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy
+	.word OS_IrqDummy

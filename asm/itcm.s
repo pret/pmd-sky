@@ -1902,7 +1902,7 @@ _01FF9738:
 	stmdb sp!, {r0, r1}
 	add r0, r0, #0
 	add r0, r0, #0x48
-	ldr r1, _01FF97C4 ; =sub_02080EF0
+	ldr r1, _01FF97C4 ; =CP_SaveContext
 	blx r1
 	ldmia sp!, {r0, r1}
 	ldmib sp!, {r2, r3}
@@ -1916,7 +1916,7 @@ _01FF9738:
 	stmdb sp!, {r1}
 	add r0, r1, #0
 	add r0, r0, #0x48
-	ldr r1, _01FF97C8 ; =sub_02080F30
+	ldr r1, _01FF97C8 ; =CPi_RestoreContext
 	blx r1
 	ldmia sp!, {r1}
 	ldr sp, [r1, #0x44]
@@ -1932,12 +1932,12 @@ _01FF9738:
 	.align 2, 0
 _01FF97BC: .word DTCM_BSS
 _01FF97C0: .word _022B966C
-_01FF97C4: .word sub_02080EF0
-_01FF97C8: .word sub_02080F30
+_01FF97C4: .word CP_SaveContext
+_01FF97C8: .word CPi_RestoreContext
 	arm_func_end ReturnFromInterrupt
 
-	arm_func_start sub_01FF97CC
-sub_01FF97CC: ; 0x01FF97CC
+	arm_func_start OSi_DoResetSystem
+OSi_DoResetSystem: ; 0x01FF97CC
 	stmdb sp!, {r3, lr}
 	ldr r0, _01FF97F8 ; =_022B99D0
 _01FF97D4:
@@ -1947,16 +1947,16 @@ _01FF97D4:
 	ldr r0, _01FF97FC ; =0x04000208
 	mov r1, #0
 	strh r1, [r0]
-	bl sub_01FF98E8
-	bl sub_01FF9800
+	bl OSi_ReloadRomData
+	bl OSi_DoBoot
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _01FF97F8: .word _022B99D0
 _01FF97FC: .word 0x04000208
-	arm_func_end sub_01FF97CC
+	arm_func_end OSi_DoResetSystem
 
-	arm_func_start sub_01FF9800
-sub_01FF9800: ; 0x01FF9800
+	arm_func_start OSi_DoBoot
+OSi_DoBoot: ; 0x01FF9800
 	mov ip, #0x4000000
 	str ip, [ip, #0x208]
 	ldr r1, _01FF98AC ; =OS_IRQTable
@@ -1977,16 +1977,16 @@ _01FF9820:
 	ldr r4, [r3]
 	ldr r1, _01FF98B8 ; =0x027FFD80
 	mov r2, #0x80
-	bl sub_01FF98CC
+	bl OSi_CpuClear32
 	str r4, [r3]
 	ldr r1, _01FF98BC ; =0x027FFF80
 	mov r2, #0x18
-	bl sub_01FF98CC
+	bl OSi_CpuClear32
 	ldr r1, _01FF98C0 ; =0x027FFF98
 	strh r0, [r1]
 	ldr r1, _01FF98C4 ; =0x027FFF9C
 	mov r2, #0x64
-	bl sub_01FF98CC
+	bl OSi_CpuClear32
 	ldr r1, _01FF98B0 ; =0x04000180
 _01FF9878:
 	ldrh r0, [r1]
@@ -2011,10 +2011,10 @@ _01FF98BC: .word 0x027FFF80
 _01FF98C0: .word 0x027FFF98
 _01FF98C4: .word 0x027FFF9C
 _01FF98C8: .word 0x027FFE00
-	arm_func_end sub_01FF9800
+	arm_func_end OSi_DoBoot
 
-	arm_func_start sub_01FF98CC
-sub_01FF98CC: ; 0x01FF98CC
+	arm_func_start OSi_CpuClear32
+OSi_CpuClear32: ; 0x01FF98CC
 	add ip, r1, r2
 _01FF98D0:
 	cmp r1, ip
@@ -2025,10 +2025,10 @@ _01FF98DC:
 _01FF98E0:
 	blt _01FF98D0
 	bx lr
-	arm_func_end sub_01FF98CC
+	arm_func_end OSi_CpuClear32
 
-	arm_func_start sub_01FF98E8
-sub_01FF98E8: ; 0x01FF98E8
+	arm_func_start OSi_ReloadRomData
+OSi_ReloadRomData: ; 0x01FF98E8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r1, _01FF9988 ; =0x027FFC2C
 	ldr r4, [r1]
@@ -2037,7 +2037,7 @@ sub_01FF98E8: ; 0x01FF98E8
 	mov r0, r4
 	add r1, r1, #0x1d4
 	mov r2, #0x160
-	bl sub_01FF9990
+	bl OSi_ReadCardRom32
 _01FF990C:
 	ldr r0, _01FF998C ; =0x027FFE20
 	ldr r5, [r0]
@@ -2065,19 +2065,19 @@ _01FF9964:
 	mov r0, r5
 	mov r1, r6
 	mov r2, r7
-	bl sub_01FF9990
+	bl OSi_ReadCardRom32
 	mov r1, sb
 	mov r2, sl
 	add r0, r8, r4
-	bl sub_01FF9990
+	bl OSi_ReadCardRom32
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FF9988: .word 0x027FFC2C
 _01FF998C: .word 0x027FFE20
-	arm_func_end sub_01FF98E8
+	arm_func_end OSi_ReloadRomData
 
-	arm_func_start sub_01FF9990
-sub_01FF9990: ; 0x01FF9990
+	arm_func_start OSi_ReadCardRom32
+OSi_ReadCardRom32: ; 0x01FF9990
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r4, _01FF9A54 ; =0x027FFE60
 	ldr r3, _01FF9A58 ; =0x000001FF
@@ -2138,7 +2138,7 @@ _01FF9A58: .word 0x000001FF
 _01FF9A5C: .word 0x040001A4
 _01FF9A60: .word 0x040001A1
 _01FF9A64: .word 0x04100010
-	arm_func_end sub_01FF9990
+	arm_func_end OSi_ReadCardRom32
 
 	arm_func_start InitDmaTransfer_Standard
 InitDmaTransfer_Standard: ; 0x01FF9A68
@@ -2160,8 +2160,8 @@ InitDmaTransfer_Standard: ; 0x01FF9A68
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end InitDmaTransfer_Standard
 
-	arm_func_start sub_01FF9AA8
-sub_01FF9AA8: ; 0x01FF9AA8
+	arm_func_start MIi_DmaSetParams_Wait
+MIi_DmaSetParams_Wait: ; 0x01FF9AA8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -2192,10 +2192,10 @@ _01FF9B08:
 	.align 2, 0
 _01FF9B10: .word 0x040000B0
 _01FF9B14: .word 0x81400001
-	arm_func_end sub_01FF9AA8
+	arm_func_end MIi_DmaSetParams_Wait
 
-	arm_func_start sub_01FF9B18
-sub_01FF9B18: ; 0x01FF9B18
+	arm_func_start MIi_DmaSetParams_NoInt
+MIi_DmaSetParams_NoInt: ; 0x01FF9B18
 	mov ip, #0xc
 	mul ip, r0, ip
 	add r0, ip, #0xb0
@@ -2205,7 +2205,7 @@ sub_01FF9B18: ; 0x01FF9B18
 	str r2, [r0, #4]
 	str r3, [r0, #8]
 	bx lr
-	arm_func_end sub_01FF9B18
+	arm_func_end MIi_DmaSetParams_NoInt
 
 	arm_func_start sub_01FF9B3C
 sub_01FF9B3C: ; 0x01FF9B3C

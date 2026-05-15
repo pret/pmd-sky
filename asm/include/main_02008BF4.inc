@@ -59,6 +59,7 @@
 .public MemZero16
 .public MemZero32
 .public MTi_CpuClearFast
+.public PM_SetLcdPower
 .public sub_0200844C
 .public sub_0200846C
 .public sub_02008980
@@ -69,4 +70,3 @@
 .public sub_02009DCC
 .public sub_02009E70
 .public sub_02009F9C
-.public sub_02082420

@@ -6,7 +6,7 @@
 	arm_func_start FileClose
 FileClose: ; 0x020082C4
 	stmdb sp!, {r3, lr}
-	bl sub_0207F70C
+	bl FS_CloseFile
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #1

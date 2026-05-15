@@ -1,13 +1,13 @@
 #include "main_0207F818.h"
 
-s32 sub_0207F550(struct file_stream* file, u8* buf, s32 size, s32 param_3);
+s32 FSi_ReadFileCore(struct file_stream* file, u8* buf, s32 size, s32 param_3);
 
-s32 sub_0207F818(struct file_stream* file, u8* buf, s32 size)
+s32 FS_ReadFile(struct file_stream* file, u8* buf, s32 size)
 {
-    return sub_0207F550(file,buf,size,0);
+    return FSi_ReadFileCore(file,buf,size,0);
 }
 
-u32 sub_0207F828(struct file_stream* file, s32 offset, u32 whence)
+u32 FS_SeekFile(struct file_stream* file, s32 offset, u32 whence)
 {
     switch (whence) {
         case 0:

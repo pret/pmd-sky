@@ -52,8 +52,8 @@ _020791C0:
 	bx lr
 	arm_func_end OSi_InsertLinkToQueue
 
-	arm_func_start sub_020791E0
-sub_020791E0: ; 0x020791E0
+	arm_func_start OSi_RemoveLinkFromQueue
+OSi_RemoveLinkFromQueue: ; 0x020791E0
 	ldr r2, [r0]
 	cmp r2, #0
 	beq _0207920C
@@ -68,10 +68,10 @@ sub_020791E0: ; 0x020791E0
 _0207920C:
 	mov r0, r2
 	bx lr
-	arm_func_end sub_020791E0
+	arm_func_end OSi_RemoveLinkFromQueue
 
-	arm_func_start sub_02079214
-sub_02079214: ; 0x02079214
+	arm_func_start OSi_RemoveSpecifiedLinkFromQueue
+OSi_RemoveSpecifiedLinkFromQueue: ; 0x02079214
 	ldr ip, [r0]
 	mov r2, ip
 	cmp ip, #0
@@ -96,10 +96,10 @@ _02079254:
 _02079260:
 	mov r0, r2
 	bx lr
-	arm_func_end sub_02079214
+	arm_func_end OSi_RemoveSpecifiedLinkFromQueue
 
-	arm_func_start sub_02079268
-sub_02079268: ; 0x02079268
+	arm_func_start OSi_RemoveMutexLinkFromQueue
+OSi_RemoveMutexLinkFromQueue: ; 0x02079268
 	ldr r2, [r0]
 	cmp r2, #0
 	beq _02079290
@@ -113,7 +113,7 @@ sub_02079268: ; 0x02079268
 _02079290:
 	mov r0, r2
 	bx lr
-	arm_func_end sub_02079268
+	arm_func_end OSi_RemoveMutexLinkFromQueue
 
 	arm_func_start InsertThreadIntoList
 InsertThreadIntoList: ; 0x02079298
@@ -147,8 +147,8 @@ _020792D0:
 _020792F4: .word THREAD_INFO_STRUCT
 	arm_func_end InsertThreadIntoList
 
-	arm_func_start sub_020792F8
-sub_020792F8: ; 0x020792F8
+	arm_func_start OSi_RemoveThreadFromList
+OSi_RemoveThreadFromList: ; 0x020792F8
 	ldr r1, _0207933C ; =THREAD_INFO_STRUCT
 	mov r2, #0
 	ldr r1, [r1, #0x2c]
@@ -170,7 +170,7 @@ _02079310:
 	bx lr
 	.align 2, 0
 _0207933C: .word THREAD_INFO_STRUCT
-	arm_func_end sub_020792F8
+	arm_func_end OSi_RemoveThreadFromList
 
 	arm_func_start OS_RescheduleThread
 OS_RescheduleThread: ; 0x02079340
@@ -320,14 +320,14 @@ _02079548: .word OSi_IdleThreadProc
 _0207954C: .word _022B98C4
 	arm_func_end OS_InitThread
 
-	arm_func_start sub_02079550
-sub_02079550: ; 0x02079550
+	arm_func_start OS_IsThreadAvailable
+OS_IsThreadAvailable: ; 0x02079550
 	ldr r0, _0207955C ; =_022B9654
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _0207955C: .word _022B9654
-	arm_func_end sub_02079550
+	arm_func_end OS_IsThreadAvailable
 
 	arm_func_start StartThread
 StartThread: ; 0x02079560
@@ -404,14 +404,14 @@ ThreadExit: ; 0x0207965C
 	ldr r0, _02079678 ; =THREAD_INFO_STRUCT
 	mov r1, #0
 	ldr r0, [r0, #0x28]
-	bl sub_0207967C
+	bl OSi_ExitThread_ArgSpecified
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02079678: .word THREAD_INFO_STRUCT
 	arm_func_end ThreadExit
 
-	arm_func_start sub_0207967C
-sub_0207967C: ; 0x0207967C
+	arm_func_start OSi_ExitThread_ArgSpecified
+OSi_ExitThread_ArgSpecified: ; 0x0207967C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r2, _020796D0 ; =THREAD_INFO_STRUCT
 	mov r5, r0
@@ -419,7 +419,7 @@ sub_0207967C: ; 0x0207967C
 	mov r4, r1
 	cmp r2, #0
 	beq _020796C4
-	ldr r1, _020796D4 ; =sub_020796D8
+	ldr r1, _020796D4 ; =OSi_ExitThread
 	bl InitThread
 	str r4, [r5, #4]
 	ldr r1, [r5]
@@ -432,15 +432,15 @@ sub_0207967C: ; 0x0207967C
 	ldmia sp!, {r3, r4, r5, pc}
 _020796C4:
 	mov r0, r4
-	bl sub_020796D8
+	bl OSi_ExitThread
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020796D0: .word THREAD_INFO_STRUCT
-_020796D4: .word sub_020796D8
-	arm_func_end sub_0207967C
+_020796D4: .word OSi_ExitThread
+	arm_func_end OSi_ExitThread_ArgSpecified
 
-	arm_func_start sub_020796D8
-sub_020796D8: ; 0x020796D8
+	arm_func_start OSi_ExitThread
+OSi_ExitThread: ; 0x020796D8
 	stmdb sp!, {r3, lr}
 	ldr r1, _0207970C ; =THREAD_INFO_STRUCT
 	ldr r1, [r1, #8]
@@ -453,43 +453,43 @@ sub_020796D8: ; 0x020796D8
 	blx r2
 	bl EnableIrqFlag
 _02079704:
-	bl sub_02079710
+	bl OSi_ExitThread_Destroy
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207970C: .word THREAD_INFO_STRUCT
-	arm_func_end sub_020796D8
+	arm_func_end OSi_ExitThread
 
-	arm_func_start sub_02079710
-sub_02079710: ; 0x02079710
+	arm_func_start OSi_ExitThread_Destroy
+OSi_ExitThread_Destroy: ; 0x02079710
 	stmdb sp!, {r4, lr}
 	ldr r0, _02079768 ; =THREAD_INFO_STRUCT
 	ldr r0, [r0, #8]
 	ldr r4, [r0]
-	bl sub_02079C14
+	bl OS_DisableScheduler
 	mov r0, r4
-	bl sub_0207A128
+	bl OSi_UnlockAllMutex
 	ldr r0, [r4, #0x78]
 	cmp r0, #0
 	beq _02079740
 	mov r1, r4
-	bl sub_02079214
+	bl OSi_RemoveSpecifiedLinkFromQueue
 _02079740:
 	mov r0, r4
-	bl sub_020792F8
+	bl OSi_RemoveThreadFromList
 	mov r1, #2
 	add r0, r4, #0x9c
 	str r1, [r4, #0x64]
-	bl sub_020798D8
-	bl sub_02079C48
+	bl OS_WakeupThread
+	bl OS_EnableScheduler
 	bl sub_02079990
 	bl WaitForever2
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02079768: .word THREAD_INFO_STRUCT
-	arm_func_end sub_02079710
+	arm_func_end OSi_ExitThread_Destroy
 
-	arm_func_start sub_0207976C
-sub_0207976C: ; 0x0207976C
+	arm_func_start OS_DestroyThread
+OS_DestroyThread: ; 0x0207976C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -498,46 +498,46 @@ sub_0207976C: ; 0x0207976C
 	ldr r0, [r1, #0x28]
 	cmp r0, r5
 	bne _02079790
-	bl sub_02079710
+	bl OSi_ExitThread_Destroy
 _02079790:
-	bl sub_02079C14
+	bl OS_DisableScheduler
 	mov r0, r5
-	bl sub_0207A128
+	bl OSi_UnlockAllMutex
 	mov r0, r5
-	bl sub_020797E8
+	bl OSi_CancelThreadAlarmForSleep
 	ldr r0, [r5, #0x78]
 	cmp r0, #0
 	beq _020797B8
 	mov r1, r5
-	bl sub_02079214
+	bl OSi_RemoveSpecifiedLinkFromQueue
 _020797B8:
 	mov r0, r5
-	bl sub_020792F8
+	bl OSi_RemoveThreadFromList
 	mov r1, #2
 	add r0, r5, #0x9c
 	str r1, [r5, #0x64]
-	bl sub_020798D8
-	bl sub_02079C48
+	bl OS_WakeupThread
+	bl OS_EnableScheduler
 	mov r0, r4
 	bl SetIrqFlag
 	bl sub_02079990
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020797E4: .word THREAD_INFO_STRUCT
-	arm_func_end sub_0207976C
+	arm_func_end OS_DestroyThread
 
-	arm_func_start sub_020797E8
-sub_020797E8: ; 0x020797E8
+	arm_func_start OSi_CancelThreadAlarmForSleep
+OSi_CancelThreadAlarmForSleep: ; 0x020797E8
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0, #0xb0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_0207B1E8
+	bl OS_CancelAlarm
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020797E8
+	arm_func_end OSi_CancelThreadAlarmForSleep
 
-	arm_func_start sub_02079800
-sub_02079800: ; 0x02079800
+	arm_func_start OS_JoinThread
+OS_JoinThread: ; 0x02079800
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -551,19 +551,19 @@ _02079824:
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02079800
+	arm_func_end OS_JoinThread
 
-	arm_func_start sub_02079830
-sub_02079830: ; 0x02079830
+	arm_func_start OS_IsThreadTerminated
+OS_IsThreadTerminated: ; 0x02079830
 	ldr r0, [r0, #0x64]
 	cmp r0, #2
 	moveq r0, #1
 	movne r0, #0
 	bx lr
-	arm_func_end sub_02079830
+	arm_func_end OS_IsThreadTerminated
 
-	arm_func_start sub_02079844
-sub_02079844: ; 0x02079844
+	arm_func_start OS_SleepThreadDirect
+OS_SleepThreadDirect: ; 0x02079844
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -582,7 +582,7 @@ _02079870:
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_02079844
+	arm_func_end OS_SleepThreadDirect
 
 	arm_func_start OS_SleepThread
 OS_SleepThread: ; 0x02079888
@@ -610,8 +610,8 @@ _020798BC:
 _020798D4: .word THREAD_INFO_STRUCT
 	arm_func_end OS_SleepThread
 
-	arm_func_start sub_020798D8
-sub_020798D8: ; 0x020798D8
+	arm_func_start OS_WakeupThread
+OS_WakeupThread: ; 0x020798D8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	bl EnableIrqFlag
@@ -624,7 +624,7 @@ sub_020798D8: ; 0x020798D8
 	mov r4, #0
 _02079900:
 	mov r0, r7
-	bl sub_020791E0
+	bl OSi_RemoveLinkFromQueue
 	str r5, [r0, #0x64]
 	str r4, [r0, #0x78]
 	str r4, [r0, #0x80]
@@ -641,7 +641,7 @@ _02079934:
 	mov r0, r6
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_020798D8
+	arm_func_end OS_WakeupThread
 
 	arm_func_start OS_WakeupThreadDirect
 OS_WakeupThreadDirect: ; 0x02079940
@@ -685,8 +685,8 @@ sub_02079990: ; 0x02079990
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02079990
 
-	arm_func_start sub_020799AC
-sub_020799AC: ; 0x020799AC
+	arm_func_start OS_YieldThread
+OS_YieldThread: ; 0x020799AC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r0, _02079A60 ; =THREAD_INFO_STRUCT
 	mov r4, #0
@@ -739,10 +739,10 @@ _02079A44:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02079A60: .word THREAD_INFO_STRUCT
-	arm_func_end sub_020799AC
+	arm_func_end OS_YieldThread
 
-	arm_func_start sub_02079A64
-sub_02079A64: ; 0x02079A64
+	arm_func_start OS_SetThreadPriority
+OS_SetThreadPriority: ; 0x02079A64
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r2, _02079B04 ; =THREAD_INFO_STRUCT
 	mov r7, r0
@@ -791,16 +791,16 @@ _02079AF4:
 	.align 2, 0
 _02079B04: .word THREAD_INFO_STRUCT
 _02079B08: .word _022B967C
-	arm_func_end sub_02079A64
+	arm_func_end OS_SetThreadPriority
 
-	arm_func_start sub_02079B0C
-sub_02079B0C: ; 0x02079B0C
+	arm_func_start OS_GetThreadPriority
+OS_GetThreadPriority: ; 0x02079B0C
 	ldr r0, [r0, #0x70]
 	bx lr
-	arm_func_end sub_02079B0C
+	arm_func_end OS_GetThreadPriority
 
-	arm_func_start sub_02079B14
-sub_02079B14: ; 0x02079B14
+	arm_func_start OS_Sleep
+OS_Sleep: ; 0x02079B14
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x34
 	mov r4, r0
@@ -825,7 +825,7 @@ sub_02079B14: ; 0x02079B14
 	str r2, [sp]
 	mov r2, r3, lsr #6
 	orr r1, r1, r3, lsl #26
-	ldr r3, _02079BB8 ; =sub_02079BBC
+	ldr r3, _02079BB8 ; =OSi_SleepAlarmCallback
 	bl OS_SetAlarm
 	ldr r0, [sp, #4]
 	cmp r0, #0
@@ -845,11 +845,11 @@ _02079BA0:
 	.align 2, 0
 _02079BB0: .word THREAD_INFO_STRUCT
 _02079BB4: .word 0x000082EA
-_02079BB8: .word sub_02079BBC
-	arm_func_end sub_02079B14
+_02079BB8: .word OSi_SleepAlarmCallback
+	arm_func_end OS_Sleep
 
-	arm_func_start sub_02079BBC
-sub_02079BBC: ; 0x02079BBC
+	arm_func_start OSi_SleepAlarmCallback
+OSi_SleepAlarmCallback: ; 0x02079BBC
 	ldr r2, [r0]
 	mov r1, #0
 	str r1, [r0]
@@ -859,7 +859,7 @@ sub_02079BBC: ; 0x02079BBC
 	bx ip
 	.align 2, 0
 _02079BD8: .word OS_WakeupThreadDirect
-	arm_func_end sub_02079BBC
+	arm_func_end OSi_SleepAlarmCallback
 
 	arm_func_start OS_SetSwitchThreadCallback
 OS_SetSwitchThreadCallback: ; 0x02079BDC
@@ -885,8 +885,8 @@ _02079C0C:
 	b _02079C0C
 	arm_func_end OSi_IdleThreadProc
 
-	arm_func_start sub_02079C14
-sub_02079C14: ; 0x02079C14
+	arm_func_start OS_DisableScheduler
+OS_DisableScheduler: ; 0x02079C14
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
 	ldr r2, _02079C44 ; =THREAD_INFO_STRUCT
@@ -901,10 +901,10 @@ sub_02079C14: ; 0x02079C14
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02079C44: .word THREAD_INFO_STRUCT
-	arm_func_end sub_02079C14
+	arm_func_end OS_DisableScheduler
 
-	arm_func_start sub_02079C48
-sub_02079C48: ; 0x02079C48
+	arm_func_start OS_EnableScheduler
+OS_EnableScheduler: ; 0x02079C48
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
 	ldr r1, _02079C78 ; =THREAD_INFO_STRUCT
@@ -919,7 +919,7 @@ sub_02079C48: ; 0x02079C48
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02079C78: .word THREAD_INFO_STRUCT
-	arm_func_end sub_02079C48
+	arm_func_end OS_EnableScheduler
 
 	arm_func_start SetThreadField0xB4
 SetThreadField0xB4: ; 0x02079C7C
@@ -974,7 +974,7 @@ _02079CC4:
 OS_SaveContext: ; 0x02079D08
 	stmdb sp!, {r0, lr}
 	add r0, r0, #0x48
-	ldr r1, _02079D50 ; =sub_02080EF0
+	ldr r1, _02079D50 ; =CP_SaveContext
 	blx r1
 	ldmia sp!, {r0, lr}
 	add r1, r0, #0
@@ -991,14 +991,14 @@ OS_SaveContext: ; 0x02079D08
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_02079D50: .word sub_02080EF0
+_02079D50: .word CP_SaveContext
 	arm_func_end OS_SaveContext
 
 	arm_func_start OS_LoadContext
 OS_LoadContext: ; 0x02079D54
 	stmdb sp!, {r0, lr}
 	add r0, r0, #0x48
-	ldr r1, _02079D94 ; =sub_02080F30
+	ldr r1, _02079D94 ; =CPi_RestoreContext
 	blx r1
 	ldmia sp!, {r0, lr}
 	mrs r1, cpsr
@@ -1013,17 +1013,17 @@ OS_LoadContext: ; 0x02079D54
 	mov r0, r0
 	subs pc, lr, #4
 	.align 2, 0
-_02079D94: .word sub_02080F30
+_02079D94: .word CPi_RestoreContext
 	arm_func_end OS_LoadContext
 
-	arm_func_start sub_02079D98
-sub_02079D98: ; 0x02079D98
+	arm_func_start OS_IsRunOnEmulator
+OS_IsRunOnEmulator: ; 0x02079D98
 	mov r0, #0
 	bx lr
-	arm_func_end sub_02079D98
+	arm_func_end OS_IsRunOnEmulator
 
-	arm_func_start sub_02079DA0
-sub_02079DA0: ; 0x02079DA0
+	arm_func_start OS_GetConsoleType
+OS_GetConsoleType: ; 0x02079DA0
 	ldr r0, _02079DB0 ; =0x82000001
 	ldr r1, _02079DB4 ; =_020B2BAC
 	str r0, [r1]
@@ -1031,10 +1031,10 @@ sub_02079DA0: ; 0x02079DA0
 	.align 2, 0
 _02079DB0: .word 0x82000001
 _02079DB4: .word _020B2BAC
-	arm_func_end sub_02079DA0
+	arm_func_end OS_GetConsoleType
 
-	arm_func_start sub_02079DB8
-sub_02079DB8: ; 0x02079DB8
+	arm_func_start OS_InitMessageQueue
+OS_InitMessageQueue: ; 0x02079DB8
 	mov r3, #0
 	str r3, [r0, #4]
 	str r3, [r0]
@@ -1045,10 +1045,10 @@ sub_02079DB8: ; 0x02079DB8
 	str r3, [r0, #0x18]
 	str r3, [r0, #0x1c]
 	bx lr
-	arm_func_end sub_02079DB8
+	arm_func_end OS_InitMessageQueue
 
-	arm_func_start sub_02079DE0
-sub_02079DE0: ; 0x02079DE0
+	arm_func_start OS_SendMessage
+OS_SendMessage: ; 0x02079DE0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	mov r4, r1
@@ -1084,15 +1084,15 @@ _02079E3C:
 	ldr r1, [r5, #0x1c]
 	add r1, r1, #1
 	str r1, [r5, #0x1c]
-	bl sub_020798D8
+	bl OS_WakeupThread
 	mov r0, r6
 	bl SetIrqFlag
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_02079DE0
+	arm_func_end OS_SendMessage
 
-	arm_func_start sub_02079E74
-sub_02079E74: ; 0x02079E74
+	arm_func_start OS_ReceiveMessage
+OS_ReceiveMessage: ; 0x02079E74
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r1
@@ -1133,15 +1133,15 @@ _02079EE0:
 	mov r0, r6
 	sub r1, r1, #1
 	str r1, [r6, #0x1c]
-	bl sub_020798D8
+	bl OS_WakeupThread
 	mov r0, r4
 	bl SetIrqFlag
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_02079E74
+	arm_func_end OS_ReceiveMessage
 
-	arm_func_start sub_02079F18
-sub_02079F18: ; 0x02079F18
+	arm_func_start OS_JamMessage
+OS_JamMessage: ; 0x02079F18
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r1
@@ -1179,15 +1179,15 @@ _02079F74:
 	add r0, r6, #8
 	add r1, r1, #1
 	str r1, [r6, #0x1c]
-	bl sub_020798D8
+	bl OS_WakeupThread
 	mov r0, r4
 	bl SetIrqFlag
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_02079F18
+	arm_func_end OS_JamMessage
 
-	arm_func_start sub_02079FB4
-sub_02079FB4: ; 0x02079FB4
+	arm_func_start OS_ReadMessage
+OS_ReadMessage: ; 0x02079FB4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r1
@@ -1223,7 +1223,7 @@ _0207A020:
 	bl SetIrqFlag
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_02079FB4
+	arm_func_end OS_ReadMessage
 
 	arm_func_start OS_InitMutex
 OS_InitMutex: ; 0x0207A030
@@ -1235,8 +1235,8 @@ OS_InitMutex: ; 0x0207A030
 	bx lr
 	arm_func_end OS_InitMutex
 
-	arm_func_start sub_0207A048
-sub_0207A048: ; 0x0207A048
+	arm_func_start OS_LockMutex
+OS_LockMutex: ; 0x0207A048
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -1254,7 +1254,7 @@ _0207A064:
 	add r2, r1, #1
 	mov r1, r5
 	str r2, [r5, #0xc]
-	bl sub_0207A1D8
+	bl OSi_EnqueueTail
 	b _0207A0BC
 _0207A090:
 	cmp r0, r7
@@ -1275,10 +1275,10 @@ _0207A0BC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0207A0C8: .word _022B966C
-	arm_func_end sub_0207A048
+	arm_func_end OS_LockMutex
 
-	arm_func_start sub_0207A0CC
-sub_0207A0CC: ; 0x0207A0CC
+	arm_func_start OS_UnlockMutex
+OS_UnlockMutex: ; 0x0207A0CC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -1293,21 +1293,21 @@ sub_0207A0CC: ; 0x0207A0CC
 	str r1, [r5, #0xc]
 	bne _0207A118
 	mov r1, r5
-	bl sub_0207A1FC
+	bl OSi_DequeueItem
 	mov r1, #0
 	mov r0, r5
 	str r1, [r5, #8]
-	bl sub_020798D8
+	bl OS_WakeupThread
 _0207A118:
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0207A124: .word _022B966C
-	arm_func_end sub_0207A0CC
+	arm_func_end OS_UnlockMutex
 
-	arm_func_start sub_0207A128
-sub_0207A128: ; 0x0207A128
+	arm_func_start OSi_UnlockAllMutex
+OSi_UnlockAllMutex: ; 0x0207A128
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5, #0x88]
@@ -1316,18 +1316,18 @@ sub_0207A128: ; 0x0207A128
 	mov r4, #0
 _0207A140:
 	add r0, r5, #0x88
-	bl sub_02079268
+	bl OSi_RemoveMutexLinkFromQueue
 	str r4, [r0, #0xc]
 	str r4, [r0, #8]
-	bl sub_020798D8
+	bl OS_WakeupThread
 	ldr r0, [r5, #0x88]
 	cmp r0, #0
 	bne _0207A140
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207A128
+	arm_func_end OSi_UnlockAllMutex
 
-	arm_func_start sub_0207A164
-sub_0207A164: ; 0x0207A164
+	arm_func_start OS_TryLockMutex
+OS_TryLockMutex: ; 0x0207A164
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -1342,7 +1342,7 @@ sub_0207A164: ; 0x0207A164
 	mov r1, r5
 	add r2, r2, #1
 	str r2, [r5, #0xc]
-	bl sub_0207A1D8
+	bl OSi_EnqueueTail
 	mov r6, #1
 	b _0207A1C4
 _0207A1A8:
@@ -1360,10 +1360,10 @@ _0207A1C4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207A1D4: .word _022B966C
-	arm_func_end sub_0207A164
+	arm_func_end OS_TryLockMutex
 
-	arm_func_start sub_0207A1D8
-sub_0207A1D8: ; 0x0207A1D8
+	arm_func_start OSi_EnqueueTail
+OSi_EnqueueTail: ; 0x0207A1D8
 	ldr r2, [r0, #0x8c]
 	cmp r2, #0
 	streq r1, [r0, #0x88]
@@ -1373,10 +1373,10 @@ sub_0207A1D8: ; 0x0207A1D8
 	str r2, [r1, #0x10]
 	str r1, [r0, #0x8c]
 	bx lr
-	arm_func_end sub_0207A1D8
+	arm_func_end OSi_EnqueueTail
 
-	arm_func_start sub_0207A1FC
-sub_0207A1FC: ; 0x0207A1FC
+	arm_func_start OSi_DequeueItem
+OSi_DequeueItem: ; 0x0207A1FC
 	ldr r2, [r1, #0x10]
 	ldr r1, [r1, #0x14]
 	cmp r2, #0
@@ -1386,15 +1386,15 @@ sub_0207A1FC: ; 0x0207A1FC
 	streq r2, [r0, #0x88]
 	strne r2, [r1, #0x10]
 	bx lr
-	arm_func_end sub_0207A1FC
+	arm_func_end OSi_DequeueItem
 
-	arm_func_start sub_0207A220
-sub_0207A220: ; 0x0207A220
+	arm_func_start DC_Enable
+DC_Enable: ; 0x0207A220
 	mrc p15, 0, r1, c1, c0, 0
 	and r0, r1, #4
 	mov r0, r0, lsr #2
 	orr r1, r1, #4
 	mcr p15, 0, r1, c1, c0, 0
 	bx lr
-	arm_func_end sub_0207A220
+	arm_func_end DC_Enable
 

@@ -3,8 +3,8 @@
 
 	.text
 
-    arm_func_start sub_0207BC4C
-sub_0207BC4C: ; 0x0207BC4C
+    arm_func_start MI_DmaFill32
+MI_DmaFill32: ; 0x0207BC4C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	movs r4, r3
 	mov r8, r0
@@ -39,10 +39,10 @@ _0207BCBC:
 	tst r0, #0x80000000
 	bne _0207BCBC
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0207BC4C
+	arm_func_end MI_DmaFill32
 
-	arm_func_start sub_0207BCCC
-sub_0207BCCC: ; 0x0207BCCC
+	arm_func_start MI_DmaCopy32
+MI_DmaCopy32: ; 0x0207BCCC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r3
 	mov r6, r2
@@ -67,13 +67,13 @@ _0207BD08:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0x84000000
-	bl sub_01FF9AA8
+	bl MIi_DmaSetParams_Wait
 _0207BD2C:
 	ldr r0, [r4]
 	tst r0, #0x80000000
 	bne _0207BD2C
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0207BCCC
+	arm_func_end MI_DmaCopy32
 
 	arm_func_start MI_DmaCopy16
 MI_DmaCopy16: ; 0x0207BD3C
@@ -100,7 +100,7 @@ _0207BD74:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0x80000000
-	bl sub_01FF9AA8
+	bl MIi_DmaSetParams_Wait
 _0207BD98:
 	ldr r0, [r4]
 	tst r0, #0x80000000
@@ -108,8 +108,8 @@ _0207BD98:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end MI_DmaCopy16
 
-	arm_func_start sub_0207BDA8
-sub_0207BDA8: ; 0x0207BDA8
+	arm_func_start MI_DmaFill32Async
+MI_DmaFill32Async: ; 0x0207BDA8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	movs r4, r3
 	mov r7, r0
@@ -123,13 +123,13 @@ sub_0207BDA8: ; 0x0207BDA8
 	blx r8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207BDD8:
-	bl sub_0207C0FC
+	bl MI_WaitDma
 	cmp r8, #0
 	beq _0207BE30
 	ldr r2, [sp, #0x1c]
 	mov r0, r7
 	mov r1, r8
-	bl sub_02078BAC
+	bl OSi_EnterDmaCallback
 	bl EnableIrqFlag
 	mov r3, r4, lsr #2
 	mov r2, r7, lsl #2
@@ -141,7 +141,7 @@ _0207BDD8:
 	mov r2, r6
 	add r1, r1, #0x4000000
 	orr r3, r3, #0xc5000000
-	bl sub_01FF9B18
+	bl MIi_DmaSetParams_NoInt
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
@@ -157,14 +157,14 @@ _0207BE30:
 	add r1, r1, #0x4000000
 	orr r3, r3, #0x85000000
 	str r5, [ip, #0xe0]
-	bl sub_01FF9B18
+	bl MIi_DmaSetParams_NoInt
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0207BDA8
+	arm_func_end MI_DmaFill32Async
 
-	arm_func_start sub_0207BE6C
-sub_0207BE6C: ; 0x0207BE6C
+	arm_func_start MI_DmaCopy32Async
+MI_DmaCopy32Async: ; 0x0207BE6C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r3
 	mov r6, r2
@@ -183,13 +183,13 @@ sub_0207BE6C: ; 0x0207BE6C
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207BEAC:
 	mov r0, r8
-	bl sub_0207C0FC
+	bl MI_WaitDma
 	cmp r4, #0
 	beq _0207BEE8
 	ldr r2, [sp, #0x1c]
 	mov r0, r8
 	mov r1, r4
-	bl sub_02078BAC
+	bl OSi_EnterDmaCallback
 	mov r3, r5, lsr #2
 	mov r0, r8
 	mov r1, r7
@@ -205,10 +205,10 @@ _0207BEE8:
 	orr r3, r3, #0x84000000
 	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0207BE6C
+	arm_func_end MI_DmaCopy32Async
 
-	arm_func_start sub_0207BF04
-sub_0207BF04: ; 0x0207BF04
+	arm_func_start MI_DmaSend32Async
+MI_DmaSend32Async: ; 0x0207BF04
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r3
 	mov r6, r2
@@ -227,13 +227,13 @@ sub_0207BF04: ; 0x0207BF04
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207BF44:
 	mov r0, r8
-	bl sub_0207C0FC
+	bl MI_WaitDma
 	cmp r4, #0
 	beq _0207BF84
 	ldr r2, [sp, #0x1c]
 	mov r0, r8
 	mov r1, r4
-	bl sub_02078BAC
+	bl OSi_EnterDmaCallback
 	mov r3, #0x3bc00000
 	rsb r3, r3, #0
 	mov r0, r8
@@ -252,10 +252,10 @@ _0207BF84:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0207BFA0: .word 0x84400000
-	arm_func_end sub_0207BF04
+	arm_func_end MI_DmaSend32Async
 
-	arm_func_start sub_0207BFA4
-sub_0207BFA4: ; 0x0207BFA4
+	arm_func_start MI_DmaCopy16Async
+MI_DmaCopy16Async: ; 0x0207BFA4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r3
 	mov r6, r2
@@ -274,13 +274,13 @@ sub_0207BFA4: ; 0x0207BFA4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207BFE4:
 	mov r0, r8
-	bl sub_0207C0FC
+	bl MI_WaitDma
 	cmp r4, #0
 	beq _0207C020
 	ldr r2, [sp, #0x1c]
 	mov r0, r8
 	mov r1, r4
-	bl sub_02078BAC
+	bl OSi_EnterDmaCallback
 	mov r3, r5, lsr #1
 	mov r0, r8
 	mov r1, r7
@@ -296,10 +296,10 @@ _0207C020:
 	orr r3, r3, #0x80000000
 	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0207BFA4
+	arm_func_end MI_DmaCopy16Async
 
-	arm_func_start sub_0207C03C
-sub_0207C03C: ; 0x0207C03C
+	arm_func_start MI_DmaSend16Async
+MI_DmaSend16Async: ; 0x0207C03C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r3
 	mov r6, r2
@@ -318,13 +318,13 @@ sub_0207C03C: ; 0x0207C03C
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207C07C:
 	mov r0, r8
-	bl sub_0207C0FC
+	bl MI_WaitDma
 	cmp r4, #0
 	beq _0207C0BC
 	ldr r2, [sp, #0x1c]
 	mov r0, r8
 	mov r1, r4
-	bl sub_02078BAC
+	bl OSi_EnterDmaCallback
 	mov r3, #0x3fc00000
 	rsb r3, r3, #0
 	mov r0, r8
@@ -343,10 +343,10 @@ _0207C0BC:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0207C0D8: .word 0x80400000
-	arm_func_end sub_0207C03C
+	arm_func_end MI_DmaSend16Async
 
-	arm_func_start sub_0207C0DC
-sub_0207C0DC: ; 0x0207C0DC
+	arm_func_start MI_IsDmaBusy
+MI_IsDmaBusy: ; 0x0207C0DC
 	add r0, r0, r0, lsl #1
 	add r0, r0, #2
 	mov r0, r0, lsl #2
@@ -355,10 +355,10 @@ sub_0207C0DC: ; 0x0207C0DC
 	and r0, r0, #0x80000000
 	mov r0, r0, lsr #0x1f
 	bx lr
-	arm_func_end sub_0207C0DC
+	arm_func_end MI_IsDmaBusy
 
-	arm_func_start sub_0207C0FC
-sub_0207C0FC: ; 0x0207C0FC
+	arm_func_start MI_WaitDma
+MI_WaitDma: ; 0x0207C0FC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EnableIrqFlag
@@ -388,7 +388,7 @@ _0207C158:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207C160: .word 0x81400001
-	arm_func_end sub_0207C0FC
+	arm_func_end MI_WaitDma
 
 	arm_func_start MI_StopDma
 MI_StopDma: ; 0x0207C164
@@ -427,8 +427,8 @@ _0207C1D4:
 _0207C1DC: .word 0x81400001
 	arm_func_end MI_StopDma
 
-	arm_func_start sub_0207C1E0
-sub_0207C1E0: ; 0x0207C1E0
+	arm_func_start MIi_CheckAnotherAutoDma
+MIi_CheckAnotherAutoDma: ; 0x0207C1E0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r5, _0207C260 ; =0x040000B8
 	mov r7, r0
@@ -465,7 +465,7 @@ _0207C24C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0207C260: .word 0x040000B8
-	arm_func_end sub_0207C1E0
+	arm_func_end MIi_CheckAnotherAutoDma
 
 	arm_func_start MIi_CheckDma0SourceAddress
 MIi_CheckDma0SourceAddress: ; 0x0207C264

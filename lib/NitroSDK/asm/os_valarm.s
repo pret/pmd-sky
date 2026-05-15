@@ -26,8 +26,8 @@ OS_InitVAlarm: ; 0x0207B370
 _0207B3B4: .word _022B99BC
 	arm_func_end OS_InitVAlarm
 
-	arm_func_start sub_0207B3B8
-sub_0207B3B8: ; 0x0207B3B8
+	arm_func_start OSi_InsertVAlarm
+OSi_InsertVAlarm: ; 0x0207B3B8
 	stmdb sp!, {r3, lr}
 	ldr r1, _0207B430 ; =_022B99BC
 	ldr r3, [r1, #0xc]
@@ -53,21 +53,21 @@ _0207B3F0:
 	ldmneia sp!, {r3, pc}
 	ldr r1, _0207B430 ; =_022B99BC
 	str r0, [r1, #0xc]
-	bl sub_0207B544
+	bl OSi_SetNextVAlarm
 	ldmia sp!, {r3, pc}
 _0207B41C:
 	ldr r3, [r3, #0x18]
 	cmp r3, #0
 	bne _0207B3D0
 _0207B428:
-	bl sub_0207B434
+	bl OSi_AppendVAlarm
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207B430: .word _022B99BC
-	arm_func_end sub_0207B3B8
+	arm_func_end OSi_InsertVAlarm
 
-	arm_func_start sub_0207B434
-sub_0207B434: ; 0x0207B434
+	arm_func_start OSi_AppendVAlarm
+OSi_AppendVAlarm: ; 0x0207B434
 	stmdb sp!, {r3, lr}
 	ldr r1, _0207B468 ; =_022B99BC
 	mov r2, #0
@@ -79,14 +79,14 @@ sub_0207B434: ; 0x0207B434
 	strne r0, [r3, #0x18]
 	ldmneia sp!, {r3, pc}
 	str r0, [r1, #0xc]
-	bl sub_0207B544
+	bl OSi_SetNextVAlarm
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207B468: .word _022B99BC
-	arm_func_end sub_0207B434
+	arm_func_end OSi_AppendVAlarm
 
-	arm_func_start sub_0207B46C
-sub_0207B46C: ; 0x0207B46C
+	arm_func_start OSi_DetachVAlarm
+OSi_DetachVAlarm: ; 0x0207B46C
 	cmp r0, #0
 	bxeq lr
 	ldr r2, [r0, #0x18]
@@ -102,19 +102,19 @@ sub_0207B46C: ; 0x0207B46C
 	bx lr
 	.align 2, 0
 _0207B4A0: .word _022B99BC
-	arm_func_end sub_0207B46C
+	arm_func_end OSi_DetachVAlarm
 
-	arm_func_start sub_0207B4A4
-sub_0207B4A4: ; 0x0207B4A4
+	arm_func_start OS_CreateVAlarm
+OS_CreateVAlarm: ; 0x0207B4A4
 	mov r1, #0
 	str r1, [r0]
 	str r1, [r0, #8]
 	str r1, [r0, #0x20]
 	bx lr
-	arm_func_end sub_0207B4A4
+	arm_func_end OS_CreateVAlarm
 
-	arm_func_start sub_0207B4B8
-sub_0207B4B8: ; 0x0207B4B8
+	arm_func_start OS_SetPeriodicVAlarm
+OS_SetPeriodicVAlarm: ; 0x0207B4B8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r0
 	mov r7, r1
@@ -133,7 +133,7 @@ _0207B4EC:
 	ldr r0, _0207B540 ; =0x04000006
 	ldrh sb, [r0]
 	mov r0, sb
-	bl sub_0207B790
+	bl OSi_GetVFrame
 	mov r1, #1
 	str r1, [r8, #0x1c]
 	cmp r7, sb
@@ -147,18 +147,18 @@ _0207B4EC:
 	mov r1, #0
 	mov r0, r8
 	str r1, [r8, #0x24]
-	bl sub_0207B3B8
+	bl OSi_InsertVAlarm
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0207B540: .word 0x04000006
-	arm_func_end sub_0207B4B8
+	arm_func_end OS_SetPeriodicVAlarm
 
-	arm_func_start sub_0207B544
-sub_0207B544: ; 0x0207B544
+	arm_func_start OSi_SetNextVAlarm
+OSi_SetNextVAlarm: ; 0x0207B544
 	stmdb sp!, {r4, lr}
-	ldr r1, _0207B57C ; =sub_0207B5CC
+	ldr r1, _0207B57C ; =OSi_VAlarmHandler
 	mov r4, r0
 	mov r0, #4
 	bl OS_SetIrqFunction
@@ -172,12 +172,12 @@ sub_0207B544: ; 0x0207B544
 	bl OS_EnableIrqMask
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0207B57C: .word sub_0207B5CC
+_0207B57C: .word OSi_VAlarmHandler
 _0207B580: .word 0x04000004
-	arm_func_end sub_0207B544
+	arm_func_end OSi_SetNextVAlarm
 
-	arm_func_start sub_0207B584
-sub_0207B584: ; 0x0207B584
+	arm_func_start OS_CancelVAlarm
+OS_CancelVAlarm: ; 0x0207B584
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -191,16 +191,16 @@ sub_0207B584: ; 0x0207B584
 	ldmia sp!, {r3, r4, r5, pc}
 _0207B5B0:
 	mov r0, r5
-	bl sub_0207B46C
+	bl OSi_DetachVAlarm
 	mov r1, #0
 	mov r0, r4
 	str r1, [r5]
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207B584
+	arm_func_end OS_CancelVAlarm
 
-	arm_func_start sub_0207B5CC
-sub_0207B5CC: ; 0x0207B5CC
+	arm_func_start OSi_VAlarmHandler
+OSi_VAlarmHandler: ; 0x0207B5CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #4
 	bl OS_DisableIrqMask
@@ -220,7 +220,7 @@ sub_0207B5CC: ; 0x0207B5CC
 	and r0, r0, #0x100
 	orr r0, r1, r0
 	sub r0, r0, #1
-	bl sub_0207B790
+	bl OSi_GetVFrame
 	ldr r4, _0207B73C ; =_022B99BC
 	ldr sl, [r4, #0xc]
 	cmp sl, #0
@@ -232,12 +232,12 @@ sub_0207B5CC: ; 0x0207B5CC
 _0207B63C:
 	ldrh r8, [sb]
 	mov r0, r8
-	bl sub_0207B790
+	bl OSi_GetVFrame
 	mov r7, r0
 	mov r0, sl
 	mov r1, r7
 	mov r2, r8
-	bl sub_0207B744
+	bl OSi_CompareVCount
 	cmp r0, #0
 	beq _0207B678
 	cmp r0, #1
@@ -247,7 +247,7 @@ _0207B63C:
 	b _0207B724
 _0207B678:
 	mov r0, sl
-	bl sub_0207B544
+	bl OSi_SetNextVAlarm
 	ldrh r1, [sb]
 	ldrsh r0, [sl, #0x10]
 	cmp r0, r1
@@ -264,7 +264,7 @@ _0207B678:
 _0207B6B4:
 	ldr r7, [sl]
 	mov r0, sl
-	bl sub_0207B46C
+	bl OSi_DetachVAlarm
 	str r5, [sl]
 	cmp r7, #0
 	beq _0207B6D4
@@ -282,16 +282,16 @@ _0207B6D4:
 	mov r0, sl
 	add r1, r1, #1
 	str r1, [sl, #0xc]
-	bl sub_0207B3B8
+	bl OSi_InsertVAlarm
 	b _0207B724
 _0207B708:
 	mov r0, sl
-	bl sub_0207B46C
+	bl OSi_DetachVAlarm
 	ldr r1, [r4, #8]
 	mov r0, sl
 	add r1, r1, #1
 	str r1, [sl, #0xc]
-	bl sub_0207B3B8
+	bl OSi_InsertVAlarm
 _0207B724:
 	ldr sl, [r4, #0xc]
 	cmp sl, #0
@@ -302,10 +302,10 @@ _0207B734: .word 0x04000004
 _0207B738: .word OS_IRQTable
 _0207B73C: .word _022B99BC
 _0207B740: .word 0x04000006
-	arm_func_end sub_0207B5CC
+	arm_func_end OSi_VAlarmHandler
 
-	arm_func_start sub_0207B744
-sub_0207B744: ; 0x0207B744
+	arm_func_start OSi_CompareVCount
+OSi_CompareVCount: ; 0x0207B744
 	ldrsh r3, [r0, #0x10]
 	ldr ip, [r0, #0xc]
 	subs r1, r1, ip
@@ -327,10 +327,10 @@ _0207B770:
 	movle r0, #1
 	movgt r0, #2
 	bx lr
-	arm_func_end sub_0207B744
+	arm_func_end OSi_CompareVCount
 
-	arm_func_start sub_0207B790
-sub_0207B790: ; 0x0207B790
+	arm_func_start OSi_GetVFrame
+OSi_GetVFrame: ; 0x0207B790
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EnableIrqFlag
@@ -348,5 +348,5 @@ sub_0207B790: ; 0x0207B790
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207B7CC: .word _022B99BC
-	arm_func_end sub_0207B790
+	arm_func_end OSi_GetVFrame
 

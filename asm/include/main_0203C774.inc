@@ -161,8 +161,14 @@
 .public BAG_ITEMS_PTR_MIRROR
 .public BitstreamDebug
 .public CanMonsterUseMove
+.public Card_GetBackupTotalSize
+.public Card_GetCurrentBackupType
+.public Card_IdentifyBackup
 .public CARD_Init
+.public Card_LockBackup
+.public Card_UnlockBackup
 .public CardBackupError
+.public Cardi_RequestStreamCommand
 .public CardPullOutWithStatus
 .public ClearAdventureLogStruct
 .public ClearWindow
@@ -318,6 +324,7 @@
 .public OPTIONS
 .public OS_GetLockID
 .public OS_GetMacAddress
+.public OS_ReleaseLockId
 .public ov11_023061CC
 .public ov11_023061E4
 .public ov11_02306C64
@@ -514,13 +521,6 @@
 .public sub_0205FAB0
 .public sub_0205FC20
 .public sub_0206637C
-.public sub_02079094
-.public sub_0208346C
-.public sub_0208347C
-.public sub_02083A18
-.public sub_02083B00
-.public sub_02083B14
-.public sub_02083B3C
 .public TEAM_MEMBER_TABLE_PTR
 .public TryPointCameraToMonster
 .public UpdateWindow

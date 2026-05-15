@@ -156,9 +156,9 @@ OSi_DisplayExContent: ; 0x0207ACBC
 	ldr r1, [r1]
 	ldr ip, _0207AD30 ; =_022B98F8
 	ldr ip, [ip]
-	ldr lr, _0207AD34 ; =_0207AD0C
+	ldr lr, _0207AD34 ; =OSi_DisplayExContext_Helper
 	bx ip
-_0207AD0C:
+OSi_DisplayExContext_Helper:
 	bl OS_DisableProtectionUnit
 	ldmia sp!, {r1, r2}
 	mov sp, r1
@@ -170,6 +170,6 @@ _0207AD24: .word 0x0000009F
 _0207AD28: .word _022B991C
 _0207AD2C: .word _022B98F4
 _0207AD30: .word _022B98F8
-_0207AD34: .word _0207AD0C
+_0207AD34: .word OSi_DisplayExContext_Helper
 	arm_func_end OSi_DisplayExContent
 

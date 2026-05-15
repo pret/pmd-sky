@@ -1,7 +1,6 @@
 #pragma once
 
 .public _0200002B
-.public _0207AD0C
 .public _020B2B9C
 .public _020B2BAC
 .public _022B9208
@@ -43,6 +42,8 @@
 .public AtomicExchange
 .public CARD_Init
 .public ClearIrqFlag
+.public CP_SaveContext
+.public CPi_RestoreContext
 .public CTRDG_Init
 .public DseMem_Free
 .public DTCM_BSS
@@ -84,12 +85,18 @@
 .public GXi_DmaId
 .public GXi_VRamLockId
 .public MI_DmaCopy16
+.public MI_DmaCopy32
+.public MI_DmaCopy32Async
+.public MI_DmaFill32
+.public MI_DmaFill32Async
 .public MI_Init
+.public MI_WaitDma
 .public MTi_CpuClear32
 .public MTi_CpuCopy16
 .public MTi_CpuCopy32
 .public MTX_LookAt
 .public MTX_OrthoW
+.public OS_CancelAlarm
 .public OS_CreateAlarm
 .public OS_DisableIrqMask
 .public OS_EnableIrqMask
@@ -101,6 +108,9 @@
 .public OS_SetAlarm
 .public OS_SetIrqFunction
 .public OS_SetIrqStackChecker
+.public OS_VsNPrintfEx
+.public OSi_DisplayExContext_Helper
+.public OSi_EnterTimerCallback
 .public OSi_InitVramExclusive
 .public OSi_TimerReserved
 .public OSi_UseAlarm
@@ -122,16 +132,6 @@
 .public sub_0206F808
 .public sub_0206FD88
 .public sub_0206FDE0
-.public sub_02078BF4
-.public sub_0207B1E8
-.public sub_0207BC4C
-.public sub_0207BCCC
-.public sub_0207BDA8
-.public sub_0207BE6C
-.public sub_0207C0FC
-.public sub_02080EF0
-.public sub_02080F30
-.public sub_02085BD4
 .public SVC_WaitByLoop
 .public THREAD_INFO_STRUCT
 .public WaitForever2

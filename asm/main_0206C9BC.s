@@ -346,7 +346,7 @@ DseSwd_SysQuit: ; 0xDseSwd_SysQuit
 	strb r2, [r1, #0xdee]
 	bl OS_WakeupThreadDirect
 	ldr r0, _0206CE64 ; =_022B9120
-	bl sub_02079800
+	bl OS_JoinThread
 	ldr r0, _0206CE60 ; =_022B8330
 	ldr r0, [r0, #0xeb0]
 	bl DseMem_Free
@@ -1010,7 +1010,7 @@ DseSwd_InitMainBankFileReader: ; 0x0206D6F0
 	arm_func_start DseSwd_OpenMainBankFileReader
 DseSwd_OpenMainBankFileReader: ; 0x0206D700
 	stmdb sp!, {r3, lr}
-	bl sub_0207F6C4
+	bl FS_OpenFile
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
@@ -1025,7 +1025,7 @@ DseSwd_OpenMainBankFileReader: ; 0x0206D700
 	arm_func_start DseSwd_CloseMainBankFileReader
 DseSwd_CloseMainBankFileReader: ; 0x0206D72C
 	stmdb sp!, {r3, lr}
-	bl sub_0207F70C
+	bl FS_CloseFile
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end DseSwd_CloseMainBankFileReader
@@ -1039,7 +1039,7 @@ DseSwd_ReadMainBank: ; 0x0206D73C
 	mov r1, r3
 	mov r2, #0
 	mov sl, r0
-	bl sub_0207F828
+	bl FS_SeekFile
 	str r8, [r7, #8]
 	mov r0, #0
 	str r0, [r7, #0xc]
@@ -1057,15 +1057,15 @@ _0206D788:
 	cmp r0, #0xb4
 	blt _0206D7A0
 	mov r0, r4
-	bl sub_02079B14
+	bl OS_Sleep
 	b _0206D788
 _0206D7A0:
 	mov r0, sl
 	mov r1, sb
 	mov r2, r6
-	bl sub_0207F808
+	bl FS_ReadFileAsync
 	mov r0, sl
-	bl sub_0207F748
+	bl FS_WaitAsync
 	ldr r1, [r7, #0xc]
 	mov r0, r7
 	add r1, r1, r6
@@ -3596,7 +3596,7 @@ _0206F880:
 	mov r6, #4
 _0206F8EC:
 	mov r0, r6
-	bl sub_02079B14
+	bl OS_Sleep
 	mov r0, r5
 	bl sub_0206F974
 	cmp r0, #0
@@ -3623,7 +3623,7 @@ _0206F918:
 	mov r4, #4
 _0206F94C:
 	mov r0, r4
-	bl sub_02079B14
+	bl OS_Sleep
 	mov r0, r5
 	bl sub_0206F7C8
 	cmp r0, #0
@@ -4001,7 +4001,7 @@ sub_0206FDE0: ; 0x0206FDE0
 	strb r3, [r1, #0x2a]
 	bl OS_WakeupThreadDirect
 	ldr r0, _0206FE54 ; =_022B9234
-	bl sub_02079800
+	bl OS_JoinThread
 	ldr r1, _0206FE50 ; =_022B9208
 	mov r2, #0
 	ldr r0, _0206FE58 ; =_022B9300
@@ -4010,7 +4010,7 @@ sub_0206FDE0: ; 0x0206FDE0
 	strb r2, [r1, #0xf6]
 	bl OS_WakeupThreadDirect
 	ldr r0, _0206FE58 ; =_022B9300
-	bl sub_02079800
+	bl OS_JoinThread
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0206FE4C: .word DRIVER_WORK
@@ -4057,7 +4057,7 @@ _0206FEB0:
 	ldr r3, _02070088 ; =sub_0206FDB0
 	mov r2, r1
 	mov r0, #2
-	bl sub_0207C984
+	bl Snd_SetupAlarm
 	ldr r0, [sl, #0x2c]
 	ldrb r1, [sl, #0xbc]
 	mov r0, r0, asr #0x10
@@ -4356,7 +4356,7 @@ sub_0207028C: ; 0x0207028C
 	ldr r0, _020702F4 ; =_022B94BC
 	ldrh r1, [r2]
 	strh r4, [r2]
-	bl sub_02079800
+	bl OS_JoinThread
 	ldr r0, _020702EC ; =_022B9484
 	ldr r0, [r0, #0x34]
 	bl DseMem_Free
@@ -4694,7 +4694,7 @@ _02070770:
 	mov r1, #2
 _0207077C:
 	mov r3, r2
-	bl sub_0207CB54
+	bl Snd_SetOutputSelector
 	mov r1, #1
 	mov r0, #0
 	str r1, [sp]
@@ -4704,7 +4704,7 @@ _0207077C:
 	ldr r2, [r4]
 	mov r1, r0
 	mov r3, r3, lsr #2
-	bl sub_0207C944
+	bl Snd_SetupCapture
 	mov r0, #1
 	str r0, [sp]
 	mov r1, #0
@@ -4713,13 +4713,13 @@ _0207077C:
 	ldr r3, [r4, #0x14]
 	ldr r2, [r4, #4]
 	mov r3, r3, lsr #2
-	bl sub_0207C944
+	bl Snd_SetupCapture
 	ldr r3, _020708E4 ; =sub_0207098C
 	mov r1, r6
 	mov r2, r5
 	mov r0, #4
 	str r4, [sp]
-	bl sub_0207C984
+	bl Snd_SetupAlarm
 	ldr r1, _020708E8 ; =0x04000208
 	mov sb, #0
 	ldrh r0, [r1]
@@ -4828,7 +4828,7 @@ _02070934:
 	strb r5, [ip, #0x73b]
 	ldrh ip, [lr]
 	strh r4, [lr]
-	bl sub_0207CB54
+	bl Snd_SetOutputSelector
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02070980: .word _022B9484
@@ -5227,7 +5227,7 @@ sub_02070EA0: ; 0x02070EA0
 	strb r2, [r1, #0xd11]
 	bl OS_WakeupThreadDirect
 	ldr r0, _02070ED8 ; =_022B9044
-	bl sub_02079800
+	bl OS_JoinThread
 	ldr r0, _02070ED4 ; =_022B8330
 	ldr r0, [r0, #0xdd4]
 	bl DseMem_Free
@@ -5251,16 +5251,16 @@ DseDriver_StartTickTimer: ; 0x02070EDC
 	mov r2, r1
 	mov r0, #0
 	str ip, [sp]
-	bl sub_0207C984
+	bl Snd_SetupAlarm
 	mov r0, #0
 	mov r1, r0
 	mov r3, r0
 	mov r2, #1
-	bl sub_0207C8B8
+	bl Snd_StartTimer
 	mov r0, #1
-	bl sub_0207CF14
+	bl Snd_FlushCommand
 	mov r0, #1
-	bl sub_0207CD44
+	bl Snd_RecvCommandReply
 _02070F34:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
@@ -5278,7 +5278,7 @@ sub_02070F4C: ; 0x02070F4C
 	ldr r0, _02070FC4 ; =0x0000FFFF
 	mov r3, r1
 	mov r2, #1
-	bl sub_0207C8E0
+	bl Snd_StopTimer
 	ldr r0, _02070FC8 ; =_022B8330
 	add r0, r0, #0xd00
 	ldrsb r0, [r0, #0xd8]
@@ -5289,12 +5289,12 @@ sub_02070F4C: ; 0x02070F4C
 	mov r2, r0
 	mov r3, r0
 	str r0, [sp]
-	bl sub_0207C984
+	bl Snd_SetupAlarm
 _02070F90:
 	mov r0, #1
-	bl sub_0207CF14
+	bl Snd_FlushCommand
 	mov r0, #1
-	bl sub_0207CD44
+	bl Snd_RecvCommandReply
 	ldr r2, _02070FCC ; =_022B7A30
 	mov r0, #0
 	strh r0, [r2, #0x30]
@@ -5387,7 +5387,7 @@ _020710D0:
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, #0
-	bl sub_0207CD44
+	bl Snd_RecvCommandReply
 	ldr r0, [r6, #0x2c]
 	add r0, r0, #1
 	str r0, [r6, #0x2c]
@@ -5407,7 +5407,7 @@ _02071118:
 	bl DseVoice_UpdateHardware
 	bl DseVoice_Cleanup
 	mov r0, #0
-	bl sub_0207CF14
+	bl Snd_FlushCommand
 	ldrsb r0, [r5, #0xd0]
 	cmp r0, #1
 	bne _02071030

@@ -17,7 +17,7 @@ OSi_SetTimer: ; 0x0207AF64
 	sbc r4, r3, r1
 	ldr r1, _0207AFE4 ; =OSi_AlarmHandler
 	mov r0, #1
-	bl sub_02078BF4
+	bl OSi_EnterTimerCallback
 	subs r0, r5, #0
 	mov r3, #0
 	sbcs r0, r4, #0
@@ -199,8 +199,8 @@ _0207B1A4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end OS_SetAlarm
 
-	arm_func_start sub_0207B1E8
-sub_0207B1E8: ; 0x0207B1E8
+	arm_func_start OS_CancelAlarm
+OS_CancelAlarm: ; 0x0207B1E8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -239,7 +239,7 @@ _0207B250:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0207B26C: .word OSi_UseAlarm
-	arm_func_end sub_0207B1E8
+	arm_func_end OS_CancelAlarm
 
 	arm_func_start OSi_AlarmHandler
 OSi_AlarmHandler: ; 0x0207B270

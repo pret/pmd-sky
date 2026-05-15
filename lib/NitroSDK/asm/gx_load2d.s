@@ -129,7 +129,7 @@ GX_LoadOAM: ; 0x02077E54
 	bls _02077E90
 	mov r1, r4
 	add r2, lr, #0x7000000
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r4, pc}
 _02077E90:
 	mov r0, r4
@@ -156,7 +156,7 @@ GXS_LoadOAM: ; 0x02077EA8
 	add r2, r1, #0x400
 	mov r1, lr
 	add r2, r2, #0x7000000
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r3, pc}
 _02077EE4:
 	add r1, r1, #0x400
@@ -185,7 +185,7 @@ GX_LoadOBJ: ; 0x02077F00
 	bls _02077F40
 	mov r1, r4
 	add r2, ip, lr
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r4, pc}
 _02077F40:
 	mov r0, r4
@@ -213,7 +213,7 @@ GXS_LoadOBJ: ; 0x02077F58
 	bls _02077F98
 	mov r1, r4
 	add r2, ip, lr
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r4, pc}
 _02077F98:
 	mov r0, r4
@@ -393,7 +393,7 @@ GX_LoadBG0Char: ; 0x02078190
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 _020781D8:
 	mov r0, r6
@@ -423,7 +423,7 @@ GXS_LoadBG0Char: ; 0x020781F0
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 _02078238:
 	mov r0, r6
@@ -453,7 +453,7 @@ GX_LoadBG1Char: ; 0x02078250
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 _02078298:
 	mov r0, r6
@@ -483,7 +483,7 @@ GXS_LoadBG1Char: ; 0x020782B0
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 _020782F8:
 	mov r0, r6
@@ -513,7 +513,7 @@ GX_LoadBG2Char: ; 0x02078310
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 _02078358:
 	mov r0, r6
@@ -543,7 +543,7 @@ GX_LoadBG3Char: ; 0x02078370
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 _020783B8:
 	mov r0, r6
@@ -613,7 +613,7 @@ GX_EndLoadBGExtPltt: ; 0x02078470
 	ldr r0, [r0]
 	cmp r0, r1
 	beq _0207848C
-	bl sub_0207C0FC
+	bl MI_WaitDma
 _0207848C:
 	ldr r0, _020784B4 ; =sSubBGExtPltt
 	ldr r0, [r0, #0x14]
@@ -661,7 +661,7 @@ GX_EndLoadOBJExtPltt: ; 0x02078500
 	ldr r0, [r0]
 	cmp r0, r1
 	beq _0207851C
-	bl sub_0207C0FC
+	bl MI_WaitDma
 _0207851C:
 	ldr r0, _02078540 ; =sSubBGExtPltt
 	ldr r0, [r0, #8]
@@ -695,7 +695,7 @@ GXS_EndLoadBGExtPltt: ; 0x0207855C
 	ldr r0, [r0]
 	cmp r0, r1
 	beq _02078578
-	bl sub_0207C0FC
+	bl MI_WaitDma
 _02078578:
 	ldr r0, _02078598 ; =sSubBGExtPltt
 	ldr r0, [r0]
@@ -728,7 +728,7 @@ GXS_EndLoadOBJExtPltt: ; 0x020785B4
 	ldr r0, [r0]
 	cmp r0, r1
 	beq _020785D0
-	bl sub_0207C0FC
+	bl MI_WaitDma
 _020785D0:
 	ldr r0, _020785F0 ; =sSubBGExtPltt
 	ldr r0, [r0, #0x18]

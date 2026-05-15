@@ -81,7 +81,7 @@ _0207B958:
 	bl OS_GetLockID
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02083434
+	bl Card_LockRom
 	ldr r0, _0207B9C4 ; =0x00000000
 	bl MI_StopDma
 	ldr r0, _0207B9C8 ; =0x00000001
@@ -102,7 +102,7 @@ _0207B958:
 	ldr r1, _0207B9E8 ; =0x00000800
 	sub r0, r0, r1
 	mov sp, r0
-	bl sub_01FF97CC
+	bl OSi_DoResetSystem
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207B9C0: .word 0x027FFC40

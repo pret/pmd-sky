@@ -61,14 +61,14 @@ _02078DEC: .word 0x027FFFB0
 _02078DF0: .word 0x04000204
 	arm_func_end OS_InitLock
 
-	arm_func_start sub_02078DF4
-sub_02078DF4: ; 0x02078DF4
+	arm_func_start OSi_DoLockByWord
+OSi_DoLockByWord: ; 0x02078DF4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl sub_02078ED4
+	bl OSi_DoTryLockByWord
 	cmp r0, #0
 	ldmleia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r4, #0x400
@@ -79,19 +79,19 @@ _02078E18:
 	mov r1, r7
 	mov r2, r6
 	mov r3, r5
-	bl sub_02078ED4
+	bl OSi_DoTryLockByWord
 	cmp r0, #0
 	bgt _02078E18
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_02078DF4
+	arm_func_end OSi_DoLockByWord
 
 	arm_func_start OS_LockByWord
 OS_LockByWord: ; 0x02078E40
-	ldr ip, _02078E4C ; =sub_02078DF4
+	ldr ip, _02078E4C ; =OSi_DoLockByWord
 	mov r3, #0
 	bx ip
 	.align 2, 0
-_02078E4C: .word sub_02078DF4
+_02078E4C: .word OSi_DoLockByWord
 	arm_func_end OS_LockByWord
 
 	arm_func_start OSi_DoUnlockByWord
@@ -141,8 +141,8 @@ OS_UnlockByWord: ; 0x02078EC4
 _02078ED0: .word OSi_DoUnlockByWord
 	arm_func_end OS_UnlockByWord
 
-	arm_func_start sub_02078ED4
-sub_02078ED4: ; 0x02078ED4
+	arm_func_start OSi_DoTryLockByWord
+OSi_DoTryLockByWord: ; 0x02078ED4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	movs r6, r3
 	mov sb, r0
@@ -176,7 +176,7 @@ _02078F34:
 _02078F38:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_02078ED4
+	arm_func_end OSi_DoTryLockByWord
 
 	arm_func_start OS_UnlockCartridge
 OS_UnlockCartridge: ; 0x02078F40
@@ -199,21 +199,21 @@ OS_UnlockCartridgeVeneer: ; 0x02078F60
 _02078F68: .word OS_UnlockCartridge
 	arm_func_end OS_UnlockCartridgeVeneer
 
-	arm_func_start sub_02078F6C
-sub_02078F6C: ; 0x02078F6C
-	ldr ip, _02078F80 ; =sub_02078ED4
+	arm_func_start OS_TryLockCartridge
+OS_TryLockCartridge: ; 0x02078F6C
+	ldr ip, _02078F80 ; =OSi_DoTryLockByWord
 	ldr r1, _02078F84 ; =0x027FFFE8
-	ldr r2, _02078F88 ; =sub_02078F8C
+	ldr r2, _02078F88 ; =OSi_AllocateCartridgeBus
 	mov r3, #1
 	bx ip
 	.align 2, 0
-_02078F80: .word sub_02078ED4
+_02078F80: .word OSi_DoTryLockByWord
 _02078F84: .word 0x027FFFE8
-_02078F88: .word sub_02078F8C
-	arm_func_end sub_02078F6C
+_02078F88: .word OSi_AllocateCartridgeBus
+	arm_func_end OS_TryLockCartridge
 
-	arm_func_start sub_02078F8C
-sub_02078F8C: ; 0x02078F8C
+	arm_func_start OSi_AllocateCartridgeBus
+OSi_AllocateCartridgeBus: ; 0x02078F8C
 	ldr r1, _02078FA0 ; =0x04000204
 	ldrh r0, [r1]
 	bic r0, r0, #0x80
@@ -221,7 +221,7 @@ sub_02078F8C: ; 0x02078F8C
 	bx lr
 	.align 2, 0
 _02078FA0: .word 0x04000204
-	arm_func_end sub_02078F8C
+	arm_func_end OSi_AllocateCartridgeBus
 
 	arm_func_start OSi_FreeCartridgeBus
 OSi_FreeCartridgeBus: ; 0x02078FA4
@@ -234,32 +234,32 @@ OSi_FreeCartridgeBus: ; 0x02078FA4
 _02078FB8: .word 0x04000204
 	arm_func_end OSi_FreeCartridgeBus
 
-	arm_func_start sub_02078FBC
-sub_02078FBC: ; 0x02078FBC
+	arm_func_start OS_LockCard
+OS_LockCard: ; 0x02078FBC
 	ldr ip, _02078FCC ; =OS_LockByWord
 	ldr r1, _02078FD0 ; =0x027FFFE0
-	ldr r2, _02078FD4 ; =sub_02078FF4
+	ldr r2, _02078FD4 ; =OSi_AllocateCardBus
 	bx ip
 	.align 2, 0
 _02078FCC: .word OS_LockByWord
 _02078FD0: .word 0x027FFFE0
-_02078FD4: .word sub_02078FF4
-	arm_func_end sub_02078FBC
+_02078FD4: .word OSi_AllocateCardBus
+	arm_func_end OS_LockCard
 
-	arm_func_start sub_02078FD8
-sub_02078FD8: ; 0x02078FD8
+	arm_func_start OS_UnlockCard
+OS_UnlockCard: ; 0x02078FD8
 	ldr ip, _02078FE8 ; =OS_UnlockByWord
 	ldr r1, _02078FEC ; =0x027FFFE0
-	ldr r2, _02078FF0 ; =sub_0207900C
+	ldr r2, _02078FF0 ; =OSi_FreeCardBus
 	bx ip
 	.align 2, 0
 _02078FE8: .word OS_UnlockByWord
 _02078FEC: .word 0x027FFFE0
-_02078FF0: .word sub_0207900C
-	arm_func_end sub_02078FD8
+_02078FF0: .word OSi_FreeCardBus
+	arm_func_end OS_UnlockCard
 
-	arm_func_start sub_02078FF4
-sub_02078FF4: ; 0x02078FF4
+	arm_func_start OSi_AllocateCardBus
+OSi_AllocateCardBus: ; 0x02078FF4
 	ldr r1, _02079008 ; =0x04000204
 	ldrh r0, [r1]
 	bic r0, r0, #0x800
@@ -267,10 +267,10 @@ sub_02078FF4: ; 0x02078FF4
 	bx lr
 	.align 2, 0
 _02079008: .word 0x04000204
-	arm_func_end sub_02078FF4
+	arm_func_end OSi_AllocateCardBus
 
-	arm_func_start sub_0207900C
-sub_0207900C: ; 0x0207900C
+	arm_func_start OSi_FreeCardBus
+OSi_FreeCardBus: ; 0x0207900C
 	ldr r1, _02079020 ; =0x04000204
 	ldrh r0, [r1]
 	orr r0, r0, #0x800
@@ -278,13 +278,13 @@ sub_0207900C: ; 0x0207900C
 	bx lr
 	.align 2, 0
 _02079020: .word 0x04000204
-	arm_func_end sub_0207900C
+	arm_func_end OSi_FreeCardBus
 
-	arm_func_start sub_02079024
-sub_02079024: ; 0x02079024
+	arm_func_start OS_ReadOwnerOfLockWord
+OS_ReadOwnerOfLockWord: ; 0x02079024
 	ldrh r0, [r0, #4]
 	bx lr
-	arm_func_end sub_02079024
+	arm_func_end OS_ReadOwnerOfLockWord
 
 	arm_func_start OS_GetLockID
 OS_GetLockID: ; 0x0207902C
@@ -322,8 +322,8 @@ _0207908C: .word 0x027FFFB0
 _02079090: .word 0xFFFFFFFD
 	arm_func_end OS_GetLockID
 
-	arm_func_start sub_02079094
-sub_02079094: ; 0x02079094
+	arm_func_start OS_ReleaseLockId
+OS_ReleaseLockId: ; 0x02079094
 	ldr r3, _020790D8 ; =0x027FFFB0
 	cmp r0, #0x60
 	bpl _020790A4
@@ -349,52 +349,52 @@ _020790C0:
 	bx lr
 	.align 2, 0
 _020790D8: .word 0x027FFFB0
-	arm_func_end sub_02079094
+	arm_func_end OS_ReleaseLockId
 
-	arm_func_start sub_020790DC
-sub_020790DC: ; 0x020790DC
+	arm_func_start OS_VsPrintf
+OS_VsPrintf: ; 0x020790DC
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r2, sp, #0xc
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl sub_02079104
+	bl OS_VsNPrintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end sub_020790DC
+	arm_func_end OS_VsPrintf
 
-	arm_func_start sub_02079104
-sub_02079104: ; 0x02079104
-	ldr ip, _02079118 ; =sub_02079144
+	arm_func_start OS_VsNPrintf
+OS_VsNPrintf: ; 0x02079104
+	ldr ip, _02079118 ; =OS_VsNPrintfExStub
 	mov r3, r2
 	mov r2, r1
 	mvn r1, #0x80000000
 	bx ip
 	.align 2, 0
-_02079118: .word sub_02079144
-	arm_func_end sub_02079104
+_02079118: .word OS_VsNPrintfExStub
+	arm_func_end OS_VsNPrintf
 
-	arm_func_start sub_0207911C
-sub_0207911C: ; 0x0207911C
+	arm_func_start OS_SnPrintf
+OS_SnPrintf: ; 0x0207911C
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r3, sp, #0x10
 	bic r3, r3, #3
 	ldr r2, [sp, #0x10]
 	add r3, r3, #4
-	bl sub_02079144
+	bl OS_VsNPrintfExStub
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end sub_0207911C
+	arm_func_end OS_SnPrintf
 
-	arm_func_start sub_02079144
-sub_02079144: ; 0x02079144
-	ldr ip, _0207914C ; =sub_02085BD4
+	arm_func_start OS_VsNPrintfExStub
+OS_VsNPrintfExStub: ; 0x02079144
+	ldr ip, _0207914C ; =OS_VsNPrintfEx
 	bx ip
 	.align 2, 0
-_0207914C: .word sub_02085BD4
-	arm_func_end sub_02079144
+_0207914C: .word OS_VsNPrintfEx
+	arm_func_end OS_VsNPrintfExStub
 

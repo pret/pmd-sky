@@ -66,7 +66,7 @@ GX_LoadTex: ; 0x02078650
 	mov r1, r7
 	mov r3, r5
 	add r2, lr, ip
-	bl sub_0207BCCC
+	bl MI_DmaCopy32
 	b _020786EC
 _020786DC:
 	mov r0, r7
@@ -85,7 +85,7 @@ _020786EC:
 	add r1, r7, r5
 	sub r3, r6, r5
 	str ip, [sp, #4]
-	bl sub_0207BE6C
+	bl MI_DmaCopy32Async
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02078724:
@@ -106,7 +106,7 @@ _0207873C:
 	mov r1, r7
 	mov r3, r6
 	str r4, [sp, #4]
-	bl sub_0207BE6C
+	bl MI_DmaCopy32Async
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02078770:
@@ -129,7 +129,7 @@ GX_EndLoadTex: ; 0x02078790
 	ldr r0, [r0]
 	cmp r0, r1
 	beq _020787AC
-	bl sub_0207C0FC
+	bl MI_WaitDma
 _020787AC:
 	ldr r0, _020787D8 ; =sClrImg
 	ldr r0, [r0, #0x14]
@@ -184,7 +184,7 @@ GX_LoadTexPltt: ; 0x02078810
 	mov r1, r6
 	add r2, lr, r5
 	str ip, [sp, #4]
-	bl sub_0207BE6C
+	bl MI_DmaCopy32Async
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 _02078864:
@@ -205,7 +205,7 @@ GX_EndLoadTexPltt: ; 0x0207887C
 	ldr r0, [r0]
 	cmp r0, r1
 	beq _02078898
-	bl sub_0207C0FC
+	bl MI_WaitDma
 _02078898:
 	ldr r0, _020788BC ; =sClrImg
 	ldr r0, [r0, #0xc]

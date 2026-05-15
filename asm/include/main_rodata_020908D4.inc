@@ -256,6 +256,7 @@
 .public __vsprintf_internal
 .public __vsprintf_internal_slice
 .public ARM9_UNKNOWN_DATA__NA_209EAAC
+.public atoi
 .public GetCharWidth
 .public IsAOrBPressed
 .public memset
@@ -263,6 +264,7 @@
 .public NOTE_MODIFY_FLAG_MSG
 .public snprintf
 .public sprintf
+.public strtol
 .public SUB30_PROJECTP_MSG
 .public sub_02005D14
 .public sub_02005D90
@@ -393,8 +395,6 @@
 .public sub_0208AE08
 .public sub_0208AE18
 .public sub_0208B200
-.public sub_0208B298
-.public sub_0208B360
 .public sub_0208B404
 .public sub_0208C5D4
 .public sub_0208C690

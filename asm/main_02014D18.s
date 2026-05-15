@@ -5467,7 +5467,7 @@ InitSoundSystem: ; 0x02018C28
 	bl SND_Init
 	ldr r0, _02018E48 ; =0x0000FFFF
 	mov r1, #0
-	bl sub_0207C9C4
+	bl Snd_LockChannel
 	add r0, sp, #0x10
 	bl DseDriver_LoadDefaultSettings
 	mov r0, #0x10000
@@ -5919,7 +5919,7 @@ sub_0201929C: ; 0x0201929C
 	bl sub_0206C6BC
 	ldr r0, _020192CC ; =0x0000FFFF
 	mov r1, #0
-	bl sub_0207C9E4
+	bl Snd_UnlockChannel
 	ldr r0, _020192C8 ; =_020AFB28
 	bl sub_02002E98
 	ldmia sp!, {r3, pc}
@@ -5935,7 +5935,7 @@ sub_020192D0: ; 0x020192D0
 	bl sub_02002CB4
 	ldr r0, _02019300 ; =0x0000FFFF
 	mov r1, #0
-	bl sub_0207C9C4
+	bl Snd_LockChannel
 	mov r0, #0
 	bl sub_0206C754
 	ldr r0, _020192FC ; =_020AFB28

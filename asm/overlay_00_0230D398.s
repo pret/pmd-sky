@@ -4283,19 +4283,19 @@ _02310C20:
 	str r0, [sp]
 	cmp r5, #0
 	beq _02310C50
-	bl ov00_022CF7F4
+	bl Soc_InetNtoA
 	mov r2, r0
 	ldr r1, _02310C98 ; =ov00_0231BF04
 	mov r0, r4
 	mov r3, r5
-	bl sub_020790DC
+	bl OS_VsPrintf
 	b _02310C88
 _02310C50:
-	bl ov00_022CF7F4
+	bl Soc_InetNtoA
 	mov r2, r0
 	ldr r1, _02310C9C ; =ov00_0231BF0C
 	mov r0, r4
-	bl sub_020790DC
+	bl OS_VsPrintf
 	b _02310C88
 _02310C68:
 	cmp r5, #0
@@ -4305,7 +4305,7 @@ _02310C68:
 	ldr r1, _02310CA0 ; =ov00_0231BF10
 	mov r0, r4
 	mov r2, r5
-	bl sub_020790DC
+	bl OS_VsPrintf
 _02310C88:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
@@ -4375,7 +4375,7 @@ _02310D4C:
 	bne _02310D28
 _02310D68:
 	add r0, r5, #1
-	bl sub_0208B360
+	bl atoi
 	cmp r0, #0
 	blt _02310D84
 	ldr r1, _02310DFC ; =0x0000FFFF
@@ -4398,7 +4398,7 @@ _02310D98:
 	cmp r4, r0
 	bne _02310DDC
 	mov r0, r8
-	bl ov00_022CF3D4
+	bl Soc_GetHostByName
 	cmp r0, #0
 	addeq sp, sp, #0x104
 	moveq r0, #0
@@ -5577,7 +5577,7 @@ ov00_02311DC0: ; 0x02311DC0
 	cmp r0, r1
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
-	bl ov00_022CF3D4
+	bl Soc_GetHostByName
 	cmp r0, #0
 	moveq r0, #0
 	ldrne r0, [r0, #0xc]
@@ -5597,7 +5597,7 @@ ov00_02311DF8: ; 0x02311DF8
 	ldr r3, _02311E34 ; =ov00_02328804
 	add r0, sp, #4
 	mov r1, #0x40
-	bl sub_0207911C
+	bl OS_SnPrintf
 	add r0, sp, #4
 _02311E24:
 	bl ov00_02311DC0
@@ -6405,7 +6405,7 @@ _02312908:
 	ldr r1, _023129A8 ; =ov00_0231CD20
 	add r0, sp, #0
 	mov r2, r7
-	bl sub_020790DC
+	bl OS_VsPrintf
 _02312960:
 	cmp r4, #0
 	ldrne r0, _023129A4 ; =ov00_023293B4
@@ -6713,7 +6713,7 @@ ov00_02312D10: ; 0x02312D10
 	mov r4, r0
 	ldr r1, _02312D40 ; =ov00_0231CD78
 	add r0, sp, #0
-	bl sub_020790DC
+	bl OS_VsPrintf
 	add r1, sp, #0
 	mov r0, r4
 	bl ov00_02312D44
@@ -6822,7 +6822,7 @@ _02312E70:
 	cmp r0, #0
 	beq _02312EB8
 	mov r0, r7
-	bl ov00_022CF3D4
+	bl Soc_GetHostByName
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -7084,7 +7084,7 @@ ov00_02313200: ; 0x02313200
 	ldr r1, _023132AC ; =ov00_0231CD8C
 	add r2, sp, #4
 	add r3, sp, #0
-	bl sub_02085338
+	bl Std_TsScanf
 	ldr r0, [sp, #4]
 	ldr lr, [sp]
 	mov r2, r0, lsr #0x18
@@ -8021,7 +8021,7 @@ _02313F0C:
 	ldr r1, _02314154 ; =ov00_0231CDB0
 	add r2, sp, #8
 	sub r0, r4, #0xf
-	bl sub_02085338
+	bl Std_TsScanf
 	ldr r0, [sp, #8]
 	strb r0, [r8, #0x110]
 	ldr r0, [r8, #0xa8]
@@ -8216,12 +8216,12 @@ _02314208:
 	mov r0, r7
 	mov r1, fp
 	mov r2, r8
-	bl sub_020790DC
+	bl OS_VsPrintf
 	mov r0, r6
 	mov r1, r7
 	bl ov00_02312D44
 	ldr r0, [r5, r8, lsl #2]
-	bl ov00_022CF7F4
+	bl Soc_InetNtoA
 	mov r1, r0
 	mov r0, r6
 	bl ov00_02312D44
@@ -8917,7 +8917,7 @@ ov00_02314B48: ; 0x02314B48
 	cmp r7, #0
 	ble _02314CC0
 	mov r0, r8
-	bl sub_0208B360
+	bl atoi
 	str r0, [sb, #0x20]
 	mov r1, sb
 	add r0, sl, #8
@@ -9411,7 +9411,7 @@ ov00_023151CC: ; 0x023151CC
 	mov r5, r0
 	ldr r1, _02315200 ; =ov00_0231D3A0
 	add r0, sp, #0
-	bl sub_020790DC
+	bl OS_VsPrintf
 	add r2, sp, #0
 	mov r0, r5
 	mov r1, r4
@@ -9496,7 +9496,7 @@ _023152F0:
 	cmp r1, #0
 	moveq r0, r4
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl sub_0208B360
+	bl atoi
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02315304: .word ov00_0231D3A4
@@ -9781,7 +9781,7 @@ _02315644:
 	add r0, sp, #0xa
 	mov r2, r8
 	mov r3, r6
-	bl sub_020790DC
+	bl OS_VsPrintf
 	mov r0, fp
 	add r1, sp, #0xa
 	mov r2, sl
@@ -9941,7 +9941,7 @@ _02315888:
 	add sb, sb, r0
 	sub r8, r8, r0
 	mov r0, r4
-	bl sub_020790DC
+	bl OS_VsPrintf
 	mov r2, r7
 	mov r0, sl
 	mov r1, r4
@@ -10191,7 +10191,7 @@ _02315B5C:
 	ldr r1, _02315C28 ; =ov00_0231D3C4
 	mov r2, r7
 	add r0, fp, r5
-	bl sub_020790DC
+	bl OS_VsPrintf
 	add r5, r5, r0
 	ldrb r1, [sb, r6]
 	mov r0, sl
@@ -10705,7 +10705,7 @@ ov00_02316190: ; 0x02316190
 _023161C8:
 	ldr r1, _023162B4 ; =ov00_0231D3E0
 	add r2, r4, #0xc
-	bl sub_020790DC
+	bl OS_VsPrintf
 _023161D4:
 	ldr r1, _023162B8 ; =0x0000EE70
 	mov r2, #2
@@ -10718,7 +10718,7 @@ _023161D4:
 	cmp r0, r1
 	bne _02316240
 	add r0, sp, #8
-	bl ov00_022CF3D4
+	bl Soc_GetHostByName
 	cmp r0, #0
 	addeq sp, sp, #0x88
 	moveq r0, #2

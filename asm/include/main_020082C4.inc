@@ -20,6 +20,7 @@
 .public Debug_FatalError
 .public Debug_Print0
 .public DebugPrintSystemClock
+.public FS_CloseFile
 .public MemAlloc
 .public strcpy
 .public sub_02002778
@@ -60,4 +61,3 @@
 .public sub_02007D94
 .public sub_02007E2C
 .public sub_02008C68
-.public sub_0207F70C
