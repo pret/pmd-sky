@@ -6,6 +6,20 @@ extern s32 GetMonsterIdFromSpawnEntry(struct monster_spawn_entry*);
 extern u32 GetSpriteSize(s32);
 extern struct dungeon *DUNGEON_PTR;
 
+s32 CopySpawnEntriesMaster(struct monster_spawn_entry out[], s32 idx_out) {
+    for(s32 i = 0; i < 16; i++) {
+        s32 monster_id = GetMonsterIdFromSpawnEntry(&(DUNGEON_PTR->spawn_entries_master[i]));
+        if(monster_id == 0) {
+            break;
+        }
+
+        out[idx_out] = DUNGEON_PTR->spawn_entries_master[i];
+        idx_out++;
+    }
+
+    return idx_out;
+}
+
 s32 MonsterSpawnListPartialCopy(struct monster_spawn_entry entry_out[], s32 idx_out) {
     for(s32 i = 0; i < 16; i++) {
         s32 monster_id = GetMonsterIdFromSpawnEntry(&(DUNGEON_PTR->spawn_entries_master[i]));
