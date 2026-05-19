@@ -3,6 +3,8 @@
 #include "dungeon.h"
 #include "dungeon_mode.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 extern void TryRevealAttackedTrap(struct position* pos, int param1);
 extern bool32 PositionIsOnHiddenStairs(struct position* pos);
 extern void HiddenStairsTrigger(bool32 param0);

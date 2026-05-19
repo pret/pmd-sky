@@ -2,6 +2,8 @@
 
 #include "dungeon.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 TeamMemberHasExclusiveItemEffectActive(u8);
 
 bool8 ShouldBoostKecleonShopSpawnChance(void)

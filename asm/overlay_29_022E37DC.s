@@ -5618,37 +5618,4 @@ _022E7CF4: .word DUNGEON_PTR
 _022E7CF8: .word 0x0002C966
 #endif
 	arm_func_end MonsterSpawnListPartialCopy
-
-	arm_func_start ov29_022E7CFC
-ov29_022E7CFC: ; 0x022E7CFC
-#ifdef JAPAN
-#define OV29_022E7CFC_OFFSET -0xA4
-#else
-#define OV29_022E7CFC_OFFSET 0
-#endif
-	stmdb sp!, {r3, lr}
-	ldr r1, _022E7D48 ; =DUNGEON_PTR
-	ldr r0, [r1]
-	add r0, r0, #0x3000
-	ldrb r2, [r0, #0xe28 + OV29_022E7CFC_OFFSET]
-	cmp r2, #0
-	ldmneia sp!, {r3, pc}
-	mov r2, #1
-	strb r2, [r0, #0xe28 + OV29_022E7CFC_OFFSET]
-	ldr r0, [r1]
-	mov r1, #0
-#ifdef JAPAN
-	add r0, r0, #0x124
-#else
-	add r0, r0, #0x174
-#endif
-	add r0, r0, #0x3800
-	bl CopySpawnEntriesMaster
-	ldr r1, _022E7D48 ; =DUNGEON_PTR
-	ldr r1, [r1]
-	add r1, r1, #0x3000
-	str r0, [r1, #0xe20 + OV29_022E7CFC_OFFSET]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_022E7D48: .word DUNGEON_PTR
-	arm_func_end ov29_022E7CFC
+ 

@@ -20,6 +20,8 @@
 #define CURVED_PROJECTILE_LOG_MESSAGE_3 0xbe3
 #endif
 
+extern struct dungeon *DUNGEON_PTR[];
+
 extern bool8 ov29_022E2CA0(struct position *pos);
 extern void ov29_0234B4CC(bool8 val);
 extern s32 SinAbs4096(s32 x);

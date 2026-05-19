@@ -4,6 +4,8 @@
 #include "util.h"
 #include "main_02051760.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 EntityIsValid__022F7364(struct entity *entity)
 {
     if (entity == NULL)

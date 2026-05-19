@@ -5,6 +5,8 @@
 #include "dungeon_range_2.h"
 #include "main_0208655C.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 IsPositionActuallyInSight(struct position *origin, struct position *target, bool8 user_has_dropeye)
 {
     s16 visibility = GetVisibilityRange();

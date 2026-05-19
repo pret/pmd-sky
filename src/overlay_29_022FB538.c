@@ -5,6 +5,8 @@
 #include "overlay_29_022F7364.h"
 #include "targeting.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 extern u8 GetScenarioBalanceVeneer(); 
 extern u32 GetSpawnThreshold();
 

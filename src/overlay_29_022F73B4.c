@@ -3,6 +3,8 @@
 #include "util.h"
 #include "enums.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool32 FloorNumberIsEven() {
     struct dungeon *dungeon = DUNGEON_PTR[0];
     if (dungeon->id == DUNGEON_LABYRINTH_CAVE && dungeon->floor == 10) return 0;

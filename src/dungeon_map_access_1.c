@@ -4,6 +4,8 @@
 #include "secondary_terrain_types.h"
 #include "tileset.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 IsTileGround(struct tile *tile)
 {
     bool8 is_ground = FALSE;

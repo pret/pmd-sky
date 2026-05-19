@@ -11,6 +11,8 @@ void sub_020091B0(s32, s32);
 void StartFadeDungeonWrapper(s32, s32, s32);
 void ov29_0234C738(s32);
 
+extern struct dungeon *DUNGEON_PTR[];
+
 struct dungeon* DungeonAlloc(void)
 {
     #ifdef JAPAN

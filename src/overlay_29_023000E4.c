@@ -1,6 +1,8 @@
 #include "overlay_29_023000E4.h"
 #include "dungeon_util_static.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 EntityIsValid__023000E4(struct entity *entity)
 {
     if (entity == NULL)

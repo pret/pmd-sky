@@ -7,6 +7,8 @@
 #include "overlay_29_02336428.h"
 #include "position_util.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 ShouldMonsterHeadToStairs(struct entity *entity)
 {
     u8 stairs_room = GetStairsRoom();

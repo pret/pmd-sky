@@ -3,6 +3,8 @@
 #include "dungeon_util_static.h"
 #include "overlay_29_022F7364.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 struct entity* FindMonsterWithBehavior(enum monster_behavior monster_behavior)
 {
     for (s32 i = 0; i < DUNGEON_MAX_POKEMON; i++)

@@ -4,6 +4,7 @@
 
 // file starts at 0x022e9020
 
+extern struct dungeon *DUNGEON_PTR[];
 extern struct entity *LEADER_PTR;
 
 struct entity* GetLeader()

@@ -27,6 +27,7 @@
 
 bool8 AI_CAN_ATTACK_IN_DIRECTION[NUM_DIRECTIONS] = {0};
 u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS] = {0};
+extern struct dungeon *DUNGEON_PTR[];
 
 // AI_POTENTIAL_ATTACK_TARGET_WEIGHTS is defined twice within AiConsiderMove, so it needs two separate symbols in ASM until the function is matched.
 #ifdef NONMATCHING

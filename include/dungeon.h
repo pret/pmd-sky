@@ -12,8 +12,6 @@
 #define DUNGEON_MAX_SIZE_Y 32
 #define CORRIDOR_ROOM 0xFF
 
-extern struct dungeon *DUNGEON_PTR[];
-
 enum terrain_type
 {
     // These 3 seem to indicate the 'main' type of the terrain. See helper functions for how they're set.
@@ -1217,9 +1215,8 @@ struct dungeon {
     u8 field_0x3e25;
     u8 field_0x3e26;
     u8 field_0x3e27;
-    // 0x3E28: Related in some way to the spawn entries on the floor. Does something about them
-    // if false, then set to true.
-    bool8 unk_spawn_entry_id_check;
+    // 0x3E28: Set to true after spawn entries are copied. Prevents copying spawn entries more than once.
+    bool8 spawn_entries_copied;
     u8 field_0x3e29;
     u8 field_0x3e2a;
     u8 field_0x3e2b;

@@ -710,7 +710,7 @@ _022DF574:
 	bl ov29_022E8708
 	bl ov29_022DD5B4
 	bl ov29_023369F8
-	bl ov29_022E7CFC
+	bl CopySpawnEntriesOnce
 	bl ov29_022F7130
 	cmp r5, #0
 	bne _022DF5C4
