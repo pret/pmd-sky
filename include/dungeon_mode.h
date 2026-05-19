@@ -837,7 +837,7 @@ struct monster_spawn_entry {
     u16 level_mult_512; // 0x0: Spawn level << 9
     // 0x2: Incremental spawn weights for this entry.
     // [0] = normal spawn weight, [1] = monster house spawn weight
-    u16 incremental_spawn_weight[2];
+    s16 incremental_spawn_weight[2];
     // 0x6: Monster id. Depending on where this struct is used, it can have values above 600
     // to list secondary gender entries.
     enum monster_id id;

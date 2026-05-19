@@ -3,6 +3,7 @@
 .public ChangeGiratinaFormIfSkyDungeon
 .public ClearHiddenStairs
 .public CloseFixedBin
+.public CopySpawnEntriesOnce
 .public CountItemsOnFloorForAcuteSniffer
 .public Debug_Print0
 .public DeleteAllMonsterSpriteFiles
