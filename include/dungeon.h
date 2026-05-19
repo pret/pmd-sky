@@ -99,6 +99,14 @@ struct dungeon_generation_info {
     // There's another 6 words that look like spawn positions right after these 4
 };
 
+// Thresholds are ascending cumulative weights (0-10000)
+struct item_spawn_weights {
+    s16 category_threshold[0x8];
+    s16 unknown_1[0x8];
+    s16 item_threshold[0x16c]; 
+    s16 unknown_2[0x40c];
+}; 
+
 // Dungeon state
 struct dungeon {
     u8 field_0x0; // 0x0: Initialized to 0x0.
@@ -1640,41 +1648,10 @@ struct dungeon {
     // 0x286B1: Initialized to 0xFF, then set to a copy of dungeon::0x74B
     u8 field_0x286b1;
     struct floor_properties floor_properties; // 0x286B2: Properties about the current floor
-    // 0x286D2: Maybe a 0x10 long array?
-    u16 field_0x286d2;
-    u16 field_0x286d4;
-    u16 field_0x286d6;
-    u16 field_0x286d8;
-    u16 field_0x286da;
-    u16 field_0x286dc;
-    u16 field_0x286de;
-    u16 field_0x286e0;
-    u16 field_0x286e2;
-    u16 field_0x286e4;
-    u16 field_0x286e6;
-    u16 field_0x286e8;
-    u16 field_0x286ea;
-    u16 field_0x286ec;
-    u16 field_0x286ee;
-    u16 field_0x286f0;
-    // 0x286F2: Spawn weights for regular items. It's the unrolled form of this floor's regular
-    // item spawn list.
-    // It has enough space to hold 1416 entries (1400 items + 16 categories), but only the
-    // first 0x16C slots are used since spawn lists can't encode item IDs larger than that.
-    u16 regular_item_weights[1416];
-    // 0x29202: Spawn weights for Kecleon shop items. Same format as regular_item_weights.
-    u16 kecleon_item_weights[1416];
-    // 0x29D12: Spawn weights for monster house items. Same format as regular_item_weights.
-    u16 monster_house_item_weights[1416];
-    // 0x2A822: Spawn weights for buried items. Same format as regular_item_weights.
-    u16 buried_item_weights[1416];
-    // 0x2B332: Spawn weights for bazaar grab bag items. Same format as regular_item_weights.
-    u16 grab_bag_item_weights[1416];
-    // 0x2BE42: Spawn weights for secret room items in treasure boxes.
-    // Same format as regular_item_weights? For some reason the weights for the secret rooms
-    // are of a different length than the other item weight lists before it. The trap weights
-    // appear to overlap what would be entries 1400-1415.
-    u16 secret_room_item_weights[1400];
+    // Spawn weights for items in different contexts. 
+    // 0 = regular, 1 = Kecleon shop, 2 = monster house, 3  buried, 
+    // 4 = bazaar, 5 = secret room
+    struct item_spawn_weights item_spawn_weights[6];
     // 0x2C932: Spawn weights for traps.
     u16 trap_weights[25];
     // 0x2C964: List of spawn entries on this floor

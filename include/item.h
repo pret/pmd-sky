@@ -1426,6 +1426,7 @@ enum item_category {
     CATEGORY_TREASURE_BOXES_2 = 13,
     CATEGORY_TREASURE_BOXES_3 = 14,
     CATEGORY_EXCLUSIVE_ITEMS = 15,
+    CATEGORY_DUMMY = 16,
 };
 
 enum item_flag {

@@ -501,7 +501,7 @@ _023447C4:
 	cmp r0, #0x32
 	movlt r6, #0x46
 	blt _023447FC
-	bl ov29_022E7BB8
+	bl GetRandomBazaarItem
 	mov r6, r0
 _023447FC:
 	mov r1, r5

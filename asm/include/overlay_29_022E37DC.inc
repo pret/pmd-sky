@@ -19,7 +19,6 @@
 .public FloorNumberIsEven
 .public GetEffectAnimationField0x19
 .public GetFloorType
-.public GetItemCategoryVeneer
 .public GetLeader
 .public GetMonsterGenderVeneer
 .public GetMonsterIdFromSpawnEntry
