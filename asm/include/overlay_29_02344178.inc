@@ -12,6 +12,7 @@
 .public GetMissionEnemyMinionGroup
 .public GetMissionTargetEnemy
 .public GetMoneyCarried
+.public GetRandomBazaarItem
 .public InitStandardItem
 .public IsBagFull
 .public IsItemInBag

@@ -20,6 +20,7 @@
 .public GetOutlawLeaderLevel
 .public GetOutlawLevel
 .public GetOutlawMinionLevel
+.public GetRandomSecretRoomItem
 .public GetResolvedPerformanceProgressFlag
 .public GetSpecialTargetItem
 .public GetTileSafe

@@ -3,6 +3,7 @@
 #include "enums.h"
 #include "wan.h"
 
+extern struct dungeon *DUNGEON_PTR[];
 extern struct wan_table *WAN_TABLE;
 extern s16 GetSpriteIndex__020526EC(s16 monster_id);
 extern s16 ReplaceWanFromBinFile(struct wan_table *wan_table, s16 wan_id, s16 pack_id, s16 file_index, bool8 compressed);

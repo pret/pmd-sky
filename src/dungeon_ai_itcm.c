@@ -29,6 +29,8 @@
 
 #define REGULAR_ATTACK_INDEX 4
 
+extern struct dungeon *DUNGEON_PTR[];
+
 // https://decomp.me/scratch/zg7V6
 #ifdef NONMATCHING
 void ChooseAiMove(struct entity *monster)

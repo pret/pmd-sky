@@ -6,6 +6,8 @@
 #include "fixed_room_data_1.h"
 #include "util.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 IsMonsterLoneOutlaw(struct monster* monster_info)
 {
     return IsBehaviorLoneOutlaw(monster_info->monster_behavior);

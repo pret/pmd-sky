@@ -2,6 +2,8 @@
 
 #include "dungeon.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 IsSecretBazaar()
 {
     return DUNGEON_PTR[0]->gen_info.fixed_room_id==FIXED_SECRET_BAZAAR;

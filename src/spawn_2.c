@@ -1,7 +1,9 @@
 #include "dg_random.h"
 #include "dungeon.h"
 #include "overlay_29_022F73B4.h"
-#include "spawn.h"
+#include "spawn_2.h"
+
+extern struct dungeon *DUNGEON_PTR[];
 
 extern s32 GetMonsterIdFromSpawnEntry(struct monster_spawn_entry *);
 extern s32 GetMonsterLevelFromSpawnEntry(struct monster_spawn_entry *);

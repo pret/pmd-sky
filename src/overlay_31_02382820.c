@@ -6,6 +6,8 @@
 #include "weather.h"
 #include "main_02001188.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 extern const u8 DUNGEON_MENU_SWITCH_STR1[];// = "[dungeon:0]";
 
 extern struct struct_1* OVERLAY31_UNKNOWN_POINTER__NA_238A260[2];

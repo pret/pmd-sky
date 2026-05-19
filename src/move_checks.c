@@ -17,6 +17,8 @@
 #include "trap.h"
 #include "weather.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 extern bool8 GendersEqualNotGenderless(s16 monster1, s16 monster2);
 
 // https://decomp.me/scratch/TnODN

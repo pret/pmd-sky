@@ -40,6 +40,8 @@
 #define TURN_RIGHT_90 4
 #define TURN_LEFT_135 5
 
+extern struct dungeon *DUNGEON_PTR[];
+
 struct can_move_in_direction_info
 {
     bool8 try_turn;

@@ -1672,7 +1672,7 @@ _023434D8:
 	bl IsSecretRoom
 	cmp r0, #0
 	beq _023434F0
-	bl ov29_022E7BD0
+	bl GetRandomSecretRoomItem
 	mov r3, r0
 	b _02343528
 _023434F0:

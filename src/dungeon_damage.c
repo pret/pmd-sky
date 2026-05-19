@@ -12,6 +12,8 @@
 
 #define NUM_EFFECTIVENESS 4
 
+extern struct dungeon *DUNGEON_PTR[];
+
 s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_id move_type)
 {
     s32 weight = 1;

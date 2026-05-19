@@ -1,6 +1,7 @@
 #include "dungeon_map_access.h"
 #include "dungeon.h"
 
+extern struct dungeon *DUNGEON_PTR[];
 extern struct tile DEFAULT_TILE_COPY;
 extern struct tile* DEFAULT_TILE;
 

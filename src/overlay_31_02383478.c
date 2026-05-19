@@ -3,6 +3,7 @@
 #include "dungeon_map_access.h"
 #include "overlay_29_022E1610.h"
 
+extern struct dungeon *DUNGEON_PTR[];
 extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
 extern struct bag_items* BAG_ITEMS_PTR_MIRROR;
 extern u32 OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0;

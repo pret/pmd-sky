@@ -16,6 +16,8 @@
 #include "secondary_terrain_types.h"
 #include "targeting.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 CanMonsterMoveOrSwapWithAllyInAnyDirection(struct entity *monster)
 {
     for (u8 i = 0; i < NUM_DIRECTIONS; i++)

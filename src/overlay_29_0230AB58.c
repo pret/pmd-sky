@@ -3,6 +3,8 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 bool8 ScrappyShouldActivate(struct entity *attacker, struct entity *defender, enum type_id attack_type)
 {
     for (s16 i = 0; i < 2; i++)

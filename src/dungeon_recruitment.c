@@ -33,6 +33,7 @@ extern const s16 ROCK_HORN_RECRUIT_BOOST;
 extern const s16 GRASS_CORNET_RECRUIT_BOOST;
 extern const s16 SKY_MELODICA_RECRUIT_BOOST;
 
+extern struct dungeon *DUNGEON_PTR[];
 extern s16 RECRUITMENT_LEVEL_BOOST_TABLE[];
 
 bool8 SpecificRecruitCheck(u32 monster_id)

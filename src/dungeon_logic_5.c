@@ -9,6 +9,8 @@
 #include "overlay_29_023000E4.h"
 #include "special_move_types.h"
 
+extern struct dungeon *DUNGEON_PTR[];
+
 extern s32 GetMoveBasePower(struct move*);
 
 bool8 CanSeeTeammate(struct entity *monster)

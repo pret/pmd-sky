@@ -3716,4 +3716,13 @@ enum dungeon_mode {
     DMODE_OPEN_AND_REQUEST = 3, // Dunegon is unlocked and cleared
 };
 
+enum spawn_weight_type {
+    SPAWN_REGULAR = 0,
+    SPAWN_KECLEON_SHOP = 1,
+    SPAWN_MONSTER_HOUSE = 2,
+    SPAWN_BURIED = 3,
+    SPAWN_BAZAAR = 4,
+    SPAWN_SECRET_ROOM = 5,
+};
+
 #endif //PMDSKY_ENUMS_H
