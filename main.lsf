@@ -506,6 +506,7 @@ Overlay OVY_29
 	Object asm/overlay_29_022E335C.o
 	Object src/dg_effect.o
 	Object asm/overlay_29_022E37DC.o
+	Object src/random_trap.o
 	Object src/spawn_1.o
 	Object src/spawn_2.o
 	Object asm/overlay_29_022E7EC4.o

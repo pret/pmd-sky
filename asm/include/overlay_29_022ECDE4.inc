@@ -14,7 +14,7 @@
 .public LoadWteFromFileDirectory
 .public memset
 .public MemZero
-.public ov29_022E7A30
+.public GetRandomTrapId
 .public ov29_02352690
 .public ov29_02352698
 .public ov29_023526A0
