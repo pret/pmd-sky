@@ -20,7 +20,7 @@
 .public LogMessageByIdWithPopupCheckUserUnknown
 .public ov29_022E2CA0
 .public ov29_022E58B0
-.public ov29_022E7A30
+.public GetRandomTrapId
 .public ov29_022F9840
 .public PlaySeByIdIfShouldDisplayEntity
 .public SpawnTrap

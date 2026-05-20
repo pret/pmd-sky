@@ -852,7 +852,7 @@ _022ED8C4:
 	tst r0, #0x40
 	movne r0, r4
 	bne _022ED8FC
-	bl ov29_022E7A30
+	bl GetRandomTrapId
 _022ED8FC:
 	cmp r0, #0x11
 	mov r1, r6

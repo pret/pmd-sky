@@ -19,7 +19,7 @@ TrySpawnTrap: ; 0x022EDCBC
 	mov sb, #0
 	b _022EDD04
 _022EDCF0:
-	bl ov29_022E7A30
+	bl GetRandomTrapId
 	mov r7, r0
 	cmp r7, #0x11
 	bne _022EDD0C
