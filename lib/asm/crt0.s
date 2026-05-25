@@ -80,7 +80,7 @@ _020008D4:
 	str r0, [r1]
 	bl _fp_init
 	bl sub_02000B98
-	bl sub_020908A8
+	bl _call_static_initializers
 	ldr r1, _0200094C ; =NitroMain
 	ldr lr, _02000950 ; =0xFFFF0000
 	tst sp, #4

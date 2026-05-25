@@ -35,6 +35,6 @@
 .public _020B3338
 .public _020B333C
 .public _022BCA70
-.public sub_02086450
-.public sub_02086C64
+.public _msl_strnicmp__02086FFC
+.public NotANumber
 .public sub_020895F4

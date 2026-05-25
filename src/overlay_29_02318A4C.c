@@ -18,7 +18,7 @@ bool8 IsFloating(struct entity *entity)
     return FALSE;
 }
 
-void ov29_02318A90(struct entity* entity, s8 value)
+void SetTwoTurnInvincibility(struct entity* entity, s8 value)
 {
     if (IsMonster__02318AB0(entity))
         GetEntInfo(entity)->two_turn_move_invincible = value;

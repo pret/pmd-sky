@@ -1714,7 +1714,7 @@ FlashLeaderIcon: ; 0x02339A24
 	bic r1, r1, #0x2000
 	orr r6, r6, r2
 	orr r0, r3, #0xc000
-	ldr r3, _02339CC4 ; =_020AFC4C
+	ldr r3, _02339CC4 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrh r5, [sp, #6]
 	ldr r2, _02339CC8 ; =0xFFFF000F
 	strh r1, [sp]
@@ -1784,7 +1784,7 @@ _02339BC0:
 	strh r0, [sp, #4]
 	strh r1, [sp]
 	ldrsh r1, [ip, #4]
-	ldr r4, _02339CC4 ; =_020AFC4C
+	ldr r4, _02339CC4 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrh r2, [sp, #6]
 	ldr r0, [r4]
 	mov r1, r1, lsl #0x16
@@ -1800,7 +1800,7 @@ _02339CB0:
 _02339CB8: .word DUNGEON_PTR
 _02339CBC: .word ov29_0235376C
 _02339CC0: .word ov29_0237CFB8
-_02339CC4: .word _020AFC4C
+_02339CC4: .word OBJ_GRAPHICS_CONTROLS_PTR
 _02339CC8: .word 0xFFFF000F
 _02339CCC: .word 0x0000013F
 _02339CD0: .word 0x000001DD

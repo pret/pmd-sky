@@ -1,4 +1,5 @@
 #pragma once
+.public _call_static_initializers
 .public _fp_init
 .public HardwareInterrupt
 .public NitroMain
@@ -8,4 +9,3 @@
 .public SDK_AUTOLOAD_START
 .public SDK_STATIC_BSS_END
 .public SDK_STATIC_BSS_START
-.public sub_020908A8

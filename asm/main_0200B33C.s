@@ -152,8 +152,8 @@ sub_0200B500: ; 0x0200B500
 	bx lr
 	arm_func_end sub_0200B500
 
-	arm_func_start sub_0200B508
-sub_0200B508: ; 0x0200B508
+	arm_func_start InitOamInfo
+InitOamInfo: ; 0x0200B508
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -179,19 +179,19 @@ _0200B550:
 	bl MemAlloc
 	str r0, [r5, #0x1c]
 	mov r0, r5
-	bl sub_0200B67C
+	bl ClearGroupedOamObjsAndGroups
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0200B508
+	arm_func_end InitOamInfo
 
-	arm_func_start sub_0200B570
-sub_0200B570: ; 0x0200B570
+	arm_func_start SetShouldCopyToOam
+SetShouldCopyToOam: ; 0x0200B570
 	mov r1, #1
 	strb r1, [r0, #0x14]
 	bx lr
-	arm_func_end sub_0200B570
+	arm_func_end SetShouldCopyToOam
 
-	arm_func_start sub_0200B57C
-sub_0200B57C: ; 0x0200B57C
+	arm_func_start GroupOamObjs
+GroupOamObjs: ; 0x0200B57C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, [r0, #8]
 	cmp ip, #0
@@ -243,10 +243,10 @@ _0200B61C:
 	mov r1, #0
 	str r1, [r0, #8]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0200B57C
+	arm_func_end GroupOamObjs
 
-	arm_func_start sub_0200B630
-sub_0200B630: ; 0x0200B630
+	arm_func_start CopyAttributesToOam
+CopyAttributesToOam: ; 0x0200B630
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldrb r0, [r6, #0x14]
@@ -266,10 +266,10 @@ sub_0200B630: ; 0x0200B630
 	mov r0, #0
 	strb r0, [r6, #0x14]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0200B630
+	arm_func_end CopyAttributesToOam
 
-	arm_func_start sub_0200B67C
-sub_0200B67C: ; 0x0200B67C
+	arm_func_start ClearGroupedOamObjsAndGroups
+ClearGroupedOamObjsAndGroups: ; 0x0200B67C
 	stmdb sp!, {r3, lr}
 	ldr ip, [r0, #0x1c]
 	mov lr, #0
@@ -303,10 +303,10 @@ _0200B6E0:
 	cmp ip, r1
 	blt _0200B6D8
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0200B67C
+	arm_func_end ClearGroupedOamObjsAndGroups
 
-	arm_func_start sub_0200B6F0
-sub_0200B6F0: ; 0x0200B6F0
+	arm_func_start AddObjToUngroupedOamObjs
+AddObjToUngroupedOamObjs: ; 0x0200B6F0
 	stmdb sp!, {r4, lr}
 	ldr r4, [r0, #8]
 	ldr r3, [r0]
@@ -338,7 +338,7 @@ _0200B71C:
 	ldr r0, [r0, #0xc]
 	strh r2, [r0, r3]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0200B6F0
+	arm_func_end AddObjToUngroupedOamObjs
 
 	arm_func_start sub_0200B768
 sub_0200B768: ; 0x0200B768

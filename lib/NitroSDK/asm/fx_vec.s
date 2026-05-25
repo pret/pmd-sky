@@ -300,7 +300,7 @@ _02076048:
 _0207606C: .word FX_AtanIdxTable_
 	arm_func_end FX_Atan2Idx
 
-	arm_func_start sub_02076070
-sub_02076070: ; 0x02076070
+	arm_func_start FX_Init
+FX_Init: ; 0x02076070
 	bx lr
-	arm_func_end sub_02076070
+	arm_func_end FX_Init

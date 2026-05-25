@@ -238,7 +238,7 @@ _02345958:
 	mov r2, sl
 	orr r0, r0, r3
 	strh r0, [r1, #4]
-	ldr r0, _02345A38 ; =_020AFC4C
+	ldr r0, _02345A38 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, _02345A28 ; =ov29_0237C864
 	ldr r0, [r0]
 	bl sub_0201B9F8
@@ -258,7 +258,7 @@ _02345A28: .word ov29_0237C864
 _02345A2C: .word ov29_023537BC
 _02345A30: .word ov29_023537B4
 _02345A34: .word 0xFFFF000F
-_02345A38: .word _020AFC4C
+_02345A38: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end ov29_023457C8
 
 	arm_func_start SpawnDroppedItemWrapper

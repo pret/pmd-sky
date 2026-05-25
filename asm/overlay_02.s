@@ -3,10 +3,10 @@
 
 	.text
 
-	arm_func_start ov02_02329520
-ov02_02329520: ; 0x02329520
+	arm_func_start InitWfcSettingsOverlay
+InitWfcSettingsOverlay: ; 0x02329520
 	stmdb sp!, {r4, lr}
-	bl Dwc_CleanupInet__022E1284
+	bl Dwc_CleanupInet
 	bl ov00_022BDC5C
 	ldr r0, _0232955C ; =0x00040020
 	mov r1, #8
@@ -27,7 +27,7 @@ ov02_02329520: ; 0x02329520
 	mov r1, #0
 	mov r2, #0x10
 #endif
-	bl ov02_023388B4
+	bl Dwc_StartUtility
 	mov r0, r4
 	bl MemFree
 	ldmia sp!, {r4, pc}
@@ -36,20 +36,20 @@ _0232955C: .word 0x00040020
 #ifdef EUROPE
 _02329D88: .word ov02_023503F4_EU
 #endif
-	arm_func_end ov02_02329520
+	arm_func_end InitWfcSettingsOverlay
 
-	arm_func_start ov02_02329560
-ov02_02329560: ; 0x02329560
+	arm_func_start Nns_FndInitList
+Nns_FndInitList: ; 0x02329560
 	mov r2, #0
 	str r2, [r0]
 	str r2, [r0, #4]
 	strh r2, [r0, #8]
 	strh r1, [r0, #0xa]
 	bx lr
-	arm_func_end ov02_02329560
+	arm_func_end Nns_FndInitList
 
-	arm_func_start ov02_02329578
-ov02_02329578: ; 0x02329578
+	arm_func_start SetFirstObject
+SetFirstObject: ; 0x02329578
 	ldrh r3, [r0, #0xa]
 	mov r2, #0
 	add ip, r1, r3
@@ -61,15 +61,15 @@ ov02_02329578: ; 0x02329578
 	add r1, r1, #1
 	strh r1, [r0, #8]
 	bx lr
-	arm_func_end ov02_02329578
+	arm_func_end SetFirstObject
 
-	arm_func_start ov02_023295A4
-ov02_023295A4: ; 0x023295A4
+	arm_func_start Nns_FndAppendListObject
+Nns_FndAppendListObject: ; 0x023295A4
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0]
 	cmp r2, #0
 	bne _023295BC
-	bl ov02_02329578
+	bl SetFirstObject
 	ldmia sp!, {r3, pc}
 _023295BC:
 	ldrh ip, [r0, #0xa]
@@ -87,15 +87,15 @@ _023295BC:
 	add r1, r1, #1
 	strh r1, [r0, #8]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_023295A4
+	arm_func_end Nns_FndAppendListObject
 
-	arm_func_start ov02_023295F8
-ov02_023295F8: ; 0x023295F8
+	arm_func_start Nns_FndPrependListObject
+Nns_FndPrependListObject: ; 0x023295F8
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0]
 	cmp r2, #0
 	bne _02329610
-	bl ov02_02329578
+	bl SetFirstObject
 	ldmia sp!, {r3, pc}
 _02329610:
 	ldrh r3, [r0, #0xa]
@@ -112,22 +112,22 @@ _02329610:
 	add r1, r1, #1
 	strh r1, [r0, #8]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_023295F8
+	arm_func_end Nns_FndPrependListObject
 
-	arm_func_start ov02_02329648
-ov02_02329648: ; 0x02329648
+	arm_func_start Nns_FndInsertListObject
+Nns_FndInsertListObject: ; 0x02329648
 	stmdb sp!, {r3, lr}
 	cmp r1, #0
 	bne _02329660
 	mov r1, r2
-	bl ov02_023295A4
+	bl Nns_FndAppendListObject
 	ldmia sp!, {r3, pc}
 _02329660:
 	ldr r3, [r0]
 	cmp r1, r3
 	bne _02329678
 	mov r1, r2
-	bl ov02_023295F8
+	bl Nns_FndPrependListObject
 	ldmia sp!, {r3, pc}
 _02329678:
 	ldrh lr, [r0, #0xa]
@@ -143,10 +143,10 @@ _02329678:
 	add r1, r1, #1
 	strh r1, [r0, #8]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02329648
+	arm_func_end Nns_FndInsertListObject
 
-	arm_func_start ov02_023296AC
-ov02_023296AC: ; 0x023296AC
+	arm_func_start Nns_FndRemoveListObject
+Nns_FndRemoveListObject: ; 0x023296AC
 	stmdb sp!, {r3, lr}
 	ldrh ip, [r0, #0xa]
 	ldr r3, [r1, ip]
@@ -171,34 +171,34 @@ ov02_023296AC: ; 0x023296AC
 	sub r1, r1, #1
 	strh r1, [r0, #8]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_023296AC
+	arm_func_end Nns_FndRemoveListObject
 
-	arm_func_start ov02_0232970C
-ov02_0232970C: ; 0x0232970C
+	arm_func_start Nns_FndGetNextListObject
+Nns_FndGetNextListObject: ; 0x0232970C
 	cmp r1, #0
 	ldreq r0, [r0]
 	ldrneh r0, [r0, #0xa]
 	addne r0, r1, r0
 	ldrne r0, [r0, #4]
 	bx lr
-	arm_func_end ov02_0232970C
+	arm_func_end Nns_FndGetNextListObject
 
-	arm_func_start ov02_02329724
-ov02_02329724: ; 0x02329724
+	arm_func_start Nns_FndGetPrevListObject
+Nns_FndGetPrevListObject: ; 0x02329724
 	cmp r1, #0
 	ldreq r0, [r0, #4]
 	ldrneh r0, [r0, #0xa]
 	ldrne r0, [r1, r0]
 	bx lr
-	arm_func_end ov02_02329724
+	arm_func_end Nns_FndGetPrevListObject
 
-	arm_func_start ov02_02329738
-ov02_02329738: ; 0x02329738
+	arm_func_start FindContainHeap
+FindContainHeap: ; 0x02329738
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r1, #0
 	mov r6, r0
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r4, r0
 	beq _02329798
 _02329754:
@@ -210,38 +210,38 @@ _02329754:
 	bhs _02329784
 	mov r1, r5
 	add r0, r4, #0xc
-	bl ov02_02329738
+	bl FindContainHeap
 	cmp r0, #0
 	moveq r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 _02329784:
 	mov r0, r6
 	mov r1, r4
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r4, r0
 	bne _02329754
 _02329798:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov02_02329738
+	arm_func_end FindContainHeap
 
-	arm_func_start ov02_023297A0
-ov02_023297A0: ; 0x023297A0
+	arm_func_start FindListContainHeap
+FindListContainHeap: ; 0x023297A0
 	stmdb sp!, {r4, lr}
 	ldr r4, _023297C4 ; =ov02_023544C4
 	mov r1, r0
 	mov r0, r4
-	bl ov02_02329738
+	bl FindContainHeap
 	cmp r0, #0
 	addne r4, r0, #0xc
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023297C4: .word ov02_023544C4
-	arm_func_end ov02_023297A0
+	arm_func_end FindListContainHeap
 
-	arm_func_start ov02_023297C8
-ov02_023297C8: ; 0x023297C8
+	arm_func_start Nnsi_FndInitHeapHead
+Nnsi_FndInitHeapHead: ; 0x023297C8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrh r0, [sp, #8]
@@ -255,40 +255,40 @@ ov02_023297C8: ; 0x023297C8
 	add r0, r4, #0xc
 	mov r1, #4
 	str r2, [r4, #0x20]
-	bl ov02_02329560
+	bl Nns_FndInitList
 	ldr r0, _0232983C ; =ov02_023544C0
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _02329828
 	ldr r0, _02329840 ; =ov02_023544C4
 	mov r1, #4
-	bl ov02_02329560
+	bl Nns_FndInitList
 	ldr r0, _0232983C ; =ov02_023544C0
 	mov r1, #1
 	str r1, [r0]
 _02329828:
 	mov r0, r4
-	bl ov02_023297A0
+	bl FindListContainHeap
 	mov r1, r4
-	bl ov02_023295A4
+	bl Nns_FndAppendListObject
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0232983C: .word ov02_023544C0
 _02329840: .word ov02_023544C4
-	arm_func_end ov02_023297C8
+	arm_func_end Nnsi_FndInitHeapHead
 
-	arm_func_start ov02_02329844
-ov02_02329844: ; 0x02329844
+	arm_func_start Nnsi_FndFinalizeHeap
+Nnsi_FndFinalizeHeap: ; 0x02329844
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_023297A0
+	bl FindListContainHeap
 	mov r1, r4
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_02329844
+	arm_func_end Nnsi_FndFinalizeHeap
 
-	arm_func_start ov02_0232985C
-ov02_0232985C: ; 0x0232985C
+	arm_func_start GetRegionOfMBlock
+GetRegionOfMBlock: ; 0x0232985C
 	ldrh r2, [r1, #2]
 	add r3, r1, #0x10
 	mov r2, r2, asr #8
@@ -300,10 +300,10 @@ ov02_0232985C: ; 0x0232985C
 	add r1, r1, r3
 	str r1, [r0, #4]
 	bx lr
-	arm_func_end ov02_0232985C
+	arm_func_end GetRegionOfMBlock
 
-	arm_func_start ov02_02329888
-ov02_02329888: ; 0x02329888
+	arm_func_start RemoveMBlock
+RemoveMBlock: ; 0x02329888
 	ldr r2, [r1, #8]
 	ldr r1, [r1, #0xc]
 	cmp r2, #0
@@ -314,10 +314,10 @@ ov02_02329888: ; 0x02329888
 	streq r2, [r0, #4]
 	mov r0, r2
 	bx lr
-	arm_func_end ov02_02329888
+	arm_func_end RemoveMBlock
 
-	arm_func_start ov02_023298B0
-ov02_023298B0: ; 0x023298B0
+	arm_func_start InsertMBlock
+InsertMBlock: ; 0x023298B0
 	str r2, [r1, #8]
 	cmp r2, #0
 	ldrne r3, [r2, #0xc]
@@ -330,10 +330,10 @@ ov02_023298B0: ; 0x023298B0
 	streq r1, [r0, #4]
 	mov r0, r1
 	bx lr
-	arm_func_end ov02_023298B0
+	arm_func_end InsertMBlock
 
-	arm_func_start ov02_023298E0
-ov02_023298E0: ; 0x023298E0
+	arm_func_start InitMBlock
+InitMBlock: ; 0x023298E0
 	ldr r3, [r0]
 	mov r2, #0
 	strh r1, [r3]
@@ -345,10 +345,10 @@ ov02_023298E0: ; 0x023298E0
 	mov r0, r3
 	str r2, [r3, #0xc]
 	bx lr
-	arm_func_end ov02_023298E0
+	arm_func_end InitMBlock
 
-	arm_func_start ov02_0232990C
-ov02_0232990C: ; 0x0232990C
+	arm_func_start InitExpHeap
+InitExpHeap: ; 0x0232990C
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0xc
 	mov r3, r1
@@ -356,7 +356,7 @@ ov02_0232990C: ; 0x0232990C
 	str r2, [sp]
 	ldr r1, _02329978 ; =0x45585048
 	add r2, r4, #0x38
-	bl ov02_023297C8
+	bl Nnsi_FndInitHeapHead
 	mov r0, #0
 	strh r0, [r4, #0x34]
 	bic r0, r0, #1
@@ -367,7 +367,7 @@ ov02_0232990C: ; 0x0232990C
 	ldr r2, [r4, #0x1c]
 	ldr r1, _0232997C ; =0x00004652
 	str r2, [sp, #8]
-	bl ov02_023298E0
+	bl InitMBlock
 	str r0, [r4, #0x24]
 	str r0, [r4, #0x28]
 	mov r1, #0
@@ -379,10 +379,10 @@ ov02_0232990C: ; 0x0232990C
 	.align 2, 0
 _02329978: .word 0x45585048
 _0232997C: .word 0x00004652
-	arm_func_end ov02_0232990C
+	arm_func_end InitExpHeap
 
-	arm_func_start ov02_02329980
-ov02_02329980: ; 0x02329980
+	arm_func_start AllocUsedBlockFromFreeBlock
+AllocUsedBlockFromFreeBlock: ; 0x02329980
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x18
 	mov r7, r0
@@ -390,7 +390,7 @@ ov02_02329980: ; 0x02329980
 	mov r8, r1
 	mov r6, r2
 	mov r4, r3
-	bl ov02_0232985C
+	bl GetRegionOfMBlock
 	ldr r3, [sp, #0x14]
 	sub r5, r6, #0x10
 	add r2, r4, r6
@@ -399,7 +399,7 @@ ov02_02329980: ; 0x02329980
 	str r5, [sp, #0x14]
 	str r3, [sp, #0xc]
 	str r2, [sp, #8]
-	bl ov02_02329888
+	bl RemoveMBlock
 	ldr r2, [sp, #0x10]
 	ldr r1, [sp, #0x14]
 	mov r4, r0
@@ -409,11 +409,11 @@ ov02_02329980: ; 0x02329980
 	blo _02329A00
 	ldr r1, _02329AF8 ; =0x00004652
 	add r0, sp, #0x10
-	bl ov02_023298E0
+	bl InitMBlock
 	mov r1, r0
 	mov r0, r7
 	mov r2, r4
-	bl ov02_023298B0
+	bl InsertMBlock
 	mov r4, r0
 _02329A00:
 	ldr r1, [sp, #0xc]
@@ -424,11 +424,11 @@ _02329A00:
 	blo _02329A34
 	ldr r1, _02329AF8 ; =0x00004652
 	add r0, sp, #8
-	bl ov02_023298E0
+	bl InitMBlock
 	mov r1, r0
 	mov r0, r7
 	mov r2, r4
-	bl ov02_023298B0
+	bl InsertMBlock
 _02329A34:
 	ldr r0, [r7, #-4]
 	ldr r1, [sp, #0x14]
@@ -445,7 +445,7 @@ _02329A58:
 	add r0, sp, #0
 	str r5, [sp]
 	str r2, [sp, #4]
-	bl ov02_023298E0
+	bl InitMBlock
 	mov r1, r0
 	ldrh r3, [r1, #2]
 	ldrh r2, [sp, #0x30]
@@ -476,17 +476,17 @@ _02329A58:
 	orr r2, r2, r3
 	strh r2, [r1, #2]
 	ldr r2, [r7, #0xc]
-	bl ov02_023298B0
+	bl InsertMBlock
 	mov r0, r6
 	add sp, sp, #0x18
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02329AF8: .word 0x00004652
 _02329AFC: .word 0x00005544
-	arm_func_end ov02_02329980
+	arm_func_end AllocUsedBlockFromFreeBlock
 
-	arm_func_start ov02_02329B00
-ov02_02329B00: ; 0x02329B00
+	arm_func_start ExpHeap_AllocFromHead
+ExpHeap_AllocFromHead: ; 0x02329B00
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldrh r4, [r0, #0x36]
 	mov r3, r1
@@ -533,12 +533,12 @@ _02329B90:
 	mov r2, r4
 	add r0, r0, #0x24
 	str r5, [sp]
-	bl ov02_02329980
+	bl AllocUsedBlockFromFreeBlock
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov02_02329B00
+	arm_func_end ExpHeap_AllocFromHead
 
-	arm_func_start ov02_02329BB4
-ov02_02329BB4: ; 0x02329BB4
+	arm_func_start ExpHeap_AllocFromTail
+ExpHeap_AllocFromTail: ; 0x02329BB4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldrh r4, [r0, #0x36]
 	mov r3, r1
@@ -584,12 +584,12 @@ _02329C40:
 	mov r2, r4
 	add r0, r0, #0x24
 	str r5, [sp]
-	bl ov02_02329980
+	bl AllocUsedBlockFromFreeBlock
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov02_02329BB4
+	arm_func_end ExpHeap_AllocFromTail
 
-	arm_func_start ov02_02329C64
-ov02_02329C64: ; 0x02329C64
+	arm_func_start RecycleRegion
+RecycleRegion: ; 0x02329C64
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r5, r1
@@ -615,7 +615,7 @@ _02329C98:
 	add r2, r2, r0
 	mov r0, r6
 	str r2, [sp, #4]
-	bl ov02_02329888
+	bl RemoveMBlock
 	b _02329CD8
 _02329CCC:
 	ldr r1, [r1, #0xc]
@@ -633,7 +633,7 @@ _02329CD8:
 	mov r0, r6
 	mov r1, r4
 	str r4, [sp]
-	bl ov02_02329888
+	bl RemoveMBlock
 	mov r4, r0
 _02329D0C:
 	ldr r1, [sp, #4]
@@ -645,20 +645,20 @@ _02329D0C:
 	ldmloia sp!, {r4, r5, r6, pc}
 	ldr r1, _02329D50 ; =0x00004652
 	add r0, sp, #0
-	bl ov02_023298E0
+	bl InitMBlock
 	mov r1, r0
 	mov r0, r6
 	mov r2, r4
-	bl ov02_023298B0
+	bl InsertMBlock
 	mov r0, #1
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02329D50: .word 0x00004652
-	arm_func_end ov02_02329C64
+	arm_func_end RecycleRegion
 
-	arm_func_start ov02_02329D54
-ov02_02329D54: ; 0x02329D54
+	arm_func_start Nns_FndCreateExpHeapEx
+Nns_FndCreateExpHeapEx: ; 0x02329D54
 	stmdb sp!, {r3, lr}
 	add r1, r1, r0
 	add r0, r0, #3
@@ -673,20 +673,20 @@ _02329D7C:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 _02329D84:
-	bl ov02_0232990C
+	bl InitExpHeap
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02329D54
+	arm_func_end Nns_FndCreateExpHeapEx
 
-	arm_func_start ov02_02329D8C
-ov02_02329D8C: ; 0x02329D8C
-	ldr ip, _02329D94 ; =ov02_02329844
+	arm_func_start Nns_FndDestroyExpHeap
+Nns_FndDestroyExpHeap: ; 0x02329D8C
+	ldr ip, _02329D94 ; =Nnsi_FndFinalizeHeap
 	bx ip
 	.align 2, 0
-_02329D94: .word ov02_02329844
-	arm_func_end ov02_02329D8C
+_02329D94: .word Nnsi_FndFinalizeHeap
+	arm_func_end Nns_FndDestroyExpHeap
 
-	arm_func_start ov02_02329D98
-ov02_02329D98: ; 0x02329D98
+	arm_func_start Nns_FndAllocFromExpHeapEx
+Nns_FndAllocFromExpHeapEx: ; 0x02329D98
 	stmdb sp!, {r3, lr}
 	cmp r1, #0
 	moveq r1, #1
@@ -694,35 +694,35 @@ ov02_02329D98: ; 0x02329D98
 	cmp r2, #0
 	bic r1, r1, #3
 	blt _02329DBC
-	bl ov02_02329B00
+	bl ExpHeap_AllocFromHead
 	ldmia sp!, {r3, pc}
 _02329DBC:
 	rsb r2, r2, #0
-	bl ov02_02329BB4
+	bl ExpHeap_AllocFromTail
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02329D98
+	arm_func_end Nns_FndAllocFromExpHeapEx
 
-	arm_func_start ov02_02329DC8
-ov02_02329DC8: ; 0x02329DC8
+	arm_func_start Nns_FndFreeToExpHeap
+Nns_FndFreeToExpHeap: ; 0x02329DC8
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	sub r4, r1, #0x10
 	mov r5, r0
 	add r0, sp, #0
 	mov r1, r4
-	bl ov02_0232985C
+	bl GetRegionOfMBlock
 	mov r1, r4
 	add r0, r5, #0x2c
-	bl ov02_02329888
+	bl RemoveMBlock
 	add r1, sp, #0
 	add r0, r5, #0x24
-	bl ov02_02329C64
+	bl RecycleRegion
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_02329DC8
+	arm_func_end Nns_FndFreeToExpHeap
 
-	arm_func_start ov02_02329E04
-ov02_02329E04: ; 0x02329E04
+	arm_func_start InitFrameHeap
+InitFrameHeap: ; 0x02329E04
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r3, r1
@@ -730,7 +730,7 @@ ov02_02329E04: ; 0x02329E04
 	str r2, [sp]
 	ldr r1, _02329E48 ; =0x46524D48
 	add r2, r4, #0x30
-	bl ov02_023297C8
+	bl Nnsi_FndInitHeapHead
 	ldr r0, [r4, #0x18]
 	mov r1, #0
 	str r0, [r4, #0x24]
@@ -742,10 +742,10 @@ ov02_02329E04: ; 0x02329E04
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _02329E48: .word 0x46524D48
-	arm_func_end ov02_02329E04
+	arm_func_end InitFrameHeap
 
-	arm_func_start ov02_02329E4C
-ov02_02329E4C: ; 0x02329E4C
+	arm_func_start FrmHeap_AllocFromHead
+FrmHeap_AllocFromHead: ; 0x02329E4C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	ldr r3, [r4]
@@ -770,10 +770,10 @@ _02329E9C:
 	mov r0, r5
 	str r6, [r4]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov02_02329E4C
+	arm_func_end FrmHeap_AllocFromHead
 
-	arm_func_start ov02_02329EA8
-ov02_02329EA8: ; 0x02329EA8
+	arm_func_start FrmHeap_AllocFromTail
+FrmHeap_AllocFromTail: ; 0x02329EA8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	ldr r3, [r4, #4]
@@ -797,19 +797,19 @@ _02329EF4:
 	mov r0, r5
 	str r5, [r4, #4]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_02329EA8
+	arm_func_end FrmHeap_AllocFromTail
 
-	arm_func_start ov02_02329F00
-ov02_02329F00: ; 0x02329F00
+	arm_func_start FrmHeap_FreeHead
+FrmHeap_FreeHead: ; 0x02329F00
 	ldr r2, [r0, #0x18]
 	mov r1, #0
 	str r2, [r0, #0x24]
 	str r1, [r0, #0x2c]
 	bx lr
-	arm_func_end ov02_02329F00
+	arm_func_end FrmHeap_FreeHead
 
-	arm_func_start ov02_02329F14
-ov02_02329F14: ; 0x02329F14
+	arm_func_start FrmHeap_FreeTail
+FrmHeap_FreeTail: ; 0x02329F14
 	ldr r2, [r0, #0x2c]
 	cmp r2, #0
 	beq _02329F34
@@ -823,10 +823,10 @@ _02329F34:
 	ldr r1, [r0, #0x1c]
 	str r1, [r0, #0x28]
 	bx lr
-	arm_func_end ov02_02329F14
+	arm_func_end FrmHeap_FreeTail
 
-	arm_func_start ov02_02329F40
-ov02_02329F40: ; 0x02329F40
+	arm_func_start Nns_FndCreateFrmHeapEx
+Nns_FndCreateFrmHeapEx: ; 0x02329F40
 	stmdb sp!, {r3, lr}
 	add r1, r1, r0
 	add r0, r0, #3
@@ -841,20 +841,20 @@ _02329F68:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 _02329F70:
-	bl ov02_02329E04
+	bl InitFrameHeap
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02329F40
+	arm_func_end Nns_FndCreateFrmHeapEx
 
-	arm_func_start ov02_02329F78
-ov02_02329F78: ; 0x02329F78
-	ldr ip, _02329F80 ; =ov02_02329844
+	arm_func_start Nns_FndDestroyFrmHeap
+Nns_FndDestroyFrmHeap: ; 0x02329F78
+	ldr ip, _02329F80 ; =Nnsi_FndFinalizeHeap
 	bx ip
 	.align 2, 0
-_02329F80: .word ov02_02329844
-	arm_func_end ov02_02329F78
+_02329F80: .word Nnsi_FndFinalizeHeap
+	arm_func_end Nns_FndDestroyFrmHeap
 
-	arm_func_start ov02_02329F84
-ov02_02329F84: ; 0x02329F84
+	arm_func_start Nns_FndAllocFromFrmHeapEx
+Nns_FndAllocFromFrmHeapEx: ; 0x02329F84
 	stmdb sp!, {r3, lr}
 	cmp r1, #0
 	moveq r1, #1
@@ -863,32 +863,32 @@ ov02_02329F84: ; 0x02329F84
 	bic r1, r1, #3
 	add r0, r0, #0x24
 	blt _02329FAC
-	bl ov02_02329E4C
+	bl FrmHeap_AllocFromHead
 	ldmia sp!, {r3, pc}
 _02329FAC:
 	rsb r2, r2, #0
-	bl ov02_02329EA8
+	bl FrmHeap_AllocFromTail
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02329F84
+	arm_func_end Nns_FndAllocFromFrmHeapEx
 
-	arm_func_start ov02_02329FB8
-ov02_02329FB8: ; 0x02329FB8
+	arm_func_start Nns_FndFreeToFrmHeap
+Nns_FndFreeToFrmHeap: ; 0x02329FB8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
 	tst r4, #1
 	beq _02329FD0
-	bl ov02_02329F00
+	bl FrmHeap_FreeHead
 _02329FD0:
 	tst r4, #2
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl ov02_02329F14
+	bl FrmHeap_FreeTail
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_02329FB8
+	arm_func_end Nns_FndFreeToFrmHeap
 
-	arm_func_start ov02_02329FE4
-ov02_02329FE4: ; 0x02329FE4
+	arm_func_start Nns_G2dFindBinaryBlock
+Nns_G2dFindBinaryBlock: ; 0x02329FE4
 	ldrh r2, [r0, #0xc]
 	ldrh ip, [r0, #0xe]
 	mov r3, #0
@@ -909,10 +909,10 @@ _02329FFC:
 _0232A024:
 	mov r0, #0
 	bx lr
-	arm_func_end ov02_02329FE4
+	arm_func_end Nns_G2dFindBinaryBlock
 
-	arm_func_start ov02_0232A02C
-ov02_0232A02C: ; 0x0232A02C
+	arm_func_start GetGlyphIndex
+GetGlyphIndex: ; 0x0232A02C
 	stmdb sp!, {r3, lr}
 	ldrh r3, [r0, #4]
 	ldr r2, _0232A0F0 ; =0x0000FFFF
@@ -970,24 +970,24 @@ _0232A0E8:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232A0F0: .word 0x0000FFFF
-	arm_func_end ov02_0232A02C
+	arm_func_end GetGlyphIndex
 
-	arm_func_start ov02_0232A0F4
-ov02_0232A0F4: ; 0x0232A0F4
+	arm_func_start Nns_G2dFontInitUtf16
+Nns_G2dFontInitUtf16: ; 0x0232A0F4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
 	mov r1, r4
-	bl ov02_0232BA74
-	ldr r0, _0232A114 ; =ov02_0232BD04
+	bl Nnsi_G2dGetUnpackedFont
+	ldr r0, _0232A114 ; =Nnsi_G2dSplitCharUtf16
 	str r0, [r4, #4]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0232A114: .word ov02_0232BD04
-	arm_func_end ov02_0232A0F4
+_0232A114: .word Nnsi_G2dSplitCharUtf16
+	arm_func_end Nns_G2dFontInitUtf16
 
-	arm_func_start ov02_0232A118
-ov02_0232A118: ; 0x0232A118
+	arm_func_start Nns_G2dFontFindGlyphIndex
+Nns_G2dFontFindGlyphIndex: ; 0x0232A118
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #0x10]
@@ -999,7 +999,7 @@ _0232A12C:
 	ldrlsh r2, [r0, #2]
 	cmpls r1, r2
 	bhi _0232A148
-	bl ov02_0232A02C
+	bl GetGlyphIndex
 	ldmia sp!, {r3, pc}
 _0232A148:
 	ldr r0, [r0, #8]
@@ -1010,10 +1010,10 @@ _0232A154:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232A15C: .word 0x0000FFFF
-	arm_func_end ov02_0232A118
+	arm_func_end Nns_G2dFontFindGlyphIndex
 
-	arm_func_start ov02_0232A160
-ov02_0232A160: ; 0x0232A160
+	arm_func_start Nns_G2dFontGetCharWidthsFromIndex
+Nns_G2dFontGetCharWidthsFromIndex: ; 0x0232A160
 	ldr ip, [r0]
 	ldr r3, [ip, #0xc]
 	cmp r3, #0
@@ -1036,10 +1036,10 @@ _0232A198:
 _0232A1A4:
 	add r0, ip, #4
 	bx lr
-	arm_func_end ov02_0232A160
+	arm_func_end Nns_G2dFontGetCharWidthsFromIndex
 
-	arm_func_start ov02_0232A1AC
-ov02_0232A1AC: ; 0x0232A1AC
+	arm_func_start Nnsi_G2dFontGetStringWidth
+Nnsi_G2dFontGetStringWidth: ; 0x0232A1AC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
 	mov r8, r0
@@ -1058,13 +1058,13 @@ _0232A1E4:
 	cmp r1, #0xa
 	beq _0232A228
 	mov r0, r8
-	bl ov02_0232A118
+	bl Nns_G2dFontFindGlyphIndex
 	mov r1, r0
 	cmp r1, sb
 	ldreq r0, [r8]
 	ldreqh r1, [r0, #2]
 	mov r0, r8
-	bl ov02_0232A160
+	bl Nns_G2dFontGetCharWidthsFromIndex
 	ldrsb r1, [r0, #2]
 	mov r0, sl
 	add r1, r7, r1
@@ -1087,10 +1087,10 @@ _0232A240:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0232A254: .word 0x0000FFFF
-	arm_func_end ov02_0232A1AC
+	arm_func_end Nnsi_G2dFontGetStringWidth
 
-	arm_func_start ov02_0232A258
-ov02_0232A258: ; 0x0232A258
+	arm_func_start Nnsi_G2dFontGetTextHeight
+Nnsi_G2dFontGetTextHeight: ; 0x0232A258
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	add r4, sp, #0
@@ -1122,10 +1122,10 @@ _0232A2B0:
 	sub r0, r0, r4
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0232A258
+	arm_func_end Nnsi_G2dFontGetTextHeight
 
-	arm_func_start ov02_0232A2CC
-ov02_0232A2CC: ; 0x0232A2CC
+	arm_func_start Nnsi_G2dFontGetTextWidth
+Nnsi_G2dFontGetTextWidth: ; 0x0232A2CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #8
 	mov r6, r2
@@ -1145,7 +1145,7 @@ _0232A308:
 	mov r0, r7
 	mov r1, r6
 	mov r3, sb
-	bl ov02_0232A1AC
+	bl Nnsi_G2dFontGetStringWidth
 	ldr r1, [sp]
 	ldr r2, [sp, #0x28]
 	cmp r0, r1
@@ -1165,10 +1165,10 @@ _0232A334:
 	stmia r8, {r0, r1}
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov02_0232A2CC
+	arm_func_end Nnsi_G2dFontGetTextWidth
 
-	arm_func_start ov02_0232A360
-ov02_0232A360: ; 0x0232A360
+	arm_func_start GetCharIndex1D
+GetCharIndex1D: ; 0x0232A360
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sl, #3
 	ldr r7, [sp, #0x20]
@@ -1238,10 +1238,10 @@ _0232A450:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0232A454: .word ov02_0234FBF8
-	arm_func_end ov02_0232A360
+	arm_func_end GetCharIndex1D
 
-	arm_func_start ov02_0232A458
-ov02_0232A458: ; 0x0232A458
+	arm_func_start ObjSizeToShape
+ObjSizeToShape: ; 0x0232A458
 	ldrb r3, [r0, #1]
 	ldr r2, _0232A470 ; =ov02_0234FC18
 	ldrb r1, [r0]
@@ -1250,10 +1250,10 @@ ov02_0232A458: ; 0x0232A458
 	bx lr
 	.align 2, 0
 _0232A470: .word ov02_0234FC18
-	arm_func_end ov02_0232A458
+	arm_func_end ObjSizeToShape
 
-	arm_func_start ov02_0232A474
-ov02_0232A474: ; 0x0232A474
+	arm_func_start ClearChar
+ClearChar: ; 0x0232A474
 	stmdb sp!, {r3, r4, r5, lr}
 	cmp r3, #8
 	ldreq r4, [sp, #0x10]
@@ -1338,10 +1338,10 @@ _0232A57C:
 	cmp r4, ip
 	blo _0232A57C
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0232A474
+	arm_func_end ClearChar
 
-	arm_func_start ov02_0232A5AC
-ov02_0232A5AC: ; 0x0232A5AC
+	arm_func_start LetterChar
+LetterChar: ; 0x0232A5AC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x28
 	ldr r5, [r0, #8]
@@ -1408,7 +1408,7 @@ _0232A680:
 	strb r0, [sp, #0x25]
 	mov r0, r5
 	add r1, r1, r2, ror #29
-	bl ov02_0232BCA4
+	bl Nnsi_G2dBitReaderRead
 	ldr r6, [sp]
 	mov r0, r6
 	cmp r0, sl
@@ -1416,7 +1416,7 @@ _0232A680:
 _0232A6C4:
 	mov r0, r5
 	mov r1, r8
-	bl ov02_0232BCA4
+	bl Nnsi_G2dBitReaderRead
 	cmp r0, #0
 	beq _0232A6E8
 	add r0, r7, r0
@@ -1458,7 +1458,7 @@ _0232A738:
 	add r0, sp, #0x18
 	strb r2, [sp, #0x1c]
 	strb r2, [sp, #0x1d]
-	bl ov02_0232BCA4
+	bl Nnsi_G2dBitReaderRead
 	ldr sb, [sp]
 	mov r0, sb
 	cmp r0, sl
@@ -1466,7 +1466,7 @@ _0232A738:
 _0232A778:
 	add r0, sp, #0x18
 	mov r1, r8
-	bl ov02_0232BCA4
+	bl Nnsi_G2dBitReaderRead
 	cmp r0, #0
 	beq _0232A7BC
 	add r1, r5, r0
@@ -1496,10 +1496,10 @@ _0232A7C8:
 	blo _0232A738
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov02_0232A5AC
+	arm_func_end LetterChar
 
-	arm_func_start ov02_0232A7EC
-ov02_0232A7EC: ; 0x0232A7EC
+	arm_func_start DrawGlyphLine
+DrawGlyphLine: ; 0x0232A7EC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	ldr r4, [sp, #0x54]
@@ -1592,7 +1592,7 @@ _0232A948:
 	mov r0, r4
 	str r7, [sp, #4]
 	str r5, [sp, #0xc]
-	bl ov02_0232A5AC
+	bl LetterChar
 	sub r5, r5, #8
 	cmp r5, r6
 	add r7, r7, r8
@@ -1605,10 +1605,10 @@ _0232A968:
 	bgt _0232A938
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov02_0232A7EC
+	arm_func_end DrawGlyphLine
 
-	arm_func_start ov02_0232A984
-ov02_0232A984: ; 0x0232A984
+	arm_func_start DrawGlyph1D
+DrawGlyph1D: ; 0x0232A984
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x4c
 	ldr r6, [sp, #0x74]
@@ -1724,12 +1724,12 @@ _0232AB30:
 	mov r0, r6
 	mov r1, sl
 	str r7, [sp, #4]
-	bl ov02_0232A360
+	bl GetCharIndex1D
 	mla r1, r0, sb, fp
 	add r0, sp, #0x24
 	str r4, [sp, #0x2c]
 	str r1, [sp, #0x24]
-	bl ov02_0232A5AC
+	bl LetterChar
 	sub r4, r4, #8
 	add r6, r6, #1
 	cmp r4, r5
@@ -1744,10 +1744,10 @@ _0232AB70:
 	bgt _0232AB14
 	add sp, sp, #0x4c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov02_0232A984
+	arm_func_end DrawGlyph1D
 
-	arm_func_start ov02_0232AB94
-ov02_0232AB94: ; 0x0232AB94
+	arm_func_start ClearContinuous
+ClearContinuous: ; 0x0232AB94
 	stmdb sp!, {r3, lr}
 	mov r3, r0
 	ldrb r2, [r3, #0xc]
@@ -1768,10 +1768,10 @@ ov02_0232AB94: ; 0x0232AB94
 	ldr r1, [r3]
 	bl MTi_CpuClearFast
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0232AB94
+	arm_func_end ClearContinuous
 
-	arm_func_start ov02_0232ABE4
-ov02_0232ABE4: ; 0x0232ABE4
+	arm_func_start ClearLine
+ClearLine: ; 0x0232ABE4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r0
 	ldrb r2, [r7, #0xc]
@@ -1805,10 +1805,10 @@ _0232AC3C:
 	add sb, sb, r5
 	blt _0232AC3C
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov02_0232ABE4
+	arm_func_end ClearLine
 
-	arm_func_start ov02_0232AC64
-ov02_0232AC64: ; 0x0232AC64
+	arm_func_start ClearAreaLine
+ClearAreaLine: ; 0x0232AC64
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
 	ldr r4, [sp, #0x58]
@@ -1897,7 +1897,7 @@ _0232AD8C:
 	mov r0, r7
 	mov r2, r8
 	stmia sp, {r5, sl, fp}
-	bl ov02_0232A474
+	bl ClearChar
 	ldr r0, [sp, #0x14]
 	add r4, r4, #8
 	add r7, r7, r0
@@ -1916,10 +1916,10 @@ _0232ADD0:
 	blt _0232AD40
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov02_0232AC64
+	arm_func_end ClearAreaLine
 
-	arm_func_start ov02_0232AE00
-ov02_0232AE00: ; 0x0232AE00
+	arm_func_start ClearArea1D
+ClearArea1D: ; 0x0232AE00
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x48
 	ldrb r4, [r0, #0xc]
@@ -2018,7 +2018,7 @@ _0232AF5C:
 	str r0, [sp, #4]
 	mov r0, r6
 	mov r1, r8
-	bl ov02_0232A360
+	bl GetCharIndex1D
 	ldr r2, [sp, #0x3c]
 	cmp r4, sl
 	sublt r1, sl, r4
@@ -2034,7 +2034,7 @@ _0232AF5C:
 	ldr r2, [sp, #0x30]
 	mla r0, ip, r0, r2
 	mov r2, sb
-	bl ov02_0232A474
+	bl ClearChar
 	add r4, r4, #8
 	add r6, r6, #1
 	cmp r4, r7
@@ -2049,10 +2049,10 @@ _0232AFD0:
 	blt _0232AF10
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov02_0232AE00
+	arm_func_end ClearArea1D
 
-	arm_func_start ov02_0232AFF4
-ov02_0232AFF4: ; 0x0232AFF4
+	arm_func_start InitCharCanvas
+InitCharCanvas: ; 0x0232AFF4
 	str r2, [r0, #4]
 	ldr r2, [sp]
 	str r3, [r0, #8]
@@ -2063,10 +2063,10 @@ ov02_0232AFF4: ; 0x0232AFF4
 	str r2, [r0, #0x14]
 	str r1, [r0, #0x10]
 	bx lr
-	arm_func_end ov02_0232AFF4
+	arm_func_end InitCharCanvas
 
-	arm_func_start ov02_0232B01C
-ov02_0232B01C: ; 0x0232B01C
+	arm_func_start Nns_G2dCharCanvasDrawChar
+Nns_G2dCharCanvasDrawChar: ; 0x0232B01C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
 	mov r7, r1
@@ -2075,7 +2075,7 @@ ov02_0232B01C: ; 0x0232B01C
 	mov r0, r7
 	mov r6, r2
 	mov r5, r3
-	bl ov02_0232A118
+	bl Nns_G2dFontFindGlyphIndex
 	ldr r1, _0232B13C ; =0x0000FFFF
 	mov r4, r0
 	cmp r4, r1
@@ -2083,7 +2083,7 @@ ov02_0232B01C: ; 0x0232B01C
 	ldreqh r4, [r0, #2]
 	mov r0, r7
 	mov r1, r4
-	bl ov02_0232A160
+	bl Nns_G2dFontGetCharWidthsFromIndex
 	str r0, [sp, #8]
 	ldr r1, [r7]
 	ldr r2, [r1, #8]
@@ -2147,10 +2147,10 @@ _0232B100:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0232B13C: .word 0x0000FFFF
-	arm_func_end ov02_0232B01C
+	arm_func_end Nns_G2dCharCanvasDrawChar
 
-	arm_func_start ov02_0232B140
-ov02_0232B140: ; 0x0232B140
+	arm_func_start Nns_G2dCharCanvasInitForBG
+Nns_G2dCharCanvasInitForBG: ; 0x0232B140
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	ldr lr, [sp, #0x10]
@@ -2158,15 +2158,15 @@ ov02_0232B140: ; 0x0232B140
 	str lr, [sp]
 	str ip, [sp, #4]
 	str r2, [sp, #8]
-	bl ov02_0232AFF4
+	bl InitCharCanvas
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
 	.align 2, 0
 _0232B168: .word ov02_0234FBE0
-	arm_func_end ov02_0232B140
+	arm_func_end Nns_G2dCharCanvasInitForBG
 
-	arm_func_start ov02_0232B16C
-ov02_0232B16C: ; 0x0232B16C
+	arm_func_start Nns_G2dCharCanvasInitForObj1D
+Nns_G2dCharCanvasInitForObj1D: ; 0x0232B16C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	cmp r2, #8
@@ -2196,16 +2196,16 @@ ov02_0232B16C: ; 0x0232B16C
 	str ip, [sp, #4]
 	str r4, [sp, #0xc]
 	str r4, [sp, #8]
-	bl ov02_0232AFF4
+	bl InitCharCanvas
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232B1EC: .word ov02_0234FBF8
 _0232B1F0: .word ov02_0234FBEC
-	arm_func_end ov02_0232B16C
+	arm_func_end Nns_G2dCharCanvasInitForObj1D
 
-	arm_func_start ov02_0232B1F4
-ov02_0232B1F4: ; 0x0232B1F4
+	arm_func_start Nns_G2dMapScrToCharText
+Nns_G2dMapScrToCharText: ; 0x0232B1F4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r5, [sp, #0x24]
@@ -2218,7 +2218,7 @@ ov02_0232B1F4: ; 0x0232B1F4
 	mov r3, r5
 	add r0, r0, r4, lsl #1
 	stmia sp, {ip, lr}
-	bl ov02_0232B2A4
+	bl Nns_G2dMapScrToChar256x16Pltt
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0232B230:
@@ -2254,10 +2254,10 @@ _0232B290:
 	blt _0232B24C
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0232B1F4
+	arm_func_end Nns_G2dMapScrToCharText
 
-	arm_func_start ov02_0232B2A4
-ov02_0232B2A4: ; 0x0232B2A4
+	arm_func_start Nns_G2dMapScrToChar256x16Pltt
+Nns_G2dMapScrToChar256x16Pltt: ; 0x0232B2A4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r4, [sp, #0x1c]
 	ldr r8, [sp, #0x18]
@@ -2284,10 +2284,10 @@ _0232B2EC:
 	add r0, r0, r3, lsl #1
 	blt _0232B2C4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0232B2A4
+	arm_func_end Nns_G2dMapScrToChar256x16Pltt
 
-	arm_func_start ov02_0232B300
-ov02_0232B300: ; 0x0232B300
+	arm_func_start Nnsi_G2dCalcRequiredObj
+Nnsi_G2dCalcRequiredObj: ; 0x0232B300
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r3, r0, lsr #3
 	mov r5, r1, lsr #3
@@ -2311,10 +2311,10 @@ ov02_0232B300: ; 0x0232B300
 	add r0, r4, lr, lsr #2
 	mla r0, r1, r0, ip
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0232B300
+	arm_func_end Nnsi_G2dCalcRequiredObj
 
-	arm_func_start ov02_0232B35C
-ov02_0232B35C: ; 0x0232B35C
+	arm_func_start Nns_G2dArrangeObj1D
+Nns_G2dArrangeObj1D: ; 0x0232B35C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x38
 	mov r7, r0
@@ -2359,7 +2359,7 @@ ov02_0232B35C: ; 0x0232B35C
 	strne r1, [sp, #0x18]
 	mov r1, #0
 	str r1, [sp, #0x24]
-	bl ov02_0232A458
+	bl ObjSizeToShape
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
 	mov sb, r1, asr fp
@@ -2439,7 +2439,7 @@ _0232B4DC:
 	mov r0, r7
 	mov r1, r8
 	str r4, [sp, #0xc]
-	bl ov02_0232B35C
+	bl Nns_G2dArrangeObj1D
 	ldr r1, [sp, #0x18]
 	add r7, r7, r0, lsl #3
 	mul r2, r1, r8
@@ -2467,7 +2467,7 @@ _0232B564:
 	ldr r1, [sp, #0x2c]
 	mov r0, r7
 	mov r2, r8
-	bl ov02_0232B35C
+	bl Nns_G2dArrangeObj1D
 	ldr r2, [sp, #0x18]
 	ldr r1, [sp, #0x2c]
 	add r7, r7, r0, lsl #3
@@ -2501,7 +2501,7 @@ _0232B5D0:
 	mov r0, r7
 	add r3, r3, r5, lsl #3
 	str r4, [sp, #0xc]
-	bl ov02_0232B35C
+	bl Nns_G2dArrangeObj1D
 	ldr r1, [sp, #0x24]
 	add r0, r1, r0
 	str r0, [sp, #0x24]
@@ -2513,10 +2513,10 @@ _0232B63C:
 _0232B648: .word ov02_0234FBF8
 _0232B64C: .word 0xFE00FF00
 _0232B650: .word 0x3FFF3FFF
-	arm_func_end ov02_0232B35C
+	arm_func_end Nns_G2dArrangeObj1D
 
-	arm_func_start ov02_0232B654
-ov02_0232B654: ; 0x0232B654
+	arm_func_start Nnsi_G2dTextCanvasDrawString
+Nnsi_G2dTextCanvasDrawString: ; 0x0232B654
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov fp, r0
@@ -2544,7 +2544,7 @@ _0232B698:
 	ldr r0, [fp]
 	mov r1, r5
 	mov r3, sb
-	bl ov02_0232B01C
+	bl Nns_G2dCharCanvasDrawChar
 	add r0, r4, r0
 	mla sl, r0, r7, sl
 	mla sb, r0, r8, sb
@@ -2564,10 +2564,10 @@ _0232B6DC:
 	str r1, [r0]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov02_0232B654
+	arm_func_end Nnsi_G2dTextCanvasDrawString
 
-	arm_func_start ov02_0232B708
-ov02_0232B708: ; 0x0232B708
+	arm_func_start Nnsi_G2dTextCanvasDrawTextAlign
+Nnsi_G2dTextCanvasDrawTextAlign: ; 0x0232B708
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x34
 	mov sl, r0
@@ -2618,7 +2618,7 @@ _0232B7A4:
 	ldr r2, [sp, #0x30]
 	mov r3, #0
 	ldmib sl, {r0, r1}
-	bl ov02_0232A1AC
+	bl Nnsi_G2dFontGetStringWidth
 	sub r0, fp, r0
 	mla r4, r0, sb, r4
 	mla r5, r0, r8, r5
@@ -2630,7 +2630,7 @@ _0232B7E0:
 	ldr r2, [sp, #0x30]
 	mov r3, #0
 	ldmib sl, {r0, r1}
-	bl ov02_0232A1AC
+	bl Nnsi_G2dFontGetStringWidth
 	add r0, r0, #1
 	add r0, r0, r0, lsr #31
 	mov r1, r0, asr #1
@@ -2651,7 +2651,7 @@ _0232B818:
 	mov r0, sl
 	strb r3, [sp, #9]
 	ldr r3, [sp, #0x58]
-	bl ov02_0232B654
+	bl Nnsi_G2dTextCanvasDrawString
 	ldr r0, [sp, #0x20]
 	add r6, r6, r0
 	ldr r0, [sp, #0x1c]
@@ -2661,10 +2661,10 @@ _0232B818:
 	bne _0232B7A4
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov02_0232B708
+	arm_func_end Nnsi_G2dTextCanvasDrawTextAlign
 
-	arm_func_start ov02_0232B870
-ov02_0232B870: ; 0x0232B870
+	arm_func_start Nnsi_G2dTextCanvasDrawText
+Nnsi_G2dTextCanvasDrawText: ; 0x0232B870
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x28
 	ldr r4, [sp, #0x44]
@@ -2676,7 +2676,7 @@ ov02_0232B870: ; 0x0232B870
 	mov r5, r3
 	ldmib r8, {r1, r2, r3}
 	ldr r4, [sp, #0x40]
-	bl ov02_0232A2CC
+	bl Nnsi_G2dFontGetTextWidth
 	ldr r2, [sp, #0x18]
 	ldr r0, [sp, #0x1c]
 	str r2, [sp, #0x10]
@@ -2739,13 +2739,13 @@ _0232B958:
 	mov r1, r7
 	mov r2, r6
 	strb r4, [sp, #0xd]
-	bl ov02_0232B708
+	bl Nnsi_G2dTextCanvasDrawTextAlign
 	add sp, sp, #0x28
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0232B870
+	arm_func_end Nnsi_G2dTextCanvasDrawText
 
-	arm_func_start ov02_0232B994
-ov02_0232B994: ; 0x0232B994
+	arm_func_start Nnsi_G2dTextCanvasDrawTextRect
+Nnsi_G2dTextCanvasDrawTextRect: ; 0x0232B994
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	ldr ip, [sp, #0x30]
@@ -2758,7 +2758,7 @@ ov02_0232B994: ; 0x0232B994
 	ldr r0, [r7, #4]
 	ldr r1, [r7, #0xc]
 	ldr r2, [sp, #0x34]
-	bl ov02_0232A258
+	bl Nnsi_G2dFontGetTextHeight
 	ldrsb r2, [sp, #0x39]
 	ldr r3, [sp, #0x28]
 	ldrsb r1, [sp, #0x38]
@@ -2773,7 +2773,7 @@ _0232B9E8:
 	ldr r0, [r7, #4]
 	ldr r1, [r7, #0xc]
 	ldr r2, [sp, #0x34]
-	bl ov02_0232A258
+	bl Nnsi_G2dFontGetTextHeight
 	ldr r1, [sp, #0x28]
 	add r0, r0, #1
 	ldrsb r3, [sp, #0x39]
@@ -2801,13 +2801,13 @@ _0232BA30:
 	mov r2, r5
 	mov r3, r4
 	strb ip, [sp, #0xd]
-	bl ov02_0232B708
+	bl Nnsi_G2dTextCanvasDrawTextAlign
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov02_0232B994
+	arm_func_end Nnsi_G2dTextCanvasDrawTextRect
 
-	arm_func_start ov02_0232BA74
-ov02_0232BA74: ; 0x0232BA74
+	arm_func_start Nnsi_G2dGetUnpackedFont
+Nnsi_G2dGetUnpackedFont: ; 0x0232BA74
 	stmdb sp!, {r4, r5, r6, lr}
 	movs r6, r0
 	mov r5, r1
@@ -2886,10 +2886,10 @@ _0232BB6C:
 	mov r4, #1
 _0232BB70:
 	mov r0, r6
-	bl ov02_0232BBC8
+	bl Nnsi_G2dUnpackNft
 	ldr r1, _0232BBC4 ; =0x46494E46
 	mov r0, r6
-	bl ov02_02329FE4
+	bl Nns_G2dFindBinaryBlock
 	cmp r0, #0
 	moveq r0, #0
 	streq r0, [r5]
@@ -2909,10 +2909,10 @@ _0232BBB4:
 _0232BBBC: .word 0x4E465452
 _0232BBC0: .word 0x00000101
 _0232BBC4: .word 0x46494E46
-	arm_func_end ov02_0232BA74
+	arm_func_end Nnsi_G2dGetUnpackedFont
 
-	arm_func_start ov02_0232BBC8
-ov02_0232BBC8: ; 0x0232BBC8
+	arm_func_start Nnsi_G2dUnpackNft
+Nnsi_G2dUnpackNft: ; 0x0232BBC8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldrh r1, [r0, #0xc]
 	ldrh r3, [r0, #0xe]
@@ -2975,10 +2975,10 @@ _0232BC94: .word 0x46494E46
 _0232BC98: .word 0x43574448
 _0232BC9C: .word 0x434D4150
 _0232BCA0: .word 0x43474C50
-	arm_func_end ov02_0232BBC8
+	arm_func_end Nnsi_G2dUnpackNft
 
-	arm_func_start ov02_0232BCA4
-ov02_0232BCA4: ; 0x0232BCA4
+	arm_func_start Nnsi_G2dBitReaderRead
+Nnsi_G2dBitReaderRead: ; 0x0232BCA4
 	stmdb sp!, {r4, r5, r6, lr}
 	ldrsb r3, [r0, #4]
 	ldrb r4, [r0, #5]
@@ -2997,26 +2997,26 @@ ov02_0232BCA4: ; 0x0232BCA4
 	mov r2, #8
 	strb r3, [r0, #5]
 	strb r2, [r0, #4]
-	bl ov02_0232BCA4
+	bl Nnsi_G2dBitReaderRead
 	orr r2, r0, r4, lsl r6
 _0232BCF4:
 	rsb r0, r5, #8
 	mov r1, #0xff
 	and r0, r2, r1, asr r0
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov02_0232BCA4
+	arm_func_end Nnsi_G2dBitReaderRead
 
-	arm_func_start ov02_0232BD04
-ov02_0232BD04: ; 0x0232BD04
+	arm_func_start Nnsi_G2dSplitCharUtf16
+Nnsi_G2dSplitCharUtf16: ; 0x0232BD04
 	ldr r1, [r0]
 	ldrh r2, [r1], #2
 	str r1, [r0]
 	mov r0, r2
 	bx lr
-	arm_func_end ov02_0232BD04
+	arm_func_end Nnsi_G2dSplitCharUtf16
 
-	arm_func_start ov02_0232BD18
-ov02_0232BD18: ; 0x0232BD18
+	arm_func_start Nns_SndInit
+Nns_SndInit: ; 0x0232BD18
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232BD8C ; =ov02_023544E0
 	ldr r1, [r0, #0xc]
@@ -3025,11 +3025,11 @@ ov02_0232BD18: ; 0x0232BD18
 	mov r1, #1
 	str r1, [r0, #0xc]
 	bl SND_Init
-	ldr r0, _0232BD90 ; =ov02_0232BDD0
+	ldr r0, _0232BD90 ; =BeginSleep
 	ldr r1, _0232BD8C ; =ov02_023544E0
 	mov r2, #0
 	str r0, [r1, #0x10]
-	ldr r0, _0232BD94 ; =ov02_0232BE08
+	ldr r0, _0232BD94 ; =EndSleep
 	str r2, [r1, #0x14]
 	str r0, [r1, #0x1c]
 	ldr r0, _0232BD98 ; =ov02_023544F0
@@ -3037,9 +3037,9 @@ ov02_0232BD18: ; 0x0232BD18
 	bl PM_PrependPreSleepCallback
 	ldr r0, _0232BD9C ; =ov02_023544FC
 	bl PM_AppendPostSleepCallback
-	bl ov02_0232BE80
-	bl ov02_0232C84C
-	bl ov02_0232C038
+	bl Nnsi_SndInitResourceMgr
+	bl Nnsi_SndCaptureInit
+	bl Nnsi_SndPlayerInit
 	ldr r0, _0232BD8C ; =ov02_023544E0
 	mvn r1, #0
 	strb r1, [r0]
@@ -3048,14 +3048,14 @@ ov02_0232BD18: ; 0x0232BD18
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232BD8C: .word ov02_023544E0
-_0232BD90: .word ov02_0232BDD0
-_0232BD94: .word ov02_0232BE08
+_0232BD90: .word BeginSleep
+_0232BD94: .word EndSleep
 _0232BD98: .word ov02_023544F0
 _0232BD9C: .word ov02_023544FC
-	arm_func_end ov02_0232BD18
+	arm_func_end Nns_SndInit
 
-	arm_func_start ov02_0232BDA0
-ov02_0232BDA0: ; 0x0232BDA0
+	arm_func_start Nns_SndMain
+Nns_SndMain: ; 0x0232BDA0
 	stmdb sp!, {r4, lr}
 	mov r4, #0
 _0232BDA8:
@@ -3063,18 +3063,18 @@ _0232BDA8:
 	bl Snd_RecvCommandReply
 	cmp r0, #0
 	bne _0232BDA8
-	bl ov02_0232C0EC
-	bl ov02_0232C864
-	bl ov02_0232D990
+	bl Nnsi_SndPlayerMain
+	bl Nnsi_SndCaptureMain
+	bl Nnsi_SndArcStrmMain
 	mov r0, #0
 	bl Snd_FlushCommand
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232BDA0
+	arm_func_end Nns_SndMain
 
-	arm_func_start ov02_0232BDD0
-ov02_0232BDD0: ; 0x0232BDD0
+	arm_func_start BeginSleep
+BeginSleep: ; 0x0232BDD0
 	stmdb sp!, {r4, lr}
-	bl ov02_0232C9DC
+	bl Nnsi_SndCaptureBeginSleep
 	mov r0, #0
 	mov r1, r0
 	mov r2, r0
@@ -3087,18 +3087,18 @@ ov02_0232BDD0: ; 0x0232BDD0
 	mov r0, r4
 	bl Snd_WaitForCommandProc
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232BDD0
+	arm_func_end BeginSleep
 
-	arm_func_start ov02_0232BE08
-ov02_0232BE08: ; 0x0232BE08
-	ldr ip, _0232BE10 ; =ov02_0232CA3C
+	arm_func_start EndSleep
+EndSleep: ; 0x0232BE08
+	ldr ip, _0232BE10 ; =Nnsi_SndCaptureEndSleep
 	bx ip
 	.align 2, 0
-_0232BE10: .word ov02_0232CA3C
-	arm_func_end ov02_0232BE08
+_0232BE10: .word Nnsi_SndCaptureEndSleep
+	arm_func_end EndSleep
 
-	arm_func_start ov02_0232BE14
-ov02_0232BE14: ; 0x0232BE14
+	arm_func_start Nns_SndUnlockChannel
+Nns_SndUnlockChannel: ; 0x0232BE14
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	ldmeqia sp!, {r4, pc}
@@ -3112,10 +3112,10 @@ ov02_0232BE14: ; 0x0232BE14
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0232BE40: .word ov02_023568E0
-	arm_func_end ov02_0232BE14
+	arm_func_end Nns_SndUnlockChannel
 
-	arm_func_start ov02_0232BE44
-ov02_0232BE44: ; 0x0232BE44
+	arm_func_start Nns_SndUnlockCapture
+Nns_SndUnlockCapture: ; 0x0232BE44
 	ldr r1, _0232BE5C ; =ov02_023568E0
 	mvn r0, r0
 	ldr r2, [r1]
@@ -3124,10 +3124,10 @@ ov02_0232BE44: ; 0x0232BE44
 	bx lr
 	.align 2, 0
 _0232BE5C: .word ov02_023568E0
-	arm_func_end ov02_0232BE44
+	arm_func_end Nns_SndUnlockCapture
 
-	arm_func_start ov02_0232BE60
-ov02_0232BE60: ; 0x0232BE60
+	arm_func_start Nns_SndFreeAlarm
+Nns_SndFreeAlarm: ; 0x0232BE60
 	ldr r1, _0232BE7C ; =ov02_023568E0
 	mov r2, #1
 	mvn r0, r2, lsl r0
@@ -3137,10 +3137,10 @@ ov02_0232BE60: ; 0x0232BE60
 	bx lr
 	.align 2, 0
 _0232BE7C: .word ov02_023568E0
-	arm_func_end ov02_0232BE60
+	arm_func_end Nns_SndFreeAlarm
 
-	arm_func_start ov02_0232BE80
-ov02_0232BE80: ; 0x0232BE80
+	arm_func_start Nnsi_SndInitResourceMgr
+Nnsi_SndInitResourceMgr: ; 0x0232BE80
 	ldr r0, _0232BE98 ; =ov02_023568E0
 	mov r1, #0
 	str r1, [r0, #8]
@@ -3149,10 +3149,10 @@ ov02_0232BE80: ; 0x0232BE80
 	bx lr
 	.align 2, 0
 _0232BE98: .word ov02_023568E0
-	arm_func_end ov02_0232BE80
+	arm_func_end Nnsi_SndInitResourceMgr
 
-	arm_func_start ov02_0232BE9C
-ov02_0232BE9C: ; 0x0232BE9C
+	arm_func_start Nns_SndPlayerSetPlayableSeqCount
+Nns_SndPlayerSetPlayableSeqCount: ; 0x0232BE9C
 	mov r2, #0x24
 	mul r2, r0, r2
 	mov r0, r1, lsl #0x10
@@ -3162,10 +3162,10 @@ ov02_0232BE9C: ; 0x0232BE9C
 	bx lr
 	.align 2, 0
 _0232BEB8: .word ov02_02356D5C
-	arm_func_end ov02_0232BE9C
+	arm_func_end Nns_SndPlayerSetPlayableSeqCount
 
-	arm_func_start ov02_0232BEBC
-ov02_0232BEBC: ; 0x0232BEBC
+	arm_func_start Nns_SndPlayerSetAllocatableChannel
+Nns_SndPlayerSetAllocatableChannel: ; 0x0232BEBC
 	mov r2, #0x24
 	mul r2, r0, r2
 	ldr r0, _0232BED0 ; =ov02_02356D60
@@ -3173,20 +3173,20 @@ ov02_0232BEBC: ; 0x0232BEBC
 	bx lr
 	.align 2, 0
 _0232BED0: .word ov02_02356D60
-	arm_func_end ov02_0232BEBC
+	arm_func_end Nns_SndPlayerSetAllocatableChannel
 
-	arm_func_start ov02_0232BED4
-ov02_0232BED4: ; 0x0232BED4
+	arm_func_start Nns_SndPlayerCreateHeap
+Nns_SndPlayerCreateHeap: ; 0x0232BED4
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r5, r2
 	mov r6, r0
 	mov r0, r1
 	mov r3, #0
-	ldr r2, _0232BF60 ; =ov02_0232C5F4
+	ldr r2, _0232BF60 ; =PlayerHeapDisposeCallback
 	add r1, r5, #0x14
 	str r3, [sp]
-	bl ov02_0232CFB4
+	bl Nns_SndHeapAlloc
 	movs r4, r0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -3197,7 +3197,7 @@ ov02_0232BED4: ; 0x0232BED4
 	mov r1, r5
 	add r0, r4, #0x14
 	str r2, [r4, #8]
-	bl ov02_0232CE70
+	bl Nns_SndHeapCreate
 	cmp r0, #0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -3208,33 +3208,33 @@ ov02_0232BED4: ; 0x0232BED4
 	str r0, [r4, #8]
 	mov r1, r4
 	add r0, r2, #0xc
-	bl ov02_023295A4
+	bl Nns_FndAppendListObject
 	mov r0, #1
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_0232BF60: .word ov02_0232C5F4
+_0232BF60: .word PlayerHeapDisposeCallback
 _0232BF64: .word ov02_02356D44
-	arm_func_end ov02_0232BED4
+	arm_func_end Nns_SndPlayerCreateHeap
 
-	arm_func_start ov02_0232BF68
-ov02_0232BF68: ; 0x0232BF68
-	ldr ip, _0232BF74 ; =ov02_0232C344
+	arm_func_start Nns_SndPlayerStopSeq
+Nns_SndPlayerStopSeq: ; 0x0232BF68
+	ldr ip, _0232BF74 ; =Nnsi_SndPlayerStopSeq
 	ldr r0, [r0]
 	bx ip
 	.align 2, 0
-_0232BF74: .word ov02_0232C344
-	arm_func_end ov02_0232BF68
+_0232BF74: .word Nnsi_SndPlayerStopSeq
+	arm_func_end Nns_SndPlayerStopSeq
 
-	arm_func_start ov02_0232BF78
-ov02_0232BF78: ; 0x0232BF78
+	arm_func_start Nns_SndHandleInit
+Nns_SndHandleInit: ; 0x0232BF78
 	mov r1, #0
 	str r1, [r0]
 	bx lr
-	arm_func_end ov02_0232BF78
+	arm_func_end Nns_SndHandleInit
 
-	arm_func_start ov02_0232BF84
-ov02_0232BF84: ; 0x0232BF84
+	arm_func_start Nns_SndHandleReleaseSeq
+Nns_SndHandleReleaseSeq: ; 0x0232BF84
 	ldr r1, [r0]
 	cmp r1, #0
 	bxeq lr
@@ -3243,7 +3243,7 @@ ov02_0232BF84: ; 0x0232BF84
 	str r2, [r1]
 	str r2, [r0]
 	bx lr
-	arm_func_end ov02_0232BF84
+	arm_func_end Nns_SndHandleReleaseSeq
 
 	arm_func_start ov02_0232BFA4
 ov02_0232BFA4: ; 0x0232BFA4
@@ -3254,17 +3254,17 @@ ov02_0232BFA4: ; 0x0232BFA4
 	bx lr
 	arm_func_end ov02_0232BFA4
 
-	arm_func_start ov02_0232BFB8
-ov02_0232BFB8: ; 0x0232BFB8
+	arm_func_start Nns_SndPlayerSetInitialVolume
+Nns_SndPlayerSetInitialVolume: ; 0x0232BFB8
 	ldr r2, [r0]
 	cmp r2, #0
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x40]
 	bx lr
-	arm_func_end ov02_0232BFB8
+	arm_func_end Nns_SndPlayerSetInitialVolume
 
-	arm_func_start ov02_0232BFCC
-ov02_0232BFCC: ; 0x0232BFCC
+	arm_func_start Nns_SndPlayerSetChannelPriority
+Nns_SndPlayerSetChannelPriority: ; 0x0232BFCC
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0]
 	cmp r2, #0
@@ -3273,10 +3273,10 @@ ov02_0232BFCC: ; 0x0232BFCC
 	ldrb r0, [r0, #0x3c]
 	bl Snd_SetPlayerVolume
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0232BFCC
+	arm_func_end Nns_SndPlayerSetChannelPriority
 
-	arm_func_start ov02_0232BFEC
-ov02_0232BFEC: ; 0x0232BFEC
+	arm_func_start Nns_SndPlayerSetTrackPitch
+Nns_SndPlayerSetTrackPitch: ; 0x0232BFEC
 	stmdb sp!, {r3, lr}
 	ldr r3, [r0]
 	cmp r3, #0
@@ -3285,10 +3285,10 @@ ov02_0232BFEC: ; 0x0232BFEC
 	ldrb r0, [r0, #0x3c]
 	bl Snd_SetTrackPan
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0232BFEC
+	arm_func_end Nns_SndPlayerSetTrackPitch
 
-	arm_func_start ov02_0232C00C
-ov02_0232C00C: ; 0x0232C00C
+	arm_func_start Nns_SndPlayerSetSeqArcNo
+Nns_SndPlayerSetSeqArcNo: ; 0x0232C00C
 	ldr r3, [r0]
 	cmp r3, #0
 	bxeq lr
@@ -3300,17 +3300,17 @@ ov02_0232C00C: ; 0x0232C00C
 	ldr r0, [r0]
 	strh r2, [r0, #0x3a]
 	bx lr
-	arm_func_end ov02_0232C00C
+	arm_func_end Nns_SndPlayerSetSeqArcNo
 
-	arm_func_start ov02_0232C038
-ov02_0232C038: ; 0x0232C038
+	arm_func_start Nnsi_SndPlayerInit
+Nnsi_SndPlayerInit: ; 0x0232C038
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r0, _0232C0DC ; =ov02_023568F8
 	mov r1, #0x14
-	bl ov02_02329560
+	bl Nns_FndInitList
 	ldr r0, _0232C0E0 ; =ov02_023568EC
 	mov r1, #0x14
-	bl ov02_02329560
+	bl Nns_FndInitList
 	mov r6, #0
 	ldr r7, _0232C0E4 ; =ov02_02356904
 	ldr r4, _0232C0E0 ; =ov02_023568EC
@@ -3320,7 +3320,7 @@ _0232C064:
 	mov r0, r4
 	mov r1, r7
 	strb r6, [r7, #0x3c]
-	bl ov02_023295A4
+	bl Nns_FndAppendListObject
 	add r6, r6, #1
 	cmp r6, #0x10
 	add r7, r7, #0x44
@@ -3335,10 +3335,10 @@ _0232C064:
 _0232C0A4:
 	mov r0, sb
 	mov r1, r8
-	bl ov02_02329560
+	bl Nns_FndInitList
 	mov r1, r7
 	add r0, sb, #0xc
-	bl ov02_02329560
+	bl Nns_FndInitList
 	strb r6, [sb, #0x20]
 	str r5, [sb, #0x18]
 	add sl, sl, #1
@@ -3352,16 +3352,16 @@ _0232C0DC: .word ov02_023568F8
 _0232C0E0: .word ov02_023568EC
 _0232C0E4: .word ov02_02356904
 _0232C0E8: .word ov02_02356D44
-	arm_func_end ov02_0232C038
+	arm_func_end Nnsi_SndPlayerInit
 
-	arm_func_start ov02_0232C0EC
-ov02_0232C0EC: ; 0x0232C0EC
+	arm_func_start Nnsi_SndPlayerMain
+Nnsi_SndPlayerMain: ; 0x0232C0EC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bl Snd_GetPlayerStatus
 	mov fp, r0
 	ldr r0, _0232C244 ; =ov02_023568F8
 	mov r1, #0
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r6, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
@@ -3370,7 +3370,7 @@ ov02_0232C0EC: ; 0x0232C0EC
 _0232C118:
 	ldr r0, _0232C244 ; =ov02_023568F8
 	mov r1, r6
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	ldrb r1, [r6, #0x2d]
 	mov r7, r0
 	cmp r1, #0
@@ -3389,11 +3389,11 @@ _0232C148:
 	tst fp, r0, lsl r1
 	bne _0232C170
 	mov r0, r6
-	bl ov02_0232C570
+	bl ShutdownPlayer__0232CD9C
 	b _0232C234
 _0232C170:
 	add r0, r6, #0x1c
-	bl ov02_0232DD3C
+	bl Nnsi_SndFaderUpdate
 	ldr r0, [r6, #4]
 	ldrb r2, [r6, #0x41]
 	ldrb r0, [r0, #0x20]
@@ -3405,7 +3405,7 @@ _0232C170:
 	add r0, r6, #0x1c
 	ldrsh r8, [r5, r2]
 	ldrsh sb, [r5, r1]
-	bl ov02_0232DD08
+	bl Nnsi_SndFaderGet
 	mov r0, r0, asr #8
 	mov r0, r0, lsl #1
 	add r1, sb, r8
@@ -3431,11 +3431,11 @@ _0232C1F4:
 	cmp r0, #2
 	bne _0232C218
 	add r0, r6, #0x1c
-	bl ov02_0232DD54
+	bl Nnsi_SndFaderIsFinished
 	cmp r0, #0
 	beq _0232C218
 	mov r0, r6
-	bl ov02_0232C4D0
+	bl ForceStopSeq
 _0232C218:
 	ldrb r0, [r6, #0x2f]
 	cmp r0, #0
@@ -3450,13 +3450,13 @@ _0232C234:
 	bne _0232C118
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-	arm_func_end ov02_0232C0EC
+	arm_func_end Nnsi_SndPlayerMain
 _0232C244: .word ov02_023568F8
 _0232C248: .word _020AE224
 _0232C24C: .word 0x00007FFF
 
-	arm_func_start ov02_0232C250
-ov02_0232C250: ; 0x0232C250
+	arm_func_start Nnsi_SndPlayerAllocSeqPlayer
+Nnsi_SndPlayerAllocSeqPlayer: ; 0x0232C250
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr ip, _0232C2E4 ; =ov02_02356D44
 	mov r3, #0x24
@@ -3466,7 +3466,7 @@ ov02_0232C250: ; 0x0232C250
 	mov r7, r2
 	cmp r5, #0
 	beq _0232C278
-	bl ov02_0232BF84
+	bl Nns_SndHandleReleaseSeq
 _0232C278:
 	ldrh r1, [r6, #8]
 	ldr r0, [r6, #0x18]
@@ -3474,7 +3474,7 @@ _0232C278:
 	blo _0232C2B4
 	mov r0, r6
 	mov r1, #0
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -3482,34 +3482,34 @@ _0232C278:
 	cmp r7, r1
 	movlt r0, #0
 	ldmltia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov02_0232C4D0
+	bl ForceStopSeq
 _0232C2B4:
 	mov r0, r7
-	bl ov02_0232C508
+	bl AllocSeqPlayer
 	movs r5, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
 	mov r1, r5
-	bl ov02_0232C42C
+	bl InsertPlayerList
 	str r4, [r5]
 	mov r0, r5
 	str r5, [r4]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232C2E4: .word ov02_02356D44
-	arm_func_end ov02_0232C250
+	arm_func_end Nnsi_SndPlayerAllocSeqPlayer
 
-	arm_func_start ov02_0232C2E8
-ov02_0232C2E8: ; 0x0232C2E8
-	ldr ip, _0232C2F0 ; =ov02_0232C570
+	arm_func_start Nnsi_SndPlayerFreeSeqPlayer__0232CB14
+Nnsi_SndPlayerFreeSeqPlayer__0232CB14: ; 0x0232C2E8
+	ldr ip, _0232C2F0 ; =ShutdownPlayer__0232CD9C
 	bx ip
 	.align 2, 0
-_0232C2F0: .word ov02_0232C570
-	arm_func_end ov02_0232C2E8
+_0232C2F0: .word ShutdownPlayer__0232CD9C
+	arm_func_end Nnsi_SndPlayerFreeSeqPlayer__0232CB14
 
-	arm_func_start ov02_0232C2F4
-ov02_0232C2F4: ; 0x0232C2F4
+	arm_func_start Nnsi_SndPlayerStartSeq
+Nnsi_SndPlayerStartSeq: ; 0x0232C2F4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldrb r0, [r5, #0x3c]
@@ -3523,7 +3523,7 @@ ov02_0232C2F4: ; 0x0232C2F4
 	bl Snd_SetTrackAllocatableChannel
 _0232C320:
 	mov r0, r5
-	bl ov02_0232C3E4
+	bl InitPlayer
 	bl Snd_GetCurrentCommandTag
 	str r0, [r5, #0x30]
 	mov r0, #1
@@ -3532,10 +3532,10 @@ _0232C320:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232C340: .word 0x0000FFFF
-	arm_func_end ov02_0232C2F4
+	arm_func_end Nnsi_SndPlayerStartSeq
 
-	arm_func_start ov02_0232C344
-ov02_0232C344: ; 0x0232C344
+	arm_func_start Nnsi_SndPlayerStopSeq
+Nnsi_SndPlayerStopSeq: ; 0x0232C344
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	mov r2, r1
@@ -3544,22 +3544,22 @@ ov02_0232C344: ; 0x0232C344
 	ldmeqia sp!, {r4, pc}
 	cmp r2, #0
 	bne _0232C36C
-	bl ov02_0232C4D0
+	bl ForceStopSeq
 	ldmia sp!, {r4, pc}
 _0232C36C:
 	add r0, r4, #0x1c
 	mov r1, #0
-	bl ov02_0232DCE0
+	bl Nnsi_SndFaderSet
 	mov r0, r4
 	mov r1, #0
-	bl ov02_0232C644
+	bl SetPlayerPriority
 	mov r0, #2
 	strb r0, [r4, #0x2c]
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232C344
+	arm_func_end Nnsi_SndPlayerStopSeq
 
-	arm_func_start ov02_0232C390
-ov02_0232C390: ; 0x0232C390
+	arm_func_start Nnsi_SndPlayerAllocHeap
+Nnsi_SndPlayerAllocHeap: ; 0x0232C390
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r3, _0232C3E0 ; =ov02_02356D44
 	mov r2, #0x24
@@ -3567,25 +3567,25 @@ ov02_0232C390: ; 0x0232C390
 	mov r6, r1
 	add r0, r5, #0xc
 	mov r1, #0
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r1, r4
 	add r0, r5, #0xc
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	str r6, [r4, #0xc]
 	str r4, [r6, #8]
 	ldr r0, [r4, #8]
-	bl ov02_0232CEF8
+	bl Nns_SndHeapClear
 	ldr r0, [r4, #8]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0232C3E0: .word ov02_02356D44
-	arm_func_end ov02_0232C390
+	arm_func_end Nnsi_SndPlayerAllocHeap
 
-	arm_func_start ov02_0232C3E4
-ov02_0232C3E4: ; 0x0232C3E4
+	arm_func_start InitPlayer
+InitPlayer: ; 0x0232C3E4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #0
@@ -3598,21 +3598,21 @@ ov02_0232C3E4: ; 0x0232C3E4
 	strb r1, [r4, #0x40]
 	add r0, r4, #0x1c
 	strb r1, [r4, #0x41]
-	bl ov02_0232DCC8
+	bl Nnsi_SndFaderInit
 	add r0, r4, #0x1c
 	mov r1, #0x7f00
 	mov r2, #1
-	bl ov02_0232DCE0
+	bl Nnsi_SndFaderSet
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232C3E4
+	arm_func_end InitPlayer
 
-	arm_func_start ov02_0232C42C
-ov02_0232C42C: ; 0x0232C42C
+	arm_func_start InsertPlayerList
+InsertPlayerList: ; 0x0232C42C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r1, #0
 	mov r5, r0
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r1, r0
 	beq _0232C468
 _0232C448:
@@ -3621,24 +3621,24 @@ _0232C448:
 	cmp r2, r0
 	blo _0232C468
 	mov r0, r5
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r1, r0
 	bne _0232C448
 _0232C468:
 	mov r0, r5
 	mov r2, r4
-	bl ov02_02329648
+	bl Nns_FndInsertListObject
 	str r5, [r4, #4]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0232C42C
+	arm_func_end InsertPlayerList
 
-	arm_func_start ov02_0232C47C
-ov02_0232C47C: ; 0x0232C47C
+	arm_func_start InsertPrioList
+InsertPrioList: ; 0x0232C47C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, _0232C4CC ; =ov02_023568F8
 	mov r1, #0
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r1, r0
 	beq _0232C4BC
 	ldr r4, _0232C4CC ; =ov02_023568F8
@@ -3648,20 +3648,20 @@ _0232C49C:
 	cmp r2, r0
 	blo _0232C4BC
 	mov r0, r4
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r1, r0
 	bne _0232C49C
 _0232C4BC:
 	ldr r0, _0232C4CC ; =ov02_023568F8
 	mov r2, r5
-	bl ov02_02329648
+	bl Nns_FndInsertListObject
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232C4CC: .word ov02_023568F8
-	arm_func_end ov02_0232C47C
+	arm_func_end InsertPrioList
 
-	arm_func_start ov02_0232C4D0
-ov02_0232C4D0: ; 0x0232C4D0
+	arm_func_start ForceStopSeq
+ForceStopSeq: ; 0x0232C4D0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrb r0, [r4, #0x2c]
@@ -3674,46 +3674,46 @@ _0232C4F0:
 	ldrb r0, [r4, #0x3c]
 	bl Snd_StopSeq
 	mov r0, r4
-	bl ov02_0232C570
+	bl ShutdownPlayer__0232CD9C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0232C504: .word 0xFFFFFD2D
-	arm_func_end ov02_0232C4D0
+	arm_func_end ForceStopSeq
 
-	arm_func_start ov02_0232C508
-ov02_0232C508: ; 0x0232C508
+	arm_func_start AllocSeqPlayer
+AllocSeqPlayer: ; 0x0232C508
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, _0232C568 ; =ov02_023568EC
 	mov r1, #0
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r4, r0
 	bne _0232C548
 	ldr r0, _0232C56C ; =ov02_023568F8
 	mov r1, #0
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	mov r4, r0
 	ldrb r1, [r4, #0x3d]
 	cmp r5, r1
 	movlt r0, #0
 	ldmltia sp!, {r3, r4, r5, pc}
-	bl ov02_0232C4D0
+	bl ForceStopSeq
 _0232C548:
 	ldr r0, _0232C568 ; =ov02_023568EC
 	mov r1, r4
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	mov r0, r4
 	strb r5, [r4, #0x3d]
-	bl ov02_0232C47C
+	bl InsertPrioList
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232C568: .word ov02_023568EC
 _0232C56C: .word ov02_023568F8
-	arm_func_end ov02_0232C508
+	arm_func_end AllocSeqPlayer
 
-	arm_func_start ov02_0232C570
-ov02_0232C570: ; 0x0232C570
+	arm_func_start ShutdownPlayer__0232CD9C
+ShutdownPlayer__0232CD9C: ; 0x0232C570
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	ldr r1, [r4]
@@ -3724,14 +3724,14 @@ ov02_0232C570: ; 0x0232C570
 	ldr r5, [r4, #4]
 	mov r1, r4
 	mov r0, r5
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r1, [r4, #8]
 	cmp r1, #0
 	beq _0232C5C8
 	add r0, r5, #0xc
-	bl ov02_023295A4
+	bl Nns_FndAppendListObject
 	ldr r0, [r4, #8]
 	mov r1, #0
 	str r1, [r0, #0xc]
@@ -3739,26 +3739,26 @@ ov02_0232C570: ; 0x0232C570
 _0232C5C8:
 	ldr r0, _0232C5EC ; =ov02_023568F8
 	mov r1, r4
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	ldr r0, _0232C5F0 ; =ov02_023568EC
 	mov r1, r4
-	bl ov02_023295A4
+	bl Nns_FndAppendListObject
 	mov r0, #0
 	strb r0, [r4, #0x2c]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232C5EC: .word ov02_023568F8
 _0232C5F0: .word ov02_023568EC
-	arm_func_end ov02_0232C570
+	arm_func_end ShutdownPlayer__0232CD9C
 
-	arm_func_start ov02_0232C5F4
-ov02_0232C5F4: ; 0x0232C5F4
+	arm_func_start PlayerHeapDisposeCallback
+PlayerHeapDisposeCallback: ; 0x0232C5F4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov02_0232CEE0
+	bl Nns_SndHeapDestroy
 	ldr r1, [r4, #0xc]
 	cmp r1, #0
 	movne r0, #0
@@ -3770,14 +3770,14 @@ ov02_0232C5F4: ; 0x0232C5F4
 	mla r0, r1, r0, r2
 	mov r1, r4
 	add r0, r0, #0xc
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0232C640: .word ov02_02356D44
-	arm_func_end ov02_0232C5F4
+	arm_func_end PlayerHeapDisposeCallback
 
-	arm_func_start ov02_0232C644
-ov02_0232C644: ; 0x0232C644
+	arm_func_start SetPlayerPriority
+SetPlayerPriority: ; 0x0232C644
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldr r4, [r6, #4]
@@ -3786,43 +3786,43 @@ ov02_0232C644: ; 0x0232C644
 	beq _0232C670
 	mov r0, r4
 	mov r1, r6
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	mov r0, #0
 	str r0, [r6, #4]
 _0232C670:
 	ldr r0, _0232C6A0 ; =ov02_023568F8
 	mov r1, r6
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	strb r5, [r6, #0x3d]
 	cmp r4, #0
 	beq _0232C694
 	mov r0, r4
 	mov r1, r6
-	bl ov02_0232C42C
+	bl InsertPlayerList
 _0232C694:
 	mov r0, r6
-	bl ov02_0232C47C
+	bl InsertPrioList
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0232C6A0: .word ov02_023568F8
-	arm_func_end ov02_0232C644
+	arm_func_end SetPlayerPriority
 
-	arm_func_start ov02_0232C6A4
-ov02_0232C6A4: ; 0x0232C6A4
+	arm_func_start Nns_SndStrmFreeChannel
+Nns_SndStrmFreeChannel: ; 0x0232C6A4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov02_0232BE14
+	bl Nns_SndUnlockChannel
 	mov r0, #0
 	str r0, [r4, #0x44]
 	str r0, [r4, #0x48]
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232C6A4
+	arm_func_end Nns_SndStrmFreeChannel
 
-	arm_func_start ov02_0232C6CC
-ov02_0232C6CC: ; 0x0232C6CC
+	arm_func_start Nns_SndStrmStart
+Nns_SndStrmStart: ; 0x0232C6CC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #0x40]
@@ -3844,21 +3844,21 @@ ov02_0232C6CC: ; 0x0232C6CC
 	orr r0, r0, #2
 	str r0, [r4, #0x24]
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232C6CC
+	arm_func_end Nns_SndStrmStart
 
-	arm_func_start ov02_0232C720
-ov02_0232C720: ; 0x0232C720
+	arm_func_start Nns_SndStrmStop
+Nns_SndStrmStop: ; 0x0232C720
 	stmdb sp!, {r3, lr}
 	ldr r1, [r0, #0x24]
 	mov r1, r1, lsl #0x1f
 	movs r1, r1, asr #0x1f
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0232C7A8
+	bl ForceStopStrm
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0232C720
+	arm_func_end Nns_SndStrmStop
 
-	arm_func_start ov02_0232C73C
-ov02_0232C73C: ; 0x0232C73C
+	arm_func_start Nns_SndStrmSetVolume
+Nns_SndStrmSetVolume: ; 0x0232C73C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r0
 	str r1, [r7, #0x3c]
@@ -3888,10 +3888,10 @@ _0232C760:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0232C7A4: .word ov02_02357214
-	arm_func_end ov02_0232C73C
+	arm_func_end Nns_SndStrmSetVolume
 
-	arm_func_start ov02_0232C7A8
-ov02_0232C7A8: ; 0x0232C7A8
+	arm_func_start ForceStopStrm
+ForceStopStrm: ; 0x0232C7A8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	ldr r0, [r4, #0x24]
@@ -3920,29 +3920,29 @@ ov02_0232C7A8: ; 0x0232C7A8
 	bl Snd_WaitForCommandProc
 _0232C810:
 	mov r0, r4
-	bl ov02_0232C81C
+	bl ShutdownStrm
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0232C7A8
+	arm_func_end ForceStopStrm
 
-	arm_func_start ov02_0232C81C
-ov02_0232C81C: ; 0x0232C81C
+	arm_func_start ShutdownStrm
+ShutdownStrm: ; 0x0232C81C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #0x40]
-	bl ov02_0232BE60
+	bl Nns_SndFreeAlarm
 	ldr r0, _0232C848 ; =ov02_023571C8
 	mov r1, r4
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	ldr r0, [r4, #0x24]
 	bic r0, r0, #1
 	str r0, [r4, #0x24]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0232C848: .word ov02_023571C8
-	arm_func_end ov02_0232C81C
+	arm_func_end ShutdownStrm
 
-	arm_func_start ov02_0232C84C
-ov02_0232C84C: ; 0x0232C84C
+	arm_func_start Nnsi_SndCaptureInit
+Nnsi_SndCaptureInit: ; 0x0232C84C
 	ldr r0, _0232C860 ; =ov02_02357294
 	mov r1, #0
 	str r1, [r0]
@@ -3950,10 +3950,10 @@ ov02_0232C84C: ; 0x0232C84C
 	bx lr
 	.align 2, 0
 _0232C860: .word ov02_02357294
-	arm_func_end ov02_0232C84C
+	arm_func_end Nnsi_SndCaptureInit
 
-	arm_func_start ov02_0232C864
-ov02_0232C864: ; 0x0232C864
+	arm_func_start Nnsi_SndCaptureMain
+Nnsi_SndCaptureMain: ; 0x0232C864
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _0232C8E4 ; =ov02_02357294
 	ldr r4, _0232C8E8 ; =ov02_023572DC
@@ -3964,19 +3964,19 @@ ov02_0232C864: ; 0x0232C864
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	add r0, r4, #0x3c
-	bl ov02_0232DD3C
+	bl Nnsi_SndFaderUpdate
 	ldr r0, [r4, #0x4c]
 	cmp r0, #0
 	beq _0232C8B4
 	add r0, r4, #0x3c
-	bl ov02_0232DD54
+	bl Nnsi_SndFaderIsFinished
 	cmp r0, #0
 	beq _0232C8B4
-	bl ov02_0232C8EC
+	bl Nnsi_SndCaptureStop
 	ldmia sp!, {r3, r4, r5, pc}
 _0232C8B4:
 	add r0, r4, #0x3c
-	bl ov02_0232DD08
+	bl Nnsi_SndFaderGet
 	ldr r1, [r4, #0x50]
 	mov r5, r0, asr #8
 	cmp r5, r1
@@ -3990,10 +3990,10 @@ _0232C8B4:
 	.align 2, 0
 _0232C8E4: .word ov02_02357294
 _0232C8E8: .word ov02_023572DC
-	arm_func_end ov02_0232C864
+	arm_func_end Nnsi_SndCaptureMain
 
-	arm_func_start ov02_0232C8EC
-ov02_0232C8EC: ; 0x0232C8EC
+	arm_func_start Nnsi_SndCaptureStop
+Nnsi_SndCaptureStop: ; 0x0232C8EC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r0, _0232C9D0 ; =ov02_02357294
 	ldr r4, _0232C9D4 ; =ov02_023572DC
@@ -4033,17 +4033,17 @@ _0232C974:
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
 	beq _0232C984
-	bl ov02_0232BE44
+	bl Nns_SndUnlockCapture
 _0232C984:
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0232C994
-	bl ov02_0232BE14
+	bl Nns_SndUnlockChannel
 _0232C994:
 	cmp r7, #0
 	beq _0232C9A4
 	ldr r0, [r4, #0x2c]
-	bl ov02_0232BE60
+	bl Nns_SndFreeAlarm
 _0232C9A4:
 	ldr r0, [r4, #4]
 	cmp r0, #1
@@ -4061,10 +4061,10 @@ _0232C9C4:
 _0232C9D0: .word ov02_02357294
 _0232C9D4: .word ov02_023572DC
 _0232C9D8: .word ov02_0235729C
-	arm_func_end ov02_0232C8EC
+	arm_func_end Nnsi_SndCaptureStop
 
-	arm_func_start ov02_0232C9DC
-ov02_0232C9DC: ; 0x0232C9DC
+	arm_func_start Nnsi_SndCaptureBeginSleep
+Nnsi_SndCaptureBeginSleep: ; 0x0232C9DC
 	stmdb sp!, {r4, lr}
 	ldr r0, _0232CA34 ; =ov02_02357294
 	ldr r3, _0232CA38 ; =ov02_023572DC
@@ -4090,10 +4090,10 @@ ov02_0232C9DC: ; 0x0232C9DC
 	.align 2, 0
 _0232CA34: .word ov02_02357294
 _0232CA38: .word ov02_023572DC
-	arm_func_end ov02_0232C9DC
+	arm_func_end Nnsi_SndCaptureBeginSleep
 
-	arm_func_start ov02_0232CA3C
-ov02_0232CA3C: ; 0x0232CA3C
+	arm_func_start Nnsi_SndCaptureEndSleep
+Nnsi_SndCaptureEndSleep: ; 0x0232CA3C
 	stmdb sp!, {r4, lr}
 	ldr r0, _0232CAB8 ; =ov02_02357294
 	ldr r4, _0232CABC ; =ov02_023572DC
@@ -4128,10 +4128,10 @@ ov02_0232CA3C: ; 0x0232CA3C
 	.align 2, 0
 _0232CAB8: .word ov02_02357294
 _0232CABC: .word ov02_023572DC
-	arm_func_end ov02_0232CA3C
+	arm_func_end Nnsi_SndCaptureEndSleep
 
-	arm_func_start ov02_0232CAC0
-ov02_0232CAC0: ; 0x0232CAC0
+	arm_func_start Nns_SndArcInitOnMemory
+Nns_SndArcInitOnMemory: ; 0x0232CAC0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -4184,10 +4184,10 @@ _0232CB6C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232CB80: .word ov02_02357890
-	arm_func_end ov02_0232CAC0
+	arm_func_end Nns_SndArcInitOnMemory
 
-	arm_func_start ov02_0232CB84
-ov02_0232CB84: ; 0x0232CB84
+	arm_func_start Nns_SndArcSetCurrent
+Nns_SndArcSetCurrent: ; 0x0232CB84
 	ldr r1, _0232CB98 ; =ov02_02357890
 	ldr r2, [r1]
 	str r0, [r1]
@@ -4195,19 +4195,19 @@ ov02_0232CB84: ; 0x0232CB84
 	bx lr
 	.align 2, 0
 _0232CB98: .word ov02_02357890
-	arm_func_end ov02_0232CB84
+	arm_func_end Nns_SndArcSetCurrent
 
-	arm_func_start ov02_0232CB9C
-ov02_0232CB9C: ; 0x0232CB9C
+	arm_func_start Nns_SndArcGetCurrent
+Nns_SndArcGetCurrent: ; 0x0232CB9C
 	ldr r0, _0232CBA8 ; =ov02_02357890
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _0232CBA8: .word ov02_02357890
-	arm_func_end ov02_0232CB9C
+	arm_func_end Nns_SndArcGetCurrent
 
-	arm_func_start ov02_0232CBAC
-ov02_0232CBAC: ; 0x0232CBAC
+	arm_func_start Nns_SndArcGetSeqArcInfo
+Nns_SndArcGetSeqArcInfo: ; 0x0232CBAC
 	ldr r1, _0232CC0C ; =ov02_02357890
 	ldr r3, [r1]
 	ldr r2, [r3, #0x8c]
@@ -4234,10 +4234,10 @@ ov02_0232CBAC: ; 0x0232CBAC
 	bx lr
 	.align 2, 0
 _0232CC0C: .word ov02_02357890
-	arm_func_end ov02_0232CBAC
+	arm_func_end Nns_SndArcGetSeqArcInfo
 
-	arm_func_start ov02_0232CC10
-ov02_0232CC10: ; 0x0232CC10
+	arm_func_start Nns_SndArcGetBankInfo
+Nns_SndArcGetBankInfo: ; 0x0232CC10
 	ldr r1, _0232CC70 ; =ov02_02357890
 	ldr r3, [r1]
 	ldr r2, [r3, #0x8c]
@@ -4264,10 +4264,10 @@ ov02_0232CC10: ; 0x0232CC10
 	bx lr
 	.align 2, 0
 _0232CC70: .word ov02_02357890
-	arm_func_end ov02_0232CC10
+	arm_func_end Nns_SndArcGetBankInfo
 
-	arm_func_start ov02_0232CC74
-ov02_0232CC74: ; 0x0232CC74
+	arm_func_start Nns_SndArcGetWaveArcInfo
+Nns_SndArcGetWaveArcInfo: ; 0x0232CC74
 	ldr r1, _0232CCD4 ; =ov02_02357890
 	ldr r3, [r1]
 	ldr r2, [r3, #0x8c]
@@ -4294,10 +4294,10 @@ ov02_0232CC74: ; 0x0232CC74
 	bx lr
 	.align 2, 0
 _0232CCD4: .word ov02_02357890
-	arm_func_end ov02_0232CC74
+	arm_func_end Nns_SndArcGetWaveArcInfo
 
-	arm_func_start ov02_0232CCD8
-ov02_0232CCD8: ; 0x0232CCD8
+	arm_func_start Nns_SndArcGetPlayerInfo
+Nns_SndArcGetPlayerInfo: ; 0x0232CCD8
 	ldr r1, _0232CD38 ; =ov02_02357890
 	ldr r3, [r1]
 	ldr r2, [r3, #0x8c]
@@ -4324,10 +4324,10 @@ ov02_0232CCD8: ; 0x0232CCD8
 	bx lr
 	.align 2, 0
 _0232CD38: .word ov02_02357890
-	arm_func_end ov02_0232CCD8
+	arm_func_end Nns_SndArcGetPlayerInfo
 
-	arm_func_start ov02_0232CD3C
-ov02_0232CD3C: ; 0x0232CD3C
+	arm_func_start Nns_SndArcGetFileSize
+Nns_SndArcGetFileSize: ; 0x0232CD3C
 	ldr r1, _0232CD60 ; =ov02_02357890
 	ldr r1, [r1]
 	ldr r2, [r1, #0x84]
@@ -4339,10 +4339,10 @@ ov02_0232CD3C: ; 0x0232CD3C
 	bx lr
 	.align 2, 0
 _0232CD60: .word ov02_02357890
-	arm_func_end ov02_0232CD3C
+	arm_func_end Nns_SndArcGetFileSize
 
-	arm_func_start ov02_0232CD64
-ov02_0232CD64: ; 0x0232CD64
+	arm_func_start Nns_SndArcReadFile
+Nns_SndArcReadFile: ; 0x0232CD64
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r4, _0232CE28 ; =ov02_02357890
 	mov sb, r2
@@ -4396,10 +4396,10 @@ _0232CE20:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0232CE28: .word ov02_02357890
-	arm_func_end ov02_0232CD64
+	arm_func_end Nns_SndArcReadFile
 
-	arm_func_start ov02_0232CE2C
-ov02_0232CE2C: ; 0x0232CE2C
+	arm_func_start Nns_SndArcGetFileAddress
+Nns_SndArcGetFileAddress: ; 0x0232CE2C
 	ldr r1, _0232CE50 ; =ov02_02357890
 	ldr r1, [r1]
 	ldr r2, [r1, #0x84]
@@ -4411,10 +4411,10 @@ ov02_0232CE2C: ; 0x0232CE2C
 	bx lr
 	.align 2, 0
 _0232CE50: .word ov02_02357890
-	arm_func_end ov02_0232CE2C
+	arm_func_end Nns_SndArcGetFileAddress
 
-	arm_func_start ov02_0232CE54
-ov02_0232CE54: ; 0x0232CE54
+	arm_func_start Nns_SndArcSetFileAddress
+Nns_SndArcSetFileAddress: ; 0x0232CE54
 	ldr r2, _0232CE6C ; =ov02_02357890
 	ldr r2, [r2]
 	ldr r2, [r2, #0x84]
@@ -4423,10 +4423,10 @@ ov02_0232CE54: ; 0x0232CE54
 	bx lr
 	.align 2, 0
 _0232CE6C: .word ov02_02357890
-	arm_func_end ov02_0232CE54
+	arm_func_end Nns_SndArcSetFileAddress
 
-	arm_func_start ov02_0232CE70
-ov02_0232CE70: ; 0x0232CE70
+	arm_func_start Nns_SndHeapCreate
+Nns_SndHeapCreate: ; 0x0232CE70
 	stmdb sp!, {r3, r4, r5, lr}
 	add r2, r0, #3
 	add r0, r0, r1
@@ -4441,40 +4441,40 @@ ov02_0232CE70: ; 0x0232CE70
 	add r0, r5, #0x10
 	sub r1, r1, #0x10
 	mov r2, #0
-	bl ov02_02329F40
+	bl Nns_FndCreateFrmHeapEx
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, r4
-	bl ov02_0232D02C
+	bl InitHeap
 	cmp r0, #0
 	movne r0, r5
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r4
-	bl ov02_02329F78
+	bl Nns_FndDestroyFrmHeap
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0232CE70
+	arm_func_end Nns_SndHeapCreate
 
-	arm_func_start ov02_0232CEE0
-ov02_0232CEE0: ; 0x0232CEE0
+	arm_func_start Nns_SndHeapDestroy
+Nns_SndHeapDestroy: ; 0x0232CEE0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_0232CEF8
+	bl Nns_SndHeapClear
 	ldr r0, [r4]
-	bl ov02_02329F78
+	bl Nns_FndDestroyFrmHeap
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232CEE0
+	arm_func_end Nns_SndHeapDestroy
 
-	arm_func_start ov02_0232CEF8
-ov02_0232CEF8: ; 0x0232CEF8
+	arm_func_start Nns_SndHeapClear
+Nns_SndHeapClear: ; 0x0232CEF8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r8, r0
 	mov r6, #0
 	mov r1, r6
 	add r0, r8, #4
-	bl ov02_02329724
+	bl Nns_FndGetPrevListObject
 	movs r5, r0
 	beq _0232CF90
 	mov sl, #1
@@ -4483,7 +4483,7 @@ ov02_0232CEF8: ; 0x0232CEF8
 _0232CF24:
 	mov r0, r5
 	mov r1, r4
-	bl ov02_02329724
+	bl Nns_FndGetPrevListObject
 	movs r7, r0
 	beq _0232CF70
 _0232CF38:
@@ -4499,33 +4499,33 @@ _0232CF38:
 _0232CF5C:
 	mov r0, r5
 	mov r1, r7
-	bl ov02_02329724
+	bl Nns_FndGetPrevListObject
 	movs r7, r0
 	bne _0232CF38
 _0232CF70:
 	mov r1, r5
 	add r0, r8, #4
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	mov r1, sb
 	add r0, r8, #4
-	bl ov02_02329724
+	bl Nns_FndGetPrevListObject
 	movs r5, r0
 	bne _0232CF24
 _0232CF90:
 	ldr r0, [r8]
 	mov r1, #3
-	bl ov02_02329FB8
+	bl Nns_FndFreeToFrmHeap
 	cmp r6, #0
 	beq _0232CFA8
-	bl ov02_0232D09C
+	bl EraseSync
 _0232CFA8:
 	mov r0, r8
-	bl ov02_0232D060
+	bl NewSection
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end ov02_0232CEF8
+	arm_func_end Nns_SndHeapClear
 
-	arm_func_start ov02_0232CFB4
-ov02_0232CFB4: ; 0x0232CFB4
+	arm_func_start Nns_SndHeapAlloc
+Nns_SndHeapAlloc: ; 0x0232CFB4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r1
 	mov r8, r0
@@ -4536,71 +4536,71 @@ ov02_0232CFB4: ; 0x0232CFB4
 	add r1, r1, #0x20
 	mov r2, #0x20
 	mov r5, r3
-	bl ov02_02329F84
+	bl Nns_FndAllocFromFrmHeapEx
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	add r0, r8, #4
 	mov r1, #0
-	bl ov02_02329724
+	bl Nns_FndGetPrevListObject
 	str r7, [r4, #8]
 	str r6, [r4, #0xc]
 	ldr r2, [sp, #0x18]
 	str r5, [r4, #0x10]
 	mov r1, r4
 	str r2, [r4, #0x14]
-	bl ov02_023295A4
+	bl Nns_FndAppendListObject
 	add r0, r4, #0x20
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0232CFB4
+	arm_func_end Nns_SndHeapAlloc
 
-	arm_func_start ov02_0232D01C
-ov02_0232D01C: ; 0x0232D01C
-	ldr ip, _0232D028 ; =ov02_02329560
+	arm_func_start InitHeapSection
+InitHeapSection: ; 0x0232D01C
+	ldr ip, _0232D028 ; =Nns_FndInitList
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_0232D028: .word ov02_02329560
-	arm_func_end ov02_0232D01C
+_0232D028: .word Nns_FndInitList
+	arm_func_end InitHeapSection
 
-	arm_func_start ov02_0232D02C
-ov02_0232D02C: ; 0x0232D02C
+	arm_func_start InitHeap
+InitHeap: ; 0x0232D02C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	add r0, r5, #4
 	mov r1, #0xc
-	bl ov02_02329560
+	bl Nns_FndInitList
 	mov r0, r5
 	str r4, [r5]
-	bl ov02_0232D060
+	bl NewSection
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0232D02C
+	arm_func_end InitHeap
 
-	arm_func_start ov02_0232D060
-ov02_0232D060: ; 0x0232D060
+	arm_func_start NewSection
+NewSection: ; 0x0232D060
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5]
 	mov r1, #0x14
 	mov r2, #4
-	bl ov02_02329F84
+	bl Nns_FndAllocFromFrmHeapEx
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	bl ov02_0232D01C
+	bl InitHeapSection
 	mov r1, r4
 	add r0, r5, #4
-	bl ov02_023295A4
+	bl Nns_FndAppendListObject
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0232D060
+	arm_func_end NewSection
 
-	arm_func_start ov02_0232D09C
-ov02_0232D09C: ; 0x0232D09C
+	arm_func_start EraseSync
+EraseSync: ; 0x0232D09C
 	stmdb sp!, {r4, lr}
 	bl Snd_GetCurrentCommandTag
 	mov r4, r0
@@ -4609,16 +4609,16 @@ ov02_0232D09C: ; 0x0232D09C
 	mov r0, r4
 	bl Snd_WaitForCommandProc
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232D09C
+	arm_func_end EraseSync
 
-	arm_func_start ov02_0232D0BC
-ov02_0232D0BC: ; 0x0232D0BC
+	arm_func_start Nnsi_SndArcLoadBank
+Nnsi_SndArcLoadBank: ; 0x0232D0BC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sl, r1
 	mov sb, r2
 	mov fp, r3
-	bl ov02_0232CC10
+	bl Nns_SndArcGetBankInfo
 	movs r5, r0
 	addeq sp, sp, #8
 	moveq r0, #4
@@ -4628,14 +4628,14 @@ ov02_0232D0BC: ; 0x0232D0BC
 	beq _0232D110
 	mov r1, sb
 	mov r2, fp
-	bl ov02_0232D328
+	bl LoadBank
 	movs r6, r0
 	bne _0232D118
 	add sp, sp, #8
 	mov r0, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0232D110:
-	bl ov02_0232CE2C
+	bl Nns_SndArcGetFileAddress
 	mov r6, r0
 _0232D118:
 	and r8, sl, #4
@@ -4646,7 +4646,7 @@ _0232D120:
 	ldr r1, _0232D1F8 ; =0x0000FFFF
 	cmp r0, r1
 	beq _0232D1D4
-	bl ov02_0232CC74
+	bl Nns_SndArcGetWaveArcInfo
 	movs r4, r0
 	addeq sp, sp, #8
 	moveq r0, #5
@@ -4658,7 +4658,7 @@ _0232D120:
 	mov r1, sl
 	mov r2, sb
 	mov r3, fp
-	bl ov02_0232D1FC
+	bl Nnsi_SndArcLoadWaveArc
 	cmp r0, #0
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -4674,7 +4674,7 @@ _0232D120:
 	mov r1, r6
 	mov r2, r7
 	mov r3, r3, lsr #8
-	bl ov02_0232D6F0
+	bl LoadSingleWaves
 	cmp r0, #0
 	addeq sp, sp, #8
 	moveq r0, #9
@@ -4699,15 +4699,15 @@ _0232D1D4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0232D1F8: .word 0x0000FFFF
-	arm_func_end ov02_0232D0BC
+	arm_func_end Nnsi_SndArcLoadBank
 
-	arm_func_start ov02_0232D1FC
-ov02_0232D1FC: ; 0x0232D1FC
+	arm_func_start Nnsi_SndArcLoadWaveArc
+Nnsi_SndArcLoadWaveArc: ; 0x0232D1FC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ov02_0232CC74
+	bl Nns_SndArcGetWaveArcInfo
 	cmp r0, #0
 	moveq r0, #5
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -4721,12 +4721,12 @@ ov02_0232D1FC: ; 0x0232D1FC
 	beq _0232D24C
 	mov r2, r4
 	mov r0, r0, lsr #8
-	bl ov02_0232D400
+	bl LoadWaveArcTable
 	b _0232D258
 _0232D24C:
 	mov r2, r4
 	mov r0, r0, lsr #8
-	bl ov02_0232D394
+	bl LoadWaveArc
 _0232D258:
 	cmp r0, #0
 	bne _0232D274
@@ -4735,24 +4735,24 @@ _0232D258:
 _0232D268:
 	mov r0, r0, lsl #8
 	mov r0, r0, lsr #8
-	bl ov02_0232CE2C
+	bl Nns_SndArcGetFileAddress
 _0232D274:
 	ldr r1, [sp, #0x10]
 	cmp r1, #0
 	strne r0, [r1]
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov02_0232D1FC
+	arm_func_end Nnsi_SndArcLoadWaveArc
 
-	arm_func_start ov02_0232D288
-ov02_0232D288: ; 0x0232D288
+	arm_func_start Nnsi_SndArcLoadFile
+Nnsi_SndArcLoadFile: ; 0x0232D288
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r8, r0
 	mov r7, r1
 	mov r6, r2
 	mov r4, r3
-	bl ov02_0232CD3C
+	bl Nns_SndArcGetFileSize
 	movs r5, r0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -4766,7 +4766,7 @@ ov02_0232D288: ; 0x0232D288
 	mov r3, r6
 	add r1, r5, #0x20
 	str r4, [sp]
-	bl ov02_0232CFB4
+	bl Nns_SndHeapAlloc
 	movs r4, r0
 	addeq sp, sp, #4
 	moveq r0, #0
@@ -4775,7 +4775,7 @@ ov02_0232D288: ; 0x0232D288
 	mov r1, r4
 	mov r2, r5
 	mov r3, #0
-	bl ov02_0232CD64
+	bl Nns_SndArcReadFile
 	cmp r5, r0
 	addne sp, sp, #4
 	movne r0, #0
@@ -4786,90 +4786,90 @@ ov02_0232D288: ; 0x0232D288
 	mov r0, r4
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0232D288
+	arm_func_end Nnsi_SndArcLoadFile
 
-	arm_func_start ov02_0232D328
-ov02_0232D328: ; 0x0232D328
+	arm_func_start LoadBank
+LoadBank: ; 0x0232D328
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
-	bl ov02_0232CE2C
+	bl Nns_SndArcGetFileAddress
 	movs r4, r0
 	bne _0232D388
 	cmp r5, #0
 	moveq r2, #0
 	beq _0232D358
-	bl ov02_0232CB9C
+	bl Nns_SndArcGetCurrent
 	mov r2, r0
 _0232D358:
-	ldr r1, _0232D390 ; =ov02_0232D560
+	ldr r1, _0232D390 ; =BankDisposeCallback
 	mov r0, r7
 	mov r3, r7
 	str r6, [sp]
-	bl ov02_0232D288
+	bl Nnsi_SndArcLoadFile
 	mov r4, r0
 	cmp r5, #0
 	cmpne r4, #0
 	beq _0232D388
 	mov r0, r7
 	mov r1, r4
-	bl ov02_0232CE54
+	bl Nns_SndArcSetFileAddress
 _0232D388:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0232D390: .word ov02_0232D560
-	arm_func_end ov02_0232D328
+_0232D390: .word BankDisposeCallback
+	arm_func_end LoadBank
 
-	arm_func_start ov02_0232D394
-ov02_0232D394: ; 0x0232D394
+	arm_func_start LoadWaveArc
+LoadWaveArc: ; 0x0232D394
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
-	bl ov02_0232CE2C
+	bl Nns_SndArcGetFileAddress
 	movs r4, r0
 	bne _0232D3F4
 	cmp r5, #0
 	moveq r2, #0
 	beq _0232D3C4
-	bl ov02_0232CB9C
+	bl Nns_SndArcGetCurrent
 	mov r2, r0
 _0232D3C4:
-	ldr r1, _0232D3FC ; =ov02_0232D590
+	ldr r1, _0232D3FC ; =WaveArcDisposeCallback
 	mov r0, r7
 	mov r3, r7
 	str r6, [sp]
-	bl ov02_0232D288
+	bl Nnsi_SndArcLoadFile
 	mov r4, r0
 	cmp r5, #0
 	cmpne r4, #0
 	beq _0232D3F4
 	mov r0, r7
 	mov r1, r4
-	bl ov02_0232CE54
+	bl Nns_SndArcSetFileAddress
 _0232D3F4:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0232D3FC: .word ov02_0232D590
-	arm_func_end ov02_0232D394
+_0232D3FC: .word WaveArcDisposeCallback
+	arm_func_end LoadWaveArc
 
-	arm_func_start ov02_0232D400
-ov02_0232D400: ; 0x0232D400
+	arm_func_start LoadWaveArcTable
+LoadWaveArcTable: ; 0x0232D400
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r8, r1
 	mov r7, r2
-	bl ov02_0232CE2C
+	bl Nns_SndArcGetFileAddress
 	movs r5, r0
 	bne _0232D4F4
 	ldr r1, _0232D4FC ; =ov02_02357894
 	mov r0, sb
 	mov r2, #0x3c
 	mov r3, #0
-	bl ov02_0232CD64
+	bl Nns_SndArcReadFile
 	cmp r0, #0x3c
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -4883,14 +4883,14 @@ ov02_0232D400: ; 0x0232D400
 	cmp r7, #0
 	moveq r3, #0
 	beq _0232D46C
-	bl ov02_0232CB9C
+	bl Nns_SndArcGetCurrent
 	mov r3, r0
 _0232D46C:
-	ldr r2, _0232D504 ; =ov02_0232D5C0
+	ldr r2, _0232D504 ; =WaveArcTableDisposeCallback
 	mov r0, r8
 	add r1, r4, #0x5c
 	str sb, [sp]
-	bl ov02_0232CFB4
+	bl Nns_SndHeapAlloc
 	movs r5, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -4898,7 +4898,7 @@ _0232D46C:
 	mov r1, r5
 	add r2, r6, #0x3c
 	mov r3, #0
-	bl ov02_0232CD64
+	bl Nns_SndArcReadFile
 	add r1, r6, #0x3c
 	cmp r0, r1
 	movne r0, #0
@@ -4919,18 +4919,18 @@ _0232D46C:
 	beq _0232D4F4
 	mov r0, sb
 	mov r1, r5
-	bl ov02_0232CE54
+	bl Nns_SndArcSetFileAddress
 _0232D4F4:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0232D4FC: .word ov02_02357894
 _0232D500: .word ov02_02357894
-_0232D504: .word ov02_0232D5C0
-	arm_func_end ov02_0232D400
+_0232D504: .word WaveArcTableDisposeCallback
+	arm_func_end LoadWaveArcTable
 
-	arm_func_start ov02_0232D508
-ov02_0232D508: ; 0x0232D508
+	arm_func_start DisposeCallback
+DisposeCallback: ; 0x0232D508
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	movs r4, r1
 	mov r7, r0
@@ -4939,69 +4939,69 @@ ov02_0232D508: ; 0x0232D508
 	bl EnableIrqFlag
 	mov r5, r0
 	mov r0, r4
-	bl ov02_0232CB84
+	bl Nns_SndArcSetCurrent
 	mov r4, r0
 	mov r0, r6
-	bl ov02_0232CE2C
+	bl Nns_SndArcGetFileAddress
 	cmp r7, r0
 	bne _0232D54C
 	mov r0, r6
 	mov r1, #0
-	bl ov02_0232CE54
+	bl Nns_SndArcSetFileAddress
 _0232D54C:
 	mov r0, r4
-	bl ov02_0232CB84
+	bl Nns_SndArcSetCurrent
 	mov r0, r5
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov02_0232D508
+	arm_func_end DisposeCallback
 
-	arm_func_start ov02_0232D560
-ov02_0232D560: ; 0x0232D560
+	arm_func_start BankDisposeCallback
+BankDisposeCallback: ; 0x0232D560
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r1, r2
 	mov r5, r0
 	mov r2, r3
-	bl ov02_0232D508
+	bl DisposeCallback
 	mov r0, r5
 	add r1, r5, r4
 	bl Snd_InvalidateSeqData
 	mov r0, r5
 	bl Snd_DestroyBank
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0232D560
+	arm_func_end BankDisposeCallback
 
-	arm_func_start ov02_0232D590
-ov02_0232D590: ; 0x0232D590
+	arm_func_start WaveArcDisposeCallback
+WaveArcDisposeCallback: ; 0x0232D590
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r1, r2
 	mov r5, r0
 	mov r2, r3
-	bl ov02_0232D508
+	bl DisposeCallback
 	mov r0, r5
 	add r1, r5, r4
 	bl Snd_InvalidateBankData
 	mov r0, r5
 	bl Snd_DestroyWaveArc
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0232D590
+	arm_func_end WaveArcDisposeCallback
 
-	arm_func_start ov02_0232D5C0
-ov02_0232D5C0: ; 0x0232D5C0
+	arm_func_start WaveArcTableDisposeCallback
+WaveArcTableDisposeCallback: ; 0x0232D5C0
 	stmdb sp!, {r4, lr}
 	mov r1, r2
 	mov r4, r0
 	mov r2, r3
-	bl ov02_0232D508
+	bl DisposeCallback
 	mov r0, r4
 	bl Snd_DestroyWaveArc
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232D5C0
+	arm_func_end WaveArcTableDisposeCallback
 
-	arm_func_start ov02_0232D5E0
-ov02_0232D5E0: ; 0x0232D5E0
+	arm_func_start SingleWaveDisposeCallback
+SingleWaveDisposeCallback: ; 0x0232D5E0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r2
 	mov r7, r0
@@ -5021,10 +5021,10 @@ _0232D618:
 	add r1, r7, r6
 	bl Snd_InvalidateBankData
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov02_0232D5E0
+	arm_func_end SingleWaveDisposeCallback
 
-	arm_func_start ov02_0232D628
-ov02_0232D628: ; 0x0232D628
+	arm_func_start LoadSingleWave
+LoadSingleWave: ; 0x0232D628
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r0
 	mov r7, r1
@@ -5048,12 +5048,12 @@ ov02_0232D628: ; 0x0232D628
 	sub sb, r0, r4
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	ldr r2, _0232D6EC ; =ov02_0232D5E0
+	ldr r2, _0232D6EC ; =SingleWaveDisposeCallback
 	mov r0, r5
 	mov r3, r8
 	add r1, sb, #0x20
 	str r7, [sp]
-	bl ov02_0232CFB4
+	bl Nns_SndHeapAlloc
 	movs r5, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -5061,7 +5061,7 @@ ov02_0232D628: ; 0x0232D628
 	mov r1, r5
 	mov r2, sb
 	mov r3, r4
-	bl ov02_0232CD64
+	bl Nns_SndArcReadFile
 	cmp sb, r0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -5075,11 +5075,11 @@ ov02_0232D628: ; 0x0232D628
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0232D6EC: .word ov02_0232D5E0
-	arm_func_end ov02_0232D628
+_0232D6EC: .word SingleWaveDisposeCallback
+	arm_func_end LoadSingleWave
 
-	arm_func_start ov02_0232D6F0
-ov02_0232D6F0: ; 0x0232D6F0
+	arm_func_start LoadSingleWaves
+LoadSingleWaves: ; 0x0232D6F0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x1c
 	mov r8, r0
@@ -5115,7 +5115,7 @@ _0232D754:
 	mov r0, r8
 	mov r2, r5
 	mov r3, r4
-	bl ov02_0232D628
+	bl LoadSingleWave
 	cmp r0, #0
 	addeq sp, sp, #0x1c
 	moveq r0, #0
@@ -5131,26 +5131,26 @@ _0232D7A4:
 	mov r0, #1
 	add sp, sp, #0x1c
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end ov02_0232D6F0
+	arm_func_end LoadSingleWaves
 
-	arm_func_start ov02_0232D7B0
-ov02_0232D7B0: ; 0x0232D7B0
+	arm_func_start Nns_SndArcPlayerSetup
+Nns_SndArcPlayerSetup: ; 0x0232D7B0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r4, r0
-	bl ov02_0232CB9C
+	bl Nns_SndArcGetCurrent
 	mov r6, #0
 	mov r5, r6
 _0232D7C4:
 	mov r0, r6
-	bl ov02_0232CCD8
+	bl Nns_SndArcGetPlayerInfo
 	movs r7, r0
 	beq _0232D838
 	ldrb r1, [r7]
 	mov r0, r6
-	bl ov02_0232BE9C
+	bl Nns_SndPlayerSetPlayableSeqCount
 	ldrh r1, [r7, #2]
 	mov r0, r6
-	bl ov02_0232BEBC
+	bl Nns_SndPlayerSetAllocatableChannel
 	ldr r0, [r7, #4]
 	cmp r0, #0
 	cmpne r4, #0
@@ -5163,7 +5163,7 @@ _0232D80C:
 	ldr r2, [r7, #4]
 	mov r0, r6
 	mov r1, r4
-	bl ov02_0232BED4
+	bl Nns_SndPlayerCreateHeap
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
@@ -5177,29 +5177,29 @@ _0232D838:
 	blt _0232D7C4
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0232D7B0
+	arm_func_end Nns_SndArcPlayerSetup
 
-	arm_func_start ov02_0232D84C
-ov02_0232D84C: ; 0x0232D84C
+	arm_func_start Nns_SndArcPlayerStartSeqArc
+Nns_SndArcPlayerStartSeqArc: ; 0x0232D84C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	mov r6, r1
 	mov r7, r0
 	mov r0, r6
 	mov r5, r2
-	bl ov02_0232CBAC
+	bl Nns_SndArcGetSeqArcInfo
 	cmp r0, #0
 	addeq sp, sp, #0x10
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, [r0]
-	bl ov02_0232CE2C
+	bl Nns_SndArcGetFileAddress
 	movs r4, r0
 	addeq sp, sp, #0x10
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r1, r5
-	bl ov02_0232DC88
+	bl Nnsi_SndSeqArcGetSeqInfo
 	cmp r0, #0
 	addeq sp, sp, #0x10
 	moveq r0, #0
@@ -5210,13 +5210,13 @@ ov02_0232D84C: ; 0x0232D84C
 	ldrh r2, [r0, #4]
 	ldrb r3, [r0, #8]
 	mov r0, r7
-	bl ov02_0232D8CC
+	bl StartSeqArc
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov02_0232D84C
+	arm_func_end Nns_SndArcPlayerStartSeqArc
 
-	arm_func_start ov02_0232D8CC
-ov02_0232D8CC: ; 0x0232D8CC
+	arm_func_start StartSeqArc
+StartSeqArc: ; 0x0232D8CC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	mov r7, r2
@@ -5224,25 +5224,25 @@ ov02_0232D8CC: ; 0x0232D8CC
 	ldr r6, [sp, #0x20]
 	mov r4, r0
 	mov r8, r1
-	bl ov02_0232C250
+	bl Nnsi_SndPlayerAllocSeqPlayer
 	movs r5, r0
 	addeq sp, sp, #8
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r8
 	mov r1, r5
-	bl ov02_0232C390
+	bl Nnsi_SndPlayerAllocHeap
 	add ip, sp, #4
 	mov r2, r0
 	mov r0, r7
 	mov r1, #6
 	mov r3, #0
 	str ip, [sp]
-	bl ov02_0232D0BC
+	bl Nnsi_SndArcLoadBank
 	cmp r0, #0
 	beq _0232D940
 	mov r0, r5
-	bl ov02_0232C2E8
+	bl Nnsi_SndPlayerFreeSeqPlayer__0232CB14
 	add sp, sp, #8
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
@@ -5253,24 +5253,24 @@ _0232D940:
 	ldr r3, [sp, #4]
 	mov r0, r5
 	add r1, ip, r1
-	bl ov02_0232C2F4
+	bl Nnsi_SndPlayerStartSeq
 	ldrb r1, [r6, #6]
 	mov r0, r4
-	bl ov02_0232BFB8
+	bl Nns_SndPlayerSetInitialVolume
 	ldrb r1, [r6, #7]
 	mov r0, r4
-	bl ov02_0232BFCC
+	bl Nns_SndPlayerSetChannelPriority
 	ldr r1, [sp, #0x28]
 	ldr r2, [sp, #0x2c]
 	mov r0, r4
-	bl ov02_0232C00C
+	bl Nns_SndPlayerSetSeqArcNo
 	mov r0, #1
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0232D8CC
+	arm_func_end StartSeqArc
 
-	arm_func_start ov02_0232D990
-ov02_0232D990: ; 0x0232D990
+	arm_func_start Nnsi_SndArcStrmMain
+Nnsi_SndArcStrmMain: ; 0x0232D990
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r7, _0232DA98 ; =ov02_02357F6C
 	ldr r4, _0232DA9C ; =_020AE224
@@ -5284,7 +5284,7 @@ _0232D9A0:
 	cmp r0, #0
 	bne _0232D9C8
 	mov r0, r7
-	bl ov02_0232DACC
+	bl ForceStopStrm_Arc
 	b _0232DA84
 _0232D9C8:
 	mov r0, r1, lsl #0x1d
@@ -5293,7 +5293,7 @@ _0232D9C8:
 	cmpne r0, #0
 	beq _0232D9F4
 	mov r0, r7
-	bl ov02_0232C6CC
+	bl Nns_SndStrmStart
 	ldr r0, [r7, #0x110]
 	orr r0, r0, #2
 	bic r0, r0, #4
@@ -5304,12 +5304,12 @@ _0232D9F4:
 	movs r0, r0, asr #0x1f
 	beq _0232DA84
 	add r0, r7, #0xe8
-	bl ov02_0232DD3C
+	bl Nnsi_SndFaderUpdate
 	ldr r1, [r7, #0x154]
 	add r0, r7, #0xe8
 	mov r1, r1, lsl #1
 	ldrsh r6, [r4, r1]
-	bl ov02_0232DD08
+	bl Nnsi_SndFaderGet
 	mov r0, r0, asr #8
 	ldr r1, [r7, #0x158]
 	mov r0, r0, lsl #1
@@ -5323,7 +5323,7 @@ _0232D9F4:
 	beq _0232DA5C
 	mov r0, r7
 	mov r1, r6
-	bl ov02_0232C73C
+	bl Nns_SndStrmSetVolume
 	str r6, [r7, #0x15c]
 _0232DA5C:
 	ldr r0, [r7, #0x110]
@@ -5331,11 +5331,11 @@ _0232DA5C:
 	movs r0, r0, asr #0x1f
 	beq _0232DA84
 	add r0, r7, #0xe8
-	bl ov02_0232DD54
+	bl Nnsi_SndFaderIsFinished
 	cmp r0, #0
 	beq _0232DA84
 	mov r0, r7
-	bl ov02_0232DACC
+	bl ForceStopStrm_Arc
 _0232DA84:
 	add r5, r5, #1
 	cmp r5, #4
@@ -5345,10 +5345,10 @@ _0232DA84:
 	.align 2, 0
 _0232DA98: .word ov02_02357F6C
 _0232DA9C: .word _020AE224
-	arm_func_end ov02_0232D990
+	arm_func_end Nnsi_SndArcStrmMain
 
-	arm_func_start ov02_0232DAA0
-ov02_0232DAA0: ; 0x0232DAA0
+	arm_func_start FreePlayer
+FreePlayer: ; 0x0232DAA0
 	ldr r2, [r0, #0x14c]
 	cmp r2, #0
 	movne r1, #0
@@ -5360,10 +5360,10 @@ ov02_0232DAA0: ; 0x0232DAA0
 	bic r1, r1, #2
 	str r1, [r0, #0x110]
 	bx lr
-	arm_func_end ov02_0232DAA0
+	arm_func_end FreePlayer
 
-	arm_func_start ov02_0232DACC
-ov02_0232DACC: ; 0x0232DACC
+	arm_func_start ForceStopStrm_Arc
+ForceStopStrm_Arc: ; 0x0232DACC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _0232DB5C ; =ov02_02357F48
@@ -5381,7 +5381,7 @@ _0232DAF8:
 	movs r0, r0, asr #0x1f
 	beq _0232DB10
 	mov r0, r4
-	bl ov02_0232C720
+	bl Nns_SndStrmStop
 _0232DB10:
 	ldr r0, [r4, #0x110]
 	mov r0, r0, lsl #0x1f
@@ -5392,7 +5392,7 @@ _0232DB10:
 	blx r1
 _0232DB2C:
 	mov r0, r4
-	bl ov02_0232DB64
+	bl ShutdownPlayer__0232E390
 	ldr r0, _0232DB5C ; =ov02_02357F48
 	bl OS_UnlockMutex
 	ldr r0, _0232DB60 ; =ov02_023578D0
@@ -5406,41 +5406,41 @@ _0232DB2C:
 	.align 2, 0
 _0232DB5C: .word ov02_02357F48
 _0232DB60: .word ov02_023578D0
-	arm_func_end ov02_0232DACC
+	arm_func_end ForceStopStrm_Arc
 
-	arm_func_start ov02_0232DB64
-ov02_0232DB64: ; 0x0232DB64
+	arm_func_start ShutdownPlayer__0232E390
+ShutdownPlayer__0232E390: ; 0x0232DB64
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r1, [r4, #0x110]
 	mov r1, r1, lsl #0x1f
 	movs r1, r1, asr #0x1f
 	ldmeqia sp!, {r4, pc}
-	bl ov02_0232DBC8
+	bl FreeChannel
 	ldr r1, [r4, #0x168]
 	mov r0, r4
 	blx r1
 	ldr r0, _0232DBC0 ; =ov02_02357F60
 	mov r1, r4
-	bl ov02_0232DBEC
+	bl RemoveCommandByPlayer
 	ldr r0, _0232DBC4 ; =ov02_023578D0
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0232DBB4
 	mov r1, r4
 	add r0, r0, #0x4e0
-	bl ov02_0232DBEC
+	bl RemoveCommandByPlayer
 _0232DBB4:
 	mov r0, r4
-	bl ov02_0232DAA0
+	bl FreePlayer
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0232DBC0: .word ov02_02357F60
 _0232DBC4: .word ov02_023578D0
-	arm_func_end ov02_0232DB64
+	arm_func_end ShutdownPlayer__0232E390
 
-	arm_func_start ov02_0232DBC8
-ov02_0232DBC8: ; 0x0232DBC8
+	arm_func_start FreeChannel
+FreeChannel: ; 0x0232DBC8
 	stmdb sp!, {r3, lr}
 	ldr r1, [r0, #0x120]
 	cmp r1, #0
@@ -5448,12 +5448,12 @@ ov02_0232DBC8: ; 0x0232DBC8
 	subs r1, r1, #1
 	str r1, [r0, #0x120]
 	ldmneia sp!, {r3, pc}
-	bl ov02_0232C6A4
+	bl Nns_SndStrmFreeChannel
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0232DBC8
+	arm_func_end FreeChannel
 
-	arm_func_start ov02_0232DBEC
-ov02_0232DBEC: ; 0x0232DBEC
+	arm_func_start RemoveCommandByPlayer
+RemoveCommandByPlayer: ; 0x0232DBEC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -5461,22 +5461,22 @@ ov02_0232DBEC: ; 0x0232DBEC
 	mov r4, r0
 	mov r0, r8
 	mov r1, #0
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	movs r5, r0
 	beq _0232DC50
 _0232DC14:
 	mov r0, r8
 	mov r1, r5
-	bl ov02_0232970C
+	bl Nns_FndGetNextListObject
 	ldr r1, [r5, #8]
 	mov r6, r0
 	cmp r1, r7
 	bne _0232DC44
 	mov r0, r8
 	mov r1, r5
-	bl ov02_023296AC
+	bl Nns_FndRemoveListObject
 	mov r0, r5
-	bl ov02_0232DC5C
+	bl FreeCommandBuffer
 _0232DC44:
 	mov r5, r6
 	cmp r6, #0
@@ -5485,26 +5485,26 @@ _0232DC50:
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0232DBEC
+	arm_func_end RemoveCommandByPlayer
 
-	arm_func_start ov02_0232DC5C
-ov02_0232DC5C: ; 0x0232DC5C
+	arm_func_start FreeCommandBuffer
+FreeCommandBuffer: ; 0x0232DC5C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
 	mov r4, r0
 	ldr r0, _0232DC84 ; =ov02_023578DC
 	mov r1, r5
-	bl ov02_023295A4
+	bl Nns_FndAppendListObject
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232DC84: .word ov02_023578DC
-	arm_func_end ov02_0232DC5C
+	arm_func_end FreeCommandBuffer
 
-	arm_func_start ov02_0232DC88
-ov02_0232DC88: ; 0x0232DC88
+	arm_func_start Nnsi_SndSeqArcGetSeqInfo
+Nnsi_SndSeqArcGetSeqInfo: ; 0x0232DC88
 	cmp r1, #0
 	movlt r0, #0
 	bxlt lr
@@ -5521,34 +5521,34 @@ ov02_0232DC88: ; 0x0232DC88
 	add r0, ip, r3
 	moveq r0, #0
 	bx lr
-	arm_func_end ov02_0232DC88
+	arm_func_end Nnsi_SndSeqArcGetSeqInfo
 
-	arm_func_start ov02_0232DCC8
-ov02_0232DCC8: ; 0x0232DCC8
+	arm_func_start Nnsi_SndFaderInit
+Nnsi_SndFaderInit: ; 0x0232DCC8
 	mov r1, #0
 	str r1, [r0, #4]
 	str r1, [r0]
 	str r1, [r0, #0xc]
 	str r1, [r0, #8]
 	bx lr
-	arm_func_end ov02_0232DCC8
+	arm_func_end Nnsi_SndFaderInit
 
-	arm_func_start ov02_0232DCE0
-ov02_0232DCE0: ; 0x0232DCE0
+	arm_func_start Nnsi_SndFaderSet
+Nnsi_SndFaderSet: ; 0x0232DCE0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl ov02_0232DD08
+	bl Nnsi_SndFaderGet
 	stmia r6, {r0, r5}
 	str r4, [r6, #0xc]
 	mov r0, #0
 	str r0, [r6, #8]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov02_0232DCE0
+	arm_func_end Nnsi_SndFaderSet
 
-	arm_func_start ov02_0232DD08
-ov02_0232DD08: ; 0x0232DD08
+	arm_func_start Nnsi_SndFaderGet
+Nnsi_SndFaderGet: ; 0x0232DD08
 	stmdb sp!, {r4, lr}
 	ldr r1, [r0, #0xc]
 	ldr r2, [r0, #8]
@@ -5562,30 +5562,30 @@ ov02_0232DD08: ; 0x0232DD08
 	bl _s32_div_f
 	add r0, r4, r0
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0232DD08
+	arm_func_end Nnsi_SndFaderGet
 
-	arm_func_start ov02_0232DD3C
-ov02_0232DD3C: ; 0x0232DD3C
+	arm_func_start Nnsi_SndFaderUpdate
+Nnsi_SndFaderUpdate: ; 0x0232DD3C
 	ldr r2, [r0, #8]
 	ldr r1, [r0, #0xc]
 	cmp r2, r1
 	addlt r1, r2, #1
 	strlt r1, [r0, #8]
 	bx lr
-	arm_func_end ov02_0232DD3C
+	arm_func_end Nnsi_SndFaderUpdate
 
-	arm_func_start ov02_0232DD54
-ov02_0232DD54: ; 0x0232DD54
+	arm_func_start Nnsi_SndFaderIsFinished
+Nnsi_SndFaderIsFinished: ; 0x0232DD54
 	ldr r1, [r0, #8]
 	ldr r0, [r0, #0xc]
 	cmp r1, r0
 	movge r0, #1
 	movlt r0, #0
 	bx lr
-	arm_func_end ov02_0232DD54
+	arm_func_end Nnsi_SndFaderIsFinished
 
-	thumb_func_start ov02_0232DD6C
-ov02_0232DD6C: ; 0x0232DD6C
+	thumb_func_start Aoss_Malloc
+Aoss_Malloc: ; 0x0232DD6C
 	push {r3, lr}
 	ldr r1, _0232DD78 ; =ov02_02359320
 	ldr r1, [r1]
@@ -5593,10 +5593,10 @@ ov02_0232DD6C: ; 0x0232DD6C
 	pop {r3, pc}
 	nop
 _0232DD78: .word ov02_02359320
-	thumb_func_end ov02_0232DD6C
+	thumb_func_end Aoss_Malloc
 
-	thumb_func_start ov02_0232DD7C
-ov02_0232DD7C: ; 0x0232DD7C
+	thumb_func_start Aoss_Free
+Aoss_Free: ; 0x0232DD7C
 	push {r3, lr}
 	ldr r1, _0232DD88 ; =ov02_0235932C
 	ldr r1, [r1]
@@ -5604,10 +5604,10 @@ ov02_0232DD7C: ; 0x0232DD7C
 	pop {r3, pc}
 	nop
 _0232DD88: .word ov02_0235932C
-	thumb_func_end ov02_0232DD7C
+	thumb_func_end Aoss_Free
 
-	thumb_func_start ov02_0232DD8C
-ov02_0232DD8C: ; 0x0232DD8C
+	thumb_func_start Aossi_Init
+Aossi_Init: ; 0x0232DD8C
 	push {r4, lr}
 	ldr r2, _0232DE60 ; =0x00000106
 	add r4, r0, #0
@@ -5674,13 +5674,13 @@ _0232DDF8:
 	ldr r0, _0232DE6C ; =0x00000116
 	mov r1, #0xf
 	strb r1, [r4, r0]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	mvn r0, r0
 	pop {r4, pc}
 _0232DE10:
 	ldr r0, _0232DE70 ; =0x000005F8
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	ldr r1, _0232DE74 ; =ov02_0235853C
 	cmp r0, #0
 	str r0, [r1, #0x14]
@@ -5688,28 +5688,28 @@ _0232DE10:
 	ldr r0, _0232DE6C ; =0x00000116
 	mov r1, #0xf
 	strb r1, [r4, r0]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	mvn r0, r0
 	pop {r4, pc}
 _0232DE2E:
 	mov r0, #0
 	mvn r0, r0
-	bl ov02_0232EC54
+	bl Aoss_StatusExclusion
 	add r0, r4, #0
-	bl ov02_0232DE7C
+	bl Aoss_Init_Old
 	add r4, r0, #0
 	ldr r0, _0232DE74 ; =ov02_0235853C
 	ldr r0, [r0, #0x14]
-	bl ov02_0232DD7C
-	bl ov02_0232E8AC
+	bl Aoss_Free
+	bl aoss_release
 	ldr r0, _0232DE78 ; =ov02_02352F64
 	mov r1, #0
 	ldr r0, [r0]
 	mvn r1, r1
 	cmp r0, r1
 	beq _0232DE5A
-	bl ov02_0232FE98
+	bl Aoss_Close
 _0232DE5A:
 	add r0, r4, #0
 	pop {r4, pc}
@@ -5721,10 +5721,10 @@ _0232DE6C: .word 0x00000116
 _0232DE70: .word 0x000005F8
 _0232DE74: .word ov02_0235853C
 _0232DE78: .word ov02_02352F64
-	thumb_func_end ov02_0232DD8C
+	thumb_func_end Aossi_Init
 
-	thumb_func_start ov02_0232DE7C
-ov02_0232DE7C: ; 0x0232DE7C
+	thumb_func_start Aoss_Init_Old
+Aoss_Init_Old: ; 0x0232DE7C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0xc8
 	ldr r1, _0232E1D0 ; =ov02_0234FC58
@@ -5747,7 +5747,7 @@ ov02_0232DE7C: ; 0x0232DE7C
 	str r0, [sp, #0x1c]
 	add r0, sp, #0xb0
 	mov r2, #0x18
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	ldr r1, _0232E1D4 ; =0x00000106
 	ldr r0, [sp, #8]
 	ldrsh r0, [r0, r1]
@@ -5815,7 +5815,7 @@ _0232DF10:
 	str r0, [sp, #0xc]
 _0232DF26:
 	ldr r0, [sp, #8]
-	bl ov02_0232E8D8
+	bl aoss_data_init
 	ldr r0, _0232E1E0 ; =ov02_0235853C
 	ldr r1, [r0, #0x2c]
 	mov r0, #1
@@ -5823,12 +5823,12 @@ _0232DF26:
 	cmp r0, #1
 	beq _0232DF52
 	mov r0, #0x13
-	bl ov02_0232E930
+	bl aoss_set_error
 	ldr r1, _0232E1E4 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -5836,7 +5836,7 @@ _0232DF26:
 _0232DF52:
 	mov r4, #0
 	add r0, r4, #0
-	bl ov02_0232EC54
+	bl Aoss_StatusExclusion
 	add r1, sp, #0x2c
 	mov r0, #0x32
 	ldrsh r6, [r1, r0]
@@ -5847,12 +5847,12 @@ _0232DF66:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _0232DF74
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	mov r0, #0
 	str r0, [r5, #4]
 _0232DF74:
 	ldr r0, _0232E1E8 ; =ov02_02358540
-	bl ov02_02330234
+	bl Aossi_WlanGetBssList
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -5861,21 +5861,21 @@ _0232DF74:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232DF96:
 	ldr r0, [r5, #4]
-	bl ov02_0232EB64
+	bl CheckAP_Aoss
 	cmp r0, #4
 	bne _0232DFB4
 	ldr r1, _0232E1E4 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #2
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -5889,41 +5889,41 @@ _0232DFB4:
 	ldr r0, [sp, #8]
 	mov r2, #1
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232DFD0:
 	add r0, r6, #0
-	bl ov02_0233057C
+	bl Aossi_Sleep
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	b _0232DF66
 _0232DFDE:
 	mov r0, #1
-	bl ov02_0232EC54
+	bl Aoss_StatusExclusion
 	add r0, sp, #0x74
 	mov r1, #0
 	mov r2, #0x3c
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	add r0, sp, #0x74
-	bl ov02_0232EBE0
+	bl Aoss_Set_ApInfo
 	cmp r0, #0
 	beq _0232E00C
 	ldr r1, _0232E1E4 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E00C:
 	mov r0, #0x58
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	ldr r1, _0232E1E0 ; =ov02_0235853C
 	cmp r0, #0
 	str r0, [r1, #0xc]
@@ -5932,7 +5932,7 @@ _0232E00C:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -5940,7 +5940,7 @@ _0232E00C:
 _0232E02E:
 	mov r1, #0
 	mov r2, #0x58
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	add r1, sp, #0x2c
 	mov r0, #0x30
 	ldrsh r5, [r1, r0]
@@ -5951,7 +5951,7 @@ _0232E02E:
 _0232E044:
 	ldr r1, [r7, #0xc]
 	add r0, sp, #0x74
-	bl ov02_023303AC
+	bl Aossi_WlanConnect
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -5960,7 +5960,7 @@ _0232E044:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -5975,7 +5975,7 @@ _0232E068:
 	beq _0232E086
 _0232E076:
 	add r0, r6, #0
-	bl ov02_0233057C
+	bl Aossi_Sleep
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
@@ -5991,7 +5991,7 @@ _0232E086:
 	mov r2, #0xf
 	add r1, #0xe6
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6001,33 +6001,33 @@ _0232E0A4:
 	mov r1, #0xff
 	mvn r1, r1
 	add r2, r0, #0
-	bl ov02_0232FD50
+	bl Aoss_SetIpAddr
 	cmp r0, #0
 	beq _0232E0CE
 	mov r0, #0xc
-	bl ov02_0232E930
+	bl aoss_set_error
 	ldr r1, _0232E1E4 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E0CE:
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r3, #0x11
 	ldr r2, [sp, #8]
 	lsl r3, r3, #4
 	mov r0, #3
 	add r1, sp, #0xb0
 	add r2, r2, r3
-	bl ov02_0232EC24
+	bl MakeSendSeqID
 	mov r0, #2
 	add r1, r0, #0
 	mov r2, #0
-	bl ov02_0232FE84
+	bl Aoss_Socket
 	ldr r1, _0232E1F0 ; =ov02_02352F64
 	cmp r0, #0
 	str r0, [r1]
@@ -6036,7 +6036,7 @@ _0232E0CE:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6047,16 +6047,16 @@ _0232E108:
 	ldr r1, _0232E1F4 ; =0x0000FFFF
 	mov r2, #1
 	add r3, sp, #0x54
-	bl ov02_0232FE80
+	bl Aoss_Setsockopt
 	cmp r0, #0
 	bge _0232E134
 	mov r0, #0xb
-	bl ov02_0232E930
+	bl aoss_set_error
 	ldr r1, _0232E1E4 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6065,29 +6065,29 @@ _0232E134:
 	add r0, sp, #0x2c
 	mov r1, #0
 	mov r2, #8
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	mov r1, #2
 	add r0, sp, #0x2c
 	strb r1, [r0, #1]
 	ldr r0, _0232E1EC ; =0xC0A80B65
-	bl ov02_0232FEA0
+	bl Aoss_Htonl
 	str r0, [sp, #0x30]
 	ldr r0, _0232E1F8 ; =0x00005790
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	add r1, sp, #0x2c
 	strh r0, [r1, #2]
 	ldr r0, _0232E1F0 ; =ov02_02352F64
 	add r1, sp, #0x2c
 	ldr r0, [r0]
 	mov r2, #8
-	bl ov02_0232FE8C
+	bl Aoss_Bind
 	cmp r0, #0
 	bge _0232E17A
 	ldr r1, _0232E1E4 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6099,7 +6099,7 @@ _0232E17A:
 	mov r2, #0x14
 	str r0, [sp, #0x18]
 	add r0, sp, #0x60
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	ldr r0, _0232E1EC ; =0xC0A80B65
 	mov r1, #0xfa
 	str r0, [sp, #0x70]
@@ -6154,27 +6154,27 @@ _0232E200:
 	mvn r1, r1
 	cmp r0, r1
 	beq _0232E20E
-	bl ov02_0232FE98
+	bl Aoss_Close
 _0232E20E:
 	mov r1, #0
 	ldr r0, _0232E540 ; =ov02_02352F64
 	mvn r1, r1
 	str r1, [r0]
-	bl ov02_0232FDA8
+	bl Aoss_Disconnect
 	cmp r0, #0
 	beq _0232E232
 	ldr r1, _0232E544 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E232:
 	mov r0, #0x58
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	str r0, [r5, #4]
 	cmp r0, #0
 	bne _0232E252
@@ -6182,7 +6182,7 @@ _0232E232:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6191,12 +6191,12 @@ _0232E252:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _0232E260
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	mov r0, #0
 	str r0, [r5, #4]
 _0232E260:
 	ldr r0, _0232E548 ; =ov02_02358540
-	bl ov02_02330234
+	bl Aossi_WlanGetBssList
 	mov r1, #0
 	mvn r1, r1
 	str r0, [sp, #0x28]
@@ -6206,21 +6206,21 @@ _0232E260:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E284:
 	ldr r0, [r5, #4]
-	bl ov02_0232EB64
+	bl CheckAP_Aoss
 	cmp r0, #4
 	bne _0232E2A2
 	ldr r1, _0232E544 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #2
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6234,14 +6234,14 @@ _0232E2A2:
 	ldr r0, [sp, #8]
 	mov r2, #1
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E2BE:
 	add r0, r6, #0
-	bl ov02_0233057C
+	bl Aossi_Sleep
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
@@ -6256,14 +6256,14 @@ _0232E2CC:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E2EA:
 	mov r0, #0x58
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	str r0, [r5, #0xc]
 	cmp r0, #0
 	bne _0232E30A
@@ -6271,7 +6271,7 @@ _0232E2EA:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6279,14 +6279,14 @@ _0232E2EA:
 _0232E30A:
 	mov r1, #0
 	mov r2, #0x58
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	mov r4, #0
 	cmp r7, #0
 	ble _0232E35A
 _0232E318:
 	ldr r1, [r5, #0xc]
 	add r0, sp, #0x74
-	bl ov02_023303AC
+	bl Aossi_WlanConnect
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -6295,7 +6295,7 @@ _0232E318:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6310,7 +6310,7 @@ _0232E33C:
 	beq _0232E35A
 _0232E34A:
 	add r0, r6, #0
-	bl ov02_0233057C
+	bl Aossi_Sleep
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
@@ -6323,7 +6323,7 @@ _0232E35A:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6331,20 +6331,20 @@ _0232E35A:
 _0232E372:
 	ldr r0, [r5, #0x34]
 	ldr r1, [r5, #0x38]
-	bl ov02_0232E894
+	bl aoss_ip_sta
 	ldr r1, [r5, #0x38]
 	add r2, r0, #0
 	str r0, [sp, #0x1c]
-	bl ov02_0232FD50
+	bl Aoss_SetIpAddr
 	cmp r0, #0
 	beq _0232E3A2
 	mov r0, #0xc
-	bl ov02_0232E930
+	bl aoss_set_error
 	ldr r1, _0232E544 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6353,11 +6353,11 @@ _0232E3A2:
 	ldr r0, _0232E54C ; =ov02_0235855C
 	mov r1, #1
 	strb r1, [r0, #0x1c]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #2
 	add r1, r0, #0
 	mov r2, #0
-	bl ov02_0232FE84
+	bl Aoss_Socket
 	ldr r1, _0232E540 ; =ov02_02352F64
 	cmp r0, #0
 	str r0, [r1]
@@ -6366,7 +6366,7 @@ _0232E3A2:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6377,16 +6377,16 @@ _0232E3D2:
 	ldr r1, _0232E550 ; =0x0000FFFF
 	mov r2, #1
 	add r3, sp, #0x54
-	bl ov02_0232FE80
+	bl Aoss_Setsockopt
 	cmp r0, #0
 	bge _0232E3FE
 	mov r0, #0xb
-	bl ov02_0232E930
+	bl aoss_set_error
 	ldr r1, _0232E544 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6395,29 +6395,29 @@ _0232E3FE:
 	add r0, sp, #0x2c
 	mov r1, #0
 	mov r2, #8
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	mov r1, #2
 	add r0, sp, #0x2c
 	strb r1, [r0, #1]
 	ldr r0, [sp, #0x1c]
-	bl ov02_0232FEA0
+	bl Aoss_Htonl
 	str r0, [sp, #0x30]
 	ldr r0, _0232E554 ; =0x00005790
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	add r1, sp, #0x2c
 	strh r0, [r1, #2]
 	ldr r0, _0232E540 ; =ov02_02352F64
 	add r1, sp, #0x2c
 	ldr r0, [r0]
 	mov r2, #8
-	bl ov02_0232FE8C
+	bl Aoss_Bind
 	cmp r0, #0
 	bge _0232E444
 	ldr r1, _0232E544 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6428,7 +6428,7 @@ _0232E444:
 	ldr r3, [r3]
 	add r1, sp, #0x60
 	add r2, sp, #0xb0
-	bl ov02_0232F538
+	bl SendMessage
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -6437,12 +6437,12 @@ _0232E444:
 	ldr r0, [sp, #0x24]
 	lsl r1, r1, #0xc
 	add r0, r0, r1
-	bl ov02_0232E930
+	bl aoss_set_error
 	ldr r1, _0232E544 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6451,13 +6451,13 @@ _0232E47A:
 	ldr r0, [sp, #0x18]
 	ldr r2, _0232E558 ; =0x000005F8
 	mov r1, #0
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	add r0, sp, #0x3c
-	bl ov02_0232FFA4
+	bl Aoss_FD_Zero
 	ldr r0, _0232E540 ; =ov02_02352F64
 	add r1, sp, #0x3c
 	ldr r0, [r0]
-	bl ov02_0232FFB0
+	bl Aoss_FD_Set
 	ldr r0, [sp, #0x14]
 	mov r2, #0
 	str r0, [sp, #0x34]
@@ -6470,7 +6470,7 @@ _0232E47A:
 	add r3, r2, #0
 	ldr r0, [r0]
 	add r0, r0, #1
-	bl ov02_0232FE1C
+	bl Aoss_Select
 	cmp r0, #0
 	bgt _0232E4F4
 	ldr r0, [sp, #0x50]
@@ -6485,17 +6485,17 @@ _0232E47A:
 	cmp r0, #0
 	bne _0232E4D2
 	mov r0, #0xf
-	bl ov02_0232E930
+	bl aoss_set_error
 	b _0232E4E4
 _0232E4D2:
 	cmp r0, #1
 	bne _0232E4DE
 	mov r0, #0x10
-	bl ov02_0232E930
+	bl aoss_set_error
 	b _0232E4E4
 _0232E4DE:
 	mov r0, #0x11
-	bl ov02_0232E930
+	bl aoss_set_error
 _0232E4E4:
 	mov r5, #0
 	mvn r5, r5
@@ -6503,7 +6503,7 @@ _0232E4E4:
 _0232E4EA:
 	mov r0, #0x2e
 	ldrsh r0, [r1, r0]
-	bl ov02_0233057C
+	bl Aossi_Sleep
 	b _0232E1B8
 _0232E4F4:
 	mov r0, #8
@@ -6518,14 +6518,14 @@ _0232E4F4:
 	ldr r2, _0232E55C ; =0x000005DC
 	add r1, #0xc
 	mov r3, #0
-	bl ov02_0232FE08
+	bl Aoss_Recvfrom
 	ldr r1, _0232E540 ; =ov02_02352F64
 	lsl r0, r0, #0x10
 	ldr r2, [r1]
 	ldr r1, [sp, #0x18]
 	lsr r0, r0, #0x10
 	str r2, [r1]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	ldr r1, [sp, #0x18]
 	add r2, sp, #0x50
 	str r0, [r1, #4]
@@ -6534,7 +6534,7 @@ _0232E4F4:
 	ldr r0, [r0]
 	str r0, [sp]
 	ldr r0, [sp, #0x24]
-	bl ov02_0232EC80
+	bl RecvMessage
 	str r0, [sp, #0x20]
 	cmp r0, #0x64
 	bne _0232E560
@@ -6569,20 +6569,20 @@ _0232E578:
 	ldr r0, [r0]
 	cmp r0, r5
 	beq _0232E584
-	bl ov02_0232FE98
+	bl Aoss_Close
 _0232E584:
 	mov r1, #0
 	ldr r0, _0232E87C ; =ov02_02352F64
 	mvn r1, r1
 	str r1, [r0]
-	bl ov02_0232FDA8
+	bl Aoss_Disconnect
 	cmp r0, #0
 	beq _0232E5A8
 	ldr r1, _0232E880 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6590,7 +6590,7 @@ _0232E584:
 _0232E5A8:
 	mov r0, #4
 	mov r4, #0
-	bl ov02_0232EC54
+	bl Aoss_StatusExclusion
 	add r1, sp, #0x2c
 	mov r0, #0x30
 	ldrsh r7, [r1, r0]
@@ -6599,12 +6599,12 @@ _0232E5B8:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _0232E5C6
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	mov r0, #0
 	str r0, [r5, #4]
 _0232E5C6:
 	ldr r0, _0232E888 ; =ov02_02358540
-	bl ov02_02330234
+	bl Aossi_WlanGetBssList
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -6613,21 +6613,21 @@ _0232E5C6:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E5E8:
 	ldr r0, [r5, #4]
-	bl ov02_0232EB64
+	bl CheckAP_Aoss
 	cmp r0, #4
 	bne _0232E606
 	ldr r1, _0232E880 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #2
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6641,21 +6641,21 @@ _0232E606:
 	ldr r0, [sp, #8]
 	mov r2, #1
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E622:
 	add r0, r6, #0
-	bl ov02_0233057C
+	bl Aossi_Sleep
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	b _0232E5B8
 _0232E630:
 	mov r0, #0x58
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	ldr r1, _0232E884 ; =ov02_0235853C
 	cmp r0, #0
 	str r0, [r1, #0xc]
@@ -6664,7 +6664,7 @@ _0232E630:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6672,7 +6672,7 @@ _0232E630:
 _0232E652:
 	mov r1, #0
 	mov r2, #0x58
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	add r1, sp, #0x2c
 	mov r0, #0x30
 	ldrsh r5, [r1, r0]
@@ -6683,7 +6683,7 @@ _0232E652:
 _0232E668:
 	ldr r1, [r7, #0xc]
 	add r0, sp, #0x74
-	bl ov02_023303AC
+	bl Aossi_WlanConnect
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -6692,7 +6692,7 @@ _0232E668:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6707,7 +6707,7 @@ _0232E68C:
 	beq _0232E6AA
 _0232E69A:
 	add r0, r6, #0
-	bl ov02_0233057C
+	bl Aossi_Sleep
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
@@ -6723,7 +6723,7 @@ _0232E6AA:
 	mov r2, #0xf
 	add r1, #0xe6
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6733,26 +6733,26 @@ _0232E6C8:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [r1, #0x38]
 	add r2, r0, #0
-	bl ov02_0232FD50
+	bl Aoss_SetIpAddr
 	cmp r0, #0
 	beq _0232E6F2
 	mov r0, #0xc
-	bl ov02_0232E930
+	bl aoss_set_error
 	ldr r1, _0232E880 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E6F2:
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #2
 	add r1, r0, #0
 	mov r2, #0
-	bl ov02_0232FE84
+	bl Aoss_Socket
 	ldr r1, _0232E87C ; =ov02_02352F64
 	cmp r0, #0
 	str r0, [r1]
@@ -6761,7 +6761,7 @@ _0232E6F2:
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6772,16 +6772,16 @@ _0232E71C:
 	ldr r1, _0232E88C ; =0x0000FFFF
 	mov r2, #1
 	add r3, sp, #0x54
-	bl ov02_0232FE80
+	bl Aoss_Setsockopt
 	cmp r0, #0
 	bge _0232E748
 	mov r0, #0xb
-	bl ov02_0232E930
+	bl aoss_set_error
 	ldr r1, _0232E880 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6790,29 +6790,29 @@ _0232E748:
 	add r0, sp, #0x2c
 	mov r1, #0
 	mov r2, #8
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	mov r1, #2
 	add r0, sp, #0x2c
 	strb r1, [r0, #1]
 	ldr r0, [sp, #0x1c]
-	bl ov02_0232FEA0
+	bl Aoss_Htonl
 	str r0, [sp, #0x30]
 	ldr r0, _0232E890 ; =0x00005790
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	add r1, sp, #0x2c
 	strh r0, [r1, #2]
 	ldr r0, _0232E87C ; =ov02_02352F64
 	add r1, sp, #0x2c
 	ldr r0, [r0]
 	mov r2, #8
-	bl ov02_0232FE8C
+	bl Aoss_Bind
 	cmp r0, #0
 	bge _0232E78E
 	ldr r1, _0232E880 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6833,17 +6833,17 @@ _0232E794:
 	cmp r0, #0
 	bne _0232E7B0
 	mov r0, #0xf
-	bl ov02_0232E930
+	bl aoss_set_error
 	b _0232E7C2
 _0232E7B0:
 	cmp r0, #1
 	bne _0232E7BC
 	mov r0, #0x10
-	bl ov02_0232E930
+	bl aoss_set_error
 	b _0232E7C2
 _0232E7BC:
 	mov r0, #0x11
-	bl ov02_0232E930
+	bl aoss_set_error
 _0232E7C2:
 	mov r5, #0
 	mvn r5, r5
@@ -6851,7 +6851,7 @@ _0232E7C2:
 _0232E7C8:
 	mov r0, #0x2e
 	ldrsh r0, [r1, r0]
-	bl ov02_0233057C
+	bl Aossi_Sleep
 	b _0232E17A
 _0232E7D2:
 	ldr r0, _0232E87C ; =ov02_02352F64
@@ -6860,20 +6860,20 @@ _0232E7D2:
 	mvn r1, r1
 	cmp r0, r1
 	beq _0232E7E2
-	bl ov02_0232FE98
+	bl Aoss_Close
 _0232E7E2:
 	mov r1, #0
 	ldr r0, _0232E87C ; =ov02_02352F64
 	mvn r1, r1
 	str r1, [r0]
-	bl ov02_0232FDA8
+	bl Aoss_Disconnect
 	cmp r0, #0
 	beq _0232E806
 	ldr r1, _0232E880 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #0xf
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6881,7 +6881,7 @@ _0232E7E2:
 _0232E806:
 	cmp r5, #0
 	beq _0232E856
-	bl ov02_0232E93C
+	bl aoss_get_error
 	sub r0, #0xf
 	cmp r0, #6
 	bhi _0232E842
@@ -6920,21 +6920,21 @@ _0232E844:
 	ldr r1, _0232E880 ; =0x00000116
 	ldr r0, [sp, #8]
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232E856:
 	ldr r0, [sp, #8]
-	bl ov02_0232E948
+	bl aoss_seq_data_copy
 	cmp r0, #0
 	beq _0232E874
 	ldr r1, _0232E880 ; =0x00000116
 	ldr r0, [sp, #8]
 	mov r2, #6
 	strb r2, [r0, r1]
-	bl ov02_0232E8AC
+	bl aoss_release
 	mov r0, #0
 	add sp, #0xc8
 	mvn r0, r0
@@ -6950,10 +6950,10 @@ _0232E884: .word ov02_0235853C
 _0232E888: .word ov02_02358540
 _0232E88C: .word 0x0000FFFF
 _0232E890: .word 0x00005790
-	thumb_func_end ov02_0232DE7C
+	thumb_func_end Aoss_Init_Old
 
-	thumb_func_start ov02_0232E894
-ov02_0232E894: ; 0x0232E894
+	thumb_func_start aoss_ip_sta
+aoss_ip_sta: ; 0x0232E894
 	add r2, r0, #0
 	and r2, r1
 	mvn r1, r1
@@ -6967,16 +6967,16 @@ ov02_0232E894: ; 0x0232E894
 	orr r0, r2
 _0232E8AA:
 	bx lr
-	thumb_func_end ov02_0232E894
+	thumb_func_end aoss_ip_sta
 
-	thumb_func_start ov02_0232E8AC
-ov02_0232E8AC: ; 0x0232E8AC
+	thumb_func_start aoss_release
+aoss_release: ; 0x0232E8AC
 	push {r3, lr}
 	ldr r0, _0232E8D4 ; =ov02_0235853C
 	ldr r0, [r0, #0xc]
 	cmp r0, #0
 	beq _0232E8C0
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	ldr r0, _0232E8D4 ; =ov02_0235853C
 	mov r1, #0
 	str r1, [r0, #0xc]
@@ -6985,7 +6985,7 @@ _0232E8C0:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0232E8D2
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	ldr r0, _0232E8D4 ; =ov02_0235853C
 	mov r1, #0
 	str r1, [r0, #4]
@@ -6993,23 +6993,23 @@ _0232E8D2:
 	pop {r3, pc}
 	.align 2, 0
 _0232E8D4: .word ov02_0235853C
-	thumb_func_end ov02_0232E8AC
+	thumb_func_end aoss_release
 
-	thumb_func_start ov02_0232E8D8
-ov02_0232E8D8: ; 0x0232E8D8
+	thumb_func_start aoss_data_init
+aoss_data_init: ; 0x0232E8D8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0232E91C ; =ov02_0235929C
 	mov r1, #0
 	mov r2, #8
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	ldr r0, _0232E920 ; =ov02_0235853C
 	mov r1, #1
 	str r1, [r0, #0x10]
 	ldr r0, _0232E924 ; =ov02_02358560
 	mov r1, #0
 	mov r2, #0x1c
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	ldr r1, _0232E920 ; =ov02_0235853C
 	add r0, r4, #6
 	str r0, [r1, #0x24]
@@ -7034,28 +7034,28 @@ _0232E920: .word ov02_0235853C
 _0232E924: .word ov02_02358560
 _0232E928: .word ov02_0235855C
 _0232E92C: .word 0xC0A80B01
-	thumb_func_end ov02_0232E8D8
+	thumb_func_end aoss_data_init
 
-	thumb_func_start ov02_0232E930
-ov02_0232E930: ; 0x0232E930
+	thumb_func_start aoss_set_error
+aoss_set_error: ; 0x0232E930
 	ldr r1, _0232E938 ; =ov02_0235853C
 	str r0, [r1, #0x10]
 	bx lr
 	nop
 _0232E938: .word ov02_0235853C
-	thumb_func_end ov02_0232E930
+	thumb_func_end aoss_set_error
 
-	thumb_func_start ov02_0232E93C
-ov02_0232E93C: ; 0x0232E93C
+	thumb_func_start aoss_get_error
+aoss_get_error: ; 0x0232E93C
 	ldr r0, _0232E944 ; =ov02_0235853C
 	ldr r0, [r0, #0x10]
 	bx lr
 	nop
 _0232E944: .word ov02_0235853C
-	thumb_func_end ov02_0232E93C
+	thumb_func_end aoss_get_error
 
-	thumb_func_start ov02_0232E948
-ov02_0232E948: ; 0x0232E948
+	thumb_func_start aoss_seq_data_copy
+aoss_seq_data_copy: ; 0x0232E948
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r0, #0
@@ -7081,7 +7081,7 @@ _0232E968:
 	strh r0, [r7]
 	add r0, r4, #0
 	mov r1, #0
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	ldrh r1, [r7]
 	mov r0, #1
 	tst r0, r1
@@ -7090,44 +7090,44 @@ _0232E968:
 	ldr r2, [r6, #4]
 	add r0, r4, #0
 	add r1, #0x30
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r1, r6, #0
 	ldr r2, [r6, #4]
 	add r0, r4, #6
 	add r1, #0x70
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r4, #0
 	add r1, r6, #0
 	ldr r2, [r6, #4]
 	add r0, #0xc
 	add r1, #0xb0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r4, #0
 	add r1, r6, #0
 	ldr r2, [r6, #4]
 	add r0, #0x12
 	add r1, #0xf0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r6, #0
 	add r0, #8
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r1, r0, #0
 	add r0, r6, #0
 	add r0, #8
-	bl ov02_0232EB40
+	bl aoss_check_str
 	cmp r0, #0
 	beq _0232E9D0
 	b _0232EB0C
 _0232E9D0:
 	add r0, r6, #0
 	add r0, #8
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r2, r0, #0
 	add r0, r4, #0
 	add r6, #8
 	add r0, #0x18
 	add r1, r6, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 _0232E9E6:
 	ldrh r1, [r7]
 	mov r0, #2
@@ -7138,43 +7138,43 @@ _0232E9E6:
 	ldr r2, [r5, #4]
 	add r0, #0x39
 	add r1, #0x30
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r4, #0
 	add r1, r5, #0
 	ldr r2, [r5, #4]
 	add r0, #0x47
 	add r1, #0x70
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r4, #0
 	add r1, r5, #0
 	ldr r2, [r5, #4]
 	add r0, #0x55
 	add r1, #0xb0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r4, #0
 	add r1, r5, #0
 	ldr r2, [r5, #4]
 	add r0, #0x63
 	add r1, #0xf0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r5, #0
 	add r0, #8
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #8
-	bl ov02_0232EB40
+	bl aoss_check_str
 	cmp r0, #0
 	bne _0232EB0C
 	add r0, r5, #0
 	add r0, #8
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r2, r0, #0
 	add r0, r4, #0
 	add r5, #8
 	add r0, #0x71
 	add r1, r5, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 _0232EA52:
 	ldrh r1, [r7]
 	mov r0, #4
@@ -7185,7 +7185,7 @@ _0232EA52:
 	ldr r1, [r1, #4]
 	add r0, #0x30
 	sub r1, r1, #1
-	bl ov02_0232EB40
+	bl aoss_check_str
 	cmp r0, #0
 	bne _0232EB0C
 	ldr r2, [sp, #4]
@@ -7194,26 +7194,26 @@ _0232EA52:
 	ldr r2, [r2, #4]
 	add r0, #0x92
 	add r1, #0x30
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r0, [sp, #4]
 	add r0, #8
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r1, r0, #0
 	ldr r0, [sp, #4]
 	add r0, #8
-	bl ov02_0232EB40
+	bl aoss_check_str
 	cmp r0, #0
 	bne _0232EB0C
 	ldr r0, [sp, #4]
 	add r0, #8
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	ldr r1, [sp, #4]
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, #8
 	add r0, #0xd2
 	str r1, [sp, #4]
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 _0232EAAA:
 	ldrh r1, [r7]
 	mov r0, #8
@@ -7224,7 +7224,7 @@ _0232EAAA:
 	ldr r1, [r1, #4]
 	add r0, #0x30
 	sub r1, r1, #1
-	bl ov02_0232EB40
+	bl aoss_check_str
 	cmp r0, #0
 	bne _0232EB0C
 	ldr r2, [sp]
@@ -7233,26 +7233,26 @@ _0232EAAA:
 	ldr r2, [r2, #4]
 	add r0, #0xf3
 	add r1, #0x30
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r0, [sp]
 	add r0, #8
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r0, #8
-	bl ov02_0232EB40
+	bl aoss_check_str
 	cmp r0, #0
 	bne _0232EB0C
 	ldr r0, [sp]
 	add r0, #8
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r2, r0, #0
 	ldr r0, _0232EB38 ; =0x00000133
 	ldr r1, [sp]
 	add r0, r4, r0
 	add r1, #8
 	str r1, [sp]
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 _0232EB02:
 	ldr r1, _0232EB3C ; =0x00000116
 	mov r0, #0
@@ -7264,7 +7264,7 @@ _0232EB0C:
 	add r0, r4, #0
 	mov r1, #0
 	lsl r2, r2, #2
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	mov r0, #0
 	mvn r0, r0
 	add sp, #8
@@ -7278,10 +7278,10 @@ _0232EB30: .word ov02_02358D34
 _0232EB34: .word ov02_0235853C
 _0232EB38: .word 0x00000133
 _0232EB3C: .word 0x00000116
-	thumb_func_end ov02_0232E948
+	thumb_func_end aoss_seq_data_copy
 
-	thumb_func_start ov02_0232EB40
-ov02_0232EB40: ; 0x0232EB40
+	thumb_func_start aoss_check_str
+aoss_check_str: ; 0x0232EB40
 	mov r3, #0
 	cmp r1, #0
 	ble _0232EB5E
@@ -7304,10 +7304,10 @@ _0232EB5E:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_0232EB40
+	thumb_func_end aoss_check_str
 
-	thumb_func_start ov02_0232EB64
-ov02_0232EB64: ; 0x0232EB64
+	thumb_func_start CheckAP_Aoss
+CheckAP_Aoss: ; 0x0232EB64
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -7338,16 +7338,16 @@ _0232EB90:
 	tst r0, r1
 	beq _0232EBBA
 	ldr r0, _0232EBDC ; =ov02_02352FC4
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	ldr r1, [r5, #4]
 	cmp r1, r0
 	bne _0232EBBA
 	ldr r0, _0232EBDC ; =ov02_02352FC4
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r2, r0, #0
 	ldr r1, _0232EBDC ; =ov02_02352FC4
 	add r0, r6, #0
-	bl ov02_0232FDCC
+	bl Aoss_Memcmp
 	cmp r0, #0
 	bne _0232EBBA
 	add r4, r4, #1
@@ -7374,23 +7374,23 @@ _0232EBD6:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232EBDC: .word ov02_02352FC4
-	thumb_func_end ov02_0232EB64
+	thumb_func_end CheckAP_Aoss
 
-	thumb_func_start ov02_0232EBE0
-ov02_0232EBE0: ; 0x0232EBE0
+	thumb_func_start Aoss_Set_ApInfo
+Aoss_Set_ApInfo: ; 0x0232EBE0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0232EC1C ; =ov02_02352FC4
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	str r0, [r4]
 	ldr r1, _0232EC1C ; =ov02_02352FC4
 	ldr r2, [r4]
 	add r0, r4, #4
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	mov r0, #1
 	str r0, [r4, #0x24]
 	ldr r0, _0232EC20 ; =ov02_02352FD0
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r2, r0, #0
 	str r0, [r4, #0x28]
 	cmp r2, #0xd
@@ -7402,16 +7402,16 @@ _0232EC0E:
 	add r4, #0x2c
 	ldr r1, _0232EC20 ; =ov02_02352FD0
 	add r0, r4, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	mov r0, #0
 	pop {r4, pc}
 	.align 2, 0
 _0232EC1C: .word ov02_02352FC4
 _0232EC20: .word ov02_02352FD0
-	thumb_func_end ov02_0232EBE0
+	thumb_func_end Aoss_Set_ApInfo
 
-	thumb_func_start ov02_0232EC24
-ov02_0232EC24: ; 0x0232EC24
+	thumb_func_start MakeSendSeqID
+MakeSendSeqID: ; 0x0232EC24
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -7423,11 +7423,11 @@ _0232EC32:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #6
-	bl ov02_0232FDEC
-	bl ov02_0232FF34
+	bl Aoss_Memcpy
+	bl Aoss_Rand
 	strh r0, [r5, #6]
 	ldrh r0, [r5, #6]
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r5, #6]
 	add r4, r4, #1
 	add r5, #8
@@ -7435,10 +7435,10 @@ _0232EC32:
 	blt _0232EC32
 _0232EC52:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_0232EC24
+	thumb_func_end MakeSendSeqID
 
-	thumb_func_start ov02_0232EC54
-ov02_0232EC54: ; 0x0232EC54
+	thumb_func_start Aoss_StatusExclusion
+Aoss_StatusExclusion: ; 0x0232EC54
 	push {r3, lr}
 	mov r1, #0
 	mvn r1, r1
@@ -7454,17 +7454,17 @@ _0232EC66:
 	cmp r2, r0
 	beq _0232EC76
 	str r0, [r1, #4]
-	bl ov02_02330584
+	bl Aossi_Status
 	pop {r3, pc}
 _0232EC76:
 	mov r0, #0
 	pop {r3, pc}
 	nop
 _0232EC7C: .word ov02_02352F64
-	thumb_func_end ov02_0232EC54
+	thumb_func_end Aoss_StatusExclusion
 
-	thumb_func_start ov02_0232EC80
-ov02_0232EC80: ; 0x0232EC80
+	thumb_func_start RecvMessage
+RecvMessage: ; 0x0232EC80
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -7473,7 +7473,7 @@ ov02_0232EC80: ; 0x0232EC80
 	add r4, r2, #0
 	str r3, [sp]
 	add r7, #0xc
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	cmp r0, #1
 	bhs _0232ECA2
 	ldr r0, [r4]
@@ -7493,7 +7493,7 @@ _0232ECA2:
 _0232ECB2:
 	add r0, r6, #0
 	add r0, #0xc
-	bl ov02_0232EF78
+	bl DecodePacket
 	cmp r0, #0
 	ble _0232ECC8
 	ldr r0, [r4]
@@ -7503,7 +7503,7 @@ _0232ECB2:
 	pop {r3, r4, r5, r6, r7, pc}
 _0232ECC8:
 	ldrh r0, [r7, #6]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	ldr r1, _0232ED14 ; =0x00001010
 	cmp r0, r1
 	beq _0232ECE2
@@ -7519,7 +7519,7 @@ _0232ECE2:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl ov02_0232ED20
+	bl AstsSetInitRes
 	add r5, r0, #0
 	b _0232ED10
 _0232ECF2:
@@ -7527,7 +7527,7 @@ _0232ECF2:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl ov02_0232EDFC
+	bl AstsSetSecureRes
 	add r5, r0, #0
 	b _0232ED10
 _0232ED02:
@@ -7535,7 +7535,7 @@ _0232ED02:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl ov02_0232EED4
+	bl AstsRestartRes
 	add r5, r0, #0
 _0232ED10:
 	add r0, r5, #0
@@ -7544,10 +7544,10 @@ _0232ED10:
 _0232ED14: .word 0x00001010
 _0232ED18: .word 0x00002010
 _0232ED1C: .word 0x00003010
-	thumb_func_end ov02_0232EC80
+	thumb_func_end RecvMessage
 
-	thumb_func_start ov02_0232ED20
-ov02_0232ED20: ; 0x0232ED20
+	thumb_func_start AstsSetInitRes
+AstsSetInitRes: ; 0x0232ED20
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r2, #0
@@ -7565,7 +7565,7 @@ _0232ED32:
 	add r0, r3, #0
 	add r1, #0x10
 	add r4, #0x24
-	bl ov02_0232F0B0
+	bl CheckRecvSeqID
 	cmp r0, #0
 	bge _0232ED52
 	ldr r0, [r5]
@@ -7575,7 +7575,7 @@ _0232ED32:
 	pop {r3, r4, r5, r6, r7, pc}
 _0232ED52:
 	ldrh r0, [r4, #2]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	cmp r0, #0
 	bne _0232ED66
 	ldr r0, [r5]
@@ -7588,27 +7588,27 @@ _0232ED66:
 	cmp r0, #7
 	bne _0232EDA4
 	ldr r0, [r4, #4]
-	bl ov02_0232FEE0
+	bl Aoss_Ntohl
 	mov r1, #1
 	mvn r1, r1
 	cmp r0, r1
 	bne _0232ED82
 	mov r0, #0x14
-	bl ov02_0232E930
+	bl aoss_set_error
 	b _0232ED9E
 _0232ED82:
 	ldr r0, [r4, #4]
-	bl ov02_0232FEE0
+	bl Aoss_Ntohl
 	mov r1, #2
 	mvn r1, r1
 	cmp r0, r1
 	bne _0232ED98
 	mov r0, #0x15
-	bl ov02_0232E930
+	bl aoss_set_error
 	b _0232ED9E
 _0232ED98:
 	mov r0, #0x18
-	bl ov02_0232E930
+	bl aoss_set_error
 _0232ED9E:
 	mov r0, #0
 	mvn r0, r0
@@ -7624,7 +7624,7 @@ _0232EDA4:
 _0232EDB2:
 	ldr r1, _0232EDF4 ; =ov02_0235857C
 	add r0, r4, #4
-	bl ov02_0232F0FC
+	bl GetProductInfo
 	cmp r0, #0
 	bge _0232EDDC
 	mov r1, #1
@@ -7632,7 +7632,7 @@ _0232EDB2:
 	cmp r0, r1
 	bne _0232EDD2
 	mov r0, #0x16
-	bl ov02_0232E930
+	bl aoss_set_error
 	mov r0, #0
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7644,8 +7644,8 @@ _0232EDD2:
 	pop {r3, r4, r5, r6, r7, pc}
 _0232EDDC:
 	ldrh r0, [r7, #0xc]
-	bl ov02_0232FF08
-	bl ov02_0232F528
+	bl Aoss_Ntohs
+	bl GetSecurityType
 	ldr r1, _0232EDF8 ; =ov02_0235853C
 	str r0, [r1]
 	mov r0, #0
@@ -7655,10 +7655,10 @@ _0232EDDC:
 	nop
 _0232EDF4: .word ov02_0235857C
 _0232EDF8: .word ov02_0235853C
-	thumb_func_end ov02_0232ED20
+	thumb_func_end AstsSetInitRes
 
-	thumb_func_start ov02_0232EDFC
-ov02_0232EDFC: ; 0x0232EDFC
+	thumb_func_start AstsSetSecureRes
+AstsSetSecureRes: ; 0x0232EDFC
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r2, #0
@@ -7677,7 +7677,7 @@ _0232EE0E:
 	add r0, r3, #0
 	add r1, #0x10
 	add r4, #0x24
-	bl ov02_0232F0B0
+	bl CheckRecvSeqID
 	cmp r0, #0
 	bge _0232EE30
 	ldr r0, [r5]
@@ -7687,7 +7687,7 @@ _0232EE0E:
 	pop {r3, r4, r5, r6, r7, pc}
 _0232EE30:
 	ldrh r0, [r4, #2]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	cmp r0, #0
 	bne _0232EE44
 	ldr r0, [r5]
@@ -7700,27 +7700,27 @@ _0232EE44:
 	cmp r0, #7
 	bne _0232EE82
 	ldr r0, [r4, #4]
-	bl ov02_0232FEE0
+	bl Aoss_Ntohl
 	mov r1, #1
 	mvn r1, r1
 	cmp r0, r1
 	bne _0232EE60
 	mov r0, #0x14
-	bl ov02_0232E930
+	bl aoss_set_error
 	b _0232EE7C
 _0232EE60:
 	ldr r0, [r4, #4]
-	bl ov02_0232FEE0
+	bl Aoss_Ntohl
 	mov r1, #2
 	mvn r1, r1
 	cmp r0, r1
 	bne _0232EE76
 	mov r0, #0x15
-	bl ov02_0232E930
+	bl aoss_set_error
 	b _0232EE7C
 _0232EE76:
 	mov r0, #0x18
-	bl ov02_0232E930
+	bl aoss_set_error
 _0232EE7C:
 	mov r0, #0
 	mvn r0, r0
@@ -7730,16 +7730,16 @@ _0232EE82:
 	ldr r0, _0232EEC8 ; =ov02_02358BFC
 	mov r1, #0
 	lsl r2, r2, #4
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	ldrh r0, [r7, #0xa]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r2, r0, #0
 	ldr r0, _0232EECC ; =ov02_0235857C
 	ldr r3, _0232EEC8 ; =ov02_02358BFC
 	str r0, [sp]
 	mov r0, #0
 	add r1, r4, #0
-	bl ov02_0232F418
+	bl GetSecurityData
 	cmp r0, #0
 	bge _0232EEB2
 	ldr r0, [r5]
@@ -7764,10 +7764,10 @@ _0232EEC0:
 _0232EEC8: .word ov02_02358BFC
 _0232EECC: .word ov02_0235857C
 _0232EED0: .word ov02_0235853C
-	thumb_func_end ov02_0232EDFC
+	thumb_func_end AstsSetSecureRes
 
-	thumb_func_start ov02_0232EED4
-ov02_0232EED4: ; 0x0232EED4
+	thumb_func_start AstsRestartRes
+AstsRestartRes: ; 0x0232EED4
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r5, r2, #0
@@ -7784,7 +7784,7 @@ _0232EEE6:
 	add r0, r3, #0
 	add r1, #0x10
 	add r4, #0x24
-	bl ov02_0232F0B0
+	bl CheckRecvSeqID
 	cmp r0, #0
 	bge _0232EF04
 	ldr r0, [r5]
@@ -7803,7 +7803,7 @@ _0232EF04:
 	pop {r4, r5, r6, pc}
 _0232EF14:
 	ldrh r0, [r4, #2]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	cmp r0, #0
 	bne _0232EF28
 	ldr r0, [r5]
@@ -7813,46 +7813,46 @@ _0232EF14:
 	pop {r4, r5, r6, pc}
 _0232EF28:
 	ldr r0, [r4, #4]
-	bl ov02_0232FEE0
+	bl Aoss_Ntohl
 	cmp r0, #0
 	bne _0232EF36
 	mov r0, #0x64
 	pop {r4, r5, r6, pc}
 _0232EF36:
 	ldr r0, [r4, #4]
-	bl ov02_0232FEE0
+	bl Aoss_Ntohl
 	mov r1, #1
 	mvn r1, r1
 	cmp r0, r1
 	bne _0232EF50
 	mov r0, #0x14
-	bl ov02_0232E930
+	bl aoss_set_error
 	mov r0, #0
 	mvn r0, r0
 	pop {r4, r5, r6, pc}
 _0232EF50:
 	ldr r0, [r4, #4]
-	bl ov02_0232FEE0
+	bl Aoss_Ntohl
 	mov r1, #2
 	mvn r1, r1
 	cmp r0, r1
 	bne _0232EF6A
 	mov r0, #0x15
-	bl ov02_0232E930
+	bl aoss_set_error
 	mov r0, #0
 	mvn r0, r0
 	pop {r4, r5, r6, pc}
 _0232EF6A:
 	mov r0, #0x18
-	bl ov02_0232E930
+	bl aoss_set_error
 	mov r0, #0
 	mvn r0, r0
 	pop {r4, r5, r6, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232EED4
+	thumb_func_end AstsRestartRes
 
-	thumb_func_start ov02_0232EF78
-ov02_0232EF78: ; 0x0232EF78
+	thumb_func_start DecodePacket
+DecodePacket: ; 0x0232EF78
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -7862,33 +7862,33 @@ ov02_0232EF78: ; 0x0232EF78
 	add r1, #0x10
 	mov r2, #8
 	add r4, #0x18
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r0, _0232F064 ; =ov02_02352FD0
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r3, r0, #0
 	ldr r2, _0232F064 ; =ov02_02352FD0
 	add r0, sp, #0xc
 	mov r1, #8
-	bl ov02_0232FC24
+	bl CryptSeqNo
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
 	bne _0232EFB6
 	mov r0, #2
-	bl ov02_0232E930
+	bl aoss_set_error
 	mov r0, #0x63
 	add sp, #0x14
 	mvn r0, r0
 	pop {r4, r5, r6, r7, pc}
 _0232EFB6:
 	ldrh r0, [r5, #6]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r1, sp, #0xc
-	bl ov02_0232F06C
+	bl CheckSeqID
 	cmp r0, #0
 	bne _0232F05E
 	ldrh r0, [r5, #6]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	mov r1, #1
 	lsl r1, r1, #0xc
 	cmp r0, r1
@@ -7896,10 +7896,10 @@ _0232EFB6:
 	ldr r0, _0232F068 ; =ov02_0235929C
 	add r1, sp, #0xc
 	mov r2, #8
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 _0232EFDE:
 	ldrh r0, [r5, #0xc]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	mov r1, #0xf
 	tst r0, r1
 	bne _0232EFF0
@@ -7908,13 +7908,13 @@ _0232EFDE:
 	pop {r4, r5, r6, r7, pc}
 _0232EFF0:
 	ldrh r0, [r4]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r6, r0, #0
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	add r7, r0, #0
 	bne _0232F00C
 	mov r0, #2
-	bl ov02_0232E930
+	bl aoss_set_error
 	add sp, #0x14
 	mov r0, #0x64
 	pop {r4, r5, r6, r7, pc}
@@ -7929,12 +7929,12 @@ _0232F00C:
 	ldrb r3, [r5, #0xe]
 	add r0, r4, #4
 	add r2, r6, #0
-	bl ov02_0232FA34
+	bl DecodeRC4
 	cmp r0, #0
 	bge _0232F042
 	add r0, r7, #0
-	bl ov02_0232DD7C
-	bl ov02_0232E93C
+	bl Aoss_Free
+	bl aoss_get_error
 	cmp r0, #2
 	bne _0232F03C
 	add sp, #0x14
@@ -7948,13 +7948,13 @@ _0232F042:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r6, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	lsl r0, r6, #0x10
 	lsr r0, r0, #0x10
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r5, #0xa]
 	add r0, r7, #0
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	mov r0, #0
 _0232F05E:
 	add sp, #0x14
@@ -7962,10 +7962,10 @@ _0232F05E:
 	nop
 _0232F064: .word ov02_02352FD0
 _0232F068: .word ov02_0235929C
-	thumb_func_end ov02_0232EF78
+	thumb_func_end DecodePacket
 
-	thumb_func_start ov02_0232F06C
-ov02_0232F06C: ; 0x0232F06C
+	thumb_func_start CheckSeqID
+CheckSeqID: ; 0x0232F06C
 	push {r4, r5, r6, lr}
 	mov r4, #0
 	ldr r6, _0232F0AC ; =ov02_0235929C
@@ -7987,7 +7987,7 @@ _0232F088:
 	beq _0232F09C
 	ldr r0, _0232F0AC ; =ov02_0235929C
 	mov r2, #6
-	bl ov02_0232FDCC
+	bl Aoss_Memcmp
 	cmp r0, #0
 	beq _0232F0A6
 	mov r4, #1
@@ -8003,35 +8003,35 @@ _0232F0A6:
 	pop {r4, r5, r6, pc}
 	nop
 _0232F0AC: .word ov02_0235929C
-	thumb_func_end ov02_0232F06C
+	thumb_func_end CheckSeqID
 
-	thumb_func_start ov02_0232F0B0
-ov02_0232F0B0: ; 0x0232F0B0
+	thumb_func_start CheckRecvSeqID
+CheckRecvSeqID: ; 0x0232F0B0
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, _0232F0F8 ; =ov02_02352FD0
 	add r5, r1, #0
 	mov r4, #0
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r3, r0, #0
 	ldr r2, _0232F0F8 ; =ov02_02352FD0
 	add r0, r5, #0
 	mov r1, #8
-	bl ov02_0232FC24
+	bl CryptSeqNo
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r2, #6
-	bl ov02_0232FDCC
+	bl Aoss_Memcmp
 	cmp r0, #0
 	beq _0232F0DC
 	sub r4, r4, #1
 	b _0232F0F2
 _0232F0DC:
 	ldrh r0, [r6, #6]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r6, r0, #0
 	ldrh r0, [r5, #6]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r1, r6, #1
 	cmp r1, r0
 	beq _0232F0F2
@@ -8041,10 +8041,10 @@ _0232F0F2:
 	pop {r4, r5, r6, pc}
 	nop
 _0232F0F8: .word ov02_02352FD0
-	thumb_func_end ov02_0232F0B0
+	thumb_func_end CheckRecvSeqID
 
-	thumb_func_start ov02_0232F0FC
-ov02_0232F0FC: ; 0x0232F0FC
+	thumb_func_start GetProductInfo
+GetProductInfo: ; 0x0232F0FC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	mov r2, #0x41
@@ -8052,13 +8052,13 @@ ov02_0232F0FC: ; 0x0232F0FC
 	add r0, r5, #0
 	mov r1, #0
 	lsl r2, r2, #2
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	add r7, r5, #0
 	add r4, r6, #0
 	add r7, #0x80
 _0232F114:
 	ldrh r0, [r4, #2]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r2, r0, #0
 	cmp r2, #0
 	bgt _0232F126
@@ -8086,23 +8086,23 @@ _0232F138: ; jump table
 _0232F146:
 	add r0, r5, #0
 	add r1, r4, #6
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	b _0232F1A2
 _0232F150:
 	add r0, r7, #0
 	add r1, r4, #6
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	b _0232F1A2
 _0232F15A:
 	mov r0, #1
 	lsl r0, r0, #8
 	add r0, r5, r0
 	add r1, r4, #6
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	b _0232F1A2
 _0232F168:
 	ldrb r0, [r4, #6]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	cmp r0, #0
 	bgt _0232F1A2
 	mov r0, #1
@@ -8111,16 +8111,16 @@ _0232F168:
 _0232F178:
 	add r0, r4, #6
 	add r1, r2, #0
-	bl ov02_0232F1B8
-	bl ov02_0232FEE0
+	bl aoss_get_bin
+	bl Aoss_Ntohl
 	ldr r1, _0232F1B4 ; =ov02_0235853C
 	str r0, [r1, #0x34]
 	b _0232F1A2
 _0232F18A:
 	add r0, r4, #6
 	add r1, r2, #0
-	bl ov02_0232F1B8
-	bl ov02_0232FEE0
+	bl aoss_get_bin
+	bl Aoss_Ntohl
 	ldr r1, _0232F1B4 ; =ov02_0235853C
 	str r0, [r1, #0x38]
 	b _0232F1A2
@@ -8132,7 +8132,7 @@ _0232F1A2:
 	ldrh r0, [r4, #4]
 	cmp r0, #0
 	beq _0232F1B0
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r4, r6, r0
 	b _0232F114
 _0232F1B0:
@@ -8140,10 +8140,10 @@ _0232F1B0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232F1B4: .word ov02_0235853C
-	thumb_func_end ov02_0232F0FC
+	thumb_func_end GetProductInfo
 
-	thumb_func_start ov02_0232F1B8
-ov02_0232F1B8: ; 0x0232F1B8
+	thumb_func_start aoss_get_bin
+aoss_get_bin: ; 0x0232F1B8
 	push {r4, r5}
 	mov r3, #0
 	sub r2, r1, #1
@@ -8164,10 +8164,10 @@ _0232F1D4:
 	pop {r4, r5}
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_0232F1B8
+	thumb_func_end aoss_get_bin
 
-	thumb_func_start ov02_0232F1DC
-ov02_0232F1DC: ; 0x0232F1DC
+	thumb_func_start GetWepData
+GetWepData: ; 0x0232F1DC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r6, r1, #0
@@ -8193,7 +8193,7 @@ ov02_0232F1DC: ; 0x0232F1DC
 	str r5, [sp, #0x10]
 _0232F20A:
 	ldrh r0, [r5, #2]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r4, r0, #0
 	ldrb r0, [r5]
 	cmp r0, #0x21
@@ -8294,28 +8294,28 @@ _0232F2B8:
 	add r0, r7, #0
 	add r1, r5, #6
 	add r2, r4, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	str r4, [r6, #4]
 	b _0232F318
 _0232F2C6:
 	ldr r0, [sp]
 	add r1, r5, #6
 	add r2, r4, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	str r4, [r6, #4]
 	b _0232F318
 _0232F2D4:
 	ldr r0, [sp, #4]
 	add r1, r5, #6
 	add r2, r4, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	str r4, [r6, #4]
 	b _0232F318
 _0232F2E2:
 	ldr r0, [sp, #8]
 	add r1, r5, #6
 	add r2, r4, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	str r4, [r6, #4]
 	b _0232F318
 _0232F2F0:
@@ -8333,7 +8333,7 @@ _0232F304:
 	ldr r0, [sp, #0xc]
 	add r1, r5, #6
 	add r2, r4, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	b _0232F318
 _0232F310:
 	mov r0, #0
@@ -8344,7 +8344,7 @@ _0232F318:
 	ldrh r0, [r5, #4]
 	cmp r0, #0
 	beq _0232F328
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	ldr r1, [sp, #0x10]
 	add r5, r1, r0
 	b _0232F20A
@@ -8353,10 +8353,10 @@ _0232F328:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232F1DC
+	thumb_func_end GetWepData
 
-	thumb_func_start ov02_0232F330
-ov02_0232F330: ; 0x0232F330
+	thumb_func_start GetWpaData
+GetWpaData: ; 0x0232F330
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r6, r1, #0
@@ -8370,7 +8370,7 @@ ov02_0232F330: ; 0x0232F330
 	str r4, [sp, #4]
 _0232F346:
 	ldrh r0, [r4, #2]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r5, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #0x35
@@ -8422,7 +8422,7 @@ _0232F39C:
 	add r0, r7, #0
 	add r1, r4, #6
 	add r2, r5, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	str r5, [r6, #4]
 	b _0232F3D2
 _0232F3AA:
@@ -8440,7 +8440,7 @@ _0232F3BE:
 	ldr r0, [sp]
 	add r1, r4, #6
 	add r2, r5, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	b _0232F3D2
 _0232F3CA:
 	mov r0, #0
@@ -8451,7 +8451,7 @@ _0232F3D2:
 	ldrh r0, [r4, #4]
 	cmp r0, #0
 	beq _0232F3E2
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	ldr r1, [sp, #4]
 	add r4, r1, r0
 	b _0232F346
@@ -8459,15 +8459,15 @@ _0232F3E2:
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_0232F330
+	thumb_func_end GetWpaData
 
-	thumb_func_start ov02_0232F3E8
-ov02_0232F3E8: ; 0x0232F3E8
+	thumb_func_start GetBssidData
+GetBssidData: ; 0x0232F3E8
 	push {r3, r4, r5, lr}
 	add r4, r0, #6
 	ldrh r0, [r4, #2]
 	add r5, r1, #0
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r2, r0, #0
 	cmp r2, #0
 	bgt _0232F400
@@ -8484,13 +8484,13 @@ _0232F400:
 _0232F40C:
 	add r0, r5, #0
 	add r1, r4, #6
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov02_0232F3E8
+	thumb_func_end GetBssidData
 
-	thumb_func_start ov02_0232F418
-ov02_0232F418: ; 0x0232F418
+	thumb_func_start GetSecurityData
+GetSecurityData: ; 0x0232F418
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r6, r2, #0
@@ -8513,7 +8513,7 @@ _0232F432:
 	cmp r0, r2
 	beq _0232F456
 	ldrh r0, [r4, #2]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r0, r0, #4
 	sub r6, r6, r0
 	add r4, r4, r0
@@ -8526,7 +8526,7 @@ _0232F432:
 _0232F456:
 	ldrh r0, [r1, #2]
 	add r4, r4, #4
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r7, r0, #0
 	mov r1, #0x35
 	ldr r0, [sp]
@@ -8569,7 +8569,7 @@ _0232F492: ; jump table
 _0232F4A8:
 	ldr r1, [sp, #0x10]
 	add r0, r4, #0
-	bl ov02_0232F1DC
+	bl GetWepData
 	mov r1, #1
 	orr r5, r1
 	b _0232F4FE
@@ -8578,7 +8578,7 @@ _0232F4B6:
 	lsl r1, r1, #2
 	add r0, r4, #0
 	add r1, r6, r1
-	bl ov02_0232F1DC
+	bl GetWepData
 	mov r1, #2
 	orr r5, r1
 	b _0232F4FE
@@ -8587,7 +8587,7 @@ _0232F4C8:
 	lsl r1, r1, #2
 	add r0, r4, #0
 	add r1, r6, r1
-	bl ov02_0232F330
+	bl GetWpaData
 	mov r1, #4
 	orr r5, r1
 	b _0232F4FE
@@ -8596,7 +8596,7 @@ _0232F4DA:
 	lsl r1, r1, #2
 	add r0, r4, #0
 	add r1, r6, r1
-	bl ov02_0232F330
+	bl GetWpaData
 	mov r1, #8
 	orr r5, r1
 	b _0232F4FE
@@ -8605,7 +8605,7 @@ _0232F4EC:
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
 	add r1, r2, r1
-	bl ov02_0232F3E8
+	bl GetBssidData
 	b _0232F4FE
 _0232F4FA:
 	mov r0, #2
@@ -8614,7 +8614,7 @@ _0232F4FE:
 	cmp r0, #0
 	bne _0232F51C
 	ldrh r0, [r4, #2]
-	bl ov02_0232FF08
+	bl Aoss_Ntohs
 	add r0, r0, #4
 	sub r7, r7, r0
 	add r4, r4, r0
@@ -8631,10 +8631,10 @@ _0232F51C:
 	.align 2, 0
 _0232F520: .word ov02_02352F60
 _0232F524: .word ov02_0235853C
-	thumb_func_end ov02_0232F418
+	thumb_func_end GetSecurityData
 
-	thumb_func_start ov02_0232F528
-ov02_0232F528: ; 0x0232F528
+	thumb_func_start GetSecurityType
+GetSecurityType: ; 0x0232F528
 	mov r1, #0x10
 	mov r2, #0
 	tst r0, r1
@@ -8644,10 +8644,10 @@ _0232F532:
 	add r0, r2, #0
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_0232F528
+	thumb_func_end GetSecurityType
 
-	thumb_func_start ov02_0232F538
-ov02_0232F538: ; 0x0232F538
+	thumb_func_start SendMessage
+SendMessage: ; 0x0232F538
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r2, #0
@@ -8661,37 +8661,37 @@ ov02_0232F538: ; 0x0232F538
 	b _0232F584
 _0232F54E:
 	mov r0, #2
-	bl ov02_0232EC54
+	bl Aoss_StatusExclusion
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov02_0232F58C
+	bl AstsSetInitReq
 	pop {r4, r5, r6, pc}
 _0232F560:
 	mov r0, #3
-	bl ov02_0232EC54
+	bl Aoss_StatusExclusion
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov02_0232F6D0
+	bl AstsSetSecureReq
 	pop {r4, r5, r6, pc}
 _0232F572:
 	mov r0, #5
-	bl ov02_0232EC54
+	bl Aoss_StatusExclusion
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov02_0232F7AC
+	bl AstsRestartReq
 	pop {r4, r5, r6, pc}
 _0232F584:
 	mov r0, #0
 	mvn r0, r0
 	pop {r4, r5, r6, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232F538
+	thumb_func_end SendMessage
 
-	thumb_func_start ov02_0232F58C
-ov02_0232F58C: ; 0x0232F58C
+	thumb_func_start AstsSetInitReq
+AstsSetInitReq: ; 0x0232F58C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r7, r1, #0
@@ -8705,14 +8705,14 @@ ov02_0232F58C: ; 0x0232F58C
 	ldr r5, [r0, #0x14]
 	ldr r2, _0232F6C4 ; =0x000005DC
 	add r0, r5, #0
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	mov r0, #0x21
 	lsl r0, r0, #4
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	add r4, r0, #0
 	bne _0232F5C4
 	mov r0, #2
-	bl ov02_0232E930
+	bl aoss_set_error
 	mov r0, #0
 	add sp, #0x20
 	mvn r0, r0
@@ -8721,20 +8721,20 @@ _0232F5C4:
 	mov r2, #0x21
 	mov r1, #0
 	lsl r2, r2, #4
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	add r6, r5, #0
 	ldr r0, _0232F6C8 ; =ov02_0235929C
 	add r1, r7, #0
 	mov r2, #8
 	add r6, #0x18
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, sp, #0x14
 	ldr r1, _0232F6C8 ; =ov02_0235929C
 	add r0, #2
 	mov r2, #8
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r4, #4
-	bl ov02_0232F818
+	bl SetStaData
 	add r1, sp, #0x10
 	strh r0, [r1, #4]
 	mov r0, #4
@@ -8742,11 +8742,11 @@ _0232F5C4:
 	cmp r0, #0
 	bge _0232F612
 	mov r0, #3
-	bl ov02_0232E930
+	bl aoss_set_error
 	cmp r4, #0
 	beq _0232F60A
 	add r0, r4, #0
-	bl ov02_0232DD7C
+	bl Aoss_Free
 _0232F60A:
 	mov r0, #0
 	add sp, #0x20
@@ -8756,7 +8756,7 @@ _0232F612:
 	mov r0, #0
 	strb r0, [r4]
 	ldrh r0, [r1, #4]
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r4, #2]
 	add r1, sp, #0x10
 	mov r0, #4
@@ -8772,7 +8772,7 @@ _0232F612:
 	str r0, [sp, #4]
 	mov r0, #0
 	add r1, r6, #0
-	bl ov02_0232F8A4
+	bl PacketDataSet
 	add r1, sp, #0x10
 	mov r0, #2
 	ldrsh r2, [r1, r0]
@@ -8784,15 +8784,15 @@ _0232F612:
 	ldr r2, _0232F6CC ; =ov02_02352FD0
 	add r0, #2
 	mov r1, #8
-	bl ov02_0232FC24
+	bl CryptSeqNo
 	cmp r0, #0
 	beq _0232F674
 	mov r0, #2
-	bl ov02_0232E930
+	bl aoss_set_error
 	cmp r4, #0
 	beq _0232F66C
 	add r0, r4, #0
-	bl ov02_0232DD7C
+	bl Aoss_Free
 _0232F66C:
 	mov r0, #0
 	add sp, #0x20
@@ -8815,7 +8815,7 @@ _0232F674:
 	ldrsh r3, [r3, r6]
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl ov02_0232F8F8
+	bl SetPacketHeader
 	add r2, sp, #0x10
 	mov r1, #4
 	ldrsh r0, [r2, r1]
@@ -8825,11 +8825,11 @@ _0232F674:
 	ldrsh r1, [r2, r1]
 	add r0, r5, #0
 	mov r2, #0xff
-	bl ov02_0232F950
+	bl SendPacketUdp
 	cmp r4, #0
 	beq _0232F6B8
 	add r0, r4, #0
-	bl ov02_0232DD7C
+	bl Aoss_Free
 _0232F6B8:
 	mov r0, #0
 	add sp, #0x20
@@ -8839,10 +8839,10 @@ _0232F6C0: .word ov02_0235853C
 _0232F6C4: .word 0x000005DC
 _0232F6C8: .word ov02_0235929C
 _0232F6CC: .word ov02_02352FD0
-	thumb_func_end ov02_0232F58C
+	thumb_func_end AstsSetInitReq
 
-	thumb_func_start ov02_0232F6D0
-ov02_0232F6D0: ; 0x0232F6D0
+	thumb_func_start AstsSetSecureReq
+AstsSetSecureReq: ; 0x0232F6D0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x24
 	add r5, r1, #0
@@ -8856,24 +8856,24 @@ ov02_0232F6D0: ; 0x0232F6D0
 	ldr r4, [r0, #0x14]
 	add r0, sp, #0x14
 	mov r2, #8
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	ldr r2, _0232F7A4 ; =0x000005DC
 	add r0, r4, #0
 	mov r1, #0
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	mov r1, #2
 	add r0, sp, #0xc
 	strb r1, [r0, #8]
 	mov r1, #0
 	strb r1, [r0, #9]
 	mov r0, #4
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	add r1, sp, #0xc
 	strh r0, [r1, #0xa]
 	ldr r0, _0232F7A0 ; =ov02_0235853C
 	ldr r0, [r0, #0x2c]
 	str r0, [sp, #0x18]
-	bl ov02_0232FEA0
+	bl Aoss_Htonl
 	str r0, [sp, #0x18]
 	mov r1, #8
 	add r0, sp, #0xc
@@ -8889,21 +8889,21 @@ ov02_0232F6D0: ; 0x0232F6D0
 	add r1, #0x18
 	add r2, sp, #0x14
 	add r3, sp, #0x10
-	bl ov02_0232F8A4
+	bl PacketDataSet
 	add r5, #8
 	add r0, sp, #0x1c
 	add r1, r5, #0
 	mov r2, #8
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r2, _0232F7A8 ; =ov02_02352FD0
 	add r0, sp, #0x1c
 	mov r1, #8
 	mov r3, #6
-	bl ov02_0232FC24
+	bl CryptSeqNo
 	cmp r0, #0
 	beq _0232F762
 	mov r0, #2
-	bl ov02_0232E930
+	bl aoss_set_error
 	mov r0, #0
 	add sp, #0x24
 	mvn r0, r0
@@ -8924,7 +8924,7 @@ _0232F762:
 	ldrsh r3, [r3, r5]
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl ov02_0232F8F8
+	bl SetPacketHeader
 	add r2, sp, #0xc
 	mov r1, #4
 	ldrsh r0, [r2, r1]
@@ -8934,7 +8934,7 @@ _0232F762:
 	ldrsh r1, [r2, r1]
 	add r0, r4, #0
 	mov r2, #0
-	bl ov02_0232F950
+	bl SendPacketUdp
 	mov r0, #0
 	add sp, #0x24
 	pop {r3, r4, r5, r6, pc}
@@ -8942,10 +8942,10 @@ _0232F762:
 _0232F7A0: .word ov02_0235853C
 _0232F7A4: .word 0x000005DC
 _0232F7A8: .word ov02_02352FD0
-	thumb_func_end ov02_0232F6D0
+	thumb_func_end AstsSetSecureReq
 
-	thumb_func_start ov02_0232F7AC
-ov02_0232F7AC: ; 0x0232F7AC
+	thumb_func_start AstsRestartReq
+AstsRestartReq: ; 0x0232F7AC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x14
 	ldr r0, _0232F80C ; =ov02_0235853C
@@ -8955,19 +8955,19 @@ ov02_0232F7AC: ; 0x0232F7AC
 	add r5, r1, #0
 	add r0, r4, #0
 	mov r1, #0
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	add r5, #0x10
 	add r0, sp, #0xc
 	add r1, r5, #0
 	mov r2, #8
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r0, _0232F814 ; =ov02_02352FD0
-	bl ov02_0232FF20
+	bl Aoss_Strlen
 	add r3, r0, #0
 	ldr r2, _0232F814 ; =ov02_02352FD0
 	add r0, sp, #0xc
 	mov r1, #8
-	bl ov02_0232FC24
+	bl CryptSeqNo
 	mov r2, #0
 	mov r1, #3
 	str r2, [sp]
@@ -8978,12 +8978,12 @@ ov02_0232F7AC: ; 0x0232F7AC
 	add r0, r4, #0
 	lsl r1, r1, #0xc
 	add r3, r2, #0
-	bl ov02_0232F8F8
+	bl SetPacketHeader
 	add r0, r4, #0
 	mov r1, #0x18
 	mov r2, #0
 	add r3, r6, #0
-	bl ov02_0232F950
+	bl SendPacketUdp
 	mov r0, #0
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -8991,10 +8991,10 @@ ov02_0232F7AC: ; 0x0232F7AC
 _0232F80C: .word ov02_0235853C
 _0232F810: .word 0x000005DC
 _0232F814: .word ov02_02352FD0
-	thumb_func_end ov02_0232F7AC
+	thumb_func_end AstsRestartReq
 
-	thumb_func_start ov02_0232F818
-ov02_0232F818: ; 0x0232F818
+	thumb_func_start SetStaData
+SetStaData: ; 0x0232F818
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _0232F89C ; =ov02_0235855C
 	add r5, r0, #0
@@ -9011,10 +9011,10 @@ ov02_0232F818: ; 0x0232F818
 	asr r4, r0, #0x10
 	add r0, r5, #6
 	add r2, r4, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r5, #2]
 	add r0, r4, #6
 	lsl r0, r0, #0x10
@@ -9027,7 +9027,7 @@ ov02_0232F818: ; 0x0232F818
 	asr r7, r0, #0x10
 	lsl r0, r7, #0x10
 	lsr r0, r0, #0x10
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r5, #4]
 	add r0, r6, r7
 	lsl r0, r0, #0x10
@@ -9037,17 +9037,17 @@ ov02_0232F818: ; 0x0232F818
 	add r4, r5, r7
 	mov r0, #0
 	strb r0, [r4, #1]
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r4, #4]
 	mov r0, #0xe
-	bl ov02_0232FEA0
+	bl Aoss_Htonl
 	str r0, [sp]
 	add r0, r4, #6
 	add r1, sp, #0
 	mov r2, #4
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	mov r0, #4
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	add r6, #0xa
 	strh r0, [r4, #2]
 	lsl r0, r6, #0x10
@@ -9056,10 +9056,10 @@ ov02_0232F818: ; 0x0232F818
 	nop
 _0232F89C: .word ov02_0235855C
 _0232F8A0: .word ov02_0235853C
-	thumb_func_end ov02_0232F818
+	thumb_func_end SetStaData
 
-	thumb_func_start ov02_0232F8A4
-ov02_0232F8A4: ; 0x0232F8A4
+	thumb_func_start PacketDataSet
+PacketDataSet: ; 0x0232F8A4
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -9080,9 +9080,9 @@ ov02_0232F8A4: ; 0x0232F8A4
 	mov r2, #0
 	ldrsh r2, [r4, r2]
 	add r1, r5, #4
-	bl ov02_0232F9B8
+	bl EncodeRC4
 	ldrh r0, [r4]
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r5]
 	mov r0, #0
 	ldrsh r0, [r4, r0]
@@ -9095,39 +9095,39 @@ _0232F8E4:
 	mov r2, #0
 	ldrsh r2, [r4, r2]
 	add r0, r5, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.align 2, 0
 _0232F8F4: .word ov02_0235929C
-	thumb_func_end ov02_0232F8A4
+	thumb_func_end PacketDataSet
 
-	thumb_func_start ov02_0232F8F8
-ov02_0232F8F8: ; 0x0232F8F8
+	thumb_func_start SetPacketHeader
+SetPacketHeader: ; 0x0232F8F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	mov r0, #1
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r5]
 	mov r0, #0
 	strh r0, [r5, #2]
 	strh r0, [r5, #4]
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r5, #6]
 	mov r0, #0
 	strh r0, [r5, #8]
 	lsl r0, r6, #0x10
 	lsr r0, r0, #0x10
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r5, #0xa]
 	lsl r0, r7, #0x10
 	lsr r0, r0, #0x10
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	strh r0, [r5, #0xc]
 	add r1, sp, #8
 	mov r0, #0x10
@@ -9140,13 +9140,13 @@ ov02_0232F8F8: ; 0x0232F8F8
 	strb r0, [r5, #0xf]
 	add r5, #0x10
 	add r0, r5, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232F8F8
+	thumb_func_end SetPacketHeader
 
-	thumb_func_start ov02_0232F950
-ov02_0232F950: ; 0x0232F950
+	thumb_func_start SendPacketUdp
+SendPacketUdp: ; 0x0232F950
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -9156,17 +9156,17 @@ ov02_0232F950: ; 0x0232F950
 	mov r1, #0
 	mov r2, #8
 	add r7, r3, #0
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	mov r1, #2
 	add r0, sp, #8
 	strb r1, [r0, #1]
 	ldr r0, _0232F9AC ; =0x00005790
-	bl ov02_0232FEC8
+	bl Aoss_Htons
 	add r1, sp, #8
 	strh r0, [r1, #2]
 	ldr r0, _0232F9B0 ; =ov02_0235853C
 	ldr r0, [r0, #0x34]
-	bl ov02_0232FEA0
+	bl Aoss_Htonl
 	str r0, [sp, #0xc]
 	cmp r4, #0xff
 	beq _0232F98E
@@ -9188,17 +9188,17 @@ _0232F994:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #0
-	bl ov02_0232FE70
+	bl Aoss_Sendto
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232F9AC: .word 0x00005790
 _0232F9B0: .word ov02_0235853C
 _0232F9B4: .word ov02_0235855C
-	thumb_func_end ov02_0232F950
+	thumb_func_end SendPacketUdp
 
-	thumb_func_start ov02_0232F9B8
-ov02_0232F9B8: ; 0x0232F9B8
+	thumb_func_start EncodeRC4
+EncodeRC4: ; 0x0232F9B8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r2, #0
@@ -9206,10 +9206,10 @@ ov02_0232F9B8: ; 0x0232F9B8
 	add r4, r3, #0
 	add r1, r5, #0
 	add r6, r0, #0
-	bl ov02_0232FB8C
+	bl crc
 	strb r0, [r4]
 	add r0, r5, #0
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	str r0, [sp, #0xc]
 	cmp r0, #0
 	bne _0232F9E0
@@ -9218,44 +9218,44 @@ ov02_0232F9B8: ; 0x0232F9B8
 	mvn r0, r0
 	pop {r4, r5, r6, r7, pc}
 _0232F9E0:
-	bl ov02_0232FF34
+	bl Aoss_Rand
 	add r1, sp, #0
 	strh r0, [r1]
 	ldr r0, [sp, #0x28]
 	add r1, sp, #0
 	mov r2, #2
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r0, _0232FA2C ; =ov02_023592A4
 	ldr r1, [sp, #0x28]
 	mov r2, #2
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r0, _0232FA30 ; =ov02_023592A6
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x30]
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r2, [sp, #0x30]
 	ldr r1, _0232FA2C ; =ov02_023592A4
 	add r0, sp, #4
 	add r2, r2, #2
 	add r3, r5, #0
-	bl ov02_0232FABC
+	bl RC4init
 	add r0, sp, #4
 	add r1, r7, #0
 	add r2, r6, #0
 	add r3, r5, #0
-	bl ov02_0232FB20
+	bl RC4encrypt
 	ldr r0, [sp, #0xc]
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	mov r0, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232FA2C: .word ov02_023592A4
 _0232FA30: .word ov02_023592A6
-	thumb_func_end ov02_0232F9B8
+	thumb_func_end EncodeRC4
 
-	thumb_func_start ov02_0232FA34
-ov02_0232FA34: ; 0x0232FA34
+	thumb_func_start DecodeRC4
+DecodeRC4: ; 0x0232FA34
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r2, #0
@@ -9263,12 +9263,12 @@ ov02_0232FA34: ; 0x0232FA34
 	add r0, r4, #0
 	add r5, r1, #0
 	add r6, r3, #0
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	str r0, [sp, #8]
 	cmp r0, #0
 	bne _0232FA5A
 	mov r0, #2
-	bl ov02_0232E930
+	bl aoss_set_error
 	mov r0, #0
 	add sp, #0x10
 	mvn r0, r0
@@ -9277,48 +9277,48 @@ _0232FA5A:
 	ldr r0, _0232FAB4 ; =ov02_023592A4
 	ldr r1, [sp, #0x28]
 	mov r2, #2
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r0, _0232FAB8 ; =ov02_023592A6
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x30]
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	ldr r2, [sp, #0x30]
 	ldr r1, _0232FAB4 ; =ov02_023592A4
 	add r0, sp, #0
 	add r2, r2, #2
 	add r3, r4, #0
-	bl ov02_0232FABC
+	bl RC4init
 	add r0, sp, #0
 	add r1, r5, #0
 	add r2, r7, #0
 	add r3, r4, #0
-	bl ov02_0232FB20
+	bl RC4encrypt
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov02_0232FB8C
+	bl crc
 	cmp r0, r6
 	beq _0232FAA8
 	mov r0, #0x12
-	bl ov02_0232E930
+	bl aoss_set_error
 	ldr r0, [sp, #8]
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	mov r0, #0
 	add sp, #0x10
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0232FAA8:
 	ldr r0, [sp, #8]
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232FAB4: .word ov02_023592A4
 _0232FAB8: .word ov02_023592A6
-	thumb_func_end ov02_0232FA34
+	thumb_func_end DecodeRC4
 
-	thumb_func_start ov02_0232FABC
-ov02_0232FABC: ; 0x0232FABC
+	thumb_func_start RC4init
+RC4init: ; 0x0232FABC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	str r0, [sp]
@@ -9373,10 +9373,10 @@ _0232FB1A:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232FABC
+	thumb_func_end RC4init
 
-	thumb_func_start ov02_0232FB20
-ov02_0232FB20: ; 0x0232FB20
+	thumb_func_start RC4encrypt
+RC4encrypt: ; 0x0232FB20
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	add r5, r1, #0
@@ -9386,7 +9386,7 @@ ov02_0232FB20: ; 0x0232FB20
 	beq _0232FB44
 _0232FB2E:
 	ldr r0, [sp]
-	bl ov02_0232FB4C
+	bl arcfour_byte
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	ldrb r0, [r6, r4]
@@ -9399,10 +9399,10 @@ _0232FB44:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0232FB48: .word 0x00000000
-	thumb_func_end ov02_0232FB20
+	thumb_func_end RC4encrypt
 
-	thumb_func_start ov02_0232FB4C
-ov02_0232FB4C: ; 0x0232FB4C
+	thumb_func_start arcfour_byte
+arcfour_byte: ; 0x0232FB4C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
@@ -9432,10 +9432,10 @@ ov02_0232FB4C: ; 0x0232FB4C
 	ldrb r0, [r4, r1]
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232FB4C
+	thumb_func_end arcfour_byte
 
-	thumb_func_start ov02_0232FB8C
-ov02_0232FB8C: ; 0x0232FB8C
+	thumb_func_start crc
+crc: ; 0x0232FB8C
 	push {r3, lr}
 	add r3, r0, #0
 	ldr r0, _0232FBB0 ; =ov02_023587FC
@@ -9445,7 +9445,7 @@ ov02_0232FB8C: ; 0x0232FB8C
 	add r1, r3, #0
 	mvn r0, r0
 	mov r3, #0
-	bl ov02_0232FBB4
+	bl update_crc
 	mov r1, #0
 	mvn r1, r1
 	eor r0, r1
@@ -9454,10 +9454,10 @@ ov02_0232FB8C: ; 0x0232FB8C
 	pop {r3, pc}
 	nop
 _0232FBB0: .word ov02_023587FC
-	thumb_func_end ov02_0232FB8C
+	thumb_func_end crc
 
-	thumb_func_start ov02_0232FBB4
-ov02_0232FBB4: ; 0x0232FBB4
+	thumb_func_start update_crc
+update_crc: ; 0x0232FBB4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -9467,7 +9467,7 @@ ov02_0232FBB4: ; 0x0232FBB4
 	bne _0232FBCA
 	add r0, r3, #0
 	add r1, r6, #0
-	bl ov02_0232FBEC
+	bl make_crc_table
 _0232FBCA:
 	mov r1, #0
 	cmp r4, #0
@@ -9488,10 +9488,10 @@ _0232FBE6:
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232FBB4
+	thumb_func_end update_crc
 
-	thumb_func_start ov02_0232FBEC
-ov02_0232FBEC: ; 0x0232FBEC
+	thumb_func_start make_crc_table
+make_crc_table: ; 0x0232FBEC
 	push {r4, r5, r6, r7}
 	mov r5, #1
 	add r3, r5, #0
@@ -9523,10 +9523,10 @@ _0232FC0C:
 	bx lr
 	nop
 _0232FC20: .word 0xEDB88320
-	thumb_func_end ov02_0232FBEC
+	thumb_func_end make_crc_table
 
-	thumb_func_start ov02_0232FC24
-ov02_0232FC24: ; 0x0232FC24
+	thumb_func_start CryptSeqNo
+CryptSeqNo: ; 0x0232FC24
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r1, #0
@@ -9536,7 +9536,7 @@ ov02_0232FC24: ; 0x0232FC24
 	asr r0, r0, #1
 	str r2, [sp, #4]
 	str r3, [sp, #8]
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	add r6, r0, #0
 	bne _0232FC46
 	mov r0, #0
@@ -9545,12 +9545,12 @@ ov02_0232FC24: ; 0x0232FC24
 	pop {r3, r4, r5, r6, r7, pc}
 _0232FC46:
 	add r0, r5, #0
-	bl ov02_0232DD6C
+	bl Aoss_Malloc
 	str r0, [sp, #0xc]
 	cmp r0, #0
 	bne _0232FC60
 	add r0, r6, #0
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	mov r0, #0
 	add sp, #0x10
 	mvn r0, r0
@@ -9564,30 +9564,30 @@ _0232FC62:
 	add r0, r4, #0
 	add r1, r6, #0
 	add r2, r5, #0
-	bl ov02_0232FCA0
+	bl MakeKey
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl ov02_0232FCD4
+	bl AddKey
 	ldr r2, [sp, #0xc]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl ov02_0232FCF8
+	bl Rotate
 	add r4, r4, #1
 	cmp r4, #2
 	blt _0232FC62
 	add r0, r6, #0
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	ldr r0, [sp, #0xc]
-	bl ov02_0232DD7C
+	bl Aoss_Free
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232FC24
+	thumb_func_end CryptSeqNo
 
-	thumb_func_start ov02_0232FCA0
-ov02_0232FCA0: ; 0x0232FCA0
+	thumb_func_start MakeKey
+MakeKey: ; 0x0232FCA0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	lsr r1, r2, #0x1f
@@ -9616,10 +9616,10 @@ _0232FCCC:
 	blt _0232FCBA
 _0232FCD2:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_0232FCA0
+	thumb_func_end MakeKey
 
-	thumb_func_start ov02_0232FCD4
-ov02_0232FCD4: ; 0x0232FCD4
+	thumb_func_start AddKey
+AddKey: ; 0x0232FCD4
 	push {r4, r5}
 	lsr r3, r2, #0x1f
 	add r3, r2, r3
@@ -9640,10 +9640,10 @@ _0232FCE4:
 _0232FCF4:
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ov02_0232FCD4
+	thumb_func_end AddKey
 
-	thumb_func_start ov02_0232FCF8
-ov02_0232FCF8: ; 0x0232FCF8
+	thumb_func_start Rotate
+Rotate: ; 0x0232FCF8
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -9654,18 +9654,18 @@ ov02_0232FCF8: ; 0x0232FCF8
 	add r0, r4, #0
 	add r1, r5, r7
 	add r2, r7, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r4, r7
 	add r1, r5, #0
 	add r2, r7, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov02_0232FDEC
+	bl Aoss_Memcpy
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232FCF8
+	thumb_func_end Rotate
 
 	thumb_func_start ov02_0232FD28
 ov02_0232FD28: ; 0x0232FD28
@@ -9696,20 +9696,20 @@ ov02_0232FD40: ; 0x0232FD40
 _0232FD4C: .word ov02_0235932C
 	thumb_func_end ov02_0232FD40
 
-	thumb_func_start ov02_0232FD50
-ov02_0232FD50: ; 0x0232FD50
+	thumb_func_start Aoss_SetIpAddr
+Aoss_SetIpAddr: ; 0x0232FD50
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl ov02_0232FEA0
+	bl Aoss_Htonl
 	ldr r1, _0232FD9C ; =ov02_02352F64
 	str r0, [r1, #0x18]
 	add r0, r5, #0
-	bl ov02_0232FEA0
+	bl Aoss_Htonl
 	ldr r1, _0232FD9C ; =ov02_02352F64
 	str r0, [r1, #0x1c]
 	add r0, r4, #0
-	bl ov02_0232FEA0
+	bl Aoss_Htonl
 	ldr r1, _0232FD9C ; =ov02_02352F64
 	str r0, [r1, #0x20]
 	ldr r0, _0232FDA0 ; =ov02_02352F6C
@@ -9738,10 +9738,10 @@ _0232FD98:
 _0232FD9C: .word ov02_02352F64
 _0232FDA0: .word ov02_02352F6C
 _0232FDA4: .word ov00_023250C8
-	thumb_func_end ov02_0232FD50
+	thumb_func_end Aoss_SetIpAddr
 
-	thumb_func_start ov02_0232FDA8
-ov02_0232FDA8: ; 0x0232FDA8
+	thumb_func_start Aoss_Disconnect
+Aoss_Disconnect: ; 0x0232FDA8
 	push {r3, lr}
 	blx ov00_022CF7E8
 	cmp r0, #0
@@ -9750,7 +9750,7 @@ ov02_0232FDA8: ; 0x0232FDA8
 	mvn r0, r0
 	pop {r3, pc}
 _0232FDB8:
-	bl ov02_023301FC
+	bl Aossi_Disconnect
 	cmp r0, #0
 	beq _0232FDC4
 	mov r0, #1
@@ -9761,10 +9761,10 @@ _0232FDC6:
 	neg r0, r0
 	pop {r3, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232FDA8
+	thumb_func_end Aoss_Disconnect
 
-	thumb_func_start ov02_0232FDCC
-ov02_0232FDCC: ; 0x0232FDCC
+	thumb_func_start Aoss_Memcmp
+Aoss_Memcmp: ; 0x0232FDCC
 	push {r3, r4}
 	mov r3, #0
 	b _0232FDD6
@@ -9784,10 +9784,10 @@ _0232FDE6:
 	add r0, r3, #0
 	pop {r3, r4}
 	bx lr
-	thumb_func_end ov02_0232FDCC
+	thumb_func_end Aoss_Memcmp
 
-	thumb_func_start ov02_0232FDEC
-ov02_0232FDEC: ; 0x0232FDEC
+	thumb_func_start Aoss_Memcpy
+Aoss_Memcpy: ; 0x0232FDEC
 	add r3, r0, #0
 	add r0, r1, #0
 	add r1, r3, #0
@@ -9795,20 +9795,20 @@ ov02_0232FDEC: ; 0x0232FDEC
 	bx r3
 	nop
 _0232FDF8: .word MI_CpuCopy8
-	thumb_func_end ov02_0232FDEC
+	thumb_func_end Aoss_Memcpy
 
-	thumb_func_start ov02_0232FDFC
-ov02_0232FDFC: ; 0x0232FDFC
+	thumb_func_start Aoss_Memset
+Aoss_Memset: ; 0x0232FDFC
 	ldr r3, _0232FE04 ; =MI_CpuFill8
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	bx r3
 	.align 2, 0
 _0232FE04: .word MI_CpuFill8
-	thumb_func_end ov02_0232FDFC
+	thumb_func_end Aoss_Memset
 
-	thumb_func_start ov02_0232FE08
-ov02_0232FE08: ; 0x0232FE08
+	thumb_func_start Aoss_Recvfrom
+Aoss_Recvfrom: ; 0x0232FE08
 	push {r3, r4, r5, lr}
 	ldr r4, [sp, #0x14]
 	ldr r5, [r4]
@@ -9818,10 +9818,10 @@ ov02_0232FE08: ; 0x0232FE08
 	blx recvfrom
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-	thumb_func_end ov02_0232FE08
+	thumb_func_end Aoss_Recvfrom
 
-	thumb_func_start ov02_0232FE1C
-ov02_0232FE1C: ; 0x0232FE1C
+	thumb_func_start Aoss_Select
+Aoss_Select: ; 0x0232FE1C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	ldr r2, [r1]
@@ -9860,10 +9860,10 @@ ov02_0232FE1C: ; 0x0232FE1C
 	pop {r4, r5, r6, pc}
 	nop
 _0232FE6C: .word 0x01FF6210
-	thumb_func_end ov02_0232FE1C
+	thumb_func_end Aoss_Select
 
-	thumb_func_start ov02_0232FE70
-ov02_0232FE70: ; 0x0232FE70
+	thumb_func_start Aoss_Sendto
+Aoss_Sendto: ; 0x0232FE70
 	push {r3, r4, r5, lr}
 	ldr r5, [sp, #0x14]
 	ldr r4, [sp, #0x10]
@@ -9871,41 +9871,41 @@ ov02_0232FE70: ; 0x0232FE70
 	str r4, [sp]
 	blx sendto
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov02_0232FE70
+	thumb_func_end Aoss_Sendto
 
-	thumb_func_start ov02_0232FE80
-ov02_0232FE80: ; 0x0232FE80
+	thumb_func_start Aoss_Setsockopt
+Aoss_Setsockopt: ; 0x0232FE80
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_0232FE80
+	thumb_func_end Aoss_Setsockopt
 
-	thumb_func_start ov02_0232FE84
-ov02_0232FE84: ; 0x0232FE84
+	thumb_func_start Aoss_Socket
+Aoss_Socket: ; 0x0232FE84
 	ldr r3, _0232FE88 ; =socket
 	bx r3
 	.align 2, 0
 _0232FE88: .word socket
-	thumb_func_end ov02_0232FE84
+	thumb_func_end Aoss_Socket
 
-	thumb_func_start ov02_0232FE8C
-ov02_0232FE8C: ; 0x0232FE8C
+	thumb_func_start Aoss_Bind
+Aoss_Bind: ; 0x0232FE8C
 	ldr r3, _0232FE94 ; =bind
 	strb r2, [r1]
 	bx r3
 	nop
 _0232FE94: .word bind
-	thumb_func_end ov02_0232FE8C
+	thumb_func_end Aoss_Bind
 
-	thumb_func_start ov02_0232FE98
-ov02_0232FE98: ; 0x0232FE98
+	thumb_func_start Aoss_Close
+Aoss_Close: ; 0x0232FE98
 	ldr r3, _0232FE9C ; =CloseVeneer
 	bx r3
 	.align 2, 0
 _0232FE9C: .word CloseVeneer
-	thumb_func_end ov02_0232FE98
+	thumb_func_end Aoss_Close
 
-	thumb_func_start ov02_0232FEA0
-ov02_0232FEA0: ; 0x0232FEA0
+	thumb_func_start Aoss_Htonl
+Aoss_Htonl: ; 0x0232FEA0
 	push {r4, r5}
 	mov r3, #0xff
 	lsl r1, r0, #0x18
@@ -9926,10 +9926,10 @@ ov02_0232FEA0: ; 0x0232FEA0
 	orr r0, r2
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ov02_0232FEA0
+	thumb_func_end Aoss_Htonl
 
-	thumb_func_start ov02_0232FEC8
-ov02_0232FEC8: ; 0x0232FEC8
+	thumb_func_start Aoss_Htons
+Aoss_Htons: ; 0x0232FEC8
 	asr r1, r0, #8
 	lsl r1, r1, #0x18
 	lsr r2, r1, #0x18
@@ -9942,10 +9942,10 @@ ov02_0232FEC8: ; 0x0232FEC8
 	lsr r0, r0, #0x10
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_0232FEC8
+	thumb_func_end Aoss_Htons
 
-	thumb_func_start ov02_0232FEE0
-ov02_0232FEE0: ; 0x0232FEE0
+	thumb_func_start Aoss_Ntohl
+Aoss_Ntohl: ; 0x0232FEE0
 	push {r4, r5}
 	mov r3, #0xff
 	lsl r1, r0, #0x18
@@ -9966,10 +9966,10 @@ ov02_0232FEE0: ; 0x0232FEE0
 	orr r0, r2
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ov02_0232FEE0
+	thumb_func_end Aoss_Ntohl
 
-	thumb_func_start ov02_0232FF08
-ov02_0232FF08: ; 0x0232FF08
+	thumb_func_start Aoss_Ntohs
+Aoss_Ntohs: ; 0x0232FF08
 	asr r1, r0, #8
 	lsl r1, r1, #0x18
 	lsr r2, r1, #0x18
@@ -9982,10 +9982,10 @@ ov02_0232FF08: ; 0x0232FF08
 	lsr r0, r0, #0x10
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_0232FF08
+	thumb_func_end Aoss_Ntohs
 
-	thumb_func_start ov02_0232FF20
-ov02_0232FF20: ; 0x0232FF20
+	thumb_func_start Aoss_Strlen
+Aoss_Strlen: ; 0x0232FF20
 	mov r2, #0
 	ldrsb r1, [r0, r2]
 	cmp r1, #0
@@ -9998,10 +9998,10 @@ _0232FF28:
 _0232FF30:
 	add r0, r2, #0
 	bx lr
-	thumb_func_end ov02_0232FF20
+	thumb_func_end Aoss_Strlen
 
-	thumb_func_start ov02_0232FF34
-ov02_0232FF34: ; 0x0232FF34
+	thumb_func_start Aoss_Rand
+Aoss_Rand: ; 0x0232FF34
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r0, _0232FF94 ; =ov02_0235853C
@@ -10012,7 +10012,7 @@ ov02_0232FF34: ; 0x0232FF34
 	add r0, sp, #0
 	add r1, r4, #0
 	mov r2, #0xc
-	bl ov02_0232FDFC
+	bl Aoss_Memset
 	add r0, sp, #0
 	bl Rtc_GetTime
 	cmp r0, #0
@@ -10055,28 +10055,28 @@ _0232FF94: .word ov02_0235853C
 _0232FF98: .word 0x5D588B65
 _0232FF9C: .word 0x00269EC3
 _0232FFA0: .word 0x00007FFF
-	thumb_func_end ov02_0232FF34
+	thumb_func_end Aoss_Rand
 
-	thumb_func_start ov02_0232FFA4
-ov02_0232FFA4: ; 0x0232FFA4
+	thumb_func_start Aoss_FD_Zero
+Aoss_FD_Zero: ; 0x0232FFA4
 	mov r1, #0
 	str r1, [r0]
 	strh r1, [r0, #4]
 	strh r1, [r0, #6]
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_0232FFA4
+	thumb_func_end Aoss_FD_Zero
 
-	thumb_func_start ov02_0232FFB0
-ov02_0232FFB0: ; 0x0232FFB0
+	thumb_func_start Aoss_FD_Set
+Aoss_FD_Set: ; 0x0232FFB0
 	str r0, [r1]
 	mov r0, #1
 	strh r0, [r1, #4]
 	bx lr
-	thumb_func_end ov02_0232FFB0
+	thumb_func_end Aoss_FD_Set
 
-	thumb_func_start ov02_0232FFB8
-ov02_0232FFB8: ; 0x0232FFB8
+	thumb_func_start Set_Wlla_Bss_Info
+Set_Wlla_Bss_Info: ; 0x0232FFB8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldrh r0, [r5, #0xa]
@@ -10149,10 +10149,10 @@ _02330038:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02330040: .word ov02_02352FD8
-	thumb_func_end ov02_0232FFB8
+	thumb_func_end Set_Wlla_Bss_Info
 
-	thumb_func_start ov02_02330044
-ov02_02330044: ; 0x02330044
+	thumb_func_start Get_Wlla_Ssid_Param
+Get_Wlla_Ssid_Param: ; 0x02330044
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -10169,22 +10169,22 @@ ov02_02330044: ; 0x02330044
 	bl MI_CpuCopy8
 	pop {r3, r4, r5, pc}
 	.align 2, 0
-	thumb_func_end ov02_02330044
+	thumb_func_end Get_Wlla_Ssid_Param
 
-	thumb_func_start ov02_02330068
-ov02_02330068: ; 0x02330068
+	thumb_func_start Set_Wlla_Link_Stat
+Set_Wlla_Link_Stat: ; 0x02330068
 	add r3, r0, #0
 	add r0, r1, #0
 	str r2, [r3]
 	add r1, r3, #4
-	ldr r3, _02330074 ; =ov02_0232FFB8
+	ldr r3, _02330074 ; =Set_Wlla_Bss_Info
 	bx r3
 	.align 2, 0
-_02330074: .word ov02_0232FFB8 + 1
-	thumb_func_end ov02_02330068
+_02330074: .word Set_Wlla_Bss_Info + 1
+	thumb_func_end Set_Wlla_Link_Stat
 
-	thumb_func_start ov02_02330078
-ov02_02330078: ; 0x02330078
+	thumb_func_start aoss_apc_callback
+aoss_apc_callback: ; 0x02330078
 	ldr r3, _02330084 ; =OS_SendMessage
 	add r1, r0, #0
 	ldr r0, _02330088 ; =ov02_02359340
@@ -10193,10 +10193,10 @@ ov02_02330078: ; 0x02330078
 	nop
 _02330084: .word OS_SendMessage
 _02330088: .word ov02_02359340
-	thumb_func_end ov02_02330078
+	thumb_func_end aoss_apc_callback
 
-	thumb_func_start ov02_0233008C
-ov02_0233008C: ; 0x0233008C
+	thumb_func_start AlarmCallback__023308B8
+AlarmCallback__023308B8: ; 0x0233008C
 	ldr r3, _02330098 ; =OS_SendMessage
 	add r1, r0, #0
 	ldr r0, _0233009C ; =ov02_02359340
@@ -10205,10 +10205,10 @@ ov02_0233008C: ; 0x0233008C
 	nop
 _02330098: .word OS_SendMessage
 _0233009C: .word ov02_02359340
-	thumb_func_end ov02_0233008C
+	thumb_func_end AlarmCallback__023308B8
 
-	thumb_func_start ov02_023300A0
-ov02_023300A0: ; 0x023300A0
+	thumb_func_start Aossi_InitLocal
+Aossi_InitLocal: ; 0x023300A0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -10244,7 +10244,7 @@ _023300C0:
 _023300E2:
 	ldr r0, _02330160 ; =ov02_02330079
 	ldr r2, _0233015C ; =0x00005890
-	bl ov02_02330B3C
+	bl Apc_Init__02331368
 	cmp r0, #0
 	bne _023300F0
 	mov r4, #0
@@ -10306,11 +10306,11 @@ _02330150: .word ov02_02359340
 _02330154: .word ov02_02359330
 _02330158: .word ov02_02359320
 _0233015C: .word 0x00005890
-_02330160: .word ov02_02330078 + 1
-	thumb_func_end ov02_023300A0
+_02330160: .word aoss_apc_callback + 1
+	thumb_func_end Aossi_InitLocal
 
-	thumb_func_start ov02_02330164
-ov02_02330164: ; 0x02330164
+	thumb_func_start Aossi_EndLocal
+Aossi_EndLocal: ; 0x02330164
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r0, _023301F4 ; =ov02_02359320
 	mov r4, #1
@@ -10321,7 +10321,7 @@ ov02_02330164: ; 0x02330164
 	add r0, r5, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02330176:
-	bl ov02_02330A60
+	bl Apc_End__0233128C
 	cmp r0, #0
 	bne _02330182
 	sub r0, r4, #2
@@ -10388,14 +10388,14 @@ _023301DA:
 	nop
 _023301F4: .word ov02_02359320
 _023301F8: .word ov02_02359340
-	thumb_func_end ov02_02330164
+	thumb_func_end Aossi_EndLocal
 
-	thumb_func_start ov02_023301FC
-ov02_023301FC: ; 0x023301FC
+	thumb_func_start Aossi_Disconnect
+Aossi_Disconnect: ; 0x023301FC
 	push {r3, r4, r5, r6, r7, lr}
 	mov r5, #0
 	mvn r5, r5
-	bl ov02_02330A28
+	bl Apc_Disconnect
 	cmp r0, #0
 	beq _0233022C
 	ldr r4, _02330230 ; =ov02_02359340
@@ -10422,10 +10422,10 @@ _0233022C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02330230: .word ov02_02359340
-	thumb_func_end ov02_023301FC
+	thumb_func_end Aossi_Disconnect
 
-	thumb_func_start ov02_02330234
-ov02_02330234: ; 0x02330234
+	thumb_func_start Aossi_WlanGetBssList
+Aossi_WlanGetBssList: ; 0x02330234
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x44
 	str r0, [sp, #4]
@@ -10464,7 +10464,7 @@ _02330270:
 	add r1, r0, #0
 	add r2, r0, #0
 	str r4, [sp, #8]
-	bl ov02_023308FC
+	bl Apc_SearchStart__02331128
 	cmp r0, #0
 	bne _02330284
 	b _02330388
@@ -10520,10 +10520,10 @@ _023302DE:
 	beq _023302F0
 	add r0, r4, #0
 	mov r1, #0x40
-	bl ov02_023308B8
+	bl Apc_GetApList__023310E4
 	add r7, r0, #0
 _023302F0:
-	bl ov02_023309EC
+	bl Apc_SearchEnd__02331218
 	cmp r0, #0
 	beq _0233036E
 	mov r6, #1
@@ -10538,9 +10538,9 @@ _023302FC:
 _02330308:
 	add r0, r4, #0
 	mov r1, #0x40
-	bl ov02_023308B8
+	bl Apc_GetApList__023310E4
 	add r7, r0, #0
-	bl ov02_023309EC
+	bl Apc_SearchEnd__02331218
 	cmp r0, #0
 	beq _0233036E
 	mov r6, #1
@@ -10583,7 +10583,7 @@ _0233034E:
 _0233035C:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov02_0232FFB8
+	bl Set_Wlla_Bss_Info
 	add r6, r6, #1
 	add r4, #0xc0
 	add r5, #0x54
@@ -10614,12 +10614,12 @@ _02330388:
 _02330398: .word ov02_02359320
 _0233039C: .word 0x0030BFFE
 _023303A0: .word 0x003FEC42
-_023303A4: .word ov02_0233008C + 1
+_023303A4: .word AlarmCallback__023308B8 + 1
 _023303A8: .word ov02_02359340
-	thumb_func_end ov02_02330234
+	thumb_func_end Aossi_WlanGetBssList
 
-	thumb_func_start ov02_023303AC
-ov02_023303AC: ; 0x023303AC
+	thumb_func_start Aossi_WlanConnect
+Aossi_WlanConnect: ; 0x023303AC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x40
 	mov r4, #1
@@ -10688,7 +10688,7 @@ _0233040C:
 	ldr r3, _02330564 ; =0x0030BFFE
 	mov r0, #0
 	add r1, r7, #4
-	bl ov02_023308FC
+	bl Apc_SearchStart__02331128
 	cmp r0, #0
 	bne _02330438
 	b _02330546
@@ -10696,7 +10696,7 @@ _02330438:
 	mov r0, #0
 	str r0, [sp, #8]
 	add r0, sp, #0x14
-	bl OS_CreateAlarm 
+	bl OS_CreateAlarm
 	mov r0, #0x12
 	str r0, [sp]
 	ldr r1, _02330568 ; =0x003FEC42
@@ -10753,7 +10753,7 @@ _023304A0:
 	bl OS_CancelAlarm
 	ldr r0, _02330574 ; =ov02_02359360
 	mov r1, #1
-	bl ov02_023308B8
+	bl Apc_GetApList__023310E4
 	cmp r0, #1
 	beq _023304BA
 	mov r4, #0
@@ -10761,7 +10761,7 @@ _023304A0:
 _023304BA:
 	ldr r1, _02330574 ; =ov02_02359360
 	add r0, r7, #0
-	bl ov02_02330044
+	bl Get_Wlla_Ssid_Param
 	ldr r1, _02330578 ; =ov02_02359360
 	mov r0, #0
 	ldrh r1, [r1, #0xa]
@@ -10774,7 +10774,7 @@ _023304CC:
 	ldr r0, _02330574 ; =ov02_02359360
 	ldr r1, _02330560 ; =ov02_02359420
 	add r2, r5, #0
-	bl ov02_02330AB8
+	bl Apc_Connect__023312E4
 	cmp r0, #0
 	bne _023304E2
 	mov r4, #0
@@ -10785,11 +10785,11 @@ _023304E2:
 _023304E6:
 	ldr r1, _02330574 ; =ov02_02359360
 	add r0, r7, #0
-	bl ov02_02330044
+	bl Get_Wlla_Ssid_Param
 	ldr r0, _02330574 ; =ov02_02359360
 	ldr r1, _02330560 ; =ov02_02359420
 	add r2, r5, #0
-	bl ov02_02330AB8
+	bl Apc_Connect__023312E4
 	cmp r0, #0
 	bne _02330528
 	mov r4, #0
@@ -10807,7 +10807,7 @@ _02330506:
 	ldr r0, _02330574 ; =ov02_02359360
 	ldr r1, _02330560 ; =ov02_02359420
 	add r2, r5, #0
-	bl ov02_02330AB8
+	bl Apc_Connect__023312E4
 	cmp r0, #0
 	bne _02330528
 	mov r4, #0
@@ -10843,7 +10843,7 @@ _02330550:
 _02330552:
 	ldr r0, [sp, #4]
 	ldr r1, _02330574 ; =ov02_02359360
-	bl ov02_02330068
+	bl Set_Wlla_Link_Stat
 	ldr r0, [sp, #0xc]
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10851,22 +10851,22 @@ _02330552:
 _02330560: .word ov02_02359420
 _02330564: .word 0x0030BFFE
 _02330568: .word 0x003FEC42
-_0233056C: .word ov02_0233008C + 1
+_0233056C: .word AlarmCallback__023308B8 + 1
 _02330570: .word ov02_02359340
 _02330574: .word ov02_02359360
 _02330578: .word ov02_02359360
-	thumb_func_end ov02_023303AC
+	thumb_func_end Aossi_WlanConnect
 
-	thumb_func_start ov02_0233057C
-ov02_0233057C: ; 0x0233057C
+	thumb_func_start Aossi_Sleep
+Aossi_Sleep: ; 0x0233057C
 	ldr r3, _02330580 ; =OS_Sleep
 	bx r3
 	.align 2, 0
 _02330580: .word OS_Sleep
-	thumb_func_end ov02_0233057C
+	thumb_func_end Aossi_Sleep
 
-	thumb_func_start ov02_02330584
-ov02_02330584: ; 0x02330584
+	thumb_func_start Aossi_Status
+Aossi_Status: ; 0x02330584
 	push {r3, lr}
 	ldr r1, _02330594 ; =ov02_02359320
 	ldr r1, [r1, #4]
@@ -10878,10 +10878,10 @@ _02330590:
 	pop {r3, pc}
 	.align 2, 0
 _02330594: .word ov02_02359320
-	thumb_func_end ov02_02330584
+	thumb_func_end Aossi_Status
 
-	thumb_func_start ov02_02330598
-ov02_02330598: ; 0x02330598
+	thumb_func_start Apci_Notify__02330DC4
+Apci_Notify__02330DC4: ; 0x02330598
 	push {r3, lr}
 	cmp r0, #0
 	bne _023305A0
@@ -11251,10 +11251,10 @@ _02330848:
 	pop {r3, pc}
 	nop
 _0233084C: .word ov02_02359480
-	thumb_func_end ov02_02330598
+	thumb_func_end Apci_Notify__02330DC4
 
-	thumb_func_start ov02_02330850
-ov02_02330850: ; 0x02330850
+	thumb_func_start Apci_MoveIdleState__0233107C
+Apci_MoveIdleState__0233107C: ; 0x02330850
 	push {r3, lr}
 	ldr r1, _023308B0 ; =ov02_02359480
 	ldr r0, [r1, #0x18]
@@ -11307,11 +11307,11 @@ _023308AA:
 	pop {r3, pc}
 	nop
 _023308B0: .word ov02_02359480
-_023308B4: .word ov02_02330598 + 1
-	thumb_func_end ov02_02330850
+_023308B4: .word Apci_Notify__02330DC4 + 1
+	thumb_func_end Apci_MoveIdleState__0233107C
 
-	thumb_func_start ov02_023308B8
-ov02_023308B8: ; 0x023308B8
+	thumb_func_start Apc_GetApList__023310E4
+Apc_GetApList__023310E4: ; 0x023308B8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	mov r0, #1
@@ -11343,10 +11343,10 @@ _023308F0:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_023308B8
+	thumb_func_end Apc_GetApList__023310E4
 
-	thumb_func_start ov02_023308FC
-ov02_023308FC: ; 0x023308FC
+	thumb_func_start Apc_SearchStart__02331128
+Apc_SearchStart__02331128: ; 0x023308FC
 	push {r3, r4, r5, r6, r7, lr}
 	str r3, [sp]
 	add r5, r0, #0
@@ -11444,7 +11444,7 @@ _0233098E:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _023309B4:
-	bl ov02_02330850
+	bl Apci_MoveIdleState__0233107C
 	cmp r0, #1
 	bne _023309CC
 	ldr r0, _023309D8 ; =ov02_02359480
@@ -11465,10 +11465,10 @@ _023309DC: .word ov02_023594A8
 _023309E0: .word ov00_02318158
 _023309E4: .word ov02_023594B0
 _023309E8: .word ov00_02318160
-	thumb_func_end ov02_023308FC
+	thumb_func_end Apc_SearchStart__02331128
 
-	thumb_func_start ov02_023309EC
-ov02_023309EC: ; 0x023309EC
+	thumb_func_start Apc_SearchEnd__02331218
+Apc_SearchEnd__02331218: ; 0x023309EC
 	push {r4, lr}
 	bl EnableIrqFlag
 	add r4, r0, #0
@@ -11496,10 +11496,10 @@ _02330A1A:
 	pop {r4, pc}
 	.align 2, 0
 _02330A24: .word ov02_02359480
-	thumb_func_end ov02_023309EC
+	thumb_func_end Apc_SearchEnd__02331218
 
-	thumb_func_start ov02_02330A28
-ov02_02330A28: ; 0x02330A28
+	thumb_func_start Apc_Disconnect
+Apc_Disconnect: ; 0x02330A28
 	push {r4, lr}
 	bl EnableIrqFlag
 	add r4, r0, #0
@@ -11524,10 +11524,10 @@ _02330A50:
 	pop {r4, pc}
 	nop
 _02330A5C: .word ov02_02359480
-	thumb_func_end ov02_02330A28
+	thumb_func_end Apc_Disconnect
 
-	thumb_func_start ov02_02330A60
-ov02_02330A60: ; 0x02330A60
+	thumb_func_start Apc_End__0233128C
+Apc_End__0233128C: ; 0x02330A60
 	push {r4, lr}
 	bl EnableIrqFlag
 	add r4, r0, #0
@@ -11551,7 +11551,7 @@ _02330A82:
 	mov r0, #1
 	pop {r4, pc}
 _02330A92:
-	bl ov02_02330850
+	bl Apci_MoveIdleState__0233107C
 	cmp r0, #1
 	bne _02330AAA
 	ldr r0, _02330AB4 ; =ov02_02359480
@@ -11568,10 +11568,10 @@ _02330AAA:
 	pop {r4, pc}
 	.align 2, 0
 _02330AB4: .word ov02_02359480
-	thumb_func_end ov02_02330A60
+	thumb_func_end Apc_End__0233128C
 
-	thumb_func_start ov02_02330AB8
-ov02_02330AB8: ; 0x02330AB8
+	thumb_func_start Apc_Connect__023312E4
+Apc_Connect__023312E4: ; 0x02330AB8
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r5, r1, #0
@@ -11598,7 +11598,7 @@ _02330AE4:
 	ldr r1, [r1, #0x20]
 	mov r2, #0xc0
 	bl MTi_CpuCopy32
-	bl ov02_02330850
+	bl Apci_MoveIdleState__0233107C
 	cmp r0, #1
 	bne _02330B08
 	ldr r0, _02330B38 ; =ov02_02359480
@@ -11633,10 +11633,10 @@ _02330B2E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02330B38: .word ov02_02359480
-	thumb_func_end ov02_02330AB8
+	thumb_func_end Apc_Connect__023312E4
 
-	thumb_func_start ov02_02330B3C
-ov02_02330B3C: ; 0x02330B3C
+	thumb_func_start Apc_Init__02331368
+Apc_Init__02331368: ; 0x02330B3C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -11722,11 +11722,11 @@ _02330BDC:
 	nop
 _02330BE8: .word ov02_02359480
 _02330BEC: .word 0x0000231F
-_02330BF0: .word ov02_02330598 + 1
-	thumb_func_end ov02_02330B3C
+_02330BF0: .word Apci_Notify__02330DC4 + 1
+	thumb_func_end Apc_Init__02331368
 
-	thumb_func_start ov02_02330BF4
-ov02_02330BF4: ; 0x02330BF4
+	thumb_func_start Apci_Notify__02331420
+Apci_Notify__02331420: ; 0x02330BF4
 	push {r3, lr}
 	cmp r0, #0
 	bne _02330BFC
@@ -12140,10 +12140,10 @@ _02330EF6:
 	.align 2, 0
 _02330EF8: .word ov02_023594D0
 _02330EFC: .word ov02_02359550
-	thumb_func_end ov02_02330BF4
+	thumb_func_end Apci_Notify__02331420
 
-	thumb_func_start ov02_02330F00
-ov02_02330F00: ; 0x02330F00
+	thumb_func_start Apci_MoveIdleState__0233172C
+Apci_MoveIdleState__0233172C: ; 0x02330F00
 	push {r3, lr}
 	ldr r1, _02330F60 ; =ov02_023594D0
 	ldr r0, [r1, #0x2c]
@@ -12196,11 +12196,11 @@ _02330F5A:
 	pop {r3, pc}
 	nop
 _02330F60: .word ov02_023594D0
-_02330F64: .word ov02_02330BF4 + 1
-	thumb_func_end ov02_02330F00
+_02330F64: .word Apci_Notify__02331420 + 1
+	thumb_func_end Apci_MoveIdleState__0233172C
 
-	thumb_func_start ov02_02330F68
-ov02_02330F68: ; 0x02330F68
+	thumb_func_start Apc_GetApList__02331794
+Apc_GetApList__02331794: ; 0x02330F68
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	mov r0, #1
@@ -12232,10 +12232,10 @@ _02330FA0:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_02330F68
+	thumb_func_end Apc_GetApList__02331794
 
-	thumb_func_start ov02_02330FAC
-ov02_02330FAC: ; 0x02330FAC
+	thumb_func_start Apc_SearchStart__023317D8
+Apc_SearchStart__023317D8: ; 0x02330FAC
 	push {r3, r4, r5, r6, r7, lr}
 	str r3, [sp]
 	add r5, r0, #0
@@ -12328,7 +12328,7 @@ _02331036:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0233105C:
-	bl ov02_02330F00
+	bl Apci_MoveIdleState__0233172C
 	cmp r0, #1
 	bne _02331074
 	ldr r0, _02331080 ; =ov02_023594D0
@@ -12349,10 +12349,10 @@ _02331084: .word ov02_02359988
 _02331088: .word ov00_02318158
 _0233108C: .word ov02_023599C0
 _02331090: .word ov00_02318160
-	thumb_func_end ov02_02330FAC
+	thumb_func_end Apc_SearchStart__023317D8
 
-	thumb_func_start ov02_02331094
-ov02_02331094: ; 0x02331094
+	thumb_func_start Apc_SearchEnd__023318C0
+Apc_SearchEnd__023318C0: ; 0x02331094
 	push {r4, lr}
 	bl EnableIrqFlag
 	add r4, r0, #0
@@ -12377,10 +12377,10 @@ _023310BC:
 	pop {r4, pc}
 	nop
 _023310C8: .word ov02_023594D0
-	thumb_func_end ov02_02331094
+	thumb_func_end Apc_SearchEnd__023318C0
 
-	thumb_func_start ov02_023310CC
-ov02_023310CC: ; 0x023310CC
+	thumb_func_start Apc_End__023318F8
+Apc_End__023318F8: ; 0x023310CC
 	push {r4, lr}
 	bl EnableIrqFlag
 	add r4, r0, #0
@@ -12404,7 +12404,7 @@ _023310EE:
 	mov r0, #1
 	pop {r4, pc}
 _023310FE:
-	bl ov02_02330F00
+	bl Apci_MoveIdleState__0233172C
 	cmp r0, #1
 	bne _02331116
 	ldr r0, _02331120 ; =ov02_023594D0
@@ -12421,10 +12421,10 @@ _02331116:
 	pop {r4, pc}
 	.align 2, 0
 _02331120: .word ov02_023594D0
-	thumb_func_end ov02_023310CC
+	thumb_func_end Apc_End__023318F8
 
-	thumb_func_start ov02_02331124
-ov02_02331124: ; 0x02331124
+	thumb_func_start Apc_Connect__02331950
+Apc_Connect__02331950: ; 0x02331124
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r5, r1, #0
@@ -12451,7 +12451,7 @@ _02331150:
 	ldr r1, [r1, #0x4c]
 	mov r2, #0xc0
 	bl MTi_CpuCopy32
-	bl ov02_02330F00
+	bl Apci_MoveIdleState__0233172C
 	cmp r0, #1
 	bne _02331174
 	ldr r0, _023311A4 ; =ov02_023594D0
@@ -12486,10 +12486,10 @@ _0233119A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _023311A4: .word ov02_023594D0
-	thumb_func_end ov02_02331124
+	thumb_func_end Apc_Connect__02331950
 
-	thumb_func_start ov02_023311A8
-ov02_023311A8: ; 0x023311A8
+	thumb_func_start Apc_Init__023319D4
+Apc_Init__023319D4: ; 0x023311A8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -12577,20 +12577,20 @@ _0233124A:
 _02331254: .word ov02_023594D0
 _02331258: .word 0x0000231F
 _0233125C: .word ov02_02359550
-_02331260: .word ov02_02330BF4 + 1
-	thumb_func_end ov02_023311A8
+_02331260: .word Apci_Notify__02331420 + 1
+	thumb_func_end Apc_Init__023319D4
 
-	thumb_func_start ov02_02331264
-ov02_02331264: ; 0x02331264
+	thumb_func_start Apc_GetState
+Apc_GetState: ; 0x02331264
 	ldr r0, _0233126C ; =ov02_023594D0
 	ldr r0, [r0, #0x2c]
 	bx lr
 	nop
 _0233126C: .word ov02_023594D0
-	thumb_func_end ov02_02331264
+	thumb_func_end Apc_GetState
 
-	thumb_func_start ov02_02331270
-ov02_02331270: ; 0x02331270
+	thumb_func_start SoAlloc
+SoAlloc: ; 0x02331270
 	push {r4, lr}
 	add r4, r1, #0
 	cmp r4, #0
@@ -12612,10 +12612,10 @@ _02331292:
 	nop
 _02331298: .word ov02_02359564
 _0233129C: .word ov02_023594D0
-	thumb_func_end ov02_02331270
+	thumb_func_end SoAlloc
 
-	thumb_func_start ov02_023312A0
-ov02_023312A0: ; 0x023312A0
+	thumb_func_start SoFree
+SoFree: ; 0x023312A0
 	push {r4, lr}
 	add r4, r1, #0
 	beq _023312BE
@@ -12634,10 +12634,10 @@ _023312BE:
 	.align 2, 0
 _023312C0: .word ov02_02359564
 _023312C4: .word ov02_023594D0
-	thumb_func_end ov02_023312A0
+	thumb_func_end SoFree
 
-	thumb_func_start ov02_023312C8
-ov02_023312C8: ; 0x023312C8
+	thumb_func_start AtermApc_InitEventBuf
+AtermApc_InitEventBuf: ; 0x023312C8
 	push {r3, lr}
 	bl EnableIrqFlag
 	ldr r1, _023312E8 ; =ov02_023594D0
@@ -12656,10 +12656,10 @@ _023312DA:
 	.align 2, 0
 _023312E8: .word ov02_023594D0
 _023312EC: .word ov02_02359554
-	thumb_func_end ov02_023312C8
+	thumb_func_end AtermApc_InitEventBuf
 
-	thumb_func_start ov02_023312F0
-ov02_023312F0: ; 0x023312F0
+	thumb_func_start AtermApc_GetEvent
+AtermApc_GetEvent: ; 0x023312F0
 	push {r3, r4, r5, lr}
 	bl EnableIrqFlag
 	ldr r1, _02331320 ; =ov02_023594D0
@@ -12686,10 +12686,10 @@ _02331316:
 	nop
 _02331320: .word ov02_023594D0
 _02331324: .word ov02_02359554
-	thumb_func_end ov02_023312F0
+	thumb_func_end AtermApc_GetEvent
 
-	thumb_func_start ov02_02331328
-ov02_02331328: ; 0x02331328
+	thumb_func_start AtermApc_Callback
+AtermApc_Callback: ; 0x02331328
 	push {r3, r4}
 	ldr r1, _02331350 ; =ov02_023594D0
 	ldr r3, [r1, #0x68]
@@ -12714,25 +12714,25 @@ _0233134C:
 	.align 2, 0
 _02331350: .word ov02_023594D0
 _02331354: .word ov02_02359554
-	thumb_func_end ov02_02331328
+	thumb_func_end AtermApc_Callback
 
-	thumb_func_start ov02_02331358
-ov02_02331358: ; 0x02331358
-	ldr r3, _02331360 ; =ov02_02331328
+	thumb_func_start AlarmCallback__02331B84
+AlarmCallback__02331B84: ; 0x02331358
+	ldr r3, _02331360 ; =AtermApc_Callback
 	mov r1, #0
 	bx r3
 	nop
-_02331360: .word ov02_02331328 + 1
-	thumb_func_end ov02_02331358
+_02331360: .word AtermApc_Callback + 1
+	thumb_func_end AlarmCallback__02331B84
 
-	thumb_func_start ov02_02331364
-ov02_02331364: ; 0x02331364
+	thumb_func_start InitAtermApcNetwork
+InitAtermApcNetwork: ; 0x02331364
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, _023313F8 ; =ov02_023594D0
 	mov r4, #1
 	str r6, [r0, #0x70]
-	bl ov02_023312C8
+	bl AtermApc_InitEventBuf
 	mov r0, #0xd0
 	add r7, r6, #0
 	mul r7, r0
@@ -12767,7 +12767,7 @@ _02331394:
 	str r0, [r6, #0x5c]
 	ldr r0, _02331404 ; =ov02_02331329
 	add r1, r3, #0
-	bl ov02_023311A8
+	bl Apc_Init__023319D4
 	cmp r0, #0
 	bne _023313C0
 	sub r0, r4, #3
@@ -12778,7 +12778,7 @@ _023313C0:
 _023313C4:
 	mov r0, #0xa
 	bl OS_Sleep
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	beq _023313F0
 _023313D2:
@@ -12795,7 +12795,7 @@ _023313E4:
 	mov r4, #0
 	sub r5, r4, #2
 _023313E8:
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	bne _023313D2
 _023313F0:
@@ -12807,14 +12807,14 @@ _023313F0:
 _023313F8: .word ov02_023594D0
 _023313FC: .word 0x000024D0
 _02331400: .word 0x00002490
-_02331404: .word ov02_02331328 + 1
-	thumb_func_end ov02_02331364
+_02331404: .word AtermApc_Callback + 1
+	thumb_func_end InitAtermApcNetwork
 
-	thumb_func_start ov02_02331408
-ov02_02331408: ; 0x02331408
+	thumb_func_start FreeAtermApcNetwork
+FreeAtermApcNetwork: ; 0x02331408
 	push {r3, r4, r5, r6, r7, lr}
 	mov r5, #1
-	bl ov02_023310CC
+	bl Apc_End__023318F8
 	cmp r0, #0
 	beq _02331446
 	mov r6, #0
@@ -12823,7 +12823,7 @@ ov02_02331408: ; 0x02331408
 _0233141A:
 	add r0, r7, #0
 	bl OS_Sleep
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	beq _02331442
 _02331428:
@@ -12838,7 +12838,7 @@ _02331428:
 _02331438:
 	add r5, r6, #0
 _0233143A:
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	bne _02331428
 _02331442:
@@ -12859,10 +12859,10 @@ _02331458:
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0233145C: .word ov02_023594D0
-	thumb_func_end ov02_02331408
+	thumb_func_end FreeAtermApcNetwork
 
-	thumb_func_start ov02_02331460
-ov02_02331460: ; 0x02331460
+	thumb_func_start ConnectAP
+ConnectAP: ; 0x02331460
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	ldr r0, _02331570 ; =ov02_023594D0
@@ -12882,7 +12882,7 @@ _0233147E:
 	add r0, r6, #0
 	mov r1, #0
 	lsl r2, r2, #0xa
-	bl ov02_02331124
+	bl Apc_Connect__02331950
 	cmp r0, #0
 	bne _02331492
 	add sp, #0x30
@@ -12894,13 +12894,13 @@ _02331492:
 	mov r0, #0x12
 	str r0, [sp]
 	ldr r1, _02331574 ; =0x003FEC42
-	ldr r3, _02331578 ; =ov02_02331358
+	ldr r3, _02331578 ; =AlarmCallback__02331B84
 	add r0, sp, #4
 	mov r2, #0
 	bl OS_SetAlarm
 	mov r7, #0
 _023314AA:
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r1, _0233157C ; =ov02_02353008
 	ldr r1, [r1, #0xc]
 	cmp r0, r1
@@ -12919,7 +12919,7 @@ _023314BC:
 _023314CA:
 	mov r0, #0xa
 	bl OS_Sleep
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	beq _02331538
 _023314D8:
@@ -12963,7 +12963,7 @@ _02331518:
 	add r0, r6, #0
 	mov r1, #0
 	lsl r2, r2, #0x10
-	bl ov02_02331124
+	bl Apc_Connect__02331950
 	cmp r0, #0
 	bne _02331530
 	add sp, #0x30
@@ -12972,7 +12972,7 @@ _02331518:
 _0233152E:
 	mov r4, #0
 _02331530:
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	bne _023314D8
 _02331538:
@@ -12982,7 +12982,7 @@ _0233153C:
 	add r0, sp, #4
 	bl OS_CancelAlarm
 _02331542:
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	bne _02331542
 	cmp r5, #0
@@ -13008,20 +13008,20 @@ _0233156A:
 	.align 2, 0
 _02331570: .word ov02_023594D0
 _02331574: .word 0x003FEC42
-_02331578: .word ov02_02331358 + 1
+_02331578: .word AlarmCallback__02331B84 + 1
 _0233157C: .word ov02_02353008
 _02331580: .word ov02_0235301C
-	thumb_func_end ov02_02331460
+	thumb_func_end ConnectAP
 
-	thumb_func_start ov02_02331584
-ov02_02331584: ; 0x02331584
+	thumb_func_start DisconnectAP
+DisconnectAP: ; 0x02331584
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r0, _023315E4 ; =ov02_023594D0
 	mov r5, #1
 	ldr r0, [r0, #0x20]
 	cmp r0, #0
 	beq _023315D0
-	bl ov02_02331094
+	bl Apc_SearchEnd__023318C0
 	cmp r0, #0
 	beq _023315CA
 	mov r6, #0
@@ -13030,7 +13030,7 @@ ov02_02331584: ; 0x02331584
 _0233159E:
 	add r0, r7, #0
 	bl OS_Sleep
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	beq _023315C6
 _023315AC:
@@ -13045,7 +13045,7 @@ _023315AC:
 _023315BC:
 	add r5, r6, #0
 _023315BE:
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	bne _023315AC
 _023315C6:
@@ -13067,10 +13067,10 @@ _023315E0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _023315E4: .word ov02_023594D0
-	thumb_func_end ov02_02331584
+	thumb_func_end DisconnectAP
 
-	thumb_func_start ov02_023315E8
-ov02_023315E8: ; 0x023315E8
+	thumb_func_start CheckAccessPoint
+CheckAccessPoint: ; 0x023315E8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x6c
 	str r0, [sp]
@@ -13304,10 +13304,10 @@ _023317A8:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _023317B0: .word ov02_02353074
-	thumb_func_end ov02_023315E8
+	thumb_func_end CheckAccessPoint
 
-	thumb_func_start ov02_023317B4
-ov02_023317B4: ; 0x023317B4
+	thumb_func_start ScanAP
+ScanAP: ; 0x023317B4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x70
 	mov r0, #0
@@ -13324,13 +13324,13 @@ ov02_023317B4: ; 0x023317B4
 	ldr r1, [sp, #0x10]
 	mov r0, #1
 	mvn r4, r4
-	bl ov02_0233415C
+	bl Calloc
 	str r0, [sp, #0xc]
 	cmp r0, #0
 	beq _023317EC
 	ldr r1, [sp, #0x10]
 	mov r0, #1
-	bl ov02_0233415C
+	bl Calloc
 	str r0, [sp, #8]
 	cmp r0, #0
 	bne _023317EE
@@ -13341,7 +13341,7 @@ _023317EE:
 	str r0, [sp, #0x1c]
 	b _023319DA
 _023317F4:
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r1, _02331A30 ; =ov02_02353008
 	ldr r1, [r1, #0xc]
 	cmp r0, r1
@@ -13350,7 +13350,7 @@ _023317F4:
 	ldr r3, _02331A34 ; =0x0030BFFE
 	add r1, r0, #0
 	add r2, r0, #0
-	bl ov02_02330FAC
+	bl Apc_SearchStart__023317D8
 	cmp r0, #0
 	bne _02331816
 	mov r4, #1
@@ -13362,7 +13362,7 @@ _02331816:
 	mov r0, #0x13
 	str r0, [sp]
 	ldr r1, _02331A38 ; =0x000FFB10
-	ldr r3, _02331A3C ; =ov02_02331358
+	ldr r3, _02331A3C ; =AlarmCallback__02331B84
 	add r0, sp, #0x24
 	mov r2, #0
 	bl OS_SetAlarm
@@ -13373,7 +13373,7 @@ _02331816:
 _02331834:
 	mov r0, #0xa
 	bl OS_Sleep
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r1, _02331A30 ; =ov02_02353008
 	ldr r1, [r1, #0xc]
 	cmp r0, r1
@@ -13381,7 +13381,7 @@ _02331834:
 	ldr r0, [r7, #0x10]
 	cmp r0, #0
 	bne _023318C8
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	beq _023318C4
 _02331854:
@@ -13420,7 +13420,7 @@ _0233188C:
 _02331890:
 	ldr r0, [r7, #0x5c]
 	ldr r1, [r7, #0x70]
-	bl ov02_02330F68
+	bl Apc_GetApList__02331794
 	cmp r0, r4
 	ble _023318BC
 	add r4, r0, #0
@@ -13429,7 +13429,7 @@ _02331890:
 	mov r0, #0x13
 	str r0, [sp]
 	ldr r1, _02331A38 ; =0x000FFB10
-	ldr r3, _02331A3C ; =ov02_02331358
+	ldr r3, _02331A3C ; =AlarmCallback__02331B84
 	add r0, r6, #0
 	mov r2, #0
 	bl OS_SetAlarm
@@ -13440,7 +13440,7 @@ _023318B6:
 _023318BA:
 	mov r5, #0
 _023318BC:
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	bne _02331854
 _023318C4:
@@ -13450,7 +13450,7 @@ _023318C8:
 	add r0, sp, #0x24
 	bl OS_CancelAlarm
 _023318CE:
-	bl ov02_023312F0
+	bl AtermApc_GetEvent
 	cmp r0, #0
 	bne _023318CE
 	ldr r1, _02331A2C ; =ov02_023594D0
@@ -13540,7 +13540,7 @@ _02331966:
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
 	add r2, sp, #0x20
-	bl ov02_023315E8
+	bl CheckAccessPoint
 	cmp r0, #0
 	beq _023319C0
 	ldr r0, [sp, #0xc]
@@ -13571,7 +13571,7 @@ _02331966:
 	ldrb r0, [r0, #5]
 	strb r0, [r1, #5]
 	add r0, sp, #0x50
-	bl ov02_023341C4
+	bl PutMac
 	b _023319EA
 _023319C0:
 	ldr r0, [sp, #8]
@@ -13581,7 +13581,7 @@ _023319C0:
 	ldr r0, _02331A2C ; =ov02_023594D0
 	mov r1, #2
 	str r1, [r0, #0x38]
-	bl ov02_023343C0
+	bl SendNotify
 	ldr r0, [sp, #0x1c]
 	add r0, r0, #1
 	str r0, [sp, #0x1c]
@@ -13598,7 +13598,7 @@ _023319EA:
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0x1e
 	bge _023319FC
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r1, _02331A30 ; =ov02_02353008
 	ldr r1, [r1, #0xc]
 	cmp r0, r1
@@ -13621,12 +13621,12 @@ _02331A12:
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
 	beq _02331A1C
-	bl ov02_02334180
+	bl Free
 _02331A1C:
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _02331A26
-	bl ov02_02334180
+	bl Free
 _02331A26:
 	add r0, r4, #0
 	add sp, #0x70
@@ -13636,13 +13636,13 @@ _02331A2C: .word ov02_023594D0
 _02331A30: .word ov02_02353008
 _02331A34: .word 0x0030BFFE
 _02331A38: .word 0x000FFB10
-_02331A3C: .word ov02_02331358 + 1
+_02331A3C: .word AlarmCallback__02331B84 + 1
 _02331A40: .word ov02_023599E0
 _02331A44: .word ov02_02359980
-	thumb_func_end ov02_023317B4
+	thumb_func_end ScanAP
 
-	thumb_func_start ov02_02331A48
-ov02_02331A48: ; 0x02331A48
+	thumb_func_start SendFrameViaInterface
+SendFrameViaInterface: ; 0x02331A48
 	push {r3, lr}
 	ldr r2, [sp, #8]
 	str r1, [sp]
@@ -13655,10 +13655,10 @@ ov02_02331A48: ; 0x02331A48
 	mvn r0, r0
 _02331A5E:
 	pop {r3, pc}
-	thumb_func_end ov02_02331A48
+	thumb_func_end SendFrameViaInterface
 
-	thumb_func_start ov02_02331A60
-ov02_02331A60: ; 0x02331A60
+	thumb_func_start SendBroadcast
+SendBroadcast: ; 0x02331A60
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -13681,25 +13681,25 @@ ov02_02331A60: ; 0x02331A60
 	add r2, sp, #4
 	add r3, r6, #0
 	str r4, [sp]
-	bl ov02_02331A48
+	bl SendFrameViaInterface
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.align 2, 0
 _02331A98: .word 0x000001E6
-	thumb_func_end ov02_02331A60
+	thumb_func_end SendBroadcast
 
-	thumb_func_start ov02_02331A9C
-ov02_02331A9C: ; 0x02331A9C
+	thumb_func_start SendFrame
+SendFrame: ; 0x02331A9C
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _02331AA4 ; =ov02_02331A60
+	ldr r3, _02331AA4 ; =SendBroadcast
 	bx r3
 	.align 2, 0
-_02331AA4: .word ov02_02331A60 + 1
-	thumb_func_end ov02_02331A9C
+_02331AA4: .word SendBroadcast + 1
+	thumb_func_end SendFrame
 
-	thumb_func_start ov02_02331AA8
-ov02_02331AA8: ; 0x02331AA8
+	thumb_func_start GetFrameData
+GetFrameData: ; 0x02331AA8
 	push {r3, r4, r5, r6}
 	ldrh r5, [r0]
 	mov r3, #0
@@ -13759,10 +13759,10 @@ _02331B10:
 	pop {r3, r4, r5, r6}
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_02331AA8
+	thumb_func_end GetFrameData
 
-	thumb_func_start ov02_02331B18
-ov02_02331B18: ; 0x02331B18
+	thumb_func_start GetElementData
+GetElementData: ; 0x02331B18
 	push {r3, r4, r5, r6}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -13804,10 +13804,10 @@ _02331B28:
 	pop {r3, r4, r5, r6}
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_02331B18
+	thumb_func_end GetElementData
 
-	thumb_func_start ov02_02331B68
-ov02_02331B68: ; 0x02331B68
+	thumb_func_start GetFirstElement
+GetFirstElement: ; 0x02331B68
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -13829,14 +13829,14 @@ ov02_02331B68: ; 0x02331B68
 	lsr r1, r1, #0x10
 	add r1, r5, r1
 	add r2, r4, #0
-	bl ov02_02331B18
+	bl GetElementData
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.align 2, 0
-	thumb_func_end ov02_02331B68
+	thumb_func_end GetFirstElement
 
-	thumb_func_start ov02_02331B9C
-ov02_02331B9C: ; 0x02331B9C
+	thumb_func_start SetFrameData
+SetFrameData: ; 0x02331B9C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r3, #0
@@ -13873,7 +13873,7 @@ ov02_02331B9C: ; 0x02331B9C
 	str r0, [sp]
 	add r0, r6, #6
 	add r2, r7, #0
-	bl ov02_023327DC
+	bl keywrap_encrypt
 	add r7, #8
 	b _02331BF4
 _02331BEC:
@@ -13937,10 +13937,10 @@ _02331C40:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_02331B9C
+	thumb_func_end SetFrameData
 
-	thumb_func_start ov02_02331C60
-ov02_02331C60: ; 0x02331C60
+	thumb_func_start SetElementData
+SetElementData: ; 0x02331C60
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	lsl r0, r1, #0x10
@@ -13987,10 +13987,10 @@ ov02_02331C60: ; 0x02331C60
 	add r0, r5, r6
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_02331C60
+	thumb_func_end SetElementData
 
-	thumb_func_start ov02_02331CC0
-ov02_02331CC0: ; 0x02331CC0
+	thumb_func_start SetSingleElement
+SetSingleElement: ; 0x02331CC0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0
@@ -14004,22 +14004,22 @@ ov02_02331CC0: ; 0x02331CC0
 	strb r0, [r4, #7]
 	add r0, r4, #0
 	add r0, #8
-	bl ov02_02331C60
+	bl SetElementData
 	sub r0, r0, r4
 	add r1, r0, #0
 	sub r1, #8
 	strh r1, [r4]
 	pop {r4, pc}
-	thumb_func_end ov02_02331CC0
+	thumb_func_end SetSingleElement
 
-	thumb_func_start ov02_02331CE8
-ov02_02331CE8: ; 0x02331CE8
+	thumb_func_start IsSearchCommand
+IsSearchCommand: ; 0x02331CE8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	str r1, [sp]
 	add r1, sp, #0x18
 	add r2, sp, #0x14
-	bl ov02_02331AA8
+	bl GetFrameData
 	mov r6, #0
 	add r5, r0, #0
 	add r7, r6, #0
@@ -14046,7 +14046,7 @@ _02331D16:
 	add r1, r5, r4
 	add r2, sp, #0x10
 	add r3, sp, #0xc
-	bl ov02_02331B18
+	bl GetElementData
 	cmp r0, #0
 	beq _02331D96
 _02331D2E:
@@ -14102,7 +14102,7 @@ _02331D86:
 	add r1, r5, r4
 	add r2, sp, #0x10
 	add r3, sp, #0xc
-	bl ov02_02331B18
+	bl GetElementData
 	cmp r0, #0
 	bne _02331D2E
 _02331D96:
@@ -14129,10 +14129,10 @@ _02331DB4:
 	mov r0, #1
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov02_02331CE8
+	thumb_func_end IsSearchCommand
 
-	thumb_func_start ov02_02331DBC
-ov02_02331DBC: ; 0x02331DBC
+	thumb_func_start GetCommandElement
+GetCommandElement: ; 0x02331DBC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -14140,7 +14140,7 @@ ov02_02331DBC: ; 0x02331DBC
 	add r1, sp, #8
 	add r2, sp, #4
 	add r4, r3, #0
-	bl ov02_02331AA8
+	bl GetFrameData
 	add r1, r0, #0
 	bne _02331DD8
 	add sp, #0xc
@@ -14161,7 +14161,7 @@ _02331DE4:
 	ldr r2, [sp, #4]
 	add r0, r6, #0
 	add r3, r4, #0
-	bl ov02_02332994
+	bl keywrap_decrypt
 	ldr r0, [sp, #4]
 	sub r0, #8
 	str r0, [sp, #4]
@@ -14174,10 +14174,10 @@ _02331E06:
 	ldr r0, [sp, #4]
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ov02_02331DBC
+	thumb_func_end GetCommandElement
 
-	thumb_func_start ov02_02331E0C
-ov02_02331E0C: ; 0x02331E0C
+	thumb_func_start SetSearchRes
+SetSearchRes: ; 0x02331E0C
 	push {r4, lr}
 	sub sp, #0x10
 	mov r1, #1
@@ -14201,11 +14201,11 @@ _02331E22:
 	ldr r0, [r0]
 	add r2, sp, #4
 	mov r3, #2
-	bl ov02_02331C60
+	bl SetElementData
 	mov r1, #2
 	add r2, sp, #4
 	add r3, r1, #0
-	bl ov02_02331C60
+	bl SetElementData
 	ldr r1, _02331E9C ; =ov02_023594D0
 	ldr r1, [r1, #0x50]
 	cmp r1, #0
@@ -14213,13 +14213,13 @@ _02331E22:
 	mov r1, #5
 	add r2, sp, #4
 	mov r3, #2
-	bl ov02_02331C60
+	bl SetElementData
 _02331E58:
 	add r2, sp, #4
 	mov r1, #3
 	add r2, #2
 	mov r3, #7
-	bl ov02_02331C60
+	bl SetElementData
 	ldr r1, _02331E9C ; =ov02_023594D0
 	add r3, r0, #0
 	ldr r1, [r1, #0x50]
@@ -14228,7 +14228,7 @@ _02331E58:
 	ldr r2, _02331EA0 ; =ov02_02359978
 	mov r1, #4
 	mov r3, #6
-	bl ov02_02331C60
+	bl SetElementData
 	add r3, r0, #0
 _02331E7A:
 	mov r0, #0
@@ -14240,7 +14240,7 @@ _02331E7A:
 	mov r1, #2
 	sub r3, r3, r4
 	add r3, #8
-	bl ov02_02331B9C
+	bl SetFrameData
 	add sp, #0x10
 	pop {r4, pc}
 	.align 2, 0
@@ -14249,19 +14249,19 @@ _02331E98: .word ov02_02353008
 _02331E9C: .word ov02_023594D0
 _02331EA0: .word ov02_02359978
 _02331EA4: .word ov02_02359A04
-	thumb_func_end ov02_02331E0C
+	thumb_func_end SetSearchRes
 
-	thumb_func_start ov02_02331EA8
-ov02_02331EA8: ; 0x02331EA8
+	thumb_func_start GetAdapterMac
+GetAdapterMac: ; 0x02331EA8
 	push {r3, lr}
 	bl OS_GetMacAddress
 	mov r0, #1
 	pop {r3, pc}
 	.align 2, 0
-	thumb_func_end ov02_02331EA8
+	thumb_func_end GetAdapterMac
 
-	thumb_func_start ov02_02331EB4
-ov02_02331EB4: ; 0x02331EB4
+	thumb_func_start GetMacEncKey
+GetMacEncKey: ; 0x02331EB4
 	push {r3, r4, lr}
 	sub sp, #0x4c
 	ldr r1, _02331FA0 ; =ov02_023530C8
@@ -14297,7 +14297,7 @@ ov02_02331EB4: ; 0x02331EB4
 	and r0, r2
 	strb r0, [r1, #6]
 	add r0, sp, #0
-	bl ov02_02331EA8
+	bl GetAdapterMac
 	add r1, sp, #0
 	ldrb r2, [r1]
 	ldr r0, _02331FA8 ; =ov02_02359978
@@ -14369,11 +14369,11 @@ _02331F66:
 	beq _02331F98
 	add r0, sp, #0x2c
 	add r1, sp, #0
-	bl ov02_023341C4
+	bl PutMac
 	add r1, sp, #4
 	add r0, sp, #0xc
 	add r1, #2
-	bl ov02_023341C4
+	bl PutMac
 _02331F98:
 	mov r0, #1
 	add sp, #0x4c
@@ -14383,10 +14383,10 @@ _02331FA0: .word ov02_023530C8
 _02331FA4: .word ov02_02359980
 _02331FA8: .word ov02_02359978
 _02331FAC: .word ov02_02353008
-	thumb_func_end ov02_02331EB4
+	thumb_func_end GetMacEncKey
 
-	thumb_func_start ov02_02331FB0
-ov02_02331FB0: ; 0x02331FB0
+	thumb_func_start GetWLanSetElement
+GetWLanSetElement: ; 0x02331FB0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r1, r0, #0
@@ -14414,7 +14414,7 @@ ov02_02331FB0: ; 0x02331FB0
 	add r0, sp, #0x14
 	add r1, r2, r1
 	add r2, sp, #0x10
-	bl ov02_02331B18
+	bl GetElementData
 	add r5, r0, #0
 	bne _02331FF0
 	b _02332160
@@ -14564,7 +14564,7 @@ _023320FA:
 	ldrsb r1, [r5, r7]
 	add r0, r4, #0
 	add r5, r5, #1
-	bl ov02_02334190
+	bl PutHex
 	add r4, r4, r0
 	ldr r0, [sp, #0xc]
 	add r6, r6, #1
@@ -14607,7 +14607,7 @@ _0233214A:
 	add r1, r2, r1
 	add r2, sp, #0x10
 	add r3, sp, #0xc
-	bl ov02_02331B18
+	bl GetElementData
 	add r5, r0, #0
 	beq _02332160
 	b _02331FF0
@@ -14623,10 +14623,10 @@ _02332174: .word ov02_02359724
 _02332178: .word ov02_02359888
 _0233217C: .word 0x00000206
 _02332180: .word ov02_02359920
-	thumb_func_end ov02_02331FB0
+	thumb_func_end GetWLanSetElement
 
-	thumb_func_start ov02_02332184
-ov02_02332184: ; 0x02332184
+	thumb_func_start AsciiToHex
+AsciiToHex: ; 0x02332184
 	push {r4, r5, r6, r7}
 	add r4, r2, #0
 	mov r2, #0
@@ -14730,10 +14730,10 @@ _02332232:
 	mov r0, #1
 	pop {r4, r5, r6, r7}
 	bx lr
-	thumb_func_end ov02_02332184
+	thumb_func_end AsciiToHex
 
-	thumb_func_start ov02_02332238
-ov02_02332238: ; 0x02332238
+	thumb_func_start StoreNetParam
+StoreNetParam: ; 0x02332238
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	mov r0, #1
@@ -14838,7 +14838,7 @@ _023322EA:
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0xa
-	bl ov02_02332184
+	bl AsciiToHex
 	b _0233235A
 _023322FC:
 	ldr r0, _023323AC ; =ov02_02359650
@@ -14862,7 +14862,7 @@ _02332316:
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x1a
-	bl ov02_02332184
+	bl AsciiToHex
 	b _0233235A
 _02332328:
 	ldr r0, _023323AC ; =ov02_02359650
@@ -14886,7 +14886,7 @@ _02332342:
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x20
-	bl ov02_02332184
+	bl AsciiToHex
 	b _0233235A
 _02332354:
 	mov r0, #6
@@ -14942,10 +14942,10 @@ _023323B0: .word ov02_02359888
 _023323B4: .word ov02_02359664
 _023323B8: .word ov02_023596E4
 _023323BC: .word ov02_02359920
-	thumb_func_end ov02_02332238
+	thumb_func_end StoreNetParam
 
-	thumb_func_start ov02_023323C0
-ov02_023323C0: ; 0x023323C0
+	thumb_func_start AutoConfigThreadEx
+AutoConfigThreadEx: ; 0x023323C0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	mov r4, #0
@@ -14987,7 +14987,7 @@ _023323F6: ; jump table
 	.hword _023326AA - _023323F6 - 2 ; case 9
 	.hword _02332748 - _023323F6 - 2 ; case 10
 _0233240C:
-	bl ov02_023317B4
+	bl ScanAP
 	str r0, [sp, #8]
 	cmp r0, #1
 	beq _0233241A
@@ -14997,13 +14997,13 @@ _0233241A:
 	ldr r0, _02332708 ; =ov02_023594D0
 	mov r1, #3
 	str r1, [r0, #0x38]
-	bl ov02_023343C0
+	bl SendNotify
 	ldr r0, _02332708 ; =ov02_023594D0
 	mov r1, #2
 	str r1, [r0, #0x1c]
 	b _02332772
 _0233242C:
-	bl ov02_02331460
+	bl ConnectAP
 	str r0, [sp, #8]
 	cmp r0, #1
 	beq _0233243A
@@ -15055,7 +15055,7 @@ _02332488:
 	str r1, [r0, #0x1c]
 	b _02332772
 _02332490:
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r1, _02332710 ; =ov02_02353008
 	ldr r1, [r1, #0xc]
 	cmp r0, r1
@@ -15073,7 +15073,7 @@ _023324AC:
 	strb r1, [r0, #0xc]
 	ldr r0, _02332714 ; =ov02_02359990
 	add r1, sp, #0x1c
-	bl ov02_02331EB4
+	bl GetMacEncKey
 	add r0, sp, #0x1c
 	mov r2, #2
 	str r0, [sp]
@@ -15086,10 +15086,10 @@ _023324AC:
 	ble _023325AA
 	ldr r0, _02332718 ; =ov02_0235A204
 	ldr r1, _0233271C ; =ov02_02359520
-	bl ov02_02331CE8
+	bl IsSearchCommand
 	cmp r0, #0
 	beq _023325AA
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r1, _02332720 ; =0x00007530
 	add r1, r0, r1
 	ldr r0, _02332710 ; =ov02_02353008
@@ -15099,26 +15099,26 @@ _023324AC:
 	str r1, [r0, #0x1c]
 	mov r1, #4
 	str r1, [r0, #0x38]
-	bl ov02_023343C0
+	bl SendNotify
 	b _02332772
 _023324F8:
 	ldr r0, _02332718 ; =ov02_0235A204
-	bl ov02_02331E0C
+	bl SetSearchRes
 	add r3, r0, #0
 	ldr r0, _02332708 ; =ov02_023594D0
 	ldr r2, _02332718 ; =ov02_0235A204
 	str r3, [r0, #0x14]
 	add r0, r4, #0
 	add r1, sp, #0x1c
-	bl ov02_02331A9C
-	bl ov02_02334140
+	bl SendFrame
+	bl GetTickCount
 	str r0, [sp, #0xc]
 	ldr r0, _02332708 ; =ov02_023594D0
 	mov r1, #6
 	str r1, [r0, #0x1c]
 	b _02332772
 _0233251C:
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r1, _02332710 ; =ov02_02353008
 	ldr r1, [r1, #0xc]
 	cmp r0, r1
@@ -15145,19 +15145,19 @@ _02332538:
 	ldr r2, _02332724 ; =ov02_02359A04
 	ldr r3, _02332714 ; =ov02_02359990
 	mov r1, #3
-	bl ov02_02331DBC
+	bl GetCommandElement
 	cmp r0, #0
 	beq _023325AC
 	ldr r0, _02332724 ; =ov02_02359A04
 	add r1, sp, #0x18
 	add r2, sp, #0x14
-	bl ov02_02331B68
+	bl GetFirstElement
 	add r5, r0, #0
 	ldr r1, [sp, #0x18]
 	ldr r0, _02332728 ; =0x00000101
 	cmp r1, r0
 	bne _023325AA
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r2, _0233272C ; =ov02_023599A0
 	str r0, [sp, #0x10]
 	mov r1, #8
@@ -15171,7 +15171,7 @@ _0233257C:
 	ldr r0, _02332730 ; =ov02_023599A8
 	add r1, sp, #0x10
 	mov r2, #4
-	bl ov02_02334118
+	bl MD5Encode
 	mov r0, #0
 	str r0, [sp, #4]
 	ldr r0, _02332708 ; =ov02_023594D0
@@ -15182,11 +15182,11 @@ _0233257C:
 	ldr r0, _02332710 ; =ov02_02353008
 	sub r1, r1, #6
 	str r1, [r0, #0xc]
-	bl ov02_023343C0
+	bl SendNotify
 _023325AA:
 	b _02332772
 _023325AC:
-	bl ov02_02334140
+	bl GetTickCount
 	mov r2, #0xfa
 	ldr r1, [sp, #0xc]
 	lsl r2, r2, #2
@@ -15204,7 +15204,7 @@ _023325C6:
 	ldr r1, _02332734 ; =0x00000102
 	ldr r2, _02332730 ; =ov02_023599A8
 	mov r3, #8
-	bl ov02_02331CC0
+	bl SetSingleElement
 	ldr r3, _02332708 ; =ov02_023594D0
 	ldr r2, _02332724 ; =ov02_02359A04
 	str r0, [r3, #0x34]
@@ -15213,15 +15213,15 @@ _023325C6:
 	str r0, [sp]
 	ldr r0, _02332718 ; =ov02_0235A204
 	ldr r3, [r3, #0x34]
-	bl ov02_02331B9C
+	bl SetFrameData
 	add r3, r0, #0
 	ldr r0, _02332708 ; =ov02_023594D0
 	ldr r2, _02332718 ; =ov02_0235A204
 	str r3, [r0, #0x14]
 	add r0, r4, #0
 	add r1, sp, #0x1c
-	bl ov02_02331A9C
-	bl ov02_02334140
+	bl SendFrame
+	bl GetTickCount
 	str r0, [sp, #0xc]
 	mov r0, #0
 	mov r5, #0x12
@@ -15258,13 +15258,13 @@ _02332622:
 	ldr r2, _02332724 ; =ov02_02359A04
 	ldr r3, _0233272C ; =ov02_023599A0
 	mov r1, #5
-	bl ov02_02331DBC
+	bl GetCommandElement
 	ldr r1, _02332708 ; =ov02_023594D0
 	cmp r0, #0
 	str r0, [r1, #0x34]
 	beq _02332678
 	ldr r0, _02332724 ; =ov02_02359A04
-	bl ov02_02331FB0
+	bl GetWLanSetElement
 	cmp r0, #0
 	beq _02332678
 	ldr r1, _0233273C ; =ov02_02359810
@@ -15287,7 +15287,7 @@ _0233266A:
 	str r1, [r0, #0x1c]
 	b _02332772
 _02332678:
-	bl ov02_02334140
+	bl GetTickCount
 	mov r2, #0xfa
 	ldr r1, [sp, #0xc]
 	lsl r2, r2, #2
@@ -15316,7 +15316,7 @@ _023326AA:
 	ldr r1, _02332740 ; =0x00000301
 	ldr r2, _02332744 ; =ov02_023594D0
 	mov r3, #1
-	bl ov02_02331CC0
+	bl SetSingleElement
 	ldr r3, _02332708 ; =ov02_023594D0
 	ldr r2, _02332724 ; =ov02_02359A04
 	str r0, [r3, #0x34]
@@ -15325,13 +15325,13 @@ _023326AA:
 	str r0, [sp]
 	ldr r0, _02332718 ; =ov02_0235A204
 	ldr r3, [r3, #0x34]
-	bl ov02_02331B9C
+	bl SetFrameData
 	ldr r1, _02332708 ; =ov02_023594D0
 	str r0, [r1, #0x14]
-	bl ov02_02331264
+	bl Apc_GetState
 	cmp r0, #7
 	beq _023326EC
-	bl ov02_02334140
+	bl GetTickCount
 	mov r1, #0xfa
 	lsl r1, r1, #2
 	add r0, r0, r1
@@ -15347,8 +15347,8 @@ _023326EC:
 	ldr r3, [r3, #0x14]
 	add r0, r4, #0
 	add r1, sp, #0x1c
-	bl ov02_02331A9C
-	bl ov02_02334140
+	bl SendFrame
+	bl GetTickCount
 	str r0, [sp, #0xc]
 	ldr r0, _02332708 ; =ov02_023594D0
 	mov r1, #0xa
@@ -15372,7 +15372,7 @@ _0233273C: .word ov02_02359810
 _02332740: .word 0x00000301
 _02332744: .word ov02_023594D0
 _02332748:
-	bl ov02_02334140
+	bl GetTickCount
 	mov r2, #0xfa
 	ldr r1, [sp, #0xc]
 	lsl r2, r2, #2
@@ -15385,7 +15385,7 @@ _02332748:
 	cmp r0, #0xa
 	blt _0233276C
 	mov r6, #1
-	bl ov02_02332238
+	bl StoreNetParam
 	str r0, [sp, #8]
 	b _02332772
 _0233276C:
@@ -15419,16 +15419,16 @@ _02332798:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _023327A0: .word ov02_023594D0
-	thumb_func_end ov02_023323C0
+	thumb_func_end AutoConfigThreadEx
 
-	thumb_func_start ov02_023327A4
-ov02_023327A4: ; 0x023327A4
+	thumb_func_start AutoConfigThread
+AutoConfigThread: ; 0x023327A4
 	push {r4, lr}
-	bl ov02_023323C0
+	bl AutoConfigThreadEx
 	add r4, r0, #0
 	ldr r0, _023327D4 ; =ov02_023594D0
 	str r4, [r0, #0x78]
-	bl ov02_02331584
+	bl DisconnectAP
 	cmp r4, #1
 	bne _023327BE
 	mov r1, #6
@@ -15443,15 +15443,15 @@ _023327C2:
 	ldr r0, _023327D8 ; =ov02_02353008
 	mvn r1, r1
 	str r1, [r0, #0xc]
-	bl ov02_023343C0
+	bl SendNotify
 	pop {r4, pc}
 	nop
 _023327D4: .word ov02_023594D0
 _023327D8: .word ov02_02353008
-	thumb_func_end ov02_023327A4
+	thumb_func_end AutoConfigThread
 
-	thumb_func_start ov02_023327DC
-ov02_023327DC: ; 0x023327DC
+	thumb_func_start keywrap_encrypt
+keywrap_encrypt: ; 0x023327DC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x1a8
 	str r0, [sp]
@@ -15483,7 +15483,7 @@ _0233280E:
 	add r0, sp, #0x68
 	add r1, r3, #0
 	lsl r2, r2, #3
-	bl ov02_02332B94
+	bl RijndaelKeySetupEnc
 	str r0, [sp, #0x1c]
 	ldr r0, [sp]
 	add r1, r5, #0
@@ -15544,7 +15544,7 @@ _02332876:
 	ldr r1, [sp, #0x1c]
 	add r0, sp, #0x68
 	add r3, r2, #0
-	bl ov02_02332FDC
+	bl RijndaelEncrypt
 	ldr r0, [sp, #0xc]
 	asr r1, r4, #0x1f
 	add r3, r4, r0
@@ -15640,7 +15640,7 @@ _02332876:
 	add r0, sp, #0x58
 	add r1, sp, #0x50
 	add r2, r0, #0
-	bl ov02_02332B4C
+	bl aeskw_xor64
 	add r2, sp, #0x60
 	mov r1, #8
 _02332954:
@@ -15678,10 +15678,10 @@ _02332978:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02332990: .word 0xA6A6A6A6
-	thumb_func_end ov02_023327DC
+	thumb_func_end keywrap_encrypt
 
-	thumb_func_start ov02_02332994
-ov02_02332994: ; 0x02332994
+	thumb_func_start keywrap_decrypt
+keywrap_decrypt: ; 0x02332994
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x1a8
 	str r0, [sp]
@@ -15716,7 +15716,7 @@ _023329CC:
 	add r0, sp, #0x68
 	add r1, r3, #0
 	lsl r2, r2, #3
-	bl ov02_02332E4C
+	bl RijndaelKeySetupDec
 	str r0, [sp, #0x20]
 	add r3, sp, #0x58
 	add r2, r5, #0
@@ -15854,7 +15854,7 @@ _02332A28:
 	add r0, sp, #0x58
 	add r1, sp, #0x50
 	add r2, r0, #0
-	bl ov02_02332B4C
+	bl aeskw_xor64
 	sub r0, r4, #1
 	lsl r1, r0, #3
 	ldr r0, [sp]
@@ -15873,7 +15873,7 @@ _02332AF6:
 	ldr r1, [sp, #0x20]
 	add r0, sp, #0x68
 	add r3, r2, #0
-	bl ov02_02333398
+	bl RijndaelDecrypt
 	add r2, sp, #0x60
 	mov r1, #8
 _02332B12:
@@ -15907,10 +15907,10 @@ _02332B40:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02332B48: .word 0xA6A6A6A6
-	thumb_func_end ov02_02332994
+	thumb_func_end keywrap_decrypt
 
-	thumb_func_start ov02_02332B4C
-ov02_02332B4C: ; 0x02332B4C
+	thumb_func_start aeskw_xor64
+aeskw_xor64: ; 0x02332B4C
 	push {r3, r4}
 	ldrb r4, [r0]
 	ldrb r3, [r1]
@@ -15947,10 +15947,10 @@ ov02_02332B4C: ; 0x02332B4C
 	pop {r3, r4}
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_02332B4C
+	thumb_func_end aeskw_xor64
 
-	thumb_func_start ov02_02332B94
-ov02_02332B94: ; 0x02332B94
+	thumb_func_start RijndaelKeySetupEnc
+RijndaelKeySetupEnc: ; 0x02332B94
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r3, r1, #0
@@ -16307,13 +16307,13 @@ _02332E3E:
 	.align 2, 0
 _02332E44: .word ov02_0234FC64
 _02332E48: .word ov02_0235188C
-	thumb_func_end ov02_02332B94
+	thumb_func_end RijndaelKeySetupEnc
 
-	thumb_func_start ov02_02332E4C
-ov02_02332E4C: ; 0x02332E4C
+	thumb_func_start RijndaelKeySetupDec
+RijndaelKeySetupDec: ; 0x02332E4C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl ov02_02332B94
+	bl RijndaelKeySetupEnc
 	mov ip, r0
 	mov r1, ip
 	lsl r6, r1, #2
@@ -16510,10 +16510,10 @@ _02332FCC: .word ov02_0235008C
 _02332FD0: .word ov02_0234FC8C
 _02332FD4: .word ov02_02351C8C
 _02332FD8: .word ov02_0235208C
-	thumb_func_end ov02_02332E4C
+	thumb_func_end RijndaelKeySetupDec
 
-	thumb_func_start ov02_02332FDC
-ov02_02332FDC: ; 0x02332FDC
+	thumb_func_start RijndaelEncrypt
+RijndaelEncrypt: ; 0x02332FDC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x4c
 	add r7, r1, #0
@@ -16990,10 +16990,10 @@ _02333388: .word ov02_0235108C
 _0233338C: .word ov02_0235088C
 _02333390: .word ov02_02350C8C
 _02333394: .word ov02_0235188C
-	thumb_func_end ov02_02332FDC
+	thumb_func_end RijndaelEncrypt
 
-	thumb_func_start ov02_02333398
-ov02_02333398: ; 0x02333398
+	thumb_func_start RijndaelDecrypt
+RijndaelDecrypt: ; 0x02333398
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x48
 	add r7, r1, #0
@@ -17469,10 +17469,10 @@ _02333744: .word ov02_0234FC8C
 _02333748: .word ov02_02351C8C
 _0233374C: .word ov02_0235208C
 _02333750: .word ov02_0235048C
-	thumb_func_end ov02_02333398
+	thumb_func_end RijndaelDecrypt
 
-	thumb_func_start ov02_02333754
-ov02_02333754: ; 0x02333754
+	thumb_func_start MY_MD5Init
+MY_MD5Init: ; 0x02333754
 	mov r1, #0
 	str r1, [r0, #0x14]
 	str r1, [r0, #0x10]
@@ -17490,10 +17490,10 @@ _0233376C: .word 0x67452301
 _02333770: .word 0xEFCDAB89
 _02333774: .word 0x98BADCFE
 _02333778: .word 0x10325476
-	thumb_func_end ov02_02333754
+	thumb_func_end MY_MD5Init
 
-	thumb_func_start ov02_0233377C
-ov02_0233377C: ; 0x0233377C
+	thumb_func_start MY_MD5Update
+MY_MD5Update: ; 0x0233377C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -17524,11 +17524,11 @@ _0233379C:
 	add r0, r1, r0
 	add r1, r7, #0
 	add r2, r4, #0
-	bl ov02_023340E8
+	bl MD5_Memcpy
 	add r1, r5, #0
 	add r0, r5, #0
 	add r1, #0x18
-	bl ov02_02333848
+	bl MD5Transform
 	add r0, r4, #0
 	add r0, #0x3f
 	cmp r0, r6
@@ -17536,7 +17536,7 @@ _0233379C:
 _023337CC:
 	add r0, r5, #0
 	add r1, r7, r4
-	bl ov02_02333848
+	bl MD5Transform
 	add r4, #0x40
 	add r0, r4, #0
 	add r0, #0x3f
@@ -17552,13 +17552,13 @@ _023337E4:
 	add r0, r5, r0
 	add r1, r7, r4
 	sub r2, r6, r4
-	bl ov02_023340E8
+	bl MD5_Memcpy
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-	thumb_func_end ov02_0233377C
+	thumb_func_end MY_MD5Update
 
-	thumb_func_start ov02_023337F4
-ov02_023337F4: ; 0x023337F4
+	thumb_func_start MY_MD5Final
+MY_MD5Final: ; 0x023337F4
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -17566,7 +17566,7 @@ ov02_023337F4: ; 0x023337F4
 	add r0, sp, #0
 	add r1, #0x10
 	mov r2, #8
-	bl ov02_02334090
+	bl Encode
 	ldr r0, [r4, #0x10]
 	lsr r1, r0, #3
 	mov r0, #0x3f
@@ -17581,27 +17581,27 @@ _02333818:
 	sub r2, r0, r1
 	ldr r1, _02333844 ; =ov02_02353088
 	add r0, r4, #0
-	bl ov02_0233377C
+	bl MY_MD5Update
 	add r0, r4, #0
 	add r1, sp, #0
 	mov r2, #8
-	bl ov02_0233377C
+	bl MY_MD5Update
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x10
-	bl ov02_02334090
+	bl Encode
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x58
-	bl ov02_02334100
+	bl MD5_Memset
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 _02333844: .word ov02_02353088
-	thumb_func_end ov02_023337F4
+	thumb_func_end MY_MD5Final
 
-	thumb_func_start ov02_02333848
-ov02_02333848: ; 0x02333848
+	thumb_func_start MD5Transform
+MD5Transform: ; 0x02333848
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x84
 	add r7, r0, #0
@@ -17612,7 +17612,7 @@ ov02_02333848: ; 0x02333848
 	ldr r4, [r7, #4]
 	ldr r5, [r7, #8]
 	ldr r6, [r7, #0xc]
-	bl ov02_023340BC
+	bl Decode
 	ldr r0, [sp, #0x44]
 	add r1, r4, #0
 	str r0, [sp, #4]
@@ -18562,7 +18562,7 @@ _02333CA0:
 	add r0, r0, r5
 	str r0, [r7, #0xc]
 	add r0, sp, #0x44
-	bl ov02_02334100
+	bl MD5_Memset
 	add sp, #0x84
 	pop {r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -18598,10 +18598,10 @@ _02334080: .word 0x08AC817E
 _02334084: .word 0x42C50DCB
 _02334088: .word 0x2AD7D2BB
 _0233408C: .word 0x14792C6F
-	thumb_func_end ov02_02333848
+	thumb_func_end MD5Transform
 
-	thumb_func_start ov02_02334090
-ov02_02334090: ; 0x02334090
+	thumb_func_start Encode
+Encode: ; 0x02334090
 	push {r4, r5}
 	mov r4, #0
 	cmp r2, #0
@@ -18626,10 +18626,10 @@ _02334098:
 _023340B8:
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ov02_02334090
+	thumb_func_end Encode
 
-	thumb_func_start ov02_023340BC
-ov02_023340BC: ; 0x023340BC
+	thumb_func_start Decode
+Decode: ; 0x023340BC
 	push {r4, r5, r6, r7}
 	mov r7, #0
 	cmp r2, #0
@@ -18654,10 +18654,10 @@ _023340E2:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_023340BC
+	thumb_func_end Decode
 
-	thumb_func_start ov02_023340E8
-ov02_023340E8: ; 0x023340E8
+	thumb_func_start MD5_Memcpy
+MD5_Memcpy: ; 0x023340E8
 	push {r3, r4}
 	mov r4, #0
 	cmp r2, #0
@@ -18672,10 +18672,10 @@ _023340FA:
 	pop {r3, r4}
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_023340E8
+	thumb_func_end MD5_Memcpy
 
-	thumb_func_start ov02_02334100
-ov02_02334100: ; 0x02334100
+	thumb_func_start MD5_Memset
+MD5_Memset: ; 0x02334100
 	mov r3, #0
 	cmp r2, #0
 	bls _02334114
@@ -18690,31 +18690,31 @@ _0233410A:
 _02334114:
 	bx lr
 	.align 2, 0
-	thumb_func_end ov02_02334100
+	thumb_func_end MD5_Memset
 
-	thumb_func_start ov02_02334118
-ov02_02334118: ; 0x02334118
+	thumb_func_start MD5Encode
+MD5Encode: ; 0x02334118
 	push {r4, r5, r6, lr}
 	sub sp, #0x58
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
 	add r0, sp, #0
-	bl ov02_02333754
+	bl MY_MD5Init
 	add r0, sp, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov02_0233377C
+	bl MY_MD5Update
 	add r0, r5, #0
 	add r1, sp, #0
-	bl ov02_023337F4
+	bl MY_MD5Final
 	add sp, #0x58
 	pop {r4, r5, r6, pc}
 	.align 2, 0
-	thumb_func_end ov02_02334118
+	thumb_func_end MD5Encode
 
-	thumb_func_start ov02_02334140
-ov02_02334140: ; 0x02334140
+	thumb_func_start GetTickCount
+GetTickCount: ; 0x02334140
 	push {r3, lr}
 	bl OS_GetTick
 	lsr r2, r0, #0x1a
@@ -18727,10 +18727,10 @@ ov02_02334140: ; 0x02334140
 	pop {r3, pc}
 	.align 2, 0
 _02334158: .word 0x000082EA
-	thumb_func_end ov02_02334140
+	thumb_func_end GetTickCount
 
-	thumb_func_start ov02_0233415C
-ov02_0233415C: ; 0x0233415C
+	thumb_func_start Calloc
+Calloc: ; 0x0233415C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mul r4, r1
@@ -18748,10 +18748,10 @@ _02334176:
 	pop {r3, r4, r5, pc}
 	nop
 _0233417C: .word ov02_023594D0
-	thumb_func_end ov02_0233415C
+	thumb_func_end Calloc
 
-	thumb_func_start ov02_02334180
-ov02_02334180: ; 0x02334180
+	thumb_func_start Free
+Free: ; 0x02334180
 	push {r3, lr}
 	ldr r1, _0233418C ; =ov02_023594D0
 	ldr r1, [r1, #0xc]
@@ -18759,10 +18759,10 @@ ov02_02334180: ; 0x02334180
 	pop {r3, pc}
 	nop
 _0233418C: .word ov02_023594D0
-	thumb_func_end ov02_02334180
+	thumb_func_end Free
 
-	thumb_func_start ov02_02334190
-ov02_02334190: ; 0x02334190
+	thumb_func_start PutHex
+PutHex: ; 0x02334190
 	push {r4, r5}
 	lsl r1, r1, #0x18
 	lsr r3, r1, #0x18
@@ -18792,10 +18792,10 @@ _023341AE:
 	sub r0, r2, r0
 	pop {r4, r5}
 	bx lr
-	thumb_func_end ov02_02334190
+	thumb_func_end PutHex
 
-	thumb_func_start ov02_023341C4
-ov02_023341C4: ; 0x023341C4
+	thumb_func_start PutMac
+PutMac: ; 0x023341C4
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	add r6, r1, #0
@@ -18807,7 +18807,7 @@ _023341D0:
 	ldrsb r1, [r6, r1]
 	add r0, r4, #0
 	add r6, r6, #1
-	bl ov02_02334190
+	bl PutHex
 	add r0, r4, r0
 	add r4, r0, #0
 	cmp r5, #5
@@ -18823,10 +18823,10 @@ _023341E8:
 	ldr r0, [sp]
 	sub r0, r4, r0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_023341C4
+	thumb_func_end PutMac
 
-	thumb_func_start ov02_023341F8
-ov02_023341F8: ; 0x023341F8
+	thumb_func_start Atermi_ApConfigStart
+Atermi_ApConfigStart: ; 0x023341F8
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -18853,7 +18853,7 @@ _02334212:
 	ldr r0, [sp, #0x1c]
 	str r0, [r5, #8]
 	add r0, r1, #0
-	bl ov02_02331364
+	bl InitAtermApcNetwork
 	mov r2, #1
 	ldr r1, _023342C8 ; =ov02_023594D0
 	cmp r0, #0
@@ -18903,7 +18903,7 @@ _0233426C:
 	ldr r0, _023342C8 ; =ov02_023594D0
 	mov r1, #1
 	str r1, [r0, #0x38]
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r1, _023342D8 ; =0x0000EA60
 	ldr r5, _023342DC ; =ov02_0235963C
 	add r1, r0, r1
@@ -18922,7 +18922,7 @@ _023342AA:
 	sub r4, r4, #1
 	bne _023342AA
 	stmia r5!, {r0, r1}
-	bl ov02_023343C0
+	bl SendNotify
 	ldr r0, _023342D0 ; =ov02_0235957C
 	bl OS_WakeupThreadDirect
 	ldr r1, _023342C8 ; =ov02_023594D0
@@ -18934,13 +18934,13 @@ _023342AA:
 _023342C8: .word ov02_023594D0
 _023342CC: .word ov02_02353008
 _023342D0: .word ov02_0235957C
-_023342D4: .word ov02_023327A4 + 1
+_023342D4: .word AutoConfigThread + 1
 _023342D8: .word 0x0000EA60
 _023342DC: .word ov02_0235963C
-	thumb_func_end ov02_023341F8
+	thumb_func_end Atermi_ApConfigStart
 
-	thumb_func_start ov02_023342E0
-ov02_023342E0: ; 0x023342E0
+	thumb_func_start Atermi_ApConfigEnd
+Atermi_ApConfigEnd: ; 0x023342E0
 	push {r4, r5, r6, lr}
 	ldr r4, _0233436C ; =ov02_023594D0
 	ldr r0, [r4, #0x64]
@@ -18995,13 +18995,13 @@ _02334340:
 	ldr r0, [r0, #0x38]
 	cmp r6, r0
 	beq _02334350
-	bl ov02_023343C0
+	bl SendNotify
 _02334350:
 	ldr r0, _0233436C ; =ov02_023594D0
 	ldr r0, [r0, #0x74]
 	cmp r0, #0
 	ble _02334364
-	bl ov02_02331408
+	bl FreeAtermApcNetwork
 	ldr r1, _0233436C ; =ov02_023594D0
 	mov r2, #0
 	str r2, [r1, #0x74]
@@ -19013,10 +19013,10 @@ _02334364:
 	nop
 _0233436C: .word ov02_023594D0
 _02334370: .word ov02_0235957C
-	thumb_func_end ov02_023342E0
+	thumb_func_end Atermi_ApConfigEnd
 
-	thumb_func_start ov02_02334374
-ov02_02334374: ; 0x02334374
+	thumb_func_start Atermi_ApConfigGetState
+Atermi_ApConfigGetState: ; 0x02334374
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _023343A4 ; =ov02_023594D0
@@ -19030,7 +19030,7 @@ ov02_02334374: ; 0x02334374
 	bne _0233438C
 	b _02334396
 _0233438C:
-	bl ov02_02334140
+	bl GetTickCount
 	ldr r1, _023343A8 ; =ov02_02353008
 	ldr r1, [r1, #0xc]
 	sub r0, r1, r0
@@ -19044,10 +19044,10 @@ _02334396:
 	nop
 _023343A4: .word ov02_023594D0
 _023343A8: .word ov02_02353008
-	thumb_func_end ov02_02334374
+	thumb_func_end Atermi_ApConfigGetState
 
-	thumb_func_start ov02_023343AC
-ov02_023343AC: ; 0x023343AC
+	thumb_func_start Atermi_ApConfigGetResult
+Atermi_ApConfigGetResult: ; 0x023343AC
 	push {r3, lr}
 	ldr r1, _023343BC ; =ov02_0235963C
 	mov r2, #0xe8
@@ -19056,14 +19056,14 @@ ov02_023343AC: ; 0x023343AC
 	pop {r3, pc}
 	nop
 _023343BC: .word ov02_0235963C
-	thumb_func_end ov02_023343AC
+	thumb_func_end Atermi_ApConfigGetResult
 
-	thumb_func_start ov02_023343C0
-ov02_023343C0: ; 0x023343C0
+	thumb_func_start SendNotify
+SendNotify: ; 0x023343C0
 	push {lr}
 	sub sp, #0xc
 	add r0, sp, #0
-	bl ov02_02334374
+	bl Atermi_ApConfigGetState
 	ldr r1, _023343D8 ; =ov02_023594D0
 	add r0, sp, #0
 	ldr r1, [r1, #0x7c]
@@ -19072,21 +19072,21 @@ ov02_023343C0: ; 0x023343C0
 	pop {pc}
 	nop
 _023343D8: .word ov02_023594D0
-	thumb_func_end ov02_023343C0
+	thumb_func_end SendNotify
 
-	arm_func_start ov02_023343DC
-ov02_023343DC: ; 0x023343DC
+	arm_func_start Dwci_AnimelInitEx
+Dwci_AnimelInitEx: ; 0x023343DC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	mov r0, #0xc
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _0233449C ; =ov02_0235AA04
 	mov r1, #0x47
 	str r0, [r2]
 	strb r4, [r0, #8]
 	mov r0, #0
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr lr, _0233449C ; =ov02_0235AA04
 	ldr r1, _023344A0 ; =ov02_0235248C
 	ldr r2, [lr]
@@ -19095,7 +19095,7 @@ ov02_023343DC: ; 0x023343DC
 	ldr r0, [lr]
 	ldr ip, _023344A4 ; =0xFE00FF00
 	ldr r5, [r0, #4]
-	ldr r1, _023344A8 ; =ov02_023344E8
+	ldr r1, _023344A8 ; =TaskAnime
 	ldrh r3, [r5, #4]
 	mov r0, #1
 	mov r2, #0
@@ -19119,7 +19119,7 @@ ov02_023343DC: ; 0x023343DC
 	orr ip, ip, #0x8b
 	orr ip, ip, #0xe60000
 	str ip, [r4]
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233449C ; =ov02_0235AA04
 	ldr r1, [r1]
 	str r0, [r1]
@@ -19128,31 +19128,31 @@ ov02_023343DC: ; 0x023343DC
 _0233449C: .word ov02_0235AA04
 _023344A0: .word ov02_0235248C
 _023344A4: .word 0xFE00FF00
-_023344A8: .word ov02_023344E8
-	arm_func_end ov02_023343DC
+_023344A8: .word TaskAnime
+	arm_func_end Dwci_AnimelInitEx
 
-	arm_func_start ov02_023344AC
-ov02_023344AC: ; 0x023344AC
+	arm_func_start Dwci_AnimelEnd
+Dwci_AnimelEnd: ; 0x023344AC
 	stmdb sp!, {r3, lr}
 	ldr r1, _023344E0 ; =ov02_0235AA04
 	mov r0, #1
 	ldr r1, [r1]
 	ldr r1, [r1]
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r0, _023344E0 ; =ov02_0235AA04
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 	ldr r0, _023344E4 ; =ov02_0235AA04
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023344E0: .word ov02_0235AA04
 _023344E4: .word ov02_0235AA04
-	arm_func_end ov02_023344AC
+	arm_func_end Dwci_AnimelEnd
 
-	arm_func_start ov02_023344E8
-ov02_023344E8: ; 0x023344E8
+	arm_func_start TaskAnime
+TaskAnime: ; 0x023344E8
 	stmdb sp!, {r3, lr}
 	ldr r0, _023345A8 ; =ov02_0235AA04
 	mov r1, #0x28
@@ -19172,7 +19172,7 @@ ov02_023344E8: ; 0x023344E8
 	ldr r2, [r2]
 	mov r0, #0
 	ldr r2, [r2, #4]
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r1, _023345A8 ; =ov02_0235AA04
 	ldr ip, _023345AC ; =ov02_0235248C
 	ldr r2, [r1]
@@ -19205,17 +19205,17 @@ ov02_023344E8: ; 0x023344E8
 _023345A8: .word ov02_0235AA04
 _023345AC: .word ov02_0235248C
 _023345B0: .word 0xFE00FF00
-	arm_func_end ov02_023344E8
+	arm_func_end TaskAnime
 
-	arm_func_start ov02_023345B4
-ov02_023345B4: ; 0x023345B4
+	arm_func_start Dwci_BtnlInit
+Dwci_BtnlInit: ; 0x023345B4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r2, _0233469C ; =ov02_023524BC
 	mov r5, r0
 	mov r0, #0x1c
 	mov r1, #4
 	ldrb r8, [r2, r5]
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r4, _023346A0 ; =ov02_0235AA08
 	mvn r7, #1
 	str r0, [r4]
@@ -19234,14 +19234,14 @@ _02334608:
 	ldrb r1, [sl], #1
 	mov r0, r6
 	mov r2, r5
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r1, [r4]
 	mov r2, fp
 	str r0, [r1, sb, lsl #2]
 	ldr r0, [r4]
 	add r1, r7, #1
 	ldr r0, [r0, sb, lsl #2]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	add sb, sb, #1
 	cmp sb, r8
 	blt _02334608
@@ -19249,7 +19249,7 @@ _02334640:
 	mov r1, #1
 	mov r2, r1
 	mov r0, #0
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r3, _023346A0 ; =ov02_0235AA08
 	mvn r1, #0
 	ldr r4, [r3]
@@ -19257,14 +19257,14 @@ _02334640:
 	str r0, [r4, #8]
 	ldr r0, [r3]
 	ldr r0, [r0, #8]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	mov r0, #0xc0
-	bl ov02_02334780
+	bl Button_Disp
 	mov r0, #0
-	ldr r1, _023346A8 ; =ov02_02334814
+	ldr r1, _023346A8 ; =Button_TaskStart
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _023346A0 ; =ov02_0235AA08
 	ldr r1, [r1]
 	str r0, [r1, #0xc]
@@ -19273,38 +19273,38 @@ _02334640:
 _0233469C: .word ov02_023524BC
 _023346A0: .word ov02_0235AA08
 _023346A4: .word ov02_023524A0
-_023346A8: .word ov02_02334814
-	arm_func_end ov02_023345B4
+_023346A8: .word Button_TaskStart
+	arm_func_end Dwci_BtnlInit
 
-	arm_func_start ov02_023346AC
-ov02_023346AC: ; 0x023346AC
+	arm_func_start Dwci_BtnlEnd
+Dwci_BtnlEnd: ; 0x023346AC
 	ldr r0, _023346D0 ; =ov02_0235AA08
 	mov r3, #1
 	ldr r2, [r0]
-	ldr ip, _023346D4 ; =ov02_0234FB38
+	ldr ip, _023346D4 ; =Dwci_TsklChangeFunc
 	strb r3, [r2, #0x19]
 	ldr r0, [r0]
-	ldr r1, _023346D8 ; =ov02_02334A5C
+	ldr r1, _023346D8 ; =Button_TaskEnd
 	ldr r0, [r0, #0xc]
 	bx ip
 	.align 2, 0
 _023346D0: .word ov02_0235AA08
-_023346D4: .word ov02_0234FB38
-_023346D8: .word ov02_02334A5C
-	arm_func_end ov02_023346AC
+_023346D4: .word Dwci_TsklChangeFunc
+_023346D8: .word Button_TaskEnd
+	arm_func_end Dwci_BtnlEnd
 
-	arm_func_start ov02_023346DC
-ov02_023346DC: ; 0x023346DC
+	arm_func_start Dwci_BtnlGet
+Dwci_BtnlGet: ; 0x023346DC
 	ldr r0, _023346EC ; =ov02_0235AA08
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x16]
 	bx lr
 	.align 2, 0
 _023346EC: .word ov02_0235AA08
-	arm_func_end ov02_023346DC
+	arm_func_end Dwci_BtnlGet
 
-	arm_func_start ov02_023346F0
-ov02_023346F0: ; 0x023346F0
+	arm_func_start Dwci_BtnlSet
+Dwci_BtnlSet: ; 0x023346F0
 	ldr r2, _0233470C ; =ov02_0235AA08
 	mvn r1, #0
 	ldr r3, [r2]
@@ -19314,20 +19314,20 @@ ov02_023346F0: ; 0x023346F0
 	bx lr
 	.align 2, 0
 _0233470C: .word ov02_0235AA08
-	arm_func_end ov02_023346F0
+	arm_func_end Dwci_BtnlSet
 
-	arm_func_start ov02_02334710
-ov02_02334710: ; 0x02334710
+	arm_func_start Dwci_BtnlSetForce
+Dwci_BtnlSetForce: ; 0x02334710
 	ldr r1, _02334720 ; =ov02_0235AA08
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _02334720: .word ov02_0235AA08
-	arm_func_end ov02_02334710
+	arm_func_end Dwci_BtnlSetForce
 
-	arm_func_start ov02_02334724
-ov02_02334724: ; 0x02334724
+	arm_func_start Dwci_BtnlIsEnd
+Dwci_BtnlIsEnd: ; 0x02334724
 	ldr r0, _0233474C ; =ov02_0235AA08
 	ldr r0, [r0]
 	cmp r0, #0
@@ -19340,10 +19340,10 @@ ov02_02334724: ; 0x02334724
 	bx lr
 	.align 2, 0
 _0233474C: .word ov02_0235AA08
-	arm_func_end ov02_02334724
+	arm_func_end Dwci_BtnlIsEnd
 
-	arm_func_start ov02_02334750
-ov02_02334750: ; 0x02334750
+	arm_func_start Dwci_BtnlEnable
+Dwci_BtnlEnable: ; 0x02334750
 	ldr r0, _02334764 ; =ov02_0235AA08
 	mov r1, #0
 	ldr r0, [r0]
@@ -19351,10 +19351,10 @@ ov02_02334750: ; 0x02334750
 	bx lr
 	.align 2, 0
 _02334764: .word ov02_0235AA08
-	arm_func_end ov02_02334750
+	arm_func_end Dwci_BtnlEnable
 
-	arm_func_start ov02_02334768
-ov02_02334768: ; 0x02334768
+	arm_func_start Dwci_BtnlDisable
+Dwci_BtnlDisable: ; 0x02334768
 	ldr r0, _0233477C ; =ov02_0235AA08
 	mov r1, #1
 	ldr r0, [r0]
@@ -19362,10 +19362,10 @@ ov02_02334768: ; 0x02334768
 	bx lr
 	.align 2, 0
 _0233477C: .word ov02_0235AA08
-	arm_func_end ov02_02334768
+	arm_func_end Dwci_BtnlDisable
 
-	arm_func_start ov02_02334780
-ov02_02334780: ; 0x02334780
+	arm_func_start Button_Disp
+Button_Disp: ; 0x02334780
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r1, _02334804 ; =ov02_0235AA08
 	mov r8, r0
@@ -19377,7 +19377,7 @@ ov02_02334780: ; 0x02334780
 	ldrb r6, [r1, r2]
 	mvn r1, #0
 	mov r2, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	mov r7, #0
 	cmp r6, #0
 	ldmleia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -19395,7 +19395,7 @@ _023347CC:
 	ldrb r2, [r7, r2]
 	mov r2, r2, lsl #2
 	ldrh r2, [sl, r2]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r7, r7, #1
 	cmp r7, r6
 	blt _023347CC
@@ -19405,10 +19405,10 @@ _02334804: .word ov02_0235AA08
 _02334808: .word ov02_023524BC
 _0233480C: .word ov02_023524AE
 _02334810: .word ov02_02352498
-	arm_func_end ov02_02334780
+	arm_func_end Button_Disp
 
-	arm_func_start ov02_02334814
-ov02_02334814: ; 0x02334814
+	arm_func_start Button_TaskStart
+Button_TaskStart: ; 0x02334814
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02334878 ; =ov02_0235AA08
@@ -19418,29 +19418,29 @@ ov02_02334814: ; 0x02334814
 	ldr r0, [r0, #8]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp]
 	sub r0, r0, #4
 	str r0, [sp]
-	bl ov02_02334780
+	bl Button_Disp
 	ldr r0, [sp]
 	cmp r0, #0xa8
 	addgt sp, sp, #8
 	ldmgtia sp!, {r4, pc}
 	mov r0, #0xa8
-	bl ov02_02334780
-	ldr r1, _0233487C ; =ov02_02334880
+	bl Button_Disp
+	ldr r1, _0233487C ; =Button_TaskStart1
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02334878: .word ov02_0235AA08
-_0233487C: .word ov02_02334880
-	arm_func_end ov02_02334814
+_0233487C: .word Button_TaskStart1
+	arm_func_end Button_TaskStart
 
-	arm_func_start ov02_02334880
-ov02_02334880: ; 0x02334880
+	arm_func_start Button_TaskStart1
+Button_TaskStart1: ; 0x02334880
 	stmdb sp!, {r3, lr}
 	ldr r1, _023348C8 ; =ov02_0235AA08
 	mvn r3, #0
@@ -19454,18 +19454,18 @@ ov02_02334880: ; 0x02334880
 	ldrh r1, [r3, #0x14]
 	cmp r1, #4
 	ldmloia sp!, {r3, pc}
-	ldr r1, _023348CC ; =ov02_023348D0
+	ldr r1, _023348CC ; =Button_TaskMain
 	mov r2, #0
 	strh r2, [r3, #0x14]
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023348C8: .word ov02_0235AA08
-_023348CC: .word ov02_023348D0
-	arm_func_end ov02_02334880
+_023348CC: .word Button_TaskMain
+	arm_func_end Button_TaskStart1
 
-	arm_func_start ov02_023348D0
-ov02_023348D0: ; 0x023348D0
+	arm_func_start Button_TaskMain
+Button_TaskMain: ; 0x023348D0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	ldr r8, _02334A3C ; =ov02_0235AA08
@@ -19496,9 +19496,9 @@ _02334928:
 	add r0, r4, r0, lsl #1
 	ldrb r0, [r7, r0]
 	add r0, r5, r0, lsl #2
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, sb
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _02334A18
 	ldr r0, _02334A3C ; =ov02_0235AA08
@@ -19512,11 +19512,11 @@ _02334928:
 	add r1, r1, r2, lsl #1
 	ldrb r4, [r7, r1]
 	mov r1, #0
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, r0
 	add r1, r4, #1
 	mov r0, #0
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, _02334A3C ; =ov02_0235AA08
 	ldr r1, _02334A48 ; =ov02_023524AE
 	ldr r0, [r0]
@@ -19530,18 +19530,18 @@ _02334928:
 	mov r4, r4, lsl #2
 	ldrh r2, [r2, r4]
 	ldrh r3, [r3, r4]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02334A3C ; =ov02_0235AA08
 	mvn r1, #0
 	ldr r0, [r0]
 	mov r2, #1
 	ldr r0, [r0, r7, lsl #2]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	mov r0, #0
-	ldr r1, _02334A58 ; =ov02_02334B38
+	ldr r1, _02334A58 ; =Button_TaskRelease
 	mov r2, r0
 	mov r3, #0x6e
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02334A3C ; =ov02_0235AA08
 	add sp, sp, #8
 	ldr r2, [r1]
@@ -19568,11 +19568,11 @@ _02334A48: .word ov02_023524AE
 _02334A4C: .word ov02_02352494
 _02334A50: .word ov02_023524A0
 _02334A54: .word ov02_0235249A
-_02334A58: .word ov02_02334B38
-	arm_func_end ov02_023348D0
+_02334A58: .word Button_TaskRelease
+	arm_func_end Button_TaskMain
 
-	arm_func_start ov02_02334A5C
-ov02_02334A5C: ; 0x02334A5C
+	arm_func_start Button_TaskEnd
+Button_TaskEnd: ; 0x02334A5C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02334AB8 ; =ov02_0235AA08
@@ -19582,38 +19582,38 @@ ov02_02334A5C: ; 0x02334A5C
 	ldr r0, [r0, #8]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp]
 	add r0, r0, #4
 	str r0, [sp]
-	bl ov02_02334780
+	bl Button_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _02334ABC ; =ov02_02334AC0
+	ldr r1, _02334ABC ; =Button_TaskEnd1
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02334AB8: .word ov02_0235AA08
-_02334ABC: .word ov02_02334AC0
-	arm_func_end ov02_02334A5C
+_02334ABC: .word Button_TaskEnd1
+	arm_func_end Button_TaskEnd
 
-	arm_func_start ov02_02334AC0
-ov02_02334AC0: ; 0x02334AC0
+	arm_func_start Button_TaskEnd1
+Button_TaskEnd1: ; 0x02334AC0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, r0
 	mov r0, #0
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldr r0, _02334B30 ; =ov02_0235AA08
 	ldr r0, [r0]
 	ldr r1, [r0, #0x10]
 	cmp r1, #0
 	beq _02334AEC
 	mov r0, #0
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 _02334AEC:
 	ldr r4, _02334B30 ; =ov02_0235AA08
 	mov r5, #0
@@ -19622,7 +19622,7 @@ _02334AF4:
 	ldr r0, [r0, r5, lsl #2]
 	cmp r0, #0
 	beq _02334B08
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 _02334B08:
 	add r5, r5, #1
 	cmp r5, #2
@@ -19630,17 +19630,17 @@ _02334B08:
 	ldr r0, _02334B30 ; =ov02_0235AA08
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	ldr r0, _02334B34 ; =ov02_0235AA08
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02334B30: .word ov02_0235AA08
 _02334B34: .word ov02_0235AA08
-	arm_func_end ov02_02334AC0
+	arm_func_end Button_TaskEnd1
 
-	arm_func_start ov02_02334B38
-ov02_02334B38: ; 0x02334B38
+	arm_func_start Button_TaskRelease
+Button_TaskRelease: ; 0x02334B38
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r4, _02334C1C ; =ov02_0235AA08
 	str r0, [sp]
@@ -19669,22 +19669,22 @@ _02334B8C:
 	ldr r0, [r0, sb, lsl #2]
 	add r2, r7, r2, lsl #1
 	ldrb sl, [sb, r2]
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, r0
 	mov r1, sl
 	mov r0, fp
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, [r4]
 	mov r1, r5
 	ldr r0, [r0, sb, lsl #2]
 	mov r2, #1
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	add sb, sb, #1
 	cmp sb, r8
 	blt _02334B8C
 _02334BD8:
 	mov r0, #0xa8
-	bl ov02_02334780
+	bl Button_Disp
 	ldr r1, _02334C1C ; =ov02_0235AA08
 	mov r0, #0
 	ldr r2, [r1]
@@ -19698,26 +19698,26 @@ _02334BD8:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r1, [sp]
 	str r0, [r2, #0x10]
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02334C1C: .word ov02_0235AA08
 _02334C20: .word ov02_023524BC
 _02334C24: .word ov02_023524A0
-	arm_func_end ov02_02334B38
+	arm_func_end Button_TaskRelease
 
-	arm_func_start ov02_02334C28
-ov02_02334C28: ; 0x02334C28
+	arm_func_start Dwci_CommentlInit
+Dwci_CommentlInit: ; 0x02334C28
 	ldr r0, _02334C38 ; =ov02_0235AA0C
 	mov r1, #0
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
 _02334C38: .word ov02_0235AA0C
-	arm_func_end ov02_02334C28
+	arm_func_end Dwci_CommentlInit
 
-	arm_func_start ov02_02334C3C
-ov02_02334C3C: ; 0x02334C3C
+	arm_func_start Dwci_CommentlDispEx
+Dwci_CommentlDispEx: ; 0x02334C3C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	ldr r3, _02334CF8 ; =ov02_0235AA0C
@@ -19731,22 +19731,22 @@ ov02_02334C3C: ; 0x02334C3C
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, _02334CFC ; =ov02_023530D0
 	ldr r1, _02334D00 ; =GX_LoadBG0Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _02334D04 ; =0x01920000
 	ldr r2, _02334D08 ; =0x04001010
 	mov r0, #1
 	mov r1, #0
 	str r3, [r2]
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	ldr r1, _02334D0C ; =ov02_0235AA98
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, r7
 	mov r2, r6
 	mov r3, r5
-	bl ov02_02338F74
+	bl Dwci_MsglGetEx
 	mov r5, r0
-	bl ov02_02334FA0
+	bl Dwci_CmnlFontFlag
 	mov r1, #0x40
 	str r1, [sp]
 	mov r1, #2
@@ -19757,9 +19757,9 @@ ov02_02334C3C: ; 0x02334C3C
 	mov r1, #0x14
 	mov r2, #0
 	mov r3, #0xd8
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	mov r0, r4
-	bl ov02_0234E354
+	bl Dwci_FntlRenewBg
 	mov r0, #1
 	ldr r1, _02334CF8 ; =ov02_0235AA0C
 	strb r0, [r1]
@@ -19772,10 +19772,10 @@ _02334D00: .word GX_LoadBG0Scr
 _02334D04: .word 0x01920000
 _02334D08: .word 0x04001010
 _02334D0C: .word ov02_0235AA98
-	arm_func_end ov02_02334C3C
+	arm_func_end Dwci_CommentlDispEx
 
-	arm_func_start ov02_02334D10
-ov02_02334D10: ; 0x02334D10
+	arm_func_start Dwci_CommentlDelete
+Dwci_CommentlDelete: ; 0x02334D10
 	stmdb sp!, {r3, lr}
 	ldr r0, _02334D44 ; =ov02_0235AA0C
 	ldrb r0, [r0]
@@ -19783,7 +19783,7 @@ ov02_02334D10: ; 0x02334D10
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #1
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _02334D44 ; =ov02_0235AA0C
 	mov r1, #0
 	strb r1, [r0]
@@ -19791,10 +19791,10 @@ ov02_02334D10: ; 0x02334D10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02334D44: .word ov02_0235AA0C
-	arm_func_end ov02_02334D10
+	arm_func_end Dwci_CommentlDelete
 
-	arm_func_start ov02_02334D48
-ov02_02334D48: ; 0x02334D48
+	arm_func_start Dwci_Char
+Dwci_Char: ; 0x02334D48
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _02334DA0 ; =ov02_0235AA10
@@ -19805,7 +19805,7 @@ ov02_02334D48: ; 0x02334D48
 	cmp r0, #0x78
 	ldreq r0, _02334DA0 ; =ov02_0235AA10
 	ldmeqia sp!, {r4, pc}
-	bl ov02_02338DF0
+	bl Dwci_Language__0233961C
 	ldrb r1, [r4, #5]
 	cmp r1, #0x79
 	bne _02334D8C
@@ -19821,16 +19821,16 @@ _02334D8C:
 	.align 2, 0
 _02334DA0: .word ov02_0235AA10
 _02334DA4: .word ov02_0235250C
-	arm_func_end ov02_02334D48
+	arm_func_end Dwci_Char
 
-	arm_func_start ov02_02334DA8
-ov02_02334DA8: ; 0x02334DA8
+	arm_func_start Dwci_CmnlLoadResource
+Dwci_CmnlLoadResource: ; 0x02334DA8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
-	bl ov02_02334D48
+	bl Dwci_Char
 	add r1, sp, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, [sp]
 	mov r4, r0
 	bl DC_FlushRange
@@ -19839,23 +19839,23 @@ ov02_02334DA8: ; 0x02334DA8
 	mov r1, #0
 	blx r5
 	mov r0, r4
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_02334DA8
+	arm_func_end Dwci_CmnlLoadResource
 
-	arm_func_start ov02_02334DE8
-ov02_02334DE8: ; 0x02334DE8
+	arm_func_start Dwci_CmnlStep
+Dwci_CmnlStep: ; 0x02334DE8
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
 	add r0, sp, #0
 	mov r1, #0
-	bl ov02_02338D8C
+	bl Dwci_GetParam
 	ldr r0, [sp]
 	cmp r0, #1
 	bne _02334E1C
 	mov r0, r4
-	bl ov02_02348174
+	bl Dwci_SteplBegin
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _02334E1C:
@@ -19863,44 +19863,44 @@ _02334E1C:
 	addne sp, sp, #4
 	ldmneia sp!, {r3, r4, pc}
 	mov r0, r4
-	bl ov02_02348708
+	bl Dwci_SteplChange
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end ov02_02334DE8
+	arm_func_end Dwci_CmnlStep
 
-	arm_func_start ov02_02334E38
-ov02_02334E38: ; 0x02334E38
+	arm_func_start Dwci_CmnlButton
+Dwci_CmnlButton: ; 0x02334E38
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338D8C
+	bl Dwci_GetParam
 	ldr r0, [sp]
 	cmp r0, #1
 	addne sp, sp, #4
 	ldmneia sp!, {r3, r4, pc}
 	mov r0, r4
-	bl ov02_023345B4
+	bl Dwci_BtnlInit
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end ov02_02334E38
+	arm_func_end Dwci_CmnlButton
 
-	arm_func_start ov02_02334E70
-ov02_02334E70: ; 0x02334E70
+	arm_func_start Dwci_CmnlMsgDraw
+Dwci_CmnlMsgDraw: ; 0x02334E70
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0
 	mov r1, r0
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	ldr r1, _02334EE0 ; =ov02_0235AA98
 	mov r5, r0
 	ldr r0, [r1]
 	mov r1, r4
-	bl ov02_02338F5C
+	bl Dwci_MsglGet
 	mov r4, r0
-	bl ov02_02334FA0
+	bl Dwci_CmnlFontFlag
 	mov r1, #0x70
 	str r1, [sp]
 	mov r1, #2
@@ -19911,31 +19911,31 @@ ov02_02334E70: ; 0x02334E70
 	mov r1, #0xd
 	mov r2, #0x28
 	mov r3, #0xe6
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	mov r0, r5
-	bl ov02_0234E354
+	bl Dwci_FntlRenewBg
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02334EE0: .word ov02_0235AA98
-	arm_func_end ov02_02334E70
+	arm_func_end Dwci_CmnlMsgDraw
 
-	arm_func_start ov02_02334EE4
-ov02_02334EE4: ; 0x02334EE4
+	arm_func_start Dwci_CmnlMsgNameDraw
+Dwci_CmnlMsgNameDraw: ; 0x02334EE4
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	mov r5, r0
 	mov r0, #0
 	mov r6, r1
 	mov r1, r0
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	ldr r1, _02334F90 ; =ov02_0235AA98
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, r6
-	bl ov02_02338F5C
+	bl Dwci_MsglGet
 	mov r6, r0
-	bl ov02_02334FA0
+	bl Dwci_CmnlFontFlag
 	mov r1, #0x5e
 	str r1, [sp]
 	mov r1, #2
@@ -19946,10 +19946,10 @@ ov02_02334EE4: ; 0x02334EE4
 	mov r2, #0x3c
 	mov r3, #0xe6
 	str r6, [sp, #0xc]
-	bl ov02_0234E1E8
-	bl ov02_02338DF0
+	bl Dwci_FntlDrawRect
+	bl Dwci_Language__0233961C
 	mov r6, r0
-	bl ov02_02338DF0
+	bl Dwci_Language__0233961C
 	ldr r1, _02334F94 ; =0x00000209
 	mov r3, r0, lsl #2
 	stmia sp, {r1, r5}
@@ -19960,9 +19960,9 @@ ov02_02334EE4: ; 0x02334EE4
 	ldrh r1, [r1, ip]
 	mov r0, r4
 	mov r3, #2
-	bl ov02_0234E050
+	bl Dwci_FntlDraw
 	mov r0, r4
-	bl ov02_0234E354
+	bl Dwci_FntlRenewBg
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -19970,52 +19970,52 @@ _02334F90: .word ov02_0235AA98
 _02334F94: .word 0x00000209
 _02334F98: .word ov02_023524F2
 _02334F9C: .word ov02_023524F0
-	arm_func_end ov02_02334EE4
+	arm_func_end Dwci_CmnlMsgNameDraw
 
-	arm_func_start ov02_02334FA0
-ov02_02334FA0: ; 0x02334FA0
+	arm_func_start Dwci_CmnlFontFlag
+Dwci_CmnlFontFlag: ; 0x02334FA0
 	stmdb sp!, {r3, lr}
-	bl ov02_02338DF0
+	bl Dwci_Language__0233961C
 	ldr r1, _02334FB4 ; =ov02_023524D4
 	ldr r0, [r1, r0, lsl #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02334FB4: .word ov02_023524D4
-	arm_func_end ov02_02334FA0
+	arm_func_end Dwci_CmnlFontFlag
 
-	arm_func_start ov02_02334FB8
-ov02_02334FB8: ; 0x02334FB8
+	arm_func_start Dwci_FocuslInit
+Dwci_FocuslInit: ; 0x02334FB8
 	stmdb sp!, {r3, lr}
 	mov r0, #0x10
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _02334FD4 ; =ov02_0235AA50
 	str r0, [r1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02334FD4: .word ov02_0235AA50
-	arm_func_end ov02_02334FB8
+	arm_func_end Dwci_FocuslInit
 
-	arm_func_start ov02_02334FD8
-ov02_02334FD8: ; 0x02334FD8
+	arm_func_start Dwci_FocuslEnd
+Dwci_FocuslEnd: ; 0x02334FD8
 	stmdb sp!, {r3, lr}
-	bl ov02_0233519C
+	bl Dwci_FocuslDelete
 	ldr r0, _02334FEC ; =ov02_0235AA50
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02334FEC: .word ov02_0235AA50
-	arm_func_end ov02_02334FD8
+	arm_func_end Dwci_FocuslEnd
 
-	arm_func_start ov02_02334FF0
-ov02_02334FF0: ; 0x02334FF0
+	arm_func_start Dwci_FocuslDisp
+Dwci_FocuslDisp: ; 0x02334FF0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov r4, r0
 	str r1, [sp]
 	str r2, [sp, #4]
 	mov fp, r3
-	bl ov02_0233519C
+	bl Dwci_FocuslDelete
 	ldr r0, _023350A4 ; =ov02_02352514
 	mov sb, #0
 	add sl, r0, r4, lsl #1
@@ -20028,14 +20028,14 @@ _0233502C:
 	ldrb r1, [sl], #1
 	mov r0, r8
 	mov r2, r7
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r2, [r4]
 	mov r1, r6
 	str r0, [r2, sb, lsl #2]
 	ldr r0, [r4]
 	mov r2, r5
 	ldr r0, [r0, sb, lsl #2]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	add sb, sb, #1
 	cmp sb, #2
 	blt _0233502C
@@ -20045,23 +20045,23 @@ _0233502C:
 	mov r3, fp
 	ldr r0, [r0]
 	mvn r1, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _023350A8 ; =ov02_0235AA50
 	ldr r2, [sp, #4]
 	ldr r0, [r0]
 	mov r3, fp
 	ldr r0, [r0, #4]
 	mvn r1, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _023350A4: .word ov02_02352514
 _023350A8: .word ov02_0235AA50
-	arm_func_end ov02_02334FF0
+	arm_func_end Dwci_FocuslDisp
 
-	arm_func_start ov02_023350AC
-ov02_023350AC: ; 0x023350AC
+	arm_func_start Dwci_FocuslDisp4
+Dwci_FocuslDisp4: ; 0x023350AC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	mov fp, r0
@@ -20069,7 +20069,7 @@ ov02_023350AC: ; 0x023350AC
 	str r2, [sp, #4]
 	str r3, [sp, #8]
 	mov sb, #6
-	bl ov02_0233519C
+	bl Dwci_FocuslDelete
 	mov sl, #0
 	mov r7, #1
 	ldr r4, _02335198 ; =ov02_0235AA50
@@ -20080,14 +20080,14 @@ _023350E4:
 	mov r0, r8
 	mov r1, sb
 	mov r2, r7
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r2, [r4]
 	mov r1, r6
 	str r0, [r2, sl, lsl #2]
 	ldr r0, [r4]
 	mov r2, r5
 	ldr r0, [r0, sl, lsl #2]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	add sl, sl, #1
 	cmp sl, #4
 	add sb, sb, #1
@@ -20098,36 +20098,36 @@ _023350E4:
 	mov r2, fp
 	ldr r0, [r0]
 	mvn r1, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02335198 ; =ov02_0235AA50
 	ldr r2, [sp]
 	ldr r0, [r0]
 	ldr r3, [sp, #4]
 	ldr r0, [r0, #4]
 	mvn r1, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02335198 ; =ov02_0235AA50
 	ldr r3, [sp, #8]
 	ldr r0, [r0]
 	mov r2, fp
 	ldr r0, [r0, #8]
 	mvn r1, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02335198 ; =ov02_0235AA50
 	ldr r2, [sp]
 	ldr r0, [r0]
 	ldr r3, [sp, #8]
 	ldr r0, [r0, #0xc]
 	mvn r1, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02335198: .word ov02_0235AA50
-	arm_func_end ov02_023350AC
+	arm_func_end Dwci_FocuslDisp4
 
-	arm_func_start ov02_0233519C
-ov02_0233519C: ; 0x0233519C
+	arm_func_start Dwci_FocuslDelete
+Dwci_FocuslDelete: ; 0x0233519C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, #0
 	ldr r4, _023351D8 ; =ov02_0235AA50
@@ -20137,7 +20137,7 @@ _023351AC:
 	ldr r0, [r0, r6, lsl #2]
 	cmp r0, #0
 	beq _023351C8
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	ldr r0, [r4]
 	str r5, [r0, r6, lsl #2]
 _023351C8:
@@ -20147,20 +20147,20 @@ _023351C8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023351D8: .word ov02_0235AA50
-	arm_func_end ov02_0233519C
+	arm_func_end Dwci_FocuslDelete
 
-	arm_func_start ov02_023351DC
-ov02_023351DC: ; 0x023351DC
+	arm_func_start Dwci_HLlInit
+Dwci_HLlInit: ; 0x023351DC
 	stmdb sp!, {r3, lr}
 	mov r0, #0xc0
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _02335240 ; =ov02_0235AA54
 	ldr r1, _02335244 ; =GX_LoadBG1Char
 	str r0, [r2]
 	ldr r0, _02335248 ; =ov02_02353304
-	bl ov02_02334DA8
-	bl ov02_02338E00
+	bl Dwci_CmnlLoadResource
+	bl Dwci_Entry
 	cmp r0, #0
 	beq _02335218
 	cmp r0, #1
@@ -20170,13 +20170,13 @@ _02335218:
 	ldr r0, _0233524C ; =ov02_023532B4
 	ldr r1, _02335250 ; =GX_LoadBG1Scr
 	ldr r0, [r0]
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldmia sp!, {r3, pc}
 _0233522C:
 	ldr r0, _0233524C ; =ov02_023532B4
 	ldr r1, _02335250 ; =GX_LoadBG1Scr
 	ldr r0, [r0, #4]
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02335240: .word ov02_0235AA54
@@ -20184,68 +20184,68 @@ _02335244: .word GX_LoadBG1Char
 _02335248: .word ov02_02353304
 _0233524C: .word ov02_023532B4
 _02335250: .word GX_LoadBG1Scr
-	arm_func_end ov02_023351DC
+	arm_func_end Dwci_HLlInit
 
-	arm_func_start ov02_02335254
-ov02_02335254: ; 0x02335254
-	ldr ip, _02335260 ; =ov02_0234E7D8
+	arm_func_start Dwci_HLlEnd
+Dwci_HLlEnd: ; 0x02335254
+	ldr ip, _02335260 ; =Dwci_HeaplFree
 	ldr r0, _02335264 ; =ov02_0235AA54
 	bx ip
 	.align 2, 0
-_02335260: .word ov02_0234E7D8
+_02335260: .word Dwci_HeaplFree
 _02335264: .word ov02_0235AA54
-	arm_func_end ov02_02335254
+	arm_func_end Dwci_HLlEnd
 
-	arm_func_start ov02_02335268
-ov02_02335268: ; 0x02335268
+	arm_func_start Dwci_HLlLoad
+Dwci_HLlLoad: ; 0x02335268
 	stmdb sp!, {r4, lr}
 	ldr r1, _023352B8 ; =ov02_023532B4
 	ldr r0, [r1, r0, lsl #2]
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _023352BC ; =ov02_0235AA54
 	mov r4, r0
 	ldr r1, [r1]
 	mov r2, #0xc0
 	bl MTi_CpuCopy32Fast
 	mov r0, r4
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	mov r0, #1
-	ldr r1, _023352C0 ; =ov02_023352F4
+	ldr r1, _023352C0 ; =Headline_TaskLoad
 	mov r2, #0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023352B8: .word ov02_023532B4
 _023352BC: .word ov02_0235AA54
-_023352C0: .word ov02_023352F4
-	arm_func_end ov02_02335268
+_023352C0: .word Headline_TaskLoad
+	arm_func_end Dwci_HLlLoad
 
-	arm_func_start ov02_023352C4
-ov02_023352C4: ; 0x023352C4
+	arm_func_start Dwci_HLlLoadSet
+Dwci_HLlLoadSet: ; 0x023352C4
 	stmdb sp!, {r3, lr}
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	ldrb r0, [r0, #0xf4]
 	add r0, r0, #5
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_023352C4
+	arm_func_end Dwci_HLlLoadSet
 
-	arm_func_start ov02_023352DC
-ov02_023352DC: ; 0x023352DC
+	arm_func_start Dwci_HLlLoadList
+Dwci_HLlLoadList: ; 0x023352DC
 	stmdb sp!, {r3, lr}
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	ldrb r0, [r0, #0xf4]
 	add r0, r0, #2
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_023352DC
+	arm_func_end Dwci_HLlLoadList
 
-	arm_func_start ov02_023352F4
-ov02_023352F4: ; 0x023352F4
+	arm_func_start Headline_TaskLoad
+Headline_TaskLoad: ; 0x023352F4
 	stmdb sp!, {r4, lr}
 	ldr r1, _02335330 ; =ov02_0235AA54
 	mov r4, r0
@@ -20259,14 +20259,14 @@ ov02_023352F4: ; 0x023352F4
 	bl GX_LoadBG1Scr
 	mov r1, r4
 	mov r0, #1
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02335330: .word ov02_0235AA54
-	arm_func_end ov02_023352F4
+	arm_func_end Headline_TaskLoad
 
-	arm_func_start ov02_02335334
-ov02_02335334: ; 0x02335334
+	arm_func_start Dwci_IconlInit
+Dwci_IconlInit: ; 0x02335334
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _023353DC ; =ov02_0235AA58
 	mov r4, r0
@@ -20275,18 +20275,18 @@ ov02_02335334: ; 0x02335334
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #0xc
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _023353E0 ; =ov02_02352520
 	ldr r2, _023353DC ; =ov02_0235AA58
 	ldrb r1, [r1, r4, lsl #2]
 	str r0, [r2]
 	strb r4, [r0, #8]
 	mov r0, #0
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr lr, _023353DC ; =ov02_0235AA58
 	ldr ip, _023353E4 ; =0xFE00FF00
 	ldr r2, [lr]
-	ldr r1, _023353E8 ; =ov02_02335430
+	ldr r1, _023353E8 ; =Icon_TaskRenew
 	str r0, [r2]
 	ldr r2, [lr]
 	mov r0, #0
@@ -20304,7 +20304,7 @@ ov02_02335334: ; 0x02335334
 	bic ip, ip, #0xc00
 	orr ip, ip, #0x800
 	strh ip, [lr, #4]
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _023353DC ; =ov02_0235AA58
 	ldr r1, [r1]
 	str r0, [r1, #4]
@@ -20313,11 +20313,11 @@ ov02_02335334: ; 0x02335334
 _023353DC: .word ov02_0235AA58
 _023353E0: .word ov02_02352520
 _023353E4: .word 0xFE00FF00
-_023353E8: .word ov02_02335430
-	arm_func_end ov02_02335334
+_023353E8: .word Icon_TaskRenew
+	arm_func_end Dwci_IconlInit
 
-	arm_func_start ov02_023353EC
-ov02_023353EC: ; 0x023353EC
+	arm_func_start Dwci_IconlEnd
+Dwci_IconlEnd: ; 0x023353EC
 	stmdb sp!, {r3, lr}
 	ldr r0, _02335428 ; =ov02_0235AA58
 	ldr r0, [r0]
@@ -20325,21 +20325,21 @@ ov02_023353EC: ; 0x023353EC
 	ldmeqia sp!, {r3, pc}
 	ldr r1, [r0, #4]
 	mov r0, #0
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r0, _02335428 ; =ov02_0235AA58
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 	ldr r0, _0233542C ; =ov02_0235AA58
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02335428: .word ov02_0235AA58
 _0233542C: .word ov02_0235AA58
-	arm_func_end ov02_023353EC
+	arm_func_end Dwci_IconlEnd
 
-	arm_func_start ov02_02335430
-ov02_02335430: ; 0x02335430
+	arm_func_start Icon_TaskRenew
+Icon_TaskRenew: ; 0x02335430
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _023354C8 ; =0x04000208
 	mov r4, #0
@@ -20362,7 +20362,7 @@ _02335458:
 	ldr r2, [r2]
 	add r1, r3, r1, lsl #2
 	ldrb r1, [r4, r1]
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r1, _023354CC ; =ov02_0235AA58
 	ldr r0, _023354D4 ; =0xFE00FF00
 	ldr r2, [r1]
@@ -20384,10 +20384,10 @@ _023354C8: .word 0x04000208
 _023354CC: .word ov02_0235AA58
 _023354D0: .word ov02_02352520
 _023354D4: .word 0xFE00FF00
-	arm_func_end ov02_02335430
+	arm_func_end Icon_TaskRenew
 
-	arm_func_start ov02_023354D8
-ov02_023354D8: ; 0x023354D8
+	arm_func_start Dwci_KBlInit
+Dwci_KBlInit: ; 0x023354D8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
 	add r5, sp, #0x1c
@@ -20402,7 +20402,7 @@ ov02_023354D8: ; 0x023354D8
 	strh r4, [r5, #2]
 	strh r3, [sp, #0x20]
 	strh r2, [sp, #0x22]
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r8, _02335824 ; =ov02_0235AA5C
 	mov r1, #0xff
 	str r0, [r8]
@@ -20421,7 +20421,7 @@ ov02_023354D8: ; 0x023354D8
 _02335550:
 	mov r0, r5
 	mov r1, r4
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, [r8]
 	add r1, r1, r6, lsl #2
 	str r0, [r1, #0x30]
@@ -20450,7 +20450,7 @@ _02335550:
 _023355C0:
 	ldrb r1, [r5], #1
 	mov r0, r4
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, [r8]
 	add r1, r1, r6, lsl #2
 	str r0, [r1, #0xec]
@@ -20483,7 +20483,7 @@ _0233563C:
 	ldrb r1, [sb], #1
 	mov r0, r8
 	mov r2, r7
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r2, [r4]
 	mov r1, r6
 	add r2, r2, sl, lsl #2
@@ -20493,13 +20493,13 @@ _0233563C:
 	add r0, r0, sl, lsl #2
 	ldr r0, [r0, #0xfc]
 	mov r3, fp
-	bl ov02_0234D31C
+	bl Dwci_CelllSetEffect
 	ldr r0, [r4]
 	mov r1, r6
 	add r0, r0, sl, lsl #2
 	ldr r0, [r0, #0xfc]
 	mov r2, #3
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	add sl, sl, #1
 	cmp sl, #2
 	blt _0233563C
@@ -20519,7 +20519,7 @@ _023356B4:
 	mov r1, #0x1c
 	mov r2, #2
 	mov r3, r0
-	bl ov02_0234DCC0
+	bl Dwci_FntlFormEx
 	ldr r1, [r4]
 	mov r2, sb, lsl #2
 	add r1, r1, sl, lsl #4
@@ -20545,7 +20545,7 @@ _023356F8:
 	ldrh r2, [sp, #0x1e]
 	ldrh r3, [sp, #0x20]
 	ldr r0, [r0, r5]
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	ldrh r0, [sp, #0x1c]
 	add r8, r8, #1
 	cmp r8, #0xc
@@ -20558,7 +20558,7 @@ _023356F8:
 	ldr r1, [sp, #0x18]
 	mov r0, #0
 	mov r2, #1
-	bl ov02_0234D12C
+	bl Dwci_CelllForm
 	ldr r1, [r4]
 	add r1, r1, sb, lsl #2
 	str r0, [r1, #0x104]
@@ -20575,7 +20575,7 @@ _02335778:
 	mov r0, #0
 	mov r1, #0x40
 	mov r2, #1
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r3, _02335824 ; =ov02_0235AA5C
 	mvn r1, #0
 	ldr r4, [r3]
@@ -20584,18 +20584,18 @@ _02335778:
 	ldr r0, [r3]
 	mov r3, #0
 	ldr r0, [r0, #0x114]
-	bl ov02_0234D31C
+	bl Dwci_CelllSetEffect
 	ldr r0, _02335824 ; =ov02_0235AA5C
 	mvn r1, #0
 	ldr r0, [r0]
 	mov r2, #2
 	ldr r0, [r0, #0x114]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	mov r0, #0
-	ldr r1, _02335838 ; =ov02_023358C8
+	ldr r1, _02335838 ; =Keyboard_TaskStart0
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r3, _02335824 ; =ov02_0235AA5C
 	mov r1, #0
 	ldr r4, [r3]
@@ -20603,7 +20603,7 @@ _02335778:
 	str r0, [r4, #0x118]
 	ldr r0, [r3]
 	ldrb r0, [r0, #0x11d]
-	bl ov02_02336574
+	bl Keyboard_Disp
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -20612,59 +20612,59 @@ _02335828: .word 0xC1FFFCFF
 _0233582C: .word ov02_02352538
 _02335830: .word ov02_02352530
 _02335834: .word ov02_02353324
-_02335838: .word ov02_023358C8
-	arm_func_end ov02_023354D8
+_02335838: .word Keyboard_TaskStart0
+	arm_func_end Dwci_KBlInit
 
-	arm_func_start ov02_0233583C
-ov02_0233583C: ; 0x0233583C
+	arm_func_start Dwci_KBlEnd
+Dwci_KBlEnd: ; 0x0233583C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02335868 ; =ov02_0235AA5C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x114]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	ldr r0, _02335868 ; =ov02_0235AA5C
-	ldr r1, _0233586C ; =ov02_02336E50
+	ldr r1, _0233586C ; =Keyboard_TaskEnd0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x118]
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02335868: .word ov02_0235AA5C
-_0233586C: .word ov02_02336E50
-	arm_func_end ov02_0233583C
+_0233586C: .word Keyboard_TaskEnd0
+	arm_func_end Dwci_KBlEnd
 
-	arm_func_start ov02_02335870
-ov02_02335870: ; 0x02335870
+	arm_func_start Dwci_KBlGet
+Dwci_KBlGet: ; 0x02335870
 	ldr r0, _02335880 ; =ov02_0235AA5C
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x11c]
 	bx lr
 	.align 2, 0
 _02335880: .word ov02_0235AA5C
-	arm_func_end ov02_02335870
+	arm_func_end Dwci_KBlGet
 
-	arm_func_start ov02_02335884
-ov02_02335884: ; 0x02335884
+	arm_func_start Dwci_KBlSetErase
+Dwci_KBlSetErase: ; 0x02335884
 	ldr r1, _02335894 ; =ov02_0235AA5C
 	ldr r1, [r1]
 	strb r0, [r1, #0x123]
 	bx lr
 	.align 2, 0
 _02335894: .word ov02_0235AA5C
-	arm_func_end ov02_02335884
+	arm_func_end Dwci_KBlSetErase
 
-	arm_func_start ov02_02335898
-ov02_02335898: ; 0x02335898
+	arm_func_start Dwci_KBlSetInput
+Dwci_KBlSetInput: ; 0x02335898
 	ldr r1, _023358A8 ; =ov02_0235AA5C
 	ldr r1, [r1]
 	strb r0, [r1, #0x124]
 	bx lr
 	.align 2, 0
 _023358A8: .word ov02_0235AA5C
-	arm_func_end ov02_02335898
+	arm_func_end Dwci_KBlSetInput
 
-	arm_func_start ov02_023358AC
-ov02_023358AC: ; 0x023358AC
+	arm_func_start Dwci_KBlIsInit
+Dwci_KBlIsInit: ; 0x023358AC
 	ldr r0, _023358C4 ; =ov02_0235AA5C
 	ldr r0, [r0]
 	cmp r0, #0
@@ -20673,10 +20673,10 @@ ov02_023358AC: ; 0x023358AC
 	bx lr
 	.align 2, 0
 _023358C4: .word ov02_0235AA5C
-	arm_func_end ov02_023358AC
+	arm_func_end Dwci_KBlIsInit
 
-	arm_func_start ov02_023358C8
-ov02_023358C8: ; 0x023358C8
+	arm_func_start Keyboard_TaskStart0
+Keyboard_TaskStart0: ; 0x023358C8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r2, _02335950 ; =ov02_0235AA5C
@@ -20695,31 +20695,31 @@ ov02_023358C8: ; 0x023358C8
 	ldrb r0, [r3, #0x11d]
 	mov r1, #0
 	ble _0233591C
-	bl ov02_02336574
+	bl Keyboard_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _0233591C:
 	mov r2, #0x51
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r0, _02335950 ; =ov02_0235AA5C
 	mov r1, #1
 	ldr r0, [r0]
 	mov r2, #0xc0
 	ldrb r0, [r0, #0x11d]
-	bl ov02_02336574
-	ldr r1, _02335958 ; =ov02_0233595C
+	bl Keyboard_Disp
+	ldr r1, _02335958 ; =Keyboard_TaskStart1
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02335950: .word ov02_0235AA5C
 _02335954: .word 0x01FF0000
-_02335958: .word ov02_0233595C
-	arm_func_end ov02_023358C8
+_02335958: .word Keyboard_TaskStart1
+	arm_func_end Keyboard_TaskStart0
 
-	arm_func_start ov02_0233595C
-ov02_0233595C: ; 0x0233595C
+	arm_func_start Keyboard_TaskStart1
+Keyboard_TaskStart1: ; 0x0233595C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r2, _023359E4 ; =ov02_0235AA5C
@@ -20738,31 +20738,31 @@ ov02_0233595C: ; 0x0233595C
 	ldrb r0, [r3, #0x11d]
 	mov r1, #1
 	ble _023359B0
-	bl ov02_02336574
+	bl Keyboard_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _023359B0:
 	mov r2, #0x67
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r0, _023359E4 ; =ov02_0235AA5C
 	mov r1, #2
 	ldr r0, [r0]
 	mov r2, #0xc0
 	ldrb r0, [r0, #0x11d]
-	bl ov02_02336574
-	ldr r1, _023359EC ; =ov02_023359F0
+	bl Keyboard_Disp
+	ldr r1, _023359EC ; =Keyboard_TaskStart2
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023359E4: .word ov02_0235AA5C
 _023359E8: .word 0x01FF0000
-_023359EC: .word ov02_023359F0
-	arm_func_end ov02_0233595C
+_023359EC: .word Keyboard_TaskStart2
+	arm_func_end Keyboard_TaskStart1
 
-	arm_func_start ov02_023359F0
-ov02_023359F0: ; 0x023359F0
+	arm_func_start Keyboard_TaskStart2
+Keyboard_TaskStart2: ; 0x023359F0
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r2, _02335A78 ; =ov02_0235AA5C
@@ -20781,31 +20781,31 @@ ov02_023359F0: ; 0x023359F0
 	ldrb r0, [r3, #0x11d]
 	mov r1, #2
 	ble _02335A44
-	bl ov02_02336574
+	bl Keyboard_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _02335A44:
 	mov r2, #0x7d
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r0, _02335A78 ; =ov02_0235AA5C
 	mov r1, #3
 	ldr r0, [r0]
 	mov r2, #0xc0
 	ldrb r0, [r0, #0x11d]
-	bl ov02_02336574
-	ldr r1, _02335A80 ; =ov02_02335A84
+	bl Keyboard_Disp
+	ldr r1, _02335A80 ; =Keyboard_TaskStart3
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02335A78: .word ov02_0235AA5C
 _02335A7C: .word 0x01FF0000
-_02335A80: .word ov02_02335A84
-	arm_func_end ov02_023359F0
+_02335A80: .word Keyboard_TaskStart3
+	arm_func_end Keyboard_TaskStart2
 
-	arm_func_start ov02_02335A84
-ov02_02335A84: ; 0x02335A84
+	arm_func_start Keyboard_TaskStart3
+Keyboard_TaskStart3: ; 0x02335A84
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r2, _02335B0C ; =ov02_0235AA5C
@@ -20824,28 +20824,28 @@ ov02_02335A84: ; 0x02335A84
 	ldrb r0, [r3, #0x11d]
 	mov r1, #3
 	ble _02335AD8
-	bl ov02_02336574
+	bl Keyboard_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _02335AD8:
 	mov r2, #0x93
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r0, _02335B0C ; =ov02_0235AA5C
 	mov r1, #4
 	ldr r0, [r0]
 	mov r2, #0xc0
 	ldrb r0, [r0, #0x11d]
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r1, _02335B14 ; =ov02_02335B18
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02335B0C: .word ov02_0235AA5C
 _02335B10: .word 0x01FF0000
 _02335B14: .word ov02_02335B18
-	arm_func_end ov02_02335A84
+	arm_func_end Keyboard_TaskStart3
 
 	arm_func_start ov02_02335B18
 ov02_02335B18: ; 0x02335B18
@@ -20858,7 +20858,7 @@ ov02_02335B18: ; 0x02335B18
 	ldr r0, [r0, #0xfc]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp]
 	mov r1, #4
 	sub r2, r0, #0xc
@@ -20868,7 +20868,7 @@ ov02_02335B18: ; 0x02335B18
 	ldr r0, _02335B9C ; =ov02_0235AA5C
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x11d]
-	bl ov02_02336574
+	bl Keyboard_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _02335B70:
@@ -20876,34 +20876,34 @@ _02335B70:
 	mov r2, #0xaa
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x11d]
-	bl ov02_02336574
-	bl ov02_0233693C
-	ldr r1, _02335BA0 ; =ov02_02335BA4
+	bl Keyboard_Disp
+	bl Keyboard_DispFocus
+	ldr r1, _02335BA0 ; =Keyboard_TaskMain
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02335B9C: .word ov02_0235AA5C
-_02335BA0: .word ov02_02335BA4
+_02335BA0: .word Keyboard_TaskMain
 	arm_func_end ov02_02335B18
 
-	arm_func_start ov02_02335BA4
-ov02_02335BA4: ; 0x02335BA4
+	arm_func_start Keyboard_TaskMain
+Keyboard_TaskMain: ; 0x02335BA4
 	stmdb sp!, {r3, lr}
-	bl ov02_02335BBC
-	bl ov02_02335DA4
-	bl ov02_023360EC
-	bl ov02_02336344
+	bl Keyboard_TouchTriger
+	bl Keyboard_TouchRelease
+	bl Keyboard_Touch
+	bl Keyboard_Key
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02335BA4
+	arm_func_end Keyboard_TaskMain
 
-	arm_func_start ov02_02335BBC
-ov02_02335BBC: ; 0x02335BBC
+	arm_func_start Keyboard_TouchTriger
+Keyboard_TouchTriger: ; 0x02335BBC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r0, _02335D80 ; =ov02_02352F34
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -20919,9 +20919,9 @@ _02335BF8:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _02335C58
 	ldr r0, _02335D84 ; =ov02_0235AA5C
@@ -20930,12 +20930,12 @@ _02335BF8:
 	cmp r0, #0
 	bne _02335C3C
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02335C3C:
 	mov r0, #0
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02335D84 ; =ov02_0235AA5C
 	add sp, sp, #8
 	ldr r0, [r0]
@@ -20954,9 +20954,9 @@ _02335C78:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _02335D04
 	cmp r4, #3
@@ -20976,13 +20976,13 @@ _02335CB4:
 	bne _02335CE0
 _02335CD0:
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02335CE0:
 	ldr r0, _02335D98 ; =ov02_02353330
 	ldr r0, [r0, r4, lsl #2]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02335D84 ; =ov02_0235AA5C
 	add r1, r4, #0x2f
 	ldr r0, [r0]
@@ -21003,13 +21003,13 @@ _02335D28:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r4
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _02335D68
 	mov r0, #0
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02335D84 ; =ov02_0235AA5C
 	add r1, r7, #0x33
 	ldr r0, [r0]
@@ -21033,10 +21033,10 @@ _02335D94: .word ov02_02352560
 _02335D98: .word ov02_02353330
 _02335D9C: .word ov02_02352558
 _02335DA0: .word ov02_02352540
-	arm_func_end ov02_02335BBC
+	arm_func_end Keyboard_TouchTriger
 
-	arm_func_start ov02_02335DA4
-ov02_02335DA4: ; 0x02335DA4
+	arm_func_start Keyboard_TouchRelease
+Keyboard_TouchRelease: ; 0x02335DA4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r1, _02336050 ; =ov02_0235AA5C
@@ -21044,7 +21044,7 @@ ov02_02335DA4: ; 0x02335DA4
 	ldr r1, [r1]
 	mov r2, #0
 	strb r2, [r1, #0x11c]
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -21056,9 +21056,9 @@ _02335DE0:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	beq _02335E60
 	ldr r1, _02336050 ; =ov02_0235AA5C
@@ -21078,12 +21078,12 @@ _02335DE0:
 	cmp r0, #1
 	bne _02335E48
 	mov r0, #0
-	bl ov02_023367F0
+	bl Keyboard_ChangePage
 _02335E48:
 	ldr r0, _02336050 ; =ov02_0235AA5C
 	ldr r0, [r0]
 	strb r4, [r0, #0x121]
-	bl ov02_0233693C
+	bl Keyboard_DispFocus
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02335E60:
@@ -21099,9 +21099,9 @@ _02335E80:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	beq _02335F00
 	ldr r1, _02336050 ; =ov02_0235AA5C
@@ -21120,13 +21120,13 @@ _02335E80:
 	cmp r0, #1
 	bne _02335EE4
 	mov r0, #0
-	bl ov02_023367F0
+	bl Keyboard_ChangePage
 _02335EE4:
 	ldr r0, _02336050 ; =ov02_0235AA5C
 	add r1, r4, #0x2f
 	ldr r0, [r0]
 	strb r1, [r0, #0x121]
-	bl ov02_0233693C
+	bl Keyboard_DispFocus
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02335F00:
@@ -21143,9 +21143,9 @@ _02335F24:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	beq _02335F84
 	ldr r1, _02336050 ; =ov02_0235AA5C
@@ -21161,7 +21161,7 @@ _02335F24:
 	strb r0, [r3, #0x11c]
 	ldr r0, [r1]
 	strb r2, [r0, #0x121]
-	bl ov02_0233693C
+	bl Keyboard_DispFocus
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02335F84:
@@ -21172,9 +21172,9 @@ _02335F84:
 	ldr r0, _0233607C ; =ov02_02352560
 	ldr r1, _02336080 ; =ov02_02352570
 	add r2, sp, #0
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	add r0, sp, #0
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	beq _02335FF0
 	ldr r0, _02336050 ; =ov02_0235AA5C
@@ -21184,21 +21184,21 @@ _02335F84:
 	cmp r0, #0x2f
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov02_0233608C
+	bl Keyboard_PushCaps
 	ldr r0, _02336050 ; =ov02_0235AA5C
 	mov r1, #0x2f
 	ldr r0, [r0]
 	strb r1, [r0, #0x121]
-	bl ov02_0233693C
+	bl Keyboard_DispFocus
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02335FF0:
 	ldr r0, _02336084 ; =ov02_02352564
 	ldr r1, _02336088 ; =ov02_02352574
 	add r2, sp, #0
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	add r0, sp, #0
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -21209,12 +21209,12 @@ _02335FF0:
 	cmp r0, #0x30
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov02_023360BC
+	bl Keyboard_PushShift
 	ldr r0, _02336050 ; =ov02_0235AA5C
 	mov r1, #0x30
 	ldr r0, [r0]
 	strb r1, [r0, #0x121]
-	bl ov02_0233693C
+	bl Keyboard_DispFocus
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -21233,10 +21233,10 @@ _0233607C: .word ov02_02352560
 _02336080: .word ov02_02352570
 _02336084: .word ov02_02352564
 _02336088: .word ov02_02352574
-	arm_func_end ov02_02335DA4
+	arm_func_end Keyboard_TouchRelease
 
-	arm_func_start ov02_0233608C
-ov02_0233608C: ; 0x0233608C
+	arm_func_start Keyboard_PushCaps
+Keyboard_PushCaps: ; 0x0233608C
 	stmdb sp!, {r3, lr}
 	ldr r0, _023360B8 ; =ov02_0235AA5C
 	ldr r0, [r0]
@@ -21244,16 +21244,16 @@ ov02_0233608C: ; 0x0233608C
 	cmp r0, #2
 	moveq r0, #0
 	movne r0, #2
-	bl ov02_023367F0
+	bl Keyboard_ChangePage
 	mov r0, #1
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023360B8: .word ov02_0235AA5C
-	arm_func_end ov02_0233608C
+	arm_func_end Keyboard_PushCaps
 
-	arm_func_start ov02_023360BC
-ov02_023360BC: ; 0x023360BC
+	arm_func_start Keyboard_PushShift
+Keyboard_PushShift: ; 0x023360BC
 	stmdb sp!, {r3, lr}
 	ldr r0, _023360E8 ; =ov02_0235AA5C
 	ldr r0, [r0]
@@ -21261,20 +21261,20 @@ ov02_023360BC: ; 0x023360BC
 	cmp r0, #1
 	movne r0, #1
 	moveq r0, #0
-	bl ov02_023367F0
+	bl Keyboard_ChangePage
 	mov r0, #1
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023360E8: .word ov02_0235AA5C
-	arm_func_end ov02_023360BC
+	arm_func_end Keyboard_PushShift
 
-	arm_func_start ov02_023360EC
-ov02_023360EC: ; 0x023360EC
+	arm_func_start Keyboard_Touch
+Keyboard_Touch: ; 0x023360EC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r0, _023362D0 ; =ov02_02352F34
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	beq _023362B0
 	ldr r7, _023362D4 ; =ov02_02352588
@@ -21285,9 +21285,9 @@ _02336114:
 	mov r0, r7
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r4
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	beq _02336158
 	ldr r0, _023362DC ; =ov02_0235AA5C
@@ -21297,7 +21297,7 @@ _02336114:
 	cmp r0, r6
 	bne _023362B0
 	mov r0, r6
-	bl ov02_023362F0
+	bl Keyboard_ExchangeBack
 	b _023362B8
 _02336158:
 	add r6, r6, #1
@@ -21312,9 +21312,9 @@ _02336178:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	beq _02336238
 	ldr r1, _023362DC ; =ov02_0235AA5C
@@ -21324,7 +21324,7 @@ _02336178:
 	ldrsb r1, [r1, #0x1e]
 	cmp r1, r0
 	bne _023362B0
-	bl ov02_023362F0
+	bl Keyboard_ExchangeBack
 	cmp r4, #3
 	addne sp, sp, #8
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -21342,7 +21342,7 @@ _02336178:
 	cmp r1, #0
 	bne _02336218
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _023362DC ; =ov02_0235AA5C
 	mvn r1, #0
 	ldr r0, [r0]
@@ -21372,9 +21372,9 @@ _0233625C:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r4
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	beq _023362A0
 	ldr r1, _023362DC ; =ov02_0235AA5C
@@ -21384,7 +21384,7 @@ _0233625C:
 	ldrsb r1, [r1, #0x1e]
 	cmp r1, r0
 	bne _023362B0
-	bl ov02_023362F0
+	bl Keyboard_ExchangeBack
 	b _023362B8
 _023362A0:
 	add r7, r7, #1
@@ -21393,7 +21393,7 @@ _023362A0:
 	blt _0233625C
 _023362B0:
 	mvn r0, #0
-	bl ov02_023362F0
+	bl Keyboard_ExchangeBack
 _023362B8:
 	ldr r0, _023362DC ; =ov02_0235AA5C
 	mov r1, #0
@@ -21410,10 +21410,10 @@ _023362E0: .word ov02_02352578
 _023362E4: .word ov02_02352568
 _023362E8: .word ov02_02352558
 _023362EC: .word ov02_02352540
-	arm_func_end ov02_023360EC
+	arm_func_end Keyboard_Touch
 
-	arm_func_start ov02_023362F0
-ov02_023362F0: ; 0x023362F0
+	arm_func_start Keyboard_ExchangeBack
+Keyboard_ExchangeBack: ; 0x023362F0
 	stmdb sp!, {r4, lr}
 	ldr r1, _02336340 ; =ov02_0235AA5C
 	mov r4, r0
@@ -21423,54 +21423,54 @@ ov02_023362F0: ; 0x023362F0
 	cmp r4, r1
 	ldmeqia sp!, {r4, pc}
 	mov r1, #1
-	bl ov02_02336874
+	bl Keyboard_ChangeColor
 	ldr r0, _02336340 ; =ov02_0235AA5C
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x1f]
-	bl ov02_02336874
+	bl Keyboard_ChangeColor
 	ldr r0, _02336340 ; =ov02_0235AA5C
 	ldr r0, [r0]
 	strb r4, [r0, #0x11f]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02336340: .word ov02_0235AA5C
-	arm_func_end ov02_023362F0
+	arm_func_end Keyboard_ExchangeBack
 
-	arm_func_start ov02_02336344
-ov02_02336344: ; 0x02336344
+	arm_func_start Keyboard_Key
+Keyboard_Key: ; 0x02336344
 	stmdb sp!, {r4, lr}
 	mov r0, #0x20
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02336360
 	mov r0, #0
-	bl ov02_02336A18
+	bl Keyboard_MoveFocus
 _02336360:
 	mov r0, #0x40
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02336378
 	mov r0, #1
-	bl ov02_02336A18
+	bl Keyboard_MoveFocus
 _02336378:
 	mov r0, #0x10
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02336390
 	mov r0, #2
-	bl ov02_02336A18
+	bl Keyboard_MoveFocus
 _02336390:
 	mov r0, #0x80
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _023363A8
 	mov r0, #3
-	bl ov02_02336A18
+	bl Keyboard_MoveFocus
 _023363A8:
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _023364C0
 	ldr r2, _02336564 ; =ov02_0235AA5C
@@ -21483,7 +21483,7 @@ _023363A8:
 	cmp r1, #0
 	bne _023363E8
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r4, pc}
 _023363E8:
 	ldrb r3, [r0, #0x11d]
@@ -21496,7 +21496,7 @@ _023363E8:
 	cmp r0, #1
 	ldmneia sp!, {r4, pc}
 	mov r0, #0
-	bl ov02_023367F0
+	bl Keyboard_ChangePage
 	ldmia sp!, {r4, pc}
 _02336418:
 	sub r1, r4, #0x2f
@@ -21511,31 +21511,31 @@ _02336430: ; jump table
 	b _02336450 ; case 2
 	b _02336468 ; case 3
 _02336440:
-	bl ov02_0233608C
+	bl Keyboard_PushCaps
 	ldmia sp!, {r4, pc}
 _02336448:
-	bl ov02_023360BC
+	bl Keyboard_PushShift
 	ldmia sp!, {r4, pc}
 _02336450:
 	ldrb r1, [r0, #0x124]
 	cmp r1, #0
 	bne _02336480
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r4, pc}
 _02336468:
 	ldrb r1, [r0, #0x123]
 	cmp r1, #0
 	bne _02336480
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r4, pc}
 _02336480:
 	ldrb r0, [r0, #0x11d]
 	cmp r0, #1
 	bne _02336494
 	mov r0, #0
-	bl ov02_023367F0
+	bl Keyboard_ChangePage
 _02336494:
 	ldr r1, _0233656C ; =ov02_02352580
 	sub r2, r4, #0x2f
@@ -21551,7 +21551,7 @@ _023364B0:
 	strb r1, [r0, #0x11c]
 _023364C0:
 	mov r0, #2
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02336518
 	ldr r0, _02336564 ; =ov02_0235AA5C
@@ -21563,7 +21563,7 @@ _023364C0:
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02336564 ; =ov02_0235AA5C
 	mov r1, #1
 	ldr r0, [r0]
@@ -21575,7 +21575,7 @@ _0233650C:
 	b _02336538
 _02336518:
 	mov r0, #2
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	beq _02336538
 	ldr r0, _02336564 ; =ov02_0235AA5C
@@ -21584,26 +21584,26 @@ _02336518:
 	strb r1, [r0, #0x125]
 _02336538:
 	mov r0, #0x400
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0233654C
-	bl ov02_0233608C
+	bl Keyboard_PushCaps
 _0233654C:
 	mov r0, #0x800
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov02_023360BC
+	bl Keyboard_PushShift
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02336564: .word ov02_0235AA5C
 _02336568: .word ov02_02353318
 _0233656C: .word ov02_02352580
 _02336570: .word ov02_02352534
-	arm_func_end ov02_02336344
+	arm_func_end Keyboard_Key
 
-	arm_func_start ov02_02336574
-ov02_02336574: ; 0x02336574
+	arm_func_start Keyboard_Disp
+Keyboard_Disp: ; 0x02336574
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	ldr r3, _023367D4 ; =ov02_0235253C
@@ -21692,7 +21692,7 @@ _02336690:
 	ldr r3, [r2, #0x104]
 	ldr r0, [r0, sl, lsl #2]
 	mov r2, sb
-	bl ov02_0234E2BC
+	bl Dwci_FntlDisp
 _023366D0:
 	add r0, sl, #3
 	mov r1, #4
@@ -21747,7 +21747,7 @@ _02336780:
 	ldr r0, [r0, #0xfc]
 	mov r2, fp
 	mov r3, fp
-	bl ov02_0234D31C
+	bl Dwci_CelllSetEffect
 	ldr r0, [r4]
 	mov r1, r8, lsl #2
 	add r0, r0, r8, lsl #2
@@ -21755,7 +21755,7 @@ _02336780:
 	ldrh r2, [r5, r1]
 	mov r1, r6
 	mov r3, sb
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldrb r0, [r7, sl]
 	add r8, r8, #1
 	cmp r8, r0
@@ -21770,10 +21770,10 @@ _023367E0: .word 0xC1FFFCFF
 _023367E4: .word 0xFE00FF00
 _023367E8: .word ov02_02352560
 _023367EC: .word ov02_02352558
-	arm_func_end ov02_02336574
+	arm_func_end Keyboard_Disp
 
-	arm_func_start ov02_023367F0
-ov02_023367F0: ; 0x023367F0
+	arm_func_start Keyboard_ChangePage
+Keyboard_ChangePage: ; 0x023367F0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r1, _0233686C ; =ov02_0235AA5C
 	mov r5, #0
@@ -21789,7 +21789,7 @@ _02336818:
 	ldrh r2, [r0, #2]
 	mov r0, r8
 	mov r1, r4
-	bl ov02_02336574
+	bl Keyboard_Disp
 	add r4, r4, #1
 	cmp r4, #4
 	add r7, r7, #0xc
@@ -21802,18 +21802,18 @@ _02336818:
 _02336850:
 	mov r1, r5
 	mov r0, #0x2f
-	bl ov02_02336874
+	bl Keyboard_ChangeColor
 	mov r1, r6
 	mov r0, #0x30
-	bl ov02_02336874
+	bl Keyboard_ChangeColor
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0233686C: .word ov02_0235AA5C
 _02336870: .word ov02_02352588
-	arm_func_end ov02_023367F0
+	arm_func_end Keyboard_ChangePage
 
-	arm_func_start ov02_02336874
-ov02_02336874: ; 0x02336874
+	arm_func_start Keyboard_ChangeColor
+Keyboard_ChangeColor: ; 0x02336874
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	ldmltia sp!, {r3, pc}
@@ -21861,16 +21861,16 @@ _02336904:
 	ldr r0, [r0, #0xfc]
 	mvn r1, #0
 	mov r2, #0
-	bl ov02_0234D3C0
+	bl Dwci_CelllSetPalette
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02336930: .word ov02_0235AA5C
 _02336934: .word ov02_02352528
 _02336938: .word ov02_0235252C
-	arm_func_end ov02_02336874
+	arm_func_end Keyboard_ChangeColor
 
-	arm_func_start ov02_0233693C
-ov02_0233693C: ; 0x0233693C
+	arm_func_start Keyboard_DispFocus
+Keyboard_DispFocus: ; 0x0233693C
 	stmdb sp!, {r4, lr}
 	ldr r0, _02336A0C ; =ov02_0235AA5C
 	ldr r1, [r0]
@@ -21907,17 +21907,17 @@ _023369A0:
 _023369A4:
 	ldr r0, [r1, #0x114]
 	mov r1, #0
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, r0
 	mov r1, r4
 	mov r0, #0
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, _02336A0C ; =ov02_0235AA5C
 	mvn r1, #0
 	ldr r0, [r0]
 	mov r2, #2
 	ldr r0, [r0, #0x114]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	ldr r0, _02336A0C ; =ov02_0235AA5C
 	ldr r2, _02336A10 ; =ov02_02352644
 	ldr r3, [r0]
@@ -21929,16 +21929,16 @@ _023369A4:
 	mov ip, ip, lsl #2
 	ldrh r2, [r2, ip]
 	ldrh r3, [r3, ip]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02336A0C: .word ov02_0235AA5C
 _02336A10: .word ov02_02352644
 _02336A14: .word ov02_02352646
-	arm_func_end ov02_0233693C
+	arm_func_end Keyboard_DispFocus
 
-	arm_func_start ov02_02336A18
-ov02_02336A18: ; 0x02336A18
+	arm_func_start Keyboard_MoveFocus
+Keyboard_MoveFocus: ; 0x02336A18
 	stmdb sp!, {r3, lr}
 	ldr r2, _02336E48 ; =ov02_0235AA5C
 	ldr r3, _02336E4C ; =ov02_02352718
@@ -22251,17 +22251,17 @@ _02336E30:
 	mov r0, #8
 	strb r0, [r1, #0x121]
 _02336E38:
-	bl ov02_0233693C
+	bl Keyboard_DispFocus
 	mov r0, #8
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02336E48: .word ov02_0235AA5C
 _02336E4C: .word ov02_02352718
-	arm_func_end ov02_02336A18
+	arm_func_end Keyboard_MoveFocus
 
-	arm_func_start ov02_02336E50
-ov02_02336E50: ; 0x02336E50
+	arm_func_start Keyboard_TaskEnd0
+Keyboard_TaskEnd0: ; 0x02336E50
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02336EC8 ; =ov02_0235AA5C
@@ -22269,7 +22269,7 @@ ov02_02336E50: ; 0x02336E50
 	ldr r0, [r1]
 	mov r1, #0
 	ldr r0, [r0, #0xfc]
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	ldr r3, [r0]
 	ldr r1, _02336EC8 ; =ov02_0235AA5C
 	ldr r0, _02336ECC ; =0x01FF0000
@@ -22282,24 +22282,24 @@ ov02_02336E50: ; 0x02336E50
 	str r2, [sp]
 	mov r1, #4
 	str r3, [sp, #4]
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _02336ED0 ; =ov02_02336ED4
+	ldr r1, _02336ED0 ; =Keyboard_TaskEnd1
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02336EC8: .word ov02_0235AA5C
 _02336ECC: .word 0x01FF0000
-_02336ED0: .word ov02_02336ED4
-	arm_func_end ov02_02336E50
+_02336ED0: .word Keyboard_TaskEnd1
+	arm_func_end Keyboard_TaskEnd0
 
-	arm_func_start ov02_02336ED4
-ov02_02336ED4: ; 0x02336ED4
+	arm_func_start Keyboard_TaskEnd1
+Keyboard_TaskEnd1: ; 0x02336ED4
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02336F3C ; =ov02_0235AA5C
@@ -22316,24 +22316,24 @@ ov02_02336ED4: ; 0x02336ED4
 	mov r3, ip, lsr #0x10
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _02336F44 ; =ov02_02336F48
+	ldr r1, _02336F44 ; =Keyboard_TaskEnd2
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02336F3C: .word ov02_0235AA5C
 _02336F40: .word 0x01FF0000
-_02336F44: .word ov02_02336F48
-	arm_func_end ov02_02336ED4
+_02336F44: .word Keyboard_TaskEnd2
+	arm_func_end Keyboard_TaskEnd1
 
-	arm_func_start ov02_02336F48
-ov02_02336F48: ; 0x02336F48
+	arm_func_start Keyboard_TaskEnd2
+Keyboard_TaskEnd2: ; 0x02336F48
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02336FB0 ; =ov02_0235AA5C
@@ -22350,24 +22350,24 @@ ov02_02336F48: ; 0x02336F48
 	mov r3, ip, lsr #0x10
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _02336FB8 ; =ov02_02336FBC
+	ldr r1, _02336FB8 ; =Keyboard_TaskEnd3
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02336FB0: .word ov02_0235AA5C
 _02336FB4: .word 0x01FF0000
-_02336FB8: .word ov02_02336FBC
-	arm_func_end ov02_02336F48
+_02336FB8: .word Keyboard_TaskEnd3
+	arm_func_end Keyboard_TaskEnd2
 
-	arm_func_start ov02_02336FBC
-ov02_02336FBC: ; 0x02336FBC
+	arm_func_start Keyboard_TaskEnd3
+Keyboard_TaskEnd3: ; 0x02336FBC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02337024 ; =ov02_0235AA5C
@@ -22384,24 +22384,24 @@ ov02_02336FBC: ; 0x02336FBC
 	mov r3, ip, lsr #0x10
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _0233702C ; =ov02_02337030
+	ldr r1, _0233702C ; =Keyboard_TaskEnd4
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02337024: .word ov02_0235AA5C
 _02337028: .word 0x01FF0000
-_0233702C: .word ov02_02337030
-	arm_func_end ov02_02336FBC
+_0233702C: .word Keyboard_TaskEnd4
+	arm_func_end Keyboard_TaskEnd3
 
-	arm_func_start ov02_02337030
-ov02_02337030: ; 0x02337030
+	arm_func_start Keyboard_TaskEnd4
+Keyboard_TaskEnd4: ; 0x02337030
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02337098 ; =ov02_0235AA5C
@@ -22418,28 +22418,28 @@ ov02_02337030: ; 0x02337030
 	mov r3, ip, lsr #0x10
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl ov02_02336574
+	bl Keyboard_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _023370A0 ; =ov02_023370A4
+	ldr r1, _023370A0 ; =Keyboard_TaskEnd5
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02337098: .word ov02_0235AA5C
 _0233709C: .word 0x01FF0000
-_023370A0: .word ov02_023370A4
-	arm_func_end ov02_02337030
+_023370A0: .word Keyboard_TaskEnd5
+	arm_func_end Keyboard_TaskEnd4
 
-	arm_func_start ov02_023370A4
-ov02_023370A4: ; 0x023370A4
+	arm_func_start Keyboard_TaskEnd5
+Keyboard_TaskEnd5: ; 0x023370A4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r1, r0
 	mov r0, #0
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	mov r5, #0
 	ldr r7, _0233717C ; =ov02_0235AA5C
 	mov r4, r5
@@ -22449,13 +22449,13 @@ _023370C4:
 	ldr r0, [r7]
 	add r0, r0, r5, lsl #4
 	ldr r0, [r0, r6, lsl #2]
-	bl ov02_0234DD9C
+	bl Dwci_FntlDelete
 	cmp r5, #0
 	bne _023370EC
 	ldr r0, [r7]
 	add r0, r0, r6, lsl #2
 	ldr r0, [r0, #0x104]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 _023370EC:
 	add r6, r6, #1
 	cmp r6, #4
@@ -22469,7 +22469,7 @@ _0233710C:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0xfc]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	add r5, r5, #1
 	cmp r5, #2
 	blt _0233710C
@@ -22479,7 +22479,7 @@ _02337130:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0xec]
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 	add r5, r5, #1
 	cmp r5, #4
 	blt _02337130
@@ -22489,20 +22489,20 @@ _02337154:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0x30]
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 	add r5, r5, #1
 	cmp r5, #0x2f
 	blt _02337154
 	ldr r0, _02337180 ; =ov02_0235AA5C
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0233717C: .word ov02_0235AA5C
 _02337180: .word ov02_0235AA5C
-	arm_func_end ov02_023370A4
+	arm_func_end Keyboard_TaskEnd5
 
-	arm_func_start ov02_02337184
-ov02_02337184: ; 0x02337184
+	arm_func_start Dwci_KB10lInit
+Dwci_KB10lInit: ; 0x02337184
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
 	ldr r0, _023374A4 ; =ov02_02352804
@@ -22516,7 +22516,7 @@ ov02_02337184: ; 0x02337184
 	strh r4, [sp, #0x1e]
 	strh r3, [sp, #0x20]
 	strh r2, [sp, #0x22]
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r8, _023374A8 ; =ov02_0235AA60
 	mov r6, #0
 	mov r1, #0x1f
@@ -22537,7 +22537,7 @@ ov02_02337184: ; 0x02337184
 _02337200:
 	mov r0, r5
 	mov r1, r4
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, [r8]
 	add r1, r1, r6, lsl #2
 	str r0, [r1, #0x10]
@@ -22566,7 +22566,7 @@ _02337200:
 _02337270:
 	ldrb r1, [r5], #1
 	mov r0, r4
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, [r8]
 	add r1, r1, r6, lsl #2
 	str r0, [r1, #0x38]
@@ -22599,7 +22599,7 @@ _023372EC:
 	ldrb r1, [sb], #1
 	mov r0, r8
 	mov r2, r7
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r2, [r4]
 	mov r1, r6
 	add r2, r2, sl, lsl #2
@@ -22609,13 +22609,13 @@ _023372EC:
 	add r0, r0, sl, lsl #2
 	ldr r0, [r0, #0x40]
 	mov r3, fp
-	bl ov02_0234D31C
+	bl Dwci_CelllSetEffect
 	ldr r0, [r4]
 	mov r1, r6
 	add r0, r0, sl, lsl #2
 	ldr r0, [r0, #0x40]
 	mov r2, #3
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	add sl, sl, #1
 	cmp sl, #2
 	blt _023372EC
@@ -22630,7 +22630,7 @@ _02337354:
 	mov r1, #0xc
 	mov r2, #4
 	str r0, [sp, #4]
-	bl ov02_0234DCC0
+	bl Dwci_FntlFormEx
 	ldr fp, _023374A8 ; =ov02_0235AA60
 	mov sb, #0
 	ldr r1, [fp]
@@ -22654,7 +22654,7 @@ _0233739C:
 	ldrh r2, [sp, #0x1e]
 	ldrh r3, [sp, #0x20]
 	ldr r0, [r0, sl, lsl #2]
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	ldrh r0, [sp, #0x1c]
 	add sb, sb, #1
 	cmp sb, #3
@@ -22665,7 +22665,7 @@ _0233739C:
 	mov r0, #0
 	ldr r1, [sp, #0x18]
 	mov r2, r0
-	bl ov02_0234D12C
+	bl Dwci_CelllForm
 	ldr r1, [sp, #0x10]
 	ldr r2, _023374A8 ; =ov02_0235AA60
 	add r1, r1, #3
@@ -22679,7 +22679,7 @@ _0233739C:
 	mov r0, #0
 	mov r1, #0x44
 	mov r2, #1
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r3, _023374A8 ; =ov02_0235AA60
 	mvn r1, #0
 	ldr r4, [r3]
@@ -22688,24 +22688,24 @@ _0233739C:
 	ldr r0, [r3]
 	mov r3, #0
 	ldr r0, [r0, #0x58]
-	bl ov02_0234D31C
+	bl Dwci_CelllSetEffect
 	ldr r0, _023374A8 ; =ov02_0235AA60
 	mvn r1, #0
 	ldr r0, [r0]
 	mov r2, #2
 	ldr r0, [r0, #0x58]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	mov r0, #0
-	ldr r1, _023374BC ; =ov02_02337560
+	ldr r1, _023374BC ; =Keyboard10_TaskStart0
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r2, _023374A8 ; =ov02_0235AA60
 	mov r1, #0xc0
 	ldr r2, [r2]
 	str r0, [r2, #0x5c]
 	mov r0, #0
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -22715,69 +22715,69 @@ _023374AC: .word 0xC1FFFCFF
 _023374B0: .word ov02_023527F0
 _023374B4: .word ov02_023527F4
 _023374B8: .word ov02_0235283C
-_023374BC: .word ov02_02337560
-	arm_func_end ov02_02337184
+_023374BC: .word Keyboard10_TaskStart0
+	arm_func_end Dwci_KB10lInit
 
-	arm_func_start ov02_023374C0
-ov02_023374C0: ; 0x023374C0
+	arm_func_start Dwci_KB10lEnd
+Dwci_KB10lEnd: ; 0x023374C0
 	stmdb sp!, {r3, lr}
 	ldr r0, _023374EC ; =ov02_0235AA60
 	ldr r0, [r0]
 	ldr r0, [r0, #0x58]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	ldr r0, _023374EC ; =ov02_0235AA60
-	ldr r1, _023374F0 ; =ov02_023383E0
+	ldr r1, _023374F0 ; =Keyboard10_TaskEnd0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x5c]
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023374EC: .word ov02_0235AA60
-_023374F0: .word ov02_023383E0
-	arm_func_end ov02_023374C0
+_023374F0: .word Keyboard10_TaskEnd0
+	arm_func_end Dwci_KB10lEnd
 
-	arm_func_start ov02_023374F4
-ov02_023374F4: ; 0x023374F4
+	arm_func_start Dwci_KB10lGet
+Dwci_KB10lGet: ; 0x023374F4
 	ldr r0, _02337504 ; =ov02_0235AA60
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x60]
 	bx lr
 	.align 2, 0
 _02337504: .word ov02_0235AA60
-	arm_func_end ov02_023374F4
+	arm_func_end Dwci_KB10lGet
 
-	arm_func_start ov02_02337508
-ov02_02337508: ; 0x02337508
+	arm_func_start Dwci_KB10lSetErase
+Dwci_KB10lSetErase: ; 0x02337508
 	ldr r1, _02337518 ; =ov02_0235AA60
 	ldr r1, [r1]
 	strb r0, [r1, #0x66]
 	bx lr
 	.align 2, 0
 _02337518: .word ov02_0235AA60
-	arm_func_end ov02_02337508
+	arm_func_end Dwci_KB10lSetErase
 
-	arm_func_start ov02_0233751C
-ov02_0233751C: ; 0x0233751C
+	arm_func_start Dwci_KB10lSetInput
+Dwci_KB10lSetInput: ; 0x0233751C
 	ldr r1, _0233752C ; =ov02_0235AA60
 	ldr r1, [r1]
 	strb r0, [r1, #0x67]
 	bx lr
 	.align 2, 0
 _0233752C: .word ov02_0235AA60
-	arm_func_end ov02_0233751C
+	arm_func_end Dwci_KB10lSetInput
 
-	arm_func_start ov02_02337530
-ov02_02337530: ; 0x02337530
+	arm_func_start Dwci_KB10lSetShift
+Dwci_KB10lSetShift: ; 0x02337530
 	ldr r1, _02337540 ; =ov02_0235AA60
 	ldr r1, [r1]
 	strb r0, [r1, #0x68]
 	bx lr
 	.align 2, 0
 _02337540: .word ov02_0235AA60
-	arm_func_end ov02_02337530
+	arm_func_end Dwci_KB10lSetShift
 
-	arm_func_start ov02_02337544
-ov02_02337544: ; 0x02337544
+	arm_func_start Dwci_KB10lIsInit
+Dwci_KB10lIsInit: ; 0x02337544
 	ldr r0, _0233755C ; =ov02_0235AA60
 	ldr r0, [r0]
 	cmp r0, #0
@@ -22786,10 +22786,10 @@ ov02_02337544: ; 0x02337544
 	bx lr
 	.align 2, 0
 _0233755C: .word ov02_0235AA60
-	arm_func_end ov02_02337544
+	arm_func_end Dwci_KB10lIsInit
 
-	arm_func_start ov02_02337560
-ov02_02337560: ; 0x02337560
+	arm_func_start Keyboard10_TaskStart0
+Keyboard10_TaskStart0: ; 0x02337560
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r2, _023375D8 ; =ov02_0235AA60
@@ -22807,28 +22807,28 @@ ov02_02337560: ; 0x02337560
 	cmp r1, #0x4c
 	mov r0, #0
 	ble _023375B0
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _023375B0:
 	mov r1, #0x4c
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	mov r0, #1
 	mov r1, #0xc0
-	bl ov02_02337F80
-	ldr r1, _023375E0 ; =ov02_023375E4
+	bl Keyboard10_Disp
+	ldr r1, _023375E0 ; =Keyboard10_TaskStart1
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023375D8: .word ov02_0235AA60
 _023375DC: .word 0x01FF0000
-_023375E0: .word ov02_023375E4
-	arm_func_end ov02_02337560
+_023375E0: .word Keyboard10_TaskStart1
+	arm_func_end Keyboard10_TaskStart0
 
-	arm_func_start ov02_023375E4
-ov02_023375E4: ; 0x023375E4
+	arm_func_start Keyboard10_TaskStart1
+Keyboard10_TaskStart1: ; 0x023375E4
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r2, _0233765C ; =ov02_0235AA60
@@ -22846,28 +22846,28 @@ ov02_023375E4: ; 0x023375E4
 	cmp r1, #0x63
 	mov r0, #1
 	ble _02337634
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _02337634:
 	mov r1, #0x63
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	mov r0, #2
 	mov r1, #0xc0
-	bl ov02_02337F80
-	ldr r1, _02337664 ; =ov02_02337668
+	bl Keyboard10_Disp
+	ldr r1, _02337664 ; =Keyboard10_TaskStart2
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233765C: .word ov02_0235AA60
 _02337660: .word 0x01FF0000
-_02337664: .word ov02_02337668
-	arm_func_end ov02_023375E4
+_02337664: .word Keyboard10_TaskStart2
+	arm_func_end Keyboard10_TaskStart1
 
-	arm_func_start ov02_02337668
-ov02_02337668: ; 0x02337668
+	arm_func_start Keyboard10_TaskStart2
+Keyboard10_TaskStart2: ; 0x02337668
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r2, _023376E0 ; =ov02_0235AA60
@@ -22885,28 +22885,28 @@ ov02_02337668: ; 0x02337668
 	cmp r1, #0x7a
 	mov r0, #2
 	ble _023376B8
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _023376B8:
 	mov r1, #0x7a
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	mov r0, #3
 	mov r1, #0xc0
-	bl ov02_02337F80
-	ldr r1, _023376E8 ; =ov02_023376EC
+	bl Keyboard10_Disp
+	ldr r1, _023376E8 ; =Keyboard10_TaskStart3
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023376E0: .word ov02_0235AA60
 _023376E4: .word 0x01FF0000
-_023376E8: .word ov02_023376EC
-	arm_func_end ov02_02337668
+_023376E8: .word Keyboard10_TaskStart3
+	arm_func_end Keyboard10_TaskStart2
 
-	arm_func_start ov02_023376EC
-ov02_023376EC: ; 0x023376EC
+	arm_func_start Keyboard10_TaskStart3
+Keyboard10_TaskStart3: ; 0x023376EC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r2, _02337764 ; =ov02_0235AA60
@@ -22924,28 +22924,28 @@ ov02_023376EC: ; 0x023376EC
 	cmp r1, #0x91
 	mov r0, #3
 	ble _0233773C
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _0233773C:
 	mov r1, #0x91
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	mov r0, #4
 	mov r1, #0xc0
-	bl ov02_02337F80
-	ldr r1, _0233776C ; =ov02_02337770
+	bl Keyboard10_Disp
+	ldr r1, _0233776C ; =Keyboard10_TaskStart4
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02337764: .word ov02_0235AA60
 _02337768: .word 0x01FF0000
-_0233776C: .word ov02_02337770
-	arm_func_end ov02_023376EC
+_0233776C: .word Keyboard10_TaskStart4
+	arm_func_end Keyboard10_TaskStart3
 
-	arm_func_start ov02_02337770
-ov02_02337770: ; 0x02337770
+	arm_func_start Keyboard10_TaskStart4
+Keyboard10_TaskStart4: ; 0x02337770
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _023377DC ; =ov02_0235AA60
@@ -22955,46 +22955,46 @@ ov02_02337770: ; 0x02337770
 	ldr r0, [r0, #0x40]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp]
 	sub r1, r0, #0xc
 	str r1, [sp]
 	cmp r1, #0xaa
 	mov r0, #4
 	ble _023377BC
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _023377BC:
 	mov r1, #0xaa
-	bl ov02_02337F80
-	bl ov02_023382A8
-	ldr r1, _023377E0 ; =ov02_023377E4
+	bl Keyboard10_Disp
+	bl Keyboard10_DispFocus
+	ldr r1, _023377E0 ; =Keyboard10_TaskMain
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023377DC: .word ov02_0235AA60
-_023377E0: .word ov02_023377E4
-	arm_func_end ov02_02337770
+_023377E0: .word Keyboard10_TaskMain
+	arm_func_end Keyboard10_TaskStart4
 
-	arm_func_start ov02_023377E4
-ov02_023377E4: ; 0x023377E4
+	arm_func_start Keyboard10_TaskMain
+Keyboard10_TaskMain: ; 0x023377E4
 	stmdb sp!, {r3, lr}
-	bl ov02_023377FC
-	bl ov02_023379D8
-	bl ov02_02337BA8
-	bl ov02_02337DE4
+	bl Keyboard10_TouchTriger
+	bl Keyboard10_TouchRelease
+	bl Keyboard10_Touch
+	bl Keyboard10_Key
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_023377E4
+	arm_func_end Keyboard10_TaskMain
 
-	arm_func_start ov02_023377FC
-ov02_023377FC: ; 0x023377FC
+	arm_func_start Keyboard10_TouchTriger
+Keyboard10_TouchTriger: ; 0x023377FC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r0, _023379B8 ; =ov02_02352F34
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -23010,9 +23010,9 @@ _02337838:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _02337898
 	ldr r0, _023379BC ; =ov02_0235AA60
@@ -23021,12 +23021,12 @@ _02337838:
 	cmp r0, #0
 	bne _0233787C
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0233787C:
 	mov r0, #0
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _023379BC ; =ov02_0235AA60
 	add sp, sp, #8
 	ldr r0, [r0]
@@ -23045,9 +23045,9 @@ _023378B8:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _02337940
 	cmp r4, #0
@@ -23067,12 +23067,12 @@ _023378F4:
 	bne _02337920
 _02337910:
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02337920:
 	mov r0, #0
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _023379BC ; =ov02_0235AA60
 	add r1, r4, #0xa
 	ldr r0, [r0]
@@ -23092,13 +23092,13 @@ _02337960:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r4
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _023379A0
 	mov r0, #0
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _023379BC ; =ov02_0235AA60
 	add r1, r7, #0xc
 	ldr r0, [r0]
@@ -23121,10 +23121,10 @@ _023379C8: .word ov02_0235282C
 _023379CC: .word ov02_0235280C
 _023379D0: .word ov02_02352834
 _023379D4: .word ov02_02352810
-	arm_func_end ov02_023377FC
+	arm_func_end Keyboard10_TouchTriger
 
-	arm_func_start ov02_023379D8
-ov02_023379D8: ; 0x023379D8
+	arm_func_start Keyboard10_TouchRelease
+Keyboard10_TouchRelease: ; 0x023379D8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r1, _02337B7C ; =ov02_0235AA60
@@ -23132,7 +23132,7 @@ ov02_023379D8: ; 0x023379D8
 	ldr r1, [r1]
 	mov r2, #0
 	strb r2, [r1, #0x60]
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -23144,9 +23144,9 @@ _02337A14:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	beq _02337A6C
 	ldr r0, _02337B7C ; =ov02_0235AA60
@@ -23160,7 +23160,7 @@ _02337A14:
 	strb r1, [r2, #0x60]
 	ldr r0, [r0]
 	strb r4, [r0, #0x63]
-	bl ov02_023382A8
+	bl Keyboard10_DispFocus
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02337A6C:
@@ -23176,9 +23176,9 @@ _02337A8C:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	beq _02337AE8
 	ldr r0, _02337B7C ; =ov02_0235AA60
@@ -23193,7 +23193,7 @@ _02337A8C:
 	strb r1, [r3, #0x60]
 	ldr r0, [r0]
 	strb r2, [r0, #0x63]
-	bl ov02_023382A8
+	bl Keyboard10_DispFocus
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02337AE8:
@@ -23209,9 +23209,9 @@ _02337B08:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	beq _02337B64
 	ldr r0, _02337B7C ; =ov02_0235AA60
@@ -23226,7 +23226,7 @@ _02337B08:
 	strb r1, [r3, #0x60]
 	ldr r0, [r0]
 	strb r2, [r0, #0x63]
-	bl ov02_023382A8
+	bl Keyboard10_DispFocus
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02337B64:
@@ -23248,14 +23248,14 @@ _02337B98: .word ov02_02352800
 _02337B9C: .word ov02_02352834
 _02337BA0: .word ov02_02352810
 _02337BA4: .word ov02_023527FC
-	arm_func_end ov02_023379D8
+	arm_func_end Keyboard10_TouchRelease
 
-	arm_func_start ov02_02337BA8
-ov02_02337BA8: ; 0x02337BA8
+	arm_func_start Keyboard10_Touch
+Keyboard10_Touch: ; 0x02337BA8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r0, _02337D78 ; =ov02_02352F34
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	beq _02337D58
 	ldr r7, _02337D7C ; =ov02_02352856
@@ -23266,9 +23266,9 @@ _02337BD0:
 	mov r0, r7
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r4
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	beq _02337C10
 	ldr r0, _02337D84 ; =ov02_0235AA60
@@ -23277,7 +23277,7 @@ _02337BD0:
 	cmp r0, r6
 	bne _02337D58
 	mov r0, r6
-	bl ov02_02337D98
+	bl Keyboard10_ExchangeBack
 	b _02337D60
 _02337C10:
 	add r6, r6, #1
@@ -23292,9 +23292,9 @@ _02337C30:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r4
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	beq _02337CE8
 	ldr r1, _02337D84 ; =ov02_0235AA60
@@ -23303,7 +23303,7 @@ _02337C30:
 	ldrsb r1, [r1, #0x61]
 	cmp r1, r0
 	bne _02337D58
-	bl ov02_02337D98
+	bl Keyboard10_ExchangeBack
 	cmp r7, #0
 	bne _02337D60
 	ldr r0, _02337D84 ; =ov02_0235AA60
@@ -23320,7 +23320,7 @@ _02337C30:
 	cmp r1, #0
 	bne _02337CC8
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02337D84 ; =ov02_0235AA60
 	mvn r1, #0
 	ldr r0, [r0]
@@ -23349,9 +23349,9 @@ _02337D08:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r4
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	beq _02337D48
 	ldr r1, _02337D84 ; =ov02_0235AA60
@@ -23360,7 +23360,7 @@ _02337D08:
 	ldrsb r1, [r1, #0x61]
 	cmp r1, r0
 	bne _02337D58
-	bl ov02_02337D98
+	bl Keyboard10_ExchangeBack
 	b _02337D60
 _02337D48:
 	add r7, r7, #1
@@ -23369,7 +23369,7 @@ _02337D48:
 	blt _02337D08
 _02337D58:
 	mvn r0, #0
-	bl ov02_02337D98
+	bl Keyboard10_ExchangeBack
 _02337D60:
 	ldr r0, _02337D84 ; =ov02_0235AA60
 	mov r1, #0
@@ -23386,10 +23386,10 @@ _02337D88: .word ov02_0235282C
 _02337D8C: .word ov02_0235280C
 _02337D90: .word ov02_02352834
 _02337D94: .word ov02_02352810
-	arm_func_end ov02_02337BA8
+	arm_func_end Keyboard10_Touch
 
-	arm_func_start ov02_02337D98
-ov02_02337D98: ; 0x02337D98
+	arm_func_start Keyboard10_ExchangeBack
+Keyboard10_ExchangeBack: ; 0x02337D98
 	stmdb sp!, {r4, lr}
 	ldr r1, _02337DE0 ; =ov02_0235AA60
 	mov r4, r0
@@ -23398,53 +23398,53 @@ ov02_02337D98: ; 0x02337D98
 	cmp r4, r1
 	ldmeqia sp!, {r4, pc}
 	mov r1, #1
-	bl ov02_023381E0
+	bl Keyboard10_ChangeColor
 	ldr r0, _02337DE0 ; =ov02_0235AA60
 	mov r1, #0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x62]
-	bl ov02_023381E0
+	bl Keyboard10_ChangeColor
 	ldr r0, _02337DE0 ; =ov02_0235AA60
 	ldr r0, [r0]
 	strb r4, [r0, #0x62]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02337DE0: .word ov02_0235AA60
-	arm_func_end ov02_02337D98
+	arm_func_end Keyboard10_ExchangeBack
 
-	arm_func_start ov02_02337DE4
-ov02_02337DE4: ; 0x02337DE4
+	arm_func_start Keyboard10_Key
+Keyboard10_Key: ; 0x02337DE4
 	stmdb sp!, {r3, lr}
 	mov r0, #0x20
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02337E00
 	mov r0, #0
-	bl ov02_02338334
+	bl Keyboard10_MoveFocus
 _02337E00:
 	mov r0, #0x40
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02337E18
 	mov r0, #1
-	bl ov02_02338334
+	bl Keyboard10_MoveFocus
 _02337E18:
 	mov r0, #0x10
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02337E30
 	mov r0, #2
-	bl ov02_02338334
+	bl Keyboard10_MoveFocus
 _02337E30:
 	mov r0, #0x80
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02337E48
 	mov r0, #3
-	bl ov02_02338334
+	bl Keyboard10_MoveFocus
 _02337E48:
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02337EF4
 	ldr r0, _02337F70 ; =ov02_0235AA60
@@ -23461,7 +23461,7 @@ _02337E48:
 	ldmia sp!, {r3, pc}
 _02337E88:
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r3, pc}
 _02337E94:
 	sub r1, r2, #0xa
@@ -23478,7 +23478,7 @@ _02337E94:
 	bne _02337ED0
 _02337EC4:
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r3, pc}
 _02337ED0:
 	ldr r1, _02337F78 ; =ov02_02352800
@@ -23493,7 +23493,7 @@ _02337EE4:
 	strb r1, [r0, #0x60]
 _02337EF4:
 	mov r0, #2
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02337F4C
 	ldr r0, _02337F70 ; =ov02_0235AA60
@@ -23505,7 +23505,7 @@ _02337EF4:
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02337F70 ; =ov02_0235AA60
 	mov r1, #1
 	ldr r0, [r0]
@@ -23517,7 +23517,7 @@ _02337F40:
 	ldmia sp!, {r3, pc}
 _02337F4C:
 	mov r0, #2
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _02337F70 ; =ov02_0235AA60
@@ -23530,10 +23530,10 @@ _02337F70: .word ov02_0235AA60
 _02337F74: .word ov02_023528F0
 _02337F78: .word ov02_02352800
 _02337F7C: .word ov02_023527FC
-	arm_func_end ov02_02337DE4
+	arm_func_end Keyboard10_Key
 
-	arm_func_start ov02_02337F80
-ov02_02337F80: ; 0x02337F80
+	arm_func_start Keyboard10_Disp
+Keyboard10_Disp: ; 0x02337F80
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	ldr r2, _023381C4 ; =ov02_02352804
@@ -23618,7 +23618,7 @@ _02338094:
 	ldr r0, [r3, sl, lsl #2]
 	ldr r3, [r2, #0x48]
 	mov r2, sb
-	bl ov02_0234E2BC
+	bl Dwci_FntlDisp
 _023380CC:
 	add r3, sp, #9
 	ldrb r0, [r3, sl]
@@ -23670,7 +23670,7 @@ _02338170:
 	ldr r0, [r0, #0x40]
 	mov r2, fp
 	mov r3, fp
-	bl ov02_0234D31C
+	bl Dwci_CelllSetEffect
 	ldr r0, [r4]
 	mov r1, r8, lsl #2
 	add r0, r0, r8, lsl #2
@@ -23678,7 +23678,7 @@ _02338170:
 	ldrh r2, [r5, r1]
 	mov r1, r6
 	mov r3, sb
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldrb r0, [r7, sl]
 	add r8, r8, #1
 	cmp r8, r0
@@ -23693,10 +23693,10 @@ _023381D0: .word 0xC1FFFCFF
 _023381D4: .word 0xFE00FF00
 _023381D8: .word ov02_0235282C
 _023381DC: .word ov02_02352834
-	arm_func_end ov02_02337F80
+	arm_func_end Keyboard10_Disp
 
-	arm_func_start ov02_023381E0
-ov02_023381E0: ; 0x023381E0
+	arm_func_start Keyboard10_ChangeColor
+Keyboard10_ChangeColor: ; 0x023381E0
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	ldmltia sp!, {r3, pc}
@@ -23744,16 +23744,16 @@ _02338270:
 	ldr r0, [r0, #0x40]
 	mvn r1, #0
 	mov r2, #0
-	bl ov02_0234D3C0
+	bl Dwci_CelllSetPalette
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233829C: .word ov02_0235AA60
 _023382A0: .word ov02_023527F8
 _023382A4: .word ov02_023527EC
-	arm_func_end ov02_023381E0
+	arm_func_end Keyboard10_ChangeColor
 
-	arm_func_start ov02_023382A8
-ov02_023382A8: ; 0x023382A8
+	arm_func_start Keyboard10_DispFocus
+Keyboard10_DispFocus: ; 0x023382A8
 	stmdb sp!, {r4, lr}
 	ldr r0, _02338328 ; =ov02_0235AA60
 	ldr r1, [r0]
@@ -23763,17 +23763,17 @@ ov02_023382A8: ; 0x023382A8
 	ldr r0, [r1, #0x58]
 	movgt r4, #0x45
 	mov r1, #0
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, r0
 	mov r1, r4
 	mov r0, #0
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, _02338328 ; =ov02_0235AA60
 	mvn r1, #0
 	ldr r0, [r0]
 	mov r2, #2
 	ldr r0, [r0, #0x58]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	ldr r0, _02338328 ; =ov02_0235AA60
 	ldr r2, _0233832C ; =ov02_0235287E
 	ldr r0, [r0]
@@ -23784,16 +23784,16 @@ ov02_023382A8: ; 0x023382A8
 	mov ip, ip, lsl #2
 	ldrh r2, [r2, ip]
 	ldrh r3, [r3, ip]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02338328: .word ov02_0235AA60
 _0233832C: .word ov02_0235287E
 _02338330: .word ov02_02352880
-	arm_func_end ov02_023382A8
+	arm_func_end Keyboard10_DispFocus
 
-	arm_func_start ov02_02338334
-ov02_02338334: ; 0x02338334
+	arm_func_start Keyboard10_MoveFocus
+Keyboard10_MoveFocus: ; 0x02338334
 	stmdb sp!, {r3, lr}
 	ldr r1, _023383D8 ; =ov02_0235AA60
 	ldr r2, _023383DC ; =ov02_023528B6
@@ -23834,17 +23834,17 @@ _023383A0:
 	movne r0, #2
 	strneb r0, [r2, #0x63]
 _023383C8:
-	bl ov02_023382A8
+	bl Keyboard10_DispFocus
 	mov r0, #8
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023383D8: .word ov02_0235AA60
 _023383DC: .word ov02_023528B6
-	arm_func_end ov02_02338334
+	arm_func_end Keyboard10_MoveFocus
 
-	arm_func_start ov02_023383E0
-ov02_023383E0: ; 0x023383E0
+	arm_func_start Keyboard10_TaskEnd0
+Keyboard10_TaskEnd0: ; 0x023383E0
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _0233844C ; =ov02_0235AA60
@@ -23852,7 +23852,7 @@ ov02_023383E0: ; 0x023383E0
 	ldr r0, [r1]
 	mov r1, #0
 	ldr r0, [r0, #0x40]
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	ldr r2, [r0]
 	ldr r0, _02338450 ; =0x01FF0000
 	and r1, r2, #0xff
@@ -23862,24 +23862,24 @@ ov02_023383E0: ; 0x023383E0
 	str r1, [sp]
 	mov r0, #4
 	str r2, [sp, #4]
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _02338454 ; =ov02_02338458
+	ldr r1, _02338454 ; =Keyboard10_TaskEnd1
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233844C: .word ov02_0235AA60
 _02338450: .word 0x01FF0000
-_02338454: .word ov02_02338458
-	arm_func_end ov02_023383E0
+_02338454: .word Keyboard10_TaskEnd1
+	arm_func_end Keyboard10_TaskEnd0
 
-	arm_func_start ov02_02338458
-ov02_02338458: ; 0x02338458
+	arm_func_start Keyboard10_TaskEnd1
+Keyboard10_TaskEnd1: ; 0x02338458
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _023384BC ; =ov02_0235AA60
@@ -23895,24 +23895,24 @@ ov02_02338458: ; 0x02338458
 	mov r2, r3, lsr #0x10
 	str r1, [sp]
 	str r2, [sp, #4]
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _023384C4 ; =ov02_023384C8
+	ldr r1, _023384C4 ; =Keyboard10_TaskEnd2
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023384BC: .word ov02_0235AA60
 _023384C0: .word 0x01FF0000
-_023384C4: .word ov02_023384C8
-	arm_func_end ov02_02338458
+_023384C4: .word Keyboard10_TaskEnd2
+	arm_func_end Keyboard10_TaskEnd1
 
-	arm_func_start ov02_023384C8
-ov02_023384C8: ; 0x023384C8
+	arm_func_start Keyboard10_TaskEnd2
+Keyboard10_TaskEnd2: ; 0x023384C8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _0233852C ; =ov02_0235AA60
@@ -23928,24 +23928,24 @@ ov02_023384C8: ; 0x023384C8
 	mov r2, r3, lsr #0x10
 	str r1, [sp]
 	str r2, [sp, #4]
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _02338534 ; =ov02_02338538
+	ldr r1, _02338534 ; =Keyboard10_TaskEnd3
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233852C: .word ov02_0235AA60
 _02338530: .word 0x01FF0000
-_02338534: .word ov02_02338538
-	arm_func_end ov02_023384C8
+_02338534: .word Keyboard10_TaskEnd3
+	arm_func_end Keyboard10_TaskEnd2
 
-	arm_func_start ov02_02338538
-ov02_02338538: ; 0x02338538
+	arm_func_start Keyboard10_TaskEnd3
+Keyboard10_TaskEnd3: ; 0x02338538
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _0233859C ; =ov02_0235AA60
@@ -23961,24 +23961,24 @@ ov02_02338538: ; 0x02338538
 	mov r2, r3, lsr #0x10
 	str r1, [sp]
 	str r2, [sp, #4]
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _023385A4 ; =ov02_023385A8
+	ldr r1, _023385A4 ; =Keyboard10_TaskEnd4
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233859C: .word ov02_0235AA60
 _023385A0: .word 0x01FF0000
-_023385A4: .word ov02_023385A8
-	arm_func_end ov02_02338538
+_023385A4: .word Keyboard10_TaskEnd4
+	arm_func_end Keyboard10_TaskEnd3
 
-	arm_func_start ov02_023385A8
-ov02_023385A8: ; 0x023385A8
+	arm_func_start Keyboard10_TaskEnd4
+Keyboard10_TaskEnd4: ; 0x023385A8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _0233860C ; =ov02_0235AA60
@@ -23994,38 +23994,38 @@ ov02_023385A8: ; 0x023385A8
 	mov r2, r3, lsr #0x10
 	str r1, [sp]
 	str r2, [sp, #4]
-	bl ov02_02337F80
+	bl Keyboard10_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
 	ldmltia sp!, {r4, pc}
-	ldr r1, _02338614 ; =ov02_02338618
+	ldr r1, _02338614 ; =Keyboard10_TaskEnd5
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233860C: .word ov02_0235AA60
 _02338610: .word 0x01FF0000
-_02338614: .word ov02_02338618
-	arm_func_end ov02_023385A8
+_02338614: .word Keyboard10_TaskEnd5
+	arm_func_end Keyboard10_TaskEnd4
 
-	arm_func_start ov02_02338618
-ov02_02338618: ; 0x02338618
+	arm_func_start Keyboard10_TaskEnd5
+Keyboard10_TaskEnd5: ; 0x02338618
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, r0
 	mov r0, #0
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldr r4, _023386D0 ; =ov02_0235AA60
 	mov r5, #0
 _02338630:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0x48]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	ldr r0, [r4]
 	ldr r0, [r0, r5, lsl #2]
-	bl ov02_0234DD9C
+	bl Dwci_FntlDelete
 	add r5, r5, #1
 	cmp r5, #4
 	blt _02338630
@@ -24035,7 +24035,7 @@ _02338660:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0x40]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	add r5, r5, #1
 	cmp r5, #2
 	blt _02338660
@@ -24045,7 +24045,7 @@ _02338684:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0x38]
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 	add r5, r5, #1
 	cmp r5, #2
 	blt _02338684
@@ -24055,25 +24055,25 @@ _023386A8:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0x10]
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 	add r5, r5, #1
 	cmp r5, #0xa
 	blt _023386A8
 	ldr r0, _023386D4 ; =ov02_0235AA60
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023386D0: .word ov02_0235AA60
 _023386D4: .word ov02_0235AA60
-	arm_func_end ov02_02338618
+	arm_func_end Keyboard10_TaskEnd5
 
-	arm_func_start ov02_023386D8
-ov02_023386D8: ; 0x023386D8
+	arm_func_start Dwci_AosslInit
+Dwci_AosslInit: ; 0x023386D8
 	stmdb sp!, {lr}
 	sub sp, sp, #0x104
 	mov r0, #0x26c
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r3, _023387D8 ; =ov02_0235AA64
 	add r1, sp, #0
 	str r0, [r3, #4]
@@ -24125,9 +24125,9 @@ _02338744:
 	ldr r0, [r1, #4]
 	add r0, r0, #0x110
 	bl OS_GetMacAddress
-	ldr r0, _023387E0 ; =ov02_02338898
-	ldr r1, _023387E4 ; =ov02_023388A8
-	blx ov02_023300A0
+	ldr r0, _023387E0 ; =AossAlloc
+	ldr r1, _023387E4 ; =AossFree
+	blx Aossi_InitLocal
 	cmp r0, #0
 	addeq sp, sp, #0x104
 	ldmeqia sp!, {pc}
@@ -24137,15 +24137,15 @@ _02338744:
 	.align 2, 0
 _023387D8: .word ov02_0235AA64
 _023387DC: .word ov02_023528FC
-_023387E0: .word ov02_02338898
-_023387E4: .word ov02_023388A8
-	arm_func_end ov02_023386D8
+_023387E0: .word AossAlloc
+_023387E4: .word AossFree
+	arm_func_end Dwci_AosslInit
 
-	arm_func_start ov02_023387E8
-ov02_023387E8: ; 0x023387E8
+	arm_func_start Dwci_AosslEnd
+Dwci_AosslEnd: ; 0x023387E8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	blx ov02_02330164
+	blx Aossi_EndLocal
 	cmp r4, #0
 	beq _02338824
 	ldr r0, _02338830 ; =ov02_0235AA64
@@ -24157,22 +24157,22 @@ ov02_023387E8: ; 0x023387E8
 	bne _02338824
 	add r0, r2, #0x17
 	add r0, r0, #0x100
-	bl ov02_02347C0C
+	bl Dwci_SettinglSetAoss
 _02338824:
 	ldr r0, _02338834 ; =ov02_0235AA68
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02338830: .word ov02_0235AA64
 _02338834: .word ov02_0235AA68
-	arm_func_end ov02_023387E8
+	arm_func_end Dwci_AosslEnd
 
-	arm_func_start ov02_02338838
-ov02_02338838: ; 0x02338838
+	arm_func_start Dwci_AosslStart
+Dwci_AosslStart: ; 0x02338838
 	stmdb sp!, {r3, lr}
 	ldr r0, _02338894 ; =ov02_0235AA64
 	ldr r0, [r0, #4]
-	blx ov02_0232DD8C
+	blx Aossi_Init
 	cmp r0, #0
 	bne _02338860
 	ldr r1, _02338894 ; =ov02_0235AA64
@@ -24197,63 +24197,63 @@ _0233888C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02338894: .word ov02_0235AA64
-	arm_func_end ov02_02338838
+	arm_func_end Dwci_AosslStart
 
-	arm_func_start ov02_02338898
-ov02_02338898: ; 0x02338898
-	ldr ip, _023388A4 ; =ov02_0234E7B4
+	arm_func_start AossAlloc
+AossAlloc: ; 0x02338898
+	ldr ip, _023388A4 ; =Dwci_HeaplAllocEx
 	mov r1, #0x20
 	bx ip
 	.align 2, 0
-_023388A4: .word ov02_0234E7B4
-	arm_func_end ov02_02338898
+_023388A4: .word Dwci_HeaplAllocEx
+	arm_func_end AossAlloc
 
-	arm_func_start ov02_023388A8
-ov02_023388A8: ; 0x023388A8
-	ldr ip, _023388B0 ; =ov02_0234E81C
+	arm_func_start AossFree
+AossFree: ; 0x023388A8
+	ldr ip, _023388B0 ; =Dwci_HeaplFree2
 	bx ip
 	.align 2, 0
-_023388B0: .word ov02_0234E81C
-	arm_func_end ov02_023388A8
+_023388B0: .word Dwci_HeaplFree2
+	arm_func_end AossFree
 
-	arm_func_start ov02_023388B4
-ov02_023388B4: ; 0x023388B4
+	arm_func_start Dwc_StartUtility
+Dwc_StartUtility: ; 0x023388B4
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r3, _02338950 ; =ov02_0235AA6C
 	str r0, [r3, #4]
 	mov r0, r1
 	mov r1, r2
-	bl ov02_0233895C
+	bl Main_CheckParam
 	cmp r0, #0
 	mvneq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl ov00_022DBC94
+	bl Dwc_Auth_GetCustomNas
 	mov r6, r0
 	ldr r0, _02338954 ; =ov02_023534FC
 	bl Dwc_Auth_SetCustomNas
 	ldr r0, _02338950 ; =ov02_0235AA6C
 	mov r1, #0
 	strb r1, [r0, #1]
-	bl ov02_023389D8
-	bl ov02_02338AA0
-	bl ov02_02348024
-	ldr r0, _02338958 ; =ov02_0233963C
-	bl ov02_02338D68
+	bl Main_InitGame
+	bl Main_InitGraph
+	bl Dwci_SndlInit
+	ldr r0, _02338958 ; =Dwci_SceneInit
+	bl Dwci_ChangeScene
 	ldr r4, _02338950 ; =ov02_0235AA6C
 	mov r5, #0
 _02338910:
-	bl ov02_0234E90C
+	bl Dwci_IptlRead
 	ldr r0, [r4, #0xc]
 	blx r0
 	mov r0, r5
-	bl ov02_0234F9E8
-	bl ov02_0234EF6C
-	bl ov02_0234F850
+	bl Dwci_TsklAct
+	bl Dwci_IptlCheckFold
+	bl Dwci_SetLedWireless
 	bl OS_WaitVBlankIntr
 	ldrb r0, [r4, #1]
 	cmp r0, #0
 	beq _02338910
-	bl ov02_02338D18
+	bl Main_ProcEnd
 	mov r0, r6
 	bl Dwc_Auth_SetCustomNas
 	mov r0, #0
@@ -24261,11 +24261,11 @@ _02338910:
 	.align 2, 0
 _02338950: .word ov02_0235AA6C
 _02338954: .word ov02_023534FC
-_02338958: .word ov02_0233963C
-	arm_func_end ov02_023388B4
+_02338958: .word Dwci_SceneInit
+	arm_func_end Dwc_StartUtility
 
-	arm_func_start ov02_0233895C
-ov02_0233895C: ; 0x0233895C
+	arm_func_start Main_CheckParam
+Main_CheckParam: ; 0x0233895C
 	ldr r2, _023389D4 ; =ov02_0235AA6C
 	cmp r0, #0
 	strb r0, [r2]
@@ -24302,10 +24302,10 @@ _023389CC:
 	bx lr
 	.align 2, 0
 _023389D4: .word ov02_0235AA6C
-	arm_func_end ov02_0233895C
+	arm_func_end Main_CheckParam
 
-	arm_func_start ov02_023389D8
-ov02_023389D8: ; 0x023389D8
+	arm_func_start Main_InitGame
+Main_InitGame: ; 0x023389D8
 	stmdb sp!, {r3, lr}
 	ldr r2, _02338A94 ; =0x04000208
 	mov r0, #0
@@ -24328,7 +24328,7 @@ _02338A10:
 _02338A20:
 	mov r0, #0
 	bl GX_VBlankIntr
-	bl sub_02076070
+	bl FX_Init
 	mvn r0, #0
 	bl FS_Init
 	bl TP_Init
@@ -24338,31 +24338,31 @@ _02338A20:
 	ldr r0, [r1]
 	bic r0, r0, #0x10000
 	str r0, [r1]
-	bl ov02_0234F610
+	bl Dwci_ClearVram
 	ldr r0, _02338A9C ; =ov02_0235AA6C
 	ldr r0, [r0, #4]
-	bl ov02_0234E704
-	bl ov02_0234EFE8
-	bl ov02_0234F88C
-	bl ov02_0234CB8C
-	bl ov02_0234E858
-	bl ov02_0234D860
+	bl Dwci_HeaplInit
+	bl Dwci_ItrlIntr
+	bl Dwci_TsklInit
+	bl Dwci_ArclInit
+	bl Dwci_IptlInit
+	bl Dwci_EfflInit
 	mov r0, #0x700
 	mov r1, #0x20
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	str r0, [sp]
 	bl Dwc_BM_Init
 	add r0, sp, #0
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02338A94: .word 0x04000208
 _02338A98: .word 0x04001000
 _02338A9C: .word ov02_0235AA6C
-	arm_func_end ov02_023389D8
+	arm_func_end Main_InitGame
 
-	arm_func_start ov02_02338AA0
-ov02_02338AA0: ; 0x02338AA0
+	arm_func_start Main_InitGraph
+Main_InitGraph: ; 0x02338AA0
 	stmdb sp!, {r4, lr}
 	mov r0, #0
 	bl GX_VBlankIntr
@@ -24504,10 +24504,10 @@ ov02_02338AA0: ; 0x02338AA0
 	ldrh r0, [r1]
 	bic r0, r0, #0x8000
 	strh r0, [r1]
-	bl ov02_0234DB70
-	bl ov02_0234F190
-	bl ov02_0234F324
-	bl ov02_0234D004
+	bl Dwci_FntlInit
+	bl Dwci_ObjlInit
+	bl Dwci_OvrlInit
+	bl Dwci_CelllInit
 	bl GX_DispOn
 	ldr r2, _02338D0C ; =0x04001000
 	mov r0, #1
@@ -24522,54 +24522,54 @@ _02338D08: .word 0x00200010
 _02338D0C: .word 0x04001000
 _02338D10: .word 0x04000008
 _02338D14: .word 0x0400100A
-	arm_func_end ov02_02338AA0
+	arm_func_end Main_InitGraph
 
-	arm_func_start ov02_02338D18
-ov02_02338D18: ; 0x02338D18
+	arm_func_start Main_ProcEnd
+Main_ProcEnd: ; 0x02338D18
 	stmdb sp!, {r3, lr}
 	bl GX_DispOff
 	ldr r1, _02338D64 ; =0x04001000
 	ldr r0, [r1]
 	bic r0, r0, #0x10000
 	str r0, [r1]
-	bl ov02_0234F87C
-	bl ov02_0234E8D4
-	bl ov02_0234F05C
-	bl ov02_023480B4
-	bl ov02_0234D0D8
-	bl ov02_0234F274
-	bl ov02_0234DC74
-	bl ov02_0234D8A8
-	bl ov02_0234CD3C
-	bl ov02_0234F9A0
-	bl ov02_0234E744
-	bl ov02_0234F6C4
+	bl Dwci_SetLedNormal
+	bl Dwci_IptlEnd
+	bl Dwci_ItrlEnd
+	bl Dwci_SndlEnd
+	bl Dwci_CelllEnd
+	bl Dwci_ObjlEnd
+	bl Dwci_FntlEnd
+	bl Dwci_EfflEnd
+	bl Dwci_ArclEnd
+	bl Dwci_TsklEnd
+	bl Dwci_HeaplEnd
+	bl Dwci_RepairVram
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02338D64: .word 0x04001000
-	arm_func_end ov02_02338D18
+	arm_func_end Main_ProcEnd
 
-	arm_func_start ov02_02338D68
-ov02_02338D68: ; 0x02338D68
+	arm_func_start Dwci_ChangeScene
+Dwci_ChangeScene: ; 0x02338D68
 	ldr r1, _02338D74 ; =ov02_0235AA6C
 	str r0, [r1, #0xc]
 	bx lr
 	.align 2, 0
 _02338D74: .word ov02_0235AA6C
-	arm_func_end ov02_02338D68
+	arm_func_end Dwci_ChangeScene
 
-	arm_func_start ov02_02338D78
-ov02_02338D78: ; 0x02338D78
+	arm_func_start Dwci_SetParam
+Dwci_SetParam: ; 0x02338D78
 	ldr r2, _02338D88 ; =ov02_0235AA6C
 	str r0, [r2, #0x10]
 	str r1, [r2, #0x14]
 	bx lr
 	.align 2, 0
 _02338D88: .word ov02_0235AA6C
-	arm_func_end ov02_02338D78
+	arm_func_end Dwci_SetParam
 
-	arm_func_start ov02_02338D8C
-ov02_02338D8C: ; 0x02338D8C
+	arm_func_start Dwci_GetParam
+Dwci_GetParam: ; 0x02338D8C
 	cmp r0, #0
 	ldrne r2, _02338DB0 ; =ov02_0235AA6C
 	ldrne r2, [r2, #0x10]
@@ -24581,20 +24581,20 @@ ov02_02338D8C: ; 0x02338D8C
 	bx lr
 	.align 2, 0
 _02338DB0: .word ov02_0235AA6C
-	arm_func_end ov02_02338D8C
+	arm_func_end Dwci_GetParam
 
-	arm_func_start ov02_02338DB4
-ov02_02338DB4: ; 0x02338DB4
+	arm_func_start Dwci_SetParam2
+Dwci_SetParam2: ; 0x02338DB4
 	ldr r2, _02338DC4 ; =ov02_0235AA6C
 	str r0, [r2, #0x18]
 	str r1, [r2, #0x1c]
 	bx lr
 	.align 2, 0
 _02338DC4: .word ov02_0235AA6C
-	arm_func_end ov02_02338DB4
+	arm_func_end Dwci_SetParam2
 
-	arm_func_start ov02_02338DC8
-ov02_02338DC8: ; 0x02338DC8
+	arm_func_start Dwci_GetParam2
+Dwci_GetParam2: ; 0x02338DC8
 	cmp r0, #0
 	ldrne r2, _02338DEC ; =ov02_0235AA6C
 	ldrne r2, [r2, #0x18]
@@ -24606,19 +24606,19 @@ ov02_02338DC8: ; 0x02338DC8
 	bx lr
 	.align 2, 0
 _02338DEC: .word ov02_0235AA6C
-	arm_func_end ov02_02338DC8
+	arm_func_end Dwci_GetParam2
 
-	arm_func_start ov02_02338DF0
-ov02_02338DF0: ; 0x02338DF0
+	arm_func_start Dwci_Language__0233961C
+Dwci_Language__0233961C: ; 0x02338DF0
 	ldr r0, _02338DFC ; =ov02_0235AA6C
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
 _02338DFC: .word ov02_0235AA6C
-	arm_func_end ov02_02338DF0
+	arm_func_end Dwci_Language__0233961C
 
-	arm_func_start ov02_02338E00
-ov02_02338E00: ; 0x02338E00
+	arm_func_start Dwci_Entry
+Dwci_Entry: ; 0x02338E00
 	ldr r0, _02338E14 ; =ov02_0235AA6C
 	ldr r0, [r0, #8]
 	mov r0, r0, lsl #0x1c
@@ -24626,10 +24626,10 @@ ov02_02338E00: ; 0x02338E00
 	bx lr
 	.align 2, 0
 _02338E14: .word ov02_0235AA6C
-	arm_func_end ov02_02338E00
+	arm_func_end Dwci_Entry
 
-	arm_func_start ov02_02338E18
-ov02_02338E18: ; 0x02338E18
+	arm_func_start Dwci_Flag
+Dwci_Flag: ; 0x02338E18
 	ldr r1, _02338E30 ; =ov02_0235AA6C
 	ldr r1, [r1, #8]
 	tst r0, r1, lsr #4
@@ -24638,20 +24638,20 @@ ov02_02338E18: ; 0x02338E18
 	bx lr
 	.align 2, 0
 _02338E30: .word ov02_0235AA6C
-	arm_func_end ov02_02338E18
+	arm_func_end Dwci_Flag
 
-	arm_func_start ov02_02338E34
-ov02_02338E34: ; 0x02338E34
+	arm_func_start Dwci_EndUtility
+Dwci_EndUtility: ; 0x02338E34
 	ldr r0, _02338E44 ; =ov02_0235AA6C
 	mov r1, #1
 	strb r1, [r0, #1]
 	bx lr
 	.align 2, 0
 _02338E44: .word ov02_0235AA6C
-	arm_func_end ov02_02338E34
+	arm_func_end Dwci_EndUtility
 
-	arm_func_start ov02_02338E48
-ov02_02338E48: ; 0x02338E48
+	arm_func_start Dwci_Language__02339674
+Dwci_Language__02339674: ; 0x02338E48
 	ldr r0, _02338E84 ; =ov02_0235AA6C
 	ldrb r1, [r0]
 	cmp r1, #6
@@ -24670,51 +24670,51 @@ _02338E78:
 	bx lr
 	.align 2, 0
 _02338E84: .word ov02_0235AA6C
-	arm_func_end ov02_02338E48
+	arm_func_end Dwci_Language__02339674
 
-	arm_func_start ov02_02338E88
-ov02_02338E88: ; 0x02338E88
+	arm_func_start Dwci_MsglInit
+Dwci_MsglInit: ; 0x02338E88
 	stmdb sp!, {r3, lr}
 	mov r0, #0x64
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	mov r1, r0
 	ldr r3, _02338EC0 ; =ov02_0235AA8C
 	mov r0, #8
 	mov r2, #0xc
 	str r1, [r3]
-	bl ov02_0234D754
+	bl Dwci_QuelFormEx
 	ldr r1, _02338EC0 ; =ov02_0235AA8C
 	ldr r1, [r1]
 	str r0, [r1, #0x60]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02338EC0: .word ov02_0235AA8C
-	arm_func_end ov02_02338E88
+	arm_func_end Dwci_MsglInit
 
-	arm_func_start ov02_02338EC4
-ov02_02338EC4: ; 0x02338EC4
-	ldr ip, _02338ED0 ; =ov02_0234E7D8
+	arm_func_start Dwci_MsglEnd
+Dwci_MsglEnd: ; 0x02338EC4
+	ldr ip, _02338ED0 ; =Dwci_HeaplFree
 	ldr r0, _02338ED4 ; =ov02_0235AA8C
 	bx ip
 	.align 2, 0
-_02338ED0: .word ov02_0234E7D8
+_02338ED0: .word Dwci_HeaplFree
 _02338ED4: .word ov02_0235AA8C
-	arm_func_end ov02_02338EC4
+	arm_func_end Dwci_MsglEnd
 
-	arm_func_start ov02_02338ED8
-ov02_02338ED8: ; 0x02338ED8
+	arm_func_start Dwci_MsglRead
+Dwci_MsglRead: ; 0x02338ED8
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _02338F2C ; =ov02_0235AA8C
 	mov r5, r0
 	ldr r0, [r1]
 	ldr r0, [r0, #0x60]
-	bl ov02_0234D808
+	bl Dwci_QuelPopBack
 	mov r4, r0
 	add r1, sp, #0
 	mov r0, r5
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	add r2, r0, #0x20
 	str r0, [r4, #8]
 	add r0, r2, #0x10
@@ -24727,36 +24727,36 @@ ov02_02338ED8: ; 0x02338ED8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02338F2C: .word ov02_0235AA8C
-	arm_func_end ov02_02338ED8
+	arm_func_end Dwci_MsglRead
 
-	arm_func_start ov02_02338F30
-ov02_02338F30: ; 0x02338F30
+	arm_func_start Dwci_MsglRelease
+Dwci_MsglRelease: ; 0x02338F30
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #8]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	ldr r0, _02338F58 ; =ov02_0235AA8C
 	mov r1, r4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x60]
-	bl ov02_0234D7B0
+	bl Dwci_QuelPushBack
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02338F58: .word ov02_0235AA8C
-	arm_func_end ov02_02338F30
+	arm_func_end Dwci_MsglRelease
 
-	arm_func_start ov02_02338F5C
-ov02_02338F5C: ; 0x02338F5C
+	arm_func_start Dwci_MsglGet
+Dwci_MsglGet: ; 0x02338F5C
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
 	ldmia r0, {r2, r3}
 	ldr r0, [r2, r1, lsl #2]
 	add r0, r3, r0
 	bx lr
-	arm_func_end ov02_02338F5C
+	arm_func_end Dwci_MsglGet
 
-	arm_func_start ov02_02338F74
-ov02_02338F74: ; 0x02338F74
+	arm_func_start Dwci_MsglGetEx
+Dwci_MsglGetEx: ; 0x02338F74
 	stmdb sp!, {r3, lr}
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
@@ -24768,16 +24768,16 @@ ov02_02338F74: ; 0x02338F74
 	movge r1, r2, lsl #1
 	strgeh r3, [r0, r1]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02338F74
+	arm_func_end Dwci_MsglGetEx
 
-	arm_func_start ov02_02338FA0
-ov02_02338FA0: ; 0x02338FA0
+	arm_func_start Dwci_MovlInit
+Dwci_MovlInit: ; 0x02338FA0
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x1c
 	mov r4, r0
 	ldr r0, _02339078 ; =0x0001E2A4
 	mov r1, #0x20
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _0233907C ; =ov02_0235AA90
 	add r1, r0, #0x1e000
 	str r0, [r2]
@@ -24798,29 +24798,29 @@ ov02_02338FA0: ; 0x02338FA0
 	ldr r0, _02339084 ; =ov02_0235AA98
 	mov r1, r4
 	ldr r0, [r0]
-	bl ov02_02338F5C
+	bl Dwci_MsglGet
 	ldr r1, _02339084 ; =ov02_0235AA98
 	str r0, [sp, #4]
 	ldr r0, [r1]
 	mov r1, #1
-	bl ov02_02338F5C
+	bl Dwci_MsglGet
 	str r0, [sp, #8]
-	bl ov02_02338E48
+	bl Dwci_Language__02339674
 	strb r0, [sp, #0x18]
 	ldr r0, _0233907C ; =ov02_0235AA90
 	add r1, sp, #0
 	ldr r0, [r0]
-	bl ov02_0234BD34
-	bl ov02_0234BF80
+	bl Dwci_MovInit
+	bl Dwci_MovStartAdmitChild
 	cmp r0, #0
 	bne _0233904C
 	bl WaitForever2
 _0233904C:
 	mov r0, #0
-	ldr r1, _02339088 ; =ov02_02339140
+	ldr r1, _02339088 ; =Move_TaskFramework
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233907C ; =ov02_0235AA90
 	ldr r1, [r1]
 	add r1, r1, #0x1e000
@@ -24832,27 +24832,27 @@ _02339078: .word 0x0001E2A4
 _0233907C: .word ov02_0235AA90
 _02339080: .word ov02_02353560
 _02339084: .word ov02_0235AA98
-_02339088: .word ov02_02339140
-	arm_func_end ov02_02338FA0
+_02339088: .word Move_TaskFramework
+	arm_func_end Dwci_MovlInit
 
-	arm_func_start ov02_0233908C
-ov02_0233908C: ; 0x0233908C
-	ldr ip, _023390A4 ; =ov02_0234FA98
+	arm_func_start Dwci_MovlEnd
+Dwci_MovlEnd: ; 0x0233908C
+	ldr ip, _023390A4 ; =Dwci_TsklForm
 	mov r0, #0
-	ldr r1, _023390A8 ; =ov02_023390AC
+	ldr r1, _023390A8 ; =Move_TaskEnd
 	mov r2, r0
 	mov r3, #0x78
 	bx ip
 	.align 2, 0
-_023390A4: .word ov02_0234FA98
-_023390A8: .word ov02_023390AC
-	arm_func_end ov02_0233908C
+_023390A4: .word Dwci_TsklForm
+_023390A8: .word Move_TaskEnd
+	arm_func_end Dwci_MovlEnd
 
-	arm_func_start ov02_023390AC
-ov02_023390AC: ; 0x023390AC
+	arm_func_start Move_TaskEnd
+Move_TaskEnd: ; 0x023390AC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_0234BE24
+	bl Dwci_MovFinalize
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r0, _023390E4 ; =ov02_0235AA90
@@ -24862,14 +24862,14 @@ ov02_023390AC: ; 0x023390AC
 	add r2, r0, #0x1e000
 	mov r0, #0
 	strb r3, [r2, #0x2a1]
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023390E4: .word ov02_0235AA90
-	arm_func_end ov02_023390AC
+	arm_func_end Move_TaskEnd
 
-	arm_func_start ov02_023390E8
-ov02_023390E8: ; 0x023390E8
+	arm_func_start Dwci_MovlIsEnd
+Dwci_MovlIsEnd: ; 0x023390E8
 	ldr r0, _02339100 ; =ov02_0235AA90
 	ldr r0, [r0]
 	cmp r0, #0
@@ -24878,10 +24878,10 @@ ov02_023390E8: ; 0x023390E8
 	bx lr
 	.align 2, 0
 _02339100: .word ov02_0235AA90
-	arm_func_end ov02_023390E8
+	arm_func_end Dwci_MovlIsEnd
 
-	arm_func_start ov02_02339104
-ov02_02339104: ; 0x02339104
+	arm_func_start Dwci_MovlChangeCallback
+Dwci_MovlChangeCallback: ; 0x02339104
 	ldr r1, _02339118 ; =ov02_0235AA90
 	ldr r1, [r1]
 	add r1, r1, #0x1e000
@@ -24889,18 +24889,18 @@ ov02_02339104: ; 0x02339104
 	bx lr
 	.align 2, 0
 _02339118: .word ov02_0235AA90
-	arm_func_end ov02_02339104
+	arm_func_end Dwci_MovlChangeCallback
 
-	arm_func_start ov02_0233911C
-ov02_0233911C: ; 0x0233911C
-	ldr ip, _02339124 ; =ov02_0234BFC8
+	arm_func_start Dwci_MovlAdmitChild
+Dwci_MovlAdmitChild: ; 0x0233911C
+	ldr ip, _02339124 ; =Dwci_MovStartDownloadandBootChild
 	bx ip
 	.align 2, 0
-_02339124: .word ov02_0234BFC8
-	arm_func_end ov02_0233911C
+_02339124: .word Dwci_MovStartDownloadandBootChild
+	arm_func_end Dwci_MovlAdmitChild
 
-	arm_func_start ov02_02339128
-ov02_02339128: ; 0x02339128
+	arm_func_start Dwci_MovlGetChild
+Dwci_MovlGetChild: ; 0x02339128
 	ldr r0, _0233913C ; =ov02_0235AA90
 	ldr r0, [r0]
 	add r0, r0, #0x2280
@@ -24908,14 +24908,14 @@ ov02_02339128: ; 0x02339128
 	bx lr
 	.align 2, 0
 _0233913C: .word ov02_0235AA90
-	arm_func_end ov02_02339128
+	arm_func_end Dwci_MovlGetChild
 
-	arm_func_start ov02_02339140
-ov02_02339140: ; 0x02339140
+	arm_func_start Move_TaskFramework
+Move_TaskFramework: ; 0x02339140
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
-	bl ov02_0234BFFC
+	bl Dwci_MovFramework
 	ldr r0, _023393D8 ; =ov02_0235AA90
 	ldr r0, [r0]
 	add r0, r0, #0x1e000
@@ -24936,7 +24936,7 @@ ov02_02339140: ; 0x02339140
 _02339194:
 	add r0, sp, #1
 	add r1, sp, #0
-	bl ov02_0234C380
+	bl Dwci_MovGetStatus
 	ldrb r0, [sp, #1]
 	cmp r0, #0x1a
 	bgt _02339228
@@ -24992,7 +24992,7 @@ _0233924C:
 	ldr r0, _023393D8 ; =ov02_0235AA90
 	ldr r0, [r0]
 	add r4, r0, #0x2280
-	bl ov02_0234C3C4
+	bl Dwci_GetChildInfo
 	add r1, r4, #0x1c000
 	mov r2, #0x16
 	bl MTi_CpuCopy16
@@ -25084,35 +25084,35 @@ _02339378:
 _023393BC:
 	mov r1, r4
 	mov r0, #0
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldr r0, _023393DC ; =ov02_0235AA90
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 _023393D0:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _023393D8: .word ov02_0235AA90
 _023393DC: .word ov02_0235AA90
-	arm_func_end ov02_02339140
+	arm_func_end Move_TaskFramework
 
-	arm_func_start ov02_023393E0
-ov02_023393E0: ; 0x023393E0
+	arm_func_start Dwci_RakulInit
+Dwci_RakulInit: ; 0x023393E0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	mov r0, #0xc
 	sub r1, r0, #0x10
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _0233943C ; =ov02_0235AA94
-	ldr ip, _02339440 ; =ov02_02339580
+	ldr ip, _02339440 ; =RakuRaku_CbConfig
 	str r0, [r1]
-	ldr r2, _02339444 ; =ov02_02339558
-	ldr r3, _02339448 ; =ov02_02339570
+	ldr r2, _02339444 ; =RakuRaku_MemAlloc
+	ldr r3, _02339448 ; =RakuRaku_MemFree
 	str ip, [sp]
 	mov ip, #0x800
 	mov r0, #0xf
 	mov r1, #0x40
 	str ip, [sp, #4]
-	blx ov02_023341F8
+	blx Atermi_ApConfigStart
 	cmp r0, #1
 	beq _0233942C
 	bl WaitForever2
@@ -25123,28 +25123,28 @@ _0233942C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233943C: .word ov02_0235AA94
-_02339440: .word ov02_02339580
-_02339444: .word ov02_02339558
-_02339448: .word ov02_02339570
-	arm_func_end ov02_023393E0
+_02339440: .word RakuRaku_CbConfig
+_02339444: .word RakuRaku_MemAlloc
+_02339448: .word RakuRaku_MemFree
+	arm_func_end Dwci_RakulInit
 
-	arm_func_start ov02_0233944C
-ov02_0233944C: ; 0x0233944C
+	arm_func_start Dwci_RakulEnd
+Dwci_RakulEnd: ; 0x0233944C
 	stmdb sp!, {r3, lr}
-	blx ov02_023342E0
+	blx Atermi_ApConfigEnd
 	cmp r0, #1
 	beq _02339460
 	bl WaitForever2
 _02339460:
 	ldr r0, _0233946C ; =ov02_0235AA94
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233946C: .word ov02_0235AA94
-	arm_func_end ov02_0233944C
+	arm_func_end Dwci_RakulEnd
 
-	arm_func_start ov02_02339470
-ov02_02339470: ; 0x02339470
+	arm_func_start Dwci_RakulGetState
+Dwci_RakulGetState: ; 0x02339470
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0xe8
 	ldr r1, _02339528 ; =ov02_0235AA94
@@ -25176,7 +25176,7 @@ _023394C8:
 	ldmia sp!, {r3, pc}
 _023394D4:
 	add r0, sp, #0
-	blx ov02_023343AC
+	blx Atermi_ApConfigGetResult
 	cmp r0, #1
 	beq _023394E8
 	bl WaitForever2
@@ -25202,26 +25202,26 @@ _02339520:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02339528: .word ov02_0235AA94
-	arm_func_end ov02_02339470
+	arm_func_end Dwci_RakulGetState
 
-	arm_func_start ov02_0233952C
-ov02_0233952C: ; 0x0233952C
+	arm_func_start Dwci_RakulSetResult
+Dwci_RakulSetResult: ; 0x0233952C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0xe8
 	add r0, sp, #0
-	blx ov02_023343AC
+	blx Atermi_ApConfigGetResult
 	cmp r0, #1
 	beq _02339548
 	bl WaitForever2
 _02339548:
 	add r0, sp, #0
-	bl ov02_02347AF8
+	bl Dwci_SettinglSetRaku
 	add sp, sp, #0xe8
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233952C
+	arm_func_end Dwci_RakulSetResult
 
-	arm_func_start ov02_02339558
-ov02_02339558: ; 0x02339558
+	arm_func_start RakuRaku_MemAlloc
+RakuRaku_MemAlloc: ; 0x02339558
 	ldr r3, _0233956C ; =ov02_0235AA94
 	ldmia r0, {r0, r1, r2}
 	ldr r3, [r3]
@@ -25229,142 +25229,142 @@ ov02_02339558: ; 0x02339558
 	bx lr
 	.align 2, 0
 _0233956C: .word ov02_0235AA94
-	arm_func_end ov02_02339558
+	arm_func_end RakuRaku_MemAlloc
 
-	arm_func_start ov02_02339570
-ov02_02339570: ; 0x02339570
-	ldr ip, _0233957C ; =ov02_0234E7B4
+	arm_func_start RakuRaku_MemFree
+RakuRaku_MemFree: ; 0x02339570
+	ldr ip, _0233957C ; =Dwci_HeaplAllocEx
 	mov r1, #0x20
 	bx ip
 	.align 2, 0
-_0233957C: .word ov02_0234E7B4
-	arm_func_end ov02_02339570
+_0233957C: .word Dwci_HeaplAllocEx
+	arm_func_end RakuRaku_MemFree
 
-	arm_func_start ov02_02339580
-ov02_02339580: ; 0x02339580
-	ldr ip, _02339588 ; =ov02_0234E81C
+	arm_func_start RakuRaku_CbConfig
+RakuRaku_CbConfig: ; 0x02339580
+	ldr ip, _02339588 ; =Dwci_HeaplFree2
 	bx ip
 	.align 2, 0
-_02339588: .word ov02_0234E81C
-	arm_func_end ov02_02339580
+_02339588: .word Dwci_HeaplFree2
+	arm_func_end RakuRaku_CbConfig
 
-	arm_func_start ov02_0233958C
-ov02_0233958C: ; 0x0233958C
+	arm_func_start Dwci_SceneEnd
+Dwci_SceneEnd: ; 0x0233958C
 	stmdb sp!, {r3, lr}
 	mov r0, #3
 	mov r1, #1
 	mov r2, #0x3f
 	mov r3, #0x14
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x3f
 	mov r3, #0x14
-	bl ov02_0234D8E0
-	ldr r0, _023395C4 ; =ov02_023395C8
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _023395C4 ; =SceneEnd_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023395C4: .word ov02_023395C8
-	arm_func_end ov02_0233958C
+_023395C4: .word SceneEnd_EndScene
+	arm_func_end Dwci_SceneEnd
 
-	arm_func_start ov02_023395C8
-ov02_023395C8: ; 0x023395C8
+	arm_func_start SceneEnd_EndScene
+SceneEnd_EndScene: ; 0x023395C8
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
 	mov r1, r0
-	bl ov02_0234FBB0
+	bl Dwci_TsklOperate
 	mov r0, #1
 	mov r1, #0
-	bl ov02_0234FBB0
+	bl Dwci_TsklOperate
 	mov r0, #1
-	bl ov02_0234D5F0
+	bl Dwci_CeinlRelease
 	mov r0, #0
-	bl ov02_0234D5F0
-	bl ov02_02335254
-	bl ov02_02334FD8
+	bl Dwci_CeinlRelease
+	bl Dwci_HLlEnd
+	bl Dwci_FocuslEnd
 	ldr r0, _02339638 ; =ov02_0235AA98
 	ldr r0, [r0]
-	bl ov02_02338F30
-	bl ov02_02338EC4
-	bl ov02_02347504
-	bl ov02_02338E34
+	bl Dwci_MsglRelease
+	bl Dwci_MsglEnd
+	bl Dwci_SettignlEnd
+	bl Dwci_EndUtility
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02339638: .word ov02_0235AA98
-	arm_func_end ov02_023395C8
+	arm_func_end SceneEnd_EndScene
 
-	arm_func_start ov02_0233963C
-ov02_0233963C: ; 0x0233963C
+	arm_func_start Dwci_SceneInit
+Dwci_SceneInit: ; 0x0233963C
 	stmdb sp!, {r3, lr}
-	bl ov02_023474C0
-	bl ov02_02338E88
-	bl ov02_02334FB8
-	bl ov02_023351DC
-	bl ov02_02334C28
-	bl ov02_02338DF0
+	bl Dwci_SettignlInit
+	bl Dwci_MsglInit
+	bl Dwci_FocuslInit
+	bl Dwci_HLlInit
+	bl Dwci_CommentlInit
+	bl Dwci_Language__0233961C
 	cmp r0, #1
 	bne _02339684
 	mov r0, #2
-	bl ov02_02338E18
+	bl Dwci_Flag
 	cmp r0, #0
 	beq _02339684
 	ldr r0, _023397B4 ; =ov02_02353608
-	bl ov02_02338ED8
+	bl Dwci_MsglRead
 	ldr r1, _023397B8 ; =ov02_0235AA98
 	str r0, [r1]
 	b _0233969C
 _02339684:
-	bl ov02_02338DF0
+	bl Dwci_Language__0233961C
 	ldr r1, _023397BC ; =ov02_023535EC
 	ldr r0, [r1, r0, lsl #2]
-	bl ov02_02338ED8
+	bl Dwci_MsglRead
 	ldr r1, _023397B8 ; =ov02_0235AA98
 	str r0, [r1]
 _0233969C:
 	ldr r0, _023397C0 ; =ov02_02353618
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, r0
 	mov r0, #1
-	bl ov02_0234D5C0
+	bl Dwci_CeinlRead
 	ldr r0, _023397C4 ; =ov02_0235362C
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, r0
 	mov r0, #0
-	bl ov02_0234D5C0
+	bl Dwci_CeinlRead
 	ldr r0, _023397C8 ; =ov02_02353640
 	ldr r1, _023397CC ; =GXS_LoadBG1Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023397D0 ; =ov02_02353654
 	ldr r1, _023397D4 ; =GXS_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023397D8 ; =ov02_02353668
 	ldr r1, _023397DC ; =GXS_LoadOBJ
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023397E0 ; =ov02_02353680
 	ldr r1, _023397E4 ; =GXS_LoadOBJPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023397E8 ; =ov02_02353698
 	ldr r1, _023397EC ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023397F0 ; =ov02_023536B0
 	ldr r1, _023397F4 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023397F8 ; =ov02_023536C8
 	ldr r1, _023397FC ; =GX_LoadOBJ
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02339800 ; =ov02_023536E0
 	ldr r1, _02339804 ; =GX_LoadOBJPltt
-	bl ov02_02334DA8
-	bl ov02_02338E00
+	bl Dwci_CmnlLoadResource
+	bl Dwci_Entry
 	cmp r0, #0
 	beq _0233973C
 	cmp r0, #1
@@ -25373,12 +25373,12 @@ _0233969C:
 _0233973C:
 	ldr r0, _02339808 ; =ov02_023536F8
 	ldr r1, _0233980C ; =GXS_LoadBG1Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	b _02339758
 _0233974C:
 	ldr r0, _02339810 ; =ov02_0235370C
 	ldr r1, _0233980C ; =GXS_LoadBG1Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 _02339758:
 	ldr ip, _02339814 ; =0x0400100A
 	mov r0, #1
@@ -25396,12 +25396,12 @@ _02339758:
 	bic r2, r2, #3
 	orr r2, r2, #3
 	strh r2, [r3]
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #2
-	bl ov02_0234E3D0
-	ldr r0, _02339818 ; =ov02_0233981C
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02339818 ; =SceneInit_ProcFade
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023397B4: .word ov02_02353608
@@ -25429,41 +25429,41 @@ _02339808: .word ov02_023536F8
 _0233980C: .word GXS_LoadBG1Scr
 _02339810: .word ov02_0235370C
 _02339814: .word 0x0400100A
-_02339818: .word ov02_0233981C
-	arm_func_end ov02_0233963C
+_02339818: .word SceneInit_ProcFade
+	arm_func_end Dwci_SceneInit
 
-	arm_func_start ov02_0233981C
-ov02_0233981C: ; 0x0233981C
+	arm_func_start SceneInit_ProcFade
+SceneInit_ProcFade: ; 0x0233981C
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r2, r0
 	mov r1, #1
 	mov r3, #0x14
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r2, r0
 	mov r1, #0
 	mov r3, #0x14
-	bl ov02_0234D8E0
-	ldr r0, _02339854 ; =ov02_02339858
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02339854 ; =SceneInit_ProcWait
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339854: .word ov02_02339858
-	arm_func_end ov02_0233981C
+_02339854: .word SceneInit_ProcWait
+	arm_func_end SceneInit_ProcFade
 
-	arm_func_start ov02_02339858
-ov02_02339858: ; 0x02339858
+	arm_func_start SceneInit_ProcWait
+SceneInit_ProcWait: ; 0x02339858
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02338E00
+	bl Dwci_Entry
 	cmp r0, #0
 	beq _02339894
 	cmp r0, #1
@@ -25472,34 +25472,34 @@ ov02_02339858: ; 0x02339858
 _02339894:
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _023398C4 ; =ov02_023398CC
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _023398C4 ; =Dwci_SceneMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _023398AC:
 	mov r0, #1
 	mov r1, r0
-	bl ov02_02338D78
-	ldr r0, _023398C8 ; =ov02_02343DB0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _023398C8 ; =Dwci_SceneSetSelectAp
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023398C4: .word ov02_023398CC
-_023398C8: .word ov02_02343DB0
-	arm_func_end ov02_02339858
+_023398C4: .word Dwci_SceneMenu
+_023398C8: .word Dwci_SceneSetSelectAp
+	arm_func_end SceneInit_ProcWait
 
-	arm_func_start ov02_023398CC
-ov02_023398CC: ; 0x023398CC
+	arm_func_start Dwci_SceneMenu
+Dwci_SceneMenu: ; 0x023398CC
 	stmdb sp!, {r3, lr}
-	bl ov02_02339948
+	bl SceneMenu_InitGraphics
 	mov r0, #0
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	mov r0, #0x2e
 	sub r1, r0, #0x2f
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #4
-	bl ov02_02348C1C
+	bl Dwci_SteplChangeScr
 	ldr r0, _02339930 ; =ov02_0235AA9C
 	ldr r3, _02339934 ; =ov02_0235291A
 	ldrb r0, [r0]
@@ -25511,9 +25511,9 @@ ov02_023398CC: ; 0x023398CC
 	ldrh r2, [r2, ip]
 	ldr r3, _02339940 ; =ov02_02352920
 	ldrh r3, [r3, ip]
-	bl ov02_023350AC
-	ldr r0, _02339944 ; =ov02_02339A34
-	bl ov02_02338D68
+	bl Dwci_FocuslDisp4
+	ldr r0, _02339944 ; =SceneMenu_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02339930: .word ov02_0235AA9C
@@ -25521,11 +25521,11 @@ _02339934: .word ov02_0235291A
 _02339938: .word ov02_0235291E
 _0233993C: .word ov02_0235291C
 _02339940: .word ov02_02352920
-_02339944: .word ov02_02339A34
-	arm_func_end ov02_023398CC
+_02339944: .word SceneMenu_ProcInit
+	arm_func_end Dwci_SceneMenu
 
-	arm_func_start ov02_02339948
-ov02_02339948: ; 0x02339948
+	arm_func_start SceneMenu_InitGraphics
+SceneMenu_InitGraphics: ; 0x02339948
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x18
 	ldr ip, _02339A0C ; =ov02_0235292A
@@ -25542,18 +25542,18 @@ _0233995C:
 	bne _0233995C
 	ldr r0, _02339A10 ; =ov02_02353720
 	ldr r1, _02339A14 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02339A18 ; =ov02_02353738
 	ldr r1, _02339A1C ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02339A20 ; =ov02_02353750
 	ldr r1, _02339A24 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	add r0, sp, #0
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _02339A28 ; =ov02_0235AA9C
 	ldr r2, _02339A2C ; =0x04001008
 	str r0, [r1, #4]
@@ -25587,90 +25587,90 @@ _02339A24: .word GX_LoadBG2Scr
 _02339A28: .word ov02_0235AA9C
 _02339A2C: .word 0x04001008
 _02339A30: .word 0x0400000A
-	arm_func_end ov02_02339948
+	arm_func_end SceneMenu_InitGraphics
 
-	arm_func_start ov02_02339A34
-ov02_02339A34: ; 0x02339A34
+	arm_func_start SceneMenu_ProcInit
+SceneMenu_ProcInit: ; 0x02339A34
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E3D0
-	ldr r0, _02339A84 ; =ov02_02339A88
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02339A84 ; =SceneMenu_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339A84: .word ov02_02339A88
-	arm_func_end ov02_02339A34
+_02339A84: .word SceneMenu_ProcInit1
+	arm_func_end SceneMenu_ProcInit
 
-	arm_func_start ov02_02339A88
-ov02_02339A88: ; 0x02339A88
+	arm_func_start SceneMenu_ProcInit1
+SceneMenu_ProcInit1: ; 0x02339A88
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_02334E38
-	ldr r0, _02339AC0 ; =ov02_02339AC4
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _02339AC0 ; =SceneMenu_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339AC0: .word ov02_02339AC4
-	arm_func_end ov02_02339A88
+_02339AC0: .word SceneMenu_ProcInit2
+	arm_func_end SceneMenu_ProcInit1
 
-	arm_func_start ov02_02339AC4
-ov02_02339AC4: ; 0x02339AC4
+	arm_func_start SceneMenu_ProcInit2
+SceneMenu_ProcInit2: ; 0x02339AC4
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02339AE8 ; =ov02_02339AEC
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02339AE8 ; =SceneMenu_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339AE8: .word ov02_02339AEC
-	arm_func_end ov02_02339AC4
+_02339AE8: .word SceneMenu_ProcScene
+	arm_func_end SceneMenu_ProcInit2
 
-	arm_func_start ov02_02339AEC
-ov02_02339AEC: ; 0x02339AEC
+	arm_func_start SceneMenu_ProcScene
+SceneMenu_ProcScene: ; 0x02339AEC
 	stmdb sp!, {r3, lr}
-	bl ov02_02339B00
-	bl ov02_02339C2C
-	bl ov02_02339C30
+	bl SceneMenu_Input
+	bl SceneMenu_Draw
+	bl SceneMenu_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02339AEC
+	arm_func_end SceneMenu_ProcScene
 
-	arm_func_start ov02_02339B00
-ov02_02339B00: ; 0x02339B00
+	arm_func_start SceneMenu_Input
+SceneMenu_Input: ; 0x02339B00
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r5, _02339C14 ; =ov02_0235290A
 	mov r4, #0
 _02339B0C:
 	mov r0, r5
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _02339B5C
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	and r1, r4, #0xff
 	mov lr, r1, lsl #3
 	ldr r0, _02339C18 ; =ov02_0235291A
@@ -25683,7 +25683,7 @@ _02339B0C:
 	ldrh r2, [r2, lr]
 	ldrh r3, [r3, lr]
 	strb r4, [ip]
-	bl ov02_023350AC
+	bl Dwci_FocuslDisp4
 	ldmia sp!, {r3, r4, r5, pc}
 _02339B5C:
 	add r4, r4, #1
@@ -25691,51 +25691,51 @@ _02339B5C:
 	add r5, r5, #8
 	blo _02339B0C
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02339B88
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, r4, r5, pc}
 _02339B88:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02339BA4
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, r4, r5, pc}
 _02339BA4:
 	mov r0, #0x40
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02339BC0
 	mov r0, #1
-	bl ov02_02339D94
+	bl SceneMenu_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _02339BC0:
 	mov r0, #0x80
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02339BDC
 	mov r0, #3
-	bl ov02_02339D94
+	bl SceneMenu_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _02339BDC:
 	mov r0, #0x20
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02339BF8
 	mov r0, #0
-	bl ov02_02339D94
+	bl SceneMenu_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _02339BF8:
 	mov r0, #0x10
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, #2
-	bl ov02_02339D94
+	bl SceneMenu_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02339C14: .word ov02_0235290A
@@ -25744,17 +25744,17 @@ _02339C1C: .word ov02_0235291E
 _02339C20: .word ov02_0235291C
 _02339C24: .word ov02_02352920
 _02339C28: .word ov02_0235AA9C
-	arm_func_end ov02_02339B00
+	arm_func_end SceneMenu_Input
 
-	arm_func_start ov02_02339C2C
-ov02_02339C2C: ; 0x02339C2C
+	arm_func_start SceneMenu_Draw
+SceneMenu_Draw: ; 0x02339C2C
 	bx lr
-	arm_func_end ov02_02339C2C
+	arm_func_end SceneMenu_Draw
 
-	arm_func_start ov02_02339C30
-ov02_02339C30: ; 0x02339C30
+	arm_func_start SceneMenu_Button
+SceneMenu_Button: ; 0x02339C30
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	beq _02339C4C
 	cmp r0, #1
@@ -25762,81 +25762,81 @@ ov02_02339C30: ; 0x02339C30
 	ldmia sp!, {r3, pc}
 _02339C4C:
 	mov r0, #7
-	bl ov02_023480E0
-	ldr r0, _02339C78 ; =ov02_0233958C
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02339C78 ; =Dwci_SceneEnd
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02339C60:
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_02339E04
-	ldr r0, _02339C7C ; =ov02_02339C80
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl SceneMenu_DispPushButton
+	ldr r0, _02339C7C ; =SceneMenu_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339C78: .word ov02_0233958C
-_02339C7C: .word ov02_02339C80
-	arm_func_end ov02_02339C30
+_02339C78: .word Dwci_SceneEnd
+_02339C7C: .word SceneMenu_EndScene
+	arm_func_end SceneMenu_Button
 
-	arm_func_start ov02_02339C80
-ov02_02339C80: ; 0x02339C80
+	arm_func_start SceneMenu_EndScene
+SceneMenu_EndScene: ; 0x02339C80
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _02339C9C ; =ov02_02339CA0
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _02339C9C ; =SceneMenu_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339C9C: .word ov02_02339CA0
-	arm_func_end ov02_02339C80
+_02339C9C: .word SceneMenu_EndScene1
+	arm_func_end SceneMenu_EndScene
 
-	arm_func_start ov02_02339CA0
-ov02_02339CA0: ; 0x02339CA0
+	arm_func_start SceneMenu_EndScene1
+SceneMenu_EndScene1: ; 0x02339CA0
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x16
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02339CE8 ; =ov02_02339CEC
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02339CE8 ; =SceneMenu_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339CE8: .word ov02_02339CEC
-	arm_func_end ov02_02339CA0
+_02339CE8: .word SceneMenu_EndScene2
+	arm_func_end SceneMenu_EndScene1
 
-	arm_func_start ov02_02339CEC
-ov02_02339CEC: ; 0x02339CEC
+	arm_func_start SceneMenu_EndScene2
+SceneMenu_EndScene2: ; 0x02339CEC
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0233519C
-	bl ov02_02334D10
+	bl Dwci_FocuslDelete
+	bl Dwci_CommentlDelete
 	ldr r0, _02339D88 ; =ov02_0235AA9C
 	ldr r0, [r0, #4]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _02339D88 ; =ov02_0235AA9C
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -25847,25 +25847,25 @@ ov02_02339CEC: ; 0x02339CEC
 _02339D58:
 	mov r0, #1
 	mov r1, #0
-	bl ov02_02338D78
-	ldr r0, _02339D8C ; =ov02_02343DB0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02339D8C ; =Dwci_SceneSetSelectAp
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02339D70:
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
-	ldr r0, _02339D90 ; =ov02_0233A904
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02339D90 ; =Dwci_SceneOptMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02339D88: .word ov02_0235AA9C
-_02339D8C: .word ov02_02343DB0
-_02339D90: .word ov02_0233A904
-	arm_func_end ov02_02339CEC
+_02339D8C: .word Dwci_SceneSetSelectAp
+_02339D90: .word Dwci_SceneOptMenu
+	arm_func_end SceneMenu_EndScene2
 
-	arm_func_start ov02_02339D94
-ov02_02339D94: ; 0x02339D94
+	arm_func_start SceneMenu_MoveFocus
+SceneMenu_MoveFocus: ; 0x02339D94
 	stmdb sp!, {r3, lr}
 	cmp r0, #1
 	cmpne r0, #3
@@ -25875,7 +25875,7 @@ ov02_02339D94: ; 0x02339D94
 	ldrb r2, [r1]
 	eor r2, r2, #1
 	strb r2, [r1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02339DF0 ; =ov02_0235AA9C
 	ldr ip, _02339DF4 ; =ov02_0235291A
 	ldrb r0, [r0]
@@ -25887,7 +25887,7 @@ ov02_02339D94: ; 0x02339D94
 	ldrh r1, [r1, lr]
 	ldrh r2, [r2, lr]
 	ldrh r3, [r3, lr]
-	bl ov02_023350AC
+	bl Dwci_FocuslDisp4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02339DF0: .word ov02_0235AA9C
@@ -25895,10 +25895,10 @@ _02339DF4: .word ov02_0235291A
 _02339DF8: .word ov02_0235291E
 _02339DFC: .word ov02_0235291C
 _02339E00: .word ov02_02352920
-	arm_func_end ov02_02339D94
+	arm_func_end SceneMenu_MoveFocus
 
-	arm_func_start ov02_02339E04
-ov02_02339E04: ; 0x02339E04
+	arm_func_start SceneMenu_DispPushButton
+SceneMenu_DispPushButton: ; 0x02339E04
 	stmdb sp!, {r3, lr}
 	ldr r1, _02339E3C ; =ov02_02352908
 	ldr r0, _02339E40 ; =ov02_0235AA9C
@@ -25911,42 +25911,42 @@ ov02_02339E04: ; 0x02339E04
 	ldrb r1, [ip, r1]
 	ldr r0, [r0, #4]
 	mov r2, r1
-	bl ov02_023468A0
+	bl Dwci_ScreenlCopyPalette
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02339E3C: .word ov02_02352908
 _02339E40: .word ov02_0235AA9C
-	arm_func_end ov02_02339E04
+	arm_func_end SceneMenu_DispPushButton
 
-	arm_func_start ov02_02339E44
-ov02_02339E44: ; 0x02339E44
+	arm_func_start Dwci_SceneOptErase
+Dwci_SceneOptErase: ; 0x02339E44
 	stmdb sp!, {r3, lr}
 	ldr r0, _02339E84 ; =ov02_0235AAA4
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02339E8C
+	bl SceneOptErase_InitGraphics
 	mov r0, #0x12
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	mov r0, #0x3b
 	sub r1, r0, #0x3c
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #0x17
-	bl ov02_02334E70
-	ldr r0, _02339E88 ; =ov02_02339F0C
-	bl ov02_02338D68
+	bl Dwci_CmnlMsgDraw
+	ldr r0, _02339E88 ; =SceneOptErase_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02339E84: .word ov02_0235AAA4
-_02339E88: .word ov02_02339F0C
-	arm_func_end ov02_02339E44
+_02339E88: .word SceneOptErase_ProcInit
+	arm_func_end Dwci_SceneOptErase
 
-	arm_func_start ov02_02339E8C
-ov02_02339E8C: ; 0x02339E8C
+	arm_func_start SceneOptErase_InitGraphics
+SceneOptErase_InitGraphics: ; 0x02339E8C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02339EFC ; =ov02_02353764
 	ldr r1, _02339F00 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _02339F04 ; =0x04001008
 	ldr r1, _02339F08 ; =0x0400000A
 	ldrh r0, [r3]
@@ -25976,106 +25976,106 @@ _02339EFC: .word ov02_02353764
 _02339F00: .word GX_LoadBG2Scr
 _02339F04: .word 0x04001008
 _02339F08: .word 0x0400000A
-	arm_func_end ov02_02339E8C
+	arm_func_end SceneOptErase_InitGraphics
 
-	arm_func_start ov02_02339F0C
-ov02_02339F0C: ; 0x02339F0C
+	arm_func_start SceneOptErase_ProcInit
+SceneOptErase_ProcInit: ; 0x02339F0C
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _02339F5C ; =ov02_02339F60
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02339F5C ; =SceneOptErase_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339F5C: .word ov02_02339F60
-	arm_func_end ov02_02339F0C
+_02339F5C: .word SceneOptErase_ProcInit1
+	arm_func_end SceneOptErase_ProcInit
 
-	arm_func_start ov02_02339F60
-ov02_02339F60: ; 0x02339F60
+	arm_func_start SceneOptErase_ProcInit1
+SceneOptErase_ProcInit1: ; 0x02339F60
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #3
-	bl ov02_02334E38
-	ldr r0, _02339F98 ; =ov02_02339F9C
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _02339F98 ; =SceneOptErase_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339F98: .word ov02_02339F9C
-	arm_func_end ov02_02339F60
+_02339F98: .word SceneOptErase_ProcInit2
+	arm_func_end SceneOptErase_ProcInit1
 
-	arm_func_start ov02_02339F9C
-ov02_02339F9C: ; 0x02339F9C
+	arm_func_start SceneOptErase_ProcInit2
+SceneOptErase_ProcInit2: ; 0x02339F9C
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02339FC0 ; =ov02_02339FC4
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02339FC0 ; =SceneOptErase_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339FC0: .word ov02_02339FC4
-	arm_func_end ov02_02339F9C
+_02339FC0: .word SceneOptErase_ProcScene
+	arm_func_end SceneOptErase_ProcInit2
 
-	arm_func_start ov02_02339FC4
-ov02_02339FC4: ; 0x02339FC4
+	arm_func_start SceneOptErase_ProcScene
+SceneOptErase_ProcScene: ; 0x02339FC4
 	stmdb sp!, {r3, lr}
-	bl ov02_02339FD8
-	bl ov02_0233A010
-	bl ov02_0233A014
+	bl SceneOptErase_Input
+	bl SceneOptErase_Draw
+	bl SceneOptErase_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02339FC4
+	arm_func_end SceneOptErase_ProcScene
 
-	arm_func_start ov02_02339FD8
-ov02_02339FD8: ; 0x02339FD8
+	arm_func_start SceneOptErase_Input
+SceneOptErase_Input: ; 0x02339FD8
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02339FF4
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 _02339FF4:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02339FD8
+	arm_func_end SceneOptErase_Input
 
-	arm_func_start ov02_0233A010
-ov02_0233A010: ; 0x0233A010
+	arm_func_start SceneOptErase_Draw
+SceneOptErase_Draw: ; 0x0233A010
 	bx lr
-	arm_func_end ov02_0233A010
+	arm_func_end SceneOptErase_Draw
 
-	arm_func_start ov02_0233A014
-ov02_0233A014: ; 0x0233A014
+	arm_func_start SceneOptErase_Button
+SceneOptErase_Button: ; 0x0233A014
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	beq _0233A030
 	cmp r0, #1
@@ -26083,49 +26083,49 @@ ov02_0233A014: ; 0x0233A014
 	ldmia sp!, {r3, pc}
 _0233A030:
 	mov r0, #7
-	bl ov02_023480E0
-	ldr r0, _0233A074 ; =ov02_0233A07C
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233A074 ; =SceneOptErase_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233A044:
 	mov r0, #6
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r2, #1
 	mov r1, #0
 	sub r3, r2, #2
 	mov r0, #0x18
 	str r1, [sp]
-	bl ov02_02349394
-	bl ov02_02334768
-	ldr r0, _0233A078 ; =ov02_0233A1B8
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	bl Dwci_BtnlDisable
+	ldr r0, _0233A078 ; =SceneOptErase_ProcConfirm
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A074: .word ov02_0233A07C
-_0233A078: .word ov02_0233A1B8
-	arm_func_end ov02_0233A014
+_0233A074: .word SceneOptErase_EndScene
+_0233A078: .word SceneOptErase_ProcConfirm
+	arm_func_end SceneOptErase_Button
 
-	arm_func_start ov02_0233A07C
-ov02_0233A07C: ; 0x0233A07C
+	arm_func_start SceneOptErase_EndScene
+SceneOptErase_EndScene: ; 0x0233A07C
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233A098 ; =ov02_0233A09C
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233A098 ; =SceneOptErase_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A098: .word ov02_0233A09C
-	arm_func_end ov02_0233A07C
+_0233A098: .word SceneOptErase_EndScene1
+	arm_func_end SceneOptErase_EndScene
 
-	arm_func_start ov02_0233A09C
-ov02_0233A09C: ; 0x0233A09C
+	arm_func_start SceneOptErase_EndScene1
+SceneOptErase_EndScene1: ; 0x0233A09C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	ldr r0, _0233A0F8 ; =ov02_0235AAA4
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -26134,26 +26134,26 @@ ov02_0233A09C: ; 0x0233A09C
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _0233A0D8:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233A0FC ; =ov02_0233A100
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233A0FC ; =SceneOptErase_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233A0F8: .word ov02_0235AAA4
-_0233A0FC: .word ov02_0233A100
-	arm_func_end ov02_0233A09C
+_0233A0FC: .word SceneOptErase_EndScene2
+	arm_func_end SceneOptErase_EndScene1
 
-	arm_func_start ov02_0233A100
-ov02_0233A100: ; 0x0233A100
+	arm_func_start SceneOptErase_EndScene2
+SceneOptErase_EndScene2: ; 0x0233A100
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233A1AC ; =ov02_0235AAA4
@@ -26161,108 +26161,108 @@ ov02_0233A100: ; 0x0233A100
 	cmp r0, #0
 	bne _0233A134
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 _0233A134:
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _0233A1AC ; =ov02_0235AAA4
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233A168
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _0233A168:
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _0233A1AC ; =ov02_0235AAA4
 	mov r1, #1
 	ldrb r0, [r0]
 	cmp r0, #0
 	mov r0, #0
 	bne _0233A19C
-	bl ov02_02338D78
-	ldr r0, _0233A1B0 ; =ov02_0233A904
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233A1B0 ; =Dwci_SceneOptMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233A19C:
-	bl ov02_02338D78
-	ldr r0, _0233A1B4 ; =ov02_0233A228
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233A1B4 ; =Dwci_SceneOptErase1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233A1AC: .word ov02_0235AAA4
-_0233A1B0: .word ov02_0233A904
-_0233A1B4: .word ov02_0233A228
-	arm_func_end ov02_0233A100
+_0233A1B0: .word Dwci_SceneOptMenu
+_0233A1B4: .word Dwci_SceneOptErase1
+	arm_func_end SceneOptErase_EndScene2
 
-	arm_func_start ov02_0233A1B8
-ov02_0233A1B8: ; 0x0233A1B8
+	arm_func_start SceneOptErase_ProcConfirm
+SceneOptErase_ProcConfirm: ; 0x0233A1B8
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	beq _0233A1E8
 	cmp r0, #1
 	ldmneia sp!, {r3, pc}
 	mov r0, #0xe
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233A200 ; =ov02_0235AAA4
 	mov r1, #1
 	strb r1, [r0]
 	b _0233A1F0
 _0233A1E8:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233A1F0:
-	bl ov02_023496C0
-	ldr r0, _0233A204 ; =ov02_0233A208
-	bl ov02_02338D68
+	bl Dwci_WinlEnd
+	ldr r0, _0233A204 ; =SceneOptErase_ProcConfirm1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233A200: .word ov02_0235AAA4
-_0233A204: .word ov02_0233A208
-	arm_func_end ov02_0233A1B8
+_0233A204: .word SceneOptErase_ProcConfirm1
+	arm_func_end SceneOptErase_ProcConfirm
 
-	arm_func_start ov02_0233A208
-ov02_0233A208: ; 0x0233A208
+	arm_func_start SceneOptErase_ProcConfirm1
+SceneOptErase_ProcConfirm1: ; 0x0233A208
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0233A224 ; =ov02_0233A07C
-	bl ov02_02338D68
+	ldr r0, _0233A224 ; =SceneOptErase_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A224: .word ov02_0233A07C
-	arm_func_end ov02_0233A208
+_0233A224: .word SceneOptErase_EndScene
+	arm_func_end SceneOptErase_ProcConfirm1
 
-	arm_func_start ov02_0233A228
-ov02_0233A228: ; 0x0233A228
+	arm_func_start Dwci_SceneOptErase1
+Dwci_SceneOptErase1: ; 0x0233A228
 	stmdb sp!, {r3, lr}
-	bl ov02_0233A24C
+	bl SceneOptErase1_InitGraphics
 	mov r0, #0x19
-	bl ov02_02334E70
-	bl ov02_02347D68
-	ldr r0, _0233A248 ; =ov02_0233A2CC
-	bl ov02_02338D68
+	bl Dwci_CmnlMsgDraw
+	bl Dwci_SettinglEraseAll
+	ldr r0, _0233A248 ; =SceneOptErase1_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A248: .word ov02_0233A2CC
-	arm_func_end ov02_0233A228
+_0233A248: .word SceneOptErase1_ProcInit
+	arm_func_end Dwci_SceneOptErase1
 
-	arm_func_start ov02_0233A24C
-ov02_0233A24C: ; 0x0233A24C
+	arm_func_start SceneOptErase1_InitGraphics
+SceneOptErase1_InitGraphics: ; 0x0233A24C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233A2BC ; =ov02_02353778
 	ldr r1, _0233A2C0 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233A2C4 ; =0x04001008
 	ldr r1, _0233A2C8 ; =0x0400000A
 	ldrh r0, [r3]
@@ -26292,176 +26292,176 @@ _0233A2BC: .word ov02_02353778
 _0233A2C0: .word GX_LoadBG2Scr
 _0233A2C4: .word 0x04001008
 _0233A2C8: .word 0x0400000A
-	arm_func_end ov02_0233A24C
+	arm_func_end SceneOptErase1_InitGraphics
 
-	arm_func_start ov02_0233A2CC
-ov02_0233A2CC: ; 0x0233A2CC
+	arm_func_start SceneOptErase1_ProcInit
+SceneOptErase1_ProcInit: ; 0x0233A2CC
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233A2FC ; =ov02_0233A300
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233A2FC ; =SceneOptErase1_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A2FC: .word ov02_0233A300
-	arm_func_end ov02_0233A2CC
+_0233A2FC: .word SceneOptErase1_ProcInit1
+	arm_func_end SceneOptErase1_ProcInit
 
-	arm_func_start ov02_0233A300
-ov02_0233A300: ; 0x0233A300
+	arm_func_start SceneOptErase1_ProcInit1
+SceneOptErase1_ProcInit1: ; 0x0233A300
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #5
-	bl ov02_02334E38
-	ldr r0, _0233A328 ; =ov02_0233A32C
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233A328 ; =SceneOptErase1_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A328: .word ov02_0233A32C
-	arm_func_end ov02_0233A300
+_0233A328: .word SceneOptErase1_ProcInit2
+	arm_func_end SceneOptErase1_ProcInit1
 
-	arm_func_start ov02_0233A32C
-ov02_0233A32C: ; 0x0233A32C
+	arm_func_start SceneOptErase1_ProcInit2
+SceneOptErase1_ProcInit2: ; 0x0233A32C
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _0233A350 ; =ov02_0233A354
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _0233A350 ; =SceneOptErase1_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A350: .word ov02_0233A354
-	arm_func_end ov02_0233A32C
+_0233A350: .word SceneOptErase1_ProcScene
+	arm_func_end SceneOptErase1_ProcInit2
 
-	arm_func_start ov02_0233A354
-ov02_0233A354: ; 0x0233A354
+	arm_func_start SceneOptErase1_ProcScene
+SceneOptErase1_ProcScene: ; 0x0233A354
 	stmdb sp!, {r3, lr}
-	bl ov02_0233A368
-	bl ov02_0233A388
-	bl ov02_0233A38C
+	bl SceneOptErase1_Input
+	bl SceneOptErase1_Draw
+	bl SceneOptErase1_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233A354
+	arm_func_end SceneOptErase1_ProcScene
 
-	arm_func_start ov02_0233A368
-ov02_0233A368: ; 0x0233A368
+	arm_func_start SceneOptErase1_Input
+SceneOptErase1_Input: ; 0x0233A368
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233A368
+	arm_func_end SceneOptErase1_Input
 
-	arm_func_start ov02_0233A388
-ov02_0233A388: ; 0x0233A388
+	arm_func_start SceneOptErase1_Draw
+SceneOptErase1_Draw: ; 0x0233A388
 	bx lr
-	arm_func_end ov02_0233A388
+	arm_func_end SceneOptErase1_Draw
 
-	arm_func_start ov02_0233A38C
-ov02_0233A38C: ; 0x0233A38C
+	arm_func_start SceneOptErase1_Button
+SceneOptErase1_Button: ; 0x0233A38C
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	ldr r0, _0233A3B0 ; =ov02_0233A3B4
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233A3B0 ; =SceneOptErase1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A3B0: .word ov02_0233A3B4
-	arm_func_end ov02_0233A38C
+_0233A3B0: .word SceneOptErase1_EndScene
+	arm_func_end SceneOptErase1_Button
 
-	arm_func_start ov02_0233A3B4
-ov02_0233A3B4: ; 0x0233A3B4
+	arm_func_start SceneOptErase1_EndScene
+SceneOptErase1_EndScene: ; 0x0233A3B4
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233A3D0 ; =ov02_0233A3D4
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233A3D0 ; =SceneOptErase1_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A3D0: .word ov02_0233A3D4
-	arm_func_end ov02_0233A3B4
+_0233A3D0: .word SceneOptErase1_EndScene1
+	arm_func_end SceneOptErase1_EndScene
 
-	arm_func_start ov02_0233A3D4
-ov02_0233A3D4: ; 0x0233A3D4
+	arm_func_start SceneOptErase1_EndScene1
+SceneOptErase1_EndScene1: ; 0x0233A3D4
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #3
 	mov r1, #1
 	mov r2, #0x3f
 	mov r3, #0x40
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x3f
 	mov r3, #0x40
-	bl ov02_0234D8E0
-	ldr r0, _0233A41C ; =ov02_0233A420
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233A41C ; =SceneOptErase1_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A41C: .word ov02_0233A420
-	arm_func_end ov02_0233A3D4
+_0233A41C: .word SceneOptErase1_EndScene2
+	arm_func_end SceneOptErase1_EndScene1
 
-	arm_func_start ov02_0233A420
-ov02_0233A420: ; 0x0233A420
+	arm_func_start SceneOptErase1_EndScene2
+SceneOptErase1_EndScene2: ; 0x0233A420
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0x1000000
 	bl OS_SpinWait
 	bl PM_ForceToPowerOff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233A420
+	arm_func_end SceneOptErase1_EndScene2
 
-	arm_func_start ov02_0233A454
-ov02_0233A454: ; 0x0233A454
+	arm_func_start Dwci_SceneOptInfo
+Dwci_SceneOptInfo: ; 0x0233A454
 	stmdb sp!, {r3, lr}
-	bl ov02_0233A488
+	bl SceneOptInfo_InitGraphics
 	mov r0, #0x11
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	mov r0, #0x3a
 	sub r1, r0, #0x3b
 	mov r2, #0
-	bl ov02_02334C3C
-	bl ov02_0233A508
-	ldr r0, _0233A484 ; =ov02_0233A70C
-	bl ov02_02338D68
+	bl Dwci_CommentlDispEx
+	bl SceneOptInfo_DrawInfo
+	ldr r0, _0233A484 ; =SceneOptInfo_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A484: .word ov02_0233A70C
-	arm_func_end ov02_0233A454
+_0233A484: .word SceneOptInfo_ProcInit
+	arm_func_end Dwci_SceneOptInfo
 
-	arm_func_start ov02_0233A488
-ov02_0233A488: ; 0x0233A488
+	arm_func_start SceneOptInfo_InitGraphics
+SceneOptInfo_InitGraphics: ; 0x0233A488
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233A4F8 ; =ov02_0235378C
 	ldr r1, _0233A4FC ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233A500 ; =0x04001008
 	ldr r1, _0233A504 ; =0x0400000A
 	ldrh r0, [r3]
@@ -26491,15 +26491,15 @@ _0233A4F8: .word ov02_0235378C
 _0233A4FC: .word GX_LoadBG2Scr
 _0233A500: .word 0x04001008
 _0233A504: .word 0x0400000A
-	arm_func_end ov02_0233A488
+	arm_func_end SceneOptInfo_InitGraphics
 
-	arm_func_start ov02_0233A508
-ov02_0233A508: ; 0x0233A508
+	arm_func_start SceneOptInfo_DrawInfo
+SceneOptInfo_DrawInfo: ; 0x0233A508
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x7c
 	mov r0, #0
 	mov r1, r0
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	mov fp, r0
 	add r0, sp, #0x14
 	bl OS_GetMacAddress
@@ -26521,7 +26521,7 @@ ov02_0233A508: ; 0x0233A508
 	add r0, sp, #0x2e
 	add r1, sp, #0x1a
 	mov r2, #0x14
-	bl ov02_0234F5C8
+	bl swprintf_subroutine
 	mov r0, #0x1c
 	str r0, [sp]
 	mov r0, #2
@@ -26534,7 +26534,7 @@ ov02_0233A508: ; 0x0233A508
 	mov r1, #8
 	mov r2, #0x40
 	mov r3, #0xf0
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	add r0, sp, #0x68
 	bl Dwci_BM_GetWiFiInfo
 	ldr sl, [sp, #0x6c]
@@ -26594,7 +26594,7 @@ _0233A614:
 	add r0, sp, #0x2e
 	add r1, sp, #0x1a
 	mov r2, #0x14
-	bl ov02_0234F5C8
+	bl swprintf_subroutine
 	b _0233A6B8
 _0233A698:
 	ldr r2, _0233A708 ; =ov02_023537D4
@@ -26604,7 +26604,7 @@ _0233A698:
 	add r0, sp, #0x2e
 	add r1, sp, #0x1a
 	mov r2, #0x14
-	bl ov02_0234F5C8
+	bl swprintf_subroutine
 _0233A6B8:
 	mov r0, #0x1c
 	str r0, [sp]
@@ -26618,9 +26618,9 @@ _0233A6B8:
 	mov r2, #0x78
 	mov r3, #0xf0
 	str r4, [sp, #0xc]
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	mov r0, fp
-	bl ov02_0234E354
+	bl Dwci_FntlRenewBg
 	add sp, sp, #0x7c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -26628,199 +26628,199 @@ _0233A6FC: .word ov02_023537A0
 _0233A700: .word 0x00002710
 _0233A704: .word ov02_023537C0
 _0233A708: .word ov02_023537D4
-	arm_func_end ov02_0233A508
+	arm_func_end SceneOptInfo_DrawInfo
 
-	arm_func_start ov02_0233A70C
-ov02_0233A70C: ; 0x0233A70C
+	arm_func_start SceneOptInfo_ProcInit
+SceneOptInfo_ProcInit: ; 0x0233A70C
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233A75C ; =ov02_0233A760
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233A75C ; =SceneOptInfo_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A75C: .word ov02_0233A760
-	arm_func_end ov02_0233A70C
+_0233A75C: .word SceneOptInfo_ProcInit1
+	arm_func_end SceneOptInfo_ProcInit
 
-	arm_func_start ov02_0233A760
-ov02_0233A760: ; 0x0233A760
+	arm_func_start SceneOptInfo_ProcInit1
+SceneOptInfo_ProcInit1: ; 0x0233A760
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #2
-	bl ov02_02334E38
-	ldr r0, _0233A798 ; =ov02_0233A79C
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233A798 ; =SceneOptInfo_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A798: .word ov02_0233A79C
-	arm_func_end ov02_0233A760
+_0233A798: .word SceneOptInfo_ProcInit2
+	arm_func_end SceneOptInfo_ProcInit1
 
-	arm_func_start ov02_0233A79C
-ov02_0233A79C: ; 0x0233A79C
+	arm_func_start SceneOptInfo_ProcInit2
+SceneOptInfo_ProcInit2: ; 0x0233A79C
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _0233A7C0 ; =ov02_0233A7C4
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _0233A7C0 ; =SceneOptInfo_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A7C0: .word ov02_0233A7C4
-	arm_func_end ov02_0233A79C
+_0233A7C0: .word SceneOptInfo_ProcScene
+	arm_func_end SceneOptInfo_ProcInit2
 
-	arm_func_start ov02_0233A7C4
-ov02_0233A7C4: ; 0x0233A7C4
+	arm_func_start SceneOptInfo_ProcScene
+SceneOptInfo_ProcScene: ; 0x0233A7C4
 	stmdb sp!, {r3, lr}
-	bl ov02_0233A7D8
-	bl ov02_0233A7F8
-	bl ov02_0233A7FC
+	bl SceneOptInfo_Input
+	bl SceneOptInfo_Draw
+	bl SceneOptInfo_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233A7C4
+	arm_func_end SceneOptInfo_ProcScene
 
-	arm_func_start ov02_0233A7D8
-ov02_0233A7D8: ; 0x0233A7D8
+	arm_func_start SceneOptInfo_Input
+SceneOptInfo_Input: ; 0x0233A7D8
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233A7D8
+	arm_func_end SceneOptInfo_Input
 
-	arm_func_start ov02_0233A7F8
-ov02_0233A7F8: ; 0x0233A7F8
+	arm_func_start SceneOptInfo_Draw
+SceneOptInfo_Draw: ; 0x0233A7F8
 	bx lr
-	arm_func_end ov02_0233A7F8
+	arm_func_end SceneOptInfo_Draw
 
-	arm_func_start ov02_0233A7FC
-ov02_0233A7FC: ; 0x0233A7FC
+	arm_func_start SceneOptInfo_Button
+SceneOptInfo_Button: ; 0x0233A7FC
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #7
-	bl ov02_023480E0
-	ldr r0, _0233A820 ; =ov02_0233A824
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233A820 ; =SceneOptInfo_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A820: .word ov02_0233A824
-	arm_func_end ov02_0233A7FC
+_0233A820: .word SceneOptInfo_EndScene
+	arm_func_end SceneOptInfo_Button
 
-	arm_func_start ov02_0233A824
-ov02_0233A824: ; 0x0233A824
+	arm_func_start SceneOptInfo_EndScene
+SceneOptInfo_EndScene: ; 0x0233A824
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233A840 ; =ov02_0233A844
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233A840 ; =SceneOptInfo_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A840: .word ov02_0233A844
-	arm_func_end ov02_0233A824
+_0233A840: .word SceneOptInfo_EndScene1
+	arm_func_end SceneOptInfo_EndScene
 
-	arm_func_start ov02_0233A844
-ov02_0233A844: ; 0x0233A844
+	arm_func_start SceneOptInfo_EndScene1
+SceneOptInfo_EndScene1: ; 0x0233A844
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233A890 ; =ov02_0233A894
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233A890 ; =SceneOptInfo_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A890: .word ov02_0233A894
-	arm_func_end ov02_0233A844
+_0233A890: .word SceneOptInfo_EndScene2
+	arm_func_end SceneOptInfo_EndScene1
 
-	arm_func_start ov02_0233A894
-ov02_0233A894: ; 0x0233A894
+	arm_func_start SceneOptInfo_EndScene2
+SceneOptInfo_EndScene2: ; 0x0233A894
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
-	bl ov02_02334D10
+	bl Dwci_FntlDeleteBgLcd
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0233A900 ; =ov02_0233A904
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233A900 ; =Dwci_SceneOptMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A900: .word ov02_0233A904
-	arm_func_end ov02_0233A894
+_0233A900: .word Dwci_SceneOptMenu
+	arm_func_end SceneOptInfo_EndScene2
 
-	arm_func_start ov02_0233A904
-ov02_0233A904: ; 0x0233A904
+	arm_func_start Dwci_SceneOptMenu
+Dwci_SceneOptMenu: ; 0x0233A904
 	stmdb sp!, {r4, lr}
 	ldr r0, _0233A9B0 ; =ov02_0235AAA8
 	mov r1, #0
 	strb r1, [r0, #1]
-	bl ov02_0233A9CC
+	bl SceneOptMenu_InitGraphics
 	mov r0, #0x10
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	mov r0, #3
-	bl ov02_02348C1C
+	bl Dwci_SteplChangeScr
 	mov r0, #0x39
 	sub r1, r0, #0x3a
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #0
 	mov r1, #0x5b
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r2, _0233A9B0 ; =ov02_0235AAA8
 	ldr r1, _0233A9B4 ; =0xFE00FF00
 	str r0, [r2, #8]
@@ -26844,9 +26844,9 @@ ov02_0233A904: ; 0x0233A904
 	ldrh r1, [r1, r4]
 	ldrh r2, [ip, r4]
 	ldrh r3, [r3, r4]
-	bl ov02_023350AC
-	ldr r0, _0233A9C8 ; =ov02_0233AB68
-	bl ov02_02338D68
+	bl Dwci_FocuslDisp4
+	ldr r0, _0233A9C8 ; =SceneOptMenu_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233A9B0: .word ov02_0235AAA8
@@ -26855,11 +26855,11 @@ _0233A9B8: .word ov02_0235298E
 _0233A9BC: .word ov02_02352992
 _0233A9C0: .word ov02_02352990
 _0233A9C4: .word ov02_02352994
-_0233A9C8: .word ov02_0233AB68
-	arm_func_end ov02_0233A904
+_0233A9C8: .word SceneOptMenu_ProcInit
+	arm_func_end Dwci_SceneOptMenu
 
-	arm_func_start ov02_0233A9CC
-ov02_0233A9CC: ; 0x0233A9CC
+	arm_func_start SceneOptMenu_InitGraphics
+SceneOptMenu_InitGraphics: ; 0x0233A9CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x44
 	ldr r4, _0233AB44 ; =ov02_02352948
@@ -26890,22 +26890,22 @@ _0233AA0C:
 	ldr r0, _0233AB4C ; =ov02_023537E8
 	ldr r1, _0233AB50 ; =GX_LoadBG2Char
 	strb r2, [r3]
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0233AB54 ; =ov02_02353800
 	ldr r1, _0233AB58 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	add r0, sp, #0x14
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _0233AB5C ; =ov02_0235AAA8
 	str r0, [r1, #4]
 	add r0, sp, #0x2b
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	mov r8, r0
 	add r0, sp, #0
 	bl Dwci_BM_GetWiFiInfo
@@ -26937,7 +26937,7 @@ _0233AAD0:
 	mov r2, #0x200
 	bl GX_LoadBGPltt
 	mov r0, r8
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	ldr r2, _0233AB60 ; =0x04001008
 	ldr r1, _0233AB64 ; =0x0400000A
 	ldrh r0, [r2]
@@ -26968,90 +26968,90 @@ _0233AB58: .word GX_LoadBG2Scr
 _0233AB5C: .word ov02_0235AAA8
 _0233AB60: .word 0x04001008
 _0233AB64: .word 0x0400000A
-	arm_func_end ov02_0233A9CC
+	arm_func_end SceneOptMenu_InitGraphics
 
-	arm_func_start ov02_0233AB68
-ov02_0233AB68: ; 0x0233AB68
+	arm_func_start SceneOptMenu_ProcInit
+SceneOptMenu_ProcInit: ; 0x0233AB68
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E3D0
-	ldr r0, _0233ABB8 ; =ov02_0233ABBC
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233ABB8 ; =SceneOptMenu_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233ABB8: .word ov02_0233ABBC
-	arm_func_end ov02_0233AB68
+_0233ABB8: .word SceneOptMenu_ProcInit1
+	arm_func_end SceneOptMenu_ProcInit
 
-	arm_func_start ov02_0233ABBC
-ov02_0233ABBC: ; 0x0233ABBC
+	arm_func_start SceneOptMenu_ProcInit1
+SceneOptMenu_ProcInit1: ; 0x0233ABBC
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_02334E38
-	ldr r0, _0233ABF4 ; =ov02_0233ABF8
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233ABF4 ; =SceneOptMenu_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233ABF4: .word ov02_0233ABF8
-	arm_func_end ov02_0233ABBC
+_0233ABF4: .word SceneOptMenu_ProcInit2
+	arm_func_end SceneOptMenu_ProcInit1
 
-	arm_func_start ov02_0233ABF8
-ov02_0233ABF8: ; 0x0233ABF8
+	arm_func_start SceneOptMenu_ProcInit2
+SceneOptMenu_ProcInit2: ; 0x0233ABF8
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _0233AC1C ; =ov02_0233AC20
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _0233AC1C ; =SceneOptMenu_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233AC1C: .word ov02_0233AC20
-	arm_func_end ov02_0233ABF8
+_0233AC1C: .word SceneOptMenu_ProcScene
+	arm_func_end SceneOptMenu_ProcInit2
 
-	arm_func_start ov02_0233AC20
-ov02_0233AC20: ; 0x0233AC20
+	arm_func_start SceneOptMenu_ProcScene
+SceneOptMenu_ProcScene: ; 0x0233AC20
 	stmdb sp!, {r3, lr}
-	bl ov02_0233AC34
-	bl ov02_0233AD28
-	bl ov02_0233AD2C
+	bl SceneOptMenu_Input
+	bl SceneOptMenu_Draw
+	bl SceneOptMenu_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233AC20
+	arm_func_end SceneOptMenu_ProcScene
 
-	arm_func_start ov02_0233AC34
-ov02_0233AC34: ; 0x0233AC34
+	arm_func_start SceneOptMenu_Input
+SceneOptMenu_Input: ; 0x0233AC34
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r5, _0233AD10 ; =ov02_02352976
 	mov r4, #0
 _0233AC40:
 	mov r0, r5
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _0233AC90
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	and r1, r4, #0xff
 	mov lr, r1, lsl #3
 	ldr r0, _0233AD14 ; =ov02_0235298E
@@ -27064,7 +27064,7 @@ _0233AC40:
 	ldrh r2, [r2, lr]
 	ldrh r3, [r3, lr]
 	strb r4, [ip]
-	bl ov02_023350AC
+	bl Dwci_FocuslDisp4
 	ldmia sp!, {r3, r4, r5, pc}
 _0233AC90:
 	add r4, r4, #1
@@ -27072,35 +27072,35 @@ _0233AC90:
 	add r5, r5, #8
 	blo _0233AC40
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0233ACBC
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, r4, r5, pc}
 _0233ACBC:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0233ACD8
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, r4, r5, pc}
 _0233ACD8:
 	mov r0, #0x40
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _0233ACF4
 	mov r0, #1
-	bl ov02_0233AF60
+	bl SceneOptMenu_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _0233ACF4:
 	mov r0, #0x80
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, #3
-	bl ov02_0233AF60
+	bl SceneOptMenu_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0233AD10: .word ov02_02352976
@@ -27109,18 +27109,18 @@ _0233AD18: .word ov02_02352992
 _0233AD1C: .word ov02_02352990
 _0233AD20: .word ov02_02352994
 _0233AD24: .word ov02_0235AAA8
-	arm_func_end ov02_0233AC34
+	arm_func_end SceneOptMenu_Input
 
-	arm_func_start ov02_0233AD28
-ov02_0233AD28: ; 0x0233AD28
+	arm_func_start SceneOptMenu_Draw
+SceneOptMenu_Draw: ; 0x0233AD28
 	bx lr
-	arm_func_end ov02_0233AD28
+	arm_func_end SceneOptMenu_Draw
 
-	arm_func_start ov02_0233AD2C
-ov02_0233AD2C: ; 0x0233AD2C
+	arm_func_start SceneOptMenu_Button
+SceneOptMenu_Button: ; 0x0233AD2C
 	stmdb sp!, {lr}
 	sub sp, sp, #0x14
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	beq _0233AD50
 	cmp r0, #1
@@ -27129,7 +27129,7 @@ ov02_0233AD2C: ; 0x0233AD2C
 	ldmia sp!, {pc}
 _0233AD50:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233ADB8
 _0233AD5C:
 	add r0, sp, #0
@@ -27144,109 +27144,109 @@ _0233AD5C:
 	cmpeq r1, #0
 	bne _0233ADA0
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mvn r0, #0
-	bl ov02_02334710
+	bl Dwci_BtnlSetForce
 	add sp, sp, #0x14
 	ldmia sp!, {pc}
 _0233ADA0:
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_0233AFF0
+	bl Dwci_SndlPlay
+	bl SceneOptMenu_DispPush
 	ldr r0, _0233ADC8 ; =ov02_0235AAA8
 	mov r1, #1
 	strb r1, [r0, #1]
 _0233ADB8:
-	ldr r0, _0233ADCC ; =ov02_0233ADD0
-	bl ov02_02338D68
+	ldr r0, _0233ADCC ; =SceneOptMenu_EndScene
+	bl Dwci_ChangeScene
 	add sp, sp, #0x14
 	ldmia sp!, {pc}
 	.align 2, 0
 _0233ADC8: .word ov02_0235AAA8
-_0233ADCC: .word ov02_0233ADD0
-	arm_func_end ov02_0233AD2C
+_0233ADCC: .word SceneOptMenu_EndScene
+	arm_func_end SceneOptMenu_Button
 
-	arm_func_start ov02_0233ADD0
-ov02_0233ADD0: ; 0x0233ADD0
+	arm_func_start SceneOptMenu_EndScene
+SceneOptMenu_EndScene: ; 0x0233ADD0
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233ADEC ; =ov02_0233ADF0
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233ADEC ; =SceneOptMenu_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233ADEC: .word ov02_0233ADF0
-	arm_func_end ov02_0233ADD0
+_0233ADEC: .word SceneOptMenu_EndScene1
+	arm_func_end SceneOptMenu_EndScene
 
-	arm_func_start ov02_0233ADF0
-ov02_0233ADF0: ; 0x0233ADF0
+	arm_func_start SceneOptMenu_EndScene1
+SceneOptMenu_EndScene1: ; 0x0233ADF0
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233AE4C ; =ov02_0235AAA8
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	beq _0233AE18
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 _0233AE18:
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233AE50 ; =ov02_0233AE54
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233AE50 ; =SceneOptMenu_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233AE4C: .word ov02_0235AAA8
-_0233AE50: .word ov02_0233AE54
-	arm_func_end ov02_0233ADF0
+_0233AE50: .word SceneOptMenu_EndScene2
+	arm_func_end SceneOptMenu_EndScene1
 
-	arm_func_start ov02_0233AE54
-ov02_0233AE54: ; 0x0233AE54
+	arm_func_start SceneOptMenu_EndScene2
+SceneOptMenu_EndScene2: ; 0x0233AE54
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _0233AF4C ; =ov02_0235AAA8
 	ldr r0, [r0, #8]
-	bl ov02_0234F2C0
-	bl ov02_0233519C
-	bl ov02_02334D10
+	bl Dwci_ObjlDelete
+	bl Dwci_FocuslDelete
+	bl Dwci_CommentlDelete
 	ldr r0, _0233AF4C ; =ov02_0235AAA8
 	ldr r0, [r0, #4]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _0233AF4C ; =ov02_0235AAA8
 	ldrb r1, [r0, #1]
 	cmp r1, #0
 	bne _0233AEE4
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
-	ldr r0, _0233AF50 ; =ov02_023398CC
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233AF50 ; =Dwci_SceneMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233AEE4:
 	ldrb r0, [r0]
@@ -27260,34 +27260,34 @@ _0233AEE4:
 _0233AF04:
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0233AF54 ; =ov02_0233A454
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233AF54 ; =Dwci_SceneOptInfo
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233AF1C:
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0233AF58 ; =ov02_02339E44
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233AF58 ; =Dwci_SceneOptErase
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233AF34:
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0233AF5C ; =ov02_0233B6D0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233AF5C ; =Dwci_SceneOptMovConfirm1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233AF4C: .word ov02_0235AAA8
-_0233AF50: .word ov02_023398CC
-_0233AF54: .word ov02_0233A454
-_0233AF58: .word ov02_02339E44
-_0233AF5C: .word ov02_0233B6D0
-	arm_func_end ov02_0233AE54
+_0233AF50: .word Dwci_SceneMenu
+_0233AF54: .word Dwci_SceneOptInfo
+_0233AF58: .word Dwci_SceneOptErase
+_0233AF5C: .word Dwci_SceneOptMovConfirm1
+	arm_func_end SceneOptMenu_EndScene2
 
-	arm_func_start ov02_0233AF60
-ov02_0233AF60: ; 0x0233AF60
+	arm_func_start SceneOptMenu_MoveFocus
+SceneOptMenu_MoveFocus: ; 0x0233AF60
 	stmdb sp!, {r3, lr}
 	cmp r0, #1
 	mov r1, #3
@@ -27307,7 +27307,7 @@ _0233AF88:
 _0233AF9C:
 	strb r0, [r1]
 	mov r0, #8
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233AFDC ; =ov02_0235AAA8
 	ldr ip, _0233AFE0 ; =ov02_0235298E
 	ldrb r0, [r0]
@@ -27319,7 +27319,7 @@ _0233AF9C:
 	ldrh r1, [r1, lr]
 	ldrh r2, [r2, lr]
 	ldrh r3, [r3, lr]
-	bl ov02_023350AC
+	bl Dwci_FocuslDisp4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233AFDC: .word ov02_0235AAA8
@@ -27327,14 +27327,14 @@ _0233AFE0: .word ov02_0235298E
 _0233AFE4: .word ov02_02352992
 _0233AFE8: .word ov02_02352990
 _0233AFEC: .word ov02_02352994
-	arm_func_end ov02_0233AF60
+	arm_func_end SceneOptMenu_MoveFocus
 
-	arm_func_start ov02_0233AFF0
-ov02_0233AFF0: ; 0x0233AFF0
+	arm_func_start SceneOptMenu_DispPush
+SceneOptMenu_DispPush: ; 0x0233AFF0
 	ldr r0, _0233B010 ; =ov02_0235AAA8
 	ldr r1, _0233B014 ; =ov02_02352940
 	ldrb r2, [r0]
-	ldr ip, _0233B018 ; =ov02_023468A0
+	ldr ip, _0233B018 ; =Dwci_ScreenlCopyPalette
 	ldr r0, [r0, #4]
 	ldrb r1, [r1, r2]
 	mov r2, r1
@@ -27342,34 +27342,34 @@ ov02_0233AFF0: ; 0x0233AFF0
 	.align 2, 0
 _0233B010: .word ov02_0235AAA8
 _0233B014: .word ov02_02352940
-_0233B018: .word ov02_023468A0
-	arm_func_end ov02_0233AFF0
+_0233B018: .word Dwci_ScreenlCopyPalette
+	arm_func_end SceneOptMenu_DispPush
 
-	arm_func_start ov02_0233B01C
-ov02_0233B01C: ; 0x0233B01C
+	arm_func_start Dwci_SceneOptMovComm
+Dwci_SceneOptMovComm: ; 0x0233B01C
 	stmdb sp!, {r3, lr}
-	bl ov02_0233B054
+	bl SceneOptMovComm_InitGraphics
 	mov r0, #0x1e
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0
-	bl ov02_023343DC
+	bl Dwci_AnimelInitEx
 	mov r0, #1
-	bl ov02_02335334
+	bl Dwci_IconlInit
 	mov r0, #0xb
-	bl ov02_023480E0
-	ldr r0, _0233B050 ; =ov02_0233B0D4
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233B050 ; =SceneOptMovComm_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B050: .word ov02_0233B0D4
-	arm_func_end ov02_0233B01C
+_0233B050: .word SceneOptMovComm_ProcInit
+	arm_func_end Dwci_SceneOptMovComm
 
-	arm_func_start ov02_0233B054
-ov02_0233B054: ; 0x0233B054
+	arm_func_start SceneOptMovComm_InitGraphics
+SceneOptMovComm_InitGraphics: ; 0x0233B054
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233B0C4 ; =ov02_02353818
 	ldr r1, _0233B0C8 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233B0CC ; =0x04001008
 	ldr r1, _0233B0D0 ; =0x0400000A
 	ldrh r0, [r3]
@@ -27399,132 +27399,132 @@ _0233B0C4: .word ov02_02353818
 _0233B0C8: .word GX_LoadBG2Scr
 _0233B0CC: .word 0x04001008
 _0233B0D0: .word 0x0400000A
-	arm_func_end ov02_0233B054
+	arm_func_end SceneOptMovComm_InitGraphics
 
-	arm_func_start ov02_0233B0D4
-ov02_0233B0D4: ; 0x0233B0D4
+	arm_func_start SceneOptMovComm_ProcInit
+SceneOptMovComm_ProcInit: ; 0x0233B0D4
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233B104 ; =ov02_0233B108
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233B104 ; =SceneOptMovComm_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B104: .word ov02_0233B108
-	arm_func_end ov02_0233B0D4
+_0233B104: .word SceneOptMovComm_ProcInit1
+	arm_func_end SceneOptMovComm_ProcInit
 
-	arm_func_start ov02_0233B108
-ov02_0233B108: ; 0x0233B108
+	arm_func_start SceneOptMovComm_ProcInit1
+SceneOptMovComm_ProcInit1: ; 0x0233B108
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0233B130 ; =ov02_0233B20C
-	bl ov02_02339104
-	ldr r0, _0233B134 ; =ov02_0233B138
-	bl ov02_02338D68
+	ldr r0, _0233B130 ; =SceneOptMoveComm_CbMov
+	bl Dwci_MovlChangeCallback
+	ldr r0, _0233B134 ; =SceneOptMovComm_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B130: .word ov02_0233B20C
-_0233B134: .word ov02_0233B138
-	arm_func_end ov02_0233B108
+_0233B130: .word SceneOptMoveComm_CbMov
+_0233B134: .word SceneOptMovComm_ProcScene
+	arm_func_end SceneOptMovComm_ProcInit1
 
-	arm_func_start ov02_0233B138
-ov02_0233B138: ; 0x0233B138
+	arm_func_start SceneOptMovComm_ProcScene
+SceneOptMovComm_ProcScene: ; 0x0233B138
 	stmdb sp!, {r3, lr}
-	bl ov02_0233B148
-	bl ov02_0233B14C
+	bl SceneOptMovComm_Input
+	bl SceneOptMovComm_Draw
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233B138
+	arm_func_end SceneOptMovComm_ProcScene
 
-	arm_func_start ov02_0233B148
-ov02_0233B148: ; 0x0233B148
+	arm_func_start SceneOptMovComm_Input
+SceneOptMovComm_Input: ; 0x0233B148
 	bx lr
-	arm_func_end ov02_0233B148
+	arm_func_end SceneOptMovComm_Input
 
-	arm_func_start ov02_0233B14C
-ov02_0233B14C: ; 0x0233B14C
+	arm_func_start SceneOptMovComm_Draw
+SceneOptMovComm_Draw: ; 0x0233B14C
 	bx lr
-	arm_func_end ov02_0233B14C
+	arm_func_end SceneOptMovComm_Draw
 
-	arm_func_start ov02_0233B150
-ov02_0233B150: ; 0x0233B150
+	arm_func_start SceneOptMovComm_EndScene
+SceneOptMovComm_EndScene: ; 0x0233B150
 	stmdb sp!, {r3, lr}
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233B174 ; =ov02_0233B178
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233B174 ; =SceneOptMovComm_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B174: .word ov02_0233B178
-	arm_func_end ov02_0233B150
+_0233B174: .word SceneOptMovComm_EndScene1
+	arm_func_end SceneOptMovComm_EndScene
 
-	arm_func_start ov02_0233B178
-ov02_0233B178: ; 0x0233B178
+	arm_func_start SceneOptMovComm_EndScene1
+SceneOptMovComm_EndScene1: ; 0x0233B178
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023390E8
+	bl Dwci_MovlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov02_023353EC
-	bl ov02_023344AC
+	bl Dwci_IconlEnd
+	bl Dwci_AnimelEnd
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	ldr r0, _0233B1FC ; =ov02_0235AAB4
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233B1DC
-	ldr r0, _0233B200 ; =ov02_0233BC04
-	bl ov02_02338D68
+	ldr r0, _0233B200 ; =Dwci_SceneOptMovFailure
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233B1DC:
 	cmp r0, #2
 	bne _0233B1F0
-	ldr r0, _0233B204 ; =ov02_0233BA1C
-	bl ov02_02338D68
+	ldr r0, _0233B204 ; =Dwci_SceneOptMovDisconnect
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233B1F0:
-	ldr r0, _0233B208 ; =ov02_0233B294
-	bl ov02_02338D68
+	ldr r0, _0233B208 ; =Dwci_SceneOptMovComplete
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233B1FC: .word ov02_0235AAB4
-_0233B200: .word ov02_0233BC04
-_0233B204: .word ov02_0233BA1C
-_0233B208: .word ov02_0233B294
-	arm_func_end ov02_0233B178
+_0233B200: .word Dwci_SceneOptMovFailure
+_0233B204: .word Dwci_SceneOptMovDisconnect
+_0233B208: .word Dwci_SceneOptMovComplete
+	arm_func_end SceneOptMovComm_EndScene1
 
-	arm_func_start ov02_0233B20C
-ov02_0233B20C: ; 0x0233B20C
+	arm_func_start SceneOptMoveComm_CbMov
+SceneOptMoveComm_CbMov: ; 0x0233B20C
 	stmdb sp!, {r3, lr}
 	cmp r0, #2
 	bne _0233B238
-	bl ov02_02347D68
+	bl Dwci_SettinglEraseAll
 	ldr r0, _0233B28C ; =ov02_0235AAB4
 	mov r1, #1
 	strb r1, [r0]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #0x10
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233B274
 _0233B238:
 	cmp r0, #3
@@ -27532,44 +27532,44 @@ _0233B238:
 	ldr r0, _0233B28C ; =ov02_0235AAB4
 	mov r1, #2
 	strb r1, [r0]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #0x12
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233B274
 _0233B25C:
 	ldr r0, _0233B28C ; =ov02_0235AAB4
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #0x12
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233B274:
 	mov r0, #0
-	bl ov02_02339104
-	bl ov02_0233908C
-	ldr r0, _0233B290 ; =ov02_0233B150
-	bl ov02_02338D68
+	bl Dwci_MovlChangeCallback
+	bl Dwci_MovlEnd
+	ldr r0, _0233B290 ; =SceneOptMovComm_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233B28C: .word ov02_0235AAB4
-_0233B290: .word ov02_0233B150
-	arm_func_end ov02_0233B20C
+_0233B290: .word SceneOptMovComm_EndScene
+	arm_func_end SceneOptMoveComm_CbMov
 
-	arm_func_start ov02_0233B294
-ov02_0233B294: ; 0x0233B294
+	arm_func_start Dwci_SceneOptMovComplete
+Dwci_SceneOptMovComplete: ; 0x0233B294
 	stmdb sp!, {r3, lr}
-	bl ov02_0233B2B4
+	bl SceneOptMovComplete_InitGraphics
 	mov r0, #0x1f
-	bl ov02_02334E70
-	ldr r0, _0233B2B0 ; =ov02_0233B31C
-	bl ov02_02338D68
+	bl Dwci_CmnlMsgDraw
+	ldr r0, _0233B2B0 ; =SceneOptMovComplete_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B2B0: .word ov02_0233B31C
-	arm_func_end ov02_0233B294
+_0233B2B0: .word SceneOptMovComplete_ProcInit
+	arm_func_end Dwci_SceneOptMovComplete
 
-	arm_func_start ov02_0233B2B4
-ov02_0233B2B4: ; 0x0233B2B4
+	arm_func_start SceneOptMovComplete_InitGraphics
+SceneOptMovComplete_InitGraphics: ; 0x0233B2B4
 	ldr r3, _0233B314 ; =0x04001008
 	ldr r1, _0233B318 ; =0x0400000A
 	ldrh r0, [r3]
@@ -27597,167 +27597,167 @@ ov02_0233B2B4: ; 0x0233B2B4
 	.align 2, 0
 _0233B314: .word 0x04001008
 _0233B318: .word 0x0400000A
-	arm_func_end ov02_0233B2B4
+	arm_func_end SceneOptMovComplete_InitGraphics
 
-	arm_func_start ov02_0233B31C
-ov02_0233B31C: ; 0x0233B31C
+	arm_func_start SceneOptMovComplete_ProcInit
+SceneOptMovComplete_ProcInit: ; 0x0233B31C
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233B34C ; =ov02_0233B350
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233B34C ; =SceneOptMovComplete_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B34C: .word ov02_0233B350
-	arm_func_end ov02_0233B31C
+_0233B34C: .word SceneOptMovComplete_ProcInit1
+	arm_func_end SceneOptMovComplete_ProcInit
 
-	arm_func_start ov02_0233B350
-ov02_0233B350: ; 0x0233B350
+	arm_func_start SceneOptMovComplete_ProcInit1
+SceneOptMovComplete_ProcInit1: ; 0x0233B350
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #5
-	bl ov02_02334E38
-	ldr r0, _0233B378 ; =ov02_0233B37C
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233B378 ; =SceneOptMovComplete_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B378: .word ov02_0233B37C
-	arm_func_end ov02_0233B350
+_0233B378: .word SceneOptMovComplete_ProcInit2
+	arm_func_end SceneOptMovComplete_ProcInit1
 
-	arm_func_start ov02_0233B37C
-ov02_0233B37C: ; 0x0233B37C
+	arm_func_start SceneOptMovComplete_ProcInit2
+SceneOptMovComplete_ProcInit2: ; 0x0233B37C
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _0233B3A0 ; =ov02_0233B3A4
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _0233B3A0 ; =SceneOptMovComplete_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B3A0: .word ov02_0233B3A4
-	arm_func_end ov02_0233B37C
+_0233B3A0: .word SceneOptMovComplete_ProcScene
+	arm_func_end SceneOptMovComplete_ProcInit2
 
-	arm_func_start ov02_0233B3A4
-ov02_0233B3A4: ; 0x0233B3A4
+	arm_func_start SceneOptMovComplete_ProcScene
+SceneOptMovComplete_ProcScene: ; 0x0233B3A4
 	stmdb sp!, {r3, lr}
-	bl ov02_0233B3B8
-	bl ov02_0233B3D8
-	bl ov02_0233B3DC
+	bl SceneOptMovComplete_Input
+	bl SceneOptMovComplete_Draw
+	bl SceneOptMovComplete_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233B3A4
+	arm_func_end SceneOptMovComplete_ProcScene
 
-	arm_func_start ov02_0233B3B8
-ov02_0233B3B8: ; 0x0233B3B8
+	arm_func_start SceneOptMovComplete_Input
+SceneOptMovComplete_Input: ; 0x0233B3B8
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233B3B8
+	arm_func_end SceneOptMovComplete_Input
 
-	arm_func_start ov02_0233B3D8
-ov02_0233B3D8: ; 0x0233B3D8
+	arm_func_start SceneOptMovComplete_Draw
+SceneOptMovComplete_Draw: ; 0x0233B3D8
 	bx lr
-	arm_func_end ov02_0233B3D8
+	arm_func_end SceneOptMovComplete_Draw
 
-	arm_func_start ov02_0233B3DC
-ov02_0233B3DC: ; 0x0233B3DC
+	arm_func_start SceneOptMovComplete_Button
+SceneOptMovComplete_Button: ; 0x0233B3DC
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	ldr r0, _0233B400 ; =ov02_0233B404
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233B400 ; =SceneOptMovComplete_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B400: .word ov02_0233B404
-	arm_func_end ov02_0233B3DC
+_0233B400: .word SceneOptMovComplete_EndScene
+	arm_func_end SceneOptMovComplete_Button
 
-	arm_func_start ov02_0233B404
-ov02_0233B404: ; 0x0233B404
+	arm_func_start SceneOptMovComplete_EndScene
+SceneOptMovComplete_EndScene: ; 0x0233B404
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233B420 ; =ov02_0233B424
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233B420 ; =SceneOptMovComplete_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B420: .word ov02_0233B424
-	arm_func_end ov02_0233B404
+_0233B420: .word SceneOptMovComplete_EndScene1
+	arm_func_end SceneOptMovComplete_EndScene
 
-	arm_func_start ov02_0233B424
-ov02_0233B424: ; 0x0233B424
+	arm_func_start SceneOptMovComplete_EndScene1
+SceneOptMovComplete_EndScene1: ; 0x0233B424
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #3
 	mov r1, #1
 	mov r2, #0x3f
 	mov r3, #0x40
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x3f
 	mov r3, #0x40
-	bl ov02_0234D8E0
-	ldr r0, _0233B46C ; =ov02_0233B470
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233B46C ; =SceneOptMovComplete_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B46C: .word ov02_0233B470
-	arm_func_end ov02_0233B424
+_0233B46C: .word SceneOptMovComplete_EndScene2
+	arm_func_end SceneOptMovComplete_EndScene1
 
-	arm_func_start ov02_0233B470
-ov02_0233B470: ; 0x0233B470
+	arm_func_start SceneOptMovComplete_EndScene2
+SceneOptMovComplete_EndScene2: ; 0x0233B470
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0x1000000
 	bl OS_SpinWait
 	bl PM_ForceToPowerOff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233B470
+	arm_func_end SceneOptMovComplete_EndScene2
 
-	arm_func_start ov02_0233B4A4
-ov02_0233B4A4: ; 0x0233B4A4
+	arm_func_start Dwci_SceneOptMovConfirm
+Dwci_SceneOptMovConfirm: ; 0x0233B4A4
 	stmdb sp!, {r3, lr}
-	bl ov02_0233B4C4
+	bl SceneOptMovConfirm_InitGraphics
 	mov r0, #0x1a
-	bl ov02_02334E70
-	ldr r0, _0233B4C0 ; =ov02_0233B52C
-	bl ov02_02338D68
+	bl Dwci_CmnlMsgDraw
+	ldr r0, _0233B4C0 ; =SceneOptMovConfirm_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B4C0: .word ov02_0233B52C
-	arm_func_end ov02_0233B4A4
+_0233B4C0: .word SceneOptMovConfirm_ProcInit
+	arm_func_end Dwci_SceneOptMovConfirm
 
-	arm_func_start ov02_0233B4C4
-ov02_0233B4C4: ; 0x0233B4C4
+	arm_func_start SceneOptMovConfirm_InitGraphics
+SceneOptMovConfirm_InitGraphics: ; 0x0233B4C4
 	ldr r3, _0233B524 ; =0x04001008
 	ldr r1, _0233B528 ; =0x0400000A
 	ldrh r0, [r3]
@@ -27785,189 +27785,189 @@ ov02_0233B4C4: ; 0x0233B4C4
 	.align 2, 0
 _0233B524: .word 0x04001008
 _0233B528: .word 0x0400000A
-	arm_func_end ov02_0233B4C4
+	arm_func_end SceneOptMovConfirm_InitGraphics
 
-	arm_func_start ov02_0233B52C
-ov02_0233B52C: ; 0x0233B52C
+	arm_func_start SceneOptMovConfirm_ProcInit
+SceneOptMovConfirm_ProcInit: ; 0x0233B52C
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233B55C ; =ov02_0233B560
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233B55C ; =SceneOptMovConfirm_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B55C: .word ov02_0233B560
-	arm_func_end ov02_0233B52C
+_0233B55C: .word SceneOptMovConfirm_ProcInit1
+	arm_func_end SceneOptMovConfirm_ProcInit
 
-	arm_func_start ov02_0233B560
-ov02_0233B560: ; 0x0233B560
+	arm_func_start SceneOptMovConfirm_ProcInit1
+SceneOptMovConfirm_ProcInit1: ; 0x0233B560
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #4
-	bl ov02_02334E38
-	ldr r0, _0233B598 ; =ov02_0233B59C
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233B598 ; =SceneOptMovConfirm_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B598: .word ov02_0233B59C
-	arm_func_end ov02_0233B560
+_0233B598: .word SceneOptMovConfirm_ProcInit2
+	arm_func_end SceneOptMovConfirm_ProcInit1
 
-	arm_func_start ov02_0233B59C
-ov02_0233B59C: ; 0x0233B59C
+	arm_func_start SceneOptMovConfirm_ProcInit2
+SceneOptMovConfirm_ProcInit2: ; 0x0233B59C
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _0233B5C0 ; =ov02_0233B5C4
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _0233B5C0 ; =SceneOptMovConfirm_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B5C0: .word ov02_0233B5C4
-	arm_func_end ov02_0233B59C
+_0233B5C0: .word SceneOptMovConfirm_ProcScene
+	arm_func_end SceneOptMovConfirm_ProcInit2
 
-	arm_func_start ov02_0233B5C4
-ov02_0233B5C4: ; 0x0233B5C4
+	arm_func_start SceneOptMovConfirm_ProcScene
+SceneOptMovConfirm_ProcScene: ; 0x0233B5C4
 	stmdb sp!, {r3, lr}
-	bl ov02_0233B5D8
-	bl ov02_0233B5F8
-	bl ov02_0233B5FC
+	bl SceneOptMovConfirm_Input
+	bl SceneOptMovConfirm_Draw
+	bl SceneOptMovConfirm_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233B5C4
+	arm_func_end SceneOptMovConfirm_ProcScene
 
-	arm_func_start ov02_0233B5D8
-ov02_0233B5D8: ; 0x0233B5D8
+	arm_func_start SceneOptMovConfirm_Input
+SceneOptMovConfirm_Input: ; 0x0233B5D8
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233B5D8
+	arm_func_end SceneOptMovConfirm_Input
 
-	arm_func_start ov02_0233B5F8
-ov02_0233B5F8: ; 0x0233B5F8
+	arm_func_start SceneOptMovConfirm_Draw
+SceneOptMovConfirm_Draw: ; 0x0233B5F8
 	bx lr
-	arm_func_end ov02_0233B5F8
+	arm_func_end SceneOptMovConfirm_Draw
 
-	arm_func_start ov02_0233B5FC
-ov02_0233B5FC: ; 0x0233B5FC
+	arm_func_start SceneOptMovConfirm_Button
+SceneOptMovConfirm_Button: ; 0x0233B5FC
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	ldr r0, _0233B620 ; =ov02_0233B624
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233B620 ; =SceneOptMovConfirm_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B620: .word ov02_0233B624
-	arm_func_end ov02_0233B5FC
+_0233B620: .word SceneOptMovConfirm_EndScene
+	arm_func_end SceneOptMovConfirm_Button
 
-	arm_func_start ov02_0233B624
-ov02_0233B624: ; 0x0233B624
+	arm_func_start SceneOptMovConfirm_EndScene
+SceneOptMovConfirm_EndScene: ; 0x0233B624
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233B640 ; =ov02_0233B644
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233B640 ; =SceneOptMovConfirm_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B640: .word ov02_0233B644
-	arm_func_end ov02_0233B624
+_0233B640: .word SceneOptMovConfirm_EndScene1
+	arm_func_end SceneOptMovConfirm_EndScene
 
-	arm_func_start ov02_0233B644
-ov02_0233B644: ; 0x0233B644
+	arm_func_start SceneOptMovConfirm_EndScene1
+SceneOptMovConfirm_EndScene1: ; 0x0233B644
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233B67C ; =ov02_0233B680
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233B67C ; =SceneOptMovConfirm_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B67C: .word ov02_0233B680
-	arm_func_end ov02_0233B644
+_0233B67C: .word SceneOptMovConfirm_EndScene2
+	arm_func_end SceneOptMovConfirm_EndScene1
 
-	arm_func_start ov02_0233B680
-ov02_0233B680: ; 0x0233B680
+	arm_func_start SceneOptMovConfirm_EndScene2
+SceneOptMovConfirm_EndScene2: ; 0x0233B680
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0233B6CC ; =ov02_0233C364
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233B6CC ; =Dwci_SceneOptMovWait
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B6CC: .word ov02_0233C364
-	arm_func_end ov02_0233B680
+_0233B6CC: .word Dwci_SceneOptMovWait
+	arm_func_end SceneOptMovConfirm_EndScene2
 
-	arm_func_start ov02_0233B6D0
-ov02_0233B6D0: ; 0x0233B6D0
+	arm_func_start Dwci_SceneOptMovConfirm1
+Dwci_SceneOptMovConfirm1: ; 0x0233B6D0
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233B710 ; =ov02_0235AAB8
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_0233B718
+	bl SceneOptMovConfirm1_InitGraphics
 	mov r0, #0x13
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	mov r0, #0x3c
 	sub r1, r0, #0x3d
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #0x1b
-	bl ov02_02334E70
-	ldr r0, _0233B714 ; =ov02_0233B798
-	bl ov02_02338D68
+	bl Dwci_CmnlMsgDraw
+	ldr r0, _0233B714 ; =SceneOptMovConfirm1_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233B710: .word ov02_0235AAB8
-_0233B714: .word ov02_0233B798
-	arm_func_end ov02_0233B6D0
+_0233B714: .word SceneOptMovConfirm1_ProcInit
+	arm_func_end Dwci_SceneOptMovConfirm1
 
-	arm_func_start ov02_0233B718
-ov02_0233B718: ; 0x0233B718
+	arm_func_start SceneOptMovConfirm1_InitGraphics
+SceneOptMovConfirm1_InitGraphics: ; 0x0233B718
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233B788 ; =ov02_0235382C
 	ldr r1, _0233B78C ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233B790 ; =0x04001008
 	ldr r1, _0233B794 ; =0x0400000A
 	ldrh r0, [r3]
@@ -27997,102 +27997,102 @@ _0233B788: .word ov02_0235382C
 _0233B78C: .word GX_LoadBG2Scr
 _0233B790: .word 0x04001008
 _0233B794: .word 0x0400000A
-	arm_func_end ov02_0233B718
+	arm_func_end SceneOptMovConfirm1_InitGraphics
 
-	arm_func_start ov02_0233B798
-ov02_0233B798: ; 0x0233B798
+	arm_func_start SceneOptMovConfirm1_ProcInit
+SceneOptMovConfirm1_ProcInit: ; 0x0233B798
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233B7E8 ; =ov02_0233B7EC
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233B7E8 ; =SceneOptMovConfirm1_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B7E8: .word ov02_0233B7EC
-	arm_func_end ov02_0233B798
+_0233B7E8: .word SceneOptMovConfirm1_ProcInit1
+	arm_func_end SceneOptMovConfirm1_ProcInit
 
-	arm_func_start ov02_0233B7EC
-ov02_0233B7EC: ; 0x0233B7EC
+	arm_func_start SceneOptMovConfirm1_ProcInit1
+SceneOptMovConfirm1_ProcInit1: ; 0x0233B7EC
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #3
-	bl ov02_02334E38
-	ldr r0, _0233B814 ; =ov02_0233B818
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233B814 ; =SceneOptMovConfirm1_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B814: .word ov02_0233B818
-	arm_func_end ov02_0233B7EC
+_0233B814: .word SceneOptMovConfirm1_ProcInit2
+	arm_func_end SceneOptMovConfirm1_ProcInit1
 
-	arm_func_start ov02_0233B818
-ov02_0233B818: ; 0x0233B818
+	arm_func_start SceneOptMovConfirm1_ProcInit2
+SceneOptMovConfirm1_ProcInit2: ; 0x0233B818
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _0233B83C ; =ov02_0233B840
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _0233B83C ; =SceneOptMovConfirm1_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B83C: .word ov02_0233B840
-	arm_func_end ov02_0233B818
+_0233B83C: .word SceneOptMovConfirm1_ProcScene
+	arm_func_end SceneOptMovConfirm1_ProcInit2
 
-	arm_func_start ov02_0233B840
-ov02_0233B840: ; 0x0233B840
+	arm_func_start SceneOptMovConfirm1_ProcScene
+SceneOptMovConfirm1_ProcScene: ; 0x0233B840
 	stmdb sp!, {r3, lr}
-	bl ov02_0233B854
-	bl ov02_0233B88C
-	bl ov02_0233B890
+	bl SceneOptMovConfirm1_Input
+	bl SceneOptMovConfirm1_Draw
+	bl SceneOptMovConfirm1_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233B840
+	arm_func_end SceneOptMovConfirm1_ProcScene
 
-	arm_func_start ov02_0233B854
-ov02_0233B854: ; 0x0233B854
+	arm_func_start SceneOptMovConfirm1_Input
+SceneOptMovConfirm1_Input: ; 0x0233B854
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0233B870
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 _0233B870:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233B854
+	arm_func_end SceneOptMovConfirm1_Input
 
-	arm_func_start ov02_0233B88C
-ov02_0233B88C: ; 0x0233B88C
+	arm_func_start SceneOptMovConfirm1_Draw
+SceneOptMovConfirm1_Draw: ; 0x0233B88C
 	bx lr
-	arm_func_end ov02_0233B88C
+	arm_func_end SceneOptMovConfirm1_Draw
 
-	arm_func_start ov02_0233B890
-ov02_0233B890: ; 0x0233B890
+	arm_func_start SceneOptMovConfirm1_Button
+SceneOptMovConfirm1_Button: ; 0x0233B890
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	beq _0233B8AC
 	cmp r0, #1
@@ -28100,44 +28100,44 @@ ov02_0233B890: ; 0x0233B890
 	ldmia sp!, {r3, pc}
 _0233B8AC:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233B8CC
 _0233B8B8:
 	mov r0, #6
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233B8D8 ; =ov02_0235AAB8
 	mov r1, #1
 	strb r1, [r0]
 _0233B8CC:
-	ldr r0, _0233B8DC ; =ov02_0233B8E0
-	bl ov02_02338D68
+	ldr r0, _0233B8DC ; =SceneOptMovConfirm1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233B8D8: .word ov02_0235AAB8
-_0233B8DC: .word ov02_0233B8E0
-	arm_func_end ov02_0233B890
+_0233B8DC: .word SceneOptMovConfirm1_EndScene
+	arm_func_end SceneOptMovConfirm1_Button
 
-	arm_func_start ov02_0233B8E0
-ov02_0233B8E0: ; 0x0233B8E0
+	arm_func_start SceneOptMovConfirm1_EndScene
+SceneOptMovConfirm1_EndScene: ; 0x0233B8E0
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233B8FC ; =ov02_0233B900
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233B8FC ; =SceneOptMovConfirm1_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233B8FC: .word ov02_0233B900
-	arm_func_end ov02_0233B8E0
+_0233B8FC: .word SceneOptMovConfirm1_EndScene1
+	arm_func_end SceneOptMovConfirm1_EndScene
 
-	arm_func_start ov02_0233B900
-ov02_0233B900: ; 0x0233B900
+	arm_func_start SceneOptMovConfirm1_EndScene1
+SceneOptMovConfirm1_EndScene1: ; 0x0233B900
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	ldr r0, _0233B95C ; =ov02_0235AAB8
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -28146,26 +28146,26 @@ ov02_0233B900: ; 0x0233B900
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _0233B93C:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233B960 ; =ov02_0233B964
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233B960 ; =SceneOptMovConfirm1_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233B95C: .word ov02_0235AAB8
-_0233B960: .word ov02_0233B964
-	arm_func_end ov02_0233B900
+_0233B960: .word SceneOptMovConfirm1_EndScene2
+	arm_func_end SceneOptMovConfirm1_EndScene1
 
-	arm_func_start ov02_0233B964
-ov02_0233B964: ; 0x0233B964
+	arm_func_start SceneOptMovConfirm1_EndScene2
+SceneOptMovConfirm1_EndScene2: ; 0x0233B964
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233BA10 ; =ov02_0235AAB8
@@ -28173,71 +28173,71 @@ ov02_0233B964: ; 0x0233B964
 	cmp r0, #0
 	bne _0233B998
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 _0233B998:
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _0233BA10 ; =ov02_0235AAB8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233B9CC
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _0233B9CC:
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _0233BA10 ; =ov02_0235AAB8
 	mov r1, #1
 	ldrb r0, [r0]
 	cmp r0, #0
 	mov r0, #0
 	bne _0233BA00
-	bl ov02_02338D78
-	ldr r0, _0233BA14 ; =ov02_0233A904
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233BA14 ; =Dwci_SceneOptMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233BA00:
-	bl ov02_02338D78
-	ldr r0, _0233BA18 ; =ov02_0233B4A4
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233BA18 ; =Dwci_SceneOptMovConfirm
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233BA10: .word ov02_0235AAB8
-_0233BA14: .word ov02_0233A904
-_0233BA18: .word ov02_0233B4A4
-	arm_func_end ov02_0233B964
+_0233BA14: .word Dwci_SceneOptMenu
+_0233BA18: .word Dwci_SceneOptMovConfirm
+	arm_func_end SceneOptMovConfirm1_EndScene2
 
-	arm_func_start ov02_0233BA1C
-ov02_0233BA1C: ; 0x0233BA1C
+	arm_func_start Dwci_SceneOptMovDisconnect
+Dwci_SceneOptMovDisconnect: ; 0x0233BA1C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233BA44 ; =ov02_0235AABC
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_0233BA4C
+	bl SceneOptMovDisconnect_InitGraphics
 	mov r0, #0x21
-	bl ov02_02334E70
-	ldr r0, _0233BA48 ; =ov02_0233BAB8
-	bl ov02_02338D68
+	bl Dwci_CmnlMsgDraw
+	ldr r0, _0233BA48 ; =SceneOptMovDisconnect_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233BA44: .word ov02_0235AABC
-_0233BA48: .word ov02_0233BAB8
-	arm_func_end ov02_0233BA1C
+_0233BA48: .word SceneOptMovDisconnect_ProcInit
+	arm_func_end Dwci_SceneOptMovDisconnect
 
-	arm_func_start ov02_0233BA4C
-ov02_0233BA4C: ; 0x0233BA4C
+	arm_func_start SceneOptMovDisconnect_InitGraphics
+SceneOptMovDisconnect_InitGraphics: ; 0x0233BA4C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233BAA8 ; =ov02_02353840
 	ldr r1, _0233BAAC ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r2, _0233BAB0 ; =0x04001008
 	ldr r1, _0233BAB4 ; =0x0400000A
 	ldrh r0, [r2]
@@ -28262,108 +28262,108 @@ _0233BAA8: .word ov02_02353840
 _0233BAAC: .word GX_LoadBG2Scr
 _0233BAB0: .word 0x04001008
 _0233BAB4: .word 0x0400000A
-	arm_func_end ov02_0233BA4C
+	arm_func_end SceneOptMovDisconnect_InitGraphics
 
-	arm_func_start ov02_0233BAB8
-ov02_0233BAB8: ; 0x0233BAB8
+	arm_func_start SceneOptMovDisconnect_ProcInit
+SceneOptMovDisconnect_ProcInit: ; 0x0233BAB8
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233BAE8 ; =ov02_0233BAEC
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233BAE8 ; =SceneOptMovDisconnect_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233BAE8: .word ov02_0233BAEC
-	arm_func_end ov02_0233BAB8
+_0233BAE8: .word SceneOptMovDisconnect_ProcInit1
+	arm_func_end SceneOptMovDisconnect_ProcInit
 
-	arm_func_start ov02_0233BAEC
-ov02_0233BAEC: ; 0x0233BAEC
+	arm_func_start SceneOptMovDisconnect_ProcInit1
+SceneOptMovDisconnect_ProcInit1: ; 0x0233BAEC
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023390E8
+	bl Dwci_MovlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _0233BB18 ; =ov02_0233BB1C
-	bl ov02_02338D68
+	ldr r0, _0233BB18 ; =SceneOptMovDisconnect_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233BB18: .word ov02_0233BB1C
-	arm_func_end ov02_0233BAEC
+_0233BB18: .word SceneOptMovDisconnect_ProcScene
+	arm_func_end SceneOptMovDisconnect_ProcInit1
 
-	arm_func_start ov02_0233BB1C
-ov02_0233BB1C: ; 0x0233BB1C
+	arm_func_start SceneOptMovDisconnect_ProcScene
+SceneOptMovDisconnect_ProcScene: ; 0x0233BB1C
 	stmdb sp!, {r3, lr}
-	bl ov02_0233BBD0
-	bl ov02_0233BB2C
+	bl SceneOptMovDisconnect_Wait
+	bl SceneOptMovDisconnect_Draw
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233BB1C
+	arm_func_end SceneOptMovDisconnect_ProcScene
 
-	arm_func_start ov02_0233BB2C
-ov02_0233BB2C: ; 0x0233BB2C
+	arm_func_start SceneOptMovDisconnect_Draw
+SceneOptMovDisconnect_Draw: ; 0x0233BB2C
 	bx lr
-	arm_func_end ov02_0233BB2C
+	arm_func_end SceneOptMovDisconnect_Draw
 
-	arm_func_start ov02_0233BB30
-ov02_0233BB30: ; 0x0233BB30
+	arm_func_start SceneOptMovDisconnect_EndScene
+SceneOptMovDisconnect_EndScene: ; 0x0233BB30
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233BB68 ; =ov02_0233BB6C
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233BB68 ; =SceneOptMovDisconnect_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233BB68: .word ov02_0233BB6C
-	arm_func_end ov02_0233BB30
+_0233BB68: .word SceneOptMovDisconnect_EndScene1
+	arm_func_end SceneOptMovDisconnect_EndScene
 
-	arm_func_start ov02_0233BB6C
-ov02_0233BB6C: ; 0x0233BB6C
+	arm_func_start SceneOptMovDisconnect_EndScene1
+SceneOptMovDisconnect_EndScene1: ; 0x0233BB6C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
-	bl ov02_02334D10
+	bl Dwci_FntlDeleteBgLcd
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0233BBCC ; =ov02_0233A904
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233BBCC ; =Dwci_SceneOptMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233BBCC: .word ov02_0233A904
-	arm_func_end ov02_0233BB6C
+_0233BBCC: .word Dwci_SceneOptMenu
+	arm_func_end SceneOptMovDisconnect_EndScene1
 
-	arm_func_start ov02_0233BBD0
-ov02_0233BBD0: ; 0x0233BBD0
+	arm_func_start SceneOptMovDisconnect_Wait
+SceneOptMovDisconnect_Wait: ; 0x0233BBD0
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233BBFC ; =ov02_0235AABC
 	ldrb r1, [r0]
@@ -28372,40 +28372,40 @@ ov02_0233BBD0: ; 0x0233BBD0
 	strb r2, [r0]
 	cmp r1, #0x78
 	ldmloia sp!, {r3, pc}
-	ldr r0, _0233BC00 ; =ov02_0233BB30
-	bl ov02_02338D68
+	ldr r0, _0233BC00 ; =SceneOptMovDisconnect_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233BBFC: .word ov02_0235AABC
-_0233BC00: .word ov02_0233BB30
-	arm_func_end ov02_0233BBD0
+_0233BC00: .word SceneOptMovDisconnect_EndScene
+	arm_func_end SceneOptMovDisconnect_Wait
 
-	arm_func_start ov02_0233BC04
-ov02_0233BC04: ; 0x0233BC04
+	arm_func_start Dwci_SceneOptMovFailure
+Dwci_SceneOptMovFailure: ; 0x0233BC04
 	stmdb sp!, {r3, lr}
-	bl ov02_0233BC40
+	bl SceneOptMovFailure_InitGraphics
 	mov r0, #0x20
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0x3c
 	sub r1, r0, #0x3d
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	ldr r1, _0233BC38 ; =ov02_0235AAC0
 	strb r0, [r1]
-	ldr r0, _0233BC3C ; =ov02_0233BCC0
-	bl ov02_02338D68
+	ldr r0, _0233BC3C ; =SceneOptMovFailure_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233BC38: .word ov02_0235AAC0
-_0233BC3C: .word ov02_0233BCC0
-	arm_func_end ov02_0233BC04
+_0233BC3C: .word SceneOptMovFailure_ProcInit
+	arm_func_end Dwci_SceneOptMovFailure
 
-	arm_func_start ov02_0233BC40
-ov02_0233BC40: ; 0x0233BC40
+	arm_func_start SceneOptMovFailure_InitGraphics
+SceneOptMovFailure_InitGraphics: ; 0x0233BC40
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233BCB0 ; =ov02_02353854
 	ldr r1, _0233BCB4 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233BCB8 ; =0x04001008
 	ldr r1, _0233BCBC ; =0x0400000A
 	ldrh r0, [r3]
@@ -28435,19 +28435,19 @@ _0233BCB0: .word ov02_02353854
 _0233BCB4: .word GX_LoadBG2Scr
 _0233BCB8: .word 0x04001008
 _0233BCBC: .word 0x0400000A
-	arm_func_end ov02_0233BC40
+	arm_func_end SceneOptMovFailure_InitGraphics
 
-	arm_func_start ov02_0233BCC0
-ov02_0233BCC0: ; 0x0233BCC0
+	arm_func_start SceneOptMovFailure_ProcInit
+SceneOptMovFailure_ProcInit: ; 0x0233BCC0
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	ldr r0, _0233BD20 ; =ov02_0235AAC0
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -28456,94 +28456,94 @@ ov02_0233BCC0: ; 0x0233BCC0
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 _0233BD14:
-	ldr r0, _0233BD24 ; =ov02_0233BD28
-	bl ov02_02338D68
+	ldr r0, _0233BD24 ; =SceneOptMovFailure_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233BD20: .word ov02_0235AAC0
-_0233BD24: .word ov02_0233BD28
-	arm_func_end ov02_0233BCC0
+_0233BD24: .word SceneOptMovFailure_ProcInit1
+	arm_func_end SceneOptMovFailure_ProcInit
 
-	arm_func_start ov02_0233BD28
-ov02_0233BD28: ; 0x0233BD28
+	arm_func_start SceneOptMovFailure_ProcInit1
+SceneOptMovFailure_ProcInit1: ; 0x0233BD28
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #3
-	bl ov02_02334E38
-	ldr r0, _0233BD60 ; =ov02_0233BD64
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233BD60 ; =SceneOptMovFailure_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233BD60: .word ov02_0233BD64
-	arm_func_end ov02_0233BD28
+_0233BD60: .word SceneOptMovFailure_ProcInit2
+	arm_func_end SceneOptMovFailure_ProcInit1
 
-	arm_func_start ov02_0233BD64
-ov02_0233BD64: ; 0x0233BD64
+	arm_func_start SceneOptMovFailure_ProcInit2
+SceneOptMovFailure_ProcInit2: ; 0x0233BD64
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_023390E8
+	bl Dwci_MovlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _0233BD94 ; =ov02_0233BD98
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _0233BD94 ; =SceneOptMovFailure_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233BD94: .word ov02_0233BD98
-	arm_func_end ov02_0233BD64
+_0233BD94: .word SceneOptMovFailure_ProcScene
+	arm_func_end SceneOptMovFailure_ProcInit2
 
-	arm_func_start ov02_0233BD98
-ov02_0233BD98: ; 0x0233BD98
+	arm_func_start SceneOptMovFailure_ProcScene
+SceneOptMovFailure_ProcScene: ; 0x0233BD98
 	stmdb sp!, {r3, lr}
-	bl ov02_0233BDAC
-	bl ov02_0233BDE4
-	bl ov02_0233BDE8
+	bl SceneOptMovFailure_Input
+	bl SceneOptMovFailure_Draw
+	bl SceneOptMovFailure_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233BD98
+	arm_func_end SceneOptMovFailure_ProcScene
 
-	arm_func_start ov02_0233BDAC
-ov02_0233BDAC: ; 0x0233BDAC
+	arm_func_start SceneOptMovFailure_Input
+SceneOptMovFailure_Input: ; 0x0233BDAC
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0233BDC8
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 _0233BDC8:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233BDAC
+	arm_func_end SceneOptMovFailure_Input
 
-	arm_func_start ov02_0233BDE4
-ov02_0233BDE4: ; 0x0233BDE4
+	arm_func_start SceneOptMovFailure_Draw
+SceneOptMovFailure_Draw: ; 0x0233BDE4
 	bx lr
-	arm_func_end ov02_0233BDE4
+	arm_func_end SceneOptMovFailure_Draw
 
-	arm_func_start ov02_0233BDE8
-ov02_0233BDE8: ; 0x0233BDE8
+	arm_func_start SceneOptMovFailure_Button
+SceneOptMovFailure_Button: ; 0x0233BDE8
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	beq _0233BE18
 	cmp r0, #1
@@ -28552,44 +28552,44 @@ ov02_0233BDE8: ; 0x0233BDE8
 	mov r2, #1
 	mov r0, #6
 	strb r2, [r1, #1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233BE2C
 _0233BE18:
 	ldr r1, _0233BE38 ; =ov02_0235AAC0
 	mov r2, #0
 	mov r0, #7
 	strb r2, [r1, #1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233BE2C:
-	ldr r0, _0233BE3C ; =ov02_0233BE40
-	bl ov02_02338D68
+	ldr r0, _0233BE3C ; =SceneOptMovFailure_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233BE38: .word ov02_0235AAC0
-_0233BE3C: .word ov02_0233BE40
-	arm_func_end ov02_0233BDE8
+_0233BE3C: .word SceneOptMovFailure_EndScene
+	arm_func_end SceneOptMovFailure_Button
 
-	arm_func_start ov02_0233BE40
-ov02_0233BE40: ; 0x0233BE40
+	arm_func_start SceneOptMovFailure_EndScene
+SceneOptMovFailure_EndScene: ; 0x0233BE40
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233BE5C ; =ov02_0233BE60
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233BE5C ; =SceneOptMovFailure_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233BE5C: .word ov02_0233BE60
-	arm_func_end ov02_0233BE40
+_0233BE5C: .word SceneOptMovFailure_EndScene1
+	arm_func_end SceneOptMovFailure_EndScene
 
-	arm_func_start ov02_0233BE60
-ov02_0233BE60: ; 0x0233BE60
+	arm_func_start SceneOptMovFailure_EndScene1
+SceneOptMovFailure_EndScene1: ; 0x0233BE60
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	ldr r0, _0233BEBC ; =ov02_0235AAC0
 	ldrb r0, [r0, #1]
 	cmp r0, #0
@@ -28598,85 +28598,85 @@ ov02_0233BE60: ; 0x0233BE60
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _0233BE9C:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233BEC0 ; =ov02_0233BEC4
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233BEC0 ; =SceneOptMovFailure_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233BEBC: .word ov02_0235AAC0
-_0233BEC0: .word ov02_0233BEC4
-	arm_func_end ov02_0233BE60
+_0233BEC0: .word SceneOptMovFailure_EndScene2
+	arm_func_end SceneOptMovFailure_EndScene1
 
-	arm_func_start ov02_0233BEC4
-ov02_0233BEC4: ; 0x0233BEC4
+	arm_func_start SceneOptMovFailure_EndScene2
+SceneOptMovFailure_EndScene2: ; 0x0233BEC4
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _0233BF60 ; =ov02_0235AAC0
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	bne _0233BF1C
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _0233BF1C:
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _0233BF60 ; =ov02_0235AAC0
 	mov r1, #1
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	mov r0, #0
 	bne _0233BF50
-	bl ov02_02338D78
-	ldr r0, _0233BF64 ; =ov02_0233A904
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233BF64 ; =Dwci_SceneOptMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233BF50:
-	bl ov02_02338D78
-	ldr r0, _0233BF68 ; =ov02_0233C364
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233BF68 ; =Dwci_SceneOptMovWait
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233BF60: .word ov02_0235AAC0
-_0233BF64: .word ov02_0233A904
-_0233BF68: .word ov02_0233C364
-	arm_func_end ov02_0233BEC4
+_0233BF64: .word Dwci_SceneOptMenu
+_0233BF68: .word Dwci_SceneOptMovWait
+	arm_func_end SceneOptMovFailure_EndScene2
 
-	arm_func_start ov02_0233BF6C
-ov02_0233BF6C: ; 0x0233BF6C
+	arm_func_start Dwci_SceneOptMovUser
+Dwci_SceneOptMovUser: ; 0x0233BF6C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x28
-	bl ov02_02339128
+	bl Dwci_MovlGetChild
 	mov r5, r0
 	mov r0, #0
 	mov r1, r0
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	ldr r1, _0233C030 ; =ov02_0235AAC4
 	mov r2, #0
 	strb r2, [r1, #1]
 	mov r4, r0
 	strb r2, [r1]
-	bl ov02_0233C03C
+	bl SceneOptMovUser_InitGraphics
 	mov r0, #0
 	add r1, sp, #0x10
 	mov r2, #0x16
@@ -28698,33 +28698,33 @@ ov02_0233BF6C: ; 0x0233BF6C
 	mov r1, #8
 	mov r2, #0x35
 	mov r3, #0xf0
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	mov r0, r4
-	bl ov02_0234E354
-	ldr r0, _0233C034 ; =ov02_0233C330
-	bl ov02_02339104
+	bl Dwci_FntlRenewBg
+	ldr r0, _0233C034 ; =SceneOptMovUser_CbMov
+	bl Dwci_MovlChangeCallback
 	mov r1, #4
 	mov r2, #0
 	mov r0, #0x1d
 	sub r3, r1, #5
 	str r2, [sp]
-	bl ov02_02349394
-	ldr r0, _0233C038 ; =ov02_0233C0BC
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	ldr r0, _0233C038 ; =SceneOptMovUser_ProcInit
+	bl Dwci_ChangeScene
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0233C030: .word ov02_0235AAC4
-_0233C034: .word ov02_0233C330
-_0233C038: .word ov02_0233C0BC
-	arm_func_end ov02_0233BF6C
+_0233C034: .word SceneOptMovUser_CbMov
+_0233C038: .word SceneOptMovUser_ProcInit
+	arm_func_end Dwci_SceneOptMovUser
 
-	arm_func_start ov02_0233C03C
-ov02_0233C03C: ; 0x0233C03C
+	arm_func_start SceneOptMovUser_InitGraphics
+SceneOptMovUser_InitGraphics: ; 0x0233C03C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233C0AC ; =ov02_02353868
 	ldr r1, _0233C0B0 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233C0B4 ; =0x04001008
 	ldr r1, _0233C0B8 ; =0x0400000A
 	ldrh r0, [r3]
@@ -28754,60 +28754,60 @@ _0233C0AC: .word ov02_02353868
 _0233C0B0: .word GX_LoadBG2Scr
 _0233C0B4: .word 0x04001008
 _0233C0B8: .word 0x0400000A
-	arm_func_end ov02_0233C03C
+	arm_func_end SceneOptMovUser_InitGraphics
 
-	arm_func_start ov02_0233C0BC
-ov02_0233C0BC: ; 0x0233C0BC
+	arm_func_start SceneOptMovUser_ProcInit
+SceneOptMovUser_ProcInit: ; 0x0233C0BC
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233C0EC ; =ov02_0233C0F0
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233C0EC ; =SceneOptMovUser_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C0EC: .word ov02_0233C0F0
-	arm_func_end ov02_0233C0BC
+_0233C0EC: .word SceneOptMovUser_ProcInit1
+	arm_func_end SceneOptMovUser_ProcInit
 
-	arm_func_start ov02_0233C0F0
-ov02_0233C0F0: ; 0x0233C0F0
+	arm_func_start SceneOptMovUser_ProcInit1
+SceneOptMovUser_ProcInit1: ; 0x0233C0F0
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0233C110 ; =ov02_0233C114
-	bl ov02_02338D68
+	ldr r0, _0233C110 ; =SceneOptMovUser_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C110: .word ov02_0233C114
-	arm_func_end ov02_0233C0F0
+_0233C110: .word SceneOptMovUser_ProcInit2
+	arm_func_end SceneOptMovUser_ProcInit1
 
-	arm_func_start ov02_0233C114
-ov02_0233C114: ; 0x0233C114
+	arm_func_start SceneOptMovUser_ProcInit2
+SceneOptMovUser_ProcInit2: ; 0x0233C114
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _0233C134 ; =ov02_0233C138
-	bl ov02_02338D68
+	ldr r0, _0233C134 ; =SceneOptMovUser_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C134: .word ov02_0233C138
-	arm_func_end ov02_0233C114
+_0233C134: .word SceneOptMovUser_ProcScene
+	arm_func_end SceneOptMovUser_ProcInit2
 
-	arm_func_start ov02_0233C138
-ov02_0233C138: ; 0x0233C138
+	arm_func_start SceneOptMovUser_ProcScene
+SceneOptMovUser_ProcScene: ; 0x0233C138
 	stmdb sp!, {r3, lr}
-	bl ov02_0233C1A8
-	bl ov02_0233C1AC
-	bl ov02_02349704
+	bl SceneOptMovUser_Input
+	bl SceneOptMovUser_Draw
+	bl Dwci_WinlGet
 	cmp r0, #0
 	beq _0233C15C
 	cmp r0, #1
@@ -28818,40 +28818,40 @@ _0233C15C:
 	mov r2, #0
 	mov r0, #7
 	strb r2, [r1, #1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233C188
 _0233C174:
 	ldr r1, _0233C1A0 ; =ov02_0235AAC4
 	mov r2, #1
 	mov r0, #0xe
 	strb r2, [r1, #1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233C188:
 	mov r0, #0
-	bl ov02_02339104
-	bl ov02_023496C0
-	ldr r0, _0233C1A4 ; =ov02_0233C1B0
-	bl ov02_02338D68
+	bl Dwci_MovlChangeCallback
+	bl Dwci_WinlEnd
+	ldr r0, _0233C1A4 ; =SceneOptMovUser_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233C1A0: .word ov02_0235AAC4
-_0233C1A4: .word ov02_0233C1B0
-	arm_func_end ov02_0233C138
+_0233C1A4: .word SceneOptMovUser_EndScene
+	arm_func_end SceneOptMovUser_ProcScene
 
-	arm_func_start ov02_0233C1A8
-ov02_0233C1A8: ; 0x0233C1A8
+	arm_func_start SceneOptMovUser_Input
+SceneOptMovUser_Input: ; 0x0233C1A8
 	bx lr
-	arm_func_end ov02_0233C1A8
+	arm_func_end SceneOptMovUser_Input
 
-	arm_func_start ov02_0233C1AC
-ov02_0233C1AC: ; 0x0233C1AC
+	arm_func_start SceneOptMovUser_Draw
+SceneOptMovUser_Draw: ; 0x0233C1AC
 	bx lr
-	arm_func_end ov02_0233C1AC
+	arm_func_end SceneOptMovUser_Draw
 
-	arm_func_start ov02_0233C1B0
-ov02_0233C1B0: ; 0x0233C1B0
+	arm_func_start SceneOptMovUser_EndScene
+SceneOptMovUser_EndScene: ; 0x0233C1B0
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233C204 ; =ov02_0235AAC4
@@ -28862,30 +28862,30 @@ ov02_0233C1B0: ; 0x0233C1B0
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _0233C1E4:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233C208 ; =ov02_0233C20C
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233C208 ; =SceneOptMovUser_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233C204: .word ov02_0235AAC4
-_0233C208: .word ov02_0233C20C
-	arm_func_end ov02_0233C1B0
+_0233C208: .word SceneOptMovUser_EndScene1
+	arm_func_end SceneOptMovUser_EndScene
 
-	arm_func_start ov02_0233C20C
-ov02_0233C20C: ; 0x0233C20C
+	arm_func_start SceneOptMovUser_EndScene1
+SceneOptMovUser_EndScene1: ; 0x0233C20C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233C260 ; =ov02_0235AAC4
@@ -28894,21 +28894,21 @@ ov02_0233C20C: ; 0x0233C20C
 	ldreqb r0, [r0, #1]
 	cmpeq r0, #1
 	bne _0233C250
-	bl ov02_0233911C
+	bl Dwci_MovlAdmitChild
 	b _0233C254
 _0233C250:
-	bl ov02_0233908C
+	bl Dwci_MovlEnd
 _0233C254:
-	ldr r0, _0233C264 ; =ov02_0233C268
-	bl ov02_02338D68
+	ldr r0, _0233C264 ; =SceneOptMovUser_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233C260: .word ov02_0235AAC4
-_0233C264: .word ov02_0233C268
-	arm_func_end ov02_0233C20C
+_0233C264: .word SceneOptMovUser_EndScene2
+	arm_func_end SceneOptMovUser_EndScene1
 
-	arm_func_start ov02_0233C268
-ov02_0233C268: ; 0x0233C268
+	arm_func_start SceneOptMovUser_EndScene2
+SceneOptMovUser_EndScene2: ; 0x0233C268
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233C320 ; =ov02_0235AAC4
 	ldrb r1, [r0]
@@ -28918,33 +28918,33 @@ ov02_0233C268: ; 0x0233C268
 	cmp r0, #0
 	bne _0233C294
 _0233C288:
-	bl ov02_023390E8
+	bl Dwci_MovlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 _0233C294:
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _0233C320 ; =ov02_0235AAC4
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	bne _0233C2C8
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _0233C2C8:
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	ldr r0, _0233C320 ; =ov02_0235AAC4
 	ldrb r1, [r0]
 	cmp r1, #0
 	beq _0233C2F0
-	ldr r0, _0233C324 ; =ov02_0233BC04
-	bl ov02_02338D68
+	ldr r0, _0233C324 ; =Dwci_SceneOptMovFailure
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233C2F0:
 	ldrb r0, [r0, #1]
@@ -28952,33 +28952,33 @@ _0233C2F0:
 	bne _0233C314
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
-	ldr r0, _0233C328 ; =ov02_0233A904
-	bl ov02_02338D68
+	bl Dwci_GXlInvisible
+	ldr r0, _0233C328 ; =Dwci_SceneOptMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233C314:
-	ldr r0, _0233C32C ; =ov02_0233B01C
-	bl ov02_02338D68
+	ldr r0, _0233C32C ; =Dwci_SceneOptMovComm
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233C320: .word ov02_0235AAC4
-_0233C324: .word ov02_0233BC04
-_0233C328: .word ov02_0233A904
-_0233C32C: .word ov02_0233B01C
-	arm_func_end ov02_0233C268
+_0233C324: .word Dwci_SceneOptMovFailure
+_0233C328: .word Dwci_SceneOptMenu
+_0233C32C: .word Dwci_SceneOptMovComm
+	arm_func_end SceneOptMovUser_EndScene2
 
-	arm_func_start ov02_0233C330
-ov02_0233C330: ; 0x0233C330
+	arm_func_start SceneOptMovUser_CbMov
+SceneOptMovUser_CbMov: ; 0x0233C330
 	ldr r0, _0233C340 ; =ov02_0235AAC4
 	mov r1, #1
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
 _0233C340: .word ov02_0235AAC4
-	arm_func_end ov02_0233C330
+	arm_func_end SceneOptMovUser_CbMov
 
-	arm_func_start ov02_0233C344
-ov02_0233C344: ; 0x0233C344
+	arm_func_start Dwci_IsFold__0233CB70
+Dwci_IsFold__0233CB70: ; 0x0233C344
 	ldr r0, _0233C360 ; =0x027FFFA8
 	ldrh r0, [r0]
 	and r0, r0, #0x8000
@@ -28988,38 +28988,38 @@ ov02_0233C344: ; 0x0233C344
 	bx lr
 	.align 2, 0
 _0233C360: .word 0x027FFFA8
-	arm_func_end ov02_0233C344
+	arm_func_end Dwci_IsFold__0233CB70
 
-	arm_func_start ov02_0233C364
-ov02_0233C364: ; 0x0233C364
+	arm_func_start Dwci_SceneOptMovWait
+Dwci_SceneOptMovWait: ; 0x0233C364
 	stmdb sp!, {r3, lr}
-	ldr r0, _0233C3A4 ; =ov02_0233C6E0
-	bl ov02_02338FA0
+	ldr r0, _0233C3A4 ; =SceneOptMovWait_CbMov
+	bl Dwci_MovlInit
 	ldr r0, _0233C3A8 ; =ov02_0235AAC8
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_0233C3B0
+	bl SceneOptMovWait_InitGraphics
 	mov r0, #0x1c
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0
-	bl ov02_023343DC
+	bl Dwci_AnimelInitEx
 	mov r0, #0xb
-	bl ov02_023480E0
-	ldr r0, _0233C3AC ; =ov02_0233C430
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233C3AC ; =SceneOptMovWait_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C3A4: .word ov02_0233C6E0
+_0233C3A4: .word SceneOptMovWait_CbMov
 _0233C3A8: .word ov02_0235AAC8
-_0233C3AC: .word ov02_0233C430
-	arm_func_end ov02_0233C364
+_0233C3AC: .word SceneOptMovWait_ProcInit
+	arm_func_end Dwci_SceneOptMovWait
 
-	arm_func_start ov02_0233C3B0
-ov02_0233C3B0: ; 0x0233C3B0
+	arm_func_start SceneOptMovWait_InitGraphics
+SceneOptMovWait_InitGraphics: ; 0x0233C3B0
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233C420 ; =ov02_0235387C
 	ldr r1, _0233C424 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233C428 ; =0x04001008
 	ldr r1, _0233C42C ; =0x0400000A
 	ldrh r0, [r3]
@@ -29049,141 +29049,141 @@ _0233C420: .word ov02_0235387C
 _0233C424: .word GX_LoadBG2Scr
 _0233C428: .word 0x04001008
 _0233C42C: .word 0x0400000A
-	arm_func_end ov02_0233C3B0
+	arm_func_end SceneOptMovWait_InitGraphics
 
-	arm_func_start ov02_0233C430
-ov02_0233C430: ; 0x0233C430
+	arm_func_start SceneOptMovWait_ProcInit
+SceneOptMovWait_ProcInit: ; 0x0233C430
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233C460 ; =ov02_0233C464
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233C460 ; =SceneOptMovWait_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C460: .word ov02_0233C464
-	arm_func_end ov02_0233C430
+_0233C460: .word SceneOptMovWait_ProcInit1
+	arm_func_end SceneOptMovWait_ProcInit
 
-	arm_func_start ov02_0233C464
-ov02_0233C464: ; 0x0233C464
+	arm_func_start SceneOptMovWait_ProcInit1
+SceneOptMovWait_ProcInit1: ; 0x0233C464
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #1
-	bl ov02_02334E38
-	ldr r0, _0233C48C ; =ov02_0233C490
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233C48C ; =SceneOptMovWait_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C48C: .word ov02_0233C490
-	arm_func_end ov02_0233C464
+_0233C48C: .word SceneOptMovWait_ProcInit2
+	arm_func_end SceneOptMovWait_ProcInit1
 
-	arm_func_start ov02_0233C490
-ov02_0233C490: ; 0x0233C490
+	arm_func_start SceneOptMovWait_ProcInit2
+SceneOptMovWait_ProcInit2: ; 0x0233C490
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _0233C4B0 ; =ov02_0233C4B4
-	bl ov02_02338D68
+	ldr r0, _0233C4B0 ; =SceneOptMovWait_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C4B0: .word ov02_0233C4B4
-	arm_func_end ov02_0233C490
+_0233C4B0: .word SceneOptMovWait_ProcScene
+	arm_func_end SceneOptMovWait_ProcInit2
 
-	arm_func_start ov02_0233C4B4
-ov02_0233C4B4: ; 0x0233C4B4
+	arm_func_start SceneOptMovWait_ProcScene
+SceneOptMovWait_ProcScene: ; 0x0233C4B4
 	stmdb sp!, {r3, lr}
-	bl ov02_0233C4C8
-	bl ov02_0233C500
-	bl ov02_0233C504
+	bl SceneOptMovWait_Input
+	bl SceneOptMovWait_Draw
+	bl SceneOptMovWait_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233C4B4
+	arm_func_end SceneOptMovWait_ProcScene
 
-	arm_func_start ov02_0233C4C8
-ov02_0233C4C8: ; 0x0233C4C8
+	arm_func_start SceneOptMovWait_Input
+SceneOptMovWait_Input: ; 0x0233C4C8
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0233C4E8
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
 _0233C4E8:
-	bl ov02_0233C344
+	bl Dwci_IsFold__0233CB70
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233C4C8
+	arm_func_end SceneOptMovWait_Input
 
-	arm_func_start ov02_0233C500
-ov02_0233C500: ; 0x0233C500
+	arm_func_start SceneOptMovWait_Draw
+SceneOptMovWait_Draw: ; 0x0233C500
 	bx lr
-	arm_func_end ov02_0233C500
+	arm_func_end SceneOptMovWait_Draw
 
-	arm_func_start ov02_0233C504
-ov02_0233C504: ; 0x0233C504
+	arm_func_start SceneOptMovWait_Button
+SceneOptMovWait_Button: ; 0x0233C504
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #7
-	bl ov02_023480E0
-	ldr r0, _0233C52C ; =ov02_0233C530
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233C52C ; =SceneOptMovWait_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C52C: .word ov02_0233C530
-	arm_func_end ov02_0233C504
+_0233C52C: .word SceneOptMovWait_EndScene
+	arm_func_end SceneOptMovWait_Button
 
-	arm_func_start ov02_0233C530
-ov02_0233C530: ; 0x0233C530
+	arm_func_start SceneOptMovWait_EndScene
+SceneOptMovWait_EndScene: ; 0x0233C530
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233C560 ; =ov02_0235AAC8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233C548
-	bl ov02_0233908C
+	bl Dwci_MovlEnd
 _0233C548:
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233C564 ; =ov02_0233C568
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233C564 ; =SceneOptMovWait_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233C560: .word ov02_0235AAC8
-_0233C564: .word ov02_0233C568
-	arm_func_end ov02_0233C530
+_0233C564: .word SceneOptMovWait_EndScene1
+	arm_func_end SceneOptMovWait_EndScene
 
-	arm_func_start ov02_0233C568
-ov02_0233C568: ; 0x0233C568
+	arm_func_start SceneOptMovWait_EndScene1
+SceneOptMovWait_EndScene1: ; 0x0233C568
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233C5E0 ; =ov02_0235AAC8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233C598
-	bl ov02_023390E8
+	bl Dwci_MovlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 _0233C598:
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	ldr r0, _0233C5E0 ; =ov02_0235AAC8
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -29192,26 +29192,26 @@ _0233C598:
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _0233C5C0:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233C5E4 ; =ov02_0233C5E8
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233C5E4 ; =SceneOptMovWait_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233C5E0: .word ov02_0235AAC8
-_0233C5E4: .word ov02_0233C5E8
-	arm_func_end ov02_0233C568
+_0233C5E4: .word SceneOptMovWait_EndScene2
+	arm_func_end SceneOptMovWait_EndScene1
 
-	arm_func_start ov02_0233C5E8
-ov02_0233C5E8: ; 0x0233C5E8
+	arm_func_start SceneOptMovWait_EndScene2
+SceneOptMovWait_EndScene2: ; 0x0233C5E8
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233C6D0 ; =ov02_0235AAC8
@@ -29219,98 +29219,98 @@ ov02_0233C5E8: ; 0x0233C5E8
 	cmp r0, #0
 	bne _0233C61C
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 _0233C61C:
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _0233C6D0 ; =ov02_0235AAC8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233C644
-	bl ov02_023390E8
+	bl Dwci_MovlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 _0233C644:
-	bl ov02_023344AC
+	bl Dwci_AnimelEnd
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _0233C6D0 ; =ov02_0235AAC8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233C670
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _0233C670:
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _0233C6D0 ; =ov02_0235AAC8
 	mov r1, #1
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233C6A4
 	mov r0, #0
-	bl ov02_02338D78
-	ldr r0, _0233C6D4 ; =ov02_0233A904
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233C6D4 ; =Dwci_SceneOptMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233C6A4:
 	cmp r0, #2
 	mov r0, #0
 	bne _0233C6C0
-	bl ov02_02338D78
-	ldr r0, _0233C6D8 ; =ov02_0233BC04
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233C6D8 ; =Dwci_SceneOptMovFailure
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233C6C0:
-	bl ov02_02338D78
-	ldr r0, _0233C6DC ; =ov02_0233BF6C
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233C6DC ; =Dwci_SceneOptMovUser
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233C6D0: .word ov02_0235AAC8
-_0233C6D4: .word ov02_0233A904
-_0233C6D8: .word ov02_0233BC04
-_0233C6DC: .word ov02_0233BF6C
-	arm_func_end ov02_0233C5E8
+_0233C6D4: .word Dwci_SceneOptMenu
+_0233C6D8: .word Dwci_SceneOptMovFailure
+_0233C6DC: .word Dwci_SceneOptMovUser
+	arm_func_end SceneOptMovWait_EndScene2
 
-	arm_func_start ov02_0233C6E0
-ov02_0233C6E0: ; 0x0233C6E0
+	arm_func_start SceneOptMovWait_CbMov
+SceneOptMovWait_CbMov: ; 0x0233C6E0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	cmp r4, #0
 	bne _0233C70C
 	ldr r1, _0233C734 ; =ov02_0235AAC8
 	mov r2, #1
 	mov r0, #0x10
 	strb r2, [r1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233C720
 _0233C70C:
 	ldr r1, _0233C734 ; =ov02_0235AAC8
 	mov r2, #2
 	mov r0, #0x12
 	strb r2, [r1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233C720:
 	mov r0, #0
-	bl ov02_02339104
-	ldr r0, _0233C738 ; =ov02_0233C530
-	bl ov02_02338D68
+	bl Dwci_MovlChangeCallback
+	ldr r0, _0233C738 ; =SceneOptMovWait_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233C734: .word ov02_0235AAC8
-_0233C738: .word ov02_0233C530
-	arm_func_end ov02_0233C6E0
+_0233C738: .word SceneOptMovWait_EndScene
+	arm_func_end SceneOptMovWait_CbMov
 
-	arm_func_start ov02_0233C73C
-ov02_0233C73C: ; 0x0233C73C
+	arm_func_start Dwci_IsFold__0233CF68
+Dwci_IsFold__0233CF68: ; 0x0233C73C
 	ldr r0, _0233C758 ; =0x027FFFA8
 	ldrh r0, [r0]
 	and r0, r0, #0x8000
@@ -29320,49 +29320,49 @@ ov02_0233C73C: ; 0x0233C73C
 	bx lr
 	.align 2, 0
 _0233C758: .word 0x027FFFA8
-	arm_func_end ov02_0233C73C
+	arm_func_end Dwci_IsFold__0233CF68
 
-	arm_func_start ov02_0233C75C
-ov02_0233C75C: ; 0x0233C75C
+	arm_func_start Dwci_SceneSetAossButton
+Dwci_SceneSetAossButton: ; 0x0233C75C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233C7B4 ; =ov02_0235AACC
 	mov r1, #0
 	strh r1, [r0, #2]
-	bl ov02_0233C7BC
-	bl ov02_023352C4
+	bl SceneSetAossButton_InitGraphics
+	bl Dwci_HLlLoadSet
 	mov r0, #0x36
 	sub r1, r0, #0x37
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #2
-	bl ov02_02334DE8
+	bl Dwci_CmnlStep
 	mov r0, #0x22
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0
-	bl ov02_023343DC
-	bl ov02_023386D8
+	bl Dwci_AnimelInitEx
+	bl Dwci_AosslInit
 	mov r0, #0xb
-	bl ov02_023480E0
-	ldr r0, _0233C7B8 ; =ov02_0233C864
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233C7B8 ; =SceneSetAossButton_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233C7B4: .word ov02_0235AACC
-_0233C7B8: .word ov02_0233C864
-	arm_func_end ov02_0233C75C
+_0233C7B8: .word SceneSetAossButton_ProcInit
+	arm_func_end Dwci_SceneSetAossButton
 
-	arm_func_start ov02_0233C7BC
-ov02_0233C7BC: ; 0x0233C7BC
+	arm_func_start SceneSetAossButton_InitGraphics
+SceneSetAossButton_InitGraphics: ; 0x0233C7BC
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233C844 ; =ov02_02353890
 	ldr r1, _0233C848 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0233C84C ; =ov02_023538A8
 	ldr r1, _0233C850 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0233C854 ; =ov02_023538C0
 	ldr r1, _0233C858 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233C85C ; =0x04001008
 	ldr r1, _0233C860 ; =0x0400000A
 	ldrh r0, [r3]
@@ -29396,84 +29396,84 @@ _0233C854: .word ov02_023538C0
 _0233C858: .word GX_LoadBG2Scr
 _0233C85C: .word 0x04001008
 _0233C860: .word 0x0400000A
-	arm_func_end ov02_0233C7BC
+	arm_func_end SceneSetAossButton_InitGraphics
 
-	arm_func_start ov02_0233C864
-ov02_0233C864: ; 0x0233C864
+	arm_func_start SceneSetAossButton_ProcInit
+SceneSetAossButton_ProcInit: ; 0x0233C864
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233C8B4 ; =ov02_0233C8B8
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233C8B4 ; =SceneSetAossButton_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C8B4: .word ov02_0233C8B8
-	arm_func_end ov02_0233C864
+_0233C8B4: .word SceneSetAossButton_ProcInit1
+	arm_func_end SceneSetAossButton_ProcInit
 
-	arm_func_start ov02_0233C8B8
-ov02_0233C8B8: ; 0x0233C8B8
+	arm_func_start SceneSetAossButton_ProcInit1
+SceneSetAossButton_ProcInit1: ; 0x0233C8B8
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #1
-	bl ov02_02334E38
-	ldr r0, _0233C8F0 ; =ov02_0233C8F4
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233C8F0 ; =SceneSetAossButton_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C8F0: .word ov02_0233C8F4
-	arm_func_end ov02_0233C8B8
+_0233C8F0: .word SceneSetAossButton_ProcInit2
+	arm_func_end SceneSetAossButton_ProcInit1
 
-	arm_func_start ov02_0233C8F4
-ov02_0233C8F4: ; 0x0233C8F4
+	arm_func_start SceneSetAossButton_ProcInit2
+SceneSetAossButton_ProcInit2: ; 0x0233C8F4
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	ldr r1, _0233C930 ; =ov02_0233CC14
+	ldr r1, _0233C930 ; =SceneSetAossButton_TaskVBlank
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233C934 ; =ov02_0235AACC
 	str r0, [r1, #4]
-	ldr r0, _0233C938 ; =ov02_0233C93C
-	bl ov02_02338D68
+	ldr r0, _0233C938 ; =SceneSetAossButton_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233C930: .word ov02_0233CC14
+_0233C930: .word SceneSetAossButton_TaskVBlank
 _0233C934: .word ov02_0235AACC
-_0233C938: .word ov02_0233C93C
-	arm_func_end ov02_0233C8F4
+_0233C938: .word SceneSetAossButton_ProcScene
+	arm_func_end SceneSetAossButton_ProcInit2
 
-	arm_func_start ov02_0233C93C
-ov02_0233C93C: ; 0x0233C93C
+	arm_func_start SceneSetAossButton_ProcScene
+SceneSetAossButton_ProcScene: ; 0x0233C93C
 	stmdb sp!, {r3, lr}
-	bl ov02_0233CA10
-	bl ov02_0233CA48
-	bl ov02_0233CA4C
-	bl ov02_02338838
+	bl SceneSetAossButton_Input
+	bl SceneSetAossButton_Draw
+	bl SceneSetAossButton_Button
+	bl Dwci_AosslStart
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	cmp r0, #1
@@ -29488,73 +29488,73 @@ _0233C96C:
 	ldmeqia sp!, {r3, pc}
 	mov r0, #1
 	strb r0, [r2]
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r1, _0233CA04 ; =ov02_0235AACC
 	mov r2, #0
-	ldr r0, _0233CA08 ; =ov02_0233CC7C
+	ldr r0, _0233CA08 ; =SceneSetAossButton_ProcWait
 	str r2, [r1, #4]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233C9A0:
 	ldr r0, _0233CA04 ; =ov02_0235AACC
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r1, #1
 	mov ip, #0
 	mov r2, r1
 	sub r3, r1, #2
 	mov r0, #0xc
 	str ip, [sp]
-	bl ov02_02349394
+	bl Dwci_WinlInitEx
 	mov r0, #9
-	bl ov02_023480E0
-	bl ov02_02334768
+	bl Dwci_SndlPlay
+	bl Dwci_BtnlDisable
 	ldr r1, _0233CA04 ; =ov02_0235AACC
 	mov r0, #1
 	ldr r1, [r1, #4]
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r1, _0233CA04 ; =ov02_0235AACC
 	mov r2, #0
-	ldr r0, _0233CA0C ; =ov02_0233CC30
+	ldr r0, _0233CA0C ; =SceneSetAossButton_ProcError
 	str r2, [r1, #4]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CA04: .word ov02_0235AACC
-_0233CA08: .word ov02_0233CC7C
-_0233CA0C: .word ov02_0233CC30
-	arm_func_end ov02_0233C93C
+_0233CA08: .word SceneSetAossButton_ProcWait
+_0233CA0C: .word SceneSetAossButton_ProcError
+	arm_func_end SceneSetAossButton_ProcScene
 
-	arm_func_start ov02_0233CA10
-ov02_0233CA10: ; 0x0233CA10
+	arm_func_start SceneSetAossButton_Input
+SceneSetAossButton_Input: ; 0x0233CA10
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0233CA30
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
 _0233CA30:
-	bl ov02_0233C73C
+	bl Dwci_IsFold__0233CF68
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233CA10
+	arm_func_end SceneSetAossButton_Input
 
-	arm_func_start ov02_0233CA48
-ov02_0233CA48: ; 0x0233CA48
+	arm_func_start SceneSetAossButton_Draw
+SceneSetAossButton_Draw: ; 0x0233CA48
 	bx lr
-	arm_func_end ov02_0233CA48
+	arm_func_end SceneSetAossButton_Draw
 
-	arm_func_start ov02_0233CA4C
-ov02_0233CA4C: ; 0x0233CA4C
+	arm_func_start SceneSetAossButton_Button
+SceneSetAossButton_Button: ; 0x0233CA4C
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233CA90 ; =ov02_0235AACC
@@ -29562,48 +29562,48 @@ ov02_0233CA4C: ; 0x0233CA4C
 	cmp r1, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #1
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldr r0, _0233CA90 ; =ov02_0235AACC
 	mov r1, #0
 	str r1, [r0, #4]
-	bl ov02_02334768
-	ldr r0, _0233CA94 ; =ov02_0233CCC8
-	bl ov02_02338D68
+	bl Dwci_BtnlDisable
+	ldr r0, _0233CA94 ; =SceneSetAossButton_ProcCancel
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CA90: .word ov02_0235AACC
-_0233CA94: .word ov02_0233CCC8
-	arm_func_end ov02_0233CA4C
+_0233CA94: .word SceneSetAossButton_ProcCancel
+	arm_func_end SceneSetAossButton_Button
 
-	arm_func_start ov02_0233CA98
-ov02_0233CA98: ; 0x0233CA98
+	arm_func_start SceneSetAossButton_EndScene
+SceneSetAossButton_EndScene: ; 0x0233CA98
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	ldr r0, _0233CACC ; =ov02_0235AACC
 	ldr r1, [r0, #4]
 	cmp r1, #0
 	beq _0233CAB8
 	mov r0, #1
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 _0233CAB8:
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233CAD0 ; =ov02_0233CAD4
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233CAD0 ; =SceneSetAossButton_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CACC: .word ov02_0235AACC
-_0233CAD0: .word ov02_0233CAD4
-	arm_func_end ov02_0233CA98
+_0233CAD0: .word SceneSetAossButton_EndScene1
+	arm_func_end SceneSetAossButton_EndScene
 
-	arm_func_start ov02_0233CAD4
-ov02_0233CAD4: ; 0x0233CAD4
+	arm_func_start SceneSetAossButton_EndScene1
+SceneSetAossButton_EndScene1: ; 0x0233CAD4
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	ldr r0, _0233CB30 ; =ov02_0235AACC
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -29612,26 +29612,26 @@ ov02_0233CAD4: ; 0x0233CAD4
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _0233CB10:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233CB34 ; =ov02_0233CB38
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233CB34 ; =SceneSetAossButton_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CB30: .word ov02_0235AACC
-_0233CB34: .word ov02_0233CB38
-	arm_func_end ov02_0233CAD4
+_0233CB34: .word SceneSetAossButton_EndScene2
+	arm_func_end SceneSetAossButton_EndScene1
 
-	arm_func_start ov02_0233CB38
-ov02_0233CB38: ; 0x0233CB38
+	arm_func_start SceneSetAossButton_EndScene2
+SceneSetAossButton_EndScene2: ; 0x0233CB38
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233CC08 ; =ov02_0235AACC
@@ -29639,11 +29639,11 @@ ov02_0233CB38: ; 0x0233CB38
 	cmp r0, #0
 	bne _0233CB6C
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 _0233CB6C:
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _0233CC08 ; =ov02_0235AACC
@@ -29651,91 +29651,91 @@ _0233CB6C:
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
-	bl ov02_023387E8
-	bl ov02_023344AC
+	bl Dwci_AosslEnd
+	bl Dwci_AnimelEnd
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _0233CC08 ; =ov02_0235AACC
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233CBBC
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _0233CBBC:
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _0233CC08 ; =ov02_0235AACC
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0233CBF0
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0233CC0C ; =ov02_02344AF0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233CC0C ; =Dwci_SceneSetSelectWay
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233CBF0:
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
-	ldr r0, _0233CC10 ; =ov02_0233CCF8
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233CC10 ; =Dwci_SceneSetAossComplete
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CC08: .word ov02_0235AACC
-_0233CC0C: .word ov02_02344AF0
-_0233CC10: .word ov02_0233CCF8
-	arm_func_end ov02_0233CB38
+_0233CC0C: .word Dwci_SceneSetSelectWay
+_0233CC10: .word Dwci_SceneSetAossComplete
+	arm_func_end SceneSetAossButton_EndScene2
 
-	arm_func_start ov02_0233CC14
-ov02_0233CC14: ; 0x0233CC14
+	arm_func_start SceneSetAossButton_TaskVBlank
+SceneSetAossButton_TaskVBlank: ; 0x0233CC14
 	stmdb sp!, {r3, lr}
-	bl ov02_0234E90C
+	bl Dwci_IptlRead
 	mov r0, #0
-	bl ov02_0234F9E8
-	bl ov02_0233CA10
-	bl ov02_0233CA4C
+	bl Dwci_TsklAct
+	bl SceneSetAossButton_Input
+	bl SceneSetAossButton_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233CC14
+	arm_func_end SceneSetAossButton_TaskVBlank
 
-	arm_func_start ov02_0233CC30
-ov02_0233CC30: ; 0x0233CC30
+	arm_func_start SceneSetAossButton_ProcError
+SceneSetAossButton_ProcError: ; 0x0233CC30
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
-	ldr r0, _0233CC58 ; =ov02_0233CC5C
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
+	ldr r0, _0233CC58 ; =SceneSetAossButton_ProcError1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233CC58: .word ov02_0233CC5C
-	arm_func_end ov02_0233CC30
+_0233CC58: .word SceneSetAossButton_ProcError1
+	arm_func_end SceneSetAossButton_ProcError
 
-	arm_func_start ov02_0233CC5C
-ov02_0233CC5C: ; 0x0233CC5C
+	arm_func_start SceneSetAossButton_ProcError1
+SceneSetAossButton_ProcError1: ; 0x0233CC5C
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0233CC78 ; =ov02_0233CA98
-	bl ov02_02338D68
+	ldr r0, _0233CC78 ; =SceneSetAossButton_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233CC78: .word ov02_0233CA98
-	arm_func_end ov02_0233CC5C
+_0233CC78: .word SceneSetAossButton_EndScene
+	arm_func_end SceneSetAossButton_ProcError1
 
-	arm_func_start ov02_0233CC7C
-ov02_0233CC7C: ; 0x0233CC7C
+	arm_func_start SceneSetAossButton_ProcWait
+SceneSetAossButton_ProcWait: ; 0x0233CC7C
 	stmdb sp!, {r3, lr}
-	bl ov02_0233CA10
-	bl ov02_0233CA48
-	bl ov02_0233CA4C
+	bl SceneSetAossButton_Input
+	bl SceneSetAossButton_Draw
+	bl SceneSetAossButton_Button
 	ldr r1, _0233CCBC ; =ov02_0235AACC
 	ldr r0, _0233CCC0 ; =0x00000438
 	ldrh r2, [r1, #2]
@@ -29744,59 +29744,59 @@ ov02_0233CC7C: ; 0x0233CC7C
 	ldrh r1, [r1, #2]
 	cmp r1, r0
 	ldmloia sp!, {r3, pc}
-	bl ov02_02348148
-	ldr r0, _0233CCC4 ; =ov02_0233CA98
-	bl ov02_02338D68
+	bl Dwci_SndlStop
+	ldr r0, _0233CCC4 ; =SceneSetAossButton_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CCBC: .word ov02_0235AACC
 _0233CCC0: .word 0x00000438
-_0233CCC4: .word ov02_0233CA98
-	arm_func_end ov02_0233CC7C
+_0233CCC4: .word SceneSetAossButton_EndScene
+	arm_func_end SceneSetAossButton_ProcWait
 
-	arm_func_start ov02_0233CCC8
-ov02_0233CCC8: ; 0x0233CCC8
+	arm_func_start SceneSetAossButton_ProcCancel
+SceneSetAossButton_ProcCancel: ; 0x0233CCC8
 	stmdb sp!, {r3, lr}
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r1, _0233CCF0 ; =ov02_0235AACC
 	mov r2, #0
-	ldr r0, _0233CCF4 ; =ov02_0233CA98
+	ldr r0, _0233CCF4 ; =SceneSetAossButton_EndScene
 	strb r2, [r1]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CCF0: .word ov02_0235AACC
-_0233CCF4: .word ov02_0233CA98
-	arm_func_end ov02_0233CCC8
+_0233CCF4: .word SceneSetAossButton_EndScene
+	arm_func_end SceneSetAossButton_ProcCancel
 
-	arm_func_start ov02_0233CCF8
-ov02_0233CCF8: ; 0x0233CCF8
+	arm_func_start Dwci_SceneSetAossComplete
+Dwci_SceneSetAossComplete: ; 0x0233CCF8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233CD2C ; =ov02_0235AAD4
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_0233CD34
-	bl ov02_023352C4
+	bl SceneSetAossComplete_InitGraphics
+	bl Dwci_HLlLoadSet
 	mov r0, #0x23
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0x10
-	bl ov02_023480E0
-	ldr r0, _0233CD30 ; =ov02_0233CDA0
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233CD30 ; =SceneSetAossComplete_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CD2C: .word ov02_0235AAD4
-_0233CD30: .word ov02_0233CDA0
-	arm_func_end ov02_0233CCF8
+_0233CD30: .word SceneSetAossComplete_ProcInit
+	arm_func_end Dwci_SceneSetAossComplete
 
-	arm_func_start ov02_0233CD34
-ov02_0233CD34: ; 0x0233CD34
+	arm_func_start SceneSetAossComplete_InitGraphics
+SceneSetAossComplete_InitGraphics: ; 0x0233CD34
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233CD90 ; =ov02_023538D4
 	ldr r1, _0233CD94 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r2, _0233CD98 ; =0x04001008
 	ldr r1, _0233CD9C ; =0x0400000A
 	ldrh r0, [r2]
@@ -29821,108 +29821,108 @@ _0233CD90: .word ov02_023538D4
 _0233CD94: .word GX_LoadBG2Scr
 _0233CD98: .word 0x04001008
 _0233CD9C: .word 0x0400000A
-	arm_func_end ov02_0233CD34
+	arm_func_end SceneSetAossComplete_InitGraphics
 
-	arm_func_start ov02_0233CDA0
-ov02_0233CDA0: ; 0x0233CDA0
+	arm_func_start SceneSetAossComplete_ProcInit
+SceneSetAossComplete_ProcInit: ; 0x0233CDA0
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233CDD0 ; =ov02_0233CDD4
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233CDD0 ; =SceneSetAossComplete_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233CDD0: .word ov02_0233CDD4
-	arm_func_end ov02_0233CDA0
+_0233CDD0: .word SceneSetAossComplete_ProcInit1
+	arm_func_end SceneSetAossComplete_ProcInit
 
-	arm_func_start ov02_0233CDD4
-ov02_0233CDD4: ; 0x0233CDD4
+	arm_func_start SceneSetAossComplete_ProcInit1
+SceneSetAossComplete_ProcInit1: ; 0x0233CDD4
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0233CDF4 ; =ov02_0233CDF8
-	bl ov02_02338D68
+	ldr r0, _0233CDF4 ; =SceneSetAossComplete_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233CDF4: .word ov02_0233CDF8
-	arm_func_end ov02_0233CDD4
+_0233CDF4: .word SceneSetAossComplete_ProcScene
+	arm_func_end SceneSetAossComplete_ProcInit1
 
-	arm_func_start ov02_0233CDF8
-ov02_0233CDF8: ; 0x0233CDF8
+	arm_func_start SceneSetAossComplete_ProcScene
+SceneSetAossComplete_ProcScene: ; 0x0233CDF8
 	stmdb sp!, {r3, lr}
-	bl ov02_0233CEB8
-	bl ov02_0233CE08
+	bl SceneSetAossComplete_Wait
+	bl SceneSetAossComplete_Draw
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233CDF8
+	arm_func_end SceneSetAossComplete_ProcScene
 
-	arm_func_start ov02_0233CE08
-ov02_0233CE08: ; 0x0233CE08
+	arm_func_start SceneSetAossComplete_Draw
+SceneSetAossComplete_Draw: ; 0x0233CE08
 	bx lr
-	arm_func_end ov02_0233CE08
+	arm_func_end SceneSetAossComplete_Draw
 
-	arm_func_start ov02_0233CE0C
-ov02_0233CE0C: ; 0x0233CE0C
+	arm_func_start SceneSetAossComplete_EndScene
+SceneSetAossComplete_EndScene: ; 0x0233CE0C
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233CE44 ; =ov02_0233CE48
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233CE44 ; =SceneSetAossComplete_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233CE44: .word ov02_0233CE48
-	arm_func_end ov02_0233CE0C
+_0233CE44: .word SceneSetAossComplete_EndScene1
+	arm_func_end SceneSetAossComplete_EndScene
 
-	arm_func_start ov02_0233CE48
-ov02_0233CE48: ; 0x0233CE48
+	arm_func_start SceneSetAossComplete_EndScene1
+SceneSetAossComplete_EndScene1: ; 0x0233CE48
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
-	bl ov02_02334D10
+	bl Dwci_FntlDeleteBgLcd
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338DB4
-	ldr r0, _0233CEB4 ; =ov02_02345968
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _0233CEB4 ; =Dwci_SceneSetTestConfirm
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233CEB4: .word ov02_02345968
-	arm_func_end ov02_0233CE48
+_0233CEB4: .word Dwci_SceneSetTestConfirm
+	arm_func_end SceneSetAossComplete_EndScene1
 
-	arm_func_start ov02_0233CEB8
-ov02_0233CEB8: ; 0x0233CEB8
+	arm_func_start SceneSetAossComplete_Wait
+SceneSetAossComplete_Wait: ; 0x0233CEB8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233CEE4 ; =ov02_0235AAD4
 	ldrb r1, [r0]
@@ -29931,25 +29931,25 @@ ov02_0233CEB8: ; 0x0233CEB8
 	strb r2, [r0]
 	cmp r1, #0x78
 	ldmloia sp!, {r3, pc}
-	ldr r0, _0233CEE8 ; =ov02_0233CE0C
-	bl ov02_02338D68
+	ldr r0, _0233CEE8 ; =SceneSetAossComplete_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CEE4: .word ov02_0235AAD4
-_0233CEE8: .word ov02_0233CE0C
-	arm_func_end ov02_0233CEB8
+_0233CEE8: .word SceneSetAossComplete_EndScene
+	arm_func_end SceneSetAossComplete_Wait
 
-	arm_func_start ov02_0233CEEC
-ov02_0233CEEC: ; 0x0233CEEC
+	arm_func_start Dwci_SceneSetApList
+Dwci_SceneSetApList: ; 0x0233CEEC
 	stmdb sp!, {r3, lr}
 	mov r0, #0x5c
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _0233CFB8 ; =ov02_0235AAD8
 	mov r1, #0
 	str r0, [r2, #4]
 	add r0, sp, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #0
 	bne _0233CF2C
@@ -29960,47 +29960,47 @@ ov02_0233CEEC: ; 0x0233CEEC
 _0233CF2C:
 	ldr r0, _0233CFB8 ; =ov02_0235AAD8
 	ldr r0, [r0, #4]
-	bl ov02_0234722C
+	bl Dwci_SearchlGetApInfo
 	ldr r1, _0233CFB8 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0x51]
-	bl ov02_0233CFC4
-	bl ov02_023352C4
+	bl SceneSetApList_InitGraphics
+	bl Dwci_HLlLoadSet
 	mov r0, #0x34
 	sub r1, r0, #0x35
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #2
-	bl ov02_02334DE8
-	bl ov02_0233D118
-	bl ov02_0233D1C0
+	bl Dwci_CmnlStep
+	bl InitScrollBar
+	bl GetCharName
 	mov r0, #0
 	mov r1, r0
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	ldr r2, _0233CFB8 ; =ov02_0235AAD8
-	ldr r1, _0233CFBC ; =ov02_0233E118
+	ldr r1, _0233CFBC ; =SceneSetApList_TaskVBlank
 	ldr r3, [r2, #4]
 	mov r2, #0
 	str r0, [r3, #0xc]
 	mov r0, #1
 	mov r3, #0x6e
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233CFB8 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x3c]
-	bl ov02_0233DC5C
-	bl ov02_0233E174
-	ldr r0, _0233CFC0 ; =ov02_0233D334
-	bl ov02_02338D68
+	bl DrawApInfo
+	bl SceneSetApList_DispFocus
+	ldr r0, _0233CFC0 ; =SceneSetApList_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CFB8: .word ov02_0235AAD8
-_0233CFBC: .word ov02_0233E118
-_0233CFC0: .word ov02_0233D334
-	arm_func_end ov02_0233CEEC
+_0233CFBC: .word SceneSetApList_TaskVBlank
+_0233CFC0: .word SceneSetApList_ProcInit
+	arm_func_end Dwci_SceneSetApList
 
-	arm_func_start ov02_0233CFC4
-ov02_0233CFC4: ; 0x0233CFC4
+	arm_func_start SceneSetApList_InitGraphics
+SceneSetApList_InitGraphics: ; 0x0233CFC4
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x30
 	ldr r3, _0233D0FC ; =ov02_023529BF
@@ -30031,24 +30031,24 @@ _0233D00C:
 	bne _0233D00C
 	ldr r0, _0233D104 ; =ov02_023538E8
 	ldr r1, _0233D108 ; =GX_LoadBG3Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	add r0, sp, #0x16
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _0233D10C ; =ov02_0235AAD8
 	ldr r2, [r1, #4]
 	str r0, [r2, #4]
 	ldr r0, [r1, #4]
 	ldr r0, [r0, #4]
-	bl ov02_02346750
-	bl ov02_023467DC
+	bl Dwci_ScreenlInit
+	bl Dwci_ScreenlRenew
 	add r0, sp, #0
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _0233D10C ; =ov02_0235AAD8
 	ldr r3, _0233D110 ; =0x04001008
 	ldr r1, [r1, #4]
@@ -30089,10 +30089,10 @@ _0233D108: .word GX_LoadBG3Scr
 _0233D10C: .word ov02_0235AAD8
 _0233D110: .word 0x04001008
 _0233D114: .word 0x0400000A
-	arm_func_end ov02_0233CFC4
+	arm_func_end SceneSetApList_InitGraphics
 
-	arm_func_start ov02_0233D118
-ov02_0233D118: ; 0x0233D118
+	arm_func_start InitScrollBar
+InitScrollBar: ; 0x0233D118
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r2, _0233D1BC ; =ov02_0235AAD8
@@ -30133,15 +30133,15 @@ _0233D19C:
 	mov r1, #0x55
 	mov r2, #0xec
 	mov r3, #0x3f
-	bl ov02_02346964
+	bl Dwci_SBlInit
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0233D1BC: .word ov02_0235AAD8
-	arm_func_end ov02_0233D118
+	arm_func_end InitScrollBar
 
-	arm_func_start ov02_0233D1C0
-ov02_0233D1C0: ; 0x0233D1C0
+	arm_func_start GetCharName
+GetCharName: ; 0x0233D1C0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r0, _0233D324 ; =ov02_0235AAD8
 	mov sb, #0
@@ -30159,13 +30159,13 @@ ov02_0233D1C0: ; 0x0233D1C0
 _0233D1F8:
 	mov r0, r7
 	mov r1, r6
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r2, [sl, #4]
 	mov r1, r4
 	add r2, r2, sb, lsl #2
 	str r0, [r2, #0x10]
 	mov r0, r5
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, [sl, #4]
 	add r1, r1, sb, lsl #2
 	add sb, sb, #1
@@ -30183,7 +30183,7 @@ _0233D248:
 	ldrb r1, [r5], #1
 	ldr r2, [r0, #0x10]
 	mov r0, r4
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, [sb, #4]
 	ldr r1, [r0, #0x10]
 	add r0, r0, r6, lsl #1
@@ -30203,7 +30203,7 @@ _0233D294:
 	ldrb r1, [r5], #1
 	ldr r2, [r0, #0x24]
 	mov r0, r4
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, [sb, #4]
 	ldr r1, [r0, #0x24]
 	add r0, r0, r6, lsl #1
@@ -30241,80 +30241,80 @@ _0233D324: .word ov02_0235AAD8
 _0233D328: .word ov02_02352A28
 _0233D32C: .word 0x000003FF
 _0233D330: .word ov02_02352A2C
-	arm_func_end ov02_0233D1C0
+	arm_func_end GetCharName
 
-	arm_func_start ov02_0233D334
-ov02_0233D334: ; 0x0233D334
+	arm_func_start SceneSetApList_ProcInit
+SceneSetApList_ProcInit: ; 0x0233D334
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x1d
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x1d
-	bl ov02_0234E3D0
-	ldr r0, _0233D384 ; =ov02_0233D388
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233D384 ; =SceneSetApList_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233D384: .word ov02_0233D388
-	arm_func_end ov02_0233D334
+_0233D384: .word SceneSetApList_ProcInit1
+	arm_func_end SceneSetApList_ProcInit
 
-	arm_func_start ov02_0233D388
-ov02_0233D388: ; 0x0233D388
+	arm_func_start SceneSetApList_ProcInit1
+SceneSetApList_ProcInit1: ; 0x0233D388
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_02334E38
-	ldr r0, _0233D3C0 ; =ov02_0233D3C4
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0233D3C0 ; =SceneSetApList_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233D3C0: .word ov02_0233D3C4
-	arm_func_end ov02_0233D388
+_0233D3C0: .word SceneSetApList_ProcInit2
+	arm_func_end SceneSetApList_ProcInit1
 
-	arm_func_start ov02_0233D3C4
-ov02_0233D3C4: ; 0x0233D3C4
+	arm_func_start SceneSetApList_ProcInit2
+SceneSetApList_ProcInit2: ; 0x0233D3C4
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _0233D3E8 ; =ov02_0233D3EC
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _0233D3E8 ; =SceneSetApList_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233D3E8: .word ov02_0233D3EC
-	arm_func_end ov02_0233D3C4
+_0233D3E8: .word SceneSetApList_ProcScene
+	arm_func_end SceneSetApList_ProcInit2
 
-	arm_func_start ov02_0233D3EC
-ov02_0233D3EC: ; 0x0233D3EC
+	arm_func_start SceneSetApList_ProcScene
+SceneSetApList_ProcScene: ; 0x0233D3EC
 	stmdb sp!, {r3, lr}
-	bl ov02_0233D400
-	bl ov02_0233D654
-	bl ov02_0233D8C4
+	bl SceneSetApList_Input
+	bl SceneSetApList_Draw
+	bl SceneSetApList_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233D3EC
+	arm_func_end SceneSetApList_ProcScene
 
-	arm_func_start ov02_0233D400
-ov02_0233D400: ; 0x0233D400
+	arm_func_start SceneSetApList_Input
+SceneSetApList_Input: ; 0x0233D400
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _0233D648 ; =ov02_0235AAD8
 	ldr r1, [r0, #4]
@@ -30324,7 +30324,7 @@ ov02_0233D400: ; 0x0233D400
 	cmpeq r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r0, _0233D64C ; =ov02_02352F34
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _0233D498
 	ldr r0, _0233D648 ; =ov02_0235AAD8
@@ -30335,7 +30335,7 @@ ov02_0233D400: ; 0x0233D400
 	mov r4, #0
 _0233D448:
 	mov r0, r5
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _0233D488
 	cmp r4, #4
@@ -30346,10 +30346,10 @@ _0233D448:
 	b _0233D498
 _0233D470:
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldr r0, _0233D648 ; =ov02_0235AAD8
 	strb r4, [r0]
-	bl ov02_0233E174
+	bl SceneSetApList_DispFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D488:
 	add r4, r4, #1
@@ -30358,14 +30358,14 @@ _0233D488:
 	blo _0233D448
 _0233D498:
 	ldr r0, _0233D64C ; =ov02_02352F34
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	beq _0233D514
 	ldr r4, _0233D650 ; =ov02_023529D8
 	mov r5, #0
 _0233D4B0:
 	mov r0, r4
-	bl ov02_0234EE14
+	bl Dwci_TPlCheckRelease
 	cmp r0, #0
 	beq _0233D504
 	ldr r0, _0233D648 ; =ov02_0235AAD8
@@ -30377,14 +30377,14 @@ _0233D4B0:
 	cmp r5, r0
 	blt _0233D4EC
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233D514
 _0233D4EC:
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldr r0, _0233D648 ; =ov02_0235AAD8
 	strb r5, [r0]
-	bl ov02_0233E174
+	bl SceneSetApList_DispFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D504:
 	add r5, r5, #1
@@ -30393,31 +30393,31 @@ _0233D504:
 	blt _0233D4B0
 _0233D514:
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0233D534
 	mov r0, #1
-	bl ov02_023346F0
-	bl ov02_02346AC4
+	bl Dwci_BtnlSet
+	bl Dwci_SBlDisable
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D534:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0233D550
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D550:
 	mov r0, #0x200
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _0233D568
-	bl ov02_0233E380
+	bl ScrollDown
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D568:
 	mov r0, #0x200
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	beq _0233D58C
 	ldr r0, _0233D648 ; =ov02_0235AAD8
@@ -30427,14 +30427,14 @@ _0233D568:
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D58C:
 	mov r0, #0x100
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _0233D5A4
-	bl ov02_0233E30C
+	bl ScrollUp
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D5A4:
 	mov r0, #0x100
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	beq _0233D5C8
 	ldr r0, _0233D648 ; =ov02_0235AAD8
@@ -30444,15 +30444,15 @@ _0233D5A4:
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D5C8:
 	mov r0, #0x40
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _0233D5E4
 	mov r0, #1
-	bl ov02_0233E1C0
+	bl SceneSetApList_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D5E4:
 	mov r0, #0x40
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	beq _0233D608
 	ldr r0, _0233D648 ; =ov02_0235AAD8
@@ -30462,15 +30462,15 @@ _0233D5E4:
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D608:
 	mov r0, #0x80
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _0233D624
 	mov r0, #3
-	bl ov02_0233E1C0
+	bl SceneSetApList_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _0233D624:
 	mov r0, #0x80
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r0, _0233D648 ; =ov02_0235AAD8
@@ -30482,10 +30482,10 @@ _0233D624:
 _0233D648: .word ov02_0235AAD8
 _0233D64C: .word ov02_02352F34
 _0233D650: .word ov02_023529D8
-	arm_func_end ov02_0233D400
+	arm_func_end SceneSetApList_Input
 
-	arm_func_start ov02_0233D654
-ov02_0233D654: ; 0x0233D654
+	arm_func_start SceneSetApList_Draw
+SceneSetApList_Draw: ; 0x0233D654
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233D8B8 ; =ov02_0235AAD8
 	ldr r1, [r0, #4]
@@ -30496,7 +30496,7 @@ ov02_0233D654: ; 0x0233D654
 	cmp r0, #0
 	subne r0, r0, #1
 	strneb r0, [r1, #0x55]
-	bl ov02_02346A8C
+	bl Dwci_SBlGetState
 	cmp r0, #7
 	addls pc, pc, r0, lsl #2
 	ldmia sp!, {r3, pc}
@@ -30514,7 +30514,7 @@ _0233D6AC:
 	mov r1, #1
 	ldr r0, [r0, #4]
 	strb r1, [r0, #0x57]
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	ldmia sp!, {r3, pc}
 _0233D6C4:
 	ldr r0, _0233D8B8 ; =ov02_0235AAD8
@@ -30522,8 +30522,8 @@ _0233D6C4:
 	ldrb r0, [r0, #0x55]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0233519C
-	bl ov02_02346A78
+	bl Dwci_FocuslDelete
+	bl Dwci_SBlGet
 	ldr r1, _0233D8B8 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	ldrh r2, [r1, #0x40]
@@ -30532,7 +30532,7 @@ _0233D6C4:
 	bl FX_DivS32
 	ldr r1, _0233D8B8 ; =ov02_0235AAD8
 	strh r0, [r1, #2]
-	bl ov02_0233DC5C
+	bl DrawApInfo
 	ldr r0, _0233D8B8 ; =ov02_0235AAD8
 	mov r1, #4
 	ldr r0, [r0, #4]
@@ -30543,8 +30543,8 @@ _0233D718:
 	mov r1, #0
 	ldr r0, [r0, #4]
 	strb r1, [r0, #0x57]
-	bl ov02_02334750
-	bl ov02_02346A78
+	bl Dwci_BtnlEnable
+	bl Dwci_SBlGet
 	ldr r1, _0233D8B8 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	ldrh r2, [r1, #0x40]
@@ -30554,32 +30554,32 @@ _0233D718:
 	ldr r1, _0233D8B8 ; =ov02_0235AAD8
 	strh r0, [r1, #2]
 	mov r0, #0x13
-	bl ov02_023480E0
-	bl ov02_0233DC5C
+	bl Dwci_SndlPlay
+	bl DrawApInfo
 	ldr r0, _0233D8B8 ; =ov02_0235AAD8
 	mov r1, #0x1c
 	ldrh r0, [r0, #2]
 	bl FX_ModS32
 	cmp r0, #0
 	bne _0233D77C
-	bl ov02_0233E174
+	bl SceneSetApList_DispFocus
 	ldmia sp!, {r3, pc}
 _0233D77C:
 	cmp r0, #0xe
 	mov r0, #0
 	mov r3, #0x78
 	bge _0233D7A8
-	ldr r1, _0233D8BC ; =ov02_0233DFC4
+	ldr r1, _0233D8BC ; =SceneSetApList_TaskUp
 	mov r2, r0
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233D8B8 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x38]
 	ldmia sp!, {r3, pc}
 _0233D7A8:
-	ldr r1, _0233D8C0 ; =ov02_0233E080
+	ldr r1, _0233D8C0 ; =SceneSetApList_TaskDown
 	mov r2, r0
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233D8B8 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x38]
@@ -30594,7 +30594,7 @@ _0233D7C4:
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233D8B8 ; =ov02_0235AAD8
 	mov r1, #1
 	ldr r0, [r0, #4]
@@ -30602,12 +30602,12 @@ _0233D7C4:
 	ldmia sp!, {r3, pc}
 _0233D800:
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _0233D8BC ; =ov02_0233DFC4
+	ldr r1, _0233D8BC ; =SceneSetApList_TaskUp
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233D8B8 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x38]
@@ -30627,7 +30627,7 @@ _0233D850:
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233D8B8 ; =ov02_0235AAD8
 	mov r1, #1
 	ldr r0, [r0, #4]
@@ -30635,12 +30635,12 @@ _0233D850:
 	ldmia sp!, {r3, pc}
 _0233D878:
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _0233D8C0 ; =ov02_0233E080
+	ldr r1, _0233D8C0 ; =SceneSetApList_TaskDown
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233D8B8 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x38]
@@ -30653,12 +30653,12 @@ _0233D8A4:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233D8B8: .word ov02_0235AAD8
-_0233D8BC: .word ov02_0233DFC4
-_0233D8C0: .word ov02_0233E080
-	arm_func_end ov02_0233D654
+_0233D8BC: .word SceneSetApList_TaskUp
+_0233D8C0: .word SceneSetApList_TaskDown
+	arm_func_end SceneSetApList_Draw
 
-	arm_func_start ov02_0233D8C4
-ov02_0233D8C4: ; 0x0233D8C4
+	arm_func_start SceneSetApList_Button
+SceneSetApList_Button: ; 0x0233D8C4
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233D9C4 ; =ov02_0235AAD8
 	ldr r1, [r0, #4]
@@ -30667,7 +30667,7 @@ ov02_0233D8C4: ; 0x0233D8C4
 	ldreqb r0, [r1, #0x57]
 	cmpeq r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	beq _0233D8FC
 	cmp r0, #1
@@ -30675,7 +30675,7 @@ ov02_0233D8C4: ; 0x0233D8C4
 	ldmia sp!, {r3, pc}
 _0233D8FC:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233D9B8
 _0233D908:
 	ldr r0, _0233D9C4 ; =ov02_0235AAD8
@@ -30686,8 +30686,8 @@ _0233D908:
 	mov r2, #1
 	mov r0, #6
 	strb r2, [r1, #0x54]
-	bl ov02_023480E0
-	bl ov02_0233E404
+	bl Dwci_SndlPlay
+	bl SceneSetApList_DispPushButton
 	b _0233D9B8
 _0233D934:
 	ldrh r0, [r0, #2]
@@ -30704,18 +30704,18 @@ _0233D934:
 	cmp r0, #2
 	bne _0233D9A0
 	mov r0, #9
-	bl ov02_023480E0
-	bl ov02_02346AC4
-	bl ov02_02334768
+	bl Dwci_SndlPlay
+	bl Dwci_SBlDisable
+	bl Dwci_BtnlDisable
 	mov r1, #1
 	mov r0, #0
 	str r0, [sp]
 	mov r2, r1
 	mov r0, #0xe
 	sub r3, r1, #2
-	bl ov02_02349394
-	ldr r0, _0233D9C8 ; =ov02_0233E434
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	ldr r0, _0233D9C8 ; =SceneSetApList_ProcError
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233D9A0:
 	mov r0, #1
@@ -30723,35 +30723,35 @@ _0233D9A0:
 	ldr r1, [r2, #4]
 	mov r0, #6
 	strb lr, [r1, #0x52]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233D9B8:
-	ldr r0, _0233D9CC ; =ov02_0233D9D0
-	bl ov02_02338D68
+	ldr r0, _0233D9CC ; =SceneSetApList_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233D9C4: .word ov02_0235AAD8
-_0233D9C8: .word ov02_0233E434
-_0233D9CC: .word ov02_0233D9D0
-	arm_func_end ov02_0233D8C4
+_0233D9C8: .word SceneSetApList_ProcError
+_0233D9CC: .word SceneSetApList_EndScene
+	arm_func_end SceneSetApList_Button
 
-	arm_func_start ov02_0233D9D0
-ov02_0233D9D0: ; 0x0233D9D0
+	arm_func_start SceneSetApList_EndScene
+SceneSetApList_EndScene: ; 0x0233D9D0
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233D9EC ; =ov02_0233D9F0
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233D9EC ; =SceneSetApList_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233D9EC: .word ov02_0233D9F0
-	arm_func_end ov02_0233D9D0
+_0233D9EC: .word SceneSetApList_EndScene1
+	arm_func_end SceneSetApList_EndScene
 
-	arm_func_start ov02_0233D9F0
-ov02_0233D9F0: ; 0x0233D9F0
+	arm_func_start SceneSetApList_EndScene1
+SceneSetApList_EndScene1: ; 0x0233D9F0
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233DA58 ; =ov02_0235AAD8
@@ -30759,48 +30759,48 @@ ov02_0233D9F0: ; 0x0233D9F0
 	ldrb r0, [r0, #0x54]
 	cmp r0, #0
 	beq _0233DA20
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	b _0233DA24
 _0233DA20:
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 _0233DA24:
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x1d
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0233DA5C ; =ov02_0233DA60
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0233DA5C ; =SceneSetApList_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233DA58: .word ov02_0235AAD8
-_0233DA5C: .word ov02_0233DA60
-	arm_func_end ov02_0233D9F0
+_0233DA5C: .word SceneSetApList_EndScene2
+	arm_func_end SceneSetApList_EndScene1
 
-	arm_func_start ov02_0233DA60
-ov02_0233DA60: ; 0x0233DA60
+	arm_func_start SceneSetApList_EndScene2
+SceneSetApList_EndScene2: ; 0x0233DA60
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r1, _0233DC40 ; =ov02_0235AAD8
 	mov r0, #1
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0x3c]
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r4, _0233DC40 ; =ov02_0235AAD8
 	mov r5, #0
 _0233DAAC:
@@ -30809,14 +30809,14 @@ _0233DAAC:
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	beq _0233DAC4
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 _0233DAC4:
 	ldr r0, [r4, #4]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0233DADC
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 _0233DADC:
 	add r5, r5, #1
 	cmp r5, #5
@@ -30824,25 +30824,25 @@ _0233DADC:
 	ldr r0, _0233DC40 ; =ov02_0235AAD8
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl ov02_0234DFC8
-	bl ov02_02346A3C
-	bl ov02_0233519C
-	bl ov02_02334D10
-	bl ov02_023467B0
+	bl Dwci_FntlDeleteBg
+	bl Dwci_SBlEnd
+	bl Dwci_FocuslDelete
+	bl Dwci_CommentlDelete
+	bl Dwci_ScreenlEnd
 	ldr r0, _0233DC40 ; =ov02_0235AAD8
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #4]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	ldr r0, _0233DC40 ; =ov02_0235AAD8
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #8]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x1d
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r2, #0
 	ldr r1, _0233DC44 ; =0x04000010
 	ldr r0, _0233DC40 ; =ov02_0235AAD8
@@ -30852,36 +30852,36 @@ _0233DADC:
 	ldrb r1, [r2, #0x54]
 	cmp r1, #0
 	bne _0233DB8C
-	bl ov02_0234705C
-	bl ov02_02347518
+	bl Dwci_SearchlEnd
+	bl Dwci_SettignlGet
 	ldrb r0, [r0, #0xf4]
-	bl ov02_0234793C
+	bl Dwci_SettinglSetSetting
 	mov r0, #2
 	mov r1, #0
-	bl ov02_02338D78
-	ldr r0, _0233DC48 ; =ov02_02344AF0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233DC48 ; =Dwci_SceneSetSelectWay
+	bl Dwci_ChangeScene
 	b _0233DC34
 _0233DB8C:
 	ldrb r0, [r0]
 	cmp r0, #4
 	bne _0233DBB4
-	bl ov02_0234705C
+	bl Dwci_SearchlEnd
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0233DC4C ; =ov02_023438CC
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0233DC4C ; =Dwci_SceneSetSearch
+	bl Dwci_ChangeScene
 	b _0233DC34
 _0233DBB4:
 	ldrb r1, [r2, #0x52]
 	ldr r2, [r2]
 	mov r0, #0x2a
 	mla r0, r1, r0, r2
-	bl ov02_02347554
+	bl Dwci_SettinglSetSsid
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	ldr r1, _0233DC40 ; =ov02_0235AAD8
 	mov r0, #0x2a
 	ldr r2, [r1, #4]
@@ -30893,36 +30893,36 @@ _0233DBB4:
 	cmp r0, #0
 	mov r0, #0
 	beq _0233DC1C
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #1
 	mov r1, r0
-	bl ov02_02338DB4
-	ldr r0, _0233DC50 ; =ov02_0233E488
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _0233DC50 ; =Dwci_SceneSetEdit32
+	bl Dwci_ChangeScene
 	b _0233DC34
 _0233DC1C:
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338DB4
-	ldr r0, _0233DC54 ; =ov02_02345968
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _0233DC54 ; =Dwci_SceneSetTestConfirm
+	bl Dwci_ChangeScene
 _0233DC34:
 	ldr r0, _0233DC58 ; =ov02_0235AADC
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0233DC40: .word ov02_0235AAD8
 _0233DC44: .word 0x04000010
-_0233DC48: .word ov02_02344AF0
-_0233DC4C: .word ov02_023438CC
-_0233DC50: .word ov02_0233E488
-_0233DC54: .word ov02_02345968
+_0233DC48: .word Dwci_SceneSetSelectWay
+_0233DC4C: .word Dwci_SceneSetSearch
+_0233DC50: .word Dwci_SceneSetEdit32
+_0233DC54: .word Dwci_SceneSetTestConfirm
 _0233DC58: .word ov02_0235AADC
-	arm_func_end ov02_0233DA60
+	arm_func_end SceneSetApList_EndScene2
 
-	arm_func_start ov02_0233DC5C
-ov02_0233DC5C: ; 0x0233DC5C
+	arm_func_start DrawApInfo
+DrawApInfo: ; 0x0233DC5C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r0, _0233DD00 ; =ov02_0235AAD8
 	mov r1, #0x1c
@@ -30934,7 +30934,7 @@ ov02_0233DC5C: ; 0x0233DC5C
 	mov r1, #0
 	ldrb r4, [r0, #0x51]
 	ldr r0, [r0, #0xc]
-	bl ov02_0234E2A8
+	bl Dwci_FntlClear
 	cmp r4, #5
 	movgt r4, #5
 	mov r5, r7
@@ -30944,7 +30944,7 @@ ov02_0233DC5C: ; 0x0233DC5C
 _0233DCA4:
 	mov r0, r5
 	mov r1, r6
-	bl ov02_0233DD04
+	bl DrawAp
 	add r6, r6, #1
 	cmp r6, r4
 	add r5, r5, #1
@@ -30956,7 +30956,7 @@ _0233DCC0:
 _0233DCCC:
 	mov r0, r7
 	mov r1, r5
-	bl ov02_0233DE7C
+	bl DrapApObj
 	add r5, r5, #1
 	cmp r5, r4
 	add r7, r7, #1
@@ -30965,15 +30965,15 @@ _0233DCE8:
 	ldr r0, _0233DD00 ; =ov02_0235AAD8
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl ov02_0234E354
-	bl ov02_0233DF08
+	bl Dwci_FntlRenewBg
+	bl SceneSetApList_SetOffset
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0233DD00: .word ov02_0235AAD8
-	arm_func_end ov02_0233DC5C
+	arm_func_end DrawApInfo
 
-	arm_func_start ov02_0233DD04
-ov02_0233DD04: ; 0x0233DD04
+	arm_func_start DrawAp
+DrawAp: ; 0x0233DD04
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x30
 	mov r7, r0
@@ -30985,7 +30985,7 @@ ov02_0233DD04: ; 0x0233DD04
 	ldr r0, [r0]
 	mov r1, #0x20
 	add r0, r0, r6
-	bl ov02_0234F59C
+	bl Dwci_StrlNLen
 	ldr r2, _0233DE78 ; =ov02_0235AAD8
 	mov r1, #0x1c
 	mul r5, r4, r1
@@ -31031,7 +31031,7 @@ _0233DDB4:
 	ldr r0, [r0, #4]
 	mov r3, #2
 	ldr r0, [r0, #0xc]
-	bl ov02_0234E13C
+	bl Dwci_FntlDrawStringEx
 	cmp r4, #0x10
 	addle sp, sp, #0x30
 	ldmleia sp!, {r3, r4, r5, r6, r7, pc}
@@ -31068,15 +31068,15 @@ _0233DE40:
 	ldr r0, [r0, #4]
 	mov r3, #2
 	ldr r0, [r0, #0xc]
-	bl ov02_0234E13C
+	bl Dwci_FntlDrawStringEx
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0233DE78: .word ov02_0235AAD8
-	arm_func_end ov02_0233DD04
+	arm_func_end DrawAp
 
-	arm_func_start ov02_0233DE7C
-ov02_0233DE7C: ; 0x0233DE7C
+	arm_func_start DrapApObj
+DrapApObj: ; 0x0233DE7C
 	stmdb sp!, {r4, lr}
 	ldr r3, _0233DF04 ; =ov02_0235AAD8
 	ldr lr, [r3, #4]
@@ -31113,10 +31113,10 @@ ov02_0233DE7C: ; 0x0233DE7C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233DF04: .word ov02_0235AAD8
-	arm_func_end ov02_0233DE7C
+	arm_func_end DrapApObj
 
-	arm_func_start ov02_0233DF08
-ov02_0233DF08: ; 0x0233DF08
+	arm_func_start SceneSetApList_SetOffset
+SceneSetApList_SetOffset: ; 0x0233DF08
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _0233DFBC ; =ov02_0235AAD8
 	mov r1, #0x1c
@@ -31167,14 +31167,14 @@ _0233DFA8:
 	.align 2, 0
 _0233DFBC: .word ov02_0235AAD8
 _0233DFC0: .word 0xFE00FF00
-	arm_func_end ov02_0233DF08
+	arm_func_end SceneSetApList_SetOffset
 
-	arm_func_start ov02_0233DFC4
-ov02_0233DFC4: ; 0x0233DFC4
+	arm_func_start SceneSetApList_TaskUp
+SceneSetApList_TaskUp: ; 0x0233DFC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl ov02_02346AC4
-	bl ov02_0233519C
+	bl Dwci_SBlDisable
+	bl Dwci_FocuslDelete
 	ldr r0, _0233E07C ; =ov02_0235AAD8
 	ldrh r1, [r0, #2]
 	cmp r1, #4
@@ -31188,7 +31188,7 @@ ov02_0233DFC4: ; 0x0233DFC4
 	mov r5, r0
 	cmp r5, #0x18
 	bne _0233E010
-	bl ov02_0233DC5C
+	bl DrawApInfo
 	ldmia sp!, {r3, r4, r5, pc}
 _0233E010:
 	ble _0233E02C
@@ -31199,7 +31199,7 @@ _0233E010:
 	add r1, r2, r1
 	strh r1, [r0, #2]
 _0233E02C:
-	bl ov02_0233DF08
+	bl SceneSetApList_SetOffset
 	cmp r5, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r0, _0233E07C ; =ov02_0235AAD8
@@ -31209,26 +31209,26 @@ _0233E02C:
 	ldrh r1, [r1, #0x40]
 	mul r0, r2, r0
 	bl FX_DivS32
-	bl ov02_02346AA0
-	bl ov02_02346AAC
-	bl ov02_0233E174
+	bl Scrollbar_Disp__023472CC
+	bl Dwci_SBlEnable
+	bl SceneSetApList_DispFocus
 	ldr r0, _0233E07C ; =ov02_0235AAD8
 	mov r1, r4
 	ldr r2, [r0, #4]
 	mov r0, #0
 	str r0, [r2, #0x38]
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0233E07C: .word ov02_0235AAD8
-	arm_func_end ov02_0233DFC4
+	arm_func_end SceneSetApList_TaskUp
 
-	arm_func_start ov02_0233E080
-ov02_0233E080: ; 0x0233E080
+	arm_func_start SceneSetApList_TaskDown
+SceneSetApList_TaskDown: ; 0x0233E080
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_02346AC4
-	bl ov02_0233519C
+	bl Dwci_SBlDisable
+	bl Dwci_FocuslDelete
 	ldr r0, _0233E114 ; =ov02_0235AAD8
 	mov r1, #0x1c
 	ldrh r2, [r0, #2]
@@ -31238,14 +31238,14 @@ ov02_0233E080: ; 0x0233E080
 	bl FX_ModS32
 	cmp r0, #4
 	blt _0233E0BC
-	bl ov02_0233DF08
+	bl SceneSetApList_SetOffset
 	ldmia sp!, {r4, pc}
 _0233E0BC:
 	ldr r1, _0233E114 ; =ov02_0235AAD8
 	ldrh r2, [r1, #2]
 	sub r0, r2, r0
 	strh r0, [r1, #2]
-	bl ov02_0233DC5C
+	bl DrawApInfo
 	ldr r0, _0233E114 ; =ov02_0235AAD8
 	ldr r1, [r0, #4]
 	ldrh r2, [r0, #2]
@@ -31253,22 +31253,22 @@ _0233E0BC:
 	ldrh r1, [r1, #0x40]
 	mul r0, r2, r0
 	bl FX_DivS32
-	bl ov02_02346AA0
-	bl ov02_02346AAC
-	bl ov02_0233E174
+	bl Scrollbar_Disp__023472CC
+	bl Dwci_SBlEnable
+	bl SceneSetApList_DispFocus
 	ldr r0, _0233E114 ; =ov02_0235AAD8
 	mov r1, r4
 	ldr r2, [r0, #4]
 	mov r0, #0
 	str r0, [r2, #0x38]
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233E114: .word ov02_0235AAD8
-	arm_func_end ov02_0233E080
+	arm_func_end SceneSetApList_TaskDown
 
-	arm_func_start ov02_0233E118
-ov02_0233E118: ; 0x0233E118
+	arm_func_start SceneSetApList_TaskVBlank
+SceneSetApList_TaskVBlank: ; 0x0233E118
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233E168 ; =ov02_0235AAD8
 	ldr r1, [r0, #4]
@@ -31293,10 +31293,10 @@ ov02_0233E118: ; 0x0233E118
 _0233E168: .word ov02_0235AAD8
 _0233E16C: .word 0x01FF0000
 _0233E170: .word 0x04000010
-	arm_func_end ov02_0233E118
+	arm_func_end SceneSetApList_TaskVBlank
 
-	arm_func_start ov02_0233E174
-ov02_0233E174: ; 0x0233E174
+	arm_func_start SceneSetApList_DispFocus
+SceneSetApList_DispFocus: ; 0x0233E174
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233E1B0 ; =ov02_0235AAD8
 	ldr r1, _0233E1B4 ; =ov02_02352A00
@@ -31310,17 +31310,17 @@ ov02_0233E174: ; 0x0233E174
 	ldrh r2, [r2, ip]
 	ldrh r3, [r3, ip]
 	movhs r0, #3
-	bl ov02_02334FF0
+	bl Dwci_FocuslDisp
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233E1B0: .word ov02_0235AAD8
 _0233E1B4: .word ov02_02352A00
 _0233E1B8: .word ov02_02352A02
 _0233E1BC: .word ov02_02352A04
-	arm_func_end ov02_0233E174
+	arm_func_end SceneSetApList_DispFocus
 
-	arm_func_start ov02_0233E1C0
-ov02_0233E1C0: ; 0x0233E1C0
+	arm_func_start SceneSetApList_MoveFocus
+SceneSetApList_MoveFocus: ; 0x0233E1C0
 	stmdb sp!, {r4, lr}
 	ldr r1, _0233E304 ; =ov02_0235AAD8
 	mov r4, #1
@@ -31343,12 +31343,12 @@ _0233E1F0:
 	streqb r0, [r1]
 	beq _0233E2BC
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _0233E308 ; =ov02_0233DFC4
+	ldr r1, _0233E308 ; =SceneSetApList_TaskUp
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233E304 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x38]
@@ -31378,7 +31378,7 @@ _0233E280:
 	subeq r0, r3, #1
 	streqb r0, [r1]
 	beq _0233E2BC
-	bl ov02_0233E380
+	bl ScrollDown
 	ldmia sp!, {r4, pc}
 _0233E298:
 	cmp r0, #1
@@ -31387,9 +31387,9 @@ _0233E298:
 	mov r0, #0
 	strh r0, [r1, #2]
 	strb r0, [r1]
-	bl ov02_0233DC5C
+	bl DrawApInfo
 	mov r0, #0
-	bl ov02_02346AA0
+	bl Scrollbar_Disp__023472CC
 _0233E2BC:
 	cmp r4, #0
 	bne _0233E2F4
@@ -31399,7 +31399,7 @@ _0233E2BC:
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233E304 ; =ov02_0235AAD8
 	mov r1, #1
 	ldr r0, [r0, #4]
@@ -31407,16 +31407,16 @@ _0233E2BC:
 	ldmia sp!, {r4, pc}
 _0233E2F4:
 	mov r0, #8
-	bl ov02_023480E0
-	bl ov02_0233E174
+	bl Dwci_SndlPlay
+	bl SceneSetApList_DispFocus
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233E304: .word ov02_0235AAD8
-_0233E308: .word ov02_0233DFC4
-	arm_func_end ov02_0233E1C0
+_0233E308: .word SceneSetApList_TaskUp
+	arm_func_end SceneSetApList_MoveFocus
 
-	arm_func_start ov02_0233E30C
-ov02_0233E30C: ; 0x0233E30C
+	arm_func_start ScrollUp
+ScrollUp: ; 0x0233E30C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233E378 ; =ov02_0235AAD8
 	ldrh r1, [r0, #2]
@@ -31427,7 +31427,7 @@ ov02_0233E30C: ; 0x0233E30C
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233E378 ; =ov02_0235AAD8
 	mov r1, #1
 	ldr r0, [r0, #4]
@@ -31435,23 +31435,23 @@ ov02_0233E30C: ; 0x0233E30C
 	ldmia sp!, {r3, pc}
 _0233E34C:
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _0233E37C ; =ov02_0233DFC4
+	ldr r1, _0233E37C ; =SceneSetApList_TaskUp
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233E378 ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x38]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233E378: .word ov02_0235AAD8
-_0233E37C: .word ov02_0233DFC4
-	arm_func_end ov02_0233E30C
+_0233E37C: .word SceneSetApList_TaskUp
+	arm_func_end ScrollUp
 
-	arm_func_start ov02_0233E380
-ov02_0233E380: ; 0x0233E380
+	arm_func_start ScrollDown
+ScrollDown: ; 0x0233E380
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233E3FC ; =ov02_0235AAD8
 	ldr r2, [r0, #4]
@@ -31467,7 +31467,7 @@ _0233E3A8:
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233E3FC ; =ov02_0235AAD8
 	mov r1, #1
 	ldr r0, [r0, #4]
@@ -31475,23 +31475,23 @@ _0233E3A8:
 	ldmia sp!, {r3, pc}
 _0233E3D0:
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _0233E400 ; =ov02_0233E080
+	ldr r1, _0233E400 ; =SceneSetApList_TaskDown
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0233E3FC ; =ov02_0235AAD8
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x38]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233E3FC: .word ov02_0235AAD8
-_0233E400: .word ov02_0233E080
-	arm_func_end ov02_0233E380
+_0233E400: .word SceneSetApList_TaskDown
+	arm_func_end ScrollDown
 
-	arm_func_start ov02_0233E404
-ov02_0233E404: ; 0x0233E404
+	arm_func_start SceneSetApList_DispPushButton
+SceneSetApList_DispPushButton: ; 0x0233E404
 	stmdb sp!, {r3, lr}
 	ldr r1, _0233E42C ; =ov02_023529A8
 	ldr r0, _0233E430 ; =ov02_0235AAD8
@@ -31500,46 +31500,46 @@ ov02_0233E404: ; 0x0233E404
 	ldr r0, [r0, #8]
 	mov r2, r1
 	strb r1, [sp]
-	bl ov02_023468A0
+	bl Dwci_ScreenlCopyPalette
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233E42C: .word ov02_023529A8
 _0233E430: .word ov02_0235AAD8
-	arm_func_end ov02_0233E404
+	arm_func_end SceneSetApList_DispPushButton
 
-	arm_func_start ov02_0233E434
-ov02_0233E434: ; 0x0233E434
+	arm_func_start SceneSetApList_ProcError
+SceneSetApList_ProcError: ; 0x0233E434
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
-	ldr r0, _0233E45C ; =ov02_0233E460
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
+	ldr r0, _0233E45C ; =SceneSetApList_ProcError1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233E45C: .word ov02_0233E460
-	arm_func_end ov02_0233E434
+_0233E45C: .word SceneSetApList_ProcError1
+	arm_func_end SceneSetApList_ProcError
 
-	arm_func_start ov02_0233E460
-ov02_0233E460: ; 0x0233E460
+	arm_func_start SceneSetApList_ProcError1
+SceneSetApList_ProcError1: ; 0x0233E460
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334750
-	bl ov02_02346AAC
-	ldr r0, _0233E484 ; =ov02_0233D3EC
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	bl Dwci_SBlEnable
+	ldr r0, _0233E484 ; =SceneSetApList_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233E484: .word ov02_0233D3EC
-	arm_func_end ov02_0233E460
+_0233E484: .word SceneSetApList_ProcScene
+	arm_func_end SceneSetApList_ProcError1
 
-	arm_func_start ov02_0233E488
-ov02_0233E488: ; 0x0233E488
+	arm_func_start Dwci_SceneSetEdit32
+Dwci_SceneSetEdit32: ; 0x0233E488
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	ldr r1, _0233E5B0 ; =ov02_02352A30
@@ -31549,39 +31549,39 @@ ov02_0233E488: ; 0x0233E488
 	mov r1, #4
 	strb r3, [sp]
 	strb r2, [sp, #1]
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _0233E5B4 ; =ov02_0235AAE0
 	add r1, sp, #4
 	str r0, [r2]
 	add r0, sp, #8
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	bne _0233E500
 	ldr r0, _0233E5B4 ; =ov02_0235AAE0
 	ldr r0, [r0]
 	add r0, r0, #8
-	bl ov02_023477B4
+	bl Dwci_SettinglGetSsid
 	ldr r0, _0233E5B4 ; =ov02_0235AAE0
 	mov r1, #0x20
 	ldr r0, [r0]
 	add r0, r0, #8
-	bl ov02_0234F59C
+	bl Dwci_StrlNLen
 	ldr r1, _0233E5B4 ; =ov02_0235AAE0
 	ldr r1, [r1]
 	strb r0, [r1, #0x29]
 _0233E500:
-	bl ov02_0233E5BC
+	bl SceneSetEdit32_InitGraphics
 	ldr r0, [sp, #8]
 	add r0, r0, #9
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	ldr r0, [sp, #4]
 	cmp r0, #1
 	bne _0233E530
 	mov r0, #0x35
 	sub r1, r0, #0x36
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	b _0233E548
 _0233E530:
 	ldr r2, [sp, #8]
@@ -31589,19 +31589,19 @@ _0233E530:
 	ldrb r0, [r0, r2]
 	mvn r1, #0
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 _0233E548:
 	mov r0, #2
-	bl ov02_02334DE8
+	bl Dwci_CmnlStep
 	mov r0, #0
 	mov r1, r0
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	ldr r2, _0233E5B4 ; =ov02_0235AAE0
 	mov r1, #0x3e
 	ldr r2, [r2]
 	str r0, [r2]
 	mov r0, #0
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, _0233E5B4 ; =ov02_0235AAE0
 	ldr r2, [r1]
 	str r0, [r2, #4]
@@ -31611,33 +31611,33 @@ _0233E548:
 	bic r0, r0, #0xc00
 	orr r0, r0, #0xc00
 	strh r0, [r1, #4]
-	bl ov02_0233EC58
-	bl ov02_0233EB64
-	ldr r0, _0233E5B8 ; =ov02_0233E678
-	bl ov02_02338D68
+	bl SceneSetEdit32_DispCaret
+	bl DrawSsid
+	ldr r0, _0233E5B8 ; =SceneSetEdit32_ProcInit
+	bl Dwci_ChangeScene
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
 	.align 2, 0
 _0233E5B0: .word ov02_02352A30
 _0233E5B4: .word ov02_0235AAE0
-_0233E5B8: .word ov02_0233E678
-	arm_func_end ov02_0233E488
+_0233E5B8: .word SceneSetEdit32_ProcInit
+	arm_func_end Dwci_SceneSetEdit32
 
-	arm_func_start ov02_0233E5BC
-ov02_0233E5BC: ; 0x0233E5BC
+	arm_func_start SceneSetEdit32_InitGraphics
+SceneSetEdit32_InitGraphics: ; 0x0233E5BC
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233E650 ; =ov02_02353900
 	ldr r1, _0233E654 ; =GX_LoadOBJPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0233E658 ; =ov02_02353914
 	ldr r1, _0233E65C ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0233E660 ; =ov02_0235392C
 	ldr r1, _0233E664 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0233E668 ; =ov02_02353944
 	ldr r1, _0233E66C ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233E670 ; =0x04001008
 	ldr r1, _0233E674 ; =0x0400000A
 	ldrh r0, [r3]
@@ -31673,55 +31673,55 @@ _0233E668: .word ov02_02353944
 _0233E66C: .word GX_LoadBG2Scr
 _0233E670: .word 0x04001008
 _0233E674: .word 0x0400000A
-	arm_func_end ov02_0233E5BC
+	arm_func_end SceneSetEdit32_InitGraphics
 
-	arm_func_start ov02_0233E678
-ov02_0233E678: ; 0x0233E678
+	arm_func_start SceneSetEdit32_ProcInit
+SceneSetEdit32_ProcInit: ; 0x0233E678
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233E6C8 ; =ov02_0233E6CC
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233E6C8 ; =SceneSetEdit32_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233E6C8: .word ov02_0233E6CC
-	arm_func_end ov02_0233E678
+_0233E6C8: .word SceneSetEdit32_ProcInit1
+	arm_func_end SceneSetEdit32_ProcInit
 
-	arm_func_start ov02_0233E6CC
-ov02_0233E6CC: ; 0x0233E6CC
+	arm_func_start SceneSetEdit32_ProcInit1
+SceneSetEdit32_ProcInit1: ; 0x0233E6CC
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023354D8
+	bl Dwci_KBlInit
 	mov r0, #0x14
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233E740 ; =ov02_0235AAE0
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x29]
 	cmp r0, #0
 	bne _0233E718
 	mov r0, #0
-	bl ov02_02335884
+	bl Dwci_KBlSetErase
 _0233E718:
 	ldr r0, _0233E740 ; =ov02_0235AAE0
 	ldr r0, [r0]
@@ -31729,41 +31729,41 @@ _0233E718:
 	cmp r0, #0x20
 	bne _0233E734
 	mov r0, #0
-	bl ov02_02335898
+	bl Dwci_KBlSetInput
 _0233E734:
-	ldr r0, _0233E744 ; =ov02_0233E748
-	bl ov02_02338D68
+	ldr r0, _0233E744 ; =SceneSetEdit32_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233E740: .word ov02_0235AAE0
-_0233E744: .word ov02_0233E748
-	arm_func_end ov02_0233E6CC
+_0233E744: .word SceneSetEdit32_ProcInit2
+	arm_func_end SceneSetEdit32_ProcInit1
 
-	arm_func_start ov02_0233E748
-ov02_0233E748: ; 0x0233E748
+	arm_func_start SceneSetEdit32_ProcInit2
+SceneSetEdit32_ProcInit2: ; 0x0233E748
 	stmdb sp!, {r3, lr}
-	bl ov02_02335870
+	bl Dwci_KBlGet
 	cmp r0, #0xff
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _0233E764 ; =ov02_0233E768
-	bl ov02_02338D68
+	ldr r0, _0233E764 ; =SceneSetEdit32_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233E764: .word ov02_0233E768
-	arm_func_end ov02_0233E748
+_0233E764: .word SceneSetEdit32_ProcScene
+	arm_func_end SceneSetEdit32_ProcInit2
 
-	arm_func_start ov02_0233E768
-ov02_0233E768: ; 0x0233E768
+	arm_func_start SceneSetEdit32_ProcScene
+SceneSetEdit32_ProcScene: ; 0x0233E768
 	stmdb sp!, {r3, lr}
-	bl ov02_0233E778
-	bl ov02_0233E938
+	bl SceneSetEdit32_Input
+	bl SceneSetEdit32_Draw
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233E768
+	arm_func_end SceneSetEdit32_ProcScene
 
-	arm_func_start ov02_0233E778
-ov02_0233E778: ; 0x0233E778
+	arm_func_start SceneSetEdit32_Input
+SceneSetEdit32_Input: ; 0x0233E778
 	stmdb sp!, {r4, lr}
-	bl ov02_02335870
+	bl Dwci_KBlGet
 	mov r4, r0
 	cmp r4, #0x83
 	bgt _0233E7B8
@@ -31790,7 +31790,7 @@ _0233E7C4:
 	cmp r0, #0
 	beq _0233E91C
 	mov r0, #3
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r1, _0233E92C ; =ov02_0235AAE0
 	mov r0, #0
 	ldr r3, [r1]
@@ -31805,27 +31805,27 @@ _0233E7C4:
 	ldrb r1, [r1, #0x29]
 	cmp r1, #0
 	bne _0233E81C
-	bl ov02_02335884
+	bl Dwci_KBlSetErase
 _0233E81C:
 	mov r0, #1
-	bl ov02_02335898
+	bl Dwci_KBlSetInput
 	b _0233E91C
 _0233E828:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r1, _0233E92C ; =ov02_0235AAE0
-	ldr r0, _0233E930 ; =ov02_0233E93C
+	ldr r0, _0233E930 ; =SceneSetEdit32_EndScene
 	ldr r1, [r1]
 	mov r2, #0
 	strb r2, [r1, #0x2a]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r4, pc}
 _0233E84C:
-	bl ov02_0233EDCC
+	bl SceneSetEdit32_IsCorrect
 	cmp r0, #0
 	beq _0233E874
 	mov r0, #6
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233E92C ; =ov02_0235AAE0
 	mov r1, #1
 	ldr r0, [r0]
@@ -31837,18 +31837,18 @@ _0233E874:
 	ldr r1, [r0]
 	mov r0, #9
 	strb r2, [r1, #0x2a]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233E88C:
 	ldr r0, _0233E92C ; =ov02_0235AAE0
 	ldr r1, _0233E934 ; =0xC1FFFCFF
 	ldr r2, [r0]
-	ldr r0, _0233E930 ; =ov02_0233E93C
+	ldr r0, _0233E930 ; =SceneSetEdit32_EndScene
 	ldr r3, [r2, #4]
 	ldr r2, [r3]
 	and r1, r2, r1
 	orr r1, r1, #0x200
 	str r1, [r3]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r4, pc}
 _0233E8B8:
 	ldr r0, _0233E92C ; =ov02_0235AAE0
@@ -31857,7 +31857,7 @@ _0233E8B8:
 	cmp r0, #0x20
 	beq _0233E91C
 	mov r0, #1
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r1, _0233E92C ; =ov02_0235AAE0
 	mov r0, #1
 	ldr r3, [r1]
@@ -31868,61 +31868,61 @@ _0233E8B8:
 	ldrb r1, [r2, #0x29]
 	add r1, r1, #1
 	strb r1, [r2, #0x29]
-	bl ov02_02335884
+	bl Dwci_KBlSetErase
 	ldr r0, _0233E92C ; =ov02_0235AAE0
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x29]
 	cmp r0, #0x20
 	bne _0233E91C
 	mov r0, #0
-	bl ov02_02335898
+	bl Dwci_KBlSetInput
 _0233E91C:
-	bl ov02_0233EB64
-	bl ov02_0233EC58
+	bl DrawSsid
+	bl SceneSetEdit32_DispCaret
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233E928: .word 0x0000E01D
 _0233E92C: .word ov02_0235AAE0
-_0233E930: .word ov02_0233E93C
+_0233E930: .word SceneSetEdit32_EndScene
 _0233E934: .word 0xC1FFFCFF
-	arm_func_end ov02_0233E778
+	arm_func_end SceneSetEdit32_Input
 
-	arm_func_start ov02_0233E938
-ov02_0233E938: ; 0x0233E938
+	arm_func_start SceneSetEdit32_Draw
+SceneSetEdit32_Draw: ; 0x0233E938
 	bx lr
-	arm_func_end ov02_0233E938
+	arm_func_end SceneSetEdit32_Draw
 
-	arm_func_start ov02_0233E93C
-ov02_0233E93C: ; 0x0233E93C
+	arm_func_start SceneSetEdit32_EndScene
+SceneSetEdit32_EndScene: ; 0x0233E93C
 	stmdb sp!, {r3, lr}
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233E954 ; =ov02_0233E958
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233E954 ; =SceneSetEdit32_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233E954: .word ov02_0233E958
-	arm_func_end ov02_0233E93C
+_0233E954: .word SceneSetEdit32_EndScene1
+	arm_func_end SceneSetEdit32_EndScene
 
-	arm_func_start ov02_0233E958
-ov02_0233E958: ; 0x0233E958
+	arm_func_start SceneSetEdit32_EndScene1
+SceneSetEdit32_EndScene1: ; 0x0233E958
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0233583C
+	bl Dwci_KBlEnd
 	mov r0, #0x15
-	bl ov02_023480E0
-	ldr r0, _0233E984 ; =ov02_0233E988
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233E984 ; =SceneSetEdit32_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233E984: .word ov02_0233E988
-	arm_func_end ov02_0233E958
+_0233E984: .word SceneSetEdit32_EndScene2
+	arm_func_end SceneSetEdit32_EndScene1
 
-	arm_func_start ov02_0233E988
-ov02_0233E988: ; 0x0233E988
+	arm_func_start SceneSetEdit32_EndScene2
+SceneSetEdit32_EndScene2: ; 0x0233E988
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
 	ldr r0, _0233EA4C ; =ov02_02352A30
@@ -31930,7 +31930,7 @@ ov02_0233E988: ; 0x0233E988
 	ldr r0, [r0, #0xc]
 	str r1, [sp, #8]
 	str r0, [sp, #0xc]
-	bl ov02_023358AC
+	bl Dwci_KBlIsInit
 	cmp r0, #0
 	addne sp, sp, #0x10
 	ldmneia sp!, {r3, pc}
@@ -31939,8 +31939,8 @@ ov02_0233E988: ; 0x0233E988
 	ldrb r0, [r0, #0x2a]
 	cmp r0, #0
 	bne _0233E9D8
-	ldr r0, _0233EA54 ; =ov02_0233EA60
-	bl ov02_02338D68
+	ldr r0, _0233EA54 ; =SceneSetEdit32_EndScene3
+	bl Dwci_ChangeScene
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 _0233E9D8:
@@ -31952,15 +31952,15 @@ _0233E9D8:
 	mov r0, #6
 	mov r1, #3
 	str ip, [sp]
-	bl ov02_02349394
-	ldr r0, _0233EA58 ; =ov02_0233EF58
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	ldr r0, _0233EA58 ; =SceneSetEdit32_ProcError
+	bl Dwci_ChangeScene
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 _0233EA0C:
 	add r1, sp, #4
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	mov r0, #0
 	str r0, [sp]
 	mov r2, #1
@@ -31969,53 +31969,53 @@ _0233EA0C:
 	ldr r0, [r0, r1, lsl #2]
 	sub r3, r2, #2
 	mov r1, #2
-	bl ov02_02349394
-	ldr r0, _0233EA5C ; =ov02_0233ECC0
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	ldr r0, _0233EA5C ; =SceneSetEdit32_ProcWin
+	bl Dwci_ChangeScene
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233EA4C: .word ov02_02352A30
 _0233EA50: .word ov02_0235AAE0
-_0233EA54: .word ov02_0233EA60
-_0233EA58: .word ov02_0233EF58
-_0233EA5C: .word ov02_0233ECC0
-	arm_func_end ov02_0233E988
+_0233EA54: .word SceneSetEdit32_EndScene3
+_0233EA58: .word SceneSetEdit32_ProcError
+_0233EA5C: .word SceneSetEdit32_ProcWin
+	arm_func_end SceneSetEdit32_EndScene2
 
-	arm_func_start ov02_0233EA60
-ov02_0233EA60: ; 0x0233EA60
+	arm_func_start SceneSetEdit32_EndScene3
+SceneSetEdit32_EndScene3: ; 0x0233EA60
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	ldr r0, _0233EB48 ; =ov02_0235AAE0
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _0233EB4C ; =ov02_02353958
 	ldr r1, _0233EB50 ; =GX_LoadOBJPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #0
 	bne _0233EAE4
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	ldr r1, [sp, #4]
 	mov r0, #0
-	bl ov02_02338DB4
-	ldr r0, _0233EB54 ; =ov02_023402CC
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _0233EB54 ; =Dwci_SceneSetList
+	bl Dwci_ChangeScene
 	b _0233EB38
 _0233EAE4:
 	ldr r0, _0233EB48 ; =ov02_0235AAE0
@@ -32025,38 +32025,38 @@ _0233EAE4:
 	mov r0, #0
 	bne _0233EB1C
 	mov r1, #1
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #1
 	mov r1, #0
-	bl ov02_02338DB4
-	ldr r0, _0233EB58 ; =ov02_0233CEEC
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _0233EB58 ; =Dwci_SceneSetApList
+	bl Dwci_ChangeScene
 	b _0233EB38
 _0233EB1C:
 	mov r1, r0
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338DB4
-	ldr r0, _0233EB5C ; =ov02_02345968
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _0233EB5C ; =Dwci_SceneSetTestConfirm
+	bl Dwci_ChangeScene
 _0233EB38:
 	ldr r0, _0233EB60 ; =ov02_0235AAE0
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233EB48: .word ov02_0235AAE0
 _0233EB4C: .word ov02_02353958
 _0233EB50: .word GX_LoadOBJPltt
-_0233EB54: .word ov02_023402CC
-_0233EB58: .word ov02_0233CEEC
-_0233EB5C: .word ov02_02345968
+_0233EB54: .word Dwci_SceneSetList
+_0233EB58: .word Dwci_SceneSetApList
+_0233EB5C: .word Dwci_SceneSetTestConfirm
 _0233EB60: .word ov02_0235AAE0
-	arm_func_end ov02_0233EA60
+	arm_func_end SceneSetEdit32_EndScene3
 
-	arm_func_start ov02_0233EB64
-ov02_0233EB64: ; 0x0233EB64
+	arm_func_start DrawSsid
+DrawSsid: ; 0x0233EB64
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1c
 	ldr r0, _0233EC4C ; =ov02_0235AAE0
@@ -32074,7 +32074,7 @@ ov02_0233EB64: ; 0x0233EB64
 	strh r3, [sp, #0x18]
 	strh r2, [sp, #0x1a]
 	ldr r0, [r0]
-	bl ov02_0234E2A8
+	bl Dwci_FntlClear
 	mov sl, #0
 	ldr r7, _0233EC50 ; =0x0000E01D
 	ldr r6, _0233EC54 ; =ov02_02352A4C
@@ -32105,7 +32105,7 @@ _0233EBD0:
 	ldrh r2, [sp, #0x16]
 	ldrh r3, [sp, #0x18]
 	ldr r0, [r0]
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	add sl, sl, #1
 	cmp sl, #0x20
 	add sb, sb, #1
@@ -32113,17 +32113,17 @@ _0233EBD0:
 	ldr r0, _0233EC4C ; =ov02_0235AAE0
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl ov02_0234E354
+	bl Dwci_FntlRenewBg
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233EC4C: .word ov02_0235AAE0
 _0233EC50: .word 0x0000E01D
 _0233EC54: .word ov02_02352A4C
-	arm_func_end ov02_0233EB64
+	arm_func_end DrawSsid
 
-	arm_func_start ov02_0233EC58
-ov02_0233EC58: ; 0x0233EC58
+	arm_func_start SceneSetEdit32_DispCaret
+SceneSetEdit32_DispCaret: ; 0x0233EC58
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233ECB0 ; =ov02_0235AAE0
 	ldr r1, [r0]
@@ -32151,12 +32151,12 @@ _0233ECB0: .word ov02_0235AAE0
 _0233ECB4: .word ov02_02352A48
 _0233ECB8: .word ov02_02352A4C
 _0233ECBC: .word 0xFE00FF00
-	arm_func_end ov02_0233EC58
+	arm_func_end SceneSetEdit32_DispCaret
 
-	arm_func_start ov02_0233ECC0
-ov02_0233ECC0: ; 0x0233ECC0
+	arm_func_start SceneSetEdit32_ProcWin
+SceneSetEdit32_ProcWin: ; 0x0233ECC0
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	ldr r1, _0233ED14 ; =ov02_0235AAE0
 	ldr r2, [r1]
 	strb r0, [r2, #0x2a]
@@ -32169,23 +32169,23 @@ ov02_0233ECC0: ; 0x0233ECC0
 	ldmia sp!, {r3, pc}
 _0233ECF0:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233ED04
 _0233ECFC:
 	mov r0, #0xe
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233ED04:
-	bl ov02_023496C0
-	ldr r0, _0233ED18 ; =ov02_0233ED1C
-	bl ov02_02338D68
+	bl Dwci_WinlEnd
+	ldr r0, _0233ED18 ; =SceneSetEdit32_ProcWin1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233ED14: .word ov02_0235AAE0
-_0233ED18: .word ov02_0233ED1C
-	arm_func_end ov02_0233ECC0
+_0233ED18: .word SceneSetEdit32_ProcWin1
+	arm_func_end SceneSetEdit32_ProcWin
 
-	arm_func_start ov02_0233ED1C
-ov02_0233ED1C: ; 0x0233ED1C
+	arm_func_start SceneSetEdit32_ProcWin1
+SceneSetEdit32_ProcWin1: ; 0x0233ED1C
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	ldr r0, _0233EDB8 ; =ov02_02352A30
@@ -32193,7 +32193,7 @@ ov02_0233ED1C: ; 0x0233ED1C
 	ldr r0, [r0, #0x14]
 	str r1, [sp, #4]
 	str r0, [sp, #8]
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	addne sp, sp, #0xc
 	ldmneia sp!, {pc}
@@ -32205,16 +32205,16 @@ ov02_0233ED1C: ; 0x0233ED1C
 	ldr r3, [r1, #4]
 	ldr r1, _0233EDC0 ; =0xC1FFFCFF
 	ldr r2, [r3]
-	ldr r0, _0233EDC4 ; =ov02_0233E6CC
+	ldr r0, _0233EDC4 ; =SceneSetEdit32_ProcInit1
 	and r1, r2, r1
 	str r1, [r3]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
 _0233ED80:
 	add r0, sp, #0
 	mov r1, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, _0233EDBC ; =ov02_0235AAE0
 	ldr r2, [sp]
 	add r1, sp, #4
@@ -32222,36 +32222,36 @@ _0233ED80:
 	ldr r1, [r1, r2, lsl #2]
 	add r0, r0, #8
 	blx r1
-	ldr r0, _0233EDC8 ; =ov02_0233EA60
-	bl ov02_02338D68
+	ldr r0, _0233EDC8 ; =SceneSetEdit32_EndScene3
+	bl Dwci_ChangeScene
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
 	.align 2, 0
 _0233EDB8: .word ov02_02352A30
 _0233EDBC: .word ov02_0235AAE0
 _0233EDC0: .word 0xC1FFFCFF
-_0233EDC4: .word ov02_0233E6CC
-_0233EDC8: .word ov02_0233EA60
-	arm_func_end ov02_0233ED1C
+_0233EDC4: .word SceneSetEdit32_ProcInit1
+_0233EDC8: .word SceneSetEdit32_EndScene3
+	arm_func_end SceneSetEdit32_ProcWin1
 
-	arm_func_start ov02_0233EDCC
-ov02_0233EDCC: ; 0x0233EDCC
+	arm_func_start SceneSetEdit32_IsCorrect
+SceneSetEdit32_IsCorrect: ; 0x0233EDCC
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #1
 	bne _0233EDFC
 	mov r0, #0x35
 	sub r1, r0, #0x36
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 _0233EDFC:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	bne _0233EE34
@@ -32279,7 +32279,7 @@ _0233EE5C:
 	mov r1, #0x20
 	ldr r0, [r0]
 	add r0, r0, #8
-	bl ov02_0234F59C
+	bl Dwci_StrlNLen
 	cmp r0, #0x10
 	bgt _0233EEB0
 	cmp r0, #0xa
@@ -32352,48 +32352,48 @@ _0233EF48:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233EF54: .word ov02_0235AAE0
-	arm_func_end ov02_0233EDCC
+	arm_func_end SceneSetEdit32_IsCorrect
 
-	arm_func_start ov02_0233EF58
-ov02_0233EF58: ; 0x0233EF58
+	arm_func_start SceneSetEdit32_ProcError
+SceneSetEdit32_ProcError: ; 0x0233EF58
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
-	ldr r0, _0233EF80 ; =ov02_0233EF84
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
+	ldr r0, _0233EF80 ; =SceneSetEdit32_ProcError1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233EF80: .word ov02_0233EF84
-	arm_func_end ov02_0233EF58
+_0233EF80: .word SceneSetEdit32_ProcError1
+	arm_func_end SceneSetEdit32_ProcError
 
-	arm_func_start ov02_0233EF84
-ov02_0233EF84: ; 0x0233EF84
+	arm_func_start SceneSetEdit32_ProcError1
+SceneSetEdit32_ProcError1: ; 0x0233EF84
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233EFBC ; =ov02_0235AAE0
 	ldr r1, _0233EFC0 ; =0xC1FFFCFF
 	ldr r2, [r0]
-	ldr r0, _0233EFC4 ; =ov02_0233E6CC
+	ldr r0, _0233EFC4 ; =SceneSetEdit32_ProcInit1
 	ldr r3, [r2, #4]
 	ldr r2, [r3]
 	and r1, r2, r1
 	str r1, [r3]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233EFBC: .word ov02_0235AAE0
 _0233EFC0: .word 0xC1FFFCFF
-_0233EFC4: .word ov02_0233E6CC
-	arm_func_end ov02_0233EF84
+_0233EFC4: .word SceneSetEdit32_ProcInit1
+	arm_func_end SceneSetEdit32_ProcError1
 
-	arm_func_start ov02_0233EFC8
-ov02_0233EFC8: ; 0x0233EFC8
+	arm_func_start Dwci_SceneSetEditAddress
+Dwci_SceneSetEditAddress: ; 0x0233EFC8
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x20
 	ldr r4, _0233F128 ; =ov02_02352A74
@@ -32415,12 +32415,12 @@ ov02_0233EFC8: ; 0x0233EFC8
 	strb lr, [sp, #6]
 	strb r3, [sp, #7]
 	strb r2, [sp, #8]
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _0233F130 ; =ov02_0235AAE4
 	mov r1, #0
 	str r0, [r2]
 	add r0, sp, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, _0233F130 ; =ov02_0235AAE4
 	ldr r2, [sp]
 	add r1, sp, #0xc
@@ -32447,27 +32447,27 @@ ov02_0233EFC8: ; 0x0233EFC8
 	ldr r0, [r0]
 	strb r1, [r0, #0x14]
 _0233F098:
-	bl ov02_0233F13C
+	bl SceneSetEditAddress_InitGraphics
 	ldr r0, [sp]
 	add r0, r0, #0xb
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	ldr r2, [sp]
 	add r0, sp, #4
 	ldrb r0, [r0, r2]
 	mvn r1, #0
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #2
-	bl ov02_02334DE8
+	bl Dwci_CmnlStep
 	mov r0, #0
 	mov r1, r0
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	ldr r2, _0233F130 ; =ov02_0235AAE4
 	mov r1, #0x3f
 	ldr r2, [r2]
 	str r0, [r2]
 	mov r0, #0
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, _0233F130 ; =ov02_0235AAE4
 	ldr r2, [r1]
 	str r0, [r2, #4]
@@ -32477,10 +32477,10 @@ _0233F098:
 	bic r0, r0, #0xc00
 	orr r0, r0, #0xc00
 	strh r0, [r1, #4]
-	bl ov02_0233F8F0
-	bl ov02_0233F82C
-	ldr r0, _0233F138 ; =ov02_0233F1F8
-	bl ov02_02338D68
+	bl SceneSetEditAddress_DispCaret
+	bl SceneSetEditAddress_DrawAddress
+	ldr r0, _0233F138 ; =SceneSetEditAddress_ProcInit
+	bl Dwci_ChangeScene
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -32488,24 +32488,24 @@ _0233F128: .word ov02_02352A74
 _0233F12C: .word ov02_02352A5C
 _0233F130: .word ov02_0235AAE4
 _0233F134: .word ov02_02353970
-_0233F138: .word ov02_0233F1F8
-	arm_func_end ov02_0233EFC8
+_0233F138: .word SceneSetEditAddress_ProcInit
+	arm_func_end Dwci_SceneSetEditAddress
 
-	arm_func_start ov02_0233F13C
-ov02_0233F13C: ; 0x0233F13C
+	arm_func_start SceneSetEditAddress_InitGraphics
+SceneSetEditAddress_InitGraphics: ; 0x0233F13C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233F1D0 ; =ov02_02353974
 	ldr r1, _0233F1D4 ; =GX_LoadOBJPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0233F1D8 ; =ov02_02353988
 	ldr r1, _0233F1DC ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0233F1E0 ; =ov02_023539A0
 	ldr r1, _0233F1E4 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0233F1E8 ; =ov02_023539B8
 	ldr r1, _0233F1EC ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233F1F0 ; =0x04001008
 	ldr r1, _0233F1F4 ; =0x0400000A
 	ldrh r0, [r3]
@@ -32541,102 +32541,102 @@ _0233F1E8: .word ov02_023539B8
 _0233F1EC: .word GX_LoadBG2Scr
 _0233F1F0: .word 0x04001008
 _0233F1F4: .word 0x0400000A
-	arm_func_end ov02_0233F13C
+	arm_func_end SceneSetEditAddress_InitGraphics
 
-	arm_func_start ov02_0233F1F8
-ov02_0233F1F8: ; 0x0233F1F8
+	arm_func_start SceneSetEditAddress_ProcInit
+SceneSetEditAddress_ProcInit: ; 0x0233F1F8
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0233F248 ; =ov02_0233F24C
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0233F248 ; =SceneSetEditAddress_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233F248: .word ov02_0233F24C
-	arm_func_end ov02_0233F1F8
+_0233F248: .word SceneSetEditAddress_ProcInit1
+	arm_func_end SceneSetEditAddress_ProcInit
 
-	arm_func_start ov02_0233F24C
-ov02_0233F24C: ; 0x0233F24C
+	arm_func_start SceneSetEditAddress_ProcInit1
+SceneSetEditAddress_ProcInit1: ; 0x0233F24C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02337184
+	bl Dwci_KB10lInit
 	mov r0, #0x14
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233F2D0 ; =ov02_0235AAE4
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x14]
 	cmp r0, #0
 	bne _0233F2A4
 	mov r0, #0
-	bl ov02_02337508
+	bl Dwci_KB10lSetErase
 	mov r0, #0
-	bl ov02_02337530
+	bl Dwci_KB10lSetShift
 	b _0233F2C4
 _0233F2A4:
 	mov r0, #0x1a
-	bl ov02_0233F618
+	bl IsOver
 	cmp r0, #0
 	beq _0233F2BC
 	mov r0, #0
-	bl ov02_0233751C
+	bl Dwci_KB10lSetInput
 _0233F2BC:
 	mov r0, #0
-	bl ov02_02337530
+	bl Dwci_KB10lSetShift
 _0233F2C4:
-	ldr r0, _0233F2D4 ; =ov02_0233F2D8
-	bl ov02_02338D68
+	ldr r0, _0233F2D4 ; =SceneSetEditAddress_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233F2D0: .word ov02_0235AAE4
-_0233F2D4: .word ov02_0233F2D8
-	arm_func_end ov02_0233F24C
+_0233F2D4: .word SceneSetEditAddress_ProcInit2
+	arm_func_end SceneSetEditAddress_ProcInit1
 
-	arm_func_start ov02_0233F2D8
-ov02_0233F2D8: ; 0x0233F2D8
+	arm_func_start SceneSetEditAddress_ProcInit2
+SceneSetEditAddress_ProcInit2: ; 0x0233F2D8
 	stmdb sp!, {r3, lr}
-	bl ov02_023374F4
+	bl Dwci_KB10lGet
 	cmp r0, #0x1f
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _0233F2F4 ; =ov02_0233F2F8
-	bl ov02_02338D68
+	ldr r0, _0233F2F4 ; =SceneSetEditAddress_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233F2F4: .word ov02_0233F2F8
-	arm_func_end ov02_0233F2D8
+_0233F2F4: .word SceneSetEditAddress_ProcScene
+	arm_func_end SceneSetEditAddress_ProcInit2
 
-	arm_func_start ov02_0233F2F8
-ov02_0233F2F8: ; 0x0233F2F8
+	arm_func_start SceneSetEditAddress_ProcScene
+SceneSetEditAddress_ProcScene: ; 0x0233F2F8
 	stmdb sp!, {r3, lr}
-	bl ov02_0233F308
-	bl ov02_0233F6AC
+	bl SceneSetEditAddress_Input
+	bl SceneSetEditAddress_Draw
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0233F2F8
+	arm_func_end SceneSetEditAddress_ProcScene
 
-	arm_func_start ov02_0233F308
-ov02_0233F308: ; 0x0233F308
+	arm_func_start SceneSetEditAddress_Input
+SceneSetEditAddress_Input: ; 0x0233F308
 	stmdb sp!, {r3, r4, r5, lr}
-	bl ov02_023374F4
+	bl Dwci_KB10lGet
 	mov r4, r0
 	cmp r4, #0
 	bgt _0233F324
@@ -32662,7 +32662,7 @@ _0233F348:
 	cmpeq r0, #0
 	beq _0233F600
 	mov r0, #3
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233F60C ; =ov02_0235AAE4
 	ldr r2, [r0]
 	ldrb r1, [r2, #0x14]
@@ -32690,12 +32690,12 @@ _0233F348:
 	cmpeq r0, #0
 	bne _0233F3DC
 	mov r0, #0
-	bl ov02_02337508
+	bl Dwci_KB10lSetErase
 _0233F3DC:
 	mov r0, #1
-	bl ov02_0233751C
+	bl Dwci_KB10lSetInput
 	mov r0, #0
-	bl ov02_02337530
+	bl Dwci_KB10lSetShift
 	b _0233F600
 _0233F3F0:
 	ldr r0, _0233F60C ; =ov02_0235AAE4
@@ -32710,14 +32710,14 @@ _0233F3F0:
 	cmp r0, #0
 	beq _0233F600
 	mov r0, #1
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r1, _0233F60C ; =ov02_0235AAE4
 	mov r0, #0
 	ldr r2, [r1]
 	ldrb r1, [r2, #0x14]
 	add r1, r1, #1
 	strb r1, [r2, #0x14]
-	bl ov02_02337530
+	bl Dwci_KB10lSetShift
 	b _0233F600
 _0233F444:
 	ldr r0, _0233F60C ; =ov02_0235AAE4
@@ -32725,16 +32725,16 @@ _0233F444:
 	ldr r1, [r0]
 	mov r0, #7
 	strb r2, [r1, #0x15]
-	bl ov02_023480E0
-	ldr r0, _0233F610 ; =ov02_0233F6B0
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233F610 ; =SceneSetEditAddress_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, r4, r5, pc}
 _0233F468:
-	bl ov02_0233FACC
+	bl SceneSetEditAddress_IsCorrect
 	cmp r0, #0
 	beq _0233F490
 	mov r0, #6
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233F60C ; =ov02_0235AAE4
 	mov r1, #1
 	ldr r0, [r0]
@@ -32746,7 +32746,7 @@ _0233F490:
 	ldr r1, [r0]
 	mov r0, #9
 	strb r2, [r1, #0x15]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233F4A8:
 	ldr r1, _0233F60C ; =ov02_0235AAE4
 	mov r3, #3
@@ -32759,10 +32759,10 @@ _0233F4A8:
 	and r0, r1, r0
 	orr r0, r0, #0x200
 	str r0, [r2]
-	bl ov02_0233F8F0
-	bl ov02_0233FA54
-	ldr r0, _0233F610 ; =ov02_0233F6B0
-	bl ov02_02338D68
+	bl SceneSetEditAddress_DispCaret
+	bl ArrangeAddress
+	ldr r0, _0233F610 ; =SceneSetEditAddress_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, r4, r5, pc}
 _0233F4E8:
 	ldr r0, _0233F60C ; =ov02_0235AAE4
@@ -32771,12 +32771,12 @@ _0233F4E8:
 	cmp r0, #3
 	bne _0233F50C
 	mov r0, #0x1a
-	bl ov02_0233F618
+	bl IsOver
 	cmp r0, #0
 	bne _0233F600
 _0233F50C:
 	mov r0, #1
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _0233F60C ; =ov02_0235AAE4
 	ldr r2, [r0]
 	ldrb r1, [r2, #0x14]
@@ -32794,7 +32794,7 @@ _0233F50C:
 	strb r3, [r5, r2]
 	mov r0, #0x1a
 	strb r4, [r5, ip]
-	bl ov02_0233F618
+	bl IsOver
 	cmp r0, #0
 	beq _0233F5A4
 	ldr r0, _0233F60C ; =ov02_0235AAE4
@@ -32816,18 +32816,18 @@ _0233F580:
 	strlob r0, [r1, #0x14]
 _0233F5A4:
 	mov r0, #1
-	bl ov02_02337508
+	bl Dwci_KB10lSetErase
 	ldr r0, _0233F60C ; =ov02_0235AAE4
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x14]
 	cmp r0, #3
 	bhs _0233F5CC
 	mov r0, #1
-	bl ov02_02337530
+	bl Dwci_KB10lSetShift
 	b _0233F5D4
 _0233F5CC:
 	mov r0, #0
-	bl ov02_02337530
+	bl Dwci_KB10lSetShift
 _0233F5D4:
 	ldr r0, _0233F60C ; =ov02_0235AAE4
 	ldr r0, [r0]
@@ -32835,23 +32835,23 @@ _0233F5D4:
 	cmp r0, #3
 	bne _0233F600
 	mov r0, #0x1a
-	bl ov02_0233F618
+	bl IsOver
 	cmp r0, #0
 	beq _0233F600
 	mov r0, #0
-	bl ov02_0233751C
+	bl Dwci_KB10lSetInput
 _0233F600:
-	bl ov02_0233F82C
-	bl ov02_0233F8F0
+	bl SceneSetEditAddress_DrawAddress
+	bl SceneSetEditAddress_DispCaret
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0233F60C: .word ov02_0235AAE4
-_0233F610: .word ov02_0233F6B0
+_0233F610: .word SceneSetEditAddress_EndScene
 _0233F614: .word 0xC1FFFCFF
-	arm_func_end ov02_0233F308
+	arm_func_end SceneSetEditAddress_Input
 
-	arm_func_start ov02_0233F618
-ov02_0233F618: ; 0x0233F618
+	arm_func_start IsOver
+IsOver: ; 0x0233F618
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r1, _0233F6A8 ; =ov02_0235AAE4
@@ -32892,46 +32892,46 @@ _0233F68C:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0233F6A8: .word ov02_0235AAE4
-	arm_func_end ov02_0233F618
+	arm_func_end IsOver
 
-	arm_func_start ov02_0233F6AC
-ov02_0233F6AC: ; 0x0233F6AC
+	arm_func_start SceneSetEditAddress_Draw
+SceneSetEditAddress_Draw: ; 0x0233F6AC
 	bx lr
-	arm_func_end ov02_0233F6AC
+	arm_func_end SceneSetEditAddress_Draw
 
-	arm_func_start ov02_0233F6B0
-ov02_0233F6B0: ; 0x0233F6B0
+	arm_func_start SceneSetEditAddress_EndScene
+SceneSetEditAddress_EndScene: ; 0x0233F6B0
 	stmdb sp!, {r3, lr}
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _0233F6C8 ; =ov02_0233F6CC
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _0233F6C8 ; =SceneSetEditAddress_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233F6C8: .word ov02_0233F6CC
-	arm_func_end ov02_0233F6B0
+_0233F6C8: .word SceneSetEditAddress_EndScene1
+	arm_func_end SceneSetEditAddress_EndScene
 
-	arm_func_start ov02_0233F6CC
-ov02_0233F6CC: ; 0x0233F6CC
+	arm_func_start SceneSetEditAddress_EndScene1
+SceneSetEditAddress_EndScene1: ; 0x0233F6CC
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023374C0
+	bl Dwci_KB10lEnd
 	mov r0, #0x15
-	bl ov02_023480E0
-	ldr r0, _0233F6F8 ; =ov02_0233F6FC
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0233F6F8 ; =SceneSetEditAddress_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233F6F8: .word ov02_0233F6FC
-	arm_func_end ov02_0233F6CC
+_0233F6F8: .word SceneSetEditAddress_EndScene2
+	arm_func_end SceneSetEditAddress_EndScene1
 
-	arm_func_start ov02_0233F6FC
-ov02_0233F6FC: ; 0x0233F6FC
+	arm_func_start SceneSetEditAddress_EndScene2
+SceneSetEditAddress_EndScene2: ; 0x0233F6FC
 	stmdb sp!, {r3, lr}
-	bl ov02_02337544
+	bl Dwci_KB10lIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233F778 ; =ov02_0235AAE4
@@ -32939,8 +32939,8 @@ ov02_0233F6FC: ; 0x0233F6FC
 	ldrb r0, [r0, #0x15]
 	cmp r0, #0
 	bne _0233F72C
-	ldr r0, _0233F77C ; =ov02_0233F788
-	bl ov02_02338D68
+	ldr r0, _0233F77C ; =SceneSetEditAddress_EndScene3
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233F72C:
 	mov r2, #1
@@ -32951,73 +32951,73 @@ _0233F72C:
 	mov r0, #6
 	mov r1, #3
 	str ip, [sp]
-	bl ov02_02349394
-	ldr r0, _0233F780 ; =ov02_0233FC20
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	ldr r0, _0233F780 ; =SceneSetEditAddress_ProcError
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0233F75C:
 	mov r0, #0x47
 	mov r1, #2
 	str ip, [sp]
-	bl ov02_02349394
-	ldr r0, _0233F784 ; =ov02_0233F944
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	ldr r0, _0233F784 ; =SceneSetEditAddress_ProcWin
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233F778: .word ov02_0235AAE4
-_0233F77C: .word ov02_0233F788
-_0233F780: .word ov02_0233FC20
-_0233F784: .word ov02_0233F944
-	arm_func_end ov02_0233F6FC
+_0233F77C: .word SceneSetEditAddress_EndScene3
+_0233F780: .word SceneSetEditAddress_ProcError
+_0233F784: .word SceneSetEditAddress_ProcWin
+	arm_func_end SceneSetEditAddress_EndScene2
 
-	arm_func_start ov02_0233F788
-ov02_0233F788: ; 0x0233F788
+	arm_func_start SceneSetEditAddress_EndScene3
+SceneSetEditAddress_EndScene3: ; 0x0233F788
 	stmdb sp!, {r3, lr}
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	ldr r0, _0233F818 ; =ov02_0235AAE4
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _0233F81C ; =ov02_023539D0
 	ldr r1, _0233F820 ; =GX_LoadOBJPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	add r0, sp, #0
 	mov r1, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	mov r1, #1
 	cmp r0, #3
 	addge r0, r0, #1
 	strge r0, [sp]
 	mov r0, #2
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	ldr r1, [sp]
 	mov r0, #0
 	add r1, r1, #3
-	bl ov02_02338DB4
-	ldr r0, _0233F824 ; =ov02_023402CC
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _0233F824 ; =Dwci_SceneSetList
+	bl Dwci_ChangeScene
 	ldr r0, _0233F828 ; =ov02_0235AAE4
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233F818: .word ov02_0235AAE4
 _0233F81C: .word ov02_023539D0
 _0233F820: .word GX_LoadOBJPltt
-_0233F824: .word ov02_023402CC
+_0233F824: .word Dwci_SceneSetList
 _0233F828: .word ov02_0235AAE4
-	arm_func_end ov02_0233F788
+	arm_func_end SceneSetEditAddress_EndScene3
 
-	arm_func_start ov02_0233F82C
-ov02_0233F82C: ; 0x0233F82C
+	arm_func_start SceneSetEditAddress_DrawAddress
+SceneSetEditAddress_DrawAddress: ; 0x0233F82C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x1c
 	ldr r0, _0233F8E4 ; =ov02_0235AAE4
@@ -33033,7 +33033,7 @@ ov02_0233F82C: ; 0x0233F82C
 	strh r4, [sp, #0x16]
 	strh r3, [sp, #0x18]
 	strh r2, [sp, #0x1a]
-	bl ov02_0234E2A8
+	bl Dwci_FntlClear
 	mov r4, #0
 	ldr r5, _0233F8EC ; =ov02_02352A9C
 	ldr r6, _0233F8E4 ; =ov02_0235AAE4
@@ -33055,24 +33055,24 @@ _0233F888:
 	ldrh r3, [sp, #0x18]
 	ldr r0, [ip]
 	strh r1, [sp, #0x14]
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	add r4, r4, #1
 	cmp r4, #0xc
 	blt _0233F888
 	ldr r0, _0233F8E4 ; =ov02_0235AAE4
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl ov02_0234E354
+	bl Dwci_FntlRenewBg
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0233F8E4: .word ov02_0235AAE4
 _0233F8E8: .word ov02_02352A5C
 _0233F8EC: .word ov02_02352A9C
-	arm_func_end ov02_0233F82C
+	arm_func_end SceneSetEditAddress_DrawAddress
 
-	arm_func_start ov02_0233F8F0
-ov02_0233F8F0: ; 0x0233F8F0
+	arm_func_start SceneSetEditAddress_DispCaret
+SceneSetEditAddress_DispCaret: ; 0x0233F8F0
 	ldr r0, _0233F938 ; =ov02_0235AAE4
 	ldr r2, [r0]
 	ldrb r0, [r2, #0x14]
@@ -33095,12 +33095,12 @@ ov02_0233F8F0: ; 0x0233F8F0
 _0233F938: .word ov02_0235AAE4
 _0233F93C: .word ov02_02352A9C
 _0233F940: .word 0xFE00FF00
-	arm_func_end ov02_0233F8F0
+	arm_func_end SceneSetEditAddress_DispCaret
 
-	arm_func_start ov02_0233F944
-ov02_0233F944: ; 0x0233F944
+	arm_func_start SceneSetEditAddress_ProcWin
+SceneSetEditAddress_ProcWin: ; 0x0233F944
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	ldr r1, _0233F998 ; =ov02_0235AAE4
 	ldr r2, [r1]
 	strb r0, [r2, #0x15]
@@ -33113,23 +33113,23 @@ ov02_0233F944: ; 0x0233F944
 	ldmia sp!, {r3, pc}
 _0233F974:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _0233F988
 _0233F980:
 	mov r0, #0xe
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _0233F988:
-	bl ov02_023496C0
-	ldr r0, _0233F99C ; =ov02_0233F9A0
-	bl ov02_02338D68
+	bl Dwci_WinlEnd
+	ldr r0, _0233F99C ; =SceneSetEditAddress_ProcWin1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233F998: .word ov02_0235AAE4
-_0233F99C: .word ov02_0233F9A0
-	arm_func_end ov02_0233F944
+_0233F99C: .word SceneSetEditAddress_ProcWin1
+	arm_func_end SceneSetEditAddress_ProcWin
 
-	arm_func_start ov02_0233F9A0
-ov02_0233F9A0: ; 0x0233F9A0
+	arm_func_start SceneSetEditAddress_ProcWin1
+SceneSetEditAddress_ProcWin1: ; 0x0233F9A0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x18
 	ldr lr, _0233FA40 ; =ov02_02352A88
@@ -33138,7 +33138,7 @@ ov02_0233F9A0: ; 0x0233F9A0
 	stmia ip!, {r0, r1, r2, r3}
 	ldr r0, [lr]
 	str r0, [ip]
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	addne sp, sp, #0x18
 	ldmneia sp!, {r3, pc}
@@ -33150,16 +33150,16 @@ ov02_0233F9A0: ; 0x0233F9A0
 	ldr r3, [r1, #4]
 	ldr r1, _0233FA48 ; =0xC1FFFCFF
 	ldr r2, [r3]
-	ldr r0, _0233FA4C ; =ov02_0233F24C
+	ldr r0, _0233FA4C ; =SceneSetEditAddress_ProcInit1
 	and r1, r2, r1
 	str r1, [r3]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	add sp, sp, #0x18
 	ldmia sp!, {r3, pc}
 _0233FA08:
 	add r0, sp, #0
 	mov r1, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, _0233FA44 ; =ov02_0235AAE4
 	ldr r2, [sp]
 	add r1, sp, #4
@@ -33167,20 +33167,20 @@ _0233FA08:
 	ldr r1, [r1, r2, lsl #2]
 	add r0, r0, #8
 	blx r1
-	ldr r0, _0233FA50 ; =ov02_0233F788
-	bl ov02_02338D68
+	ldr r0, _0233FA50 ; =SceneSetEditAddress_EndScene3
+	bl Dwci_ChangeScene
 	add sp, sp, #0x18
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233FA40: .word ov02_02352A88
 _0233FA44: .word ov02_0235AAE4
 _0233FA48: .word 0xC1FFFCFF
-_0233FA4C: .word ov02_0233F24C
-_0233FA50: .word ov02_0233F788
-	arm_func_end ov02_0233F9A0
+_0233FA4C: .word SceneSetEditAddress_ProcInit1
+_0233FA50: .word SceneSetEditAddress_EndScene3
+	arm_func_end SceneSetEditAddress_ProcWin1
 
-	arm_func_start ov02_0233FA54
-ov02_0233FA54: ; 0x0233FA54
+	arm_func_start ArrangeAddress
+ArrangeAddress: ; 0x0233FA54
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, #0
 	ldr r0, _0233FAC8 ; =ov02_0235AAE4
@@ -33211,14 +33211,14 @@ _0233FAB0:
 	cmp r4, #4
 	add r6, r6, #3
 	blt _0233FA70
-	bl ov02_0233F82C
+	bl SceneSetEditAddress_DrawAddress
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0233FAC8: .word ov02_0235AAE4
-	arm_func_end ov02_0233FA54
+	arm_func_end ArrangeAddress
 
-	arm_func_start ov02_0233FACC
-ov02_0233FACC: ; 0x0233FACC
+	arm_func_start SceneSetEditAddress_IsCorrect
+SceneSetEditAddress_IsCorrect: ; 0x0233FACC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	ldr r2, _0233FC18 ; =ov02_02352A5C
@@ -33263,10 +33263,10 @@ _0233FB58:
 	blt _0233FB14
 	add r1, sp, #0
 	add r0, r2, #8
-	bl ov02_02347F80
+	bl Dwci_SettinglConvAddress
 	add r0, sp, #4
 	mov r1, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp, #4]
 	cmp r0, #1
 	bne _0233FBFC
@@ -33313,64 +33313,64 @@ _0233FBFC:
 	.align 2, 0
 _0233FC18: .word ov02_02352A5C
 _0233FC1C: .word ov02_0235AAE4
-	arm_func_end ov02_0233FACC
+	arm_func_end SceneSetEditAddress_IsCorrect
 
-	arm_func_start ov02_0233FC20
-ov02_0233FC20: ; 0x0233FC20
+	arm_func_start SceneSetEditAddress_ProcError
+SceneSetEditAddress_ProcError: ; 0x0233FC20
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
-	ldr r0, _0233FC48 ; =ov02_0233FC4C
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
+	ldr r0, _0233FC48 ; =SceneSetEditAddress_ProcError1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233FC48: .word ov02_0233FC4C
-	arm_func_end ov02_0233FC20
+_0233FC48: .word SceneSetEditAddress_ProcError1
+	arm_func_end SceneSetEditAddress_ProcError
 
-	arm_func_start ov02_0233FC4C
-ov02_0233FC4C: ; 0x0233FC4C
+	arm_func_start SceneSetEditAddress_ProcError1
+SceneSetEditAddress_ProcError1: ; 0x0233FC4C
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0233FC84 ; =ov02_0235AAE4
 	ldr r1, _0233FC88 ; =0xC1FFFCFF
 	ldr r2, [r0]
-	ldr r0, _0233FC8C ; =ov02_0233F24C
+	ldr r0, _0233FC8C ; =SceneSetEditAddress_ProcInit1
 	ldr r3, [r2, #4]
 	ldr r2, [r3]
 	and r1, r2, r1
 	str r1, [r3]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233FC84: .word ov02_0235AAE4
 _0233FC88: .word 0xC1FFFCFF
-_0233FC8C: .word ov02_0233F24C
-	arm_func_end ov02_0233FC4C
+_0233FC8C: .word SceneSetEditAddress_ProcInit1
+	arm_func_end SceneSetEditAddress_ProcError1
 
-	arm_func_start ov02_0233FC90
-ov02_0233FC90: ; 0x0233FC90
+	arm_func_start Dwci_SceneSetError
+Dwci_SceneSetError: ; 0x0233FC90
 	stmdb sp!, {r3, lr}
-	bl ov02_0233FCAC
-	bl ov02_0233FD2C
-	ldr r0, _0233FCA8 ; =ov02_023400A0
-	bl ov02_02338D68
+	bl SceneSetError_InitGraphics
+	bl DrawMessage
+	ldr r0, _0233FCA8 ; =SceneSetError_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233FCA8: .word ov02_023400A0
-	arm_func_end ov02_0233FC90
+_0233FCA8: .word SceneSetError_ProcInit
+	arm_func_end Dwci_SceneSetError
 
-	arm_func_start ov02_0233FCAC
-ov02_0233FCAC: ; 0x0233FCAC
+	arm_func_start SceneSetError_InitGraphics
+SceneSetError_InitGraphics: ; 0x0233FCAC
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233FD1C ; =ov02_023539E8
 	ldr r1, _0233FD20 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _0233FD24 ; =0x04001008
 	ldr r1, _0233FD28 ; =0x0400000A
 	ldrh r0, [r3]
@@ -33400,15 +33400,15 @@ _0233FD1C: .word ov02_023539E8
 _0233FD20: .word GX_LoadBG2Scr
 _0233FD24: .word 0x04001008
 _0233FD28: .word 0x0400000A
-	arm_func_end ov02_0233FCAC
+	arm_func_end SceneSetError_InitGraphics
 
-	arm_func_start ov02_0233FD2C
-ov02_0233FD2C: ; 0x0233FD2C
+	arm_func_start DrawMessage
+DrawMessage: ; 0x0233FD2C
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x2c
 	add r1, sp, #0x18
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, _02340074 ; =ov02_0235AAE8
 	ldr r2, _02340078 ; =0xFFFFB17D
 	ldr r1, [r0]
@@ -33558,17 +33558,17 @@ _0233FE78:
 	movge r6, #2
 	movlt r6, #0
 _0233FF88:
-	bl ov02_02338DF0
+	bl Dwci_Language__0233961C
 	mov r2, r0
 	ldr r1, _0234008C ; =ov02_02352AA8
 	mov r0, #0
 	ldrb r1, [r1, r2]
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	ldr r1, _02340090 ; =ov02_0235AA98
 	mov r5, r0
 	ldr r0, [r1]
 	mov r1, r6
-	bl ov02_02338F5C
+	bl Dwci_MsglGet
 	ldr r3, _02340074 ; =ov02_0235AAE8
 	mov r4, r0
 	ldr r3, [r3]
@@ -33580,12 +33580,12 @@ _0233FF88:
 	add r0, sp, #0x1c
 	add r1, sp, #0x10
 	mov r2, #8
-	bl ov02_0234F5C8
-	bl ov02_02338DF0
+	bl swprintf_subroutine
+	bl Dwci_Language__0233961C
 	mov r1, r0, lsl #2
 	ldr r0, _02340098 ; =ov02_02352ABA
 	ldrh r7, [r0, r1]
-	bl ov02_02338DF0
+	bl Dwci_Language__0233961C
 	mov r3, r0, lsl #2
 	ldr r1, _0234009C ; =ov02_02352AB8
 	mov r0, #0xa
@@ -33598,10 +33598,10 @@ _0233FF88:
 	mov r2, r7
 	mov r0, r5
 	mov r3, #2
-	bl ov02_0234E13C
+	bl Dwci_FntlDrawStringEx
 	cmp r6, #0
 	beq _02340064
-	bl ov02_02334FA0
+	bl Dwci_CmnlFontFlag
 	mov r1, #0x5e
 	str r1, [sp]
 	mov r1, #2
@@ -33612,10 +33612,10 @@ _0233FF88:
 	mov r2, #0x3c
 	mov r3, #0xe6
 	str r4, [sp, #0xc]
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 _02340064:
 	mov r0, r5
-	bl ov02_0234E354
+	bl Dwci_FntlRenewBg
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -33630,209 +33630,209 @@ _02340090: .word ov02_0235AA98
 _02340094: .word ov02_023539FC
 _02340098: .word ov02_02352ABA
 _0234009C: .word ov02_02352AB8
-	arm_func_end ov02_0233FD2C
+	arm_func_end DrawMessage
 
-	arm_func_start ov02_023400A0
-ov02_023400A0: ; 0x023400A0
+	arm_func_start SceneSetError_ProcInit
+SceneSetError_ProcInit: ; 0x023400A0
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _023400D0 ; =ov02_023400D4
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _023400D0 ; =SceneSetError_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023400D0: .word ov02_023400D4
-	arm_func_end ov02_023400A0
+_023400D0: .word SceneSetError_ProcInit1
+	arm_func_end SceneSetError_ProcInit
 
-	arm_func_start ov02_023400D4
-ov02_023400D4: ; 0x023400D4
+	arm_func_start SceneSetError_ProcInit1
+SceneSetError_ProcInit1: ; 0x023400D4
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #4
-	bl ov02_02334E38
-	ldr r0, _0234010C ; =ov02_02340110
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0234010C ; =SceneSetError_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234010C: .word ov02_02340110
-	arm_func_end ov02_023400D4
+_0234010C: .word SceneSetError_ProcInit2
+	arm_func_end SceneSetError_ProcInit1
 
-	arm_func_start ov02_02340110
-ov02_02340110: ; 0x02340110
+	arm_func_start SceneSetError_ProcInit2
+SceneSetError_ProcInit2: ; 0x02340110
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02340134 ; =ov02_02340138
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02340134 ; =SceneSetError_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02340134: .word ov02_02340138
-	arm_func_end ov02_02340110
+_02340134: .word SceneSetError_ProcScene
+	arm_func_end SceneSetError_ProcInit2
 
-	arm_func_start ov02_02340138
-ov02_02340138: ; 0x02340138
+	arm_func_start SceneSetError_ProcScene
+SceneSetError_ProcScene: ; 0x02340138
 	stmdb sp!, {r3, lr}
-	bl ov02_0234014C
-	bl ov02_0234016C
-	bl ov02_02340170
+	bl SceneSetError_Input
+	bl SceneSetError_Draw
+	bl SceneSetError_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02340138
+	arm_func_end SceneSetError_ProcScene
 
-	arm_func_start ov02_0234014C
-ov02_0234014C: ; 0x0234014C
+	arm_func_start SceneSetError_Input
+SceneSetError_Input: ; 0x0234014C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234014C
+	arm_func_end SceneSetError_Input
 
-	arm_func_start ov02_0234016C
-ov02_0234016C: ; 0x0234016C
+	arm_func_start SceneSetError_Draw
+SceneSetError_Draw: ; 0x0234016C
 	bx lr
-	arm_func_end ov02_0234016C
+	arm_func_end SceneSetError_Draw
 
-	arm_func_start ov02_02340170
-ov02_02340170: ; 0x02340170
+	arm_func_start SceneSetError_Button
+SceneSetError_Button: ; 0x02340170
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	ldr r0, _02340194 ; =ov02_02340198
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02340194 ; =SceneSetError_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02340194: .word ov02_02340198
-	arm_func_end ov02_02340170
+_02340194: .word SceneSetError_EndScene
+	arm_func_end SceneSetError_Button
 
-	arm_func_start ov02_02340198
-ov02_02340198: ; 0x02340198
+	arm_func_start SceneSetError_EndScene
+SceneSetError_EndScene: ; 0x02340198
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _023401B4 ; =ov02_023401B8
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _023401B4 ; =SceneSetError_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023401B4: .word ov02_023401B8
-	arm_func_end ov02_02340198
+_023401B4: .word SceneSetError_EndScene1
+	arm_func_end SceneSetError_EndScene
 
-	arm_func_start ov02_023401B8
-ov02_023401B8: ; 0x023401B8
+	arm_func_start SceneSetError_EndScene1
+SceneSetError_EndScene1: ; 0x023401B8
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02340204 ; =ov02_02340208
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02340204 ; =SceneSetError_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02340204: .word ov02_02340208
-	arm_func_end ov02_023401B8
+_02340204: .word SceneSetError_EndScene2
+	arm_func_end SceneSetError_EndScene1
 
-	arm_func_start ov02_02340208
-ov02_02340208: ; 0x02340208
+	arm_func_start SceneSetError_EndScene2
+SceneSetError_EndScene2: ; 0x02340208
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
-	bl ov02_02334D10
+	bl Dwci_FntlDeleteBgLcd
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #0
 	mov r0, #2
 	beq _0234028C
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _023402B4 ; =ov02_02343DB0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _023402B4 ; =Dwci_SceneSetSelectAp
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0234028C:
 	mov r1, #0
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338DB4
+	bl Dwci_SetParam2
 	mov r0, #0
-	bl ov02_02342798
-	ldr r0, _023402B8 ; =ov02_023402CC
-	bl ov02_02338D68
+	bl Dwci_SetListReturn
+	ldr r0, _023402B8 ; =Dwci_SceneSetList
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023402B4: .word ov02_02343DB0
-_023402B8: .word ov02_023402CC
-	arm_func_end ov02_02340208
+_023402B4: .word Dwci_SceneSetSelectAp
+_023402B8: .word Dwci_SceneSetList
+	arm_func_end SceneSetError_EndScene2
 
-	arm_func_start ov02_023402BC
-ov02_023402BC: ; 0x023402BC
+	arm_func_start Dwci_SetErrorCode
+Dwci_SetErrorCode: ; 0x023402BC
 	ldr r1, _023402C8 ; =ov02_0235AAE8
 	str r0, [r1]
 	bx lr
 	.align 2, 0
 _023402C8: .word ov02_0235AAE8
-	arm_func_end ov02_023402BC
+	arm_func_end Dwci_SetErrorCode
 
-	arm_func_start ov02_023402CC
-ov02_023402CC: ; 0x023402CC
+	arm_func_start Dwci_SceneSetList
+Dwci_SceneSetList: ; 0x023402CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	mov r4, r0
 	mov r0, #0x48
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _023404B0 ; =ov02_0235AAEC
 	mov r2, #0xc
 	str r0, [r1, #8]
@@ -33840,29 +33840,29 @@ ov02_023402CC: ; 0x023402CC
 	strb r3, [r0, #0x43]
 	ldr r0, [r1, #8]
 	strb r2, [r0, #0x42]
-	bl ov02_023406DC
-	bl ov02_023404C8
+	bl CalcParam
+	bl SceneSetList_InitGraphics
 	ldr r0, _023404B0 ; =ov02_0235AAEC
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	bne _0234033C
-	bl ov02_02338DF0
+	bl Dwci_Language__0233961C
 	ldr r1, _023404B4 ; =ov02_02352BB0
 	ldrb r2, [r4, #0xf4]
 	ldrsb r1, [r1, r0]
 	mov r0, #0x30
 	add r2, r2, #1
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	b _0234034C
 _0234033C:
 	mov r0, #0x45
 	sub r1, r0, #0x46
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 _0234034C:
 	mov r0, #1
-	bl ov02_02334DE8
-	bl ov02_023352DC
+	bl Dwci_CmnlStep
+	bl Dwci_HLlLoadList
 	ldr r0, _023404B0 ; =ov02_0235AAEC
 	mov r1, #0x37
 	ldrh r3, [r0, #4]
@@ -33877,10 +33877,10 @@ _0234034C:
 	mov r1, #0x55
 	mov r2, #0xf1
 	mov r3, #0x41
-	bl ov02_02346964
+	bl Dwci_SBlInit
 	mov r0, #0
 	mov r1, #1
-	bl ov02_0234DDC8
+	bl Dwci_FntlFormBgEx
 	ldr r6, _023404B0 ; =ov02_0235AAEC
 	mov r5, #0
 	ldr r1, [r6, #8]
@@ -33890,7 +33890,7 @@ _0234034C:
 _023403B8:
 	mov r0, r8
 	mov r1, r7
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, [r6, #8]
 	add r1, r1, r5, lsl #2
 	add r5, r5, #1
@@ -33906,7 +33906,7 @@ _023403B8:
 _023403F4:
 	mov r0, #0
 	mov r1, #0x50
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, _023404B0 ; =ov02_0235AAEC
 	ldr r2, [r1, #8]
 	str r0, [r2, #0x34]
@@ -33920,7 +33920,7 @@ _023403F4:
 _02340428:
 	mov r0, #0
 	mov r1, #0x51
-	bl ov02_0234D6AC
+	bl Dwci_CeinlSetExObj
 	ldr r1, _023404B0 ; =ov02_0235AAEC
 	ldr r2, [r1, #8]
 	str r0, [r2, #0x34]
@@ -33931,39 +33931,39 @@ _02340428:
 	orr r0, r0, #0xc00
 	strh r0, [r1, #4]
 _02340458:
-	ldr r1, _023404BC ; =ov02_02342020
+	ldr r1, _023404BC ; =SceneSetList_TaskVBlank
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x6e
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r2, _023404B0 ; =ov02_0235AAEC
-	ldr r1, _023404C0 ; =ov02_02342580
+	ldr r1, _023404C0 ; =SceneSetList_TaskPushCount
 	ldr r2, [r2, #8]
 	mov r3, #0x78
 	str r0, [r2, #0x3c]
 	mov r0, #0
 	mov r2, r0
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _023404B0 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1]
-	bl ov02_02341294
-	bl ov02_023420A4
-	ldr r0, _023404C4 ; =ov02_02340718
-	bl ov02_02338D68
+	bl SceneSetList_DrawWindow
+	bl SceneSetList_DispFocus
+	ldr r0, _023404C4 ; =SceneSetList_ProcInit
+	bl Dwci_ChangeScene
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _023404B0: .word ov02_0235AAEC
 _023404B4: .word ov02_02352BB0
 _023404B8: .word 0xE1FC780F
-_023404BC: .word ov02_02342020
-_023404C0: .word ov02_02342580
-_023404C4: .word ov02_02340718
-	arm_func_end ov02_023402CC
+_023404BC: .word SceneSetList_TaskVBlank
+_023404C0: .word SceneSetList_TaskPushCount
+_023404C4: .word SceneSetList_ProcInit
+	arm_func_end Dwci_SceneSetList
 
-	arm_func_start ov02_023404C8
-ov02_023404C8: ; 0x023404C8
+	arm_func_start SceneSetList_InitGraphics
+SceneSetList_InitGraphics: ; 0x023404C8
 	stmdb sp!, {lr}
 	sub sp, sp, #0x44
 	ldr r3, _0234069C ; =ov02_02352B4F
@@ -34014,44 +34014,44 @@ _02340544:
 	orr r2, r2, #0x218
 	orr r2, r2, #0xc00
 	strh r2, [r3]
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023406B4 ; =ov02_02353A14
 	ldr r1, _023406B8 ; =GX_LoadBG3Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023406BC ; =ov02_02353A2C
 	ldr r1, _023406C0 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r1, _023406C4 ; =GX_LoadBGPltt
 	add r0, sp, #0x16
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023406C8 ; =ov02_02353A44
 	ldr r1, _023406CC ; =GX_LoadBG3Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	add r0, sp, #0x2b
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _023406D0 ; =ov02_0235AAEC
 	ldr r2, [r1, #8]
 	str r0, [r2, #8]
 	ldr r0, [r1, #8]
 	ldr r0, [r0, #8]
-	bl ov02_02346750
-	bl ov02_023467DC
+	bl Dwci_ScreenlInit
+	bl Dwci_ScreenlRenew
 	add r0, sp, #0x16
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _023406D0 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1, #0xc]
 	add r0, sp, #0
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _023406D0 ; =ov02_0235AAEC
 	ldr r2, _023406D4 ; =0x04001008
 	ldr r1, [r1, #8]
@@ -34101,15 +34101,15 @@ _023406CC: .word GX_LoadBG3Scr
 _023406D0: .word ov02_0235AAEC
 _023406D4: .word 0x04001008
 _023406D8: .word 0x0400000A
-	arm_func_end ov02_023404C8
+	arm_func_end SceneSetList_InitGraphics
 
-	arm_func_start ov02_023406DC
-ov02_023406DC: ; 0x023406DC
+	arm_func_start CalcParam
+CalcParam: ; 0x023406DC
 	stmdb sp!, {r3, lr}
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
@@ -34121,62 +34121,62 @@ ov02_023406DC: ; 0x023406DC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02340714: .word ov02_0235AAEC
-	arm_func_end ov02_023406DC
+	arm_func_end CalcParam
 
-	arm_func_start ov02_02340718
-ov02_02340718: ; 0x02340718
+	arm_func_start SceneSetList_ProcInit
+SceneSetList_ProcInit: ; 0x02340718
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x1d
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x1d
-	bl ov02_0234E3D0
-	ldr r0, _02340768 ; =ov02_0234076C
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02340768 ; =SceneSetList_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02340768: .word ov02_0234076C
-	arm_func_end ov02_02340718
+_02340768: .word SceneSetList_ProcInit1
+	arm_func_end SceneSetList_ProcInit
 
-	arm_func_start ov02_0234076C
-ov02_0234076C: ; 0x0234076C
+	arm_func_start SceneSetList_ProcInit1
+SceneSetList_ProcInit1: ; 0x0234076C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0234079C ; =ov02_023407A0
-	bl ov02_02338D68
+	ldr r0, _0234079C ; =SceneSetList_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234079C: .word ov02_023407A0
-	arm_func_end ov02_0234076C
+_0234079C: .word SceneSetList_ProcScene
+	arm_func_end SceneSetList_ProcInit1
 
-	arm_func_start ov02_023407A0
-ov02_023407A0: ; 0x023407A0
+	arm_func_start SceneSetList_ProcScene
+SceneSetList_ProcScene: ; 0x023407A0
 	stmdb sp!, {r3, lr}
-	bl ov02_023407B0
-	bl ov02_02340CD8
+	bl SceneSetList_Input
+	bl SceneSetList_Draw
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_023407A0
+	arm_func_end SceneSetList_ProcScene
 
-	arm_func_start ov02_023407B0
-ov02_023407B0: ; 0x023407B0
+	arm_func_start SceneSetList_Input
+SceneSetList_Input: ; 0x023407B0
 	stmdb sp!, {r3, lr}
 	ldr r0, _02340A20 ; =ov02_0235AAEC
 	ldr r1, [r0, #8]
@@ -34185,34 +34185,34 @@ ov02_023407B0: ; 0x023407B0
 	ldreqb r0, [r1, #0x45]
 	cmpeq r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02340A30
+	bl InputWinButton
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _023407FC
 	ldr r0, _02340A20 ; =ov02_0235AAEC
 	ldrb r0, [r0]
-	bl ov02_02340AB4
+	bl PushWinButton
 	ldmia sp!, {r3, pc}
 _023407FC:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02340830
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r1, _02340A20 ; =ov02_0235AAEC
-	ldr r0, _02340A24 ; =ov02_02340F34
+	ldr r0, _02340A24 ; =SceneSetList_EndScene
 	ldr r1, [r1, #8]
 	mov r2, #0xd
 	strb r2, [r1, #0x40]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02340830:
 	mov r0, #0x200
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _023408A8
 	ldr r0, _02340A20 ; =ov02_0235AAEC
@@ -34224,7 +34224,7 @@ _02340830:
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02340A20 ; =ov02_0235AAEC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -34232,19 +34232,19 @@ _02340830:
 	ldmia sp!, {r3, pc}
 _0234087C:
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _02340A28 ; =ov02_02341F7C
+	ldr r1, _02340A28 ; =SceneSetList_TaskDown
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02340A20 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1, #0x38]
 	ldmia sp!, {r3, pc}
 _023408A8:
 	mov r0, #0x200
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	beq _023408CC
 	ldr r0, _02340A20 ; =ov02_0235AAEC
@@ -34254,7 +34254,7 @@ _023408A8:
 	ldmia sp!, {r3, pc}
 _023408CC:
 	mov r0, #0x100
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02340944
 	ldr r0, _02340A20 ; =ov02_0235AAEC
@@ -34266,7 +34266,7 @@ _023408CC:
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02340A20 ; =ov02_0235AAEC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -34274,19 +34274,19 @@ _023408CC:
 	ldmia sp!, {r3, pc}
 _02340918:
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _02340A2C ; =ov02_02341EB4
+	ldr r1, _02340A2C ; =SceneSetList_TaskUp
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02340A20 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1, #0x38]
 	ldmia sp!, {r3, pc}
 _02340944:
 	mov r0, #0x100
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	beq _02340968
 	ldr r0, _02340A20 ; =ov02_0235AAEC
@@ -34296,15 +34296,15 @@ _02340944:
 	ldmia sp!, {r3, pc}
 _02340968:
 	mov r0, #0x40
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02340984
 	mov r0, #1
-	bl ov02_0234225C
+	bl SceneSetList_MoveFocus
 	ldmia sp!, {r3, pc}
 _02340984:
 	mov r0, #0x40
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	beq _023409A8
 	ldr r0, _02340A20 ; =ov02_0235AAEC
@@ -34314,15 +34314,15 @@ _02340984:
 	ldmia sp!, {r3, pc}
 _023409A8:
 	mov r0, #0x80
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _023409C4
 	mov r0, #3
-	bl ov02_0234225C
+	bl SceneSetList_MoveFocus
 	ldmia sp!, {r3, pc}
 _023409C4:
 	mov r0, #0x80
-	bl ov02_0234EC3C
+	bl Dwci_IptlCheckRelease
 	cmp r0, #0
 	beq _023409E8
 	ldr r0, _02340A20 ; =ov02_0235AAEC
@@ -34332,46 +34332,46 @@ _023409C4:
 	ldmia sp!, {r3, pc}
 _023409E8:
 	mov r0, #0x20
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02340A04
 	mov r0, #0
-	bl ov02_0234225C
+	bl SceneSetList_MoveFocus
 	ldmia sp!, {r3, pc}
 _02340A04:
 	mov r0, #0x10
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #2
-	bl ov02_0234225C
+	bl SceneSetList_MoveFocus
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02340A20: .word ov02_0235AAEC
-_02340A24: .word ov02_02340F34
-_02340A28: .word ov02_02341F7C
-_02340A2C: .word ov02_02341EB4
-	arm_func_end ov02_023407B0
+_02340A24: .word SceneSetList_EndScene
+_02340A28: .word SceneSetList_TaskDown
+_02340A2C: .word SceneSetList_TaskUp
+	arm_func_end SceneSetList_Input
 
-	arm_func_start ov02_02340A30
-ov02_02340A30: ; 0x02340A30
+	arm_func_start InputWinButton
+InputWinButton: ; 0x02340A30
 	stmdb sp!, {r4, lr}
-	bl ov02_02347518
-	bl ov02_02341BD8
+	bl Dwci_SettignlGet
+	bl SceneSetList_IsPush
 	mov r4, r0
 	cmp r4, #0xe
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov02_02341644
+	bl SceneSetList_IsEnablePush
 	cmp r0, #0
 	bne _02340A68
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _02340A68:
 	mov r0, r4
-	bl ov02_0234222C
+	bl SceneSetList_ApplyForcus1
 	cmp r4, #8
 	addls pc, pc, r4, lsl #2
 	b _02340AA4
@@ -34386,24 +34386,24 @@ _02340A7C: ; jump table
 	b _02340AA0 ; case 7
 	b _02340AA0 ; case 8
 _02340AA0:
-	bl ov02_023425D4
+	bl SceneSetList_PushButtonYesNo
 _02340AA4:
 	mov r0, r4
-	bl ov02_02340AB4
+	bl PushWinButton
 	mov r0, #1
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_02340A30
+	arm_func_end InputWinButton
 
-	arm_func_start ov02_02340AB4
-ov02_02340AB4: ; 0x02340AB4
+	arm_func_start PushWinButton
+PushWinButton: ; 0x02340AB4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
-	bl ov02_02341644
+	bl SceneSetList_IsEnablePush
 	cmp r0, #0
 	bne _02340ADC
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _02340ADC:
@@ -34422,22 +34422,22 @@ _02340AE8: ; jump table
 	b _02340B30 ; case 8
 _02340B0C:
 	mov r0, #6
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	sub r0, r4, #2
 	teq r0, #1
 	movne r0, #1
 	moveq r0, #0
-	bl ov02_02340C34
+	bl SceneSetList_PushIpAuto
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _02340B30:
 	mov r0, #6
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	sub r0, r4, #7
 	teq r0, #1
 	movne r0, #1
 	moveq r0, #0
-	bl ov02_02340CA0
+	bl SceneSetList_PushDnsAuto
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _02340B54:
@@ -34447,69 +34447,69 @@ _02340B54:
 	cmp r1, #1
 	strb r4, [r0, #0x40]
 	bhi _02340BD0
-	bl ov02_0234254C
-	bl ov02_02342698
+	bl SceneSetList_DispPushButton
+	bl SceneSetList_IsCorrect
 	cmp r0, #0
 	bne _02340BB0
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r1, #1
 	mov ip, #0
 	mov r2, r1
 	sub r3, r1, #2
 	mov r0, #6
 	str ip, [sp]
-	bl ov02_02349394
-	ldr r0, _02340C28 ; =ov02_02342738
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	ldr r0, _02340C28 ; =SceneSetList_ProcError
+	bl Dwci_ChangeScene
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _02340BB0:
 	cmp r4, #0xb
 	bne _02340BC4
 	mov r0, #6
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _02340C10
 _02340BC4:
 	mov r0, #0xe
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _02340C10
 _02340BD0:
 	cmp r4, #0xd
 	bne _02340BE8
-	bl ov02_0234254C
+	bl SceneSetList_DispPushButton
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _02340C10
 _02340BE8:
 	mov r0, #6
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02340C2C ; =ov02_02352BD0
 	ldrb r0, [r0, r4]
-	bl ov02_02341E4C
+	bl SceneSetList_CalcColumnIdx
 	mov r2, r0
 	mov r0, #0
 	mov r1, #1
-	bl ov02_023416D8
-	bl ov02_023419C8
+	bl SceneSetList_DispObj
+	bl SceneSetList_SetOffset
 _02340C10:
-	bl ov02_02346AC4
-	ldr r0, _02340C30 ; =ov02_02340F34
-	bl ov02_02338D68
+	bl Dwci_SBlDisable
+	ldr r0, _02340C30 ; =SceneSetList_EndScene
+	bl Dwci_ChangeScene
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _02340C24: .word ov02_0235AAEC
-_02340C28: .word ov02_02342738
+_02340C28: .word SceneSetList_ProcError
 _02340C2C: .word ov02_02352BD0
-_02340C30: .word ov02_02340F34
-	arm_func_end ov02_02340AB4
+_02340C30: .word SceneSetList_EndScene
+	arm_func_end PushWinButton
 
-	arm_func_start ov02_02340C34
-ov02_02340C34: ; 0x02340C34
+	arm_func_start SceneSetList_PushIpAuto
+SceneSetList_PushIpAuto: ; 0x02340C34
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	ldrb r1, [r0, #0xf5]
 	cmp r1, r4
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -34530,20 +34530,20 @@ _02340C70:
 	strb r2, [r0, #0x43]
 _02340C84:
 	mov r0, r4
-	bl ov02_0234752C
+	bl Dwci_SettinglSetIpAuto
 	mov r0, r5
-	bl ov02_02347540
-	bl ov02_02341294
+	bl Dwci_SettinglSetDnsAuto
+	bl SceneSetList_DrawWindow
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02340C9C: .word ov02_0235AAEC
-	arm_func_end ov02_02340C34
+	arm_func_end SceneSetList_PushIpAuto
 
-	arm_func_start ov02_02340CA0
-ov02_02340CA0: ; 0x02340CA0
+	arm_func_start SceneSetList_PushDnsAuto
+SceneSetList_PushDnsAuto: ; 0x02340CA0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	ldrb r0, [r0, #0xf6]
 	cmp r0, r4
 	ldmeqia sp!, {r4, pc}
@@ -34551,15 +34551,15 @@ ov02_02340CA0: ; 0x02340CA0
 	mov r0, r4
 	ldr r1, [r1, #8]
 	strb r4, [r1, #0x43]
-	bl ov02_02347540
-	bl ov02_02341294
+	bl Dwci_SettinglSetDnsAuto
+	bl SceneSetList_DrawWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02340CD4: .word ov02_0235AAEC
-	arm_func_end ov02_02340CA0
+	arm_func_end SceneSetList_PushDnsAuto
 
-	arm_func_start ov02_02340CD8
-ov02_02340CD8: ; 0x02340CD8
+	arm_func_start SceneSetList_Draw
+SceneSetList_Draw: ; 0x02340CD8
 	stmdb sp!, {r3, lr}
 	ldr r0, _02340F24 ; =ov02_0235AAEC
 	ldr r1, [r0, #8]
@@ -34570,7 +34570,7 @@ ov02_02340CD8: ; 0x02340CD8
 	cmp r0, #0
 	subne r0, r0, #1
 	strneb r0, [r1, #0x41]
-	bl ov02_02346A8C
+	bl Dwci_SBlGetState
 	cmp r0, #7
 	addls pc, pc, r0, lsl #2
 	ldmia sp!, {r3, pc}
@@ -34595,8 +34595,8 @@ _02340D44:
 	ldrb r0, [r0, #0x41]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0233519C
-	bl ov02_02346A78
+	bl Dwci_FocuslDelete
+	bl Dwci_SBlGet
 	mov r1, #0x91
 	mul r1, r0, r1
 	ldr r2, _02340F28 ; =0x094F2095
@@ -34605,7 +34605,7 @@ _02340D44:
 	ldr r1, _02340F24 ; =ov02_0235AAEC
 	add r3, r0, r3, asr #1
 	strh r3, [r1, #4]
-	bl ov02_02341294
+	bl SceneSetList_DrawWindow
 	ldr r0, _02340F24 ; =ov02_0235AAEC
 	mov r1, #4
 	ldr r0, [r0, #8]
@@ -34616,7 +34616,7 @@ _02340D98:
 	mov r1, #0
 	ldr r0, [r0, #8]
 	strb r1, [r0, #0x45]
-	bl ov02_02346A78
+	bl Dwci_SBlGet
 	mov r1, #0x91
 	mul r1, r0, r1
 	ldr r2, _02340F28 ; =0x094F2095
@@ -34626,32 +34626,32 @@ _02340D98:
 	add r3, r0, r3, asr #1
 	mov r0, #0x13
 	strh r3, [r1, #4]
-	bl ov02_023480E0
-	bl ov02_02341294
+	bl Dwci_SndlPlay
+	bl SceneSetList_DrawWindow
 	ldr r0, _02340F24 ; =ov02_0235AAEC
 	mov r1, #0x1d
 	ldrh r0, [r0, #4]
 	bl FX_ModS32
 	cmp r0, #0
 	bne _02340DF8
-	bl ov02_0234217C
+	bl SceneSetList_ApplyForcus
 	ldmia sp!, {r3, pc}
 _02340DF8:
 	cmp r0, #0x10
 	mov r0, #0
 	mov r3, #0x78
 	bge _02340E24
-	ldr r1, _02340F2C ; =ov02_02341EB4
+	ldr r1, _02340F2C ; =SceneSetList_TaskUp
 	mov r2, r0
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02340F24 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1, #0x38]
 	ldmia sp!, {r3, pc}
 _02340E24:
-	ldr r1, _02340F30 ; =ov02_02341F7C
+	ldr r1, _02340F30 ; =SceneSetList_TaskDown
 	mov r2, r0
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02340F24 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1, #0x38]
@@ -34666,7 +34666,7 @@ _02340E40:
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02340F24 ; =ov02_0235AAEC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -34674,12 +34674,12 @@ _02340E40:
 	ldmia sp!, {r3, pc}
 _02340E7C:
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _02340F2C ; =ov02_02341EB4
+	ldr r1, _02340F2C ; =SceneSetList_TaskUp
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02340F24 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1, #0x38]
@@ -34694,7 +34694,7 @@ _02340EA8:
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02340F24 ; =ov02_0235AAEC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -34702,12 +34702,12 @@ _02340EA8:
 	ldmia sp!, {r3, pc}
 _02340EE4:
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _02340F30 ; =ov02_02341F7C
+	ldr r1, _02340F30 ; =SceneSetList_TaskDown
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02340F24 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1, #0x38]
@@ -34721,75 +34721,75 @@ _02340F10:
 	.align 2, 0
 _02340F24: .word ov02_0235AAEC
 _02340F28: .word 0x094F2095
-_02340F2C: .word ov02_02341EB4
-_02340F30: .word ov02_02341F7C
-	arm_func_end ov02_02340CD8
+_02340F2C: .word SceneSetList_TaskUp
+_02340F30: .word SceneSetList_TaskDown
+	arm_func_end SceneSetList_Draw
 
-	arm_func_start ov02_02340F34
-ov02_02340F34: ; 0x02340F34
+	arm_func_start SceneSetList_EndScene
+SceneSetList_EndScene: ; 0x02340F34
 	stmdb sp!, {r3, lr}
-	bl ov02_02346AC4
+	bl Dwci_SBlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _02340F50 ; =ov02_02340F54
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _02340F50 ; =SceneSetList_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02340F50: .word ov02_02340F54
-	arm_func_end ov02_02340F34
+_02340F50: .word SceneSetList_EndScene1
+	arm_func_end SceneSetList_EndScene
 
-	arm_func_start ov02_02340F54
-ov02_02340F54: ; 0x02340F54
+	arm_func_start SceneSetList_EndScene1
+SceneSetList_EndScene1: ; 0x02340F54
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x1d
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02340F9C ; =ov02_02340FA0
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02340F9C ; =SceneSetList_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02340F9C: .word ov02_02340FA0
-	arm_func_end ov02_02340F54
+_02340F9C: .word SceneSetList_EndScene2
+	arm_func_end SceneSetList_EndScene1
 
-	arm_func_start ov02_02340FA0
-ov02_02340FA0: ; 0x02340FA0
+	arm_func_start SceneSetList_EndScene2
+SceneSetList_EndScene2: ; 0x02340FA0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r1, _02341268 ; =ov02_0235AAEC
 	mov r0, #0
 	ldr r1, [r1, #8]
 	ldr r1, [r1]
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r1, _02341268 ; =ov02_0235AAEC
 	mov r0, #1
 	ldr r1, [r1, #8]
 	ldr r1, [r1, #0x3c]
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r4, _02341268 ; =ov02_0235AAEC
 	mov r5, #0
 _02340FF4:
 	ldr r0, [r4, #8]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0x18]
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 	add r5, r5, #1
 	cmp r5, #7
 	blt _02340FF4
@@ -34798,43 +34798,43 @@ _02340FF4:
 	ldr r0, [r0, #0x34]
 	cmp r0, #0
 	beq _02341028
-	bl ov02_0234F2C0
+	bl Dwci_ObjlDelete
 _02341028:
-	bl ov02_02346A3C
+	bl Dwci_SBlEnd
 	mov r0, #0
-	bl ov02_0234E02C
-	bl ov02_0233519C
+	bl Dwci_FntlDeleteBgLcd
+	bl Dwci_FocuslDelete
 	ldr r0, _02341268 ; =ov02_0235AAEC
 	ldr r0, [r0, #8]
 	ldrb r0, [r0, #0x40]
 	cmp r0, #0xc
 	beq _02341050
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 _02341050:
-	bl ov02_023467B0
+	bl Dwci_ScreenlEnd
 	ldr r0, _02341268 ; =ov02_0235AAEC
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #8]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	ldr r4, _02341268 ; =ov02_0235AAEC
 	mov r5, #0
 _0234106C:
 	ldr r0, [r4, #8]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0xc]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	add r5, r5, #1
 	cmp r5, #2
 	blt _0234106C
 	ldr r0, _0234126C ; =ov02_02353A58
 	ldr r1, _02341270 ; =GX_LoadOBJPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x1d
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _02341274 ; =0x04000010
 	mov r1, #0
 	str r1, [r0]
@@ -34866,12 +34866,12 @@ _023410E8: ; jump table
 	b _02341204 ; case 12
 	b _02341218 ; case 13
 _02341120:
-	bl ov02_02338DB4
+	bl Dwci_SetParam2
 	mov r0, #2
 	mov r1, #0
-	bl ov02_02338D78
-	ldr r0, _02341278 ; =ov02_0233E488
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02341278 ; =Dwci_SceneSetEdit32
+	bl Dwci_ChangeScene
 	b _0234125C
 _0234113C:
 	sub r4, r0, #4
@@ -34879,15 +34879,15 @@ _0234113C:
 	subhs r4, r4, #2
 	mov r0, #2
 	mov r1, #0
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, r4
 	mov r1, #0
-	bl ov02_02338DB4
-	ldr r0, _0234127C ; =ov02_0233EFC8
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _0234127C ; =Dwci_SceneSetEditAddress
+	bl Dwci_ChangeScene
 	b _0234125C
 _0234116C:
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	mov r4, r0
 	add r0, r4, #0xf0
 	bl Dwci_BackuplConvMaskCidr
@@ -34920,18 +34920,18 @@ _023411C4:
 _023411E0:
 	mov r0, #2
 	mov r1, #0
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338DB4
-	ldr r0, _02341280 ; =ov02_023452A8
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _02341280 ; =Dwci_SceneSetTest
+	bl Dwci_ChangeScene
 	b _0234125C
 _02341204:
 	mov r0, r1
-	bl ov02_02338D78
-	ldr r0, _02341284 ; =ov02_023427A8
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02341284 ; =Dwci_SceneSetListSave
+	bl Dwci_ChangeScene
 	b _0234125C
 _02341218:
 	ldrb r0, [r2, #1]
@@ -34939,39 +34939,39 @@ _02341218:
 	bne _0234123C
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _02341288 ; =ov02_02343DB0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02341288 ; =Dwci_SceneSetSelectAp
+	bl Dwci_ChangeScene
 	b _0234125C
 _0234123C:
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	ldrb r0, [r0, #0xf4]
-	bl ov02_0234793C
+	bl Dwci_SettinglSetSetting
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0234128C ; =ov02_02344AF0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0234128C ; =Dwci_SceneSetSelectWay
+	bl Dwci_ChangeScene
 _0234125C:
 	ldr r0, _02341290 ; =ov02_0235AAF4
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02341268: .word ov02_0235AAEC
 _0234126C: .word ov02_02353A58
 _02341270: .word GX_LoadOBJPltt
 _02341274: .word 0x04000010
-_02341278: .word ov02_0233E488
-_0234127C: .word ov02_0233EFC8
-_02341280: .word ov02_023452A8
-_02341284: .word ov02_023427A8
-_02341288: .word ov02_02343DB0
-_0234128C: .word ov02_02344AF0
+_02341278: .word Dwci_SceneSetEdit32
+_0234127C: .word Dwci_SceneSetEditAddress
+_02341280: .word Dwci_SceneSetTest
+_02341284: .word Dwci_SceneSetListSave
+_02341288: .word Dwci_SceneSetSelectAp
+_0234128C: .word Dwci_SceneSetSelectWay
 _02341290: .word ov02_0235AAF4
-	arm_func_end ov02_02340FA0
+	arm_func_end SceneSetList_EndScene2
 
-	arm_func_start ov02_02341294
-ov02_02341294: ; 0x02341294
+	arm_func_start SceneSetList_DrawWindow
+SceneSetList_DrawWindow: ; 0x02341294
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _0234134C ; =ov02_0235AAEC
 	mov r1, #0x1d
@@ -34982,13 +34982,13 @@ ov02_02341294: ; 0x02341294
 	ldr r0, [r1, #8]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
-	bl ov02_0234E2A8
+	bl Dwci_FntlClear
 	mov r5, r4
 	mov r6, #0
 _023412C8:
 	mov r0, r5
 	mov r1, r6
-	bl ov02_02341354
+	bl SceneSetList_DrawColumnChar
 	add r6, r6, #1
 	cmp r6, #5
 	add r5, r5, #1
@@ -35003,35 +35003,35 @@ _023412C8:
 	add r0, r2, r0, lsl #1
 	mov r2, #0x1e
 	mov r3, #0x13
-	bl ov02_023467F4
+	bl Dwci_ScreenlCopy
 	mov r5, #0
 _02341314:
 	mov r0, r4
 	mov r1, r5
-	bl ov02_023414F0
+	bl SceneSetList_DrawColumnObj
 	add r5, r5, #1
 	cmp r5, #5
 	add r4, r4, #1
 	blt _02341314
-	bl ov02_023467DC
+	bl Dwci_ScreenlRenew
 	ldr r0, _0234134C ; =ov02_0235AAEC
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0x14]
-	bl ov02_0234E354
-	bl ov02_023419C8
+	bl Dwci_FntlRenewBg
+	bl SceneSetList_SetOffset
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0234134C: .word ov02_0235AAEC
 _02341350: .word ov02_02352B12
-	arm_func_end ov02_02341294
+	arm_func_end SceneSetList_DrawWindow
 
-	arm_func_start ov02_02341354
-ov02_02341354: ; 0x02341354
+	arm_func_start SceneSetList_DrawColumnChar
+SceneSetList_DrawColumnChar: ; 0x02341354
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x24
 	mov r6, r0
 	mov r5, r1
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	cmp r6, #8
 	addls pc, pc, r6, lsl #2
 	b _023414E8
@@ -35048,7 +35048,7 @@ _02341374: ; jump table
 _02341398:
 	mov r1, r5
 	add r0, r0, #0x40
-	bl ov02_023417DC
+	bl SceneSetList_DrawString
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _023413AC:
@@ -35091,7 +35091,7 @@ _023413F0:
 	bl memset
 	add r0, sp, #0
 	mov r1, r5
-	bl ov02_023417DC
+	bl SceneSetList_DrawString
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _0234143C:
@@ -35101,7 +35101,7 @@ _0234143C:
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	mov r1, r5
 	add r0, r0, #0xc0
-	bl ov02_02341930
+	bl SceneSetList_DrawAddress
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _02341460:
@@ -35111,7 +35111,7 @@ _02341460:
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	mov r1, r5
 	add r0, r0, #0xf0
-	bl ov02_02341930
+	bl SceneSetList_DrawAddress
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _02341484:
@@ -35121,7 +35121,7 @@ _02341484:
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	mov r1, r5
 	add r0, r0, #0xc4
-	bl ov02_02341930
+	bl SceneSetList_DrawAddress
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _023414A8:
@@ -35131,7 +35131,7 @@ _023414A8:
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	mov r1, r5
 	add r0, r0, #0xc8
-	bl ov02_02341930
+	bl SceneSetList_DrawAddress
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
 _023414CC:
@@ -35141,18 +35141,18 @@ _023414CC:
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	mov r1, r5
 	add r0, r0, #0xcc
-	bl ov02_02341930
+	bl SceneSetList_DrawAddress
 _023414E8:
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov02_02341354
+	arm_func_end SceneSetList_DrawColumnChar
 
-	arm_func_start ov02_023414F0
-ov02_023414F0: ; 0x023414F0
+	arm_func_start SceneSetList_DrawColumnObj
+SceneSetList_DrawColumnObj: ; 0x023414F0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	mov r6, r1
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	cmp r4, #8
 	addls pc, pc, r4, lsl #2
 	b _02341624
@@ -35170,7 +35170,7 @@ _02341530:
 	mov r4, #0
 	mov r0, r4
 	mov r5, r4
-	bl ov02_02341644
+	bl SceneSetList_IsEnablePush
 	cmp r0, #0
 	moveq r5, #2
 	b _0234162C
@@ -35192,7 +35192,7 @@ _0234154C:
 	cmp r2, #0
 	movne r1, #1
 	mov r2, r6
-	bl ov02_023416D8
+	bl SceneSetList_DispObj
 	b _0234162C
 _02341598:
 	ldrb r0, [r0, #0xf5]
@@ -35224,7 +35224,7 @@ _023415E0:
 	cmp r2, #0
 	movne r1, #1
 	mov r2, r6
-	bl ov02_023416D8
+	bl SceneSetList_DispObj
 	b _0234162C
 _0234160C:
 	ldrb r0, [r0, #0xf6]
@@ -35240,17 +35240,17 @@ _0234162C:
 	mov r0, r4
 	mov r1, r5
 	mov r2, r6
-	bl ov02_023416D8
+	bl SceneSetList_DispObj
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02341640: .word ov02_0235AAEC
-	arm_func_end ov02_023414F0
+	arm_func_end SceneSetList_DrawColumnObj
 
-	arm_func_start ov02_02341644
-ov02_02341644: ; 0x02341644
+	arm_func_start SceneSetList_IsEnablePush
+SceneSetList_IsEnablePush: ; 0x02341644
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	cmp r4, #0xa
 	mov r1, #1
 	addls pc, pc, r4, lsl #2
@@ -35291,10 +35291,10 @@ _023416C4:
 _023416D0:
 	mov r0, r1
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_02341644
+	arm_func_end SceneSetList_IsEnablePush
 
-	arm_func_start ov02_023416D8
-ov02_023416D8: ; 0x023416D8
+	arm_func_start SceneSetList_DispObj
+SceneSetList_DispObj: ; 0x023416D8
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0xc
 	ldr r3, _023417D0 ; =ov02_0235AAEC
@@ -35315,7 +35315,7 @@ ov02_023416D8: ; 0x023416D8
 	add r4, r3, r2, lsl #2
 	bhi _0234174C
 	mov r0, r2
-	bl ov02_02341E90
+	bl SceneSetList_CalcIdxColumn
 	cmp r0, #2
 	ldrne r0, _023417D0 ; =ov02_0235AAEC
 	ldrne r0, [r0, #8]
@@ -35333,7 +35333,7 @@ _0234174C:
 	cmp r1, #0
 	beq _023417B4
 	mov r0, #0
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	add r0, sp, #0
 	mov r1, r6, lsl #1
 	ldrh r2, [r0, r1]
@@ -35363,10 +35363,10 @@ _023417B4:
 _023417D0: .word ov02_0235AAEC
 _023417D4: .word ov02_02352B02
 _023417D8: .word 0xFE00FF00
-	arm_func_end ov02_023416D8
+	arm_func_end SceneSetList_DispObj
 
-	arm_func_start ov02_023417DC
-ov02_023417DC: ; 0x023417DC
+	arm_func_start SceneSetList_DrawString
+SceneSetList_DrawString: ; 0x023417DC
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x30
 	mov r6, r0
@@ -35377,7 +35377,7 @@ ov02_023417DC: ; 0x023417DC
 	bl MI_CpuFill8
 	mov r0, r6
 	mov r1, #0x20
-	bl ov02_0234F59C
+	bl Dwci_StrlNLen
 	mov r4, r0
 	cmp r4, #0x10
 	movle lr, r4
@@ -35414,7 +35414,7 @@ _0234184C:
 	mov r2, r5
 	mov r1, #0x48
 	mov r3, #2
-	bl ov02_0234E13C
+	bl Dwci_FntlDrawStringEx
 	cmp r4, #0x10
 	addle sp, sp, #0x30
 	ldmleia sp!, {r4, r5, r6, pc}
@@ -35451,16 +35451,16 @@ _023418EC:
 	mov r1, #0x48
 	ldr r0, [r0, #0x14]
 	mov r3, #2
-	bl ov02_0234E13C
+	bl Dwci_FntlDrawStringEx
 	add sp, sp, #0x30
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02341928: .word 0x0000E01D
 _0234192C: .word ov02_0235AAEC
-	arm_func_end ov02_023417DC
+	arm_func_end SceneSetList_DrawString
 
-	arm_func_start ov02_02341930
-ov02_02341930: ; 0x02341930
+	arm_func_start SceneSetList_DrawAddress
+SceneSetList_DrawAddress: ; 0x02341930
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x3c
 	mov ip, r0
@@ -35479,7 +35479,7 @@ ov02_02341930: ; 0x02341930
 	add r0, sp, #0x1c
 	add r1, sp, #0xc
 	mov r2, #0x10
-	bl ov02_0234F5C8
+	bl swprintf_subroutine
 	mov r2, #7
 	mov r0, #0x1d
 	mul r1, r4, r0
@@ -35494,16 +35494,16 @@ ov02_02341930: ; 0x02341930
 	mov r1, #0x5f
 	ldr r0, [r0, #0x14]
 	mov r3, #2
-	bl ov02_0234E13C
+	bl Dwci_FntlDrawStringEx
 	add sp, sp, #0x3c
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _023419C0: .word ov02_02353A70
 _023419C4: .word ov02_0235AAEC
-	arm_func_end ov02_02341930
+	arm_func_end SceneSetList_DrawAddress
 
-	arm_func_start ov02_023419C8
-ov02_023419C8: ; 0x023419C8
+	arm_func_start SceneSetList_SetOffset
+SceneSetList_SetOffset: ; 0x023419C8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	ldr r0, _02341BCC ; =ov02_0235AAEC
@@ -35643,14 +35643,14 @@ _02341BB4:
 _02341BCC: .word ov02_0235AAEC
 _02341BD0: .word 0xFE00FF00
 _02341BD4: .word 0x01FF0000
-	arm_func_end ov02_023419C8
+	arm_func_end SceneSetList_SetOffset
 
-	arm_func_start ov02_02341BD8
-ov02_02341BD8: ; 0x02341BD8
+	arm_func_start SceneSetList_IsPush
+SceneSetList_IsPush: ; 0x02341BD8
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	ldr r0, _02341E38 ; =ov02_02352F34
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	addeq sp, sp, #8
 	moveq r0, #0xe
@@ -35676,7 +35676,7 @@ _02341C38:
 	cmpne r5, #6
 	beq _02341C60
 	mov r0, r4
-	bl ov02_0234EE9C
+	bl Dwci_TPlCheckATrigger
 	cmp r0, #0
 	ldrne r0, _02341E44 ; =ov02_02352BB8
 	addne sp, sp, #8
@@ -35712,7 +35712,7 @@ _02341C90:
 	strh r3, [sp, #4]
 	strh r2, [sp, #6]
 	strh r1, [sp, #2]
-	bl ov02_0234EE9C
+	bl Dwci_TPlCheckATrigger
 	cmp r0, #0
 	addne sp, sp, #8
 	movne r0, #2
@@ -35729,7 +35729,7 @@ _02341C90:
 	strh r3, [sp, #4]
 	strh r2, [sp, #6]
 	strh r1, [sp, #2]
-	bl ov02_0234EE9C
+	bl Dwci_TPlCheckATrigger
 	cmp r0, #0
 	beq _02341D3C
 	add sp, sp, #8
@@ -35763,7 +35763,7 @@ _02341D50:
 	strh r3, [sp, #4]
 	strh r2, [sp, #6]
 	strh r1, [sp, #2]
-	bl ov02_0234EE9C
+	bl Dwci_TPlCheckATrigger
 	cmp r0, #0
 	addne sp, sp, #8
 	movne r0, #7
@@ -35780,7 +35780,7 @@ _02341D50:
 	strh r3, [sp, #4]
 	strh r2, [sp, #6]
 	strh r1, [sp, #2]
-	bl ov02_0234EE9C
+	bl Dwci_TPlCheckATrigger
 	cmp r0, #0
 	beq _02341DFC
 	add sp, sp, #8
@@ -35796,7 +35796,7 @@ _02341DFC:
 	mov r5, #0
 _02341E04:
 	mov r0, r4
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	addne sp, sp, #8
 	addne r0, r5, #0xb
@@ -35814,10 +35814,10 @@ _02341E3C: .word ov02_0235AAEC
 _02341E40: .word ov02_02352AD8
 _02341E44: .word ov02_02352BB8
 _02341E48: .word ov02_02352B66
-	arm_func_end ov02_02341BD8
+	arm_func_end SceneSetList_IsPush
 
-	arm_func_start ov02_02341E4C
-ov02_02341E4C: ; 0x02341E4C
+	arm_func_start SceneSetList_CalcColumnIdx
+SceneSetList_CalcColumnIdx: ; 0x02341E4C
 	stmdb sp!, {r4, lr}
 	ldr r1, _02341E8C ; =ov02_0235AAEC
 	mov r4, r0
@@ -35837,10 +35837,10 @@ _02341E68:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02341E8C: .word ov02_0235AAEC
-	arm_func_end ov02_02341E4C
+	arm_func_end SceneSetList_CalcColumnIdx
 
-	arm_func_start ov02_02341E90
-ov02_02341E90: ; 0x02341E90
+	arm_func_start SceneSetList_CalcIdxColumn
+SceneSetList_CalcIdxColumn: ; 0x02341E90
 	stmdb sp!, {r4, lr}
 	ldr r1, _02341EB0 ; =ov02_0235AAEC
 	mov r4, r0
@@ -35851,14 +35851,14 @@ ov02_02341E90: ; 0x02341E90
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02341EB0: .word ov02_0235AAEC
-	arm_func_end ov02_02341E90
+	arm_func_end SceneSetList_CalcIdxColumn
 
-	arm_func_start ov02_02341EB4
-ov02_02341EB4: ; 0x02341EB4
+	arm_func_start SceneSetList_TaskUp
+SceneSetList_TaskUp: ; 0x02341EB4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl ov02_02346AC4
-	bl ov02_0233519C
+	bl Dwci_SBlDisable
+	bl Dwci_FocuslDelete
 	ldr r0, _02341F74 ; =ov02_0235AAEC
 	ldrh r1, [r0, #4]
 	cmp r1, #6
@@ -35872,7 +35872,7 @@ ov02_02341EB4: ; 0x02341EB4
 	mov r5, r0
 	cmp r5, #0x17
 	bne _02341F00
-	bl ov02_02341294
+	bl SceneSetList_DrawWindow
 	ldmia sp!, {r3, r4, r5, pc}
 _02341F00:
 	ble _02341F1C
@@ -35883,7 +35883,7 @@ _02341F00:
 	add r1, r2, r1
 	strh r1, [r0, #4]
 _02341F1C:
-	bl ov02_023419C8
+	bl SceneSetList_SetOffset
 	cmp r5, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r1, _02341F74 ; =ov02_0235AAEC
@@ -35895,27 +35895,27 @@ _02341F1C:
 	add r0, r3, r0
 	mov r1, r3, lsr #0x1f
 	add r0, r1, r0, asr #7
-	bl ov02_02346AA0
-	bl ov02_02346AAC
-	bl ov02_0234217C
+	bl Scrollbar_Disp__023472CC
+	bl Dwci_SBlEnable
+	bl SceneSetList_ApplyForcus
 	ldr r0, _02341F74 ; =ov02_0235AAEC
 	mov r1, r4
 	ldr r2, [r0, #8]
 	mov r0, #0
 	str r0, [r2, #0x38]
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02341F74: .word ov02_0235AAEC
 _02341F78: .word 0xE1FC780F
-	arm_func_end ov02_02341EB4
+	arm_func_end SceneSetList_TaskUp
 
-	arm_func_start ov02_02341F7C
-ov02_02341F7C: ; 0x02341F7C
+	arm_func_start SceneSetList_TaskDown
+SceneSetList_TaskDown: ; 0x02341F7C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_02346AC4
-	bl ov02_0233519C
+	bl Dwci_SBlDisable
+	bl Dwci_FocuslDelete
 	ldr r0, _02342018 ; =ov02_0235AAEC
 	mov r1, #0x1d
 	ldrh r2, [r0, #4]
@@ -35925,14 +35925,14 @@ ov02_02341F7C: ; 0x02341F7C
 	bl FX_ModS32
 	cmp r0, #6
 	blt _02341FB8
-	bl ov02_023419C8
+	bl SceneSetList_SetOffset
 	ldmia sp!, {r4, pc}
 _02341FB8:
 	ldr r1, _02342018 ; =ov02_0235AAEC
 	ldrh r2, [r1, #4]
 	sub r0, r2, r0
 	strh r0, [r1, #4]
-	bl ov02_02341294
+	bl SceneSetList_DrawWindow
 	ldr r1, _02342018 ; =ov02_0235AAEC
 	mov r0, #0x37
 	ldrh r1, [r1, #4]
@@ -35942,23 +35942,23 @@ _02341FB8:
 	add r0, r3, r0
 	mov r1, r3, lsr #0x1f
 	add r0, r1, r0, asr #7
-	bl ov02_02346AA0
-	bl ov02_02346AAC
-	bl ov02_0234217C
+	bl Scrollbar_Disp__023472CC
+	bl Dwci_SBlEnable
+	bl SceneSetList_ApplyForcus
 	ldr r0, _02342018 ; =ov02_0235AAEC
 	mov r1, r4
 	ldr r2, [r0, #8]
 	mov r0, #0
 	str r0, [r2, #0x38]
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02342018: .word ov02_0235AAEC
 _0234201C: .word 0xE1FC780F
-	arm_func_end ov02_02341F7C
+	arm_func_end SceneSetList_TaskDown
 
-	arm_func_start ov02_02342020
-ov02_02342020: ; 0x02342020
+	arm_func_start SceneSetList_TaskVBlank
+SceneSetList_TaskVBlank: ; 0x02342020
 	stmdb sp!, {r4, lr}
 	ldr r0, _02342094 ; =ov02_0235AAEC
 	ldr r1, [r0, #8]
@@ -35993,10 +35993,10 @@ _02342094: .word ov02_0235AAEC
 _02342098: .word ov02_02352BC4
 _0234209C: .word 0x01FF0000
 _023420A0: .word 0x04000010
-	arm_func_end ov02_02342020
+	arm_func_end SceneSetList_TaskVBlank
 
-	arm_func_start ov02_023420A4
-ov02_023420A4: ; 0x023420A4
+	arm_func_start SceneSetList_DispFocus
+SceneSetList_DispFocus: ; 0x023420A4
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x18
 	ldr ip, _02342168 ; =ov02_02352AF4
@@ -36025,7 +36025,7 @@ _023420B8:
 	ldrh r2, [r2, r3]
 	ldrh r3, [r0, r3]
 	mov r0, #3
-	bl ov02_02334FF0
+	bl Dwci_FocuslDisp
 	add sp, sp, #0x18
 	ldmia sp!, {r3, pc}
 _0234211C:
@@ -36045,7 +36045,7 @@ _0234211C:
 	strh r1, [sp]
 	strh r2, [sp, #4]
 	strh ip, [sp, #6]
-	bl ov02_02334FF0
+	bl Dwci_FocuslDisp
 	add sp, sp, #0x18
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -36054,10 +36054,10 @@ _0234216C: .word ov02_0235AAEC
 _02342170: .word ov02_02352B7E
 _02342174: .word ov02_02352B82
 _02342178: .word ov02_02352B80
-	arm_func_end ov02_023420A4
+	arm_func_end SceneSetList_DispFocus
 
-	arm_func_start ov02_0234217C
-ov02_0234217C: ; 0x0234217C
+	arm_func_start SceneSetList_ApplyForcus
+SceneSetList_ApplyForcus: ; 0x0234217C
 	stmdb sp!, {r4, lr}
 	ldr r0, _02342224 ; =ov02_0235AAEC
 	ldrb r0, [r0]
@@ -36065,10 +36065,10 @@ ov02_0234217C: ; 0x0234217C
 	and r0, r0, #0xff
 	cmp r0, #2
 	bhi _023421A0
-	bl ov02_023420A4
+	bl SceneSetList_DispFocus
 	ldmia sp!, {r4, pc}
 _023421A0:
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	ldr r1, _02342224 ; =ov02_0235AAEC
 	mov r4, r0
 	ldrh r0, [r1, #4]
@@ -36103,35 +36103,35 @@ _02342210:
 	ldrb r0, [r0, r2]
 	strb r0, [r1]
 _0234221C:
-	bl ov02_023420A4
+	bl SceneSetList_DispFocus
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02342224: .word ov02_0235AAEC
 _02342228: .word ov02_02352BB8
-	arm_func_end ov02_0234217C
+	arm_func_end SceneSetList_ApplyForcus
 
-	arm_func_start ov02_0234222C
-ov02_0234222C: ; 0x0234222C
+	arm_func_start SceneSetList_ApplyForcus1
+SceneSetList_ApplyForcus1: ; 0x0234222C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02342254 ; =ov02_0235AAEC
 	ldr r2, _02342258 ; =ov02_02352BD0
 	strb r0, [r1]
 	ldrb r0, [r2, r0]
-	bl ov02_02341E4C
+	bl SceneSetList_CalcColumnIdx
 	ldr r1, _02342254 ; =ov02_0235AAEC
 	strb r0, [r1, #2]
-	bl ov02_023420A4
+	bl SceneSetList_DispFocus
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02342254: .word ov02_0235AAEC
 _02342258: .word ov02_02352BD0
-	arm_func_end ov02_0234222C
+	arm_func_end SceneSetList_ApplyForcus1
 
-	arm_func_start ov02_0234225C
-ov02_0234225C: ; 0x0234225C
+	arm_func_start SceneSetList_MoveFocus
+SceneSetList_MoveFocus: ; 0x0234225C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	ldr r1, _02342540 ; =ov02_0235AAEC
 	mov r4, #0
 	ldrb r2, [r1]
@@ -36199,7 +36199,7 @@ _02342334:
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02342540 ; =ov02_0235AAEC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -36214,9 +36214,9 @@ _0234236C:
 	strb r1, [r0]
 	strb r1, [r0, #2]
 	strh r1, [r0, #4]
-	bl ov02_02341294
+	bl SceneSetList_DrawWindow
 	mov r0, #0
-	bl ov02_02346AA0
+	bl Scrollbar_Disp__023472CC
 	b _02342520
 _0234239C:
 	ldr r0, _02342540 ; =ov02_0235AAEC
@@ -36230,9 +36230,9 @@ _0234239C:
 	strb r1, [r0, #2]
 	mov r1, #0x91
 	strh r1, [r0, #4]
-	bl ov02_02341294
+	bl SceneSetList_DrawWindow
 	mov r0, #0x37
-	bl ov02_02346AA0
+	bl Scrollbar_Disp__023472CC
 	b _02342520
 _023423D8:
 	cmp r5, #3
@@ -36242,7 +36242,7 @@ _023423D8:
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02342540 ; =ov02_0235AAEC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -36265,12 +36265,12 @@ _02342424:
 	strneb r1, [r0, #2]
 	bne _02342520
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _02342544 ; =ov02_02341EB4
+	ldr r1, _02342544 ; =SceneSetList_TaskUp
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02342540 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1, #0x38]
@@ -36285,12 +36285,12 @@ _02342470:
 	strlob r1, [r0, #2]
 	blo _02342520
 	mov r0, #0x13
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	ldr r1, _02342548 ; =ov02_02341F7C
+	ldr r1, _02342548 ; =SceneSetList_TaskDown
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02342540 ; =ov02_0235AAEC
 	ldr r1, [r1, #8]
 	str r0, [r1, #0x38]
@@ -36322,30 +36322,30 @@ _02342500:
 	strb r1, [r0]
 _02342514:
 	mov r0, #8
-	bl ov02_023480E0
-	bl ov02_023420A4
+	bl Dwci_SndlPlay
+	bl SceneSetList_DispFocus
 _02342520:
 	cmp r4, #2
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, #8
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	cmp r4, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	bl ov02_0234217C
+	bl SceneSetList_ApplyForcus
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02342540: .word ov02_0235AAEC
-_02342544: .word ov02_02341EB4
-_02342548: .word ov02_02341F7C
-	arm_func_end ov02_0234225C
+_02342544: .word SceneSetList_TaskUp
+_02342548: .word SceneSetList_TaskDown
+	arm_func_end SceneSetList_MoveFocus
 
-	arm_func_start ov02_0234254C
-ov02_0234254C: ; 0x0234254C
+	arm_func_start SceneSetList_DispPushButton
+SceneSetList_DispPushButton: ; 0x0234254C
 	ldr r0, _02342574 ; =ov02_0235AAEC
 	ldr r1, _02342578 ; =ov02_02352AD4
 	ldrb r2, [r0]
 	ldr r0, [r0, #8]
-	ldr ip, _0234257C ; =ov02_023468A0
+	ldr ip, _0234257C ; =Dwci_ScreenlCopyPalette
 	sub r2, r2, #0xb
 	ldrb r1, [r1, r2]
 	ldr r0, [r0, #0x10]
@@ -36354,11 +36354,11 @@ ov02_0234254C: ; 0x0234254C
 	.align 2, 0
 _02342574: .word ov02_0235AAEC
 _02342578: .word ov02_02352AD4
-_0234257C: .word ov02_023468A0
-	arm_func_end ov02_0234254C
+_0234257C: .word Dwci_ScreenlCopyPalette
+	arm_func_end SceneSetList_DispPushButton
 
-	arm_func_start ov02_02342580
-ov02_02342580: ; 0x02342580
+	arm_func_start SceneSetList_TaskPushCount
+SceneSetList_TaskPushCount: ; 0x02342580
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r5, _023425D0 ; =ov02_0235AAEC
 	mov r4, #0
@@ -36375,7 +36375,7 @@ _0234258C:
 	ldrb r0, [r0, #4]
 	cmp r0, #0
 	bne _023425C0
-	bl ov02_02341294
+	bl SceneSetList_DrawWindow
 _023425C0:
 	add r4, r4, #1
 	cmp r4, #4
@@ -36383,10 +36383,10 @@ _023425C0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023425D0: .word ov02_0235AAEC
-	arm_func_end ov02_02342580
+	arm_func_end SceneSetList_TaskPushCount
 
-	arm_func_start ov02_023425D4
-ov02_023425D4: ; 0x023425D4
+	arm_func_start SceneSetList_PushButtonYesNo
+SceneSetList_PushButtonYesNo: ; 0x023425D4
 	stmdb sp!, {r3}
 	sub sp, sp, #4
 	ldr r1, _02342690 ; =ov02_02352AD8
@@ -36440,12 +36440,12 @@ _02342674:
 	.align 2, 0
 _02342690: .word ov02_02352AD8
 _02342694: .word ov02_0235AAEC
-	arm_func_end ov02_023425D4
+	arm_func_end SceneSetList_PushButtonYesNo
 
-	arm_func_start ov02_02342698
-ov02_02342698: ; 0x02342698
+	arm_func_start SceneSetList_IsCorrect
+SceneSetList_IsCorrect: ; 0x02342698
 	stmdb sp!, {r4, lr}
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	mov r4, r0
 	ldrb r0, [r4, #0x40]
 	cmp r0, #0
@@ -36486,76 +36486,76 @@ _023426E4:
 _02342730:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_02342698
+	arm_func_end SceneSetList_IsCorrect
 
-	arm_func_start ov02_02342738
-ov02_02342738: ; 0x02342738
+	arm_func_start SceneSetList_ProcError
+SceneSetList_ProcError: ; 0x02342738
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
 	ldr r0, _02342770 ; =ov02_0235AAEC
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0xc]
-	bl ov02_02346908
-	ldr r0, _02342774 ; =ov02_02342778
-	bl ov02_02338D68
+	bl Dwci_ScreenlSetPalette
+	ldr r0, _02342774 ; =SceneSetList_ProcError1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02342770: .word ov02_0235AAEC
-_02342774: .word ov02_02342778
-	arm_func_end ov02_02342738
+_02342774: .word SceneSetList_ProcError1
+	arm_func_end SceneSetList_ProcError
 
-	arm_func_start ov02_02342778
-ov02_02342778: ; 0x02342778
+	arm_func_start SceneSetList_ProcError1
+SceneSetList_ProcError1: ; 0x02342778
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02342794 ; =ov02_023407A0
-	bl ov02_02338D68
+	ldr r0, _02342794 ; =SceneSetList_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342794: .word ov02_023407A0
-	arm_func_end ov02_02342778
+_02342794: .word SceneSetList_ProcScene
+	arm_func_end SceneSetList_ProcError1
 
-	arm_func_start ov02_02342798
-ov02_02342798: ; 0x02342798
+	arm_func_start Dwci_SetListReturn
+Dwci_SetListReturn: ; 0x02342798
 	ldr r1, _023427A4 ; =ov02_0235AAEC
 	strb r0, [r1, #1]
 	bx lr
 	.align 2, 0
 _023427A4: .word ov02_0235AAEC
-	arm_func_end ov02_02342798
+	arm_func_end Dwci_SetListReturn
 
-	arm_func_start ov02_023427A8
-ov02_023427A8: ; 0x023427A8
+	arm_func_start Dwci_SceneSetListSave
+Dwci_SceneSetListSave: ; 0x023427A8
 	stmdb sp!, {r3, lr}
-	bl ov02_023427C8
-	bl ov02_023352C4
-	bl ov02_02347A1C
-	ldr r0, _023427C4 ; =ov02_0234285C
-	bl ov02_02338D68
+	bl SceneSetListSave_InitGraphics
+	bl Dwci_HLlLoadSet
+	bl Dwci_SettinglSet
+	ldr r0, _023427C4 ; =SceneSetListSave_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023427C4: .word ov02_0234285C
-	arm_func_end ov02_023427A8
+_023427C4: .word SceneSetListSave_ProcInit
+	arm_func_end Dwci_SceneSetListSave
 
-	arm_func_start ov02_023427C8
-ov02_023427C8: ; 0x023427C8
+	arm_func_start SceneSetListSave_InitGraphics
+SceneSetListSave_InitGraphics: ; 0x023427C8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234283C ; =ov02_02353A80
 	ldr r1, _02342840 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02342844 ; =ov02_02353A98
 	ldr r1, _02342848 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0234284C ; =ov02_02353AB0
 	ldr r1, _02342850 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r2, _02342854 ; =0x04001008
 	ldr r1, _02342858 ; =0x0400000A
 	ldrh r0, [r2]
@@ -36584,43 +36584,43 @@ _0234284C: .word ov02_02353AB0
 _02342850: .word GX_LoadBG2Scr
 _02342854: .word 0x04001008
 _02342858: .word 0x0400000A
-	arm_func_end ov02_023427C8
+	arm_func_end SceneSetListSave_InitGraphics
 
-	arm_func_start ov02_0234285C
-ov02_0234285C: ; 0x0234285C
+	arm_func_start SceneSetListSave_ProcInit
+SceneSetListSave_ProcInit: ; 0x0234285C
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E3D0
-	ldr r0, _023428AC ; =ov02_023428B0
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _023428AC ; =SceneSetListSave_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023428AC: .word ov02_023428B0
-	arm_func_end ov02_0234285C
+_023428AC: .word SceneSetListSave_ProcInit1
+	arm_func_end SceneSetListSave_ProcInit
 
-	arm_func_start ov02_023428B0
-ov02_023428B0: ; 0x023428B0
+	arm_func_start SceneSetListSave_ProcInit1
+SceneSetListSave_ProcInit1: ; 0x023428B0
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r2, #1
@@ -36629,89 +36629,89 @@ ov02_023428B0: ; 0x023428B0
 	mov r0, #0x44
 	mov r1, #5
 	str ip, [sp]
-	bl ov02_02349394
-	ldr r0, _023428FC ; =ov02_02342900
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	ldr r0, _023428FC ; =SceneSetListSave_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023428FC: .word ov02_02342900
-	arm_func_end ov02_023428B0
+_023428FC: .word SceneSetListSave_ProcScene
+	arm_func_end SceneSetListSave_ProcInit1
 
-	arm_func_start ov02_02342900
-ov02_02342900: ; 0x02342900
+	arm_func_start SceneSetListSave_ProcScene
+SceneSetListSave_ProcScene: ; 0x02342900
 	stmdb sp!, {r3, lr}
-	bl ov02_02342928
-	bl ov02_0234292C
-	bl ov02_02349718
+	bl SceneSetListSave_Input
+	bl SceneSetListSave_Draw
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02342924 ; =ov02_02342930
-	bl ov02_02338D68
+	ldr r0, _02342924 ; =SceneSetListSave_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342924: .word ov02_02342930
-	arm_func_end ov02_02342900
+_02342924: .word SceneSetListSave_EndScene
+	arm_func_end SceneSetListSave_ProcScene
 
-	arm_func_start ov02_02342928
-ov02_02342928: ; 0x02342928
+	arm_func_start SceneSetListSave_Input
+SceneSetListSave_Input: ; 0x02342928
 	bx lr
-	arm_func_end ov02_02342928
+	arm_func_end SceneSetListSave_Input
 
-	arm_func_start ov02_0234292C
-ov02_0234292C: ; 0x0234292C
+	arm_func_start SceneSetListSave_Draw
+SceneSetListSave_Draw: ; 0x0234292C
 	bx lr
-	arm_func_end ov02_0234292C
+	arm_func_end SceneSetListSave_Draw
 
-	arm_func_start ov02_02342930
-ov02_02342930: ; 0x02342930
+	arm_func_start SceneSetListSave_EndScene
+SceneSetListSave_EndScene: ; 0x02342930
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02342968 ; =ov02_0234296C
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02342968 ; =SceneSetListSave_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342968: .word ov02_0234296C
-	arm_func_end ov02_02342930
+_02342968: .word SceneSetListSave_EndScene1
+	arm_func_end SceneSetListSave_EndScene
 
-	arm_func_start ov02_0234296C
-ov02_0234296C: ; 0x0234296C
+	arm_func_start SceneSetListSave_EndScene1
+SceneSetListSave_EndScene1: ; 0x0234296C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _023429C4 ; =ov02_02343DB0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _023429C4 ; =Dwci_SceneSetSelectAp
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023429C4: .word ov02_02343DB0
-	arm_func_end ov02_0234296C
+_023429C4: .word Dwci_SceneSetSelectAp
+	arm_func_end SceneSetListSave_EndScene1
 
-	arm_func_start ov02_023429C8
-ov02_023429C8: ; 0x023429C8
+	arm_func_start Dwci_IsFold__023431F4
+Dwci_IsFold__023431F4: ; 0x023429C8
 	ldr r0, _023429E4 ; =0x027FFFA8
 	ldrh r0, [r0]
 	and r0, r0, #0x8000
@@ -36721,34 +36721,34 @@ ov02_023429C8: ; 0x023429C8
 	bx lr
 	.align 2, 0
 _023429E4: .word 0x027FFFA8
-	arm_func_end ov02_023429C8
+	arm_func_end Dwci_IsFold__023431F4
 
-	arm_func_start ov02_023429E8
-ov02_023429E8: ; 0x023429E8
+	arm_func_start Dwci_SceneSetRakuButton
+Dwci_SceneSetRakuButton: ; 0x023429E8
 	stmdb sp!, {r3, lr}
 	ldr r0, _02342A1C ; =ov02_0235AAF8
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02342A24
-	bl ov02_023352C4
+	bl SceneSetRakuButton_InitGraphics
+	bl Dwci_HLlLoadSet
 	mov r0, #0x25
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #1
-	bl ov02_023343DC
-	ldr r0, _02342A20 ; =ov02_02342AA4
-	bl ov02_02338D68
+	bl Dwci_AnimelInitEx
+	ldr r0, _02342A20 ; =SceneSetRakuButton_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02342A1C: .word ov02_0235AAF8
-_02342A20: .word ov02_02342AA4
-	arm_func_end ov02_023429E8
+_02342A20: .word SceneSetRakuButton_ProcInit
+	arm_func_end Dwci_SceneSetRakuButton
 
-	arm_func_start ov02_02342A24
-ov02_02342A24: ; 0x02342A24
+	arm_func_start SceneSetRakuButton_InitGraphics
+SceneSetRakuButton_InitGraphics: ; 0x02342A24
 	stmdb sp!, {r3, lr}
 	ldr r0, _02342A94 ; =ov02_02353AC4
 	ldr r1, _02342A98 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _02342A9C ; =0x04001008
 	ldr r1, _02342AA0 ; =0x0400000A
 	ldrh r0, [r3]
@@ -36778,134 +36778,134 @@ _02342A94: .word ov02_02353AC4
 _02342A98: .word GX_LoadBG2Scr
 _02342A9C: .word 0x04001008
 _02342AA0: .word 0x0400000A
-	arm_func_end ov02_02342A24
+	arm_func_end SceneSetRakuButton_InitGraphics
 
-	arm_func_start ov02_02342AA4
-ov02_02342AA4: ; 0x02342AA4
+	arm_func_start SceneSetRakuButton_ProcInit
+SceneSetRakuButton_ProcInit: ; 0x02342AA4
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _02342AD4 ; =ov02_02342AD8
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02342AD4 ; =SceneSetRakuButton_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342AD4: .word ov02_02342AD8
-	arm_func_end ov02_02342AA4
+_02342AD4: .word SceneSetRakuButton_ProcInit1
+	arm_func_end SceneSetRakuButton_ProcInit
 
-	arm_func_start ov02_02342AD8
-ov02_02342AD8: ; 0x02342AD8
+	arm_func_start SceneSetRakuButton_ProcInit1
+SceneSetRakuButton_ProcInit1: ; 0x02342AD8
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #1
-	bl ov02_02334E38
-	ldr r0, _02342B00 ; =ov02_02342B04
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _02342B00 ; =SceneSetRakuButton_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342B00: .word ov02_02342B04
-	arm_func_end ov02_02342AD8
+_02342B00: .word SceneSetRakuButton_ProcInit2
+	arm_func_end SceneSetRakuButton_ProcInit1
 
-	arm_func_start ov02_02342B04
-ov02_02342B04: ; 0x02342B04
+	arm_func_start SceneSetRakuButton_ProcInit2
+SceneSetRakuButton_ProcInit2: ; 0x02342B04
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02342B28 ; =ov02_02342B2C
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02342B28 ; =SceneSetRakuButton_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342B28: .word ov02_02342B2C
-	arm_func_end ov02_02342B04
+_02342B28: .word SceneSetRakuButton_ProcScene
+	arm_func_end SceneSetRakuButton_ProcInit2
 
-	arm_func_start ov02_02342B2C
-ov02_02342B2C: ; 0x02342B2C
+	arm_func_start SceneSetRakuButton_ProcScene
+SceneSetRakuButton_ProcScene: ; 0x02342B2C
 	stmdb sp!, {r3, lr}
 	mov r0, #0xa
 	bl OS_Sleep
-	bl ov02_02342D10
-	bl ov02_02342B4C
-	bl ov02_02342B84
-	bl ov02_02342B88
+	bl SceneSetRakuButton_CheckRaku
+	bl SceneSetRakuButton_Input
+	bl SceneSetRakuButton_Draw
+	bl SceneSetRakuButton_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02342B2C
+	arm_func_end SceneSetRakuButton_ProcScene
 
-	arm_func_start ov02_02342B4C
-ov02_02342B4C: ; 0x02342B4C
+	arm_func_start SceneSetRakuButton_Input
+SceneSetRakuButton_Input: ; 0x02342B4C
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02342B6C
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
 _02342B6C:
-	bl ov02_023429C8
+	bl Dwci_IsFold__023431F4
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02342B4C
+	arm_func_end SceneSetRakuButton_Input
 
-	arm_func_start ov02_02342B84
-ov02_02342B84: ; 0x02342B84
+	arm_func_start SceneSetRakuButton_Draw
+SceneSetRakuButton_Draw: ; 0x02342B84
 	bx lr
-	arm_func_end ov02_02342B84
+	arm_func_end SceneSetRakuButton_Draw
 
-	arm_func_start ov02_02342B88
-ov02_02342B88: ; 0x02342B88
+	arm_func_start SceneSetRakuButton_Button
+SceneSetRakuButton_Button: ; 0x02342B88
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #7
-	bl ov02_023480E0
-	ldr r0, _02342BB0 ; =ov02_02342BB4
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02342BB0 ; =SceneSetRakuButton_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342BB0: .word ov02_02342BB4
-	arm_func_end ov02_02342B88
+_02342BB0: .word SceneSetRakuButton_EndScene
+	arm_func_end SceneSetRakuButton_Button
 
-	arm_func_start ov02_02342BB4
-ov02_02342BB4: ; 0x02342BB4
+	arm_func_start SceneSetRakuButton_EndScene
+SceneSetRakuButton_EndScene: ; 0x02342BB4
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _02342BD0 ; =ov02_02342BD4
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _02342BD0 ; =SceneSetRakuButton_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342BD0: .word ov02_02342BD4
-	arm_func_end ov02_02342BB4
+_02342BD0: .word SceneSetRakuButton_EndScene1
+	arm_func_end SceneSetRakuButton_EndScene
 
-	arm_func_start ov02_02342BD4
-ov02_02342BD4: ; 0x02342BD4
+	arm_func_start SceneSetRakuButton_EndScene1
+SceneSetRakuButton_EndScene1: ; 0x02342BD4
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02342C40 ; =ov02_0235AAF8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _02342BFC
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 _02342BFC:
 	ldr r0, _02342C40 ; =ov02_0235AAF8
 	ldrb r0, [r0]
@@ -36915,26 +36915,26 @@ _02342BFC:
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _02342C20:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02342C44 ; =ov02_02342C48
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02342C44 ; =SceneSetRakuButton_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02342C40: .word ov02_0235AAF8
-_02342C44: .word ov02_02342C48
-	arm_func_end ov02_02342BD4
+_02342C44: .word SceneSetRakuButton_EndScene2
+	arm_func_end SceneSetRakuButton_EndScene1
 
-	arm_func_start ov02_02342C48
-ov02_02342C48: ; 0x02342C48
+	arm_func_start SceneSetRakuButton_EndScene2
+SceneSetRakuButton_EndScene2: ; 0x02342C48
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02342D04 ; =ov02_0235AAF8
@@ -36942,56 +36942,56 @@ ov02_02342C48: ; 0x02342C48
 	cmp r0, #0
 	bne _02342C7C
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 _02342C7C:
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov02_023344AC
+	bl Dwci_AnimelEnd
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _02342D04 ; =ov02_0235AAF8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _02342CB4
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _02342CB4:
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _02342D04 ; =ov02_0235AAF8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _02342CEC
-	bl ov02_0233944C
+	bl Dwci_RakulEnd
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _02342D08 ; =ov02_02344AF0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02342D08 ; =Dwci_SceneSetSelectWay
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02342CEC:
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
-	ldr r0, _02342D0C ; =ov02_02342E00
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02342D0C ; =Dwci_SceneSetRakuButton1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02342D04: .word ov02_0235AAF8
-_02342D08: .word ov02_02344AF0
-_02342D0C: .word ov02_02342E00
-	arm_func_end ov02_02342C48
+_02342D08: .word Dwci_SceneSetSelectWay
+_02342D0C: .word Dwci_SceneSetRakuButton1
+	arm_func_end SceneSetRakuButton_EndScene2
 
-	arm_func_start ov02_02342D10
-ov02_02342D10: ; 0x02342D10
+	arm_func_start SceneSetRakuButton_CheckRaku
+SceneSetRakuButton_CheckRaku: ; 0x02342D10
 	stmdb sp!, {r3, lr}
-	bl ov02_02339470
+	bl Dwci_RakulGetState
 	cmp r0, #2
 	beq _02342D2C
 	cmp r0, #4
@@ -37000,65 +37000,65 @@ ov02_02342D10: ; 0x02342D10
 _02342D2C:
 	ldr r1, _02342D88 ; =ov02_0235AAF8
 	mov r2, #1
-	ldr r0, _02342D8C ; =ov02_02342BB4
+	ldr r0, _02342D8C ; =SceneSetRakuButton_EndScene
 	strb r2, [r1]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02342D44:
 	ldr r0, _02342D88 ; =ov02_0235AAF8
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r1, #1
 	mov ip, #0
 	mov r2, r1
 	sub r3, r1, #2
 	mov r0, #0xd
 	str ip, [sp]
-	bl ov02_02349394
-	bl ov02_02334768
-	ldr r0, _02342D90 ; =ov02_02342D94
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	bl Dwci_BtnlDisable
+	ldr r0, _02342D90 ; =SceneSetRakuButton_ProcError
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02342D88: .word ov02_0235AAF8
-_02342D8C: .word ov02_02342BB4
-_02342D90: .word ov02_02342D94
-	arm_func_end ov02_02342D10
+_02342D8C: .word SceneSetRakuButton_EndScene
+_02342D90: .word SceneSetRakuButton_ProcError
+	arm_func_end SceneSetRakuButton_CheckRaku
 
-	arm_func_start ov02_02342D94
-ov02_02342D94: ; 0x02342D94
+	arm_func_start SceneSetRakuButton_ProcError
+SceneSetRakuButton_ProcError: ; 0x02342D94
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
-	ldr r0, _02342DBC ; =ov02_02342DC0
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
+	ldr r0, _02342DBC ; =SceneSetRakuButton_ProcError1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342DBC: .word ov02_02342DC0
-	arm_func_end ov02_02342D94
+_02342DBC: .word SceneSetRakuButton_ProcError1
+	arm_func_end SceneSetRakuButton_ProcError
 
-	arm_func_start ov02_02342DC0
-ov02_02342DC0: ; 0x02342DC0
+	arm_func_start SceneSetRakuButton_ProcError1
+SceneSetRakuButton_ProcError1: ; 0x02342DC0
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02342DDC ; =ov02_02342BB4
-	bl ov02_02338D68
+	ldr r0, _02342DDC ; =SceneSetRakuButton_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342DDC: .word ov02_02342BB4
-	arm_func_end ov02_02342DC0
+_02342DDC: .word SceneSetRakuButton_EndScene
+	arm_func_end SceneSetRakuButton_ProcError1
 
-	arm_func_start ov02_02342DE0
-ov02_02342DE0: ; 0x02342DE0
+	arm_func_start Dwci_IsFold__0234360C
+Dwci_IsFold__0234360C: ; 0x02342DE0
 	ldr r0, _02342DFC ; =0x027FFFA8
 	ldrh r0, [r0]
 	and r0, r0, #0x8000
@@ -37068,34 +37068,34 @@ ov02_02342DE0: ; 0x02342DE0
 	bx lr
 	.align 2, 0
 _02342DFC: .word 0x027FFFA8
-	arm_func_end ov02_02342DE0
+	arm_func_end Dwci_IsFold__0234360C
 
-	arm_func_start ov02_02342E00
-ov02_02342E00: ; 0x02342E00
+	arm_func_start Dwci_SceneSetRakuButton1
+Dwci_SceneSetRakuButton1: ; 0x02342E00
 	stmdb sp!, {r3, lr}
 	ldr r0, _02342E34 ; =ov02_0235AAFC
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02342E3C
-	bl ov02_023352C4
+	bl SceneSetRakuButton1_InitGraphics
+	bl Dwci_HLlLoadSet
 	mov r0, #0x2a
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #2
-	bl ov02_023343DC
-	ldr r0, _02342E38 ; =ov02_02342EBC
-	bl ov02_02338D68
+	bl Dwci_AnimelInitEx
+	ldr r0, _02342E38 ; =SceneSetRakuButton1_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02342E34: .word ov02_0235AAFC
-_02342E38: .word ov02_02342EBC
-	arm_func_end ov02_02342E00
+_02342E38: .word SceneSetRakuButton1_ProcInit
+	arm_func_end Dwci_SceneSetRakuButton1
 
-	arm_func_start ov02_02342E3C
-ov02_02342E3C: ; 0x02342E3C
+	arm_func_start SceneSetRakuButton1_InitGraphics
+SceneSetRakuButton1_InitGraphics: ; 0x02342E3C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02342EAC ; =ov02_02353AD8
 	ldr r1, _02342EB0 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _02342EB4 ; =0x04001008
 	ldr r1, _02342EB8 ; =0x0400000A
 	ldrh r0, [r3]
@@ -37125,130 +37125,130 @@ _02342EAC: .word ov02_02353AD8
 _02342EB0: .word GX_LoadBG2Scr
 _02342EB4: .word 0x04001008
 _02342EB8: .word 0x0400000A
-	arm_func_end ov02_02342E3C
+	arm_func_end SceneSetRakuButton1_InitGraphics
 
-	arm_func_start ov02_02342EBC
-ov02_02342EBC: ; 0x02342EBC
+	arm_func_start SceneSetRakuButton1_ProcInit
+SceneSetRakuButton1_ProcInit: ; 0x02342EBC
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _02342EEC ; =ov02_02342EF0
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02342EEC ; =SceneSetRakuButton1_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342EEC: .word ov02_02342EF0
-	arm_func_end ov02_02342EBC
+_02342EEC: .word SceneSetRakuButton1_ProcInit1
+	arm_func_end SceneSetRakuButton1_ProcInit
 
-	arm_func_start ov02_02342EF0
-ov02_02342EF0: ; 0x02342EF0
+	arm_func_start SceneSetRakuButton1_ProcInit1
+SceneSetRakuButton1_ProcInit1: ; 0x02342EF0
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #1
-	bl ov02_02334E38
-	ldr r0, _02342F18 ; =ov02_02342F1C
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _02342F18 ; =SceneSetRakuButton1_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342F18: .word ov02_02342F1C
-	arm_func_end ov02_02342EF0
+_02342F18: .word SceneSetRakuButton1_ProcInit2
+	arm_func_end SceneSetRakuButton1_ProcInit1
 
-	arm_func_start ov02_02342F1C
-ov02_02342F1C: ; 0x02342F1C
+	arm_func_start SceneSetRakuButton1_ProcInit2
+SceneSetRakuButton1_ProcInit2: ; 0x02342F1C
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02342F40 ; =ov02_02342F44
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02342F40 ; =SceneSetRakuButton1_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342F40: .word ov02_02342F44
-	arm_func_end ov02_02342F1C
+_02342F40: .word SceneSetRakuButton1_ProcScene
+	arm_func_end SceneSetRakuButton1_ProcInit2
 
-	arm_func_start ov02_02342F44
-ov02_02342F44: ; 0x02342F44
+	arm_func_start SceneSetRakuButton1_ProcScene
+SceneSetRakuButton1_ProcScene: ; 0x02342F44
 	stmdb sp!, {r3, lr}
 	mov r0, #0xa
 	bl OS_Sleep
-	bl ov02_0234310C
-	bl ov02_02342F64
-	bl ov02_02342F9C
-	bl ov02_02342FA0
+	bl SceneSetRakuButton1_CheckRaku
+	bl SceneSetRakuButton1_Input
+	bl SceneSetRakuButton1_Draw
+	bl SceneSetRakuButton1_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02342F44
+	arm_func_end SceneSetRakuButton1_ProcScene
 
-	arm_func_start ov02_02342F64
-ov02_02342F64: ; 0x02342F64
+	arm_func_start SceneSetRakuButton1_Input
+SceneSetRakuButton1_Input: ; 0x02342F64
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02342F84
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
 _02342F84:
-	bl ov02_02342DE0
+	bl Dwci_IsFold__0234360C
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02342F64
+	arm_func_end SceneSetRakuButton1_Input
 
-	arm_func_start ov02_02342F9C
-ov02_02342F9C: ; 0x02342F9C
+	arm_func_start SceneSetRakuButton1_Draw
+SceneSetRakuButton1_Draw: ; 0x02342F9C
 	bx lr
-	arm_func_end ov02_02342F9C
+	arm_func_end SceneSetRakuButton1_Draw
 
-	arm_func_start ov02_02342FA0
-ov02_02342FA0: ; 0x02342FA0
+	arm_func_start SceneSetRakuButton1_Button
+SceneSetRakuButton1_Button: ; 0x02342FA0
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #7
-	bl ov02_023480E0
-	ldr r0, _02342FC8 ; =ov02_02342FCC
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02342FC8 ; =SceneSetRakuButton1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342FC8: .word ov02_02342FCC
-	arm_func_end ov02_02342FA0
+_02342FC8: .word SceneSetRakuButton1_EndScene
+	arm_func_end SceneSetRakuButton1_Button
 
-	arm_func_start ov02_02342FCC
-ov02_02342FCC: ; 0x02342FCC
+	arm_func_start SceneSetRakuButton1_EndScene
+SceneSetRakuButton1_EndScene: ; 0x02342FCC
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _02342FE8 ; =ov02_02342FEC
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _02342FE8 ; =SceneSetRakuButton1_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02342FE8: .word ov02_02342FEC
-	arm_func_end ov02_02342FCC
+_02342FE8: .word SceneSetRakuButton1_EndScene1
+	arm_func_end SceneSetRakuButton1_EndScene
 
-	arm_func_start ov02_02342FEC
-ov02_02342FEC: ; 0x02342FEC
+	arm_func_start SceneSetRakuButton1_EndScene1
+SceneSetRakuButton1_EndScene1: ; 0x02342FEC
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	ldr r0, _02343048 ; =ov02_0235AAFC
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -37257,26 +37257,26 @@ ov02_02342FEC: ; 0x02342FEC
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _02343028:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0234304C ; =ov02_02343050
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0234304C ; =SceneSetRakuButton1_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02343048: .word ov02_0235AAFC
-_0234304C: .word ov02_02343050
-	arm_func_end ov02_02342FEC
+_0234304C: .word SceneSetRakuButton1_EndScene2
+	arm_func_end SceneSetRakuButton1_EndScene1
 
-	arm_func_start ov02_02343050
-ov02_02343050: ; 0x02343050
+	arm_func_start SceneSetRakuButton1_EndScene2
+SceneSetRakuButton1_EndScene2: ; 0x02343050
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02343100 ; =ov02_0235AAFC
@@ -37284,53 +37284,53 @@ ov02_02343050: ; 0x02343050
 	cmp r0, #0
 	bne _02343084
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 _02343084:
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov02_023344AC
+	bl Dwci_AnimelEnd
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _02343100 ; =ov02_0235AAFC
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _023430BC
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _023430BC:
-	bl ov02_0233944C
+	bl Dwci_RakulEnd
 	ldr r0, _02343100 ; =ov02_0235AAFC
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _023430E8
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _02343104 ; =ov02_02344AF0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02343104 ; =Dwci_SceneSetSelectWay
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _023430E8:
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
-	ldr r0, _02343108 ; =ov02_02343230
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02343108 ; =Dwci_SceneSetRakuComplete
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02343100: .word ov02_0235AAFC
-_02343104: .word ov02_02344AF0
-_02343108: .word ov02_02343230
-	arm_func_end ov02_02343050
+_02343104: .word Dwci_SceneSetSelectWay
+_02343108: .word Dwci_SceneSetRakuComplete
+	arm_func_end SceneSetRakuButton1_EndScene2
 
-	arm_func_start ov02_0234310C
-ov02_0234310C: ; 0x0234310C
+	arm_func_start SceneSetRakuButton1_CheckRaku
+SceneSetRakuButton1_CheckRaku: ; 0x0234310C
 	stmdb sp!, {r3, lr}
-	bl ov02_02339470
+	bl Dwci_RakulGetState
 	cmp r0, #3
 	beq _02343130
 	cmp r0, #4
@@ -37342,108 +37342,108 @@ _02343130:
 	ldr r0, _023431D8 ; =ov02_0235AAFC
 	mov r1, #1
 	strb r1, [r0]
-	bl ov02_02348148
-	bl ov02_0233952C
-	ldr r0, _023431DC ; =ov02_02342FCC
-	bl ov02_02338D68
+	bl Dwci_SndlStop
+	bl Dwci_RakulSetResult
+	ldr r0, _023431DC ; =SceneSetRakuButton1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02343150:
 	ldr r0, _023431D8 ; =ov02_0235AAFC
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r1, #1
 	mov ip, #0
 	mov r2, r1
 	sub r3, r1, #2
 	mov r0, #0xd
 	str ip, [sp]
-	bl ov02_02349394
-	bl ov02_02334768
-	ldr r0, _023431E0 ; =ov02_023431E4
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	bl Dwci_BtnlDisable
+	ldr r0, _023431E0 ; =SceneSetRakuButton1_ProcError
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02343194:
 	ldr r0, _023431D8 ; =ov02_0235AAFC
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #0x12
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r1, #1
 	mov ip, #0
 	mov r2, r1
 	sub r3, r1, #2
 	mov r0, #0xe
 	str ip, [sp]
-	bl ov02_02349394
-	bl ov02_02334768
-	ldr r0, _023431E0 ; =ov02_023431E4
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	bl Dwci_BtnlDisable
+	ldr r0, _023431E0 ; =SceneSetRakuButton1_ProcError
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023431D8: .word ov02_0235AAFC
-_023431DC: .word ov02_02342FCC
-_023431E0: .word ov02_023431E4
-	arm_func_end ov02_0234310C
+_023431DC: .word SceneSetRakuButton1_EndScene
+_023431E0: .word SceneSetRakuButton1_ProcError
+	arm_func_end SceneSetRakuButton1_CheckRaku
 
-	arm_func_start ov02_023431E4
-ov02_023431E4: ; 0x023431E4
+	arm_func_start SceneSetRakuButton1_ProcError
+SceneSetRakuButton1_ProcError: ; 0x023431E4
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
-	ldr r0, _0234320C ; =ov02_02343210
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
+	ldr r0, _0234320C ; =SceneSetRakuButton1_ProcError1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234320C: .word ov02_02343210
-	arm_func_end ov02_023431E4
+_0234320C: .word SceneSetRakuButton1_ProcError1
+	arm_func_end SceneSetRakuButton1_ProcError
 
-	arm_func_start ov02_02343210
-ov02_02343210: ; 0x02343210
+	arm_func_start SceneSetRakuButton1_ProcError1
+SceneSetRakuButton1_ProcError1: ; 0x02343210
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0234322C ; =ov02_02342FCC
-	bl ov02_02338D68
+	ldr r0, _0234322C ; =SceneSetRakuButton1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234322C: .word ov02_02342FCC
-	arm_func_end ov02_02343210
+_0234322C: .word SceneSetRakuButton1_EndScene
+	arm_func_end SceneSetRakuButton1_ProcError1
 
-	arm_func_start ov02_02343230
-ov02_02343230: ; 0x02343230
+	arm_func_start Dwci_SceneSetRakuComplete
+Dwci_SceneSetRakuComplete: ; 0x02343230
 	stmdb sp!, {r3, lr}
 	ldr r0, _02343264 ; =ov02_0235AB00
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_0234326C
-	bl ov02_023352C4
+	bl SceneSetRakuComplete_InitGraphics
+	bl Dwci_HLlLoadSet
 	mov r0, #0x26
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0x10
-	bl ov02_023480E0
-	ldr r0, _02343268 ; =ov02_023432EC
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02343268 ; =SceneSetRakuComplete_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02343264: .word ov02_0235AB00
-_02343268: .word ov02_023432EC
-	arm_func_end ov02_02343230
+_02343268: .word SceneSetRakuComplete_ProcInit
+	arm_func_end Dwci_SceneSetRakuComplete
 
-	arm_func_start ov02_0234326C
-ov02_0234326C: ; 0x0234326C
+	arm_func_start SceneSetRakuComplete_InitGraphics
+SceneSetRakuComplete_InitGraphics: ; 0x0234326C
 	stmdb sp!, {r3, lr}
 	ldr r0, _023432DC ; =ov02_02353AEC
 	ldr r1, _023432E0 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _023432E4 ; =0x04001008
 	ldr r1, _023432E8 ; =0x0400000A
 	ldrh r0, [r3]
@@ -37473,108 +37473,108 @@ _023432DC: .word ov02_02353AEC
 _023432E0: .word GX_LoadBG2Scr
 _023432E4: .word 0x04001008
 _023432E8: .word 0x0400000A
-	arm_func_end ov02_0234326C
+	arm_func_end SceneSetRakuComplete_InitGraphics
 
-	arm_func_start ov02_023432EC
-ov02_023432EC: ; 0x023432EC
+	arm_func_start SceneSetRakuComplete_ProcInit
+SceneSetRakuComplete_ProcInit: ; 0x023432EC
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _0234331C ; =ov02_02343320
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _0234331C ; =SceneSetRakuComplete_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234331C: .word ov02_02343320
-	arm_func_end ov02_023432EC
+_0234331C: .word SceneSetRakuComplete_ProcInit1
+	arm_func_end SceneSetRakuComplete_ProcInit
 
-	arm_func_start ov02_02343320
-ov02_02343320: ; 0x02343320
+	arm_func_start SceneSetRakuComplete_ProcInit1
+SceneSetRakuComplete_ProcInit1: ; 0x02343320
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02343340 ; =ov02_02343344
-	bl ov02_02338D68
+	ldr r0, _02343340 ; =SceneSetRakuComplete_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343340: .word ov02_02343344
-	arm_func_end ov02_02343320
+_02343340: .word SceneSetRakuComplete_ProcScene
+	arm_func_end SceneSetRakuComplete_ProcInit1
 
-	arm_func_start ov02_02343344
-ov02_02343344: ; 0x02343344
+	arm_func_start SceneSetRakuComplete_ProcScene
+SceneSetRakuComplete_ProcScene: ; 0x02343344
 	stmdb sp!, {r3, lr}
-	bl ov02_02343404
-	bl ov02_02343354
+	bl SceneSetRakuComplete_Wait
+	bl SceneSetRakuComplete_Draw
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02343344
+	arm_func_end SceneSetRakuComplete_ProcScene
 
-	arm_func_start ov02_02343354
-ov02_02343354: ; 0x02343354
+	arm_func_start SceneSetRakuComplete_Draw
+SceneSetRakuComplete_Draw: ; 0x02343354
 	bx lr
-	arm_func_end ov02_02343354
+	arm_func_end SceneSetRakuComplete_Draw
 
-	arm_func_start ov02_02343358
-ov02_02343358: ; 0x02343358
+	arm_func_start SceneSetRakuComplete_EndScene
+SceneSetRakuComplete_EndScene: ; 0x02343358
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02343390 ; =ov02_02343394
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02343390 ; =SceneSetRakuComplete_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343390: .word ov02_02343394
-	arm_func_end ov02_02343358
+_02343390: .word SceneSetRakuComplete_EndScene1
+	arm_func_end SceneSetRakuComplete_EndScene
 
-	arm_func_start ov02_02343394
-ov02_02343394: ; 0x02343394
+	arm_func_start SceneSetRakuComplete_EndScene1
+SceneSetRakuComplete_EndScene1: ; 0x02343394
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
-	bl ov02_02334D10
+	bl Dwci_FntlDeleteBgLcd
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338DB4
-	ldr r0, _02343400 ; =ov02_02345968
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _02343400 ; =Dwci_SceneSetTestConfirm
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343400: .word ov02_02345968
-	arm_func_end ov02_02343394
+_02343400: .word Dwci_SceneSetTestConfirm
+	arm_func_end SceneSetRakuComplete_EndScene1
 
-	arm_func_start ov02_02343404
-ov02_02343404: ; 0x02343404
+	arm_func_start SceneSetRakuComplete_Wait
+SceneSetRakuComplete_Wait: ; 0x02343404
 	stmdb sp!, {r3, lr}
 	ldr r0, _02343430 ; =ov02_0235AB00
 	ldrb r1, [r0]
@@ -37583,16 +37583,16 @@ ov02_02343404: ; 0x02343404
 	strb r2, [r0]
 	cmp r1, #0x78
 	ldmloia sp!, {r3, pc}
-	ldr r0, _02343434 ; =ov02_02343358
-	bl ov02_02338D68
+	ldr r0, _02343434 ; =SceneSetRakuComplete_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02343430: .word ov02_0235AB00
-_02343434: .word ov02_02343358
-	arm_func_end ov02_02343404
+_02343434: .word SceneSetRakuComplete_EndScene
+	arm_func_end SceneSetRakuComplete_Wait
 
-	arm_func_start ov02_02343438
-ov02_02343438: ; 0x02343438
+	arm_func_start Dwci_IsFold__02343C64
+Dwci_IsFold__02343C64: ; 0x02343438
 	ldr r0, _02343454 ; =0x027FFFA8
 	ldrh r0, [r0]
 	and r0, r0, #0x8000
@@ -37602,48 +37602,48 @@ ov02_02343438: ; 0x02343438
 	bx lr
 	.align 2, 0
 _02343454: .word 0x027FFFA8
-	arm_func_end ov02_02343438
+	arm_func_end Dwci_IsFold__02343C64
 
-	arm_func_start ov02_02343458
-ov02_02343458: ; 0x02343458
+	arm_func_start Dwci_SceneSetRakuReady
+Dwci_SceneSetRakuReady: ; 0x02343458
 	stmdb sp!, {r3, lr}
 	ldr r0, _023434AC ; =ov02_0235AB04
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_023434B4
-	bl ov02_023352C4
+	bl SceneSetRakuReady_InitGraphics
+	bl Dwci_HLlLoadSet
 	mov r0, #0x37
 	sub r1, r0, #0x38
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #2
-	bl ov02_02334DE8
+	bl Dwci_CmnlStep
 	mov r0, #0x24
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0
-	bl ov02_023343DC
+	bl Dwci_AnimelInitEx
 	mov r0, #0xb
-	bl ov02_023480E0
-	ldr r0, _023434B0 ; =ov02_0234355C
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _023434B0 ; =SceneSetRakuReady_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023434AC: .word ov02_0235AB04
-_023434B0: .word ov02_0234355C
-	arm_func_end ov02_02343458
+_023434B0: .word SceneSetRakuReady_ProcInit
+	arm_func_end Dwci_SceneSetRakuReady
 
-	arm_func_start ov02_023434B4
-ov02_023434B4: ; 0x023434B4
+	arm_func_start SceneSetRakuReady_InitGraphics
+SceneSetRakuReady_InitGraphics: ; 0x023434B4
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234353C ; =ov02_02353B00
 	ldr r1, _02343540 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02343544 ; =ov02_02353B18
 	ldr r1, _02343548 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _0234354C ; =ov02_02353B30
 	ldr r1, _02343550 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _02343554 ; =0x04001008
 	ldr r1, _02343558 ; =0x0400000A
 	ldrh r0, [r3]
@@ -37677,147 +37677,147 @@ _0234354C: .word ov02_02353B30
 _02343550: .word GX_LoadBG2Scr
 _02343554: .word 0x04001008
 _02343558: .word 0x0400000A
-	arm_func_end ov02_023434B4
+	arm_func_end SceneSetRakuReady_InitGraphics
 
-	arm_func_start ov02_0234355C
-ov02_0234355C: ; 0x0234355C
+	arm_func_start SceneSetRakuReady_ProcInit
+SceneSetRakuReady_ProcInit: ; 0x0234355C
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _023435AC ; =ov02_023435B0
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _023435AC ; =SceneSetRakuReady_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023435AC: .word ov02_023435B0
-	arm_func_end ov02_0234355C
+_023435AC: .word SceneSetRakuReady_ProcInit1
+	arm_func_end SceneSetRakuReady_ProcInit
 
-	arm_func_start ov02_023435B0
-ov02_023435B0: ; 0x023435B0
+	arm_func_start SceneSetRakuReady_ProcInit1
+SceneSetRakuReady_ProcInit1: ; 0x023435B0
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023393E0
+	bl Dwci_RakulInit
 	mov r0, #1
-	bl ov02_02334E38
-	ldr r0, _023435EC ; =ov02_023435F0
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _023435EC ; =SceneSetRakuReady_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023435EC: .word ov02_023435F0
-	arm_func_end ov02_023435B0
+_023435EC: .word SceneSetRakuReady_ProcInit2
+	arm_func_end SceneSetRakuReady_ProcInit1
 
-	arm_func_start ov02_023435F0
-ov02_023435F0: ; 0x023435F0
+	arm_func_start SceneSetRakuReady_ProcInit2
+SceneSetRakuReady_ProcInit2: ; 0x023435F0
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02343614 ; =ov02_02343618
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02343614 ; =SceneSetRakuReady_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343614: .word ov02_02343618
-	arm_func_end ov02_023435F0
+_02343614: .word SceneSetRakuReady_ProcScene
+	arm_func_end SceneSetRakuReady_ProcInit2
 
-	arm_func_start ov02_02343618
-ov02_02343618: ; 0x02343618
+	arm_func_start SceneSetRakuReady_ProcScene
+SceneSetRakuReady_ProcScene: ; 0x02343618
 	stmdb sp!, {r3, lr}
 	mov r0, #0xa
 	bl OS_Sleep
-	bl ov02_023437FC
-	bl ov02_02343638
-	bl ov02_02343670
-	bl ov02_02343674
+	bl SceneSetRakuReady_CheckRaku
+	bl SceneSetRakuReady_Input
+	bl SceneSetRakuReady_Draw
+	bl SceneSetRakuReady_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02343618
+	arm_func_end SceneSetRakuReady_ProcScene
 
-	arm_func_start ov02_02343638
-ov02_02343638: ; 0x02343638
+	arm_func_start SceneSetRakuReady_Input
+SceneSetRakuReady_Input: ; 0x02343638
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02343658
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
 _02343658:
-	bl ov02_02343438
+	bl Dwci_IsFold__02343C64
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02343638
+	arm_func_end SceneSetRakuReady_Input
 
-	arm_func_start ov02_02343670
-ov02_02343670: ; 0x02343670
+	arm_func_start SceneSetRakuReady_Draw
+SceneSetRakuReady_Draw: ; 0x02343670
 	bx lr
-	arm_func_end ov02_02343670
+	arm_func_end SceneSetRakuReady_Draw
 
-	arm_func_start ov02_02343674
-ov02_02343674: ; 0x02343674
+	arm_func_start SceneSetRakuReady_Button
+SceneSetRakuReady_Button: ; 0x02343674
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #7
-	bl ov02_023480E0
-	ldr r0, _0234369C ; =ov02_023436A0
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _0234369C ; =SceneSetRakuReady_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234369C: .word ov02_023436A0
-	arm_func_end ov02_02343674
+_0234369C: .word SceneSetRakuReady_EndScene
+	arm_func_end SceneSetRakuReady_Button
 
-	arm_func_start ov02_023436A0
-ov02_023436A0: ; 0x023436A0
+	arm_func_start SceneSetRakuReady_EndScene
+SceneSetRakuReady_EndScene: ; 0x023436A0
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _023436BC ; =ov02_023436C0
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _023436BC ; =SceneSetRakuReady_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023436BC: .word ov02_023436C0
-	arm_func_end ov02_023436A0
+_023436BC: .word SceneSetRakuReady_EndScene1
+	arm_func_end SceneSetRakuReady_EndScene
 
-	arm_func_start ov02_023436C0
-ov02_023436C0: ; 0x023436C0
+	arm_func_start SceneSetRakuReady_EndScene1
+SceneSetRakuReady_EndScene1: ; 0x023436C0
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0234372C ; =ov02_0235AB04
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _023436E8
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 _023436E8:
 	ldr r0, _0234372C ; =ov02_0235AB04
 	ldrb r0, [r0]
@@ -37827,26 +37827,26 @@ _023436E8:
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _0234370C:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02343730 ; =ov02_02343734
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02343730 ; =SceneSetRakuReady_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234372C: .word ov02_0235AB04
-_02343730: .word ov02_02343734
-	arm_func_end ov02_023436C0
+_02343730: .word SceneSetRakuReady_EndScene2
+	arm_func_end SceneSetRakuReady_EndScene1
 
-	arm_func_start ov02_02343734
-ov02_02343734: ; 0x02343734
+	arm_func_start SceneSetRakuReady_EndScene2
+SceneSetRakuReady_EndScene2: ; 0x02343734
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _023437F0 ; =ov02_0235AB04
@@ -37854,56 +37854,56 @@ ov02_02343734: ; 0x02343734
 	cmp r0, #0
 	bne _02343768
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 _02343768:
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov02_023344AC
+	bl Dwci_AnimelEnd
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _023437F0 ; =ov02_0235AB04
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _023437A0
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _023437A0:
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _023437F0 ; =ov02_0235AB04
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _023437D8
-	bl ov02_0233944C
+	bl Dwci_RakulEnd
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _023437F4 ; =ov02_02344AF0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _023437F4 ; =Dwci_SceneSetSelectWay
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _023437D8:
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
-	ldr r0, _023437F8 ; =ov02_023429E8
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _023437F8 ; =Dwci_SceneSetRakuButton
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023437F0: .word ov02_0235AB04
-_023437F4: .word ov02_02344AF0
-_023437F8: .word ov02_023429E8
-	arm_func_end ov02_02343734
+_023437F4: .word Dwci_SceneSetSelectWay
+_023437F8: .word Dwci_SceneSetRakuButton
+	arm_func_end SceneSetRakuReady_EndScene2
 
-	arm_func_start ov02_023437FC
-ov02_023437FC: ; 0x023437FC
+	arm_func_start SceneSetRakuReady_CheckRaku
+SceneSetRakuReady_CheckRaku: ; 0x023437FC
 	stmdb sp!, {r3, lr}
-	bl ov02_02339470
+	bl Dwci_RakulGetState
 	cmp r0, #1
 	beq _02343818
 	cmp r0, #4
@@ -37912,106 +37912,106 @@ ov02_023437FC: ; 0x023437FC
 _02343818:
 	ldr r1, _02343874 ; =ov02_0235AB04
 	mov r2, #1
-	ldr r0, _02343878 ; =ov02_023436A0
+	ldr r0, _02343878 ; =SceneSetRakuReady_EndScene
 	strb r2, [r1]
-	bl ov02_02338D68
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02343830:
 	ldr r0, _02343874 ; =ov02_0235AB04
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r1, #1
 	mov ip, #0
 	mov r2, r1
 	sub r3, r1, #2
 	mov r0, #0xd
 	str ip, [sp]
-	bl ov02_02349394
-	bl ov02_02334768
-	ldr r0, _0234387C ; =ov02_02343880
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	bl Dwci_BtnlDisable
+	ldr r0, _0234387C ; =SceneSetRakuReady_ProcError
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02343874: .word ov02_0235AB04
-_02343878: .word ov02_023436A0
-_0234387C: .word ov02_02343880
-	arm_func_end ov02_023437FC
+_02343878: .word SceneSetRakuReady_EndScene
+_0234387C: .word SceneSetRakuReady_ProcError
+	arm_func_end SceneSetRakuReady_CheckRaku
 
-	arm_func_start ov02_02343880
-ov02_02343880: ; 0x02343880
+	arm_func_start SceneSetRakuReady_ProcError
+SceneSetRakuReady_ProcError: ; 0x02343880
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
-	ldr r0, _023438A8 ; =ov02_023438AC
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
+	ldr r0, _023438A8 ; =SceneSetRakuReady_ProcError1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023438A8: .word ov02_023438AC
-	arm_func_end ov02_02343880
+_023438A8: .word SceneSetRakuReady_ProcError1
+	arm_func_end SceneSetRakuReady_ProcError
 
-	arm_func_start ov02_023438AC
-ov02_023438AC: ; 0x023438AC
+	arm_func_start SceneSetRakuReady_ProcError1
+SceneSetRakuReady_ProcError1: ; 0x023438AC
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _023438C8 ; =ov02_023436A0
-	bl ov02_02338D68
+	ldr r0, _023438C8 ; =SceneSetRakuReady_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023438C8: .word ov02_023436A0
-	arm_func_end ov02_023438AC
+_023438C8: .word SceneSetRakuReady_EndScene
+	arm_func_end SceneSetRakuReady_ProcError1
 
-	arm_func_start ov02_023438CC
-ov02_023438CC: ; 0x023438CC
+	arm_func_start Dwci_SceneSetSearch
+Dwci_SceneSetSearch: ; 0x023438CC
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234392C ; =ov02_0235AB08
 	mov r1, #0
 	strh r1, [r0, #2]
 	strb r1, [r0]
-	bl ov02_02343934
+	bl SceneSetSearch_InitGraphics
 	mov r0, #0x33
 	sub r1, r0, #0x34
 	mov r2, #0
-	bl ov02_02334C3C
-	bl ov02_023352C4
+	bl Dwci_CommentlDispEx
+	bl Dwci_HLlLoadSet
 	mov r0, #2
-	bl ov02_02334DE8
+	bl Dwci_CmnlStep
 	mov r0, #0x33
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0
-	bl ov02_023343DC
-	bl ov02_02347028
-	bl ov02_02347090
+	bl Dwci_AnimelInitEx
+	bl Dwci_SearchlInit
+	bl Dwci_SearchlBegin
 	mov r0, #0xa
-	bl ov02_023480E0
-	ldr r0, _02343930 ; =ov02_023439DC
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02343930 ; =SceneSetSearch_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234392C: .word ov02_0235AB08
-_02343930: .word ov02_023439DC
-	arm_func_end ov02_023438CC
+_02343930: .word SceneSetSearch_ProcInit
+	arm_func_end Dwci_SceneSetSearch
 
-	arm_func_start ov02_02343934
-ov02_02343934: ; 0x02343934
+	arm_func_start SceneSetSearch_InitGraphics
+SceneSetSearch_InitGraphics: ; 0x02343934
 	stmdb sp!, {r3, lr}
 	ldr r0, _023439BC ; =ov02_02353B44
 	ldr r1, _023439C0 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023439C4 ; =ov02_02353B5C
 	ldr r1, _023439C8 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023439CC ; =ov02_02353B74
 	ldr r1, _023439D0 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _023439D4 ; =0x04001008
 	ldr r1, _023439D8 ; =0x0400000A
 	ldrh r0, [r3]
@@ -38045,81 +38045,81 @@ _023439CC: .word ov02_02353B74
 _023439D0: .word GX_LoadBG2Scr
 _023439D4: .word 0x04001008
 _023439D8: .word 0x0400000A
-	arm_func_end ov02_02343934
+	arm_func_end SceneSetSearch_InitGraphics
 
-	arm_func_start ov02_023439DC
-ov02_023439DC: ; 0x023439DC
+	arm_func_start SceneSetSearch_ProcInit
+SceneSetSearch_ProcInit: ; 0x023439DC
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _02343A2C ; =ov02_02343A30
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02343A2C ; =SceneSetSearch_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343A2C: .word ov02_02343A30
-	arm_func_end ov02_023439DC
+_02343A2C: .word SceneSetSearch_ProcInit1
+	arm_func_end SceneSetSearch_ProcInit
 
-	arm_func_start ov02_02343A30
-ov02_02343A30: ; 0x02343A30
+	arm_func_start SceneSetSearch_ProcInit1
+SceneSetSearch_ProcInit1: ; 0x02343A30
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #1
-	bl ov02_02334E38
-	ldr r0, _02343A68 ; =ov02_02343A6C
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _02343A68 ; =SceneSetSearch_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343A68: .word ov02_02343A6C
-	arm_func_end ov02_02343A30
+_02343A68: .word SceneSetSearch_ProcInit2
+	arm_func_end SceneSetSearch_ProcInit1
 
-	arm_func_start ov02_02343A6C
-ov02_02343A6C: ; 0x02343A6C
+	arm_func_start SceneSetSearch_ProcInit2
+SceneSetSearch_ProcInit2: ; 0x02343A6C
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02343A90 ; =ov02_02343A94
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02343A90 ; =SceneSetSearch_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343A90: .word ov02_02343A94
-	arm_func_end ov02_02343A6C
+_02343A90: .word SceneSetSearch_ProcScene
+	arm_func_end SceneSetSearch_ProcInit2
 
-	arm_func_start ov02_02343A94
-ov02_02343A94: ; 0x02343A94
+	arm_func_start SceneSetSearch_ProcScene
+SceneSetSearch_ProcScene: ; 0x02343A94
 	stmdb sp!, {r3, lr}
-	bl ov02_02343BD4
-	bl ov02_02343BF8
-	bl ov02_02343BFC
-	bl ov02_02343AAC
+	bl SceneSetSearch_Input
+	bl SceneSetSearch_Draw
+	bl SceneSetSearch_Button
+	bl SceneSetSearch_IsEnd
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02343A94
+	arm_func_end SceneSetSearch_ProcScene
 
-	arm_func_start ov02_02343AAC
-ov02_02343AAC: ; 0x02343AAC
+	arm_func_start SceneSetSearch_IsEnd
+SceneSetSearch_IsEnd: ; 0x02343AAC
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r0, _02343BC8 ; =ov02_0235AB08
@@ -38130,9 +38130,9 @@ ov02_02343AAC: ; 0x02343AAC
 	cmp r0, #0x12c
 	addlo sp, sp, #8
 	ldmloia sp!, {r3, pc}
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	add r0, sp, #4
-	bl ov02_0234722C
+	bl Dwci_SearchlGetApInfo
 	cmp r0, #0
 	bne _02343B2C
 	ldr r0, _02343BC8 ; =ov02_0235AB08
@@ -38144,12 +38144,12 @@ ov02_02343AAC: ; 0x02343AAC
 	sub r3, r1, #2
 	mov r0, #0xf
 	str ip, [sp]
-	bl ov02_02349394
+	bl Dwci_WinlInitEx
 	mov r0, #0x12
-	bl ov02_023480E0
-	bl ov02_02334768
-	ldr r0, _02343BCC ; =ov02_02343D64
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_BtnlDisable
+	ldr r0, _02343BCC ; =SceneSetSearch_ProcError
+	bl Dwci_ChangeScene
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 _02343B2C:
@@ -38177,12 +38177,12 @@ _02343B58:
 	sub r3, r1, #2
 	mov r0, #0xe
 	str ip, [sp]
-	bl ov02_02349394
+	bl Dwci_WinlInitEx
 	mov r0, #0x12
-	bl ov02_023480E0
-	bl ov02_02334768
-	ldr r0, _02343BCC ; =ov02_02343D64
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_BtnlDisable
+	ldr r0, _02343BCC ; =SceneSetSearch_ProcError
+	bl Dwci_ChangeScene
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 _02343BA4:
@@ -38190,207 +38190,207 @@ _02343BA4:
 	mov r2, #1
 	mov r0, #0xf
 	strb r2, [r1]
-	bl ov02_023480E0
-	ldr r0, _02343BD0 ; =ov02_02343C28
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02343BD0 ; =SceneSetSearch_EndScene
+	bl Dwci_ChangeScene
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02343BC8: .word ov02_0235AB08
-_02343BCC: .word ov02_02343D64
-_02343BD0: .word ov02_02343C28
-	arm_func_end ov02_02343AAC
+_02343BCC: .word SceneSetSearch_ProcError
+_02343BD0: .word SceneSetSearch_EndScene
+	arm_func_end SceneSetSearch_IsEnd
 
-	arm_func_start ov02_02343BD4
-ov02_02343BD4: ; 0x02343BD4
+	arm_func_start SceneSetSearch_Input
+SceneSetSearch_Input: ; 0x02343BD4
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02343BD4
+	arm_func_end SceneSetSearch_Input
 
-	arm_func_start ov02_02343BF8
-ov02_02343BF8: ; 0x02343BF8
+	arm_func_start SceneSetSearch_Draw
+SceneSetSearch_Draw: ; 0x02343BF8
 	bx lr
-	arm_func_end ov02_02343BF8
+	arm_func_end SceneSetSearch_Draw
 
-	arm_func_start ov02_02343BFC
-ov02_02343BFC: ; 0x02343BFC
+	arm_func_start SceneSetSearch_Button
+SceneSetSearch_Button: ; 0x02343BFC
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #7
-	bl ov02_023480E0
-	ldr r0, _02343C24 ; =ov02_02343C28
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02343C24 ; =SceneSetSearch_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343C24: .word ov02_02343C28
-	arm_func_end ov02_02343BFC
+_02343C24: .word SceneSetSearch_EndScene
+	arm_func_end SceneSetSearch_Button
 
-	arm_func_start ov02_02343C28
-ov02_02343C28: ; 0x02343C28
+	arm_func_start SceneSetSearch_EndScene
+SceneSetSearch_EndScene: ; 0x02343C28
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _02343C44 ; =ov02_02343C48
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _02343C44 ; =SceneSetSearch_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343C44: .word ov02_02343C48
-	arm_func_end ov02_02343C28
+_02343C44: .word SceneSetSearch_EndScene1
+	arm_func_end SceneSetSearch_EndScene
 
-	arm_func_start ov02_02343C48
-ov02_02343C48: ; 0x02343C48
+	arm_func_start SceneSetSearch_EndScene1
+SceneSetSearch_EndScene1: ; 0x02343C48
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02343C94 ; =ov02_02343C98
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02343C94 ; =SceneSetSearch_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343C94: .word ov02_02343C98
-	arm_func_end ov02_02343C48
+_02343C94: .word SceneSetSearch_EndScene2
+	arm_func_end SceneSetSearch_EndScene1
 
-	arm_func_start ov02_02343C98
-ov02_02343C98: ; 0x02343C98
+	arm_func_start SceneSetSearch_EndScene2
+SceneSetSearch_EndScene2: ; 0x02343C98
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 _02343CC8:
-	bl ov02_02347190
+	bl Dwci_SearchlStop
 	cmp r0, #0
 	beq _02343CC8
-	bl ov02_023344AC
+	bl Dwci_AnimelEnd
 	mov r0, #0
-	bl ov02_0234E02C
-	bl ov02_02334D10
+	bl Dwci_FntlDeleteBgLcd
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _02343D58 ; =ov02_0235AB08
 	ldrb r0, [r0]
 	cmp r0, #1
 	beq _02343D34
-	bl ov02_0234705C
-	bl ov02_02347518
+	bl Dwci_SearchlEnd
+	bl Dwci_SettignlGet
 	ldrb r0, [r0, #0xf4]
-	bl ov02_0234793C
+	bl Dwci_SettinglSetSetting
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _02343D5C ; =ov02_02344AF0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02343D5C ; =Dwci_SceneSetSelectWay
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02343D34:
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338DB4
-	ldr r0, _02343D60 ; =ov02_0233CEEC
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _02343D60 ; =Dwci_SceneSetApList
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02343D58: .word ov02_0235AB08
-_02343D5C: .word ov02_02344AF0
-_02343D60: .word ov02_0233CEEC
-	arm_func_end ov02_02343C98
+_02343D5C: .word Dwci_SceneSetSelectWay
+_02343D60: .word Dwci_SceneSetApList
+	arm_func_end SceneSetSearch_EndScene2
 
-	arm_func_start ov02_02343D64
-ov02_02343D64: ; 0x02343D64
+	arm_func_start SceneSetSearch_ProcError
+SceneSetSearch_ProcError: ; 0x02343D64
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
-	ldr r0, _02343D8C ; =ov02_02343D90
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
+	ldr r0, _02343D8C ; =SceneSetSearch_ProcError1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343D8C: .word ov02_02343D90
-	arm_func_end ov02_02343D64
+_02343D8C: .word SceneSetSearch_ProcError1
+	arm_func_end SceneSetSearch_ProcError
 
-	arm_func_start ov02_02343D90
-ov02_02343D90: ; 0x02343D90
+	arm_func_start SceneSetSearch_ProcError1
+SceneSetSearch_ProcError1: ; 0x02343D90
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02343DAC ; =ov02_02343C28
-	bl ov02_02338D68
+	ldr r0, _02343DAC ; =SceneSetSearch_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343DAC: .word ov02_02343C28
-	arm_func_end ov02_02343D90
+_02343DAC: .word SceneSetSearch_EndScene
+	arm_func_end SceneSetSearch_ProcError1
 
-	arm_func_start ov02_02343DB0
-ov02_02343DB0: ; 0x02343DB0
+	arm_func_start Dwci_SceneSetSelectAp
+Dwci_SceneSetSelectAp: ; 0x02343DB0
 	stmdb sp!, {r3, lr}
 	mov r0, #0x20
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _02343E08 ; =ov02_0235AB0C
 	mov r2, #0
 	str r0, [r1, #4]
 	strb r2, [r0, #0x1d]
-	bl ov02_02343E10
+	bl SceneSetSelectAp_InitGraphics
 	mov r0, #1
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	mov r0, #0x2f
 	sub r1, r0, #0x30
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #0
-	bl ov02_02334DE8
-	bl ov02_02343F20
-	bl ov02_02344590
-	ldr r0, _02343E0C ; =ov02_02344028
-	bl ov02_02338D68
+	bl Dwci_CmnlStep
+	bl SceneSetSelectAp_InitObj
+	bl SceneSetSelectAp_DispFocus
+	ldr r0, _02343E0C ; =SceneSetSelectAp_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02343E08: .word ov02_0235AB0C
-_02343E0C: .word ov02_02344028
-	arm_func_end ov02_02343DB0
+_02343E0C: .word SceneSetSelectAp_ProcInit
+	arm_func_end Dwci_SceneSetSelectAp
 
-	arm_func_start ov02_02343E10
-ov02_02343E10: ; 0x02343E10
+	arm_func_start SceneSetSelectAp_InitGraphics
+SceneSetSelectAp_InitGraphics: ; 0x02343E10
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x18
 	ldr ip, _02343EF0 ; =ov02_02352BE8
@@ -38407,27 +38407,27 @@ _02343E24:
 	bne _02343E24
 	ldr r0, _02343EF4 ; =ov02_02353B88
 	ldr r1, _02343EF8 ; =GX_LoadOBJPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02343EFC ; =ov02_02353B9C
 	ldr r1, _02343F00 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02343F04 ; =ov02_02353BB4
 	ldr r1, _02343F08 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02343F0C ; =ov02_02353BCC
 	ldr r1, _02343F10 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	add r0, sp, #0
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r2, _02343F14 ; =ov02_0235AB0C
 	mov r1, #0x10
 	ldr r2, [r2, #4]
 	str r0, [r2]
 	mov r0, #1
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	ldr r2, _02343F18 ; =0x04001008
 	ldr r1, _02343F1C ; =0x0400000A
 	ldrh r0, [r2]
@@ -38461,10 +38461,10 @@ _02343F10: .word GX_LoadBG2Scr
 _02343F14: .word ov02_0235AB0C
 _02343F18: .word 0x04001008
 _02343F1C: .word 0x0400000A
-	arm_func_end ov02_02343E10
+	arm_func_end SceneSetSelectAp_InitGraphics
 
-	arm_func_start ov02_02343F20
-ov02_02343F20: ; 0x02343F20
+	arm_func_start SceneSetSelectAp_InitObj
+SceneSetSelectAp_InitObj: ; 0x02343F20
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, #0
 	ldr r6, _0234401C ; =ov02_02352BFE
@@ -38475,7 +38475,7 @@ ov02_02343F20: ; 0x02343F20
 	mov r8, #3
 _02343F40:
 	mov r0, sl
-	bl ov02_02347924
+	bl Dwci_SettinglGetSetType
 	mov sb, r0
 	cmp sb, #0xff
 	moveq sb, r8
@@ -38483,7 +38483,7 @@ _02343F40:
 	mov r0, fp
 	mov r1, #0x11
 	mov r2, #1
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r1, [r4, #4]
 	add r3, sl, #3
 	add r1, r1, sl, lsl #2
@@ -38496,18 +38496,18 @@ _02343F40:
 	ldrh r3, [r3, #2]
 	ldr r0, [r0, #0x10]
 	mov r1, r7
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, [r4, #4]
 	mov r1, r7
 	add r0, r0, sl, lsl #2
 	ldr r0, [r0, #0x10]
 	mov r2, #3
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 _02343FB4:
 	ldrb r1, [r5, sb]
 	mov r0, #0
 	mov r2, #1
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r1, [r4, #4]
 	mov r2, sl, lsl #2
 	add r1, r1, sl, lsl #2
@@ -38519,13 +38519,13 @@ _02343FB4:
 	ldrh r3, [r3, #2]
 	ldr r0, [r0, #4]
 	mov r1, r7
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, [r4, #4]
 	mov r1, r7
 	add r0, r0, sl, lsl #2
 	ldr r0, [r0, #4]
 	mov r2, #3
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	add sl, sl, #1
 	cmp sl, #3
 	blt _02343F40
@@ -38534,96 +38534,96 @@ _02343FB4:
 _0234401C: .word ov02_02352BFE
 _02344020: .word ov02_02352BDC
 _02344024: .word ov02_0235AB0C
-	arm_func_end ov02_02343F20
+	arm_func_end SceneSetSelectAp_InitObj
 
-	arm_func_start ov02_02344028
-ov02_02344028: ; 0x02344028
+	arm_func_start SceneSetSelectAp_ProcInit
+SceneSetSelectAp_ProcInit: ; 0x02344028
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E3D0
-	ldr r0, _02344078 ; =ov02_0234407C
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02344078 ; =SceneSetSelectAp_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02344078: .word ov02_0234407C
-	arm_func_end ov02_02344028
+_02344078: .word SceneSetSelectAp_ProcInit1
+	arm_func_end SceneSetSelectAp_ProcInit
 
-	arm_func_start ov02_0234407C
-ov02_0234407C: ; 0x0234407C
+	arm_func_start SceneSetSelectAp_ProcInit1
+SceneSetSelectAp_ProcInit1: ; 0x0234407C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_02334E38
-	ldr r0, _023440B4 ; =ov02_023440B8
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _023440B4 ; =SceneSetSelectAp_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023440B4: .word ov02_023440B8
-	arm_func_end ov02_0234407C
+_023440B4: .word SceneSetSelectAp_ProcInit2
+	arm_func_end SceneSetSelectAp_ProcInit1
 
-	arm_func_start ov02_023440B8
-ov02_023440B8: ; 0x023440B8
+	arm_func_start SceneSetSelectAp_ProcInit2
+SceneSetSelectAp_ProcInit2: ; 0x023440B8
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_023487D0
+	bl Dwci_SteplGet
 	cmp r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _023440E8 ; =ov02_023440EC
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _023440E8 ; =SceneSetSelectAp_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023440E8: .word ov02_023440EC
-	arm_func_end ov02_023440B8
+_023440E8: .word SceneSetSelectAp_ProcScene
+	arm_func_end SceneSetSelectAp_ProcInit2
 
-	arm_func_start ov02_023440EC
-ov02_023440EC: ; 0x023440EC
+	arm_func_start SceneSetSelectAp_ProcScene
+SceneSetSelectAp_ProcScene: ; 0x023440EC
 	stmdb sp!, {r3, lr}
-	bl ov02_02344100
-	bl ov02_023441F4
-	bl ov02_023441F8
+	bl SceneSetSelectAp_Input
+	bl SceneSetSelectAp_Draw
+	bl SceneSetSelectAp_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_023440EC
+	arm_func_end SceneSetSelectAp_ProcScene
 
-	arm_func_start ov02_02344100
-ov02_02344100: ; 0x02344100
+	arm_func_start SceneSetSelectAp_Input
+SceneSetSelectAp_Input: ; 0x02344100
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r5, _023441EC ; =ov02_02352C16
 	mov r4, #0
 _0234410C:
 	mov r0, r5
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _02344134
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldr r0, _023441F0 ; =ov02_0235AB0C
 	strb r4, [r0]
-	bl ov02_02344590
+	bl SceneSetSelectAp_DispFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _02344134:
 	add r4, r4, #1
@@ -38631,67 +38631,67 @@ _02344134:
 	add r5, r5, #8
 	blo _0234410C
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02344160
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, r4, r5, pc}
 _02344160:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0234417C
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, r4, r5, pc}
 _0234417C:
 	mov r0, #0x40
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02344198
 	mov r0, #1
-	bl ov02_0234460C
+	bl SceneSetSelectAp_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _02344198:
 	mov r0, #0x80
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _023441B4
 	mov r0, #3
-	bl ov02_0234460C
+	bl SceneSetSelectAp_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _023441B4:
 	mov r0, #0x20
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _023441D0
 	mov r0, #0
-	bl ov02_0234460C
+	bl SceneSetSelectAp_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 _023441D0:
 	mov r0, #0x10
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, #2
-	bl ov02_0234460C
+	bl SceneSetSelectAp_MoveFocus
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023441EC: .word ov02_02352C16
 _023441F0: .word ov02_0235AB0C
-	arm_func_end ov02_02344100
+	arm_func_end SceneSetSelectAp_Input
 
-	arm_func_start ov02_023441F4
-ov02_023441F4: ; 0x023441F4
+	arm_func_start SceneSetSelectAp_Draw
+SceneSetSelectAp_Draw: ; 0x023441F4
 	bx lr
-	arm_func_end ov02_023441F4
+	arm_func_end SceneSetSelectAp_Draw
 
-	arm_func_start ov02_023441F8
-ov02_023441F8: ; 0x023441F8
+	arm_func_start SceneSetSelectAp_Button
+SceneSetSelectAp_Button: ; 0x023441F8
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	beq _0234421C
 	cmp r0, #1
@@ -38699,7 +38699,7 @@ ov02_023441F8: ; 0x023441F8
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _0234421C:
-	bl ov02_02338E00
+	bl Dwci_Entry
 	cmp r0, #0
 	beq _02344234
 	cmp r0, #1
@@ -38707,16 +38707,16 @@ _0234421C:
 	b _02344308
 _02344234:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02344318 ; =ov02_0235AB0C
 	mov r1, #2
 	ldr r0, [r0, #4]
 	strb r1, [r0, #0x1d]
 	b _02344308
 _02344250:
-	bl ov02_02334768
-	ldr r0, _0234431C ; =ov02_0233958C
-	bl ov02_02338D68
+	bl Dwci_BtnlDisable
+	ldr r0, _0234431C ; =Dwci_SceneEnd
+	bl Dwci_ChangeScene
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _02344264:
@@ -38729,19 +38729,19 @@ _02344264:
 	blo _023442F0
 	sub r4, r0, #4
 	mov r0, r4
-	bl ov02_02347924
+	bl Dwci_SettinglGetSetType
 	cmp r0, #0xff
 	bne _023442AC
 	mov r0, #9
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mvn r0, #0
-	bl ov02_02334710
+	bl Dwci_BtnlSetForce
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _023442AC:
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_02338DF0
+	bl Dwci_SndlPlay
+	bl Dwci_Language__0233961C
 	ldr r1, _02344320 ; =ov02_02352C88
 	add ip, r4, #1
 	ldrsb r3, [r1, r0]
@@ -38749,60 +38749,60 @@ _023442AC:
 	mov r1, #0
 	mov r2, #1
 	str ip, [sp]
-	bl ov02_02349394
-	bl ov02_02344800
-	bl ov02_02334768
-	ldr r0, _02344324 ; =ov02_02344890
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	bl SceneSetSelectAp_DispPushClear
+	bl Dwci_BtnlDisable
+	ldr r0, _02344324 ; =SceneSetSelectAp_ProcErase
+	bl Dwci_ChangeScene
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 _023442F0:
 	cmp r0, #2
 	bhi _023442FC
-	bl ov02_0234793C
+	bl Dwci_SettinglSetSetting
 _023442FC:
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_02344A20
+	bl Dwci_SndlPlay
+	bl SceneSetSelectAp_DispPush
 _02344308:
-	ldr r0, _02344328 ; =ov02_0234432C
-	bl ov02_02338D68
+	ldr r0, _02344328 ; =SceneSetSelectAp_EndScene
+	bl Dwci_ChangeScene
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _02344318: .word ov02_0235AB0C
-_0234431C: .word ov02_0233958C
+_0234431C: .word Dwci_SceneEnd
 _02344320: .word ov02_02352C88
-_02344324: .word ov02_02344890
-_02344328: .word ov02_0234432C
-	arm_func_end ov02_023441F8
+_02344324: .word SceneSetSelectAp_ProcErase
+_02344328: .word SceneSetSelectAp_EndScene
+	arm_func_end SceneSetSelectAp_Button
 
-	arm_func_start ov02_0234432C
-ov02_0234432C: ; 0x0234432C
+	arm_func_start SceneSetSelectAp_EndScene
+SceneSetSelectAp_EndScene: ; 0x0234432C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02344360 ; =ov02_0235AB0C
 	ldr r0, [r0, #4]
 	ldrb r0, [r0, #0x1d]
 	cmp r0, #2
 	bne _02344348
-	bl ov02_023486C8
+	bl Dwci_SteplEnd
 _02344348:
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _02344364 ; =ov02_02344368
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _02344364 ; =SceneSetSelectAp_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02344360: .word ov02_0235AB0C
-_02344364: .word ov02_02344368
-	arm_func_end ov02_0234432C
+_02344364: .word SceneSetSelectAp_EndScene1
+	arm_func_end SceneSetSelectAp_EndScene
 
-	arm_func_start ov02_02344368
-ov02_02344368: ; 0x02344368
+	arm_func_start SceneSetSelectAp_EndScene1
+SceneSetSelectAp_EndScene1: ; 0x02344368
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _023443E4 ; =ov02_0235AB0C
@@ -38813,46 +38813,46 @@ ov02_02344368: ; 0x02344368
 	ldrb r0, [r0]
 	cmp r0, #3
 	beq _023443AC
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	ldrb r0, [r0, #0xe7]
 	cmp r0, #0xff
 	beq _023443B0
 _023443AC:
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 _023443B0:
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _023443E8 ; =ov02_023443EC
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _023443E8 ; =SceneSetSelectAp_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023443E4: .word ov02_0235AB0C
-_023443E8: .word ov02_023443EC
-	arm_func_end ov02_02344368
+_023443E8: .word SceneSetSelectAp_EndScene2
+	arm_func_end SceneSetSelectAp_EndScene1
 
-	arm_func_start ov02_023443EC
-ov02_023443EC: ; 0x023443EC
+	arm_func_start SceneSetSelectAp_EndScene2
+SceneSetSelectAp_EndScene2: ; 0x023443EC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	bl ov02_02348BF0
+	bl Dwci_SteplIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r4, _02344570 ; =ov02_0235AB0C
@@ -38863,7 +38863,7 @@ _02344430:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _02344448
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 _02344448:
 	add r5, r5, #1
 	cmp r5, #3
@@ -38876,26 +38876,26 @@ _0234445C:
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	beq _02344474
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 _02344474:
 	add r5, r5, #1
 	cmp r5, #3
 	blo _0234445C
-	bl ov02_0233519C
-	bl ov02_02334D10
+	bl Dwci_FocuslDelete
+	bl Dwci_CommentlDelete
 	ldr r0, _02344570 ; =ov02_0235AB0C
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	ldr r0, _02344574 ; =ov02_02353BE0
 	ldr r1, _02344578 ; =GX_LoadOBJPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _02344570 ; =ov02_0235AB0C
 	ldr r1, [r0, #4]
 	ldrb r1, [r1, #0x1d]
@@ -38903,9 +38903,9 @@ _02344474:
 	bne _023444E8
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
-	ldr r0, _0234457C ; =ov02_023398CC
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0234457C ; =Dwci_SceneMenu
+	bl Dwci_ChangeScene
 	b _02344564
 _023444E8:
 	ldrb r0, [r0]
@@ -38920,46 +38920,46 @@ _023444F8: ; jump table
 _02344508:
 	mov r0, #2
 	mov r1, #0
-	bl ov02_02338D78
-	bl ov02_02347518
+	bl Dwci_SetParam
+	bl Dwci_SettignlGet
 	ldrb r0, [r0, #0xe7]
 	cmp r0, #0xff
 	bne _02344530
-	ldr r0, _02344580 ; =ov02_02344AF0
-	bl ov02_02338D68
+	ldr r0, _02344580 ; =Dwci_SceneSetSelectWay
+	bl Dwci_ChangeScene
 	b _02344564
 _02344530:
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338DB4
+	bl Dwci_SetParam2
 	mov r0, #0
-	bl ov02_02342798
-	ldr r0, _02344584 ; =ov02_023402CC
-	bl ov02_02338D68
+	bl Dwci_SetListReturn
+	ldr r0, _02344584 ; =Dwci_SceneSetList
+	bl Dwci_ChangeScene
 	b _02344564
 _02344550:
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _02344588 ; =ov02_02345DC8
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02344588 ; =Dwci_SceneSetUsbReady
+	bl Dwci_ChangeScene
 _02344564:
 	ldr r0, _0234458C ; =ov02_0235AB10
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02344570: .word ov02_0235AB0C
 _02344574: .word ov02_02353BE0
 _02344578: .word GX_LoadOBJPltt
-_0234457C: .word ov02_023398CC
-_02344580: .word ov02_02344AF0
-_02344584: .word ov02_023402CC
-_02344588: .word ov02_02345DC8
+_0234457C: .word Dwci_SceneMenu
+_02344580: .word Dwci_SceneSetSelectWay
+_02344584: .word Dwci_SceneSetList
+_02344588: .word Dwci_SceneSetUsbReady
 _0234458C: .word ov02_0235AB10
-	arm_func_end ov02_023443EC
+	arm_func_end SceneSetSelectAp_EndScene2
 
-	arm_func_start ov02_02344590
-ov02_02344590: ; 0x02344590
+	arm_func_start SceneSetSelectAp_DispFocus
+SceneSetSelectAp_DispFocus: ; 0x02344590
 	stmdb sp!, {r3, lr}
 	ldr r0, _023445F8 ; =ov02_0235AB0C
 	ldrb r2, [r0]
@@ -38974,7 +38974,7 @@ ov02_02344590: ; 0x02344590
 	ldrh r1, [r1, ip]
 	ldrh r2, [r2, ip]
 	ldrh r3, [r3, ip]
-	bl ov02_023350AC
+	bl Dwci_FocuslDisp4
 	ldmia sp!, {r3, pc}
 _023445D0:
 	ldr r1, _023445FC ; =ov02_02352C4E
@@ -38985,7 +38985,7 @@ _023445D0:
 	ldrh r2, [r2, r3]
 	ldrh r3, [r0, r3]
 	mov r0, #0
-	bl ov02_02334FF0
+	bl Dwci_FocuslDisp
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023445F8: .word ov02_0235AB0C
@@ -38993,10 +38993,10 @@ _023445FC: .word ov02_02352C4E
 _02344600: .word ov02_02352C52
 _02344604: .word ov02_02352C50
 _02344608: .word ov02_02352C54
-	arm_func_end ov02_02344590
+	arm_func_end SceneSetSelectAp_DispFocus
 
-	arm_func_start ov02_0234460C
-ov02_0234460C: ; 0x0234460C
+	arm_func_start SceneSetSelectAp_MoveFocus
+SceneSetSelectAp_MoveFocus: ; 0x0234460C
 	stmdb sp!, {r3, lr}
 	ldr r2, _023447FC ; =ov02_0235AB0C
 	mov r1, #1
@@ -39127,15 +39127,15 @@ _023447E4:
 	cmp r1, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #8
-	bl ov02_023480E0
-	bl ov02_02344590
+	bl Dwci_SndlPlay
+	bl SceneSetSelectAp_DispFocus
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023447FC: .word ov02_0235AB0C
-	arm_func_end ov02_0234460C
+	arm_func_end SceneSetSelectAp_MoveFocus
 
-	arm_func_start ov02_02344800
-ov02_02344800: ; 0x02344800
+	arm_func_start SceneSetSelectAp_DispPushClear
+SceneSetSelectAp_DispPushClear: ; 0x02344800
 	stmdb sp!, {r4, lr}
 	ldr r0, _02344884 ; =ov02_0235AB0C
 	mov r1, #0
@@ -39144,11 +39144,11 @@ ov02_02344800: ; 0x02344800
 	sub r4, r2, #4
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #0x10]
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, r0
 	mov r0, #0
 	mov r1, #0x32
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, _02344884 ; =ov02_0235AB0C
 	add r3, r4, #3
 	ldr r2, [r0, #4]
@@ -39160,46 +39160,46 @@ ov02_02344800: ; 0x02344800
 	ldrh r3, [r0, r3]
 	ldr r0, [ip, #0x10]
 	mvn r1, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02344884 ; =ov02_0235AB0C
 	mvn r1, #0
 	ldr r0, [r0, #4]
 	mov r2, #3
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #0x10]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02344884: .word ov02_0235AB0C
 _02344888: .word ov02_02352BFE
 _0234488C: .word ov02_02352C00
-	arm_func_end ov02_02344800
+	arm_func_end SceneSetSelectAp_DispPushClear
 
-	arm_func_start ov02_02344890
-ov02_02344890: ; 0x02344890
+	arm_func_start SceneSetSelectAp_ProcErase
+SceneSetSelectAp_ProcErase: ; 0x02344890
 	stmdb sp!, {r4, lr}
 	ldr r0, _023449EC ; =ov02_0235AB0C
 	ldrb r0, [r0]
 	sub r4, r0, #4
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	beq _02344960
 	cmp r0, #1
 	ldmneia sp!, {r4, pc}
 	mov r0, #0xe
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, r4
-	bl ov02_02347D2C
+	bl Dwci_SettinglErasePage
 	ldr r0, _023449EC ; =ov02_0235AB0C
 	mov r1, #0
 	ldr r0, [r0, #4]
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #4]
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, r0
 	mov r0, #0
 	mov r1, #0x56
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, _023449EC ; =ov02_0235AB0C
 	mov ip, r4, lsl #2
 	ldr r0, [r0, #4]
@@ -39210,19 +39210,19 @@ ov02_02344890: ; 0x02344890
 	ldr r3, _023449F4 ; =ov02_02352C00
 	ldrh r2, [r2, ip]
 	ldrh r3, [r3, ip]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _023449EC ; =ov02_0235AB0C
 	mvn r1, #0
 	ldr r0, [r0, #4]
 	mov r2, #3
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #4]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	ldr r0, _023449EC ; =ov02_0235AB0C
 	ldr r0, [r0, #4]
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #0x10]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	mov r1, #0
 	ldr r0, _023449EC ; =ov02_0235AB0C
 	ldr r0, [r0, #4]
@@ -39231,17 +39231,17 @@ ov02_02344890: ; 0x02344890
 	b _023449DC
 _02344960:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _023449EC ; =ov02_0235AB0C
 	mov r1, #0
 	ldr r0, [r0, #4]
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #0x10]
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, r0
 	mov r0, #0
 	mov r1, #0x11
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, _023449EC ; =ov02_0235AB0C
 	add r1, r4, #3
 	ldr r0, [r0, #4]
@@ -39253,42 +39253,42 @@ _02344960:
 	ldrh r3, [r3, ip]
 	ldr r0, [r0, #0x10]
 	mvn r1, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _023449EC ; =ov02_0235AB0C
 	mvn r1, #0
 	ldr r0, [r0, #4]
 	mov r2, #3
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #0x10]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 _023449DC:
-	bl ov02_023496C0
-	ldr r0, _023449F8 ; =ov02_023449FC
-	bl ov02_02338D68
+	bl Dwci_WinlEnd
+	ldr r0, _023449F8 ; =SceneSetSelectAp_ProcErase1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023449EC: .word ov02_0235AB0C
 _023449F0: .word ov02_02352BFE
 _023449F4: .word ov02_02352C00
-_023449F8: .word ov02_023449FC
-	arm_func_end ov02_02344890
+_023449F8: .word SceneSetSelectAp_ProcErase1
+	arm_func_end SceneSetSelectAp_ProcErase
 
-	arm_func_start ov02_023449FC
-ov02_023449FC: ; 0x023449FC
+	arm_func_start SceneSetSelectAp_ProcErase1
+SceneSetSelectAp_ProcErase1: ; 0x023449FC
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02344A1C ; =ov02_023440EC
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02344A1C ; =SceneSetSelectAp_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02344A1C: .word ov02_023440EC
-	arm_func_end ov02_023449FC
+_02344A1C: .word SceneSetSelectAp_ProcScene
+	arm_func_end SceneSetSelectAp_ProcErase1
 
-	arm_func_start ov02_02344A20
-ov02_02344A20: ; 0x02344A20
+	arm_func_start SceneSetSelectAp_DispPush
+SceneSetSelectAp_DispPush: ; 0x02344A20
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r1, _02344AE8 ; =ov02_02352BE0
@@ -39318,13 +39318,13 @@ ov02_02344A20: ; 0x02344A20
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
 	mov r2, r1
-	bl ov02_023468A0
+	bl Dwci_ScreenlCopyPalette
 	ldr r0, _02344AEC ; =ov02_0235AB0C
 	ldrb r0, [r0]
 	cmp r0, #3
 	addeq sp, sp, #8
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov02_02347924
+	bl Dwci_SettinglGetSetType
 	ldr r1, _02344AEC ; =ov02_0235AB0C
 	cmp r0, #2
 	ldrb ip, [r1]
@@ -39336,18 +39336,18 @@ ov02_02344A20: ; 0x02344A20
 	ldr r0, [r0, #4]
 	mvn r1, #0
 	mov r2, #0
-	bl ov02_0234D3C0
+	bl Dwci_CelllSetPalette
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02344AE8: .word ov02_02352BE0
 _02344AEC: .word ov02_0235AB0C
-	arm_func_end ov02_02344A20
+	arm_func_end SceneSetSelectAp_DispPush
 
-	arm_func_start ov02_02344AF0
-ov02_02344AF0: ; 0x02344AF0
+	arm_func_start Dwci_SceneSetSelectWay
+Dwci_SceneSetSelectWay: ; 0x02344AF0
 	stmdb sp!, {r4, r5, r6, lr}
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	ldr r1, _02344BF8 ; =ov02_0235AB14
 	mov r2, #0
 	strb r2, [r1, #2]
@@ -39356,7 +39356,7 @@ ov02_02344AF0: ; 0x02344AF0
 	cmp r2, #0
 	moveq r0, #1
 	streqb r0, [r1]
-	bl ov02_02338DF0
+	bl Dwci_Language__0233961C
 	cmp r0, #0
 	beq _02344B4C
 	ldr r0, _02344BF8 ; =ov02_0235AB14
@@ -39370,29 +39370,29 @@ ov02_02344AF0: ; 0x02344AF0
 	moveq r1, #1
 	streqb r1, [r0]
 _02344B4C:
-	bl ov02_02344C14
-	bl ov02_023352C4
-	bl ov02_02338DF0
+	bl SceneSetSelectWay_InitGraphics
+	bl Dwci_HLlLoadSet
+	bl Dwci_Language__0233961C
 	mov r5, r0
 	ldrb r1, [r4, #0xf4]
 	mov r0, #0x32
 	ldr r3, _02344BFC ; =ov02_02352CCC
 	add r2, r1, #1
 	ldrsb r1, [r3, r5]
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #1
-	bl ov02_02334DE8
+	bl Dwci_CmnlStep
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r6, r0
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r5, r0
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r4, r0
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r3, r0
 	ldr r1, _02344C00 ; =ov02_02352D14
 	ldr r0, _02344BF8 ; =ov02_0235AB14
@@ -39409,9 +39409,9 @@ _02344B4C:
 	ldr r4, _02344C0C ; =ov02_02352D1A
 	add r3, r4, r3, lsl #5
 	ldrh r3, [r5, r3]
-	bl ov02_023350AC
-	ldr r0, _02344C10 ; =ov02_02344D00
-	bl ov02_02338D68
+	bl Dwci_FocuslDisp4
+	ldr r0, _02344C10 ; =SceneSetSelectWay_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02344BF8: .word ov02_0235AB14
@@ -39420,11 +39420,11 @@ _02344C00: .word ov02_02352D14
 _02344C04: .word ov02_02352D18
 _02344C08: .word ov02_02352D16
 _02344C0C: .word ov02_02352D1A
-_02344C10: .word ov02_02344D00
-	arm_func_end ov02_02344AF0
+_02344C10: .word SceneSetSelectWay_ProcInit
+	arm_func_end Dwci_SceneSetSelectWay
 
-	arm_func_start ov02_02344C14
-ov02_02344C14: ; 0x02344C14
+	arm_func_start SceneSetSelectWay_InitGraphics
+SceneSetSelectWay_InitGraphics: ; 0x02344C14
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x18
 	ldr ip, _02344CD8 ; =ov02_02352C94
@@ -39441,18 +39441,18 @@ _02344C28:
 	bne _02344C28
 	ldr r0, _02344CDC ; =ov02_02353BF8
 	ldr r1, _02344CE0 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02344CE4 ; =ov02_02353C10
 	ldr r1, _02344CE8 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02344CEC ; =ov02_02353C28
 	ldr r1, _02344CF0 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	add r0, sp, #0
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _02344CF4 ; =ov02_0235AB14
 	ldr r2, _02344CF8 ; =0x04001008
 	str r0, [r1, #4]
@@ -39486,80 +39486,80 @@ _02344CF0: .word GX_LoadBG2Scr
 _02344CF4: .word ov02_0235AB14
 _02344CF8: .word 0x04001008
 _02344CFC: .word 0x0400000A
-	arm_func_end ov02_02344C14
+	arm_func_end SceneSetSelectWay_InitGraphics
 
-	arm_func_start ov02_02344D00
-ov02_02344D00: ; 0x02344D00
+	arm_func_start SceneSetSelectWay_ProcInit
+SceneSetSelectWay_ProcInit: ; 0x02344D00
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E3D0
-	ldr r0, _02344D50 ; =ov02_02344D54
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02344D50 ; =SceneSetSelectWay_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02344D50: .word ov02_02344D54
-	arm_func_end ov02_02344D00
+_02344D50: .word SceneSetSelectWay_ProcInit1
+	arm_func_end SceneSetSelectWay_ProcInit
 
-	arm_func_start ov02_02344D54
-ov02_02344D54: ; 0x02344D54
+	arm_func_start SceneSetSelectWay_ProcInit1
+SceneSetSelectWay_ProcInit1: ; 0x02344D54
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_02334E38
-	ldr r0, _02344D8C ; =ov02_02344D90
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _02344D8C ; =SceneSetSelectWay_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02344D8C: .word ov02_02344D90
-	arm_func_end ov02_02344D54
+_02344D8C: .word SceneSetSelectWay_ProcInit2
+	arm_func_end SceneSetSelectWay_ProcInit1
 
-	arm_func_start ov02_02344D90
-ov02_02344D90: ; 0x02344D90
+	arm_func_start SceneSetSelectWay_ProcInit2
+SceneSetSelectWay_ProcInit2: ; 0x02344D90
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02344DB4 ; =ov02_02344DB8
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02344DB4 ; =SceneSetSelectWay_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02344DB4: .word ov02_02344DB8
-	arm_func_end ov02_02344D90
+_02344DB4: .word SceneSetSelectWay_ProcScene
+	arm_func_end SceneSetSelectWay_ProcInit2
 
-	arm_func_start ov02_02344DB8
-ov02_02344DB8: ; 0x02344DB8
+	arm_func_start SceneSetSelectWay_ProcScene
+SceneSetSelectWay_ProcScene: ; 0x02344DB8
 	stmdb sp!, {r3, lr}
-	bl ov02_02344DCC
-	bl ov02_02344F50
-	bl ov02_02344F54
+	bl SceneSetSelectWay_Input
+	bl SceneSetSelectWay_Draw
+	bl SceneSetSelectWay_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02344DB8
+	arm_func_end SceneSetSelectWay_ProcScene
 
-	arm_func_start ov02_02344DCC
-ov02_02344DCC: ; 0x02344DCC
+	arm_func_start SceneSetSelectWay_Input
+SceneSetSelectWay_Input: ; 0x02344DCC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, #0
 	ldr r4, _02344F38 ; =ov02_02352CD4
@@ -39567,27 +39567,27 @@ ov02_02344DCC: ; 0x02344DCC
 	mov r5, #1
 _02344DE0:
 	mov r0, r5
-	bl ov02_02338E18
+	bl Dwci_Flag
 	add r0, r4, r0, lsl #5
 	add r0, r0, r7
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _02344E80
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldr r1, _02344F3C ; =ov02_0235AB14
 	mov r0, #1
 	strb r6, [r1, #1]
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r6, r0
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r5, r0
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r4, r0
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r3, r0
 	ldr r0, _02344F3C ; =ov02_0235AB14
 	ldr r1, _02344F40 ; =ov02_02352D14
@@ -39604,7 +39604,7 @@ _02344DE0:
 	ldrh r1, [r5, r1]
 	ldrh r2, [r5, r2]
 	ldrh r3, [r5, r3]
-	bl ov02_023350AC
+	bl Dwci_FocuslDisp4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02344E80:
 	add r6, r6, #1
@@ -39612,51 +39612,51 @@ _02344E80:
 	add r7, r7, #8
 	blo _02344DE0
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02344EAC
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02344EAC:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02344EC8
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02344EC8:
 	mov r0, #0x40
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02344EE4
 	mov r0, #1
-	bl ov02_0234515C
+	bl SceneSetSelectWay_MoveFocus
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02344EE4:
 	mov r0, #0x80
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02344F00
 	mov r0, #3
-	bl ov02_0234515C
+	bl SceneSetSelectWay_MoveFocus
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02344F00:
 	mov r0, #0x20
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	beq _02344F1C
 	mov r0, #0
-	bl ov02_0234515C
+	bl SceneSetSelectWay_MoveFocus
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02344F1C:
 	mov r0, #0x10
-	bl ov02_0234EBFC
+	bl Dwci_IptlCheckRepeat
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, #2
-	bl ov02_0234515C
+	bl SceneSetSelectWay_MoveFocus
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02344F38: .word ov02_02352CD4
@@ -39665,17 +39665,17 @@ _02344F40: .word ov02_02352D14
 _02344F44: .word ov02_02352D16
 _02344F48: .word ov02_02352D18
 _02344F4C: .word ov02_02352D1A
-	arm_func_end ov02_02344DCC
+	arm_func_end SceneSetSelectWay_Input
 
-	arm_func_start ov02_02344F50
-ov02_02344F50: ; 0x02344F50
+	arm_func_start SceneSetSelectWay_Draw
+SceneSetSelectWay_Draw: ; 0x02344F50
 	bx lr
-	arm_func_end ov02_02344F50
+	arm_func_end SceneSetSelectWay_Draw
 
-	arm_func_start ov02_02344F54
-ov02_02344F54: ; 0x02344F54
+	arm_func_start SceneSetSelectWay_Button
+SceneSetSelectWay_Button: ; 0x02344F54
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	beq _02344F70
 	cmp r0, #1
@@ -39683,102 +39683,102 @@ ov02_02344F54: ; 0x02344F54
 	ldmia sp!, {r3, pc}
 _02344F70:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _02344F94
 _02344F7C:
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_02345250
+	bl Dwci_SndlPlay
+	bl SceneSetSelectWay_DispPush
 	ldr r0, _02344FA0 ; =ov02_0235AB14
 	mov r1, #1
 	strb r1, [r0, #2]
 _02344F94:
-	ldr r0, _02344FA4 ; =ov02_02344FA8
-	bl ov02_02338D68
+	ldr r0, _02344FA4 ; =SceneSetSelectWay_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02344FA0: .word ov02_0235AB14
-_02344FA4: .word ov02_02344FA8
-	arm_func_end ov02_02344F54
+_02344FA4: .word SceneSetSelectWay_EndScene
+	arm_func_end SceneSetSelectWay_Button
 
-	arm_func_start ov02_02344FA8
-ov02_02344FA8: ; 0x02344FA8
+	arm_func_start SceneSetSelectWay_EndScene
+SceneSetSelectWay_EndScene: ; 0x02344FA8
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _02344FC4 ; =ov02_02344FC8
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _02344FC4 ; =SceneSetSelectWay_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02344FC4: .word ov02_02344FC8
-	arm_func_end ov02_02344FA8
+_02344FC4: .word SceneSetSelectWay_EndScene1
+	arm_func_end SceneSetSelectWay_EndScene
 
-	arm_func_start ov02_02344FC8
-ov02_02344FC8: ; 0x02344FC8
+	arm_func_start SceneSetSelectWay_EndScene1
+SceneSetSelectWay_EndScene1: ; 0x02344FC8
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02345024 ; =ov02_0235AB14
 	ldrb r0, [r0, #2]
 	cmp r0, #0
 	beq _02344FF0
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 _02344FF0:
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02345028 ; =ov02_0234502C
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02345028 ; =SceneSetSelectWay_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02345024: .word ov02_0235AB14
-_02345028: .word ov02_0234502C
-	arm_func_end ov02_02344FC8
+_02345028: .word SceneSetSelectWay_EndScene2
+	arm_func_end SceneSetSelectWay_EndScene1
 
-	arm_func_start ov02_0234502C
-ov02_0234502C: ; 0x0234502C
+	arm_func_start SceneSetSelectWay_EndScene2
+SceneSetSelectWay_EndScene2: ; 0x0234502C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0233519C
-	bl ov02_02334D10
+	bl Dwci_FocuslDelete
+	bl Dwci_CommentlDelete
 	ldr r0, _02345144 ; =ov02_0235AB14
 	ldr r0, [r0, #4]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _02345144 ; =ov02_0235AB14
 	ldrb r1, [r0, #2]
 	cmp r1, #0
 	bne _023450B0
 	mov r0, #2
 	mov r1, #0
-	bl ov02_02338D78
-	ldr r0, _02345148 ; =ov02_02343DB0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02345148 ; =Dwci_SceneSetSelectAp
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _023450B0:
 	ldrsb r0, [r0, #1]
@@ -39793,53 +39793,53 @@ _023450C0: ; jump table
 _023450D0:
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0234514C ; =ov02_023438CC
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0234514C ; =Dwci_SceneSetSearch
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _023450E8:
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _02345150 ; =ov02_0233C75C
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02345150 ; =Dwci_SceneSetAossButton
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02345100:
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _02345154 ; =ov02_02343458
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02345154 ; =Dwci_SceneSetRakuReady
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02345118:
 	mov r0, #2
 	mov r1, #0
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338DB4
+	bl Dwci_SetParam2
 	mov r0, #1
-	bl ov02_02342798
-	ldr r0, _02345158 ; =ov02_023402CC
-	bl ov02_02338D68
+	bl Dwci_SetListReturn
+	ldr r0, _02345158 ; =Dwci_SceneSetList
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02345144: .word ov02_0235AB14
-_02345148: .word ov02_02343DB0
-_0234514C: .word ov02_023438CC
-_02345150: .word ov02_0233C75C
-_02345154: .word ov02_02343458
-_02345158: .word ov02_023402CC
-	arm_func_end ov02_0234502C
+_02345148: .word Dwci_SceneSetSelectAp
+_0234514C: .word Dwci_SceneSetSearch
+_02345150: .word Dwci_SceneSetAossButton
+_02345154: .word Dwci_SceneSetRakuReady
+_02345158: .word Dwci_SceneSetList
+	arm_func_end SceneSetSelectWay_EndScene2
 
-	arm_func_start ov02_0234515C
-ov02_0234515C: ; 0x0234515C
+	arm_func_start SceneSetSelectWay_MoveFocus
+SceneSetSelectWay_MoveFocus: ; 0x0234515C
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _02345238 ; =ov02_0235AB14
 	mov r5, r0
 	mov r0, #1
 	ldrsb r4, [r1, #1]
-	bl ov02_02338E18
+	bl Dwci_Flag
 	ldr r2, _0234523C ; =ov02_02352CAA
 	mvn r1, #0
 	add r0, r2, r0, lsl #4
@@ -39860,18 +39860,18 @@ ov02_0234515C: ; 0x0234515C
 	strb r1, [r0, #1]
 _023451BC:
 	mov r0, #8
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r6, r0
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r5, r0
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r4, r0
 	mov r0, #1
-	bl ov02_02338E18
+	bl Dwci_Flag
 	mov r3, r0
 	ldr r1, _02345240 ; =ov02_02352D14
 	ldr r0, _02345238 ; =ov02_0235AB14
@@ -39888,7 +39888,7 @@ _023451BC:
 	ldr r4, _0234524C ; =ov02_02352D1A
 	add r3, r4, r3, lsl #5
 	ldrh r3, [r5, r3]
-	bl ov02_023350AC
+	bl Dwci_FocuslDisp4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02345238: .word ov02_0235AB14
@@ -39897,10 +39897,10 @@ _02345240: .word ov02_02352D14
 _02345244: .word ov02_02352D18
 _02345248: .word ov02_02352D16
 _0234524C: .word ov02_02352D1A
-	arm_func_end ov02_0234515C
+	arm_func_end SceneSetSelectWay_MoveFocus
 
-	arm_func_start ov02_02345250
-ov02_02345250: ; 0x02345250
+	arm_func_start SceneSetSelectWay_DispPush
+SceneSetSelectWay_DispPush: ; 0x02345250
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r1, _023452A0 ; =ov02_02352C90
@@ -39918,68 +39918,68 @@ ov02_02345250: ; 0x02345250
 	ldrb r1, [r4, r1]
 	ldr r0, [r0, #4]
 	mov r2, r1
-	bl ov02_023468A0
+	bl Dwci_ScreenlCopyPalette
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _023452A0: .word ov02_02352C90
 _023452A4: .word ov02_0235AB14
-	arm_func_end ov02_02345250
+	arm_func_end SceneSetSelectWay_DispPush
 
-	arm_func_start ov02_023452A8
-ov02_023452A8: ; 0x023452A8
+	arm_func_start Dwci_SceneSetTest
+Dwci_SceneSetTest: ; 0x023452A8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234532C ; =ov02_0235AB1C
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02345334
+	bl SceneSetTest_InitGraphics
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #0
 	bne _023452E4
 	mov r0, #0x31
 	sub r1, r0, #0x32
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 _023452E4:
 	mov r0, #2
-	bl ov02_02334DE8
+	bl Dwci_CmnlStep
 	ldr r0, [sp]
 	cmp r0, #0
 	bne _023452FC
-	bl ov02_023352C4
+	bl Dwci_HLlLoadSet
 _023452FC:
 	mov r0, #0x2c
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0
-	bl ov02_023343DC
-	bl ov02_023453DC
+	bl Dwci_AnimelInitEx
+	bl SceneSetTest_InitAc
 	mov r0, #0
-	bl ov02_02335334
+	bl Dwci_IconlInit
 	mov r0, #0xc
-	bl ov02_023480E0
-	ldr r0, _02345330 ; =ov02_0234547C
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02345330 ; =SceneSetTest_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234532C: .word ov02_0235AB1C
-_02345330: .word ov02_0234547C
-	arm_func_end ov02_023452A8
+_02345330: .word SceneSetTest_ProcInit
+	arm_func_end Dwci_SceneSetTest
 
-	arm_func_start ov02_02345334
-ov02_02345334: ; 0x02345334
+	arm_func_start SceneSetTest_InitGraphics
+SceneSetTest_InitGraphics: ; 0x02345334
 	stmdb sp!, {r3, lr}
 	ldr r0, _023453BC ; =ov02_02353C3C
 	ldr r1, _023453C0 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023453C4 ; =ov02_02353C54
 	ldr r1, _023453C8 ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023453CC ; =ov02_02353C6C
 	ldr r1, _023453D0 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _023453D4 ; =0x04001008
 	ldr r1, _023453D8 ; =0x0400000A
 	ldrh r0, [r3]
@@ -40013,13 +40013,13 @@ _023453CC: .word ov02_02353C6C
 _023453D0: .word GX_LoadBG2Scr
 _023453D4: .word 0x04001008
 _023453D8: .word 0x0400000A
-	arm_func_end ov02_02345334
+	arm_func_end SceneSetTest_InitGraphics
 
-	arm_func_start ov02_023453DC
-ov02_023453DC: ; 0x023453DC
+	arm_func_start SceneSetTest_InitAc
+SceneSetTest_InitAc: ; 0x023453DC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
-	bl ov02_02347518
+	bl Dwci_SettignlGet
 	mov r4, r0
 	ldr r0, _02345470 ; =ov02_02352D54
 	add r1, sp, #4
@@ -40027,7 +40027,7 @@ ov02_023453DC: ; 0x023453DC
 	bl MTi_CpuCopy32
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #2
 	moveq r0, #4
@@ -40049,32 +40049,32 @@ ov02_023453DC: ; 0x023453DC
 	bl Dwci_AC_InsertApInfo
 _02345454:
 	mov r0, #0
-	ldr r1, _02345478 ; =ov02_0234562C
+	ldr r1, _02345478 ; =SceneSetTest_TaskAc
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02345470: .word ov02_02352D54
 _02345474: .word ov02_0235AB1C
-_02345478: .word ov02_0234562C
-	arm_func_end ov02_023453DC
+_02345478: .word SceneSetTest_TaskAc
+	arm_func_end SceneSetTest_InitAc
 
-	arm_func_start ov02_0234547C
-ov02_0234547C: ; 0x0234547C
+	arm_func_start SceneSetTest_ProcInit
+SceneSetTest_ProcInit: ; 0x0234547C
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #0
 	bne _023454D8
@@ -40082,93 +40082,93 @@ ov02_0234547C: ; 0x0234547C
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 _023454D8:
-	ldr r0, _023454E4 ; =ov02_023454E8
-	bl ov02_02338D68
+	ldr r0, _023454E4 ; =SceneSetTest_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023454E4: .word ov02_023454E8
-	arm_func_end ov02_0234547C
+_023454E4: .word SceneSetTest_ProcInit1
+	arm_func_end SceneSetTest_ProcInit
 
-	arm_func_start ov02_023454E8
-ov02_023454E8: ; 0x023454E8
+	arm_func_start SceneSetTest_ProcInit1
+SceneSetTest_ProcInit1: ; 0x023454E8
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02345518 ; =ov02_0234551C
-	bl ov02_02338D68
+	ldr r0, _02345518 ; =SceneSetTest_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345518: .word ov02_0234551C
-	arm_func_end ov02_023454E8
+_02345518: .word SceneSetTest_ProcScene
+	arm_func_end SceneSetTest_ProcInit1
 
-	arm_func_start ov02_0234551C
-ov02_0234551C: ; 0x0234551C
+	arm_func_start SceneSetTest_ProcScene
+SceneSetTest_ProcScene: ; 0x0234551C
 	stmdb sp!, {r3, lr}
-	bl ov02_02345530
-	bl ov02_02345534
-	bl ov02_02345538
+	bl SceneSetTest_Input
+	bl SceneSetTest_Draw
+	bl SceneSetTest_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234551C
+	arm_func_end SceneSetTest_ProcScene
 
-	arm_func_start ov02_02345530
-ov02_02345530: ; 0x02345530
+	arm_func_start SceneSetTest_Input
+SceneSetTest_Input: ; 0x02345530
 	bx lr
-	arm_func_end ov02_02345530
+	arm_func_end SceneSetTest_Input
 
-	arm_func_start ov02_02345534
-ov02_02345534: ; 0x02345534
+	arm_func_start SceneSetTest_Draw
+SceneSetTest_Draw: ; 0x02345534
 	bx lr
-	arm_func_end ov02_02345534
+	arm_func_end SceneSetTest_Draw
 
-	arm_func_start ov02_02345538
-ov02_02345538: ; 0x02345538
+	arm_func_start SceneSetTest_Button
+SceneSetTest_Button: ; 0x02345538
 	bx lr
-	arm_func_end ov02_02345538
+	arm_func_end SceneSetTest_Button
 
-	arm_func_start ov02_0234553C
-ov02_0234553C: ; 0x0234553C
+	arm_func_start SceneSetTest_EndScene
+SceneSetTest_EndScene: ; 0x0234553C
 	stmdb sp!, {r3, lr}
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02345560 ; =ov02_02345564
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02345560 ; =SceneSetTest_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345560: .word ov02_02345564
-	arm_func_end ov02_0234553C
+_02345560: .word SceneSetTest_EndScene1
+	arm_func_end SceneSetTest_EndScene
 
-	arm_func_start ov02_02345564
-ov02_02345564: ; 0x02345564
+	arm_func_start SceneSetTest_EndScene1
+SceneSetTest_EndScene1: ; 0x02345564
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02345584 ; =ov02_02345588
-	bl ov02_02338D68
+	ldr r0, _02345584 ; =SceneSetTest_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345584: .word ov02_02345588
-	arm_func_end ov02_02345564
+_02345584: .word SceneSetTest_EndScene2
+	arm_func_end SceneSetTest_EndScene1
 
-	arm_func_start ov02_02345588
-ov02_02345588: ; 0x02345588
+	arm_func_start SceneSetTest_EndScene2
+SceneSetTest_EndScene2: ; 0x02345588
 	stmdb sp!, {r4, lr}
-	bl ov02_02347D1C
+	bl Dwci_SettinglGetMemMap
 	ldr r1, _02345620 ; =ov02_0235AB1C
 	mov r4, r0
 	ldr r0, [r1, #4]
@@ -40186,35 +40186,35 @@ _023455B0:
 	add r1, r4, #0x1f0
 	mov r2, #0xe
 	bl MI_CpuCopy8
-	bl ov02_023344AC
+	bl Dwci_AnimelEnd
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _02345620 ; =ov02_0235AB1C
 	mov r1, #1
 	ldrb r0, [r0]
 	cmp r0, #0
 	mov r0, #0
 	bne _02345610
-	bl ov02_02338D78
-	ldr r0, _02345624 ; =ov02_0233FC90
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02345624 ; =Dwci_SceneSetError
+	bl Dwci_ChangeScene
 	ldmia sp!, {r4, pc}
 _02345610:
-	bl ov02_02338D78
-	ldr r0, _02345628 ; =ov02_023456F4
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02345628 ; =Dwci_SceneSetTestCompletet
+	bl Dwci_ChangeScene
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02345620: .word ov02_0235AB1C
-_02345624: .word ov02_0233FC90
-_02345628: .word ov02_023456F4
-	arm_func_end ov02_02345588
+_02345624: .word Dwci_SceneSetError
+_02345628: .word Dwci_SceneSetTestCompletet
+	arm_func_end SceneSetTest_EndScene2
 
-	arm_func_start ov02_0234562C
-ov02_0234562C: ; 0x0234562C
+	arm_func_start SceneSetTest_TaskAc
+SceneSetTest_TaskAc: ; 0x0234562C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _023456C4 ; =ov02_0235AB1C
 	mov r4, r0
@@ -40225,8 +40225,8 @@ ov02_0234562C: ; 0x0234562C
 	movs r5, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
 _02345650:
-	bl ov02_023353EC
-	bl ov02_02348148
+	bl Dwci_IconlEnd
+	bl Dwci_SndlStop
 	ldr r1, _023456C4 ; =ov02_0235AB1C
 	ldr r0, [r1, #4]
 	cmp r0, #0
@@ -40236,7 +40236,7 @@ _02345650:
 	mov r2, #1
 	mov r0, #0x11
 	strb r2, [r1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _023456AC
 _02345684:
 	cmp r0, #0
@@ -40247,64 +40247,64 @@ _02345694:
 	mvn r1, #9
 	cmp r0, r1
 	ldrge r0, _023456C8 ; =0xFFFF3BE9
-	bl ov02_023402BC
+	bl Dwci_SetErrorCode
 	mov r0, #0x12
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _023456AC:
-	ldr r0, _023456CC ; =ov02_0234553C
-	bl ov02_02338D68
+	ldr r0, _023456CC ; =SceneSetTest_EndScene
+	bl Dwci_ChangeScene
 	mov r1, r4
 	mov r0, #0
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023456C4: .word ov02_0235AB1C
 _023456C8: .word 0xFFFF3BE9
-_023456CC: .word ov02_0234553C
-	arm_func_end ov02_0234562C
+_023456CC: .word SceneSetTest_EndScene
+	arm_func_end SceneSetTest_TaskAc
 
-	arm_func_start ov02_023456D0
-ov02_023456D0: ; 0x023456D0
-	ldr ip, _023456E0 ; =ov02_0234E7B4
+	arm_func_start AcAlloc
+AcAlloc: ; 0x023456D0
+	ldr ip, _023456E0 ; =Dwci_HeaplAllocEx
 	mov r0, r1
 	mov r1, #0x20
 	bx ip
 	.align 2, 0
-_023456E0: .word ov02_0234E7B4
-	arm_func_end ov02_023456D0
+_023456E0: .word Dwci_HeaplAllocEx
+	arm_func_end AcAlloc
 
-	arm_func_start ov02_023456E4
-ov02_023456E4: ; 0x023456E4
-	ldr ip, _023456F0 ; =ov02_0234E81C
+	arm_func_start AcFree
+AcFree: ; 0x023456E4
+	ldr ip, _023456F0 ; =Dwci_HeaplFree2
 	mov r0, r1
 	bx ip
 	.align 2, 0
-_023456F0: .word ov02_0234E81C
-	arm_func_end ov02_023456E4
+_023456F0: .word Dwci_HeaplFree2
+	arm_func_end AcFree
 
-	arm_func_start ov02_023456F4
-ov02_023456F4: ; 0x023456F4
+	arm_func_start Dwci_SceneSetTestCompletet
+Dwci_SceneSetTestCompletet: ; 0x023456F4
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234571C ; =ov02_0235AB24
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02345724
+	bl SceneSetTestCompletet_InitGraphics
 	mov r0, #0x2d
-	bl ov02_02334E70
-	ldr r0, _02345720 ; =ov02_02345790
-	bl ov02_02338D68
+	bl Dwci_CmnlMsgDraw
+	ldr r0, _02345720 ; =SceneSetTestCompletet_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234571C: .word ov02_0235AB24
-_02345720: .word ov02_02345790
-	arm_func_end ov02_023456F4
+_02345720: .word SceneSetTestCompletet_ProcInit
+	arm_func_end Dwci_SceneSetTestCompletet
 
-	arm_func_start ov02_02345724
-ov02_02345724: ; 0x02345724
+	arm_func_start SceneSetTestCompletet_InitGraphics
+SceneSetTestCompletet_InitGraphics: ; 0x02345724
 	stmdb sp!, {r3, lr}
 	ldr r0, _02345780 ; =ov02_02353C80
 	ldr r1, _02345784 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r2, _02345788 ; =0x04001008
 	ldr r1, _0234578C ; =0x0400000A
 	ldrh r0, [r2]
@@ -40329,130 +40329,130 @@ _02345780: .word ov02_02353C80
 _02345784: .word GX_LoadBG2Scr
 _02345788: .word 0x04001008
 _0234578C: .word 0x0400000A
-	arm_func_end ov02_02345724
+	arm_func_end SceneSetTestCompletet_InitGraphics
 
-	arm_func_start ov02_02345790
-ov02_02345790: ; 0x02345790
+	arm_func_start SceneSetTestCompletet_ProcInit
+SceneSetTestCompletet_ProcInit: ; 0x02345790
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _023457C0 ; =ov02_023457C4
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _023457C0 ; =SceneSetTestCompletet_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023457C0: .word ov02_023457C4
-	arm_func_end ov02_02345790
+_023457C0: .word SceneSetTestCompletet_ProcInit1
+	arm_func_end SceneSetTestCompletet_ProcInit
 
-	arm_func_start ov02_023457C4
-ov02_023457C4: ; 0x023457C4
+	arm_func_start SceneSetTestCompletet_ProcInit1
+SceneSetTestCompletet_ProcInit1: ; 0x023457C4
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _023457E4 ; =ov02_023457E8
-	bl ov02_02338D68
+	ldr r0, _023457E4 ; =SceneSetTestCompletet_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023457E4: .word ov02_023457E8
-	arm_func_end ov02_023457C4
+_023457E4: .word SceneSetTestCompletet_ProcScene
+	arm_func_end SceneSetTestCompletet_ProcInit1
 
-	arm_func_start ov02_023457E8
-ov02_023457E8: ; 0x023457E8
+	arm_func_start SceneSetTestCompletet_ProcScene
+SceneSetTestCompletet_ProcScene: ; 0x023457E8
 	stmdb sp!, {r3, lr}
-	bl ov02_023458F8
-	bl ov02_023457F8
+	bl SceneSetTestCompletet_Wait
+	bl SceneSetTestCompletet_Draw
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_023457E8
+	arm_func_end SceneSetTestCompletet_ProcScene
 
-	arm_func_start ov02_023457F8
-ov02_023457F8: ; 0x023457F8
+	arm_func_start SceneSetTestCompletet_Draw
+SceneSetTestCompletet_Draw: ; 0x023457F8
 	bx lr
-	arm_func_end ov02_023457F8
+	arm_func_end SceneSetTestCompletet_Draw
 
-	arm_func_start ov02_023457FC
-ov02_023457FC: ; 0x023457FC
+	arm_func_start SceneSetTestCompletet_EndScene
+SceneSetTestCompletet_EndScene: ; 0x023457FC
 	stmdb sp!, {r3, lr}
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #0
 	beq _0234581C
-	bl ov02_023486C8
+	bl Dwci_SteplEnd
 _0234581C:
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02345850 ; =ov02_02345854
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02345850 ; =SceneSetTestCompletet_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345850: .word ov02_02345854
-	arm_func_end ov02_023457FC
+_02345850: .word SceneSetTestCompletet_EndScene1
+	arm_func_end SceneSetTestCompletet_EndScene
 
-	arm_func_start ov02_02345854
-ov02_02345854: ; 0x02345854
+	arm_func_start SceneSetTestCompletet_EndScene1
+SceneSetTestCompletet_EndScene1: ; 0x02345854
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02348BF0
+	bl Dwci_SteplIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
-	bl ov02_02334D10
+	bl Dwci_FntlDeleteBgLcd
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	ldr r0, [sp]
 	cmp r0, #0
 	bne _023458E4
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338DB4
-	ldr r0, _023458F0 ; =ov02_023402CC
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _023458F0 ; =Dwci_SceneSetList
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _023458E4:
-	ldr r0, _023458F4 ; =ov02_023398CC
-	bl ov02_02338D68
+	ldr r0, _023458F4 ; =Dwci_SceneMenu
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023458F0: .word ov02_023402CC
-_023458F4: .word ov02_023398CC
-	arm_func_end ov02_02345854
+_023458F0: .word Dwci_SceneSetList
+_023458F4: .word Dwci_SceneMenu
+	arm_func_end SceneSetTestCompletet_EndScene1
 
-	arm_func_start ov02_023458F8
-ov02_023458F8: ; 0x023458F8
+	arm_func_start SceneSetTestCompletet_Wait
+SceneSetTestCompletet_Wait: ; 0x023458F8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234595C ; =ov02_0235AB24
 	ldrb r1, [r0]
@@ -40463,8 +40463,8 @@ ov02_023458F8: ; 0x023458F8
 	ldmloia sp!, {r3, pc}
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338DC8
-	bl ov02_02338E00
+	bl Dwci_GetParam2
+	bl Dwci_Entry
 	cmp r0, #0
 	beq _02345950
 	cmp r0, #1
@@ -40472,54 +40472,54 @@ ov02_023458F8: ; 0x023458F8
 	ldr r0, [sp]
 	cmp r0, #0
 	beq _02345950
-	ldr r0, _02345960 ; =ov02_0233958C
-	bl ov02_02338D68
+	ldr r0, _02345960 ; =Dwci_SceneEnd
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02345950:
-	ldr r0, _02345964 ; =ov02_023457FC
-	bl ov02_02338D68
+	ldr r0, _02345964 ; =SceneSetTestCompletet_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234595C: .word ov02_0235AB24
-_02345960: .word ov02_0233958C
-_02345964: .word ov02_023457FC
-	arm_func_end ov02_023458F8
+_02345960: .word Dwci_SceneEnd
+_02345964: .word SceneSetTestCompletet_EndScene
+	arm_func_end SceneSetTestCompletet_Wait
 
-	arm_func_start ov02_02345968
-ov02_02345968: ; 0x02345968
+	arm_func_start Dwci_SceneSetTestConfirm
+Dwci_SceneSetTestConfirm: ; 0x02345968
 	stmdb sp!, {r3, lr}
-	bl ov02_0234705C
+	bl Dwci_SearchlEnd
 	add r1, sp, #0
 	mov r0, #0
-	bl ov02_02338DC8
-	bl ov02_023459C0
+	bl Dwci_GetParam2
+	bl SceneSetTestConfirm_InitGraphics
 	mov r0, #0x31
 	sub r1, r0, #0x32
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	ldr r0, [sp]
 	cmp r0, #2
 	beq _023459A0
-	bl ov02_023352C4
+	bl Dwci_HLlLoadSet
 _023459A0:
 	ldr r0, [sp]
 	cmp r0, #1
 	bne _023459B0
-	bl ov02_02347A1C
+	bl Dwci_SettinglSet
 _023459B0:
-	ldr r0, _023459BC ; =ov02_02345A2C
-	bl ov02_02338D68
+	ldr r0, _023459BC ; =SceneSetTestConfirm_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023459BC: .word ov02_02345A2C
-	arm_func_end ov02_02345968
+_023459BC: .word SceneSetTestConfirm_ProcInit
+	arm_func_end Dwci_SceneSetTestConfirm
 
-	arm_func_start ov02_023459C0
-ov02_023459C0: ; 0x023459C0
+	arm_func_start SceneSetTestConfirm_InitGraphics
+SceneSetTestConfirm_InitGraphics: ; 0x023459C0
 	stmdb sp!, {r3, lr}
 	ldr r0, _02345A1C ; =ov02_02353C94
 	ldr r1, _02345A20 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r2, _02345A24 ; =0x04001008
 	ldr r1, _02345A28 ; =0x0400000A
 	ldrh r0, [r2]
@@ -40544,36 +40544,36 @@ _02345A1C: .word ov02_02353C94
 _02345A20: .word GX_LoadBG2Scr
 _02345A24: .word 0x04001008
 _02345A28: .word 0x0400000A
-	arm_func_end ov02_023459C0
+	arm_func_end SceneSetTestConfirm_InitGraphics
 
-	arm_func_start ov02_02345A2C
-ov02_02345A2C: ; 0x02345A2C
+	arm_func_start SceneSetTestConfirm_ProcInit
+SceneSetTestConfirm_ProcInit: ; 0x02345A2C
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E3D0
-	ldr r0, _02345A7C ; =ov02_02345A80
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02345A7C ; =SceneSetTestConfirm_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345A7C: .word ov02_02345A80
-	arm_func_end ov02_02345A2C
+_02345A7C: .word SceneSetTestConfirm_ProcInit1
+	arm_func_end SceneSetTestConfirm_ProcInit
 
-	arm_func_start ov02_02345A80
-ov02_02345A80: ; 0x02345A80
+	arm_func_start SceneSetTestConfirm_ProcInit1
+SceneSetTestConfirm_ProcInit1: ; 0x02345A80
 	stmdb sp!, {lr}
 	sub sp, sp, #0x14
 	ldr r0, _02345B00 ; =ov02_02352D60
@@ -40581,18 +40581,18 @@ ov02_02345A80: ; 0x02345A80
 	ldmia r0, {r0, r1, r2}
 	stmia r3, {r0, r1, r2}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	addne sp, sp, #0x14
 	ldmneia sp!, {pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	addne sp, sp, #0x14
 	ldmneia sp!, {pc}
 	add r1, sp, #4
 	mov r0, #0
-	bl ov02_02338DC8
+	bl Dwci_GetParam2
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -40601,111 +40601,111 @@ ov02_02345A80: ; 0x02345A80
 	ldr r0, [r0, r3, lsl #2]
 	mov r2, r1
 	sub r3, r1, #2
-	bl ov02_02349394
-	ldr r0, _02345B04 ; =ov02_02345B08
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	ldr r0, _02345B04 ; =SceneSetTestConfirm_ProcScene
+	bl Dwci_ChangeScene
 	add sp, sp, #0x14
 	ldmia sp!, {pc}
 	.align 2, 0
 _02345B00: .word ov02_02352D60
-_02345B04: .word ov02_02345B08
-	arm_func_end ov02_02345A80
+_02345B04: .word SceneSetTestConfirm_ProcScene
+	arm_func_end SceneSetTestConfirm_ProcInit1
 
-	arm_func_start ov02_02345B08
-ov02_02345B08: ; 0x02345B08
+	arm_func_start SceneSetTestConfirm_ProcScene
+SceneSetTestConfirm_ProcScene: ; 0x02345B08
 	stmdb sp!, {r3, lr}
-	bl ov02_02345B44
-	bl ov02_02345B48
-	bl ov02_02349704
+	bl SceneSetTestConfirm_Input
+	bl SceneSetTestConfirm_Draw
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
 	mov r0, #6
-	bl ov02_023480E0
-	ldr r0, _02345B40 ; =ov02_02345B4C
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02345B40 ; =SceneSetTestConfirm_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345B40: .word ov02_02345B4C
-	arm_func_end ov02_02345B08
+_02345B40: .word SceneSetTestConfirm_EndScene
+	arm_func_end SceneSetTestConfirm_ProcScene
 
-	arm_func_start ov02_02345B44
-ov02_02345B44: ; 0x02345B44
+	arm_func_start SceneSetTestConfirm_Input
+SceneSetTestConfirm_Input: ; 0x02345B44
 	bx lr
-	arm_func_end ov02_02345B44
+	arm_func_end SceneSetTestConfirm_Input
 
-	arm_func_start ov02_02345B48
-ov02_02345B48: ; 0x02345B48
+	arm_func_start SceneSetTestConfirm_Draw
+SceneSetTestConfirm_Draw: ; 0x02345B48
 	bx lr
-	arm_func_end ov02_02345B48
+	arm_func_end SceneSetTestConfirm_Draw
 
-	arm_func_start ov02_02345B4C
-ov02_02345B4C: ; 0x02345B4C
+	arm_func_start SceneSetTestConfirm_EndScene
+SceneSetTestConfirm_EndScene: ; 0x02345B4C
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x14
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02345B7C ; =ov02_02345B80
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02345B7C ; =SceneSetTestConfirm_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345B7C: .word ov02_02345B80
-	arm_func_end ov02_02345B4C
+_02345B7C: .word SceneSetTestConfirm_EndScene1
+	arm_func_end SceneSetTestConfirm_EndScene
 
-	arm_func_start ov02_02345B80
-ov02_02345B80: ; 0x02345B80
+	arm_func_start SceneSetTestConfirm_EndScene1
+SceneSetTestConfirm_EndScene1: ; 0x02345B80
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
 	mov r1, #0x14
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _02345BB8 ; =ov02_023452A8
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02345BB8 ; =Dwci_SceneSetTest
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345BB8: .word ov02_023452A8
-	arm_func_end ov02_02345B80
+_02345BB8: .word Dwci_SceneSetTest
+	arm_func_end SceneSetTestConfirm_EndScene1
 
-	arm_func_start ov02_02345BBC
-ov02_02345BBC: ; 0x02345BBC
+	arm_func_start Dwci_SceneSetUsbComplete
+Dwci_SceneSetUsbComplete: ; 0x02345BBC
 	stmdb sp!, {r3, lr}
 	ldr r0, _02345BF4 ; =ov02_0235AB28
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02345BFC
+	bl SceneSetUsbComplete_InitGraphics
 	mov r0, #8
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	mov r0, #0x29
-	bl ov02_02334E70
+	bl Dwci_CmnlMsgDraw
 	mov r0, #0x10
-	bl ov02_023480E0
-	ldr r0, _02345BF8 ; =ov02_02345C7C
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02345BF8 ; =SceneSetUsbComplete_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02345BF4: .word ov02_0235AB28
-_02345BF8: .word ov02_02345C7C
-	arm_func_end ov02_02345BBC
+_02345BF8: .word SceneSetUsbComplete_ProcInit
+	arm_func_end Dwci_SceneSetUsbComplete
 
-	arm_func_start ov02_02345BFC
-ov02_02345BFC: ; 0x02345BFC
+	arm_func_start SceneSetUsbComplete_InitGraphics
+SceneSetUsbComplete_InitGraphics: ; 0x02345BFC
 	stmdb sp!, {r3, lr}
 	ldr r0, _02345C6C ; =ov02_02353CA8
 	ldr r1, _02345C70 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _02345C74 ; =0x04001008
 	ldr r1, _02345C78 ; =0x0400000A
 	ldrh r0, [r3]
@@ -40735,108 +40735,108 @@ _02345C6C: .word ov02_02353CA8
 _02345C70: .word GX_LoadBG2Scr
 _02345C74: .word 0x04001008
 _02345C78: .word 0x0400000A
-	arm_func_end ov02_02345BFC
+	arm_func_end SceneSetUsbComplete_InitGraphics
 
-	arm_func_start ov02_02345C7C
-ov02_02345C7C: ; 0x02345C7C
+	arm_func_start SceneSetUsbComplete_ProcInit
+SceneSetUsbComplete_ProcInit: ; 0x02345C7C
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _02345CAC ; =ov02_02345CB0
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02345CAC ; =SceneSetUsbComplete_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345CAC: .word ov02_02345CB0
-	arm_func_end ov02_02345C7C
+_02345CAC: .word SceneSetUsbComplete_ProcInit1
+	arm_func_end SceneSetUsbComplete_ProcInit
 
-	arm_func_start ov02_02345CB0
-ov02_02345CB0: ; 0x02345CB0
+	arm_func_start SceneSetUsbComplete_ProcInit1
+SceneSetUsbComplete_ProcInit1: ; 0x02345CB0
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02345CD0 ; =ov02_02345CD4
-	bl ov02_02338D68
+	ldr r0, _02345CD0 ; =SceneSetUsbComplete_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345CD0: .word ov02_02345CD4
-	arm_func_end ov02_02345CB0
+_02345CD0: .word SceneSetUsbComplete_ProcScene
+	arm_func_end SceneSetUsbComplete_ProcInit1
 
-	arm_func_start ov02_02345CD4
-ov02_02345CD4: ; 0x02345CD4
+	arm_func_start SceneSetUsbComplete_ProcScene
+SceneSetUsbComplete_ProcScene: ; 0x02345CD4
 	stmdb sp!, {r3, lr}
-	bl ov02_02345D94
-	bl ov02_02345CE4
+	bl SceneSetUsbComplete_Wait
+	bl SceneSetUsbComplete_Draw
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02345CD4
+	arm_func_end SceneSetUsbComplete_ProcScene
 
-	arm_func_start ov02_02345CE4
-ov02_02345CE4: ; 0x02345CE4
+	arm_func_start SceneSetUsbComplete_Draw
+SceneSetUsbComplete_Draw: ; 0x02345CE4
 	bx lr
-	arm_func_end ov02_02345CE4
+	arm_func_end SceneSetUsbComplete_Draw
 
-	arm_func_start ov02_02345CE8
-ov02_02345CE8: ; 0x02345CE8
+	arm_func_start SceneSetUsbComplete_EndScene
+SceneSetUsbComplete_EndScene: ; 0x02345CE8
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02345D20 ; =ov02_02345D24
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02345D20 ; =SceneSetUsbComplete_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345D20: .word ov02_02345D24
-	arm_func_end ov02_02345CE8
+_02345D20: .word SceneSetUsbComplete_EndScene1
+	arm_func_end SceneSetUsbComplete_EndScene
 
-	arm_func_start ov02_02345D24
-ov02_02345D24: ; 0x02345D24
+	arm_func_start SceneSetUsbComplete_EndScene1
+SceneSetUsbComplete_EndScene1: ; 0x02345D24
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
-	bl ov02_02334D10
+	bl Dwci_FntlDeleteBgLcd
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
+	bl Dwci_SetParam
 	mov r0, #0
 	mov r1, #2
-	bl ov02_02338DB4
-	ldr r0, _02345D90 ; =ov02_02345968
-	bl ov02_02338D68
+	bl Dwci_SetParam2
+	ldr r0, _02345D90 ; =Dwci_SceneSetTestConfirm
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345D90: .word ov02_02345968
-	arm_func_end ov02_02345D24
+_02345D90: .word Dwci_SceneSetTestConfirm
+	arm_func_end SceneSetUsbComplete_EndScene1
 
-	arm_func_start ov02_02345D94
-ov02_02345D94: ; 0x02345D94
+	arm_func_start SceneSetUsbComplete_Wait
+SceneSetUsbComplete_Wait: ; 0x02345D94
 	stmdb sp!, {r3, lr}
 	ldr r0, _02345DC0 ; =ov02_0235AB28
 	ldrb r1, [r0]
@@ -40845,51 +40845,51 @@ ov02_02345D94: ; 0x02345D94
 	strb r2, [r0]
 	cmp r1, #0x78
 	ldmloia sp!, {r3, pc}
-	ldr r0, _02345DC4 ; =ov02_02345CE8
-	bl ov02_02338D68
+	ldr r0, _02345DC4 ; =SceneSetUsbComplete_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02345DC0: .word ov02_0235AB28
-_02345DC4: .word ov02_02345CE8
-	arm_func_end ov02_02345D94
+_02345DC4: .word SceneSetUsbComplete_EndScene
+	arm_func_end SceneSetUsbComplete_Wait
 
-	arm_func_start ov02_02345DC8
-ov02_02345DC8: ; 0x02345DC8
+	arm_func_start Dwci_SceneSetUsbReady
+Dwci_SceneSetUsbReady: ; 0x02345DC8
 	stmdb sp!, {r3, lr}
 	ldr r0, _02345E10 ; =ov02_0235AB2C
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02345E18
+	bl SceneSetUsbReady_InitGraphics
 	mov r0, #8
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	mov r0, #0x38
 	sub r1, r0, #0x39
 	mov r2, #0
-	bl ov02_02334C3C
+	bl Dwci_CommentlDispEx
 	mov r0, #1
-	bl ov02_02334DE8
+	bl Dwci_CmnlStep
 	mov r0, #0x27
-	bl ov02_02334E70
-	ldr r0, _02345E14 ; =ov02_02345EC0
-	bl ov02_02338D68
+	bl Dwci_CmnlMsgDraw
+	ldr r0, _02345E14 ; =SceneSetUsbReady_ProcInit
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02345E10: .word ov02_0235AB2C
-_02345E14: .word ov02_02345EC0
-	arm_func_end ov02_02345DC8
+_02345E14: .word SceneSetUsbReady_ProcInit
+	arm_func_end Dwci_SceneSetUsbReady
 
-	arm_func_start ov02_02345E18
-ov02_02345E18: ; 0x02345E18
+	arm_func_start SceneSetUsbReady_InitGraphics
+SceneSetUsbReady_InitGraphics: ; 0x02345E18
 	stmdb sp!, {r3, lr}
 	ldr r0, _02345EA0 ; =ov02_02353CBC
 	ldr r1, _02345EA4 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02345EA8 ; =ov02_02353CD4
 	ldr r1, _02345EAC ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02345EB0 ; =ov02_02353CEC
 	ldr r1, _02345EB4 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _02345EB8 ; =0x04001008
 	ldr r1, _02345EBC ; =0x0400000A
 	ldrh r0, [r3]
@@ -40923,106 +40923,106 @@ _02345EB0: .word ov02_02353CEC
 _02345EB4: .word GX_LoadBG2Scr
 _02345EB8: .word 0x04001008
 _02345EBC: .word 0x0400000A
-	arm_func_end ov02_02345E18
+	arm_func_end SceneSetUsbReady_InitGraphics
 
-	arm_func_start ov02_02345EC0
-ov02_02345EC0: ; 0x02345EC0
+	arm_func_start SceneSetUsbReady_ProcInit
+SceneSetUsbReady_ProcInit: ; 0x02345EC0
 	stmdb sp!, {r3, lr}
 	mov r1, #1
 	mov r2, r1
 	mov r0, #2
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E3D0
+	bl Dwci_GXlVisible
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _02345F10 ; =ov02_02345F14
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _02345F10 ; =SceneSetUsbReady_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345F10: .word ov02_02345F14
-	arm_func_end ov02_02345EC0
+_02345F10: .word SceneSetUsbReady_ProcInit1
+	arm_func_end SceneSetUsbReady_ProcInit
 
-	arm_func_start ov02_02345F14
-ov02_02345F14: ; 0x02345F14
+	arm_func_start SceneSetUsbReady_ProcInit1
+SceneSetUsbReady_ProcInit1: ; 0x02345F14
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_02334E38
-	ldr r0, _02345F4C ; =ov02_02345F50
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _02345F4C ; =SceneSetUsbReady_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345F4C: .word ov02_02345F50
-	arm_func_end ov02_02345F14
+_02345F4C: .word SceneSetUsbReady_ProcInit2
+	arm_func_end SceneSetUsbReady_ProcInit1
 
-	arm_func_start ov02_02345F50
-ov02_02345F50: ; 0x02345F50
+	arm_func_start SceneSetUsbReady_ProcInit2
+SceneSetUsbReady_ProcInit2: ; 0x02345F50
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02345F74 ; =ov02_02345F78
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02345F74 ; =SceneSetUsbReady_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02345F74: .word ov02_02345F78
-	arm_func_end ov02_02345F50
+_02345F74: .word SceneSetUsbReady_ProcScene
+	arm_func_end SceneSetUsbReady_ProcInit2
 
-	arm_func_start ov02_02345F78
-ov02_02345F78: ; 0x02345F78
+	arm_func_start SceneSetUsbReady_ProcScene
+SceneSetUsbReady_ProcScene: ; 0x02345F78
 	stmdb sp!, {r3, lr}
-	bl ov02_02345F8C
-	bl ov02_02345FC4
-	bl ov02_02345FC8
+	bl SceneSetUsbReady_Input
+	bl SceneSetUsbReady_Draw
+	bl SceneSetUsbReady_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02345F78
+	arm_func_end SceneSetUsbReady_ProcScene
 
-	arm_func_start ov02_02345F8C
-ov02_02345F8C: ; 0x02345F8C
+	arm_func_start SceneSetUsbReady_Input
+SceneSetUsbReady_Input: ; 0x02345F8C
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02345FA8
 	mov r0, #1
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 _02345FA8:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02345F8C
+	arm_func_end SceneSetUsbReady_Input
 
-	arm_func_start ov02_02345FC4
-ov02_02345FC4: ; 0x02345FC4
+	arm_func_start SceneSetUsbReady_Draw
+SceneSetUsbReady_Draw: ; 0x02345FC4
 	bx lr
-	arm_func_end ov02_02345FC4
+	arm_func_end SceneSetUsbReady_Draw
 
-	arm_func_start ov02_02345FC8
-ov02_02345FC8: ; 0x02345FC8
+	arm_func_start SceneSetUsbReady_Button
+SceneSetUsbReady_Button: ; 0x02345FC8
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	beq _02345FE4
 	cmp r0, #1
@@ -41030,44 +41030,44 @@ ov02_02345FC8: ; 0x02345FC8
 	ldmia sp!, {r3, pc}
 _02345FE4:
 	mov r0, #7
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _02346004
 _02345FF0:
 	mov r0, #6
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldr r0, _02346010 ; =ov02_0235AB2C
 	mov r1, #1
 	strb r1, [r0]
 _02346004:
-	ldr r0, _02346014 ; =ov02_02346018
-	bl ov02_02338D68
+	ldr r0, _02346014 ; =SceneSetUsbReady_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02346010: .word ov02_0235AB2C
-_02346014: .word ov02_02346018
-	arm_func_end ov02_02345FC8
+_02346014: .word SceneSetUsbReady_EndScene
+	arm_func_end SceneSetUsbReady_Button
 
-	arm_func_start ov02_02346018
-ov02_02346018: ; 0x02346018
+	arm_func_start SceneSetUsbReady_EndScene
+SceneSetUsbReady_EndScene: ; 0x02346018
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _02346034 ; =ov02_02346038
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _02346034 ; =SceneSetUsbReady_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02346034: .word ov02_02346038
-	arm_func_end ov02_02346018
+_02346034: .word SceneSetUsbReady_EndScene1
+	arm_func_end SceneSetUsbReady_EndScene
 
-	arm_func_start ov02_02346038
-ov02_02346038: ; 0x02346038
+	arm_func_start SceneSetUsbReady_EndScene1
+SceneSetUsbReady_EndScene1: ; 0x02346038
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	ldr r0, _02346094 ; =ov02_0235AB2C
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -41076,26 +41076,26 @@ ov02_02346038: ; 0x02346038
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _02346074:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _02346098 ; =ov02_0234609C
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _02346098 ; =SceneSetUsbReady_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02346094: .word ov02_0235AB2C
-_02346098: .word ov02_0234609C
-	arm_func_end ov02_02346038
+_02346098: .word SceneSetUsbReady_EndScene2
+	arm_func_end SceneSetUsbReady_EndScene1
 
-	arm_func_start ov02_0234609C
-ov02_0234609C: ; 0x0234609C
+	arm_func_start SceneSetUsbReady_EndScene2
+SceneSetUsbReady_EndScene2: ; 0x0234609C
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02346148 ; =ov02_0235AB2C
@@ -41103,50 +41103,50 @@ ov02_0234609C: ; 0x0234609C
 	cmp r0, #0
 	bne _023460D0
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 _023460D0:
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _02346148 ; =ov02_0235AB2C
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _02346104
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _02346104:
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _02346148 ; =ov02_0235AB2C
 	mov r1, #1
 	ldrb r0, [r0]
 	cmp r0, #0
 	mov r0, #2
 	bne _02346138
-	bl ov02_02338D78
-	ldr r0, _0234614C ; =ov02_02343DB0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0234614C ; =Dwci_SceneSetSelectAp
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02346138:
-	bl ov02_02338D78
-	ldr r0, _02346150 ; =ov02_02346174
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02346150 ; =Dwci_SceneSetUsbReady1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02346148: .word ov02_0235AB2C
-_0234614C: .word ov02_02343DB0
-_02346150: .word ov02_02346174
-	arm_func_end ov02_0234609C
+_0234614C: .word Dwci_SceneSetSelectAp
+_02346150: .word Dwci_SceneSetUsbReady1
+	arm_func_end SceneSetUsbReady_EndScene2
 
-	arm_func_start ov02_02346154
-ov02_02346154: ; 0x02346154
+	arm_func_start Dwci_IsFold__02346980
+Dwci_IsFold__02346980: ; 0x02346154
 	ldr r0, _02346170 ; =0x027FFFA8
 	ldrh r0, [r0]
 	and r0, r0, #0x8000
@@ -41156,20 +41156,20 @@ ov02_02346154: ; 0x02346154
 	bx lr
 	.align 2, 0
 _02346170: .word 0x027FFFA8
-	arm_func_end ov02_02346154
+	arm_func_end Dwci_IsFold__02346980
 
-	arm_func_start ov02_02346174
-ov02_02346174: ; 0x02346174
+	arm_func_start Dwci_SceneSetUsbReady1
+Dwci_SceneSetUsbReady1: ; 0x02346174
 	stmdb sp!, {lr}
 	sub sp, sp, #0x6c
 	ldr r0, _023461FC ; =ov02_0235AB30
 	mov r1, #0
 	strb r1, [r0]
-	bl ov02_02346208
+	bl SceneSetUsbReady1_InitGraphics
 	mov r0, #8
-	bl ov02_02335268
+	bl Dwci_HLlLoad
 	mov r0, #2
-	bl ov02_02334DE8
+	bl Dwci_CmnlStep
 	add r0, sp, #0x16
 	bl GetDsFirmwareUserSettings
 	add r1, sp, #0
@@ -41183,35 +41183,35 @@ ov02_02346174: ; 0x02346174
 	bl MTi_CpuCopy16
 	add r0, sp, #0
 	mov r1, #0x28
-	bl ov02_02334EE4
+	bl Dwci_CmnlMsgNameDraw
 	mov r0, #0
-	bl ov02_023343DC
-	ldr r0, _02346200 ; =ov02_02346554
-	bl ov02_02348CB0
+	bl Dwci_AnimelInitEx
+	ldr r0, _02346200 ; =SceneSetUsbReady1_CbUsb
+	bl Dwci_UsbaplBegin
 	mov r0, #0xb
-	bl ov02_023480E0
-	ldr r0, _02346204 ; =ov02_023462B0
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02346204 ; =SceneSetUsbReady1_ProcInit
+	bl Dwci_ChangeScene
 	add sp, sp, #0x6c
 	ldmia sp!, {pc}
 	.align 2, 0
 _023461FC: .word ov02_0235AB30
-_02346200: .word ov02_02346554
-_02346204: .word ov02_023462B0
-	arm_func_end ov02_02346174
+_02346200: .word SceneSetUsbReady1_CbUsb
+_02346204: .word SceneSetUsbReady1_ProcInit
+	arm_func_end Dwci_SceneSetUsbReady1
 
-	arm_func_start ov02_02346208
-ov02_02346208: ; 0x02346208
+	arm_func_start SceneSetUsbReady1_InitGraphics
+SceneSetUsbReady1_InitGraphics: ; 0x02346208
 	stmdb sp!, {r3, lr}
 	ldr r0, _02346290 ; =ov02_02353D00
 	ldr r1, _02346294 ; =GX_LoadBG2Char
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _02346298 ; =ov02_02353D18
 	ldr r1, _0234629C ; =GX_LoadBGPltt
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r0, _023462A0 ; =ov02_02353D30
 	ldr r1, _023462A4 ; =GX_LoadBG2Scr
-	bl ov02_02334DA8
+	bl Dwci_CmnlLoadResource
 	ldr r3, _023462A8 ; =0x04001008
 	ldr r1, _023462AC ; =0x0400000A
 	ldrh r0, [r3]
@@ -41245,135 +41245,135 @@ _023462A0: .word ov02_02353D30
 _023462A4: .word GX_LoadBG2Scr
 _023462A8: .word 0x04001008
 _023462AC: .word 0x0400000A
-	arm_func_end ov02_02346208
+	arm_func_end SceneSetUsbReady1_InitGraphics
 
-	arm_func_start ov02_023462B0
-ov02_023462B0: ; 0x023462B0
+	arm_func_start SceneSetUsbReady1_ProcInit
+SceneSetUsbReady1_ProcInit: ; 0x023462B0
 	stmdb sp!, {r3, lr}
 	mov r0, #2
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E3D0
-	ldr r0, _023462E0 ; =ov02_023462E4
-	bl ov02_02338D68
+	bl Dwci_GXlVisible
+	ldr r0, _023462E0 ; =SceneSetUsbReady1_ProcInit1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023462E0: .word ov02_023462E4
-	arm_func_end ov02_023462B0
+_023462E0: .word SceneSetUsbReady1_ProcInit1
+	arm_func_end SceneSetUsbReady1_ProcInit
 
-	arm_func_start ov02_023462E4
-ov02_023462E4: ; 0x023462E4
+	arm_func_start SceneSetUsbReady1_ProcInit1
+SceneSetUsbReady1_ProcInit1: ; 0x023462E4
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #2
-	bl ov02_02334E38
-	ldr r0, _0234630C ; =ov02_02346310
-	bl ov02_02338D68
+	bl Dwci_CmnlButton
+	ldr r0, _0234630C ; =SceneSetUsbReady1_ProcInit2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234630C: .word ov02_02346310
-	arm_func_end ov02_023462E4
+_0234630C: .word SceneSetUsbReady1_ProcInit2
+	arm_func_end SceneSetUsbReady1_ProcInit1
 
-	arm_func_start ov02_02346310
-ov02_02346310: ; 0x02346310
+	arm_func_start SceneSetUsbReady1_ProcInit2
+SceneSetUsbReady1_ProcInit2: ; 0x02346310
 	stmdb sp!, {r3, lr}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02334750
-	ldr r0, _02346334 ; =ov02_02346338
-	bl ov02_02338D68
+	bl Dwci_BtnlEnable
+	ldr r0, _02346334 ; =SceneSetUsbReady1_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02346334: .word ov02_02346338
-	arm_func_end ov02_02346310
+_02346334: .word SceneSetUsbReady1_ProcScene
+	arm_func_end SceneSetUsbReady1_ProcInit2
 
-	arm_func_start ov02_02346338
-ov02_02346338: ; 0x02346338
+	arm_func_start SceneSetUsbReady1_ProcScene
+SceneSetUsbReady1_ProcScene: ; 0x02346338
 	stmdb sp!, {r3, lr}
-	bl ov02_0234634C
-	bl ov02_02346384
-	bl ov02_02346388
+	bl SceneSetUsbReady1_Input
+	bl SceneSetUsbReady1_Draw
+	bl SceneSetUsbReady1_Button
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_02346338
+	arm_func_end SceneSetUsbReady1_ProcScene
 
-	arm_func_start ov02_0234634C
-ov02_0234634C: ; 0x0234634C
+	arm_func_start SceneSetUsbReady1_Input
+SceneSetUsbReady1_Input: ; 0x0234634C
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0234636C
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
 _0234636C:
-	bl ov02_02346154
+	bl Dwci_IsFold__02346980
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_023346F0
+	bl Dwci_BtnlSet
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234634C
+	arm_func_end SceneSetUsbReady1_Input
 
-	arm_func_start ov02_02346384
-ov02_02346384: ; 0x02346384
+	arm_func_start SceneSetUsbReady1_Draw
+SceneSetUsbReady1_Draw: ; 0x02346384
 	bx lr
-	arm_func_end ov02_02346384
+	arm_func_end SceneSetUsbReady1_Draw
 
-	arm_func_start ov02_02346388
-ov02_02346388: ; 0x02346388
+	arm_func_start SceneSetUsbReady1_Button
+SceneSetUsbReady1_Button: ; 0x02346388
 	stmdb sp!, {r3, lr}
 	ldr r0, _023463CC ; =ov02_0235AB30
 	ldrb r0, [r0]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346DC
+	bl Dwci_BtnlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _023463CC ; =ov02_0235AB30
 	mov r1, #2
 	strb r1, [r0]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #7
-	bl ov02_023480E0
-	ldr r0, _023463D0 ; =ov02_023463D4
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _023463D0 ; =SceneSetUsbReady1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023463CC: .word ov02_0235AB30
-_023463D0: .word ov02_023463D4
-	arm_func_end ov02_02346388
+_023463D0: .word SceneSetUsbReady1_EndScene
+	arm_func_end SceneSetUsbReady1_Button
 
-	arm_func_start ov02_023463D4
-ov02_023463D4: ; 0x023463D4
+	arm_func_start SceneSetUsbReady1_EndScene
+SceneSetUsbReady1_EndScene: ; 0x023463D4
 	stmdb sp!, {r3, lr}
-	bl ov02_02334768
+	bl Dwci_BtnlDisable
 	mov r0, #8
-	bl ov02_0234DAE0
-	ldr r0, _023463F0 ; =ov02_023463F4
-	bl ov02_02338D68
+	bl Dwci_EfflWait
+	ldr r0, _023463F0 ; =SceneSetUsbReady1_EndScene1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023463F0: .word ov02_023463F4
-	arm_func_end ov02_023463D4
+_023463F0: .word SceneSetUsbReady1_EndScene1
+	arm_func_end SceneSetUsbReady1_EndScene
 
-	arm_func_start ov02_023463F4
-ov02_023463F4: ; 0x023463F4
+	arm_func_start SceneSetUsbReady1_EndScene1
+SceneSetUsbReady1_EndScene1: ; 0x023463F4
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_023346AC
+	bl Dwci_BtnlEnd
 	ldr r0, _02346458 ; =ov02_0235AB30
 	ldrb r0, [r0]
 	add r0, r0, #0xfe
@@ -41384,26 +41384,26 @@ ov02_023463F4: ; 0x023463F4
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
-	bl ov02_0234D8E0
+	bl Dwci_EfflFade
 _02346438:
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
 	mov r3, #8
-	bl ov02_0234D8E0
-	ldr r0, _0234645C ; =ov02_02346460
-	bl ov02_02338D68
+	bl Dwci_EfflFade
+	ldr r0, _0234645C ; =SceneSetUsbReady1_EndScene2
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02346458: .word ov02_0235AB30
-_0234645C: .word ov02_02346460
-	arm_func_end ov02_023463F4
+_0234645C: .word SceneSetUsbReady1_EndScene2
+	arm_func_end SceneSetUsbReady1_EndScene1
 
-	arm_func_start ov02_02346460
-ov02_02346460: ; 0x02346460
+	arm_func_start SceneSetUsbReady1_EndScene2
+SceneSetUsbReady1_EndScene2: ; 0x02346460
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02346544 ; =ov02_0235AB30
@@ -41411,66 +41411,66 @@ ov02_02346460: ; 0x02346460
 	cmp r0, #2
 	bne _02346494
 	mov r0, #1
-	bl ov02_0234D8BC
+	bl Dwci_EfflCheck
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 _02346494:
-	bl ov02_02334724
+	bl Dwci_BtnlIsEnd
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov02_02348E68
-	bl ov02_023344AC
+	bl Dwci_UsbaplEnd
+	bl Dwci_AnimelEnd
 	mov r0, #0
-	bl ov02_0234E02C
+	bl Dwci_FntlDeleteBgLcd
 	ldr r0, _02346544 ; =ov02_0235AB30
 	ldrb r0, [r0]
 	add r0, r0, #0xfe
 	and r0, r0, #0xff
 	cmp r0, #1
 	bhi _023464D8
-	bl ov02_02334D10
+	bl Dwci_CommentlDelete
 	mov r0, #1
 	mov r1, r0
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 _023464D8:
 	mov r0, #0
 	mov r1, #0x15
-	bl ov02_0234E424
+	bl Dwci_GXlInvisible
 	ldr r0, _02346544 ; =ov02_0235AB30
 	ldrb r0, [r0]
 	cmp r0, #2
 	bne _0234650C
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _02346548 ; =ov02_02343DB0
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02346548 ; =Dwci_SceneSetSelectAp
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0234650C:
 	cmp r0, #3
 	bne _0234652C
 	mov r0, #2
 	mov r1, #1
-	bl ov02_02338D78
-	ldr r0, _0234654C ; =ov02_02345DC8
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _0234654C ; =Dwci_SceneSetUsbReady
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _0234652C:
 	mov r0, #0
 	mov r1, r0
-	bl ov02_02338D78
-	ldr r0, _02346550 ; =ov02_02345BBC
-	bl ov02_02338D68
+	bl Dwci_SetParam
+	ldr r0, _02346550 ; =Dwci_SceneSetUsbComplete
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02346544: .word ov02_0235AB30
-_02346548: .word ov02_02343DB0
-_0234654C: .word ov02_02345DC8
-_02346550: .word ov02_02345BBC
-	arm_func_end ov02_02346460
+_02346548: .word Dwci_SceneSetSelectAp
+_0234654C: .word Dwci_SceneSetUsbReady
+_02346550: .word Dwci_SceneSetUsbComplete
+	arm_func_end SceneSetUsbReady1_EndScene2
 
-	arm_func_start ov02_02346554
-ov02_02346554: ; 0x02346554
+	arm_func_start SceneSetUsbReady1_CbUsb
+SceneSetUsbReady1_CbUsb: ; 0x02346554
 	stmdb sp!, {r3, lr}
 	ldr r1, _02346630 ; =ov02_0235AB30
 	ldrb r2, [r1]
@@ -41487,90 +41487,90 @@ _02346574: ; jump table
 _02346584:
 	mov r0, #3
 	strb r0, [r1]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #0x12
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r1, #1
 	mov ip, #0
 	mov r2, r1
 	sub r3, r1, #2
 	mov r0, #0x10
 	str ip, [sp]
-	bl ov02_02349394
-	bl ov02_02334768
-	ldr r0, _02346634 ; =ov02_02346640
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	bl Dwci_BtnlDisable
+	ldr r0, _02346634 ; =SceneSetUsbReady1_ProcNotFound
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _023465C4:
 	mov r0, #1
 	strb r0, [r1]
-	bl ov02_02348148
-	ldr r0, _02346638 ; =ov02_023463D4
-	bl ov02_02338D68
+	bl Dwci_SndlStop
+	ldr r0, _02346638 ; =SceneSetUsbReady1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _023465DC:
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #0
-	bl ov02_02348F4C
+	bl Dwci_UsbaplSetCallback
 	mov r2, #1
 	mov r1, #0
 	sub r3, r2, #2
 	mov r0, #0x11
 	str r1, [sp]
-	bl ov02_02349394
-	bl ov02_02334768
-	ldr r0, _0234663C ; =ov02_0234668C
-	bl ov02_02338D68
+	bl Dwci_WinlInitEx
+	bl Dwci_BtnlDisable
+	ldr r0, _0234663C ; =SceneSetUsbReady1_ProcBoth__02346EB8
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02346610:
 	mov r0, #2
 	strb r0, [r1]
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	mov r0, #9
-	bl ov02_023480E0
-	ldr r0, _02346638 ; =ov02_023463D4
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	ldr r0, _02346638 ; =SceneSetUsbReady1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02346630: .word ov02_0235AB30
-_02346634: .word ov02_02346640
-_02346638: .word ov02_023463D4
-_0234663C: .word ov02_0234668C
-	arm_func_end ov02_02346554
+_02346634: .word SceneSetUsbReady1_ProcNotFound
+_02346638: .word SceneSetUsbReady1_EndScene
+_0234663C: .word SceneSetUsbReady1_ProcBoth__02346EB8
+	arm_func_end SceneSetUsbReady1_CbUsb
 
-	arm_func_start ov02_02346640
-ov02_02346640: ; 0x02346640
+	arm_func_start SceneSetUsbReady1_ProcNotFound
+SceneSetUsbReady1_ProcNotFound: ; 0x02346640
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
-	bl ov02_023480E0
-	bl ov02_023496C0
-	ldr r0, _02346668 ; =ov02_0234666C
-	bl ov02_02338D68
+	bl Dwci_SndlPlay
+	bl Dwci_WinlEnd
+	ldr r0, _02346668 ; =SceneSetUsbReady1_ProcNotFound1
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02346668: .word ov02_0234666C
-	arm_func_end ov02_02346640
+_02346668: .word SceneSetUsbReady1_ProcNotFound1
+	arm_func_end SceneSetUsbReady1_ProcNotFound
 
-	arm_func_start ov02_0234666C
-ov02_0234666C: ; 0x0234666C
+	arm_func_start SceneSetUsbReady1_ProcNotFound1
+SceneSetUsbReady1_ProcNotFound1: ; 0x0234666C
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02346688 ; =ov02_023463D4
-	bl ov02_02338D68
+	ldr r0, _02346688 ; =SceneSetUsbReady1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02346688: .word ov02_023463D4
-	arm_func_end ov02_0234666C
+_02346688: .word SceneSetUsbReady1_EndScene
+	arm_func_end SceneSetUsbReady1_ProcNotFound1
 
-	arm_func_start ov02_0234668C
-ov02_0234668C: ; 0x0234668C
+	arm_func_start SceneSetUsbReady1_ProcBoth__02346EB8
+SceneSetUsbReady1_ProcBoth__02346EB8: ; 0x0234668C
 	stmdb sp!, {r3, lr}
-	bl ov02_02349704
+	bl Dwci_WinlGet
 	cmp r0, #0
 	beq _023466BC
 	cmp r0, #1
@@ -41579,63 +41579,63 @@ ov02_0234668C: ; 0x0234668C
 	mov r2, #3
 	mov r0, #6
 	strb r2, [r1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	b _023466D0
 _023466BC:
 	ldr r1, _023466E0 ; =ov02_0235AB30
 	mov r2, #1
 	mov r0, #7
 	strb r2, [r1]
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 _023466D0:
-	bl ov02_023496C0
-	ldr r0, _023466E4 ; =ov02_023466E8
-	bl ov02_02338D68
+	bl Dwci_WinlEnd
+	ldr r0, _023466E4 ; =SceneSetUsbReady1_ProcBoth__02346F14
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023466E0: .word ov02_0235AB30
-_023466E4: .word ov02_023466E8
-	arm_func_end ov02_0234668C
+_023466E4: .word SceneSetUsbReady1_ProcBoth__02346F14
+	arm_func_end SceneSetUsbReady1_ProcBoth__02346EB8
 
-	arm_func_start ov02_023466E8
-ov02_023466E8: ; 0x023466E8
+	arm_func_start SceneSetUsbReady1_ProcBoth__02346F14
+SceneSetUsbReady1_ProcBoth__02346F14: ; 0x023466E8
 	stmdb sp!, {r3, lr}
-	bl ov02_02349718
+	bl Dwci_WinlIsInit
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02346740 ; =ov02_0235AB30
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _02346714
-	ldr r0, _02346744 ; =ov02_023463D4
-	bl ov02_02338D68
+	ldr r0, _02346744 ; =SceneSetUsbReady1_EndScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 _02346714:
 	mov r0, #0xb
-	bl ov02_023480E0
-	bl ov02_02334750
+	bl Dwci_SndlPlay
+	bl Dwci_BtnlEnable
 	ldr r1, _02346740 ; =ov02_0235AB30
 	mov r2, #0
-	ldr r0, _02346748 ; =ov02_02346554
+	ldr r0, _02346748 ; =SceneSetUsbReady1_CbUsb
 	strb r2, [r1]
-	bl ov02_02348F4C
-	ldr r0, _0234674C ; =ov02_02346338
-	bl ov02_02338D68
+	bl Dwci_UsbaplSetCallback
+	ldr r0, _0234674C ; =SceneSetUsbReady1_ProcScene
+	bl Dwci_ChangeScene
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02346740: .word ov02_0235AB30
-_02346744: .word ov02_023463D4
-_02346748: .word ov02_02346554
-_0234674C: .word ov02_02346338
-	arm_func_end ov02_023466E8
+_02346744: .word SceneSetUsbReady1_EndScene
+_02346748: .word SceneSetUsbReady1_CbUsb
+_0234674C: .word SceneSetUsbReady1_ProcScene
+	arm_func_end SceneSetUsbReady1_ProcBoth__02346F14
 
-	arm_func_start ov02_02346750
-ov02_02346750: ; 0x02346750
+	arm_func_start Dwci_ScreenlInit
+Dwci_ScreenlInit: ; 0x02346750
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _023467A4 ; =0x00000608
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	mov ip, r0
 	ldr r3, _023467A8 ; =ov02_0235AB34
 	mov r0, r4
@@ -41643,11 +41643,11 @@ ov02_02346750: ; 0x02346750
 	mov r2, #0x600
 	str ip, [r3]
 	bl MTi_CpuCopy32Fast
-	ldr r1, _023467AC ; =ov02_0234684C
+	ldr r1, _023467AC ; =Screen_TaskLoad
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _023467A8 ; =ov02_0235AB34
 	ldr r1, [r1]
 	str r0, [r1]
@@ -41655,27 +41655,27 @@ ov02_02346750: ; 0x02346750
 	.align 2, 0
 _023467A4: .word 0x00000608
 _023467A8: .word ov02_0235AB34
-_023467AC: .word ov02_0234684C
-	arm_func_end ov02_02346750
+_023467AC: .word Screen_TaskLoad
+	arm_func_end Dwci_ScreenlInit
 
-	arm_func_start ov02_023467B0
-ov02_023467B0: ; 0x023467B0
+	arm_func_start Dwci_ScreenlEnd
+Dwci_ScreenlEnd: ; 0x023467B0
 	stmdb sp!, {r3, lr}
 	ldr r1, _023467D4 ; =ov02_0235AB34
 	mov r0, #1
 	ldr r1, [r1]
 	ldr r1, [r1]
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r0, _023467D8 ; =ov02_0235AB34
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023467D4: .word ov02_0235AB34
 _023467D8: .word ov02_0235AB34
-	arm_func_end ov02_023467B0
+	arm_func_end Dwci_ScreenlEnd
 
-	arm_func_start ov02_023467DC
-ov02_023467DC: ; 0x023467DC
+	arm_func_start Dwci_ScreenlRenew
+Dwci_ScreenlRenew: ; 0x023467DC
 	ldr r0, _023467F0 ; =ov02_0235AB34
 	mov r1, #1
 	ldr r0, [r0]
@@ -41683,10 +41683,10 @@ ov02_023467DC: ; 0x023467DC
 	bx lr
 	.align 2, 0
 _023467F0: .word ov02_0235AB34
-	arm_func_end ov02_023467DC
+	arm_func_end Dwci_ScreenlRenew
 
-	arm_func_start ov02_023467F4
-ov02_023467F4: ; 0x023467F4
+	arm_func_start Dwci_ScreenlCopy
+Dwci_ScreenlCopy: ; 0x023467F4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr ip, _02346848 ; =ov02_0235AB34
 	mov r7, r3
@@ -41711,10 +41711,10 @@ _02346820:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02346848: .word ov02_0235AB34
-	arm_func_end ov02_023467F4
+	arm_func_end Dwci_ScreenlCopy
 
-	arm_func_start ov02_0234684C
-ov02_0234684C: ; 0x0234684C
+	arm_func_start Screen_TaskLoad
+Screen_TaskLoad: ; 0x0234684C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234689C ; =ov02_0235AB34
 	ldr r1, [r0]
@@ -41737,30 +41737,30 @@ ov02_0234684C: ; 0x0234684C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234689C: .word ov02_0235AB34
-	arm_func_end ov02_0234684C
+	arm_func_end Screen_TaskLoad
 
-	arm_func_start ov02_023468A0
-ov02_023468A0: ; 0x023468A0
+	arm_func_start Dwci_ScreenlCopyPalette
+Dwci_ScreenlCopyPalette: ; 0x023468A0
 	stmdb sp!, {r3, lr}
 	ldr ip, _023468D4 ; =ov02_0235AB34
 	add r3, r0, r1, lsl #5
 	mov r0, r2, lsl #5
-	ldr r1, _023468D8 ; =ov02_023468DC
+	ldr r1, _023468D8 ; =Screen_TaskCopyPltt
 	str r3, [ip, #4]
 	add lr, r0, #0x5000000
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x78
 	str lr, [ip, #8]
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023468D4: .word ov02_0235AB34
-_023468D8: .word ov02_023468DC
-	arm_func_end ov02_023468A0
+_023468D8: .word Screen_TaskCopyPltt
+	arm_func_end Dwci_ScreenlCopyPalette
 
-	arm_func_start ov02_023468DC
-ov02_023468DC: ; 0x023468DC
+	arm_func_start Screen_TaskCopyPltt
+Screen_TaskCopyPltt: ; 0x023468DC
 	stmdb sp!, {r4, lr}
 	ldr r1, _02346904 ; =ov02_0235AB34
 	mov r4, r0
@@ -41769,30 +41769,30 @@ ov02_023468DC: ; 0x023468DC
 	bl MTi_CpuCopy16
 	mov r1, r4
 	mov r0, #1
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02346904: .word ov02_0235AB34
-	arm_func_end ov02_023468DC
+	arm_func_end Screen_TaskCopyPltt
 
-	arm_func_start ov02_02346908
-ov02_02346908: ; 0x02346908
+	arm_func_start Dwci_ScreenlSetPalette
+Dwci_ScreenlSetPalette: ; 0x02346908
 	ldr r2, _02346928 ; =ov02_0235AB34
-	ldr ip, _0234692C ; =ov02_0234FA98
+	ldr ip, _0234692C ; =Dwci_TsklForm
 	str r0, [r2, #4]
-	ldr r1, _02346930 ; =ov02_02346934
+	ldr r1, _02346930 ; =Screen_TaskSetPltt
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x78
 	bx ip
 	.align 2, 0
 _02346928: .word ov02_0235AB34
-_0234692C: .word ov02_0234FA98
-_02346930: .word ov02_02346934
-	arm_func_end ov02_02346908
+_0234692C: .word Dwci_TsklForm
+_02346930: .word Screen_TaskSetPltt
+	arm_func_end Dwci_ScreenlSetPalette
 
-	arm_func_start ov02_02346934
-ov02_02346934: ; 0x02346934
+	arm_func_start Screen_TaskSetPltt
+Screen_TaskSetPltt: ; 0x02346934
 	stmdb sp!, {r4, lr}
 	ldr r1, _02346960 ; =ov02_0235AB34
 	mov r4, r0
@@ -41802,14 +41802,14 @@ ov02_02346934: ; 0x02346934
 	bl MTi_CpuCopy16
 	mov r1, r4
 	mov r0, #1
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02346960: .word ov02_0235AB34
-	arm_func_end ov02_02346934
+	arm_func_end Screen_TaskSetPltt
 
-	arm_func_start ov02_02346964
-ov02_02346964: ; 0x02346964
+	arm_func_start Dwci_SBlInit
+Dwci_SBlInit: ; 0x02346964
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r7, r1
@@ -41817,7 +41817,7 @@ ov02_02346964: ; 0x02346964
 	mov r1, #4
 	mov r5, r2
 	mov r4, r3
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _02346A30 ; =ov02_0235AB40
 	ldr ip, [sp, #0x18]
 	str r0, [r2]
@@ -41830,12 +41830,12 @@ ov02_02346964: ; 0x02346964
 	strb ip, [r3, #0x1a]
 	ldr r2, [r2]
 	add r2, r2, #0x10
-	bl ov02_0234E378
+	bl Dwci_InputCoord
 	ldr r1, _02346A34 ; =ov02_02352D6C
 	mov r0, #0
 	ldrb r1, [r1, r6]
 	mov r2, #1
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	mov r2, r5
 	ldr r5, _02346A30 ; =ov02_0235AB40
 	ldr r3, [sp, #0x18]
@@ -41845,18 +41845,18 @@ ov02_02346964: ; 0x02346964
 	ldr r0, [r5]
 	add r3, r4, r3
 	ldr r0, [r0]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	mov r0, r5
 	ldr r0, [r0]
 	mvn r1, #0
 	ldr r0, [r0]
 	mov r2, #1
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	mov r0, #0
-	ldr r1, _02346A38 ; =ov02_02346ADC
+	ldr r1, _02346A38 ; =Scrollbar_TaskMain
 	mov r2, r0
 	mov r3, #0x80
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	mov r1, r5
 	ldr r1, [r1]
 	str r0, [r1, #0xc]
@@ -41864,59 +41864,59 @@ ov02_02346964: ; 0x02346964
 	.align 2, 0
 _02346A30: .word ov02_0235AB40
 _02346A34: .word ov02_02352D6C
-_02346A38: .word ov02_02346ADC
-	arm_func_end ov02_02346964
+_02346A38: .word Scrollbar_TaskMain
+	arm_func_end Dwci_SBlInit
 
-	arm_func_start ov02_02346A3C
-ov02_02346A3C: ; 0x02346A3C
+	arm_func_start Dwci_SBlEnd
+Dwci_SBlEnd: ; 0x02346A3C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02346A70 ; =ov02_0235AB40
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r1, [r1, #0xc]
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r0, _02346A70 ; =ov02_0235AB40
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	ldr r0, _02346A74 ; =ov02_0235AB40
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02346A70: .word ov02_0235AB40
 _02346A74: .word ov02_0235AB40
-	arm_func_end ov02_02346A3C
+	arm_func_end Dwci_SBlEnd
 
-	arm_func_start ov02_02346A78
-ov02_02346A78: ; 0x02346A78
+	arm_func_start Dwci_SBlGet
+Dwci_SBlGet: ; 0x02346A78
 	ldr r0, _02346A88 ; =ov02_0235AB40
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x1a]
 	bx lr
 	.align 2, 0
 _02346A88: .word ov02_0235AB40
-	arm_func_end ov02_02346A78
+	arm_func_end Dwci_SBlGet
 
-	arm_func_start ov02_02346A8C
-ov02_02346A8C: ; 0x02346A8C
+	arm_func_start Dwci_SBlGetState
+Dwci_SBlGetState: ; 0x02346A8C
 	ldr r0, _02346A9C ; =ov02_0235AB40
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x1d]
 	bx lr
 	.align 2, 0
 _02346A9C: .word ov02_0235AB40
-	arm_func_end ov02_02346A8C
+	arm_func_end Dwci_SBlGetState
 
-	arm_func_start ov02_02346AA0
-ov02_02346AA0: ; 0x02346AA0
-	ldr ip, _02346AA8 ; =ov02_02346FEC
+	arm_func_start Scrollbar_Disp__023472CC
+Scrollbar_Disp__023472CC: ; 0x02346AA0
+	ldr ip, _02346AA8 ; =Scrollbar_Disp__02347818
 	bx ip
 	.align 2, 0
-_02346AA8: .word ov02_02346FEC
-	arm_func_end ov02_02346AA0
+_02346AA8: .word Scrollbar_Disp__02347818
+	arm_func_end Scrollbar_Disp__023472CC
 
-	arm_func_start ov02_02346AAC
-ov02_02346AAC: ; 0x02346AAC
+	arm_func_start Dwci_SBlEnable
+Dwci_SBlEnable: ; 0x02346AAC
 	ldr r0, _02346AC0 ; =ov02_0235AB40
 	mov r1, #0
 	ldr r0, [r0]
@@ -41924,10 +41924,10 @@ ov02_02346AAC: ; 0x02346AAC
 	bx lr
 	.align 2, 0
 _02346AC0: .word ov02_0235AB40
-	arm_func_end ov02_02346AAC
+	arm_func_end Dwci_SBlEnable
 
-	arm_func_start ov02_02346AC4
-ov02_02346AC4: ; 0x02346AC4
+	arm_func_start Dwci_SBlDisable
+Dwci_SBlDisable: ; 0x02346AC4
 	ldr r0, _02346AD8 ; =ov02_0235AB40
 	mov r1, #1
 	ldr r0, [r0]
@@ -41935,10 +41935,10 @@ ov02_02346AC4: ; 0x02346AC4
 	bx lr
 	.align 2, 0
 _02346AD8: .word ov02_0235AB40
-	arm_func_end ov02_02346AC4
+	arm_func_end Dwci_SBlDisable
 
-	arm_func_start ov02_02346ADC
-ov02_02346ADC: ; 0x02346ADC
+	arm_func_start Scrollbar_TaskMain
+Scrollbar_TaskMain: ; 0x02346ADC
 	stmdb sp!, {r3, lr}
 	ldr r0, _02346C5C ; =ov02_0235AB40
 	mov r2, #0
@@ -41958,7 +41958,7 @@ _02346B14:
 	ldrb r0, [r1, #0x1e]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_02346E3C
+	bl Scrollbar_IsTrigger
 	cmp r0, #4
 	addls pc, pc, r0, lsl #2
 	ldmia sp!, {r3, pc}
@@ -41975,16 +41975,16 @@ _02346B44:
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0x16
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	mov r0, #0
-	bl ov02_02348104
+	bl Dwci_SndlSetVolume
 	ldr r0, _02346C5C ; =ov02_0235AB40
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0x1d]
 	ldr r0, [r0]
 	add r0, r0, #0x14
-	bl ov02_0234EF04
+	bl Dwci_TPlGet
 	ldr r0, _02346C5C ; =ov02_0235AB40
 	mov r1, #1
 	ldr r3, [r0]
@@ -41995,21 +41995,21 @@ _02346B44:
 	ldmia sp!, {r3, pc}
 _02346BA4:
 	mov r0, #2
-	bl ov02_02346DA8
+	bl Scrollbar_StepBar
 	ldmia sp!, {r3, pc}
 _02346BB0:
 	mov r0, #3
-	bl ov02_02346DA8
+	bl Scrollbar_StepBar
 	ldmia sp!, {r3, pc}
 _02346BBC:
-	bl ov02_02346DD4
+	bl Scrollbar_SetBar
 	ldmia sp!, {r3, pc}
 _02346BC4:
-	bl ov02_02346C60
+	bl Scrollbar_MoveBar
 	ldmia sp!, {r3, pc}
 _02346BCC:
 	mov r0, #2
-	bl ov02_02346EC8
+	bl Scrollbar_IsTouch
 	cmp r0, #2
 	beq _02346BFC
 	ldr r0, _02346C5C ; =ov02_0235AB40
@@ -42021,15 +42021,15 @@ _02346BCC:
 	strb r1, [r0, #0x1c]
 	ldmia sp!, {r3, pc}
 _02346BFC:
-	bl ov02_02346E3C
+	bl Scrollbar_IsTrigger
 	cmp r0, #2
 	ldmneia sp!, {r3, pc}
 	mov r0, #2
-	bl ov02_02346DA8
+	bl Scrollbar_StepBar
 	ldmia sp!, {r3, pc}
 _02346C14:
 	mov r0, #3
-	bl ov02_02346EC8
+	bl Scrollbar_IsTouch
 	cmp r0, #3
 	beq _02346C44
 	ldr r0, _02346C5C ; =ov02_0235AB40
@@ -42041,26 +42041,26 @@ _02346C14:
 	strb r1, [r0, #0x1c]
 	ldmia sp!, {r3, pc}
 _02346C44:
-	bl ov02_02346E3C
+	bl Scrollbar_IsTrigger
 	cmp r0, #3
 	ldmneia sp!, {r3, pc}
 	mov r0, #3
-	bl ov02_02346DA8
+	bl Scrollbar_StepBar
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02346C5C: .word ov02_0235AB40
-	arm_func_end ov02_02346ADC
+	arm_func_end Scrollbar_TaskMain
 
-	arm_func_start ov02_02346C60
-ov02_02346C60: ; 0x02346C60
+	arm_func_start Scrollbar_MoveBar
+Scrollbar_MoveBar: ; 0x02346C60
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r0, _02346D24 ; =ov02_02352F34
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	beq _02346CFC
 	add r0, sp, #0
-	bl ov02_0234EF04
+	bl Dwci_TPlGet
 	ldr r0, _02346D28 ; =ov02_0235AB40
 	ldrh r1, [sp]
 	ldr r3, [r0]
@@ -42084,9 +42084,9 @@ ov02_02346C60: ; 0x02346C60
 	movge r4, r0
 _02346CD4:
 	mov r0, r4
-	bl ov02_02346D30
+	bl Scrollbar_PlaySound
 	mov r0, r4
-	bl ov02_02346FEC
+	bl Scrollbar_Disp__02347818
 	ldr r0, _02346D28 ; =ov02_0235AB40
 	mov r1, #2
 	ldr r0, [r0]
@@ -42094,7 +42094,7 @@ _02346CD4:
 	strb r1, [r0, #0x1d]
 	ldmia sp!, {r3, r4, pc}
 _02346CFC:
-	bl ov02_02348148
+	bl Dwci_SndlStop
 	ldr r0, _02346D28 ; =ov02_0235AB40
 	mov r3, #0
 	ldr r2, [r0]
@@ -42108,10 +42108,10 @@ _02346CFC:
 _02346D24: .word ov02_02352F34
 _02346D28: .word ov02_0235AB40
 _02346D2C: .word ov02_02352D70
-	arm_func_end ov02_02346C60
+	arm_func_end Scrollbar_MoveBar
 
-	arm_func_start ov02_02346D30
-ov02_02346D30: ; 0x02346D30
+	arm_func_start Scrollbar_PlaySound
+Scrollbar_PlaySound: ; 0x02346D30
 	stmdb sp!, {r4, lr}
 	ldr r1, _02346DA0 ; =ov02_0235AB40
 	ldr r1, [r1]
@@ -42127,7 +42127,7 @@ ov02_02346D30: ; 0x02346D30
 	rsb r1, r4, #6
 	bl FX_DivS32
 _02346D68:
-	bl ov02_02348104
+	bl Dwci_SndlSetVolume
 	cmp r4, #2
 	mvnlt r1, #0xff
 	blt _02346D94
@@ -42140,15 +42140,15 @@ _02346D68:
 	sub r1, r0, #0x100
 _02346D94:
 	ldr r0, _02346DA4 ; =0x0000FFFF
-	bl ov02_02348124
+	bl Dwci_SndlSetPitch
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02346DA0: .word ov02_0235AB40
 _02346DA4: .word 0x0000FFFF
-	arm_func_end ov02_02346D30
+	arm_func_end Scrollbar_PlaySound
 
-	arm_func_start ov02_02346DA8
-ov02_02346DA8: ; 0x02346DA8
+	arm_func_start Scrollbar_StepBar
+Scrollbar_StepBar: ; 0x02346DA8
 	ldr r1, _02346DD0 ; =ov02_0235AB40
 	cmp r0, #2
 	ldr r1, [r1]
@@ -42161,13 +42161,13 @@ ov02_02346DA8: ; 0x02346DA8
 	bx lr
 	.align 2, 0
 _02346DD0: .word ov02_0235AB40
-	arm_func_end ov02_02346DA8
+	arm_func_end Scrollbar_StepBar
 
-	arm_func_start ov02_02346DD4
-ov02_02346DD4: ; 0x02346DD4
+	arm_func_start Scrollbar_SetBar
+Scrollbar_SetBar: ; 0x02346DD4
 	stmdb sp!, {r3, lr}
 	add r0, sp, #0
-	bl ov02_0234EF04
+	bl Dwci_TPlGet
 	ldr r0, _02346E34 ; =ov02_0235AB40
 	ldr r2, _02346E38 ; =ov02_02352D70
 	ldr ip, [r0]
@@ -42184,7 +42184,7 @@ ov02_02346DD4: ; 0x02346DD4
 	cmp r0, r1
 	movge r0, r1
 _02346E1C:
-	bl ov02_02346FEC
+	bl Scrollbar_Disp__02347818
 	ldr r0, _02346E34 ; =ov02_0235AB40
 	mov r1, #3
 	ldr r0, [r0]
@@ -42193,17 +42193,17 @@ _02346E1C:
 	.align 2, 0
 _02346E34: .word ov02_0235AB40
 _02346E38: .word ov02_02352D70
-	arm_func_end ov02_02346DD4
+	arm_func_end Scrollbar_SetBar
 
-	arm_func_start ov02_02346E3C
-ov02_02346E3C: ; 0x02346E3C
+	arm_func_start Scrollbar_IsTrigger
+Scrollbar_IsTrigger: ; 0x02346E3C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	add r1, sp, #0
 	mov r0, #1
-	bl ov02_02346F14
+	bl Scrollbar_CalcRect
 	add r0, sp, #0
-	bl ov02_0234ED8C
+	bl Dwci_TPlCheckRepeat
 	cmp r0, #0
 	addne sp, sp, #8
 	movne r0, #1
@@ -42213,9 +42213,9 @@ ov02_02346E3C: ; 0x02346E3C
 _02346E70:
 	mov r0, r5
 	mov r1, r4
-	bl ov02_02346F14
+	bl Scrollbar_CalcRect
 	mov r0, r4
-	bl ov02_0234ED8C
+	bl Dwci_TPlCheckRepeat
 	cmp r0, #0
 	addne sp, sp, #8
 	movne r0, r5
@@ -42225,18 +42225,18 @@ _02346E70:
 	ble _02346E70
 	add r1, sp, #0
 	mov r0, #4
-	bl ov02_02346F14
+	bl Scrollbar_CalcRect
 	add r0, sp, #0
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	movne r0, #4
 	moveq r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_02346E3C
+	arm_func_end Scrollbar_IsTrigger
 
-	arm_func_start ov02_02346EC8
-ov02_02346EC8: ; 0x02346EC8
+	arm_func_start Scrollbar_IsTouch
+Scrollbar_IsTouch: ; 0x02346EC8
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r5, #2
@@ -42244,9 +42244,9 @@ ov02_02346EC8: ; 0x02346EC8
 _02346ED8:
 	mov r0, r5
 	mov r1, r4
-	bl ov02_02346F14
+	bl Scrollbar_CalcRect
 	mov r0, r4
-	bl ov02_0234EC7C
+	bl Dwci_TPlCheck
 	cmp r0, #0
 	addne sp, sp, #8
 	movne r0, r5
@@ -42257,10 +42257,10 @@ _02346ED8:
 	mov r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_02346EC8
+	arm_func_end Scrollbar_IsTouch
 
-	arm_func_start ov02_02346F14
-ov02_02346F14: ; 0x02346F14
+	arm_func_start Scrollbar_CalcRect
+Scrollbar_CalcRect: ; 0x02346F14
 	ldr r2, _02346FE4 ; =ov02_0235AB40
 	cmp r0, #4
 	ldr r3, [r2]
@@ -42321,10 +42321,10 @@ _02346FC4:
 	.align 2, 0
 _02346FE4: .word ov02_0235AB40
 _02346FE8: .word ov02_02352D70
-	arm_func_end ov02_02346F14
+	arm_func_end Scrollbar_CalcRect
 
-	arm_func_start ov02_02346FEC
-ov02_02346FEC: ; 0x02346FEC
+	arm_func_start Scrollbar_Disp__02347818
+Scrollbar_Disp__02347818: ; 0x02346FEC
 	stmdb sp!, {r4, lr}
 	ldr r1, _02347024 ; =ov02_0235AB40
 	mov r4, r0
@@ -42334,17 +42334,17 @@ ov02_02346FEC: ; 0x02346FEC
 	ldrh r2, [r0, #0x10]
 	ldr r0, [r0]
 	add r3, r4, r3
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02347024 ; =ov02_0235AB40
 	ldr r0, [r0]
 	strb r4, [r0, #0x1a]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02347024: .word ov02_0235AB40
-	arm_func_end ov02_02346FEC
+	arm_func_end Scrollbar_Disp__02347818
 
-	arm_func_start ov02_02347028
-ov02_02347028: ; 0x02347028
+	arm_func_start Dwci_SearchlInit
+Dwci_SearchlInit: ; 0x02347028
 	stmdb sp!, {r3, lr}
 	ldr r0, _02347054 ; =ov02_0235AB44
 	ldr r0, [r0]
@@ -42352,17 +42352,17 @@ ov02_02347028: ; 0x02347028
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02347058 ; =0x00001E60
 	mov r1, #0x20
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _02347054 ; =ov02_0235AB44
 	str r0, [r1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02347054: .word ov02_0235AB44
 _02347058: .word 0x00001E60
-	arm_func_end ov02_02347028
+	arm_func_end Dwci_SearchlInit
 
-	arm_func_start ov02_0234705C
-ov02_0234705C: ; 0x0234705C
+	arm_func_start Dwci_SearchlEnd
+Dwci_SearchlEnd: ; 0x0234705C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02347088 ; =ov02_0235AB44
 	ldr r0, [r0]
@@ -42373,15 +42373,15 @@ _02347070:
 	cmp r0, #0x8000
 	bne _02347070
 	ldr r0, _0234708C ; =ov02_0235AB44
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02347088: .word ov02_0235AB44
 _0234708C: .word ov02_0235AB44
-	arm_func_end ov02_0234705C
+	arm_func_end Dwci_SearchlEnd
 
-	arm_func_start ov02_02347090
-ov02_02347090: ; 0x02347090
+	arm_func_start Dwci_SearchlBegin
+Dwci_SearchlBegin: ; 0x02347090
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _02347150 ; =ov02_0235AB44
 	mov r0, #0
@@ -42390,7 +42390,7 @@ ov02_02347090: ; 0x02347090
 	add r1, r1, #0x1300
 	bl MTi_CpuClear16
 	ldr r0, _02347150 ; =ov02_0235AB44
-	ldr r1, _02347154 ; =ov02_02347288
+	ldr r1, _02347154 ; =Search_Callback
 	ldr r0, [r0]
 	mov r2, #3
 	bl WM_InitializeEx
@@ -42427,22 +42427,22 @@ _02347104:
 	ldr r1, [r1]
 	add r1, r1, #0x1600
 	strh r0, [r1, #0x50]
-	bl ov02_0234715C
+	bl Search_StartScan
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02347150: .word ov02_0235AB44
-_02347154: .word ov02_02347288
+_02347154: .word Search_Callback
 _02347158: .word ov02_02352D80
-	arm_func_end ov02_02347090
+	arm_func_end Dwci_SearchlBegin
 
-	arm_func_start ov02_0234715C
-ov02_0234715C: ; 0x0234715C
+	arm_func_start Search_StartScan
+Search_StartScan: ; 0x0234715C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02347188 ; =ov02_0235AB44
-	ldr r0, _0234718C ; =ov02_02347288
+	ldr r0, _0234718C ; =Search_Callback
 	ldr r1, [r1]
 	add r1, r1, #0x248
 	add r1, r1, #0x1400
@@ -42453,11 +42453,11 @@ ov02_0234715C: ; 0x0234715C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02347188: .word ov02_0235AB44
-_0234718C: .word ov02_02347288
-	arm_func_end ov02_0234715C
+_0234718C: .word Search_Callback
+	arm_func_end Search_StartScan
 
-	arm_func_start ov02_02347190
-ov02_02347190: ; 0x02347190
+	arm_func_start Dwci_SearchlStop
+Dwci_SearchlStop: ; 0x02347190
 	stmdb sp!, {r4, lr}
 	ldr r1, _02347224 ; =ov02_0235AB44
 	mov r2, #1
@@ -42474,7 +42474,7 @@ ov02_02347190: ; 0x02347190
 	ldrh r0, [r0, #0x8c]
 	cmp r0, #2
 	beq _0234720C
-	ldr r0, _02347228 ; =ov02_02347288
+	ldr r0, _02347228 ; =Search_Callback
 	bl WM_Reset
 	cmp r0, #2
 	movne r0, #0
@@ -42491,7 +42491,7 @@ _023471E8:
 	cmp r0, #2
 	bne _023471E8
 _0234720C:
-	ldr r0, _02347228 ; =ov02_02347288
+	ldr r0, _02347228 ; =Search_Callback
 	bl WM_End
 	cmp r0, #2
 	movne r0, #0
@@ -42499,11 +42499,11 @@ _0234720C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02347224: .word ov02_0235AB44
-_02347228: .word ov02_02347288
-	arm_func_end ov02_02347190
+_02347228: .word Search_Callback
+	arm_func_end Dwci_SearchlStop
 
-	arm_func_start ov02_0234722C
-ov02_0234722C: ; 0x0234722C
+	arm_func_start Dwci_SearchlGetApInfo
+Dwci_SearchlGetApInfo: ; 0x0234722C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r1, _02347280 ; =ov02_0235AB44
 	mov r6, #0
@@ -42529,10 +42529,10 @@ _02347250:
 	.align 2, 0
 _02347280: .word ov02_0235AB44
 _02347284: .word ov02_02352D78
-	arm_func_end ov02_0234722C
+	arm_func_end Dwci_SearchlGetApInfo
 
-	arm_func_start ov02_02347288
-ov02_02347288: ; 0x02347288
+	arm_func_start Search_Callback
+Search_Callback: ; 0x02347288
 	stmdb sp!, {r3, lr}
 	ldrh r1, [r0, #2]
 	cmp r1, #0
@@ -42550,21 +42550,21 @@ ov02_02347288: ; 0x02347288
 	beq _023472D8
 	cmp r1, #5
 	bne _023472E0
-	bl ov02_023472EC
-	bl ov02_0234715C
+	bl Search_RenewInfo
+	bl Search_StartScan
 	ldmia sp!, {r3, pc}
 _023472D8:
-	bl ov02_0234715C
+	bl Search_StartScan
 	ldmia sp!, {r3, pc}
 _023472E0:
 	bl WaitForever2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023472E8: .word ov02_0235AB44
-	arm_func_end ov02_02347288
+	arm_func_end Search_Callback
 
-	arm_func_start ov02_023472EC
-ov02_023472EC: ; 0x023472EC
+	arm_func_start Search_RenewInfo
+Search_RenewInfo: ; 0x023472EC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x88
 	ldr r1, _023474B4 ; =ov02_0235AB44
@@ -42692,14 +42692,14 @@ _0234749C:
 _023474B4: .word ov02_0235AB44
 _023474B8: .word ov02_02352D78
 _023474BC: .word ov02_02352D74
-	arm_func_end ov02_023472EC
+	arm_func_end Search_RenewInfo
 
-	arm_func_start ov02_023474C0
-ov02_023474C0: ; 0x023474C0
+	arm_func_start Dwci_SettignlInit
+Dwci_SettignlInit: ; 0x023474C0
 	stmdb sp!, {r3, lr}
 	ldr r0, _023474F8 ; =0x000006F8
 	mov r1, #0x20
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _023474FC ; =ov02_0235AB48
 	add r2, r0, #0xf8
 	str r0, [r1]
@@ -42714,50 +42714,50 @@ ov02_023474C0: ; 0x023474C0
 _023474F8: .word 0x000006F8
 _023474FC: .word ov02_0235AB48
 _02347500: .word 0x0000A001
-	arm_func_end ov02_023474C0
+	arm_func_end Dwci_SettignlInit
 
-	arm_func_start ov02_02347504
-ov02_02347504: ; 0x02347504
-	ldr ip, _02347510 ; =ov02_0234E7D8
+	arm_func_start Dwci_SettignlEnd
+Dwci_SettignlEnd: ; 0x02347504
+	ldr ip, _02347510 ; =Dwci_HeaplFree
 	ldr r0, _02347514 ; =ov02_0235AB48
 	bx ip
 	.align 2, 0
-_02347510: .word ov02_0234E7D8
+_02347510: .word Dwci_HeaplFree
 _02347514: .word ov02_0235AB48
-	arm_func_end ov02_02347504
+	arm_func_end Dwci_SettignlEnd
 
-	arm_func_start ov02_02347518
-ov02_02347518: ; 0x02347518
+	arm_func_start Dwci_SettignlGet
+Dwci_SettignlGet: ; 0x02347518
 	ldr r0, _02347528 ; =ov02_0235AB48
 	ldr r0, [r0]
 	add r0, r0, #0x400
 	bx lr
 	.align 2, 0
 _02347528: .word ov02_0235AB48
-	arm_func_end ov02_02347518
+	arm_func_end Dwci_SettignlGet
 
-	arm_func_start ov02_0234752C
-ov02_0234752C: ; 0x0234752C
+	arm_func_start Dwci_SettinglSetIpAuto
+Dwci_SettinglSetIpAuto: ; 0x0234752C
 	ldr r1, _0234753C ; =ov02_0235AB48
 	ldr r1, [r1]
 	strb r0, [r1, #0x4f5]
 	bx lr
 	.align 2, 0
 _0234753C: .word ov02_0235AB48
-	arm_func_end ov02_0234752C
+	arm_func_end Dwci_SettinglSetIpAuto
 
-	arm_func_start ov02_02347540
-ov02_02347540: ; 0x02347540
+	arm_func_start Dwci_SettinglSetDnsAuto
+Dwci_SettinglSetDnsAuto: ; 0x02347540
 	ldr r1, _02347550 ; =ov02_0235AB48
 	ldr r1, [r1]
 	strb r0, [r1, #0x4f6]
 	bx lr
 	.align 2, 0
 _02347550: .word ov02_0235AB48
-	arm_func_end ov02_02347540
+	arm_func_end Dwci_SettinglSetDnsAuto
 
-	arm_func_start ov02_02347554
-ov02_02347554: ; 0x02347554
+	arm_func_start Dwci_SettinglSetSsid
+Dwci_SettinglSetSsid: ; 0x02347554
 	stmdb sp!, {r3, lr}
 	ldr r1, _02347580 ; =ov02_0235AB48
 	mov r2, #0x20
@@ -42771,10 +42771,10 @@ ov02_02347554: ; 0x02347554
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02347580: .word ov02_0235AB48
-	arm_func_end ov02_02347554
+	arm_func_end Dwci_SettinglSetSsid
 
-	arm_func_start ov02_02347584
-ov02_02347584: ; 0x02347584
+	arm_func_start Dwci_SettinglSetWep
+Dwci_SettinglSetWep: ; 0x02347584
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r1, _02347718 ; =ov02_0235AB48
 	mov r6, r0
@@ -42785,7 +42785,7 @@ ov02_02347584: ; 0x02347584
 	bl MI_CpuFill8
 	mov r0, r6
 	mov r1, #0x20
-	bl ov02_0234F59C
+	bl Dwci_StrlNLen
 	mov r5, r0
 	cmp r5, #0xa
 	bgt _023475CC
@@ -42815,10 +42815,10 @@ _023475E4:
 _0234760C:
 	ldrb r0, [r6, r4]
 	add sb, r6, r4
-	bl ov02_02348008
+	bl Setting_Ascii2Hex
 	mov r7, r0
 	ldrb r0, [sb, #1]
-	bl ov02_02348008
+	bl Setting_Ascii2Hex
 	add r0, r0, r7, lsl #4
 	add r4, r4, #2
 	cmp r4, r5
@@ -42890,73 +42890,73 @@ _023476FC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02347718: .word ov02_0235AB48
-	arm_func_end ov02_02347584
+	arm_func_end Dwci_SettinglSetWep
 
 	arm_func_start ov02_0234771C
 ov02_0234771C: ; 0x0234771C
 	ldr r1, _02347730 ; =ov02_0235AB48
-	ldr ip, _02347734 ; =ov02_02347F80
+	ldr ip, _02347734 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
 	add r1, r1, #0x4c0
 	bx ip
 	.align 2, 0
 _02347730: .word ov02_0235AB48
-_02347734: .word ov02_02347F80
+_02347734: .word Dwci_SettinglConvAddress
 	arm_func_end ov02_0234771C
 
-	arm_func_start ov02_02347738
-ov02_02347738: ; 0x02347738
+	arm_func_start Dwci_SettinglSetIp
+Dwci_SettinglSetIp: ; 0x02347738
 	ldr r1, _0234774C ; =ov02_0235AB48
-	ldr ip, _02347750 ; =ov02_02347F80
+	ldr ip, _02347750 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
 	add r1, r1, #0x4f0
 	bx ip
 	.align 2, 0
 _0234774C: .word ov02_0235AB48
-_02347750: .word ov02_02347F80
-	arm_func_end ov02_02347738
+_02347750: .word Dwci_SettinglConvAddress
+	arm_func_end Dwci_SettinglSetIp
 
-	arm_func_start ov02_02347754
-ov02_02347754: ; 0x02347754
+	arm_func_start Dwci_SettinglSetNetMask
+Dwci_SettinglSetNetMask: ; 0x02347754
 	ldr r1, _0234776C ; =ov02_0235AB48
-	ldr ip, _02347770 ; =ov02_02347F80
+	ldr ip, _02347770 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
 	add r1, r1, #0xc4
 	add r1, r1, #0x400
 	bx ip
 	.align 2, 0
 _0234776C: .word ov02_0235AB48
-_02347770: .word ov02_02347F80
-	arm_func_end ov02_02347754
+_02347770: .word Dwci_SettinglConvAddress
+	arm_func_end Dwci_SettinglSetNetMask
 
-	arm_func_start ov02_02347774
-ov02_02347774: ; 0x02347774
+	arm_func_start Dwci_SettinglSetGateway
+Dwci_SettinglSetGateway: ; 0x02347774
 	ldr r1, _0234778C ; =ov02_0235AB48
-	ldr ip, _02347790 ; =ov02_02347F80
+	ldr ip, _02347790 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
 	add r1, r1, #0xc8
 	add r1, r1, #0x400
 	bx ip
 	.align 2, 0
 _0234778C: .word ov02_0235AB48
-_02347790: .word ov02_02347F80
-	arm_func_end ov02_02347774
+_02347790: .word Dwci_SettinglConvAddress
+	arm_func_end Dwci_SettinglSetGateway
 
-	arm_func_start ov02_02347794
-ov02_02347794: ; 0x02347794
+	arm_func_start Dwci_SettinglSetDnsP
+Dwci_SettinglSetDnsP: ; 0x02347794
 	ldr r1, _023477AC ; =ov02_0235AB48
-	ldr ip, _023477B0 ; =ov02_02347F80
+	ldr ip, _023477B0 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
 	add r1, r1, #0xcc
 	add r1, r1, #0x400
 	bx ip
 	.align 2, 0
 _023477AC: .word ov02_0235AB48
-_023477B0: .word ov02_02347F80
-	arm_func_end ov02_02347794
+_023477B0: .word Dwci_SettinglConvAddress
+	arm_func_end Dwci_SettinglSetDnsP
 
-	arm_func_start ov02_023477B4
-ov02_023477B4: ; 0x023477B4
+	arm_func_start Dwci_SettinglGetSsid
+Dwci_SettinglGetSsid: ; 0x023477B4
 	ldr r2, _023477D0 ; =ov02_0235AB48
 	mov r1, r0
 	ldr r0, [r2]
@@ -42967,10 +42967,10 @@ ov02_023477B4: ; 0x023477B4
 	.align 2, 0
 _023477D0: .word ov02_0235AB48
 _023477D4: .word MI_CpuCopy8
-	arm_func_end ov02_023477B4
+	arm_func_end Dwci_SettinglGetSsid
 
-	arm_func_start ov02_023477D8
-ov02_023477D8: ; 0x023477D8
+	arm_func_start Dwci_SettinglGetIp
+Dwci_SettinglGetIp: ; 0x023477D8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r2, _02347810 ; =ov02_0235AB48
@@ -42988,10 +42988,10 @@ ov02_023477D8: ; 0x023477D8
 	.align 2, 0
 _02347810: .word ov02_0235AB48
 _02347814: .word ov02_02353D44
-	arm_func_end ov02_023477D8
+	arm_func_end Dwci_SettinglGetIp
 
-	arm_func_start ov02_02347818
-ov02_02347818: ; 0x02347818
+	arm_func_start Dwci_SettinglGetNetMask
+Dwci_SettinglGetNetMask: ; 0x02347818
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r2, _02347850 ; =ov02_0235AB48
@@ -43009,10 +43009,10 @@ ov02_02347818: ; 0x02347818
 	.align 2, 0
 _02347850: .word ov02_0235AB48
 _02347854: .word ov02_02353D44
-	arm_func_end ov02_02347818
+	arm_func_end Dwci_SettinglGetNetMask
 
-	arm_func_start ov02_02347858
-ov02_02347858: ; 0x02347858
+	arm_func_start Dwci_SettinglGetGateway
+Dwci_SettinglGetGateway: ; 0x02347858
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r2, _02347894 ; =ov02_0235AB48
@@ -43031,10 +43031,10 @@ ov02_02347858: ; 0x02347858
 	.align 2, 0
 _02347894: .word ov02_0235AB48
 _02347898: .word ov02_02353D44
-	arm_func_end ov02_02347858
+	arm_func_end Dwci_SettinglGetGateway
 
-	arm_func_start ov02_0234789C
-ov02_0234789C: ; 0x0234789C
+	arm_func_start Dwci_SettinglGetDnsP
+Dwci_SettinglGetDnsP: ; 0x0234789C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r2, _023478D8 ; =ov02_0235AB48
@@ -43053,10 +43053,10 @@ ov02_0234789C: ; 0x0234789C
 	.align 2, 0
 _023478D8: .word ov02_0235AB48
 _023478DC: .word ov02_02353D44
-	arm_func_end ov02_0234789C
+	arm_func_end Dwci_SettinglGetDnsP
 
-	arm_func_start ov02_023478E0
-ov02_023478E0: ; 0x023478E0
+	arm_func_start Dwci_SettinglGetDnsS
+Dwci_SettinglGetDnsS: ; 0x023478E0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r2, _0234791C ; =ov02_0235AB48
@@ -43075,10 +43075,10 @@ ov02_023478E0: ; 0x023478E0
 	.align 2, 0
 _0234791C: .word ov02_0235AB48
 _02347920: .word ov02_02353D44
-	arm_func_end ov02_023478E0
+	arm_func_end Dwci_SettinglGetDnsS
 
-	arm_func_start ov02_02347924
-ov02_02347924: ; 0x02347924
+	arm_func_start Dwci_SettinglGetSetType
+Dwci_SettinglGetSetType: ; 0x02347924
 	ldr r1, _02347938 ; =ov02_0235AB48
 	ldr r1, [r1]
 	add r0, r1, r0, lsl #8
@@ -43086,10 +43086,10 @@ ov02_02347924: ; 0x02347924
 	bx lr
 	.align 2, 0
 _02347938: .word ov02_0235AB48
-	arm_func_end ov02_02347924
+	arm_func_end Dwci_SettinglGetSetType
 
-	arm_func_start ov02_0234793C
-ov02_0234793C: ; 0x0234793C
+	arm_func_start Dwci_SettinglSetSetting
+Dwci_SettinglSetSetting: ; 0x0234793C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _02347A14 ; =ov02_0235AB48
 	mov r3, #0x78
@@ -43151,10 +43151,10 @@ _023479FC:
 	.align 2, 0
 _02347A14: .word ov02_0235AB48
 _02347A18: .word ov02_02352DC4
-	arm_func_end ov02_0234793C
+	arm_func_end Dwci_SettinglSetSetting
 
-	arm_func_start ov02_02347A1C
-ov02_02347A1C: ; 0x02347A1C
+	arm_func_start Dwci_SettinglSet
+Dwci_SettinglSet: ; 0x02347A1C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _02347AF4 ; =ov02_0235AB48
 	mov r2, #0x78
@@ -43212,14 +43212,14 @@ _02347ADC:
 	bl MI_CpuCopy8
 _02347AE8:
 	ldrb r0, [r4, #0xf4]
-	bl ov02_02347E18
+	bl Setting_Write
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02347AF4: .word ov02_0235AB48
-	arm_func_end ov02_02347A1C
+	arm_func_end Dwci_SettinglSet
 
-	arm_func_start ov02_02347AF8
-ov02_02347AF8: ; 0x02347AF8
+	arm_func_start Dwci_SettinglSetRaku
+Dwci_SettinglSetRaku: ; 0x02347AF8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r1, _02347C08 ; =ov02_0235AB48
 	mov r6, r0
@@ -43292,14 +43292,14 @@ _02347BB8:
 	mov r0, #1
 	strb r0, [r4, #0x4f5]
 	strb r0, [r4, #0x4f6]
-	bl ov02_02347A1C
+	bl Dwci_SettinglSet
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02347C08: .word ov02_0235AB48
-	arm_func_end ov02_02347AF8
+	arm_func_end Dwci_SettinglSetRaku
 
-	arm_func_start ov02_02347C0C
-ov02_02347C0C: ; 0x02347C0C
+	arm_func_start Dwci_SettinglSetAoss
+Dwci_SettinglSetAoss: ; 0x02347C0C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _02347D18 ; =ov02_0235AB48
 	mov r5, r0
@@ -43365,23 +43365,23 @@ ov02_02347C0C: ; 0x02347C0C
 	mov r0, #1
 	strb r0, [r4, #0xf5]
 	strb r0, [r4, #0xf6]
-	bl ov02_02347A1C
+	bl Dwci_SettinglSet
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02347D18: .word ov02_0235AB48
-	arm_func_end ov02_02347C0C
+	arm_func_end Dwci_SettinglSetAoss
 
-	arm_func_start ov02_02347D1C
-ov02_02347D1C: ; 0x02347D1C
+	arm_func_start Dwci_SettinglGetMemMap
+Dwci_SettinglGetMemMap: ; 0x02347D1C
 	ldr r0, _02347D28 ; =ov02_0235AB48
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
 _02347D28: .word ov02_0235AB48
-	arm_func_end ov02_02347D1C
+	arm_func_end Dwci_SettinglGetMemMap
 
-	arm_func_start ov02_02347D2C
-ov02_02347D2C: ; 0x02347D2C
+	arm_func_start Dwci_SettinglErasePage
+Dwci_SettinglErasePage: ; 0x02347D2C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _02347D64 ; =ov02_0235AB48
 	mov r5, r0
@@ -43394,14 +43394,14 @@ ov02_02347D2C: ; 0x02347D2C
 	mov r1, #0xff
 	mov r0, r5
 	strb r1, [r4, #0xe7]
-	bl ov02_02347E18
+	bl Setting_Write
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02347D64: .word ov02_0235AB48
-	arm_func_end ov02_02347D2C
+	arm_func_end Dwci_SettinglErasePage
 
-	arm_func_start ov02_02347D68
-ov02_02347D68: ; 0x02347D68
+	arm_func_start Dwci_SettinglEraseAll
+Dwci_SettinglEraseAll: ; 0x02347D68
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x14
 	ldr r1, _02347E14 ; =ov02_0235AB48
@@ -43442,7 +43442,7 @@ _02347DCC:
 	mov r4, #0
 _02347DF8:
 	mov r0, r4
-	bl ov02_02347E18
+	bl Setting_Write
 	add r4, r4, #1
 	cmp r4, #4
 	blt _02347DF8
@@ -43450,10 +43450,10 @@ _02347DF8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02347E14: .word ov02_0235AB48
-	arm_func_end ov02_02347D68
+	arm_func_end Dwci_SettinglEraseAll
 
-	arm_func_start ov02_02347E18
-ov02_02347E18: ; 0x02347E18
+	arm_func_start Setting_Write
+Setting_Write: ; 0x02347E18
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x14
 	ldr r1, _02347F7C ; =ov02_0235AB48
@@ -43536,7 +43536,7 @@ _02347F38:
 	blt _02347F08
 	mov r0, #0x100
 	mov r1, #0x20
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	mov r2, r0
 	ldr r0, _02347F7C ; =ov02_0235AB48
 	add r1, sp, #4
@@ -43544,15 +43544,15 @@ _02347F38:
 	str r2, [sp]
 	bl Dwci_BackuplWritePage
 	add r0, sp, #0
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02347F7C: .word ov02_0235AB48
-	arm_func_end ov02_02347E18
+	arm_func_end Setting_Write
 
-	arm_func_start ov02_02347F80
-ov02_02347F80: ; 0x02347F80
+	arm_func_start Dwci_SettinglConvAddress
+Dwci_SettinglConvAddress: ; 0x02347F80
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	mov sb, r1
@@ -43590,10 +43590,10 @@ _02347FE8:
 	add r8, r8, #3
 	blt _02347FB4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov02_02347F80
+	arm_func_end Dwci_SettinglConvAddress
 
-	arm_func_start ov02_02348008
-ov02_02348008: ; 0x02348008
+	arm_func_start Setting_Ascii2Hex
+Setting_Ascii2Hex: ; 0x02348008
 	cmp r0, #0x39
 	subls r0, r0, #0x30
 	bxls lr
@@ -43601,39 +43601,39 @@ ov02_02348008: ; 0x02348008
 	subls r0, r0, #0x37
 	subhi r0, r0, #0x57
 	bx lr
-	arm_func_end ov02_02348008
+	arm_func_end Setting_Ascii2Hex
 
-	arm_func_start ov02_02348024
-ov02_02348024: ; 0x02348024
+	arm_func_start Dwci_SndlInit
+Dwci_SndlInit: ; 0x02348024
 	stmdb sp!, {r3, lr}
 	mov r0, #0xa0
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _023480A8 ; =ov02_0235AB4C
 	add r1, sp, #0
 	str r0, [r2]
 	ldr r0, _023480AC ; =ov02_02353D54
 	mov r2, #0x20
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _023480A8 ; =ov02_0235AB4C
 	ldr r1, [r1]
 	str r0, [r1, #0x98]
-	bl ov02_0232BD18
+	bl Nns_SndInit
 	ldr r0, _023480A8 ; =ov02_0235AB4C
 	ldr r0, [r0]
 	ldr r1, [r0, #0x98]
-	bl ov02_0232CAC0
+	bl Nns_SndArcInitOnMemory
 	mov r0, #0
-	bl ov02_0232D7B0
+	bl Nns_SndArcPlayerSetup
 	ldr r0, _023480A8 ; =ov02_0235AB4C
 	ldr r0, [r0]
 	add r0, r0, #0x94
-	bl ov02_0232BF78
+	bl Nns_SndHandleInit
 	mov r0, #0
-	ldr r1, _023480B0 ; =ov02_02348168
+	ldr r1, _023480B0 ; =Sound_TaskSound
 	mov r2, r0
 	mov r3, #0xc8
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _023480A8 ; =ov02_0235AB4C
 	ldr r1, [r1]
 	str r0, [r1, #0x9c]
@@ -43641,41 +43641,41 @@ ov02_02348024: ; 0x02348024
 	.align 2, 0
 _023480A8: .word ov02_0235AB4C
 _023480AC: .word ov02_02353D54
-_023480B0: .word ov02_02348168
-	arm_func_end ov02_02348024
+_023480B0: .word Sound_TaskSound
+	arm_func_end Dwci_SndlInit
 
-	arm_func_start ov02_023480B4
-ov02_023480B4: ; 0x023480B4
+	arm_func_start Dwci_SndlEnd
+Dwci_SndlEnd: ; 0x023480B4
 	stmdb sp!, {r3, lr}
 	ldr r1, _023480D8 ; =ov02_0235AB4C
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r1, [r1, #0x9c]
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldr r0, _023480DC ; =ov02_0235AB4C
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023480D8: .word ov02_0235AB4C
 _023480DC: .word ov02_0235AB4C
-	arm_func_end ov02_023480B4
+	arm_func_end Dwci_SndlEnd
 
-	arm_func_start ov02_023480E0
-ov02_023480E0: ; 0x023480E0
+	arm_func_start Dwci_SndlPlay
+Dwci_SndlPlay: ; 0x023480E0
 	ldr r1, _023480FC ; =ov02_0235AB4C
 	mov r2, r0
 	ldr r0, [r1]
-	ldr ip, _02348100 ; =ov02_0232D84C
+	ldr ip, _02348100 ; =Nns_SndArcPlayerStartSeqArc
 	mov r1, #0
 	add r0, r0, #0x94
 	bx ip
 	.align 2, 0
 _023480FC: .word ov02_0235AB4C
-_02348100: .word ov02_0232D84C
-	arm_func_end ov02_023480E0
+_02348100: .word Nns_SndArcPlayerStartSeqArc
+	arm_func_end Dwci_SndlPlay
 
-	arm_func_start ov02_02348104
-ov02_02348104: ; 0x02348104
+	arm_func_start Dwci_SndlSetVolume
+Dwci_SndlSetVolume: ; 0x02348104
 	ldr r2, _0234811C ; =ov02_0235AB4C
 	mov r1, r0
 	ldr r0, [r2]
@@ -43685,12 +43685,12 @@ ov02_02348104: ; 0x02348104
 	.align 2, 0
 _0234811C: .word ov02_0235AB4C
 _02348120: .word ov02_0232BFA4
-	arm_func_end ov02_02348104
+	arm_func_end Dwci_SndlSetVolume
 
-	arm_func_start ov02_02348124
-ov02_02348124: ; 0x02348124
+	arm_func_start Dwci_SndlSetPitch
+Dwci_SndlSetPitch: ; 0x02348124
 	ldr r2, _02348140 ; =ov02_0235AB4C
-	ldr ip, _02348144 ; =ov02_0232BFEC
+	ldr ip, _02348144 ; =Nns_SndPlayerSetTrackPitch
 	ldr r3, [r2]
 	mov r2, r1
 	mov r1, r0
@@ -43698,37 +43698,37 @@ ov02_02348124: ; 0x02348124
 	bx ip
 	.align 2, 0
 _02348140: .word ov02_0235AB4C
-_02348144: .word ov02_0232BFEC
-	arm_func_end ov02_02348124
+_02348144: .word Nns_SndPlayerSetTrackPitch
+	arm_func_end Dwci_SndlSetPitch
 
-	arm_func_start ov02_02348148
-ov02_02348148: ; 0x02348148
+	arm_func_start Dwci_SndlStop
+Dwci_SndlStop: ; 0x02348148
 	ldr r0, _02348160 ; =ov02_0235AB4C
-	ldr ip, _02348164 ; =ov02_0232BF68
+	ldr ip, _02348164 ; =Nns_SndPlayerStopSeq
 	ldr r0, [r0]
 	mov r1, #0
 	add r0, r0, #0x94
 	bx ip
 	.align 2, 0
 _02348160: .word ov02_0235AB4C
-_02348164: .word ov02_0232BF68
-	arm_func_end ov02_02348148
+_02348164: .word Nns_SndPlayerStopSeq
+	arm_func_end Dwci_SndlStop
 
-	arm_func_start ov02_02348168
-ov02_02348168: ; 0x02348168
-	ldr ip, _02348170 ; =ov02_0232BDA0
+	arm_func_start Sound_TaskSound
+Sound_TaskSound: ; 0x02348168
+	ldr ip, _02348170 ; =Nns_SndMain
 	bx ip
 	.align 2, 0
-_02348170: .word ov02_0232BDA0
-	arm_func_end ov02_02348168
+_02348170: .word Nns_SndMain
+	arm_func_end Sound_TaskSound
 
-	arm_func_start ov02_02348174
-ov02_02348174: ; 0x02348174
+	arm_func_start Dwci_SteplBegin
+Dwci_SteplBegin: ; 0x02348174
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	str r0, [sp]
 	mov r0, #0x1c
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, [sp]
 	ldr r4, _0234825C ; =ov02_0235AB50
 	add r3, r1, r1, lsl #2
@@ -43746,53 +43746,53 @@ _023481BC:
 	ldrb r1, [sb], #1
 	mov r0, #1
 	mov r2, r0
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r2, [r4, #4]
 	mov r1, r7
 	str r0, [r2, r8, lsl #2]
 	ldr r0, [r4, #4]
 	mov r2, fp
 	ldr r0, [r0, r8, lsl #2]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	ldr r0, [r4, #4]
 	add r3, r5, r8, lsl #2
 	ldrh r3, [r3, #2]
 	ldr r0, [r0, r8, lsl #2]
 	mov r1, r7
 	mov r2, r6
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, [r4, #4]
 	ldrb r3, [sl], #1
 	ldr r0, [r0, r8, lsl #2]
 	mov r1, r7
 	mov r2, #0
-	bl ov02_0234D3C0
+	bl Dwci_CelllSetPalette
 	add r8, r8, #1
 	cmp r8, #5
 	blt _023481BC
 	mov r0, #0
-	ldr r1, _0234826C ; =ov02_02348270
+	ldr r1, _0234826C ; =Step_TaskBegin0
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0234825C ; =ov02_0235AB50
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x14]
 	ldr r0, [sp]
-	bl ov02_02348C1C
+	bl Dwci_SteplChangeScr
 	mov r0, #0xd
-	bl ov02_023480E0
+	bl Dwci_SndlPlay
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0234825C: .word ov02_0235AB50
 _02348260: .word ov02_02352DC8
 _02348264: .word ov02_02352DD7
 _02348268: .word ov02_02352DE6
-_0234826C: .word ov02_02348270
-	arm_func_end ov02_02348174
+_0234826C: .word Step_TaskBegin0
+	arm_func_end Dwci_SteplBegin
 
-	arm_func_start ov02_02348270
-ov02_02348270: ; 0x02348270
+	arm_func_start Step_TaskBegin0
+Step_TaskBegin0: ; 0x02348270
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r1, _02348348 ; =ov02_0235AB50
@@ -43802,7 +43802,7 @@ ov02_02348270: ; 0x02348270
 	ldr r0, [r0]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	add r0, r0, #8
 	str r0, [sp, #4]
@@ -43822,7 +43822,7 @@ _023482C4:
 	ldr r0, [r1, r7, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r6
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r7, r7, #1
 	cmp r7, #5
 	blt _023482C4
@@ -43842,23 +43842,23 @@ _0234830C:
 	ldr r0, [r1, r8, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r7
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r8, r8, #1
 	cmp r8, #5
 	blt _0234830C
-	ldr r1, _02348350 ; =ov02_02348354
+	ldr r1, _02348350 ; =Step_TaskBegin1
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02348348: .word ov02_0235AB50
 _0234834C: .word ov02_02352DE6
-_02348350: .word ov02_02348354
-	arm_func_end ov02_02348270
+_02348350: .word Step_TaskBegin1
+	arm_func_end Step_TaskBegin0
 
-	arm_func_start ov02_02348354
-ov02_02348354: ; 0x02348354
+	arm_func_start Step_TaskBegin1
+Step_TaskBegin1: ; 0x02348354
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r1, _0234842C ; =ov02_0235AB50
@@ -43868,7 +43868,7 @@ ov02_02348354: ; 0x02348354
 	ldr r0, [r0, #4]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	add r0, r0, #8
 	str r0, [sp, #4]
@@ -43888,7 +43888,7 @@ _023483A8:
 	ldr r0, [r1, r7, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r6
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r7, r7, #1
 	cmp r7, #5
 	blt _023483A8
@@ -43908,23 +43908,23 @@ _023483F0:
 	ldr r0, [r1, r8, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r7
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r8, r8, #1
 	cmp r8, #5
 	blt _023483F0
-	ldr r1, _02348434 ; =ov02_02348438
+	ldr r1, _02348434 ; =Step_TaskBegin2
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0234842C: .word ov02_0235AB50
 _02348430: .word ov02_02352DE6
-_02348434: .word ov02_02348438
-	arm_func_end ov02_02348354
+_02348434: .word Step_TaskBegin2
+	arm_func_end Step_TaskBegin1
 
-	arm_func_start ov02_02348438
-ov02_02348438: ; 0x02348438
+	arm_func_start Step_TaskBegin2
+Step_TaskBegin2: ; 0x02348438
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r1, _02348510 ; =ov02_0235AB50
@@ -43934,7 +43934,7 @@ ov02_02348438: ; 0x02348438
 	ldr r0, [r0, #8]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	add r0, r0, #8
 	str r0, [sp, #4]
@@ -43954,7 +43954,7 @@ _0234848C:
 	ldr r0, [r1, r7, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r6
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r7, r7, #1
 	cmp r7, #5
 	blt _0234848C
@@ -43974,23 +43974,23 @@ _023484D4:
 	ldr r0, [r1, r8, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r7
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r8, r8, #1
 	cmp r8, #5
 	blt _023484D4
-	ldr r1, _02348518 ; =ov02_0234851C
+	ldr r1, _02348518 ; =Step_TaskBegin3
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02348510: .word ov02_0235AB50
 _02348514: .word ov02_02352DE6
-_02348518: .word ov02_0234851C
-	arm_func_end ov02_02348438
+_02348518: .word Step_TaskBegin3
+	arm_func_end Step_TaskBegin2
 
-	arm_func_start ov02_0234851C
-ov02_0234851C: ; 0x0234851C
+	arm_func_start Step_TaskBegin3
+Step_TaskBegin3: ; 0x0234851C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r1, _023485F4 ; =ov02_0235AB50
@@ -44000,7 +44000,7 @@ ov02_0234851C: ; 0x0234851C
 	ldr r0, [r0, #0xc]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	add r0, r0, #8
 	str r0, [sp, #4]
@@ -44020,7 +44020,7 @@ _02348570:
 	ldr r0, [r1, r7, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r6
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r7, r7, #1
 	cmp r7, #5
 	blt _02348570
@@ -44040,23 +44040,23 @@ _023485B8:
 	ldr r0, [r1, r8, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r7
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r8, r8, #1
 	cmp r8, #5
 	blt _023485B8
-	ldr r1, _023485FC ; =ov02_02348600
+	ldr r1, _023485FC ; =Step_TaskBegin4
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _023485F4: .word ov02_0235AB50
 _023485F8: .word ov02_02352DE6
-_023485FC: .word ov02_02348600
-	arm_func_end ov02_0234851C
+_023485FC: .word Step_TaskBegin4
+	arm_func_end Step_TaskBegin3
 
-	arm_func_start ov02_02348600
-ov02_02348600: ; 0x02348600
+	arm_func_start Step_TaskBegin4
+Step_TaskBegin4: ; 0x02348600
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02348698 ; =ov02_0235AB50
@@ -44066,7 +44066,7 @@ ov02_02348600: ; 0x02348600
 	ldr r0, [r0, #0x10]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	add r2, r0, #8
 	str r2, [sp, #4]
@@ -44080,7 +44080,7 @@ _02348644:
 	ldr r0, [r0, #4]
 	mov r3, #0x21
 	ldr r0, [r0, #0x10]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _02348664:
@@ -44091,23 +44091,23 @@ _02348664:
 	ldr r0, [r0, #0x10]
 	sub r1, r2, #0xb1
 	mov r3, #0x21
-	bl ov02_0234D440
-	ldr r1, _0234869C ; =ov02_023486A0
+	bl Dwci_CelllSetPosition
+	ldr r1, _0234869C ; =Step_TaskBegin5
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02348698: .word ov02_0235AB50
-_0234869C: .word ov02_023486A0
-	arm_func_end ov02_02348600
+_0234869C: .word Step_TaskBegin5
+	arm_func_end Step_TaskBegin4
 
-	arm_func_start ov02_023486A0
-ov02_023486A0: ; 0x023486A0
+	arm_func_start Step_TaskBegin5
+Step_TaskBegin5: ; 0x023486A0
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	mov r0, #0
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldr r0, _023486C4 ; =ov02_0235AB50
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -44115,31 +44115,31 @@ ov02_023486A0: ; 0x023486A0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023486C4: .word ov02_0235AB50
-	arm_func_end ov02_023486A0
+	arm_func_end Step_TaskBegin5
 
-	arm_func_start ov02_023486C8
-ov02_023486C8: ; 0x023486C8
+	arm_func_start Dwci_SteplEnd
+Dwci_SteplEnd: ; 0x023486C8
 	stmdb sp!, {r3, lr}
 	ldr r1, _02348700 ; =ov02_0235AB50
 	mov r0, #0
 	ldr ip, [r1, #4]
 	mov lr, #1
-	ldr r1, _02348704 ; =ov02_023487F0
+	ldr r1, _02348704 ; =Step_TaskEnd0
 	mov r2, r0
 	mov r3, #0x78
 	strb lr, [ip, #0x18]
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02348700 ; =ov02_0235AB50
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x14]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02348700: .word ov02_0235AB50
-_02348704: .word ov02_023487F0
-	arm_func_end ov02_023486C8
+_02348704: .word Step_TaskEnd0
+	arm_func_end Dwci_SteplEnd
 
-	arm_func_start ov02_02348708
-ov02_02348708: ; 0x02348708
+	arm_func_start Dwci_SteplChange
+Dwci_SteplChange: ; 0x02348708
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	str r0, [sp]
 	add r2, r0, r0, lsl #2
@@ -44157,16 +44157,16 @@ _0234873C:
 	ldr r0, [r4, #4]
 	mov r1, r7
 	ldr r0, [r0, r8, lsl #2]
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, r0
 	ldrb r1, [sb], #2
 	mov r0, fp
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, [r4, #4]
 	mov r1, r6
 	ldr r0, [r0, r8, lsl #2]
 	mov r2, #0
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	ldr r0, [r4, #4]
 	mov r1, r8, lsl #2
 	add r3, r5, r8, lsl #2
@@ -44174,28 +44174,28 @@ _0234873C:
 	ldrh r3, [r3, #2]
 	ldr r0, [r0, r8, lsl #2]
 	mov r1, r6
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, [r4, #4]
 	ldrb r3, [sl], #2
 	ldr r0, [r0, r8, lsl #2]
 	mov r1, r6
 	mov r2, #0
-	bl ov02_0234D3C0
+	bl Dwci_CelllSetPalette
 	add r8, r8, #2
 	cmp r8, #5
 	blt _0234873C
 	ldr r0, [sp]
-	bl ov02_02348C1C
+	bl Dwci_SteplChangeScr
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _023487C0: .word ov02_02352DC8
 _023487C4: .word ov02_02352DD7
 _023487C8: .word ov02_02352DE6
 _023487CC: .word ov02_0235AB50
-	arm_func_end ov02_02348708
+	arm_func_end Dwci_SteplChange
 
-	arm_func_start ov02_023487D0
-ov02_023487D0: ; 0x023487D0
+	arm_func_start Dwci_SteplGet
+Dwci_SteplGet: ; 0x023487D0
 	ldr r0, _023487EC ; =ov02_0235AB50
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x14]
@@ -44205,10 +44205,10 @@ ov02_023487D0: ; 0x023487D0
 	bx lr
 	.align 2, 0
 _023487EC: .word ov02_0235AB50
-	arm_func_end ov02_023487D0
+	arm_func_end Dwci_SteplGet
 
-	arm_func_start ov02_023487F0
-ov02_023487F0: ; 0x023487F0
+	arm_func_start Step_TaskEnd0
+Step_TaskEnd0: ; 0x023487F0
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _0234887C ; =ov02_0235AB50
@@ -44218,7 +44218,7 @@ ov02_023487F0: ; 0x023487F0
 	ldr r0, [r0, #0x10]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	mov r3, #0x21
 	sub r2, r0, #8
@@ -44229,7 +44229,7 @@ ov02_023487F0: ; 0x023487F0
 	mvn r1, #0
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x10]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _0234884C:
@@ -44239,19 +44239,19 @@ _0234884C:
 	str r2, [sp, #4]
 	ldr r0, [r0, #0x10]
 	sub r1, r2, #0x99
-	bl ov02_0234D440
-	ldr r1, _02348880 ; =ov02_02348884
+	bl Dwci_CelllSetPosition
+	ldr r1, _02348880 ; =Step_TaskEnd1
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234887C: .word ov02_0235AB50
-_02348880: .word ov02_02348884
-	arm_func_end ov02_023487F0
+_02348880: .word Step_TaskEnd1
+	arm_func_end Step_TaskEnd0
 
-	arm_func_start ov02_02348884
-ov02_02348884: ; 0x02348884
+	arm_func_start Step_TaskEnd1
+Step_TaskEnd1: ; 0x02348884
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r1, _02348954 ; =ov02_0235AB50
@@ -44261,7 +44261,7 @@ ov02_02348884: ; 0x02348884
 	ldr r0, [r0, #0xc]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	sub r0, r0, #8
 	str r0, [sp, #4]
@@ -44278,7 +44278,7 @@ _023488D0:
 	ldr r0, [r1, r7, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r6
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r7, r7, #1
 	cmp r7, #5
 	blt _023488D0
@@ -44298,23 +44298,23 @@ _02348918:
 	ldr r0, [r1, r8, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r7
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r8, r8, #1
 	cmp r8, #5
 	blt _02348918
-	ldr r1, _0234895C ; =ov02_02348960
+	ldr r1, _0234895C ; =Step_TaskEnd2
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02348954: .word ov02_0235AB50
 _02348958: .word ov02_02352DE6
-_0234895C: .word ov02_02348960
-	arm_func_end ov02_02348884
+_0234895C: .word Step_TaskEnd2
+	arm_func_end Step_TaskEnd1
 
-	arm_func_start ov02_02348960
-ov02_02348960: ; 0x02348960
+	arm_func_start Step_TaskEnd2
+Step_TaskEnd2: ; 0x02348960
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r1, _02348A30 ; =ov02_0235AB50
@@ -44324,7 +44324,7 @@ ov02_02348960: ; 0x02348960
 	ldr r0, [r0, #8]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	sub r0, r0, #8
 	str r0, [sp, #4]
@@ -44341,7 +44341,7 @@ _023489AC:
 	ldr r0, [r1, r7, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r6
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r7, r7, #1
 	cmp r7, #5
 	blt _023489AC
@@ -44361,23 +44361,23 @@ _023489F4:
 	ldr r0, [r1, r8, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r7
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r8, r8, #1
 	cmp r8, #5
 	blt _023489F4
-	ldr r1, _02348A38 ; =ov02_02348A3C
+	ldr r1, _02348A38 ; =Step_TaskEnd3
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02348A30: .word ov02_0235AB50
 _02348A34: .word ov02_02352DE6
-_02348A38: .word ov02_02348A3C
-	arm_func_end ov02_02348960
+_02348A38: .word Step_TaskEnd3
+	arm_func_end Step_TaskEnd2
 
-	arm_func_start ov02_02348A3C
-ov02_02348A3C: ; 0x02348A3C
+	arm_func_start Step_TaskEnd3
+Step_TaskEnd3: ; 0x02348A3C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r1, _02348B0C ; =ov02_0235AB50
@@ -44387,7 +44387,7 @@ ov02_02348A3C: ; 0x02348A3C
 	ldr r0, [r0, #4]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	sub r0, r0, #8
 	str r0, [sp, #4]
@@ -44404,7 +44404,7 @@ _02348A88:
 	ldr r0, [r1, r7, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r6
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r7, r7, #1
 	cmp r7, #5
 	blt _02348A88
@@ -44424,23 +44424,23 @@ _02348AD0:
 	ldr r0, [r1, r8, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r7
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r8, r8, #1
 	cmp r8, #5
 	blt _02348AD0
-	ldr r1, _02348B14 ; =ov02_02348B18
+	ldr r1, _02348B14 ; =Step_TaskEnd4
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02348B0C: .word ov02_0235AB50
 _02348B10: .word ov02_02352DE6
-_02348B14: .word ov02_02348B18
-	arm_func_end ov02_02348A3C
+_02348B14: .word Step_TaskEnd4
+	arm_func_end Step_TaskEnd3
 
-	arm_func_start ov02_02348B18
-ov02_02348B18: ; 0x02348B18
+	arm_func_start Step_TaskEnd4
+Step_TaskEnd4: ; 0x02348B18
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r1, _02348BE0 ; =ov02_0235AB50
@@ -44450,7 +44450,7 @@ ov02_02348B18: ; 0x02348B18
 	ldr r0, [r0]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp, #4]
 	ldr r7, _02348BE4 ; =ov02_02352DE6
 	sub r0, r0, #8
@@ -44465,7 +44465,7 @@ _02348B5C:
 	ldr r0, [r1, r4, lsl #2]
 	ldr r2, [sp, #4]
 	mov r1, r8
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	add r4, r4, #1
 	cmp r4, #5
 	blt _02348B5C
@@ -44479,18 +44479,18 @@ _02348B5C:
 	ldmltia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r1, r5
 	mov r0, #0
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldr r4, _02348BE0 ; =ov02_0235AB50
 	mov r5, #0
 _02348BB8:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, r5, lsl #2]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	add r5, r5, #1
 	cmp r5, #5
 	blt _02348BB8
 	ldr r0, _02348BEC ; =ov02_0235AB54
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
@@ -44498,10 +44498,10 @@ _02348BE0: .word ov02_0235AB50
 _02348BE4: .word ov02_02352DE6
 _02348BE8: .word 0x000001D6
 _02348BEC: .word ov02_0235AB54
-	arm_func_end ov02_02348B18
+	arm_func_end Step_TaskEnd4
 
-	arm_func_start ov02_02348BF0
-ov02_02348BF0: ; 0x02348BF0
+	arm_func_start Dwci_SteplIsEnd
+Dwci_SteplIsEnd: ; 0x02348BF0
 	ldr r0, _02348C18 ; =ov02_0235AB50
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -44514,33 +44514,33 @@ ov02_02348BF0: ; 0x02348BF0
 	bx lr
 	.align 2, 0
 _02348C18: .word ov02_0235AB50
-	arm_func_end ov02_02348BF0
+	arm_func_end Dwci_SteplIsEnd
 
-	arm_func_start ov02_02348C1C
-ov02_02348C1C: ; 0x02348C1C
+	arm_func_start Dwci_SteplChangeScr
+Dwci_SteplChangeScr: ; 0x02348C1C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02348C58 ; =ov02_02353DD0
 	ldr r0, [r1, r0, lsl #2]
-	bl ov02_02334D48
+	bl Dwci_Char
 	mov r1, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r2, _02348C5C ; =ov02_0235AB50
-	ldr r1, _02348C60 ; =ov02_02348C64
+	ldr r1, _02348C60 ; =Step_TaskChange
 	str r0, [r2]
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02348C58: .word ov02_02353DD0
 _02348C5C: .word ov02_0235AB50
-_02348C60: .word ov02_02348C64
-	arm_func_end ov02_02348C1C
+_02348C60: .word Step_TaskChange
+	arm_func_end Dwci_SteplChangeScr
 
-	arm_func_start ov02_02348C64
-ov02_02348C64: ; 0x02348C64
+	arm_func_start Step_TaskChange
+Step_TaskChange: ; 0x02348C64
 	stmdb sp!, {r4, lr}
 	ldr r1, _02348CAC ; =ov02_0235AB50
 	mov r4, r0
@@ -44554,23 +44554,23 @@ ov02_02348C64: ; 0x02348C64
 	bl GXS_LoadBG1Scr
 	ldr r0, _02348CAC ; =ov02_0235AB50
 	ldr r0, [r0]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	mov r1, r4
 	mov r0, #1
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02348CAC: .word ov02_0235AB50
-	arm_func_end ov02_02348C64
+	arm_func_end Step_TaskChange
 
-	arm_func_start ov02_02348CB0
-ov02_02348CB0: ; 0x02348CB0
+	arm_func_start Dwci_UsbaplBegin
+Dwci_UsbaplBegin: ; 0x02348CB0
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x54
 	mov r4, r0
 	ldr r0, _02348E18 ; =0x00001BA0
 	mov r1, #0x20
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _02348E1C ; =ov02_0235AB58
 	add r1, r0, #0x1000
 	str r0, [r2]
@@ -44583,7 +44583,7 @@ ov02_02348CB0: ; 0x02348CB0
 	str r0, [r3, #0xb88]
 	str r1, [r3, #0xb8c]
 	ldr r0, [r4]
-	ldr r1, _02348E20 ; =ov02_02348F64
+	ldr r1, _02348E20 ; =UsbAc_CbWm
 	bl WM_InitializeEx
 	cmp r0, #2
 	bne _02348E04
@@ -44637,14 +44637,14 @@ _02348D3C:
 	add r1, r1, #0x1000
 	mov r2, r2, lsl #1
 	bl MI_CpuCopy8
-	bl ov02_02348E34
+	bl UsbAc_StartScan
 	cmp r0, #0
 	beq _02348E04
 	mov r0, #0
-	ldr r1, _02348E2C ; =ov02_02349258
+	ldr r1, _02348E2C ; =UsbAc_TaskFirst
 	mov r2, r0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02348E1C ; =ov02_0235AB58
 	add sp, sp, #0x54
 	ldr r1, [r1]
@@ -44654,25 +44654,25 @@ _02348D3C:
 	ldmia sp!, {r4, r5, pc}
 _02348E04:
 	ldr r0, _02348E30 ; =ov02_0235AB58
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	mov r0, #0
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _02348E18: .word 0x00001BA0
 _02348E1C: .word ov02_0235AB58
-_02348E20: .word ov02_02348F64
+_02348E20: .word UsbAc_CbWm
 _02348E24: .word ov02_02352E10
 _02348E28: .word ov02_02352E04
-_02348E2C: .word ov02_02349258
+_02348E2C: .word UsbAc_TaskFirst
 _02348E30: .word ov02_0235AB58
-	arm_func_end ov02_02348CB0
+	arm_func_end Dwci_UsbaplBegin
 
-	arm_func_start ov02_02348E34
-ov02_02348E34: ; 0x02348E34
+	arm_func_start UsbAc_StartScan
+UsbAc_StartScan: ; 0x02348E34
 	stmdb sp!, {r3, lr}
 	ldr r1, _02348E60 ; =ov02_0235AB58
-	ldr r0, _02348E64 ; =ov02_02348F64
+	ldr r0, _02348E64 ; =UsbAc_CbWm
 	ldr r1, [r1]
 	add r1, r1, #0x374
 	add r1, r1, #0x1000
@@ -44683,11 +44683,11 @@ ov02_02348E34: ; 0x02348E34
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02348E60: .word ov02_0235AB58
-_02348E64: .word ov02_02348F64
-	arm_func_end ov02_02348E34
+_02348E64: .word UsbAc_CbWm
+	arm_func_end UsbAc_StartScan
 
-	arm_func_start ov02_02348E68
-ov02_02348E68: ; 0x02348E68
+	arm_func_start Dwci_UsbaplEnd
+Dwci_UsbaplEnd: ; 0x02348E68
 	stmdb sp!, {r4, lr}
 	ldr r1, _02348F40 ; =ov02_0235AB58
 	mov r2, #1
@@ -44704,7 +44704,7 @@ ov02_02348E68: ; 0x02348E68
 	ldrh r0, [r0, #0xb8]
 	cmp r0, #2
 	beq _02348EE4
-	ldr r0, _02348F44 ; =ov02_02348F64
+	ldr r0, _02348F44 ; =UsbAc_CbWm
 	bl WM_Reset
 	cmp r0, #2
 	movne r0, #0
@@ -44721,7 +44721,7 @@ _02348EC0:
 	cmp r0, #2
 	bne _02348EC0
 _02348EE4:
-	ldr r0, _02348F44 ; =ov02_02348F64
+	ldr r0, _02348F44 ; =UsbAc_CbWm
 	bl WM_End
 	cmp r0, #2
 	movne r0, #0
@@ -44733,7 +44733,7 @@ _02348EE4:
 	cmp r1, #0
 	beq _02348F18
 	mov r0, #0
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 _02348F18:
 	ldr r0, _02348F40 ; =ov02_0235AB58
 	ldr r0, [r0]
@@ -44743,17 +44743,17 @@ _02348F24:
 	cmp r1, #2
 	bne _02348F24
 	ldr r0, _02348F48 ; =ov02_0235AB58
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02348F40: .word ov02_0235AB58
-_02348F44: .word ov02_02348F64
+_02348F44: .word UsbAc_CbWm
 _02348F48: .word ov02_0235AB58
-	arm_func_end ov02_02348E68
+	arm_func_end Dwci_UsbaplEnd
 
-	arm_func_start ov02_02348F4C
-ov02_02348F4C: ; 0x02348F4C
+	arm_func_start Dwci_UsbaplSetCallback
+Dwci_UsbaplSetCallback: ; 0x02348F4C
 	ldr r1, _02348F60 ; =ov02_0235AB58
 	ldr r1, [r1]
 	add r1, r1, #0x1000
@@ -44761,10 +44761,10 @@ ov02_02348F4C: ; 0x02348F4C
 	bx lr
 	.align 2, 0
 _02348F60: .word ov02_0235AB58
-	arm_func_end ov02_02348F4C
+	arm_func_end Dwci_UsbaplSetCallback
 
-	arm_func_start ov02_02348F64
-ov02_02348F64: ; 0x02348F64
+	arm_func_start UsbAc_CbWm
+UsbAc_CbWm: ; 0x02348F64
 	stmdb sp!, {r3, lr}
 	ldrh r1, [r0, #2]
 	cmp r1, #0
@@ -44792,25 +44792,25 @@ _02348FA0:
 	ldrb r1, [r1, #0xb96]
 	cmp r1, #0
 	beq _02348FD4
-	bl ov02_0234914C
+	bl UsbAc_ScanWait
 	b _02348FD8
 _02348FD4:
-	bl ov02_02348FF4
+	bl UsbAc_ScanFirst
 _02348FD8:
-	bl ov02_02348E34
+	bl UsbAc_StartScan
 	ldmia sp!, {r3, pc}
 _02348FE0:
-	bl ov02_02348E34
+	bl UsbAc_StartScan
 	ldmia sp!, {r3, pc}
 _02348FE8:
 	bl WaitForever2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02348FF0: .word ov02_0235AB58
-	arm_func_end ov02_02348F64
+	arm_func_end UsbAc_CbWm
 
-	arm_func_start ov02_02348FF4
-ov02_02348FF4: ; 0x02348FF4
+	arm_func_start UsbAc_ScanFirst
+UsbAc_ScanFirst: ; 0x02348FF4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov fp, r0
 	ldrh r0, [fp, #0xe]
@@ -44904,10 +44904,10 @@ _0234912C:
 _02349140: .word ov02_02352E04
 _02349144: .word ov02_0235AB58
 _02349148: .word ov02_02352DFC
-	arm_func_end ov02_02348FF4
+	arm_func_end UsbAc_ScanFirst
 
-	arm_func_start ov02_0234914C
-ov02_0234914C: ; 0x0234914C
+	arm_func_start UsbAc_ScanWait
+UsbAc_ScanWait: ; 0x0234914C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r1, _02349250 ; =ov02_0235AB58
 	mov sl, r0
@@ -44981,10 +44981,10 @@ _02349240:
 	.align 2, 0
 _02349250: .word ov02_0235AB58
 _02349254: .word ov02_02352E04
-	arm_func_end ov02_0234914C
+	arm_func_end UsbAc_ScanWait
 
-	arm_func_start ov02_02349258
-ov02_02349258: ; 0x02349258
+	arm_func_start UsbAc_TaskFirst
+UsbAc_TaskFirst: ; 0x02349258
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	str r0, [sp]
 	bl OS_GetTick
@@ -45064,16 +45064,16 @@ _02349358:
 	mov r3, #1
 	add r2, r2, #0x1000
 	strb r3, [r2, #0xb96]
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02349388: .word ov02_0235AB58
 _0234938C: .word 0x0017F898
 _02349390: .word ov02_02352DFC
-	arm_func_end ov02_02349258
+	arm_func_end UsbAc_TaskFirst
 
-	arm_func_start ov02_02349394
-ov02_02349394: ; 0x02349394
+	arm_func_start Dwci_WinlInitEx
+Dwci_WinlInitEx: ; 0x02349394
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
 	ldr r5, _02349690 ; =ov02_02352E54
@@ -45097,11 +45097,11 @@ ov02_02349394: ; 0x02349394
 	strb r7, [sp, #0x1f]
 	strb r6, [sp, #0x20]
 	strb r5, [sp, #0x21]
-	bl ov02_02338F74
+	bl Dwci_MsglGetEx
 	str r0, [sp, #0x14]
 	mov r0, #0x20
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _02349698 ; =ov02_0235AB5C
 	mvn r3, #1
 	str r0, [r1]
@@ -45119,7 +45119,7 @@ ov02_02349394: ; 0x02349394
 	mov r0, #0
 	ldrb r1, [r1, sl]
 	mov r2, r0
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r3, _02349698 ; =ov02_0235AB5C
 	mvn r1, #0
 	ldr r4, [r3]
@@ -45128,13 +45128,13 @@ ov02_02349394: ; 0x02349394
 	ldr r0, [r3]
 	mov r3, #0
 	ldr r0, [r0]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02349698 ; =ov02_0235AB5C
 	mvn r1, #0
 	ldr r0, [r0]
 	mov r2, #0
 	ldr r0, [r0]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	ldr r7, _023496A4 ; =ov02_02352F10
 	mov r8, #0
 	ldrb r0, [r7, sl]
@@ -45150,7 +45150,7 @@ _023494B4:
 	ldrb r1, [sb], #1
 	mov r0, #0
 	mov r2, r0
-	bl ov02_0234D6D8
+	bl Dwci_CeinlSetExCell
 	ldr r2, [r4]
 	mov r1, r6
 	add r2, r2, r8, lsl #2
@@ -45160,13 +45160,13 @@ _023494B4:
 	add r0, r0, r8, lsl #2
 	ldr r0, [r0, #8]
 	mov r3, fp
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, [r4]
 	mov r1, r6
 	add r0, r0, r8, lsl #2
 	ldr r0, [r0, #8]
 	mov r2, #0
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	ldrb r0, [r7, sl]
 	add r8, r8, #1
 	cmp r8, r0
@@ -45179,18 +45179,18 @@ _02349514:
 	mov r2, #0xc
 	mov r3, #1
 	str r0, [sp, #4]
-	bl ov02_0234DCC0
+	bl Dwci_FntlFormEx
 	ldr r1, _02349698 ; =ov02_0235AB5C
 	ldr r1, [r1]
 	str r0, [r1, #0x10]
 	mov r0, #0
 	ldr r1, [sp, #0x18]
 	mov r2, r0
-	bl ov02_0234D12C
+	bl Dwci_CelllForm
 	ldr r1, _02349698 ; =ov02_0235AB5C
 	ldr r1, [r1]
 	str r0, [r1, #4]
-	bl ov02_02334FA0
+	bl Dwci_CmnlFontFlag
 	ldr r1, _023496AC ; =ov02_02352E9A
 	mov r5, sl, lsl #2
 	ldrh r4, [r1, r5]
@@ -45207,7 +45207,7 @@ _02349514:
 	ldrh r3, [r3, r5]
 	ldr r0, [r0, #0x10]
 	mov r2, r1
-	bl ov02_0234E1E8
+	bl Dwci_FntlDrawRect
 	ldr r0, _02349698 ; =ov02_0235AB5C
 	mov r2, #0
 	ldr r3, [r0]
@@ -45215,12 +45215,12 @@ _02349514:
 	str r2, [sp]
 	ldr r0, [r3, #0x10]
 	ldr r3, [r3, #4]
-	bl ov02_0234E2BC
+	bl Dwci_FntlDisp
 	mov r0, #0
 	mov r1, r0
 	mov r2, #0x1f
 	mov r3, r0
-	bl ov02_0234E598
+	bl Dwci_GXlSetWndPlane
 	ldr r3, _02349698 ; =ov02_0235AB5C
 	add r4, sp, #0x1c
 	ldr r3, [r3]
@@ -45229,18 +45229,18 @@ _02349514:
 	mov r1, #1
 	mov r2, #0x1f
 	ldrb r3, [r4, r3]
-	bl ov02_0234E598
+	bl Dwci_GXlSetWndPlane
 	mov r0, #0
 	mov r1, #3
 	mov r2, #0x1f
 	mov r3, #1
-	bl ov02_0234E598
+	bl Dwci_GXlSetWndPlane
 	ldr r2, _023496B4 ; =ov02_02352E5E
 	mov r0, #0
 	mov r1, #1
-	bl ov02_0234E480
+	bl Dwci_GXlSetWndPosition
 	mov r0, #0xc0
-	bl ov02_02349A30
+	bl Window_Disp
 	mov r2, #0x4000000
 	ldr r0, [sp, #0x10]
 	ldr r1, [r2]
@@ -45251,18 +45251,18 @@ _02349514:
 	mov r0, #1
 	mov r2, #0
 	beq _02349670
-	ldr r1, _023496B8 ; =ov02_02349734
+	ldr r1, _023496B8 ; =Window_TaskV
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02349698 ; =ov02_0235AB5C
 	add sp, sp, #0x24
 	ldr r1, [r1]
 	str r0, [r1, #0x14]
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02349670:
-	ldr r1, _023496BC ; =ov02_02349794
+	ldr r1, _023496BC ; =Window_TaskMove
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02349698 ; =ov02_0235AB5C
 	ldr r1, [r1]
 	str r0, [r1, #0x14]
@@ -45279,44 +45279,44 @@ _023496A8: .word ov02_02352E7A
 _023496AC: .word ov02_02352E9A
 _023496B0: .word ov02_02352E98
 _023496B4: .word ov02_02352E5E
-_023496B8: .word ov02_02349734
-_023496BC: .word ov02_02349794
-	arm_func_end ov02_02349394
+_023496B8: .word Window_TaskV
+_023496BC: .word Window_TaskMove
+	arm_func_end Dwci_WinlInitEx
 
-	arm_func_start ov02_023496C0
-ov02_023496C0: ; 0x023496C0
+	arm_func_start Dwci_WinlEnd
+Dwci_WinlEnd: ; 0x023496C0
 	stmdb sp!, {r3, lr}
 	ldr r1, _023496FC ; =ov02_0235AB5C
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r1, [r1, #0x14]
-	bl ov02_0234FB40
-	ldr r1, _02349700 ; =ov02_02349D24
+	bl Dwci_TsklDelete
+	ldr r1, _02349700 ; =Window_TaskEnd
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _023496FC ; =ov02_0235AB5C
 	ldr r1, [r1]
 	str r0, [r1, #0x14]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023496FC: .word ov02_0235AB5C
-_02349700: .word ov02_02349D24
-	arm_func_end ov02_023496C0
+_02349700: .word Window_TaskEnd
+	arm_func_end Dwci_WinlEnd
 
-	arm_func_start ov02_02349704
-ov02_02349704: ; 0x02349704
+	arm_func_start Dwci_WinlGet
+Dwci_WinlGet: ; 0x02349704
 	ldr r0, _02349714 ; =ov02_0235AB5C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x1b]
 	bx lr
 	.align 2, 0
 _02349714: .word ov02_0235AB5C
-	arm_func_end ov02_02349704
+	arm_func_end Dwci_WinlGet
 
-	arm_func_start ov02_02349718
-ov02_02349718: ; 0x02349718
+	arm_func_start Dwci_WinlIsInit
+Dwci_WinlIsInit: ; 0x02349718
 	ldr r0, _02349730 ; =ov02_0235AB5C
 	ldr r0, [r0]
 	cmp r0, #0
@@ -45325,10 +45325,10 @@ ov02_02349718: ; 0x02349718
 	bx lr
 	.align 2, 0
 _02349730: .word ov02_0235AB5C
-	arm_func_end ov02_02349718
+	arm_func_end Dwci_WinlIsInit
 
-	arm_func_start ov02_02349734
-ov02_02349734: ; 0x02349734
+	arm_func_start Window_TaskV
+Window_TaskV: ; 0x02349734
 	stmdb sp!, {r4, lr}
 	ldr r1, _02349788 ; =ov02_0235AB5C
 	mov r4, r0
@@ -45346,18 +45346,18 @@ ov02_02349734: ; 0x02349734
 	ldrsb r1, [r1, #0x1a]
 	cmp r1, r0
 	ldmgtia sp!, {r4, pc}
-	ldr r1, _02349790 ; =ov02_02349794
+	ldr r1, _02349790 ; =Window_TaskMove
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02349788: .word ov02_0235AB5C
 _0234978C: .word 0x04000050
-_02349790: .word ov02_02349794
-	arm_func_end ov02_02349734
+_02349790: .word Window_TaskMove
+	arm_func_end Window_TaskV
 
-	arm_func_start ov02_02349794
-ov02_02349794: ; 0x02349794
+	arm_func_start Window_TaskMove
+Window_TaskMove: ; 0x02349794
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02349858 ; =ov02_0235AB5C
@@ -45367,7 +45367,7 @@ ov02_02349794: ; 0x02349794
 	ldr r0, [r0]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp]
 	ldr r1, _02349858 ; =ov02_0235AB5C
 	sub r0, r0, #0xc
@@ -45379,12 +45379,12 @@ ov02_02349794: ; 0x02349794
 	ldrh r1, [r1, r2]
 	cmp r0, r1
 	ble _023497F4
-	bl ov02_02349A30
+	bl Window_Disp
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _023497F4:
 	mov r0, r1
-	bl ov02_02349A30
+	bl Window_Disp
 	ldr r0, _02349858 ; =ov02_0235AB5C
 	mov r3, #0x78
 	ldr r0, [r0]
@@ -45392,33 +45392,33 @@ _023497F4:
 	cmp r0, #5
 	mov r0, #0
 	bne _0234982C
-	ldr r1, _02349860 ; =ov02_023499C4
+	ldr r1, _02349860 ; =Window_TaskMain1
 	mov r2, r0
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02349858 ; =ov02_0235AB5C
 	b _0234983C
 _0234982C:
-	ldr r1, _02349864 ; =ov02_02349868
+	ldr r1, _02349864 ; =Window_TaskMain
 	mov r2, r0
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02349858 ; =ov02_0235AB5C
 _0234983C:
 	ldr r1, [r1]
 	str r0, [r1, #0x14]
 	mov r1, r4
 	mov r0, #1
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02349858: .word ov02_0235AB5C
 _0234985C: .word ov02_02352EB2
-_02349860: .word ov02_023499C4
-_02349864: .word ov02_02349868
-	arm_func_end ov02_02349794
+_02349860: .word Window_TaskMain1
+_02349864: .word Window_TaskMain
+	arm_func_end Window_TaskMove
 
-	arm_func_start ov02_02349868
-ov02_02349868: ; 0x02349868
+	arm_func_start Window_TaskMain
+Window_TaskMain: ; 0x02349868
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	ldr r4, _023499A8 ; =ov02_0235AB5C
@@ -45440,9 +45440,9 @@ _023498A0:
 	mov r2, r5
 	add r0, r3, r0, lsl #2
 	add r1, r6, r1, lsl #2
-	bl ov02_0234E39C
+	bl Dwci_Coord2Rect
 	mov r0, r5
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	cmp r0, #0
 	beq _023498DC
 	ldr r0, _023499A8 ; =ov02_0235AB5C
@@ -45458,7 +45458,7 @@ _023498DC:
 	blt _023498A0
 _023498F4:
 	mov r0, #1
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _02349920
 	ldr r0, _023499A8 ; =ov02_0235AB5C
@@ -45470,7 +45470,7 @@ _023498F4:
 	strb r0, [r2, #0x1b]
 _02349920:
 	mov r0, #2
-	bl ov02_0234EBBC
+	bl Dwci_IptlCheckTrigger
 	cmp r0, #0
 	beq _0234994C
 	ldr r0, _023499A8 ; =ov02_0235AB5C
@@ -45493,7 +45493,7 @@ _0234994C:
 _02349970:
 	cmp r0, r3
 	bne _02349984
-	bl ov02_02349C64
+	bl Window_PushButton
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _02349984:
@@ -45515,10 +45515,10 @@ _023499B4: .word ov02_02352E66
 _023499B8: .word ov02_02352E84
 _023499BC: .word ov02_02352E70
 _023499C0: .word ov02_02352E71
-	arm_func_end ov02_02349868
+	arm_func_end Window_TaskMain
 
-	arm_func_start ov02_023499C4
-ov02_023499C4: ; 0x023499C4
+	arm_func_start Window_TaskMain1
+Window_TaskMain1: ; 0x023499C4
 	stmdb sp!, {r3, lr}
 	ldr r2, _02349A28 ; =ov02_0235AB5C
 	mvn ip, #0
@@ -45534,23 +45534,23 @@ ov02_023499C4: ; 0x023499C4
 	cmp r0, #0x78
 	ldmloia sp!, {r3, pc}
 	mov r0, #0
-	bl ov02_0234FB40
-	ldr r1, _02349A2C ; =ov02_02349D24
+	bl Dwci_TsklDelete
+	ldr r1, _02349A2C ; =Window_TaskEnd
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0x78
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _02349A28 ; =ov02_0235AB5C
 	ldr r1, [r1]
 	str r0, [r1, #0x14]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02349A28: .word ov02_0235AB5C
-_02349A2C: .word ov02_02349D24
-	arm_func_end ov02_023499C4
+_02349A2C: .word Window_TaskEnd
+	arm_func_end Window_TaskMain1
 
-	arm_func_start ov02_02349A30
-ov02_02349A30: ; 0x02349A30
+	arm_func_start Window_Disp
+Window_Disp: ; 0x02349A30
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	ldr r1, _02349BBC ; =ov02_0235AB5C
@@ -45563,7 +45563,7 @@ ov02_02349A30: ; 0x02349A30
 	mov r2, r2, lsl #2
 	ldrh r2, [r1, r2]
 	mvn r1, #0
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02349BBC ; =ov02_0235AB5C
 	ldr r2, _02349BC0 ; =ov02_02352EB0
 	ldr r0, [r0]
@@ -45574,17 +45574,17 @@ ov02_02349A30: ; 0x02349A30
 	mov r4, r4, lsl #2
 	ldrh r2, [r2, r4]
 	add r2, r2, #8
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02349BBC ; =ov02_0235AB5C
 	mov r1, sl
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl ov02_02349BD8
+	bl Window_DispCell
 	ldr r0, _02349BBC ; =ov02_0235AB5C
 	mov r1, sl
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl ov02_02349BD8
+	bl Window_DispCell
 	ldr r4, _02349BBC ; =ov02_0235AB5C
 	ldr r8, _02349BC4 ; =ov02_02352F10
 	ldr r0, [r4]
@@ -45613,12 +45613,12 @@ _02349AE8:
 	ldr r0, [r1, #8]
 	mov r1, r6
 	sub r3, ip, r3
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, [r4]
 	mov r1, sl
 	add r0, r0, sb, lsl #2
 	ldr r0, [r0, #8]
-	bl ov02_02349BD8
+	bl Window_DispCell
 	ldr r0, [r4]
 	add sb, sb, #1
 	ldrb r0, [r0, #0x1c]
@@ -45646,11 +45646,11 @@ _02349B78:
 	movgt r3, #0xc0
 	add r2, r0, r2
 	str r4, [sp]
-	bl ov02_0234E384
+	bl Dwci_InputRect
 	mov r0, #0
 	mov r2, r4
 	mov r1, r0
-	bl ov02_0234E480
+	bl Dwci_GXlSetWndPosition
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -45661,15 +45661,15 @@ _02349BC8: .word ov02_02352E66
 _02349BCC: .word ov02_02352EE0
 _02349BD0: .word ov02_02352ECA
 _02349BD4: .word ov02_02352EC8
-	arm_func_end ov02_02349A30
+	arm_func_end Window_Disp
 
-	arm_func_start ov02_02349BD8
-ov02_02349BD8: ; 0x02349BD8
+	arm_func_start Window_DispCell
+Window_DispCell: ; 0x02349BD8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sl, r0
 	mov sb, r1
-	bl ov02_0234D314
+	bl Dwci_CelllGetObjNum
 	mov r7, r0
 	cmp r7, #0
 	mov r8, #0
@@ -45684,7 +45684,7 @@ _02349C10:
 	mov r1, r8
 	mov r2, r6
 	mov r3, r5
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp]
 	cmp r0, sb
 	blt _02349C3C
@@ -45697,16 +45697,16 @@ _02349C40:
 	mov r0, sl
 	mov r1, r8
 	mov r3, #0
-	bl ov02_0234D31C
+	bl Dwci_CelllSetEffect
 	add r8, r8, #1
 	cmp r8, r7
 	blt _02349C10
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov02_02349BD8
+	arm_func_end Window_DispCell
 
-	arm_func_start ov02_02349C64
-ov02_02349C64: ; 0x02349C64
+	arm_func_start Window_PushButton
+Window_PushButton: ; 0x02349C64
 	stmdb sp!, {r4, lr}
 	ldr r1, _02349D10 ; =ov02_0235AB5C
 	mov r4, r0
@@ -45714,7 +45714,7 @@ ov02_02349C64: ; 0x02349C64
 	mov r1, #0
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #8]
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	ldr r1, _02349D10 ; =ov02_0235AB5C
 	mov r2, r0
 	ldr r0, [r1]
@@ -45724,7 +45724,7 @@ ov02_02349C64: ; 0x02349C64
 	add r1, r1, r3, lsl #1
 	ldrb r1, [r4, r1]
 	add r1, r1, #1
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	ldr r0, _02349D10 ; =ov02_0235AB5C
 	ldr r2, _02349D18 ; =ov02_02352E66
 	ldr r0, [r0]
@@ -45741,14 +45741,14 @@ ov02_02349C64: ; 0x02349C64
 	ldr r3, _02349D20 ; =ov02_02352EE2
 	add r3, r3, lr, lsl #3
 	ldrh r3, [ip, r3]
-	bl ov02_0234D440
+	bl Dwci_CelllSetPosition
 	ldr r0, _02349D10 ; =ov02_0235AB5C
 	mvn r1, #0
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #8]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02349D10: .word ov02_0235AB5C
@@ -45756,10 +45756,10 @@ _02349D14: .word ov02_02352E7A
 _02349D18: .word ov02_02352E66
 _02349D1C: .word ov02_02352EE0
 _02349D20: .word ov02_02352EE2
-	arm_func_end ov02_02349C64
+	arm_func_end Window_PushButton
 
-	arm_func_start ov02_02349D24
-ov02_02349D24: ; 0x02349D24
+	arm_func_start Window_TaskEnd
+Window_TaskEnd: ; 0x02349D24
 	stmdb sp!, {r3, lr}
 	ldr r1, _02349D58 ; =ov02_0235AB5C
 	ldr r3, [r1]
@@ -45770,16 +45770,16 @@ ov02_02349D24: ; 0x02349D24
 	ldrb r1, [r1, #0x1d]
 	cmp r1, #8
 	ldmloia sp!, {r3, pc}
-	ldr r1, _02349D5C ; =ov02_02349D60
-	bl ov02_0234FB38
+	ldr r1, _02349D5C ; =Window_TaskEnd1
+	bl Dwci_TsklChangeFunc
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02349D58: .word ov02_0235AB5C
-_02349D5C: .word ov02_02349D60
-	arm_func_end ov02_02349D24
+_02349D5C: .word Window_TaskEnd1
+	arm_func_end Window_TaskEnd
 
-	arm_func_start ov02_02349D60
-ov02_02349D60: ; 0x02349D60
+	arm_func_start Window_TaskEnd1
+Window_TaskEnd1: ; 0x02349D60
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _02349DE4 ; =ov02_0235AB5C
@@ -45789,11 +45789,11 @@ ov02_02349D60: ; 0x02349D60
 	ldr r0, [r0]
 	add r3, sp, #0
 	mov r1, #0
-	bl ov02_0234D590
+	bl Dwci_CelllGetPosition
 	ldr r0, [sp]
 	add r0, r0, #0xc
 	str r0, [sp]
-	bl ov02_02349A30
+	bl Window_Disp
 	ldr r0, [sp]
 	cmp r0, #0xc0
 	addlt sp, sp, #8
@@ -45803,25 +45803,25 @@ ov02_02349D60: ; 0x02349D60
 	ldrb r0, [r0, #0x1e]
 	cmp r0, #0
 	beq _02349DD0
-	ldr r1, _02349DE8 ; =ov02_02349DF0
+	ldr r1, _02349DE8 ; =WindowTaskEnd2
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 _02349DD0:
-	ldr r1, _02349DEC ; =ov02_02349E4C
+	ldr r1, _02349DEC ; =Window_TaskEnd3
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02349DE4: .word ov02_0235AB5C
-_02349DE8: .word ov02_02349DF0
-_02349DEC: .word ov02_02349E4C
-	arm_func_end ov02_02349D60
+_02349DE8: .word WindowTaskEnd2
+_02349DEC: .word Window_TaskEnd3
+	arm_func_end Window_TaskEnd1
 
-	arm_func_start ov02_02349DF0
-ov02_02349DF0: ; 0x02349DF0
+	arm_func_start WindowTaskEnd2
+WindowTaskEnd2: ; 0x02349DF0
 	stmdb sp!, {r4, lr}
 	ldr r1, _02349E40 ; =ov02_0235AB5C
 	mov r4, r0
@@ -45838,18 +45838,18 @@ ov02_02349DF0: ; 0x02349DF0
 	ldrsb r0, [r0, #0x1a]
 	cmp r0, #0
 	ldmltia sp!, {r4, pc}
-	ldr r1, _02349E48 ; =ov02_02349E4C
+	ldr r1, _02349E48 ; =Window_TaskEnd3
 	mov r0, r4
-	bl ov02_0234FB38
+	bl Dwci_TsklChangeFunc
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02349E40: .word ov02_0235AB5C
 _02349E44: .word 0x04000050
-_02349E48: .word ov02_02349E4C
-	arm_func_end ov02_02349DF0
+_02349E48: .word Window_TaskEnd3
+	arm_func_end WindowTaskEnd2
 
-	arm_func_start ov02_02349E4C
-ov02_02349E4C: ; 0x02349E4C
+	arm_func_start Window_TaskEnd3
+Window_TaskEnd3: ; 0x02349E4C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r3, #0x4000000
 	ldr r2, [r3]
@@ -45859,11 +45859,11 @@ ov02_02349E4C: ; 0x02349E4C
 	ldr r1, [r1]
 	mov r6, r0
 	ldr r0, [r1]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	ldr r0, _02349EF0 ; =ov02_0235AB5C
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 	ldr r7, _02349EF0 ; =ov02_0235AB5C
 	ldr r4, _02349EF4 ; =ov02_02352F10
 	ldr r1, [r7]
@@ -45877,7 +45877,7 @@ _02349EA4:
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _02349EB8
-	bl ov02_0234D288
+	bl Dwci_CelllDelete
 _02349EB8:
 	ldr r1, [r7]
 	add r5, r5, #1
@@ -45887,27 +45887,27 @@ _02349EB8:
 	blt _02349EA4
 _02349ED0:
 	ldr r0, [r1, #0x10]
-	bl ov02_0234DD9C
+	bl Dwci_FntlDelete
 	mov r1, r6
 	mov r0, #1
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldr r0, _02349EF8 ; =ov02_0235AB5C
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02349EF0: .word ov02_0235AB5C
 _02349EF4: .word ov02_02352F10
 _02349EF8: .word ov02_0235AB5C
-	arm_func_end ov02_02349E4C
+	arm_func_end Window_TaskEnd3
 
-	arm_func_start ov02_02349EFC
-ov02_02349EFC: ; 0x02349EFC
+	arm_func_start Dwci_Mov_Mbp_MemInit
+Dwci_Mov_Mbp_MemInit: ; 0x02349EFC
 	stmdb sp!, {r3, lr}
 	ldr r2, _02349F38 ; =ov02_0235AB60
 	add r1, r0, #0x160
 	str r0, [r2]
 	add r0, r1, #0x1b000
-	bl ov02_0234AB94
+	bl Dwci_Mov_WH_MemInit
 	ldr r1, _02349F38 ; =ov02_0235AB60
 	mov r2, #0
 	ldr r0, [r1]
@@ -45919,10 +45919,10 @@ ov02_02349EFC: ; 0x02349EFC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02349F38: .word ov02_0235AB60
-	arm_func_end ov02_02349EFC
+	arm_func_end Dwci_Mov_Mbp_MemInit
 
-	arm_func_start ov02_02349F3C
-ov02_02349F3C: ; 0x02349F3C
+	arm_func_start Dwci_Mov_Mbp_Init
+Dwci_Mov_Mbp_Init: ; 0x02349F3C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x7c
 	mov r5, r0
@@ -45981,50 +45981,50 @@ _02349FC4:
 	add r0, r0, #0x1b000
 	ldr r0, [r0, #0x140]
 	mov r3, r4
-	bl ov00_022C6EFC
+	bl MB_Init
 	cmp r0, #0
 	beq _0234A030
 	bl WaitForever2
 _0234A030:
 	mov r0, #0x100
 	mov r1, #1
-	bl ov00_022C7150
-	ldr r0, _0234A058 ; =ov02_0234A64C
-	bl ov00_022C3270
+	bl MB_SetParentCommParam
+	ldr r0, _0234A058 ; =ParentStateCallback
+	bl MB_CommSetParentStateCallback
 	mov r0, #1
-	bl ov02_0234A970
+	bl Dwci_Mov_Mbp_ChangeState
 	add sp, sp, #0x7c
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _0234A054: .word ov02_0235AB60
-_0234A058: .word ov02_0234A64C
-	arm_func_end ov02_02349F3C
+_0234A058: .word ParentStateCallback
+	arm_func_end Dwci_Mov_Mbp_Init
 
-	arm_func_start ov02_0234A05C
-ov02_0234A05C: ; 0x0234A05C
+	arm_func_start Dwci_Mov_Mbp_Start
+Dwci_Mov_Mbp_Start: ; 0x0234A05C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	mov r0, #2
-	bl ov02_0234A970
+	bl Dwci_Mov_Mbp_ChangeState
 	mov r0, r4
-	bl ov00_022C74A0
+	bl MB_StartParentFromIdle
 	cmp r0, #0
 	beq _0234A08C
 	mov r0, #7
-	bl ov02_0234A970
+	bl Dwci_Mov_Mbp_ChangeState
 	ldmia sp!, {r3, r4, r5, pc}
 _0234A08C:
 	mov r0, r5
-	bl ov02_0234A0A4
+	bl Dwci_Mov_Mbp_RegistFile
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	bl WaitForever2
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0234A05C
+	arm_func_end Dwci_Mov_Mbp_Start
 
-	arm_func_start ov02_0234A0A4
-ov02_0234A0A4: ; 0x0234A0A4
+	arm_func_start Dwci_Mov_Mbp_RegistFile
+Dwci_Mov_Mbp_RegistFile: ; 0x0234A0A4
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x48
 	mov r6, r0
@@ -46045,7 +46045,7 @@ ov02_0234A0A4: ; 0x0234A0A4
 	add r4, sp, #0
 _0234A0EC:
 	mov r0, r4
-	bl ov00_022C4698
+	bl MB_GetSegmentLength
 	cmp r0, #0
 	beq _0234A158
 	ldr r1, _0234A174 ; =ov02_0235AB60
@@ -46060,7 +46060,7 @@ _0234A0EC:
 	beq _0234A158
 	mov r0, r4
 	mov r2, #0x10000
-	bl ov00_022C4718
+	bl MB_ReadSegment
 	cmp r0, #0
 	beq _0234A158
 	ldr r1, _0234A174 ; =ov02_0235AB60
@@ -46068,7 +46068,7 @@ _0234A0EC:
 	ldr r1, [r1]
 	add r1, r1, #0x1b000
 	ldr r1, [r1, #0x144]
-	bl ov00_022C4C08
+	bl MB_RegisterFile
 	cmp r0, #0
 	movne r5, #1
 _0234A158:
@@ -46082,14 +46082,14 @@ _0234A168:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0234A174: .word ov02_0235AB60
-	arm_func_end ov02_0234A0A4
+	arm_func_end Dwci_Mov_Mbp_RegistFile
 
-	arm_func_start ov02_0234A178
-ov02_0234A178: ; 0x0234A178
+	arm_func_start Dwci_Mov_Mbp_AcceptChild
+Dwci_Mov_Mbp_AcceptChild: ; 0x0234A178
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #1
 	mov r4, r0
-	bl ov00_022C33BC
+	bl MB_CommResponseRequest
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #1
@@ -46123,18 +46123,18 @@ ov02_0234A178: ; 0x0234A178
 	strh r1, [r2, #0xc]
 	bl SetIrqFlag
 	mov r0, r4
-	bl ov00_022C75D8
+	bl MB_DisconnectChild
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234A214: .word ov02_0235AB60
-	arm_func_end ov02_0234A178
+	arm_func_end Dwci_Mov_Mbp_AcceptChild
 
-	arm_func_start ov02_0234A218
-ov02_0234A218: ; 0x0234A218
+	arm_func_start Dwci_Mov_Mbp_KickChild
+Dwci_Mov_Mbp_KickChild: ; 0x0234A218
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #0
 	mov r4, r0
-	bl ov00_022C33BC
+	bl MB_CommResponseRequest
 	cmp r0, #0
 	bne _0234A2B4
 	mov r0, #1
@@ -46168,7 +46168,7 @@ ov02_0234A218: ; 0x0234A218
 	strh r1, [r2, #0xc]
 	bl SetIrqFlag
 	mov r0, r4
-	bl ov00_022C75D8
+	bl MB_DisconnectChild
 	ldmia sp!, {r3, r4, r5, pc}
 _0234A2B4:
 	bl EnableIrqFlag
@@ -46187,14 +46187,14 @@ _0234A2B4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234A2EC: .word ov02_0235AB60
-	arm_func_end ov02_0234A218
+	arm_func_end Dwci_Mov_Mbp_KickChild
 
-	arm_func_start ov02_0234A2F0
-ov02_0234A2F0: ; 0x0234A2F0
+	arm_func_start Dwci_Mov_Mbp_StartDownload
+Dwci_Mov_Mbp_StartDownload: ; 0x0234A2F0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #2
 	mov r4, r0
-	bl ov00_022C33BC
+	bl MB_CommResponseRequest
 	cmp r0, #0
 	bne _0234A38C
 	mov r0, #1
@@ -46228,7 +46228,7 @@ ov02_0234A2F0: ; 0x0234A2F0
 	strh r1, [r2, #0xc]
 	bl SetIrqFlag
 	mov r0, r4
-	bl ov00_022C75D8
+	bl MB_DisconnectChild
 	ldmia sp!, {r3, r4, r5, pc}
 _0234A38C:
 	bl EnableIrqFlag
@@ -46247,13 +46247,13 @@ _0234A38C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234A3C4: .word ov02_0235AB60
-	arm_func_end ov02_0234A2F0
+	arm_func_end Dwci_Mov_Mbp_StartDownload
 
-	arm_func_start ov02_0234A3C8
-ov02_0234A3C8: ; 0x0234A3C8
+	arm_func_start Dwci_Mov_Mbp_StartDownloadAll
+Dwci_Mov_Mbp_StartDownloadAll: ; 0x0234A3C8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r0, #3
-	bl ov02_0234A970
+	bl Dwci_Mov_Mbp_ChangeState
 	mov r5, #1
 	ldr r7, _0234A4A4 ; =ov02_0235AB60
 	mov r4, r5
@@ -46297,11 +46297,11 @@ _0234A3E0:
 	strh r1, [r2, #0xc]
 	bl SetIrqFlag
 	mov r0, r5
-	bl ov00_022C75D8
+	bl MB_DisconnectChild
 	b _0234A48C
 _0234A484:
 	mov r0, r5
-	bl ov02_0234A2F0
+	bl Dwci_Mov_Mbp_StartDownload
 _0234A48C:
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
@@ -46311,10 +46311,10 @@ _0234A48C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0234A4A4: .word ov02_0235AB60
-	arm_func_end ov02_0234A3C8
+	arm_func_end Dwci_Mov_Mbp_StartDownloadAll
 
-	arm_func_start ov02_0234A4A8
-ov02_0234A4A8: ; 0x0234A4A8
+	arm_func_start Dwci_Mov_Mbp_IsBootableAll
+Dwci_Mov_Mbp_IsBootableAll: ; 0x0234A4A8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r4, _0234A50C ; =ov02_0235AB60
 	ldr r0, [r4]
@@ -46330,7 +46330,7 @@ _0234A4CC:
 	tst r0, r5, lsl r6
 	beq _0234A4F0
 	mov r0, r6
-	bl ov00_022C3368
+	bl MB_CommIsBootable
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -46344,10 +46344,10 @@ _0234A4F0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0234A50C: .word ov02_0235AB60
-	arm_func_end ov02_0234A4A8
+	arm_func_end Dwci_Mov_Mbp_IsBootableAll
 
-	arm_func_start ov02_0234A510
-ov02_0234A510: ; 0x0234A510
+	arm_func_start Dwci_Mov_Mbp_StartRebootAll
+Dwci_Mov_Mbp_StartRebootAll: ; 0x0234A510
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, #1
 	ldr r4, _0234A604 ; =ov02_0235AB60
@@ -46361,7 +46361,7 @@ _0234A528:
 	beq _0234A5D0
 	mov r0, r7
 	mov r1, r5
-	bl ov00_022C33BC
+	bl MB_CommResponseRequest
 	cmp r0, #0
 	orrne r0, r8, r6, lsl r7
 	movne r0, r0, lsl #0x10
@@ -46396,7 +46396,7 @@ _0234A528:
 	strh r1, [r2, #0xc]
 	bl SetIrqFlag
 	mov r0, r7
-	bl ov00_022C75D8
+	bl MB_DisconnectChild
 _0234A5D0:
 	add r0, r7, #1
 	mov r0, r0, lsl #0x10
@@ -46406,27 +46406,27 @@ _0234A5D0:
 	cmp r8, #0
 	bne _0234A5F8
 	mov r0, #7
-	bl ov02_0234A970
+	bl Dwci_Mov_Mbp_ChangeState
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0234A5F8:
 	mov r0, #4
-	bl ov02_0234A970
+	bl Dwci_Mov_Mbp_ChangeState
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0234A604: .word ov02_0235AB60
-	arm_func_end ov02_0234A510
+	arm_func_end Dwci_Mov_Mbp_StartRebootAll
 
-	arm_func_start ov02_0234A608
-ov02_0234A608: ; 0x0234A608
+	arm_func_start Dwci_Mov_Mbp_Cancel
+Dwci_Mov_Mbp_Cancel: ; 0x0234A608
 	stmdb sp!, {r3, lr}
 	mov r0, #6
-	bl ov02_0234A970
-	bl ov00_022C759C
+	bl Dwci_Mov_Mbp_ChangeState
+	bl MB_EndToIdle
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234A608
+	arm_func_end Dwci_Mov_Mbp_Cancel
 
-	arm_func_start ov02_0234A61C
-ov02_0234A61C: ; 0x0234A61C
+	arm_func_start ParentStateCallback_Helper
+ParentStateCallback_Helper: ; 0x0234A61C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234A648 ; =ov02_0235AB60
 	ldr r2, [r0]
@@ -46436,14 +46436,14 @@ ov02_0234A61C: ; 0x0234A61C
 	ldreqh r0, [r2, #0xc]
 	cmpeq r1, r0
 	ldmneia sp!, {r3, pc}
-	bl ov00_022C759C
+	bl MB_EndToIdle
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234A648: .word ov02_0235AB60
-	arm_func_end ov02_0234A61C
+	arm_func_end ParentStateCallback_Helper
 
-	arm_func_start ov02_0234A64C
-ov02_0234A64C: ; 0x0234A64C
+	arm_func_start ParentStateCallback
+ParentStateCallback: ; 0x0234A64C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r2
@@ -46467,7 +46467,7 @@ _0234A664: ; jump table
 	b _0234A924 ; case 13
 	b _0234A820 ; case 14
 _0234A6A0:
-	bl ov02_0234A984
+	bl Dwci_Mov_Mbp_GetState
 	cmp r0, #2
 	ldmneia sp!, {r4, r5, r6, pc}
 	ldr r0, _0234A96C ; =ov02_0235AB60
@@ -46502,7 +46502,7 @@ _0234A6A0:
 	strh r5, [r0, #0x2a]
 	ldmia sp!, {r4, r5, r6, pc}
 _0234A728:
-	bl ov02_0234A9F0
+	bl Dwci_Mov_Mbp_GetChildState
 	cmp r0, #6
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, #1
@@ -46535,14 +46535,14 @@ _0234A728:
 	and r1, r1, r4, lsr #16
 	strh r1, [r2, #0xc]
 	bl SetIrqFlag
-	bl ov02_0234A61C
+	bl ParentStateCallback_Helper
 	ldmia sp!, {r4, r5, r6, pc}
 _0234A7B4:
-	bl ov02_0234A984
+	bl Dwci_Mov_Mbp_GetState
 	cmp r0, #2
 	beq _0234A7CC
 	mov r0, r5
-	bl ov02_0234A218
+	bl Dwci_Mov_Mbp_KickChild
 	ldmia sp!, {r4, r5, r6, pc}
 _0234A7CC:
 	ldr r0, _0234A96C ; =ov02_0235AB60
@@ -46552,9 +46552,9 @@ _0234A7CC:
 	ldrh r2, [r3, #4]
 	orr r1, r2, r1, lsl r5
 	strh r1, [r3, #4]
-	bl ov02_0234A178
+	bl Dwci_Mov_Mbp_AcceptChild
 	mov r0, r5
-	bl ov00_022C32E4
+	bl MB_CommGetChildUser
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	ldr r1, _0234A96C ; =ov02_0235AB60
@@ -46578,11 +46578,11 @@ _0234A820:
 	ldrh r0, [r1, #6]
 	orr r0, r0, r4, lsl r5
 	strh r0, [r1, #6]
-	bl ov02_0234A984
+	bl Dwci_Mov_Mbp_GetState
 	cmp r0, #3
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r0, r5
-	bl ov02_0234A2F0
+	bl Dwci_Mov_Mbp_StartDownload
 	ldmia sp!, {r4, r5, r6, pc}
 _0234A864:
 	ldr r0, _0234A96C ; =ov02_0235AB60
@@ -46609,18 +46609,18 @@ _0234A894:
 	ldrh r0, [r1, #0xc]
 	orr r0, r0, r4, lsl r5
 	strh r0, [r1, #0xc]
-	bl ov02_0234A61C
+	bl ParentStateCallback_Helper
 	ldmia sp!, {r4, r5, r6, pc}
 _0234A8C8:
-	bl ov02_0234A984
+	bl Dwci_Mov_Mbp_GetState
 	cmp r0, #4
 	bne _0234A8E0
 	mov r0, #5
-	bl ov02_0234A970
+	bl Dwci_Mov_Mbp_ChangeState
 	b _0234A8E8
 _0234A8E0:
 	mov r0, #0
-	bl ov02_0234A970
+	bl Dwci_Mov_Mbp_ChangeState
 _0234A8E8:
 	ldr r0, _0234A96C ; =ov02_0235AB60
 	ldr r0, [r0]
@@ -46654,37 +46654,37 @@ _0234A950:
 	ldmneia sp!, {r4, r5, r6, pc}
 _0234A958:
 	mov r0, #7
-	bl ov02_0234A970
+	bl Dwci_Mov_Mbp_ChangeState
 	ldmia sp!, {r4, r5, r6, pc}
 _0234A964:
 	bl WaitForever2
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0234A96C: .word ov02_0235AB60
-	arm_func_end ov02_0234A64C
+	arm_func_end ParentStateCallback
 
-	arm_func_start ov02_0234A970
-ov02_0234A970: ; 0x0234A970
+	arm_func_start Dwci_Mov_Mbp_ChangeState
+Dwci_Mov_Mbp_ChangeState: ; 0x0234A970
 	ldr r1, _0234A980 ; =ov02_0235AB60
 	ldr r1, [r1]
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
 _0234A980: .word ov02_0235AB60
-	arm_func_end ov02_0234A970
+	arm_func_end Dwci_Mov_Mbp_ChangeState
 
-	arm_func_start ov02_0234A984
-ov02_0234A984: ; 0x0234A984
+	arm_func_start Dwci_Mov_Mbp_GetState
+Dwci_Mov_Mbp_GetState: ; 0x0234A984
 	ldr r0, _0234A994 ; =ov02_0235AB60
 	ldr r0, [r0]
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
 _0234A994: .word ov02_0235AB60
-	arm_func_end ov02_0234A984
+	arm_func_end Dwci_Mov_Mbp_GetState
 
-	arm_func_start ov02_0234A998
-ov02_0234A998: ; 0x0234A998
+	arm_func_start Dwci_Mov_Mbp_GetChildBmp
+Dwci_Mov_Mbp_GetChildBmp: ; 0x0234A998
 	ldr r2, _0234A9E4 ; =ov02_0235AB60
 	ldr r1, _0234A9E8 ; =ov02_02353E54
 	ldr ip, [r2]
@@ -46708,10 +46708,10 @@ ov02_0234A998: ; 0x0234A998
 _0234A9E4: .word ov02_0235AB60
 _0234A9E8: .word ov02_02353E54
 _0234A9EC: .word ov02_02353E54
-	arm_func_end ov02_0234A998
+	arm_func_end Dwci_Mov_Mbp_GetChildBmp
 
-	arm_func_start ov02_0234A9F0
-ov02_0234A9F0: ; 0x0234A9F0
+	arm_func_start Dwci_Mov_Mbp_GetChildState
+Dwci_Mov_Mbp_GetChildState: ; 0x0234A9F0
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -46764,10 +46764,10 @@ _0234AA34:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234AAB4: .word ov02_0235AB60
-	arm_func_end ov02_0234A9F0
+	arm_func_end Dwci_Mov_Mbp_GetChildState
 
-	arm_func_start ov02_0234AAB8
-ov02_0234AAB8: ; 0x0234AAB8
+	arm_func_start Dwci_Mov_Mbp_GetChildInfo
+Dwci_Mov_Mbp_GetChildInfo: ; 0x0234AAB8
 	ldr r1, _0234AAE8 ; =ov02_0235AB60
 	mov r2, #1
 	ldr r3, [r1]
@@ -46782,10 +46782,10 @@ ov02_0234AAB8: ; 0x0234AAB8
 	bx lr
 	.align 2, 0
 _0234AAE8: .word ov02_0235AB60
-	arm_func_end ov02_0234AAB8
+	arm_func_end Dwci_Mov_Mbp_GetChildInfo
 
-	arm_func_start ov02_0234AAEC
-ov02_0234AAEC: ; 0x0234AAEC
+	arm_func_start Dwci_Mov_Mbp_GetPlayerNo
+Dwci_Mov_Mbp_GetPlayerNo: ; 0x0234AAEC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r1, _0234AB90 ; =ov02_0235AB60
 	mov lr, #1
@@ -46831,10 +46831,10 @@ _0234AB74:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0234AB90: .word ov02_0235AB60
-	arm_func_end ov02_0234AAEC
+	arm_func_end Dwci_Mov_Mbp_GetPlayerNo
 
-	arm_func_start ov02_0234AB94
-ov02_0234AB94: ; 0x0234AB94
+	arm_func_start Dwci_Mov_WH_MemInit
+Dwci_Mov_WH_MemInit: ; 0x0234AB94
 	ldr r1, _0234ABCC ; =ov02_0235AB64
 	mov r2, #0
 	str r0, [r1, #4]
@@ -46851,10 +46851,10 @@ ov02_0234AB94: ; 0x0234AB94
 	bx lr
 	.align 2, 0
 _0234ABCC: .word ov02_0235AB64
-	arm_func_end ov02_0234AB94
+	arm_func_end Dwci_Mov_WH_MemInit
 
-	arm_func_start ov02_0234ABD0
-ov02_0234ABD0: ; 0x0234ABD0
+	arm_func_start Dwci_Mov_WH_ChangeSysState
+Dwci_Mov_WH_ChangeSysState: ; 0x0234ABD0
 	stmdb sp!, {r4, lr}
 	ldr r1, _0234AC3C ; =ov02_0235AB64
 	mov r4, r0
@@ -46888,10 +46888,10 @@ _0234AC3C: .word ov02_0235AB64
 _0234AC40: .word ov02_0235420C
 _0234AC44: .word ov02_02354234
 _0234AC48: .word ov02_0235423C
-	arm_func_end ov02_0234ABD0
+	arm_func_end Dwci_Mov_WH_ChangeSysState
 
-	arm_func_start ov02_0234AC4C
-ov02_0234AC4C: ; 0x0234AC4C
+	arm_func_start Dwci_Mov_WH_SetError
+Dwci_Mov_WH_SetError: ; 0x0234AC4C
 	ldr r1, _0234AC68 ; =ov02_0235AB64
 	ldr r2, [r1, #4]
 	ldr r1, [r2, #0x40]
@@ -46901,39 +46901,39 @@ ov02_0234AC4C: ; 0x0234AC4C
 	bx lr
 	.align 2, 0
 _0234AC68: .word ov02_0235AB64
-	arm_func_end ov02_0234AC4C
+	arm_func_end Dwci_Mov_WH_SetError
 
-	arm_func_start ov02_0234AC6C
-ov02_0234AC6C: ; 0x0234AC6C
+	arm_func_start Dwci_Mov_WH_StateInSetParentParam
+Dwci_Mov_WH_StateInSetParentParam: ; 0x0234AC6C
 	stmdb sp!, {r3, lr}
 	mov r0, #3
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldr r1, _0234ACA8 ; =ov02_0235AB64
-	ldr r0, _0234ACAC ; =ov02_0234ACB0
+	ldr r0, _0234ACAC ; =Dwci_Mov_WH_StateOutSetParentParam
 	ldr r1, [r1, #4]
 	bl WM_SetParentParameter
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234ACA8: .word ov02_0235AB64
-_0234ACAC: .word ov02_0234ACB0
-	arm_func_end ov02_0234AC6C
+_0234ACAC: .word Dwci_Mov_WH_StateOutSetParentParam
+	arm_func_end Dwci_Mov_WH_StateInSetParentParam
 
-	arm_func_start ov02_0234ACB0
-ov02_0234ACB0: ; 0x0234ACB0
+	arm_func_start Dwci_Mov_WH_StateOutSetParentParam
+Dwci_Mov_WH_StateOutSetParentParam: ; 0x0234ACB0
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	beq _0234ACD0
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234ACD0:
 	ldr r0, _0234AD18 ; =ov02_0235AB64
@@ -46942,28 +46942,28 @@ _0234ACD0:
 	ldr r0, [r0, #0x3ac]
 	cmp r0, #0
 	beq _0234AD00
-	bl ov02_0234AD1C
+	bl Dwci_Mov_WH_StateInStartParent
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234AD00:
-	bl ov02_0234ADB8
+	bl Dwci_Mov_WH_StateInSetParentWepKey
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234AD18: .word ov02_0235AB64
-	arm_func_end ov02_0234ACB0
+	arm_func_end Dwci_Mov_WH_StateOutSetParentParam
 
-	arm_func_start ov02_0234AD1C
-ov02_0234AD1C: ; 0x0234AD1C
+	arm_func_start Dwci_Mov_WH_StateInStartParent
+Dwci_Mov_WH_StateInStartParent: ; 0x0234AD1C
 	stmdb sp!, {r3, lr}
 	mov r0, #3
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldr r0, _0234AD78 ; =ov02_0235AB64
 	ldr r1, [r0, #4]
 	add r0, r1, #0x1000
@@ -46973,43 +46973,43 @@ ov02_0234AD1C: ; 0x0234AD1C
 	ldr r2, _0234AD78 ; =ov02_0235AB64
 	mov r1, r0
 	ldr r2, [r2, #4]
-	ldr r0, _0234AD7C ; =ov02_0234AD80
+	ldr r0, _0234AD7C ; =Dwci_Mov_WH_StateOutSetParentWepKey
 	add r2, r2, #0x13c0
 	bl WM_SetWepKey
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234AD78: .word ov02_0235AB64
-_0234AD7C: .word ov02_0234AD80
-	arm_func_end ov02_0234AD1C
+_0234AD7C: .word Dwci_Mov_WH_StateOutSetParentWepKey
+	arm_func_end Dwci_Mov_WH_StateInStartParent
 
-	arm_func_start ov02_0234AD80
-ov02_0234AD80: ; 0x0234AD80
+	arm_func_start Dwci_Mov_WH_StateOutSetParentWepKey
+Dwci_Mov_WH_StateOutSetParentWepKey: ; 0x0234AD80
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	beq _0234ADA0
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234ADA0:
-	bl ov02_0234ADB8
+	bl Dwci_Mov_WH_StateInSetParentWepKey
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234AD80
+	arm_func_end Dwci_Mov_WH_StateOutSetParentWepKey
 
-	arm_func_start ov02_0234ADB8
-ov02_0234ADB8: ; 0x0234ADB8
+	arm_func_start Dwci_Mov_WH_StateInSetParentWepKey
+Dwci_Mov_WH_StateInSetParentWepKey: ; 0x0234ADB8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234AE14 ; =ov02_0235AB64
 	ldr r0, [r0, #4]
@@ -47018,11 +47018,11 @@ ov02_0234ADB8: ; 0x0234ADB8
 	cmp r0, #2
 	movls r0, #1
 	ldmlsia sp!, {r3, pc}
-	ldr r0, _0234AE18 ; =ov02_0234AE1C
+	ldr r0, _0234AE18 ; =Dwci_Mov_WH_StateOutStartParent
 	bl WM_StartParent
 	cmp r0, #2
 	beq _0234ADF4
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 _0234ADF4:
@@ -47036,11 +47036,11 @@ _0234ADF4:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234AE14: .word ov02_0235AB64
-_0234AE18: .word ov02_0234AE1C
-	arm_func_end ov02_0234ADB8
+_0234AE18: .word Dwci_Mov_WH_StateOutStartParent
+	arm_func_end Dwci_Mov_WH_StateInSetParentWepKey
 
-	arm_func_start ov02_0234AE1C
-ov02_0234AE1C: ; 0x0234AE1C
+	arm_func_start Dwci_Mov_WH_StateOutStartParent
+Dwci_Mov_WH_StateOutStartParent: ; 0x0234AE1C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	ldrh r2, [r4, #0x10]
@@ -47050,9 +47050,9 @@ ov02_0234AE1C: ; 0x0234AE1C
 	cmp r0, #0
 	mov r5, r1, lsl #0x10
 	beq _0234AE50
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, r4, r5, pc}
 _0234AE50:
 	ldrh ip, [r4, #8]
@@ -47094,9 +47094,9 @@ _0234AEA8:
 	bl WM_Disconnect
 	cmp r0, #2
 	ldmeqia sp!, {r3, r4, r5, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, r4, r5, pc}
 _0234AEF0:
 	ldr r0, _0234AF7C ; =ov02_0235AB64
@@ -47122,11 +47122,11 @@ _0234AF24:
 	strh r0, [r2, #0x52]
 	ldmia sp!, {r3, r4, r5, pc}
 _0234AF40:
-	bl ov02_0234AF8C
+	bl Dwci_Mov_WH_StateInStartParentMP
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, r4, r5, pc}
 _0234AF58:
 	ldr r0, _0234AF7C ; =ov02_0235AB64
@@ -47143,10 +47143,10 @@ _0234AF7C: .word ov02_0235AB64
 _0234AF80: .word ov02_02354240
 _0234AF84: .word ov02_0235426C
 _0234AF88: .word ov02_02354298
-	arm_func_end ov02_0234AE1C
+	arm_func_end Dwci_Mov_WH_StateOutStartParent
 
-	arm_func_start ov02_0234AF8C
-ov02_0234AF8C: ; 0x0234AF8C
+	arm_func_start Dwci_Mov_WH_StateInStartParentMP
+Dwci_Mov_WH_StateInStartParentMP: ; 0x0234AF8C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r0, _0234B01C ; =ov02_0235AB64
@@ -47158,11 +47158,11 @@ ov02_0234AF8C: ; 0x0234AF8C
 	movls r0, #1
 	ldmlsia sp!, {r3, pc}
 	mov r0, #4
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldr r0, _0234B01C ; =ov02_0235AB64
 	mov ip, #1
 	ldr lr, [r0, #4]
-	ldr r0, _0234B020 ; =ov02_0234B024
+	ldr r0, _0234B020 ; =Dwci_Mov_WH_StateOutStartParentMP
 	add r3, lr, #0x1000
 	ldr r1, [r3, #0x2a0]
 	add r2, lr, #0x60
@@ -47179,25 +47179,25 @@ ov02_0234AF8C: ; 0x0234AF8C
 	addeq sp, sp, #8
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B01C: .word ov02_0235AB64
-_0234B020: .word ov02_0234B024
-	arm_func_end ov02_0234AF8C
+_0234B020: .word Dwci_Mov_WH_StateOutStartParentMP
+	arm_func_end Dwci_Mov_WH_StateInStartParentMP
 
-	arm_func_start ov02_0234B024
-ov02_0234B024: ; 0x0234B024
+	arm_func_start Dwci_Mov_WH_StateOutStartParentMP
+Dwci_Mov_WH_StateOutStartParentMP: ; 0x0234B024
 	stmdb sp!, {r3, lr}
 	ldrh r1, [r0, #2]
 	cmp r1, #0
 	beq _0234B048
 	mov r0, r1
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234B048:
 	ldrh r2, [r0, #4]
@@ -47219,7 +47219,7 @@ _0234B06C:
 	ldr r0, [r1, #0x40]
 	cmp r0, #4
 	bne _0234B0C0
-	bl ov02_0234B150
+	bl Dwci_Mov_WH_StateInStartParentKeyShare
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0234B144 ; =ov02_0235AB64
@@ -47231,7 +47231,7 @@ _0234B06C:
 	blx r2
 _0234B0B4:
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234B0C0:
 	cmp r0, #6
@@ -47250,17 +47250,17 @@ _0234B0CC:
 	bl WM_StartDataSharing
 	cmp r0, #0
 	beq _0234B10C
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234B10C:
 	mov r0, #5
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234B118:
 	mov r0, #4
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234B124:
 	ldr r0, _0234B144 ; =ov02_0235AB64
@@ -47275,13 +47275,13 @@ _0234B124:
 _0234B144: .word ov02_0235AB64
 _0234B148: .word ov02_023542B8
 _0234B14C: .word ov02_02354298
-	arm_func_end ov02_0234B024
+	arm_func_end Dwci_Mov_WH_StateOutStartParentMP
 
-	arm_func_start ov02_0234B150
-ov02_0234B150: ; 0x0234B150
+	arm_func_start Dwci_Mov_WH_StateInStartParentKeyShare
+Dwci_Mov_WH_StateInStartParentKeyShare: ; 0x0234B150
 	stmdb sp!, {r3, lr}
 	mov r0, #6
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldr r0, _0234B188 ; =ov02_0235AB64
 	mov r1, #0xd
 	ldr r0, [r0, #4]
@@ -47290,15 +47290,15 @@ ov02_0234B150: ; 0x0234B150
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B188: .word ov02_0235AB64
-	arm_func_end ov02_0234B150
+	arm_func_end Dwci_Mov_WH_StateInStartParentKeyShare
 
-	arm_func_start ov02_0234B18C
-ov02_0234B18C: ; 0x0234B18C
+	arm_func_start Dwci_Mov_WH_StateInEndParentKeyShare
+Dwci_Mov_WH_StateInEndParentKeyShare: ; 0x0234B18C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234B1B8 ; =ov02_0235AB64
 	ldr r0, [r0, #4]
@@ -47307,41 +47307,41 @@ ov02_0234B18C: ; 0x0234B18C
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B1B8: .word ov02_0235AB64
-	arm_func_end ov02_0234B18C
+	arm_func_end Dwci_Mov_WH_StateInEndParentKeyShare
 
-	arm_func_start ov02_0234B1BC
-ov02_0234B1BC: ; 0x0234B1BC
+	arm_func_start Dwci_Mov_WH_StateInEndParentMP
+Dwci_Mov_WH_StateInEndParentMP: ; 0x0234B1BC
 	stmdb sp!, {r3, lr}
 	mov r0, #3
-	bl ov02_0234ABD0
-	ldr r0, _0234B1E8 ; =ov02_0234B1EC
+	bl Dwci_Mov_WH_ChangeSysState
+	ldr r0, _0234B1E8 ; =Dwci_Mov_WH_StateOutEndParentMP
 	bl WM_EndMP
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B1E8: .word ov02_0234B1EC
-	arm_func_end ov02_0234B1BC
+_0234B1E8: .word Dwci_Mov_WH_StateOutEndParentMP
+	arm_func_end Dwci_Mov_WH_StateInEndParentMP
 
-	arm_func_start ov02_0234B1EC
-ov02_0234B1EC: ; 0x0234B1EC
+	arm_func_start Dwci_Mov_WH_StateOutEndParentMP
+Dwci_Mov_WH_StateOutEndParentMP: ; 0x0234B1EC
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	beq _0234B208
-	bl ov02_0234AC4C
-	bl ov02_0234BBC0
+	bl Dwci_Mov_WH_SetError
+	bl Dwci_Mov_WH_Reset
 	ldmia sp!, {r3, pc}
 _0234B208:
-	bl ov02_0234B240
+	bl Dwci_Mov_WH_StateInEndParent
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0234B238 ; =ov02_0235AB64
@@ -47352,44 +47352,44 @@ _0234B208:
 	mov r0, #0x8000000
 	blx r2
 _0234B230:
-	bl ov02_0234BBC0
+	bl Dwci_Mov_WH_Reset
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B238: .word ov02_0235AB64
 _0234B23C: .word ov02_023542E8
-	arm_func_end ov02_0234B1EC
+	arm_func_end Dwci_Mov_WH_StateOutEndParentMP
 
-	arm_func_start ov02_0234B240
-ov02_0234B240: ; 0x0234B240
+	arm_func_start Dwci_Mov_WH_StateInEndParent
+Dwci_Mov_WH_StateInEndParent: ; 0x0234B240
 	stmdb sp!, {r3, lr}
-	ldr r0, _0234B264 ; =ov02_0234B268
+	ldr r0, _0234B264 ; =Dwci_Mov_WH_StateOutEndParent
 	bl WM_EndParent
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B264: .word ov02_0234B268
-	arm_func_end ov02_0234B240
+_0234B264: .word Dwci_Mov_WH_StateOutEndParent
+	arm_func_end Dwci_Mov_WH_StateInEndParent
 
-	arm_func_start ov02_0234B268
-ov02_0234B268: ; 0x0234B268
+	arm_func_start Dwci_Mov_WH_StateOutEndParent
+Dwci_Mov_WH_StateOutEndParent: ; 0x0234B268
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	beq _0234B280
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	ldmia sp!, {r3, pc}
 _0234B280:
 	mov r0, #1
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234B268
+	arm_func_end Dwci_Mov_WH_StateOutEndParent
 
-	arm_func_start ov02_0234B28C
-ov02_0234B28C: ; 0x0234B28C
+	arm_func_start Dwci_Mov_WH_StateInEndChildKeyShare
+Dwci_Mov_WH_StateInEndChildKeyShare: ; 0x0234B28C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234B2D8 ; =ov02_0235AB64
 	ldr r0, [r0, #4]
@@ -47398,7 +47398,7 @@ ov02_0234B28C: ; 0x0234B28C
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #3
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldr r0, _0234B2D8 ; =ov02_0235AB64
 	ldr r0, [r0, #4]
 	add r0, r0, #0x1e00
@@ -47406,163 +47406,163 @@ ov02_0234B28C: ; 0x0234B28C
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B2D8: .word ov02_0235AB64
-	arm_func_end ov02_0234B28C
+	arm_func_end Dwci_Mov_WH_StateInEndChildKeyShare
 
-	arm_func_start ov02_0234B2DC
-ov02_0234B2DC: ; 0x0234B2DC
+	arm_func_start Dwci_Mov_WH_StateInEndChildMP
+Dwci_Mov_WH_StateInEndChildMP: ; 0x0234B2DC
 	stmdb sp!, {r3, lr}
 	mov r0, #3
-	bl ov02_0234ABD0
-	ldr r0, _0234B308 ; =ov02_0234B30C
+	bl Dwci_Mov_WH_ChangeSysState
+	ldr r0, _0234B308 ; =Dwci_Mov_WH_StateOutEndChildMP
 	bl WM_EndMP
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B308: .word ov02_0234B30C
-	arm_func_end ov02_0234B2DC
+_0234B308: .word Dwci_Mov_WH_StateOutEndChildMP
+	arm_func_end Dwci_Mov_WH_StateInEndChildMP
 
-	arm_func_start ov02_0234B30C
-ov02_0234B30C: ; 0x0234B30C
+	arm_func_start Dwci_Mov_WH_StateOutEndChildMP
+Dwci_Mov_WH_StateOutEndChildMP: ; 0x0234B30C
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	beq _0234B328
-	bl ov02_0234AC4C
-	bl ov02_0234BBDC
+	bl Dwci_Mov_WH_SetError
+	bl Dwci_Mov_WH_Finalize
 	ldmia sp!, {r3, pc}
 _0234B328:
-	bl ov02_0234B340
+	bl Dwci_Mov_WH_StateInEndChild
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234B30C
+	arm_func_end Dwci_Mov_WH_StateOutEndChildMP
 
-	arm_func_start ov02_0234B340
-ov02_0234B340: ; 0x0234B340
+	arm_func_start Dwci_Mov_WH_StateInEndChild
+Dwci_Mov_WH_StateInEndChild: ; 0x0234B340
 	stmdb sp!, {r3, lr}
 	mov r0, #3
-	bl ov02_0234ABD0
-	ldr r0, _0234B374 ; =ov02_0234B378
+	bl Dwci_Mov_WH_ChangeSysState
+	ldr r0, _0234B374 ; =Dwci_Mov_WH_StateOutEndChild
 	mov r1, #0
 	bl WM_Disconnect
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
-	bl ov02_0234BBC0
+	bl Dwci_Mov_WH_SetError
+	bl Dwci_Mov_WH_Reset
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B374: .word ov02_0234B378
-	arm_func_end ov02_0234B340
+_0234B374: .word Dwci_Mov_WH_StateOutEndChild
+	arm_func_end Dwci_Mov_WH_StateInEndChild
 
-	arm_func_start ov02_0234B378
-ov02_0234B378: ; 0x0234B378
+	arm_func_start Dwci_Mov_WH_StateOutEndChild
+Dwci_Mov_WH_StateOutEndChild: ; 0x0234B378
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	beq _0234B390
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	ldmia sp!, {r3, pc}
 _0234B390:
 	mov r0, #1
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234B378
+	arm_func_end Dwci_Mov_WH_StateOutEndChild
 
-	arm_func_start ov02_0234B39C
-ov02_0234B39C: ; 0x0234B39C
+	arm_func_start Dwci_Mov_WH_StateInReset
+Dwci_Mov_WH_StateInReset: ; 0x0234B39C
 	stmdb sp!, {r3, lr}
 	mov r0, #3
-	bl ov02_0234ABD0
-	ldr r0, _0234B3C8 ; =ov02_0234B3CC
+	bl Dwci_Mov_WH_ChangeSysState
+	ldr r0, _0234B3C8 ; =Dwci_Mov_WH_StateOutReset
 	bl WM_Reset
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B3C8: .word ov02_0234B3CC
-	arm_func_end ov02_0234B39C
+_0234B3C8: .word Dwci_Mov_WH_StateOutReset
+	arm_func_end Dwci_Mov_WH_StateInReset
 
-	arm_func_start ov02_0234B3CC
-ov02_0234B3CC: ; 0x0234B3CC
+	arm_func_start Dwci_Mov_WH_StateOutReset
+Dwci_Mov_WH_StateOutReset: ; 0x0234B3CC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	beq _0234B3F4
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldrh r0, [r4, #2]
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	ldmia sp!, {r4, pc}
 _0234B3F4:
 	mov r0, #1
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0234B3CC
+	arm_func_end Dwci_Mov_WH_StateOutReset
 
-	arm_func_start ov02_0234B400
-ov02_0234B400: ; 0x0234B400
+	arm_func_start Dwci_Mov_WH_StateOutEnd
+Dwci_Mov_WH_StateOutEnd: ; 0x0234B400
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	beq _0234B41C
 	mov r0, #0xa
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234B41C:
 	mov r0, #0
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234B400
+	arm_func_end Dwci_Mov_WH_StateOutEnd
 
-	arm_func_start ov02_0234B428
-ov02_0234B428: ; 0x0234B428
+	arm_func_start Dwci_Mov_WH_SetGgid
+Dwci_Mov_WH_SetGgid: ; 0x0234B428
 	ldr r1, _0234B438 ; =ov02_0235AB64
 	ldr r1, [r1, #4]
 	str r0, [r1, #8]
 	bx lr
 	.align 2, 0
 _0234B438: .word ov02_0235AB64
-	arm_func_end ov02_0234B428
+	arm_func_end Dwci_Mov_WH_SetGgid
 
-	arm_func_start ov02_0234B43C
-ov02_0234B43C: ; 0x0234B43C
+	arm_func_start Dwci_Mov_WH_GetBitmap
+Dwci_Mov_WH_GetBitmap: ; 0x0234B43C
 	ldr r0, _0234B44C ; =ov02_0235AB64
 	ldr r0, [r0, #4]
 	ldrh r0, [r0, #0x52]
 	bx lr
 	.align 2, 0
 _0234B44C: .word ov02_0235AB64
-	arm_func_end ov02_0234B43C
+	arm_func_end Dwci_Mov_WH_GetBitmap
 
-	arm_func_start ov02_0234B450
-ov02_0234B450: ; 0x0234B450
+	arm_func_start Dwci_Mov_WH_GetSystemState
+Dwci_Mov_WH_GetSystemState: ; 0x0234B450
 	ldr r0, _0234B460 ; =ov02_0235AB64
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x40]
 	bx lr
 	.align 2, 0
 _0234B460: .word ov02_0235AB64
-	arm_func_end ov02_0234B450
+	arm_func_end Dwci_Mov_WH_GetSystemState
 
-	arm_func_start ov02_0234B464
-ov02_0234B464: ; 0x0234B464
+	arm_func_start Dwci_Mov_WH_StartMeasureChannel
+Dwci_Mov_WH_StartMeasureChannel: ; 0x0234B464
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
@@ -47592,15 +47592,15 @@ ov02_0234B464: ; 0x0234B464
 	ldr r1, [r1, #4]
 	mov r0, #3
 	strh r2, [r1, #0x5e]
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	mov r0, #1
-	bl ov02_0234B53C
+	bl Dwci_Mov_WH_StateInMeasureChannel
 	cmp r0, #0x18
 	bne _0234B508
 	mov r0, #0x18
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	add sp, sp, #8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
@@ -47609,9 +47609,9 @@ _0234B508:
 	addeq sp, sp, #8
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	mov r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
@@ -47619,28 +47619,28 @@ _0234B508:
 _0234B530: .word 0x027FFC3C
 _0234B534: .word ov02_0235AB64
 _0234B538: .word 0x00010DCD
-	arm_func_end ov02_0234B464
+	arm_func_end Dwci_Mov_WH_StartMeasureChannel
 
-	arm_func_start ov02_0234B53C
-ov02_0234B53C: ; 0x0234B53C
+	arm_func_start Dwci_Mov_WH_StateInMeasureChannel
+Dwci_Mov_WH_StateInMeasureChannel: ; 0x0234B53C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl WM_GetAllowedChannel
 	cmp r0, #0x8000
 	bne _0234B568
 	mov r0, #3
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	mov r0, #3
 	ldmia sp!, {r4, pc}
 _0234B568:
 	cmp r0, #0
 	bne _0234B588
 	mov r0, #0x16
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	mov r0, #0x18
 	ldmia sp!, {r4, pc}
 _0234B588:
@@ -47659,26 +47659,26 @@ _0234B598:
 	tst r0, r2, lsl r1
 	beq _0234B598
 _0234B5BC:
-	ldr r0, _0234B5D4 ; =ov02_0234B5D8
+	ldr r0, _0234B5D4 ; =Dwci_Mov_WH_StateOutMeasureChannel
 	mov r1, r4
-	bl ov02_0234B6B0
+	bl WHi_MeasureChannel
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0234B5D4: .word ov02_0234B5D8
-	arm_func_end ov02_0234B53C
+_0234B5D4: .word Dwci_Mov_WH_StateOutMeasureChannel
+	arm_func_end Dwci_Mov_WH_StateInMeasureChannel
 
-	arm_func_start ov02_0234B5D8
-ov02_0234B5D8: ; 0x0234B5D8
+	arm_func_start Dwci_Mov_WH_StateOutMeasureChannel
+Dwci_Mov_WH_StateOutMeasureChannel: ; 0x0234B5D8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	beq _0234B5FC
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r4, pc}
 _0234B5FC:
 	ldr r0, _0234B6A8 ; =ov02_0235AB64
@@ -47716,25 +47716,25 @@ _0234B670:
 	add r0, ip, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl ov02_0234B53C
+	bl Dwci_Mov_WH_StateInMeasureChannel
 	cmp r0, #0x18
 	bne _0234B694
 	mov r0, #7
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r4, pc}
 _0234B694:
 	cmp r0, #2
 	ldmeqia sp!, {r4, pc}
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234B6A8: .word ov02_0235AB64
 _0234B6AC: .word ov02_02354340
-	arm_func_end ov02_0234B5D8
+	arm_func_end Dwci_Mov_WH_StateOutMeasureChannel
 
-	arm_func_start ov02_0234B6B0
-ov02_0234B6B0: ; 0x0234B6B0
+	arm_func_start WHi_MeasureChannel
+WHi_MeasureChannel: ; 0x0234B6B0
 	stmdb sp!, {r3, lr}
 	mov r3, r1
 	mov ip, #0x1e
@@ -47743,10 +47743,10 @@ ov02_0234B6B0: ; 0x0234B6B0
 	str ip, [sp]
 	bl WM_MeasureChannel
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234B6B0
+	arm_func_end WHi_MeasureChannel
 
-	arm_func_start ov02_0234B6D0
-ov02_0234B6D0: ; 0x0234B6D0
+	arm_func_start Dwci_Mov_WH_GetMeasureChannel
+Dwci_Mov_WH_GetMeasureChannel: ; 0x0234B6D0
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234B740 ; =ov02_0235AB64
 	ldr r0, [r0, #4]
@@ -47756,11 +47756,11 @@ ov02_0234B6D0: ; 0x0234B6D0
 	bl WaitForever2
 _0234B6EC:
 	mov r0, #1
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldr r0, _0234B740 ; =ov02_0235AB64
 	ldr r0, [r0, #4]
 	ldrh r0, [r0, #0x60]
-	bl ov02_0234B748
+	bl SelectChannel
 	ldr r1, _0234B740 ; =ov02_0235AB64
 	ldr r2, [r1, #4]
 	strh r0, [r2, #0x5c]
@@ -47780,10 +47780,10 @@ _0234B730:
 	.align 2, 0
 _0234B740: .word ov02_0235AB64
 _0234B744: .word ov02_02354358
-	arm_func_end ov02_0234B6D0
+	arm_func_end Dwci_Mov_WH_GetMeasureChannel
 
-	arm_func_start ov02_0234B748
-ov02_0234B748: ; 0x0234B748
+	arm_func_start SelectChannel
+SelectChannel: ; 0x0234B748
 	stmdb sp!, {r4, lr}
 	mov r3, #0
 	mov r1, r3
@@ -47848,10 +47848,10 @@ _0234B804:
 	.align 2, 0
 _0234B828: .word ov02_0235AB64
 _0234B82C: .word 0x00010DCD
-	arm_func_end ov02_0234B748
+	arm_func_end SelectChannel
 
-	arm_func_start ov02_0234B830
-ov02_0234B830: ; 0x0234B830
+	arm_func_start Dwci_Mov_WH_Initialize
+Dwci_Mov_WH_Initialize: ; 0x0234B830
 	stmdb sp!, {r3, lr}
 	ldr r2, _0234B8A4 ; =ov02_0235AB64
 	mov r0, #0
@@ -47876,34 +47876,34 @@ ov02_0234B830: ; 0x0234B830
 	strh r0, [r1, #4]
 	ldr r1, [r2, #4]
 	str r0, [r1, #0x4c]
-	bl ov02_0234B8C8
+	bl Dwci_Mov_WH_StateInInitialize
 	cmp r0, #0
 	moveq r0, #0
 	movne r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B8A4: .word ov02_0235AB64
-	arm_func_end ov02_0234B830
+	arm_func_end Dwci_Mov_WH_Initialize
 
-	arm_func_start ov02_0234B8A8
-ov02_0234B8A8: ; 0x0234B8A8
+	arm_func_start Dwci_Mov_WH_IndicateHandler
+Dwci_Mov_WH_IndicateHandler: ; 0x0234B8A8
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #8
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	bl WaitForever2
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234B8A8
+	arm_func_end Dwci_Mov_WH_IndicateHandler
 
-	arm_func_start ov02_0234B8C8
-ov02_0234B8C8: ; 0x0234B8C8
+	arm_func_start Dwci_Mov_WH_StateInInitialize
+Dwci_Mov_WH_StateInInitialize: ; 0x0234B8C8
 	stmdb sp!, {r3, lr}
 	mov r0, #3
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldr r0, _0234B90C ; =ov02_0235AB64
-	ldr r1, _0234B910 ; =ov02_0234B914
+	ldr r1, _0234B910 ; =Dwci_Mov_WH_StateOutInitialize
 	ldr r0, [r0, #4]
 	mov r2, #2
 	add r0, r0, #0x80
@@ -47911,45 +47911,45 @@ ov02_0234B8C8: ; 0x0234B8C8
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0xa
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B90C: .word ov02_0235AB64
-_0234B910: .word ov02_0234B914
-	arm_func_end ov02_0234B8C8
+_0234B910: .word Dwci_Mov_WH_StateOutInitialize
+	arm_func_end Dwci_Mov_WH_StateInInitialize
 
-	arm_func_start ov02_0234B914
-ov02_0234B914: ; 0x0234B914
+	arm_func_start Dwci_Mov_WH_StateOutInitialize
+Dwci_Mov_WH_StateOutInitialize: ; 0x0234B914
 	stmdb sp!, {r3, lr}
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	beq _0234B934
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0xa
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234B934:
-	ldr r0, _0234B960 ; =ov02_0234B8A8
+	ldr r0, _0234B960 ; =Dwci_Mov_WH_IndicateHandler
 	bl WM_SetIndCallback
 	cmp r0, #0
 	beq _0234B954
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0xa
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234B954:
 	mov r0, #1
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B960: .word ov02_0234B8A8
-	arm_func_end ov02_0234B914
+_0234B960: .word Dwci_Mov_WH_IndicateHandler
+	arm_func_end Dwci_Mov_WH_StateOutInitialize
 
-	arm_func_start ov02_0234B964
-ov02_0234B964: ; 0x0234B964
+	arm_func_start Dwci_Mov_WH_ParentConnect
+Dwci_Mov_WH_ParentConnect: ; 0x0234B964
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r3, _0234BACC ; =ov02_0235AB64
 	mov r6, r0
@@ -47996,7 +47996,7 @@ _0234BA00:
 	mov r0, #3
 	ldr r1, [r1, #4]
 	str r6, [r1, #0x44]
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldr r0, _0234BACC ; =ov02_0235AB64
 	ldr r1, [r0, #4]
 	strh r5, [r1, #0xc]
@@ -48032,7 +48032,7 @@ _0234BA00:
 	strh r4, [r1, #0x14]
 	cmpne r6, #4
 	bne _0234BAA8
-	bl ov02_0234AC6C
+	bl Dwci_Mov_WH_StateInSetParentParam
 	ldmia sp!, {r4, r5, r6, pc}
 _0234BAA8:
 	ldr r3, [r0]
@@ -48050,20 +48050,20 @@ _0234BACC: .word ov02_0235AB64
 _0234BAD0: .word ov02_02354310
 _0234BAD4: .word ov02_02354328
 _0234BAD8: .word ov02_02354370
-	arm_func_end ov02_0234B964
+	arm_func_end Dwci_Mov_WH_ParentConnect
 
-	arm_func_start ov02_0234BADC
-ov02_0234BADC: ; 0x0234BADC
+	arm_func_start Dwci_Mov_WH_SetJudgeAcceptFunc
+Dwci_Mov_WH_SetJudgeAcceptFunc: ; 0x0234BADC
 	ldr r1, _0234BAEC ; =ov02_0235AB64
 	ldr r1, [r1, #4]
 	str r0, [r1, #0x4c]
 	bx lr
 	.align 2, 0
 _0234BAEC: .word ov02_0235AB64
-	arm_func_end ov02_0234BADC
+	arm_func_end Dwci_Mov_WH_SetJudgeAcceptFunc
 
-	arm_func_start ov02_0234BAF0
-ov02_0234BAF0: ; 0x0234BAF0
+	arm_func_start Dwci_Mov_WH_GetSharedDataAdr
+Dwci_Mov_WH_GetSharedDataAdr: ; 0x0234BAF0
 	ldr r1, _0234BB10 ; =ov02_0235AB64
 	ldr ip, _0234BB14 ; =WM_GetSharedDataAddress
 	ldr r1, [r1, #4]
@@ -48075,10 +48075,10 @@ ov02_0234BAF0: ; 0x0234BAF0
 	.align 2, 0
 _0234BB10: .word ov02_0235AB64
 _0234BB14: .word WM_GetSharedDataAddress
-	arm_func_end ov02_0234BAF0
+	arm_func_end Dwci_Mov_WH_GetSharedDataAdr
 
-	arm_func_start ov02_0234BB18
-ov02_0234BB18: ; 0x0234BB18
+	arm_func_start Dwci_Mov_WH_StepDS
+Dwci_Mov_WH_StepDS: ; 0x0234BB18
 	stmdb sp!, {r4, lr}
 	ldr r2, _0234BBB4 ; =ov02_0235AB64
 	mov r1, r0
@@ -48112,35 +48112,35 @@ _0234BB68:
 	blx r2
 _0234BB8C:
 	mov r0, r4
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 _0234BB9C:
 	cmp r4, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
-	bl ov02_0234AC4C
+	bl Dwci_Mov_WH_SetError
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234BBB4: .word ov02_0235AB64
 _0234BBB8: .word ov02_0235438C
 _0234BBBC: .word ov02_023543BC
-	arm_func_end ov02_0234BB18
+	arm_func_end Dwci_Mov_WH_StepDS
 
-	arm_func_start ov02_0234BBC0
-ov02_0234BBC0: ; 0x0234BBC0
+	arm_func_start Dwci_Mov_WH_Reset
+Dwci_Mov_WH_Reset: ; 0x0234BBC0
 	stmdb sp!, {r3, lr}
-	bl ov02_0234B39C
+	bl Dwci_Mov_WH_StateInReset
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0xa
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234BBC0
+	arm_func_end Dwci_Mov_WH_Reset
 
-	arm_func_start ov02_0234BBDC
-ov02_0234BBDC: ; 0x0234BBDC
+	arm_func_start Dwci_Mov_WH_Finalize
+Dwci_Mov_WH_Finalize: ; 0x0234BBDC
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234BCD8 ; =ov02_0235AB64
 	ldr r1, [r0, #4]
@@ -48170,11 +48170,11 @@ _0234BC28:
 	cmpne r0, #4
 	mov r0, #3
 	beq _0234BC54
-	bl ov02_0234ABD0
-	bl ov02_0234BBC0
+	bl Dwci_Mov_WH_ChangeSysState
+	bl Dwci_Mov_WH_Reset
 	ldmia sp!, {r3, pc}
 _0234BC54:
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	ldr r0, _0234BCD8 ; =ov02_0235AB64
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x44]
@@ -48189,37 +48189,37 @@ _0234BC70: ; jump table
 	b _0234BCC4 ; case 4
 	b _0234BC9C ; case 5
 _0234BC88:
-	bl ov02_0234B28C
+	bl Dwci_Mov_WH_StateInEndChildKeyShare
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BBC0
+	bl Dwci_Mov_WH_Reset
 	ldmia sp!, {r3, pc}
 _0234BC9C:
-	bl ov02_0234B2DC
+	bl Dwci_Mov_WH_StateInEndChildMP
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BBC0
+	bl Dwci_Mov_WH_Reset
 	ldmia sp!, {r3, pc}
 _0234BCB0:
-	bl ov02_0234B18C
+	bl Dwci_Mov_WH_StateInEndParentKeyShare
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BBC0
+	bl Dwci_Mov_WH_Reset
 	ldmia sp!, {r3, pc}
 _0234BCC4:
-	bl ov02_0234B1BC
+	bl Dwci_Mov_WH_StateInEndParentMP
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BBC0
+	bl Dwci_Mov_WH_Reset
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234BCD8: .word ov02_0235AB64
 _0234BCDC: .word ov02_023543F0
 _0234BCE0: .word ov02_02354414
-	arm_func_end ov02_0234BBDC
+	arm_func_end Dwci_Mov_WH_Finalize
 
-	arm_func_start ov02_0234BCE4
-ov02_0234BCE4: ; 0x0234BCE4
+	arm_func_start Dwci_Mov_WH_End
+Dwci_Mov_WH_End: ; 0x0234BCE4
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234BD2C ; =ov02_0235AB64
 	ldr r0, [r0, #4]
@@ -48229,29 +48229,29 @@ ov02_0234BCE4: ; 0x0234BCE4
 	bl WaitForever2
 _0234BD00:
 	mov r0, #3
-	bl ov02_0234ABD0
-	ldr r0, _0234BD30 ; =ov02_0234B400
+	bl Dwci_Mov_WH_ChangeSysState
+	ldr r0, _0234BD30 ; =Dwci_Mov_WH_StateOutEnd
 	bl WM_End
 	cmp r0, #2
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
 	mov r0, #9
-	bl ov02_0234ABD0
+	bl Dwci_Mov_WH_ChangeSysState
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234BD2C: .word ov02_0235AB64
-_0234BD30: .word ov02_0234B400
-	arm_func_end ov02_0234BCE4
+_0234BD30: .word Dwci_Mov_WH_StateOutEnd
+	arm_func_end Dwci_Mov_WH_End
 
-	arm_func_start ov02_0234BD34
-ov02_0234BD34: ; 0x0234BD34
+	arm_func_start Dwci_MovInit
+Dwci_MovInit: ; 0x0234BD34
 	stmdb sp!, {r4, lr}
 	ldr r2, _0234BE20 ; =ov02_0235AB6C
 	mov r4, r1
 	str r0, [r2]
 	add r0, r0, #0xb00
-	bl ov02_02349EFC
+	bl Dwci_Mov_Mbp_MemInit
 	ldr r1, _0234BE20 ; =ov02_0235AB6C
 	mov r3, #0
 	ldr r0, [r1]
@@ -48267,7 +48267,7 @@ ov02_0234BD34: ; 0x0234BD34
 	strb r2, [r0, #0xa91]
 	ldr r0, [r1]
 	str r3, [r0, #0xa9c]
-	bl ov02_0234C8E4
+	bl Parent_InitDataShare
 	ldr r0, _0234BE20 ; =ov02_0235AB6C
 	ldr r3, [r4]
 	ldr r2, [r0]
@@ -48300,17 +48300,17 @@ ov02_0234BD34: ; 0x0234BD34
 	add r0, r0, #0x400
 	bl Dwci_BackuplRead
 	bl OS_GetTick
-	bl ov02_02347D1C
+	bl Dwci_SettinglGetMemMap
 	ldr r1, _0234BE20 ; =ov02_0235AB6C
 	ldr r1, [r1]
 	str r0, [r1, #0xaa4]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234BE20: .word ov02_0235AB6C
-	arm_func_end ov02_0234BD34
+	arm_func_end Dwci_MovInit
 
-	arm_func_start ov02_0234BE24
-ov02_0234BE24: ; 0x0234BE24
+	arm_func_start Dwci_MovFinalize
+Dwci_MovFinalize: ; 0x0234BE24
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234BEFC ; =ov02_0235AB6C
 	ldr r2, [r0]
@@ -48342,7 +48342,7 @@ _0234BE6C:
 	movlo r0, #0
 	ldmloia sp!, {r3, pc}
 _0234BE98:
-	bl ov00_022C759C
+	bl MB_EndToIdle
 	ldr r0, _0234BEFC ; =ov02_0235AB6C
 	mov r3, #0x10
 	ldr r1, [r0]
@@ -48371,15 +48371,15 @@ _0234BEE0:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234BEFC: .word ov02_0235AB6C
-	arm_func_end ov02_0234BE24
+	arm_func_end Dwci_MovFinalize
 
-	arm_func_start ov02_0234BF00
-ov02_0234BF00: ; 0x0234BF00
+	arm_func_start Dwci_MovPrepare
+Dwci_MovPrepare: ; 0x0234BF00
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234BF7C ; =ov02_0235AB6C
 	ldr r0, [r0]
 	ldr r0, [r0, #0xac8]
-	bl ov02_0234B428
+	bl Dwci_Mov_WH_SetGgid
 	ldr r0, _0234BF7C ; =ov02_0235AB6C
 	mov r1, #1
 	ldr r0, [r0]
@@ -48408,10 +48408,10 @@ ov02_0234BF00: ; 0x0234BF00
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234BF7C: .word ov02_0235AB6C
-	arm_func_end ov02_0234BF00
+	arm_func_end Dwci_MovPrepare
 
-	arm_func_start ov02_0234BF80
-ov02_0234BF80: ; 0x0234BF80
+	arm_func_start Dwci_MovStartAdmitChild
+Dwci_MovStartAdmitChild: ; 0x0234BF80
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234BFC4 ; =ov02_0235AB6C
 	ldr r0, [r0]
@@ -48421,8 +48421,8 @@ ov02_0234BF80: ; 0x0234BF80
 	cmpne r0, #0x1d
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BF00
-	bl ov02_0234B830
+	bl Dwci_MovPrepare
+	bl Dwci_Mov_WH_Initialize
 	ldr r0, _0234BFC4 ; =ov02_0235AB6C
 	mov r2, #2
 	ldr r1, [r0]
@@ -48431,10 +48431,10 @@ ov02_0234BF80: ; 0x0234BF80
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234BFC4: .word ov02_0235AB6C
-	arm_func_end ov02_0234BF80
+	arm_func_end Dwci_MovStartAdmitChild
 
-	arm_func_start ov02_0234BFC8
-ov02_0234BFC8: ; 0x0234BFC8
+	arm_func_start Dwci_MovStartDownloadandBootChild
+Dwci_MovStartDownloadandBootChild: ; 0x0234BFC8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234BFF8 ; =ov02_0235AB6C
 	ldr r1, [r0]
@@ -48444,15 +48444,15 @@ ov02_0234BFC8: ; 0x0234BFC8
 	ldmneia sp!, {r3, pc}
 	mov r0, #6
 	strb r0, [r1, #0xa90]
-	bl ov02_0234A3C8
+	bl Dwci_Mov_Mbp_StartDownloadAll
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234BFF8: .word ov02_0235AB6C
-	arm_func_end ov02_0234BFC8
+	arm_func_end Dwci_MovStartDownloadandBootChild
 
-	arm_func_start ov02_0234BFFC
-ov02_0234BFFC: ; 0x0234BFFC
+	arm_func_start Dwci_MovFramework
+Dwci_MovFramework: ; 0x0234BFFC
 	stmdb sp!, {r3, lr}
 	ldr r1, _0234C378 ; =ov02_0235AB6C
 	ldr r0, [r1]
@@ -48502,7 +48502,7 @@ _0234C0A4:
 	bne _0234C0C0
 	mov r1, #0
 	strb r1, [r0, #0xaac]
-	bl ov02_0234BF80
+	bl Dwci_MovStartAdmitChild
 	ldmia sp!, {r3, pc}
 _0234C0C0:
 	cmp r2, #2
@@ -48514,10 +48514,10 @@ _0234C0C0:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C0E0:
-	bl ov02_0234C3D4
+	bl Dwci_MovSearchChannel
 	ldmia sp!, {r3, pc}
 _0234C0E8:
-	bl ov02_0234C47C
+	bl Dwci_MovStartWaitChild
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r1, #4
 	ldr r0, [r0]
@@ -48527,19 +48527,19 @@ _0234C100:
 	ldr r1, [r0, #0xa98]
 	add r1, r1, #1
 	str r1, [r0, #0xa98]
-	bl ov02_0234C4A0
+	bl Dwci_Mov_WaitandDownloadandBoot_Child
 	ldmia sp!, {r3, pc}
 _0234C114:
-	bl ov02_0234C4A0
+	bl Dwci_Mov_WaitandDownloadandBoot_Child
 	ldmia sp!, {r3, pc}
 _0234C11C:
-	bl ov02_0234C658
+	bl Dwci_Mov_ReadyMovUserID
 	ldmia sp!, {r3, pc}
 _0234C124:
-	bl ov02_0234C684
+	bl Dwci_Mov_MovUserID
 	ldmia sp!, {r3, pc}
 _0234C12C:
-	bl ov02_0234C860
+	bl Dwci_Mov_EraseFlashData
 	ldmia sp!, {r3, pc}
 _0234C134:
 	mov r2, #0
@@ -48554,10 +48554,10 @@ _0234C14C:
 	str r1, [r0, #0xa9c]
 	cmp r2, #0x1e
 	ldmlsia sp!, {r3, pc}
-	bl ov02_0234C878
+	bl Dwci_MovEnd
 	ldmia sp!, {r3, pc}
 _0234C168:
-	bl ov00_022C759C
+	bl MB_EndToIdle
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r3, #0
 	ldr r2, [r0]
@@ -48572,17 +48572,17 @@ _0234C18C:
 	str r1, [r0, #0xa9c]
 	cmp r2, #0x1e
 	ldmlsia sp!, {r3, pc}
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #1
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BCE4
+	bl Dwci_Mov_WH_End
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r1, #0x14
 	ldr r0, [r0]
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C1C4:
-	bl ov02_0234BBDC
+	bl Dwci_Mov_WH_Finalize
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r3, #0
 	ldr r2, [r0]
@@ -48597,17 +48597,17 @@ _0234C1E8:
 	str r1, [r0, #0xa9c]
 	cmp r2, #0x1e
 	ldmlsia sp!, {r3, pc}
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #1
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BCE4
+	bl Dwci_Mov_WH_End
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r1, #0x17
 	ldr r0, [r0]
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C220:
-	bl ov02_0234BBDC
+	bl Dwci_Mov_WH_Finalize
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r3, #0
 	ldr r2, [r0]
@@ -48622,17 +48622,17 @@ _0234C244:
 	str r1, [r0, #0xa9c]
 	cmp r2, #0x1e
 	ldmlsia sp!, {r3, pc}
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #1
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BCE4
+	bl Dwci_Mov_WH_End
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r1, #0x1a
 	ldr r0, [r0]
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C27C:
-	bl ov02_0234BBDC
+	bl Dwci_Mov_WH_Finalize
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r3, #0
 	ldr r2, [r0]
@@ -48647,10 +48647,10 @@ _0234C2A0:
 	str r1, [r0, #0xa9c]
 	cmp r2, #0x1e
 	ldmlsia sp!, {r3, pc}
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #1
 	bne _0234C2D8
-	bl ov02_0234BCE4
+	bl Dwci_Mov_WH_End
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r1, #0x1d
 	ldr r0, [r0]
@@ -48670,10 +48670,10 @@ _0234C2D8:
 	ldmneia sp!, {r3, pc}
 	cmp r3, #0x37
 	ldmlsia sp!, {r3, pc}
-	bl ov02_0234BBDC
+	bl Dwci_Mov_WH_Finalize
 	ldmia sp!, {r3, pc}
 _0234C314:
-	bl ov02_0234BBDC
+	bl Dwci_Mov_WH_Finalize
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r3, #0
 	ldr r2, [r0]
@@ -48688,25 +48688,25 @@ _0234C338:
 	str r1, [r0, #0xa9c]
 	cmp r2, #0x1e
 	ldmlsia sp!, {r3, pc}
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #1
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BCE4
+	bl Dwci_Mov_WH_End
 	ldr r0, _0234C378 ; =ov02_0235AB6C
 	mov r1, #0x22
 	ldr r0, [r0]
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C370:
-	bl ov02_0234BBDC
+	bl Dwci_Mov_WH_Finalize
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234C378: .word ov02_0235AB6C
 _0234C37C: .word 0x88888889
-	arm_func_end ov02_0234BFFC
+	arm_func_end Dwci_MovFramework
 
-	arm_func_start ov02_0234C380
-ov02_0234C380: ; 0x0234C380
+	arm_func_start Dwci_MovGetStatus
+Dwci_MovGetStatus: ; 0x0234C380
 	ldr r2, _0234C3C0 ; =ov02_0235AB6C
 	ldr r3, [r2]
 	ldrb r3, [r3, #0xa90]
@@ -48725,21 +48725,21 @@ ov02_0234C380: ; 0x0234C380
 	bx lr
 	.align 2, 0
 _0234C3C0: .word ov02_0235AB6C
-	arm_func_end ov02_0234C380
+	arm_func_end Dwci_MovGetStatus
 
-	arm_func_start ov02_0234C3C4
-ov02_0234C3C4: ; 0x0234C3C4
-	ldr ip, _0234C3D0 ; =ov00_022C32E4
+	arm_func_start Dwci_GetChildInfo
+Dwci_GetChildInfo: ; 0x0234C3C4
+	ldr ip, _0234C3D0 ; =MB_CommGetChildUser
 	mov r0, #1
 	bx ip
 	.align 2, 0
-_0234C3D0: .word ov00_022C32E4
-	arm_func_end ov02_0234C3C4
+_0234C3D0: .word MB_CommGetChildUser
+	arm_func_end Dwci_GetChildInfo
 
-	arm_func_start ov02_0234C3D4
-ov02_0234C3D4: ; 0x0234C3D4
+	arm_func_start Dwci_MovSearchChannel
+Dwci_MovSearchChannel: ; 0x0234C3D4
 	stmdb sp!, {r3, lr}
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #9
 	addls pc, pc, r0, lsl #2
 	b _0234C470
@@ -48755,10 +48755,10 @@ _0234C3E8: ; jump table
 	b _0234C470 ; case 8
 	b _0234C468 ; case 9
 _0234C410:
-	bl ov02_0234B464
+	bl Dwci_Mov_WH_StartMeasureChannel
 	ldmia sp!, {r3, pc}
 _0234C418:
-	bl ov02_0234B6D0
+	bl Dwci_Mov_WH_GetMeasureChannel
 	ldr r2, _0234C478 ; =ov02_0235AB6C
 	mov ip, #0
 	ldr r1, [r2]
@@ -48780,19 +48780,19 @@ _0234C448:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C468:
-	bl ov02_0234BBC0
+	bl Dwci_Mov_WH_Reset
 	ldmia sp!, {r3, pc}
 _0234C470:
 	bl WaitForever2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234C478: .word ov02_0235AB6C
-	arm_func_end ov02_0234C3D4
+	arm_func_end Dwci_MovSearchChannel
 
-	arm_func_start ov02_0234C47C
-ov02_0234C47C: ; 0x0234C47C
+	arm_func_start Dwci_MovStartWaitChild
+Dwci_MovStartWaitChild: ; 0x0234C47C
 	ldr r0, _0234C498 ; =ov02_0235AB6C
-	ldr ip, _0234C49C ; =ov02_02349F3C
+	ldr ip, _0234C49C ; =Dwci_Mov_Mbp_Init
 	ldr r2, [r0]
 	add r0, r2, #0x600
 	ldrh r1, [r0, #0x48]
@@ -48800,13 +48800,13 @@ ov02_0234C47C: ; 0x0234C47C
 	bx ip
 	.align 2, 0
 _0234C498: .word ov02_0235AB6C
-_0234C49C: .word ov02_02349F3C
-	arm_func_end ov02_0234C47C
+_0234C49C: .word Dwci_Mov_Mbp_Init
+	arm_func_end Dwci_MovStartWaitChild
 
-	arm_func_start ov02_0234C4A0
-ov02_0234C4A0: ; 0x0234C4A0
+	arm_func_start Dwci_Mov_WaitandDownloadandBoot_Child
+Dwci_Mov_WaitandDownloadandBoot_Child: ; 0x0234C4A0
 	stmdb sp!, {r3, lr}
-	bl ov02_0234A984
+	bl Dwci_Mov_Mbp_GetState
 	cmp r0, #7
 	addls pc, pc, r0, lsl #2
 	ldmia sp!, {r3, pc}
@@ -48826,11 +48826,11 @@ _0234C4D4:
 	ldrh r1, [r0, #0x4a]
 	add r0, r2, #0x2b4
 	add r0, r0, #0x800
-	bl ov02_0234A05C
+	bl Dwci_Mov_Mbp_Start
 	ldmia sp!, {r3, pc}
 _0234C4F4:
 	mov r0, #2
-	bl ov02_0234A998
+	bl Dwci_Mov_Mbp_GetChildBmp
 	cmp r0, #0
 	beq _0234C518
 	ldr r0, _0234C654 ; =ov02_0235AB6C
@@ -48840,11 +48840,11 @@ _0234C4F4:
 	ldmia sp!, {r3, pc}
 _0234C518:
 	mov r0, #3
-	bl ov02_0234A998
+	bl Dwci_Mov_Mbp_GetChildBmp
 	cmp r0, #0
 	bne _0234C538
 	mov r0, #4
-	bl ov02_0234A998
+	bl Dwci_Mov_Mbp_GetChildBmp
 	cmp r0, #0
 	beq _0234C54C
 _0234C538:
@@ -48860,7 +48860,7 @@ _0234C54C:
 	cmp r0, #5
 	ldmneia sp!, {r3, pc}
 	mov r0, #2
-	bl ov02_0234A998
+	bl Dwci_Mov_Mbp_GetChildBmp
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0234C654 ; =ov02_0235AB6C
@@ -48869,10 +48869,10 @@ _0234C54C:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C584:
-	bl ov02_0234A4A8
+	bl Dwci_Mov_Mbp_IsBootableAll
 	cmp r0, #0
 	beq _0234C598
-	bl ov02_0234A510
+	bl Dwci_Mov_Mbp_StartRebootAll
 	ldmia sp!, {r3, pc}
 _0234C598:
 	ldr r0, _0234C654 ; =ov02_0235AB6C
@@ -48883,7 +48883,7 @@ _0234C598:
 	cmp r0, #1
 	ldmhiia sp!, {r3, pc}
 	mov r0, #3
-	bl ov02_0234A998
+	bl Dwci_Mov_Mbp_GetChildBmp
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0234C654 ; =ov02_0235AB6C
@@ -48898,14 +48898,14 @@ _0234C5D8:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C5EC:
-	bl ov02_0234A608
+	bl Dwci_Mov_Mbp_Cancel
 	ldr r0, _0234C654 ; =ov02_0235AB6C
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C604:
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #0
 	beq _0234C62C
 	cmp r0, #1
@@ -48914,7 +48914,7 @@ _0234C604:
 	ldmeqia sp!, {r3, pc}
 	b _0234C640
 _0234C624:
-	bl ov02_0234BCE4
+	bl Dwci_Mov_WH_End
 	ldmia sp!, {r3, pc}
 _0234C62C:
 	ldr r0, _0234C654 ; =ov02_0235AB6C
@@ -48930,28 +48930,28 @@ _0234C640:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234C654: .word ov02_0235AB6C
-	arm_func_end ov02_0234C4A0
+	arm_func_end Dwci_Mov_WaitandDownloadandBoot_Child
 
-	arm_func_start ov02_0234C658
-ov02_0234C658: ; 0x0234C658
+	arm_func_start Dwci_Mov_ReadyMovUserID
+Dwci_Mov_ReadyMovUserID: ; 0x0234C658
 	stmdb sp!, {r3, lr}
-	bl ov02_0234C8E4
-	ldr r0, _0234C67C ; =ov02_0234C8A8
-	bl ov02_0234BADC
+	bl Parent_InitDataShare
+	ldr r0, _0234C67C ; =JudgeConnectableChild
+	bl Dwci_Mov_WH_SetJudgeAcceptFunc
 	ldr r0, _0234C680 ; =ov02_0235AB6C
 	mov r1, #8
 	ldr r0, [r0]
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234C67C: .word ov02_0234C8A8
+_0234C67C: .word JudgeConnectableChild
 _0234C680: .word ov02_0235AB6C
-	arm_func_end ov02_0234C658
+	arm_func_end Dwci_Mov_ReadyMovUserID
 
-	arm_func_start ov02_0234C684
-ov02_0234C684: ; 0x0234C684
+	arm_func_start Dwci_Mov_MovUserID
+Dwci_Mov_MovUserID: ; 0x0234C684
 	stmdb sp!, {r3, lr}
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	ldmia sp!, {r3, pc}
@@ -48973,7 +48973,7 @@ _0234C6B4:
 	add r1, r3, #1
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
-	bl ov02_0234B964
+	bl Dwci_Mov_WH_ParentConnect
 	ldmia sp!, {r3, pc}
 _0234C6E0:
 	ldr r1, _0234C85C ; =ov02_0235AB6C
@@ -48986,8 +48986,8 @@ _0234C6E0:
 	rsb r2, r3, r1, lsl #28
 	add r2, r3, r2, ror #28
 	add r2, ip, r2, lsl #6
-	bl ov02_0234C928
-	bl ov02_0234CA90
+	bl Parent_StepDataShare
+	bl Parent_Data_Receive_Progress
 	ldr r0, _0234C85C ; =ov02_0235AB6C
 	ldr r1, [r0]
 	ldrb r0, [r1, #0xa90]
@@ -48998,21 +48998,21 @@ _0234C6E0:
 	movhi r0, #0x1b
 	strhib r0, [r1, #0xa90]
 	ldmhiia sp!, {r3, pc}
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	cmp r0, #0x10
 	beq _0234C750
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	cmp r0, #0x20
 	bne _0234C768
 _0234C750:
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	ldr r0, _0234C85C ; =ov02_0235AB6C
 	mov r1, #0xa
 	ldr r0, [r0]
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C768:
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	cmp r0, #0x40
 	bne _0234C788
 	ldr r0, _0234C85C ; =ov02_0235AB6C
@@ -49021,7 +49021,7 @@ _0234C768:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C788:
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	cmp r0, #0xff
 	bne _0234C7A8
 	ldr r0, _0234C85C ; =ov02_0235AB6C
@@ -49030,7 +49030,7 @@ _0234C788:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C7A8:
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	cmp r0, #0x50
 	bne _0234C7C8
 	ldr r0, _0234C85C ; =ov02_0235AB6C
@@ -49039,7 +49039,7 @@ _0234C7A8:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C7C8:
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	cmp r0, #0x60
 	bne _0234C7E8
 	ldr r0, _0234C85C ; =ov02_0235AB6C
@@ -49048,7 +49048,7 @@ _0234C7C8:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C7E8:
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	cmp r0, #0x70
 	bne _0234C808
 	ldr r0, _0234C85C ; =ov02_0235AB6C
@@ -49057,7 +49057,7 @@ _0234C7E8:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C808:
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	cmp r0, #0
 	bne _0234C828
 	ldr r0, _0234C85C ; =ov02_0235AB6C
@@ -49066,7 +49066,7 @@ _0234C808:
 	strb r1, [r0, #0xa90]
 	ldmia sp!, {r3, pc}
 _0234C828:
-	bl ov02_0234CB74
+	bl Parent_Get_Child_Data_Kind
 	cmp r0, #0xbd
 	bne _0234C848
 	ldr r0, _0234C85C ; =ov02_0235AB6C
@@ -49082,10 +49082,10 @@ _0234C848:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234C85C: .word ov02_0235AB6C
-	arm_func_end ov02_0234C684
+	arm_func_end Dwci_Mov_MovUserID
 
-	arm_func_start ov02_0234C860
-ov02_0234C860: ; 0x0234C860
+	arm_func_start Dwci_Mov_EraseFlashData
+Dwci_Mov_EraseFlashData: ; 0x0234C860
 	ldr r0, _0234C874 ; =ov02_0235AB6C
 	mov r1, #0xc
 	ldr r0, [r0]
@@ -49093,16 +49093,16 @@ ov02_0234C860: ; 0x0234C860
 	bx lr
 	.align 2, 0
 _0234C874: .word ov02_0235AB6C
-	arm_func_end ov02_0234C860
+	arm_func_end Dwci_Mov_EraseFlashData
 
-	arm_func_start ov02_0234C878
-ov02_0234C878: ; 0x0234C878
+	arm_func_start Dwci_MovEnd
+Dwci_MovEnd: ; 0x0234C878
 	stmdb sp!, {r3, lr}
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #1
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov02_0234BCE4
+	bl Dwci_Mov_WH_End
 	ldr r1, _0234C8A4 ; =ov02_0235AB6C
 	mov r0, #1
 	ldr r1, [r1]
@@ -49110,17 +49110,17 @@ ov02_0234C878: ; 0x0234C878
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234C8A4: .word ov02_0235AB6C
-	arm_func_end ov02_0234C878
+	arm_func_end Dwci_MovEnd
 
-	arm_func_start ov02_0234C8A8
-ov02_0234C8A8: ; 0x0234C8A8
+	arm_func_start JudgeConnectableChild
+JudgeConnectableChild: ; 0x0234C8A8
 	stmdb sp!, {r4, lr}
 	add r0, r0, #0xa
-	bl ov02_0234AAEC
+	bl Dwci_Mov_Mbp_GetPlayerNo
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov02_0234AAB8
+	bl Dwci_Mov_Mbp_GetChildInfo
 	ldr r1, _0234C8E0 ; =ov02_0235AB6C
 	sub r2, r4, #1
 	ldr r1, [r1]
@@ -49130,10 +49130,10 @@ ov02_0234C8A8: ; 0x0234C8A8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234C8E0: .word ov02_0235AB6C
-	arm_func_end ov02_0234C8A8
+	arm_func_end JudgeConnectableChild
 
-	arm_func_start ov02_0234C8E4
-ov02_0234C8E4: ; 0x0234C8E4
+	arm_func_start Parent_InitDataShare
+Parent_InitDataShare: ; 0x0234C8E4
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234C924 ; =ov02_0235AB6C
 	mov r1, #0
@@ -49152,10 +49152,10 @@ ov02_0234C8E4: ; 0x0234C8E4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234C924: .word ov02_0235AB6C
-	arm_func_end ov02_0234C8E4
+	arm_func_end Parent_InitDataShare
 
-	arm_func_start ov02_0234C928
-ov02_0234C928: ; 0x0234C928
+	arm_func_start Parent_StepDataShare
+Parent_StepDataShare: ; 0x0234C928
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r3, _0234CA8C ; =ov02_0235AB6C
 	ldr r5, [r3]
@@ -49187,12 +49187,12 @@ _0234C970:
 	ldr r0, [r0, #0xab0]
 	strb r1, [r0, #4]
 _0234C99C:
-	bl ov02_0234B450
+	bl Dwci_Mov_WH_GetSystemState
 	cmp r0, #5
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldr r0, _0234CA8C ; =ov02_0235AB6C
 	ldr r0, [r0]
-	bl ov02_0234BB18
+	bl Dwci_Mov_WH_StepDS
 	cmp r0, #0
 	bne _0234C9D4
 	ldr r0, _0234CA8C ; =ov02_0235AB6C
@@ -49214,7 +49214,7 @@ _0234C9D4:
 _0234C9F8:
 	mov r0, #0
 	str r0, [r1, #0x204]
-	bl ov02_0234B43C
+	bl Dwci_Mov_WH_GetBitmap
 	cmp r0, #3
 	beq _0234CA20
 	ldr r0, _0234CA8C ; =ov02_0235AB6C
@@ -49231,7 +49231,7 @@ _0234CA20:
 	mov r8, r6
 _0234CA38:
 	mov r0, r7
-	bl ov02_0234BAF0
+	bl Dwci_Mov_WH_GetSharedDataAdr
 	cmp r0, #0
 	ldreq r0, [sb]
 	addeq r0, r0, r7, lsl #2
@@ -49254,10 +49254,10 @@ _0234CA74:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0234CA8C: .word ov02_0235AB6C
-	arm_func_end ov02_0234C928
+	arm_func_end Parent_StepDataShare
 
-	arm_func_start ov02_0234CA90
-ov02_0234CA90: ; 0x0234CA90
+	arm_func_start Parent_Data_Receive_Progress
+Parent_Data_Receive_Progress: ; 0x0234CA90
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov ip, #0
 	ldr r4, _0234CB70 ; =ov02_0235AB6C
@@ -49319,10 +49319,10 @@ _0234CB60:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0234CB70: .word ov02_0235AB6C
-	arm_func_end ov02_0234CA90
+	arm_func_end Parent_Data_Receive_Progress
 
-	arm_func_start ov02_0234CB74
-ov02_0234CB74: ; 0x0234CB74
+	arm_func_start Parent_Get_Child_Data_Kind
+Parent_Get_Child_Data_Kind: ; 0x0234CB74
 	ldr r0, _0234CB88 ; =ov02_0235AB6C
 	ldr r0, [r0]
 	add r0, r0, #0x100
@@ -49330,15 +49330,15 @@ ov02_0234CB74: ; 0x0234CB74
 	bx lr
 	.align 2, 0
 _0234CB88: .word ov02_0235AB6C
-	arm_func_end ov02_0234CB74
+	arm_func_end Parent_Get_Child_Data_Kind
 
-	arm_func_start ov02_0234CB8C
-ov02_0234CB8C: ; 0x0234CB8C
+	arm_func_start Dwci_ArclInit
+Dwci_ArclInit: ; 0x0234CB8C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0xe8
 	mov r0, #0xe8
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _0234CD1C ; =ov02_0235AB70
 	str r0, [r1]
 	add r0, sp, #0xa0
@@ -49380,16 +49380,16 @@ _0234CBC8:
 	bl WaitForever2
 _0234CC38:
 	ldr r0, _0234CD1C ; =ov02_0235AB70
-	ldr r1, _0234CD28 ; =ov02_0234CDC8
+	ldr r1, _0234CD28 ; =UserProc
 	ldr r0, [r0]
 	ldr r2, _0234CD2C ; =0x00000602
 	add r0, r0, #0x88
 	bl FS_SetArchiveProc
 	ldr r0, [sp, #0x18]
-	ldr r1, _0234CD30 ; =ov02_0234CE2C
+	ldr r1, _0234CD30 ; =CbRead
 	str r0, [sp]
 	ldr r2, [sp, #0x1c]
-	ldr r0, _0234CD34 ; =ov02_0234CE7C
+	ldr r0, _0234CD34 ; =CbWrite
 	str r2, [sp, #4]
 	str r1, [sp, #8]
 	str r0, [sp, #0xc]
@@ -49412,7 +49412,7 @@ _0234CC98:
 	bl FS_LoadArchiveTables
 	mov r1, #4
 	mov r4, r0
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _0234CD1C ; =ov02_0235AB70
 	mov r2, r4
 	ldr r3, [r1]
@@ -49425,7 +49425,7 @@ _0234CC98:
 	ldr r1, [r1]
 	mov r2, #4
 	add r1, r1, #4
-	bl ov02_0234D754
+	bl Dwci_QuelFormEx
 	ldr r2, _0234CD1C ; =ov02_0235AB70
 	ldr r1, _0234CD38 ; =ov02_02354450
 	ldr r3, [r2]
@@ -49441,15 +49441,15 @@ _0234CC98:
 _0234CD1C: .word ov02_0235AB70
 _0234CD20: .word ov02_02354438
 _0234CD24: .word ov02_02352F18
-_0234CD28: .word ov02_0234CDC8
+_0234CD28: .word UserProc
 _0234CD2C: .word 0x00000602
-_0234CD30: .word ov02_0234CE2C
-_0234CD34: .word ov02_0234CE7C
+_0234CD30: .word CbRead
+_0234CD34: .word CbWrite
 _0234CD38: .word ov02_02354450
-	arm_func_end ov02_0234CB8C
+	arm_func_end Dwci_ArclInit
 
-	arm_func_start ov02_0234CD3C
-ov02_0234CD3C: ; 0x0234CD3C
+	arm_func_start Dwci_ArclEnd
+Dwci_ArclEnd: ; 0x0234CD3C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234CDBC ; =ov02_02354458
 	bl FS_ChangeDir
@@ -49474,22 +49474,22 @@ ov02_0234CD3C: ; 0x0234CD3C
 	ldr r1, [r0]
 	strh r2, [r1, #0xe4]
 	ldr r0, [r0]
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldr r1, _0234CDC0 ; =ov02_0235AB70
 	ldr r0, _0234CDC4 ; =ov02_0235AB70
 	ldr r1, [r1]
 	mov r2, #0
 	str r2, [r1]
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234CDBC: .word ov02_02354458
 _0234CDC0: .word ov02_0235AB70
 _0234CDC4: .word ov02_0235AB70
-	arm_func_end ov02_0234CD3C
+	arm_func_end Dwci_ArclEnd
 
-	arm_func_start ov02_0234CDC8
-ov02_0234CDC8: ; 0x0234CDC8
+	arm_func_start UserProc
+UserProc: ; 0x0234CDC8
 	stmdb sp!, {r3, lr}
 	cmp r1, #1
 	beq _0234CE18
@@ -49520,13 +49520,13 @@ _0234CE20:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234CE28: .word ov02_0235AB70
-	arm_func_end ov02_0234CDC8
+	arm_func_end UserProc
 
-	arm_func_start ov02_0234CE2C
-ov02_0234CE2C: ; 0x0234CE2C
+	arm_func_start CbRead
+CbRead: ; 0x0234CE2C
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
-	ldr ip, _0234CE68 ; =ov02_0234CE6C
+	ldr ip, _0234CE68 ; =CbReadRom
 	mov lr, r1
 	str ip, [sp]
 	mov ip, #1
@@ -49540,26 +49540,26 @@ ov02_0234CE2C: ; 0x0234CE2C
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
 	.align 2, 0
-_0234CE68: .word ov02_0234CE6C
-	arm_func_end ov02_0234CE2C
+_0234CE68: .word CbReadRom
+	arm_func_end CbRead
 
-	arm_func_start ov02_0234CE6C
-ov02_0234CE6C: ; 0x0234CE6C
+	arm_func_start CbReadRom
+CbReadRom: ; 0x0234CE6C
 	ldr ip, _0234CE78 ; =FS_NotifyArchiveAsyncEnd
 	mov r1, #0
 	bx ip
 	.align 2, 0
 _0234CE78: .word FS_NotifyArchiveAsyncEnd
-	arm_func_end ov02_0234CE6C
+	arm_func_end CbReadRom
 
-	arm_func_start ov02_0234CE7C
-ov02_0234CE7C: ; 0x0234CE7C
+	arm_func_start CbWrite
+CbWrite: ; 0x0234CE7C
 	mov r0, #1
 	bx lr
-	arm_func_end ov02_0234CE7C
+	arm_func_end CbWrite
 
-	arm_func_start ov02_0234CE84
-ov02_0234CE84: ; 0x0234CE84
+	arm_func_start Dwci_ArclReadEx
+Dwci_ArclReadEx: ; 0x0234CE84
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x4c
 	ldr r3, _0234CF70 ; =ov02_0235AB70
@@ -49568,7 +49568,7 @@ ov02_0234CE84: ; 0x0234CE84
 	mov r5, r1
 	ldr r0, [r0, #0x84]
 	mov r4, r2
-	bl ov02_0234D808
+	bl Dwci_QuelPopBack
 	add r0, sp, #4
 	bl FileInit
 	add r0, sp, #4
@@ -49586,13 +49586,13 @@ _0234CEC8:
 	ldr r1, _0234CF74 ; =ov02_02354460
 	mov r0, r6
 	strne r7, [r5]
-	bl ov02_0234CFAC
+	bl CmpBack
 	cmp r0, #0
 	mvnne r6, #3
 	moveq r6, r4
 	mov r0, r7
 	mov r1, r6
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	mov r1, r0
 	add r0, sp, #4
 	mov r2, r7
@@ -49610,41 +49610,41 @@ _0234CEC8:
 	mov r1, r4
 	mov r0, r0, lsr #8
 	strne r0, [r5]
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	mov r4, r0
 	ldr r0, [sp]
 	mov r1, r4
 	bl MI_UncompressLZ8
 	add r0, sp, #0
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	mov r0, r4
 	add sp, sp, #0x4c
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _0234CF70: .word ov02_0235AB70
 _0234CF74: .word ov02_02354460
-	arm_func_end ov02_0234CE84
+	arm_func_end Dwci_ArclReadEx
 
-	arm_func_start ov02_0234CF78
-ov02_0234CF78: ; 0x0234CF78
+	arm_func_start Dwci_ArclRelease
+Dwci_ArclRelease: ; 0x0234CF78
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r0, sp, #8
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldr r0, _0234CFA8 ; =ov02_0235AB70
 	ldr r1, [sp, #8]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x84]
-	bl ov02_0234D7B0
+	bl Dwci_QuelPushBack
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
 _0234CFA8: .word ov02_0235AB70
-	arm_func_end ov02_0234CF78
+	arm_func_end Dwci_ArclRelease
 
-	arm_func_start ov02_0234CFAC
-ov02_0234CFAC: ; 0x0234CFAC
+	arm_func_start CmpBack
+CmpBack: ; 0x0234CFAC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
@@ -49667,14 +49667,14 @@ ov02_0234CFAC: ; 0x0234CFAC
 	moveq r0, #1
 	movne r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov02_0234CFAC
+	arm_func_end CmpBack
 
-	arm_func_start ov02_0234D004
-ov02_0234D004: ; 0x0234D004
+	arm_func_start Dwci_CelllInit
+Dwci_CelllInit: ; 0x0234D004
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r0, #0x450
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr sl, _0234D0D4 ; =ov02_0235AB74
 	mov r8, #0
 	mov sb, r8
@@ -49688,23 +49688,23 @@ _0234D034:
 	mov r0, r7
 	mov r2, r6
 	add r1, r1, sb
-	bl ov02_0234D754
+	bl Dwci_QuelFormEx
 	ldr r1, [sl]
 	add r1, r1, sb
 	str r0, [r1, #0x224]
-	bl ov02_0234F0C0
+	bl Dwci_LstlForm
 	ldr r2, [sl]
 	mov r1, r5
 	add r2, r2, sb
 	str r0, [r2, #0x220]
 	mov r0, r8
-	bl ov02_0234F30C
+	bl Dwci_ObjlGetOam
 	ldr r2, [sl]
 	mov r1, r4
 	add r2, r2, sb
 	str r0, [r2, #0x208]
 	mov r0, r8
-	bl ov02_0234F30C
+	bl Dwci_ObjlGetOam
 	add r1, r0, #8
 	ldr r0, [sl]
 	add r0, r0, sb
@@ -49713,12 +49713,12 @@ _0234D034:
 	add r1, r0, sb
 	ldr r0, [r1, #0x220]
 	add r1, r1, #0x200
-	bl ov02_0234F180
+	bl Dwci_LstlPushFront
 	ldr r0, [sl]
 	add r1, r0, sb
 	ldr r0, [r1, #0x220]
 	add r1, r1, #0x210
-	bl ov02_0234F170
+	bl Dwci_LstlPushBack
 	add sb, sb, #0x228
 	add r8, r8, #1
 	cmp r8, #2
@@ -49726,10 +49726,10 @@ _0234D034:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0234D0D4: .word ov02_0235AB74
-	arm_func_end ov02_0234D004
+	arm_func_end Dwci_CelllInit
 
-	arm_func_start ov02_0234D0D8
-ov02_0234D0D8: ; 0x0234D0D8
+	arm_func_start Dwci_CelllEnd
+Dwci_CelllEnd: ; 0x0234D0D8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, #0
 	ldr r4, _0234D124 ; =ov02_0235AB74
@@ -49738,25 +49738,25 @@ _0234D0E8:
 	ldr r0, [r4]
 	add r0, r0, r6
 	ldr r0, [r0, #0x220]
-	bl ov02_0234F0EC
+	bl Dwci_LstlDelete
 	ldr r0, [r4]
 	add r0, r0, r6
 	ldr r0, [r0, #0x224]
-	bl ov02_0234D794
+	bl Dwci_QuelDelete
 	add r5, r5, #1
 	cmp r5, #2
 	add r6, r6, #0x228
 	blt _0234D0E8
 	ldr r0, _0234D128 ; =ov02_0235AB74
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0234D124: .word ov02_0235AB74
 _0234D128: .word ov02_0235AB74
-	arm_func_end ov02_0234D0D8
+	arm_func_end Dwci_CelllEnd
 
-	arm_func_start ov02_0234D12C
-ov02_0234D12C: ; 0x0234D12C
+	arm_func_start Dwci_CelllForm
+Dwci_CelllForm: ; 0x0234D12C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r0, #0x228
@@ -49767,7 +49767,7 @@ ov02_0234D12C: ; 0x0234D12C
 	mov r5, r2
 	add r0, r0, r7
 	ldr r0, [r0, #0x224]
-	bl ov02_0234D808
+	bl Dwci_QuelPopBack
 	mov r4, r0
 	mov r0, #1
 	bl OS_DisableIrqMask
@@ -49794,7 +49794,7 @@ _0234D198:
 	bhi _0234D1C4
 	mov r1, r4
 	str sb, [r4, #8]
-	bl ov02_0234F140
+	bl Dwci_LstlInsert
 	b _0234D1D0
 _0234D1C4:
 	mov r5, r0
@@ -49831,7 +49831,7 @@ _0234D214:
 	mov r0, r5
 	mov r1, r4
 	str r3, [r4, #8]
-	bl ov02_0234F140
+	bl Dwci_LstlInsert
 	b _0234D254
 _0234D248:
 	mov r5, sb
@@ -49853,10 +49853,10 @@ _0234D270:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0234D284: .word ov02_0235AB74
-	arm_func_end ov02_0234D12C
+	arm_func_end Dwci_CelllForm
 
-	arm_func_start ov02_0234D288
-ov02_0234D288: ; 0x0234D288
+	arm_func_start Dwci_CelllDelete
+Dwci_CelllDelete: ; 0x0234D288
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldrb r0, [r5, #0xc]
@@ -49877,7 +49877,7 @@ _0234D2AC:
 	blt _0234D2AC
 _0234D2CC:
 	mov r0, r5
-	bl ov02_0234F108
+	bl Dwci_LstlErase
 	ldr r0, _0234D304 ; =ov02_0235AB74
 	ldr r1, [r0]
 	add r0, r1, #0x228
@@ -49887,28 +49887,28 @@ _0234D2CC:
 	mla r0, r4, r0, r1
 	ldr r0, [r0, #0x224]
 	mov r1, r5
-	bl ov02_0234D7B0
+	bl Dwci_QuelPushBack
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234D300: .word 0xC1FFFCFF
 _0234D304: .word ov02_0235AB74
-	arm_func_end ov02_0234D288
+	arm_func_end Dwci_CelllDelete
 
-	arm_func_start ov02_0234D308
-ov02_0234D308: ; 0x0234D308
+	arm_func_start Dwci_CelllGetObj
+Dwci_CelllGetObj: ; 0x0234D308
 	ldr r0, [r0, #8]
 	add r0, r0, r1, lsl #3
 	bx lr
-	arm_func_end ov02_0234D308
+	arm_func_end Dwci_CelllGetObj
 
-	arm_func_start ov02_0234D314
-ov02_0234D314: ; 0x0234D314
+	arm_func_start Dwci_CelllGetObjNum
+Dwci_CelllGetObjNum: ; 0x0234D314
 	ldrb r0, [r0, #0xc]
 	bx lr
-	arm_func_end ov02_0234D314
+	arm_func_end Dwci_CelllGetObjNum
 
-	arm_func_start ov02_0234D31C
-ov02_0234D31C: ; 0x0234D31C
+	arm_func_start Dwci_CelllSetEffect
+Dwci_CelllSetEffect: ; 0x0234D31C
 	stmdb sp!, {r4, lr}
 	cmp r1, #0
 	ldr ip, [r0, #8]
@@ -49956,10 +49956,10 @@ _0234D3A4:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234D3BC: .word 0xC1FFFCFF
-	arm_func_end ov02_0234D31C
+	arm_func_end Dwci_CelllSetEffect
 
-	arm_func_start ov02_0234D3C0
-ov02_0234D3C0: ; 0x0234D3C0
+	arm_func_start Dwci_CelllSetPalette
+Dwci_CelllSetPalette: ; 0x0234D3C0
 	stmdb sp!, {r4, lr}
 	cmp r1, #0
 	ldr ip, [r0, #8]
@@ -49994,10 +49994,10 @@ _0234D408:
 	cmp r4, r1
 	blt _0234D408
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0234D3C0
+	arm_func_end Dwci_CelllSetPalette
 
-	arm_func_start ov02_0234D440
-ov02_0234D440: ; 0x0234D440
+	arm_func_start Dwci_CelllSetPosition
+Dwci_CelllSetPosition: ; 0x0234D440
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x10
 	cmp r1, #0
@@ -50061,10 +50061,10 @@ _0234D4D4:
 	.align 2, 0
 _0234D528: .word 0xFE00FF00
 _0234D52C: .word 0x01FF0000
-	arm_func_end ov02_0234D440
+	arm_func_end Dwci_CelllSetPosition
 
-	arm_func_start ov02_0234D530
-ov02_0234D530: ; 0x0234D530
+	arm_func_start Dwci_CelllSetPriority
+Dwci_CelllSetPriority: ; 0x0234D530
 	stmdb sp!, {r3, lr}
 	cmp r1, #0
 	ldr ip, [r0, #8]
@@ -50091,10 +50091,10 @@ _0234D568:
 	cmp lr, r1
 	blt _0234D568
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234D530
+	arm_func_end Dwci_CelllSetPriority
 
-	arm_func_start ov02_0234D590
-ov02_0234D590: ; 0x0234D590
+	arm_func_start Dwci_CelllGetPosition
+Dwci_CelllGetPosition: ; 0x0234D590
 	stmdb sp!, {r3, lr}
 	ldr lr, [r0, #8]
 	ldr r0, _0234D5BC ; =0x01FF0000
@@ -50108,42 +50108,42 @@ ov02_0234D590: ; 0x0234D590
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234D5BC: .word 0x01FF0000
-	arm_func_end ov02_0234D590
+	arm_func_end Dwci_CelllGetPosition
 
-	arm_func_start ov02_0234D5C0
-ov02_0234D5C0: ; 0x0234D5C0
+	arm_func_start Dwci_CeinlRead
+Dwci_CeinlRead: ; 0x0234D5C0
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
 	mov r0, r1
 	add r1, sp, #0
 	mov r2, #4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, _0234D5EC ; =ov02_0235AB78
 	str r0, [r1, r4, lsl #2]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0234D5EC: .word ov02_0235AB78
-	arm_func_end ov02_0234D5C0
+	arm_func_end Dwci_CeinlRead
 
-	arm_func_start ov02_0234D5F0
-ov02_0234D5F0: ; 0x0234D5F0
+	arm_func_start Dwci_CeinlRelease
+Dwci_CeinlRelease: ; 0x0234D5F0
 	stmdb sp!, {r4, lr}
 	ldr r1, _0234D614 ; =ov02_0235AB78
 	mov r4, r0
 	ldr r0, [r1, r4, lsl #2]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	ldr r0, _0234D614 ; =ov02_0235AB78
 	mov r1, #0
 	str r1, [r0, r4, lsl #2]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234D614: .word ov02_0235AB78
-	arm_func_end ov02_0234D5F0
+	arm_func_end Dwci_CeinlRelease
 
-	arm_func_start ov02_0234D618
-ov02_0234D618: ; 0x0234D618
+	arm_func_start Dwci_CeinlSet
+Dwci_CeinlSet: ; 0x0234D618
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	ldr r3, _0234D6A8 ; =ov02_0235AB78
@@ -50183,25 +50183,25 @@ _0234D66C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0234D6A8: .word ov02_0235AB78
-	arm_func_end ov02_0234D618
+	arm_func_end Dwci_CeinlSet
 
-	arm_func_start ov02_0234D6AC
-ov02_0234D6AC: ; 0x0234D6AC
+	arm_func_start Dwci_CeinlSetExObj
+Dwci_CeinlSetExObj: ; 0x0234D6AC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
-	bl ov02_0234F2A0
+	bl Dwci_ObjlFormGx
 	mov r4, r0
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov02_0234D6AC
+	arm_func_end Dwci_CeinlSetExObj
 
-	arm_func_start ov02_0234D6D8
-ov02_0234D6D8: ; 0x0234D6D8
+	arm_func_start Dwci_CeinlSetExCell
+Dwci_CeinlSetExCell: ; 0x0234D6D8
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r3, _0234D71C ; =ov02_0235AB78
 	mov r6, r0
@@ -50209,44 +50209,44 @@ ov02_0234D6D8: ; 0x0234D6D8
 	ldr r3, [r3, r6, lsl #2]
 	mov r1, r5, lsl #3
 	ldrh r1, [r3, r1]
-	bl ov02_0234D12C
+	bl Dwci_CelllForm
 	mov r1, #0
 	mov r4, r0
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, r0
 	mov r0, r6
 	mov r1, r5
-	bl ov02_0234D618
+	bl Dwci_CeinlSet
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0234D71C: .word ov02_0235AB78
-	arm_func_end ov02_0234D6D8
+	arm_func_end Dwci_CeinlSetExCell
 
-	arm_func_start ov02_0234D720
-ov02_0234D720: ; 0x0234D720
+	arm_func_start Dwci_QuelForm
+Dwci_QuelForm: ; 0x0234D720
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r0, r4, #1
 	mov r0, r0, lsl #2
 	add r0, r0, #8
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	add r1, r4, #1
 	strh r1, [r0]
 	mov r1, #0
 	strb r1, [r0, #2]
 	strb r1, [r0, #3]
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0234D720
+	arm_func_end Dwci_QuelForm
 
-	arm_func_start ov02_0234D754
-ov02_0234D754: ; 0x0234D754
+	arm_func_start Dwci_QuelFormEx
+Dwci_QuelFormEx: ; 0x0234D754
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl ov02_0234D720
+	bl Dwci_QuelForm
 	cmp r6, #0
 	mov r2, #0
 	ble _0234D78C
@@ -50260,21 +50260,21 @@ _0234D774:
 _0234D78C:
 	strb r6, [r0, #3]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov02_0234D754
+	arm_func_end Dwci_QuelFormEx
 
-	arm_func_start ov02_0234D794
-ov02_0234D794: ; 0x0234D794
+	arm_func_start Dwci_QuelDelete
+Dwci_QuelDelete: ; 0x0234D794
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r0, sp, #8
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end ov02_0234D794
+	arm_func_end Dwci_QuelDelete
 
-	arm_func_start ov02_0234D7B0
-ov02_0234D7B0: ; 0x0234D7B0
+	arm_func_start Dwci_QuelPushBack
+Dwci_QuelPushBack: ; 0x0234D7B0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	mov r0, #1
@@ -50298,10 +50298,10 @@ _0234D7EC:
 	strb r7, [r5, #3]
 	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov02_0234D7B0
+	arm_func_end Dwci_QuelPushBack
 
-	arm_func_start ov02_0234D808
-ov02_0234D808: ; 0x0234D808
+	arm_func_start Dwci_QuelPopBack
+Dwci_QuelPopBack: ; 0x0234D808
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r0, #1
@@ -50325,14 +50325,14 @@ _0234D850:
 	bl OS_EnableIrqMask
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov02_0234D808
+	arm_func_end Dwci_QuelPopBack
 
-	arm_func_start ov02_0234D860
-ov02_0234D860: ; 0x0234D860
+	arm_func_start Dwci_EfflInit
+Dwci_EfflInit: ; 0x0234D860
 	stmdb sp!, {r3, lr}
 	mov r0, #0x18
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r2, _0234D89C ; =ov02_0235AB80
 	mov r1, #0x3f
 	str r0, [r2]
@@ -50348,20 +50348,20 @@ ov02_0234D860: ; 0x0234D860
 _0234D89C: .word ov02_0235AB80
 _0234D8A0: .word 0x04000050
 _0234D8A4: .word 0x04001050
-	arm_func_end ov02_0234D860
+	arm_func_end Dwci_EfflInit
 
-	arm_func_start ov02_0234D8A8
-ov02_0234D8A8: ; 0x0234D8A8
-	ldr ip, _0234D8B4 ; =ov02_0234E7D8
+	arm_func_start Dwci_EfflEnd
+Dwci_EfflEnd: ; 0x0234D8A8
+	ldr ip, _0234D8B4 ; =Dwci_HeaplFree
 	ldr r0, _0234D8B8 ; =ov02_0235AB80
 	bx ip
 	.align 2, 0
-_0234D8B4: .word ov02_0234E7D8
+_0234D8B4: .word Dwci_HeaplFree
 _0234D8B8: .word ov02_0235AB80
-	arm_func_end ov02_0234D8A8
+	arm_func_end Dwci_EfflEnd
 
-	arm_func_start ov02_0234D8BC
-ov02_0234D8BC: ; 0x0234D8BC
+	arm_func_start Dwci_EfflCheck
+Dwci_EfflCheck: ; 0x0234D8BC
 	cmp r0, #1
 	ldreq r0, _0234D8DC ; =ov02_0235AB80
 	ldreq r0, [r0]
@@ -50372,10 +50372,10 @@ ov02_0234D8BC: ; 0x0234D8BC
 	bx lr
 	.align 2, 0
 _0234D8DC: .word ov02_0235AB80
-	arm_func_end ov02_0234D8BC
+	arm_func_end Dwci_EfflCheck
 
-	arm_func_start ov02_0234D8E0
-ov02_0234D8E0: ; 0x0234D8E0
+	arm_func_start Dwci_EfflFade
+Dwci_EfflFade: ; 0x0234D8E0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	ldr r4, _0234D9A4 ; =ov02_02352F1C
@@ -50413,11 +50413,11 @@ _0234D960:
 	ldr r0, _0234D9B0 ; =0x04000050
 	bl G2x_SetBlendBrightness_
 _0234D96C:
-	ldr r1, _0234D9B4 ; =ov02_0234D9B8
+	ldr r1, _0234D9B4 ; =Effect_TaskFade
 	mov r2, r6
 	mov r0, #1
 	mov r3, #0xc8
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	str r0, [r6]
 	mov r0, #0
 	strh r0, [r6, #4]
@@ -50432,11 +50432,11 @@ _0234D9A4: .word ov02_02352F1C
 _0234D9A8: .word ov02_0235AB80
 _0234D9AC: .word 0x04001050
 _0234D9B0: .word 0x04000050
-_0234D9B4: .word ov02_0234D9B8
-	arm_func_end ov02_0234D8E0
+_0234D9B4: .word Effect_TaskFade
+	arm_func_end Dwci_EfflFade
 
-	arm_func_start ov02_0234D9B8
-ov02_0234D9B8: ; 0x0234D9B8
+	arm_func_start Effect_TaskFade
+Effect_TaskFade: ; 0x0234D9B8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #8
 	ldr r2, _0234DAD0 ; =ov02_02352F1C
@@ -50508,7 +50508,7 @@ _0234DAB4:
 	mov r1, r5
 	mov r0, #1
 	strb r2, [r4, #9]
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -50516,10 +50516,10 @@ _0234DAD0: .word ov02_02352F1C
 _0234DAD4: .word ov02_0235AB80
 _0234DAD8: .word 0x04001050
 _0234DADC: .word 0x04000050
-	arm_func_end ov02_0234D9B8
+	arm_func_end Effect_TaskFade
 
-	arm_func_start ov02_0234DAE0
-ov02_0234DAE0: ; 0x0234DAE0
+	arm_func_start Dwci_EfflWait
+Dwci_EfflWait: ; 0x0234DAE0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _0234DB30 ; =ov02_0235AB80
 	mov r5, r0
@@ -50528,11 +50528,11 @@ ov02_0234DAE0: ; 0x0234DAE0
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	ldr r1, _0234DB34 ; =ov02_0234DB38
+	ldr r1, _0234DB34 ; =Effect_TaskWait
 	mov r2, r4
 	mov r0, #1
 	mov r3, #0xc8
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	str r0, [r4]
 	mov r0, #0
 	strh r0, [r4, #4]
@@ -50542,11 +50542,11 @@ ov02_0234DAE0: ; 0x0234DAE0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234DB30: .word ov02_0235AB80
-_0234DB34: .word ov02_0234DB38
-	arm_func_end ov02_0234DAE0
+_0234DB34: .word Effect_TaskWait
+	arm_func_end Dwci_EfflWait
 
-	arm_func_start ov02_0234DB38
-ov02_0234DB38: ; 0x0234DB38
+	arm_func_start Effect_TaskWait
+Effect_TaskWait: ; 0x0234DB38
 	stmdb sp!, {r3, lr}
 	ldrsh r2, [r1, #4]
 	add r2, r2, #1
@@ -50559,27 +50559,27 @@ ov02_0234DB38: ; 0x0234DB38
 	strb r2, [r1, #9]
 	mov r1, r0
 	mov r0, #1
-	bl ov02_0234FB40
+	bl Dwci_TsklDelete
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234DB38
+	arm_func_end Effect_TaskWait
 
-	arm_func_start ov02_0234DB70
-ov02_0234DB70: ; 0x0234DB70
+	arm_func_start Dwci_FntlInit
+Dwci_FntlInit: ; 0x0234DB70
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r0, #0x680
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	mov r4, r0
 	ldr r3, _0234DC68 ; =ov02_0235AB84
 	add r1, r4, #0x10
 	mov r0, #0x20
 	mov r2, #0x30
 	str r4, [r3]
-	bl ov02_0234D754
+	bl Dwci_QuelFormEx
 	ldr r1, _0234DC68 ; =ov02_0235AB84
 	ldr r1, [r1]
 	str r0, [r1, #0x670]
-	bl ov02_02338DF0
+	bl Dwci_Language__0233961C
 	cmp r0, #6
 	mov r4, #4
 	bne _0234DC10
@@ -50592,7 +50592,7 @@ _0234DBCC:
 	ldr r0, [r6, r7, lsl #2]
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, [sb]
 	add r1, r1, r7, lsl #2
 	str r0, [r1, #0x674]
@@ -50600,7 +50600,7 @@ _0234DBCC:
 	add r0, r2, r7, lsl #2
 	ldr r1, [r0, #0x674]
 	add r0, r2, r8
-	bl ov02_0232A0F4
+	bl Nns_G2dFontInitUtf16
 	add r7, r7, #1
 	cmp r7, #2
 	add r8, r8, #8
@@ -50616,7 +50616,7 @@ _0234DC24:
 	ldr r0, [r6, r8, lsl #2]
 	mov r1, r5
 	mov r2, r4
-	bl ov02_0234CE84
+	bl Dwci_ArclReadEx
 	ldr r1, [sb]
 	add r1, r1, r8, lsl #2
 	str r0, [r1, #0x674]
@@ -50624,7 +50624,7 @@ _0234DC24:
 	add r0, r2, r8, lsl #2
 	ldr r1, [r0, #0x674]
 	add r0, r2, r7
-	bl ov02_0232A0F4
+	bl Nns_G2dFontInitUtf16
 	add r8, r8, #1
 	cmp r8, #2
 	add r7, r7, #8
@@ -50634,10 +50634,10 @@ _0234DC24:
 _0234DC68: .word ov02_0235AB84
 _0234DC6C: .word ov02_02354464
 _0234DC70: .word ov02_0235446C
-	arm_func_end ov02_0234DB70
+	arm_func_end Dwci_FntlInit
 
-	arm_func_start ov02_0234DC74
-ov02_0234DC74: ; 0x0234DC74
+	arm_func_start Dwci_FntlEnd
+Dwci_FntlEnd: ; 0x0234DC74
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, _0234DCB8 ; =ov02_0235AB84
 	mov r5, #0
@@ -50645,24 +50645,24 @@ _0234DC80:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	ldr r0, [r0, #0x674]
-	bl ov02_0234CF78
+	bl Dwci_ArclRelease
 	add r5, r5, #1
 	cmp r5, #2
 	blt _0234DC80
 	ldr r0, _0234DCB8 ; =ov02_0235AB84
 	ldr r0, [r0]
 	ldr r0, [r0, #0x670]
-	bl ov02_0234D794
+	bl Dwci_QuelDelete
 	ldr r0, _0234DCBC ; =ov02_0235AB84
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234DCB8: .word ov02_0235AB84
 _0234DCBC: .word ov02_0235AB84
-	arm_func_end ov02_0234DC74
+	arm_func_end Dwci_FntlEnd
 
-	arm_func_start ov02_0234DCC0
-ov02_0234DCC0: ; 0x0234DCC0
+	arm_func_start Dwci_FntlFormEx
+Dwci_FntlFormEx: ; 0x0234DCC0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r4, _0234DD98 ; =ov02_0235AB84
@@ -50672,7 +50672,7 @@ ov02_0234DCC0: ; 0x0234DCC0
 	ldr r0, [r0, #0x670]
 	mov r5, r2
 	mov r8, r3
-	bl ov02_0234D808
+	bl Dwci_QuelPopBack
 	mov r4, r0
 	strb r6, [r4, #0x2e]
 	mul r1, r6, r5
@@ -50680,13 +50680,13 @@ ov02_0234DCC0: ; 0x0234DCC0
 	strb r5, [r4, #0x2f]
 	mov r0, r7
 	add r3, sp, #4
-	bl ov02_0234F3E4
+	bl Dwci_OvrlAlloc
 	str r0, [r4, #0x28]
 	ldr r1, [sp, #4]
 	mov r0, r6
 	strh r1, [r4, #0x2c]
 	mov r1, r5
-	bl ov02_0232B300
+	bl Nnsi_G2dCalcRequiredObj
 	ldr r1, [sp, #0x20]
 	cmp r7, #1
 	str r0, [r1]
@@ -50699,7 +50699,7 @@ ov02_0234DCC0: ; 0x0234DCC0
 	mov r2, r6
 	mov r3, r5
 	add r1, ip, r7, lsl #7
-	bl ov02_0232B16C
+	bl Nns_G2dCharCanvasInitForObj1D
 	ldr r1, [r4, #0x14]
 	mov r0, r4
 	ldr r2, [r1, #4]
@@ -50719,26 +50719,26 @@ ov02_0234DCC0: ; 0x0234DCC0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0234DD98: .word ov02_0235AB84
-	arm_func_end ov02_0234DCC0
+	arm_func_end Dwci_FntlFormEx
 
-	arm_func_start ov02_0234DD9C
-ov02_0234DD9C: ; 0x0234DD9C
+	arm_func_start Dwci_FntlDelete
+Dwci_FntlDelete: ; 0x0234DD9C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #0x28]
-	bl ov02_0234F55C
+	bl Dwci_OvrlFree
 	ldr r0, _0234DDC4 ; =ov02_0235AB84
 	mov r1, r4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x670]
-	bl ov02_0234D7B0
+	bl Dwci_QuelPushBack
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234DDC4: .word ov02_0235AB84
-	arm_func_end ov02_0234DD9C
+	arm_func_end Dwci_FntlDelete
 
-	arm_func_start ov02_0234DDC8
-ov02_0234DDC8: ; 0x0234DDC8
+	arm_func_start Dwci_FntlFormBgEx
+Dwci_FntlFormBgEx: ; 0x0234DDC8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
 	mov r8, r0
@@ -50756,7 +50756,7 @@ ov02_0234DDC8: ; 0x0234DDC8
 	mla r4, r8, r0, r3
 	mov r0, r2, lsl #5
 	mov r1, #0x20
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	str r0, [r4, #0x28]
 	cmp r8, #1
 	bne _0234DE40
@@ -50785,7 +50785,7 @@ _0234DE60:
 	mov r0, r4
 	mov r2, r6
 	mov r3, r5
-	bl ov02_0232B140
+	bl Nns_G2dCharCanvasInitForBG
 	ldr r0, _0234DF24 ; =ov02_0235AB84
 	mov r1, #1
 	ldr r0, [r0]
@@ -50813,19 +50813,19 @@ _0234DEB0:
 	str r7, [sp, #8]
 	mov r5, #0xf
 	str r5, [sp, #0xc]
-	bl ov02_0232B1F4
+	bl Nns_G2dMapScrToCharText
 	mov r0, r4
 	mov r1, #0
-	bl ov02_0234E2A8
+	bl Dwci_FntlClear
 	ldr r0, _0234DF24 ; =ov02_0235AB84
-	ldr r1, _0234DF3C ; =ov02_0234DF40
+	ldr r1, _0234DF3C ; =Font_TaskLoad
 	ldr r2, [r0]
 	mov r0, #1
 	add r2, r2, #0x27c
 	add r2, r2, #0x400
 	add r2, r2, r8
 	mov r3, #0xc8
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	str r0, [r4, #0x2c]
 	mov r0, r4
 	add sp, sp, #0x10
@@ -50837,11 +50837,11 @@ _0234DF2C: .word ov02_02352F2C
 _0234DF30: .word 0x04001008
 _0234DF34: .word 0x04000008
 _0234DF38: .word ov02_02352F28
-_0234DF3C: .word ov02_0234DF40
-	arm_func_end ov02_0234DDC8
+_0234DF3C: .word Font_TaskLoad
+	arm_func_end Dwci_FntlFormBgEx
 
-	arm_func_start ov02_0234DF40
-ov02_0234DF40: ; 0x0234DF40
+	arm_func_start Font_TaskLoad
+Font_TaskLoad: ; 0x0234DF40
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	ldrb r0, [r4]
@@ -50879,15 +50879,15 @@ _0234DFB8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234DFC4: .word ov02_0235AB84
-	arm_func_end ov02_0234DF40
+	arm_func_end Font_TaskLoad
 
-	arm_func_start ov02_0234DFC8
-ov02_0234DFC8: ; 0x0234DFC8
+	arm_func_start Dwci_FntlDeleteBg
+Dwci_FntlDeleteBg: ; 0x0234DFC8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r1, [r4, #0x2c]
 	mov r0, #1
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r0, _0234E028 ; =ov02_0235AB84
 	ldr r0, [r0]
 	add r0, r0, #0x610
@@ -50907,28 +50907,28 @@ _0234E008:
 	bl MTi_CpuClear16
 _0234E01C:
 	add r0, r4, #0x28
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234E028: .word ov02_0235AB84
-	arm_func_end ov02_0234DFC8
+	arm_func_end Dwci_FntlDeleteBg
 
-	arm_func_start ov02_0234E02C
-ov02_0234E02C: ; 0x0234E02C
+	arm_func_start Dwci_FntlDeleteBgLcd
+Dwci_FntlDeleteBgLcd: ; 0x0234E02C
 	ldr r2, _0234E048 ; =ov02_0235AB84
 	mov r1, #0x30
 	ldr r2, [r2]
-	ldr ip, _0234E04C ; =ov02_0234DFC8
+	ldr ip, _0234E04C ; =Dwci_FntlDeleteBg
 	add r2, r2, #0x610
 	mla r0, r1, r0, r2
 	bx ip
 	.align 2, 0
 _0234E048: .word ov02_0235AB84
-_0234E04C: .word ov02_0234DFC8
-	arm_func_end ov02_0234E02C
+_0234E04C: .word Dwci_FntlDeleteBg
+	arm_func_end Dwci_FntlDeleteBgLcd
 
-	arm_func_start ov02_0234E050
-ov02_0234E050: ; 0x0234E050
+	arm_func_start Dwci_FntlDraw
+Dwci_FntlDraw: ; 0x0234E050
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	ldr r4, [r0, #0x1c]
@@ -50976,13 +50976,13 @@ _0234E0D0:
 	add r0, r0, #0x18
 	strb lr, [sp, #8]
 	strb ip, [sp, #9]
-	bl ov02_0232B870
+	bl Nnsi_G2dTextCanvasDrawText
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0234E050
+	arm_func_end Dwci_FntlDraw
 
-	arm_func_start ov02_0234E100
-ov02_0234E100: ; 0x0234E100
+	arm_func_start Dwci_FntlDrawCharEx
+Dwci_FntlDrawCharEx: ; 0x0234E100
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldrh ip, [sp, #0x10]
@@ -50994,15 +50994,15 @@ ov02_0234E100: ; 0x0234E100
 	mov r3, r2
 	mov r2, r1
 	add r1, lr, ip, lsl #3
-	bl ov02_0232B01C
+	bl Nns_G2dCharCanvasDrawChar
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234E138: .word ov02_0235AB84
-	arm_func_end ov02_0234E100
+	arm_func_end Dwci_FntlDrawCharEx
 
-	arm_func_start ov02_0234E13C
-ov02_0234E13C: ; 0x0234E13C
+	arm_func_start Dwci_FntlDrawStringEx
+Dwci_FntlDrawStringEx: ; 0x0234E13C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	ldr r6, [sp, #0x34]
@@ -51021,14 +51021,14 @@ _0234E170:
 	ldr r0, [r0]
 	add r4, r0, r5, lsl #3
 	mov r0, r4
-	bl ov02_0232A118
+	bl Nns_G2dFontFindGlyphIndex
 	mov r1, r0
 	ldr r0, _0234E1E4 ; =0x0000FFFF
 	cmp r1, r0
 	ldreq r0, [r4]
 	ldreqh r1, [r0, #2]
 	mov r0, r4
-	bl ov02_0232A160
+	bl Nns_G2dFontGetCharWidthsFromIndex
 	ldrh r1, [r6]
 	mov r2, r0
 	mov r0, sl
@@ -51038,7 +51038,7 @@ _0234E170:
 	mov r3, fp
 	sub r1, r7, r1
 	add r1, sb, r1, asr #1
-	bl ov02_0234E100
+	bl Dwci_FntlDrawCharEx
 	ldrh r1, [r6, #2]!
 	add sb, sb, r7
 	cmp r1, #0
@@ -51048,10 +51048,10 @@ _0234E170:
 	.align 2, 0
 _0234E1E0: .word ov02_0235AB84
 _0234E1E4: .word 0x0000FFFF
-	arm_func_end ov02_0234E13C
+	arm_func_end Dwci_FntlDrawStringEx
 
-	arm_func_start ov02_0234E1E8
-ov02_0234E1E8: ; 0x0234E1E8
+	arm_func_start Dwci_FntlDrawRect
+Dwci_FntlDrawRect: ; 0x0234E1E8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x18
 	ldr r4, [r0, #0x1c]
@@ -51103,22 +51103,22 @@ _0234E268:
 	add r0, r0, #0x18
 	strb lr, [sp, #0x10]
 	strb ip, [sp, #0x11]
-	bl ov02_0232B994
+	bl Nnsi_G2dTextCanvasDrawTextRect
 	add sp, sp, #0x18
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0234E1E8
+	arm_func_end Dwci_FntlDrawRect
 
-	arm_func_start ov02_0234E2A8
-ov02_0234E2A8: ; 0x0234E2A8
+	arm_func_start Dwci_FntlClear
+Dwci_FntlClear: ; 0x0234E2A8
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0x14]
 	ldr r2, [r2, #4]
 	blx r2
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234E2A8
+	arm_func_end Dwci_FntlClear
 
-	arm_func_start ov02_0234E2BC
-ov02_0234E2BC: ; 0x0234E2BC
+	arm_func_start Dwci_FntlDisp
+Dwci_FntlDisp: ; 0x0234E2BC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
 	mov r6, r3
@@ -51127,22 +51127,22 @@ ov02_0234E2BC: ; 0x0234E2BC
 	mov r0, r6
 	mov r1, #0
 	mov r7, r2
-	bl ov02_0234D308
+	bl Dwci_CelllGetObj
 	mov r2, #0
 	mov r5, r0
 	mov r0, r6
 	mvn r1, #0
 	mov r3, r2
-	bl ov02_0234D31C
+	bl Dwci_CelllSetEffect
 	mov r0, r6
 	mvn r1, #0
 	mov r2, #0
 	mov r3, #0xf
-	bl ov02_0234D3C0
+	bl Dwci_CelllSetPalette
 	mov r0, r6
 	mvn r1, #0
 	ldr r2, [sp, #0x28]
-	bl ov02_0234D530
+	bl Dwci_CelllSetPriority
 	str r7, [sp]
 	mov r0, r5
 	mov r3, r8
@@ -51154,13 +51154,13 @@ ov02_0234E2BC: ; 0x0234E2BC
 	str r1, [sp, #0xc]
 	ldrb r1, [r4, #0x2e]
 	ldrb r2, [r4, #0x2f]
-	bl ov02_0232B35C
+	bl Nns_G2dArrangeObj1D
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov02_0234E2BC
+	arm_func_end Dwci_FntlDisp
 
-	arm_func_start ov02_0234E354
-ov02_0234E354: ; 0x0234E354
+	arm_func_start Dwci_FntlRenewBg
+Dwci_FntlRenewBg: ; 0x0234E354
 	ldr r1, _0234E374 ; =ov02_0235AB84
 	ldr r2, [r1]
 	add r1, r2, #0x610
@@ -51171,27 +51171,27 @@ ov02_0234E354: ; 0x0234E354
 	bx lr
 	.align 2, 0
 _0234E374: .word ov02_0235AB84
-	arm_func_end ov02_0234E354
+	arm_func_end Dwci_FntlRenewBg
 
-	arm_func_start ov02_0234E378
-ov02_0234E378: ; 0x0234E378
+	arm_func_start Dwci_InputCoord
+Dwci_InputCoord: ; 0x0234E378
 	strh r0, [r2]
 	strh r1, [r2, #2]
 	bx lr
-	arm_func_end ov02_0234E378
+	arm_func_end Dwci_InputCoord
 
-	arm_func_start ov02_0234E384
-ov02_0234E384: ; 0x0234E384
+	arm_func_start Dwci_InputRect
+Dwci_InputRect: ; 0x0234E384
 	ldr ip, [sp]
 	strh r0, [ip]
 	strh r1, [ip, #2]
 	strh r2, [ip, #4]
 	strh r3, [ip, #6]
 	bx lr
-	arm_func_end ov02_0234E384
+	arm_func_end Dwci_InputRect
 
-	arm_func_start ov02_0234E39C
-ov02_0234E39C: ; 0x0234E39C
+	arm_func_start Dwci_Coord2Rect
+Dwci_Coord2Rect: ; 0x0234E39C
 	ldrh r3, [r0]
 	strh r3, [r2]
 	ldrh r3, [r0, #2]
@@ -51205,10 +51205,10 @@ ov02_0234E39C: ; 0x0234E39C
 	add r0, r3, r0
 	strh r0, [r2, #6]
 	bx lr
-	arm_func_end ov02_0234E39C
+	arm_func_end Dwci_Coord2Rect
 
-	arm_func_start ov02_0234E3D0
-ov02_0234E3D0: ; 0x0234E3D0
+	arm_func_start Dwci_GXlVisible
+Dwci_GXlVisible: ; 0x0234E3D0
 	cmp r0, #1
 	bne _0234E3FC
 	ldr r3, _0234E420 ; =0x04001000
@@ -51232,10 +51232,10 @@ _0234E3FC:
 	bx lr
 	.align 2, 0
 _0234E420: .word 0x04001000
-	arm_func_end ov02_0234E3D0
+	arm_func_end Dwci_GXlVisible
 
-	arm_func_start ov02_0234E424
-ov02_0234E424: ; 0x0234E424
+	arm_func_start Dwci_GXlInvisible
+Dwci_GXlInvisible: ; 0x0234E424
 	cmp r0, #1
 	bne _0234E454
 	ldr r3, _0234E47C ; =0x04001000
@@ -51261,10 +51261,10 @@ _0234E454:
 	bx lr
 	.align 2, 0
 _0234E47C: .word 0x04001000
-	arm_func_end ov02_0234E424
+	arm_func_end Dwci_GXlInvisible
 
-	arm_func_start ov02_0234E480
-ov02_0234E480: ; 0x0234E480
+	arm_func_start Dwci_GXlSetWndPosition
+Dwci_GXlSetWndPosition: ; 0x0234E480
 	cmp r0, #1
 	bne _0234E508
 	cmp r1, #0
@@ -51339,10 +51339,10 @@ _0234E588: .word 0x04001040
 _0234E58C: .word 0x04001042
 _0234E590: .word 0x04000040
 _0234E594: .word 0x04000042
-	arm_func_end ov02_0234E480
+	arm_func_end Dwci_GXlSetWndPosition
 
-	arm_func_start ov02_0234E598
-ov02_0234E598: ; 0x0234E598
+	arm_func_start Dwci_GXlSetWndPlane
+Dwci_GXlSetWndPlane: ; 0x0234E598
 	cmp r1, #3
 	addls pc, pc, r1, lsl #2
 	bx lr
@@ -51444,10 +51444,10 @@ _0234E6F4: .word 0x04001048
 _0234E6F8: .word 0x04000048
 _0234E6FC: .word 0x0400104A
 _0234E700: .word 0x0400004A
-	arm_func_end ov02_0234E598
+	arm_func_end Dwci_GXlSetWndPlane
 
-	arm_func_start ov02_0234E704
-ov02_0234E704: ; 0x0234E704
+	arm_func_start Dwci_HeaplInit
+Dwci_HeaplInit: ; 0x0234E704
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r1, #0
@@ -51456,7 +51456,7 @@ ov02_0234E704: ; 0x0234E704
 	mov r0, r4
 	mov r1, #0x40000
 	mov r2, #0
-	bl ov02_02329D54
+	bl Nns_FndCreateExpHeapEx
 	ldr r1, _0234E740 ; =ov02_0235AB88
 	cmp r0, #0
 	str r0, [r1]
@@ -51465,24 +51465,24 @@ ov02_0234E704: ; 0x0234E704
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234E740: .word ov02_0235AB88
-	arm_func_end ov02_0234E704
+	arm_func_end Dwci_HeaplInit
 
-	arm_func_start ov02_0234E744
-ov02_0234E744: ; 0x0234E744
+	arm_func_start Dwci_HeaplEnd
+Dwci_HeaplEnd: ; 0x0234E744
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234E764 ; =ov02_0235AB88
 	ldr r0, [r0]
-	bl ov02_02329D8C
+	bl Nns_FndDestroyExpHeap
 	ldr r0, _0234E764 ; =ov02_0235AB88
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234E764: .word ov02_0235AB88
-	arm_func_end ov02_0234E744
+	arm_func_end Dwci_HeaplEnd
 
-	arm_func_start ov02_0234E768
-ov02_0234E768: ; 0x0234E768
+	arm_func_start Dwci_HeaplAlloc
+Dwci_HeaplAlloc: ; 0x0234E768
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r0, #1
@@ -51493,7 +51493,7 @@ ov02_0234E768: ; 0x0234E768
 	ldr r0, [r1]
 	mov r1, r6
 	mov r2, r4
-	bl ov02_02329D98
+	bl Nns_FndAllocFromExpHeapEx
 	movs r4, r0
 	bne _0234E7A0
 	bl WaitForever2
@@ -51504,23 +51504,23 @@ _0234E7A0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0234E7B0: .word ov02_0235AB88
-	arm_func_end ov02_0234E768
+	arm_func_end Dwci_HeaplAlloc
 
-	arm_func_start ov02_0234E7B4
-ov02_0234E7B4: ; 0x0234E7B4
+	arm_func_start Dwci_HeaplAllocEx
+Dwci_HeaplAllocEx: ; 0x0234E7B4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_0234E768
+	bl Dwci_HeaplAlloc
 	mov r2, r4
 	mov r1, #0
 	mov r4, r0
 	bl MI_CpuFill8
 	mov r0, r4
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0234E7B4
+	arm_func_end Dwci_HeaplAllocEx
 
-	arm_func_start ov02_0234E7D8
-ov02_0234E7D8: ; 0x0234E7D8
+	arm_func_start Dwci_HeaplFree
+Dwci_HeaplFree: ; 0x0234E7D8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #1
@@ -51531,7 +51531,7 @@ ov02_0234E7D8: ; 0x0234E7D8
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r0, _0234E818 ; =ov02_0235AB88
 	ldr r0, [r0]
-	bl ov02_02329DC8
+	bl Nns_FndFreeToExpHeap
 	mov r0, r4
 	bl OS_EnableIrqMask
 	mov r0, #0
@@ -51539,10 +51539,10 @@ ov02_0234E7D8: ; 0x0234E7D8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234E818: .word ov02_0235AB88
-	arm_func_end ov02_0234E7D8
+	arm_func_end Dwci_HeaplFree
 
-	arm_func_start ov02_0234E81C
-ov02_0234E81C: ; 0x0234E81C
+	arm_func_start Dwci_HeaplFree2
+Dwci_HeaplFree2: ; 0x0234E81C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #1
@@ -51553,21 +51553,21 @@ ov02_0234E81C: ; 0x0234E81C
 	ldr r0, _0234E854 ; =ov02_0235AB88
 	mov r1, r5
 	ldr r0, [r0]
-	bl ov02_02329DC8
+	bl Nns_FndFreeToExpHeap
 	mov r0, r4
 	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234E854: .word ov02_0235AB88
-	arm_func_end ov02_0234E81C
+	arm_func_end Dwci_HeaplFree2
 
-	arm_func_start ov02_0234E858
-ov02_0234E858: ; 0x0234E858
+	arm_func_start Dwci_IptlInit
+Dwci_IptlInit: ; 0x0234E858
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	mov r0, #0x3a
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, _0234E8D0 ; =ov02_0235AB8C
 	str r0, [r1, #4]
 	add r0, sp, #0
@@ -51592,15 +51592,15 @@ _0234E888:
 	beq _0234E8C4
 	bl WaitForever2
 _0234E8C4:
-	bl ov02_0234E90C
+	bl Dwci_IptlRead
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234E8D0: .word ov02_0235AB8C
-	arm_func_end ov02_0234E858
+	arm_func_end Dwci_IptlInit
 
-	arm_func_start ov02_0234E8D4
-ov02_0234E8D4: ; 0x0234E8D4
+	arm_func_start Dwci_IptlEnd
+Dwci_IptlEnd: ; 0x0234E8D4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #4
 	mov r4, r5
@@ -51613,22 +51613,22 @@ _0234E8E0:
 	cmp r0, #0
 	bne _0234E8E0
 	ldr r0, _0234E908 ; =ov02_0235AB90
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234E908: .word ov02_0235AB90
-	arm_func_end ov02_0234E8D4
+	arm_func_end Dwci_IptlEnd
 
-	arm_func_start ov02_0234E90C
-ov02_0234E90C: ; 0x0234E90C
+	arm_func_start Dwci_IptlRead
+Dwci_IptlRead: ; 0x0234E90C
 	stmdb sp!, {r3, lr}
-	bl ov02_0234E91C
-	bl ov02_0234EA20
+	bl Input_ReadKey
+	bl Input_ReadTouch
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234E90C
+	arm_func_end Dwci_IptlRead
 
-	arm_func_start ov02_0234E91C
-ov02_0234E91C: ; 0x0234E91C
+	arm_func_start Input_ReadKey
+Input_ReadKey: ; 0x0234E91C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r1, _0234EA0C ; =0x04000130
 	ldr r0, _0234EA10 ; =0x027FFFA8
@@ -51698,10 +51698,10 @@ _0234EA10: .word 0x027FFFA8
 _0234EA14: .word ov02_0235AB8C
 _0234EA18: .word 0x00002FFF
 _0234EA1C: .word ov02_0235AB94
-	arm_func_end ov02_0234E91C
+	arm_func_end Input_ReadKey
 
-	arm_func_start ov02_0234EA20
-ov02_0234EA20: ; 0x0234EA20
+	arm_func_start Input_ReadTouch
+Input_ReadTouch: ; 0x0234EA20
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	ldr r0, _0234EBB8 ; =ov02_0235AB8C
@@ -51737,7 +51737,7 @@ _0234EA6C:
 	ldr r2, [r1, #4]
 	ldrh r1, [sp, #2]
 	add r2, r2, #0x28
-	bl ov02_0234E378
+	bl Dwci_InputCoord
 	b _0234EAC8
 _0234EAB0:
 	mov r1, r8
@@ -51810,10 +51810,10 @@ _0234EB8C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0234EBB8: .word ov02_0235AB8C
-	arm_func_end ov02_0234EA20
+	arm_func_end Input_ReadTouch
 
-	arm_func_start ov02_0234EBBC
-ov02_0234EBBC: ; 0x0234EBBC
+	arm_func_start Dwci_IptlCheckTrigger
+Dwci_IptlCheckTrigger: ; 0x0234EBBC
 	ldr r1, _0234EBF4 ; =0x027FFFA8
 	ldrh r1, [r1]
 	and r1, r1, #0x8000
@@ -51831,10 +51831,10 @@ ov02_0234EBBC: ; 0x0234EBBC
 	.align 2, 0
 _0234EBF4: .word 0x027FFFA8
 _0234EBF8: .word ov02_0235AB8C
-	arm_func_end ov02_0234EBBC
+	arm_func_end Dwci_IptlCheckTrigger
 
-	arm_func_start ov02_0234EBFC
-ov02_0234EBFC: ; 0x0234EBFC
+	arm_func_start Dwci_IptlCheckRepeat
+Dwci_IptlCheckRepeat: ; 0x0234EBFC
 	ldr r1, _0234EC34 ; =0x027FFFA8
 	ldrh r1, [r1]
 	and r1, r1, #0x8000
@@ -51852,10 +51852,10 @@ ov02_0234EBFC: ; 0x0234EBFC
 	.align 2, 0
 _0234EC34: .word 0x027FFFA8
 _0234EC38: .word ov02_0235AB8C
-	arm_func_end ov02_0234EBFC
+	arm_func_end Dwci_IptlCheckRepeat
 
-	arm_func_start ov02_0234EC3C
-ov02_0234EC3C: ; 0x0234EC3C
+	arm_func_start Dwci_IptlCheckRelease
+Dwci_IptlCheckRelease: ; 0x0234EC3C
 	ldr r1, _0234EC74 ; =0x027FFFA8
 	ldrh r1, [r1]
 	and r1, r1, #0x8000
@@ -51873,10 +51873,10 @@ ov02_0234EC3C: ; 0x0234EC3C
 	.align 2, 0
 _0234EC74: .word 0x027FFFA8
 _0234EC78: .word ov02_0235AB8C
-	arm_func_end ov02_0234EC3C
+	arm_func_end Dwci_IptlCheckRelease
 
-	arm_func_start ov02_0234EC7C
-ov02_0234EC7C: ; 0x0234EC7C
+	arm_func_start Dwci_TPlCheck
+Dwci_TPlCheck: ; 0x0234EC7C
 	ldr r1, _0234ECFC ; =0x027FFFA8
 	ldrh r1, [r1]
 	and r1, r1, #0x8000
@@ -51912,10 +51912,10 @@ ov02_0234EC7C: ; 0x0234EC7C
 	.align 2, 0
 _0234ECFC: .word 0x027FFFA8
 _0234ED00: .word ov02_0235AB8C
-	arm_func_end ov02_0234EC7C
+	arm_func_end Dwci_TPlCheck
 
-	arm_func_start ov02_0234ED04
-ov02_0234ED04: ; 0x0234ED04
+	arm_func_start Dwci_TPlCheckTrigger
+Dwci_TPlCheckTrigger: ; 0x0234ED04
 	ldr r1, _0234ED84 ; =0x027FFFA8
 	ldrh r1, [r1]
 	and r1, r1, #0x8000
@@ -51951,10 +51951,10 @@ ov02_0234ED04: ; 0x0234ED04
 	.align 2, 0
 _0234ED84: .word 0x027FFFA8
 _0234ED88: .word ov02_0235AB8C
-	arm_func_end ov02_0234ED04
+	arm_func_end Dwci_TPlCheckTrigger
 
-	arm_func_start ov02_0234ED8C
-ov02_0234ED8C: ; 0x0234ED8C
+	arm_func_start Dwci_TPlCheckRepeat
+Dwci_TPlCheckRepeat: ; 0x0234ED8C
 	ldr r1, _0234EE0C ; =0x027FFFA8
 	ldrh r1, [r1]
 	and r1, r1, #0x8000
@@ -51990,10 +51990,10 @@ ov02_0234ED8C: ; 0x0234ED8C
 	.align 2, 0
 _0234EE0C: .word 0x027FFFA8
 _0234EE10: .word ov02_0235AB8C
-	arm_func_end ov02_0234ED8C
+	arm_func_end Dwci_TPlCheckRepeat
 
-	arm_func_start ov02_0234EE14
-ov02_0234EE14: ; 0x0234EE14
+	arm_func_start Dwci_TPlCheckRelease
+Dwci_TPlCheckRelease: ; 0x0234EE14
 	ldr r1, _0234EE94 ; =0x027FFFA8
 	ldrh r1, [r1]
 	and r1, r1, #0x8000
@@ -52029,10 +52029,10 @@ ov02_0234EE14: ; 0x0234EE14
 	.align 2, 0
 _0234EE94: .word 0x027FFFA8
 _0234EE98: .word ov02_0235AB8C
-	arm_func_end ov02_0234EE14
+	arm_func_end Dwci_TPlCheckRelease
 
-	arm_func_start ov02_0234EE9C
-ov02_0234EE9C: ; 0x0234EE9C
+	arm_func_start Dwci_TPlCheckATrigger
+Dwci_TPlCheckATrigger: ; 0x0234EE9C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r1, _0234EF00 ; =0x027FFFA8
@@ -52055,15 +52055,15 @@ ov02_0234EE9C: ; 0x0234EE9C
 	add r0, sp, #0
 	add r1, r2, r1
 	strh r1, [sp, #6]
-	bl ov02_0234ED04
+	bl Dwci_TPlCheckTrigger
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234EF00: .word 0x027FFFA8
-	arm_func_end ov02_0234EE9C
+	arm_func_end Dwci_TPlCheckATrigger
 
-	arm_func_start ov02_0234EF04
-ov02_0234EF04: ; 0x0234EF04
+	arm_func_start Dwci_TPlGet
+Dwci_TPlGet: ; 0x0234EF04
 	ldr r1, _0234EF64 ; =0x027FFFA8
 	ldrh r1, [r1]
 	and r1, r1, #0x8000
@@ -52092,10 +52092,10 @@ _0234EF4C:
 	.align 2, 0
 _0234EF64: .word 0x027FFFA8
 _0234EF68: .word ov02_0235AB8C
-	arm_func_end ov02_0234EF04
+	arm_func_end Dwci_TPlGet
 
-	arm_func_start ov02_0234EF6C
-ov02_0234EF6C: ; 0x0234EF6C
+	arm_func_start Dwci_IptlCheckFold
+Dwci_IptlCheckFold: ; 0x0234EF6C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234EFE0 ; =ov02_0235AB8C
 	ldrb r0, [r0]
@@ -52129,10 +52129,10 @@ _0234EFB4:
 	.align 2, 0
 _0234EFE0: .word ov02_0235AB8C
 _0234EFE4: .word 0x027FFFA8
-	arm_func_end ov02_0234EF6C
+	arm_func_end Dwci_IptlCheckFold
 
-	arm_func_start ov02_0234EFE8
-ov02_0234EFE8: ; 0x0234EFE8
+	arm_func_start Dwci_ItrlIntr
+Dwci_ItrlIntr: ; 0x0234EFE8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234F048 ; =0x04000210
 	ldr r1, _0234F04C ; =ov02_0235ABA4
@@ -52145,7 +52145,7 @@ ov02_0234EFE8: ; 0x0234EFE8
 	mov r0, #1
 	bl OS_GetIrqFunction
 	ldr r2, _0234F04C ; =ov02_0235ABA4
-	ldr r1, _0234F054 ; =ov02_0234F098
+	ldr r1, _0234F054 ; =IntrVBlank
 	str r0, [r2]
 	mov r0, #1
 	bl OS_SetIrqFunction
@@ -52161,12 +52161,12 @@ ov02_0234EFE8: ; 0x0234EFE8
 _0234F048: .word 0x04000210
 _0234F04C: .word ov02_0235ABA4
 _0234F050: .word 0x00040018
-_0234F054: .word ov02_0234F098
+_0234F054: .word IntrVBlank
 _0234F058: .word 0x04000208
-	arm_func_end ov02_0234EFE8
+	arm_func_end Dwci_ItrlIntr
 
-	arm_func_start ov02_0234F05C
-ov02_0234F05C: ; 0x0234F05C
+	arm_func_start Dwci_ItrlEnd
+Dwci_ItrlEnd: ; 0x0234F05C
 	stmdb sp!, {r3, lr}
 	ldr r2, _0234F090 ; =0x04000208
 	mov r1, #0
@@ -52183,13 +52183,13 @@ ov02_0234F05C: ; 0x0234F05C
 	.align 2, 0
 _0234F090: .word 0x04000208
 _0234F094: .word ov02_0235ABA4
-	arm_func_end ov02_0234F05C
+	arm_func_end Dwci_ItrlEnd
 
-	arm_func_start ov02_0234F098
-ov02_0234F098: ; 0x0234F098
+	arm_func_start IntrVBlank
+IntrVBlank: ; 0x0234F098
 	stmdb sp!, {r3, lr}
 	mov r0, #1
-	bl ov02_0234F9E8
+	bl Dwci_TsklAct
 	ldr r0, _0234F0BC ; =OS_IRQTable
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0xff8]
@@ -52198,14 +52198,14 @@ ov02_0234F098: ; 0x0234F098
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234F0BC: .word OS_IRQTable
-	arm_func_end ov02_0234F098
+	arm_func_end IntrVBlank
 
-	arm_func_start ov02_0234F0C0
-ov02_0234F0C0: ; 0x0234F0C0
+	arm_func_start Dwci_LstlForm
+Dwci_LstlForm: ; 0x0234F0C0
 	stmdb sp!, {r3, lr}
 	mov r0, #0x10
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	mov r2, #0
 	str r2, [r0]
 	add r1, r0, #8
@@ -52213,21 +52213,21 @@ ov02_0234F0C0: ; 0x0234F0C0
 	str r0, [r0, #8]
 	str r2, [r0, #0xc]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234F0C0
+	arm_func_end Dwci_LstlForm
 
-	arm_func_start ov02_0234F0EC
-ov02_0234F0EC: ; 0x0234F0EC
+	arm_func_start Dwci_LstlDelete
+Dwci_LstlDelete: ; 0x0234F0EC
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r0, sp, #8
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end ov02_0234F0EC
+	arm_func_end Dwci_LstlDelete
 
-	arm_func_start ov02_0234F108
-ov02_0234F108: ; 0x0234F108
+	arm_func_start Dwci_LstlErase
+Dwci_LstlErase: ; 0x0234F108
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
@@ -52242,10 +52242,10 @@ ov02_0234F108: ; 0x0234F108
 	str r1, [r4]
 	bl OS_EnableIrqMask
 	ldmia sp!, {r4, pc}
-	arm_func_end ov02_0234F108
+	arm_func_end Dwci_LstlErase
 
-	arm_func_start ov02_0234F140
-ov02_0234F140: ; 0x0234F140
+	arm_func_start Dwci_LstlInsert
+Dwci_LstlInsert: ; 0x0234F140
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #1
@@ -52258,32 +52258,32 @@ ov02_0234F140: ; 0x0234F140
 	str r4, [r5]
 	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov02_0234F140
+	arm_func_end Dwci_LstlInsert
 
-	arm_func_start ov02_0234F170
-ov02_0234F170: ; 0x0234F170
-	ldr ip, _0234F17C ; =ov02_0234F140
+	arm_func_start Dwci_LstlPushBack
+Dwci_LstlPushBack: ; 0x0234F170
+	ldr ip, _0234F17C ; =Dwci_LstlInsert
 	add r0, r0, #8
 	bx ip
 	.align 2, 0
-_0234F17C: .word ov02_0234F140
-	arm_func_end ov02_0234F170
+_0234F17C: .word Dwci_LstlInsert
+	arm_func_end Dwci_LstlPushBack
 
-	arm_func_start ov02_0234F180
-ov02_0234F180: ; 0x0234F180
-	ldr ip, _0234F18C ; =ov02_0234F140
+	arm_func_start Dwci_LstlPushFront
+Dwci_LstlPushFront: ; 0x0234F180
+	ldr ip, _0234F18C ; =Dwci_LstlInsert
 	ldr r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_0234F18C: .word ov02_0234F140
-	arm_func_end ov02_0234F180
+_0234F18C: .word Dwci_LstlInsert
+	arm_func_end Dwci_LstlPushFront
 
-	arm_func_start ov02_0234F190
-ov02_0234F190: ; 0x0234F190
+	arm_func_start Dwci_ObjlInit
+Dwci_ObjlInit: ; 0x0234F190
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r0, _0234F220 ; =0x0000080C
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	mov r1, r0
 	ldr r3, _0234F224 ; =ov02_0235ABAC
 	mov r0, #0x200
@@ -52300,7 +52300,7 @@ _0234F1CC:
 	mov r0, r4
 	mov r2, r8
 	add r1, r1, r6
-	bl ov02_0234D754
+	bl Dwci_QuelFormEx
 	ldr r1, [r7]
 	add r6, r6, #0x400
 	add r1, r1, r5, lsl #2
@@ -52308,11 +52308,11 @@ _0234F1CC:
 	str r0, [r1, #0x800]
 	cmp r5, #2
 	blt _0234F1CC
-	ldr r1, _0234F228 ; =ov02_0234F22C
+	ldr r1, _0234F228 ; =Obj_TaskTransfer
 	mov r0, #1
 	mov r2, #0
 	mov r3, #0xc8
-	bl ov02_0234FA98
+	bl Dwci_TsklForm
 	ldr r1, _0234F224 ; =ov02_0235ABAC
 	ldr r1, [r1]
 	str r0, [r1, #0x808]
@@ -52320,11 +52320,11 @@ _0234F1CC:
 	.align 2, 0
 _0234F220: .word 0x0000080C
 _0234F224: .word ov02_0235ABAC
-_0234F228: .word ov02_0234F22C
-	arm_func_end ov02_0234F190
+_0234F228: .word Obj_TaskTransfer
+	arm_func_end Dwci_ObjlInit
 
-	arm_func_start ov02_0234F22C
-ov02_0234F22C: ; 0x0234F22C
+	arm_func_start Obj_TaskTransfer
+Obj_TaskTransfer: ; 0x0234F22C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234F270 ; =ov02_0235ABAC
 	mov r1, #0x800
@@ -52344,39 +52344,39 @@ ov02_0234F22C: ; 0x0234F22C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234F270: .word ov02_0235ABAC
-	arm_func_end ov02_0234F22C
+	arm_func_end Obj_TaskTransfer
 
-	arm_func_start ov02_0234F274
-ov02_0234F274: ; 0x0234F274
+	arm_func_start Dwci_ObjlEnd
+Dwci_ObjlEnd: ; 0x0234F274
 	stmdb sp!, {r3, lr}
 	ldr r1, _0234F298 ; =ov02_0235ABAC
 	mov r0, #1
 	ldr r1, [r1]
 	ldr r1, [r1, #0x808]
-	bl ov02_0234FB60
+	bl Dwci_TsklDeleteEx
 	ldr r0, _0234F29C ; =ov02_0235ABAC
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234F298: .word ov02_0235ABAC
 _0234F29C: .word ov02_0235ABAC
-	arm_func_end ov02_0234F274
+	arm_func_end Dwci_ObjlEnd
 
-	arm_func_start ov02_0234F2A0
-ov02_0234F2A0: ; 0x0234F2A0
+	arm_func_start Dwci_ObjlFormGx
+Dwci_ObjlFormGx: ; 0x0234F2A0
 	ldr r1, _0234F2B8 ; =ov02_0235ABAC
-	ldr ip, _0234F2BC ; =ov02_0234D808
+	ldr ip, _0234F2BC ; =Dwci_QuelPopBack
 	ldr r1, [r1]
 	add r0, r1, r0, lsl #2
 	ldr r0, [r0, #0x800]
 	bx ip
 	.align 2, 0
 _0234F2B8: .word ov02_0235ABAC
-_0234F2BC: .word ov02_0234D808
-	arm_func_end ov02_0234F2A0
+_0234F2BC: .word Dwci_QuelPopBack
+	arm_func_end Dwci_ObjlFormGx
 
-	arm_func_start ov02_0234F2C0
-ov02_0234F2C0: ; 0x0234F2C0
+	arm_func_start Dwci_ObjlDelete
+Dwci_ObjlDelete: ; 0x0234F2C0
 	mov r1, r0
 	ldr r3, [r1]
 	ldr r0, _0234F300 ; =0xC1FFFCFF
@@ -52390,17 +52390,17 @@ ov02_0234F2C0: ; 0x0234F2C0
 	cmp r1, r0
 	movhs r2, #1
 	add r0, r3, r2, lsl #2
-	ldr ip, _0234F308 ; =ov02_0234D7B0
+	ldr ip, _0234F308 ; =Dwci_QuelPushBack
 	ldr r0, [r0, #0x800]
 	bx ip
 	.align 2, 0
 _0234F300: .word 0xC1FFFCFF
 _0234F304: .word ov02_0235ABAC
-_0234F308: .word ov02_0234D7B0
-	arm_func_end ov02_0234F2C0
+_0234F308: .word Dwci_QuelPushBack
+	arm_func_end Dwci_ObjlDelete
 
-	arm_func_start ov02_0234F30C
-ov02_0234F30C: ; 0x0234F30C
+	arm_func_start Dwci_ObjlGetOam
+Dwci_ObjlGetOam: ; 0x0234F30C
 	ldr r2, _0234F320 ; =ov02_0235ABAC
 	ldr r2, [r2]
 	add r0, r2, r0, lsl #10
@@ -52408,14 +52408,14 @@ ov02_0234F30C: ; 0x0234F30C
 	bx lr
 	.align 2, 0
 _0234F320: .word ov02_0235ABAC
-	arm_func_end ov02_0234F30C
+	arm_func_end Dwci_ObjlGetOam
 
-	arm_func_start ov02_0234F324
-ov02_0234F324: ; 0x0234F324
+	arm_func_start Dwci_OvrlInit
+Dwci_OvrlInit: ; 0x0234F324
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r0, #0x340
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r4, _0234F3E0 ; =ov02_0235ABB0
 	mov sb, #0
 	mov sl, sb
@@ -52429,11 +52429,11 @@ _0234F354:
 	mov r0, r8
 	mov r2, r7
 	add r1, r1, sl
-	bl ov02_0234D754
+	bl Dwci_QuelFormEx
 	ldr r1, [r4]
 	add r1, r1, sl
 	str r0, [r1, #0x19c]
-	bl ov02_0234F0C0
+	bl Dwci_LstlForm
 	ldr r1, [r4]
 	add r1, r1, sl
 	str r0, [r1, #0x198]
@@ -52449,12 +52449,12 @@ _0234F354:
 	add r1, r0, sl
 	ldr r0, [r1, #0x198]
 	add r1, r1, #0x180
-	bl ov02_0234F180
+	bl Dwci_LstlPushFront
 	ldr r0, [r4]
 	add r1, r0, sl
 	ldr r0, [r1, #0x198]
 	add r1, r1, #0x18c
-	bl ov02_0234F170
+	bl Dwci_LstlPushBack
 	add sb, sb, #1
 	cmp sb, #2
 	add sl, sl, #0x1a0
@@ -52462,10 +52462,10 @@ _0234F354:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0234F3E0: .word ov02_0235ABB0
-	arm_func_end ov02_0234F324
+	arm_func_end Dwci_OvrlInit
 
-	arm_func_start ov02_0234F3E4
-ov02_0234F3E4: ; 0x0234F3E4
+	arm_func_start Dwci_OvrlAlloc
+Dwci_OvrlAlloc: ; 0x0234F3E4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r5, r0
 	mov r0, #0x1a0
@@ -52477,7 +52477,7 @@ ov02_0234F3E4: ; 0x0234F3E4
 	add r0, r0, sb
 	ldr r0, [r0, #0x19c]
 	mov r4, r3
-	bl ov02_0234D808
+	bl Dwci_QuelPopBack
 	add r1, r6, #3
 	bic r1, r1, #3
 	mov r6, r0
@@ -52509,7 +52509,7 @@ _0234F464:
 	bgt _0234F494
 	mov r1, r6
 	strh sl, [r6, #8]
-	bl ov02_0234F140
+	bl Dwci_LstlInsert
 	b _0234F4A0
 _0234F494:
 	mov r5, r0
@@ -52546,7 +52546,7 @@ _0234F4E4:
 	mov r0, r5
 	mov r1, r6
 	strh r3, [r6, #8]
-	bl ov02_0234F140
+	bl Dwci_LstlInsert
 	b _0234F524
 _0234F518:
 	mov r5, sl
@@ -52569,14 +52569,14 @@ _0234F540:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0234F558: .word ov02_0235ABB0
-	arm_func_end ov02_0234F3E4
+	arm_func_end Dwci_OvrlAlloc
 
-	arm_func_start ov02_0234F55C
-ov02_0234F55C: ; 0x0234F55C
+	arm_func_start Dwci_OvrlFree
+Dwci_OvrlFree: ; 0x0234F55C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, #0
-	bl ov02_0234F108
+	bl Dwci_LstlErase
 	ldr r0, _0234F598 ; =ov02_0235ABB0
 	ldr r1, [r0]
 	add r0, r1, #0x1a0
@@ -52586,14 +52586,14 @@ ov02_0234F55C: ; 0x0234F55C
 	mla r0, r4, r0, r1
 	ldr r0, [r0, #0x19c]
 	mov r1, r5
-	bl ov02_0234D7B0
+	bl Dwci_QuelPushBack
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234F598: .word ov02_0235ABB0
-	arm_func_end ov02_0234F55C
+	arm_func_end Dwci_OvrlFree
 
-	arm_func_start ov02_0234F59C
-ov02_0234F59C: ; 0x0234F59C
+	arm_func_start Dwci_StrlNLen
+Dwci_StrlNLen: ; 0x0234F59C
 	cmp r1, #0
 	mov r3, #0
 	ble _0234F5C0
@@ -52607,10 +52607,10 @@ _0234F5A8:
 _0234F5C0:
 	mov r0, r3
 	bx lr
-	arm_func_end ov02_0234F59C
+	arm_func_end Dwci_StrlNLen
 
-	arm_func_start ov02_0234F5C8
-ov02_0234F5C8: ; 0x0234F5C8
+	arm_func_start swprintf_subroutine
+swprintf_subroutine: ; 0x0234F5C8
 	stmdb sp!, {r3, lr}
 	sub ip, r2, #1
 	cmp ip, #0
@@ -52631,10 +52631,10 @@ _0234F5FC:
 	strh r2, [r0, r1]
 	mov r0, lr
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234F5C8
+	arm_func_end swprintf_subroutine
 
-	arm_func_start ov02_0234F610
-ov02_0234F610: ; 0x0234F610
+	arm_func_start Dwci_ClearVram
+Dwci_ClearVram: ; 0x0234F610
 	stmdb sp!, {r3, lr}
 	bl GX_DisableBankForBG
 	ldr r1, _0234F6C0 ; =ov02_0235ABB4
@@ -52677,20 +52677,20 @@ ov02_0234F610: ; 0x0234F610
 	str r0, [r1, #0x30]
 	ldr r0, [r1, #0x2c]
 	bl GX_SetBankForARM7
-	bl ov02_0234F7CC
+	bl Sub_ClearVram
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234F6C0: .word ov02_0235ABB4
-	arm_func_end ov02_0234F610
+	arm_func_end Dwci_ClearVram
 
-	arm_func_start ov02_0234F6C4
-ov02_0234F6C4: ; 0x0234F6C4
+	arm_func_start Dwci_RepairVram
+Dwci_RepairVram: ; 0x0234F6C4
 	stmdb sp!, {r4, lr}
 	bl GX_DisableBankForBG
 	bl GX_DisableBankForOBJ
 	bl GX_DisableBankForSubBG
 	bl GX_DisableBankForSubOBJ
-	bl ov02_0234F7CC
+	bl Sub_ClearVram
 	ldr r0, _0234F7C0 ; =ov02_0235ABB4
 	ldr r0, [r0]
 	bl GX_SetBankForBG
@@ -52752,10 +52752,10 @@ ov02_0234F6C4: ; 0x0234F6C4
 _0234F7C0: .word ov02_0235ABB4
 _0234F7C4: .word 0x04000050
 _0234F7C8: .word 0x04001014
-	arm_func_end ov02_0234F6C4
+	arm_func_end Dwci_RepairVram
 
-	arm_func_start ov02_0234F7CC
-ov02_0234F7CC: ; 0x0234F7CC
+	arm_func_start Sub_ClearVram
+Sub_ClearVram: ; 0x0234F7CC
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234F840 ; =0x000001F3
 	bl GX_SetBankForLCDC
@@ -52790,10 +52790,10 @@ _0234F840: .word 0x000001F3
 _0234F844: .word 0x06880000
 _0234F848: .word 0x07000400
 _0234F84C: .word 0x05000400
-	arm_func_end ov02_0234F7CC
+	arm_func_end Sub_ClearVram
 
-	arm_func_start ov02_0234F850
-ov02_0234F850: ; 0x0234F850
+	arm_func_start Dwci_SetLedWireless
+Dwci_SetLedWireless: ; 0x0234F850
 	stmdb sp!, {r3, lr}
 	add r0, sp, #0
 	bl PM_GetLedPattern
@@ -52805,23 +52805,23 @@ ov02_0234F850: ; 0x0234F850
 	mov r0, #0xf
 	bl PMi_SendLedPatternCommand
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234F850
+	arm_func_end Dwci_SetLedWireless
 
-	arm_func_start ov02_0234F87C
-ov02_0234F87C: ; 0x0234F87C
+	arm_func_start Dwci_SetLedNormal
+Dwci_SetLedNormal: ; 0x0234F87C
 	ldr ip, _0234F888 ; =PMi_SendLedPatternCommand
 	mov r0, #1
 	bx ip
 	.align 2, 0
 _0234F888: .word PMi_SendLedPatternCommand
-	arm_func_end ov02_0234F87C
+	arm_func_end Dwci_SetLedNormal
 
-	arm_func_start ov02_0234F88C
-ov02_0234F88C: ; 0x0234F88C
+	arm_func_start Dwci_TsklInit
+Dwci_TsklInit: ; 0x0234F88C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #0x80
 	mov r1, #4
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	mov r8, #0
 	ldr r4, _0234F998 ; =ov02_0235ABE8
 	ldr sb, _0234F99C ; =ov02_02352F3C
@@ -52839,7 +52839,7 @@ _0234F8C0:
 	str r2, [r0, #0x34]
 	ldrb r2, [sb]
 	mul r0, r2, fp
-	bl ov02_0234E7B4
+	bl Dwci_HeaplAllocEx
 	ldr r1, [r4]
 	mov r2, #0x14
 	add r1, r1, r8, lsl #6
@@ -52848,15 +52848,15 @@ _0234F8C0:
 	ldrb r0, [sb]
 	add r1, r1, r8, lsl #6
 	ldr r1, [r1, #0x3c]
-	bl ov02_0234D754
+	bl Dwci_QuelFormEx
 	ldr r1, [r4]
 	str r0, [r1, r8, lsl #6]
 	ldrb r0, [sb], #1
-	bl ov02_0234D720
+	bl Dwci_QuelForm
 	ldr r1, [r4]
 	add r1, r1, r8, lsl #6
 	str r0, [r1, #4]
-	bl ov02_0234F0C0
+	bl Dwci_LstlForm
 	ldr r1, [r4]
 	add r1, r1, r8, lsl #6
 	str r0, [r1, #8]
@@ -52871,13 +52871,13 @@ _0234F8C0:
 	add r1, r1, sl
 	ldr r0, [r0, #8]
 	add r1, r1, #0xc
-	bl ov02_0234F180
+	bl Dwci_LstlPushFront
 	ldr r1, [r4]
 	add r0, r1, r8, lsl #6
 	add r1, r1, sl
 	ldr r0, [r0, #8]
 	add r1, r1, #0x20
-	bl ov02_0234F170
+	bl Dwci_LstlPushBack
 	ldr r0, [r4]
 	add sl, sl, #0x40
 	add r0, r0, r8, lsl #6
@@ -52889,10 +52889,10 @@ _0234F8C0:
 	.align 2, 0
 _0234F998: .word ov02_0235ABE8
 _0234F99C: .word ov02_02352F3C
-	arm_func_end ov02_0234F88C
+	arm_func_end Dwci_TsklInit
 
-	arm_func_start ov02_0234F9A0
-ov02_0234F9A0: ; 0x0234F9A0
+	arm_func_start Dwci_TsklEnd
+Dwci_TsklEnd: ; 0x0234F9A0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, _0234F9E0 ; =ov02_0235ABE8
 	mov r5, #0
@@ -52900,23 +52900,23 @@ _0234F9AC:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #6
 	ldr r0, [r0, #8]
-	bl ov02_0234F0EC
+	bl Dwci_LstlDelete
 	ldr r0, [r4]
 	ldr r0, [r0, r5, lsl #6]
-	bl ov02_0234D794
+	bl Dwci_QuelDelete
 	add r5, r5, #1
 	cmp r5, #2
 	blt _0234F9AC
 	ldr r0, _0234F9E4 ; =ov02_0235ABE8
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234F9E0: .word ov02_0235ABE8
 _0234F9E4: .word ov02_0235ABE8
-	arm_func_end ov02_0234F9A0
+	arm_func_end Dwci_TsklEnd
 
-	arm_func_start ov02_0234F9E8
-ov02_0234F9E8: ; 0x0234F9E8
+	arm_func_start Dwci_TsklAct
+Dwci_TsklAct: ; 0x0234F9E8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r5, _0234FA94 ; =ov02_0235ABE8
 	mov r6, r0
@@ -52951,11 +52951,11 @@ _0234FA40:
 _0234FA5C:
 	add r0, r4, r0
 	ldr r0, [r0, #4]
-	bl ov02_0234D808
+	bl Dwci_QuelPopBack
 	movs r1, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
-	bl ov02_0234FB6C
+	bl Task_DeleteTcb
 	ldr r0, [r7]
 	add r5, r5, #1
 	add r1, r4, r0
@@ -52965,19 +52965,19 @@ _0234FA5C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0234FA94: .word ov02_0235ABE8
-	arm_func_end ov02_0234F9E8
+	arm_func_end Dwci_TsklAct
 
-	arm_func_start ov02_0234FA98
-ov02_0234FA98: ; 0x0234FA98
+	arm_func_start Dwci_TsklForm
+Dwci_TsklForm: ; 0x0234FA98
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	str ip, [sp]
-	bl ov02_0234FAAC
+	bl Task_FormTask
 	ldmia sp!, {r3, pc}
-	arm_func_end ov02_0234FA98
+	arm_func_end Dwci_TsklForm
 
-	arm_func_start ov02_0234FAAC
-ov02_0234FAAC: ; 0x0234FAAC
+	arm_func_start Task_FormTask
+Task_FormTask: ; 0x0234FAAC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r4, _0234FB34 ; =ov02_0235ABE8
 	mov r7, r0
@@ -52986,7 +52986,7 @@ ov02_0234FAAC: ; 0x0234FAAC
 	ldr r0, [r0, r7, lsl #6]
 	mov r5, r2
 	mov r6, r3
-	bl ov02_0234D808
+	bl Dwci_QuelPopBack
 	mov r4, r0
 	str r8, [r4, #8]
 	str r5, [r4, #0xc]
@@ -53005,7 +53005,7 @@ _0234FB04:
 	cmp r6, r1
 	bhs _0234FB1C
 	mov r1, r4
-	bl ov02_0234F140
+	bl Dwci_LstlInsert
 	b _0234FB24
 _0234FB1C:
 	ldr r0, [r0, #4]
@@ -53017,37 +53017,37 @@ _0234FB24:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0234FB34: .word ov02_0235ABE8
-	arm_func_end ov02_0234FAAC
+	arm_func_end Task_FormTask
 
-	arm_func_start ov02_0234FB38
-ov02_0234FB38: ; 0x0234FB38
+	arm_func_start Dwci_TsklChangeFunc
+Dwci_TsklChangeFunc: ; 0x0234FB38
 	str r1, [r0, #8]
 	bx lr
-	arm_func_end ov02_0234FB38
+	arm_func_end Dwci_TsklChangeFunc
 
-	arm_func_start ov02_0234FB40
-ov02_0234FB40: ; 0x0234FB40
+	arm_func_start Dwci_TsklDelete
+Dwci_TsklDelete: ; 0x0234FB40
 	ldr r2, _0234FB58 ; =ov02_0235ABE8
-	ldr ip, _0234FB5C ; =ov02_0234D7B0
+	ldr ip, _0234FB5C ; =Dwci_QuelPushBack
 	ldr r2, [r2]
 	add r0, r2, r0, lsl #6
 	ldr r0, [r0, #4]
 	bx ip
 	.align 2, 0
 _0234FB58: .word ov02_0235ABE8
-_0234FB5C: .word ov02_0234D7B0
-	arm_func_end ov02_0234FB40
+_0234FB5C: .word Dwci_QuelPushBack
+	arm_func_end Dwci_TsklDelete
 
-	arm_func_start ov02_0234FB60
-ov02_0234FB60: ; 0x0234FB60
-	ldr ip, _0234FB68 ; =ov02_0234FB6C
+	arm_func_start Dwci_TsklDeleteEx
+Dwci_TsklDeleteEx: ; 0x0234FB60
+	ldr ip, _0234FB68 ; =Task_DeleteTcb
 	bx ip
 	.align 2, 0
-_0234FB68: .word ov02_0234FB6C
-	arm_func_end ov02_0234FB60
+_0234FB68: .word Task_DeleteTcb
+	arm_func_end Dwci_TsklDeleteEx
 
-	arm_func_start ov02_0234FB6C
-ov02_0234FB6C: ; 0x0234FB6C
+	arm_func_start Task_DeleteTcb
+Task_DeleteTcb: ; 0x0234FB6C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	ldrb r1, [r4, #0x11]
@@ -53055,22 +53055,22 @@ ov02_0234FB6C: ; 0x0234FB6C
 	cmp r1, #0
 	beq _0234FB8C
 	add r0, r4, #0xc
-	bl ov02_0234E7D8
+	bl Dwci_HeaplFree
 _0234FB8C:
 	mov r0, r4
-	bl ov02_0234F108
+	bl Dwci_LstlErase
 	ldr r0, _0234FBAC ; =ov02_0235ABE8
 	mov r1, r4
 	ldr r0, [r0]
 	ldr r0, [r0, r5, lsl #6]
-	bl ov02_0234D7B0
+	bl Dwci_QuelPushBack
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234FBAC: .word ov02_0235ABE8
-	arm_func_end ov02_0234FB6C
+	arm_func_end Task_DeleteTcb
 
-	arm_func_start ov02_0234FBB0
-ov02_0234FBB0: ; 0x0234FBB0
+	arm_func_start Dwci_TsklOperate
+Dwci_TsklOperate: ; 0x0234FBB0
 	ldr r2, _0234FBC4 ; =ov02_0235ABE8
 	ldr r2, [r2]
 	add r0, r2, r0, lsl #6
@@ -53078,7 +53078,7 @@ ov02_0234FBB0: ; 0x0234FBB0
 	bx lr
 	.align 2, 0
 _0234FBC4: .word ov02_0235ABE8
-	arm_func_end ov02_0234FBB0
+	arm_func_end Dwci_TsklOperate
 	; 0x0234FBC8
 
 	.rodata
@@ -53089,19 +53089,19 @@ ov02_023503F4_EU:
 	.byte 0x05, 0x00, 0x00, 0x00
 #endif
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
-	.word ov02_0232A7EC
-	.word ov02_0232ABE4
-	.word ov02_0232AC64
+	.word DrawGlyphLine
+	.word ClearLine
+	.word ClearAreaLine
 	.global ov02_0234FBE0
 ov02_0234FBE0:
-	.word ov02_0232A7EC
-	.word ov02_0232AB94
-	.word ov02_0232AC64
+	.word DrawGlyphLine
+	.word ClearContinuous
+	.word ClearAreaLine
 	.global ov02_0234FBEC
 ov02_0234FBEC:
-	.word ov02_0232A984
-	.word ov02_0232AB94
-	.word ov02_0232AE00
+	.word DrawGlyph1D
+	.word ClearContinuous
+	.word ClearArea1D
 	.global ov02_0234FBF8
 ov02_0234FBF8:
 	.byte 0x00, 0x00, 0x01, 0x00, 0x02, 0x00, 0x02, 0x00, 0x00, 0x01, 0x01, 0x01, 0x02, 0x01, 0x02, 0x01
@@ -54099,8 +54099,8 @@ ov02_02352A2C:
 ov02_02352A30:
 	.byte 0x3E, 0x3D, 0x0E, 0x00, 0x10, 0x00, 0x00, 0x00
 	.byte 0x47, 0x00, 0x00, 0x00, 0x48, 0x00, 0x00, 0x00
-	.word ov02_02347554
-	.word ov02_02347584
+	.word Dwci_SettinglSetSsid
+	.word Dwci_SettinglSetWep
 	.global ov02_02352A48
 ov02_02352A48:
 	.byte 0x20, 0x31, 0x00, 0x00
@@ -54114,18 +54114,18 @@ ov02_02352A5C:
 	.byte 0x43, 0x00, 0x00, 0x00, 0x29, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov02_02352A74
 ov02_02352A74:
-	.word ov02_023477D8
-	.word ov02_02347818
-	.word ov02_02347858
-	.word ov02_0234789C
-	.word ov02_023478E0
+	.word Dwci_SettinglGetIp
+	.word Dwci_SettinglGetNetMask
+	.word Dwci_SettinglGetGateway
+	.word Dwci_SettinglGetDnsP
+	.word Dwci_SettinglGetDnsS
 	.global ov02_02352A88
 ov02_02352A88:
 	.word ov02_0234771C
-	.word ov02_02347738
-	.word ov02_02347754
-	.word ov02_02347774
-	.word ov02_02347794
+	.word Dwci_SettinglSetIp
+	.word Dwci_SettinglSetNetMask
+	.word Dwci_SettinglSetGateway
+	.word Dwci_SettinglSetDnsP
 	.global ov02_02352A9C
 ov02_02352A9C:
 	.byte 0x31, 0x3D, 0x49, 0x5A, 0x66, 0x72, 0x83, 0x8F, 0x9B, 0xAC, 0xB8, 0xC4
@@ -54284,8 +54284,8 @@ ov02_02352D1A:
 	.byte 0xB6, 0x00, 0x92, 0x00, 0xC6, 0x00, 0x62, 0x00, 0xEA, 0x00, 0x92, 0x00
 	.global ov02_02352D54
 ov02_02352D54:
-	.word ov02_023456D0
-	.word ov02_023456E4
+	.word AcAlloc
+	.word AcFree
 	.byte 0x03, 0x01, 0x00, 0x00
 	.global ov02_02352D60
 ov02_02352D60:
@@ -54460,8 +54460,8 @@ ov02_02353008:
 	.global ov02_0235301C
 ov02_0235301C:
 	.byte 0x00, 0x00, 0x00, 0x01
-	.word ov02_02331270 + 1
-	.word ov02_023312A0 + 1
+	.word SoAlloc + 1
+	.word SoFree + 1
 	.byte 0x00, 0x00, 0x00, 0x00, 0xC0, 0xA8, 0x00, 0xB0, 0xFF, 0xFF, 0xFF, 0x00, 0xC0, 0xA8, 0x00, 0xC8
 	.byte 0xC0, 0xA8, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

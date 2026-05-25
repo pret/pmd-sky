@@ -1,5 +1,4 @@
 #pragma once
-.public _020AFC4C
 .public AllocateTemp1024ByteBufferFromPool
 .public ChangeMonsterAnimation
 .public DIRECTIONS_XY
@@ -36,6 +35,7 @@
 .public LogMessageByIdWithPopup
 .public LogMessageByIdWithPopupCheckUserTarget
 .public NeedsItemToSpawn
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov29_022DD7D8
 .public ov29_022DDB98
 .public ov29_022E273C

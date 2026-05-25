@@ -1,5 +1,4 @@
 #pragma once
-.public _020AFC4C
 .public _s32_div_f
 .public abs
 .public AddHeldItemToBag
@@ -76,6 +75,7 @@
 .public MemFree
 .public MemZero
 .public MonsterHasEmbargoStatus
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public OpenMenu
 .public OpenMessageLog
 .public ov29_022DE608

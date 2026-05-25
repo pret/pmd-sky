@@ -8258,7 +8258,7 @@ sub_0201B198: ; 0x0201B198
 	mov r2, #0x140
 	mov r3, #0x7000000
 	str ip, [sp]
-	bl sub_0200B508
+	bl InitOamInfo
 	b _0201B284
 _0201B210:
 	cmp r5, #1
@@ -8269,7 +8269,7 @@ _0201B210:
 	mov r1, #0x70
 	mov r2, #0x140
 	str ip, [sp]
-	bl sub_0200B508
+	bl InitOamInfo
 	b _0201B284
 _0201B238:
 	cmp r5, #2
@@ -8280,7 +8280,7 @@ _0201B238:
 	mov r1, #0x10
 	mov r2, #0x140
 	str ip, [sp]
-	bl sub_0200B508
+	bl InitOamInfo
 	b _0201B284
 _0201B260:
 	cmp r5, #3
@@ -8291,7 +8291,7 @@ _0201B260:
 	mov r1, #0x10
 	mov r2, #0x140
 	str ip, [sp]
-	bl sub_0200B508
+	bl InitOamInfo
 _0201B284:
 	mov r0, r4
 	bl sub_0201B2A0
@@ -8310,7 +8310,7 @@ sub_0201B2A0: ; 0x0201B2A0
 	mov r0, #0
 	str r0, [r4, #0x40]
 	add r0, r4, #0x20
-	bl sub_0200B67C
+	bl ClearGroupedOamObjsAndGroups
 	ldrb r0, [r4, #0x1c]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -8803,7 +8803,7 @@ _0201B950:
 	strh r4, [sp, #8]
 	strh r3, [sp, #0xa]
 	add r0, r5, #0x20
-	bl sub_0200B6F0
+	bl AddObjToUngroupedOamObjs
 	ldr r0, [r5, #0x40]
 	add r0, r0, #1
 	str r0, [r5, #0x40]
@@ -8883,7 +8883,7 @@ _0201BA2C:
 	and r3, r3, #0xff
 	orr r3, lr, r3
 	strh r3, [sp]
-	bl sub_0200B6F0
+	bl AddObjToUngroupedOamObjs
 	ldr r0, [r4, #0x40]
 	add r0, r0, #1
 	str r0, [r4, #0x40]
@@ -8898,11 +8898,11 @@ _0201BA98: .word 0x00000FFF
 
 	arm_func_start sub_0201BA9C
 sub_0201BA9C: ; 0x0201BA9C
-	ldr ip, _0201BAA8 ; =sub_0200B57C
+	ldr ip, _0201BAA8 ; =GroupOamObjs
 	add r0, r0, #0x20
 	bx ip
 	.align 2, 0
-_0201BAA8: .word sub_0200B57C
+_0201BAA8: .word GroupOamObjs
 	arm_func_end sub_0201BA9C
 
 	arm_func_start sub_0201BAAC
@@ -8910,9 +8910,9 @@ sub_0201BAAC: ; 0x0201BAAC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r0, r4, #0x20
-	bl sub_0200B570
+	bl SetShouldCopyToOam
 	add r0, r4, #0x20
-	bl sub_0200B630
+	bl CopyAttributesToOam
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0201BAAC
 
@@ -8960,59 +8960,59 @@ sub_0201BB3C: ; 0x0201BB3C
 	mov r0, #0x1f00
 	mov r1, #0
 	bl MemAlloc
-	ldr r2, _0201BCBC ; =_020AFC4C
+	ldr r2, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r1, #0x1f00
 	str r0, [r2]
 	bl MemZero
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1c0
 	bl sub_0201AB90
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3c4
 	add r0, r0, #0xc00
 	bl sub_0201AB90
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1c0
 	bl sub_0201AC10
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3c4
 	add r0, r0, #0xc00
 	bl sub_0201AC10
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1c8
 	add r0, r0, #0x1c00
 	bl sub_0201AEF0
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, _0201BCC0 ; =0x05000200
 	ldr r0, [r0]
 	add r0, r0, #0x1c8
 	add r0, r0, #0x1c00
 	bl sub_0201AF18
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, _0201BCC4 ; =0x06894000
 	ldr r0, [r0]
 	add r0, r0, #0x1c8
 	add r0, r0, #0x1c00
 	bl sub_0201AF64
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x264
 	add r0, r0, #0x1c00
 	bl sub_0201AEF0
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, _0201BCC8 ; =0x05000600
 	ldr r0, [r0]
 	add r0, r0, #0x264
 	add r0, r0, #0x1c00
 	bl sub_0201AF18
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r3, #0
 	ldr r0, [r0]
 	str r3, [sp]
@@ -9020,7 +9020,7 @@ sub_0201BB3C: ; 0x0201BB3C
 	add r1, r1, #0x1c00
 	add r2, r0, #0x1c0
 	bl sub_0201B198
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r3, #1
 	ldr r2, [r0]
 	str r3, [sp]
@@ -9030,7 +9030,7 @@ sub_0201BB3C: ; 0x0201BB3C
 	add r2, r2, #0x3c4
 	add r2, r2, #0xc00
 	bl sub_0201B198
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r1, #2
 	ldr r2, [r0]
 	mov r3, #0
@@ -9040,7 +9040,7 @@ sub_0201BB3C: ; 0x0201BB3C
 	add r1, r1, #0x1c00
 	add r2, r2, #0x1c0
 	bl sub_0201B198
-	ldr r0, _0201BCBC ; =_020AFC4C
+	ldr r0, _0201BCBC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r1, #3
 	ldr r2, [r0]
 	mov r3, #1
@@ -9053,7 +9053,7 @@ sub_0201BB3C: ; 0x0201BB3C
 	bl sub_0201B198
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BCBC: .word _020AFC4C
+_0201BCBC: .word OBJ_GRAPHICS_CONTROLS_PTR
 _0201BCC0: .word 0x05000200
 _0201BCC4: .word 0x06894000
 _0201BCC8: .word 0x05000600
@@ -9061,7 +9061,7 @@ _0201BCC8: .word 0x05000600
 
 	arm_func_start sub_0201BCCC
 sub_0201BCCC: ; 0x0201BCCC
-	ldr r1, _0201BCEC ; =_020AFC4C
+	ldr r1, _0201BCEC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r2, #0x9c
 	ldr r1, [r1]
 	ldr ip, _0201BCF0 ; =sub_0201AD7C
@@ -9070,13 +9070,13 @@ sub_0201BCCC: ; 0x0201BCCC
 	mla r0, r2, r0, r1
 	bx ip
 	.align 2, 0
-_0201BCEC: .word _020AFC4C
+_0201BCEC: .word OBJ_GRAPHICS_CONTROLS_PTR
 _0201BCF0: .word sub_0201AD7C
 	arm_func_end sub_0201BCCC
 
 	arm_func_start sub_0201BCF4
 sub_0201BCF4: ; 0x0201BCF4
-	ldr r1, _0201BD14 ; =_020AFC4C
+	ldr r1, _0201BD14 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r2, #0x9c
 	ldr r1, [r1]
 	ldr ip, _0201BD18 ; =sub_0201AD84
@@ -9085,13 +9085,13 @@ sub_0201BCF4: ; 0x0201BCF4
 	mla r0, r2, r0, r1
 	bx ip
 	.align 2, 0
-_0201BD14: .word _020AFC4C
+_0201BD14: .word OBJ_GRAPHICS_CONTROLS_PTR
 _0201BD18: .word sub_0201AD84
 	arm_func_end sub_0201BCF4
 
 	arm_func_start sub_0201BD1C
 sub_0201BD1C: ; 0x0201BD1C
-	ldr r3, _0201BD4C ; =_020AFC4C
+	ldr r3, _0201BD4C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r2, #0x9c
 	ldr ip, [r3]
 	and r3, r0, #1
@@ -9104,13 +9104,13 @@ sub_0201BD1C: ; 0x0201BD1C
 	strb r0, [r2, #0x78]
 	bx lr
 	.align 2, 0
-_0201BD4C: .word _020AFC4C
+_0201BD4C: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BD1C
 
 	arm_func_start sub_0201BD50
 sub_0201BD50: ; 0x0201BD50
 	stmdb sp!, {r3, lr}
-	ldr r3, _0201BD7C ; =_020AFC4C
+	ldr r3, _0201BD7C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r2, #0x9c
 	ldr r3, [r3]
 	mov ip, r0
@@ -9121,13 +9121,13 @@ sub_0201BD50: ; 0x0201BD50
 	bl sub_0201AEB4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BD7C: .word _020AFC4C
+_0201BD7C: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BD50
 
 	arm_func_start sub_0201BD80
 sub_0201BD80: ; 0x0201BD80
 	stmdb sp!, {r3, lr}
-	ldr ip, _0201BDB0 ; =_020AFC4C
+	ldr ip, _0201BDB0 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov lr, r0
 	ldr ip, [ip]
 	mov r3, #0x9c
@@ -9139,7 +9139,7 @@ sub_0201BD80: ; 0x0201BD80
 	bl sub_0201AECC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BDB0: .word _020AFC4C
+_0201BDB0: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BD80
 
 	arm_func_start sub_0201BDB4
@@ -9147,10 +9147,10 @@ sub_0201BDB4: ; 0x0201BDB4
 	stmdb sp!, {r3, lr}
 	mov r0, #8
 	bl sub_0200302C
-	ldr r0, _0201BDE8 ; =_020AFC4C
+	ldr r0, _0201BDE8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	bl sub_0201BAAC
-	ldr r0, _0201BDE8 ; =_020AFC4C
+	ldr r0, _0201BDE8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x70
 	bl sub_0201BAAC
@@ -9158,7 +9158,7 @@ sub_0201BDB4: ; 0x0201BDB4
 	bl sub_020030FC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BDE8: .word _020AFC4C
+_0201BDE8: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BDB4
 
 	arm_func_start sub_0201BDEC
@@ -9166,11 +9166,11 @@ sub_0201BDEC: ; 0x0201BDEC
 	stmdb sp!, {r3, lr}
 	mov r0, #8
 	bl sub_0200302C
-	ldr r0, _0201BE24 ; =_020AFC4C
+	ldr r0, _0201BE24 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe0
 	bl sub_0201BAAC
-	ldr r0, _0201BE24 ; =_020AFC4C
+	ldr r0, _0201BE24 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x150
 	bl sub_0201BAAC
@@ -9178,56 +9178,56 @@ sub_0201BDEC: ; 0x0201BDEC
 	bl sub_020030FC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BE24: .word _020AFC4C
+_0201BE24: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BDEC
 
 	arm_func_start sub_0201BE28
 sub_0201BE28: ; 0x0201BE28
 	stmdb sp!, {r3, lr}
-	ldr r0, _0201BE58 ; =_020AFC4C
+	ldr r0, _0201BE58 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1c8
 	add r0, r0, #0x1c00
 	bl sub_0201AFB8
-	ldr r0, _0201BE58 ; =_020AFC4C
+	ldr r0, _0201BE58 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x264
 	add r0, r0, #0x1c00
 	bl sub_0201AFB8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BE58: .word _020AFC4C
+_0201BE58: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BE28
 
 	arm_func_start sub_0201BE5C
 sub_0201BE5C: ; 0x0201BE5C
 	stmdb sp!, {r3, lr}
-	ldr r0, _0201BE80 ; =_020AFC4C
+	ldr r0, _0201BE80 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	bl sub_0201BA9C
-	ldr r0, _0201BE80 ; =_020AFC4C
+	ldr r0, _0201BE80 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x70
 	bl sub_0201BA9C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BE80: .word _020AFC4C
+_0201BE80: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BE5C
 
 	arm_func_start sub_0201BE84
 sub_0201BE84: ; 0x0201BE84
 	stmdb sp!, {r3, lr}
-	ldr r0, _0201BEAC ; =_020AFC4C
+	ldr r0, _0201BEAC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe0
 	bl sub_0201BA9C
-	ldr r0, _0201BEAC ; =_020AFC4C
+	ldr r0, _0201BEAC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x150
 	bl sub_0201BA9C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BEAC: .word _020AFC4C
+_0201BEAC: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BE84
 
 	arm_func_start sub_0201BEB0
@@ -9235,20 +9235,20 @@ sub_0201BEB0: ; 0x0201BEB0
 	stmdb sp!, {r3, lr}
 	mov r0, #8
 	bl sub_0200302C
-	ldr r0, _0201BF0C ; =_020AFC4C
+	ldr r0, _0201BF0C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1c8
 	add r0, r0, #0x1c00
 	bl sub_0201B004
-	ldr r0, _0201BF0C ; =_020AFC4C
+	ldr r0, _0201BF0C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x264
 	add r0, r0, #0x1c00
 	bl sub_0201B004
-	ldr r0, _0201BF0C ; =_020AFC4C
+	ldr r0, _0201BF0C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	bl sub_0201BB20
-	ldr r0, _0201BF0C ; =_020AFC4C
+	ldr r0, _0201BF0C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x70
 	bl sub_0201BB20
@@ -9256,7 +9256,7 @@ sub_0201BEB0: ; 0x0201BEB0
 	bl sub_020030FC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BF0C: .word _020AFC4C
+_0201BF0C: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BEB0
 
 	arm_func_start sub_0201BF10
@@ -9264,11 +9264,11 @@ sub_0201BF10: ; 0x0201BF10
 	stmdb sp!, {r3, lr}
 	mov r0, #8
 	bl sub_0200302C
-	ldr r0, _0201BF48 ; =_020AFC4C
+	ldr r0, _0201BF48 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe0
 	bl sub_0201BB20
-	ldr r0, _0201BF48 ; =_020AFC4C
+	ldr r0, _0201BF48 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x150
 	bl sub_0201BB20
@@ -9276,7 +9276,7 @@ sub_0201BF10: ; 0x0201BF10
 	bl sub_020030FC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BF48: .word _020AFC4C
+_0201BF48: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BF10
 
 	arm_func_start sub_0201BF4C
@@ -9292,31 +9292,31 @@ sub_0201BF4C: ; 0x0201BF4C
 	arm_func_start sub_0201BF64
 sub_0201BF64: ; 0x0201BF64
 	stmdb sp!, {r3, lr}
-	ldr r0, _0201BFA8 ; =_020AFC4C
+	ldr r0, _0201BFA8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	bl sub_0201B2A0
-	ldr r0, _0201BFA8 ; =_020AFC4C
+	ldr r0, _0201BFA8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x70
 	bl sub_0201B2A0
-	ldr r0, _0201BFA8 ; =_020AFC4C
+	ldr r0, _0201BFA8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe0
 	bl sub_0201B2A0
-	ldr r0, _0201BFA8 ; =_020AFC4C
+	ldr r0, _0201BFA8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x150
 	bl sub_0201B2A0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201BFA8: .word _020AFC4C
+_0201BFA8: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BF64
 
 	arm_func_start sub_0201BFAC
 sub_0201BFAC: ; 0x0201BFAC
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr ip, _0201BFEC ; =_020AFC4C
+	ldr ip, _0201BFEC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	str r3, [sp]
 	ldr lr, [ip]
 	ldr ip, [sp, #0x10]
@@ -9331,7 +9331,7 @@ sub_0201BFAC: ; 0x0201BFAC
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_0201BFEC: .word _020AFC4C
+_0201BFEC: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BFAC
 
 	arm_func_start CopyAndInterleaveWrapper
@@ -10098,13 +10098,13 @@ _0201CA38:
 	mov r2, sb
 	str r0, [sp, #0x3c]
 	str r1, [sp]
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, [sp, #0x3c]
 	ldr r0, [r0]
 	ldr r3, [r8, #0x5c]
 	bl sub_0201B388
 	ldr r2, [r8, #0x5c]
-	ldr r1, _0201CF54 ; =_020AFC4C
+	ldr r1, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrh r3, [r2, #4]
 	ldr r1, [r1]
 	ldr r0, [sp, #0x3c]
@@ -10126,7 +10126,7 @@ _0201CAA8:
 _0201CAB0:
 	cmp r4, #0
 	bne _0201CCE0
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrb r2, [r8, #0x41]
 	ldr r0, [r0]
 	ldr r1, [r8, #0x5c]
@@ -10144,14 +10144,14 @@ _0201CAE0:
 	mov r2, sb
 	str r0, [sp, #0x14]
 	str r1, [sp]
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, [sp, #0x14]
 	ldr r0, [r0]
 	ldr r3, [r8, #0x5c]
 	add r0, r0, #0x70
 	bl sub_0201B388
 	ldr r2, [r8, #0x5c]
-	ldr r1, _0201CF54 ; =_020AFC4C
+	ldr r1, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrh r3, [r2, #4]
 	ldr r1, [r1]
 	ldr r0, [sp, #0x14]
@@ -10173,7 +10173,7 @@ _0201CB54:
 _0201CB5C:
 	cmp r4, #0
 	bne _0201CCE0
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrb r2, [r8, #0x41]
 	ldr r0, [r0]
 	ldr r1, [r8, #0x5c]
@@ -10192,14 +10192,14 @@ _0201CB90:
 	mov r2, sb
 	str r0, [sp, #0x18]
 	str r1, [sp]
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, [sp, #0x18]
 	ldr r0, [r0]
 	ldr r3, [r8, #0x5c]
 	add r0, r0, #0xe0
 	bl sub_0201B388
 	ldr r2, [r8, #0x5c]
-	ldr r1, _0201CF54 ; =_020AFC4C
+	ldr r1, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrh r3, [r2, #4]
 	ldr r1, [r1]
 	ldr r0, [sp, #0x18]
@@ -10221,7 +10221,7 @@ _0201CC04:
 _0201CC0C:
 	cmp r4, #0
 	bne _0201CCE0
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrb r2, [r8, #0x41]
 	ldr r0, [r0]
 	ldr r1, [r8, #0x5c]
@@ -10240,13 +10240,13 @@ _0201CC40:
 	mov r2, sb
 	str r0, [sp, #0x1c]
 	str r1, [sp]
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, [sp, #0x1c]
 	ldr r0, [r0]
 	ldr r3, [r8, #0x5c]
 	add r0, r0, #0x150
 	bl sub_0201B388
-	ldr r1, _0201CF54 ; =_020AFC4C
+	ldr r1, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r2, [r8, #0x5c]
 	ldr r1, [r1]
 	ldrh r3, [r2, #4]
@@ -10270,7 +10270,7 @@ _0201CCB8:
 _0201CCC0:
 	cmp r4, #0
 	bne _0201CCE0
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrb r2, [r8, #0x41]
 	ldr r0, [r0]
 	ldr r1, [r8, #0x5c]
@@ -10331,7 +10331,7 @@ _0201CD38:
 	ldrh r0, [r8, #2]
 	tst r0, #2
 	bne _0201CDD4
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r3, [sp, #0x2c]
 	ldr r0, [r0]
 	mov r1, r6
@@ -10380,7 +10380,7 @@ _0201CE24:
 	str r2, [sp, #8]
 	str r4, [sp, #0xc]
 	str r0, [sp, #0x10]
-	ldr r0, _0201CF54 ; =_020AFC4C
+	ldr r0, _0201CF54 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrh r2, [r8, #0x32]
 	ldr r0, [r0]
 	mov r1, r6
@@ -10447,7 +10447,7 @@ _0201CF40:
 _0201CF48: .word _020AFC70
 _0201CF4C: .word _020AFC50
 _0201CF50: .word _020AFC30
-_0201CF54: .word _020AFC4C
+_0201CF54: .word OBJ_GRAPHICS_CONTROLS_PTR
 _0201CF58: .word 0x0000FFFF
 	arm_func_end sub_0201C5C4
 
@@ -11180,7 +11180,7 @@ _0201D848:
 	beq _0201D8C0
 	mov r8, #0
 	ldr fp, _0201D988 ; =_020AFC30
-	ldr r4, _0201D98C ; =_020AFC4C
+	ldr r4, _0201D98C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	b _0201D8B8
 _0201D860:
 	ldr r0, [r5]
@@ -11212,7 +11212,7 @@ _0201D8C0:
 	ldrb r0, [sp, #0x28]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r0, _0201D98C ; =_020AFC4C
+	ldr r0, _0201D98C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, [r5, #4]
 	ldr r0, [r0]
 	mov r2, sb
@@ -11223,7 +11223,7 @@ _0201D8E4:
 	beq _0201D960
 	mov r6, #0
 	ldr fp, _0201D988 ; =_020AFC30
-	ldr r4, _0201D98C ; =_020AFC4C
+	ldr r4, _0201D98C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	b _0201D958
 _0201D8FC:
 	ldr r0, [r5]
@@ -11256,7 +11256,7 @@ _0201D960:
 	ldrb r0, [sp, #0x28]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r0, _0201D98C ; =_020AFC4C
+	ldr r0, _0201D98C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, [r5, #4]
 	ldr r0, [r0]
 	mov r2, sb
@@ -11265,7 +11265,7 @@ _0201D960:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0201D988: .word _020AFC30
-_0201D98C: .word _020AFC4C
+_0201D98C: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201D81C
 
 	arm_func_start sub_0201D990
@@ -11383,7 +11383,7 @@ _0201DACC:
 	mov r8, #0
 	mov r6, r8
 	ldr r4, _0201DBB0 ; =_020AFC30
-	ldr fp, _0201DBB4 ; =_020AFC4C
+	ldr fp, _0201DBB4 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	b _0201DB2C
 _0201DAE0:
 	str r6, [sp]
@@ -11424,7 +11424,7 @@ _0201DB48:
 	mov r0, r6
 	bl sub_0201BFAC
 	ldr r2, [r5, #4]
-	ldr r0, _0201DBB4 ; =_020AFC4C
+	ldr r0, _0201DBB4 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrh r3, [r2, #4]
 	ldr r1, [r0]
 	ldr r0, [r6, #4]
@@ -11444,7 +11444,7 @@ _0201DBA4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0201DBB0: .word _020AFC30
-_0201DBB4: .word _020AFC4C
+_0201DBB4: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201DAA4
 
 	arm_func_start sub_0201DBB8

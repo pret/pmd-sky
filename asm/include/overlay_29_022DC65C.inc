@@ -1,5 +1,4 @@
 #pragma once
-.public _020AFC4C
 .public _s32_div_f
 .public DirectoryFileMngr_OpenDirectoryFile
 .public DrawTeamStats
@@ -12,6 +11,7 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov10_022C0814
 .public ov10_022C096C
 .public ov10_022C0998

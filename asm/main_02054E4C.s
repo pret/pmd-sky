@@ -4699,7 +4699,7 @@ _02058928:
 	mov r2, #1
 	mov r3, #0x20
 	bl sub_0201F598
-	ldr r0, _02058AB8 ; =_020AFC4C
+	ldr r0, _02058AB8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	add r1, sp, #0x20
 	ldr r0, [r0]
 	mov r2, #0
@@ -4714,12 +4714,12 @@ _02058AA8: .word _020A3468
 _02058AAC: .word _022B578C
 _02058AB0: .word 0x000003FF
 _02058AB4: .word 0x000003E5
-_02058AB8: .word _020AFC4C
+_02058AB8: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0205882C
 
 	arm_func_start sub_02058ABC
 sub_02058ABC: ; 0x02058ABC
-	ldr r3, _02058AF4 ; =_020AFC4C
+	ldr r3, _02058AF4 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r2, #0x70
 	ldr ip, [r3]
 	ldr r3, _02058AF8 ; =_020AFC28
@@ -4734,7 +4734,7 @@ sub_02058ABC: ; 0x02058ABC
 	smlabb r0, r0, r1, ip
 	bx lr
 	.align 2, 0
-_02058AF4: .word _020AFC4C
+_02058AF4: .word OBJ_GRAPHICS_CONTROLS_PTR
 _02058AF8: .word _020AFC28
 	arm_func_end sub_02058ABC
 
@@ -4794,7 +4794,7 @@ _02058B40:
 	and r0, r5, r0
 	strh r0, [r1, #6]
 	ldrh r5, [r1, #6]
-	ldr r0, _02058C18 ; =_020AFC4C
+	ldr r0, _02058C18 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	orr r3, r5, r3, lsr #16
 	strh r3, [r1, #6]
 	ldrh r5, [r1, #4]
@@ -4814,7 +4814,7 @@ _02058C08: .word 0xFFFFFD76
 _02058C0C: .word _022B578C
 _02058C10: .word _020A3450
 _02058C14: .word 0xFFFF000F
-_02058C18: .word _020AFC4C
+_02058C18: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_02058AFC
 
 	arm_func_start GetIqSkillStringId

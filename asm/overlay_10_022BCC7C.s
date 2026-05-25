@@ -857,7 +857,7 @@ ov10_022BD75C: ; 0x022BD75C
 	cmp r1, #1
 	bne _022BD7A0
 	ldr r1, _022BD824 ; =WAN_TABLE
-	ldr r3, _022BD828 ; =_020AFC4C
+	ldr r3, _022BD828 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r4, [r1]
 	mov r1, #0x38
 	smlabb r0, r0, r1, r4
@@ -875,7 +875,7 @@ _022BD7A0:
 	ldr r2, _022BD824 ; =WAN_TABLE
 	mov r1, #0x38
 	ldr r2, [r2]
-	ldr r4, _022BD828 ; =_020AFC4C
+	ldr r4, _022BD828 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	smlabb r0, r0, r1, r2
 	ldr r0, [r0, #0x30]
 	mov sl, #0
@@ -907,7 +907,7 @@ _022BD81C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _022BD824: .word WAN_TABLE
-_022BD828: .word _020AFC4C
+_022BD828: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end ov10_022BD75C
 
 	arm_func_start ov10_022BD82C

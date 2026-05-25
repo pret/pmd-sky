@@ -1030,7 +1030,7 @@ _022EDA74:
 	orr r0, r3, #0x3e
 	orr r0, r0, #0x100
 	strh r0, [r6, #4]
-	ldr r0, _022EDBD0 ; =_020AFC4C
+	ldr r0, _022EDBD0 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	bl sub_0201B9F8
 _022EDB78:
@@ -1059,7 +1059,7 @@ _022EDBC0: .word 0x0001A21C + OV29_022ED9D0_OFFSET
 _022EDBC4: .word 0x0000013E
 _022EDBC8: .word ov29_0237C864
 _022EDBCC: .word 0xFFFF000F
-_022EDBD0: .word _020AFC4C
+_022EDBD0: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end ov29_022ED9D0
 
 	arm_func_start PrepareTrapperTrap

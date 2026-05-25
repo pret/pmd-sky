@@ -378,7 +378,7 @@ StartThread: ; 0x02079560
 	str r1, [r8, #0x88]
 	mov r0, r8
 	str r1, [r8, #0x8c]
-	bl SetThreadField0xB4
+	bl OS_SetThreadDestructor
 	mov r0, #0
 	str r0, [r8, #0x78]
 	str r0, [r8, #0x80]
@@ -921,11 +921,11 @@ OS_EnableScheduler: ; 0x02079C48
 _02079C78: .word THREAD_INFO_STRUCT
 	arm_func_end OS_EnableScheduler
 
-	arm_func_start SetThreadField0xB4
-SetThreadField0xB4: ; 0x02079C7C
+	arm_func_start OS_SetThreadDestructor
+OS_SetThreadDestructor: ; 0x02079C7C
 	str r1, [r0, #0xb4]
 	bx lr
-	arm_func_end SetThreadField0xB4
+	arm_func_end OS_SetThreadDestructor
 
 	arm_func_start InitThread
 InitThread: ; 0x02079C84

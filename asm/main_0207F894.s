@@ -6686,8 +6686,8 @@ _02084F70: .word 0x33333333
 _02084F74: .word 0x0F0F0F0F
 	arm_func_end Math_CountPopulation
 
-	arm_func_start sub_02084F78
-sub_02084F78: ; 0x02084F78
+	arm_func_start Math_CalcSha1
+Math_CalcSha1: ; 0x02084F78
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x68
 	mov r6, r0
@@ -6704,7 +6704,7 @@ sub_02084F78: ; 0x02084F78
 	bl Dgt_Hash2GetHash
 	add sp, sp, #0x68
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_02084F78
+	arm_func_end Math_CalcSha1
 
 	arm_func_start Mathi_Crc8InitTable
 Mathi_Crc8InitTable: ; 0x02084FB8
@@ -6970,8 +6970,8 @@ _020852C4:
 	bx lr
 	arm_func_end Std_GetStringLength
 
-	arm_func_start Std_CompareStringVeneer
-Std_CompareStringVeneer: ; 0x020852CC
+	arm_func_start Std_CompareString__020852CC
+Std_CompareString__020852CC: ; 0x020852CC
 	b _020852D8
 _020852D0:
 	add r0, r0, #1
@@ -6986,7 +6986,7 @@ _020852D8:
 _020852F0:
 	sub r0, r2, r3
 	bx lr
-	arm_func_end Std_CompareStringVeneer
+	arm_func_end Std_CompareString__020852CC
 
 	arm_func_start Std_CompareNString
 Std_CompareNString: ; 0x020852F8
@@ -8290,8 +8290,8 @@ _02086438:
 _0208644C: .word 0xCCCCCCCD
 	arm_func_end OS_VsNPrintfEx
 
-	arm_func_start sub_02086450
-sub_02086450: ; 0x02086450
+	arm_func_start NotANumber
+NotANumber: ; 0x02086450
 	ldr r0, _02086460 ; =_020B2FBC
 	ldr ip, _02086464 ; =_f2d
 	ldr r0, [r0]
@@ -8299,10 +8299,10 @@ sub_02086450: ; 0x02086450
 	.align 2, 0
 _02086460: .word _020B2FBC
 _02086464: .word _f2d
-	arm_func_end sub_02086450
+	arm_func_end NotANumber
 
-	arm_func_start sub_02086468
-sub_02086468: ; 0x02086468
+	arm_func_start _flush_line_buffered_output_files
+_flush_line_buffered_output_files: ; 0x02086468
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r0, _020864F0 ; =_020B2ED4
 	mov r4, #0
@@ -8325,7 +8325,7 @@ _02086488:
 	mov r1, r1, lsr #0x1d
 	cmp r1, #1
 	bne _020864C8
-	bl sub_02086B7C
+	bl fflush
 	cmp r0, #0
 	movne r4, sb
 _020864C8:
@@ -8342,10 +8342,10 @@ _020864E0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020864F0: .word _020B2ED4
-	arm_func_end sub_02086468
+	arm_func_end _flush_line_buffered_output_files
 
-	arm_func_start sub_020864F4
-sub_020864F4: ; 0x020864F4
+	arm_func_start _flush_all
+_flush_all: ; 0x020864F4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r0, _02086558 ; =_020B2ED4
 	mov r4, #0
@@ -8359,7 +8359,7 @@ _02086514:
 	mov r1, r1, lsl #0x16
 	movs r1, r1, lsr #0x1d
 	beq _02086530
-	bl sub_02086B7C
+	bl fflush
 	cmp r0, #0
 	movne r4, sb
 _02086530:
@@ -8376,4 +8376,4 @@ _02086548:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02086558: .word _020B2ED4
-	arm_func_end sub_020864F4
+	arm_func_end _flush_all

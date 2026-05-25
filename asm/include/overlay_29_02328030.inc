@@ -59,7 +59,6 @@
 .public ov29_022ECAFC
 .public ov29_022F9EA0
 .public ov29_0230D4A4
-.public ov29_02318A90
 .public ov29_02318AD4
 .public ov29_02318B48
 .public ov29_02318BBC
@@ -75,6 +74,7 @@
 .public SACRED_FIRE_BURN_CHANCE
 .public SetPreprocessorArgsIdVal
 .public SetPreprocessorArgsStringToName
+.public SetTwoTurnInvincibility
 .public SHADOW_BALL_LOWER_SPECIAL_DEFENSE_CHANCE
 .public ShouldDisplayEntityAdvanced
 .public SMOG_POISON_CHANCE

@@ -2844,7 +2844,7 @@ _022F2BBC:
 	strh r2, [sp, #0x14]
 	ldrsh ip, [r8, #4]
 	and r3, r1, r0
-	ldr r0, _022F2FD0 ; =_020AFC4C
+	ldr r0, _022F2FD0 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	add ip, ip, ip, lsr #31
 	strh r3, [sp, #0x16]
 	mov r3, ip, asr #1
@@ -2998,7 +2998,7 @@ _022F2E0C:
 	ldr r2, [sp, #4]
 	orr r0, r1, r0, lsr #16
 	strh r0, [sp, #0x16]
-	ldr r0, _022F2FD0 ; =_020AFC4C
+	ldr r0, _022F2FD0 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	add r1, sp, #0x10
 	ldr r0, [r0]
 	strh r3, [sp, #0x14]
@@ -3035,7 +3035,7 @@ _022F2FC0: .word ov29_0237C9A4
 _022F2FC4: .word 0x0000013F
 _022F2FC8: .word ov29_023526D8
 _022F2FCC: .word 0xFFFF000F
-_022F2FD0: .word _020AFC4C
+_022F2FD0: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022F2FD4: .word ov29_023526F0
 _022F2FD8: .word ov29_023526F2
 _022F2FDC: .word ov29_023526F4

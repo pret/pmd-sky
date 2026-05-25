@@ -583,7 +583,7 @@ _022E0F28: .word sub_02008F3C
 
 	arm_func_start ov29_022E0F2C
 ov29_022E0F2C: ; 0x022E0F2C
-	ldr r3, _022E0F64 ; =_020AFC4C
+	ldr r3, _022E0F64 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r2, #0x70
 	ldr ip, [r3]
 	ldr r3, _022E0F68 ; =_020AFC28
@@ -598,7 +598,7 @@ ov29_022E0F2C: ; 0x022E0F2C
 	smlabb r0, r0, r1, ip
 	bx lr
 	.align 2, 0
-_022E0F64: .word _020AFC4C
+_022E0F64: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022E0F68: .word _020AFC28
 	arm_func_end ov29_022E0F2C
 
@@ -631,7 +631,7 @@ _022E0F80:
 	mov r2, #1
 	mov r3, #0x20
 	bl sub_0201F598
-	ldr r0, _022E11D8 ; =_020AFC4C
+	ldr r0, _022E11D8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	add r1, sp, #0x54
 	ldr r0, [r0]
 	mov r2, #0
@@ -694,7 +694,7 @@ _022E1038:
 	add r0, sp, #0x64
 	mov r3, #0x10
 	bl sub_0201F598
-	ldr r0, _022E11D8 ; =_020AFC4C
+	ldr r0, _022E11D8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	add r1, sp, #0x64
 	ldr r0, [r0]
 	mov r2, #0xc
@@ -768,7 +768,7 @@ _022E11A8:
 	.align 2, 0
 _022E11D0: .word ov29_023510E0
 _022E11D4: .word 0x000003E5
-_022E11D8: .word _020AFC4C
+_022E11D8: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022E11DC: .word 0x000003E3
 _022E11E0: .word 0x000003E7
 _022E11E4: .word 0x000003E6
@@ -877,7 +877,7 @@ ov29_022E1304: ; 0x022E1304
 	add r0, sp, #0x10
 	bl HandleSir0Translation
 	ldr sb, [sp, #0x10]
-	ldr r4, _022E14F0 ; =_020AFC4C
+	ldr r4, _022E14F0 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r8, #0
 	mov r7, #0xd0
 	mov r6, #0xff
@@ -1048,7 +1048,7 @@ _022E14EC: .word 0x000003F2
 #else
 _022E14EC: .word 0x000003FE
 #endif
-_022E14F0: .word _020AFC4C
+_022E14F0: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022E14F4: .word ov10_022C4D54
 _022E14F8: .word DUNGEON_PTR
 #ifdef JAPAN

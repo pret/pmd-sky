@@ -1,5 +1,4 @@
 #pragma once
-.public _020AFC4C
 .public _s32_div_f
 .public AdvanceFrame
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
@@ -27,6 +26,7 @@
 .public LogMessageByIdQuiet
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserUnknown
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov10_022C44C8
 .public ov10_022C48EC
 .public ov29_022E563C

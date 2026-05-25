@@ -222,7 +222,6 @@
 .public _020AFC28
 .public _020AFC30
 .public _020AFC3C
-.public _020AFC4C
 .public _020AFC50
 .public _020AFC64
 .public _020AFC6C
@@ -262,10 +261,13 @@
 .public _022A5970
 .public _s32_div_f
 .public _u32_div_f
+.public AddObjToUngroupedOamObjs
 .public AUDIO_COMMANDS_BUFFER
 .public BagHasExclusiveItemTypeForMonster
+.public ClearGroupedOamObjsAndGroups
 .public CopyAndInterleave
 .public CopyAndInterleave0
+.public CopyAttributesToOam
 .public CopyStringFromId
 .public DC_FlushRange
 .public Debug_FatalError
@@ -336,6 +338,7 @@
 .public GetStringFromFileVeneer
 .public GetTeamMember
 .public GetTypeStringId
+.public GroupOamObjs
 .public GX_BeginLoadBGExtPltt
 .public GX_BeginLoadOBJExtPltt
 .public GX_BeginLoadTex
@@ -350,6 +353,7 @@
 .public GXS_BeginLoadOBJExtPltt
 .public GXS_EndLoadBGExtPltt
 .public GXS_EndLoadOBJExtPltt
+.public InitOamInfo
 .public IqSkillFlagTest
 .public Is2TurnsMove
 .public LANGUAGE_INFO_DATA
@@ -375,6 +379,7 @@
 .public NewRender3dRectangle
 .public NewRender3dTexture
 .public NewRender3dTiling
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov10_022BDADC
 .public ov10_022C2528
 .public PointsToZero
@@ -385,6 +390,7 @@
 .public RENDER_3D_FUNCTIONS_64
 .public ResumeBgm
 .public Rgb8ToRgb5
+.public SetShouldCopyToOam
 .public SND_Init
 .public Snd_LockChannel
 .public Snd_UnlockChannel
@@ -434,12 +440,6 @@
 .public sub_0200B3C0
 .public sub_0200B3D4
 .public sub_0200B3FC
-.public sub_0200B508
-.public sub_0200B570
-.public sub_0200B57C
-.public sub_0200B630
-.public sub_0200B67C
-.public sub_0200B6F0
 .public sub_0200B768
 .public sub_0200D310
 .public sub_02025480

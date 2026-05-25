@@ -12,7 +12,6 @@
 .public _020A3450
 .public _020A3468
 .public _020AFC28
-.public _020AFC4C
 .public _020B0A4C
 .public _022B5788
 .public _022B578C
@@ -42,6 +41,7 @@
 .public IsSkyExclusiveDungeon
 .public ItemZInit
 .public MemZero
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public RemoveHolderForItemInBag
 .public RemovePokeItemsInBag
 .public SetHolderForItemInBag

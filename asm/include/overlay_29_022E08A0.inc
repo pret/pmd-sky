@@ -1,6 +1,5 @@
 #pragma once
 .public _020AFC28
-.public _020AFC4C
 .public _020AFC70
 .public AnimationDelayOrSomething
 .public CopyAndInterleaveWrapper
@@ -21,6 +20,7 @@
 .public LoadWteFromFileDirectory
 .public Memcpy32
 .public Memset32
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov10_022C4D54
 .public ov29_022DE15C
 .public ov29_022DE854

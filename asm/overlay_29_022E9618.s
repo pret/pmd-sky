@@ -1300,7 +1300,7 @@ ov29_022EA64C: ; 0x022EA64C
 	str r2, [sp]
 	str r1, [sp, #4]
 	ldr r0, _022EA70C ; =ov29_02353540
-	ldr r1, _022EA710 ; =_020AFC4C
+	ldr r1, _022EA710 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r2, [r0]
 	ldr r0, [r1]
 	add r1, r2, ip, lsl #8
@@ -1313,7 +1313,7 @@ ov29_022EA64C: ; 0x022EA64C
 	mov r1, #0xb
 	str r1, [sp, #4]
 	ldr r0, _022EA70C ; =ov29_02353540
-	ldr r1, _022EA710 ; =_020AFC4C
+	ldr r1, _022EA710 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr ip, [r0]
 	add r3, r4, #0x100
 	ldr r0, [r1]
@@ -1326,7 +1326,7 @@ ov29_022EA64C: ; 0x022EA64C
 	.align 2, 0
 _022EA708: .word DUNGEON_FRAMES_PASSED
 _022EA70C: .word ov29_02353540
-_022EA710: .word _020AFC4C
+_022EA710: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022EA714: .word 0x000001EA
 	arm_func_end ov29_022EA64C
 

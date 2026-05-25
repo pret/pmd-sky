@@ -1554,7 +1554,7 @@ ov01_0232A8B8: ; 0x0232A8B8
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	ldr r0, _0232A8D8 ; =ov01_0232A8DC
-	bl WM_InitWirelessCounter
+	bl WM_SetEntry
 	cmp r0, #2
 	moveq r0, #1
 	movne r0, #0
@@ -2066,13 +2066,13 @@ ov01_0232AED4: ; 0x0232AED4
 	ldr r2, _0232AF40 ; =ov01_0232B9E8
 	mov r0, #0x100
 	mov r1, #0x20
-	bl ov00_022C2D60
+	bl Wbt_InitParent
 	ldr r0, _0232AF44 ; =ov01_0232B8D0
 	bl ov01_02329BA8
 	b _0232AF24
 _0232AF14:
 	ldr r0, _0232AF40 ; =ov01_0232B9E8
-	bl ov00_022C2E1C
+	bl Wbt_InitChild
 	ldr r0, _0232AF48 ; =ov01_0232B960
 	bl ov01_02329BA8
 _0232AF24:
@@ -2346,20 +2346,20 @@ ov01_0232B18C: ; 0x0232B18C
 	bne _0232B1C8
 	ldr r0, _0232B204 ; =ov01_0233C380
 	mov r1, #0x100
-	bl ov00_022C2F20
+	bl Wbt_MpParentSendHook
 	ldr r0, _0232B208 ; =0x0000FFFF
-	bl ov00_022C324C
+	bl Wbt_CancelCurrentCommand
 	b _0232B1DC
 _0232B1C8:
 	ldr r0, _0232B204 ; =ov01_0233C380
 	mov r1, #0x20
-	bl ov00_022C2F44
+	bl Wbt_MpChildSendHook
 	mov r0, #1
-	bl ov00_022C324C
+	bl Wbt_CancelCurrentCommand
 _0232B1DC:
 	ldr r0, _0232B20C ; =0x0000044C
-	bl ov00_022C2FF0
-	bl ov00_022C2EAC
+	bl Wbt_UnregisterBlock
+	bl Wbt_End
 _0232B1E8:
 	ldr r0, _0232B200 ; =ov01_0233C0D8
 	mov r1, #0
@@ -2395,11 +2395,11 @@ ov01_0232B210: ; 0x0232B210
 	cmp r0, #0
 	bne _0232B244
 	ldr r0, _0232B268 ; =0x0000FFFF
-	bl ov00_022C324C
+	bl Wbt_CancelCurrentCommand
 	b _0232B24C
 _0232B244:
 	mov r0, #1
-	bl ov00_022C324C
+	bl Wbt_CancelCurrentCommand
 _0232B24C:
 	cmp r4, #0
 	beq _0232B25C
@@ -2471,12 +2471,12 @@ ov01_0232B2CC: ; 0x0232B2CC
 	bne _0232B300
 	ldr r0, _0232B374 ; =ov01_0233C380
 	mov r1, #0x100
-	bl ov00_022C2F20
+	bl Wbt_MpParentSendHook
 	b _0232B30C
 _0232B300:
 	ldr r0, _0232B374 ; =ov01_0233C380
 	mov r1, #0x20
-	bl ov00_022C2F44
+	bl Wbt_MpChildSendHook
 _0232B30C:
 	bl ov01_02329544
 	ldr r0, _0232B370 ; =ov01_0233C0D8
@@ -2485,10 +2485,10 @@ _0232B30C:
 	cmp r0, #0
 	beq _0232B338
 	ldr r0, _0232B378 ; =0x0000FFFF
-	bl ov00_022C324C
+	bl Wbt_CancelCurrentCommand
 	ldr r0, _0232B37C ; =0x0000044C
-	bl ov00_022C2FF0
-	bl ov00_022C2EAC
+	bl Wbt_UnregisterBlock
+	bl Wbt_End
 _0232B338:
 	ldr r0, _0232B370 ; =ov01_0233C0D8
 	mov r1, #0
@@ -2604,7 +2604,7 @@ ov01_0232B420: ; 0x0232B420
 	ldr r0, [ip, OV01_0232B420_LOAD_OFFSET]
 	ldr r1, _0232B538 ; =0x0000044C
 	add r0, r0, #0x1c
-	bl ov00_022C2FAC
+	bl Wbt_RegisterBlock
 	tst r0, #0xff
 	moveq r0, #0
 	beq _0232B528
@@ -2626,13 +2626,13 @@ _0232B4B8:
 	streqb r0, [r1, #0xb]
 	beq _0232B528
 	bl ov01_02329B28
-	bl ov00_022C2EF0
+	bl Wbt_SetOwnAid
 	ldr r0, _0232B530 ; =ov01_0233C0D8
 	ldr r1, _0232B53C ; =ov01_0232B9E8
 	ldr r0, [r0, OV01_0232B420_LOAD_OFFSET]
 	add r0, r0, #0x100
 	ldrh r0, [r0, #0x10]
-	bl ov00_022C3008
+	bl Wbt_RequestSync
 	cmp r0, #0
 	beq _0232B518
 	ldr r0, _0232B530 ; =ov01_0233C0D8
@@ -2644,8 +2644,8 @@ _0232B4B8:
 	b _0232B528
 _0232B518:
 	mov r0, #1
-	bl ov00_022C324C
-	bl ov00_022C2D18
+	bl Wbt_CancelCurrentCommand
+	bl Wbt_PrintBtList
 	mov r0, #0
 _0232B528:
 	add sp, sp, #8
@@ -2697,7 +2697,7 @@ ov01_0232B540: ; 0x0232B540
 	ldr r3, _0232B5CC ; =ov01_0232B8A8
 	add r1, sp, #0
 	add r2, r4, #1
-	bl ov00_022C31D4
+	bl Wbt_PutUserData
 	and r0, r0, #0xff
 _0232B5C0:
 	add sp, sp, #0xc
@@ -2970,7 +2970,7 @@ ov01_0232B8D0: ; 0x0232B8D0
 	mov r0, r1
 	mov r1, r2
 	mov r2, ip
-	bl ov00_022C2F68
+	bl Wbt_MpParentRecvHook
 	ldr r0, _0232B958 ; =ov01_0233C0D8
 	ldr r1, [r0, OV01_0232B8D0_LOAD_OFFSET]
 	ldrb r0, [r1, #0x15c]
@@ -3015,7 +3015,7 @@ ov01_0232B960: ; 0x0232B960
 	beq _0232B9B4
 	mov r0, r1
 	mov r1, r2
-	bl ov00_022C2F8C
+	bl Wbt_MpChildRecvHook
 	ldr r0, _0232B9E0 ; =ov01_0233C0D8
 	ldr r1, [r0, OV01_0232B960_LOAD_OFFSET]
 	ldrb r0, [r1, #0x15c]
@@ -3054,7 +3054,7 @@ ov01_0232B9E8: ; 0x0232B9E8
 	mov r5, r0
 	ldrh r0, [r5, #0xa]
 	mov r4, #0
-	bl ov00_022C2D3C
+	bl Wbt_AidbitmapToAid
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
 	ldr r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	cmp r0, #0
@@ -3108,7 +3108,7 @@ _0232BA7C:
 	ldrh r0, [r0, #0x10]
 	add r2, r1, #0x50
 	mov r1, #0
-	bl ov00_022C306C
+	bl Wbt_GetBlockInfo
 	cmp r0, #0
 	ldreq r0, _0232BD3C ; =ov01_0233C0D8
 	moveq r1, #1
@@ -3128,7 +3128,7 @@ _0232BADC:
 	ldr r3, _0232BD48 ; =ov01_0232B8A8
 	add r1, sp, #0xa
 	mov r2, #2
-	bl ov00_022C31D4
+	bl Wbt_PutUserData
 	cmp r0, #0
 	ldreq r0, _0232BD3C ; =ov01_0233C0D8
 	moveq r1, #1
@@ -3145,7 +3145,7 @@ _0232BB28:
 	ldrh r0, [r0, #0x10]
 	add r2, r1, #0x50
 	mov r1, #0
-	bl ov00_022C306C
+	bl Wbt_GetBlockInfo
 	cmp r0, #0
 	ldreq r0, _0232BD3C ; =ov01_0233C0D8
 	moveq r1, #1
@@ -3174,7 +3174,7 @@ _0232BB68:
 	ldmia r2, {r1, r3}
 	ldrh r0, [r0, #0x10]
 	add r2, r5, #0x90
-	bl ov00_022C3110
+	bl Wbt_GetBlock
 	cmp r0, #0
 	bne _0232BD34
 	ldr r1, _0232BD3C ; =ov01_0233C0D8
@@ -3182,7 +3182,7 @@ _0232BB68:
 	ldr r1, [r1, OV01_0232B9E8_LOAD_OFFSET]
 	mov r2, #1
 	strb r2, [r1, #0x14]
-	bl ov00_022C2FF0
+	bl Wbt_UnregisterBlock
 	b _0232BD34
 _0232BBE4:
 	ldr r1, _0232BD3C ; =ov01_0233C0D8
@@ -3210,7 +3210,7 @@ _0232BBE4:
 	add r0, r0, #0x100
 	ldrh r0, [r0, #0x10]
 	mov r2, #2
-	bl ov00_022C31D4
+	bl Wbt_PutUserData
 	cmp r0, #0
 	ldreq r0, _0232BD3C ; =ov01_0233C0D8
 	moveq r1, #1
@@ -3230,7 +3230,7 @@ _0232BC80:
 	b _0232BD34
 _0232BC8C:
 	ldr r0, [r5, #0x14]
-	bl ov00_022C2FF0
+	bl Wbt_UnregisterBlock
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
 	ldr r1, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	ldr r0, [r1, #0x18]
@@ -3254,7 +3254,7 @@ _0232BCB0:
 	ldr r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	add r0, r0, #0x100
 	ldrh r0, [r0, #0x10]
-	bl ov00_022C3008
+	bl Wbt_RequestSync
 	b _0232BD34
 _0232BCF4:
 	cmp r1, #1
@@ -3300,7 +3300,7 @@ ov01_0232BD54: ; 0x0232BD54
 	mov r2, #1
 	mov r1, #0x100
 	strb r2, [r3, #0x15c]
-	bl ov00_022C2F20
+	bl Wbt_MpParentSendHook
 	mov r1, r0, lsl #0x10
 	ldr r0, _0232BD94 ; =ov01_0233C380
 	mov r1, r1, lsr #0x10
@@ -3326,7 +3326,7 @@ ov01_0232BD98: ; 0x0232BD98
 	mov r2, #1
 	mov r1, #0x20
 	strb r2, [r3, #0x15c]
-	bl ov00_022C2F44
+	bl Wbt_MpChildSendHook
 	mov r1, r0, lsl #0x10
 	ldr r0, _0232BDD8 ; =ov01_0233C380
 	mov r1, r1, lsr #0x10

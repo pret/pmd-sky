@@ -1,5 +1,4 @@
 #pragma once
-.public _020AFC4C
 .public _s32_div_f
 .public abs
 .public CheckVariousStatuses2__02301244
@@ -24,6 +23,7 @@
 .public InitWeirdMinimapMatrix
 .public MemAlloc
 .public MemFree
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov29_022DD8B4
 .public ov29_022DDEF8
 .public ov29_022DE11C

@@ -41,7 +41,7 @@ ov29_022E9488: ; 0x022E9488
 	ldrh r4, [r3, ip]
 	ldrsh lr, [r1, ip]
 	ldr r1, _022E9574 ; =0xFFFF000F
-	ldr r2, _022E9578 ; =_020AFC4C
+	ldr r2, _022E9578 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	and r1, r4, r1
 	strh r1, [r3, ip]
 	add r0, r0, lr
@@ -71,6 +71,6 @@ _022E9568: .word ov29_0237C890
 _022E956C: .word ov29_0237C88E
 _022E9570: .word ov29_0237C892
 _022E9574: .word 0xFFFF000F
-_022E9578: .word _020AFC4C
+_022E9578: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022E957C: .word ov29_0237C888
 	arm_func_end ov29_022E9488

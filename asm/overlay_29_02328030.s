@@ -1516,7 +1516,7 @@ DoMoveSeismicToss: ; 0x02329258
 	bl ChangeMonsterAnimation
 	mov r0, r5
 	mov r1, #1
-	bl ov29_02318A90
+	bl SetTwoTurnInvincibility
 	ldr r1, _023293C8 ; =0x00000221
 	mov r0, r5
 	bl PlaySeByIdIfShouldDisplayEntity
@@ -1527,7 +1527,7 @@ DoMoveSeismicToss: ; 0x02329258
 	bl ov29_022EA370
 	mov r0, r5
 	mov r1, #0
-	bl ov29_02318A90
+	bl SetTwoTurnInvincibility
 	ldrb r2, [r7, #0x4c]
 	mov r0, r5
 	mov r1, #0xc
