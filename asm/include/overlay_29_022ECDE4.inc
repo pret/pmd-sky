@@ -1,5 +1,4 @@
 #pragma once
-.public _020AFC4C
 .public _020AFC70
 .public AdvanceFrame
 .public AreLateGameTrapsEnabled
@@ -7,6 +6,7 @@
 .public DUNGEON_PTR
 .public EntityIsValid__022ECDC0
 .public GetMonsterName
+.public GetRandomTrapId
 .public GetStringFromFileVeneer
 .public GetTile
 .public GetTileSafe
@@ -14,7 +14,7 @@
 .public LoadWteFromFileDirectory
 .public memset
 .public MemZero
-.public GetRandomTrapId
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov29_02352690
 .public ov29_02352698
 .public ov29_023526A0

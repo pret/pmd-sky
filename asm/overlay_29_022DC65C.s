@@ -426,7 +426,7 @@ _022DCB24:
 	str r0, [sp]
 	str r0, [sp, #4]
 	ldr r2, [r4, #4]
-	ldr r0, _022DD098 ; =_020AFC4C
+	ldr r0, _022DD098 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mla r1, fp, r1, r2
 	mov r2, sl, lsl #0x11
 	mov r2, r2, asr #0xe
@@ -456,7 +456,7 @@ _022DCB24:
 	mov r2, #0
 	mov r3, #0x10
 	bl sub_0201F598
-	ldr r0, _022DD098 ; =_020AFC4C
+	ldr r0, _022DD098 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrh r2, [sp, #0x34]
 	ldr r0, [r0]
 	add r1, sp, #0x2c
@@ -740,7 +740,7 @@ _022DCFAC:
 	orr r0, r0, #0x2000
 	strh r0, [r3, #0xe]
 _022DD06C:
-	ldr r0, _022DD098 ; =_020AFC4C
+	ldr r0, _022DD098 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, _022DD0A0 ; =ov29_02353524
 	ldr r0, [r0]
 	mov r2, #1
@@ -753,7 +753,7 @@ _022DD084:
 _022DD08C: .word ov29_02353518
 _022DD090: .word ov29_02350F8C
 _022DD094: .word ov29_02350F90
-_022DD098: .word _020AFC4C
+_022DD098: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022DD09C: .word 0xFFFF000F
 _022DD0A0: .word ov29_02353524
 	arm_func_end ov29_022DC820
@@ -1038,7 +1038,7 @@ _022DD468:
 	strh r0, [r3, #6]
 	ldrsh r3, [r2, #2]
 	ldrsh r0, [ip, #2]
-	ldr r2, _022DD514 ; =_020AFC4C
+	ldr r2, _022DD514 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	sub r0, r3, r0
 	add r0, r0, r0, lsr #31
 	mov r3, r0, asr #1
@@ -1054,7 +1054,7 @@ _022DD504: .word ov29_02353518
 _022DD508: .word 0x000001FF
 _022DD50C: .word 0xFFFF000F
 _022DD510: .word ov29_0235351C
-_022DD514: .word _020AFC4C
+_022DD514: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end ov29_022DD0A4
 
 	arm_func_start ov29_022DD518
@@ -1084,7 +1084,7 @@ ov29_022DD518: ; 0x022DD518
 	str r0, [sp, #4]
 	ldr r3, [r4, #4]
 	ldrsh r2, [r4, #0xa]
-	ldr r0, _022DD5B0 ; =_020AFC4C
+	ldr r0, _022DD5B0 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mla r4, r6, r1, r3
 	add r1, r2, #0x190
 	ldr r5, [r5, #0xc]
@@ -1098,7 +1098,7 @@ ov29_022DD518: ; 0x022DD518
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022DD5AC: .word ov29_02353518
-_022DD5B0: .word _020AFC4C
+_022DD5B0: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end ov29_022DD518
 
 	arm_func_start ov29_022DD5B4
@@ -1132,7 +1132,7 @@ _022DD60C:
 	mov sb, #0
 	strb r2, [r1, #0x6e8]
 	ldr r1, [r0]
-	ldr r4, _022DD76C ; =_020AFC4C
+	ldr r4, _022DD76C ; =OBJ_GRAPHICS_CONTROLS_PTR
 	str sb, [r1]
 	ldr r0, [r0]
 	mov r8, #0xe0
@@ -1216,7 +1216,7 @@ _022DD75C: .word ov29_0236CEF0
 _022DD760: .word 0x000006FC
 _022DD764: .word ov29_0236D5EC
 _022DD768: .word ov29_0235109C
-_022DD76C: .word _020AFC4C
+_022DD76C: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end ov29_022DD5B4
 
 	arm_func_start ov29_022DD770

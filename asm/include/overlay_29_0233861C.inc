@@ -1,5 +1,4 @@
 #pragma once
-.public _020AFC4C
 .public _020AFC70
 .public _s32_div_f
 .public abs
@@ -48,6 +47,7 @@
 .public Memcpy32
 .public MemZero
 .public MultiplyByFixedPoint
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov10_022BFD20
 .public ov10_022C6326
 .public ov29_022DE288

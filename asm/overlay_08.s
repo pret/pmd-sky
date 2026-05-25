@@ -634,18 +634,18 @@ ov08_0233D178: ; 0x0233D178
 	ldrh r3, [r1, #0x2a]
 	ldr r0, _0233D1F0 ; =ov08_0233EC80
 	add r1, r1, #0x14
-	bl ov00_022C6EFC
+	bl MB_Init
 	ldr r1, _0233D1EC ; =ov08_0233EC28
 	mov r0, #0x100
 	ldr r1, [r1, #4]
 	ldrh r1, [r1, #0xa]
-	bl ov00_022C7150
+	bl MB_SetParentCommParam
 	ldr r0, _0233D1F4 ; =ov08_0233D964
-	bl ov00_022C3270
+	bl MB_CommSetParentStateCallback
 	ldr r0, _0233D1EC ; =ov08_0233EC28
 	ldr r0, [r0, #4]
 	ldrh r0, [r0, #0x32]
-	bl ov00_022C74A0
+	bl MB_StartParentFromIdle
 	ldr r0, _0233D1EC ; =ov08_0233EC28
 	mov r1, #1
 	strb r1, [r0, #1]
@@ -769,7 +769,7 @@ _0233D318:
 	ldr r2, _0233D404 ; =0x00020100
 	add r0, sp, #0x58
 	mov r1, r5
-	bl ov00_022C4718
+	bl MB_ReadSegment
 	cmp r0, #0
 	bne _0233D3B0
 	mov r0, r5
@@ -778,7 +778,7 @@ _0233D318:
 _0233D3B0:
 	mov r0, r8
 	mov r1, r5
-	bl ov00_022C4C08
+	bl MB_RegisterFile
 	cmp r0, #0
 	ldrne r0, _0233D400 ; =ov08_0233EC28
 	movne r7, #1
@@ -846,7 +846,7 @@ _0233D488:
 	b _0233D4A0
 _0233D490:
 	strb r8, [r4]
-	bl ov00_022C759C
+	bl MB_EndToIdle
 	mov r0, #0
 	strb r0, [r4, #1]
 _0233D4A0:
@@ -1009,7 +1009,7 @@ ov08_0233D66C: ; 0x0233D66C
 	ldrh r0, [r0, #0xe]
 	cmp r0, #0
 	beq _0233D6B4
-	bl ov00_022C3298
+	bl MB_CommGetParentState
 	cmp r0, #7
 	bne _0233D6B4
 	ldr r0, _0233D6BC ; =ov08_0233EC28
@@ -1020,7 +1020,7 @@ ov08_0233D66C: ; 0x0233D66C
 	strb r2, [r3, #0x12]
 	ldr r0, [r0, #4]
 	ldrh r0, [r0, #0xe]
-	bl ov00_022C33BC
+	bl MB_CommResponseRequest
 _0233D6B4:
 	bl ov08_0233D644
 	ldmia sp!, {r3, pc}
@@ -1051,7 +1051,7 @@ ov08_0233D6E8: ; 0x0233D6E8
 	ldrh r0, [r0, #0xe]
 	cmp r0, #0
 	beq _0233D730
-	bl ov00_022C3298
+	bl MB_CommGetParentState
 	cmp r0, #0xe
 	bne _0233D730
 	ldr r0, _0233D738 ; =ov08_0233EC28
@@ -1062,7 +1062,7 @@ ov08_0233D6E8: ; 0x0233D6E8
 	strb r2, [r3, #0x12]
 	ldr r0, [r0, #4]
 	ldrh r0, [r0, #0xe]
-	bl ov00_022C33BC
+	bl MB_CommResponseRequest
 _0233D730:
 	bl ov08_0233D6C0
 	ldmia sp!, {r3, pc}
@@ -1117,7 +1117,7 @@ ov08_0233D788: ; 0x0233D788
 	ldrh r0, [r0, #0xe]
 	cmp r0, #0
 	beq _0233D80C
-	bl ov00_022C3298
+	bl MB_CommGetParentState
 	cmp r0, #0xa
 	bne _0233D80C
 	ldr r0, _0233D814 ; =ov08_0233EC28
@@ -1128,11 +1128,11 @@ ov08_0233D788: ; 0x0233D788
 	strb r2, [r3, #0x12]
 	ldr r0, [r0, #4]
 	ldrh r0, [r0, #0xe]
-	bl ov00_022C33BC
+	bl MB_CommResponseRequest
 	ldr r0, _0233D814 ; =ov08_0233EC28
 	ldr r0, [r0, #4]
 	ldrh r0, [r0, #0xe]
-	bl ov00_022C32E4
+	bl MB_CommGetChildUser
 	cmp r0, #0
 	beq _0233D7FC
 	ldr r1, _0233D814 ; =ov08_0233EC28
@@ -1186,7 +1186,7 @@ ov08_0233D854: ; 0x0233D854
 	ldrh r0, [r0, #0xe]
 	cmp r0, #0
 	beq _0233D888
-	bl ov00_022C75D8
+	bl MB_DisconnectChild
 	ldr r0, _0233D890 ; =ov08_0233EC28
 	ldr r0, [r0, #4]
 	ldrh r0, [r0, #0xe]
@@ -1333,7 +1333,7 @@ _0233DA24:
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
 	mov r1, #3
-	bl ov00_022C33BC
+	bl MB_CommResponseRequest
 	ldr r0, _0233DB5C ; =ov08_0233EC28
 	ldr r0, [r0, #4]
 	add r1, r0, #0x12
@@ -1388,7 +1388,7 @@ _0233DAFC:
 	cmp r0, #0
 	bne _0233DB10
 	mov r0, r4
-	bl ov00_022C75D8
+	bl MB_DisconnectChild
 	ldmia sp!, {r4, pc}
 _0233DB10:
 	ldr r0, _0233DB5C ; =ov08_0233EC28
@@ -1399,7 +1399,7 @@ _0233DB10:
 	bl ov08_0233D788
 	ldmia sp!, {r4, pc}
 _0233DB2C:
-	bl ov00_022C75D8
+	bl MB_DisconnectChild
 	ldmia sp!, {r4, pc}
 _0233DB34:
 	mov r0, #1
@@ -1411,7 +1411,7 @@ _0233DB40:
 	cmp r1, #0
 	ldmeqia sp!, {r4, pc}
 	mov r1, #2
-	bl ov00_022C33BC
+	bl MB_CommResponseRequest
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0233DB5C: .word ov08_0233EC28

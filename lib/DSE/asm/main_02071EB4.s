@@ -1345,20 +1345,20 @@ sub_02072F64: ; 0x02072F64
 	bx lr
 	arm_func_end sub_02072F64
 
-	arm_func_start sub_02072F68
-sub_02072F68: ; 0x02072F68
+	arm_func_start RetEu0x02073300
+RetEu0x02073300: ; 0x02072F68
 	bx lr
-	arm_func_end sub_02072F68
+	arm_func_end RetEu0x02073300
 
-	arm_func_start sub_02072F6C
-sub_02072F6C: ; 0x02072F6C
+	arm_func_start RetEu0x02073304
+RetEu0x02073304: ; 0x02072F6C
 	bx lr
-	arm_func_end sub_02072F6C
+	arm_func_end RetEu0x02073304
 
-	arm_func_start sub_02072F70
-sub_02072F70: ; 0x02072F70
+	arm_func_start RetEu0x02073308
+RetEu0x02073308: ; 0x02072F70
 	bx lr
-	arm_func_end sub_02072F70
+	arm_func_end RetEu0x02073308
 
 	arm_func_start sub_02072F74
 sub_02072F74: ; 0x02072F74
@@ -1384,15 +1384,15 @@ sub_02072F94: ; 0x02072F94
 	bx lr
 	arm_func_end sub_02072F94
 
-	arm_func_start sub_02072FA4
-sub_02072FA4: ; 0x02072FA4
+	arm_func_start RetEu0x0207333c
+RetEu0x0207333c: ; 0x02072FA4
 	bx lr
-	arm_func_end sub_02072FA4
+	arm_func_end RetEu0x0207333c
 
-	arm_func_start sub_02072FA8
-sub_02072FA8: ; 0x02072FA8
+	arm_func_start RetEu0x02073340
+RetEu0x02073340: ; 0x02072FA8
 	bx lr
-	arm_func_end sub_02072FA8
+	arm_func_end RetEu0x02073340
 
 	arm_func_start sub_02072FAC
 sub_02072FAC: ; 0x02072FAC
@@ -1621,20 +1621,20 @@ sub_020731F4: ; 0x020731F4
 	bx lr
 	arm_func_end sub_020731F4
 
-	arm_func_start sub_020731FC
-sub_020731FC: ; 0x020731FC
+	arm_func_start RetEu0x02073594
+RetEu0x02073594: ; 0x020731FC
 	bx lr
-	arm_func_end sub_020731FC
+	arm_func_end RetEu0x02073594
 
-	arm_func_start sub_02073200
-sub_02073200: ; 0x02073200
+	arm_func_start RetEu0x02073598
+RetEu0x02073598: ; 0x02073200
 	bx lr
-	arm_func_end sub_02073200
+	arm_func_end RetEu0x02073598
 
-	arm_func_start sub_02073204
-sub_02073204: ; 0x02073204
+	arm_func_start RetEu0x0207359c
+RetEu0x0207359c: ; 0x02073204
 	bx lr
-	arm_func_end sub_02073204
+	arm_func_end RetEu0x0207359c
 
 	arm_func_start DseSynth_Reset
 DseSynth_Reset: ; 0x02073208

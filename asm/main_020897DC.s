@@ -246,8 +246,8 @@ _02089AD4:
 	ldmia sp!, {r4, pc}
 	arm_func_end strstr
 
-	arm_func_start sub_02089ADC
-sub_02089ADC: ; 0x02089ADC
+	arm_func_start _strtold
+_strtold: ; 0x02089ADC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xa8
 	ldr r4, [sp, #0xd0]
@@ -645,7 +645,7 @@ _0208A020:
 	ldr r1, [sp, #0x28]
 	cmp r1, #0
 	beq _0208A054
-	bl sub_02086450
+	bl NotANumber
 	mov r2, r0
 	mov r0, #0
 	mov r3, r1
@@ -653,7 +653,7 @@ _0208A020:
 	bl _dsub
 	b _0208A058
 _0208A054:
-	bl sub_02086450
+	bl NotANumber
 _0208A058:
 	ldr r2, [sp, #0x2c]
 	add r2, r2, r5
@@ -1391,7 +1391,7 @@ _0208AA64:
 	ldr r1, [sp, #0x20]
 	add r0, sp, #0x80
 	strh r1, [sp, #0x82]
-	bl sub_0208D6E0
+	bl _dec2num
 	mov r4, r0
 	mov r6, r1
 	mov r0, #0
@@ -1578,10 +1578,10 @@ _0208ACFC:
 	ldmia r4, {r0, r1}
 	add sp, sp, #0xa8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_02089ADC
+	arm_func_end _strtold
 
-	arm_func_start sub_0208AD28
-sub_0208AD28: ; 0x0208AD28
+	arm_func_start strtold
+strtold: ; 0x0208AD28
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x14
 	mov r7, r0
@@ -1595,7 +1595,7 @@ sub_0208AD28: ; 0x0208AD28
 	add r3, sp, #0x10
 	sub r0, r0, #0x80000001
 	str r4, [sp]
-	bl sub_02089ADC
+	bl _strtold
 	mov r5, r1
 	mov r4, r0
 	cmp r6, #0
@@ -1604,7 +1604,7 @@ sub_0208AD28: ; 0x0208AD28
 	addne r0, r7, r0
 	strne r0, [r6]
 	mov r0, r4
-	bl sub_0208C5B4
+	bl fabs
 	ldr r2, [sp, #0xc]
 	mov r6, r0
 	mov r7, r1
@@ -1641,19 +1641,19 @@ _0208ADEC:
 _0208ADFC: .word sub_020895F4
 _0208AE00: .word 0x7FEFFFFF
 _0208AE04: .word _022BCA70
-	arm_func_end sub_0208AD28
+	arm_func_end strtold
 
-	arm_func_start sub_0208AE08
-sub_0208AE08: ; 0x0208AE08
-	ldr ip, _0208AE14 ; =sub_0208AD28
+	arm_func_start atof
+atof: ; 0x0208AE08
+	ldr ip, _0208AE14 ; =strtold
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_0208AE14: .word sub_0208AD28
-	arm_func_end sub_0208AE08
+_0208AE14: .word strtold
+	arm_func_end atof
 
-	arm_func_start sub_0208AE18
-sub_0208AE18: ; 0x0208AE18
+	arm_func_start _strtoul
+_strtoul: ; 0x0208AE18
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	ldr r4, [sp, #0x38]
@@ -1727,7 +1727,7 @@ _0208AF14:
 	cmp r4, #0x10
 	beq _0208B048
 	b _0208B194
-	arm_func_end sub_0208AE18
+	arm_func_end _strtoul
 
 	arm_func_start sub_0208AF20
 sub_0208AF20: ; 0x0208AF20
@@ -1954,8 +1954,8 @@ _0208B1F8: .word _020AEDB0
 _0208B1FC: .word _020AED30
 	arm_func_end sub_0208B008
 
-	arm_func_start sub_0208B200
-sub_0208B200: ; 0x0208B200
+	arm_func_start strtoul
+strtoul: ; 0x0208B200
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x20
 	mov r5, r0
@@ -1973,7 +1973,7 @@ sub_0208B200: ; 0x0208B200
 	add r3, sp, #0xc
 	sub r1, lr, #0x80000001
 	str ip, [sp, #8]
-	bl sub_0208AE18
+	bl _strtoul
 	cmp r4, #0
 	ldrne r1, [sp, #0x1c]
 	addne r1, r5, r1
@@ -1996,7 +1996,7 @@ _0208B27C:
 	.align 2, 0
 _0208B290: .word sub_020895F4
 _0208B294: .word _022BCA70
-	arm_func_end sub_0208B200
+	arm_func_end strtoul
 
 	arm_func_start strtol
 strtol: ; 0x0208B298
@@ -2017,7 +2017,7 @@ strtol: ; 0x0208B298
 	add r3, sp, #0xc
 	sub r1, lr, #0x80000001
 	str ip, [sp, #8]
-	bl sub_0208AE18
+	bl _strtoul
 	cmp r4, #0
 	ldrne r1, [sp, #0x1c]
 	addne r1, r5, r1
@@ -2066,8 +2066,8 @@ atoi: ; 0x0208B360
 _0208B370: .word strtol
 	arm_func_end atoi
 
-	arm_func_start sub_0208B374
-sub_0208B374: ; 0x0208B374
+	arm_func_start fwide
+fwide: ; 0x0208B374
 	cmp r0, #0
 	beq _0208B38C
 	ldr r3, [r0, #4]
@@ -2103,7 +2103,7 @@ _0208B3DC:
 _0208B3E0:
 	mov r0, r1
 	bx lr
-	arm_func_end sub_0208B374
+	arm_func_end fwide
 
 	arm_func_start wcslen
 wcslen: ; 0x0208B3E8
@@ -2282,7 +2282,7 @@ _0208B62C:
 _0208B65C:
 	ldr r0, [sp, #0xa8]
 	ldr r1, [sp, #0xac]
-	bl sub_0208C5B4
+	bl fabs
 	str r0, [sp, #0x70]
 	str r1, [sp, #0x74]
 	cmp r7, #0
@@ -3288,8 +3288,8 @@ sub_0208C58C: ; 0x0208C58C
 	bx lr
 	arm_func_end sub_0208C58C
 
-	arm_func_start sub_0208C5B4
-sub_0208C5B4: ; 0x0208C5B4
+	arm_func_start fabs
+fabs: ; 0x0208C5B4
 	stmdb sp!, {r0, r1, r2, r3}
 	add r2, sp, #0
 	ldr r1, [r2, #4]
@@ -3298,7 +3298,7 @@ sub_0208C5B4: ; 0x0208C5B4
 	str r1, [r2, #4]
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end sub_0208C5B4
+	arm_func_end fabs
 
 	arm_func_start sub_0208C5D4
 sub_0208C5D4: ; 0x0208C5D4
@@ -4517,8 +4517,8 @@ _0208D594:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0208D4B8
 
-	arm_func_start sub_0208D638
-sub_0208D638: ; 0x0208D638
+	arm_func_start _num2dec
+_num2dec: ; 0x0208D638
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r3
 	ldrsh r5, [r0, #2]
@@ -4564,10 +4564,10 @@ _0208D6BC:
 	cmp r2, r0
 	blt _0208D6BC
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0208D638
+	arm_func_end _num2dec
 
-	arm_func_start sub_0208D6E0
-sub_0208D6E0: ; 0x0208D6E0
+	arm_func_start _dec2num
+_dec2num: ; 0x0208D6E0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xfc
 	mov r4, r0
@@ -4993,7 +4993,7 @@ _0208DCF4: .word _020B333C
 _0208DCF8: .word _020B3228
 _0208DCFC: .word 0x40140000
 _0208DD00: .word 0x7FEFFFFF
-	arm_func_end sub_0208D6E0
+	arm_func_end _dec2num
 
 	arm_func_start sub_0208DD04
 sub_0208DD04: ; 0x0208DD04
@@ -5130,21 +5130,21 @@ _0208DE84:
 _0208DEAC: .word _020AECB0
 	arm_func_end sub_0208DE48
 
-	arm_func_start sub_0208DEB0
-sub_0208DEB0: ; 0x0208DEB0
-	ldr ip, _0208DEB8 ; =sub_02086C64
+	arm_func_start _msl_strnicmp__0208E248
+_msl_strnicmp__0208E248: ; 0x0208DEB0
+	ldr ip, _0208DEB8 ; =_msl_strnicmp__02086FFC
 	bx ip
 	.align 2, 0
-_0208DEB8: .word sub_02086C64
-	arm_func_end sub_0208DEB0
+_0208DEB8: .word _msl_strnicmp__02086FFC
+	arm_func_end _msl_strnicmp__0208E248
 
-	arm_func_start sub_0208DEBC
-sub_0208DEBC: ; 0x0208DEBC
+	arm_func_start strcasecmp
+strcasecmp: ; 0x0208DEBC
 	ldr ip, _0208DEC4 ; =sub_0208DE48
 	bx ip
 	.align 2, 0
 _0208DEC4: .word sub_0208DE48
-	arm_func_end sub_0208DEBC
+	arm_func_end strcasecmp
 
 	; FP_fastI_v5t_LE.a
 
@@ -8190,8 +8190,8 @@ sub_020908A0: ; 0x020908A0
 	bx lr
 	arm_func_end sub_020908A0
 
-	arm_func_start sub_020908A8
-sub_020908A8: ; 0x020908A8
+	arm_func_start _call_static_initializers
+_call_static_initializers: ; 0x020908A8
 	stmdb sp!, {r4, lr}
 	ldr r4, _020908D0 ; =_020AEEF0
 	b _020908BC
@@ -8206,5 +8206,5 @@ _020908BC:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020908D0: .word _020AEEF0
-	arm_func_end sub_020908A8
+	arm_func_end _call_static_initializers
 	; 0x020908D4

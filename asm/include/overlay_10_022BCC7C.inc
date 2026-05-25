@@ -1,5 +1,4 @@
 #pragma once
-.public _020AFC4C
 .public _s32_div_f
 .public abs
 .public ClearWindow
@@ -37,6 +36,7 @@
 .public MemZero
 .public MOVE_ANIMATION_INFO
 .public MultiplyByFixedPoint
+.public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov10_022C43A4
 .public ov10_022C43B0
 .public ov10_022C43C0

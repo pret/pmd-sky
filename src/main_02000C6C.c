@@ -16,7 +16,7 @@ extern void sub_02002F0C();
 extern void sub_02003ECC();
 extern void sub_020082F4(u32*);
 extern void sub_0204A5D0();
-extern void sub_02076070();
+extern void FX_Init();
 extern void OS_DisableScheduler();
 extern void DC_Enable();
 extern u32 OS_GetArenaHi(u32);
@@ -54,7 +54,7 @@ void NitroMain(void)
   Card_SetThreadPriority(0x12);
   Card_SetPulledOutCallback(sub_020024D4);
   OS_InitTick();
-  sub_02076070();
+  FX_Init();
   FS_Init(0xffffffff);
   DC_Enable();
   IC_Enable();

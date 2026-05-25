@@ -111,6 +111,7 @@
 .public GetWindowContents
 .public GetWindowIdPageStart
 .public GetWindowIdSelectedItemOnPage
+.public GpiCheckForBuddy
 .public GROUND_STATE_MAP
 .public GROUND_STATE_PTRS
 .public GROUND_WEATHER_TABLE

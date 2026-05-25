@@ -1555,7 +1555,7 @@ ov29_02303E5C: ; 0x02303E5C
 	ldrh r3, [r1, #6]
 	ldrsh r4, [r1, #0xa]
 	ldr r0, _02303F10 ; =0xFFFF000F
-	ldr r2, _02303F14 ; =_020AFC4C
+	ldr r2, _02303F14 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	and r0, r3, r0
 	strh r0, [r1, #6]
 	add r0, ip, r4
@@ -1570,7 +1570,7 @@ ov29_02303E5C: ; 0x02303E5C
 	.align 2, 0
 _02303F0C: .word ov29_0237C888
 _02303F10: .word 0xFFFF000F
-_02303F14: .word _020AFC4C
+_02303F14: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end ov29_02303E5C
 
 	arm_func_start ov29_02303F18

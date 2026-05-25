@@ -54,6 +54,7 @@
 .public DC_StoreRange
 .public DC_WaitWriteBufferEmpty
 .public EnableIrqFlag
+.public fflush
 .public FileInit
 .public FS_CloseFile
 .public FS_InitArchive
@@ -105,7 +106,6 @@
 .public PXIi_HandlerRecvFifoNotEmpty
 .public SetIrqFlag
 .public StartThread
-.public sub_02086B7C
 .public SVC_CpuSet
 .public SVC_WaitByLoop
 .public ThreadExit
