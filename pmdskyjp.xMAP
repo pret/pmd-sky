@@ -9373,14 +9373,14 @@
   0207321C 00000008 .text   sub_02072F34	(main_02071EB4.o)
   02073224 00000028 .text   sub_02072F3C	(main_02071EB4.o)
   0207324C 00000004 .text   sub_02072F64	(main_02071EB4.o)
-  02073250 00000004 .text   RetEu0x02073300	(main_02071EB4.o)
-  02073254 00000004 .text   RetEu0x02073304	(main_02071EB4.o)
-  02073258 00000004 .text   RetEu0x02073308	(main_02071EB4.o)
+  02073250 00000004 .text   RetNa0x02072f68	(main_02071EB4.o)
+  02073254 00000004 .text   RetNa0x02072f6c	(main_02071EB4.o)
+  02073258 00000004 .text   RetNa0x02072f70	(main_02071EB4.o)
   0207325C 00000010 .text   sub_02072F74	(main_02071EB4.o)
   0207326C 00000010 .text   sub_02072F84	(main_02071EB4.o)
   0207327C 00000010 .text   sub_02072F94	(main_02071EB4.o)
-  0207328C 00000004 .text   RetEu0x0207333c	(main_02071EB4.o)
-  02073290 00000004 .text   RetEu0x02073340	(main_02071EB4.o)
+  0207328C 00000004 .text   RetNa0x02072fa4	(main_02071EB4.o)
+  02073290 00000004 .text   RetNa0x02072fa8	(main_02071EB4.o)
   02073294 0000002C .text   sub_02072FAC	(main_02071EB4.o)
   020732BC 00000000 .text   $d	(main_02071EB4.o)
   020732C0 00000024 .text   sub_02072FD8	(main_02071EB4.o)
@@ -9411,9 +9411,9 @@
   020734AC 00000018 .text   sub_020731C4	(main_02071EB4.o)
   020734C4 00000018 .text   sub_020731DC	(main_02071EB4.o)
   020734DC 00000008 .text   sub_020731F4	(main_02071EB4.o)
-  020734E4 00000004 .text   RetEu0x02073594	(main_02071EB4.o)
-  020734E8 00000004 .text   RetEu0x02073598	(main_02071EB4.o)
-  020734EC 00000004 .text   RetEu0x0207359c	(main_02071EB4.o)
+  020734E4 00000004 .text   RetNa0x020731fc	(main_02071EB4.o)
+  020734E8 00000004 .text   RetNa0x02073200	(main_02071EB4.o)
+  020734EC 00000004 .text   RetNa0x02073204	(main_02071EB4.o)
   020734F0 00000078 .text   DseSynth_Reset	(main_02071EB4.o)
   0207355C 00000000 .text   $d	(main_02071EB4.o)
   02073568 00000000 .text   $a	(main_02071EB4.o)
@@ -17842,8 +17842,8 @@
   022F7814 00000054 .text   GsiLargeIntTimerExit	(overlay_00.o)
   022F785C 00000000 .text   $d	(overlay_00.o)
   022F7868 00000000 .text   $a	(overlay_00.o)
-  022F7868 00000008 .text   GsiLargeIntCompare__022F68D0	(overlay_00.o)
-  022F78F8 00000010 .text   GsiLargeIntStripLeadingZeroes__022F6960	(overlay_00.o)
+  022F7868 00000008 .text   GsiLargeIntCompare	(overlay_00.o)
+  022F78F8 00000010 .text   GsiLargeIntStripLeadingZeroes	(overlay_00.o)
   022F7928 00000140 .text   GsiLargeIntAdd	(overlay_00.o)
   022F7A68 0000010C .text   GsiLargeIntSub	(overlay_00.o)
   022F7B74 000001C4 .text   GsiLargeIntMult	(overlay_00.o)
@@ -41821,5 +41821,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon May 25 19:51:47 2026
-# Link end time: Mon May 25 19:51:48 2026
+# Link start time: Tue May 26 03:27:03 2026
+# Link end time: Tue May 26 03:27:04 2026
