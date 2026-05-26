@@ -39,6 +39,7 @@
 .public OS_UnlockMutex
 .public OS_WakeupThread
 .public OSi_EnterDmaCallback
+.public PXI_InitFifo
 .public PXI_IsCallbackReady
 .public PXI_SendWordByFifo
 .public PXI_SetFifoRecvCallback

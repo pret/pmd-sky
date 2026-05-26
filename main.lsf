@@ -264,7 +264,11 @@ Static main
     Object lib/NitroSDK/asm/snd_main.o
     Object lib/NitroSDK/asm/snd_command.o
     Object lib/NitroSDK/asm/snd_alarm.o
-    Object lib/asm/nitro.o
+    Object lib/NitroSDK/asm/snd_work.o
+    Object lib/NitroSDK/asm/snd_util.o
+    Object lib/NitroSDK/asm/snd_bank.o
+    Object lib/NitroSDK/asm/pxi_init.o
+    Object lib/NitroSDK/asm/pxi_fifo.o
     Object lib/NitroSDK/asm/fs_command.o
     Object lib/NitroSDK/asm/fs_command_default.o
 	Object src/main_0207E81C.o
