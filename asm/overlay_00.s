@@ -69195,12 +69195,12 @@ _022F60B4: .word ov00_023288DC
 _022F60B8: .word ov00_023288E0
 	arm_func_end GsiLargeIntTimerExit
 
-	arm_func_start GsiLargeIntCompare__022F68D0
-GsiLargeIntCompare__022F68D0: ; 0x022F60BC
+	arm_func_start GsiLargeIntCompare
+GsiLargeIntCompare: ; 0x022F60BC
 	b _022F60C4
 _022F60C0:
 	sub r1, r1, #1
-	arm_func_end GsiLargeIntCompare__022F68D0
+	arm_func_end GsiLargeIntCompare
 _022F60C4:
 	add ip, r0, r1, lsl #2
 	ldr ip, [ip, #-4]
@@ -69242,14 +69242,14 @@ _022F6144:
 	mov r0, #0
 	bx lr
 
-	arm_func_start GsiLargeIntStripLeadingZeroes__022F6960
-GsiLargeIntStripLeadingZeroes__022F6960: ; 0x022F614C
+	arm_func_start GsiLargeIntStripLeadingZeroes
+GsiLargeIntStripLeadingZeroes: ; 0x022F614C
 	b _022F615C
 _022F6150:
 	ldr r1, [r0]
 	sub r1, r1, #1
 	str r1, [r0]
-	arm_func_end GsiLargeIntStripLeadingZeroes__022F6960
+	arm_func_end GsiLargeIntStripLeadingZeroes
 _022F615C:
 	ldr r1, [r0]
 	cmp r1, #0
@@ -69667,7 +69667,7 @@ _022F66E8:
 	mov r1, r6
 	mov r2, r8
 	mov r3, sb
-	bl GsiLargeIntCompare__022F68D0
+	bl GsiLargeIntCompare
 	mvn r1, #0
 	cmp r0, r1
 	bne _022F6740
@@ -69716,7 +69716,7 @@ _022F6790:
 	mov r2, r8
 	mov r3, sb
 	add r0, r0, r6, lsl #2
-	bl GsiLargeIntCompare__022F68D0
+	bl GsiLargeIntCompare
 	mvn r1, #0
 	cmp r0, r1
 	bne _022F67C8
@@ -69912,7 +69912,7 @@ _022F6A58:
 	ldr r3, [sp, #0x23c]
 	add r0, sp, #0x114
 	mov r2, r6
-	bl GsiLargeIntCompare__022F68D0
+	bl GsiLargeIntCompare
 	cmp r0, #1
 	bne _022F6AF0
 	add sl, sp, #0x114
@@ -69945,7 +69945,7 @@ _022F6AD4:
 	ldr r3, [sp, #0x23c]
 	mov r0, sl
 	mov r2, r6
-	bl GsiLargeIntCompare__022F68D0
+	bl GsiLargeIntCompare
 	cmp r0, #1
 	beq _022F6A84
 _022F6AF0:
@@ -70195,11 +70195,11 @@ _022F6E20:
 	mov r2, #0x104
 	bl memcpy
 	add r0, sp, #0x210
-	bl GsiLargeIntStripLeadingZeroes__022F6960
+	bl GsiLargeIntStripLeadingZeroes
 	add r0, sp, #0x10c
-	bl GsiLargeIntStripLeadingZeroes__022F6960
+	bl GsiLargeIntStripLeadingZeroes
 	add r0, sp, #8
-	bl GsiLargeIntStripLeadingZeroes__022F6960
+	bl GsiLargeIntStripLeadingZeroes
 	ldr r3, [sp, #8]
 	cmp r3, #0
 	bne _022F6EA8
@@ -70255,7 +70255,7 @@ _022F6F3C:
 	ldr r1, [sp, #0x210]
 	add r0, sp, #0x214
 	add r2, sp, #0xc
-	bl GsiLargeIntCompare__022F68D0
+	bl GsiLargeIntCompare
 	mvn r1, #0
 	cmp r0, r1
 	beq _022F6F6C
@@ -70550,7 +70550,7 @@ _022F735C:
 	sub r1, r2, r1
 	mov r0, r5
 	add r2, r4, #4
-	bl GsiLargeIntCompare__022F68D0
+	bl GsiLargeIntCompare
 	mvn r1, #0
 	cmp r0, r1
 	beq _022F740C

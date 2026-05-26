@@ -8,6 +8,7 @@
 .public EnemyEvolution
 .public EntityIsValid__022EE348
 .public GetMessageLogPreprocessorArgs
+.public GetRandomTrapId
 .public GetSize0x80Buffer2
 .public GetTile
 .public GetTileSafe
@@ -20,7 +21,6 @@
 .public LogMessageByIdWithPopupCheckUserUnknown
 .public ov29_022E2CA0
 .public ov29_022E58B0
-.public GetRandomTrapId
 .public ov29_022F9840
 .public PlaySeByIdIfShouldDisplayEntity
 .public SpawnTrap

@@ -39,7 +39,6 @@
 .public Gti2GetResponse
 .public inet_addr_gsi
 .public IsPrivateIP
-.public rand
 .public memcmp
 .public memcpy
 .public memmove
@@ -248,6 +247,7 @@
 .public PlayerOpFloat
 .public PlayerOpInt
 .public PlayerOpString
+.public rand
 .public ServerOpFloat
 .public ServerOpInt
 .public ServerOpString
