@@ -74,7 +74,6 @@
 .public InitMenu
 .public InitWfcSettingsOverlay
 .public LoadOverlay
-.public rand
 .public Math_CalcCrc16
 .public Math_CalcCrc32
 .public Math_CalcCrc8
@@ -1075,6 +1074,7 @@
 .public qr2_send_statechanged
 .public qr2_shutdown
 .public qr2_think
+.public rand
 .public RandInt
 .public rewind
 .public Rtc_ConvertDateTimeToSecond
