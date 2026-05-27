@@ -1066,7 +1066,7 @@ ApplyRandomTrapEffect: ; 0x022EEF40
 	str r3, [sp, #0x10 + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
 	ldr r8, [sp, #0x88]
 	beq _022EF064
-	bl GetSanitizedRandomTrapId
+	bl GetRandomTrapId
 	ldr r1, _022EF06C ; =ov10_022C4B18
 	mov r4, r0
 	ldrb r0, [r1, r4]

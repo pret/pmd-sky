@@ -20,7 +20,7 @@
 .public GetItemInfo
 .public GetKecleonIdToSpawnByFloor
 .public GetMonsterIdToSpawn
-.public GetSanitizedRandomTrapId
+.public GetRandomTrapId
 .public GetTile
 .public GetTrapInfo
 .public GetVisibilityRange
