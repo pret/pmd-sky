@@ -1,9 +1,7 @@
-	.include "asm/macros.inc"
+#include <nitro.h>
 
-	.text
-
-    arm_func_start GX_SendFifo48B
-GX_SendFifo48B: ; 0x020788C0
+asm void GX_SendFifo48B(register const void *pSrc, register void *pDest)
+{
 	ldmia r0!, {r2, r3, ip}
 	stmia r1, {r2, r3, ip}
 	ldmia r0!, {r2, r3, ip}
@@ -13,10 +11,10 @@ GX_SendFifo48B: ; 0x020788C0
 	ldmia r0!, {r2, r3, ip}
 	stmia r1, {r2, r3, ip}
 	bx lr
-	arm_func_end GX_SendFifo48B
+}
 
-	arm_func_start GX_SendFifo64B
-GX_SendFifo64B: ; 0x020788E4
+asm void GX_SendFifo64B(register const void *pSrc, register void *pDest)
+{
 	stmdb sp!, {r4, r5, r6, r7, r8}
 	ldmia r0!, {r2, r3, r4, r5, r6, r7, r8, ip}
 	stmia r1, {r2, r3, r4, r5, r6, r7, r8, ip}
@@ -24,5 +22,4 @@ GX_SendFifo64B: ; 0x020788E4
 	stmia r1, {r2, r3, r4, r5, r6, r7, r8, ip}
 	ldmia sp!, {r4, r5, r6, r7, r8}
 	bx lr
-	arm_func_end GX_SendFifo64B
-
+}

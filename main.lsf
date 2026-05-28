@@ -232,7 +232,7 @@ Static main
 	Object lib/NitroSDK/asm/g3x.o
 	Object lib/NitroSDK/asm/gx_load2d.o
 	Object lib/NitroSDK/asm/gx_load3d.o
-	Object lib/NitroSDK/asm/gx_asm.o
+	Object lib/NitroSDK/src/gxasm.o
 	Object lib/NitroSDK/asm/os_interrupt.o
 	Object lib/NitroSDK/asm/os_spinlock.o
 	Object lib/NitroSDK/asm/os_thread.o
@@ -257,20 +257,20 @@ Static main
 	Object lib/NitroSDK/asm/mi_wram.o
 	Object lib/NitroSDK/asm/mi_dma.o
 	Object lib/NitroSDK/asm/mi_memory.o
-	Object lib/NitroSDK/asm/mi_uncompress.o
-	Object lib/NitroSDK/asm/mi_dma_card.o
-	Object lib/NitroSDK/asm/mi_init.o
-	Object lib/NitroSDK/asm/snd_interface.o
-	Object lib/NitroSDK/asm/snd_main.o
-	Object lib/NitroSDK/asm/snd_command.o
-	Object lib/NitroSDK/asm/snd_alarm.o
-	Object lib/NitroSDK/asm/snd_work.o
-	Object lib/NitroSDK/asm/snd_util.o
-	Object lib/NitroSDK/asm/snd_bank.o
-	Object lib/NitroSDK/asm/pxi_init.o
-	Object lib/NitroSDK/asm/pxi_fifo.o
-	Object lib/NitroSDK/asm/fs_command.o
-	Object lib/NitroSDK/asm/fs_command_default.o
+    Object lib/NitroSDK/asm/mi_uncompress.o
+    Object lib/NitroSDK/asm/mi_dma_card.o
+    Object lib/NitroSDK/asm/mi_init.o
+    Object lib/NitroSDK/asm/snd_interface.o
+    Object lib/NitroSDK/asm/snd_main.o
+    Object lib/NitroSDK/asm/snd_command.o
+    Object lib/NitroSDK/asm/snd_alarm.o
+    Object lib/NitroSDK/asm/snd_work.o
+    Object lib/NitroSDK/asm/snd_util.o
+    Object lib/NitroSDK/asm/snd_bank.o
+    Object lib/NitroSDK/src/pxi_init.o
+    Object lib/NitroSDK/asm/pxi_fifo.o
+    Object lib/NitroSDK/asm/fs_command.o
+    Object lib/NitroSDK/asm/fs_command_default.o
 	Object src/main_0207E81C.o
 	Object asm/main_0207E84C.o
 	Object src/main_0207F3E4.o
