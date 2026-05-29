@@ -8,7 +8,7 @@
 #include "dungeon_util_static.h"
 #include "dungeon_visibility.h"
 #include "item.h"
-#include "main_0208655C.h"
+#include "MSL_C/stdlib.h"
 #include "targeting.h"
 #include "util.h"
 

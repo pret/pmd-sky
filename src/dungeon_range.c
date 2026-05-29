@@ -3,7 +3,7 @@
 #include "dungeon.h"
 #include "dungeon_map_access.h"
 #include "dungeon_range_2.h"
-#include "main_0208655C.h"
+#include "MSL_C/stdlib.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 

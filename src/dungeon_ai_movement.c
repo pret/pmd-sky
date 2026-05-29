@@ -19,7 +19,7 @@
 #include "dungeon_util_static.h"
 #include "dungeon_visibility.h"
 #include "main_0200EDC0.h"
-#include "main_0208655C.h"
+#include "MSL_C/stdlib.h"
 #include "math.h"
 #include "number_util.h"
 #include "overlay_29_022E1610.h"

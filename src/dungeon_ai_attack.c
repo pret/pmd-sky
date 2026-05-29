@@ -15,7 +15,7 @@
 #include "dungeon_util.h"
 #include "dungeon_util_static.h"
 #include "dungeon_visibility.h"
-#include "main_0208655C.h"
+#include "MSL_C/stdlib.h"
 #include "move_checks.h"
 #include "move_data.h"
 #include "moves_2.h"

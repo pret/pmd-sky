@@ -1,5 +1,5 @@
 #include "position_util.h"
-#include "main_0208655C.h"
+#include "MSL_C/stdlib.h"
 
 const s32 POSITION_DISPLACEMENT_TO_DIRECTION[3][3] =
 {
