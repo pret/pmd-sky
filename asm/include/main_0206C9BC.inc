@@ -77,7 +77,7 @@
 .public Snd_StopTimer
 .public SoundEnvelope_ForceVolume
 .public SoundLfoBank_Reset
-.public StartThread
+.public OS_CreateThread
 .public sub_0206C688
 .public sub_02072BB8
 .public UpdateChannels

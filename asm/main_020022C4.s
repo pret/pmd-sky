@@ -455,7 +455,7 @@ sub_02002778: ; 0x02002778
 	ldmia ip, {r1, lr}
 	ldr r0, [r4]
 	add r3, lr, r3
-	bl StartThread
+	bl OS_CreateThread
 	mov r0, r4
 	bl sub_020026E4
 	add sp, sp, #8

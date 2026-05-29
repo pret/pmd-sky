@@ -1939,7 +1939,7 @@ _01FF97C8: .word CPi_RestoreContext
 	arm_func_start OSi_DoResetSystem
 OSi_DoResetSystem: ; 0x01FF97CC
 	stmdb sp!, {r3, lr}
-	ldr r0, _01FF97F8 ; =_022B99D0
+	ldr r0, _01FF97F8 ; =OSi_IsInitReset
 _01FF97D4:
 	ldrh r1, [r0]
 	cmp r1, #0
@@ -1951,7 +1951,7 @@ _01FF97D4:
 	bl OSi_DoBoot
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_01FF97F8: .word _022B99D0
+_01FF97F8: .word OSi_IsInitReset
 _01FF97FC: .word 0x04000208
 	arm_func_end OSi_DoResetSystem
 

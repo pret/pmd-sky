@@ -323,7 +323,7 @@ DseSwd_SysInit: ; 0x0206CD9C
 	add r3, r2, #0x800
 	ldr r1, _0206CE24 ; =DseSwd_SampleLoaderMain
 	mov r2, #0
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _0206CE20 ; =_022B9120
 	bl OS_WakeupThreadDirect
 	add sp, sp, #8
@@ -4322,7 +4322,7 @@ sub_020701F8: ; 0x020701F8
 	ldr r3, [r2, #0x34]
 	mov r2, #0
 	add r3, r3, #0x400
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _02070284 ; =_022B94BC
 	bl OS_WakeupThreadDirect
 	mov r0, #0
@@ -5202,7 +5202,7 @@ DseDriver_StartMainThread: ; 0x02070E0C
 	ldr r3, [r2, #0xdd4]
 	mov r2, #0
 	add r3, r3, #0x800
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _02070E98 ; =_022B9044
 	bl OS_WakeupThreadDirect
 	bl DseDriver_StartTickTimer

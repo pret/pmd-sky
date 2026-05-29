@@ -4442,7 +4442,7 @@ _020832BC:
 	ldr r3, _02083350 ; =_022BBE00
 	add r0, r4, #0x44
 	str ip, [sp, #4]
-	bl StartThread
+	bl OS_CreateThread
 	add r0, r4, #0x44
 	bl OS_WakeupThreadDirect
 	ldr r1, _02083354 ; =CARDi_OnFifoRecv
@@ -6568,7 +6568,7 @@ Ctrdgi_InitTaskThread: ; 0x02084DA4
 	mov r2, #0x14
 	str r2, [sp, #4]
 	mov r2, r5
-	bl StartThread
+	bl OS_CreateThread
 	mov r0, r5
 	bl OS_WakeupThreadDirect
 _02084E10:
@@ -6657,7 +6657,7 @@ _02084F04:
 	bl SetIrqFlag
 	b _02084E68
 _02084F24:
-	bl ThreadExit
+	bl OS_ExitThread
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0

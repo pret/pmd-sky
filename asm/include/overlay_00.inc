@@ -1102,7 +1102,7 @@
 .public snprintf
 .public sprintf
 .public srand
-.public StartThread
+.public OS_CreateThread
 .public Std_CompareNString
 .public Std_CompareString__020852CC
 .public Std_CopyLString
@@ -1174,7 +1174,7 @@
 .public sub_0205B80C
 .public sub_02079990
 .public SVC_WaitByLoop
-.public ThreadExit
+.public OS_ExitThread
 .public UnloadOverlay
 .public Util_RandSeed
 .public WaitForever2

@@ -13698,7 +13698,7 @@ _022C7B8C:
 	bl SetIrqFlag
 	b _022C7A9C
 _022C7BA4:
-	bl ThreadExit
+	bl OS_ExitThread
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end MBi_TaskThread
 
@@ -13727,7 +13727,7 @@ MBi_InitTaskThread: ; 0x022C7BAC
 	mov r2, r5
 	add r3, r3, ip
 	stmia sp, {ip, lr}
-	bl StartThread
+	bl OS_CreateThread
 	mov r0, r5
 	bl OS_WakeupThreadDirect
 _022C7C14:
@@ -14361,7 +14361,7 @@ _022C8324:
 	ldr r0, _022C8494 ; =ov00_023252E0
 	ldr r3, _022C8498 ; =ov00_023268C0
 	str r4, [sp, #4]
-	bl StartThread
+	bl OS_CreateThread
 	mov r1, #0x800
 	ldr r0, _022C848C ; =ov00_02318844
 	str r1, [sp]
@@ -14371,7 +14371,7 @@ _022C8324:
 	ldr r1, _022C84A0 ; =scavenger
 	ldr r3, _022C84A4 ; =ov00_023260C0
 	mov r2, #0
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _022C8494 ; =ov00_023252E0
 	bl OS_WakeupThreadDirect
 	ldr r0, _022C849C ; =ov00_02325220
@@ -20522,7 +20522,7 @@ Socli_InitCommandPipe: ; 0x022CD61C
 	mov r2, r6
 	add r3, r7, r4
 	str ip, [sp, #4]
-	bl StartThread
+	bl OS_CreateThread
 	add r0, r6, #0x20
 	bl OS_WakeupThreadDirect
 	add r0, r7, r4
@@ -38084,7 +38084,7 @@ _022DBD44:
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #0
 	str r0, [r2, #4]
-	bl Dwci_Auth_StartThread
+	bl Dwci_Auth_OS_CreateThread
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -38094,8 +38094,8 @@ _022DBDC0: .word 0x000013F4
 _022DBDC4: .word 0x00004E84
 	arm_func_end Dwc_Auth_Create
 
-	arm_func_start Dwci_Auth_StartThread
-Dwci_Auth_StartThread: ; 0x022DBDC8
+	arm_func_start Dwci_Auth_OS_CreateThread
+Dwci_Auth_OS_CreateThread: ; 0x022DBDC8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r0, _022DBE70 ; =ov00_02326CB4
@@ -38131,7 +38131,7 @@ _022DBE24:
 	add r0, r0, #0x1000
 	add r3, lr, #0x1000
 	str ip, [sp, #4]
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _022DBE70 ; =ov00_02326CB4
 	ldr r0, [r0, #8]
 	add r0, r0, #0x318
@@ -38143,7 +38143,7 @@ _022DBE24:
 _022DBE70: .word ov00_02326CB4
 _022DBE74: .word Dwci_Auth_Thread
 _022DBE78: .word ov00_02326CBC
-	arm_func_end Dwci_Auth_StartThread
+	arm_func_end Dwci_Auth_OS_CreateThread
 
 	arm_func_start Dwc_Auth_Abort
 Dwc_Auth_Abort: ; 0x022DBE7C
@@ -38361,7 +38361,7 @@ _022DC0DC:
 	sub r1, r0, #1
 	add r0, r2, #0x1000
 	ldr r0, [r0, #0x314]
-	bl Dwc_Http_StartThread
+	bl Dwc_Http_OS_CreateThread
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -39566,8 +39566,8 @@ _022DD288: .word ov00_02318E74
 _022DD28C: .word ov00_02318E78
 	arm_func_end Dwc_Http_FinishHeader
 
-	arm_func_start Dwc_Http_StartThread
-Dwc_Http_StartThread: ; 0x022DD290
+	arm_func_start Dwc_Http_OS_CreateThread
+Dwc_Http_OS_CreateThread: ; 0x022DD290
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r5, r0
@@ -39608,7 +39608,7 @@ _022DD30C:
 	add r0, r0, #0x1800
 	add r3, r5, #0x1000
 	str r4, [sp, #4]
-	bl StartThread
+	bl OS_CreateThread
 	add r0, r5, #0x338
 	add r0, r0, #0x1800
 	bl OS_WakeupThreadDirect
@@ -39617,7 +39617,7 @@ _022DD30C:
 	.align 2, 0
 _022DD344: .word ov00_02326CD4
 _022DD348: .word Dwci_Http_Thread
-	arm_func_end Dwc_Http_StartThread
+	arm_func_end Dwc_Http_OS_CreateThread
 
 	arm_func_start Dwc_Http_Abort
 Dwc_Http_Abort: ; 0x022DD34C
@@ -40915,7 +40915,7 @@ Dwc_Netcheck_Create: ; 0x022DE47C
 	add r0, r0, #0x1dc
 	add r0, r0, #0x1000
 	bl OS_InitMutex
-	bl Dwci_Netcheck_StartThread
+	bl Dwci_Netcheck_OS_CreateThread
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -41062,8 +41062,8 @@ Dwc_Netcheck_GetReturnCode: ; 0x022DE6FC
 _022DE710: .word ov00_02326CD8
 	arm_func_end Dwc_Netcheck_GetReturnCode
 
-	arm_func_start Dwci_Netcheck_StartThread
-Dwci_Netcheck_StartThread: ; 0x022DE714
+	arm_func_start Dwci_Netcheck_OS_CreateThread
+Dwci_Netcheck_OS_CreateThread: ; 0x022DE714
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r0, _022DE794 ; =ov00_02326CD8
@@ -41089,7 +41089,7 @@ _022DE74C:
 	add r0, r0, #0x1000
 	add r3, r2, #0x1000
 	str ip, [sp, #4]
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _022DE794 ; =ov00_02326CD8
 	ldr r0, [r0]
 	add r0, r0, #0x11c
@@ -41100,7 +41100,7 @@ _022DE74C:
 	.align 2, 0
 _022DE794: .word ov00_02326CD8
 _022DE798: .word Dwci_Netcheck_Thread
-	arm_func_end Dwci_Netcheck_StartThread
+	arm_func_end Dwci_Netcheck_OS_CreateThread
 
 	arm_func_start Dwci_Netcheck_Thread
 Dwci_Netcheck_Thread: ; 0x022DE79C
@@ -41172,7 +41172,7 @@ _022DE88C:
 	bl OS_GetThreadPriority
 	sub r1, r0, #1
 	ldr r0, [r5, #0x14]
-	bl Dwc_Http_StartThread
+	bl Dwc_Http_OS_CreateThread
 	ldr r1, [r5, #0x14]
 	add r0, r1, #0x1000
 	ldr r0, [r0, #0xba4]
@@ -41362,7 +41362,7 @@ _022DEB48:
 	ldr r2, _022DF628 ; =ov00_02326CD8
 	sub r1, r0, #1
 	ldr r0, [r2, #0x14]
-	bl Dwc_Http_StartThread
+	bl Dwc_Http_OS_CreateThread
 	ldr r0, _022DF628 ; =ov00_02326CD8
 	ldr r1, [r0, #0x14]
 	add r0, r1, #0x1000
@@ -41647,7 +41647,7 @@ _022DEF64:
 	bl OS_GetThreadPriority
 	sub r1, r0, #1
 	ldr r0, [r5, #0x14]
-	bl Dwc_Http_StartThread
+	bl Dwc_Http_OS_CreateThread
 	ldr r1, [r5, #0x14]
 	add r0, r1, #0x1000
 	ldr r0, [r0, #0xba4]
@@ -42002,7 +42002,7 @@ _022DF484:
 	bl OS_GetThreadPriority
 	sub r1, r0, #1
 	ldr r0, [r5, #0x14]
-	bl Dwc_Http_StartThread
+	bl Dwc_Http_OS_CreateThread
 	ldr r1, [r5, #0x14]
 	add r0, r1, #0x1000
 	ldr r0, [r0, #0xba4]
@@ -42520,7 +42520,7 @@ _022DFBD8:
 	ldr r2, [r1]
 	sub r1, r0, #1
 	add r0, r2, #8
-	bl Dwc_Http_StartThread
+	bl Dwc_Http_OS_CreateThread
 	ldr r0, _022DFC38 ; =ov00_02326D68
 	ldr r1, [r0]
 	add r0, r1, #0x1000
@@ -44278,7 +44278,7 @@ _022E123C:
 	add r3, r3, #0x9c0
 	mov r2, #0
 	str ip, [sp, #4]
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _022E1284 ; =ov00_02326D84
 	ldr r0, [r0]
 	add r0, r0, #0x9c0
@@ -63248,7 +63248,7 @@ Nhttp_CleanupAsync: ; 0x022F13A0
 	str ip, [sp]
 	mov ip, #0x10
 	str ip, [sp, #4]
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _022F13DC ; =ov00_02327964
 	bl OS_WakeupThreadDirect
 	add sp, sp, #8
@@ -63720,7 +63720,7 @@ Nhttpi_CreateCommThread: ; 0x022F193C
 	add r3, r4, #0x2000
 	mov r2, #0
 	str r5, [sp, #4]
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _022F19AC ; =ov00_02328260
 	bl OS_WakeupThreadDirect
 	mov r0, #1

@@ -105,9 +105,9 @@
 .public PXI_SetFifoRecvCallback
 .public PXIi_HandlerRecvFifoNotEmpty
 .public SetIrqFlag
-.public StartThread
+.public OS_CreateThread
 .public SVC_CpuSet
 .public SVC_WaitByLoop
-.public ThreadExit
+.public OS_ExitThread
 .public WaitForever2
 .public WaitForInterrupt

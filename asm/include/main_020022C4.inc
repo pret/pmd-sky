@@ -39,7 +39,7 @@
 .public OS_UnlockMutex
 .public OS_WakeupThreadDirect
 .public Rand16Bit
-.public StartThread
+.public OS_CreateThread
 .public sub_02003AD0
 .public sub_020059A8
 .public WaitForInterrupt

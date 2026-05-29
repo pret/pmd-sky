@@ -15,7 +15,7 @@ _0207D558:
 	add r1, r0, #0xd3
 	mvn r2, #0xef
 	cmp r0, r2
-	ldr r3, _0207D5AC ; =ARM9_UNKNOWN_TABLE__NA_20AE924
+	ldr r3, _0207D5AC ; =VolumeTable
 	add r1, r1, #0x200
 	ldrb r3, [r3, r1]
 	movlt r0, #3
@@ -35,6 +35,6 @@ _0207D598:
 	bx lr
 	.align 2, 0
 _0207D5A8: .word 0xFFFFFD2D
-_0207D5AC: .word ARM9_UNKNOWN_TABLE__NA_20AE924
+_0207D5AC: .word VolumeTable
 	arm_func_end Snd_CalcChannelVolume
 
