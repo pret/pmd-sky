@@ -18,7 +18,6 @@ extern void sub_020082F4(u32*);
 extern void sub_0204A5D0();
 extern void FX_Init();
 extern void OS_DisableScheduler();
-extern void DC_Enable();
 extern u32 OS_GetArenaHi(u32);
 extern u32 OS_GetArenaLo(u32);
 extern u32 OS_SetArenaLo(u32, u32);

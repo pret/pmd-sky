@@ -1,6 +1,7 @@
 #ifndef NITRO_OS_CACHE_H_
 #define NITRO_OS_CACHE_H_
 
+BOOL DC_Enable (void);
 void DC_FlushAll(void);
 void DC_InvalidateRange(register void * startAddr, register u32 nBytes);
 void DC_StoreRange(register void * startAddr, register u32 nBytes);

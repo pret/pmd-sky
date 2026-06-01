@@ -166,13 +166,3 @@ OSi_DequeueItem: ; 0x0207A1FC
 	bx lr
 	arm_func_end OSi_DequeueItem
 
-	arm_func_start DC_Enable
-DC_Enable: ; 0x0207A220
-	mrc p15, 0, r1, c1, c0, 0
-	and r0, r1, #4
-	mov r0, r0, lsr #2
-	orr r1, r1, #4
-	mcr p15, 0, r1, c1, c0, 0
-	bx lr
-	arm_func_end DC_Enable
-

@@ -53,6 +53,7 @@
 .public GetGameMode
 .public GetProcessorMode
 .public gGXState
+.public GX_InitGXState
 .public GXi_DmaId
 .public GXi_VRamLockId
 .public MI_DmaCopy16

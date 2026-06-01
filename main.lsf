@@ -226,10 +226,13 @@ Static main
     Object lib/NitroSDK/asm/fx_cp.o
     Object lib/NitroSDK/asm/fx_vec.o
     Object lib/NitroSDK/asm/gx.o
+    Object lib/NitroSDK/asm/gxstate.o
+    Object lib/NitroSDK/asm/gx_vramcnt.o
     Object lib/NitroSDK/asm/gx_bgcnt.o
     Object lib/NitroSDK/asm/g2.o
     Object lib/NitroSDK/asm/g3imm.o
     Object lib/NitroSDK/asm/g3x.o
+    Object lib/NitroSDK/asm/g3_util.o
     Object lib/NitroSDK/asm/gx_load2d.o
     Object lib/NitroSDK/asm/gx_load3d.o
     Object lib/NitroSDK/src/gxasm.o
@@ -265,7 +268,7 @@ Static main
     Object lib/NitroSDK/asm/mi_dma_card.o
     Object lib/NitroSDK/src/mi_init.o
     Object lib/NitroSDK/asm/snd_interface.o
-    Object lib/NitroSDK/asm/snd_main.o
+    Object lib/NitroSDK/src/snd_main.o
     Object lib/NitroSDK/asm/snd_command.o
     Object lib/NitroSDK/asm/snd_alarm.o
     Object lib/NitroSDK/asm/snd_work.o
@@ -282,6 +285,7 @@ Static main
 	Object src/main_0207F818.o
 	Object asm/main_0207F894.o
 	Object lib/MSL_C/src/arith.o
+    Object lib/MSL_C/asm/MSL_Common_buffer_io.o
 	Object asm/main_02086568.o
 	Object src/main_02089678.o
 	Object asm/main_02089694.o

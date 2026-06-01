@@ -7,5 +7,6 @@
 #include <nitro/pxi.h>
 #include <nitro/gx.h>
 #include <nitro/mi.h>
+#include <nitro/snd.h>
 
 #endif //NITRO_H_

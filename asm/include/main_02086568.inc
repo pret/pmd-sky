@@ -38,3 +38,7 @@
 .public strchr
 .public strlen
 .public strncpy
+
+.public _flush_buffer
+.public _prep_buffer
+.public _load_buffer
