@@ -8,7 +8,7 @@
 .public EnemyEvolution
 .public EntityIsValid__022EE348
 .public GetMessageLogPreprocessorArgs
-.public GetRandomTrapId
+.public GetRandomSpawnTrapId
 .public GetSize0x80Buffer2
 .public GetTile
 .public GetTileSafe

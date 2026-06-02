@@ -6,7 +6,7 @@
 .public DUNGEON_PTR
 .public EntityIsValid__022ECDC0
 .public GetMonsterName
-.public GetRandomTrapId
+.public GetRandomSpawnTrapId
 .public GetStringFromFileVeneer
 .public GetTile
 .public GetTileSafe
