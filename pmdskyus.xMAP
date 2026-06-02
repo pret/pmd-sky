@@ -821,7 +821,7 @@
                                                                                                        102](MIN_IQ_ITEM_MASTER,object) found in global dungeon_parameters_4.o
                                                                                                      100](.rodata,section) found in local overlay_30.o
                                                                                                      100](BindTrapToTile,func) found in global overlay_29_022ECDE4.o
-                                                                                                      101](GetRandomTrapId,func) found in global random_trap.o
+                                                                                                      101](GetRandomSpawnTrapId,func) found in global random_trap.o
                                                                                                      100](.data,section) found in local overlay_30.o
                                                                                                   97](InitMoveWrapper,func) found in global overlay_29_0231EA04.o
                                                                                                    98](EntityIsValid__0231EDD8,func) found in global overlay_29_0231EDD8.o
@@ -866,7 +866,7 @@
                                                                                                          104](GetRegenSpeed,func) found in global main_0205283C.o
                                                                                                       101](TryBlowAway,func) found in global overlay_29_0231FC20.o
                                                                                                        102](TwoTurnMoveForcedMiss,func) found in global overlay_29_02324698.o
-                                                                                                      101](GetSanitizedRandomTrapId,func) found in global random_trap.o
+                                                                                                      101](GetRandomTrapId,func) found in global random_trap.o
                                                                                                       101](ov29_022FBD80,func) found in global overlay_29_022FBC4C.o
                                                                                                       101](HasTypeAffectedByGravity,func) found in global dungeon_logic_3.o
                                                                                                        102](IsTypeAffectedByGravity,func) found in global dungeon_logic_3.o
@@ -35489,9 +35489,9 @@
   022E6FBC 00000A74 .text   LoadMappaFileAttributes	(overlay_29_022E37DC.o)
   022E79E4 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E7A30 00000000 .text   $a	(random_trap.o)
-  022E7A30 0000005C .text   GetRandomTrapId	(random_trap.o)
+  022E7A30 0000005C .text   GetRandomSpawnTrapId	(random_trap.o)
   022E7A80 00000000 .text   $d	(random_trap.o)
-  022E7A8C 00000038 .text   GetSanitizedRandomTrapId	(random_trap.o)
+  022E7A8C 00000038 .text   GetRandomTrapId	(random_trap.o)
   022E7A8C 00000000 .text   $a	(random_trap.o)
   022E7AC4 00000000 .text   $a	(spawn_1.o)
   022E7AC4 000000F4 .text   GetItemIdToSpawn	(spawn_1.o)
@@ -41603,5 +41603,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue May 26 23:24:49 2026
-# Link end time: Tue May 26 23:24:50 2026
+# Link start time: Tue Jun 02 22:59:26 2026
+# Link end time: Tue Jun 02 22:59:27 2026

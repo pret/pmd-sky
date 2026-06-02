@@ -595,8 +595,8 @@
                                                                                                          104](LowerSpeed,func) found in global move_orb_effects.o
                                                                                                          104](TryBlowAway,func) found in global overlay_29_0231FC20.o
                                                                                                           105](AreTileJumpsAllowed,func) found in global overlay_29_02341E6C.o
-                                                                                                         104](GetSanitizedRandomTrapId,func) found in global random_trap.o
-                                                                                                          105](GetRandomTrapId,func) found in global random_trap.o
+                                                                                                         104](GetRandomTrapId,func) found in global random_trap.o
+                                                                                                          105](GetRandomSpawnTrapId,func) found in global random_trap.o
                                                                                                          104](HasTypeAffectedByGravity,func) found in global dungeon_logic_3.o
                                                                                                           105](IsTypeAffectedByGravity,func) found in global dungeon_logic_3.o
                                                                                                          104](ov29_022E81F8,func) found in global overlay_29_022E7EC4.o
@@ -35536,9 +35536,9 @@
   022E796C 00000A74 .text   LoadMappaFileAttributes	(overlay_29_022E37DC.o)
   022E8394 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E83E0 00000000 .text   $a	(random_trap.o)
-  022E83E0 0000005C .text   GetRandomTrapId	(random_trap.o)
+  022E83E0 0000005C .text   GetRandomSpawnTrapId	(random_trap.o)
   022E8430 00000000 .text   $d	(random_trap.o)
-  022E843C 00000038 .text   GetSanitizedRandomTrapId	(random_trap.o)
+  022E843C 00000038 .text   GetRandomTrapId	(random_trap.o)
   022E843C 00000000 .text   $a	(random_trap.o)
   022E8474 00000000 .text   $a	(spawn_1.o)
   022E8474 000000F4 .text   GetItemIdToSpawn	(spawn_1.o)
@@ -41645,5 +41645,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue May 26 23:27:00 2026
-# Link end time: Tue May 26 23:27:01 2026
+# Link start time: Tue Jun 02 23:01:27 2026
+# Link end time: Tue Jun 02 23:01:28 2026
