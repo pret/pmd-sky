@@ -1731,7 +1731,7 @@ FlashLeaderIcon: ; 0x02339A24
 	add r1, sp, #0
 	add r0, r3, #0x70
 	strh r5, [sp, #6]
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 _02339BC0:
 	cmp r4, #0
 	bne _02339CB0
@@ -1792,7 +1792,7 @@ _02339BC0:
 	add r1, sp, #0
 	sub r2, r3, #0x9e
 	strh r4, [sp, #6]
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 _02339CB0:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}

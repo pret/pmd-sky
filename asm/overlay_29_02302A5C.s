@@ -1521,8 +1521,8 @@ _02303E54:
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_02303E0C
 
-	arm_func_start ov29_02303E5C
-ov29_02303E5C: ; 0x02303E5C
+	arm_func_start DisplayMonsterShadow
+DisplayMonsterShadow: ; 0x02303E5C
 	stmdb sp!, {r3, r4, r5, lr}
 	mvn r4, #0x1f
 	cmp r3, r4
@@ -1565,13 +1565,13 @@ ov29_02303E5C: ; 0x02303E5C
 	orr r3, r4, r3, lsr #16
 	mov r2, #0
 	strh r3, [r1, #6]
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02303F0C: .word ov29_0237C888
 _02303F10: .word 0xFFFF000F
 _02303F14: .word OBJ_GRAPHICS_CONTROLS_PTR
-	arm_func_end ov29_02303E5C
+	arm_func_end DisplayMonsterShadow
 
 	arm_func_start ov29_02303F18
 ov29_02303F18: ; 0x02303F18
@@ -2075,7 +2075,7 @@ _02304628:
 	mov r1, r6
 	mov r2, r4
 	mov r3, r8
-	bl ov29_02303E5C
+	bl DisplayMonsterShadow
 _0230464C:
 	ldrb r0, [r5, #0xc4]
 	cmp r0, #1

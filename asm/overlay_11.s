@@ -15278,7 +15278,7 @@ _022E930C:
 	bl ov10_022BF7D4
 	mov r0, r4
 	bl sub_02028A64
-	bl sub_0201BE5C
+	bl GroupOamAttributesBothScreens
 	bl sub_0201BE84
 	bl sub_02028E88
 	bl sub_0201BF4C

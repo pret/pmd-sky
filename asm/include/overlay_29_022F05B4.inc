@@ -5,6 +5,7 @@
 .public AddItemToBag
 .public AddItemToBagNoHeld
 .public AddMoneyCarried
+.public AddSimpleObjToOam
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public BAG_ITEMS_PTR_MIRROR
@@ -187,7 +188,6 @@
 .public StairsMenuAfterStep
 .public sub_02001AB0
 .public sub_02006B70
-.public sub_0201B9F8
 .public sub_0201CF90
 .public sub_02026268
 .public sub_02027B1C

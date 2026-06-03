@@ -867,7 +867,7 @@ ov10_022BD75C: ; 0x022BD75C
 	ldr r0, [r3]
 	ldr r1, [r1, #4]
 	mov r2, r2, lsr #0x10
-	bl sub_0201B43C
+	bl LoadObjPalette
 	b _022BD81C
 _022BD7A0:
 	cmp r1, #0
@@ -893,12 +893,12 @@ _022BD7DC:
 	mov r2, r5
 	mov r3, r8
 	add r1, r1, sl, lsl #6
-	bl sub_0201F598
+	bl FillPaletteInitInfo
 	mov r2, sl, lsl #0x10
 	ldr r0, [r4]
 	mov r1, r6
 	mov r2, r2, lsr #0x10
-	bl sub_0201B43C
+	bl LoadObjPalette
 	add sl, sl, #1
 	cmp sl, #0xd
 	blt _022BD7DC

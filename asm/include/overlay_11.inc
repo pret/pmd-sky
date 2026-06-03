@@ -83,6 +83,7 @@
 .public GetTeamMember
 .public GetType
 .public GROUND_MEMORY_ARENA_1
+.public GroupOamAttributesBothScreens
 .public HandleFadesVeneer
 .public HandleMenus
 .public IncrementNbBigTreasureWins
@@ -605,7 +606,6 @@
 .public sub_0201BCCC
 .public sub_0201BCF4
 .public sub_0201BE28
-.public sub_0201BE5C
 .public sub_0201BE84
 .public sub_0201BF4C
 .public sub_0201BF64

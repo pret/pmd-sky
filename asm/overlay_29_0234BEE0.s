@@ -274,7 +274,7 @@ _0234C274:
 	mov r0, #1
 	bl sub_02028A64
 	bl sub_0201BE28
-	bl sub_0201BE5C
+	bl GroupOamAttributesBothScreens
 	bl sub_0201BE84
 	bl sub_0204F9CC
 	bl sub_02003A40

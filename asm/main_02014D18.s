@@ -7685,8 +7685,8 @@ sub_0201AABC: ; 0x0201AABC
 _0201AAD4: .word _022A4E58
 	arm_func_end sub_0201AABC
 
-	arm_func_start sub_0201AAD8
-sub_0201AAD8: ; 0x0201AAD8
+	arm_func_start FillCopyToFlatVramCommand
+FillCopyToFlatVramCommand: ; 0x0201AAD8
 	ldrb ip, [sp]
 	cmp ip, #1
 	cmpne ip, #2
@@ -7700,7 +7700,7 @@ sub_0201AAD8: ; 0x0201AAD8
 	strh r1, [r0, #0xc]
 	mov r0, r3
 	bx lr
-	arm_func_end sub_0201AAD8
+	arm_func_end FillCopyToFlatVramCommand
 
 	arm_func_start ExecuteCopyToFlatVramCommand
 ExecuteCopyToFlatVramCommand: ; 0x0201AB0C
@@ -7770,7 +7770,7 @@ _0201ABCC:
 	ldr r2, [sb], #0xc
 	mov r0, r5
 	mov r1, r8
-	bl sub_0201AAD8
+	bl FillCopyToFlatVramCommand
 	mov r4, r0
 	mov r0, r5
 	bl ExecuteCopyToFlatVramCommand
@@ -7805,7 +7805,7 @@ sub_0201AC20: ; 0x0201AC20
 	add r0, r4, #0xe00
 	ldrsh r0, [r0]
 	add r0, r4, r0, lsl #4
-	bl sub_0201AAD8
+	bl FillCopyToFlatVramCommand
 	add r0, r4, #0xe00
 	ldrsh r1, [r0]
 	add r1, r1, #1
@@ -7844,7 +7844,7 @@ _0201ACB8:
 	ldr r2, [sb]
 	mov r1, r8
 	add r0, sl, r0, lsl #4
-	bl sub_0201AAD8
+	bl FillCopyToFlatVramCommand
 	mov r3, r0
 	b _0201AD1C
 _0201ACD8:
@@ -7853,7 +7853,7 @@ _0201ACD8:
 	ldr r2, [sb]
 	mov r1, r8
 	add r0, sl, r0, lsl #4
-	bl sub_0201AAD8
+	bl FillCopyToFlatVramCommand
 	mov r3, r0
 	b _0201AD1C
 _0201ACF8:
@@ -7864,7 +7864,7 @@ _0201ACF8:
 	ldr r2, [sb]
 	mov r1, r8
 	add r0, sl, r0, lsl #4
-	bl sub_0201AAD8
+	bl FillCopyToFlatVramCommand
 	mov r3, r0
 _0201AD1C:
 	ldrsh r0, [r4]
@@ -8426,8 +8426,8 @@ _0201B430:
 _0201B438: .word _020AFC28
 	arm_func_end sub_0201B388
 
-	arm_func_start sub_0201B43C
-sub_0201B43C: ; 0x0201B43C
+	arm_func_start LoadObjPalette
+LoadObjPalette: ; 0x0201B43C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, r1
 	ldrb r1, [r6, #0xa]
@@ -8498,7 +8498,7 @@ _0201B518:
 _0201B534:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_0201B43C
+	arm_func_end LoadObjPalette
 
 	arm_func_start sub_0201B53C
 sub_0201B53C: ; 0x0201B53C
@@ -8548,7 +8548,7 @@ _0201B5D0:
 	ldrh r2, [sp, #0x1c]
 	mov r0, r6
 	mov r1, r4
-	bl sub_0201B43C
+	bl LoadObjPalette
 _0201B5EC:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -8846,8 +8846,8 @@ _0201B9F0:
 	bx lr
 	arm_func_end sub_0201B9D4
 
-	arm_func_start sub_0201B9F8
-sub_0201B9F8: ; 0x0201B9F8
+	arm_func_start AddSimpleObjToOam
+AddSimpleObjToOam: ; 0x0201B9F8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	mov r4, r0
@@ -8894,19 +8894,19 @@ _0201BA90:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0201BA98: .word 0x00000FFF
-	arm_func_end sub_0201B9F8
+	arm_func_end AddSimpleObjToOam
 
-	arm_func_start sub_0201BA9C
-sub_0201BA9C: ; 0x0201BA9C
+	arm_func_start GroupOamAttributesWrapper
+GroupOamAttributesWrapper: ; 0x0201BA9C
 	ldr ip, _0201BAA8 ; =GroupOamObjs
 	add r0, r0, #0x20
 	bx ip
 	.align 2, 0
 _0201BAA8: .word GroupOamObjs
-	arm_func_end sub_0201BA9C
+	arm_func_end GroupOamAttributesWrapper
 
-	arm_func_start sub_0201BAAC
-sub_0201BAAC: ; 0x0201BAAC
+	arm_func_start CopyAttributesToOamWrapper
+CopyAttributesToOamWrapper: ; 0x0201BAAC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r0, r4, #0x20
@@ -8914,10 +8914,10 @@ sub_0201BAAC: ; 0x0201BAAC
 	add r0, r4, #0x20
 	bl CopyAttributesToOam
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201BAAC
+	arm_func_end CopyAttributesToOamWrapper
 
-	arm_func_start sub_0201BAC8
-sub_0201BAC8: ; 0x0201BAC8
+	arm_func_start ChangeSimpleObjTexture
+ChangeSimpleObjTexture: ; 0x0201BAC8
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	ldrb r5, [sp, #0x18]
@@ -8941,7 +8941,7 @@ sub_0201BAC8: ; 0x0201BAC8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0201BB1C: .word _020AFC28
-	arm_func_end sub_0201BAC8
+	arm_func_end ChangeSimpleObjTexture
 
 	arm_func_start sub_0201BB20
 sub_0201BB20: ; 0x0201BB20
@@ -8954,8 +8954,8 @@ sub_0201BB20: ; 0x0201BB20
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0201BB20
 
-	arm_func_start sub_0201BB3C
-sub_0201BB3C: ; 0x0201BB3C
+	arm_func_start InitObjGraphicsControls
+InitObjGraphicsControls: ; 0x0201BB3C
 	stmdb sp!, {r3, lr}
 	mov r0, #0x1f00
 	mov r1, #0
@@ -9057,7 +9057,7 @@ _0201BCBC: .word OBJ_GRAPHICS_CONTROLS_PTR
 _0201BCC0: .word 0x05000200
 _0201BCC4: .word 0x06894000
 _0201BCC8: .word 0x05000600
-	arm_func_end sub_0201BB3C
+	arm_func_end InitObjGraphicsControls
 
 	arm_func_start sub_0201BCCC
 sub_0201BCCC: ; 0x0201BCCC
@@ -9142,24 +9142,24 @@ sub_0201BD80: ; 0x0201BD80
 _0201BDB0: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BD80
 
-	arm_func_start sub_0201BDB4
-sub_0201BDB4: ; 0x0201BDB4
+	arm_func_start CopyAttributesToOamBothScreens
+CopyAttributesToOamBothScreens: ; 0x0201BDB4
 	stmdb sp!, {r3, lr}
 	mov r0, #8
 	bl sub_0200302C
 	ldr r0, _0201BDE8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
-	bl sub_0201BAAC
+	bl CopyAttributesToOamWrapper
 	ldr r0, _0201BDE8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x70
-	bl sub_0201BAAC
+	bl CopyAttributesToOamWrapper
 	mov r0, #8
 	bl sub_020030FC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0201BDE8: .word OBJ_GRAPHICS_CONTROLS_PTR
-	arm_func_end sub_0201BDB4
+	arm_func_end CopyAttributesToOamBothScreens
 
 	arm_func_start sub_0201BDEC
 sub_0201BDEC: ; 0x0201BDEC
@@ -9169,11 +9169,11 @@ sub_0201BDEC: ; 0x0201BDEC
 	ldr r0, _0201BE24 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe0
-	bl sub_0201BAAC
+	bl CopyAttributesToOamWrapper
 	ldr r0, _0201BE24 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x150
-	bl sub_0201BAAC
+	bl CopyAttributesToOamWrapper
 	mov r0, #8
 	bl sub_020030FC
 	ldmia sp!, {r3, pc}
@@ -9199,20 +9199,20 @@ sub_0201BE28: ; 0x0201BE28
 _0201BE58: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0201BE28
 
-	arm_func_start sub_0201BE5C
-sub_0201BE5C: ; 0x0201BE5C
+	arm_func_start GroupOamAttributesBothScreens
+GroupOamAttributesBothScreens: ; 0x0201BE5C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0201BE80 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
-	bl sub_0201BA9C
+	bl GroupOamAttributesWrapper
 	ldr r0, _0201BE80 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x70
-	bl sub_0201BA9C
+	bl GroupOamAttributesWrapper
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0201BE80: .word OBJ_GRAPHICS_CONTROLS_PTR
-	arm_func_end sub_0201BE5C
+	arm_func_end GroupOamAttributesBothScreens
 
 	arm_func_start sub_0201BE84
 sub_0201BE84: ; 0x0201BE84
@@ -9220,11 +9220,11 @@ sub_0201BE84: ; 0x0201BE84
 	ldr r0, _0201BEAC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe0
-	bl sub_0201BA9C
+	bl GroupOamAttributesWrapper
 	ldr r0, _0201BEAC ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x150
-	bl sub_0201BA9C
+	bl GroupOamAttributesWrapper
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0201BEAC: .word OBJ_GRAPHICS_CONTROLS_PTR
@@ -9284,7 +9284,7 @@ sub_0201BF4C: ; 0x0201BF4C
 	stmdb sp!, {r3, lr}
 	bl sub_0201BEB0
 	bl sub_0201BF10
-	bl sub_0201BDB4
+	bl CopyAttributesToOamBothScreens
 	bl sub_0201BDEC
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0201BF4C
@@ -10130,7 +10130,7 @@ _0201CAB0:
 	ldrb r2, [r8, #0x41]
 	ldr r0, [r0]
 	ldr r1, [r8, #0x5c]
-	bl sub_0201B43C
+	bl LoadObjPalette
 	b _0201CCE0
 _0201CAD0:
 	cmp r1, #0
@@ -10178,7 +10178,7 @@ _0201CB5C:
 	ldr r0, [r0]
 	ldr r1, [r8, #0x5c]
 	add r0, r0, #0x70
-	bl sub_0201B43C
+	bl LoadObjPalette
 	b _0201CCE0
 _0201CB80:
 	cmp r1, #0
@@ -10226,7 +10226,7 @@ _0201CC0C:
 	ldr r0, [r0]
 	ldr r1, [r8, #0x5c]
 	add r0, r0, #0xe0
-	bl sub_0201B43C
+	bl LoadObjPalette
 	b _0201CCE0
 _0201CC30:
 	cmp r1, #0
@@ -10275,7 +10275,7 @@ _0201CCC0:
 	ldr r0, [r0]
 	ldr r1, [r8, #0x5c]
 	add r0, r0, #0x150
-	bl sub_0201B43C
+	bl LoadObjPalette
 _0201CCE0:
 	ldrh r1, [r8, #2]
 	ldr r0, _0201CF58 ; =0x0000FFFF
@@ -11216,7 +11216,7 @@ _0201D8C0:
 	ldr r1, [r5, #4]
 	ldr r0, [r0]
 	mov r2, sb
-	bl sub_0201B43C
+	bl LoadObjPalette
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0201D8E4:
 	cmp r3, #0
@@ -11261,7 +11261,7 @@ _0201D960:
 	ldr r0, [r0]
 	mov r2, sb
 	add r0, r0, #0x70
-	bl sub_0201B43C
+	bl LoadObjPalette
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0201D988: .word _020AFC30
@@ -13450,8 +13450,8 @@ HandleSir0TranslationVeneer: ; 0x0201F58C
 _0201F594: .word HandleSir0Translation
 	arm_func_end HandleSir0TranslationVeneer
 
-	arm_func_start sub_0201F598
-sub_0201F598: ; 0x0201F598
+	arm_func_start FillPaletteInitInfo
+FillPaletteInitInfo: ; 0x0201F598
 	str r1, [r0]
 	strh r2, [r0, #4]
 	ldrsh r1, [sp]
@@ -13462,7 +13462,7 @@ sub_0201F598: ; 0x0201F598
 	strb r2, [r0, #0xa]
 	strb r1, [r0, #0xb]
 	bx lr
-	arm_func_end sub_0201F598
+	arm_func_end FillPaletteInitInfo
 
 	arm_func_start DecompressAtNormalVeneer
 DecompressAtNormalVeneer: ; 0x0201F5C0

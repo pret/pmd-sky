@@ -250,12 +250,12 @@
 .public LinkShopEntryPoint
 .public LinkShopDestructor
 .public LinkShopMainManager
-.public ov19_0238D5FC
-.public ov19_0238D68C
-.public ov19_0238D698
-.public ov19_0238D56C
-.public ov19_0238D68C
-.public ov19_0238D698
+.public SpindaBarResume
+.public SpindaBarDestruct
+.public SpindaBarMenuUpdate
+.public SpindaBarEntry
+.public SpindaBarDestruct
+.public SpindaBarMenuUpdate
 .public ov20_0238A150
 .public ov20_0238A160
 .public ov20_0238A1B0
@@ -1908,15 +1908,15 @@ ov11_023230AC:
 	.global ov11_023230BC
 ov11_023230BC:
 	.byte 0x17, 0x00, 0x00, 0x00
-	.word ov19_0238D5FC
-	.word ov19_0238D68C
-	.word ov19_0238D698
+	.word SpindaBarResume
+	.word SpindaBarDestruct
+	.word SpindaBarMenuUpdate
 	.global ov11_023230CC
 ov11_023230CC:
 	.byte 0x17, 0x00, 0x00, 0x00
-	.word ov19_0238D56C
-	.word ov19_0238D68C
-	.word ov19_0238D698
+	.word SpindaBarEntry
+	.word SpindaBarDestruct
+	.word SpindaBarMenuUpdate
 	.global ov11_023230DC
 ov11_023230DC:
 	.byte 0x18, 0x00, 0x00, 0x00

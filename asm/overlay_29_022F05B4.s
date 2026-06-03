@@ -2866,7 +2866,7 @@ _022F2BBC:
 	add r1, sp, #0x10
 	strh sl, [sp, #0x12]
 	strh r3, [sp, #0x16]
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 	add r4, r4, #1
 	cmp r4, #4
 	blt _022F2BBC
@@ -3002,7 +3002,7 @@ _022F2E0C:
 	add r1, sp, #0x10
 	ldr r0, [r0]
 	strh r3, [sp, #0x14]
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 	ldrsh r1, [sb]
 	ldrsh r0, [sb, #2]
 	add r6, r6, #1

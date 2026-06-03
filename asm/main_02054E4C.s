@@ -4563,12 +4563,12 @@ sub_0205882C: ; 0x0205882C
 	mov r0, r4, lsl #0x10
 	mov r0, r0, asr #0x10
 	mov r1, #0
-	bl sub_02058ABC
+	bl OamTileNumberToVramAddress
 	mov r0, r4, lsl #0x10
 	ldr r5, [sp, #0x1c]
 	mov r0, r0, asr #0x10
 	mov r1, #0
-	bl sub_02058ABC
+	bl OamTileNumberToVramAddress
 	add r1, r5, #4
 	mov r2, #0x40
 	mov r3, #9
@@ -4577,7 +4577,7 @@ sub_0205882C: ; 0x0205882C
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	mov r1, #0
-	bl sub_02058ABC
+	bl OamTileNumberToVramAddress
 	add r1, r5, #0x24
 	mov r2, #0x80
 	mov r3, #9
@@ -4586,7 +4586,7 @@ sub_0205882C: ; 0x0205882C
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	mov r1, #0
-	bl sub_02058ABC
+	bl OamTileNumberToVramAddress
 	add r1, r5, #0x64
 	mov r2, #0x100
 	mov r3, #9
@@ -4698,12 +4698,12 @@ _02058928:
 	add r0, sp, #0x20
 	mov r2, #1
 	mov r3, #0x20
-	bl sub_0201F598
+	bl FillPaletteInitInfo
 	ldr r0, _02058AB8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	add r1, sp, #0x20
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0201B43C
+	bl LoadObjPalette
 	add r0, sp, #0xc
 	bl UnloadFile
 	add sp, sp, #0x30
@@ -4717,8 +4717,8 @@ _02058AB4: .word 0x000003E5
 _02058AB8: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end sub_0205882C
 
-	arm_func_start sub_02058ABC
-sub_02058ABC: ; 0x02058ABC
+	arm_func_start OamTileNumberToVramAddress
+OamTileNumberToVramAddress: ; 0x02058ABC
 	ldr r3, _02058AF4 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r2, #0x70
 	ldr ip, [r3]
@@ -4736,7 +4736,7 @@ sub_02058ABC: ; 0x02058ABC
 	.align 2, 0
 _02058AF4: .word OBJ_GRAPHICS_CONTROLS_PTR
 _02058AF8: .word _020AFC28
-	arm_func_end sub_02058ABC
+	arm_func_end OamTileNumberToVramAddress
 
 	arm_func_start sub_02058AFC
 sub_02058AFC: ; 0x02058AFC
@@ -4806,7 +4806,7 @@ _02058B40:
 	mov r2, r4
 	orr r3, r5, r3, lsr #20
 	strh r3, [r1, #4]
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0

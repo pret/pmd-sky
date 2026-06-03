@@ -439,7 +439,7 @@ _022DCB24:
 	add r0, r0, #0x70
 	add r1, r4, r1
 	mov r2, r2, asr #0x10
-	bl sub_0201BAC8
+	bl ChangeSimpleObjTexture
 	add r0, r6, sl, lsl #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -455,13 +455,13 @@ _022DCB24:
 	add r1, r2, r1, lsr #10
 	mov r2, #0
 	mov r3, #0x10
-	bl sub_0201F598
+	bl FillPaletteInitInfo
 	ldr r0, _022DD098 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldrh r2, [sp, #0x34]
 	ldr r0, [r0]
 	add r1, sp, #0x2c
 	add r0, r0, #0x70
-	bl sub_0201B43C
+	bl LoadObjPalette
 _022DCC3C:
 	ldr r6, _022DD08C ; =ov29_02353518
 	ldr r2, _022DD090 ; =ov29_02350F8C
@@ -745,7 +745,7 @@ _022DD06C:
 	ldr r0, [r0]
 	mov r2, #1
 	add r0, r0, #0x70
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 _022DD084:
 	add sp, sp, #0x3c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -1044,7 +1044,7 @@ _022DD468:
 	mov r3, r0, asr #1
 	ldr r0, [r2]
 	add r2, r3, #1
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 _022DD4F8:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -1093,7 +1093,7 @@ ov29_022DD518: ; 0x022DD518
 	mov r3, r6
 	add r1, r5, r4
 	mov r2, r2, asr #0x10
-	bl sub_0201BAC8
+	bl ChangeSimpleObjTexture
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -1149,12 +1149,12 @@ _022DD648:
 	mov r2, r5
 	mov r3, fp
 	add r1, r1, sb, lsl #6
-	bl sub_0201F598
+	bl FillPaletteInitInfo
 	mov r2, sb, lsl #0x10
 	ldr r0, [r4]
 	mov r1, r6
 	mov r2, r2, lsr #0x10
-	bl sub_0201B43C
+	bl LoadObjPalette
 	add r0, sb, #1
 	mov r0, r0, lsl #0x10
 	mov sb, r0, asr #0x10

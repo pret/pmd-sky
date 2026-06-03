@@ -1,5 +1,6 @@
 #pragma once
 .public _020AFC70
+.public AddSimpleObjToOam
 .public AdvanceFrame
 .public AreLateGameTrapsEnabled
 .public CreateMonsterSummaryFromMonster
@@ -26,6 +27,5 @@
 .public SpawnTrap
 .public strcpy
 .public StringFromId
-.public sub_0201B9F8
 .public sub_0201E080
 .public sub_0201F2A0

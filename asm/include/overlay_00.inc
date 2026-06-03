@@ -46,6 +46,7 @@
 .public GetLanguage
 .public GetProcessorMode
 .public GpiCheckForBuddy
+.public GroupOamAttributesBothScreens
 .public Gt2Accept
 .public Gt2AddressToString
 .public Gt2CloseAllConnectionsHard
@@ -1146,7 +1147,6 @@
 .public sub_020184B4
 .public sub_020184C0
 .public sub_0201BE28
-.public sub_0201BE5C
 .public sub_0201BE84
 .public sub_0201BF4C
 .public sub_0201BF64

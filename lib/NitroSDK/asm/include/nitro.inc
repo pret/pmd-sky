@@ -44,9 +44,9 @@
 .public PXI_SendWordByFifo
 .public PXI_SetFifoRecvCallback
 .public SetIrqFlag
-.public SND_CommandInit
 .public Snd_AlarmInit
 .public Snd_AllocCommand
+.public SND_CommandInit
 .public Snd_PushCommand
 .public Sndi_CallAlarmHandler
 .public Sndi_GetFinishedCommandTag

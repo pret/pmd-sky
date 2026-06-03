@@ -581,8 +581,8 @@ ov29_022E0F14: ; 0x022E0F14
 _022E0F28: .word sub_02008F3C
 	arm_func_end ov29_022E0F14
 
-	arm_func_start ov29_022E0F2C
-ov29_022E0F2C: ; 0x022E0F2C
+	arm_func_start OamTileNumberToVramAddressOv29
+OamTileNumberToVramAddressOv29: ; 0x022E0F2C
 	ldr r3, _022E0F64 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	mov r2, #0x70
 	ldr ip, [r3]
@@ -600,7 +600,7 @@ ov29_022E0F2C: ; 0x022E0F2C
 	.align 2, 0
 _022E0F64: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022E0F68: .word _020AFC28
-	arm_func_end ov29_022E0F2C
+	arm_func_end OamTileNumberToVramAddressOv29
 
 	arm_func_start ov29_022E0F6C
 ov29_022E0F6C: ; 0x022E0F6C
@@ -630,12 +630,12 @@ _022E0F80:
 	add r0, sp, #0x54
 	mov r2, #1
 	mov r3, #0x20
-	bl sub_0201F598
+	bl FillPaletteInitInfo
 	ldr r0, _022E11D8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	add r1, sp, #0x54
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0201B43C
+	bl LoadObjPalette
 	add r0, sp, #8
 	bl UnloadFile
 	ldr r1, _022E11DC ; =0x000003E3
@@ -651,7 +651,7 @@ _022E0F80:
 	add r1, r1, #4
 	str r1, [sp, #0x10]
 	mov r1, #0
-	bl ov29_022E0F2C
+	bl OamTileNumberToVramAddressOv29
 	mov r7, #0
 	add r6, sp, #0x28
 	mov r5, r7
@@ -662,7 +662,7 @@ _022E1038:
 	ldrsh r0, [r6, r0]
 	ldrsh r8, [r1, #2]
 	mov r1, r5
-	bl ov29_022E0F2C
+	bl OamTileNumberToVramAddressOv29
 	ldr r1, [sp, #0x10]
 	mov r3, r4
 	mov r2, r8, lsl #1
@@ -693,13 +693,13 @@ _022E1038:
 	ldr r1, [sp, #0x18]
 	add r0, sp, #0x64
 	mov r3, #0x10
-	bl sub_0201F598
+	bl FillPaletteInitInfo
 	ldr r0, _022E11D8 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	add r1, sp, #0x64
 	ldr r0, [r0]
 	mov r2, #0xc
 	add r0, r0, #0x70
-	bl sub_0201B43C
+	bl LoadObjPalette
 	add r0, sp, #8
 	bl UnloadFile
 	ldr r1, _022E11E4 ; =0x000003E6
@@ -715,7 +715,7 @@ _022E1038:
 	add r1, r1, #4
 	str r1, [sp, #0x1c]
 	mov r1, #1
-	bl ov29_022E0F2C
+	bl OamTileNumberToVramAddressOv29
 	ldr r1, [sp, #0x1c]
 	mov r2, #0x80
 	bl Memcpy32
@@ -891,19 +891,19 @@ _022E134C:
 	mov r2, fp
 	mov r3, #0x10
 	add r1, r1, r8, lsl #6
-	bl sub_0201F598
+	bl FillPaletteInitInfo
 	mov r1, r8, lsl #0x10
 	mov r2, r1, lsr #0x10
 	ldr r0, [r4]
 	mov r1, r5
-	bl sub_0201B43C
+	bl LoadObjPalette
 	add r8, r8, #1
 	cmp r8, #0x10
 	blt _022E134C
 	ldr r4, [sp, #0x10]
 	mov r0, #0x110
 	mov r1, #0
-	bl ov29_022E0F2C
+	bl OamTileNumberToVramAddressOv29
 	ldmia r4, {r1, r2}
 	mov r2, r2, lsl #8
 	mov r3, #0xd

@@ -16,12 +16,14 @@
 .public _022B5788
 .public _022B578C
 .public AddMoneyCarried
+.public AddSimpleObjToOam
 .public CleanStickyItemsInBag
 .public CopyAndInterleaveWrapper
 .public CopyTacticString
 .public Debug_Print0
 .public DirectoryFileMngr_OpenDirectoryFile
 .public EnableAllLearnableIqSkills
+.public FillPaletteInitInfo
 .public GetBaseDefensiveStat
 .public GetBaseFormCastformCherrimDeoxys
 .public GetBaseHp
@@ -40,6 +42,7 @@
 .public IsLevelResetDungeon
 .public IsSkyExclusiveDungeon
 .public ItemZInit
+.public LoadObjPalette
 .public MemZero
 .public OBJ_GRAPHICS_CONTROLS_PTR
 .public RemoveHolderForItemInBag
@@ -54,9 +57,6 @@
 .public StrncpySimpleNoPadSafe
 .public sub_0200D8AC
 .public sub_0200FA0C
-.public sub_0201B43C
-.public sub_0201B9F8
-.public sub_0201F598
 .public sub_0204E584
 .public sub_02052CF4
 .public sub_02052E2C

@@ -1,4 +1,5 @@
 #pragma once
+.public AddSimpleObjToOam
 .public AllocateTemp1024ByteBufferFromPool
 .public ChangeMonsterAnimation
 .public DIRECTIONS_XY
@@ -83,7 +84,6 @@
 .public strcpy
 .public StringFromId
 .public sub_020149C0
-.public sub_0201B9F8
 .public sub_0201CF5C
 .public sub_0201D034
 .public sub_0201D198

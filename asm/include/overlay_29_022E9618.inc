@@ -1,6 +1,7 @@
 #pragma once
 .public _s32_div_f
 .public abs
+.public ChangeSimpleObjTexture
 .public CheckVariousStatuses2__02301244
 .public DIRECTIONS_XY
 .public DISPLACEMENTS_WITHIN_2_LARGEST_FIRST
@@ -49,7 +50,6 @@
 .public ov29_02353560
 .public ov29_0237C888
 .public RenderWeather3D
-.public sub_0201BAC8
 .public sub_02051E20
 .public UpdateCamera
 .public UpdateMinimap

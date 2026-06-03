@@ -1,4 +1,5 @@
 #pragma once
+.public AddSimpleObjToOam
 .public DUNGEON_PTR
 .public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov29_0237C888
@@ -6,4 +7,3 @@
 .public ov29_0237C88E
 .public ov29_0237C890
 .public ov29_0237C892
-.public sub_0201B9F8

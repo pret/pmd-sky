@@ -15,6 +15,7 @@
 .public DrawTextInWindow
 .public EFFECT_ANIMATION_INFO
 .public FillOamAttributeInfo
+.public FillPaletteInitInfo
 .public GendersEqual
 .public GetBgRegionArea
 .public GetBodySize
@@ -29,6 +30,7 @@
 .public InitPortraitParamsWithMonsterId
 .public InitPreprocessorArgs
 .public ITEM_ANIMATION_INFO
+.public LoadObjPalette
 .public LoadWanTableEntryFromPack
 .public MemAlloc
 .public Memcpy32
@@ -110,7 +112,6 @@
 .public sub_0200B330
 .public sub_0200B3FC
 .public sub_0200D310
-.public sub_0201B43C
 .public sub_0201C108
 .public sub_0201C138
 .public sub_0201CF5C
@@ -124,7 +125,6 @@
 .public sub_0201DA20
 .public sub_0201DBB8
 .public sub_0201E184
-.public sub_0201F598
 .public sub_02025010_EU
 .public sub_020263C8
 .public sub_02027B1C

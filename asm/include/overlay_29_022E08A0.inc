@@ -7,6 +7,7 @@
 .public DUNGEON_BUTTON_INPUT
 .public DUNGEON_PTR
 .public DungeonGoesUp
+.public FillPaletteInitInfo
 .public GetBgRegionArea
 .public GetFloorType
 .public GetHeldButtons
@@ -16,6 +17,7 @@
 .public HandleSir0Translation
 .public IsCurrentTilesetBackground
 .public IsTouchScreenUseAnywhere
+.public LoadObjPalette
 .public LoadTextureUi
 .public LoadWteFromFileDirectory
 .public Memcpy32
@@ -55,8 +57,6 @@
 .public sub_020091CC
 .public sub_02009454
 .public sub_020094C4
-.public sub_0201B43C
 .public sub_0201E380
-.public sub_0201F598
 .public UnloadFile
 .public UnloadWte
