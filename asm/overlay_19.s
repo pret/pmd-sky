@@ -26,39 +26,39 @@ _0238A16C:
 _0238A17C: .word BAR_AVAILABLE_ITEMS
 	arm_func_end GetBarItem
 
-	arm_func_start ov19_0238A180
-ov19_0238A180: ; 0x0238A180
+	arm_func_start SetMiracleDrinkStatCountRange
+SetMiracleDrinkStatCountRange: ; 0x0238A180
 	mov r2, #2
 	str r2, [r0]
 	mov r0, #5
 	str r0, [r1]
 	bx lr
-	arm_func_end ov19_0238A180
+	arm_func_end SetMiracleDrinkStatCountRange
 
-	arm_func_start ov19_0238A194
-ov19_0238A194: ; 0x0238A194
+	arm_func_start SetBadDrinkStatCountRange
+SetBadDrinkStatCountRange: ; 0x0238A194
 	mov r2, #1
 	str r2, [r0]
 	mov r0, #3
 	str r0, [r1]
 	bx lr
-	arm_func_end ov19_0238A194
+	arm_func_end SetBadDrinkStatCountRange
 
-	arm_func_start ov19_0238A1A8
-ov19_0238A1A8: ; 0x0238A1A8
+	arm_func_start GetBarItemResultWeights
+GetBarItemResultWeights: ; 0x0238A1A8
 	stmdb sp!, {r3, lr}
 	bl GetBarItem
 	add r0, r0, #0xe
 	ldmia sp!, {r3, pc}
-	arm_func_end ov19_0238A1A8
+	arm_func_end GetBarItemResultWeights
 
-	arm_func_start ov19_0238A1B8
-ov19_0238A1B8: ; 0x0238A1B8
-	ldr r0, _0238A1C0 ; =OVERLAY19_UNKNOWN_TABLE__NA_238DAE0
+	arm_func_start BarGetDrinkEventWeights
+BarGetDrinkEventWeights: ; 0x0238A1B8
+	ldr r0, _0238A1C0 ; =BAR_MIRACLE_EVENT_WEIGHTS
 	bx lr
 	.align 2, 0
-_0238A1C0: .word OVERLAY19_UNKNOWN_TABLE__NA_238DAE0
-	arm_func_end ov19_0238A1B8
+_0238A1C0: .word BAR_MIRACLE_EVENT_WEIGHTS
+	arm_func_end BarGetDrinkEventWeights
 
 	arm_func_start GetRecruitableMonsterAll
 GetRecruitableMonsterAll: ; 0x0238A1C4
@@ -220,8 +220,8 @@ _0238A3C0:
 _0238A3D0: .word BAR_RECRUITABLE_MONSTER_TABLE
 	arm_func_end GetRecruitableMonsterListRestricted
 
-	arm_func_start ov19_0238A3D4
-ov19_0238A3D4: ; 0x0238A3D4
+	arm_func_start BarGetUnlockableDungeonPtr
+BarGetUnlockableDungeonPtr: ; 0x0238A3D4
 	cmp r0, #0
 	ldrne r1, _0238A3E8 ; =BAR_UNLOCKABLE_DUNGEONS_TABLE
 	strne r1, [r0]
@@ -229,10 +229,10 @@ ov19_0238A3D4: ; 0x0238A3D4
 	bx lr
 	.align 2, 0
 _0238A3E8: .word BAR_UNLOCKABLE_DUNGEONS_TABLE
-	arm_func_end ov19_0238A3D4
+	arm_func_end BarGetUnlockableDungeonPtr
 
-	arm_func_start ov19_0238A3EC
-ov19_0238A3EC: ; 0x0238A3EC
+	arm_func_start BarPopulateUnlockableDungeons
+BarPopulateUnlockableDungeons: ; 0x0238A3EC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	bl GetScenarioBalance
@@ -267,10 +267,10 @@ _0238A450:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238A464: .word BAR_UNLOCKABLE_DUNGEONS_TABLE
-	arm_func_end ov19_0238A3EC
+	arm_func_end BarPopulateUnlockableDungeons
 
-	arm_func_start ov19_0238A468
-ov19_0238A468: ; 0x0238A468
+	arm_func_start BarTryClosePortraitBox
+BarTryClosePortraitBox: ; 0x0238A468
 	stmdb sp!, {r3, lr}
 	ldr r0, _0238A4A0 ; =ov11_02324DB0
 	ldr r0, [r0]
@@ -287,10 +287,10 @@ ov19_0238A468: ; 0x0238A468
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A4A0: .word ov11_02324DB0
-	arm_func_end ov19_0238A468
+	arm_func_end BarTryClosePortraitBox
 
-	arm_func_start ov19_0238A4A4
-ov19_0238A4A4: ; 0x0238A4A4
+	arm_func_start BarCaseManagerSub
+BarCaseManagerSub: ; 0x0238A4A4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x308
 	sub sp, sp, #0x800
@@ -392,7 +392,7 @@ _0238A604:
 	blt _0238C598
 	bl sub_02057AC4
 _0238A624:
-	bl ov19_0238D450
+	bl BarTryShowPortrait
 	ldr r0, [r8, #4]
 	ldr r4, _0238B428 ; =0x0001012E
 	cmp r0, #2
@@ -404,12 +404,12 @@ _0238A624:
 	mov r3, r1, lsr #0x10
 	mov r1, #0x3000
 	stmia sp, {r0, r4}
-	bl ov19_0238D3A0
+	bl BarCreateUnkStringIdMenu
 	mov r0, #4
 	str r0, [r8, #4]
 	b _0238C598
 _0238A664:
-	bl ov19_0238D418
+	bl GetUnkStringIdMenuResult
 	cmp r0, #1
 	bne _0238A740
 	bl GetCurrentBagCapacity
@@ -510,22 +510,22 @@ _0238A790:
 	str r0, [r8, #8]
 	b _0238C598
 _0238A7D8:
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
-	bl ov19_0238C5A8
+	bl BarPopulateDrinkableBagItems
 	ldr r1, _0238B424 ; =ov11_02324DB0
 	mvn r0, #1
 	ldr r4, [r1]
 	ldrsb r1, [r4, #0x20]
 	cmp r1, r0
 	bne _0238A82C
-	ldr r1, _0238B44C ; =ov19_0238D4A4
+	ldr r1, _0238B44C ; =BarInventoryMenuCallback
 	add r0, r4, #0x5c
 	str r1, [sp]
 	str r0, [sp, #4]
 	mov r1, #0
 	str r1, [sp, #8]
-	ldr r2, _0238B450 ; =OVERLAY19_UNKNOWN_POINTER__NA_238E360
+	ldr r2, _0238B450 ; =BAR_MENU_PRIOR_CHOICE_INDICES
 	ldr r0, [r4, #0x64]
 	ldrsh r2, [r2]
 	add r3, r4, #0x23
@@ -545,7 +545,7 @@ _0238A838:
 	ldrsb r0, [r8, #0x20]
 	bl ov10_022BCDA8
 	ldrh r2, [sp, #0x18]
-	ldr r1, _0238B450 ; =OVERLAY19_UNKNOWN_POINTER__NA_238E360
+	ldr r1, _0238B450 ; =BAR_MENU_PRIOR_CHOICE_INDICES
 	strh r0, [r1]
 	tst r2, #4
 	bne _0238A878
@@ -561,7 +561,7 @@ _0238A888:
 	bl SortItemsInBag
 	mov r0, #0
 	str r0, [r8, #0x58]
-	bl ov19_0238C5A8
+	bl BarPopulateDrinkableBagItems
 	ldrsb r0, [r8, #0x20]
 	ldr r1, [r8, #0x64]
 	bl ov10_022BCC60
@@ -577,7 +577,7 @@ _0238A8B0:
 	bl ov10_022BCDBC
 	cmp r0, #0
 	blt _0238A910
-	ldr r1, _0238B450 ; =OVERLAY19_UNKNOWN_POINTER__NA_238E360
+	ldr r1, _0238B450 ; =BAR_MENU_PRIOR_CHOICE_INDICES
 	str r0, [r8, #0x58]
 	ldrsh r2, [r1, #2]
 	mov r1, #0
@@ -589,14 +589,14 @@ _0238A8B0:
 	str r4, [sp]
 	mov r4, #0x70000
 	str r4, [sp, #4]
-	bl ov19_0238D3A0
+	bl BarCreateUnkStringIdMenu
 	mov r0, #0xa
 	str r0, [r8, #4]
 	b _0238C598
 _0238A910:
 	ldrsb r0, [r8, #0x20]
 	bl ov10_022BCD10
-	bl ov19_0238D4E4
+	bl BarTryCloseInventoryMenu
 	add r0, r8, #0x100
 	mov r1, #0xa
 	strh r1, [r0]
@@ -615,15 +615,15 @@ _0238A934:
 	str r0, [r8, #0x58]
 	ldrsb r0, [r8, #0x20]
 	bl ov10_022BCDF4
-	bl ov19_0238D4E4
+	bl BarTryCloseInventoryMenu
 	mov r0, #0xb
 	str r0, [r8, #4]
 	b _0238C598
 _0238A970:
-	bl ov19_0238D418
+	bl GetUnkStringIdMenuResult
 	mov r4, r0
 	bl sub_02046BA0
-	ldr r1, _0238B450 ; =OVERLAY19_UNKNOWN_POINTER__NA_238E360
+	ldr r1, _0238B450 ; =BAR_MENU_PRIOR_CHOICE_INDICES
 	sub r2, r4, #9
 	strh r0, [r1, #2]
 	cmp r2, #1
@@ -641,13 +641,13 @@ _0238A9A4:
 	bl InitPreprocessorArgs
 	ldr r0, _0238B428 ; =0x0001012E
 	str r0, [sp, #0xa14]
-	bl ov19_0238D4E4
+	bl BarTryCloseInventoryMenu
 	add r2, sp, #0x900
 	ldr r0, _0238B440 ; =0x0000301C
 	ldr r1, _0238B460 ; =0x00004594
 	add r2, r2, #0xc8
 	bl sub_02046BE8
-	bl ov19_0238D450
+	bl BarTryShowPortrait
 	mov r0, #0xd
 	str r0, [r8, #4]
 	mov r0, #0xe
@@ -656,7 +656,7 @@ _0238A9A4:
 _0238A9F0:
 	cmp r4, #2
 	bne _0238C598
-	bl ov19_0238D4E4
+	bl BarTryCloseInventoryMenu
 	mov r0, #0xb
 	str r0, [r8, #4]
 	b _0238C598
@@ -722,7 +722,7 @@ _0238AAA8:
 	str r0, [r8, #4]
 	b _0238C598
 _0238AAD4:
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	bl sub_0203A998
 	cmp r0, #0
@@ -761,7 +761,7 @@ _0238AB54:
 	mvn r1, #0
 	cmp r0, r1
 	beq _0238ABA4
-	ldr r1, _0238B450 ; =OVERLAY19_UNKNOWN_POINTER__NA_238E360
+	ldr r1, _0238B450 ; =BAR_MENU_PRIOR_CHOICE_INDICES
 	str r0, [r8, #0xd4]
 	ldrsh r2, [r1, #4]
 	mov r1, #0
@@ -773,7 +773,7 @@ _0238AB54:
 	str r4, [sp]
 	mov r4, #0x70000
 	str r4, [sp, #4]
-	bl ov19_0238D3A0
+	bl BarCreateUnkStringIdMenu
 	mov r0, #0x10
 	str r0, [r8, #4]
 	b _0238C598
@@ -786,10 +786,10 @@ _0238ABA4:
 	str r0, [r8, #4]
 	b _0238C598
 _0238ABC0:
-	bl ov19_0238D418
+	bl GetUnkStringIdMenuResult
 	mov r4, r0
 	bl sub_02046BA0
-	ldr r1, _0238B450 ; =OVERLAY19_UNKNOWN_POINTER__NA_238E360
+	ldr r1, _0238B450 ; =BAR_MENU_PRIOR_CHOICE_INDICES
 	sub r2, r4, #9
 	strh r0, [r1, #4]
 	cmp r2, #1
@@ -820,7 +820,7 @@ _0238ABF0:
 	str r1, [sp, #0x938]
 	str r0, [sp, #0x974]
 	bl sub_0203A51C
-	bl ov19_0238D450
+	bl BarTryShowPortrait
 	ldr r1, _0238B478 ; =BAR_MENU_ITEMS_CONFIRM_1
 	ldr r0, _0238B47C ; =0x0000459A
 	str r1, [sp]
@@ -916,7 +916,7 @@ _0238AD90:
 	bl sub_020407EC
 	cmp r0, #1
 	bne _0238ADAC
-	bl ov19_0238D51C
+	bl BarTryCloseTeamMovesMenu
 	mov r0, #0xe
 	str r0, [r8, #4]
 	b _0238C598
@@ -931,7 +931,7 @@ _0238ADAC:
 	bl MemcpySimple
 	bl sub_02041094
 	strh r0, [r8, #0xd8]
-	bl ov19_0238D51C
+	bl BarTryCloseTeamMovesMenu
 	mov r0, #0x15
 	str r0, [r8, #4]
 	b _0238C598
@@ -999,7 +999,7 @@ _0238AEA8:
 	str r0, [r8, #4]
 	b _0238C598
 _0238AEC8:
-	bl ov19_0238D418
+	bl GetUnkStringIdMenuResult
 	sub r1, r0, #9
 	cmp r1, #1
 	bhi _0238AF0C
@@ -1045,7 +1045,7 @@ _0238AF0C:
 	bl IsMainCharacter
 	cmp r0, #0
 	beq _0238AFB8
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	mov r0, #0x3d
 	str r0, [r8, #4]
@@ -1061,7 +1061,7 @@ _0238AF0C:
 	str r0, [r8]
 	b _0238C598
 _0238AFB8:
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	add r0, sp, #0x7f0
 	bl InitPreprocessorArgs
 	ldr r1, [r8, #0xd4]
@@ -1087,7 +1087,7 @@ _0238AFB8:
 	str r0, [r8]
 	b _0238C598
 _0238B01C:
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	mov r0, #0x3d
 	str r0, [r8, #4]
@@ -1104,9 +1104,9 @@ _0238B040:
 	strh r0, [r2, #0xfa]
 	ldr r0, [r1]
 	ldrsh r0, [r0, #0xd0]
-	bl ov19_0238A1A8
+	bl GetBarItemResultWeights
 	mov r6, r0
-	bl ov19_0238A1B8
+	bl BarGetDrinkEventWeights
 	ldr r1, _0238B424 ; =ov11_02324DB0
 	mov r7, r0
 	mov r0, #0
@@ -1223,7 +1223,7 @@ _0238B1C4:
 	b _0238B204
 _0238B1F4:
 	mov r0, #0
-	bl ov19_0238A3EC
+	bl BarPopulateUnlockableDungeons
 	cmp r0, #0
 	movne r5, #5
 _0238B204:
@@ -1249,7 +1249,7 @@ _0238B234:
 	str r0, [r8, #4]
 	b _0238C598
 _0238B250:
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	add r0, sp, #0x7a0
 	bl InitPreprocessorArgs
 	ldr r2, _0238B428 ; =0x0001012E
@@ -1257,7 +1257,7 @@ _0238B250:
 	mov r1, #0xc
 	str r2, [sp, #0x7ec]
 	bl SetPortraitEmotion
-	bl ov19_0238D450
+	bl BarTryShowPortrait
 	mov r0, #4
 	ldr r1, _0238B484 ; =0x0000101C
 	str r0, [r8, #0x1c4]
@@ -1276,7 +1276,7 @@ _0238B250:
 	str r0, [r8]
 	b _0238C598
 _0238B2B8:
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	add r0, sp, #0x750
 	bl InitPreprocessorArgs
 	ldr r2, _0238B428 ; =0x0001012E
@@ -1284,7 +1284,7 @@ _0238B2B8:
 	mov r1, #0xc
 	str r2, [sp, #0x79c]
 	bl SetPortraitEmotion
-	bl ov19_0238D450
+	bl BarTryShowPortrait
 	mov r0, #5
 	ldr r1, _0238B484 ; =0x0000101C
 	str r0, [r8, #0x1c4]
@@ -1303,7 +1303,7 @@ _0238B2B8:
 	str r0, [r8]
 	b _0238C598
 _0238B320:
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	add r0, r8, #0x10
 	mov r1, #0
@@ -1315,7 +1315,7 @@ _0238B320:
 	str r0, [r8, #4]
 	b _0238C598
 _0238B34C:
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	add r0, sp, #0x700
 	bl InitPreprocessorArgs
 	ldr r2, _0238B428 ; =0x0001012E
@@ -1323,7 +1323,7 @@ _0238B34C:
 	mov r1, #7
 	str r2, [sp, #0x74c]
 	bl SetPortraitEmotion
-	bl ov19_0238D450
+	bl BarTryShowPortrait
 	mov r0, #6
 #ifdef EUROPE
 	ldr r3, _0238B484 ; =0x0000101C
@@ -1355,8 +1355,8 @@ _0238B34C:
 	str r0, [r8]
 	b _0238C598
 _0238B3B4:
-	bl ov19_0238C640
-	bl ov19_0238D47C
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
+	bl BarTryHidePortrait
 	add r0, r8, #0x10
 	mov r1, #0
 	bl SetPortraitEmotion
@@ -1401,8 +1401,8 @@ _0238B43C: .word 0x0000458F + OV19_0238A4A4_OFFSET
 _0238B440: .word 0x0000301C
 _0238B444: .word 0x0000458D + OV19_0238A4A4_OFFSET
 _0238B448: .word 0x0000458E + OV19_0238A4A4_OFFSET
-_0238B44C: .word ov19_0238D4A4
-_0238B450: .word OVERLAY19_UNKNOWN_POINTER__NA_238E360
+_0238B44C: .word BarInventoryMenuCallback
+_0238B450: .word BAR_MENU_PRIOR_CHOICE_INDICES
 _0238B454: .word BAR_WINDOW_PARAMS_1
 _0238B458: .word BAR_SUBMENU_ITEMS_1
 _0238B45C: .word 0x00003F02
@@ -1489,7 +1489,7 @@ _0238B528:
 	ldr r0, _0238B424 ; =ov11_02324DB0
 	add r3, sp, #0x230
 	ldr r6, [r0]
-	ldr r2, _0238C48C ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238
+	ldr r2, _0238C48C ; =BAR_DRINK_NAMES_STRINGS
 	ldrsh r5, [r6, #0xd0]
 	mov r0, r4
 	mov r1, #0x100
@@ -1531,7 +1531,7 @@ _0238B5D8:
 	mov r0, #3
 	bl RandInt
 	mov r4, r0
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	ldr r0, [r8, #0xfc]
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
@@ -1545,17 +1545,17 @@ _0238B610: ; jump table
 	b _0238B62C ; case 5
 	b _0238B668 ; case 6
 _0238B62C:
-	ldr r0, _0238C494 ; =ov19_0238E18A
+	ldr r0, _0238C494 ; =NEUTRAL_DRINK_REACTION_STRINGS
 	mov r1, r4, lsl #1
 	ldrh r5, [r0, r1]
 	b _0238B668
 _0238B63C:
-	ldr r0, _0238C498 ; =ov19_0238E17E
+	ldr r0, _0238C498 ; =GOOD_DRINK_REACTION_STRINGS
 	mov r1, r4, lsl #1
 	ldrh r5, [r0, r1]
 	b _0238B668
 _0238B64C:
-	ldr r0, _0238C49C ; =ov19_0238E190
+	ldr r0, _0238C49C ; =BAD_DRINK_REACTION_STRINGS
 	mov r1, r4, lsl #1
 	ldrh r5, [r0, r1]
 	ldr r0, _0238C4A0 ; =0x000045B9
@@ -1618,7 +1618,7 @@ _0238B70C:
 	mov r1, #0
 	str r1, [sp, #0x24]
 	mov r4, r0
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	ldrsh r1, [r5, #0xd0]
 	cmp r1, #0x67
 	bgt _0238B7A8
@@ -1665,7 +1665,7 @@ _0238B7C4:
 	mov r0, r4
 	bl ApplySitrusBerryBoostToGroundMonster
 	ldr r1, [sp, #0x24]
-	bl ov19_0238C80C
+	bl BarPrintHpIncreaseString
 	mov r5, r0
 	b _0238BCE8
 _0238B7E0:
@@ -1673,7 +1673,7 @@ _0238B7E0:
 	mov r0, r4
 	bl ApplyLifeSeedBoostToGroundMonster
 	ldr r1, [sp, #0x24]
-	bl ov19_0238C80C
+	bl BarPrintHpIncreaseString
 	mov r5, r0
 	b _0238BCE8
 _0238B7FC:
@@ -1751,7 +1751,7 @@ _0238B904:
 	cmp r0, #0
 	beq _0238B924
 	mov r0, #1
-	bl ov19_0238CB2C
+	bl BarPrintLevelMaxedOutString
 	mov r5, #4
 	b _0238BCE8
 _0238B924:
@@ -1766,7 +1766,7 @@ _0238B938:
 	cmp r0, #0
 	beq _0238B958
 	mov r0, #5
-	bl ov19_0238CB2C
+	bl BarPrintLevelMaxedOutString
 	mov r5, #4
 	b _0238BCE8
 _0238B958:
@@ -1782,7 +1782,7 @@ _0238B96C:
 	bl ApplyProteinBoostToGroundMonster
 	mov r1, r5
 	mov r2, #2
-	bl ov19_0238C900
+	bl BarPrintOtherStatIncreaseString
 	mov r5, r0
 	b _0238BCE8
 _0238B990:
@@ -1792,7 +1792,7 @@ _0238B990:
 	bl ApplyCalciumBoostToGroundMonster
 	mov r1, r5
 	mov r2, #3
-	bl ov19_0238C900
+	bl BarPrintOtherStatIncreaseString
 	mov r5, r0
 	b _0238BCE8
 _0238B9B4:
@@ -1802,14 +1802,14 @@ _0238B9B4:
 	bl ApplyIronBoostToGroundMonster
 	mov r1, r5
 	mov r2, #4
-	bl ov19_0238C900
+	bl BarPrintOtherStatIncreaseString
 	mov r5, r0
 	b _0238BCE8
 _0238B9D8:
 	add r1, sp, #0x24
 	mov r0, r4
 	bl ApplyNectarBoostToGroundMonster
-	bl ov19_0238C9F0
+	bl BarPrintIqAndSkills
 	mov r5, r0
 	b _0238BCE8
 _0238B9F0:
@@ -1819,7 +1819,7 @@ _0238B9F0:
 	bl ApplyZincBoostToGroundMonster
 	mov r1, r5
 	mov r2, #5
-	bl ov19_0238C900
+	bl BarPrintOtherStatIncreaseString
 	mov r5, r0
 	b _0238BCE8
 _0238BA14:
@@ -1830,7 +1830,7 @@ _0238BA14:
 	add r1, sp, #0x24
 	mov r0, r4
 	bl ApplyGravelyrockBoostToGroundMonster
-	bl ov19_0238C9F0
+	bl BarPrintIqAndSkills
 	mov r5, r0
 	b _0238BCE8
 _0238BA3C:
@@ -1955,12 +1955,12 @@ _0238BB9C:
 	mov r2, r4
 	add r1, r5, #0x400
 	str r6, [sp, #8]
-	bl ov19_0238CBC0
+	bl BarDrawAndUpdateGainedIqSkills
 _0238BC0C:
 	add r0, sp, #0x128
 	bl InitPreprocessorArgs
 	ldr r0, [sb, #0xd4]
-	ldr r4, _0238C4C8 ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
+	ldr r4, _0238C4C8 ; =BAR_STAT_NAME_STRINGS
 	orr r0, r0, #0x20000
 	str r0, [sp, #0x128]
 	ldr r0, [sp, #0x10]
@@ -1973,7 +1973,7 @@ _0238BC38:
 	ldrsh sl, [r6, r0]
 	cmp sl, #0
 	beq _0238BC8C
-	ldr r1, _0238C4CC ; =ov19_0238E2C0
+	ldr r1, _0238C4CC ; =BAR_NEW_LINE_CHAR
 	mov r0, r5
 	bl strcat
 	mov r1, r7, lsl #1
@@ -2056,7 +2056,7 @@ _0238BD50:
 	blt _0238BD50
 	add r0, sp, #0x1c
 	add r1, sp, #0x20
-	bl ov19_0238A194
+	bl SetBadDrinkStatCountRange
 	mov r0, #5
 	bl RandInt
 	mov r4, r0
@@ -2072,14 +2072,14 @@ _0238BD50:
 	add r0, r8, #0x10c
 	mov r1, #0
 	strh r3, [r2, #0xc]
-	bl ov19_0238CCEC
+	bl BarUpdateDrinkEventNewStats
 	cmp r0, #0
 	bne _0238BDD0
-	bl ov19_0238D310
+	bl BarPostDrinkCaseForCustomer
 	b _0238C598
 _0238BDD0:
 	add r0, r8, #0x10c
-	bl ov19_0238CEC0
+	bl BarPrintReactionsAndStatIncreases
 	mov r0, #0x28
 	str r0, [r8, #4]
 	mov r0, #0xc
@@ -2091,14 +2091,14 @@ _0238BDEC:
 	strh r1, [r0]
 	mov r0, #3
 	str r0, [r8, #4]
-	bl ov19_0238D0D8
+	bl BarHandleDrinkEventSubcase
 	b _0238C598
 _0238BE08:
 	ldr r1, [r8, #8]
 	mvn r0, #0
 	cmp r1, r0
 	bne _0238BE28
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	mov r0, #3
 	b _0238C59C
@@ -2112,14 +2112,14 @@ _0238BE34:
 	strh r1, [r0]
 	mov r0, #3
 	str r0, [r8, #4]
-	bl ov19_0238D0D8
+	bl BarHandleDrinkEventSubcase
 	b _0238C598
 _0238BE50:
 	bl ov11_0230A390
 	cmp r0, #0
 	beq _0238C598
 	bl ov11_0230AD50
-	bl ov19_0238D0D8
+	bl BarHandleDrinkEventSubcase
 	b _0238C598
 _0238BE68:
 	add r0, r8, #0x100
@@ -2129,14 +2129,14 @@ _0238BE68:
 	ldrsh r0, [r0]
 	cmp r0, #0xa
 	ble _0238C598
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	add r0, sp, #0x520
 	bl InitPreprocessorArgs
 	ldr r1, _0238B428 ; =0x0001012E
 	mov r0, #9
 	str r1, [sp, #0x56c]
 	str r0, [r8, #0x1c4]
-	bl ov19_0238D450
+	bl BarTryShowPortrait
 	ldr r1, _0238B484 ; =0x0000101C
 	add r0, r8, #0x100
 	strh r1, [r0, #0xc8]
@@ -2159,7 +2159,7 @@ _0238BEE0:
 	mov r2, r1
 	mov r3, r1
 	bl sub_02065BAC
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	mov r0, #0x3d
 	str r0, [r8, #4]
@@ -2173,13 +2173,13 @@ _0238BEE0:
 	movne r0, #0x10
 	strne r0, [r8]
 	bne _0238C598
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	mov r0, #0x11
 	str r0, [r8]
 	b _0238C598
 _0238BF44:
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	mov r0, #0xa
 	str r0, [r8, #0x1c4]
 	mov r0, #0x2d
@@ -2209,7 +2209,7 @@ _0238BFA4:
 	cmp r0, #0
 	beq _0238C598
 	bl sub_0203EFD4
-	bl ov19_0238D310
+	bl BarPostDrinkCaseForCustomer
 	b _0238C598
 _0238BFBC:
 	add r0, r8, #0x100
@@ -2256,7 +2256,7 @@ _0238C004:
 	movne r0, #0x12
 	strne r0, [r8]
 	bne _0238C598
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	mov r0, #0x13
 	str r0, [r8]
@@ -2292,7 +2292,7 @@ _0238C0DC:
 	ldr r1, _0238C4E8 ; =0x000045DB
 	add r2, sp, #0x480
 	bl sub_02046BE8
-	bl ov19_0238D450
+	bl BarTryShowPortrait
 	mov r0, #0x32
 	str r0, [r8, #4]
 	b _0238C598
@@ -2323,7 +2323,7 @@ _0238C0FC:
 	bl IsMainCharacter
 	cmp r0, #0
 	beq _0238C174
-	ldr r1, _0238C4EC ; =OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4
+	ldr r1, _0238C4EC ; =GOURMET_PORTRAIT_OFFSET_TABLE
 	add r0, r8, #0x10
 	bl SetPortraitOffset
 	b _0238C180
@@ -2332,7 +2332,7 @@ _0238C174:
 	add r0, r8, #0x10
 	bl SetPortraitOffset
 _0238C180:
-	bl ov19_0238D450
+	bl BarTryShowPortrait
 	ldr r1, _0238C4F4 ; =BAR_MENU_ITEMS_CONFIRM_2
 #ifdef JAPAN
 	mov r0, #0x39c0
@@ -2352,10 +2352,10 @@ _0238C180:
 	str r0, [r8, #4]
 	b _0238C598
 _0238C1BC:
-	bl ov19_0238D418
+	bl GetUnkStringIdMenuResult
 	cmp r0, #8
 	bne _0238C200
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	ldr r1, _0238C4FC ; =ov19_0238E1B4
 	add r0, r8, #0x10
@@ -2373,7 +2373,7 @@ _0238C200:
 	sub r0, r0, #9
 	cmp r0, #1
 	bhi _0238C598
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	add r0, r8, #0x10
 	mov r1, #0
@@ -2395,7 +2395,7 @@ _0238C244:
 	ldrsh r0, [r0]
 	cmp r0, #0xa
 	ble _0238C598
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	ldr r1, _0238C500 ; =0x00000163
 	add r0, r8, #0x10
 	bl InitPortraitParamsWithMonsterId
@@ -2437,7 +2437,7 @@ _0238C2E4:
 	ldrsh r0, [r0]
 	cmp r0, #0xa
 	ble _0238C598
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	ldr r1, _0238C500 ; =0x00000163
 	add r0, r8, #0x10
 	bl InitPortraitParamsWithMonsterId
@@ -2489,7 +2489,7 @@ _0238C3AC:
 	moveq r0, #0
 	cmp r0, #0xa
 	bne _0238C598
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	add r0, sp, #0x2f8
 	bl InitPreprocessorArgs
 	add r0, r8, #0x100
@@ -2546,18 +2546,18 @@ _0238C46C:
 	str r0, [r8, #8]
 	b _0238C598
 _0238C480:
-	bl ov19_0238D310
+	bl BarPostDrinkCaseForCustomer
 	b _0238C598
 #ifndef JAPAN
 	.align 2, 0
 _0238C488: .word 0x000045C0 + OV19_0238A4A4_OFFSET
-_0238C48C: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238
+_0238C48C: .word BAR_DRINK_NAMES_STRINGS
 #ifndef EUROPE
 _0238C490: .word 0x000045B2
 #endif
-_0238C494: .word ov19_0238E18A
-_0238C498: .word ov19_0238E17E
-_0238C49C: .word ov19_0238E190
+_0238C494: .word NEUTRAL_DRINK_REACTION_STRINGS
+_0238C498: .word GOOD_DRINK_REACTION_STRINGS
+_0238C49C: .word BAD_DRINK_REACTION_STRINGS
 _0238C4A0: .word 0x000045B9 + OV19_0238A4A4_OFFSET
 _0238C4A4: .word 0x000045D6 + OV19_0238A4A4_OFFSET
 _0238C4A8: .word 0x000045D7 + OV19_0238A4A4_OFFSET
@@ -2568,8 +2568,8 @@ _0238C4B8: .word 0x000045E3 + OV19_0238A4A4_OFFSET
 _0238C4BC: .word 0x000045E4 + OV19_0238A4A4_OFFSET
 _0238C4C0: .word 0x000045E5 + OV19_0238A4A4_OFFSET
 _0238C4C4: .word 0x000045E6 + OV19_0238A4A4_OFFSET
-_0238C4C8: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
-_0238C4CC: .word ov19_0238E2C0
+_0238C4C8: .word BAR_STAT_NAME_STRINGS
+_0238C4CC: .word BAR_NEW_LINE_CHAR
 _0238C4D0: .word 0x000045E7 + OV19_0238A4A4_OFFSET
 _0238C4D4: .word 0x000045C1 + OV19_0238A4A4_OFFSET
 _0238C4D8: .word 0x000045D9 + OV19_0238A4A4_OFFSET
@@ -2577,7 +2577,7 @@ _0238C4DC: .word 0x000045DA + OV19_0238A4A4_OFFSET
 _0238C4E0: .word ov19_0238E1BC
 _0238C4E4: .word ov19_0238E1C4
 _0238C4E8: .word 0x000045DB + OV19_0238A4A4_OFFSET
-_0238C4EC: .word OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4
+_0238C4EC: .word GOURMET_PORTRAIT_OFFSET_TABLE
 _0238C4F0: .word ov19_0238E1AC
 _0238C4F4: .word BAR_MENU_ITEMS_CONFIRM_2
 _0238C4F8: .word 0x000045DC + OV19_0238A4A4_OFFSET
@@ -2599,7 +2599,7 @@ _0238C50C:
 	mvn r0, #0
 	cmp r1, r0
 	bne _0238C544
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	mov r0, #3
 	b _0238C59C
@@ -2607,7 +2607,7 @@ _0238C544:
 	cmp r1, #8
 	cmpne r1, #0xe
 	bne _0238C558
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 _0238C558:
 	mov r0, #0x3e
@@ -2618,11 +2618,11 @@ _0238C558:
 	b _0238C598
 #ifdef JAPAN
 	.align 2, 0
-_0238C48C: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238
+_0238C48C: .word BAR_DRINK_NAMES_STRINGS
 _0238C490: .word 0x00003996
-_0238C494: .word ov19_0238E18A
-_0238C498: .word ov19_0238E17E
-_0238C49C: .word ov19_0238E190
+_0238C494: .word NEUTRAL_DRINK_REACTION_STRINGS
+_0238C498: .word GOOD_DRINK_REACTION_STRINGS
+_0238C49C: .word BAD_DRINK_REACTION_STRINGS
 _0238C4A0: .word 0x0000399D
 _0238C4A4: .word 0x000039BA
 _0238C4A8: .word 0x000039BB
@@ -2633,8 +2633,8 @@ _0238C4B8: .word 0x000039C7
 _0238C4BC: .word 0x000039C8
 _0238C4C0: .word 0x000039C9
 _0238C4C4: .word 0x000039CA
-_0238C4C8: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
-_0238C4CC: .word ov19_0238E2C0
+_0238C4C8: .word BAR_STAT_NAME_STRINGS
+_0238C4CC: .word BAR_NEW_LINE_CHAR
 _0238C4D0: .word 0x000039CB
 _0238C4D4: .word 0x000039A5
 _0238C4D8: .word 0x000039BD
@@ -2642,7 +2642,7 @@ _0238C4DC: .word 0x000039BE
 _0238C4E0: .word ov19_0238E1BC
 _0238C4E4: .word ov19_0238E1C4
 _0238C4E8: .word 0x000039BF
-_0238C4EC: .word OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4
+_0238C4EC: .word GOURMET_PORTRAIT_OFFSET_TABLE
 _0238C4F0: .word ov19_0238E1AC
 _0238C4F4: .word BAR_MENU_ITEMS_CONFIRM_2
 _0238C4FC: .word ov19_0238E1B4
@@ -2667,10 +2667,10 @@ _0238C59C:
 	add sp, sp, #0x308
 	add sp, sp, #0x800
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov19_0238A4A4
+	arm_func_end BarCaseManagerSub
 
-	arm_func_start ov19_0238C5A8
-ov19_0238C5A8: ; 0x0238C5A8
+	arm_func_start BarPopulateDrinkableBagItems
+BarPopulateDrinkableBagItems: ; 0x0238C5A8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bl GetCurrentBagCapacity
 	mov sb, #0
@@ -2713,10 +2713,10 @@ _0238C624:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238C63C: .word ov11_02324DB0
-	arm_func_end ov19_0238C5A8
+	arm_func_end BarPopulateDrinkableBagItems
 
-	arm_func_start ov19_0238C640
-ov19_0238C640: ; 0x0238C640
+	arm_func_start BarZeroInitPreprocessorFlagsAndReturnCase
+BarZeroInitPreprocessorFlagsAndReturnCase: ; 0x0238C640
 	ldr r0, _0238C66C ; =ov11_02324DB0
 	mov r2, #0x1c
 	ldr r3, [r0]
@@ -2730,10 +2730,10 @@ ov19_0238C640: ; 0x0238C640
 	bx lr
 	.align 2, 0
 _0238C66C: .word ov11_02324DB0
-	arm_func_end ov19_0238C640
+	arm_func_end BarZeroInitPreprocessorFlagsAndReturnCase
 
-	arm_func_start ov19_0238C670
-ov19_0238C670: ; 0x0238C670
+	arm_func_start BarZeroInitBufferAndPreprocessorArgsZero
+BarZeroInitBufferAndPreprocessorArgsZero: ; 0x0238C670
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x50
 	ldr r1, _0238C6C0 ; =ov11_02324DB0
@@ -2757,10 +2757,10 @@ _0238C6B4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238C6C0: .word ov11_02324DB0
-	arm_func_end ov19_0238C670
+	arm_func_end BarZeroInitBufferAndPreprocessorArgsZero
 
-	arm_func_start ov19_0238C6C4
-ov19_0238C6C4: ; 0x0238C6C4
+	arm_func_start BarTrySetEventMainActor
+BarTrySetEventMainActor: ; 0x0238C6C4
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r1, _0238C7AC ; =ov11_02324DB0
@@ -2832,10 +2832,10 @@ _0238C7A4:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238C7AC: .word ov11_02324DB0
-	arm_func_end ov19_0238C6C4
+	arm_func_end BarTrySetEventMainActor
 
-	arm_func_start ov19_0238C7B0
-ov19_0238C7B0: ; 0x0238C7B0
+	arm_func_start BarZeroInitBufferAndPreprocessorArgsOne
+BarZeroInitBufferAndPreprocessorArgsOne: ; 0x0238C7B0
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x50
 	ldr r1, _0238C808 ; =ov11_02324DB0
@@ -2861,10 +2861,10 @@ _0238C7FC:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238C808: .word ov11_02324DB0
-	arm_func_end ov19_0238C7B0
+	arm_func_end BarZeroInitBufferAndPreprocessorArgsOne
 
-	arm_func_start ov19_0238C80C
-ov19_0238C80C: ; 0x0238C80C
+	arm_func_start BarPrintHpIncreaseString
+BarPrintHpIncreaseString: ; 0x0238C80C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x54
 	ldr r2, _0238C8F4 ; =ov11_02324DB0
@@ -2937,10 +2937,10 @@ _0238C8FC: .word 0x000039CC
 _0238C8F8: .word 0x000045E9
 _0238C8FC: .word 0x000045E8
 #endif
-	arm_func_end ov19_0238C80C
+	arm_func_end BarPrintHpIncreaseString
 
-	arm_func_start ov19_0238C900
-ov19_0238C900: ; 0x0238C900
+	arm_func_start BarPrintOtherStatIncreaseString
+BarPrintOtherStatIncreaseString: ; 0x0238C900
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x54
 	ldr r3, _0238C9E0 ; =ov11_02324DB0
@@ -2958,7 +2958,7 @@ ov19_0238C900: ; 0x0238C900
 	mov r4, r0
 	add r0, sp, #4
 	bl InitPreprocessorArgs
-	ldr r0, _0238C9E4 ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
+	ldr r0, _0238C9E4 ; =BAR_STAT_NAME_STRINGS
 	mov r1, r6, lsl #1
 	ldrh r1, [r0, r1]
 	mov r0, r4
@@ -2999,7 +2999,7 @@ ov19_0238C900: ; 0x0238C900
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238C9E0: .word ov11_02324DB0
-_0238C9E4: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
+_0238C9E4: .word BAR_STAT_NAME_STRINGS
 #if defined(EUROPE)
 _0238C9E8: .word 0x0000460A
 _0238C9EC: .word 0x00004609
@@ -3010,10 +3010,10 @@ _0238C9EC: .word 0x000039CE
 _0238C9E8: .word 0x000045EB
 _0238C9EC: .word 0x000045EA
 #endif
-	arm_func_end ov19_0238C900
+	arm_func_end BarPrintOtherStatIncreaseString
 
-	arm_func_start ov19_0238C9F0
-ov19_0238C9F0: ; 0x0238C9F0
+	arm_func_start BarPrintIqAndSkills
+BarPrintIqAndSkills: ; 0x0238C9F0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x5c
 	ldr r1, _0238CB20 ; =ov11_02324DB0
@@ -3064,7 +3064,7 @@ ov19_0238C9F0: ; 0x0238C9F0
 	mov r2, r4
 	mov r3, sb
 	add r1, r5, #0x400
-	bl ov19_0238CBC0
+	bl BarDrawAndUpdateGainedIqSkills
 _0238CABC:
 	add r0, sp, #0xc
 	bl InitPreprocessorArgs
@@ -3101,10 +3101,10 @@ _0238CB28: .word 0x000039BC
 #else
 _0238CB28: .word 0x000045D8
 #endif
-	arm_func_end ov19_0238C9F0
+	arm_func_end BarPrintIqAndSkills
 
-	arm_func_start ov19_0238CB2C
-ov19_0238CB2C: ; 0x0238CB2C
+	arm_func_start BarPrintLevelMaxedOutString
+BarPrintLevelMaxedOutString: ; 0x0238CB2C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x54
 	ldr r1, _0238CBB8 ; =ov11_02324DB0
@@ -3149,10 +3149,10 @@ _0238CBBC: .word 0x000039D0
 #else
 _0238CBBC: .word 0x000045EC
 #endif
-	arm_func_end ov19_0238CB2C
+	arm_func_end BarPrintLevelMaxedOutString
 
-	arm_func_start ov19_0238CBC0
-ov19_0238CBC0: ; 0x0238CBC0
+	arm_func_start BarDrawAndUpdateGainedIqSkills
+BarDrawAndUpdateGainedIqSkills: ; 0x0238CBC0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x5c
 	ldr r4, _0238CCDC ; =ov11_02324DB0
@@ -3199,14 +3199,14 @@ _0238CC4C:
 	beq _0238CCC4
 	add r0, sp, #0xc
 	bl InitPreprocessorArgs
-	ldr r1, _0238CCE0 ; =ov19_0238E2C0
+	ldr r1, _0238CCE0 ; =BAR_NEW_LINE_CHAR
 	mov r0, sl
 	bl strcat
 	ldr r1, [r4, #0xd4]
 	mov r0, sl
 	orr r1, r1, #0x20000
 	str r1, [sp, #0xc]
-	ldr r1, _0238CCE4 ; =ov19_0238E2C4
+	ldr r1, _0238CCE4 ; =BAR_ME_PLAY_TEXT_TAG
 	str r5, [sp, #0x1c]
 	bl strcat
 	add r0, sp, #0xc
@@ -3234,8 +3234,8 @@ _0238CCC4:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238CCDC: .word ov11_02324DB0
-_0238CCE0: .word ov19_0238E2C0
-_0238CCE4: .word ov19_0238E2C4
+_0238CCE0: .word BAR_NEW_LINE_CHAR
+_0238CCE4: .word BAR_ME_PLAY_TEXT_TAG
 #if defined(EUROPE)
 _0238CCE8: .word 0x00004601
 #elif defined(JAPAN)
@@ -3243,10 +3243,10 @@ _0238CCE8: .word 0x000039C6
 #else
 _0238CCE8: .word 0x000045E2
 #endif
-	arm_func_end ov19_0238CBC0
+	arm_func_end BarDrawAndUpdateGainedIqSkills
 
-	arm_func_start ov19_0238CCEC
-ov19_0238CCEC: ; 0x0238CCEC
+	arm_func_start BarUpdateDrinkEventNewStats
+BarUpdateDrinkEventNewStats: ; 0x0238CCEC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r2, _0238CEBC ; =ov11_02324DB0
 	mov r5, r0
@@ -3378,10 +3378,10 @@ _0238CEB0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238CEBC: .word ov11_02324DB0
-	arm_func_end ov19_0238CCEC
+	arm_func_end BarUpdateDrinkEventNewStats
 
-	arm_func_start ov19_0238CEC0
-ov19_0238CEC0: ; 0x0238CEC0
+	arm_func_start BarPrintReactionsAndStatIncreases
+BarPrintReactionsAndStatIncreases: ; 0x0238CEC0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x70
 	ldr r1, _0238D0BC ; =ov11_02324DB0
@@ -3399,7 +3399,7 @@ ov19_0238CEC0: ; 0x0238CEC0
 	add r0, r4, #0x500
 	str r0, [sp, #0xc]
 	mov r7, #0
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	add r0, sp, #0x20
 	bl InitPreprocessorArgs
 	ldr r0, [sb, #0xd4]
@@ -3427,7 +3427,7 @@ _0238CF3C:
 	ldr r2, [sl, #0x20]
 	add r0, fp, #0x400
 	mov r7, r2, lsl #1
-	ldr r2, _0238D0C4 ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E178
+	ldr r2, _0238D0C4 ; =BAR_STAT_REACTION_STRINGS
 	mov r1, #0x100
 	ldrh r2, [r2, r7]
 	mov r3, #0
@@ -3436,7 +3436,7 @@ _0238CF84:
 	add r0, fp, #0x400
 	bl sub_02020868
 	mov r7, r0
-	ldr r1, _0238D0C8 ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
+	ldr r1, _0238D0C8 ; =BAR_STAT_NAME_STRINGS
 	mov r2, r8, lsl #1
 	ldrh r1, [r1, r2]
 	ldr r0, [sp, #0xc]
@@ -3449,16 +3449,16 @@ _0238CF84:
 	cmp r8, #1
 	ldreq r0, [sl, #0x20]
 	moveq r1, r0, lsl #1
-	ldreq r0, _0238D0CC ; =ov19_0238E196
+	ldreq r0, _0238D0CC ; =BAR_IQ_CHANGE_STRINGS
 	ldreqh r2, [r0, r1]
 	beq _0238CFF0
 	ldr r0, [sl, #0x20]
 	cmp r6, #0
 	moveq r1, r0, lsl #1
-	ldreq r0, _0238D0D0 ; =ov19_0238E19C
+	ldreq r0, _0238D0D0 ; =BAR_IQ_UNABLE_TO_CHANGE_STRINGS
 	ldreqh r2, [r0, r1]
 	movne r1, r0, lsl #1
-	ldrne r0, _0238D0D4 ; =ov19_0238E184
+	ldrne r0, _0238D0D4 ; =BAR_STAT_CHANGE_STRINGS
 	ldrneh r2, [r0, r1]
 _0238CFF0:
 	add r0, sp, #0x20
@@ -3483,7 +3483,7 @@ _0238CFF0:
 	str r1, [sp, #8]
 	ldr r3, [sl, #0x24]
 	add r1, r4, #0x400
-	bl ov19_0238CBC0
+	bl BarDrawAndUpdateGainedIqSkills
 _0238D04C:
 	add r0, sp, #0x20
 	bl InitPreprocessorArgs
@@ -3517,20 +3517,20 @@ _0238D0A0:
 	.align 2, 0
 _0238D0BC: .word ov11_02324DB0
 _0238D0C0: .word 0x0000068A
-_0238D0C4: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E178
-_0238D0C8: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
-_0238D0CC: .word ov19_0238E196
-_0238D0D0: .word ov19_0238E19C
-_0238D0D4: .word ov19_0238E184
-	arm_func_end ov19_0238CEC0
+_0238D0C4: .word BAR_STAT_REACTION_STRINGS
+_0238D0C8: .word BAR_STAT_NAME_STRINGS
+_0238D0CC: .word BAR_IQ_CHANGE_STRINGS
+_0238D0D0: .word BAR_IQ_UNABLE_TO_CHANGE_STRINGS
+_0238D0D4: .word BAR_STAT_CHANGE_STRINGS
+	arm_func_end BarPrintReactionsAndStatIncreases
 
-	arm_func_start ov19_0238D0D8
-ov19_0238D0D8: ; 0x0238D0D8
+	arm_func_start BarHandleDrinkEventSubcase
+BarHandleDrinkEventSubcase: ; 0x0238D0D8
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0xc0
 	ldr r0, _0238D308 ; =ov11_02324DB0
 	ldr r4, [r0]
-	bl ov19_0238C640
+	bl BarZeroInitPreprocessorFlagsAndReturnCase
 	ldr r0, [r4, #0xfc]
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
@@ -3544,7 +3544,7 @@ _0238D0FC: ; jump table
 	b _0238D2AC ; case 5
 	b _0238D1D0 ; case 6
 _0238D118:
-	bl ov19_0238D310
+	bl BarPostDrinkCaseForCustomer
 	b _0238D300
 _0238D120:
 	ldr r0, _0238D308 ; =ov11_02324DB0
@@ -3578,14 +3578,14 @@ _0238D13C:
 	ldrsh r2, [r0, #0xc]
 	mov r0, r3
 	strh r2, [sp, #0x12]
-	bl ov19_0238CCEC
+	bl BarUpdateDrinkEventNewStats
 	cmp r0, #0
 	bne _0238D1AC
-	bl ov19_0238D310
+	bl BarPostDrinkCaseForCustomer
 	b _0238D300
 _0238D1AC:
 	add r0, sp, #8
-	bl ov19_0238CEC0
+	bl BarPrintReactionsAndStatIncreases
 	mov r0, #0x27
 	str r0, [r4, #4]
 	mov r0, #0x40
@@ -3609,7 +3609,7 @@ _0238D1DC:
 	blt _0238D1DC
 	add r0, sp, #0
 	add r1, sp, #4
-	bl ov19_0238A180
+	bl SetMiracleDrinkStatCountRange
 	mov r0, #6
 	bl RandInt
 	ldr r1, [sp, #4]
@@ -3622,14 +3622,14 @@ _0238D1DC:
 	strh r0, [r1, r2]
 	mov r0, r1
 	mov r1, #2
-	bl ov19_0238CCEC
+	bl BarUpdateDrinkEventNewStats
 	cmp r0, #0
 	bne _0238D250
-	bl ov19_0238D310
+	bl BarPostDrinkCaseForCustomer
 	b _0238D300
 _0238D250:
 	add r0, sp, #8
-	bl ov19_0238CEC0
+	bl BarPrintReactionsAndStatIncreases
 	mov r0, #0x27
 	str r0, [r4, #4]
 	mov r0, #0x40
@@ -3655,11 +3655,11 @@ _0238D290:
 	b _0238D300
 _0238D2AC:
 	mov r0, #0
-	bl ov19_0238A3D4
+	bl BarGetUnlockableDungeonPtr
 	mov r1, #0xf
 	bl MemAlloc
 	mov r5, r0
-	bl ov19_0238A3EC
+	bl BarPopulateUnlockableDungeons
 	bl RandInt
 	ldrb r1, [r5, r0]
 	mov r0, r5
@@ -3687,14 +3687,14 @@ _0238D30C: .word 0x000039C4
 #else
 _0238D30C: .word 0x000045E0
 #endif
-	arm_func_end ov19_0238D0D8
+	arm_func_end BarHandleDrinkEventSubcase
 
-	arm_func_start ov19_0238D310
-ov19_0238D310: ; 0x0238D310
+	arm_func_start BarPostDrinkCaseForCustomer
+BarPostDrinkCaseForCustomer: ; 0x0238D310
 	stmdb sp!, {r4, lr}
 	ldr r0, _0238D384 ; =ov11_02324DB0
 	ldr r4, [r0]
-	bl ov19_0238D47C
+	bl BarTryHidePortrait
 	bl sub_02046D20
 	add r0, r4, #0x100
 	mov r1, #0
@@ -3724,20 +3724,20 @@ _0238D37C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238D384: .word ov11_02324DB0
-	arm_func_end ov19_0238D310
+	arm_func_end BarPostDrinkCaseForCustomer
 
-	arm_func_start ov19_0238D388
-ov19_0238D388: ; 0x0238D388
+	arm_func_start BarMaybeIsClosedUnkStringIdMenu
+BarMaybeIsClosedUnkStringIdMenu: ; 0x0238D388
 	stmdb sp!, {r3, lr}
 	bl sub_02046C78
 	cmp r0, #0
 	movne r0, #0xa
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov19_0238D388
+	arm_func_end BarMaybeIsClosedUnkStringIdMenu
 
-	arm_func_start ov19_0238D3A0
-ov19_0238D3A0: ; 0x0238D3A0
+	arm_func_start BarCreateUnkStringIdMenu
+BarCreateUnkStringIdMenu: ; 0x0238D3A0
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0xf4
 	mov r7, r0
@@ -3768,10 +3768,10 @@ ov19_0238D3A0: ; 0x0238D3A0
 	bl sub_02046A20
 	add sp, sp, #0xf4
 	ldmia sp!, {r4, r5, r6, r7, pc}
-	arm_func_end ov19_0238D3A0
+	arm_func_end BarCreateUnkStringIdMenu
 
-	arm_func_start ov19_0238D418
-ov19_0238D418: ; 0x0238D418
+	arm_func_start GetUnkStringIdMenuResult
+GetUnkStringIdMenuResult: ; 0x0238D418
 	stmdb sp!, {r3, lr}
 	bl sub_02046B04
 	mvn r2, #0
@@ -3786,10 +3786,10 @@ ov19_0238D418: ; 0x0238D418
 	cmp r0, r1
 	moveq r0, #0xa
 	ldmia sp!, {r3, pc}
-	arm_func_end ov19_0238D418
+	arm_func_end GetUnkStringIdMenuResult
 
-	arm_func_start ov19_0238D450
-ov19_0238D450: ; 0x0238D450
+	arm_func_start BarTryShowPortrait
+BarTryShowPortrait: ; 0x0238D450
 	stmdb sp!, {r3, lr}
 	ldr r0, _0238D478 ; =ov11_02324DB0
 	mvn r1, #1
@@ -3802,10 +3802,10 @@ ov19_0238D450: ; 0x0238D450
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D478: .word ov11_02324DB0
-	arm_func_end ov19_0238D450
+	arm_func_end BarTryShowPortrait
 
-	arm_func_start ov19_0238D47C
-ov19_0238D47C: ; 0x0238D47C
+	arm_func_start BarTryHidePortrait
+BarTryHidePortrait: ; 0x0238D47C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0238D4A0 ; =ov11_02324DB0
 	mvn r1, #1
@@ -3817,10 +3817,10 @@ ov19_0238D47C: ; 0x0238D47C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D4A0: .word ov11_02324DB0
-	arm_func_end ov19_0238D47C
+	arm_func_end BarTryHidePortrait
 
-	arm_func_start ov19_0238D4A4
-ov19_0238D4A4: ; 0x0238D4A4
+	arm_func_start BarInventoryMenuCallback
+BarInventoryMenuCallback: ; 0x0238D4A4
 	stmdb sp!, {r4, lr}
 	ldr ip, _0238D4E0 ; =ov11_02324DB0
 	mov r3, r2
@@ -3838,10 +3838,10 @@ ov19_0238D4A4: ; 0x0238D4A4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238D4E0: .word ov11_02324DB0
-	arm_func_end ov19_0238D4A4
+	arm_func_end BarInventoryMenuCallback
 
-	arm_func_start ov19_0238D4E4
-ov19_0238D4E4: ; 0x0238D4E4
+	arm_func_start BarTryCloseInventoryMenu
+BarTryCloseInventoryMenu: ; 0x0238D4E4
 	stmdb sp!, {r3, lr}
 	ldr r0, _0238D518 ; =ov11_02324DB0
 	mvn r1, #1
@@ -3857,10 +3857,10 @@ ov19_0238D4E4: ; 0x0238D4E4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D518: .word ov11_02324DB0
-	arm_func_end ov19_0238D4E4
+	arm_func_end BarTryCloseInventoryMenu
 
-	arm_func_start ov19_0238D51C
-ov19_0238D51C: ; 0x0238D51C
+	arm_func_start BarTryCloseTeamMovesMenu
+BarTryCloseTeamMovesMenu: ; 0x0238D51C
 	stmdb sp!, {r3, lr}
 	ldr r1, _0238D568 ; =ov11_02324DB0
 	mvn r0, #1
@@ -3882,10 +3882,10 @@ ov19_0238D51C: ; 0x0238D51C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D568: .word ov11_02324DB0
-	arm_func_end ov19_0238D51C
+	arm_func_end BarTryCloseTeamMovesMenu
 
-	arm_func_start ov19_0238D56C
-ov19_0238D56C: ; 0x0238D56C
+	arm_func_start SpindaBarEntry
+SpindaBarEntry: ; 0x0238D56C
 	stmdb sp!, {r4, lr}
 	ldr r0, _0238D5F0 ; =0x00000A68
 	mov r1, #8
@@ -3923,10 +3923,10 @@ ov19_0238D56C: ; 0x0238D56C
 _0238D5F0: .word 0x00000A68
 _0238D5F4: .word ov11_02324DB0
 _0238D5F8: .word 0x00000163
-	arm_func_end ov19_0238D56C
+	arm_func_end SpindaBarEntry
 
-	arm_func_start ov19_0238D5FC
-ov19_0238D5FC: ; 0x0238D5FC
+	arm_func_start SpindaBarResume
+SpindaBarResume: ; 0x0238D5FC
 	stmdb sp!, {r4, lr}
 	ldr r1, _0238D684 ; =ov11_02324DB0
 	mov r0, #0
@@ -3965,19 +3965,19 @@ _0238D67C:
 	.align 2, 0
 _0238D684: .word ov11_02324DB0
 _0238D688: .word 0x00000163
-	arm_func_end ov19_0238D5FC
+	arm_func_end SpindaBarResume
 
-	arm_func_start ov19_0238D68C
-ov19_0238D68C: ; 0x0238D68C
-	ldr ip, _0238D694 ; =ov19_0238A468
+	arm_func_start SpindaBarDestruct
+SpindaBarDestruct: ; 0x0238D68C
+	ldr ip, _0238D694 ; =BarTryClosePortraitBox
 	bx ip
 	.align 2, 0
-_0238D694: .word ov19_0238A468
-	arm_func_end ov19_0238D68C
+_0238D694: .word BarTryClosePortraitBox
+	arm_func_end SpindaBarDestruct
 	; 0x0238D698
 
-	arm_func_start ov19_0238D698
-ov19_0238D698: ; 0x0238D698
+	arm_func_start SpindaBarMenuUpdate
+SpindaBarMenuUpdate: ; 0x0238D698
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _0238DACC ; =ov11_02324DB0
 	ldr r4, [r0]
@@ -4013,7 +4013,7 @@ _0238D70C:
 	mov r0, #4
 	ldmia sp!, {r3, r4, r5, pc}
 _0238D718:
-	bl ov19_0238A4A4
+	bl BarCaseManagerSub
 	cmp r0, #3
 	moveq r0, #2
 	streq r0, [r4]
@@ -4034,7 +4034,7 @@ _0238D738:
 _0238D758:
 	bl ov11_022E6E68
 _0238D75C:
-	bl ov19_0238A468
+	bl BarTryClosePortraitBox
 	ldr r0, _0238DACC ; =ov11_02324DB0
 	ldr r0, [r0]
 	bl MemFree
@@ -4186,7 +4186,7 @@ _0238D92C:
 _0238D934:
 	mov r5, #0x20
 _0238D938:
-	ldr r0, _0238DAD0 ; =ov19_0238E2D0
+	ldr r0, _0238DAD0 ; =DEBUG_MESSAGE_REQUEST_STR
 	mov r1, r5
 	bl Debug_Print0
 	mov r0, r5
@@ -4202,7 +4202,7 @@ _0238D958:
 	cmp r0, #0
 	beq _0238DAC4
 _0238D970:
-	bl ov19_0238C6C4
+	bl BarTrySetEventMainActor
 	cmp r0, #0
 	beq _0238DA38
 	ldr r2, [r4, #0x1c4]
@@ -4262,24 +4262,24 @@ _0238DA18:
 _0238DA20:
 	mov r5, #0x13
 _0238DA24:
-	ldr r0, _0238DAD4 ; =ov19_0238E2E8
+	ldr r0, _0238DAD4 ; =DEBUG_MESSAGE_REQUEST_AND_RETURN_STR
 	mov r1, r5
 	bl Debug_Print0
 	mov r0, r5
 	bl ov11_022E6E8C
 _0238DA38:
-	bl ov19_0238C670
+	bl BarZeroInitBufferAndPreprocessorArgsZero
 	cmp r0, #0
 	moveq r0, #0xe
 	streq r0, [r4]
 	beq _0238DAC4
-	ldr r0, _0238DAD8 ; =ov19_0238E304
+	ldr r0, _0238DAD8 ; =DEBUG_MESSAGE_BEFORE_SET_STR
 	bl Debug_Print0
 	mov r0, #0xd
 	str r0, [r4]
 	b _0238DAC4
 _0238DA60:
-	bl ov19_0238D388
+	bl BarMaybeIsClosedUnkStringIdMenu
 	cmp r0, #0xa
 	moveq r0, #0xe
 	streq r0, [r4]
@@ -4292,18 +4292,18 @@ _0238DA74:
 	cmp r0, #0
 	beq _0238DAC4
 _0238DA8C:
-	bl ov19_0238C7B0
+	bl BarZeroInitBufferAndPreprocessorArgsOne
 	cmp r0, #0
 	moveq r0, #1
 	streq r0, [r4]
 	beq _0238DAC4
-	ldr r0, _0238DADC ; =ov19_0238E324
+	ldr r0, _0238DADC ; =DEBUG_MESSAGE_AFTER_SET_STR
 	bl Debug_Print0
 	mov r0, #0xf
 	str r0, [r4]
 	b _0238DAC4
 _0238DAB4:
-	bl ov19_0238D388
+	bl BarMaybeIsClosedUnkStringIdMenu
 	cmp r0, #0xa
 	moveq r0, #1
 	streq r0, [r4]
@@ -4312,16 +4312,16 @@ _0238DAC4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238DACC: .word ov11_02324DB0
-_0238DAD0: .word ov19_0238E2D0
-_0238DAD4: .word ov19_0238E2E8
-_0238DAD8: .word ov19_0238E304
-_0238DADC: .word ov19_0238E324
-	arm_func_end ov19_0238D698
+_0238DAD0: .word DEBUG_MESSAGE_REQUEST_STR
+_0238DAD4: .word DEBUG_MESSAGE_REQUEST_AND_RETURN_STR
+_0238DAD8: .word DEBUG_MESSAGE_BEFORE_SET_STR
+_0238DADC: .word DEBUG_MESSAGE_AFTER_SET_STR
+	arm_func_end SpindaBarMenuUpdate
 	; 0x0238DAE0
 
 	.rodata
-	.global OVERLAY19_UNKNOWN_TABLE__NA_238DAE0
-OVERLAY19_UNKNOWN_TABLE__NA_238DAE0:
+	.global BAR_MIRACLE_EVENT_WEIGHTS
+BAR_MIRACLE_EVENT_WEIGHTS:
 	.byte 0x0A, 0x00, 0x0A, 0x00, 0x0A, 0x00, 0x0A, 0x00
 	.global BAR_UNLOCKABLE_DUNGEONS_TABLE
 BAR_UNLOCKABLE_DUNGEONS_TABLE:
@@ -4436,8 +4436,8 @@ BAR_AVAILABLE_ITEMS:
 	.byte 0x88, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x8C, 0x00
 	.byte 0x28, 0x00, 0x14, 0x00, 0x00, 0x00, 0x89, 0x00, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x64, 0x00, 0x64, 0x00, 0x14, 0x00, 0x32, 0x00
-	.global OVERLAY19_UNKNOWN_STRING_IDS__NA_238E178
-OVERLAY19_UNKNOWN_STRING_IDS__NA_238E178:
+	.global BAR_STAT_REACTION_STRINGS
+BAR_STAT_REACTION_STRINGS:
 #if defined(EUROPE)
 #define OVERLAY19_STRING_IDS_OFFSET 0x1F
 #elif defined(JAPAN)
@@ -4447,28 +4447,28 @@ OVERLAY19_UNKNOWN_STRING_IDS__NA_238E178:
 #endif
 	.hword 0x45CA + OVERLAY19_STRING_IDS_OFFSET, 0x45C6 + OVERLAY19_STRING_IDS_OFFSET
 	.hword 0x45C2 + OVERLAY19_STRING_IDS_OFFSET
-	.global ov19_0238E17E
-ov19_0238E17E:
+	.global GOOD_DRINK_REACTION_STRINGS
+GOOD_DRINK_REACTION_STRINGS:
 	.hword 0x45B6 + OVERLAY19_STRING_IDS_OFFSET, 0x45B7 + OVERLAY19_STRING_IDS_OFFSET, 0x45B8 + OVERLAY19_STRING_IDS_OFFSET
-	.global ov19_0238E184
-ov19_0238E184:
+	.global BAR_STAT_CHANGE_STRINGS
+BAR_STAT_CHANGE_STRINGS:
 	.hword 0x45CB + OVERLAY19_STRING_IDS_OFFSET, 0x45C7 + OVERLAY19_STRING_IDS_OFFSET, 0x45C3 + OVERLAY19_STRING_IDS_OFFSET
-	.global ov19_0238E18A
-ov19_0238E18A:
+	.global NEUTRAL_DRINK_REACTION_STRINGS
+NEUTRAL_DRINK_REACTION_STRINGS:
 	.hword 0x45B3 + OVERLAY19_STRING_IDS_OFFSET
 	.hword 0x45B4 + OVERLAY19_STRING_IDS_OFFSET, 0x45B5 + OVERLAY19_STRING_IDS_OFFSET
-	.global ov19_0238E190
-ov19_0238E190:
+	.global BAD_DRINK_REACTION_STRINGS
+BAD_DRINK_REACTION_STRINGS:
 	.hword 0x45B9 + OVERLAY19_STRING_IDS_OFFSET, 0x45BA + OVERLAY19_STRING_IDS_OFFSET, 0x45BB + OVERLAY19_STRING_IDS_OFFSET
-	.global ov19_0238E196
-ov19_0238E196:
+	.global BAR_IQ_CHANGE_STRINGS
+BAR_IQ_CHANGE_STRINGS:
 	.hword 0x45CD + OVERLAY19_STRING_IDS_OFFSET, 0x45C9 + OVERLAY19_STRING_IDS_OFFSET, 0x45C5 + OVERLAY19_STRING_IDS_OFFSET
-	.global ov19_0238E19C
-ov19_0238E19C:
+	.global BAR_IQ_UNABLE_TO_CHANGE_STRINGS
+BAR_IQ_UNABLE_TO_CHANGE_STRINGS:
 	.hword 0x45CC + OVERLAY19_STRING_IDS_OFFSET, 0x45C8 + OVERLAY19_STRING_IDS_OFFSET, 0x45C4 + OVERLAY19_STRING_IDS_OFFSET
 	.byte 0x00, 0x00
-	.global OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4
-OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4:
+	.global GOURMET_PORTRAIT_OFFSET_TABLE
+GOURMET_PORTRAIT_OFFSET_TABLE:
 	.byte 0x07, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.global ov19_0238E1AC
 ov19_0238E1AC:
@@ -4482,8 +4482,8 @@ ov19_0238E1BC:
 	.global ov19_0238E1C4
 ov19_0238E1C4:
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.global OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
-OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC:
+	.global BAR_STAT_NAME_STRINGS
+BAR_STAT_NAME_STRINGS:
 	.hword 0x45CE + OVERLAY19_STRING_IDS_OFFSET, 0x45CF + OVERLAY19_STRING_IDS_OFFSET, 0x45D0 + OVERLAY19_STRING_IDS_OFFSET, 0x45D1 + OVERLAY19_STRING_IDS_OFFSET, 0x45D2 + OVERLAY19_STRING_IDS_OFFSET, 0x45D3 + OVERLAY19_STRING_IDS_OFFSET
 	.global BAR_WINDOW_PARAMS_1
 BAR_WINDOW_PARAMS_1:
@@ -4510,8 +4510,8 @@ BAR_MENU_ITEMS_CONFIRM_2:
 	.byte 0x08, 0x00, 0x00, 0x00
 	.word 0x45DE + OVERLAY19_STRING_IDS_OFFSET
 	.byte 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238
-OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238:
+	.global BAR_DRINK_NAMES_STRINGS
+BAR_DRINK_NAMES_STRINGS:
 	.hword 0x45A0 + OVERLAY19_STRING_IDS_OFFSET, 0x45A2 + OVERLAY19_STRING_IDS_OFFSET
 	.hword 0x45A5 + OVERLAY19_STRING_IDS_OFFSET, 0x45A6 + OVERLAY19_STRING_IDS_OFFSET, 0x45A7 + OVERLAY19_STRING_IDS_OFFSET, 0x45A9 + OVERLAY19_STRING_IDS_OFFSET, 0x45AA + OVERLAY19_STRING_IDS_OFFSET, 0x45AB + OVERLAY19_STRING_IDS_OFFSET, 0x45AC + OVERLAY19_STRING_IDS_OFFSET, 0x45AE + OVERLAY19_STRING_IDS_OFFSET
 	.hword 0x45AF + OVERLAY19_STRING_IDS_OFFSET, 0x45B0 + OVERLAY19_STRING_IDS_OFFSET
@@ -4546,34 +4546,34 @@ BAR_SUBMENU_ITEMS_2:
 	.word 0x4599 + OVERLAY19_STRING_IDS_OFFSET
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov19_0238E2C0
-ov19_0238E2C0:
+	.global BAR_NEW_LINE_CHAR
+BAR_NEW_LINE_CHAR:
 	.byte 0x0A, 0x00, 0x00, 0x00
-	.global ov19_0238E2C4
-ov19_0238E2C4:
+	.global BAR_ME_PLAY_TEXT_TAG
+BAR_ME_PLAY_TEXT_TAG:
 	.byte 0x5B, 0x6D, 0x65, 0x5F, 0x70, 0x6C, 0x61, 0x79
 	.byte 0x3A, 0x30, 0x5D, 0x00
-	.global ov19_0238E2D0
-ov19_0238E2D0:
+	.global DEBUG_MESSAGE_REQUEST_STR
+DEBUG_MESSAGE_REQUEST_STR:
 	.byte 0x64, 0x69, 0x72, 0x69, 0x6E, 0x6B, 0x62, 0x61, 0x72, 0x20, 0x72, 0x65
 	.byte 0x71, 0x75, 0x65, 0x73, 0x74, 0x20, 0x25, 0x33, 0x64, 0x0A, 0x00, 0x00
-	.global ov19_0238E2E8
-ov19_0238E2E8:
+	.global DEBUG_MESSAGE_REQUEST_AND_RETURN_STR
+DEBUG_MESSAGE_REQUEST_AND_RETURN_STR:
 	.byte 0x64, 0x69, 0x72, 0x69
 	.byte 0x6E, 0x6B, 0x62, 0x61, 0x72, 0x20, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x20, 0x25, 0x33
 	.byte 0x64, 0x5B, 0x25, 0x33, 0x64, 0x5D, 0x0A, 0x00
-	.global ov19_0238E304
-ov19_0238E304:
+	.global DEBUG_MESSAGE_BEFORE_SET_STR
+DEBUG_MESSAGE_BEFORE_SET_STR:
 	.byte 0x64, 0x69, 0x72, 0x69, 0x6E, 0x6B, 0x62, 0x61
 	.byte 0x72, 0x20, 0x6D, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x20, 0x62, 0x65, 0x66, 0x6F, 0x72, 0x65
 	.byte 0x20, 0x73, 0x65, 0x74, 0x0A, 0x00, 0x00, 0x00
-	.global ov19_0238E324
-ov19_0238E324:
+	.global DEBUG_MESSAGE_AFTER_SET_STR
+DEBUG_MESSAGE_AFTER_SET_STR:
 	.byte 0x64, 0x69, 0x72, 0x69, 0x6E, 0x6B, 0x62, 0x61
 	.byte 0x72, 0x20, 0x6D, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x20, 0x61, 0x66, 0x74, 0x65, 0x72, 0x20
 	.byte 0x73, 0x65, 0x74, 0x0A, 0x00, 0x00, 0x00, 0x00
 
 	.data
-	.global OVERLAY19_UNKNOWN_POINTER__NA_238E360
-OVERLAY19_UNKNOWN_POINTER__NA_238E360:
+	.global BAR_MENU_PRIOR_CHOICE_INDICES
+BAR_MENU_PRIOR_CHOICE_INDICES:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

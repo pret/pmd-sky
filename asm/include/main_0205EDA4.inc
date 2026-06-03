@@ -132,6 +132,7 @@
 .public InitBitstreamForRead
 .public InitBitstreamForWrite
 .public InitKaomadoStream
+.public InitObjGraphicsControls
 .public InitOptionsVeneer
 .public InitPreprocessorArgs
 .public InitScriptVariableValues
@@ -258,7 +259,6 @@
 .public sub_0200C020
 .public sub_0200CA8C
 .public sub_0200D310
-.public sub_0201BB3C
 .public sub_0201D7A8
 .public sub_0201DD90
 .public sub_0201E050

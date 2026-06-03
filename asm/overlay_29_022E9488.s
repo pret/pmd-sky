@@ -53,7 +53,7 @@ ov29_022E9488: ; 0x022E9488
 	orr r4, r4, lr, lsr #16
 	mov r2, #0
 	strh r4, [r3, ip]
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 _022E9554:

@@ -7,6 +7,7 @@
 .public DungeonZInit
 .public G3X_Reset
 .public GetAndStoreButtonInput
+.public GroupOamAttributesBothScreens
 .public HandleMenus
 .public InitRender3dElement64
 .public MemAlloc
@@ -65,7 +66,6 @@
 .public sub_02017B70
 .public sub_02017BEC
 .public sub_0201BE28
-.public sub_0201BE5C
 .public sub_0201BE84
 .public sub_0201BF4C
 .public sub_0201BF64

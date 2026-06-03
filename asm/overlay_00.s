@@ -2516,7 +2516,7 @@ _022BE464:
 	bl ov01_0232ED84
 	mov r0, r4
 	bl sub_02028A64
-	bl sub_0201BE5C
+	bl GroupOamAttributesBothScreens
 	bl sub_0201BE84
 	bl G3X_Reset
 	bl sub_0201DE10

@@ -241,7 +241,7 @@ _02345958:
 	ldr r0, _02345A38 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r1, _02345A28 ; =ov29_0237C864
 	ldr r0, [r0]
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _02345A18:

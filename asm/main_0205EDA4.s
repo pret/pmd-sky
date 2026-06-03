@@ -8751,7 +8751,7 @@ MainLoop: ; 0x02065D1C
 	bl sub_020205E4
 	bl LoadTblTalk
 	bl sub_0201DD90
-	bl sub_0201BB3C
+	bl InitObjGraphicsControls
 	bl sub_0201D7A8
 	ldr r0, _02066374 ; =WAN_TABLE
 	mov r1, #0x80

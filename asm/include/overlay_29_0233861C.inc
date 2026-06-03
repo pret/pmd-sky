@@ -2,6 +2,7 @@
 .public _020AFC70
 .public _s32_div_f
 .public abs
+.public AddSimpleObjToOam
 .public ConvertWallsToChasms
 .public CORNER_CARDINAL_NEIGHBOR_IS_OPEN
 .public DelayWteFree
@@ -89,7 +90,6 @@
 .public sub_0200B330
 .public sub_0200B3FC
 .public sub_0200C008
-.public sub_0201B9F8
 .public sub_0201F2A0
 .public TeamMemberHasExclusiveItemEffectActive
 .public TILESET_PROPERTIES

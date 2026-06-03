@@ -1032,7 +1032,7 @@ _022EDA74:
 	strh r0, [r6, #4]
 	ldr r0, _022EDBD0 ; =OBJ_GRAPHICS_CONTROLS_PTR
 	ldr r0, [r0]
-	bl sub_0201B9F8
+	bl AddSimpleObjToOam
 _022EDB78:
 	add r7, r7, #1
 _022EDB7C:

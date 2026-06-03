@@ -1,5 +1,6 @@
 #pragma once
 .public _s32_div_f
+.public AddSimpleObjToOam
 .public AdvanceFrame
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DISPLACEMENTS_WITHIN_3
@@ -47,7 +48,6 @@
 .public SinAbs4096
 .public SpawnItem
 .public sub_0200D1FC
-.public sub_0201B9F8
 .public sub_0204F7A8
 .public SubstitutePlaceholderItemTags
 .public UNOWN_STONE_DROP_CHANCE

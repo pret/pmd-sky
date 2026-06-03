@@ -871,7 +871,7 @@ _022EA140:
 	mov r0, #1
 	bl FlashLeaderIcon
 _022EA154:
-	bl ov29_022EA64C
+	bl AnimateWaterShadows
 	bl ov29_022EA80C
 	bl DisplayUi
 	ldr r1, _022EA294 ; =ov29_02353560
@@ -1274,8 +1274,8 @@ _022EA644: .word DUNGEON_FRAMES_PASSED
 _022EA648: .word ov29_0234B1A4
 	arm_func_end ov29_022EA62C
 
-	arm_func_start ov29_022EA64C
-ov29_022EA64C: ; 0x022EA64C
+	arm_func_start AnimateWaterShadows
+AnimateWaterShadows: ; 0x022EA64C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r0, _022EA708 ; =DUNGEON_FRAMES_PASSED
@@ -1307,7 +1307,7 @@ ov29_022EA64C: ; 0x022EA64C
 	mov r2, #0x1e8
 	mov r3, #0x100
 	mov r4, ip, lsl #8
-	bl sub_0201BAC8
+	bl ChangeSimpleObjTexture
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0xb
@@ -1320,7 +1320,7 @@ ov29_022EA64C: ; 0x022EA64C
 	add r1, ip, r3
 	ldr r2, _022EA714 ; =0x000001EA
 	mov r3, #0x200
-	bl sub_0201BAC8
+	bl ChangeSimpleObjTexture
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1328,7 +1328,7 @@ _022EA708: .word DUNGEON_FRAMES_PASSED
 _022EA70C: .word ov29_02353540
 _022EA710: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022EA714: .word 0x000001EA
-	arm_func_end ov29_022EA64C
+	arm_func_end AnimateWaterShadows
 
 	arm_func_start DisplayAnimatedNumbers
 DisplayAnimatedNumbers: ; 0x022EA718
