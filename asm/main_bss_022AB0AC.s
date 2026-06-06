@@ -273,8 +273,8 @@ OSi_TimerReserved:
 	.global OSi_UseTick
 OSi_UseTick:
 	.space 0x8
-	.global _022B99A8
-_022B99A8:
+	.global OSi_TickCounter
+OSi_TickCounter:
 	.space 0x8
 	.global OSi_UseAlarm
 OSi_UseAlarm:

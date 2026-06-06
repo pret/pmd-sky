@@ -1,5 +1,5 @@
 #pragma once
-.public _022B99A8
+.public OSi_TickCounter
 .public OSi_IsInitReset
 .public Card_LockRom
 .public EnableIrqFlag

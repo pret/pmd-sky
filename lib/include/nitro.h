@@ -8,5 +8,6 @@
 #include <nitro/gx.h>
 #include <nitro/mi.h>
 #include <nitro/snd.h>
+#include <nitro/spi.h>
 
 #endif //NITRO_H_
