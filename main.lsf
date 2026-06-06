@@ -278,12 +278,24 @@ Static main
     Object lib/NitroSDK/asm/pxi_fifo.o
     Object lib/NitroSDK/asm/fs_command.o
     Object lib/NitroSDK/asm/fs_command_default.o
-	Object src/main_0207E81C.o
-	Object asm/main_0207E84C.o
+    Object lib/NitroSDK/src/fs_command_default_1.o
+	Object lib/NitroSDK/asm/fs_archive.o
 	Object src/main_0207F3E4.o
-	Object asm/main_0207F40C.o
+	Object lib/NitroSDK/asm/fs_file.o
 	Object src/main_0207F818.o
 	Object asm/main_0207F894.o
+	Object lib/NitroSDK/asm/card_rom.o
+	Object lib/NitroSDK/asm/card_request.o
+	Object lib/NitroSDK/asm/card_pullOut.o
+	Object lib/NitroSDK/asm/ctrdg.o
+	Object lib/NitroSDK/asm/ctrdg_proc.o
+	Object lib/NitroSDK/asm/ctrdg_task.o
+	Object lib/NitroSDK/asm/math_math.o
+	Object lib/NitroSDK/asm/math_dgt.o
+	Object lib/NitroSDK/asm/math_crc.o
+	Object lib/NitroSDK/asm/std_string.o
+	Object lib/NitroSDK/asm/os_printf.o
+	Object lib/MSL_C/asm/msl.o
 	Object lib/MSL_C/src/arith.o
     Object lib/MSL_C/asm/MSL_Common_buffer_io.o
 	Object asm/main_02086568.o
