@@ -234,7 +234,7 @@ _02002504:
 	str r2, [r1, #4]
 	str r2, [r1, #8]
 	bl OS_UnlockMutex
-	ldr r1, _02002578 ; =_022B966C
+	ldr r1, _02002578 ; =OSi_ThreadInfo
 	ldr r0, _0200257C ; =_0229B004
 	ldr r1, [r1, #4]
 	mov r2, #0
@@ -245,7 +245,7 @@ _02002504:
 	str r1, [r0, #0x10]
 	str r2, [r0, #0x14]
 	bl sub_020026E4
-	ldr r0, _02002578 ; =_022B966C
+	ldr r0, _02002578 ; =OSi_ThreadInfo
 	mov r1, #7
 	ldr r0, [r0, #4]
 	bl OS_SetThreadPriority
@@ -254,14 +254,14 @@ _02002504:
 _0200256C: .word _0229AFCC
 _02002570: .word _0229AFE4
 _02002574: .word _0229AFC0
-_02002578: .word _022B966C
+_02002578: .word OSi_ThreadInfo
 _0200257C: .word _0229B004
 	arm_func_end sub_020024E4
 
 	arm_func_start sub_02002580
 sub_02002580: ; 0x02002580
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _020025E8 ; =_022B966C
+	ldr r1, _020025E8 ; =OSi_ThreadInfo
 	ldr r0, _020025EC ; =_0229AFCC
 	ldr r4, [r1, #4]
 	bl OS_LockMutex
@@ -291,7 +291,7 @@ _020025E0:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020025E8: .word _022B966C
+_020025E8: .word OSi_ThreadInfo
 _020025EC: .word _0229AFCC
 _020025F0: .word _0229AFC0
 _020025F4: .word _0229AFE4
@@ -323,7 +323,7 @@ sub_02002624: ; 0x02002624
 	arm_func_start sub_02002628
 sub_02002628: ; 0x02002628
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _02002658 ; =_022B966C
+	ldr r2, _02002658 ; =OSi_ThreadInfo
 	mov r5, r0
 	ldr r0, [r2, #4]
 	mov r4, r1
@@ -335,7 +335,7 @@ sub_02002628: ; 0x02002628
 	bl OS_SetThreadPriority
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02002658: .word _022B966C
+_02002658: .word OSi_ThreadInfo
 	arm_func_end sub_02002628
 
 	arm_func_start sub_0200265C
@@ -351,7 +351,7 @@ _0200266C: .word OS_SetThreadPriority
 	arm_func_start sub_02002670
 sub_02002670: ; 0x02002670
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _020026AC ; =_022B966C
+	ldr r0, _020026AC ; =OSi_ThreadInfo
 	ldr r5, [r0, #4]
 	mov r0, r5
 	bl OS_GetThreadPriority
@@ -366,7 +366,7 @@ sub_02002670: ; 0x02002670
 	str r4, [r0, #4]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020026AC: .word _022B966C
+_020026AC: .word OSi_ThreadInfo
 _020026B0: .word _0229AFCC
 _020026B4: .word _020AEF30
 	arm_func_end sub_02002670
@@ -390,7 +390,7 @@ _020026E0: .word _0229AFCC
 	arm_func_start sub_020026E4
 sub_020026E4: ; 0x020026E4
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _02002768 ; =_022B966C
+	ldr r1, _02002768 ; =OSi_ThreadInfo
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
@@ -424,7 +424,7 @@ _02002750:
 	bl OS_SetThreadPriority
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02002768: .word _022B966C
+_02002768: .word OSi_ThreadInfo
 _0200276C: .word _0229AFCC
 _02002770: .word _0229AFC0
 _02002774: .word _0229AFE4
@@ -489,7 +489,7 @@ sub_020027F8: ; 0x020027F8
 	arm_func_start sub_02002824
 sub_02002824: ; 0x02002824
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _02002854 ; =_022B966C
+	ldr r1, _02002854 ; =OSi_ThreadInfo
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
@@ -501,7 +501,7 @@ sub_02002824: ; 0x02002824
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02002854: .word _022B966C
+_02002854: .word OSi_ThreadInfo
 	arm_func_end sub_02002824
 
 	arm_func_start sub_02002858
@@ -646,7 +646,7 @@ _020029B4: .word OS_SendMessage
 	arm_func_start sub_020029B8
 sub_020029B8: ; 0x020029B8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _02002A40 ; =_022B966C
+	ldr r1, _02002A40 ; =OSi_ThreadInfo
 	mov r4, r0
 	ldr sb, [r1, #4]
 	mov r7, #0
@@ -683,14 +683,14 @@ _02002A10:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02002A40: .word _022B966C
+_02002A40: .word OSi_ThreadInfo
 	arm_func_end sub_020029B8
 
 	arm_func_start sub_02002A44
 sub_02002A44: ; 0x02002A44
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
-	ldr r1, _02002A94 ; =_022B966C
+	ldr r1, _02002A94 ; =OSi_ThreadInfo
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
@@ -709,7 +709,7 @@ sub_02002A44: ; 0x02002A44
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02002A94: .word _022B966C
+_02002A94: .word OSi_ThreadInfo
 	arm_func_end sub_02002A44
 
 	arm_func_start sub_02002A98
@@ -798,7 +798,7 @@ sub_02002B50: ; 0x02002B50
 sub_02002B7C: ; 0x02002B7C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
-	ldr r1, _02002BCC ; =_022B966C
+	ldr r1, _02002BCC ; =OSi_ThreadInfo
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
@@ -817,14 +817,14 @@ sub_02002B7C: ; 0x02002B7C
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02002BCC: .word _022B966C
+_02002BCC: .word OSi_ThreadInfo
 	arm_func_end sub_02002B7C
 
 	arm_func_start sub_02002BD0
 sub_02002BD0: ; 0x02002BD0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
-	ldr r1, _02002C28 ; =_022B966C
+	ldr r1, _02002C28 ; =OSi_ThreadInfo
 	mov r5, r0
 	ldr r6, [r1, #4]
 	mov r0, r6
@@ -845,7 +845,7 @@ sub_02002BD0: ; 0x02002BD0
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02002C28: .word _022B966C
+_02002C28: .word OSi_ThreadInfo
 	arm_func_end sub_02002BD0
 
 	arm_func_start sub_02002C2C
@@ -861,7 +861,7 @@ _02002C3C: .word _0229B0F8
 	arm_func_start sub_02002C40
 sub_02002C40: ; 0x02002C40
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _02002CA4 ; =_022B966C
+	ldr r1, _02002CA4 ; =OSi_ThreadInfo
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
@@ -886,7 +886,7 @@ sub_02002C40: ; 0x02002C40
 	bl OS_SetThreadPriority
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02002CA4: .word _022B966C
+_02002CA4: .word OSi_ThreadInfo
 _02002CA8: .word _0229B0F8
 	arm_func_end sub_02002C40
 
@@ -899,7 +899,7 @@ sub_02002CAC: ; 0x02002CAC
 	arm_func_start sub_02002CB4
 sub_02002CB4: ; 0x02002CB4
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _02002D10 ; =_022B966C
+	ldr r1, _02002D10 ; =OSi_ThreadInfo
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
@@ -924,13 +924,13 @@ _02002CF8:
 	str r0, [r6, #0x18]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02002D10: .word _022B966C
+_02002D10: .word OSi_ThreadInfo
 	arm_func_end sub_02002CB4
 
 	arm_func_start sub_02002D14
 sub_02002D14: ; 0x02002D14
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r2, _02002D7C ; =_022B966C
+	ldr r2, _02002D7C ; =OSi_ThreadInfo
 	mov r7, r0
 	ldr r5, [r2, #4]
 	mov r6, r1
@@ -958,7 +958,7 @@ _02002D5C:
 	str r0, [r7, #0x18]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02002D7C: .word _022B966C
+_02002D7C: .word OSi_ThreadInfo
 	arm_func_end sub_02002D14
 
 	arm_func_start sub_02002D80
@@ -1008,7 +1008,7 @@ _02002E08:
 	arm_func_start sub_02002E10
 sub_02002E10: ; 0x02002E10
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _02002E94 ; =_022B966C
+	ldr r1, _02002E94 ; =OSi_ThreadInfo
 	mov r6, r0
 	ldr r5, [r1, #4]
 	mov r0, r5
@@ -1045,7 +1045,7 @@ _02002E8C:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02002E94: .word _022B966C
+_02002E94: .word OSi_ThreadInfo
 	arm_func_end sub_02002E10
 
 	arm_func_start sub_02002E98

@@ -1841,11 +1841,11 @@ _01FF9668:
 	ldr ip, _01FF97BC ; =DTCM_BSS
 	str r3, [ip]
 	str r3, [ip, #4]
-	ldr ip, _01FF97C0 ; =_022B966C
+	ldr ip, _01FF97C0 ; =OSi_ThreadInfo
 	mov r1, #1
 	strh r1, [ip]
 _01FF96A0:
-	ldr ip, _01FF97C0 ; =_022B966C
+	ldr ip, _01FF97C0 ; =OSi_ThreadInfo
 	ldrh r1, [ip]
 	cmp r1, #0
 	beq _01FF96B4
@@ -1931,7 +1931,7 @@ _01FF9738:
 	ldmia sp!, {pc}
 	.align 2, 0
 _01FF97BC: .word DTCM_BSS
-_01FF97C0: .word _022B966C
+_01FF97C0: .word OSi_ThreadInfo
 _01FF97C4: .word CP_SaveContext
 _01FF97C8: .word CPi_RestoreContext
 	arm_func_end ReturnFromInterrupt

@@ -21,7 +21,7 @@ fread: ; 0x020866B4
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _02086718
-	ldr r0, _020867B4 ; =_022B966C
+	ldr r0, _020867B4 ; =OSi_ThreadInfo
 	ldr r2, _020867B8 ; =_022BC650
 	ldr r1, [r0, #4]
 	ldr r0, _020867BC ; =_022BC674
@@ -31,7 +31,7 @@ fread: ; 0x020866B4
 	str r1, [r0, r6, lsl #2]
 	b _02086770
 _02086718:
-	ldr r0, _020867B4 ; =_022B966C
+	ldr r0, _020867B4 ; =OSi_ThreadInfo
 	ldr r1, _020867B8 ; =_022BC650
 	ldr r0, [r0, #4]
 	ldr r1, [r1, r6, lsl #2]
@@ -46,7 +46,7 @@ _02086718:
 _02086748:
 	add r0, r5, r4
 	bl OS_LockMutex
-	ldr r0, _020867B4 ; =_022B966C
+	ldr r0, _020867B4 ; =OSi_ThreadInfo
 	ldr r2, _020867B8 ; =_022BC650
 	ldr r1, [r0, #4]
 	ldr r0, _020867BC ; =_022BC674
@@ -74,7 +74,7 @@ _020867A4:
 	.align 2, 0
 _020867AC: .word _020B2ED4
 _020867B0: .word _022BC698
-_020867B4: .word _022B966C
+_020867B4: .word OSi_ThreadInfo
 _020867B8: .word _022BC650
 _020867BC: .word _022BC674
 	arm_func_end fread
@@ -516,7 +516,7 @@ _02086DA0:
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _02086DE0
-	ldr r0, _02086E78 ; =_022B966C
+	ldr r0, _02086E78 ; =OSi_ThreadInfo
 	ldr r2, _02086E7C ; =_022BC650
 	ldr r1, [r0, #4]
 	ldr r0, _02086E80 ; =_022BC674
@@ -526,7 +526,7 @@ _02086DA0:
 	str r1, [r0, r6, lsl #2]
 	b _02086E38
 _02086DE0:
-	ldr r0, _02086E78 ; =_022B966C
+	ldr r0, _02086E78 ; =OSi_ThreadInfo
 	ldr r1, _02086E7C ; =_022BC650
 	ldr r0, [r0, #4]
 	ldr r1, [r1, r6, lsl #2]
@@ -541,7 +541,7 @@ _02086DE0:
 _02086E10:
 	add r0, r5, r4
 	bl OS_LockMutex
-	ldr r0, _02086E78 ; =_022B966C
+	ldr r0, _02086E78 ; =OSi_ThreadInfo
 	ldr r2, _02086E7C ; =_022BC650
 	ldr r1, [r0, #4]
 	ldr r0, _02086E80 ; =_022BC674
@@ -568,7 +568,7 @@ _02086E68: .word _020B2ED4
 _02086E6C: .word _020B2F20
 _02086E70: .word _020B2F6C
 _02086E74: .word _022BC698
-_02086E78: .word _022B966C
+_02086E78: .word OSi_ThreadInfo
 _02086E7C: .word _022BC650
 _02086E80: .word _022BC674
 	arm_func_end ftell
@@ -735,7 +735,7 @@ _020870AC:
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020870EC
-	ldr r0, _0208718C ; =_022B966C
+	ldr r0, _0208718C ; =OSi_ThreadInfo
 	ldr r2, _02087190 ; =_022BC650
 	ldr r1, [r0, #4]
 	ldr r0, _02087194 ; =_022BC674
@@ -745,7 +745,7 @@ _020870AC:
 	str r1, [r0, r6, lsl #2]
 	b _02087144
 _020870EC:
-	ldr r0, _0208718C ; =_022B966C
+	ldr r0, _0208718C ; =OSi_ThreadInfo
 	ldr r1, _02087190 ; =_022BC650
 	ldr r0, [r0, #4]
 	ldr r1, [r1, r6, lsl #2]
@@ -760,7 +760,7 @@ _020870EC:
 _0208711C:
 	add r0, r5, r4
 	bl OS_LockMutex
-	ldr r0, _0208718C ; =_022B966C
+	ldr r0, _0208718C ; =OSi_ThreadInfo
 	ldr r2, _02087190 ; =_022BC650
 	ldr r1, [r0, #4]
 	ldr r0, _02087194 ; =_022BC674
@@ -789,7 +789,7 @@ _0208717C: .word _020B2ED4
 _02087180: .word _020B2F20
 _02087184: .word _020B2F6C
 _02087188: .word _022BC698
-_0208718C: .word _022B966C
+_0208718C: .word OSi_ThreadInfo
 _02087190: .word _022BC650
 _02087194: .word _022BC674
 	arm_func_end fseek

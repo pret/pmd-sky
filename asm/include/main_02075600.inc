@@ -23,7 +23,7 @@
 .public _022B961C
 .public _022B9644
 .public OSi_IsThreadInitialized
-.public _022B966C
+.public OSi_ThreadInfo
 .public _022B9670
 .public _022B967C
 .public _022B973C

@@ -180,7 +180,7 @@ OS_RescheduleThread: ; 0x02079340
 	cmp r1, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	ldrh r0, [r0, #0x26]
-	ldr r4, _02079404 ; =_022B966C
+	ldr r4, _02079404 ; =OSi_ThreadInfo
 	cmp r0, #0
 	bne _02079370
 	bl GetProcessorMode
@@ -229,7 +229,7 @@ _020793EC:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02079400: .word THREAD_INFO_STRUCT
-_02079404: .word _022B966C
+_02079404: .word OSi_ThreadInfo
 	arm_func_end OS_RescheduleThread
 
 	arm_func_start OS_InitThread
@@ -278,7 +278,7 @@ _0207947C:
 	str r2, [r3, #-4]
 	ldr r2, [r1, #0x184]
 	ldr ip, _02079538 ; =0x7BF9DD5B
-	ldr r3, _0207953C ; =_022B966C
+	ldr r3, _0207953C ; =OSi_ThreadInfo
 	str ip, [r2]
 	str r0, [r1, #0x194]
 	str r0, [r1, #0x190]
@@ -313,7 +313,7 @@ _0207952C: .word OS_IRQTable
 _02079530: .word 0x00000800
 _02079534: .word 0xFDDB597D
 _02079538: .word 0x7BF9DD5B
-_0207953C: .word _022B966C
+_0207953C: .word OSi_ThreadInfo
 _02079540: .word 0x027FFFA0
 _02079544: .word _022B967C
 _02079548: .word OSi_IdleThreadProc

@@ -12,7 +12,7 @@
 .public _020B2ED4
 .public _020B2FBC
 .public _020B3364
-.public _022B966C
+.public OSi_ThreadInfo
 .public _022BB5EC
 .public _022BB5FC
 .public _022BB604

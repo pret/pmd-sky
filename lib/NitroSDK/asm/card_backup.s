@@ -192,7 +192,7 @@ _02083A60:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _02083AC0:
-	ldr r0, _02083AFC ; =_022B966C
+	ldr r0, _02083AFC ; =OSi_ThreadInfo
 	ldr r1, _02083AF0 ; =_022BB7E0
 	ldr r2, [r0, #4]
 	mov r0, r4
@@ -208,7 +208,7 @@ _02083AC0:
 _02083AF0: .word _022BB7E0
 _02083AF4: .word _02000BC4
 _02083AF8: .word Cardi_RequestStreamCommandCore
-_02083AFC: .word _022B966C
+_02083AFC: .word OSi_ThreadInfo
 	arm_func_end Cardi_RequestStreamCommand
 
 	arm_func_start Card_GetCurrentBackupType
@@ -275,7 +275,7 @@ _02083B88:
 	bl SetIrqFlag
 	mov r0, r6
 	bl Cardi_IdentifyBackupCore
-	ldr r0, _02083C70 ; =_022B966C
+	ldr r0, _02083C70 ; =OSi_ThreadInfo
 	ldr r1, _02083C6C ; =_022BB7E0
 	ldr r2, [r0, #4]
 	mov r0, r4
@@ -326,7 +326,7 @@ _02083C50:
 	.align 2, 0
 _02083C68: .word _02000BC4
 _02083C6C: .word _022BB7E0
-_02083C70: .word _022B966C
+_02083C70: .word OSi_ThreadInfo
 	arm_func_end Card_IdentifyBackup
 
 	arm_func_start Card_WaitBackupAsync

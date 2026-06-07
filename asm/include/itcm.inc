@@ -8,7 +8,7 @@
 .public _020A2CF8
 .public _022A88F0
 .public _022A88FC
-.public _022B966C
+.public OSi_ThreadInfo
 .public OSi_IsInitReset
 .public CP_SaveContext
 .public CPi_RestoreContext

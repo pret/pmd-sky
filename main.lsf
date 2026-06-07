@@ -242,7 +242,7 @@ Static main
     Object lib/NitroSDK/asm/os_context.o
     Object lib/NitroSDK/asm/os_emulator.o
     Object lib/NitroSDK/asm/os_message.o
-    Object lib/NitroSDK/asm/os_mutex.o
+    Object lib/NitroSDK/src/os_mutex.o
     Object lib/NitroSDK/src/os_cache.o
     Object lib/NitroSDK/src/os_init.o
     Object lib/NitroSDK/asm/os_arena.o
@@ -257,7 +257,7 @@ Static main
     Object lib/NitroSDK/asm/os_valarm.o
 	Object lib/NitroSDK/src/os_system.o
 	object lib/NitroSDK/asm/os_reset.o
-	object lib/NitroSDK/asm/os_ownerinfo.o
+	object lib/NitroSDK/src/os_ownerinfo.o
 	Object lib/NitroSDK/src/os_vramExclusive.o
 	Object lib/NitroSDK/src/os_entropy.o
 	Object lib/NitroSDK/src/os_terminate_proc.o
@@ -288,7 +288,7 @@ Static main
 	Object lib/NitroSDK/asm/fs_overlay.o
 	Object lib/NitroSDK/asm/md5.o
 	Object lib/NitroSDK/asm/dgt.o
-	Object lib/NitroSDK/asm/cp_context.o
+	Object lib/NitroSDK/src/cp_context.o
 	Object lib/NitroSDK/asm/spi_tp.o
 	Object lib/NitroSDK/asm/spi_pm.o
 	Object lib/NitroSDK/asm/rtc_external.o

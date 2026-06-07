@@ -237,8 +237,8 @@ THREAD_INFO_STRUCT:
 	.global OSi_IsThreadInitialized
 OSi_IsThreadInitialized:
 	.space 0x18
-	.global _022B966C
-_022B966C:
+	.global OSi_ThreadInfo
+OSi_ThreadInfo:
 	.space 0x4
 	.global _022B9670
 _022B9670:

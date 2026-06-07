@@ -478,7 +478,7 @@ _020842C0:
 	bl Cardi_SetTask
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _020842D8:
-	ldr r1, _02084300 ; =_022B966C
+	ldr r1, _02084300 ; =OSi_ThreadInfo
 	mov r0, r5
 	ldr r1, [r1, #4]
 	str r1, [r5, #0x104]
@@ -489,7 +489,7 @@ _020842F0: .word _022BBE20
 _020842F4: .word _022BB7E0
 _020842F8: .word _022BBE00
 _020842FC: .word Cardi_ReadRomSyncCore
-_02084300: .word _022B966C
+_02084300: .word OSi_ThreadInfo
 	arm_func_end Cardi_ReadRom
 
 	arm_func_start CARD_Init

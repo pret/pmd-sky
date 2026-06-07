@@ -25,7 +25,6 @@ extern void sub_0207A95C(u32, u32);
 extern u32 sub_0207A98C(u32, u32, u32, u32);
 extern u32 sub_0207AA34(u32, u32, u32);
 extern void OS_InitTick();
-extern void OS_GetMacAddress(u8(*)[6]);
 extern void FS_Init(u32);
 extern void sub_02008DAC();
 extern void Card_SetThreadPriority(u32);
@@ -73,7 +72,7 @@ void NitroMain(void)
   reg_OS_IME = 1;
   ClearIrqFlag(1,old_ime);
   sub_02008DAC();
-  OS_GetMacAddress(&macAddr);
+  OS_GetMacAddress(macAddr);
   sub_02002228(macAddr[0] * macAddr[1] +
                macAddr[2] * macAddr[3] +
                macAddr[4] * macAddr[5]);

@@ -14166,7 +14166,7 @@ reset_network_vars: ; 0x022C8134
 	ldr r0, _022C822C ; =ov00_023250F8
 	mov r2, #0x60
 	bl MI_CpuFill8
-	ldr r0, _022C8230 ; =_022B966C
+	ldr r0, _022C8230 ; =OSi_ThreadInfo
 	ldr r6, [r0, #8]
 	cmp r6, #0
 	beq _022C81E4
@@ -14215,7 +14215,7 @@ _022C8210:
 	.align 2, 0
 _022C8228: .word ov00_02325078
 _022C822C: .word ov00_023250F8
-_022C8230: .word _022B966C
+_022C8230: .word OSi_ThreadInfo
 _022C8234: .word ov00_023253A0
 	arm_func_end reset_network_vars
 
@@ -14902,7 +14902,7 @@ receive_packet: ; 0x022C8ACC
 	cmp r1, r0
 	bne _022C8B20
 	mov r5, #0
-	ldr r8, _022C8B88 ; =_022B966C
+	ldr r8, _022C8B88 ; =OSi_ThreadInfo
 	mov r4, r5
 _022C8AFC:
 	ldr r1, [r8, #4]
@@ -14943,7 +14943,7 @@ _022C8B38:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022C8B84: .word ov00_02325078
-_022C8B88: .word _022B966C
+_022C8B88: .word OSi_ThreadInfo
 	arm_func_end receive_packet
 
 	arm_func_start throw_packet
@@ -15509,7 +15509,7 @@ send_ping: ; 0x022C9338
 	mov r6, r1
 	mov r1, #8
 	ldr r3, _022C93E0 ; =ov00_02325078
-	ldr r2, _022C93E4 ; =_022B966C
+	ldr r2, _022C93E4 ; =OSi_ThreadInfo
 	strh r1, [r4, #0x22]
 	ldr r2, [r2, #4]
 	ldrh lr, [r3, #4]
@@ -15546,7 +15546,7 @@ send_ping: ; 0x022C9338
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022C93E0: .word ov00_02325078
-_022C93E4: .word _022B966C
+_022C93E4: .word OSi_ThreadInfo
 	arm_func_end send_ping
 
 	arm_func_start send_udp
@@ -15645,7 +15645,7 @@ send_tcp: ; 0x022C9524
 	mov r6, r3
 	addeq sp, sp, #8
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	ldr r0, _022C9788 ; =_022B966C
+	ldr r0, _022C9788 ; =OSi_ThreadInfo
 	ldr r1, _022C978C ; =ov00_023252E0
 	ldr r0, [r0, #4]
 	cmp r0, r1
@@ -15790,7 +15790,7 @@ _022C9708:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_022C9788: .word _022B966C
+_022C9788: .word OSi_ThreadInfo
 _022C978C: .word ov00_023252E0
 _022C9790: .word ov00_0232558A
 _022C9794: .word ov00_02325078
@@ -16000,7 +16000,7 @@ process_icmp_reply: ; 0x022C9A68
 	mov r7, r1
 	mov r6, r2
 	bl EnableIrqFlag
-	ldr r1, _022C9B64 ; =_022B966C
+	ldr r1, _022C9B64 ; =OSi_ThreadInfo
 	mov r5, r0
 	ldr r1, [r1, #8]
 	cmp r1, #0
@@ -16062,7 +16062,7 @@ _022C9B58:
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022C9B64: .word _022B966C
+_022C9B64: .word OSi_ThreadInfo
 	arm_func_end process_icmp_reply
 
 	arm_func_start valid_ip
@@ -16139,7 +16139,7 @@ _022C9C54: .word 0x0000FFFF
 	arm_func_start check_listener
 check_listener: ; 0x022C9C58
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r2, _022C9D28 ; =_022B966C
+	ldr r2, _022C9D28 ; =OSi_ThreadInfo
 	ldr ip, [r2, #8]
 	cmp ip, #0
 	beq _022C9D20
@@ -16196,7 +16196,7 @@ _022C9D20:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022C9D28: .word _022B966C
+_022C9D28: .word OSi_ThreadInfo
 	arm_func_end check_listener
 
 	arm_func_start check_socket
@@ -16254,7 +16254,7 @@ _022C9DD8:
 	arm_func_start find_socket
 find_socket: ; 0x022C9DE0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r2, _022C9E40 ; =_022B966C
+	ldr r2, _022C9E40 ; =OSi_ThreadInfo
 	mov r7, r0
 	ldr r5, [r2, #8]
 	mov r6, r1
@@ -16281,7 +16281,7 @@ _022C9E38:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022C9E40: .word _022B966C
+_022C9E40: .word OSi_ThreadInfo
 	arm_func_end find_socket
 
 	arm_func_start parse_mss
@@ -16346,7 +16346,7 @@ tcp_send_handshake: ; 0x022C9EE4
 	bl no_need_inq
 	cmp r0, #0
 	bne _022C9F1C
-	ldr r0, _022C9F50 ; =_022B966C
+	ldr r0, _022C9F50 ; =OSi_ThreadInfo
 	ldr r1, _022C9F54 ; =ov00_023252E0
 	ldr r0, [r0, #4]
 	cmp r0, r1
@@ -16367,7 +16367,7 @@ _022C9F3C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_022C9F50: .word _022B966C
+_022C9F50: .word OSi_ThreadInfo
 _022C9F54: .word ov00_023252E0
 	arm_func_end tcp_send_handshake
 
@@ -17104,7 +17104,7 @@ dispatch_udp: ; 0x022CA940
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _022CA978:
 	bl EnableIrqFlag
-	ldr r1, _022CAB48 ; =_022B966C
+	ldr r1, _022CAB48 ; =OSi_ThreadInfo
 	mov r5, r0
 	ldr r1, [r1, #8]
 	cmp r1, #0
@@ -17227,7 +17227,7 @@ _022CAB3C:
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022CAB48: .word _022B966C
+_022CAB48: .word OSi_ThreadInfo
 	arm_func_end dispatch_udp
 
 	arm_func_start check_frag
@@ -17588,7 +17588,7 @@ _022CB048: .word 0x00000806
 	arm_func_start Cps_SocGetEport
 Cps_SocGetEport: ; 0x022CB04C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r0, _022CB0E8 ; =_022B966C
+	ldr r0, _022CB0E8 ; =OSi_ThreadInfo
 	ldr r2, _022CB0EC ; =ov00_02325078
 	ldr r0, [r0, #8]
 	ldr r1, _022CB0F0 ; =0x00001388
@@ -17633,7 +17633,7 @@ _022CB0D4:
 	ldrh r0, [r0, #8]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022CB0E8: .word _022B966C
+_022CB0E8: .word OSi_ThreadInfo
 _022CB0EC: .word ov00_02325078
 _022CB0F0: .word 0x00001388
 	arm_func_end Cps_SocGetEport
@@ -17662,28 +17662,28 @@ _022CB134: .word ov00_02325078
 
 	arm_func_start Cps_SocRegister
 Cps_SocRegister: ; 0x022CB138
-	ldr r1, _022CB148 ; =_022B966C
+	ldr r1, _022CB148 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	str r0, [r1, #0xa4]
 	bx lr
 	.align 2, 0
-_022CB148: .word _022B966C
+_022CB148: .word OSi_ThreadInfo
 	arm_func_end Cps_SocRegister
 
 	arm_func_start Cps_SocUnRegister
 Cps_SocUnRegister: ; 0x022CB14C
-	ldr r0, _022CB160 ; =_022B966C
+	ldr r0, _022CB160 ; =OSi_ThreadInfo
 	mov r1, #0
 	ldr r0, [r0, #4]
 	str r1, [r0, #0xa4]
 	bx lr
 	.align 2, 0
-_022CB160: .word _022B966C
+_022CB160: .word OSi_ThreadInfo
 	arm_func_end Cps_SocUnRegister
 
 	arm_func_start Cps_SocDatagramMode
 Cps_SocDatagramMode: ; 0x022CB164
-	ldr r0, _022CB18C ; =_022B966C
+	ldr r0, _022CB18C ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xa4]
 	cmp r1, #0
@@ -17694,13 +17694,13 @@ Cps_SocDatagramMode: ; 0x022CB164
 	str r0, [r1, #0x44]
 	bx lr
 	.align 2, 0
-_022CB18C: .word _022B966C
+_022CB18C: .word OSi_ThreadInfo
 	arm_func_end Cps_SocDatagramMode
 
 	arm_func_start Cps_SocBind
 Cps_SocBind: ; 0x022CB190
 	stmdb sp!, {r4, lr}
-	ldr r3, _022CB1E4 ; =_022B966C
+	ldr r3, _022CB1E4 ; =OSi_ThreadInfo
 	ldr r3, [r3, #4]
 	ldr r4, [r3, #0xa4]
 	cmp r4, #0
@@ -17721,14 +17721,14 @@ Cps_SocBind: ; 0x022CB190
 	strh r0, [r4, #0xa]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022CB1E4: .word _022B966C
+_022CB1E4: .word OSi_ThreadInfo
 _022CB1E8: .word 0x7F000001
 _022CB1EC: .word ov00_02325078
 	arm_func_end Cps_SocBind
 
 	arm_func_start Cps_SocUse
 Cps_SocUse: ; 0x022CB1F0
-	ldr r0, _022CB220 ; =_022B966C
+	ldr r0, _022CB220 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xa4]
 	cmp r1, #0
@@ -17741,12 +17741,12 @@ Cps_SocUse: ; 0x022CB1F0
 	str r0, [r1, #0x38]
 	bx lr
 	.align 2, 0
-_022CB220: .word _022B966C
+_022CB220: .word OSi_ThreadInfo
 	arm_func_end Cps_SocUse
 
 	arm_func_start Cps_SocRelease
 Cps_SocRelease: ; 0x022CB224
-	ldr r0, _022CB240 ; =_022B966C
+	ldr r0, _022CB240 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xa4]
 	cmp r1, #0
@@ -17754,30 +17754,30 @@ Cps_SocRelease: ; 0x022CB224
 	strne r0, [r1]
 	bx lr
 	.align 2, 0
-_022CB240: .word _022B966C
+_022CB240: .word OSi_ThreadInfo
 	arm_func_end Cps_SocRelease
 
 	arm_func_start Cps_SocDup
 Cps_SocDup: ; 0x022CB244
-	ldr r1, _022CB258 ; =_022B966C
+	ldr r1, _022CB258 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
 	str r1, [r0, #0xa4]
 	bx lr
 	.align 2, 0
-_022CB258: .word _022B966C
+_022CB258: .word OSi_ThreadInfo
 	arm_func_end Cps_SocDup
 
 	arm_func_start Cps_SetUdpCallback
 Cps_SetUdpCallback: ; 0x022CB25C
-	ldr r1, _022CB274 ; =_022B966C
+	ldr r1, _022CB274 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
 	cmp r1, #0
 	strne r0, [r1, #0x38]
 	bx lr
 	.align 2, 0
-_022CB274: .word _022B966C
+_022CB274: .word OSi_ThreadInfo
 	arm_func_end Cps_SetUdpCallback
 
 	arm_func_start Cpsi_TcpConnectRaw
@@ -17836,7 +17836,7 @@ _022CB328: .word ov00_02325078
 	arm_func_start Cps_TcpConnect
 Cps_TcpConnect: ; 0x022CB32C
 	stmdb sp!, {r3, lr}
-	ldr r0, _022CB368 ; =_022B966C
+	ldr r0, _022CB368 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xa4]
 	cmp r0, #0
@@ -17853,7 +17853,7 @@ _022CB360:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022CB368: .word _022B966C
+_022CB368: .word OSi_ThreadInfo
 	arm_func_end Cps_TcpConnect
 
 	arm_func_start Cpsi_TcpShutdownRaw
@@ -17884,7 +17884,7 @@ _022CB3A4:
 	arm_func_start Cps_TcpShutdown
 Cps_TcpShutdown: ; 0x022CB3BC
 	stmdb sp!, {r4, lr}
-	ldr r0, _022CB3F4 ; =_022B966C
+	ldr r0, _022CB3F4 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r4, [r0, #0xa4]
 	cmp r4, #0
@@ -17899,13 +17899,13 @@ _022CB3E8:
 	bl Cpsi_TcpShutdownRaw
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022CB3F4: .word _022B966C
+_022CB3F4: .word OSi_ThreadInfo
 	arm_func_end Cps_TcpShutdown
 
 	arm_func_start Cps_TcpClose
 Cps_TcpClose: ; 0x022CB3F8
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r0, _022CB478 ; =_022B966C
+	ldr r0, _022CB478 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r4, [r0, #0xa4]
 	cmp r4, #0
@@ -17941,7 +17941,7 @@ _022CB46C:
 	strb r0, [r4, #8]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022CB478: .word _022B966C
+_022CB478: .word OSi_ThreadInfo
 _022CB47C: .word ov00_02325078
 	arm_func_end Cps_TcpClose
 
@@ -18014,7 +18014,7 @@ _022CB538:
 	arm_func_start Cps_SocRead
 Cps_SocRead: ; 0x022CB550
 	stmdb sp!, {r3, lr}
-	ldr r1, _022CB5B0 ; =_022B966C
+	ldr r1, _022CB5B0 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
 	cmp r1, #0
@@ -18041,7 +18041,7 @@ _022CB5A0:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022CB5B0: .word _022B966C
+_022CB5B0: .word OSi_ThreadInfo
 	arm_func_end Cps_SocRead
 
 	arm_func_start Cpsi_SocConsumeRaw
@@ -18090,7 +18090,7 @@ _022CB634:
 	arm_func_start Cps_SocConsume
 Cps_SocConsume: ; 0x022CB644
 	stmdb sp!, {r3, lr}
-	ldr r1, _022CB678 ; =_022B966C
+	ldr r1, _022CB678 ; =OSi_ThreadInfo
 	ldr r1, [r1, #4]
 	ldr r1, [r1, #0xa4]
 	cmp r1, #0
@@ -18104,7 +18104,7 @@ _022CB670:
 	bl Cpsi_SocConsumeRaw
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022CB678: .word _022B966C
+_022CB678: .word OSi_ThreadInfo
 	arm_func_end Cps_SocConsume
 
 	arm_func_start tcp_write_do
@@ -18332,7 +18332,7 @@ _022CB980: .word ov00_02325078
 	arm_func_start Cpsi_SocWrite2
 Cpsi_SocWrite2: ; 0x022CB984
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr ip, _022CBA50 ; =_022B966C
+	ldr ip, _022CBA50 ; =OSi_ThreadInfo
 	mov r7, r1
 	ldr ip, [ip, #4]
 	mov r6, r2
@@ -18392,14 +18392,14 @@ _022CBA48:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022CBA50: .word _022B966C
+_022CBA50: .word OSi_ThreadInfo
 _022CBA54: .word ov00_02325078
 	arm_func_end Cpsi_SocWrite2
 
 	arm_func_start Cps_SocWrite
 Cps_SocWrite: ; 0x022CBA58
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r3, _022CBAEC ; =_022B966C
+	ldr r3, _022CBAEC ; =OSi_ThreadInfo
 	mov r2, r0
 	ldr r4, [r3, #4]
 	mov r3, r1
@@ -18439,13 +18439,13 @@ _022CBAE4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022CBAEC: .word _022B966C
+_022CBAEC: .word OSi_ThreadInfo
 	arm_func_end Cps_SocWrite
 
 	arm_func_start Cps_SocGetLength
 Cps_SocGetLength: ; 0x022CBAF0
 	stmdb sp!, {r3, lr}
-	ldr r0, _022CBB5C ; =_022B966C
+	ldr r0, _022CBB5C ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xa4]
 	cmp r0, #0
@@ -18476,13 +18476,13 @@ _022CBB54:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022CBB5C: .word _022B966C
+_022CBB5C: .word OSi_ThreadInfo
 	arm_func_end Cps_SocGetLength
 
 	arm_func_start Cps_SocFlush
 Cps_SocFlush: ; 0x022CBB60
 	stmdb sp!, {r4, lr}
-	ldr r0, _022CBB9C ; =_022B966C
+	ldr r0, _022CBB9C ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r4, [r0, #0xa4]
 	cmp r4, #0
@@ -18497,7 +18497,7 @@ Cps_SocFlush: ; 0x022CBB60
 	str r0, [r4, #0x60]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022CBB9C: .word _022B966C
+_022CBB9C: .word OSi_ThreadInfo
 	arm_func_end Cps_SocFlush
 
 	arm_func_start set_fixed_ip
@@ -18690,7 +18690,7 @@ _022CBE0C:
 	bl send_arprequest
 	mov sl, #0x69
 _022CBE3C:
-	ldr r0, _022CBFA8 ; =_022B966C
+	ldr r0, _022CBFA8 ; =OSi_ThreadInfo
 	ldr sb, [r0, #8]
 	cmp sb, #0
 	beq _022CBF04
@@ -18791,7 +18791,7 @@ _022CBF98: .word ov00_02325724
 _022CBF9C: .word ov00_023255A4
 _022CBFA0: .word ov00_023250F8
 _022CBFA4: .word 0x000003BD
-_022CBFA8: .word _022B966C
+_022CBFA8: .word OSi_ThreadInfo
 _022CBFAC: .word ov00_023253A0
 	arm_func_end scavenger
 
@@ -21723,7 +21723,7 @@ _022CE66C:
 	arm_func_start Socli_GetOptimumSendBufLen
 Socli_GetOptimumSendBufLen: ; 0x022CE688
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _022CE724 ; =_022B966C
+	ldr r1, _022CE724 ; =OSi_ThreadInfo
 	mov r4, r0
 	ldr r0, [r1, #4]
 	ldr r5, [r0, #0xa4]
@@ -21766,7 +21766,7 @@ _022CE71C:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022CE724: .word _022B966C
+_022CE724: .word OSi_ThreadInfo
 _022CE728: .word ov00_023268D0
 	arm_func_end Socli_GetOptimumSendBufLen
 
@@ -23582,7 +23582,7 @@ enter_computebound: ; 0x022CFDCC
 	cmp r0, #0x20
 	mvnhs r0, #0
 	ldmhsia sp!, {r3, r4, r5, pc}
-	ldr r0, _022CFE14 ; =_022B966C
+	ldr r0, _022CFE14 ; =OSi_ThreadInfo
 	ldr r5, [r0, #4]
 	mov r0, r5
 	bl OS_GetThreadPriority
@@ -23595,7 +23595,7 @@ enter_computebound: ; 0x022CFDCC
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022CFE10: .word ov00_023188CC
-_022CFE14: .word _022B966C
+_022CFE14: .word OSi_ThreadInfo
 	arm_func_end enter_computebound
 
 	arm_func_start exit_computebound
@@ -23604,17 +23604,17 @@ exit_computebound: ; 0x022CFE18
 	mov r1, r0
 	cmp r1, #0x20
 	ldmhsia sp!, {r3, pc}
-	ldr r0, _022CFE38 ; =_022B966C
+	ldr r0, _022CFE38 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	bl OS_SetThreadPriority
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022CFE38: .word _022B966C
+_022CFE38: .word OSi_ThreadInfo
 	arm_func_end exit_computebound
 
 	arm_func_start Cps_SetRootCa
 Cps_SetRootCa: ; 0x022CFE3C
-	ldr r2, _022CFE60 ; =_022B966C
+	ldr r2, _022CFE60 ; =OSi_ThreadInfo
 	ldr r2, [r2, #4]
 	ldr r2, [r2, #0xa4]
 	cmp r2, #0
@@ -23624,7 +23624,7 @@ Cps_SetRootCa: ; 0x022CFE3C
 	strne r1, [r2, #0x818]
 	bx lr
 	.align 2, 0
-_022CFE60: .word _022B966C
+_022CFE60: .word OSi_ThreadInfo
 	arm_func_end Cps_SetRootCa
 
 	arm_func_start Get_RootCA
@@ -26884,7 +26884,7 @@ Cps_SetSsl: ; 0x022D2B44
 	mov r4, r0
 	ldr r0, _022D2B6C ; =_02000C1C
 	bl OSi_ReferSymbol
-	ldr r0, _022D2B70 ; =_022B966C
+	ldr r0, _022D2B70 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xa4]
 	cmp r0, #0
@@ -26892,7 +26892,7 @@ Cps_SetSsl: ; 0x022D2B44
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022D2B6C: .word _02000C1C
-_022D2B70: .word _022B966C
+_022D2B70: .word OSi_ThreadInfo
 	arm_func_end Cps_SetSsl
 
 	arm_func_start Cpsi_SslPeriodical
@@ -26918,7 +26918,7 @@ _022D2BAC:
 	add r6, r6, #0x5c
 	blt _022D2B90
 	bl SetIrqFlag
-	ldr r0, _022D2C50 ; =_022B966C
+	ldr r0, _022D2C50 ; =OSi_ThreadInfo
 	ldr r4, [r0, #8]
 	cmp r4, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -26957,7 +26957,7 @@ _022D2C38:
 	.align 2, 0
 _022D2C48: .word ov00_02326AC8
 _022D2C4C: .word 0x000003BD
-_022D2C50: .word _022B966C
+_022D2C50: .word OSi_ThreadInfo
 	arm_func_end Cpsi_SslPeriodical
 
 	arm_func_start Cpsi_SslCleanup
@@ -38353,7 +38353,7 @@ _022DC0DC:
 	cmp r0, #0
 	movne r0, #4
 	ldmneia sp!, {r4, pc}
-	ldr r0, _022DC178 ; =_022B966C
+	ldr r0, _022DC178 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	bl OS_GetThreadPriority
 	ldr r1, _022DC16C ; =ov00_02326CB4
@@ -38370,7 +38370,7 @@ _022DC168: .word ov00_02318C2C
 _022DC16C: .word ov00_02326CB4
 _022DC170: .word ov00_02318BC8
 _022DC174: .word ov00_02326CC0
-_022DC178: .word _022B966C
+_022DC178: .word OSi_ThreadInfo
 	arm_func_end Dwci_Auth_Start
 
 	arm_func_start Dwci_Auth_Thread
@@ -41167,7 +41167,7 @@ _022DE864:
 	bl Dwci_Netcheck_SetError
 	b _022DF5D4
 _022DE88C:
-	ldr r0, _022DF638 ; =_022B966C
+	ldr r0, _022DF638 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	bl OS_GetThreadPriority
 	sub r1, r0, #1
@@ -41356,7 +41356,7 @@ _022DEAF0:
 	bl Dwci_Netcheck_SetError
 	b _022DF5D4
 _022DEB48:
-	ldr r0, _022DF638 ; =_022B966C
+	ldr r0, _022DF638 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	bl OS_GetThreadPriority
 	ldr r2, _022DF628 ; =ov00_02326CD8
@@ -41642,7 +41642,7 @@ _022DEF14:
 	bl Dwci_Netcheck_SetError
 	b _022DF5D4
 _022DEF64:
-	ldr r0, _022DF638 ; =_022B966C
+	ldr r0, _022DF638 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	bl OS_GetThreadPriority
 	sub r1, r0, #1
@@ -41997,7 +41997,7 @@ _022DF45C:
 	bl Dwci_Netcheck_SetError
 	b _022DF5D4
 _022DF484:
-	ldr r0, _022DF638 ; =_022B966C
+	ldr r0, _022DF638 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	bl OS_GetThreadPriority
 	sub r1, r0, #1
@@ -42117,7 +42117,7 @@ _022DF628: .word ov00_02326CD8
 _022DF62C: .word 0x00009C40
 _022DF630: .word ov00_02319084
 _022DF634: .word ov00_02326CF0
-_022DF638: .word _022B966C
+_022DF638: .word OSi_ThreadInfo
 _022DF63C: .word ov00_02319198
 _022DF640: .word _022BCA70
 _022DF644: .word 0x0000012E
@@ -42513,7 +42513,7 @@ _022DFB98:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _022DFBD8:
-	ldr r0, _022DFC58 ; =_022B966C
+	ldr r0, _022DFC58 ; =OSi_ThreadInfo
 	ldr r0, [r0, #4]
 	bl OS_GetThreadPriority
 	ldr r1, _022DFC38 ; =ov00_02326D68
@@ -42546,7 +42546,7 @@ _022DFC48: .word 0xFFFFA1DC
 _022DFC4C: .word ov00_023192F8
 _022DFC50: .word ov00_02319300
 _022DFC54: .word ov00_02319308
-_022DFC58: .word _022B966C
+_022DFC58: .word OSi_ThreadInfo
 	arm_func_end Dwc_Svl_GetTokenAsync
 
 	arm_func_start Dwc_Svl_Process

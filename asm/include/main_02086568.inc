@@ -16,7 +16,7 @@
 .public _020B3218
 .public _020B321C
 .public _020B3220
-.public _022B966C
+.public OSi_ThreadInfo
 .public _022BC650
 .public _022BC674
 .public _022BC698

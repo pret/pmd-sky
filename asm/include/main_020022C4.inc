@@ -12,7 +12,7 @@
 .public _0229B0F8
 .public _0229B110
 .public _0229B114
-.public _022B966C
+.public OSi_ThreadInfo
 .public Card_LockBackup
 .public Card_LockRom
 .public Card_SetPulledOutCallback

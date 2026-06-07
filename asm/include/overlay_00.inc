@@ -6,7 +6,7 @@
 .public _020AECB0
 .public _020AED30
 .public _020AEDB0
-.public _022B966C
+.public OSi_ThreadInfo
 .public _022BCA70
 .public _d2f
 .public _dadd
