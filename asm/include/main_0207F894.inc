@@ -48,11 +48,17 @@
 .public _f2d
 .public _ll_udiv
 .public Card_CheckEnabled
+.public Card_LockRom
+.public Card_UnlockRom
 .public Card_IsPulledOut
+.public Card_TryWaitBackupAsync
+.public Card_WaitBackupAsync
 .public Cardi_CheckPulledOutCore
+.public Cardi_IdentifyBackupCore
 .public Cardi_ReadRom
 .public Cardi_Request
 .public Cardi_SetTask
+.public Cardi_TryWaitAsync
 .public Cardi_WaitAsync
 .public CARDi_InitCommon
 .public CARDi_TaskThread
@@ -74,6 +80,7 @@
 .public Dgt_Hash2Init
 .public Dgt_Hash2Update
 .public Dgt_Hash2GetHash
+.public Dgt_Hash2CalcHmac
 .public DC_FlushAll
 .public DC_FlushRange
 .public DC_InvalidateRange
@@ -131,6 +138,11 @@
 .public PXI_SendWordByFifo
 .public PXI_SetFifoRecvCallback
 .public PXIi_HandlerRecvFifoNotEmpty
+.public Rtci_ReadRawDateAsync
+.public Rtci_ReadRawTimeAsync
+.public Rtci_ReadRawDateTimeAsync
+.public Rtci_WriteRawStatus2Async
+.public Rtc_GetDayOfWeek
 .public SetIrqFlag
 .public OS_CreateThread
 .public SVC_CpuSet
