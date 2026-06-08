@@ -29,6 +29,7 @@
 //#include <nitro/os/spinLock.h>
 #include <nitro/os/printf.h>
 #include <nitro/os/init.h>
+#include <nitro/os/message.h>
 //#include <nitro/os/exception.h>
 //#include <nitro/os/valarm.h>
 //#include <nitro/os/emulator.h>

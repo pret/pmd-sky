@@ -241,7 +241,7 @@ Static main
     Object lib/NitroSDK/asm/os_thread.o
     Object lib/NitroSDK/asm/os_context.o
     Object lib/NitroSDK/asm/os_emulator.o
-    Object lib/NitroSDK/asm/os_message.o
+    Object lib/NitroSDK/src/os_message.o
     Object lib/NitroSDK/src/os_mutex.o
     Object lib/NitroSDK/src/os_cache.o
     Object lib/NitroSDK/src/os_init.o

@@ -3,9 +3,9 @@
 void OSi_EnqueueTail(OSThread *thread, OSMutex *mtx);
 void OSi_DequeueItem(OSThread *thread, OSMutex *mtx);
 
-extern void OS_SleepThread(void *);
-extern void OS_WakeupThread(void *);
-extern OSMutex *OSi_RemoveMutexLinkFromQueue(void *);
+// extern void OS_SleepThread(void *);
+// extern void OS_WakeupThread(void *);
+// extern OSMutex *OSi_RemoveMutexLinkFromQueue(void *);
 
 void OS_InitMutex(OSMutex *mtx) {
     OS_InitThreadQueue(&mtx->queue);
