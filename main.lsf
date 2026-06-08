@@ -307,6 +307,7 @@ Static main
 	Object lib/NitroSDK/asm/math_dgt.o
 	Object lib/NitroSDK/asm/math_crc.o
 	Object lib/NitroSDK/asm/std_string.o
+	Object lib/NitroSDK/src/os_printf_1.o
 	Object lib/NitroSDK/asm/os_printf.o
 	Object lib/MSL_C/asm/msl.o
 	Object lib/MSL_C/src/arith.o

@@ -3,77 +3,9 @@
 
 	.text
 
-    arm_func_start string_put_char
-string_put_char: ; 0x02085AF8
-	ldr r2, [r0]
-	cmp r2, #0
-	beq _02085B18
-	ldr r2, [r0, #4]
-	strb r1, [r2]
-	ldr r1, [r0]
-	sub r1, r1, #1
-	str r1, [r0]
-_02085B18:
-	ldr r1, [r0, #4]
-	add r1, r1, #1
-	str r1, [r0, #4]
-	bx lr
-	arm_func_end string_put_char
-
-	arm_func_start string_fill_char
-string_fill_char: ; 0x02085B28
-	stmdb sp!, {r3, lr}
-	cmp r2, #0
-	ldmleia sp!, {r3, pc}
-	ldr lr, [r0]
-	mov ip, #0
-	cmp lr, r2
-	movhi lr, r2
-	cmp lr, #0
-	bls _02085B60
-_02085B4C:
-	ldr r3, [r0, #4]
-	strb r1, [r3, ip]
-	add ip, ip, #1
-	cmp ip, lr
-	blo _02085B4C
-_02085B60:
-	ldr r1, [r0]
-	sub r1, r1, lr
-	str r1, [r0]
-	ldr r1, [r0, #4]
-	add r1, r1, r2
-	str r1, [r0, #4]
-	ldmia sp!, {r3, pc}
-	arm_func_end string_fill_char
-
-	arm_func_start string_put_string
-string_put_string: ; 0x02085B7C
-	stmdb sp!, {r4, lr}
-	cmp r2, #0
-	ldmleia sp!, {r4, pc}
-	ldr r4, [r0]
-	mov lr, #0
-	cmp r4, r2
-	movhi r4, r2
-	cmp r4, #0
-	bls _02085BB8
-_02085BA0:
-	ldrsb ip, [r1, lr]
-	ldr r3, [r0, #4]
-	strb ip, [r3, lr]
-	add lr, lr, #1
-	cmp lr, r4
-	blo _02085BA0
-_02085BB8:
-	ldr r1, [r0]
-	sub r1, r1, r4
-	str r1, [r0]
-	ldr r1, [r0, #4]
-	add r1, r1, r2
-	str r1, [r0, #4]
-	ldmia sp!, {r4, pc}
-	arm_func_end string_put_string
+    .public string_put_char
+    .public string_fill_char
+    .public string_put_string
 
 	arm_func_start OS_VsNPrintfEx
 OS_VsNPrintfEx: ; 0x02085BD4
