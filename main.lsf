@@ -272,7 +272,7 @@ Static main
     Object lib/NitroSDK/asm/snd_command.o
     Object lib/NitroSDK/asm/snd_alarm.o
     Object lib/NitroSDK/asm/snd_work.o
-    Object lib/NitroSDK/asm/snd_util.o
+    Object lib/NitroSDK/src/snd_util.o
     Object lib/NitroSDK/asm/snd_bank.o
     Object lib/NitroSDK/src/pxi_init.o
     Object lib/NitroSDK/asm/pxi_fifo.o
