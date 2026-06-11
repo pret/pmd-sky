@@ -1,7 +1,7 @@
 #include "dungeon_range_2.h"
 #include "dungeon.h"
 #include "dungeon_map_access.h"
-#include "main_0208655C.h"
+#include "MSL_C/stdlib.h"
 
 bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target)
 {

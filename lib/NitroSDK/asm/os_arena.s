@@ -6,7 +6,7 @@
     arm_func_start OS_InitArena
 OS_InitArena: ; 0x0207A3B4
 	stmdb sp!, {r3, lr}
-	ldr r1, _0207A4B4 ; =_022B98C4
+	ldr r1, _0207A4B4 ; =OSi_Initialized
 	ldr r0, [r1]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
@@ -70,7 +70,7 @@ OS_InitArena: ; 0x0207A3B4
 	bl OS_SetArenaLo
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0207A4B4: .word _022B98C4
+_0207A4B4: .word OSi_Initialized
 	arm_func_end OS_InitArena
 
 	arm_func_start OS_InitArenaEx
@@ -86,7 +86,7 @@ OS_InitArenaEx: ; 0x0207A4B8
 	mov r1, r0
 	mov r0, #2
 	bl OS_SetArenaLo
-	ldr r0, _0207A518 ; =_022B98C4
+	ldr r0, _0207A518 ; =OSi_Initialized
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0207A504
@@ -101,7 +101,7 @@ _0207A504:
 	bl OS_SetProtectionRegion2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0207A518: .word _022B98C4
+_0207A518: .word OSi_Initialized
 _0207A51C: .word _0200002B
 _0207A520: .word 0x023E0021
 	arm_func_end OS_InitArenaEx
@@ -142,7 +142,7 @@ _0207A578:
 	ldr r0, _0207A610 ; =SDK_SECTION_ARENA_EX_START
 	ldmia sp!, {r3, pc}
 _0207A580:
-	ldr r0, _0207A614 ; =_022B98C4
+	ldr r0, _0207A614 ; =OSi_Initialized
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0207A5A0
@@ -188,7 +188,7 @@ _0207A608:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207A610: .word SDK_SECTION_ARENA_EX_START
-_0207A614: .word _022B98C4
+_0207A614: .word OSi_Initialized
 _0207A618: .word OS_IRQTable
 _0207A61C: .word 0x00000000
 _0207A620: .word 0x00000800
@@ -215,7 +215,7 @@ _0207A65C:
 	ldr r0, _0207A6BC ; =SDK_MAIN_ARENA_LO
 	ldmia sp!, {r3, pc}
 _0207A664:
-	ldr r0, _0207A6C0 ; =_022B98C4
+	ldr r0, _0207A6C0 ; =OSi_Initialized
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0207A684
@@ -246,7 +246,7 @@ _0207A6B4:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207A6BC: .word SDK_MAIN_ARENA_LO
-_0207A6C0: .word _022B98C4
+_0207A6C0: .word OSi_Initialized
 _0207A6C4: .word SDK_SECTION_ARENA_EX_START
 _0207A6C8: .word SDK_SECTION_ARENA_ITCM_START
 _0207A6CC: .word SDK_SECTION_ARENA_DTCM_START

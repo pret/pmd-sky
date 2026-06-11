@@ -223,7 +223,7 @@
 .public Soc_U32to4U8
 .public socket
 .public Socl_GetHostID
-.public StartThread
+.public OS_CreateThread
 .public strcpy
 .public strlen
 .public strncpy

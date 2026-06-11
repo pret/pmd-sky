@@ -18899,7 +18899,7 @@ _0233426C:
 	bic r3, r4
 	mov r2, #0
 	add r3, r5, r3
-	bl StartThread
+	bl OS_CreateThread
 	ldr r0, _023342C8 ; =ov02_023594D0
 	mov r1, #1
 	str r1, [r0, #0x38]

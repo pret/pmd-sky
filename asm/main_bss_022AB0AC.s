@@ -234,11 +234,11 @@ _022B9644:
 	.global THREAD_INFO_STRUCT
 THREAD_INFO_STRUCT:
 	.space 0xC
-	.global _022B9654
-_022B9654:
+	.global OSi_IsThreadInitialized
+OSi_IsThreadInitialized:
 	.space 0x18
-	.global _022B966C
-_022B966C:
+	.global OSi_ThreadInfo
+OSi_ThreadInfo:
 	.space 0x4
 	.global _022B9670
 _022B9670:
@@ -249,14 +249,14 @@ _022B967C:
 	.global _022B973C
 _022B973C:
 	.space 0x188
-	.global _022B98C4
-_022B98C4:
+	.global OSi_Initialized
+OSi_Initialized:
 	.space 0x8
 	.global _022B98CC
 _022B98CC:
 	.space 0x24
-	.global _022B98F0
-_022B98F0:
+	.global OSi_DebuggerHandler
+OSi_DebuggerHandler:
 	.space 0x4
 	.global _022B98F4
 _022B98F4:
@@ -264,8 +264,8 @@ _022B98F4:
 	.global _022B98F8
 _022B98F8:
 	.space 0x24
-	.global _022B991C
-_022B991C:
+	.global OSi_ExContext
+OSi_ExContext:
 	.space 0x80
 	.global OSi_TimerReserved
 OSi_TimerReserved:
@@ -273,8 +273,8 @@ OSi_TimerReserved:
 	.global OSi_UseTick
 OSi_UseTick:
 	.space 0x8
-	.global _022B99A8
-_022B99A8:
+	.global OSi_TickCounter
+OSi_TickCounter:
 	.space 0x8
 	.global OSi_UseAlarm
 OSi_UseAlarm:
@@ -282,8 +282,8 @@ OSi_UseAlarm:
 	.global _022B99BC
 _022B99BC:
 	.space 0x14
-	.global _022B99D0
-_022B99D0:
+	.global OSi_IsInitReset
+OSi_IsInitReset:
 	.space 0x4
 	.global OSi_vramExclusive
 OSi_vramExclusive:
@@ -294,15 +294,15 @@ OSi_vramLockId:
 	.global _022B99EC
 _022B99EC:
 	.space 0x4
-	.global _022B99F0
-_022B99F0:
+	.global sSndMutex
+sSndMutex:
 #ifdef JAPAN
 	.space 0x18
 #else
 	.space 0x30
 #endif
-	.global _022B9A20
-_022B9A20:
+	.global sReserveList
+sReserveList:
 	.space 0x24
 	.global _022B9A44
 _022B9A44:
@@ -322,8 +322,8 @@ _022BB4E8:
 	.global _022BB500
 _022BB500:
 	.space 0x60
-	.global _022BB560
-_022BB560:
+	.global SNDi_SharedWork
+SNDi_SharedWork:
 	.space 0x4
 	.global _022BB564
 _022BB564:

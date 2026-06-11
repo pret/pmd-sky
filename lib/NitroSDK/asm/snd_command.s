@@ -8,7 +8,7 @@ SND_CommandInit: ; 0x0207CC70
 	stmdb sp!, {r4, lr}
 	bl InitPxi
 	ldr lr, _0207CD2C ; =_022B9D00
-	ldr r0, _0207CD30 ; =_022B9A20
+	ldr r0, _0207CD30 ; =sReserveList
 	mov r4, #0
 	str lr, [r0]
 	mov r0, #0x18
@@ -27,7 +27,7 @@ _0207CCA8:
 	mov r3, #0
 	str r3, [r0, #0xac8]
 	ldr r1, _0207CD38 ; =_022BB4E8
-	ldr r2, _0207CD30 ; =_022B9A20
+	ldr r2, _0207CD30 ; =sReserveList
 	mov r0, #1
 	str r1, [r2, #0x10]
 	str r3, [r2, #8]
@@ -37,7 +37,7 @@ _0207CCA8:
 	str r3, [r2, #0x18]
 	str r0, [r2, #0x20]
 	ldr r0, _0207CD3C ; =_022B9A80
-	ldr r1, _0207CD40 ; =_022BB560
+	ldr r1, _0207CD40 ; =SNDi_SharedWork
 	str r3, [r2, #4]
 	str r0, [r1]
 	bl Sndi_InitSharedWork
@@ -46,7 +46,7 @@ _0207CCA8:
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r2, #0x1d
-	ldr r1, _0207CD40 ; =_022BB560
+	ldr r1, _0207CD40 ; =SNDi_SharedWork
 	str r2, [r0, #4]
 	ldr r1, [r1]
 	str r1, [r0, #8]
@@ -56,11 +56,11 @@ _0207CCA8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207CD2C: .word _022B9D00
-_0207CD30: .word _022B9A20
+_0207CD30: .word sReserveList
 _0207CD34: .word _022BAA20
 _0207CD38: .word _022BB4E8
 _0207CD3C: .word _022B9A80
-_0207CD40: .word _022BB560
+_0207CD40: .word SNDi_SharedWork
 	arm_func_end SND_CommandInit
 
 	arm_func_start Snd_RecvCommandReply
@@ -72,7 +72,7 @@ Snd_RecvCommandReply: ; 0x0207CD44
 	tst r5, #1
 	beq _0207CDA0
 	bl Sndi_GetFinishedCommandTag
-	ldr r5, _0207CE4C ; =_022B9A20
+	ldr r5, _0207CE4C ; =sReserveList
 	ldr r1, [r5, #4]
 	cmp r1, r0
 	bne _0207CDC4
@@ -91,7 +91,7 @@ _0207CD74:
 	b _0207CDC4
 _0207CDA0:
 	bl Sndi_GetFinishedCommandTag
-	ldr r1, _0207CE4C ; =_022B9A20
+	ldr r1, _0207CE4C ; =sReserveList
 	ldr r1, [r1, #4]
 	cmp r1, r0
 	bne _0207CDC4
@@ -100,7 +100,7 @@ _0207CDA0:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 _0207CDC4:
-	ldr r0, _0207CE4C ; =_022B9A20
+	ldr r0, _0207CE4C ; =sReserveList
 	ldr r2, _0207CE50 ; =_022B9A44
 	ldr r3, [r0, #0x14]
 	add r1, r3, #1
@@ -119,12 +119,12 @@ _0207CDF8:
 	cmp r0, #0
 	bne _0207CDF8
 _0207CE08:
-	ldr r0, _0207CE4C ; =_022B9A20
+	ldr r0, _0207CE4C ; =sReserveList
 	ldr r1, [r0, #0x10]
 	cmp r1, #0
 	strne r5, [r1]
 	streq r5, [r0]
-	ldr r1, _0207CE4C ; =_022B9A20
+	ldr r1, _0207CE4C ; =sReserveList
 	mov r0, r4
 	str r2, [r1, #0x10]
 	ldr r2, [r1, #0x1c]
@@ -137,7 +137,7 @@ _0207CE08:
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0207CE4C: .word _022B9A20
+_0207CE4C: .word sReserveList
 _0207CE50: .word _022B9A44
 	arm_func_end Snd_RecvCommandReply
 
@@ -188,7 +188,7 @@ Snd_PushCommand: ; 0x0207CEDC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EnableIrqFlag
-	ldr r1, _0207CF10 ; =_022B9A20
+	ldr r1, _0207CF10 ; =sReserveList
 	ldr r2, [r1, #0xc]
 	cmp r2, #0
 	streq r4, [r1, #8]
@@ -199,7 +199,7 @@ Snd_PushCommand: ; 0x0207CEDC
 	bl SetIrqFlag
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0207CF10: .word _022B9A20
+_0207CF10: .word sReserveList
 	arm_func_end Snd_PushCommand
 
 	arm_func_start Snd_FlushCommand
@@ -207,7 +207,7 @@ Snd_FlushCommand: ; 0x0207CF14
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	bl EnableIrqFlag
-	ldr r4, _0207D0C4 ; =_022B9A20
+	ldr r4, _0207D0C4 ; =sReserveList
 	mov sb, r0
 	ldr r1, [r4, #8]
 	cmp r1, #0
@@ -232,7 +232,7 @@ _0207CF64:
 	ldr r0, [r4, #0x1c]
 	cmp r0, #8
 	bge _0207CF64
-	ldr r0, _0207D0C4 ; =_022B9A20
+	ldr r0, _0207D0C4 ; =sReserveList
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	bne _0207CF98
@@ -244,7 +244,7 @@ _0207CF98:
 	ldr r0, _0207D0C8 ; =_022B9D00
 	mov r1, #0x1800
 	bl DC_FlushRange
-	ldr r1, _0207D0C4 ; =_022B9A20
+	ldr r1, _0207D0C4 ; =sReserveList
 	mov r0, #7
 	ldr r1, [r1, #8]
 	mov r2, #0
@@ -263,7 +263,7 @@ _0207CFD8:
 	mov r8, fp
 	ldr r7, _0207D0C8 ; =_022B9D00
 	mov r6, #0x1800
-	ldr r4, _0207D0C4 ; =_022B9A20
+	ldr r4, _0207D0C4 ; =sReserveList
 	b _0207D034
 _0207CFF4:
 	mov r0, sb
@@ -293,7 +293,7 @@ _0207D034:
 	cmp r0, #0
 	blt _0207CFF4
 _0207D058:
-	ldr r0, _0207D0C4 ; =_022B9A20
+	ldr r0, _0207D0C4 ; =sReserveList
 	ldr r2, _0207D0CC ; =_022B9A44
 	ldr r3, [r0, #0x18]
 	ldr r4, [r0, #8]
@@ -303,7 +303,7 @@ _0207D058:
 	cmp r1, #8
 	movgt r1, #0
 	strgt r1, [r0, #0x18]
-	ldr r1, _0207D0C4 ; =_022B9A20
+	ldr r1, _0207D0C4 ; =sReserveList
 	mov r0, #0
 	str r0, [r1, #8]
 	str r0, [r1, #0xc]
@@ -322,7 +322,7 @@ _0207D0BC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0207D0C4: .word _022B9A20
+_0207D0C4: .word sReserveList
 _0207D0C8: .word _022B9D00
 _0207D0CC: .word _022B9A44
 	arm_func_end Snd_FlushCommand
@@ -364,7 +364,7 @@ _0207D120:
 Snd_GetCurrentCommandTag: ; 0x0207D13C
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
-	ldr r1, _0207D164 ; =_022B9A20
+	ldr r1, _0207D164 ; =sReserveList
 	ldr r2, [r1, #8]
 	cmp r2, #0
 	ldreq r4, [r1, #4]
@@ -373,7 +373,7 @@ Snd_GetCurrentCommandTag: ; 0x0207D13C
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0207D164: .word _022B9A20
+_0207D164: .word sReserveList
 	arm_func_end Snd_GetCurrentCommandTag
 
 	arm_func_start Snd_IsFinishedCommandTag
@@ -381,7 +381,7 @@ Snd_IsFinishedCommandTag: ; 0x0207D168
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EnableIrqFlag
-	ldr r1, _0207D1B4 ; =_022B9A20
+	ldr r1, _0207D1B4 ; =sReserveList
 	ldr r1, [r1, #4]
 	cmp r4, r1
 	bls _0207D198
@@ -400,14 +400,14 @@ _0207D1A8:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0207D1B4: .word _022B9A20
+_0207D1B4: .word sReserveList
 	arm_func_end Snd_IsFinishedCommandTag
 
 	arm_func_start Snd_CountFreeCommand
 Snd_CountFreeCommand: ; 0x0207D1B8
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
-	ldr r1, _0207D1F0 ; =_022B9A20
+	ldr r1, _0207D1F0 ; =sReserveList
 	mov r4, #0
 	ldr r1, [r1]
 	cmp r1, #0
@@ -422,14 +422,14 @@ _0207D1E4:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0207D1F0: .word _022B9A20
+_0207D1F0: .word sReserveList
 	arm_func_end Snd_CountFreeCommand
 
 	arm_func_start Snd_CountReservedCommand
 Snd_CountReservedCommand: ; 0x0207D1F4
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
-	ldr r1, _0207D22C ; =_022B9A20
+	ldr r1, _0207D22C ; =sReserveList
 	mov r4, #0
 	ldr r1, [r1, #8]
 	cmp r1, #0
@@ -444,7 +444,7 @@ _0207D220:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0207D22C: .word _022B9A20
+_0207D22C: .word sReserveList
 	arm_func_end Snd_CountReservedCommand
 
 	arm_func_start Snd_CountWaitingCommand
@@ -520,7 +520,7 @@ _0207D2DC:
 AllocCommand: ; 0x0207D2F8
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
-	ldr r1, _0207D33C ; =_022B9A20
+	ldr r1, _0207D33C ; =sReserveList
 	ldr r4, [r1]
 	cmp r4, #0
 	bne _0207D31C
@@ -537,7 +537,7 @@ _0207D31C:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0207D33C: .word _022B9A20
+_0207D33C: .word sReserveList
 	arm_func_end AllocCommand
 
 	arm_func_start IsCommandAvailable

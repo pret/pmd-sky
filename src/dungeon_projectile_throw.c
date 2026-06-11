@@ -7,7 +7,7 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
 #include "exclusive_item.h"
-#include "main_0208655C.h"
+#include "MSL_C/stdlib.h"
 #include "moves_1.h"
 
 #ifdef JAPAN

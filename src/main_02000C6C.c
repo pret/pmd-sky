@@ -17,8 +17,6 @@ extern void sub_02003ECC();
 extern void sub_020082F4(u32*);
 extern void sub_0204A5D0();
 extern void FX_Init();
-extern void OS_DisableScheduler();
-extern void DC_Enable();
 extern u32 OS_GetArenaHi(u32);
 extern u32 OS_GetArenaLo(u32);
 extern u32 OS_SetArenaLo(u32, u32);
@@ -26,7 +24,6 @@ extern void sub_0207A95C(u32, u32);
 extern u32 sub_0207A98C(u32, u32, u32, u32);
 extern u32 sub_0207AA34(u32, u32, u32);
 extern void OS_InitTick();
-extern void OS_GetMacAddress(u8(*)[6]);
 extern void FS_Init(u32);
 extern void sub_02008DAC();
 extern void Card_SetThreadPriority(u32);
@@ -74,7 +71,7 @@ void NitroMain(void)
   reg_OS_IME = 1;
   ClearIrqFlag(1,old_ime);
   sub_02008DAC();
-  OS_GetMacAddress(&macAddr);
+  OS_GetMacAddress(macAddr);
   sub_02002228(macAddr[0] * macAddr[1] +
                macAddr[2] * macAddr[3] +
                macAddr[4] * macAddr[5]);

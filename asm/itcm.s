@@ -1841,11 +1841,11 @@ _01FF9668:
 	ldr ip, _01FF97BC ; =DTCM_BSS
 	str r3, [ip]
 	str r3, [ip, #4]
-	ldr ip, _01FF97C0 ; =_022B966C
+	ldr ip, _01FF97C0 ; =OSi_ThreadInfo
 	mov r1, #1
 	strh r1, [ip]
 _01FF96A0:
-	ldr ip, _01FF97C0 ; =_022B966C
+	ldr ip, _01FF97C0 ; =OSi_ThreadInfo
 	ldrh r1, [ip]
 	cmp r1, #0
 	beq _01FF96B4
@@ -1931,7 +1931,7 @@ _01FF9738:
 	ldmia sp!, {pc}
 	.align 2, 0
 _01FF97BC: .word DTCM_BSS
-_01FF97C0: .word _022B966C
+_01FF97C0: .word OSi_ThreadInfo
 _01FF97C4: .word CP_SaveContext
 _01FF97C8: .word CPi_RestoreContext
 	arm_func_end ReturnFromInterrupt
@@ -1939,7 +1939,7 @@ _01FF97C8: .word CPi_RestoreContext
 	arm_func_start OSi_DoResetSystem
 OSi_DoResetSystem: ; 0x01FF97CC
 	stmdb sp!, {r3, lr}
-	ldr r0, _01FF97F8 ; =_022B99D0
+	ldr r0, _01FF97F8 ; =OSi_IsInitReset
 _01FF97D4:
 	ldrh r1, [r0]
 	cmp r1, #0
@@ -1951,7 +1951,7 @@ _01FF97D4:
 	bl OSi_DoBoot
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_01FF97F8: .word _022B99D0
+_01FF97F8: .word OSi_IsInitReset
 _01FF97FC: .word 0x04000208
 	arm_func_end OSi_DoResetSystem
 

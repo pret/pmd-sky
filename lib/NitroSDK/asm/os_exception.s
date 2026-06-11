@@ -10,15 +10,15 @@ OS_InitException: ; 0x0207AB24
 	cmp r1, #0x2600000
 	blo _0207AB44
 	cmp r1, #0x2800000
-	ldrlo r0, _0207AB88 ; =_022B98F0
+	ldrlo r0, _0207AB88 ; =OSi_DebuggerHandler
 	strlo r1, [r0]
 	blo _0207AB50
 _0207AB44:
-	ldr r0, _0207AB88 ; =_022B98F0
+	ldr r0, _0207AB88 ; =OSi_DebuggerHandler
 	mov r1, #0
 	str r1, [r0]
 _0207AB50:
-	ldr r0, _0207AB88 ; =_022B98F0
+	ldr r0, _0207AB88 ; =OSi_DebuggerHandler
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0207AB74
@@ -28,20 +28,20 @@ _0207AB50:
 	str r2, [r1]
 	str r2, [r0, #0xfdc]
 _0207AB74:
-	ldr r0, _0207AB88 ; =_022B98F0
+	ldr r0, _0207AB88 ; =OSi_DebuggerHandler
 	mov r1, #0
 	str r1, [r0, #8]
 	bx lr
 	.align 2, 0
 _0207AB84: .word 0x027FFD9C
-_0207AB88: .word _022B98F0
+_0207AB88: .word OSi_DebuggerHandler
 _0207AB8C: .word OSi_ExceptionHandler
 _0207AB90: .word 0x027E3000
 	arm_func_end OS_InitException
 
 	arm_func_start OSi_ExceptionHandler
 OSi_ExceptionHandler: ; 0x0207AB94
-	ldr ip, _0207AC10 ; =_022B98F0
+	ldr ip, _0207AC10 ; =OSi_DebuggerHandler
 	ldr ip, [ip]
 	cmp ip, #0
 	bne _0207ABA8
@@ -69,7 +69,7 @@ _0207ABE0:
 	bne _0207ABEC
 	bl OSi_GetAndDisplayContext
 _0207ABEC:
-	ldr ip, _0207AC10 ; =_022B98F0
+	ldr ip, _0207AC10 ; =OSi_DebuggerHandler
 	ldr ip, [ip]
 	cmp ip, #0
 _0207ABF8:
@@ -82,7 +82,7 @@ _0207AC04:
 	mov sp, ip
 	bx lr
 	.align 2, 0
-_0207AC10: .word _022B98F0
+_0207AC10: .word OSi_DebuggerHandler
 _0207AC14: .word _secure
 	arm_func_end OSi_ExceptionHandler
 
@@ -97,7 +97,7 @@ OSi_GetAndDisplayContext: ; 0x0207AC18
 
 	arm_func_start OSi_SetExContext
 OSi_SetExContext: ; 0x0207AC2C
-	ldr r1, _0207ACB8 ; =_022B991C
+	ldr r1, _0207ACB8 ; =OSi_ExContext
 	mrs r2, cpsr
 	str r2, [r1, #0x74]
 	str r0, [r1, #0x6c]
@@ -133,13 +133,13 @@ OSi_SetExContext: ; 0x0207AC2C
 	msr cpsr_fsxc, r0
 	bx lr
 	.align 2, 0
-_0207ACB8: .word _022B991C
+_0207ACB8: .word OSi_ExContext
 	arm_func_end OSi_SetExContext
 
 	arm_func_start OSi_DisplayExContent
 OSi_DisplayExContent: ; 0x0207ACBC
 	stmdb sp!, {r3, lr}
-	ldr r0, _0207AD20 ; =_022B98F0
+	ldr r0, _0207AD20 ; =OSi_DebuggerHandler
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -151,7 +151,7 @@ OSi_DisplayExContent: ; 0x0207ACBC
 	mov sp, r0
 	stmdb sp!, {r1, r2}
 	bl OS_EnableProtectionUnit
-	ldr r0, _0207AD28 ; =_022B991C
+	ldr r0, _0207AD28 ; =OSi_ExContext
 	ldr r1, _0207AD2C ; =_022B98F4
 	ldr r1, [r1]
 	ldr ip, _0207AD30 ; =_022B98F8
@@ -165,9 +165,9 @@ OSi_DisplayExContext_Helper:
 	msr cpsr_fsxc, r2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0207AD20: .word _022B98F0
+_0207AD20: .word OSi_DebuggerHandler
 _0207AD24: .word 0x0000009F
-_0207AD28: .word _022B991C
+_0207AD28: .word OSi_ExContext
 _0207AD2C: .word _022B98F4
 _0207AD30: .word _022B98F8
 _0207AD34: .word OSi_DisplayExContext_Helper

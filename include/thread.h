@@ -24,7 +24,7 @@ struct thread {
     // This is equal to stack_pointer - 0x44, with an additional - 4 if the resulting addess is not
     // aligned to 8 bytes.
     void* usable_stack_pointer;
-    // 0x3C: Address of the function to return to once the thread exits. Usually ThreadExit.
+    // 0x3C: Address of the function to return to once the thread exits. Usually OS_ExitThread.
     thread_exit_fn_t exit_function;
     void* function_address_plus_4; // 0x40: Pointer to the function to run + 4
     void* stack_pointer_minus_4;   // 0x44: Pointer to the start of the stack area - 4

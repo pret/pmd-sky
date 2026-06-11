@@ -1,5 +1,14 @@
 #include <nitro.h>
 
+asm BOOL DC_Enable (void) {
+    mrc p15, 0, r1, c1, c0, 0
+    and r0, r1, #HW_C1_DCACHE_ENABLE
+    mov r0, r0, LSR #HW_C1_DCACHE_ENABLE_SHIFT
+    orr r1, r1, #HW_C1_DCACHE_ENABLE
+    mcr p15, 0, r1, c1, c0, 0
+    bx lr
+}
+
 asm void DC_InvalidateAll(void) {
 	mov r0, #0
 	mcr p15, 0, r0, c7, c6, 0

@@ -6,7 +6,7 @@
 	arm_func_start OS_InitReset
 OS_InitReset: ; 0x0207B87C
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _0207B8C8 ; =_022B99D0
+	ldr r0, _0207B8C8 ; =OSi_IsInitReset
 	ldrh r1, [r0, #2]
 	cmp r1, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -26,7 +26,7 @@ _0207B8A4:
 	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0207B8C8: .word _022B99D0
+_0207B8C8: .word OSi_IsInitReset
 _0207B8CC: .word OSi_CommonCallback
 	arm_func_end OS_InitReset
 
@@ -38,7 +38,7 @@ OSi_CommonCallback: ; 0x0207B8D0
 	mov r0, r0, lsr #0x10
 	cmp r0, #0x10
 	bne _0207B8F8
-	ldr r0, _0207B900 ; =_022B99D0
+	ldr r0, _0207B900 ; =OSi_IsInitReset
 	mov r1, #1
 	strh r1, [r0]
 	ldmia sp!, {r3, pc}
@@ -46,7 +46,7 @@ _0207B8F8:
 	bl WaitForever2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0207B900: .word _022B99D0
+_0207B900: .word OSi_IsInitReset
 	arm_func_end OSi_CommonCallback
 
 	arm_func_start OSi_SendToPxi ; Osi_SendToPxi

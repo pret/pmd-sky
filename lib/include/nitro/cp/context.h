@@ -12,6 +12,6 @@ typedef struct CPContext {
 } CPContext;
 
 void CP_SaveContext(register CPContext *context);
-void CPi_RestoreContext(register CPContext *context);
+void CPi_RestoreContext(register const CPContext *context);
 
 #endif //NITRO_CP_CONTEXT_H_

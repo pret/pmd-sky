@@ -1,6 +1,6 @@
 #pragma once
-.public _022B99A8
-.public _022B99D0
+.public OSi_TickCounter
+.public OSi_IsInitReset
 .public Card_LockRom
 .public EnableIrqFlag
 .public MI_CpuCopy8

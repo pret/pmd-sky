@@ -10,7 +10,7 @@
 #include "enums.h"
 #include "fixed_room_data_1.h"
 #include "main_0205283C.h" // GetRecruitRate1 and GetRecruitRate2
-#include "main_0208655C.h"
+#include "MSL_C/stdlib.h"
 #include "math.h"
 #include "overlay_29_0230E578.h" // ItemIsActive__0230E578
 #include "progression.h"
