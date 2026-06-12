@@ -1,54 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204DB08.inc"
+	.include "main_0204DBA0.inc"
 
 	.text
-
-	arm_func_start sub_0204DB08
-sub_0204DB08: ; 0x0204DB08
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	sub sp, sp, #0x48
-	mov r4, r2
-	add r3, r4, r4, lsl #2
-	and r2, r3, #7
-	add r2, r2, #7
-	mov r2, r2, asr #3
-	mov r5, r0
-	add r0, sp, #0x38
-	add r2, r2, r3, asr #3
-	bl InitBitstreamForWrite
-	mov sb, #0
-	add r8, sp, #0x38
-	add r7, sp, #0
-	mov r6, #5
-	b _0204DB5C
-_0204DB48:
-	mov r0, r8
-	mov r2, r6
-	add r1, r7, sb
-	bl CopyBitsFrom
-	add sb, sb, #1
-_0204DB5C:
-	cmp sb, r4
-	blt _0204DB48
-	add r0, sp, #0x38
-	bl BitstreamDebug
-	mov r3, #0
-	add r2, sp, #0
-	ldr r1, _0204DB9C ; =WONDER_MAIL_BITS_MAP
-	b _0204DB8C
-_0204DB7C:
-	ldrb r0, [r2, r3]
-	add r3, r3, #1
-	ldrb r0, [r1, r0]
-	strb r0, [r5], #1
-_0204DB8C:
-	cmp r3, r4
-	blt _0204DB7C
-	add sp, sp, #0x48
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	.align 2, 0
-_0204DB9C: .word WONDER_MAIL_BITS_MAP
-	arm_func_end sub_0204DB08
 
 	arm_func_start sub_0204DBA0
 sub_0204DBA0: ; 0x0204DBA0

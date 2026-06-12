@@ -7,6 +7,11 @@ extern u8 ARM9_UNKNOWN_TABLE__NA_209E164[];
 extern void InitBitstreamForRead(struct bitstream *stream, void* dst, s32 len);
 extern void CopyBitsTo(struct bitstream *stream, void* buf_write, s32 nbits);
 extern void BitstreamDebug(struct bitstream *stream);
+extern void CopyBitsFrom(struct bitstream *stream, void *buf_read, s32 nbits);
+extern void InitBitstreamForWrite(struct bitstream *stream, u32 v1, u32 v2);
+extern u8 WONDER_MAIL_BITS_MAP[];
+
+#define DIV_8_ROUND_UP(x)  (((x) >> 3) + ((((x) & 7) + 7) >> 3))
 
 s32 sub_0204DA2C(u8* arg0, void* arg1, u8 arg2)
 {
@@ -38,4 +43,22 @@ s32 sub_0204DA2C(u8* arg0, void* arg1, u8 arg2)
     BitstreamDebug(&stream);
     MemcpySimple(arg1, tmp1, (v1 >> 3) + (v2 >> 3));
     return 1;
+}
+
+void sub_0204DB08(u8* arg0, u32 arg1, s32 arg2)
+{
+    struct bitstream stream;
+    u8 buffer[0x38];
+
+    InitBitstreamForWrite(&stream, arg1, DIV_8_ROUND_UP(arg2 * 5));
+
+    for (s32 i = 0; i < arg2; i++) {
+        CopyBitsFrom(&stream, &buffer[i], 5);
+    }
+
+    BitstreamDebug(&stream);
+
+    for (s32 i = 0; i < arg2; i++) {
+        *arg0++ = WONDER_MAIL_BITS_MAP[ buffer[i] ];
+    }
 }
