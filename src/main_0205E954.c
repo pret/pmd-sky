@@ -1,9 +1,8 @@
 #include "main_0205E954.h"
+#include "main_0205E288.h"
 #include "mission.h"
 
 extern struct mission_deliver_list MISSION_DELIVER_LIST_PTR;
-
-extern s32 sub_0205E448(u32 a0, struct mission* mission);
 
 s32 sub_0205E954(void)
 {

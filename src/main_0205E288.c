@@ -86,3 +86,22 @@ bool8 sub_0205E3F8(struct unkStruct_0205E3F8 *src, s32 limit, struct unkStruct_0
 
     return TRUE;
 }
+
+s32 sub_0205E448(s32 arg0, struct mission* arg1)
+{
+    int ret = 0;
+    for (int i = 0; i < arg0; i++) {
+        u8 flag;
+        if (!arg1[i].status) {
+            flag = 1;
+        } else {
+            flag = 0;
+        }
+
+        if (!flag) {
+            ret++;
+        }
+    }
+
+    return ret;
+}
