@@ -1,57 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02054C24.inc"
+	.include "main_02054CD8.inc"
 
 	.text
-
-	arm_func_start GetBaseFormCastformDeoxysCherrim
-GetBaseFormCastformDeoxysCherrim: ; 0x02054C24
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl IsDeoxys
-	cmp r0, #0
-	ldrne r0, _02054CCC ; =0x000001A2
-	ldmneia sp!, {r4, pc}
-	ldr r1, _02054CD0 ; =0xFFFFFE85
-	add r0, r4, r1
-	mov r0, r0, lsl #0x10
-	mov r0, r0, asr #0x10
-	mov r0, r0, lsl #0x10
-	mov r0, r0, lsr #0x10
-	cmp r0, #3
-	rsbls r0, r1, #0
-	ldmlsia sp!, {r4, pc}
-	sub r0, r1, #0x258
-	add r0, r4, r0
-	mov r0, r0, lsl #0x10
-	mov r0, r0, asr #0x10
-	mov r0, r0, lsl #0x10
-	mov r0, r0, lsr #0x10
-	cmp r0, #3
-	rsbls r0, r1, #0x258
-	ldmlsia sp!, {r4, pc}
-	sub r0, r4, #0x1cc
-	mov r0, r0, lsl #0x10
-	mov r0, r0, asr #0x10
-	mov r0, r0, lsl #0x10
-	mov r0, r0, lsr #0x10
-	cmp r0, #1
-	movls r0, #0x1cc
-	ldmlsia sp!, {r4, pc}
-	ldr r0, _02054CD4 ; =0xFFFFFBDC
-	add r1, r4, r0
-	mov r1, r1, lsl #0x10
-	mov r1, r1, asr #0x10
-	mov r1, r1, lsl #0x10
-	mov r1, r1, lsr #0x10
-	cmp r1, #1
-	rsbls r4, r0, #0
-	mov r0, r4
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_02054CCC: .word 0x000001A2
-_02054CD0: .word 0xFFFFFE85
-_02054CD4: .word 0xFFFFFBDC
-	arm_func_end GetBaseFormCastformDeoxysCherrim
 
 	arm_func_start BaseFormsEqual
 BaseFormsEqual: ; 0x02054CD8
