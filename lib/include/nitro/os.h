@@ -1,7 +1,7 @@
 #ifndef NITRO_OS_H_
 #define NITRO_OS_H_
 
-//#include <nitro/os/context.h>
+#include <nitro/os/context.h>
 #include <nitro/os/system.h>
 #include <nitro/os/terminate_proc.h>
 //#include <nitro/os/systemWork.h>
@@ -19,7 +19,7 @@
 #include <nitro/os/timer.h>
 //#include <nitro/os/alarm.h>
 #include <nitro/os/ownerInfo.h>
-//#include <nitro/os/context.h>
+#include <nitro/os/context.h>
 //#include <nitro/os/system.h>
 //#include <nitro/os/systemWork.h>
 //#include <nitro/os/thread.h>

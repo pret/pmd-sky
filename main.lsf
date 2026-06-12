@@ -241,7 +241,7 @@ Static main
     Object lib/NitroSDK/asm/os_interrupt.o
     Object lib/NitroSDK/asm/os_spinlock.o
     Object lib/NitroSDK/asm/os_thread.o
-    Object lib/NitroSDK/asm/os_context.o
+    Object lib/NitroSDK/src/os_context.o
     Object lib/NitroSDK/asm/os_emulator.o
     Object lib/NitroSDK/src/os_message.o
     Object lib/NitroSDK/src/os_mutex.o
@@ -305,7 +305,7 @@ Static main
 	Object lib/NitroSDK/asm/ctrdg.o
 	Object lib/NitroSDK/asm/ctrdg_proc.o
 	Object lib/NitroSDK/asm/ctrdg_task.o
-	Object lib/NitroSDK/asm/math_math.o
+	Object lib/NitroSDK/src/math_math.o
 	Object lib/NitroSDK/asm/math_dgt.o
 	Object lib/NitroSDK/asm/math_crc.o
 	Object lib/NitroSDK/asm/std_string.o
