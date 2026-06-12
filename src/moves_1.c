@@ -11,7 +11,7 @@ void InitMove(struct move *move, enum move_id move_id)
     move->ginseng = 0;
 }
 
-void InitMoveCheckId(struct move* move, enum move_id move_id)
+void InitMoveCheckId(struct move* move, u16 move_id)
 {
     if (move_id == 0) {
         move->flags0 = 0;
@@ -19,7 +19,7 @@ void InitMoveCheckId(struct move* move, enum move_id move_id)
     }
     move->flags0 = MOVE_FLAG_ENABLED_FOR_AI | MOVE_FLAG_EXISTS;
     move->flags2 = 0;
-    move->id = move_id;
+    move->id = (enum move_id) move_id;
     move->pp = GetMaxPp(move);
     move->ginseng = 0;
 }
