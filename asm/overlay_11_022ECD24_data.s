@@ -62,9 +62,9 @@
 .public GetEffectStatusLivePerformer
 .public UpdateTeamInfoBox
 .public UpdateTeamInfoBox
-.public ov11_022FF21C
-.public ov11_022FF31C
-.public ov11_022FF358
+.public EatOverworldGummiEntryPoint
+.public EatOverworldGummiDestructor
+.public EatOverworldGummiFrameUpdate
 .public ov11_022FF500
 .public ov11_022FF588
 .public ov11_022FF5D0
@@ -80,17 +80,17 @@
 .public CreateTopGroundMenu
 .public CloseTopGroundMenu
 .public UpdateTopGroundMenu
-.public ov11_0230119C
-.public ov11_02301220
-.public ov11_0230125C
+.public GroundBagOthersMenuEntryPoint
+.public GroundBagOthersMenuDestructor
+.public GroundBagOthersMenuFrameUpdate
 .public ov11_02302004
 .public ov11_02302030
 .public ov11_02302C38
 .public ov11_02302C64
 .public ov11_02302D8C
 .public ov11_02302DB8
-.public ov11_02303904
-.public ov11_02303930
+.public FreeDiaryAndFaqBoardMenuMenu
+.public DiaryAndFaqBoardMenuFrameUpdate
 .public ov11_02303B04
 .public ov11_02303B50
 .public ov11_023043BC
@@ -256,12 +256,12 @@
 .public SpindaBarEntry
 .public SpindaBarDestruct
 .public SpindaBarMenuUpdate
-.public ov20_0238A150
-.public ov20_0238A160
-.public ov20_0238A1B0
-.public ov20_0238A140
-.public ov20_0238A160
-.public ov20_0238A1B0
+.public RecycleShopEntryPointResume
+.public RecycleShopDestructor
+.public RecycleShopFrameUpdate
+.public RecycleShopEntryPointFirst
+.public RecycleShopDestructor
+.public RecycleShopFrameUpdate
 .public SwapShopEntryPoint
 .public SwapShopDestructor
 .public SwapShopMainManager
@@ -277,21 +277,21 @@
 .public ov25_0238B134
 .public ov25_0238B1CC
 .public ov25_0238B1F8
-.public ov26_0238A140
-.public ov26_0238A568
-.public ov26_0238A5A0
-.public ov26_0238A970
-.public ov26_0238A99C
-.public ov26_0238A9C8
-.public ov26_0238AA68
-.public ov26_0238AA94
-.public ov26_0238AAC0
-.public ov26_0238AC14
-.public ov26_0238AC40
-.public ov26_0238AC6C
-.public ov26_0238ACD8
-.public ov26_0238AD10
-.public ov26_0238AD3C
+.public MissionRewardOverlayEntryPoint
+.public MissionRewardOverlayDestructor
+.public MissionRewardOverlayFrameUpdate
+.public ApplyRuleDungeonEffectsEntryPoint
+.public ApplyRuleDungeonEffectsDestructor
+.public ApplyRuleDungeonEffectsFrameUpdate
+.public ExitDungeon1EntryPoint
+.public ExitDungeon1Destructor
+.public ExitDungeon1FrameUpdate
+.public UnkOv26EntryPointEu0238b754
+.public UnkOv26DestructorEu0238b780
+.public UnkOv26FrameUpdateEu0238b7ac
+.public DungeonExitEntryPoint2
+.public DungeonExitDestructor2
+.public DungeonExitFrameUpdate2
 .public ov27_0238A140
 .public ov27_0238A388
 .public ov27_0238A3A4
@@ -1104,9 +1104,9 @@ ov11_0232246C:
 	.global ov11_0232247C
 ov11_0232247C:
 	.byte 0x0D, 0x00, 0x00, 0x00
-	.word ov11_022FF21C
-	.word ov11_022FF31C
-	.word ov11_022FF358
+	.word EatOverworldGummiEntryPoint
+	.word EatOverworldGummiDestructor
+	.word EatOverworldGummiFrameUpdate
 	.global ov11_0232248C
 ov11_0232248C:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -1256,9 +1256,9 @@ ov11_023226B4:
 	.global ov11_023226C4
 ov11_023226C4:
 	.byte 0x0D, 0x00, 0x00, 0x00
-	.word ov11_0230119C
-	.word ov11_02301220
-	.word ov11_0230125C
+	.word GroundBagOthersMenuEntryPoint
+	.word GroundBagOthersMenuDestructor
+	.word GroundBagOthersMenuFrameUpdate
 	.global ov11_023226D4
 ov11_023226D4:
 	.word 0x228 + OV11_0232262C_OFFSET
@@ -1345,8 +1345,8 @@ ov11_023227B8:
 ov11_023227C8:
 	.byte 0x0D, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.word ov11_02303904
-	.word ov11_02303930
+	.word FreeDiaryAndFaqBoardMenuMenu
+	.word DiaryAndFaqBoardMenuFrameUpdate
 	.global ov11_023227D8
 ov11_023227D8:
 	.byte 0x00, 0x00, 0x00, 0x00
@@ -1833,16 +1833,16 @@ ov11_02322F84:
 ov11_02322F98:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x1C, 0x14, 0x01, 0xFB, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov11_02322FA8
-ov11_02322FA8:
+	.global SWAP_SHOP_ONE_STAR_STR
+SWAP_SHOP_ONE_STAR_STR:
 	.byte 0x5B, 0x4D, 0x3A, 0x53
 	.byte 0x33, 0x5D, 0x00, 0x00
-	.global ov11_02322FB0
-ov11_02322FB0:
+	.global SWAP_SHOP_TWO_STAR_STR
+SWAP_SHOP_TWO_STAR_STR:
 	.byte 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02322FC0
-ov11_02322FC0:
+	.global SWAP_SHOP_THREE_STAR_STR
+SWAP_SHOP_THREE_STAR_STR:
 	.byte 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D
 	.byte 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x00, 0x00
 	.global ov11_02322FD4
@@ -1857,22 +1857,22 @@ ov11_02322FE4:
 ov11_02322FF4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x15, 0x12, 0x02
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov11_02323004
-ov11_02323004:
+	.global SWAP_SHOP_RED_TEXT_TAG_STR
+SWAP_SHOP_RED_TEXT_TAG_STR:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x57, 0x5D, 0x00, 0x00
-	.global ov11_0232300C
-ov11_0232300C:
+	.global SWAP_SHOP_UNCENTER_TEXT_TAG_STR
+SWAP_SHOP_UNCENTER_TEXT_TAG_STR:
 	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
-	.global ov11_02323014
-ov11_02323014:
+	.global SWAP_SHOP_CLUMSET_ONE_STAR_STR
+SWAP_SHOP_CLUMSET_ONE_STAR_STR:
 	.byte 0x5B, 0x43, 0x4C, 0x55, 0x4D, 0x5F, 0x53, 0x45
 	.byte 0x54, 0x3A, 0x31, 0x33, 0x30, 0x5D, 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x00, 0x00, 0x00, 0x00
-	.global ov11_0232302C
-ov11_0232302C:
+	.global SWAP_SHOP_CLUMSET_TWO_STAR_STR
+SWAP_SHOP_CLUMSET_TWO_STAR_STR:
 	.byte 0x5B, 0x43, 0x4C, 0x55, 0x4D, 0x5F, 0x53, 0x45, 0x54, 0x3A, 0x31, 0x32, 0x32, 0x5D, 0x5B, 0x4D
 	.byte 0x3A, 0x53, 0x33, 0x5D, 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x00, 0x00
-	.global ov11_02323048
-ov11_02323048:
+	.global SWAP_SHOP_CLUMSET_THREE_STAR_STR
+SWAP_SHOP_CLUMSET_THREE_STAR_STR:
 	.byte 0x5B, 0x43, 0x4C, 0x55
 	.byte 0x4D, 0x5F, 0x53, 0x45, 0x54, 0x3A, 0x31, 0x31, 0x34, 0x5D, 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D
 	.byte 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x00, 0x00, 0x00, 0x00
@@ -1920,15 +1920,15 @@ ov11_023230CC:
 	.global ov11_023230DC
 ov11_023230DC:
 	.byte 0x18, 0x00, 0x00, 0x00
-	.word ov20_0238A150
-	.word ov20_0238A160
-	.word ov20_0238A1B0
+	.word RecycleShopEntryPointResume
+	.word RecycleShopDestructor
+	.word RecycleShopFrameUpdate
 	.global ov11_023230EC
 ov11_023230EC:
 	.byte 0x18, 0x00, 0x00, 0x00
-	.word ov20_0238A140
-	.word ov20_0238A160
-	.word ov20_0238A1B0
+	.word RecycleShopEntryPointFirst
+	.word RecycleShopDestructor
+	.word RecycleShopFrameUpdate
 	.global ov11_023230FC
 ov11_023230FC:
 	.byte 0x19, 0x00, 0x00, 0x00
@@ -1962,33 +1962,33 @@ ov11_0232313C:
 	.global ov11_0232314C
 ov11_0232314C:
 	.byte 0x1E, 0x00, 0x00, 0x00
-	.word ov26_0238A140
-	.word ov26_0238A568
-	.word ov26_0238A5A0
+	.word MissionRewardOverlayEntryPoint
+	.word MissionRewardOverlayDestructor
+	.word MissionRewardOverlayFrameUpdate
 	.global ov11_0232315C
 ov11_0232315C:
 	.byte 0x1E, 0x00, 0x00, 0x00
-	.word ov26_0238A970
-	.word ov26_0238A99C
-	.word ov26_0238A9C8
+	.word ApplyRuleDungeonEffectsEntryPoint
+	.word ApplyRuleDungeonEffectsDestructor
+	.word ApplyRuleDungeonEffectsFrameUpdate
 	.global ov11_0232316C
 ov11_0232316C:
 	.byte 0x1E, 0x00, 0x00, 0x00
-	.word ov26_0238AA68
-	.word ov26_0238AA94
-	.word ov26_0238AAC0
+	.word ExitDungeon1EntryPoint
+	.word ExitDungeon1Destructor
+	.word ExitDungeon1FrameUpdate
 	.global ov11_0232317C
 ov11_0232317C:
 	.byte 0x1E, 0x00, 0x00, 0x00
-	.word ov26_0238AC14
-	.word ov26_0238AC40
-	.word ov26_0238AC6C
+	.word UnkOv26EntryPointEu0238b754
+	.word UnkOv26DestructorEu0238b780
+	.word UnkOv26FrameUpdateEu0238b7ac
 	.global ov11_0232318C
 ov11_0232318C:
 	.byte 0x1E, 0x00, 0x00, 0x00
-	.word ov26_0238ACD8
-	.word ov26_0238AD10
-	.word ov26_0238AD3C
+	.word DungeonExitEntryPoint2
+	.word DungeonExitDestructor2
+	.word DungeonExitFrameUpdate2
 	.global ov11_0232319C
 ov11_0232319C:
 	.byte 0x1F, 0x00, 0x00, 0x00
@@ -3082,8 +3082,8 @@ ov11_02324D94:
 ov11_02324D98:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324DA0
-ov11_02324DA0:
+	.global EXCLUSIVE_ITEM_REQUIREMENTS_PTR
+EXCLUSIVE_ITEM_REQUIREMENTS_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global SWAP_SHOP_INVENTORY_PTRS
 SWAP_SHOP_INVENTORY_PTRS:

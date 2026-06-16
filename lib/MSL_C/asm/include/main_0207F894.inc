@@ -12,7 +12,6 @@
 .public _020B2ED4
 .public _020B2FBC
 .public _020B3364
-.public OSi_ThreadInfo
 .public _022BB5EC
 .public _022BB5FC
 .public _022BB604
@@ -78,8 +77,10 @@
 .public MTi_CpuClear32
 .public MTi_CpuClearFast
 .public MTi_CpuCopy32
+.public OS_CreateThread
 .public OS_DisableIrqMask
 .public OS_EnableIrqMask
+.public OS_ExitThread
 .public OS_GetDTCMAddress
 .public OS_GetLockID
 .public OS_InitMutex
@@ -99,15 +100,14 @@
 .public OS_WakeupThread
 .public OS_WakeupThreadDirect
 .public OSi_ReferSymbol
+.public OSi_ThreadInfo
 .public PXI_Init
 .public PXI_IsCallbackReady
 .public PXI_SendWordByFifo
 .public PXI_SetFifoRecvCallback
 .public PXIi_HandlerRecvFifoNotEmpty
 .public SetIrqFlag
-.public OS_CreateThread
 .public SVC_CpuSet
 .public SVC_WaitByLoop
-.public OS_ExitThread
 .public WaitForever2
 .public WaitForInterrupt

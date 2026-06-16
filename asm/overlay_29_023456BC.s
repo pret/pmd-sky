@@ -849,7 +849,7 @@ _02346230:
 	ldr r0, [r0]
 	add r5, r0, #0x348
 	add r0, r5, #0x400
-	bl sub_0204F7A8
+	bl GetMissionRank__0204FAE0
 	mov r1, r0
 	cmp r1, #0xf
 	movgt r1, #0xf

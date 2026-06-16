@@ -6,6 +6,8 @@
 .public GenerateAllPossibleDungeonsList
 .public GenerateAllPossibleMonstersList
 .public GenerateMission
+.public GenerateMissionRewards
+.public GetRandomMissionTemplate
 .public GetResolvedPerformanceProgressFlag
 .public MISSION_DELIVER_LIST_PTR
 .public Rand16Bit
@@ -15,9 +17,7 @@
 .public sub_0205E9A8
 .public sub_0205EB28
 .public sub_0205EB5C
-.public sub_02062290
 .public sub_02062548
-.public sub_02062578
-.public sub_0206315C
 .public sub_020634F4
 .public sub_02063504
+.public SumValidMissionCategoryWeights

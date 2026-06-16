@@ -134,7 +134,7 @@ _0205CBD8:
 	ldrsh r2, [r4, #0xe]
 	add r1, r4, #2
 	mov r3, #1
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -142,7 +142,7 @@ _0205CBD8:
 	ldrsh r2, [r4, #0x10]
 	add r1, r4, #2
 	mov r3, #0
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -171,7 +171,7 @@ _0205CC84:
 	ldrsh r2, [r4, #0x12]
 	add r1, r4, #2
 	mov r3, #0
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	bne _0205CCC0
 	mov r0, #0
@@ -188,7 +188,7 @@ _0205CCC0:
 	ldrb r0, [r4, #1]
 	ldrsh r2, [r4, #0x14]
 	add r1, r4, #2
-	bl sub_0205D11C
+	bl CheckItemForMissionType
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}

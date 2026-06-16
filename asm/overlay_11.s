@@ -300,7 +300,7 @@ _022DC558:
 	movlt sb, r0
 	add r0, sp, #0x1c
 	mov r1, r8
-	bl sub_020585B4
+	bl GetRecoloredTeamMemberName
 	ldrb r3, [r8, #2]
 	add r0, sl, r5
 	mov r1, r7
@@ -11757,7 +11757,7 @@ _022E645C:
 	b _022E68BC
 _022E6474:
 	add r0, sp, #0x12
-	bl sub_0204F158
+	bl MissionRewardValidateDungeonId
 	cmp r0, #0
 	beq _022E6504
 	add r1, sp, #0x50
@@ -11771,7 +11771,7 @@ _022E6474:
 	mov r1, r0
 	ldrb r2, [sp, #0x12]
 	add r0, sp, #0x44
-	bl sub_0205F118
+	bl WasMissionCompletedToday
 	cmp r0, #0
 	beq _022E6504
 	ldrsh r0, [sp, #0x48]
@@ -11808,7 +11808,7 @@ _022E6524:
 	b _022E68AC
 _022E652C:
 	add r0, sp, #0x11
-	bl sub_0204F158
+	bl MissionRewardValidateDungeonId
 	cmp r0, #0
 	beq _022E6644
 	add r1, sp, #0x40
@@ -11835,7 +11835,7 @@ _022E657C:
 	ldrb r2, [sp, #0x11]
 	mov r0, sb
 	mov r1, sl
-	bl sub_0205F118
+	bl WasMissionCompletedToday
 	mov r0, r8
 	mov r1, r7
 	ldrb r2, [sl, #1]
@@ -11866,7 +11866,7 @@ _022E657C:
 	bl SetScenarioProgressScriptVar
 	ldrsh r0, [sp, #0x36]
 	ldrsh r1, [sp, #0x38]
-	bl sub_02065B80
+	bl SetRandomRequestNpcs1And2
 	ldrb r2, [sl, #1]
 	ldr r1, _022E68D0 ; =ov11_02324F94
 	mov r0, #0
@@ -11896,7 +11896,7 @@ _022E6644:
 	b _022E68BC
 _022E6678:
 	add r0, sp, #0x10
-	bl sub_0204F158
+	bl MissionRewardValidateDungeonId
 	cmp r0, #0
 	beq _022E66F8
 	add r1, sp, #0x30
@@ -11910,7 +11910,7 @@ _022E6678:
 	mov r1, r0
 	ldrb r2, [sp, #0x10]
 	add r0, sp, #0x24
-	bl sub_0205F118
+	bl WasMissionCompletedToday
 	ldrsh r1, [sp, #0x28]
 	ldr r0, _022E68E0 ; =ov11_023199D4
 	str r1, [sp]
@@ -11921,7 +11921,7 @@ _022E6678:
 	ldrb r0, [sp, #0x24]
 	cmp r0, #0
 	beq _022E66F8
-	bl ov11_0230CDCC
+	bl LoadRecycleShopOverlay
 	ldr r0, _022E68C8 ; =ov11_02324C9C
 	mov r1, #0
 	strb r1, [r0]
@@ -12476,8 +12476,8 @@ _022E6E60: .word ov11_02324C9C
 _022E6E64: .word ov11_02324F94
 	arm_func_end ov11_022E68E4
 
-	arm_func_start ov11_022E6E68
-ov11_022E6E68: ; 0x022E6E68
+	arm_func_start ReturnScriptMenuResultZero
+ReturnScriptMenuResultZero: ; 0x022E6E68
 	ldr r1, _022E6E84 ; =ov11_02324C9C
 	mov r3, #1
 	ldr r0, _022E6E88 ; =ov11_02324F94
@@ -12488,10 +12488,10 @@ ov11_022E6E68: ; 0x022E6E68
 	.align 2, 0
 _022E6E84: .word ov11_02324C9C
 _022E6E88: .word ov11_02324F94
-	arm_func_end ov11_022E6E68
+	arm_func_end ReturnScriptMenuResultZero
 
-	arm_func_start ov11_022E6E8C
-ov11_022E6E8C: ; 0x022E6E8C
+	arm_func_start ReturnScriptMenuResult
+ReturnScriptMenuResult: ; 0x022E6E8C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r1, _022E6EBC ; =ov11_02319A20
@@ -12508,10 +12508,10 @@ ov11_022E6E8C: ; 0x022E6E8C
 _022E6EBC: .word ov11_02319A20
 _022E6EC0: .word ov11_02324F94
 _022E6EC4: .word ov11_02324C9C
-	arm_func_end ov11_022E6E8C
+	arm_func_end ReturnScriptMenuResult
 
-	arm_func_start ov11_022E6EC8
-ov11_022E6EC8: ; 0x022E6EC8
+	arm_func_start IsScriptMenuReturnDisabled
+IsScriptMenuReturnDisabled: ; 0x022E6EC8
 	ldr r0, _022E6EE4 ; =ov11_02324C9C
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -12521,7 +12521,7 @@ ov11_022E6EC8: ; 0x022E6EC8
 	bx lr
 	.align 2, 0
 _022E6EE4: .word ov11_02324C9C
-	arm_func_end ov11_022E6EC8
+	arm_func_end IsScriptMenuReturnDisabled
 
 	arm_func_start ov11_022E6EE8
 ov11_022E6EE8: ; 0x022E6EE8
@@ -12830,7 +12830,7 @@ _022E72A4:
 	b _022E7AC0
 _022E72AC:
 	add r0, sp, #7
-	bl sub_0204F158
+	bl MissionRewardValidateDungeonId
 	cmp r0, #0
 	beq _022E72D0
 	ldrb r0, [sp, #7]
@@ -12843,7 +12843,7 @@ _022E72D0:
 	b _022E7AC0
 _022E72D8:
 	add r0, sp, #6
-	bl sub_0204F158
+	bl MissionRewardValidateDungeonId
 	cmp r0, #0
 	beq _022E730C
 	ldrb r2, [sp, #6]
@@ -12860,7 +12860,7 @@ _022E730C:
 	b _022E7AC0
 _022E7314:
 	add r0, sp, #4
-	bl sub_0204F158
+	bl MissionRewardValidateDungeonId
 	cmp r0, #0
 	beq _022E735C
 	ldrb r2, [sp, #4]
@@ -12873,7 +12873,7 @@ _022E7314:
 	beq _022E735C
 	ldrb r2, [sp, #4]
 	add r0, sp, #0x60
-	bl sub_0205F118
+	bl WasMissionCompletedToday
 	cmp r0, #0
 	movne r0, #1
 	bne _022E7AC0
@@ -13091,7 +13091,7 @@ _022E7630:
 	mov r0, r0, asr #0x10
 	bl GetSpecialRecruitmentSpecies
 	mov r1, #0
-	bl sub_020555D0
+	bl GetRecruitMentryIdBySpecies
 	mvn r1, #0
 	cmp r0, r1
 	moveq r0, #0
@@ -13297,7 +13297,7 @@ _022E78E4:
 	cmp r0, #0
 	beq _022E7930
 	mov r0, #0
-	bl sub_02056E04
+	bl GetUnitNpcIds
 	cmp r0, #0
 	moveq r0, #1
 	beq _022E7AC0
@@ -13320,7 +13320,7 @@ _022E7938:
 	cmp r0, #0
 	beq _022E7984
 	mov r0, #0
-	bl sub_02056E04
+	bl GetUnitNpcIds
 	cmp r0, #0
 	moveq r0, #1
 	beq _022E7AC0
@@ -13967,10 +13967,10 @@ InitRandomNpcJobs: ; 0x022E8124
 	beq _022E815C
 	add r0, sp, #0
 	mov r2, #0xff
-	bl sub_0205F118
+	bl WasMissionCompletedToday
 	ldrsh r0, [sp, #2]
 	ldrsh r1, [sp, #4]
-	bl sub_02065B80
+	bl SetRandomRequestNpcs1And2
 _022E815C:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
@@ -14212,7 +14212,7 @@ _022E8440:
 	bl sub_0203D538
 	cmp r0, #1
 	bne _022E84A0
-	bl sub_0203EFD4
+	bl FreeMissionRewardStructMain
 	bl sub_02046D20
 	mov r0, #2
 	bl ov11_022E84E4
@@ -14311,7 +14311,7 @@ _022E8558:
 	add r2, sp, #0
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_020630A4
+	bl RollRandomItemReward
 	ldr r0, _022E865C ; =ov11_02324CAC
 	ldrsh r1, [sp]
 	ldr r0, [r0]
@@ -15402,8 +15402,8 @@ _022E9498:
 	bl GenerateKecleonItems2
 	bl GenerateDailyMissions
 	bl GenerateCroagunkItems
-	bl sub_0201080C
-	bl sub_02011FA0
+	bl DecrementEggHatchTimer
+	bl UpdateRecycleShop
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E94C8: .word ov11_02320AD4

@@ -619,8 +619,8 @@ SprintfStatic__022BD44C: ; 0x022BD44C
 	bx lr
 	arm_func_end SprintfStatic__022BD44C
 
-	arm_func_start ov10_022BD474
-ov10_022BD474: ; 0x022BD474
+	arm_func_start CreateInventoryMenuOuter
+CreateInventoryMenuOuter: ; 0x022BD474
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0xa8
 #ifdef JAPAN
@@ -694,7 +694,7 @@ _022BD55C: .word ov10_022C43D0
 _022BD560: .word ov10_022C43E0
 _022BD564: .word 0x00489E33
 _022BD568: .word ov10_022C43B0
-	arm_func_end ov10_022BD474
+	arm_func_end CreateInventoryMenuOuter
 
 	arm_func_start ov10_022BD56C
 ov10_022BD56C: ; 0x022BD56C

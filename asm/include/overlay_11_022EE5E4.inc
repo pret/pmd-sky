@@ -8,6 +8,7 @@
 .public AddItemToBagNoHeld
 .public AnimationControlGetAllocForMaxFrame
 .public AnyDungeonRequestsDone
+.public AppendStandardStringToMission
 .public ApplyGummiBoostsToGroundMonster
 .public ApplyGummiBoostsToTeamMember
 .public ApplyLevelUpBoostsToGroundMonster
@@ -40,6 +41,7 @@
 .public CreateCollectionMenu
 .public CreateControlsChart
 .public CreateDialogueBox
+.public CreateInventoryMenuOuter
 .public CreateJobSummary
 .public CreateMonsterSummaryFromTeamMember
 .public CreateParentMenu
@@ -63,8 +65,10 @@
 .public EntryOverlay13
 .public EuclideanNorm__020050B0
 .public EVENTS
+.public EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 .public FemaleToMaleForm
 .public FillOamAttributeInfo
+.public FreeMissionRewardStructMain
 .public FuncThatCallsRunNextOpcode
 .public FX_Atan2Idx
 .public GetAcceptedMission
@@ -74,6 +78,7 @@
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
 .public GetCoroutineInfo
+.public GetCroagunkItemTemplates
 .public GetCurrentBagCapacity
 .public GetDexNumber
 .public GetDungeonMode
@@ -93,6 +98,7 @@
 .public GetLearnableIqSkills
 .public GetMainCharacter1
 .public GetMaxReachedFloor
+.public GetMissionRankWithCapAndModifiersAndCap
 .public GetMoneyCarried
 .public GetNameRaw
 .public GetNameWithGender
@@ -171,7 +177,6 @@
 .public ov10_022BCDBC
 .public ov10_022BCDF4
 .public ov10_022BD394
-.public ov10_022BD474
 .public ov10_022BDA84
 .public ov10_022BDB80
 .public ov10_022BDC0C
@@ -234,8 +239,6 @@
 .public ov11_022E5BF4
 .public ov11_022E5C84
 .public ov11_022E5EFC
-.public ov11_022E6E68
-.public ov11_022E6E8C
 .public ov11_022E6EE8
 .public ov11_022E7FA8
 .public ov11_022E8168
@@ -511,17 +514,9 @@
 .public ov11_02322F80
 .public ov11_02322F84
 .public ov11_02322F98
-.public ov11_02322FA8
-.public ov11_02322FB0
-.public ov11_02322FC0
 .public ov11_02322FD4
 .public ov11_02322FE4
 .public ov11_02322FF4
-.public ov11_02323004
-.public ov11_0232300C
-.public ov11_02323014
-.public ov11_0232302C
-.public ov11_02323048
 .public ov11_0232307C
 .public ov11_0232308C
 .public ov11_0232309C
@@ -698,7 +693,6 @@
 .public ov11_02324D90
 .public ov11_02324D94
 .public ov11_02324D98
-.public ov11_02324DA0
 .public ov11_02324DAC
 .public ov11_02324DB4
 .public ov11_02324DBC
@@ -753,11 +747,14 @@
 .public PrintBadgeMark
 .public PrintIqSkillsMenu
 .public RandInt
+.public RecolorNameString
 .public RemoveItemNoHole
 .public RemoveItemNoHoleCheck
 .public Render3dElement64
 .public ResumeAdvancedMenu
 .public ResumeParentMenu
+.public ReturnScriptMenuResult
+.public ReturnScriptMenuResultZero
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueBytes
 .public ScriptStationLoadTalk
@@ -828,8 +825,6 @@
 .public sub_0200FD48
 .public sub_02010044
 .public sub_02011420
-.public sub_020114F8
-.public sub_020130B8
 .public sub_020163AC
 .public sub_02017C50
 .public sub_02017C74
@@ -850,7 +845,6 @@
 .public sub_0201F36C
 .public sub_020236FC
 .public sub_02025304_JP
-.public sub_02026268
 .public sub_020262E0
 .public sub_020265A8
 .public sub_02027B1C
@@ -894,7 +888,6 @@
 .public sub_0203AF0C
 .public sub_0203D438
 .public sub_0203D538
-.public sub_0203EFD4
 .public sub_0203F150
 .public sub_0203F398
 .public sub_0203F974
@@ -954,7 +947,6 @@
 .public sub_02053CA0
 .public sub_02053D1C
 .public sub_020546E8
-.public sub_02054F44
 .public sub_02055894
 .public sub_02055B20
 .public sub_02055D4C
@@ -965,7 +957,6 @@
 .public sub_020564B0
 .public sub_02057180
 .public sub_020572EC
-.public sub_020580C4
 .public sub_020582E0
 .public sub_020586F0
 .public sub_02058794
@@ -975,9 +966,7 @@
 .public sub_0205F0F0
 .public sub_02061F44
 .public sub_02061F90
-.public sub_02062D9C
 .public sub_02062DB4
-.public sub_0206351C
 .public sub_02063830
 .public sub_02064FFC
 .public sub_02065014
@@ -1010,7 +999,16 @@
 .public sub_0206B9DC
 .public sub_0206BA5C
 .public sub_0206C110
+.public SWAP_SHOP_CLUMSET_ONE_STAR_STR
+.public SWAP_SHOP_CLUMSET_THREE_STAR_STR
+.public SWAP_SHOP_CLUMSET_TWO_STAR_STR
 .public SWAP_SHOP_INVENTORY_PTRS
+.public SWAP_SHOP_ONE_STAR_STR
+.public SWAP_SHOP_RED_TEXT_TAG_STR
+.public SWAP_SHOP_THREE_STAR_STR
+.public SWAP_SHOP_TWO_STAR_STR
+.public SWAP_SHOP_UNCENTER_TEXT_TAG_STR
+.public SwapShopFreeDoublePointer
 .public SwitchAnimationControlToNextFrame
 .public TEAM_INFO_BOX_DEFAULT_WINDOW_PARAMS
 .public TEAM_MEMBER_TABLE_PTR
@@ -1018,7 +1016,9 @@
 .public UnloadFile
 .public UnlockRoutine
 .public UpdateWindow
+.public ValidateTeamMembers
 .public VEC_Distance
 .public vsprintf
 .public WAN_TABLE
 .public WORLD_MAP_MODE
+.public ZeroInitMissionRewardDataStruct

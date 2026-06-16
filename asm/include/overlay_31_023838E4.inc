@@ -25,6 +25,7 @@
 .public CreateAdvancedTextBox
 .public CreateDialogueBox
 .public CreateInventoryMenu
+.public CreateInventoryMenuOuter
 .public CreateMonsterSummaryFromMonster
 .public CreateParentMenu
 .public CreateParentMenuFromStringIds
@@ -87,8 +88,10 @@
 .public GetMessageLogPreprocessorArgs
 .public GetMonsterIdFromSpawnEntry
 .public GetMonsterName
+.public GetMonsterOrTrapName
 .public GetNbItemsInBag
 .public GetPressedButtons
+.public GetRecoloredTeamMemberName
 .public GetRecruitRate2
 .public GetSimpleMenuResult__0202AEA4
 .public GetSpeciesString
@@ -136,11 +139,9 @@
 .public ov10_022BCDBC
 .public ov10_022BCDF4
 .public ov10_022BCE44
-.public ov10_022BD474
 .public ov29_022E08F4
 .public ov29_022E1618
 .public ov29_022E1620
-.public ov29_022E2A78
 .public ov29_022EA370
 .public ov29_022EA62C
 .public ov29_022EAC78
@@ -225,6 +226,7 @@
 .public PreprocessString
 .public PreprocessStringFromId
 .public PrintIqSkillsMenu
+.public RecolorNameString
 .public ResetLeaderActionFields
 .public ResumeParentMenu
 .public SetAdvancedTextBoxField0x1C2
@@ -280,9 +282,7 @@
 .public sub_020420F4
 .public sub_0204F10C
 .public sub_02053CA0
-.public sub_02054F44
 .public sub_02056228
-.public sub_020585B4
 .public TeamMemberHasEnabledIqSkill
 .public TryPointCameraToMonster
 .public UnkMapRelatedFunc

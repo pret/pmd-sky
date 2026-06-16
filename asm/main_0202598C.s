@@ -1091,8 +1091,8 @@ DrawTextInWindow: ; 0x02026214
 _02026264: .word 0x0000C402
 	arm_func_end DrawTextInWindow
 
-	arm_func_start sub_02026268
-sub_02026268: ; 0x02026268
+	arm_func_start AppendStandardStringToMission
+AppendStandardStringToMission: ; 0x02026268
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x128
 	sub sp, sp, #0x400
@@ -1124,7 +1124,7 @@ sub_02026268: ; 0x02026268
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020262DC: .word 0x0000C402
-	arm_func_end sub_02026268
+	arm_func_end AppendStandardStringToMission
 
 	arm_func_start sub_020262E0
 sub_020262E0: ; 0x020262E0

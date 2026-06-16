@@ -713,7 +713,7 @@ _0234E7C0:
 	str r5, [r0, #0x38]
 	mov r0, r5
 	mov r2, #0
-	bl ov29_022E2A78
+	bl GetMonsterOrTrapName
 	mov r0, #0
 #ifdef JAPAN
 	mov r1, #0x870

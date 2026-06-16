@@ -6,6 +6,7 @@
 .public ConvertStorageItemAtIdxToItem
 .public CountNbOfItemsInStorage
 .public CreateScrollBoxSingle
+.public FreeMissionRewardStructMain
 .public GetItemCategory
 .public GetLanguageType
 .public GetMainTeamNameWithCheck
@@ -60,7 +61,6 @@
 .public sub_02029FBC
 .public sub_0203D438
 .public sub_0203D538
-.public sub_0203EFD4
 .public sub_02042CF0
 .public sub_0204316C
 .public sub_0204317C
@@ -87,5 +87,5 @@
 .public sub_02046C78
 .public sub_02046D20
 .public sub_0204A018
-.public sub_0206351C
 .public UnloadFile
+.public ZeroInitMissionRewardDataStruct

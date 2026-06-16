@@ -1277,8 +1277,8 @@ ov29_022E46D0: ; 0x022E46D0
 	bx lr
 	arm_func_end ov29_022E46D0
 
-	arm_func_start ov29_022E46D4
-ov29_022E46D4: ; 0x022E46D4
+	arm_func_start DisplayStockpileNumbers
+DisplayStockpileNumbers: ; 0x022E46D4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl ShouldDisplayEntityAdvanced
@@ -1295,16 +1295,16 @@ ov29_022E46D4: ; 0x022E46D4
 	mov r3, #0xb
 	bl DisplayAnimatedNumbers
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022E46D4
+	arm_func_end DisplayStockpileNumbers
 
-	arm_func_start ov29_022E4704
-ov29_022E4704: ; 0x022E4704
+	arm_func_start PlayInvisifySeIfShouldDisplayEntity
+PlayInvisifySeIfShouldDisplayEntity: ; 0x022E4704
 	ldr ip, _022E4710 ; =PlaySeByIdIfShouldDisplayEntity
 	mov r1, #0x21c
 	bx ip
 	.align 2, 0
 _022E4710: .word PlaySeByIdIfShouldDisplayEntity
-	arm_func_end ov29_022E4704
+	arm_func_end PlayInvisifySeIfShouldDisplayEntity
 
 	arm_func_start ov29_022E4714
 ov29_022E4714: ; 0x022E4714

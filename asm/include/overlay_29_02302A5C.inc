@@ -35,6 +35,9 @@
 .public IsSpecialEpisodeDungeon
 .public LogMessageByIdWithPopup
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ModifyDefensiveStat
+.public ModifyHpStat
+.public ModifyOffensiveStat
 .public NeedsItemToSpawn
 .public OBJ_GRAPHICS_CONTROLS_PTR
 .public ov29_022DD7D8
@@ -90,9 +93,6 @@
 .public sub_0201D1B0
 .public sub_0204F610
 .public sub_02053904
-.public sub_02054FB8
-.public sub_02054FEC
-.public sub_02055020
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
 .public SwitchAnimationControlToNextFrame

@@ -2364,7 +2364,7 @@ _0238C218: ; jump table
 	b _0238C9EC ; case 6
 	b _0238CA30 ; case 7
 _0238C238:
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #2
 	ldr r0, [r0]
@@ -2915,11 +2915,11 @@ _0238C9EC:
 	b _0238CAD0
 _0238CA30:
 	mvn r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	b _0238CAD4
 _0238CA40:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	ldrne r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	movne r1, #1
@@ -2927,33 +2927,33 @@ _0238CA40:
 	strne r1, [r0, #0xd8]
 	b _0238CAD0
 _0238CA5C:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238CAD0
 	mov r0, #3
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #0xd8]
 	b _0238CAD0
 _0238CA84:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238CAD0
 	mov r0, #1
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #0xd8]
 	b _0238CAD0
 _0238CAAC:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238CAD0
 	mov r0, #4
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #2
 	ldr r0, [r0]

@@ -1036,7 +1036,7 @@ ov18_0238AF3C: ; 0x0238AF3C
 	mov r1, #4
 #endif
 	mov r2, #2
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	add r3, sp, #4
 	mov r0, r4
 	mov r1, #0x16
@@ -2012,7 +2012,7 @@ _0238BD00:
 _0238BD1C:
 	mov r0, #3
 	str r0, [r4, #0x74]
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 	bl LinkShopDestructor
 	mov r0, #4
 	b _0238BD38

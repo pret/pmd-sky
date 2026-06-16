@@ -104,7 +104,6 @@
 .public _020A28A8
 .public _020AFE5C
 .public _020AFE70
-.public _020AFE74
 .public _020AFE78
 .public _020AFE7C
 .public _020AFE8C
@@ -155,6 +154,7 @@
 .public _s32_div_f
 .public AddItemToStorage
 .public AddMoneyCarried
+.public AppendStandardStringToMission
 .public ApplyLevelUpBoostsToGroundMonster
 .public Arm9LoadUnkFieldNa0x2029EC8
 .public Arm9StoreUnkFieldNa0x2029ED8
@@ -171,6 +171,7 @@
 .public Cardi_RequestStreamCommand
 .public CardPullOutWithStatus
 .public ClearAdventureLogStruct
+.public ClearCroagunkItems
 .public ClearWindow
 .public CloseAdvancedMenu
 .public CloseAdvancedTextBox
@@ -232,6 +233,7 @@
 .public GetCurrentBagCapacity
 .public GetDexNumber
 .public GetDungeonResultString
+.public GetEggSpecies
 .public GetExecuteSpecialEpisodeType
 .public GetGameMode
 .public GetHeldButtons
@@ -250,6 +252,7 @@
 .public GetMoneyCarried
 .public GetMonsterGenderVeneer
 .public GetMonsterName
+.public GetMonsterOrTrapName
 .public GetMoveRangeId
 .public GetMoveType
 .public GetNameRaw
@@ -262,6 +265,7 @@
 .public GetPressedButtons
 .public GetRank
 .public GetRankUpEntry
+.public GetRecoloredNameOfTeamMemberAtIdx
 .public GetReleasedStylus
 .public GetResolvedPerformanceProgressFlag
 .public GetRngSeed
@@ -313,6 +317,7 @@
 .public IsTreasureBox
 .public LAST_NEW_MOVE
 .public LearnMoves
+.public LoadCroagunkItems
 .public LoadScriptVariableValue
 .public MemAlloc
 .public memcpy
@@ -320,6 +325,7 @@
 .public MemFree
 .public MemsetSimple
 .public MemZero
+.public MISSION_REWARD_STRUCT_MAIN_PTR
 .public NOTIFY_NOTE
 .public OPTIONS
 .public OS_GetLockID
@@ -334,7 +340,6 @@
 .public ov11_0230D92C
 .public ov11_02310BDC
 .public ov11_02310C18
-.public ov29_022E2A78
 .public ov29_022EA62C
 .public ov29_023002F0
 .public ov29_02347100
@@ -355,6 +360,7 @@
 .public ResetGlobalProgress
 .public RestoreScriptVariableValues
 .public ResumeAdvancedMenu
+.public SaveCroagunkItems
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueBytes
 .public SetActiveInventory
@@ -367,6 +373,8 @@
 .public SetCollectionMenuField0x1BC
 .public SetCollectionMenuVoidFn
 .public SetCollectionMenuWidth
+.public SetEggHatchTimer
+.public SetEggSpecies
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public SetPortraitOffset
@@ -415,12 +423,6 @@
 .public sub_02010044
 .public sub_02010060
 .public sub_02010154
-.public sub_0201077C
-.public sub_02010794
-.public sub_020107F4
-.public sub_02012AB8
-.public sub_02013190
-.public sub_020131F0
 .public sub_02013E54
 .public sub_02013F58
 .public sub_02017C50
@@ -433,7 +435,6 @@
 .public sub_0202613C
 .public sub_020261D4
 .public sub_02026204
-.public sub_02026268
 .public sub_020262E0
 .public sub_020264A4
 .public sub_020265A8
@@ -507,7 +508,6 @@
 .public sub_02056BD4
 .public sub_02056F60
 .public sub_02058460
-.public sub_020584FC
 .public sub_020597B0
 .public sub_02059A74
 .public sub_0205A4B4

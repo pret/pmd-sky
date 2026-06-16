@@ -12,6 +12,7 @@
 .public DECOY_TURN_RANGE
 .public DetermineMonsterShadow
 .public DisplayAnimatedNumbers
+.public DisplayStockpileNumbers
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonRandInt
@@ -35,7 +36,6 @@
 .public MonsterIsType
 .public MonsterSpawnListPartialCopy
 .public MultiplyByFixedPoint
-.public ov10_022C4470
 .public ov10_022C44B0
 .public ov10_022C4784
 .public ov10_022C4788
@@ -67,8 +67,6 @@
 .public ov29_022E4674
 .public ov29_022E46C0
 .public ov29_022E46D0
-.public ov29_022E46D4
-.public ov29_022E4704
 .public ov29_022E4714
 .public ov29_022E4718
 .public ov29_022E471C
@@ -84,6 +82,7 @@
 .public ov29_022E81F8
 .public ov29_02304830
 .public PERISH_SONG_TURN_RANGE
+.public PlayInvisifySeIfShouldDisplayEntity
 .public SafeguardIsActive
 .public SetMessageLogPreprocessorArgsNumberVal
 .public SetMessageLogPreprocessorArgsString
@@ -101,3 +100,4 @@
 .public UpdateMinimap
 .public UpdateStatusIconFlags
 .public UpdateTrapsVisibility
+.public WISE_HEALER_PERCENTAGE

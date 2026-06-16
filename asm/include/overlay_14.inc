@@ -39,7 +39,6 @@
 .public LoadObjectAnimData
 .public MemAlloc
 .public MemFree
-.public ov11_022E6E8C
 .public ov11_022F4990
 .public ov11_022F5BBC
 .public ov11_022F6EFC
@@ -50,6 +49,7 @@
 .public PortraitBoxNeedsUpdate
 .public PreprocessString
 .public RandRange
+.public ReturnScriptMenuResult
 .public SENTRY_DUTY_MONSTER_IDS
 .public SetAnimDataFields2
 .public SetAnimDataFieldsWrapper

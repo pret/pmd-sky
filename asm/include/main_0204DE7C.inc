@@ -15,6 +15,7 @@
 .public Debug_Print0
 .public GetDungeonModeSpecial
 .public GetGameMode
+.public GetMissionRank__0204FAE0
 .public GetResolvedPerformanceProgressFlag
 .public GetSosMailCount
 .public InitBitstreamForRead
@@ -33,7 +34,6 @@
 .public sub_02048BFC
 .public sub_02048CB8
 .public sub_0204DB08
-.public sub_0204F7A8
 .public sub_0204F9F4
 .public sub_0204FA0C
 .public sub_0205633C

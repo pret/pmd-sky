@@ -4,9 +4,9 @@
 extern void* MemAlloc(u32 len, u32 flags);
 void sub_0201F2E4(void);
 void InitMenu(const u8 *);
-extern void ov11_022E6E8C(u32);
-void ov11_022E6E68(void);
-BOOL ov11_022E6EC8(void);
+extern void ReturnScriptMenuResult(u32);
+void ReturnScriptMenuResultZero(void);
+BOOL IsScriptMenuReturnDisabled(void);
 void PersonalityTestMainManager(void);
 
 struct Overlay13Main
@@ -50,119 +50,119 @@ u32 PersonalityTestFrameUpdate(void) {
     switch(PERSONALITY_TEST_PTR->unk0)
     {
         case 0:
-            ov11_022E6E68();
+            ReturnScriptMenuResultZero();
             PERSONALITY_TEST_PTR->unk0 = 0xD;
             break;
         case 1:
-            if(ov11_022E6EC8())
+            if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(1);
+                ReturnScriptMenuResult(1);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 2:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x19);
+                ReturnScriptMenuResult(0x19);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0xF:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x1d);
+                ReturnScriptMenuResult(0x1d);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0xE:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x1c);
+                ReturnScriptMenuResult(0x1c);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0x11:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x1f);
+                ReturnScriptMenuResult(0x1f);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0x12:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x20);
+                ReturnScriptMenuResult(0x20);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 3:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x18);
+                ReturnScriptMenuResult(0x18);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
        case 8:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x15);
+                ReturnScriptMenuResult(0x15);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
         case 9:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x16);
+                ReturnScriptMenuResult(0x16);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
         case 7:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(PERSONALITY_TEST_PTR->unk426 + 0x5);
+                ReturnScriptMenuResult(PERSONALITY_TEST_PTR->unk426 + 0x5);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
        case 4:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x2);
+                ReturnScriptMenuResult(0x2);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 0x10:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x1e);
+                ReturnScriptMenuResult(0x1e);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
             break;
         case 5:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x3);
+                ReturnScriptMenuResult(0x3);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
         case 6:
-             if(ov11_022E6EC8())
+             if(IsScriptMenuReturnDisabled())
             {
-                ov11_022E6E8C(0x4);
+                ReturnScriptMenuResult(0x4);
                 PERSONALITY_TEST_PTR->unk0 = 0xC;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
             }
         case 12:
-            if(ov11_022E6EC8())
+            if(IsScriptMenuReturnDisabled())
             {
                 PERSONALITY_TEST_PTR->unk0 = PERSONALITY_TEST_PTR->unk1;
                 PERSONALITY_TEST_PTR->unk1 = 0xD;
@@ -176,7 +176,7 @@ u32 PersonalityTestFrameUpdate(void) {
             PersonalityTestMainManager();
             break;
         case 0x13:
-            ov11_022E6E8C(-1);
+            ReturnScriptMenuResult(-1);
             return 4;
     }
     return 1;

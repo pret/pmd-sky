@@ -3953,7 +3953,7 @@ _02037AEC:
 	ldrb r0, [r0, #0x11]
 	cmp r0, #0
 	bne _02037B10
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 _02037B10:
 	ldr r0, _02037C28 ; =_020AFDF0
 	mov r1, #3
@@ -4068,7 +4068,7 @@ sub_02037C78: ; 0x02037C78
 	ldr r3, _02037CA4 ; =0x00000122
 	mov r0, r4
 	mov r2, r1
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, r4
 	bl UpdateWindow
 	ldmia sp!, {r4, pc}
@@ -4089,7 +4089,7 @@ sub_02037CA8: ; 0x02037CA8
 	ldr r3, _02037CD4 ; =0x00000123
 	mov r0, r4
 	mov r2, r1
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, r4
 	bl UpdateWindow
 	ldmia sp!, {r4, pc}
@@ -8597,7 +8597,7 @@ _0203B35C:
 	add r1, r1, #1
 	cmp r1, #4
 	blt _0203B2C0
-	bl sub_020568A4
+	bl GetAppointedLeaderMemberIdx
 	bl sub_0203B7AC
 	cmp r0, r8
 	addge r8, r8, #1

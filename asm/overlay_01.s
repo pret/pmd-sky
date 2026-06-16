@@ -11472,7 +11472,7 @@ _02332950:
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
 	mov r3, r4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldr r0, _023329C8 ; =ov01_0233C184
 	ldr r0, [r0]
 	add r0, r0, #0x600
@@ -11855,7 +11855,7 @@ _02332E58:
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
 	mov r3, r4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldr r0, _02332EDC ; =ov01_0233C184
 	ldr r0, [r0]
 	add r0, r0, #0x600
@@ -11897,7 +11897,7 @@ ProcessContinueScreenContents: ; 0x02332EF4
 	mov r1, #8
 	mov r2, #0
 	mov r4, r0
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldr r3, _02333620 ; =ov01_0233B7BC
 	mov r0, r4
 	mov r1, #8
@@ -11907,7 +11907,7 @@ ProcessContinueScreenContents: ; 0x02332EF4
 	mov r0, r4
 	mov r1, #8
 	mov r2, #0x1c
-	bl sub_02026268
+	bl AppendStandardStringToMission
 #ifdef JAPAN
 	ldr r3, _02334DCC ; =0x0000243A
 #endif
@@ -11917,7 +11917,7 @@ ProcessContinueScreenContents: ; 0x02332EF4
 #ifndef JAPAN
 	mov r3, #0x210
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, r4
 	mov r1, #8
 	mov r2, #0x43
@@ -11926,7 +11926,7 @@ ProcessContinueScreenContents: ; 0x02332EF4
 #else
 	rsb r3, r2, #0x254
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldr r0, _02333628 ; =ov01_0233C184
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x61d]
@@ -11941,7 +11941,7 @@ ProcessContinueScreenContents: ; 0x02332EF4
 	mov r0, r4
 	mov r1, #8
 	mov r2, #0x50
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _02333000
 _02332FA4:
 	ldrsh r0, [r1, #0x48]
@@ -11951,7 +11951,7 @@ _02332FA4:
 	mov r0, r4
 	mov r1, #8
 	mov r2, #0x50
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _02333000
 _02332FC8:
 	ldrb r0, [r1, #0x61e]
@@ -11972,7 +11972,7 @@ _02332FC8:
 #ifdef JAPAN
 	mov r3, #0x2440
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _02333000:
 	ldr r0, _02333628 ; =ov01_0233C184
 	ldr r0, [r0]
@@ -11991,7 +11991,7 @@ _02333000:
 	rsb r3, r2, #0x21c
 	mov r1, #8
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	add r0, sp, #0x400
 	ldr r1, _0233363C ; =0x000001F9
 	add r0, r0, #0x94
@@ -12070,7 +12070,7 @@ _02333110:
 	mov r1, #8
 #endif
 	mov r2, #0xf
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mvn r0, #0
 	cmp r5, r0
 	beq _02333158
@@ -12085,7 +12085,7 @@ _02333110:
 	mov r3, r1, lsr #0x10
 	mov r1, #0x50
 	mov r2, #0xf
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _02333158:
 	ldr r0, _02333628 ; =ov01_0233C184
 	ldr r2, [r0]

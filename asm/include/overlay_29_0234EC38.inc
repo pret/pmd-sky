@@ -1,5 +1,6 @@
 #pragma once
 .public AdvanceFrame
+.public AppendMissionObjective
 .public Arm9LoadUnkFieldNa0x2029EC8
 .public Arm9StoreUnkFieldNa0x2029ED8
 .public CheckTeamMemberIdx
@@ -102,6 +103,5 @@
 .public sub_0204F10C
 .public sub_0204F1B4
 .public sub_0205B77C
-.public sub_02061DC8
 .public sub_02061F44
 .public UnkMapRelatedFunc

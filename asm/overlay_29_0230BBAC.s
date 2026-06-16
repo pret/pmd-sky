@@ -1882,8 +1882,8 @@ ov29_0230D628: ; 0x0230D628
 _0230D650: .word DUNGEON_PTR
 	arm_func_end ov29_0230D628
 
-	arm_func_start ov29_0230D654
-ov29_0230D654: ; 0x0230D654
+	arm_func_start IsEitherMonsterInvalid
+IsEitherMonsterInvalid: ; 0x0230D654
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl EntityIsValid__02308FBC
@@ -1899,7 +1899,7 @@ _0230D678:
 _0230D680:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_0230D654
+	arm_func_end IsEitherMonsterInvalid
 
 	arm_func_start ov29_0230D688
 ov29_0230D688: ; 0x0230D688

@@ -13,7 +13,7 @@ extern void sub_0202F2C4(s8);
 extern void sub_0202836C(int);
 extern void ClosePortraitBox(s8);
 extern void CloseDialogueBox(int);
-extern void ov11_022E6E68(void);
+extern void ReturnScriptMenuResultZero(void);
 
 void ov15_0238AE6C(void) {
 
@@ -80,7 +80,7 @@ int ov15_0238AF54(void) {
         OVERLAY15_UNKNOWN_POINTER__NA_238B180 -> unk80 = 0xfe;
         break;
     case 3:
-        ov11_022E6E68();
+        ReturnScriptMenuResultZero();
         return 4;
     }
     return 1;

@@ -376,7 +376,7 @@ sub_0200CA8C: ; 0x0200CA8C
 	bl SetActiveInventoryToMain
 	bl sub_0200FD38
 	bl sub_02010590
-	bl sub_02011AB8
+	bl WipeRecycleShopRecords
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0200CAB4: .word BAG_ITEMS
@@ -389,7 +389,7 @@ sub_0200CABC: ; 0x0200CABC
 	bl AllInventoriesZInit
 	bl sub_0200FD3C
 	bl AllKecleonShopsZInit
-	bl sub_02011AB8
+	bl WipeRecycleShopRecords
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0200CABC
 

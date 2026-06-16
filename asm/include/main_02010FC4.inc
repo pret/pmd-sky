@@ -19,7 +19,6 @@
 .public _02098E9C
 .public _020A1878
 .public _020AF6D0
-.public _020AF6D4
 .public _020AF700
 .public _022A4BD8
 .public _s32_div_f
@@ -78,6 +77,10 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
+.public ModifyDefensiveStat
+.public ModifyHpStat
+.public ModifyIqStat
+.public ModifyOffensiveStat
 .public OpenWaza
 .public PROTEIN_STAT_BOOST
 .public Rand16Bit
@@ -98,10 +101,7 @@
 .public sub_0200D1F0
 .public sub_02010044
 .public sub_0201007C
-.public sub_02054FB8
-.public sub_02054FEC
-.public sub_02055020
-.public sub_02055054
+.public SYNTH_BIN_FILE_PTR
 .public TYPE_SPECIFIC_EXCLUSIVE_ITEMS
 .public UnloadFile
 .public vsprintf

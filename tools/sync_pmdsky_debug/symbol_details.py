@@ -136,7 +136,7 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'sTexStartAddrTable': 'TEX_START_ADDR_TABLE',
     'SVC_CpuSet': 'Svc_CpuSet',
     'SVC_SoftReset': 'Svc_SoftReset',
-    'SVC_WaitByLoop': 'Svc_WaitByLo/.op',
+    'SVC_WaitByLoop': 'Svc_WaitByLoop',
     'VEC_CrossProduct': 'Vec_CrossProduct',
     'VEC_Distance': 'Vec_Distance',
     'VEC_DotProduct': 'Vec_DotProduct',

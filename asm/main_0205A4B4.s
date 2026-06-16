@@ -300,14 +300,14 @@ _0205A900:
 	mov r0, r4
 	mov r2, r7
 	mov r1, #4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldrb r0, [r6, #0x16]
 	bl GetTypeStringId
 	mov r3, r0
 	mov r0, r4
 	mov r1, #0x38
 	mov r2, r7
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldrb r0, [r6, #0x17]
 	cmp r0, #0
 	beq _0205A954
@@ -316,13 +316,13 @@ _0205A900:
 	mov r0, r4
 	mov r1, #0x68
 	mov r2, r7
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _0205A954:
 	ldr r3, _0205ADE8 ; =0x00000973
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x1c
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldrb r0, [r6, #0x18]
 	bl GetAbilityDescStringId
 	bl StringFromId
@@ -415,7 +415,7 @@ _0205AAA8:
 	mov r0, r4
 	mov r1, #0xc
 	mov r2, #0x10
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _0205AD98
 _0205AAC8:
 	ldrsh r1, [r6]
@@ -504,7 +504,7 @@ _0205ABEC:
 	mov r0, r4
 	mov r1, #0xc
 	mov r2, #0x20
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _0205AD98
 _0205AC0C:
 	bl AllocateTemp1024ByteBufferFromPool
@@ -546,7 +546,7 @@ _0205AC5C:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x1f
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldrb r2, [r6, #0x1a]
 	mov r1, r5
 	add r0, sp, #0xbc
@@ -622,7 +622,7 @@ _0205AC5C:
 #else
 	mov r2, #0x67
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _0205AD98:
 	add sp, sp, #0x184
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -684,7 +684,7 @@ CreateMonsterSummaryFromTeamMember: ; 0x0205AE28
 	mov r1, r4
 	add r0, sb, #2
 	mov r2, #0x4e
-	bl sub_02056084
+	bl GetRecoloredGroundMonsterName
 	ldrsh r0, [r8, #0xc]
 	mov r5, #0
 	strh r0, [sb]

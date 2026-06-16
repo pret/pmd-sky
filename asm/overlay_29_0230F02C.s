@@ -126,7 +126,7 @@ _0230F2B0:
 	orrne r0, r0, #0x20
 	strneb r0, [r4]
 	mov r0, r4
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	bl AddMoneyCarried
 	mov r1, r4
 	mov r0, #0

@@ -17,6 +17,7 @@
 .public GetLeaderActionId
 .public GetLeaderMonster
 .public GetMessageLogPreprocessorArgs
+.public GetMonsterOrTrapName
 .public GetTile
 .public HandleMovesMenuWrapper0
 .public HideTileGrid
@@ -26,7 +27,6 @@
 .public MovesMenu
 .public OthersMenu
 .public ov29_022E0B44
-.public ov29_022E2A78
 .public ov29_022EA370
 .public ov29_022F0C1C
 .public ov29_022F0C3C

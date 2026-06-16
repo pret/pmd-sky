@@ -502,7 +502,7 @@ _0234515C:
 	orrne r0, r0, #0x20
 	strneb r0, [r5]
 	mov r0, r5
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	mov r6, r0
 	ldr r0, _0234551C ; =0x00001308
 	bl PlaySeByIdIfNotSilence

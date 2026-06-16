@@ -458,7 +458,7 @@ _0238A704:
 	blx r2
 	b _0238A720
 _0238A71C:
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 _0238A720:
 	mov r0, #4
 	b _0238A8D4
@@ -466,7 +466,7 @@ _0238A728:
 	ldr r0, [ip, #0x838]
 	tst r0, #0x100
 	bne _0238A740
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238A8D0
 _0238A740:
@@ -490,7 +490,7 @@ _0238A77C:
 	ldr r1, [r3, #0x838]
 	tst r1, #0x100
 	bne _0238A78C
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 _0238A78C:
 	add r0, sp, #0x54
 	mov r4, #0
@@ -533,7 +533,7 @@ _0238A818:
 	ldr r0, [ip, #0x838]
 	tst r0, #0x100
 	bne _0238A830
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238A8D0
 _0238A830:
@@ -2948,7 +2948,7 @@ _0238C8C0:
 	blx r2
 	b _0238C8E4
 _0238C8E0:
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 _0238C8E4:
 	mov r0, #4
 	b _0238C8F0

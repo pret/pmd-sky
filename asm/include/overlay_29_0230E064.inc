@@ -9,6 +9,8 @@
 .public GetDirectionTowardsPosition
 .public GetMessageLogPreprocessorArgs
 .public GetNameString
+.public GetRecoloredNameOfTeamMemberAtIdx
+.public GetRecoloredTeamMemberName
 .public HandleFaint
 .public InitTeamMember
 .public IsMonsterOnTeam
@@ -52,6 +54,4 @@
 .public StrncpyName
 .public StrncpySimpleNoPad
 .public sub_02056698
-.public sub_020584FC
-.public sub_020585B4
 .public SubstitutePlaceholderStringTags

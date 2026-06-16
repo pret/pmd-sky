@@ -29,7 +29,6 @@
 .public MemAlloc
 .public MemFree
 .public ov11_022DC504
-.public ov11_022E6E68
 .public ov11_0238A134
 .public PlaySeVolumeWrapper
 .public PreprocessString
@@ -37,6 +36,7 @@
 .public RemoveItem
 .public RemoveItemAtIdxInStorage
 .public RemoveItemNoHole
+.public ReturnScriptMenuResultZero
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public ShowDialogueBox

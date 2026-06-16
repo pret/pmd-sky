@@ -1197,7 +1197,7 @@ _0200FC3C:
 	cmp r0, #0xb7
 	bne _0200FC84
 	mov r0, r5
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	bl AddMoneyCarried
 	mov r0, r5
 	bl ItemZInit
@@ -1238,7 +1238,7 @@ _0200FCC8:
 	mov r0, r4
 	bic r1, r1, #8
 	strb r1, [r4]
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	bl AddMoneyCarried
 	mov r0, r4
 	bl ItemZInit
@@ -2107,8 +2107,8 @@ _02010774: .word BAG_ITEMS_PTR_MIRROR
 _02010778: .word SetMoneyStored
 	arm_func_end AddMoneyStored
 
-	arm_func_start sub_0201077C
-sub_0201077C: ; 0x0201077C
+	arm_func_start GetEggSpecies
+GetEggSpecies: ; 0x0201077C
 	ldr r0, _02010790 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -2116,10 +2116,10 @@ sub_0201077C: ; 0x0201077C
 	bx lr
 	.align 2, 0
 _02010790: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0201077C
+	arm_func_end GetEggSpecies
 
-	arm_func_start sub_02010794
-sub_02010794: ; 0x02010794
+	arm_func_start SetEggSpecies
+SetEggSpecies: ; 0x02010794
 	ldr r1, _020107A8 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1300
@@ -2127,10 +2127,10 @@ sub_02010794: ; 0x02010794
 	bx lr
 	.align 2, 0
 _020107A8: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010794
+	arm_func_end SetEggSpecies
 
-	arm_func_start sub_020107AC
-sub_020107AC: ; 0x020107AC
+	arm_func_start GetUnkGameState0x13a6
+GetUnkGameState0x13a6: ; 0x020107AC
 	ldr r0, _020107C0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -2138,10 +2138,10 @@ sub_020107AC: ; 0x020107AC
 	bx lr
 	.align 2, 0
 _020107C0: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_020107AC
+	arm_func_end GetUnkGameState0x13a6
 
-	arm_func_start sub_020107C4
-sub_020107C4: ; 0x020107C4
+	arm_func_start SetUnkGameState0x13a6
+SetUnkGameState0x13a6: ; 0x020107C4
 	ldr r1, _020107D8 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1300
@@ -2149,10 +2149,10 @@ sub_020107C4: ; 0x020107C4
 	bx lr
 	.align 2, 0
 _020107D8: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_020107C4
+	arm_func_end SetUnkGameState0x13a6
 
-	arm_func_start sub_020107DC
-sub_020107DC: ; 0x020107DC
+	arm_func_start GetEggHatchTimer
+GetEggHatchTimer: ; 0x020107DC
 	ldr r0, _020107F0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -2160,10 +2160,10 @@ sub_020107DC: ; 0x020107DC
 	bx lr
 	.align 2, 0
 _020107F0: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_020107DC
+	arm_func_end GetEggHatchTimer
 
-	arm_func_start sub_020107F4
-sub_020107F4: ; 0x020107F4
+	arm_func_start SetEggHatchTimer
+SetEggHatchTimer: ; 0x020107F4
 	ldr r1, _02010808 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1300
@@ -2171,10 +2171,10 @@ sub_020107F4: ; 0x020107F4
 	bx lr
 	.align 2, 0
 _02010808: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_020107F4
+	arm_func_end SetEggHatchTimer
 
-	arm_func_start sub_0201080C
-sub_0201080C: ; 0x0201080C
+	arm_func_start DecrementEggHatchTimer
+DecrementEggHatchTimer: ; 0x0201080C
 	ldr r0, _0201082C ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -2185,10 +2185,10 @@ sub_0201080C: ; 0x0201080C
 	bx lr
 	.align 2, 0
 _0201082C: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0201080C
+	arm_func_end DecrementEggHatchTimer
 
-	arm_func_start sub_02010830
-sub_02010830: ; 0x02010830
+	arm_func_start RemoveInvalidKecleonShop1Items
+RemoveInvalidKecleonShop1Items: ; 0x02010830
 	ldr r1, _02010868 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r1, [r1]
@@ -2206,7 +2206,7 @@ _02010848:
 	bx lr
 	.align 2, 0
 _02010868: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010830
+	arm_func_end RemoveInvalidKecleonShop1Items
 
 	arm_func_start RemoveItemFromKecleonShop1
 RemoveItemFromKecleonShop1: ; 0x0201086C

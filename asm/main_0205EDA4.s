@@ -69,7 +69,7 @@ sub_0205EE40: ; 0x0205EE40
 	bl GetMaxMembersAllowed
 	cmp r0, #1
 	bne _0205EE80
-	bl sub_020568A4
+	bl GetAppointedLeaderMemberIdx
 	strh r0, [sp, #4]
 	ldrsh r0, [sp, #4]
 	cmp r0, #0
@@ -285,8 +285,8 @@ sub_0205F0F0: ; 0x0205F0F0
 _0205F114: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205F0F0
 
-	arm_func_start sub_0205F118
-sub_0205F118: ; 0x0205F118
+	arm_func_start WasMissionCompletedToday
+WasMissionCompletedToday: ; 0x0205F118
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r3, #0
@@ -406,7 +406,7 @@ _0205F29C:
 	strneb r0, [r6]
 	ldrb r0, [r6]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0205F118
+	arm_func_end WasMissionCompletedToday
 
 	arm_func_start sub_0205F2B8
 sub_0205F2B8: ; 0x0205F2B8
@@ -1380,8 +1380,8 @@ sub_0205FE80: ; 0x0205FE80
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0205FE80
 
-	arm_func_start sub_0205FF80
-sub_0205FF80: ; 0x0205FF80
+	arm_func_start GetMissionSpecificFixedRoom
+GetMissionSpecificFixedRoom: ; 0x0205FF80
 	stmdb sp!, {r3, lr}
 	cmp r0, #3
 	mov r2, #0
@@ -1397,9 +1397,9 @@ _0205FFA8:
 	bne _0205FFCC
 	cmp r1, #6
 	bne _02060070
-	ldr r0, _02060078 ; =_020A18FC
+	ldr r0, _02060078 ; =OUTLAW_HIDEOUT_FIXED_ROOM_IDS
 	sub r1, r2, #1
-	bl sub_02060084
+	bl SelectRandomFixedRoomInRange
 	mov r2, r0
 	b _02060070
 _0205FFCC:
@@ -1416,9 +1416,9 @@ _0205FFE0: ; jump table
 	b _02060024 ; case 4
 	b _0206002C ; case 5
 _0205FFF8:
-	ldr r0, _0206007C ; =_020A1904
+	ldr r0, _0206007C ; =CHALLENGE_NORMAL_FIXED_ROOM_IDS
 	sub r1, r2, #1
-	bl sub_02060084
+	bl SelectRandomFixedRoomInRange
 	mov r2, r0
 	b _02060070
 _0206000C:
@@ -1443,27 +1443,27 @@ _02060034:
 	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _02060060
-	ldr r0, _02060080 ; =_020A1958
+	ldr r0, _02060080 ; =TREASURE_MEMO_FIXED_ROOM_IDS
 	mov r1, #0xf
-	bl sub_02060084
+	bl SelectRandomFixedRoomInRange
 	mov r2, r0
 	b _02060070
 _02060060:
-	ldr r0, _02060080 ; =_020A1958
+	ldr r0, _02060080 ; =TREASURE_MEMO_FIXED_ROOM_IDS
 	mvn r1, #0
-	bl sub_02060084
+	bl SelectRandomFixedRoomInRange
 	mov r2, r0
 _02060070:
 	mov r0, r2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02060078: .word _020A18FC
-_0206007C: .word _020A1904
-_02060080: .word _020A1958
-	arm_func_end sub_0205FF80
+_02060078: .word OUTLAW_HIDEOUT_FIXED_ROOM_IDS
+_0206007C: .word CHALLENGE_NORMAL_FIXED_ROOM_IDS
+_02060080: .word TREASURE_MEMO_FIXED_ROOM_IDS
+	arm_func_end GetMissionSpecificFixedRoom
 
-	arm_func_start sub_02060084
-sub_02060084: ; 0x02060084
+	arm_func_start SelectRandomFixedRoomInRange
+SelectRandomFixedRoomInRange: ; 0x02060084
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r2, r5
@@ -1485,10 +1485,10 @@ _020600B8:
 	bl _s32_div_f
 	ldrb r0, [r5, r1]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02060084
+	arm_func_end SelectRandomFixedRoomInRange
 
-	arm_func_start sub_020600CC
-sub_020600CC: ; 0x020600CC
+	arm_func_start ReadRescueBinFile
+ReadRescueBinFile: ; 0x020600CC
 	stmdb sp!, {r3, lr}
 	ldr r0, _02060144 ; =_020B0AD8
 	ldr r0, [r0, #0x24]
@@ -1523,7 +1523,7 @@ sub_020600CC: ; 0x020600CC
 _02060144: .word _020B0AD8
 _02060148: .word _020B0AFC
 _0206014C: .word _020A462C
-	arm_func_end sub_020600CC
+	arm_func_end ReadRescueBinFile
 
 	arm_func_start GenerateMissionDetailsStruct
 GenerateMissionDetailsStruct: ; 0x02060150
@@ -1536,12 +1536,12 @@ GenerateMissionDetailsStruct: ; 0x02060150
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	add r1, r4, #0x18
-	bl sub_02062E5C
+	bl InitMissionReward
 	mov r0, r5
 	mov r1, r4
 	bl sub_02060274
 	mov r1, r5
-	bl sub_0206096C
+	bl MatchMissionTemplateToMission
 	str r0, [r4, #0x60]
 	add r0, r5, #4
 	str r0, [r4, #8]
@@ -2148,8 +2148,8 @@ _02060964:
 	ldmia sp!, {r3, pc}
 	arm_func_end ValidateLegendaryChallengeMission
 
-	arm_func_start sub_0206096C
-sub_0206096C: ; 0x0206096C
+	arm_func_start MatchMissionTemplateToMission
+MatchMissionTemplateToMission: ; 0x0206096C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldr r2, _020609E0 ; =MISSION_VALIDATION_FUNCTION_LIST
 	mov r8, r0
@@ -2179,12 +2179,12 @@ _020609BC:
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	mov r1, r7
 	mov r0, #1
-	bl sub_0206096C
+	bl MatchMissionTemplateToMission
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _020609E0: .word MISSION_VALIDATION_FUNCTION_LIST
 _020609E4: .word _020B0AD8
-	arm_func_end sub_0206096C
+	arm_func_end MatchMissionTemplateToMission
 
 	arm_func_start SprintfStatic__020609E8
 SprintfStatic__020609E8: ; 0x020609E8
@@ -2267,8 +2267,8 @@ _02060AF4: .word MISSION_STRING_IDS
 _02060AF8: .word _020B0AD8
 	arm_func_end AppendMissionTitle
 
-	arm_func_start sub_02060AFC
-sub_02060AFC: ; 0x02060AFC
+	arm_func_start FormatMissionHeader
+FormatMissionHeader: ; 0x02060AFC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x80
 	mov r6, r0
@@ -2432,7 +2432,7 @@ _02060D18:
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x100
-	bl sub_02061FDC
+	bl AppendMissionDungeonLocation
 	ldr r1, _02060E10 ; =_020A4644
 	mov r0, r6
 	bl strcat
@@ -2465,12 +2465,12 @@ _02060D9C:
 	bne _02060DB8
 	ldr r0, [r5, #8]
 	mov r1, #0
-	bl sub_02062D9C
+	bl GetMissionRankWithCapAndModifiersAndCap
 	b _02060DC4
 _02060DB8:
 	ldrb r1, [r1, #1]
 	ldr r0, [r5, #8]
-	bl sub_02062D9C
+	bl GetMissionRankWithCapAndModifiersAndCap
 _02060DC4:
 	ldr r2, _02060E20 ; =RANK_STRING_PTR_TABLE
 	ldr r1, _02060E1C ; =_020A4678
@@ -2505,10 +2505,10 @@ _02060E14: .word _020A4674
 _02060E18: .word 0x00003C2A + SUB_02060AFC_OFFSET
 _02060E1C: .word _020A4678
 _02060E20: .word RANK_STRING_PTR_TABLE
-	arm_func_end sub_02060AFC
+	arm_func_end FormatMissionHeader
 
-	arm_func_start sub_02060E24
-sub_02060E24: ; 0x02060E24
+	arm_func_start FormatSpecialEpisodeMissionHeader
+FormatSpecialEpisodeMissionHeader: ; 0x02060E24
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #0x400
@@ -2552,7 +2552,7 @@ _02060EB0: .word 0x0000388B
 #else
 _02060EB0: .word 0x00003C4D
 #endif
-	arm_func_end sub_02060E24
+	arm_func_end FormatSpecialEpisodeMissionHeader
 
 	arm_func_start AppendMissionSummary
 AppendMissionSummary: ; 0x02060EB4
@@ -2635,8 +2635,8 @@ _02060FD0: .word 0x00000FFF
 _02060FD4: .word MISSION_STRING_IDS
 	arm_func_end AppendMissionSummary
 
-	arm_func_start sub_02060FD8
-sub_02060FD8: ; 0x02060FD8
+	arm_func_start MakeMissionDetails
+MakeMissionDetails: ; 0x02060FD8
 #ifdef JAPAN
 #define SUB_02060FD8_ARG #0x3e
 #else
@@ -2739,7 +2739,7 @@ _02061110:
 	mov r0, r8
 	mov r2, r7
 	mov r1, #4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _02061124:
 	add r0, sp, #0xfc
 	bl InitPreprocessorArgs
@@ -2785,7 +2785,7 @@ _020611AC:
 	mov r0, r8
 	mov r1, #4
 	mov r2, #0x11
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _020613D4
 _020611C0:
 	add r1, sp, #0xfc
@@ -2959,7 +2959,7 @@ _020613D4:
 	mov r2, r6
 #endif
 	mov r1, #4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _0206144C
 _02061418:
 	cmp r1, #0xe
@@ -2974,11 +2974,11 @@ _02061418:
 	mov r0, r8
 #ifdef JAPAN
 	mov r2, sl
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	add r6, r6, #0x10
 #else
 	mov r2, r6
-	bl sub_02026268
+	bl AppendStandardStringToMission
 #endif
 	b _0206144C
 _0206143C:
@@ -2989,7 +2989,7 @@ _0206143C:
 #else
 	mov r2, r6
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _0206144C:
 	ldrb r0, [sb, #0x46]
 	cmp r0, #0
@@ -3047,7 +3047,7 @@ _020614BC:
 	mov r2, r6
 	mov r1, #0x42
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _02061518
 _020614EC:
 	ldrsh r0, [sb, #0x10]
@@ -3098,7 +3098,7 @@ _02061518:
 	mov r0, r8
 	mov r1, #4
 	mov r2, #0x3a
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldrb r2, [sb, #0x46]
 	ldrsh r6, [sb, #0x16]
 	mov r0, r4
@@ -3107,7 +3107,7 @@ _02061518:
 	mov r1, #0x12c
 	ldrnesh r3, [sb, #0x12]
 	str r6, [sp]
-	bl sub_02061DC8
+	bl AppendMissionObjective
 	mov r0, r8
 	mov r3, r4
 	mov r1, SUB_02060FD8_ARG
@@ -3118,11 +3118,11 @@ _02061518:
 	mov r0, r8
 	mov r1, #4
 	mov r2, r7
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, sb
 	mov r1, r4
 	mov r2, #0x100
-	bl sub_02061FDC
+	bl AppendMissionDungeonLocation
 	mov r0, r8
 	mov r1, SUB_02060FD8_ARG
 	mov r2, r7
@@ -3136,7 +3136,7 @@ _02061518:
 	mov r0, r8
 	mov r2, r7
 	mov r1, #4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	add r0, sp, #0xfc
 	bl InitPreprocessorArgs
 	ldrb r0, [sb, #0x49]
@@ -3196,12 +3196,12 @@ _020616C8:
 	mov r0, r8
 	mov r2, r7
 	mov r1, #4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldr r3, _02061C2C ; =0x00003C2A
 	mov r0, r8
 	mov r2, r7
 	mov r1, SUB_02060FD8_ARG
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _020617D4
 _02061710:
 	ldrb r0, [sb, #0x46]
@@ -3209,22 +3209,22 @@ _02061710:
 	bne _02061740
 	ldr r0, [sb, #8]
 	mov r1, #0
-	bl sub_02062D9C
+	bl GetMissionRankWithCapAndModifiersAndCap
 	mov sl, r0
 	ldr r0, [sb, #8]
 	mov r1, #0
-	bl sub_02062D5C
+	bl GetMissionRankWithCapAndModifiers
 	ldr r1, _02061C30 ; =MISSION_RANK_POINTS
 	b _02061764
 _02061740:
 	ldrb r1, [r1, #1]
 	ldr r0, [sb, #8]
-	bl sub_02062D9C
+	bl GetMissionRankWithCapAndModifiersAndCap
 	ldr r1, [sb, #0x5c]
 	mov sl, r0
 	ldrb r1, [r1, #1]
 	ldr r0, [sb, #8]
-	bl sub_02062D5C
+	bl GetMissionRankWithCapAndModifiers
 	ldr r1, _02061C30 ; =MISSION_RANK_POINTS
 _02061764:
 	add r7, r7, #0xd
@@ -3233,7 +3233,7 @@ _02061764:
 	mov r0, r8
 	mov r2, r7
 	mov r1, #4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldr r1, _02061C34 ; =RANK_STRING_PTR_TABLE
 	mov r0, r8
 	ldr r3, [r1, sl, lsl #2]
@@ -3273,13 +3273,13 @@ _020617D4:
 	ldr r3, _02061C3C ; =0x00003C2C
 	mov r0, r8
 	mov r2, r6
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _02061820
 _02061810:
 	ldr r3, _02061C40 ; =0x00003C2B
 	mov r0, r8
 	mov r2, r6
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _02061820:
 	ldrb r1, [sb, #0x1a]
 	cmp r1, #7
@@ -3470,7 +3470,7 @@ _02061AAC:
 	mov r0, r8
 	add r2, r7, #0xd
 	mov r1, #4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r6, #0
 	ldr r2, _02061C50 ; =_020A3CBC
 	mov r0, r5
@@ -3501,7 +3501,7 @@ _02061B48:
 	mov r0, r8
 	add r2, r7, #0xd
 	mov r1, #4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldrsh r1, [sb, #0x3c]
 	ldr r0, _02061C5C ; =0x00003C30
 	str r1, [sp, #0x5c]
@@ -3523,7 +3523,7 @@ _02061BA4:
 	ldr r2, [sb, #0x5c]
 	mov r0, r8
 	add r3, r7, #0x1a
-	bl sub_02061CC8
+	bl PrintWonderMailSkyCode
 	mov r0, r4
 	bl MemFree
 	mov r0, r5
@@ -3574,17 +3574,17 @@ _02061C50: .word _020A3CBC
 _02061C54: .word 0x00003C2E + SUB_02060FD8_OFFSET
 _02061C58: .word 0x00003C2F + SUB_02060FD8_OFFSET
 _02061C5C: .word 0x00003C30 + SUB_02060FD8_OFFSET
-	arm_func_end sub_02060FD8
+	arm_func_end MakeMissionDetails
 
-	arm_func_start sub_02061C60
-sub_02061C60: ; 0x02061C60
+	arm_func_start MakeSpecialEpisodeMissionDetails
+MakeSpecialEpisodeMissionDetails: ; 0x02061C60
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _02061CBC ; =0x00003C1E
 	mov r4, r1
 	mov r1, #4
 	mov r2, #0
 	mov r5, r0
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldr r3, _02061CC0 ; =_020A46A8
 	mov r0, r5
 	mov r1, #0x6c
@@ -3594,12 +3594,12 @@ sub_02061C60: ; 0x02061C60
 	mov r0, r5
 	mov r1, #4
 	mov r2, #0x11
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, r5
 	mov r2, r4
 	mov r1, #1
 	mov r3, #0x7b
-	bl sub_02061CC8
+	bl PrintWonderMailSkyCode
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 #if defined(EUROPE)
@@ -3612,10 +3612,10 @@ sub_02061C60: ; 0x02061C60
 _02061CBC: .word 0x00003C1E + SUB_02061C60_OFFSET
 _02061CC0: .word _020A46A8
 _02061CC4: .word 0x00003C4E + SUB_02061C60_OFFSET
-	arm_func_end sub_02061C60
+	arm_func_end MakeSpecialEpisodeMissionDetails
 
-	arm_func_start sub_02061CC8
-sub_02061CC8: ; 0x02061CC8
+	arm_func_start PrintWonderMailSkyCode
+PrintWonderMailSkyCode: ; 0x02061CC8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x28
 	mov r4, r2
@@ -3631,7 +3631,7 @@ sub_02061CC8: ; 0x02061CC8
 	ldr r3, _02061DC4 ; =0x00003C31
 	mov r2, sb
 	mov r1, #4
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	add r0, sp, #4
 	mov r1, r4
 	add sb, sb, #0xd
@@ -3691,10 +3691,10 @@ _02061DC4: .word 0x0000386F
 #else
 _02061DC4: .word 0x00003C31
 #endif
-	arm_func_end sub_02061CC8
+	arm_func_end PrintWonderMailSkyCode
 
-	arm_func_start sub_02061DC8
-sub_02061DC8: ; 0x02061DC8
+	arm_func_start AppendMissionObjective
+AppendMissionObjective: ; 0x02061DC8
 #if defined(EUROPE)
 #define SUB_02061DC8_WORD_OFFSET 2
 #elif defined(JAPAN)
@@ -3837,7 +3837,7 @@ _02061F34: .word 0x00003C44 + SUB_02061DC8_WORD_OFFSET
 _02061F38: .word 0x00003C45 + SUB_02061DC8_WORD_OFFSET
 _02061F3C: .word 0x00003C47 + SUB_02061DC8_WORD_OFFSET
 _02061F40: .word 0x00003C46 + SUB_02061DC8_WORD_OFFSET
-	arm_func_end sub_02061DC8
+	arm_func_end AppendMissionObjective
 
 	arm_func_start sub_02061F44
 sub_02061F44: ; 0x02061F44
@@ -3857,7 +3857,7 @@ sub_02061F44: ; 0x02061F44
 	mov r1, r5
 	ldrnesh r3, [r4, #0x10]
 	str ip, [sp]
-	bl sub_02061DC8
+	bl AppendMissionObjective
 	add sp, sp, #0x6c
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	arm_func_end sub_02061F44
@@ -3880,13 +3880,13 @@ sub_02061F90: ; 0x02061F90
 	str ip, [sp, #8]
 	str r3, [sp, #0x64]
 	str r4, [sp, #0x5c]
-	bl sub_02061FDC
+	bl AppendMissionDungeonLocation
 	add sp, sp, #0x68
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_02061F90
 
-	arm_func_start sub_02061FDC
-sub_02061FDC: ; 0x02061FDC
+	arm_func_start AppendMissionDungeonLocation
+AppendMissionDungeonLocation: ; 0x02061FDC
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x54
 	mov r7, r0
@@ -4042,7 +4042,7 @@ _020621FC: .word 0x00003C35 + SUB_02061FDC_OFFSET
 _02062200: .word 0x00003C34 + SUB_02061FDC_OFFSET
 _02062204: .word 0x00003C36 + SUB_02061FDC_OFFSET
 _02062208: .word 0x00003C32 + SUB_02061FDC_OFFSET
-	arm_func_end sub_02061FDC
+	arm_func_end AppendMissionDungeonLocation
 
 	arm_func_start sub_0206220C
 sub_0206220C: ; 0x0206220C
@@ -4089,8 +4089,8 @@ _02062280:
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_02062248
 
-	arm_func_start sub_02062290
-sub_02062290: ; 0x02062290
+	arm_func_start SumValidMissionCategoryWeights
+SumValidMissionCategoryWeights: ; 0x02062290
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
 	mov r0, #0x4e
@@ -4288,7 +4288,7 @@ _02062524:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02062544: .word _020B0AD8
-	arm_func_end sub_02062290
+	arm_func_end SumValidMissionCategoryWeights
 
 	arm_func_start sub_02062548
 sub_02062548: ; 0x02062548
@@ -4307,8 +4307,8 @@ sub_02062548: ; 0x02062548
 _02062574: .word _020B0AD8
 	arm_func_end sub_02062548
 
-	arm_func_start sub_02062578
-sub_02062578: ; 0x02062578
+	arm_func_start GetRandomMissionTemplate
+GetRandomMissionTemplate: ; 0x02062578
 	stmdb sp!, {r4, lr}
 	ldr r2, _02062768 ; =_020B0AD8
 	mov r1, #0x258
@@ -4365,7 +4365,7 @@ _02062638:
 	bne _02062750
 	ldrh r0, [r4, #0xc]
 	and r0, r0, #0xff
-	bl sub_02063394
+	bl CheckDungeonMissionUnlockConditions
 	cmp r0, #0
 	beq _02062750
 	mov r0, #0
@@ -4407,7 +4407,7 @@ _020626C0:
 	bne _02062754
 	ldrb r0, [r4, #0x20]
 	add r1, r4, #0x21
-	bl sub_0205E2B8
+	bl AlreadyHasSimilarMission
 	cmp r0, #0
 	beq _02062750
 	mov r0, #0
@@ -4425,7 +4425,7 @@ _020626F4:
 	beq _02062754
 	ldrb r0, [r4, #0x20]
 	add r1, r4, #0x21
-	bl sub_0205E2B8
+	bl AlreadyHasSimilarMission
 	cmp r0, #0
 	beq _02062750
 	ldrh r0, [r4, #0xc]
@@ -4447,7 +4447,7 @@ _02062760:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02062768: .word _020B0AD8
-	arm_func_end sub_02062578
+	arm_func_end GetRandomMissionTemplate
 
 	arm_func_start sub_0206276C
 sub_0206276C: ; 0x0206276C
@@ -4500,14 +4500,14 @@ sub_020627F4: ; 0x020627F4
 _02062800: .word _020B0AD8
 	arm_func_end sub_020627F4
 
-	arm_func_start sub_02062804
-sub_02062804: ; 0x02062804
+	arm_func_start LoadMissionTemplates
+LoadMissionTemplates: ; 0x02062804
 	ldr r0, _02062810 ; =_020B0AD8
 	ldr r0, [r0, #0x10]
 	bx lr
 	.align 2, 0
 _02062810: .word _020B0AD8
-	arm_func_end sub_02062804
+	arm_func_end LoadMissionTemplates
 
 	arm_func_start sub_02062814
 sub_02062814: ; 0x02062814
@@ -4921,7 +4921,7 @@ _02062D38:
 	arm_func_start sub_02062D40
 sub_02062D40: ; 0x02062D40
 	stmdb sp!, {r3, lr}
-	bl sub_0204F7A8
+	bl GetMissionRank__0204FAE0
 	cmp r0, #7
 	movle r0, #1
 	movgt r0, #0
@@ -4929,11 +4929,11 @@ sub_02062D40: ; 0x02062D40
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02062D40
 
-	arm_func_start sub_02062D5C
-sub_02062D5C: ; 0x02062D5C
+	arm_func_start GetMissionRankWithCapAndModifiers
+GetMissionRankWithCapAndModifiers: ; 0x02062D5C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl sub_0204F7A8
+	bl GetMissionRank__0204FAE0
 	cmp r4, #2
 	cmpne r4, #3
 	cmpne r4, #4
@@ -4949,17 +4949,17 @@ _02062D90:
 	cmp r0, #0xf
 	movgt r0, #0xf
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02062D5C
+	arm_func_end GetMissionRankWithCapAndModifiers
 
-	arm_func_start sub_02062D9C
-sub_02062D9C: ; 0x02062D9C
+	arm_func_start GetMissionRankWithCapAndModifiersAndCap
+GetMissionRankWithCapAndModifiersAndCap: ; 0x02062D9C
 	stmdb sp!, {r3, lr}
-	bl sub_02062D5C
+	bl GetMissionRankWithCapAndModifiers
 	and r0, r0, #0xff
 	cmp r0, #0x10
 	movhs r0, #0xf
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_02062D9C
+	arm_func_end GetMissionRankWithCapAndModifiersAndCap
 
 	arm_func_start sub_02062DB4
 sub_02062DB4: ; 0x02062DB4
@@ -4973,7 +4973,7 @@ _02062DC0: .word RANK_STRING_PTR_TABLE
 	arm_func_start sub_02062DC4
 sub_02062DC4: ; 0x02062DC4
 	stmdb sp!, {r3, lr}
-	bl sub_02062D5C
+	bl GetMissionRankWithCapAndModifiers
 	ldr r1, _02062DD8 ; =MISSION_RANK_POINTS
 	ldr r0, [r1, r0, lsl #2]
 	ldmia sp!, {r3, pc}
@@ -5025,14 +5025,14 @@ sub_02062E34: ; 0x02062E34
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02062E34
 
-	arm_func_start sub_02062E5C
-sub_02062E5C: ; 0x02062E5C
+	arm_func_start InitMissionReward
+InitMissionReward: ; 0x02062E5C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	ldrb r1, [r5, #1]
 	add r0, r5, #4
-	bl sub_02062D9C
+	bl GetMissionRankWithCapAndModifiersAndCap
 	mov ip, #0
 	str ip, [r4, #8]
 	mov r3, ip
@@ -5098,7 +5098,7 @@ _02062F50:
 	ldrb r1, [r5, #1]
 	add r0, r5, #4
 	add r2, r4, #0x1a
-	bl sub_020630A4
+	bl RollRandomItemReward
 	ldrsh r1, [r4, #0x14]
 	ldrsh r0, [r4, #0x1a]
 	cmp r1, r0
@@ -5114,7 +5114,7 @@ _02062F8C:
 	ldrb r1, [r5, #1]
 	add r0, r5, #4
 	add r2, r4, #0x20
-	bl sub_020630A4
+	bl RollRandomItemReward
 	ldrsh r1, [r4, #0x20]
 	ldrsh r0, [r4, #0x14]
 	cmp r0, r1
@@ -5179,14 +5179,14 @@ _02063074:
 	add r0, r5, #4
 	strh r1, [r4]
 	ldrb r1, [r5, #1]
-	bl sub_02062D5C
+	bl GetMissionRankWithCapAndModifiers
 	ldr r1, _02063098 ; =MISSION_RANK_POINTS
 	ldr r0, [r1, r0, lsl #2]
 	str r0, [r4, #0x28]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02063098: .word MISSION_RANK_POINTS
-	arm_func_end sub_02062E5C
+	arm_func_end InitMissionReward
 
 	arm_func_start sub_0206309C
 sub_0206309C: ; 0x0206309C
@@ -5194,13 +5194,13 @@ sub_0206309C: ; 0x0206309C
 	bx lr
 	arm_func_end sub_0206309C
 
-	arm_func_start sub_020630A4
-sub_020630A4: ; 0x020630A4
+	arm_func_start RollRandomItemReward
+RollRandomItemReward: ; 0x020630A4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r2
 	mov r5, #1
-	bl sub_02062D5C
+	bl GetMissionRankWithCapAndModifiers
 	mov r6, r0
 	mov r0, r8
 	mov r1, r6
@@ -5217,7 +5217,7 @@ _020630E0:
 	bne _020630D0
 	strh r0, [r7]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_020630A4
+	arm_func_end RollRandomItemReward
 
 	arm_func_start sub_020630F0
 sub_020630F0: ; 0x020630F0
@@ -5251,8 +5251,8 @@ _02063154:
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_020630F0
 
-	arm_func_start sub_0206315C
-sub_0206315C: ; 0x0206315C
+	arm_func_start GenerateMissionRewards
+GenerateMissionRewards: ; 0x0206315C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -5318,7 +5318,7 @@ _02063230: .word OUTLAW_MISSION_REWARD_TYPE_WEIGHTS
 _02063234: .word 0x0000031E
 _02063238: .word DEFAULT_MISSION_REWARD_TYPE_WEIGHTS
 _0206323C: .word CAFE_MISSION_REWARD_TYPE_WEIGHTS
-	arm_func_end sub_0206315C
+	arm_func_end GenerateMissionRewards
 
 	arm_func_start sub_02063240
 sub_02063240: ; 0x02063240
@@ -5349,7 +5349,7 @@ sub_02063240: ; 0x02063240
 	bne _020632B8
 	ldrb r1, [r4, #1]
 	add r0, r4, #4
-	bl sub_02062D9C
+	bl GetMissionRankWithCapAndModifiersAndCap
 	cmp r0, #0xb
 	bge _020632C0
 _020632B8:
@@ -5406,7 +5406,7 @@ _0206336C:
 	ldrb r1, [r4, #1]
 	add r0, r4, #4
 	add r2, r4, #0x18
-	bl sub_020630A4
+	bl RollRandomItemReward
 	ldrsh r1, [r4, #0x14]
 	ldrsh r0, [r4, #0x18]
 	cmp r1, r0
@@ -5416,8 +5416,8 @@ _0206338C:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	arm_func_end sub_02063240
 
-	arm_func_start sub_02063394
-sub_02063394: ; 0x02063394
+	arm_func_start CheckDungeonMissionUnlockConditions
+CheckDungeonMissionUnlockConditions: ; 0x02063394
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	bl DungeonSwapIdToIdx
@@ -5460,7 +5460,7 @@ _0206340C:
 	.align 2, 0
 _0206341C: .word MISSION_DUNGEON_UNLOCK_TABLE
 _02063420: .word _020A3CAD
-	arm_func_end sub_02063394
+	arm_func_end CheckDungeonMissionUnlockConditions
 
 	arm_func_start sub_02063424
 sub_02063424: ; 0x02063424
@@ -5552,8 +5552,8 @@ sub_02063504: ; 0x02063504
 _02063518: .word _020B0AD8
 	arm_func_end sub_02063504
 
-	arm_func_start sub_0206351C
-sub_0206351C: ; 0x0206351C
+	arm_func_start ZeroInitMissionRewardDataStruct
+ZeroInitMissionRewardDataStruct: ; 0x0206351C
 	mov ip, #0
 	strh ip, [r0]
 	str ip, [r0, #8]
@@ -5572,7 +5572,7 @@ _02063534:
 	mov r1, #1
 	str r1, [r0, #4]
 	bx lr
-	arm_func_end sub_0206351C
+	arm_func_end ZeroInitMissionRewardDataStruct
 
 	arm_func_start sub_02063560
 sub_02063560: ; 0x02063560
@@ -7790,7 +7790,7 @@ _02065128:
 	strh r0, [r5]
 	b _020651A4
 _02065134:
-	bl sub_020568A4
+	bl GetAppointedLeaderMemberIdx
 	mov r4, r0
 	mvn r0, #0
 	cmp r4, r0
@@ -7875,7 +7875,7 @@ _02065254:
 	strh r0, [r5]
 	b _020652D0
 _02065260:
-	bl sub_020568A4
+	bl GetAppointedLeaderMemberIdx
 	mov r4, r0
 	mvn r0, #0
 	cmp r4, r0
@@ -7964,7 +7964,7 @@ _0206536C:
 	b _0206548C
 _02065390:
 	add r0, sp, #8
-	bl sub_02056E04
+	bl GetUnitNpcIds
 	cmp r4, r0
 	bge _02065414
 	mvn r0, #0
@@ -7995,7 +7995,7 @@ _020653DC:
 	b _0206548C
 _02065400:
 	add r0, sp, #0
-	bl sub_02056D70
+	bl GetAdventureNpcIds
 	cmp r4, r0
 	mvnlt r0, #0
 	blt _0206548C
@@ -8004,7 +8004,7 @@ _02065414:
 	strh r0, [r5]
 	b _0206548C
 _02065420:
-	bl sub_020568A4
+	bl GetAppointedLeaderMemberIdx
 	ldrsh r1, [r5]
 	mov r6, r0
 	cmp r1, #0x3f
@@ -8102,7 +8102,7 @@ _02065540:
 	b _0206595C
 _02065580:
 	add r0, sp, #8
-	bl sub_02056E04
+	bl GetUnitNpcIds
 	cmp r4, r0
 	bge _020656A8
 	ldr r0, _0206596C ; =TEAM_MEMBER_TABLE_PTR
@@ -8165,7 +8165,7 @@ _02065640:
 	b _0206595C
 _0206566C:
 	add r0, sp, #0
-	bl sub_02056D70
+	bl GetAdventureNpcIds
 	cmp r4, r0
 	bge _020656A8
 	ldr r0, _0206596C ; =TEAM_MEMBER_TABLE_PTR
@@ -8437,7 +8437,7 @@ _020659F8:
 	cmpne r1, #0xf
 	cmpne r1, #0x3f
 	bne _02065A10
-	bl sub_020568A4
+	bl GetAppointedLeaderMemberIdx
 	b _02065B04
 _02065A10:
 	cmp r1, #0x40
@@ -8465,7 +8465,7 @@ _02065A30:
 	bne _02065B04
 _02065A64:
 	add r0, sp, #8
-	bl sub_02056E04
+	bl GetUnitNpcIds
 	cmp r4, r0
 	bge _02065B00
 	add r0, sp, #8
@@ -8488,7 +8488,7 @@ _02065A84:
 	bne _02065B04
 _02065AB8:
 	add r0, sp, #0
-	bl sub_02056D70
+	bl GetAdventureNpcIds
 	cmp r4, r0
 	bge _02065B00
 	add r0, sp, #0
@@ -8505,7 +8505,7 @@ _02065AE8:
 	bne _02065B00
 	mov r0, #0x214
 	mov r1, #0
-	bl sub_020555D0
+	bl GetRecruitMentryIdBySpecies
 	b _02065B04
 _02065B00:
 	mvn r0, #0
@@ -8559,24 +8559,24 @@ SetActorTalkSub: ; 0x02065B60
 _02065B6C: .word _020B0B08
 	arm_func_end SetActorTalkSub
 
-	arm_func_start sub_02065B70
-sub_02065B70: ; 0x02065B70
+	arm_func_start SetActorEventMain
+SetActorEventMain: ; 0x02065B70
 	ldr r1, _02065B7C ; =_020B0B08
 	strh r0, [r1, #0x14]
 	bx lr
 	.align 2, 0
 _02065B7C: .word _020B0B08
-	arm_func_end sub_02065B70
+	arm_func_end SetActorEventMain
 
-	arm_func_start sub_02065B80
-sub_02065B80: ; 0x02065B80
+	arm_func_start SetRandomRequestNpcs1And2
+SetRandomRequestNpcs1And2: ; 0x02065B80
 	ldr r2, _02065B90 ; =_020B0B08
 	strh r0, [r2, #0x10]
 	strh r1, [r2, #0xe]
 	bx lr
 	.align 2, 0
 _02065B90: .word _020B0B08
-	arm_func_end sub_02065B80
+	arm_func_end SetRandomRequestNpcs1And2
 
 	arm_func_start sub_02065B94
 sub_02065B94: ; 0x02065B94
@@ -8589,8 +8589,8 @@ sub_02065B94: ; 0x02065B94
 _02065BA8: .word SaveScriptVariableValue
 	arm_func_end sub_02065B94
 
-	arm_func_start sub_02065BAC
-sub_02065BAC: ; 0x02065BAC
+	arm_func_start SetAllEventNpcs
+SetAllEventNpcs: ; 0x02065BAC
 	ldr ip, _02065BC4 ; =_020B0B08
 	strh r0, [ip, #2]
 	strh r1, [ip]
@@ -8599,7 +8599,7 @@ sub_02065BAC: ; 0x02065BAC
 	bx lr
 	.align 2, 0
 _02065BC4: .word _020B0B08
-	arm_func_end sub_02065BAC
+	arm_func_end SetAllEventNpcs
 
 	arm_func_start sub_02065BC8
 sub_02065BC8: ; 0x02065BC8
@@ -11252,7 +11252,7 @@ _02067E70:
 	cmpeq r0, #3
 	bne _02067FE0
 	ldrb r0, [r4, #4]
-	bl sub_02063394
+	bl CheckDungeonMissionUnlockConditions
 	cmp r0, #1
 	bne _02067ED0
 	bl sub_020692B4
@@ -11470,7 +11470,7 @@ _02068158:
 	cmpeq r0, #4
 	bne _02068260
 	ldrb r0, [r4, #4]
-	bl sub_02063394
+	bl CheckDungeonMissionUnlockConditions
 	mov r6, r0
 	bl GetRank
 	ldrb r1, [sp, #4]
@@ -11950,7 +11950,7 @@ _02068770:
 	bl sub_0205B77C
 	bl sub_02068E7C
 	mov r1, #0
-	ldr r0, _02068E18 ; =sub_02069660
+	ldr r0, _02068E18 ; =ChooseMissionTitle
 	str r1, [r7, #0xe40]
 	str r0, [r7, #0xe44]
 	strb r1, [r7, #0x7c]
@@ -12064,7 +12064,7 @@ _020688DC:
 	mov r1, #0
 	str r2, [r7, #8]
 	str r0, [r7, #0xef0]
-	ldr r0, _02068E18 ; =sub_02069660
+	ldr r0, _02068E18 ; =ChooseMissionTitle
 	str r1, [r7, #0xe40]
 	str r0, [r7, #0xe44]
 	strb r1, [r7, #0x7c]
@@ -12102,7 +12102,7 @@ _0206896C:
 	mov r1, #0
 	str r2, [r7, #8]
 	str r0, [r7, #0xef0]
-	ldr r0, _02068E18 ; =sub_02069660
+	ldr r0, _02068E18 ; =ChooseMissionTitle
 	str r1, [r7, #0xe40]
 	str r0, [r7, #0xe44]
 	strb r1, [r7, #0x7c]
@@ -12134,7 +12134,7 @@ _020689F0:
 	mov r1, #0
 	str r2, [r7, #8]
 	str r0, [r7, #0xef0]
-	ldr r0, _02068E18 ; =sub_02069660
+	ldr r0, _02068E18 ; =ChooseMissionTitle
 	str r1, [r7, #0xe40]
 	str r0, [r7, #0xe44]
 	strb r1, [r7, #0x7c]
@@ -12166,7 +12166,7 @@ _02068A6C:
 	mov r1, #0
 	str r2, [r7, #8]
 	str r0, [r7, #0xef0]
-	ldr r0, _02068E18 ; =sub_02069660
+	ldr r0, _02068E18 ; =ChooseMissionTitle
 	str r1, [r7, #0xe40]
 	str r0, [r7, #0xe44]
 	strb r1, [r7, #0x7c]
@@ -12279,7 +12279,7 @@ _02068C18:
 	subge r0, r1, #1
 	strge r0, [r7, #8]
 	mov r1, #0
-	ldr r0, _02068E18 ; =sub_02069660
+	ldr r0, _02068E18 ; =ChooseMissionTitle
 	str r1, [r7, #0xe40]
 	str r0, [r7, #0xe44]
 	strb r1, [r7, #0x7c]
@@ -12304,7 +12304,7 @@ _02068C70:
 	ldr r0, _02068E28 ; =0x00003816
 	ldr r1, _02068E34 ; =sub_02069598
 	strh r0, [r5, #8]
-	ldr r0, _02068E18 ; =sub_02069660
+	ldr r0, _02068E18 ; =ChooseMissionTitle
 	str r1, [r7, #0xe40]
 	str r0, [r7, #0xe44]
 	mov r4, #1
@@ -12330,7 +12330,7 @@ _02068CBC:
 	ldr r0, _02068E6C ; =0x0000381E
 	mov r1, #0
 	strh r0, [r5, #8]
-	ldr r0, _02068E18 ; =sub_02069660
+	ldr r0, _02068E18 ; =ChooseMissionTitle
 	str r1, [r7, #0xe40]
 	str r0, [r7, #0xe44]
 	strb r1, [r7, #0x7c]
@@ -12398,7 +12398,7 @@ _02068DB0:
 	str r0, [r6, #0xc]
 	mov r0, #0x1a
 	str r0, [r6, #4]
-	ldr r0, _02068E18 ; =sub_02069660
+	ldr r0, _02068E18 ; =ChooseMissionTitle
 	str r1, [r7, #0xe40]
 	str r0, [r7, #0xe44]
 	ldr r0, _02068E14 ; =_020B0B2C
@@ -12414,7 +12414,7 @@ _02068E08:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02068E14: .word _020B0B2C
-_02068E18: .word sub_02069660
+_02068E18: .word ChooseMissionTitle
 _02068E1C: .word _020B0B2E
 _02068E20: .word 0x00003815 + SUB_020686F4_WORD_OFFSET
 _02068E24: .word 0x00003817 + SUB_020686F4_WORD_OFFSET
@@ -13059,8 +13059,8 @@ _02069654:
 _0206965C: .word _020B0B2C
 	arm_func_end sub_02069598
 
-	arm_func_start sub_02069660
-sub_02069660: ; 0x02069660
+	arm_func_start ChooseMissionTitle
+ChooseMissionTitle: ; 0x02069660
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _020696E4 ; =_020B0B2C
 	mov r5, r0
@@ -13083,7 +13083,7 @@ sub_02069660: ; 0x02069660
 	cmp r0, #0
 	beq _020696C4
 	mov r0, r5
-	bl sub_02060E24
+	bl FormatSpecialEpisodeMissionHeader
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 _020696C4:
@@ -13092,12 +13092,12 @@ _020696C4:
 	ldr r1, [r1, #0x14]
 	add r1, r1, #0x84
 	add r1, r1, r4
-	bl sub_02060AFC
+	bl FormatMissionHeader
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020696E4: .word _020B0B2C
-	arm_func_end sub_02069660
+	arm_func_end ChooseMissionTitle
 
 	arm_func_start sub_020696E8
 sub_020696E8: ; 0x020696E8
@@ -13551,7 +13551,7 @@ _02069C50:
 	add r0, sp, #0
 	mov r1, r5
 	strb r2, [sp, #0x45]
-	bl sub_02060FD8
+	bl MakeMissionDetails
 	mov r0, r5
 	bl UpdateWindow
 	add sp, sp, #0x68
@@ -13575,7 +13575,7 @@ sub_02069CC0: ; 0x02069CC0
 	beq _02069CFC
 	mov r0, r6
 	mov r1, r4
-	bl sub_02061C60
+	bl MakeSpecialEpisodeMissionDetails
 	b _02069D2C
 _02069CFC:
 	add r1, sp, #0
@@ -13589,7 +13589,7 @@ _02069CFC:
 	add r0, sp, #0
 	mov r1, r6
 	str r4, [sp, #0x5c]
-	bl sub_02060FD8
+	bl MakeMissionDetails
 _02069D2C:
 	mov r0, r6
 	bl UpdateWindow

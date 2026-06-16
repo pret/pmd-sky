@@ -1,8 +1,7 @@
 #pragma once
 .public DrawTextInWindow
+.public IsScriptMenuReturnDisabled
 .public NewWindow
-.public ov11_022E6E8C
-.public ov11_022E6EC8
 .public ov28_0238A140
 .public ov28_0238A184
 .public ov28_0238A490
@@ -10,6 +9,7 @@
 .public ov28_0238AD0C
 .public ov28_0238AD80
 .public ov28_0238ADA0
+.public ReturnScriptMenuResult
 .public sub_02025B80
 .public sub_02025B90
 .public sub_0202810C

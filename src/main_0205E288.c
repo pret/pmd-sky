@@ -27,7 +27,7 @@ bool8 sub_0205E258(struct mission* mission)
            mission->type == MISSION_ARREST_OUTLAW && mission->subtype.outlaw == MISSION_OUTLAW_ESCORT;
 }
 
-bool8 sub_0205E288(struct mission *mission, u32 val, u8 *ptr2)
+bool8 DoesMissionHaveTypeAndSubtype(struct mission *mission, u32 val, u8 *ptr2)
 {
     if (mission->status == MISSION_STATUS_INVALID)
         return FALSE;
@@ -38,35 +38,35 @@ bool8 sub_0205E288(struct mission *mission, u32 val, u8 *ptr2)
     return FALSE;
 }
 
-bool8 sub_0205E2B8(u32 arg0, u8 *arg1)
+bool8 AlreadyHasSimilarMission(u32 arg0, u8 *arg1)
 {
     for (s32 i = 0; i < 8; i++)
     {
-        if (sub_0205E288((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + i * 32), arg0, arg1))
+        if (DoesMissionHaveTypeAndSubtype((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + i * 32), arg0, arg1))
             return TRUE;
     }
 
     for (s32 i = 0; i < 8; i++)
     {
-        if (sub_0205E288((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + 0x100 + i * 32), arg0, arg1))
+        if (DoesMissionHaveTypeAndSubtype((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + 0x100 + i * 32), arg0, arg1))
             return TRUE;
     }
 
     for (s32 i = 0; i < 8; i++)
     {
-        if (sub_0205E288((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + 0x200 + i * 32), arg0, arg1))
+        if (DoesMissionHaveTypeAndSubtype((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + 0x200 + i * 32), arg0, arg1))
             return TRUE;
     }
 
     for (s32 i = 0; i < 1; i++)
     {
-        if (sub_0205E288((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + 0x300 + i * 32), arg0, arg1))
+        if (DoesMissionHaveTypeAndSubtype((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + 0x300 + i * 32), arg0, arg1))
             return TRUE;
     }
 
     for (s32 i = 0; i < 1; i++)
     {
-        if (sub_0205E288((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + 0x320 + i * 32), arg0, arg1))
+        if (DoesMissionHaveTypeAndSubtype((struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + 0x320 + i * 32), arg0, arg1))
             return TRUE;
     }
 

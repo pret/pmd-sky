@@ -547,7 +547,7 @@ _02303160:
 	ldrh r1, [sp, #0x10]
 	add r0, r7, #0x12
 	mov r6, #1
-	bl sub_02054FB8
+	bl ModifyHpStat
 	ldrsh r1, [r7, #0x10]
 	ldrh r0, [sp, #0x10]
 	add r0, r1, r0
@@ -578,16 +578,16 @@ _023031B8:
 	ldrb r1, [r7, #0x1d]
 	strb r1, [r4, #1]
 	ldrb r1, [sp, #0x12]
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	ldrb r1, [sp, #0x13]
 	ldr r0, _0230327C ; =ov29_0237C9C9
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	ldrb r1, [sp, #0x14]
 	mov r0, r4
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	ldrb r1, [sp, #0x15]
 	ldr r0, _02303280 ; =ov29_0237C9C5
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	mov r0, sl
 	bl ov29_023021F0
 	mov r0, sl
@@ -690,11 +690,11 @@ _0230333C:
 	ldrh r1, [sp, #0xc]
 	add r0, r7, #0x10
 	rsb r1, r1, #0
-	bl sub_02054FB8
+	bl ModifyHpStat
 	ldrh r1, [sp, #0xc]
 	add r0, r7, #0x12
 	rsb r1, r1, #0
-	bl sub_02054FB8
+	bl ModifyHpStat
 	ldrsh r1, [r7, #0x12]
 	ldrsh r0, [r7, #0x16]
 	add r2, r1, r0
@@ -722,19 +722,19 @@ _023033B0:
 	strb r1, [fp, #1]
 	ldrb r1, [sp, #0xe]
 	rsb r1, r1, #0
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	ldrb r1, [sp, #0xf]
 	ldr r0, _023034D0 ; =ov29_0237C9C9
 	rsb r1, r1, #0
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	ldrb r1, [sp, #0x10]
 	mov r0, fp
 	rsb r1, r1, #0
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	ldrb r1, [sp, #0x11]
 	ldr r0, _023034D4 ; =ov29_0237C9C5
 	rsb r1, r1, #0
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	mov r0, sl
 	bl ov29_023021F0
 	mov r0, sl

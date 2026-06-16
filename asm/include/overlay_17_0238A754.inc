@@ -30,13 +30,13 @@
 .public IsMainCharacter
 .public IsSimpleMenuActive
 .public ov11_022DC504
-.public ov11_022E6E68
 .public ov17_0238A278
 .public ov17_0238A364
 .public OVERLAY17_FUNCTION_POINTER_TABLE
 .public OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 .public PlaySeVolumeWrapper
 .public PrintIqSkillsMenu
+.public ReturnScriptMenuResultZero
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public ShowDialogueBox

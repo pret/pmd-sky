@@ -1,6 +1,12 @@
 #include "main_0200C4FC.h"
 #include "moves_1.h"
 
+#ifdef JAPAN
+#define DUNGEON_RESULT_STRING 0x23B6
+#else
+#define DUNGEON_RESULT_STRING 0x9CB
+#endif
+
 extern u16 _0209E7A6[][2];
 
 extern char* GetDungeonResultString(int string_number);
@@ -18,7 +24,7 @@ void GetDungeonResultMsg(s32 damage_source_or_result, char* buffer, int buffer_s
         char* rs = GetDungeonResultString(0);
         FormatMoveString(rs, &move, 0);
         scratch_2.unk1c = (u16) move.id;
-        rs = StringFromId(0x000009CB);
+        rs = StringFromId(DUNGEON_RESULT_STRING);
         PreprocessString(buffer, buffer_size, rs, 0, &scratch_2);
     } else {
         damage_source_or_result -= 0x00000233;

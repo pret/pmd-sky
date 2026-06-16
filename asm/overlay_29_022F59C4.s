@@ -174,7 +174,7 @@ _022F5BB8:
 	beq _022F5BD0
 	mov r0, r6
 	mov r1, sl
-	bl ov29_02344544
+	bl InteractWithSecretBazaarNpc
 	b _022F5D94
 _022F5BD0:
 	ldrb r0, [sb, #9]

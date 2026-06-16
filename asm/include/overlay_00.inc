@@ -6,7 +6,6 @@
 .public _020AECB0
 .public _020AED30
 .public _020AEDB0
-.public OSi_ThreadInfo
 .public _022BCA70
 .public _d2f
 .public _dadd
@@ -112,9 +111,11 @@
 .public NnThink
 .public OS_CancelAlarm
 .public OS_CreateAlarm
+.public OS_CreateThread
 .public OS_DestroyThread
 .public OS_DisableScheduler
 .public OS_EnableScheduler
+.public OS_ExitThread
 .public OS_GetLowEntropyData
 .public OS_GetMacAddress
 .public OS_GetThreadPriority
@@ -146,6 +147,7 @@
 .public OS_WakeupThreadDirect
 .public OS_YieldThread
 .public OSi_ReferSymbol
+.public OSi_ThreadInfo
 .public ov00_02317F44
 .public ov00_02317F54
 .public ov00_02317F5C
@@ -1102,7 +1104,6 @@
 .public snprintf
 .public sprintf
 .public srand
-.public OS_CreateThread
 .public Std_CompareNString
 .public Std_CompareString__020852CC
 .public Std_CopyLString
@@ -1174,7 +1175,6 @@
 .public sub_0205B80C
 .public sub_02079990
 .public SVC_WaitByLoop
-.public OS_ExitThread
 .public UnloadOverlay
 .public Util_RandSeed
 .public WaitForever2

@@ -243,7 +243,7 @@ _0205D56C:
 	add r1, sb, #0x21
 	mov r2, r5
 	mov r3, #1
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	moveq r4, #1
 	beq _0205DB40
@@ -292,7 +292,7 @@ _0205D624:
 _0205D62C:
 	add r0, sp, #8
 	add r1, sb, #0xe
-	bl sub_0205DFAC
+	bl CountAndPopulateValidMissionTableMonsters
 	movs r4, r0
 	bne _0205D658
 	ldr r0, [sp, #8]
@@ -310,7 +310,7 @@ _0205D658:
 	add r1, sb, #0x21
 	mov r3, #1
 	mov r2, r5
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	bne _0205D69C
 	ldr r0, [sp, #8]
@@ -359,7 +359,7 @@ _0205D6F8:
 	add r1, sb, #0x21
 	mov r3, #1
 	mov r2, r4
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	moveq r4, #1
 	beq _0205DB40
@@ -393,7 +393,7 @@ _0205D77C:
 	add r1, sb, #0x21
 	mov r3, #1
 	mov r2, r4
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	moveq r4, #1
 	beq _0205DB40
@@ -467,7 +467,7 @@ _0205D89C:
 	add r1, sb, #0x21
 	mov r2, r7
 	mov r3, #0
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	moveq r4, #1
 	beq _0205DB40
@@ -510,7 +510,7 @@ _0205D938:
 	bne _0205D970
 	add r1, fp, r1
 	add r0, sp, #8
-	bl sub_0205DFAC
+	bl CountAndPopulateValidMissionTableMonsters
 	movs r4, r0
 	bne _0205D970
 	ldr r0, [sp, #8]
@@ -529,7 +529,7 @@ _0205D970:
 	add r1, sb, #0x21
 	mov r2, r5
 	mov r3, #0
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	bne _0205D9B8
 	ldr r0, [sp, #8]
@@ -586,7 +586,7 @@ _0205DA30:
 	add r1, sb, #0x21
 	mov r2, r4
 	mov r3, #0
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	moveq r4, #1
 	beq _0205DB40
@@ -623,7 +623,7 @@ _0205DAC0:
 	add r1, sb, #0x21
 	mov r2, r5
 	mov r3, #0
-	bl sub_0205D008
+	bl CheckMonsterForMissionType
 	cmp r0, #0
 	moveq r4, #1
 	beq _0205DB40
@@ -668,7 +668,7 @@ _0205DB7C:
 	ldrb r0, [sb, #0x20]
 	add r1, sb, #0x21
 	mov r2, r4
-	bl sub_0205D11C
+	bl CheckItemForMissionType
 	cmp r0, #0
 	moveq r4, #1
 	beq _0205DD38
@@ -687,7 +687,7 @@ _0205DBC4:
 	ldrh r7, [sb, #4]
 	ldrh sl, [sb, #6]
 	mov r5, #0
-	bl sub_02062804
+	bl LoadMissionTemplates
 	mov fp, r0
 	mov r0, r7, lsl #1
 	mov r1, #0xf
@@ -725,7 +725,7 @@ _0205DC38:
 	ldrb r0, [sb, #0x20]
 	mov r2, r4
 	add r1, sb, #0x21
-	bl sub_0205D11C
+	bl CheckItemForMissionType
 	cmp r0, #0
 	moveq r4, #1
 	beq _0205DD38
@@ -734,7 +734,7 @@ _0205DC38:
 _0205DC74:
 	ldrh r5, [sb, #4]
 	ldrh r4, [sb, #6]
-	bl sub_02062804
+	bl LoadMissionTemplates
 	add r4, r0, r4, lsl #1
 	mov r0, r5
 	bl RandIntSafe
@@ -743,7 +743,7 @@ _0205DC74:
 	ldrb r0, [sb, #0x20]
 	add r1, sb, #0x21
 	mov r2, r4
-	bl sub_0205D11C
+	bl CheckItemForMissionType
 	cmp r0, #0
 	moveq r4, #1
 	beq _0205DD38
@@ -774,7 +774,7 @@ _0205DD04:
 	ldrb r1, [r8, #1]
 	add r0, r8, #4
 	add r2, r8, #0x14
-	bl sub_020630A4
+	bl RollRandomItemReward
 	ldrsh r0, [r8, #0x14]
 	bl IsThrownItem
 	cmp r0, #0
@@ -845,11 +845,11 @@ _0205DDEC:
 	cmp r1, #3
 	b _0205DF84
 _0205DE08:
-	bl sub_0205FF80
+	bl GetMissionSpecificFixedRoom
 	strb r0, [r8, #0xc]
 	b _0205DF84
 _0205DE14:
-	bl sub_0205FF80
+	bl GetMissionSpecificFixedRoom
 	strb r0, [r8, #0xc]
 	b _0205DF84
 _0205DE20:
@@ -901,7 +901,7 @@ _0205DEA8: ; jump table
 	b _0205DEC8 ; case 6
 	b _0205DF84 ; case 7
 _0205DEC8:
-	bl sub_0205FF80
+	bl GetMissionSpecificFixedRoom
 	strb r0, [r8, #0xc]
 	b _0205DF84
 _0205DED4:
@@ -934,12 +934,12 @@ _0205DEFC:
 _0205DF34:
 	ldrb r0, [r8, #1]
 	ldrb r1, [r8, #2]
-	bl sub_0205FF80
+	bl GetMissionSpecificFixedRoom
 	strb r0, [r8, #0xc]
 	b _0205DF84
 _0205DF48:
 	ldrb r1, [r8, #2]
-	bl sub_0205FF80
+	bl GetMissionSpecificFixedRoom
 	strb r0, [r8, #0xc]
 	mov r0, r4
 	strb r0, [r8, #0x1a]
@@ -970,8 +970,8 @@ _0205DFA4: .word MISSION_DELIVER_LIST_PTR
 _0205DFA8: .word 0x000001EA
 	arm_func_end GenerateMission
 
-	arm_func_start sub_0205DFAC
-sub_0205DFAC: ; 0x0205DFAC
+	arm_func_start CountAndPopulateValidMissionTableMonsters
+CountAndPopulateValidMissionTableMonsters: ; 0x0205DFAC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	ldrh r6, [r1, #2]
 	ldrh r8, [r1, #4]
@@ -1002,4 +1002,4 @@ _0205E008:
 	mov r0, r7
 	str sb, [sl]
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end sub_0205DFAC
+	arm_func_end CountAndPopulateValidMissionTableMonsters

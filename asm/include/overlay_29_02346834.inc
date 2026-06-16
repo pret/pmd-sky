@@ -24,6 +24,7 @@
 .public GetItemMoveId16
 .public GetItemToUseByIndex
 .public GetLeader
+.public GetMoneyQuantity
 .public GetTile
 .public IncrementEntityPixelPosXY
 .public InitMove
@@ -64,7 +65,6 @@
 .public SpawnDroppedItem
 .public sub_0200CF6C
 .public sub_0200D894
-.public sub_0200D8AC
 .public sub_02053D1C
 .public sub_02057CE8
 .public SubstitutePlaceholderStringTags

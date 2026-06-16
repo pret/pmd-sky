@@ -34,6 +34,7 @@
 .public GetItemMoveId16
 .public GetMaxMembersAllowed
 .public GetMaxPp
+.public GetMoneyQuantity
 .public GetMonsterGender
 .public GetNameRaw
 .public GetShadowSize
@@ -55,7 +56,6 @@
 .public StrncpyName
 .public StrncpySimple
 .public StrncpySimpleNoPadSafe
-.public sub_0200D8AC
 .public sub_0200FA0C
 .public sub_0204E584
 .public sub_02052CF4

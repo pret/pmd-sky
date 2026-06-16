@@ -392,8 +392,8 @@ _020114DC:
 _020114F4: .word 0x00000578
 	arm_func_end sub_02011420
 
-	arm_func_start sub_020114F8
-sub_020114F8: ; 0x020114F8
+	arm_func_start SwapShopFreeDoublePointer
+SwapShopFreeDoublePointer: ; 0x020114F8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4]
@@ -406,7 +406,7 @@ sub_020114F8: ; 0x020114F8
 	mov r0, #0
 	str r0, [r4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020114F8
+	arm_func_end SwapShopFreeDoublePointer
 
 	arm_func_start ApplyGummiBoostsToGroundMonster
 ApplyGummiBoostsToGroundMonster: ; 0x02011528
@@ -448,7 +448,7 @@ ApplySitrusBerryBoostToGroundMonster: ; 0x02011580
 	mov r6, r1
 	add r0, r7, #0xa
 	mov r1, r5
-	bl sub_02054FB8
+	bl ModifyHpStat
 	cmp r6, #0
 	strne r5, [r6]
 	ldrsh r0, [r7, #0xa]
@@ -468,7 +468,7 @@ ApplyLifeSeedBoostToGroundMonster: ; 0x020115BC
 	mov r6, r1
 	add r0, r7, #0xa
 	mov r1, r5
-	bl sub_02054FB8
+	bl ModifyHpStat
 	cmp r6, #0
 	strne r5, [r6]
 	ldrsh r0, [r7, #0xa]
@@ -567,7 +567,7 @@ ApplyProteinBoostToGroundMonster: ; 0x0201170C
 	mov r6, r1
 	add r0, r7, #0xc
 	mov r1, r5
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	cmp r6, #0
 	strne r5, [r6]
 	ldrb r0, [r7, #0xc]
@@ -587,7 +587,7 @@ ApplyCalciumBoostToGroundMonster: ; 0x02011748
 	mov r6, r1
 	add r0, r7, #0xd
 	mov r1, r5
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	cmp r6, #0
 	strne r5, [r6]
 	ldrb r0, [r7, #0xd]
@@ -607,7 +607,7 @@ ApplyIronBoostToGroundMonster: ; 0x02011784
 	mov r6, r1
 	add r0, r7, #0xe
 	mov r1, r5
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	cmp r6, #0
 	strne r5, [r6]
 	ldrb r0, [r7, #0xe]
@@ -627,7 +627,7 @@ ApplyZincBoostToGroundMonster: ; 0x020117C0
 	mov r6, r1
 	add r0, r7, #0xf
 	mov r1, r5
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	cmp r6, #0
 	strne r5, [r6]
 	ldrb r0, [r7, #0xf]
@@ -645,7 +645,7 @@ ApplyNectarBoostToGroundMonster: ; 0x020117FC
 	mov r5, r1
 	add r0, r6, #8
 	mov r1, #0xa
-	bl sub_02055054
+	bl ModifyIqStat
 	cmp r5, #0
 	movne r0, #0xa
 	strne r0, [r5]
@@ -677,7 +677,7 @@ ApplyGravelyrockBoostToGroundMonster: ; 0x02011850
 	beq _02011884
 	add r0, r6, #8
 	mov r1, #0xa
-	bl sub_02055054
+	bl ModifyIqStat
 	cmp r5, #0
 	movne r0, #0xa
 	b _0201188C
@@ -792,7 +792,7 @@ _020119EC:
 	bhs _02011A18
 	mov r0, r8
 	mov r1, r5
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 _02011A18:
 	ldrh r1, [r6, #2]
 	tst r1, #2
@@ -804,7 +804,7 @@ _02011A18:
 	bhs _02011A44
 	mov r1, r5
 	add r0, r8, #1
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 _02011A44:
 	ldrh r1, [r6, #2]
 	tst r1, #4
@@ -816,7 +816,7 @@ _02011A44:
 	bhs _02011A70
 	mov r0, r7
 	mov r1, r5
-	bl sub_02055020
+	bl ModifyDefensiveStat
 _02011A70:
 	ldrh r1, [r6, #2]
 	tst r1, #8
@@ -828,7 +828,7 @@ _02011A70:
 	ldmhsia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r1, r5
 	add r0, r7, #1
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02011AA0: .word WONDER_GUMMI_IQ_GAIN
@@ -839,8 +839,8 @@ _02011AB0: .word 0x000003E7
 _02011AB4: .word _0209889C
 	arm_func_end ApplyGummiBoostsGroundMode
 
-	arm_func_start sub_02011AB8
-sub_02011AB8: ; 0x02011AB8
+	arm_func_start WipeRecycleShopRecords
+WipeRecycleShopRecords: ; 0x02011AB8
 	stmdb sp!, {r3, lr}
 	ldr ip, _02011B38 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
@@ -875,7 +875,7 @@ sub_02011AB8: ; 0x02011AB8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02011B38: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02011AB8
+	arm_func_end WipeRecycleShopRecords
 
 	arm_func_start sub_02011B3C
 sub_02011B3C: ; 0x02011B3C
@@ -891,7 +891,7 @@ sub_02011B3C: ; 0x02011B3C
 	mov r0, sl
 	mov r1, r8
 	mov r2, r7
-	bl sub_020128DC
+	bl CountValidRecycleShopItems
 	movs r1, r0
 	str r0, [sb, #4]
 	moveq r0, #0
@@ -1062,8 +1062,8 @@ _02011DB0: .word sub_02011B3C
 _02011DB4: .word 0x000F423F
 	arm_func_end sub_02011D9C
 
-	arm_func_start sub_02011DB8
-sub_02011DB8: ; 0x02011DB8
+	arm_func_start FreeRecycleOfferItems
+FreeRecycleOfferItems: ; 0x02011DB8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4]
@@ -1079,17 +1079,17 @@ _02011DDC:
 	mov r0, #0
 	str r0, [r4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02011DB8
+	arm_func_end FreeRecycleOfferItems
 
-	arm_func_start sub_02011DF0
-sub_02011DF0: ; 0x02011DF0
+	arm_func_start GetRecycleItemId
+GetRecycleItemId: ; 0x02011DF0
 	ldr r0, [r0]
 	ldrsh r0, [r0]
 	bx lr
-	arm_func_end sub_02011DF0
+	arm_func_end GetRecycleItemId
 
-	arm_func_start sub_02011DFC
-sub_02011DFC: ; 0x02011DFC
+	arm_func_start RecycleItemHasTradeTypePrizeTicket
+RecycleItemHasTradeTypePrizeTicket: ; 0x02011DFC
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	cmp r0, #1
@@ -1097,17 +1097,17 @@ sub_02011DFC: ; 0x02011DFC
 	movne r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end sub_02011DFC
+	arm_func_end RecycleItemHasTradeTypePrizeTicket
 
-	arm_func_start sub_02011E18
-sub_02011E18: ; 0x02011E18
+	arm_func_start GetRecycleItemBonusOdds
+GetRecycleItemBonusOdds: ; 0x02011E18
 	ldr r0, [r0]
 	ldrh r0, [r0, #0x12]
 	bx lr
-	arm_func_end sub_02011E18
+	arm_func_end GetRecycleItemBonusOdds
 
-	arm_func_start sub_02011E24
-sub_02011E24: ; 0x02011E24
+	arm_func_start CountTradedRecycleItems
+CountTradedRecycleItems: ; 0x02011E24
 	mov ip, #0
 	mov r3, ip
 	b _02011E58
@@ -1128,7 +1128,7 @@ _02011E58:
 _02011E60:
 	mov r0, ip
 	bx lr
-	arm_func_end sub_02011E24
+	arm_func_end CountTradedRecycleItems
 
 	arm_func_start sub_02011E68
 sub_02011E68: ; 0x02011E68
@@ -1160,8 +1160,8 @@ _02011EBC:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02011E68
 
-	arm_func_start sub_02011EC4
-sub_02011EC4: ; 0x02011EC4
+	arm_func_start RecycleShopTradeIsNonspecific
+RecycleShopTradeIsNonspecific: ; 0x02011EC4
 	ldr r1, [r0]
 	ldr r0, _02011EE4 ; =0x00000578
 	ldrsh r1, [r1, #0x14]
@@ -1172,10 +1172,10 @@ sub_02011EC4: ; 0x02011EC4
 	bx lr
 	.align 2, 0
 _02011EE4: .word 0x00000578
-	arm_func_end sub_02011EC4
+	arm_func_end RecycleShopTradeIsNonspecific
 
-	arm_func_start sub_02011EE8
-sub_02011EE8: ; 0x02011EE8
+	arm_func_start RecycleShopOfferExists
+RecycleShopOfferExists: ; 0x02011EE8
 	ldr r0, _02011F10 ; =BAG_ITEMS_PTR_MIRROR
 	mvn r1, #0
 	ldr r0, [r0]
@@ -1188,10 +1188,10 @@ sub_02011EE8: ; 0x02011EE8
 	bx lr
 	.align 2, 0
 _02011F10: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02011EE8
+	arm_func_end RecycleShopOfferExists
 
-	arm_func_start sub_02011F14
-sub_02011F14: ; 0x02011F14
+	arm_func_start ClearRecycleShopOffer
+ClearRecycleShopOffer: ; 0x02011F14
 	ldr r0, _02011F2C ; =BAG_ITEMS_PTR_MIRROR
 	mvn r1, #0
 	ldr r0, [r0]
@@ -1200,10 +1200,10 @@ sub_02011F14: ; 0x02011F14
 	bx lr
 	.align 2, 0
 _02011F2C: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02011F14
+	arm_func_end ClearRecycleShopOffer
 
-	arm_func_start sub_02011F30
-sub_02011F30: ; 0x02011F30
+	arm_func_start GetGameStateRecycleCount
+GetGameStateRecycleCount: ; 0x02011F30
 	ldr r0, _02011F44 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1000
@@ -1211,10 +1211,10 @@ sub_02011F30: ; 0x02011F30
 	bx lr
 	.align 2, 0
 _02011F44: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02011F30
+	arm_func_end GetGameStateRecycleCount
 
-	arm_func_start sub_02011F48
-sub_02011F48: ; 0x02011F48
+	arm_func_start GetRankForRecycleShop
+GetRankForRecycleShop: ; 0x02011F48
 	ldr r0, _02011F5C ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1000
@@ -1222,10 +1222,10 @@ sub_02011F48: ; 0x02011F48
 	bx lr
 	.align 2, 0
 _02011F5C: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02011F48
+	arm_func_end GetRankForRecycleShop
 
-	arm_func_start sub_02011F60
-sub_02011F60: ; 0x02011F60
+	arm_func_start IncrementRecycleCountVar
+IncrementRecycleCountVar: ; 0x02011F60
 	stmdb sp!, {r4, lr}
 	mov r0, #0
 	mov r1, #0x6c
@@ -1243,10 +1243,10 @@ sub_02011F60: ; 0x02011F60
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02011F9C: .word 0x000F423F
-	arm_func_end sub_02011F60
+	arm_func_end IncrementRecycleCountVar
 
-	arm_func_start sub_02011FA0
-sub_02011FA0: ; 0x02011FA0
+	arm_func_start UpdateRecycleShop
+UpdateRecycleShop: ; 0x02011FA0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r0, #0
@@ -1263,12 +1263,12 @@ sub_02011FA0: ; 0x02011FA0
 	ldr r5, [r1, #0x3ac]
 	mov r1, r6
 	mov r2, r5
-	bl sub_020128DC
+	bl CountValidRecycleShopItems
 	mov r4, r0
 	mov r1, r6
 	mov r2, r5
 	mov r0, #2
-	bl sub_020128DC
+	bl CountValidRecycleShopItems
 	sub r4, r4, r0
 	mov r0, #0
 	mov r1, #0x6c
@@ -1289,12 +1289,12 @@ sub_02011FA0: ; 0x02011FA0
 	ldrb r6, [r1, #0x3aa]
 	mov r2, r5
 	mov r1, r6
-	bl sub_020128DC
+	bl CountValidRecycleShopItems
 	mov r1, r6
 	mov r2, r5
 	mov r5, r0
 	mov r0, #2
-	bl sub_020128DC
+	bl CountValidRecycleShopItems
 	sub r0, r5, r0
 	cmp r0, r4
 	ble _0201207C
@@ -1348,7 +1348,7 @@ _02012104:
 	moveq r0, #0
 	tst r0, #0xff
 	beq _0201213C
-	bl sub_02012254
+	bl IsRecycleOfferCooldownOver
 	cmp r0, #0
 	moveq r2, #0
 	beq _02012200
@@ -1400,7 +1400,7 @@ _020121D0:
 	strh r3, [r0, #0xb2]
 _020121E0:
 	add r0, sp, #0
-	bl sub_02011DB8
+	bl FreeRecycleOfferItems
 	ldr r0, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #2
 	ldr r0, [r0]
@@ -1410,7 +1410,7 @@ _020121E0:
 _02012200:
 	cmp r2, #0
 	bne _0201220C
-	bl sub_02012224
+	bl DecrementRecycleOfferCooldown
 _0201220C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -1419,12 +1419,12 @@ _02012214: .word BAG_ITEMS_PTR_MIRROR
 _02012218: .word _020988A4
 _0201221C: .word _020988A8
 _02012220: .word RECYCLE_SHOP_ITEM_LIST
-	arm_func_end sub_02011FA0
+	arm_func_end UpdateRecycleShop
 
-	arm_func_start sub_02012224
-sub_02012224: ; 0x02012224
+	arm_func_start DecrementRecycleOfferCooldown
+DecrementRecycleOfferCooldown: ; 0x02012224
 	stmdb sp!, {r3, lr}
-	bl sub_02012254
+	bl IsRecycleOfferCooldownOver
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02012250 ; =BAG_ITEMS_PTR_MIRROR
@@ -1436,10 +1436,10 @@ sub_02012224: ; 0x02012224
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02012250: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02012224
+	arm_func_end DecrementRecycleOfferCooldown
 
-	arm_func_start sub_02012254
-sub_02012254: ; 0x02012254
+	arm_func_start IsRecycleOfferCooldownOver
+IsRecycleOfferCooldownOver: ; 0x02012254
 	ldr r0, _02012278 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -1451,10 +1451,10 @@ sub_02012254: ; 0x02012254
 	bx lr
 	.align 2, 0
 _02012278: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02012254
+	arm_func_end IsRecycleOfferCooldownOver
 
-	arm_func_start sub_0201227C
-sub_0201227C: ; 0x0201227C
+	arm_func_start GetRecycleOfferCooldown
+GetRecycleOfferCooldown: ; 0x0201227C
 	ldr r0, _02012290 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -1462,7 +1462,7 @@ sub_0201227C: ; 0x0201227C
 	bx lr
 	.align 2, 0
 _02012290: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0201227C
+	arm_func_end GetRecycleOfferCooldown
 
 	arm_func_start sub_02012294
 sub_02012294: ; 0x02012294
@@ -1491,7 +1491,7 @@ _020122E8:
 	mov r0, sb
 	bl sub_02010044
 	mov r1, fp
-	bl sub_02012630
+	bl RecycleShopIsTradableItem
 	cmp r0, #0
 	moveq r1, r6, lsl #2
 	addeq r0, r8, r6, lsl #2
@@ -1522,7 +1522,7 @@ _02012354:
 	bl GetItemAtIdx
 	ldrsh r0, [r0, #4]
 	mov r1, fp
-	bl sub_02012630
+	bl RecycleShopIsTradableItem
 	cmp r0, #0
 	bne _02012388
 	mov r0, r5, lsl #2
@@ -1728,8 +1728,8 @@ sub_020125CC: ; 0x020125CC
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020125CC
 
-	arm_func_start sub_020125FC
-sub_020125FC: ; 0x020125FC
+	arm_func_start RecycleShopIsNotThrownItem
+RecycleShopIsNotThrownItem: ; 0x020125FC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetItemCategoryVeneer
@@ -1745,10 +1745,10 @@ _02012620:
 _02012628:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020125FC
+	arm_func_end RecycleShopIsNotThrownItem
 
-	arm_func_start sub_02012630
-sub_02012630: ; 0x02012630
+	arm_func_start RecycleShopIsTradableItem
+RecycleShopIsTradableItem: ; 0x02012630
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	cmp r1, #0
@@ -1759,12 +1759,12 @@ sub_02012630: ; 0x02012630
 	ldmneia sp!, {r4, pc}
 _02012650:
 	mov r0, r4
-	bl sub_020125FC
+	bl RecycleShopIsNotThrownItem
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02012630
+	arm_func_end RecycleShopIsTradableItem
 
-	arm_func_start sub_0201265C
-sub_0201265C: ; 0x0201265C
+	arm_func_start RecycleShopCountTradableItemsInBag
+RecycleShopCountTradableItemsInBag: ; 0x0201265C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r1, _020126C4 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, #0
@@ -1783,7 +1783,7 @@ _02012680:
 	beq _020126AC
 	ldrsh r0, [r8, #4]
 	mov r1, r5
-	bl sub_02012630
+	bl RecycleShopIsTradableItem
 	cmp r0, #0
 	addeq r4, r4, #1
 _020126AC:
@@ -1795,10 +1795,10 @@ _020126AC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020126C4: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0201265C
+	arm_func_end RecycleShopCountTradableItemsInBag
 
-	arm_func_start sub_020126C8
-sub_020126C8: ; 0x020126C8
+	arm_func_start RecycleShopCountTradableItemsInStorage
+RecycleShopCountTradableItemsInStorage: ; 0x020126C8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, #0
 	ldr r4, _02012718 ; =BAG_ITEMS_PTR_MIRROR
@@ -1812,7 +1812,7 @@ _020126DC:
 	cmp r0, #0
 	beq _02012704
 	mov r1, r7
-	bl sub_02012630
+	bl RecycleShopIsTradableItem
 	cmp r0, #0
 	addeq r5, r5, #1
 _02012704:
@@ -1823,7 +1823,7 @@ _02012704:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02012718: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_020126C8
+	arm_func_end RecycleShopCountTradableItemsInStorage
 
 	arm_func_start sub_0201271C
 sub_0201271C: ; 0x0201271C
@@ -1887,21 +1887,21 @@ _020127CC:
 	cmp r0, #0
 	beq _02012810
 	mov r0, #1
-	bl sub_0201265C
+	bl RecycleShopCountTradableItemsInBag
 	add r1, sl, r8, lsl #1
 	strh r0, [r1, #4]
 	mov r0, #1
-	bl sub_020126C8
+	bl RecycleShopCountTradableItemsInStorage
 	add r1, sl, r8, lsl #1
 	strh r0, [r1, #0xc]
 	b _02012850
 _02012810:
 	mov r0, #0
-	bl sub_0201265C
+	bl RecycleShopCountTradableItemsInBag
 	add r1, sl, r8, lsl #1
 	strh r0, [r1, #4]
 	mov r0, #0
-	bl sub_020126C8
+	bl RecycleShopCountTradableItemsInStorage
 	add r1, sl, r8, lsl #1
 	strh r0, [r1, #0xc]
 	b _02012850
@@ -1961,8 +1961,8 @@ _020128C4:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_02012874
 
-	arm_func_start sub_020128DC
-sub_020128DC: ; 0x020128DC
+	arm_func_start CountValidRecycleShopItems
+CountValidRecycleShopItems: ; 0x020128DC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, #0
 	mov fp, #0x24
@@ -1978,7 +1978,7 @@ _02012900:
 	mla r0, r6, r4, r5
 	ldr r1, [r0, #4]
 	mov r0, sl
-	bl sub_02012954
+	bl IsRecycleTradeTypeValid
 	cmp r0, #0
 	beq _0201293C
 _02012920:
@@ -1997,10 +1997,10 @@ _0201293C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02012950: .word RECYCLE_SHOP_ITEM_LIST
-	arm_func_end sub_020128DC
+	arm_func_end CountValidRecycleShopItems
 
-	arm_func_start sub_02012954
-sub_02012954: ; 0x02012954
+	arm_func_start IsRecycleTradeTypeValid
+IsRecycleTradeTypeValid: ; 0x02012954
 	cmp r0, r1
 	beq _0201296C
 	cmp r0, #0
@@ -2013,7 +2013,7 @@ _0201296C:
 _02012974:
 	mov r0, #0
 	bx lr
-	arm_func_end sub_02012954
+	arm_func_end IsRecycleTradeTypeValid
 
 	arm_func_start sub_0201297C
 sub_0201297C: ; 0x0201297C
@@ -2025,7 +2025,7 @@ sub_0201297C: ; 0x0201297C
 	ldr r1, [r1, r4]
 	mov r0, r2
 	mov r5, r3
-	bl sub_02012954
+	bl IsRecycleTradeTypeValid
 	cmp r0, #0
 	beq _02012A9C
 	ldr r0, _02012AA8 ; =_020988D4
@@ -2060,21 +2060,21 @@ _020129F0:
 	cmp r0, #0
 	beq _02012A44
 	mov r0, r6
-	bl sub_0201265C
+	bl RecycleShopCountTradableItemsInBag
 	add r1, sl, sb, lsl #1
 	strh r0, [r1, #4]
 	mov r0, r5
-	bl sub_020126C8
+	bl RecycleShopCountTradableItemsInStorage
 	add r1, sl, sb, lsl #1
 	strh r0, [r1, #0xc]
 	b _02012A84
 _02012A44:
 	mov r0, fp
-	bl sub_0201265C
+	bl RecycleShopCountTradableItemsInBag
 	add r1, sl, sb, lsl #1
 	strh r0, [r1, #4]
 	mov r0, #0
-	bl sub_020126C8
+	bl RecycleShopCountTradableItemsInStorage
 	add r1, sl, sb, lsl #1
 	strh r0, [r1, #0xc]
 	b _02012A84
@@ -2106,8 +2106,8 @@ _02012AB0: .word RECYCLE_SHOP_ITEM_LIST
 _02012AB4: .word 0x00000578
 	arm_func_end sub_0201297C
 
-	arm_func_start sub_02012AB8
-sub_02012AB8: ; 0x02012AB8
+	arm_func_start ClearCroagunkItems
+ClearCroagunkItems: ; 0x02012AB8
 	mov r3, #0
 	ldr r0, _02012ADC ; =_022A4BD8
 	mov r2, r3
@@ -2120,7 +2120,7 @@ _02012AC4:
 	bx lr
 	.align 2, 0
 _02012ADC: .word _022A4BD8
-	arm_func_end sub_02012AB8
+	arm_func_end ClearCroagunkItems
 
 	arm_func_start LoadSynthBin
 LoadSynthBin: ; 0x02012AE0
@@ -2133,7 +2133,7 @@ LoadSynthBin: ; 0x02012AE0
 	tst r0, #0xff
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02012B2C ; =_020AF6D4
+	ldr r0, _02012B2C ; =SYNTH_BIN_FILE_PTR
 	ldr r1, _02012B30 ; =_02098CB4
 	mov r2, #0xe
 	bl LoadFileFromRom
@@ -2144,7 +2144,7 @@ LoadSynthBin: ; 0x02012AE0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02012B28: .word _020AF6D0
-_02012B2C: .word _020AF6D4
+_02012B2C: .word SYNTH_BIN_FILE_PTR
 _02012B30: .word _02098CB4
 	arm_func_end LoadSynthBin
 
@@ -2158,7 +2158,7 @@ CloseSynthBin: ; 0x02012B34
 	moveq r0, #0
 	tst r0, #0xff
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _02012B78 ; =_020AF6D4
+	ldr r0, _02012B78 ; =SYNTH_BIN_FILE_PTR
 	bl UnloadFile
 	ldr r0, _02012B74 ; =_020AF6D0
 	mov r1, #0
@@ -2168,7 +2168,7 @@ CloseSynthBin: ; 0x02012B34
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02012B74: .word _020AF6D0
-_02012B78: .word _020AF6D4
+_02012B78: .word SYNTH_BIN_FILE_PTR
 	arm_func_end CloseSynthBin
 
 	arm_func_start GenerateCroagunkItems
@@ -2559,8 +2559,8 @@ _020130B0: .word _022A4BD8
 _020130B4: .word _02098D48
 	arm_func_end GenerateCroagunkItems
 
-	arm_func_start sub_020130B8
-sub_020130B8: ; 0x020130B8
+	arm_func_start GetCroagunkItemTemplates
+GetCroagunkItemTemplates: ; 0x020130B8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r1, _02013148 ; =_020AF6D0
 	mov r7, r0
@@ -2604,10 +2604,10 @@ _02013130:
 	.align 2, 0
 _02013148: .word _020AF6D0
 _0201314C: .word _022A4BD8
-	arm_func_end sub_020130B8
+	arm_func_end GetCroagunkItemTemplates
 
-	arm_func_start sub_02013150
-sub_02013150: ; 0x02013150
+	arm_func_start PopCroagunkItem
+PopCroagunkItem: ; 0x02013150
 	ldr r3, _0201318C ; =_022A4BD8
 	mov ip, #0
 	b _0201317C
@@ -2627,10 +2627,10 @@ _0201317C:
 	bx lr
 	.align 2, 0
 _0201318C: .word _022A4BD8
-	arm_func_end sub_02013150
+	arm_func_end PopCroagunkItem
 
-	arm_func_start sub_02013190
-sub_02013190: ; 0x02013190
+	arm_func_start LoadCroagunkItems
+LoadCroagunkItems: ; 0x02013190
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	mov r3, r0
@@ -2657,10 +2657,10 @@ _020131BC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020131EC: .word _022A4BD8
-	arm_func_end sub_02013190
+	arm_func_end LoadCroagunkItems
 
-	arm_func_start sub_020131F0
-sub_020131F0: ; 0x020131F0
+	arm_func_start SaveCroagunkItems
+SaveCroagunkItems: ; 0x020131F0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	mov r3, r0
@@ -2687,7 +2687,7 @@ _0201321C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0201324C: .word _022A4BD8
-	arm_func_end sub_020131F0
+	arm_func_end SaveCroagunkItems
 
 	arm_func_start GetSynthItem
 GetSynthItem: ; 0x02013250

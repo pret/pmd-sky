@@ -11,6 +11,7 @@
 .public CeilFixedPoint
 .public CheckVariousStatuses2__02301244
 .public CheckVariousStatuses__023016DC
+.public CONSTRICTION_DAMAGE
 .public CURSE_DAMAGE_COOLDOWN
 .public DisplayActions
 .public DUNGEON_PTR
@@ -47,7 +48,6 @@
 .public MonsterIsType
 .public MultiplyFixedPoint64
 .public ov10_022C4454
-.public ov10_022C446C
 .public ov10_022C464C
 .public ov10_022C4650
 .public ov10_022C4664

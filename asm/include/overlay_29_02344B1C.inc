@@ -21,6 +21,7 @@
 .public GetItemInfo
 .public GetItemToRetrieve
 .public GetLeader
+.public GetMoneyQuantity
 .public GetTile
 .public GetTileSafe
 .public IqSkillIsEnabled
@@ -46,6 +47,5 @@
 .public SetPreprocessorArgsIdVal
 .public ShouldMonsterRunAwayAndShowEffect
 .public SpawnItemEntity
-.public sub_0200D8AC
 .public SubstitutePlaceholderItemTags
 .public SubstitutePlaceholderStringTags

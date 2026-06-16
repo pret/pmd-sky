@@ -231,7 +231,7 @@ _022F7A14:
 	beq _022F7AA4
 	add r0, sp, #4
 	mov r1, r4
-	bl sub_020585B4
+	bl GetRecoloredTeamMemberName
 	add r1, sp, #4
 	mov r0, #1
 	bl SetMessageLogPreprocessorArgsString
@@ -761,7 +761,7 @@ _022F8008:
 	mov r1, sl
 	add r0, r0, #0x248
 	add r0, r0, #0x400
-	bl ov29_022E2A78
+	bl GetMonsterOrTrapName
 	ldr r0, _022F85D0 ; =DUNGEON_PTR
 #ifdef EUROPE
 	mov r1, #0
@@ -1134,7 +1134,7 @@ _022F83F4:
 	mov r2, #0
 	add r0, r0, #0x248
 	add r0, r0, #0x400
-	bl ov29_022E2A78
+	bl GetMonsterOrTrapName
 	b _022F8460
 _022F8428:
 	cmp r0, #0xe3
@@ -1150,7 +1150,7 @@ _022F8428:
 	mov r2, #0
 	add r0, r0, #0x248
 	add r0, r0, #0x400
-	bl ov29_022E2A78
+	bl GetMonsterOrTrapName
 _022F8460:
 	bl GetLeader
 	cmp r0, #0

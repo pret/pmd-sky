@@ -17,6 +17,7 @@
 .public HasLowHealth
 .public HasTypeAffectedByGravity
 .public IqSkillIsEnabled
+.public IsEitherMonsterInvalid
 .public LevitateIsActive
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MAGNET_PULL_ACTIVATION_CHANCE
@@ -37,7 +38,6 @@
 .public ov29_022E57D4
 .public ov29_022E5E84
 .public ov29_02300D50
-.public ov29_0230D654
 .public ov29_0230F728
 .public ov29_023380FC
 .public ov29_023535DC

@@ -529,7 +529,7 @@ _0238A7D8:
 	ldr r0, [r4, #0x64]
 	ldrsh r2, [r2]
 	add r3, r4, #0x23
-	bl ov10_022BD474
+	bl CreateInventoryMenuOuter
 	strb r0, [r4, #0x20]
 _0238A82C:
 	mov r0, #9
@@ -1189,7 +1189,7 @@ _0238B158:
 	beq _0238B1F4
 	b _0238B204
 _0238B178:
-	bl sub_0201077C
+	bl GetEggSpecies
 	cmp r0, #0
 	bne _0238B204
 	mov r0, #0x1e
@@ -1747,7 +1747,7 @@ _0238B8BC:
 	b _0238BCE8
 _0238B904:
 	mov r0, r4
-	bl ov11_0230AD7C
+	bl IsGroundMonsterAtMaxLevel
 	cmp r0, #0
 	beq _0238B924
 	mov r0, #1
@@ -1762,7 +1762,7 @@ _0238B924:
 	b _0238BCE8
 _0238B938:
 	mov r0, r4
-	bl ov11_0230AD7C
+	bl IsGroundMonsterAtMaxLevel
 	cmp r0, #0
 	beq _0238B958
 	mov r0, #5
@@ -2158,7 +2158,7 @@ _0238BEE0:
 	mov r1, #0
 	mov r2, r1
 	mov r3, r1
-	bl sub_02065BAC
+	bl SetAllEventNpcs
 	bl BarTryHidePortrait
 	bl sub_02046D20
 	mov r0, #0x3d
@@ -2189,7 +2189,7 @@ _0238BF44:
 	b _0238C598
 _0238BF64:
 	add r0, sp, #0x5c
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	mov r0, #1
 	strb r0, [sp, #0x7e]
 	add r0, r8, #0x100
@@ -2208,7 +2208,7 @@ _0238BFA4:
 	bl sub_0203D538
 	cmp r0, #0
 	beq _0238C598
-	bl sub_0203EFD4
+	bl FreeMissionRewardStructMain
 	bl BarPostDrinkCaseForCustomer
 	b _0238C598
 _0238BFBC:
@@ -2243,7 +2243,7 @@ _0238C004:
 	ldrsh r1, [r1, #4]
 	mov r2, r0
 	mov r3, r0
-	bl sub_02065BAC
+	bl SetAllEventNpcs
 	mov r0, #0x3d
 	str r0, [r8, #4]
 	mov r0, #0x31
@@ -2442,7 +2442,7 @@ _0238C2E4:
 	add r0, r8, #0x10
 	bl InitPortraitParamsWithMonsterId
 	add r0, sp, #0x30
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	mov r0, #6
 	strb r0, [sp, #0x32]
 	add r0, r8, #0x100
@@ -2459,7 +2459,7 @@ _0238C348:
 	bl sub_0203D538
 	cmp r0, #0
 	beq _0238C598
-	bl sub_0203EFD4
+	bl FreeMissionRewardStructMain
 	add r0, r8, #0x100
 	mov r1, #0
 	strh r1, [r0]
@@ -2787,7 +2787,7 @@ BarTrySetEventMainActor: ; 0x0238C6C4
 	add r0, sp, #0
 	mov r1, r1, lsl #0x10
 	mov r4, r1, asr #0x10
-	bl sub_02056E04
+	bl GetUnitNpcIds
 	mov r3, #0
 	add r2, sp, #0
 	b _0238C750
@@ -2825,7 +2825,7 @@ _0238C790:
 _0238C798:
 	mvn r0, #0
 _0238C79C:
-	bl sub_02065B70
+	bl SetActorEventMain
 	mov r0, #1
 _0238C7A4:
 	add sp, sp, #8
@@ -3281,7 +3281,7 @@ _0238CD5C:
 	mov r1, r7
 	add r0, r6, #0xa
 	ldrsh r8, [r6, #0xa]
-	bl sub_02054FB8
+	bl ModifyHpStat
 	movs sl, r0
 	ldrnesh r0, [r6, #0xa]
 	subne r0, r0, r8
@@ -3297,7 +3297,7 @@ _0238CD84:
 	str r0, [r5, #0x24]
 	mov r1, r7
 	add r0, r6, #8
-	bl sub_02055054
+	bl ModifyIqStat
 	movs sl, r0
 	ldrnesh r0, [r6, #8]
 	ldrsh r1, [r6, #4]
@@ -3313,7 +3313,7 @@ _0238CDD4:
 	mov r1, r7
 	add r0, r6, #0xc
 	ldrb r8, [r6, #0xc]
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	movs sl, r0
 	ldrneb r0, [r6, #0xc]
 	subne r0, r0, r8
@@ -3324,7 +3324,7 @@ _0238CDFC:
 	mov r1, r7
 	add r0, r6, #0xd
 	ldrb r8, [r6, #0xd]
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	movs sl, r0
 	ldrneb r0, [r6, #0xd]
 	subne r0, r0, r8
@@ -3335,7 +3335,7 @@ _0238CE24:
 	mov r1, r7
 	add r0, r6, #0xe
 	ldrb r8, [r6, #0xe]
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	movs sl, r0
 	ldrneb r0, [r6, #0xe]
 	subne r0, r0, r8
@@ -3346,7 +3346,7 @@ _0238CE4C:
 	mov r1, r7
 	add r0, r6, #0xf
 	ldrb r8, [r6, #0xf]
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	movs sl, r0
 	ldrneb r0, [r6, #0xf]
 	subne r0, r0, r8
@@ -3911,7 +3911,7 @@ SpindaBarEntry: ; 0x0238D56C
 	mov r1, #0
 	bl SetPortraitEmotion
 	add r0, r4, #0x5c
-	bl sub_020580C4
+	bl ValidateTeamMembers
 	mov r0, #0
 	str r0, [r4]
 	sub r0, r0, #1
@@ -3949,7 +3949,7 @@ SpindaBarResume: ; 0x0238D5FC
 	mov r1, #0
 	bl SetPortraitEmotion
 	add r0, r4, #0x5c
-	bl sub_020580C4
+	bl ValidateTeamMembers
 	ldr r0, [r4]
 	cmp r0, #0
 	bne _0238D67C
@@ -4009,7 +4009,7 @@ _0238D6B4: ; jump table
 	b _0238D7A4 ; case 20
 	b _0238D7A4 ; case 21
 _0238D70C:
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 	mov r0, #4
 	ldmia sp!, {r3, r4, r5, pc}
 _0238D718:
@@ -4032,7 +4032,7 @@ _0238D738:
 	blx r2
 	b _0238D75C
 _0238D758:
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 _0238D75C:
 	bl BarTryClosePortraitBox
 	ldr r0, _0238DACC ; =ov11_02324DB0
@@ -4044,7 +4044,7 @@ _0238D75C:
 	mov r0, #4
 	ldmia sp!, {r3, r4, r5, pc}
 _0238D780:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238D798
 	bl ov11_0230CC70
@@ -4055,7 +4055,7 @@ _0238D798:
 	str r0, [r4]
 	b _0238DAC4
 _0238D7A4:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238D7BC
 	bl ov11_0230CC70
@@ -4190,12 +4190,12 @@ _0238D938:
 	mov r1, r5
 	bl Debug_Print0
 	mov r0, r5
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	str r0, [r4]
 	b _0238DAC4
 _0238D958:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238D970
 	bl ov11_0230CC70
@@ -4266,7 +4266,7 @@ _0238DA24:
 	mov r1, r5
 	bl Debug_Print0
 	mov r0, r5
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 _0238DA38:
 	bl BarZeroInitBufferAndPreprocessorArgsZero
 	cmp r0, #0
@@ -4285,7 +4285,7 @@ _0238DA60:
 	streq r0, [r4]
 	b _0238DAC4
 _0238DA74:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238DA8C
 	bl ov11_0230CC70

@@ -2532,7 +2532,7 @@ _0233EC88:
 _0233ECB4:
 	add r0, r4, #0x58
 	add r0, r0, #0x1800
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	add r3, r4, #0x1000
 	mov r0, #2
 	strb r0, [r3, #0x85a]
@@ -2556,7 +2556,7 @@ _0233ED0C:
 	bl sub_0203D538
 	cmp r0, #1
 	bne _0233EEB4
-	bl sub_0203EFD4
+	bl FreeMissionRewardStructMain
 	ldr r0, _0233EF18 ; =0x00005006
 	str r0, [r4]
 	b _0233EEB4

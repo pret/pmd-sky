@@ -2295,7 +2295,7 @@ _0238C0FC:
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x890]
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	bl ov14_0238B708
 	mov r0, #4
 	b _0238C124

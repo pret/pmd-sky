@@ -6942,7 +6942,7 @@ _0202FF54:
 	ldrh r3, [r6, #0xa4]
 	mov r1, #4
 	mov r2, #2
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldrsb r0, [r5, #0x10]
 	bl UpdateWindow
 	mov r0, #2
@@ -11203,7 +11203,7 @@ sub_020335A8: ; 0x020335A8
 	mov r0, r4
 	mov r1, #8
 	mov r2, #0
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, #0x17
 	str r0, [sp]
 	ldr r2, [r5, #0xc]

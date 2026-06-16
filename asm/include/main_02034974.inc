@@ -77,6 +77,7 @@
 .public _020B12A0_JP
 .public _022AADF8
 .public _s32_div_f
+.public AppendStandardStringToMission
 .public CheckDebugMenuField0x1A4
 .public CheckOptionsMenuField0x1A4
 .public CheckParentMenuField0x1A0
@@ -113,6 +114,7 @@
 .public GetActiveRosterIndex
 .public GetActiveTeamMember
 .public GetAdvancedMenuResult
+.public GetAppointedLeaderMemberIdx
 .public GetDexNumber
 .public GetEvolutionPossibilities
 .public GetHeldButtons
@@ -160,12 +162,12 @@
 .public MemFree
 .public MemZero
 .public NULL_OVERLAY_LOAD_ENTRY
-.public ov11_022E6E68
 .public ov11_0230D71C
 .public OverlayIsLoaded
 .public OverlayLoadEntriesEqual
 .public PlaySeVolumeWrapper
 .public PreprocessStringFromId
+.public ReturnScriptMenuResultZero
 .public SaveScriptVariableValueBytes
 .public SetAdvancedTextBoxField0x1C2
 .public SetAdvancedTextBoxState5
@@ -191,7 +193,6 @@
 .public sub_020251F0
 .public sub_02025C7C
 .public sub_02025D50
-.public sub_02026268
 .public sub_020264F8
 .public sub_020265A8
 .public sub_02027180
@@ -238,7 +239,6 @@
 .public sub_02056410
 .public sub_02056460
 .public sub_020564B0
-.public sub_020568A4
 .public sub_02056F60
 .public sub_020584F8
 .public sub_02059B08

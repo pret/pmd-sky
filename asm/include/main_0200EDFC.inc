@@ -12,6 +12,7 @@
 .public GetItemCategory
 .public GetItemCategoryVeneer
 .public GetItemIdFromList
+.public GetMoneyQuantity
 .public GetRankStorageSize
 .public InitBulkItem
 .public IsItemInTimeDarkness
@@ -29,5 +30,4 @@
 .public SetItemAcquired
 .public SortItemList
 .public sub_0200D1F0
-.public sub_0200D8AC
 .public sub_020582E0

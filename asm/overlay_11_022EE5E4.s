@@ -20644,8 +20644,8 @@ _022FF214: .word ov11_0238A074
 _022FF218: .word 0x000002BD
 	arm_func_end ov11_022FF1D4
 
-	arm_func_start ov11_022FF21C
-ov11_022FF21C: ; 0x022FF21C
+	arm_func_start EatOverworldGummiEntryPoint
+EatOverworldGummiEntryPoint: ; 0x022FF21C
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r0, #0x620
@@ -20713,10 +20713,10 @@ _022FF30C: .word C_ROUTINES
 _022FF310: .word 0x000002BD
 _022FF314: .word ov11_0232248C
 _022FF318: .word ov11_022FF438
-	arm_func_end ov11_022FF21C
+	arm_func_end EatOverworldGummiEntryPoint
 
-	arm_func_start ov11_022FF31C
-ov11_022FF31C: ; 0x022FF31C
+	arm_func_start EatOverworldGummiDestructor
+EatOverworldGummiDestructor: ; 0x022FF31C
 	stmdb sp!, {r3, lr}
 	ldr r0, _022FF354 ; =ov11_02324D0C
 	ldr r0, [r0, #4]
@@ -20733,10 +20733,10 @@ ov11_022FF31C: ; 0x022FF31C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FF354: .word ov11_02324D0C
-	arm_func_end ov11_022FF31C
+	arm_func_end EatOverworldGummiDestructor
 
-	arm_func_start ov11_022FF358
-ov11_022FF358: ; 0x022FF358
+	arm_func_start EatOverworldGummiFrameUpdate
+EatOverworldGummiFrameUpdate: ; 0x022FF358
 	stmdb sp!, {r3, lr}
 	ldr r0, _022FF434 ; =ov11_02324D0C
 	ldr r2, [r0, #4]
@@ -20799,7 +20799,7 @@ _022FF42C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FF434: .word ov11_02324D0C
-	arm_func_end ov11_022FF358
+	arm_func_end EatOverworldGummiFrameUpdate
 
 	arm_func_start ov11_022FF438
 ov11_022FF438: ; 0x022FF438
@@ -23052,8 +23052,8 @@ _02301194: .word ov11_023226C4
 _02301198: .word ov11_02324D40
 	arm_func_end ov11_02301174
 
-	arm_func_start ov11_0230119C
-ov11_0230119C: ; 0x0230119C
+	arm_func_start GroundBagOthersMenuEntryPoint
+GroundBagOthersMenuEntryPoint: ; 0x0230119C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x98
 	mov r0, #8
@@ -23092,10 +23092,10 @@ _02301210: .word 0x00000227
 _02301214: .word ov11_023226B4
 _02301218: .word 0x00001813
 _0230121C: .word ov11_023226D4
-	arm_func_end ov11_0230119C
+	arm_func_end GroundBagOthersMenuEntryPoint
 
-	arm_func_start ov11_02301220
-ov11_02301220: ; 0x02301220
+	arm_func_start GroundBagOthersMenuDestructor
+GroundBagOthersMenuDestructor: ; 0x02301220
 	stmdb sp!, {r3, lr}
 	ldr r0, _02301258 ; =ov11_02324D40
 	ldr r0, [r0, #4]
@@ -23112,10 +23112,10 @@ ov11_02301220: ; 0x02301220
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02301258: .word ov11_02324D40
-	arm_func_end ov11_02301220
+	arm_func_end GroundBagOthersMenuDestructor
 
-	arm_func_start ov11_0230125C
-ov11_0230125C: ; 0x0230125C
+	arm_func_start GroundBagOthersMenuFrameUpdate
+GroundBagOthersMenuFrameUpdate: ; 0x0230125C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x130
 	ldr r0, _02301398 ; =ov11_02324D40
@@ -23209,7 +23209,7 @@ _02301390:
 	.align 2, 0
 _02301398: .word ov11_02324D40
 _0230139C: .word ov11_023013A0
-	arm_func_end ov11_0230125C
+	arm_func_end GroundBagOthersMenuFrameUpdate
 
 	arm_func_start ov11_023013A0
 ov11_023013A0: ; 0x023013A0
@@ -23420,7 +23420,7 @@ _02301658:
 	ldmia sp!, {r3, pc}
 _02301680:
 	add r0, r2, #0x1d8
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	ldr r1, _02301A10 ; =ov11_02324D48
 	mov ip, #6
 	ldr r2, [r1]
@@ -23828,7 +23828,7 @@ _02301BD4:
 	ldmia sp!, {r3, pc}
 _02301BFC:
 	add r0, r2, #0x1d8
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	ldr r1, _02301F8C ; =ov11_02324D48
 	mov ip, #6
 	ldr r2, [r1]
@@ -24553,7 +24553,7 @@ _023025A4:
 	b _023025DC
 _023025CC:
 	ldr r0, [r0, #0x20]
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	ldmia sp!, {r4, pc}
 _023025DC:
@@ -25093,7 +25093,7 @@ _02302CB8:
 	b _02302CD4
 _02302CC4:
 	ldr r0, [r1, #0x20]
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _02302CD4:
@@ -25472,7 +25472,7 @@ _0230313C:
 #else
 	add r0, r3, #0x10
 #endif
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	mov r0, sb
 	ldr r1, [r0, #4]
 	mov r3, #1
@@ -25501,12 +25501,12 @@ _023031A4:
 	bl sub_0203D538
 	cmp r0, #1
 	bne _023031DC
-	bl sub_0203EFD4
-	bl ov11_022E6E68
+	bl FreeMissionRewardStructMain
+	bl ReturnScriptMenuResultZero
 	mov r0, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _023031C0:
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 	mov r0, sb
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #9]
@@ -25592,8 +25592,8 @@ _023032BC: .word 0x00000498
 _023032C0: .word ov11_02322734
 	arm_func_end ov11_02303208
 
-	arm_func_start ov11_023032C4
-ov11_023032C4: ; 0x023032C4
+	arm_func_start InitDiaryAndFaqBoardMenu
+InitDiaryAndFaqBoardMenu: ; 0x023032C4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -25687,7 +25687,7 @@ _02304A54: .word 0x000032FC
 #endif
 _023033F4: .word 0x0000C402
 _023033F8: .word ov11_023227B0
-	arm_func_end ov11_023032C4
+	arm_func_end InitDiaryAndFaqBoardMenu
 
 	arm_func_start ov11_023033FC
 ov11_023033FC: ; 0x023033FC
@@ -26069,8 +26069,8 @@ _023038FC: .word ov11_0232287C
 _02303900: .word ov11_02322894
 	arm_func_end ov11_0230377C
 
-	arm_func_start ov11_02303904
-ov11_02303904: ; 0x02303904
+	arm_func_start FreeDiaryAndFaqBoardMenuMenu
+FreeDiaryAndFaqBoardMenuMenu: ; 0x02303904
 	stmdb sp!, {r3, lr}
 	ldr r0, _0230392C ; =ov11_02324D54
 	ldr r0, [r0]
@@ -26083,10 +26083,10 @@ ov11_02303904: ; 0x02303904
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230392C: .word ov11_02324D54
-	arm_func_end ov11_02303904
+	arm_func_end FreeDiaryAndFaqBoardMenuMenu
 
-	arm_func_start ov11_02303930
-ov11_02303930: ; 0x02303930
+	arm_func_start DiaryAndFaqBoardMenuFrameUpdate
+DiaryAndFaqBoardMenuFrameUpdate: ; 0x02303930
 	stmdb sp!, {r3, lr}
 	ldr r0, _023039A8 ; =ov11_02324D54
 	ldr r1, [r0]
@@ -26117,7 +26117,7 @@ _02303984:
 	b _023039A0
 _02303990:
 	ldr r0, [r1, #0x18]
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _023039A0:
@@ -26125,7 +26125,7 @@ _023039A0:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023039A8: .word ov11_02324D54
-	arm_func_end ov11_02303930
+	arm_func_end DiaryAndFaqBoardMenuFrameUpdate
 
 	arm_func_start ov11_023039AC
 ov11_023039AC: ; 0x023039AC
@@ -26136,7 +26136,7 @@ ov11_023039AC: ; 0x023039AC
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
-	bl ov11_023032C4
+	bl InitDiaryAndFaqBoardMenu
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023039D0: .word ov11_023227C8
@@ -26918,7 +26918,7 @@ _02304440:
 	cmp r0, #0
 	beq _02304460
 	mvn r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _02304460:
@@ -26938,7 +26938,7 @@ _02304478:
 	bne _023044AC
 	bl sub_02067664
 	mvn r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	bl ov11_0230D000
 	mov r0, #4
 	ldmia sp!, {r3, pc}
@@ -26957,13 +26957,13 @@ _023044C4:
 	cmp r0, r1
 	bne _023044E8
 	mov r0, r1
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	b _023044F8
 _023044E8:
 	cmp r0, #1
 	bne _023044F8
 	bl sub_020674CC
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 _023044F8:
 	bl sub_02067664
 	bl ov11_0230D000
@@ -27037,7 +27037,7 @@ _023045AC:
 	bne _023045CC
 	bl ov11_022E84AC
 	mvn r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _023045CC:
@@ -27053,7 +27053,7 @@ _023045E0:
 	cmp r0, #1
 	bne _02304608
 	mvn r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	bl ov11_022E84AC
 	mov r0, #4
 	ldmia sp!, {r3, pc}
@@ -27173,7 +27173,7 @@ _0230473C:
 	bne _0230477C
 	bl sub_02066888
 	mvn r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _0230477C:
@@ -27242,11 +27242,11 @@ _02304848:
 	ldrsh r0, [r1, #4]
 	bl sub_0206C110
 	mov r0, #1
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	b _0230486C
 _02304864:
 	mov r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 _0230486C:
 	bl sub_02066888
 	mov r0, #4
@@ -27344,7 +27344,7 @@ _02304960:
 	cmp r0, #0
 	beq _0230498C
 	mvn r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _0230498C:
@@ -28123,7 +28123,7 @@ _02305374:
 	str r1, [sp, #8]
 	ldr r2, [r4, #0x44]
 	add r3, r4, #6
-	bl ov10_022BD474
+	bl CreateInventoryMenuOuter
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x49]
@@ -28139,7 +28139,7 @@ _023053CC:
 	str r1, [sp, #8]
 	ldr r2, [r4, #0x44]
 	add r3, r4, #6
-	bl ov10_022BD474
+	bl CreateInventoryMenuOuter
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x49]
@@ -28622,7 +28622,7 @@ _02305A2C:
 	str r1, [sp, #8]
 	ldr r2, [r4, #0x44]
 	add r3, r4, #6
-	bl ov10_022BD474
+	bl CreateInventoryMenuOuter
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x49]
@@ -28638,7 +28638,7 @@ _02305A84:
 	str r1, [sp, #8]
 	ldr r2, [r4, #0x44]
 	add r3, r4, #6
-	bl ov10_022BD474
+	bl CreateInventoryMenuOuter
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x49]
@@ -30504,7 +30504,7 @@ ov11_02307244: ; 0x02307244
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	add r0, r0, #0x31c
-	bl sub_020580C4
+	bl ValidateTeamMembers
 	ldr r2, _023072FC ; =ov11_02324D8C
 	mvn lr, #1
 	ldr r0, [r2]
@@ -30625,7 +30625,7 @@ _023073FC:
 	str r1, [sp, #8]
 	ldr r2, [r4, #0x10]
 	add r3, r4, #0x104
-	bl ov10_022BD474
+	bl CreateInventoryMenuOuter
 	ldr r2, _023082B4 ; =ov11_02324D8C
 	mov r1, #0
 	ldr r2, [r2]
@@ -32915,7 +32915,7 @@ _0230930C:
 	add r1, sb, #0x3a
 	add r0, sp, #0x1a
 	mov r2, #0
-	bl sub_02054F44
+	bl RecolorNameString
 	add r0, sp, #0x1a
 	str r0, [sp, #0x94]
 	b _023093A0
@@ -32934,7 +32934,7 @@ _0230935C:
 	add r1, sb, #0x5e
 	add r0, sp, #0x1a
 	mov r2, #0
-	bl sub_02054F44
+	bl RecolorNameString
 	add r0, sp, #0x1a
 	str r0, [sp, #0x94]
 _023093A0:
@@ -34100,7 +34100,7 @@ ov11_0230A2D0: ; 0x0230A2D0
 	mov r3, r1, lsr #0x10
 	mov r1, #4
 	mov r2, #0x10
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0230A318: .word ov11_02322EDC
@@ -34863,15 +34863,15 @@ ov11_0230AD50: ; 0x0230AD50
 _0230AD78: .word ov11_02324D98
 	arm_func_end ov11_0230AD50
 
-	arm_func_start ov11_0230AD7C
-ov11_0230AD7C: ; 0x0230AD7C
+	arm_func_start IsGroundMonsterAtMaxLevel
+IsGroundMonsterAtMaxLevel: ; 0x0230AD7C
 	ldrb r0, [r0, #1]
 	cmp r0, #0x64
 	movhs r0, #1
 	movlo r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end ov11_0230AD7C
+	arm_func_end IsGroundMonsterAtMaxLevel
 
 	arm_func_start ov11_0230AD94
 ov11_0230AD94: ; 0x0230AD94
@@ -34924,11 +34924,11 @@ ov11_0230AE10: ; 0x0230AE10
 	mov r0, #0x10
 	mov r1, #8
 	bl MemAlloc
-	ldr r2, _0230AE78 ; =ov11_02324DA0
+	ldr r2, _0230AE78 ; =EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	mov r1, #0x10
 	str r0, [r2]
 	bl MemZero
-	ldr r0, _0230AE78 ; =ov11_02324DA0
+	ldr r0, _0230AE78 ; =EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	ldmia r5, {r1, r2}
 	ldr r4, [r0]
 	str r1, [r4]
@@ -34942,7 +34942,7 @@ ov11_0230AE10: ; 0x0230AE10
 	bl sub_0204707C
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0230AE78: .word ov11_02324DA0
+_0230AE78: .word EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 _0230AE7C: .word ov11_02322F98
 _0230AE80: .word GetExclusiveItemRequirements
 	arm_func_end ov11_0230AE10
@@ -34950,14 +34950,14 @@ _0230AE80: .word GetExclusiveItemRequirements
 	arm_func_start ov11_0230AE84
 ov11_0230AE84: ; 0x0230AE84
 	stmdb sp!, {r3, lr}
-	ldr r0, _0230AECC ; =ov11_02324DA0
+	ldr r0, _0230AECC ; =EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	ldrne r0, [r0, #8]
 	cmpne r0, #0
 	beq _0230AEC4
 	bl sub_020470D0
-	ldr r0, _0230AECC ; =ov11_02324DA0
+	ldr r0, _0230AECC ; =EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
 	bl sub_02047148
@@ -34969,32 +34969,32 @@ _0230AEC4:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0230AECC: .word ov11_02324DA0
+_0230AECC: .word EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	arm_func_end ov11_0230AE84
 
 	arm_func_start ov11_0230AED0
 ov11_0230AED0: ; 0x0230AED0
 	stmdb sp!, {r3, lr}
-	ldr r0, _0230AF08 ; =ov11_02324DA0
+	ldr r0, _0230AF08 ; =EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	add r0, r0, #8
 	bl sub_02047150
-	ldr r0, _0230AF08 ; =ov11_02324DA0
+	ldr r0, _0230AF08 ; =EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0230AF08 ; =ov11_02324DA0
+	ldr r0, _0230AF08 ; =EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0230AF08: .word ov11_02324DA0
+_0230AF08: .word EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	arm_func_end ov11_0230AED0
 
 	arm_func_start ov11_0230AF0C
 ov11_0230AF0C: ; 0x0230AF0C
-	ldr r1, _0230AF30 ; =ov11_02324DA0
+	ldr r1, _0230AF30 ; =EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	ldr r2, [r0]
 	ldr r3, [r1]
 	ldr r1, [r0, #4]
@@ -35004,7 +35004,7 @@ ov11_0230AF0C: ; 0x0230AF0C
 	str r1, [r3, #4]
 	bx ip
 	.align 2, 0
-_0230AF30: .word ov11_02324DA0
+_0230AF30: .word EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 _0230AF34: .word sub_02047188
 	arm_func_end ov11_0230AF0C
 
@@ -35012,7 +35012,7 @@ _0230AF34: .word sub_02047188
 GetExclusiveItemRequirements: ; 0x0230AF38
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x15c
-	ldr r1, _0230B1DC ; =ov11_02324DA0
+	ldr r1, _0230B1DC ; =EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 	mov r7, r0
 	ldr r6, [r1]
 	add r0, sp, #0xa
@@ -35043,21 +35043,21 @@ _0230AFA4: ; jump table
 	b _0230AFCC ; case 2
 	b _0230AFE4 ; case 3
 _0230AFB4:
-	ldr r3, _0230B1E0 ; =ov11_02322FA8
+	ldr r3, _0230B1E0 ; =SWAP_SHOP_ONE_STAR_STR
 	mov r0, r7
 	mov r1, #0x6c
 	mov r2, sb
 	bl DrawTextInWindow
 	b _0230AFF8
 _0230AFCC:
-	ldr r3, _0230B1E4 ; =ov11_02322FB0
+	ldr r3, _0230B1E4 ; =SWAP_SHOP_TWO_STAR_STR
 	mov r0, r7
 	mov r1, #0x6c
 	mov r2, sb
 	bl DrawTextInWindow
 	b _0230AFF8
 _0230AFE4:
-	ldr r3, _0230B1E8 ; =ov11_02322FC0
+	ldr r3, _0230B1E8 ; =SWAP_SHOP_THREE_STAR_STR
 	mov r0, r7
 	mov r1, #0x6c
 	mov r2, sb
@@ -35071,12 +35071,12 @@ _0230AFF8:
 	mov r1, #0x18
 	mov r2, #0x28
 	mov r4, #0
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldr r3, _0230B1F0 ; =0x000004B3
 	mov r0, r7
 	mov r1, #0x7a
 	mov r2, #0x28
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, r8
 	add sb, sb, #0x30
 	bl GetExclusiveItemType
@@ -35160,7 +35160,7 @@ _0230B144:
 	mov r0, r7
 	mov r1, #0x18
 	mov r2, #0x28
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	ldrh r0, [r6, #6]
 	ldr r3, _0230B200 ; =0x000004B4
 	add r4, sp, #0x10c
@@ -35199,10 +35199,10 @@ _0230B184:
 #else
 #define GET_EXCLUSIVE_ITEM_REQUIREMENTS_OFFSET 0
 #endif
-_0230B1DC: .word ov11_02324DA0
-_0230B1E0: .word ov11_02322FA8
-_0230B1E4: .word ov11_02322FB0
-_0230B1E8: .word ov11_02322FC0
+_0230B1DC: .word EXCLUSIVE_ITEM_REQUIREMENTS_PTR
+_0230B1E0: .word SWAP_SHOP_ONE_STAR_STR
+_0230B1E4: .word SWAP_SHOP_TWO_STAR_STR
+_0230B1E8: .word SWAP_SHOP_THREE_STAR_STR
 _0230B1EC: .word 0x000004B2 + GET_EXCLUSIVE_ITEM_REQUIREMENTS_OFFSET
 _0230B1F0: .word 0x000004B3 + GET_EXCLUSIVE_ITEM_REQUIREMENTS_OFFSET
 _0230B1F4: .word 0x000002FE
@@ -35267,7 +35267,7 @@ _0230B2B8:
 	ldr r0, [r0, #4]
 	add r0, r0, #0xe6
 	add r0, r0, #0x4500
-	bl sub_020130B8
+	bl GetCroagunkItemTemplates
 	mov r0, sb
 	ldr r0, [r0, #4]
 	ldr r1, _0230B674 ; =0x000003A6
@@ -35350,7 +35350,7 @@ _0230B3D4:
 	ldr r1, [r1, #4]
 	add r1, r1, #0x4600
 	strh r2, [r1, #0x26]
-	bl sub_020114F8
+	bl SwapShopFreeDoublePointer
 	ldr r1, _0230B664 ; =SWAP_SHOP_INVENTORY_PTRS
 	mov r0, r8, lsl #0x10
 	ldr r2, [r1, #4]
@@ -35558,7 +35558,7 @@ _0230B6BC:
 	bl ov11_0230C3CC
 	bl ov11_0230C61C
 	mov r0, #0
-	bl sub_020130B8
+	bl GetCroagunkItemTemplates
 	ldr r1, _0230B71C ; =SWAP_SHOP_INVENTORY_PTRS
 	cmp r4, #0
 	ldr r1, [r1, #4]
@@ -36087,13 +36087,13 @@ ov11_0230BD5C: ; 0x0230BD5C
 	beq _0230BDEC
 	add r0, sp, #6
 	bl sub_0200D65C
-	ldr r1, _0230BE2C ; =ov11_02323004
+	ldr r1, _0230BE2C ; =SWAP_SHOP_RED_TEXT_TAG_STR
 	mov r0, r6
 	bl strcpy
 	add r1, sp, #6
 	mov r0, r6
 	bl strcat
-	ldr r1, _0230BE30 ; =ov11_0232300C
+	ldr r1, _0230BE30 ; =SWAP_SHOP_UNCENTER_TEXT_TAG_STR
 	mov r0, r6
 	bl strcat
 	b _0230BDF4
@@ -36116,8 +36116,8 @@ _0230BDF4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0230BE28: .word SWAP_SHOP_INVENTORY_PTRS
-_0230BE2C: .word ov11_02323004
-_0230BE30: .word ov11_0232300C
+_0230BE2C: .word SWAP_SHOP_RED_TEXT_TAG_STR
+_0230BE30: .word SWAP_SHOP_UNCENTER_TEXT_TAG_STR
 	arm_func_end ov11_0230BD5C
 
 	arm_func_start ov11_0230BE34
@@ -36163,13 +36163,13 @@ _0230BEC0: ; jump table
 	b _0230BED8 ; case 2
 	b _0230BEE0 ; case 3
 _0230BED0:
-	ldr r1, _0230BF2C ; =ov11_02323014
+	ldr r1, _0230BF2C ; =SWAP_SHOP_CLUMSET_ONE_STAR_STR
 	b _0230BEEC
 _0230BED8:
-	ldr r1, _0230BF30 ; =ov11_0232302C
+	ldr r1, _0230BF30 ; =SWAP_SHOP_CLUMSET_TWO_STAR_STR
 	b _0230BEEC
 _0230BEE0:
-	ldr r1, _0230BF34 ; =ov11_02323048
+	ldr r1, _0230BF34 ; =SWAP_SHOP_CLUMSET_THREE_STAR_STR
 	b _0230BEEC
 _0230BEE8:
 	mov r1, #0
@@ -36192,9 +36192,9 @@ _0230BF20:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0230BF28: .word SWAP_SHOP_INVENTORY_PTRS
-_0230BF2C: .word ov11_02323014
-_0230BF30: .word ov11_0232302C
-_0230BF34: .word ov11_02323048
+_0230BF2C: .word SWAP_SHOP_CLUMSET_ONE_STAR_STR
+_0230BF30: .word SWAP_SHOP_CLUMSET_TWO_STAR_STR
+_0230BF34: .word SWAP_SHOP_CLUMSET_THREE_STAR_STR
 	arm_func_end ov11_0230BE34
 
 	arm_func_start ov11_0230BF38
@@ -36903,7 +36903,7 @@ _0230C86C:
 	ldr r0, [r0, #4]
 	add r0, r0, #0xe6
 	add r0, r0, #0x4500
-	bl sub_020130B8
+	bl GetCroagunkItemTemplates
 	mov r6, r0
 	mov r7, #0
 	mov r4, #1
@@ -37072,7 +37072,7 @@ ov11_0230CA7C: ; 0x0230CA7C
 	mov r4, r0
 	mov r1, #6
 	mov r2, #2
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, r4
 	bl UpdateWindow
 	ldmia sp!, {r4, pc}
@@ -37404,15 +37404,15 @@ _0230CDC4: .word InitMenu
 _0230CDC8: .word ov11_0232313C
 	arm_func_end ov11_0230CDB8
 
-	arm_func_start ov11_0230CDCC
-ov11_0230CDCC: ; 0x0230CDCC
+	arm_func_start LoadRecycleShopOverlay
+LoadRecycleShopOverlay: ; 0x0230CDCC
 	ldr ip, _0230CDD8 ; =InitMenu
 	ldr r0, _0230CDDC ; =ov11_0232314C
 	bx ip
 	.align 2, 0
 _0230CDD8: .word InitMenu
 _0230CDDC: .word ov11_0232314C
-	arm_func_end ov11_0230CDCC
+	arm_func_end LoadRecycleShopOverlay
 
 	arm_func_start ov11_0230CDE0
 ov11_0230CDE0: ; 0x0230CDE0
@@ -49230,11 +49230,11 @@ _0231691C:
 	mov r0, sl
 	mov r1, #0xcc
 	add r2, r7, #0xa
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	b _023169EC
 _023169CC:
 	add r0, sb, #4
-	bl sub_02062D9C
+	bl GetMissionRankWithCapAndModifiersAndCap
 	bl sub_02062DB4
 	mov r3, r0
 	mov r0, sl
@@ -49254,7 +49254,7 @@ _023169FC:
 	mov r0, sl
 	mov r1, #5
 	mov r2, #0x48
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _02316A18:
 	mov r0, sl
 	bl UpdateWindow

@@ -1,7 +1,4 @@
 #pragma once
-.public _020A18FC
-.public _020A1904
-.public _020A1958
 .public _020A3CA0
 .public _020A3CAD
 .public _020A3CBC
@@ -64,11 +61,14 @@
 .public _022B7310
 .public _022B7320
 .public _s32_div_f
+.public AlreadyHasSimilarMission
 .public AlreadyHaveMission
+.public AppendStandardStringToMission
 .public ARM9_UNKNOWN_TABLE__NA_20A68BC
 .public BitstreamDebug
 .public BulkItemToItem
 .public CAFE_MISSION_REWARD_TYPE_WEIGHTS
+.public CHALLENGE_NORMAL_FIXED_ROOM_IDS
 .public CloseCollectionMenu
 .public ClosePortraitBox
 .public Copy16BitsFrom
@@ -95,6 +95,8 @@
 .public ExplorersOfSkyMain
 .public FemaleToMaleForm
 .public GetAdventureLogDungeonFloor
+.public GetAdventureNpcIds
+.public GetAppointedLeaderMemberIdx
 .public GetBaseForm
 .public GetBaseFormBurmyWormadamShellosGastrodonCherrim
 .public GetDebugSpecialEpisodeNumber
@@ -113,12 +115,14 @@
 .public GetMainTeamNameWithCheck
 .public GetMaxMembersAllowed
 .public GetMaxReachedFloor
+.public GetMissionRank__0204FAE0
 .public GetNameString
 .public GetNbFloors
 .public GetPartner
 .public GetPartnerMemberIdx
 .public GetPartyMembers
 .public GetRank
+.public GetRecruitMentryIdBySpecies
 .public GetResolvedPerformanceProgressFlag
 .public GetScenarioBalance
 .public GetSecondFormIfValid
@@ -126,6 +130,7 @@
 .public GetSpecialEpisodeType
 .public GetStringFromFileVeneer
 .public GetType
+.public GetUnitNpcIds
 .public GlobalProgressAlloc
 .public HandleSir0TranslationVeneer
 .public HasMonsterBeenAttackedInDungeons
@@ -190,6 +195,7 @@
 .public NO_SEND_ITEM_TABLE
 .public NoteLoadBase
 .public NoteSaveBase
+.public OUTLAW_HIDEOUT_FIXED_ROOM_IDS
 .public OUTLAW_MISSION_REWARD_TYPE_WEIGHTS
 .public ov00_022BE0C8
 .public ov01_02337B3C
@@ -269,7 +275,6 @@
 .public sub_020251F0
 .public sub_0202568C
 .public sub_02025AD8
-.public sub_02026268
 .public sub_020264F8
 .public sub_02026E78
 .public sub_02027180
@@ -314,18 +319,13 @@
 .public sub_0204D018
 .public sub_0204E210
 .public sub_0204F1B4
-.public sub_0204F7A8
 .public sub_0204F9B8
 .public sub_02052C3C
 .public sub_02052E2C
 .public sub_02055410
 .public sub_02055474
 .public sub_020554D8
-.public sub_020555D0
-.public sub_020568A4
 .public sub_02056914
-.public sub_02056D70
-.public sub_02056E04
 .public sub_0205B44C
 .public sub_0205B77C
 .public sub_0205BD40
@@ -335,7 +335,6 @@
 .public sub_0205C8E0
 .public sub_0205D1F4
 .public sub_0205E090
-.public sub_0205E2B8
 .public sub_0205E3F8
 .public sub_0205E48C
 .public sub_0205E50C
@@ -351,6 +350,7 @@
 .public sub_0205EC50
 .public sub_0205ECF4
 .public TEAM_MEMBER_TABLE_PTR
+.public TREASURE_MEMO_FIXED_ROOM_IDS
 .public UnloadFile
 .public UnloadOverlay
 .public UpdateWindow

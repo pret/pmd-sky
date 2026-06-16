@@ -142,6 +142,7 @@
 .public MTi_CpuCopy32Fast
 .public OS_CancelAlarm
 .public OS_CreateAlarm
+.public OS_CreateThread
 .public OS_DisableIrqMask
 .public OS_EnableIrqMask
 .public OS_GetIrqFunction
@@ -223,7 +224,6 @@
 .public Soc_U32to4U8
 .public socket
 .public Socl_GetHostID
-.public OS_CreateThread
 .public strcpy
 .public strlen
 .public strncpy

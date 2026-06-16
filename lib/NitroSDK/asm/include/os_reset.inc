@@ -1,6 +1,4 @@
 #pragma once
-.public OSi_TickCounter
-.public OSi_IsInitReset
 .public Card_LockRom
 .public EnableIrqFlag
 .public MI_CpuCopy8
@@ -11,6 +9,8 @@
 .public OS_ResetRequestIrqMask
 .public OS_SetIrqMask
 .public OSi_DoResetSystem
+.public OSi_IsInitReset
+.public OSi_TickCounter
 .public PXI_Init
 .public PXI_IsCallbackReady
 .public PXI_SendWordByFifo

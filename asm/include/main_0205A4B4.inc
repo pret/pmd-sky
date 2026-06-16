@@ -8,6 +8,7 @@
 .public _020A3524
 .public _s32_div_f
 .public AllocateTemp1024ByteBufferFromPool
+.public AppendStandardStringToMission
 .public CopyNStringFromId
 .public DrawTextInWindow
 .public GetAbility
@@ -20,6 +21,7 @@
 .public GetMonsterEvoStatus
 .public GetMonsterGenderVeneer
 .public GetNameRaw
+.public GetRecoloredGroundMonsterName
 .public GetResolvedPerformanceProgressFlag
 .public GetTeamMember
 .public GetType
@@ -31,9 +33,7 @@
 .public strcpy
 .public StringFromId
 .public sub_0200D670
-.public sub_02026268
 .public sub_02026358
-.public sub_02056084
 .public sub_02058C30
 .public sub_0205B120
 .public sub_0205B354

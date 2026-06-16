@@ -1,6 +1,7 @@
 #pragma once
 .public AddItemToBagNoHeld
 .public AddMoneyCarried
+.public AppendStandardStringToMission
 .public CloseDialogueBox
 .public ClosePortraitBox
 .public CloseScrollBox
@@ -21,15 +22,13 @@
 .public InitPortraitParamsWithMonsterId
 .public InitPreprocessorArgs
 .public IsDialogueBoxActive
+.public IsScriptMenuReturnDisabled
 .public IsScrollBoxActive
 .public IsThrownItem
 .public ItemToBulkItem
 .public MemAlloc
 .public MemFree
 .public ov11_022DC504
-.public ov11_022E6E68
-.public ov11_022E6E8C
-.public ov11_022E6EC8
 .public ov11_0230B724
 .public ov11_0230B8C0
 .public ov11_0230B9BC
@@ -40,6 +39,8 @@
 .public PlaySeByIdVolumeWrapper
 .public PreprocessString
 .public RemoveItemByIdAndStackNoHole
+.public ReturnScriptMenuResult
+.public ReturnScriptMenuResultZero
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public ShowDialogueBox
@@ -47,7 +48,6 @@
 .public ShowStringIdInDialogueBox
 .public sub_0200D670
 .public sub_02017C74
-.public sub_02026268
 .public sub_02027B1C
 .public sub_0202836C
 .public sub_0202F2C4

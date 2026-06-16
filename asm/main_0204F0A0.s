@@ -58,8 +58,8 @@ sub_0204F10C: ; 0x0204F10C
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0204F10C
 
-	arm_func_start sub_0204F158
-sub_0204F158: ; 0x0204F158
+	arm_func_start MissionRewardValidateDungeonId
+MissionRewardValidateDungeonId: ; 0x0204F158
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #0
@@ -84,7 +84,7 @@ sub_0204F158: ; 0x0204F158
 _0204F1AC:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0204F158
+	arm_func_end MissionRewardValidateDungeonId
 
 	arm_func_start sub_0204F1B4
 sub_0204F1B4: ; 0x0204F1B4
@@ -595,8 +595,8 @@ _0204F7A0:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0204F77C
 
-	arm_func_start sub_0204F7A8
-sub_0204F7A8: ; 0x0204F7A8
+	arm_func_start GetMissionRank__0204FAE0
+GetMissionRank__0204FAE0: ; 0x0204F7A8
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -626,10 +626,10 @@ _0204F808:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0204F810: .word MISSION_FLOOR_RANKS_PTRS
-	arm_func_end sub_0204F7A8
+	arm_func_end GetMissionRank__0204FAE0
 
-	arm_func_start GetMissionRank
-GetMissionRank: ; 0x0204F814
+	arm_func_start GetMissionRank__0204FB4C
+GetMissionRank__0204FB4C: ; 0x0204F814
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -662,12 +662,12 @@ _0204F880:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0204F888: .word MISSION_FLOOR_RANKS_PTRS
-	arm_func_end GetMissionRank
+	arm_func_end GetMissionRank__0204FB4C
 
 	arm_func_start GetOutlawLevel
 GetOutlawLevel: ; 0x0204F88C
 	stmdb sp!, {r3, lr}
-	bl GetMissionRank
+	bl GetMissionRank__0204FB4C
 	ldr r1, _0204F8A4 ; =OUTLAW_LEVEL_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]
@@ -679,7 +679,7 @@ _0204F8A4: .word OUTLAW_LEVEL_TABLE
 	arm_func_start GetOutlawLeaderLevel
 GetOutlawLeaderLevel: ; 0x0204F8A8
 	stmdb sp!, {r3, lr}
-	bl GetMissionRank
+	bl GetMissionRank__0204FB4C
 	ldr r1, _0204F8C0 ; =OUTLAW_LEVEL_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]
@@ -691,7 +691,7 @@ _0204F8C0: .word OUTLAW_LEVEL_TABLE
 	arm_func_start GetOutlawMinionLevel
 GetOutlawMinionLevel: ; 0x0204F8C4
 	stmdb sp!, {r3, lr}
-	bl GetMissionRank
+	bl GetMissionRank__0204FB4C
 	ldr r1, _0204F8DC ; =OUTLAW_MINION_LEVEL_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]

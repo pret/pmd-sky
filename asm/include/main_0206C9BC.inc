@@ -62,6 +62,7 @@
 .public FS_SeekFile
 .public FS_WaitAsync
 .public MTi_CpuClearFast
+.public OS_CreateThread
 .public OS_GetTickLo
 .public OS_JoinThread
 .public OS_Sleep
@@ -77,7 +78,6 @@
 .public Snd_StopTimer
 .public SoundEnvelope_ForceVolume
 .public SoundLfoBank_Reset
-.public OS_CreateThread
 .public sub_0206C688
 .public sub_02072BB8
 .public UpdateChannels

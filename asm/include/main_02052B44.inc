@@ -56,6 +56,9 @@
 .public LoadMonsterMd
 .public MemAlloc
 .public MemFree
+.public ModifyDefensiveStat
+.public ModifyHpStat
+.public ModifyOffensiveStat
 .public MONSTER_DATA_TABLE_PTR
 .public PointsToZero
 .public Rand16Bit
@@ -72,9 +75,6 @@
 .public sub_02015090
 .public sub_02025304_JP
 .public sub_02050FF8
-.public sub_02054FB8
-.public sub_02054FEC
-.public sub_02055020
 .public sub_020550DC
 .public sub_020550E0
 .public sub_02055118

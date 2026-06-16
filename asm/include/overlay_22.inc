@@ -35,16 +35,17 @@
 .public MemAlloc
 .public MemFree
 .public ov11_022DC504
-.public ov11_022E6E68
 .public ov11_0238A130
 .public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public PreprocessString
 .public RemoveEmptyItemsInBag
+.public RemoveInvalidKecleonShop1Items
 .public RemoveItem
 .public RemoveItemFromKecleonShop1
 .public RemoveItemFromKecleonShop2
 .public RemoveItemNoHoleCheck
+.public ReturnScriptMenuResultZero
 .public SetCollectionMenuVoidFn
 .public SetCollectionMenuWidth
 .public SetPortraitEmotion
@@ -57,7 +58,6 @@
 .public strcpy
 .public sub_0200D65C
 .public sub_0200D670
-.public sub_02010830
 .public sub_02010898
 .public sub_020108B4
 .public sub_02010B3C

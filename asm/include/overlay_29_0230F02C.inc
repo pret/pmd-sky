@@ -13,6 +13,7 @@
 .public GetExclusiveItemForMonsterFromBag
 .public GetItemCategoryVeneer
 .public GetItemInfo
+.public GetMoneyQuantity
 .public GetTileAtEntity
 .public GetTreatmentBetweenMonsters
 .public HasHeldItem
@@ -34,6 +35,5 @@
 .public PrepareItemForPrinting__02345728
 .public RemoveGroundItem
 .public ShouldMonsterRunAwayAndShowEffect
-.public sub_0200D8AC
 .public SubstitutePlaceholderStringTags
 .public UseThrowableItem

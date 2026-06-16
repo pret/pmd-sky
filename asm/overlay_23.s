@@ -3629,7 +3629,7 @@ _0238D050:
 	blx r2
 	b _0238D080
 _0238D07C:
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 _0238D080:
 	mov r0, #4
 	ldmia sp!, {r3, r4, r5, pc}

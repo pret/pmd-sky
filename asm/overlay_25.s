@@ -1220,7 +1220,7 @@ _0238B214: ; jump table
 _0238B238:
 	mov r0, #4
 	str r0, [r2, #0x24]
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 	b _0238B374
 _0238B248:
 	bl ov25_0238A140
@@ -1246,33 +1246,33 @@ _0238B248:
 	bl sub_0202836C
 	b _0238B374
 _0238B2A0:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238B374
 	mov r0, #1
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238B37C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	mov r1, #4
 	ldr r0, [r0]
 	str r1, [r0, #0x24]
 	b _0238B374
 _0238B2C8:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238B374
 	mov r0, #2
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238B37C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	mov r1, #4
 	ldr r0, [r0]
 	str r1, [r0, #0x24]
 	b _0238B374
 _0238B2F0:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238B374
 	mov r0, #3
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238B37C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	mov r1, #4
 	ldr r0, [r0]
@@ -1292,7 +1292,7 @@ _0238B318:
 	bl ClosePortraitBox
 	b _0238B374
 _0238B348:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	ldrne r0, _0238B37C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	movne r1, #1
@@ -1301,7 +1301,7 @@ _0238B348:
 	b _0238B374
 _0238B364:
 	mvn r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _0238B374:
@@ -1382,7 +1382,7 @@ ov25_0238B414: ; 0x0238B414
 	mov r1, #4
 	mov r2, #2
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r1, #0x10
 	mov r0, r4
 	mov r2, r1

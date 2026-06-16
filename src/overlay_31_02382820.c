@@ -28,7 +28,7 @@ extern void* MemAlloc(u32 size, u32 nmemb);
 
 extern u32 GetMoneyCarried(void);
 extern u32 sub_0204F9E0(void);
-extern void ov29_022E2A78(u8*, void*, u32); // The third argument isn't actually used in the
+extern void GetMonsterOrTrapName(u8*, void*, u32); // The third argument isn't actually used in the
                                      // function (../asm/overlay_29_022E1A40.s#L1378)
 extern u8* StringFromId(u32);
 extern void PreprocessString(u8* dst, u32 dsize, const u8* src, u32 flags, struct PPStrValues* ptr);
@@ -121,7 +121,7 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
         }
         if (is_valid_member) {
             struct monster* member_info = party_member->info;
-            ov29_022E2A78(member_name_buffer, party_member, 0);
+            GetMonsterOrTrapName(member_name_buffer, party_member, 0);
 
             str_values.string0 = member_name_buffer;
             str_values.value_0 = member_info->hp;
