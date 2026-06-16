@@ -266,7 +266,7 @@ Static main
 	Object lib/NitroSDK/src/mi_wram.o
 	Object lib/NitroSDK/asm/mi_dma.o
 	Object lib/NitroSDK/asm/mi_memory.o
-    Object lib/NitroSDK/asm/mi_uncompress.o
+    Object lib/NitroSDK/src/mi_uncompress.o
     Object lib/NitroSDK/asm/mi_dma_card.o
     Object lib/NitroSDK/src/mi_init.o
     Object lib/NitroSDK/asm/snd_interface.o
