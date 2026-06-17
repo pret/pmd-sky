@@ -1,4 +1,5 @@
 #pragma once
+
 .public _020AECB0
 .public _020AEDB0
 .public _020B2ED4
@@ -16,7 +17,6 @@
 .public _020B3218
 .public _020B321C
 .public _020B3220
-.public OSi_ThreadInfo
 .public _022BC650
 .public _022BC674
 .public _022BC698
@@ -24,9 +24,12 @@
 .public _deq
 .public _dls
 .public _flush_all
+.public _flush_buffer
 .public _flush_line_buffered_output_files
 .public _ll_udiv
+.public _load_buffer
 .public _num2dec
+.public _prep_buffer
 .public _u32_div_f
 .public _ull_mod
 .public fabs
@@ -34,11 +37,8 @@
 .public OS_LockMutex
 .public OS_TryLockMutex
 .public OS_UnlockMutex
+.public OSi_ThreadInfo
 .public RAND_SEQUENCE_NUM
 .public strchr
 .public strlen
 .public strncpy
-
-.public _flush_buffer
-.public _prep_buffer
-.public _load_buffer

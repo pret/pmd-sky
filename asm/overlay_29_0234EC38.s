@@ -688,7 +688,7 @@ _0234F460:
 	mov r3, r2
 	mov r1, #0x64
 	str r2, [sp]
-	bl sub_02061DC8
+	bl AppendMissionObjective
 	add r3, sp, #0x58
 	mov r0, r5
 	mov r1, #0x3c

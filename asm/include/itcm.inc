@@ -8,8 +8,6 @@
 .public _020A2CF8
 .public _022A88F0
 .public _022A88FC
-.public OSi_ThreadInfo
-.public OSi_IsInitReset
 .public CP_SaveContext
 .public CPi_RestoreContext
 .public DC_InvalidateAll
@@ -27,6 +25,8 @@
 .public MI_CpuFill8
 .public MONSTER_DATA_TABLE_PTR
 .public OS_IRQTable
+.public OSi_IsInitReset
+.public OSi_ThreadInfo
 .public ov29_02353530
 .public RENDER_3D
 .public RENDER_3D_FUNCTIONS

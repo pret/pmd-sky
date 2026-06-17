@@ -185,7 +185,7 @@ _0230E2BC:
 _0230E2D4:
 	add r1, sp, #0xac + TRY_RECRUIT_OFFSET
 	mov r0, r4
-	bl sub_020585B4
+	bl GetRecoloredTeamMemberName
 	mov r1, r4
 	mov r0, #0
 	bl SetMessageLogPreprocessorArgsString
@@ -226,12 +226,12 @@ _0230E34C:
 	add r0, sp, #0x58
 	bne _0230E380
 	add r1, sp, #0xac + TRY_RECRUIT_OFFSET
-	bl sub_020585B4
+	bl GetRecoloredTeamMemberName
 	b _0230E38C
 _0230E380:
 	ldr r1, [r6, #0xb4]
 	ldrsh r1, [r1, #0xc]
-	bl sub_020584FC
+	bl GetRecoloredNameOfTeamMemberAtIdx
 _0230E38C:
 	mov r0, #0
 	add r1, sp, #0x58

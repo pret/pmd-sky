@@ -158,11 +158,11 @@ _022EF948:
 	mov r0, r7
 	cmp r1, #0xff
 	beq _022EF994
-	bl ov29_022FA360
+	bl ChangeMonsterAnimationToIdle
 	b _022EF99C
 _022EF994:
 	mov r1, r6
-	bl ov29_022FA360
+	bl ChangeMonsterAnimationToIdle
 _022EF99C:
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10

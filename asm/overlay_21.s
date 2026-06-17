@@ -1076,7 +1076,7 @@ _0238AFB8:
 	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xe]
-	bl sub_02013150
+	bl PopCroagunkItem
 	b _0238B064
 _0238AFE8:
 	ldrsh r0, [r1, #0xe]
@@ -1819,7 +1819,7 @@ _0238B948: ; jump table
 _0238B96C:
 	mov r0, #4
 	str r0, [r3, #0x2c]
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 	b _0238C914
 _0238B97C:
 	ldr r2, [r3]
@@ -2866,33 +2866,33 @@ _0238C830:
 	bl ClosePortraitBox
 	b _0238C914
 _0238C858:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238C914
 	mov r0, #1
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	str r1, [r0, #0x2c]
 	b _0238C914
 _0238C880:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238C914
 	mov r0, #2
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	str r1, [r0, #0x2c]
 	b _0238C914
 _0238C8A8:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238C914
 	mov r0, #3
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #4
 	ldr r0, [r0]
@@ -2908,7 +2908,7 @@ _0238C8E0: .word 0x000003B9
 #endif
 _0238C8E4: .word OVERLAY21_JP_STRING
 _0238C8E8:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	ldrne r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	movne r1, #1
@@ -2917,7 +2917,7 @@ _0238C8E8:
 	b _0238C914
 _0238C904:
 	mvn r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	b _0238C918
 _0238C914:
@@ -2994,7 +2994,7 @@ SwapShopPrintCurrentGold: ; 0x0238C9A4
 	mov r1, #4
 	mov r2, #2
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, r4
 	mov r1, #0x16
 	mov r2, #0x10

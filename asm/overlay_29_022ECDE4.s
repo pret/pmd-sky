@@ -772,8 +772,8 @@ ov29_022ED800: ; 0x022ED800
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022ED800
 
-	arm_func_start ov29_022ED82C
-ov29_022ED82C: ; 0x022ED82C
+	arm_func_start GetTrapName
+GetTrapName: ; 0x022ED82C
 	stmdb sp!, {r4, lr}
 #if defined(EUROPE)
 	add r1, r1, #0xc3
@@ -793,7 +793,7 @@ ov29_022ED82C: ; 0x022ED82C
 	mov r0, r4
 	bl strcpy
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022ED82C
+	arm_func_end GetTrapName
 
 	arm_func_start BindTrapToTile
 BindTrapToTile: ; 0x022ED858

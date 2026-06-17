@@ -426,8 +426,8 @@ CheckTeamMemberIdxVeneer: ; 0x022F9C40
 _022F9C48: .word CheckTeamMemberIdx
 	arm_func_end CheckTeamMemberIdxVeneer
 
-	arm_func_start ov29_022F9C4C
-ov29_022F9C4C: ; 0x022F9C4C
+	arm_func_start CheckMonsterTeamMemberIdx
+CheckMonsterTeamMemberIdx: ; 0x022F9C4C
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0, #0xb4]
 	ldrsh r0, [r0, #0xc]
@@ -435,7 +435,7 @@ ov29_022F9C4C: ; 0x022F9C4C
 	ldrsh r0, [r0, #8]
 	bl CheckTeamMemberIdx
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022F9C4C
+	arm_func_end CheckMonsterTeamMemberIdx
 
 	arm_func_start IsMonsterIdInNormalRangeVeneer
 IsMonsterIdInNormalRangeVeneer: ; 0x022F9C68
@@ -1012,8 +1012,8 @@ _022FA34C:
 _022FA35C: .word DUNGEON_PTR
 	arm_func_end ov29_022FA2F0
 
-	arm_func_start ov29_022FA360
-ov29_022FA360: ; 0x022FA360
+	arm_func_start ChangeMonsterAnimationToIdle
+ChangeMonsterAnimationToIdle: ; 0x022FA360
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -1030,7 +1030,7 @@ ov29_022FA360: ; 0x022FA360
 	mov r0, r6
 	bl ChangeMonsterAnimation
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov29_022FA360
+	arm_func_end ChangeMonsterAnimationToIdle
 
 	arm_func_start ov29_022FA3A0
 ov29_022FA3A0: ; 0x022FA3A0
@@ -1045,7 +1045,7 @@ ov29_022FA3A0: ; 0x022FA3A0
 	bl GetDirectionTowardsPosition
 	and r1, r0, #0xff
 	mov r0, r5
-	bl ov29_022FA360
+	bl ChangeMonsterAnimationToIdle
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022FA3A0
 

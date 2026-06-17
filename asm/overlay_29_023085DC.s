@@ -137,7 +137,7 @@ _02308780:
 _023087A8:
 	mov r0, sl
 	mov r1, sb
-	bl ov29_0230D654
+	bl IsEitherMonsterInvalid
 _023087B4:
 	cmp r0, #0
 	movne r0, #1
@@ -309,7 +309,7 @@ _023089FC:
 _02308A1C:
 	mov r0, sl
 	mov r1, sb
-	bl ov29_0230D654
+	bl IsEitherMonsterInvalid
 _02308A28:
 	cmp r0, #0
 	movne r0, #1
@@ -649,7 +649,7 @@ _02308E80:
 _02308EC0:
 	mov r0, sl
 	mov r1, sb
-	bl ov29_0230D654
+	bl IsEitherMonsterInvalid
 _02308ECC:
 	cmp r0, #0
 	movne r0, #1
@@ -690,7 +690,7 @@ _02308ECC:
 _02308F4C:
 	mov r0, sl
 	mov r1, sb
-	bl ov29_0230D654
+	bl IsEitherMonsterInvalid
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0

@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start sub_02054F44
-sub_02054F44: ; 0x02054F44
+	arm_func_start RecolorNameString
+RecolorNameString: ; 0x02054F44
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x14
 	mov r5, r0
@@ -31,21 +31,21 @@ _02054F90:
 	.align 2, 0
 _02054F98: .word _020A333C
 _02054F9C: .word _020A3340
-	arm_func_end sub_02054F44
+	arm_func_end RecolorNameString
 
-	arm_func_start sub_02054FA0
-sub_02054FA0: ; 0x02054FA0
-	ldr ip, _02054FB4 ; =sub_02054F44
+	arm_func_start RecolorTeamMemberNameString
+RecolorTeamMemberNameString: ; 0x02054FA0
+	ldr ip, _02054FB4 ; =RecolorNameString
 	cmp r2, #0
 	movne r2, #0x59
 	moveq r2, #0x46
 	bx ip
 	.align 2, 0
-_02054FB4: .word sub_02054F44
-	arm_func_end sub_02054FA0
+_02054FB4: .word RecolorNameString
+	arm_func_end RecolorTeamMemberNameString
 
-	arm_func_start sub_02054FB8
-sub_02054FB8: ; 0x02054FB8
+	arm_func_start ModifyHpStat
+ModifyHpStat: ; 0x02054FB8
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -59,10 +59,10 @@ sub_02054FB8: ; 0x02054FB8
 	strh r1, [r4]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end sub_02054FB8
+	arm_func_end ModifyHpStat
 
-	arm_func_start sub_02054FEC
-sub_02054FEC: ; 0x02054FEC
+	arm_func_start ModifyOffensiveStat
+ModifyOffensiveStat: ; 0x02054FEC
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -76,10 +76,10 @@ sub_02054FEC: ; 0x02054FEC
 	strb r1, [r4]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end sub_02054FEC
+	arm_func_end ModifyOffensiveStat
 
-	arm_func_start sub_02055020
-sub_02055020: ; 0x02055020
+	arm_func_start ModifyDefensiveStat
+ModifyDefensiveStat: ; 0x02055020
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -93,10 +93,10 @@ sub_02055020: ; 0x02055020
 	strb r1, [r4]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end sub_02055020
+	arm_func_end ModifyDefensiveStat
 
-	arm_func_start sub_02055054
-sub_02055054: ; 0x02055054
+	arm_func_start ModifyIqStat
+ModifyIqStat: ; 0x02055054
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -110,7 +110,7 @@ sub_02055054: ; 0x02055054
 	strh r1, [r4]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end sub_02055054
+	arm_func_end ModifyIqStat
 
 	arm_func_start sub_02055088
 sub_02055088: ; 0x02055088
@@ -577,8 +577,8 @@ GetTeamMember: ; 0x020555A8
 _020555CC: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetTeamMember
 
-	arm_func_start sub_020555D0
-sub_020555D0: ; 0x020555D0
+	arm_func_start GetRecruitMentryIdBySpecies
+GetRecruitMentryIdBySpecies: ; 0x020555D0
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _02055648 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, #0
@@ -615,7 +615,7 @@ _02055638:
 	.align 2, 0
 _02055648: .word TEAM_MEMBER_TABLE_PTR
 _0205564C: .word 0x0000022B
-	arm_func_end sub_020555D0
+	arm_func_end GetRecruitMentryIdBySpecies
 
 	arm_func_start GetHeroMemberIdx
 GetHeroMemberIdx: ; 0x02055650
@@ -1422,22 +1422,22 @@ IsMonsterNotNicknamed: ; 0x02056070
 _02056080: .word StrcmpMonsterName
 	arm_func_end IsMonsterNotNicknamed
 
-	arm_func_start sub_02056084
-sub_02056084: ; 0x02056084
-	ldr ip, _02056090 ; =sub_02054F44
+	arm_func_start GetRecoloredGroundMonsterName
+GetRecoloredGroundMonsterName: ; 0x02056084
+	ldr ip, _02056090 ; =RecolorNameString
 	add r1, r1, #0x3a
 	bx ip
 	.align 2, 0
-_02056090: .word sub_02054F44
-	arm_func_end sub_02056084
+_02056090: .word RecolorNameString
+	arm_func_end GetRecoloredGroundMonsterName
 
 	arm_func_start sub_02056094
 sub_02056094: ; 0x02056094
-	ldr ip, _020560A0 ; =sub_02054FA0
+	ldr ip, _020560A0 ; =RecolorTeamMemberNameString
 	add r1, r1, #0x3a
 	bx ip
 	.align 2, 0
-_020560A0: .word sub_02054FA0
+_020560A0: .word RecolorTeamMemberNameString
 	arm_func_end sub_02056094
 
 	arm_func_start sub_020560A4
@@ -2119,8 +2119,8 @@ sub_02056880: ; 0x02056880
 _020568A0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056880
 
-	arm_func_start sub_020568A4
-sub_020568A4: ; 0x020568A4
+	arm_func_start GetAppointedLeaderMemberIdx
+GetAppointedLeaderMemberIdx: ; 0x020568A4
 	ldr r1, _020568D8 ; =TEAM_MEMBER_TABLE_PTR
 	mvn r0, #0
 	ldr r3, [r1]
@@ -2136,7 +2136,7 @@ sub_020568A4: ; 0x020568A4
 	bx lr
 	.align 2, 0
 _020568D8: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_020568A4
+	arm_func_end GetAppointedLeaderMemberIdx
 
 	arm_func_start sub_020568DC
 sub_020568DC: ; 0x020568DC
@@ -2294,7 +2294,7 @@ _02056AAC: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_start SetTeamSetupHeroOnly
 SetTeamSetupHeroOnly: ; 0x02056AB0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	bl sub_020568A4
+	bl GetAppointedLeaderMemberIdx
 	ldr r1, _02056B54 ; =TEAM_MEMBER_TABLE_PTR
 	mov r7, r0
 #ifdef JAPAN
@@ -2416,7 +2416,7 @@ GetPartyMembers: ; 0x02056C20
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	mov r5, r0
-	bl sub_020568A4
+	bl GetAppointedLeaderMemberIdx
 	mov r6, r0
 	bl GetMainCharacter1MemberIdx
 	mov r7, r0
@@ -2507,8 +2507,8 @@ _02056D60:
 _02056D6C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetPartyMembers
 
-	arm_func_start sub_02056D70
-sub_02056D70: ; 0x02056D70
+	arm_func_start GetAdventureNpcIds
+GetAdventureNpcIds: ; 0x02056D70
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	movs sl, r0
@@ -2549,10 +2549,10 @@ _02056DE4:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _02056E00: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_02056D70
+	arm_func_end GetAdventureNpcIds
 
-	arm_func_start sub_02056E04
-sub_02056E04: ; 0x02056E04
+	arm_func_start GetUnitNpcIds
+GetUnitNpcIds: ; 0x02056E04
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	movs sl, r0
@@ -2601,7 +2601,7 @@ _02056E98:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _02056EB4: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_02056E04
+	arm_func_end GetUnitNpcIds
 
 	arm_func_start sub_02056EB8
 sub_02056EB8: ; 0x02056EB8
@@ -3463,7 +3463,7 @@ sub_02057A38: ; 0x02057A38
 	mvn r0, #0
 	cmp r6, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl sub_020568A4
+	bl GetAppointedLeaderMemberIdx
 	ldr r1, _02057AC0 ; =TEAM_MEMBER_TABLE_PTR
 	mov r2, #0x68
 	ldr r1, [r1]
@@ -3641,7 +3641,7 @@ _02057C68:
 	cmp r0, #0xb7
 	bne _02057CC8
 	add r0, r8, #0x3e
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	bl AddMoneyCarried
 	mov r0, sb, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -3958,8 +3958,8 @@ _020580A4:
 _020580C0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02058064
 
-	arm_func_start sub_020580C4
-sub_020580C4: ; 0x020580C4
+	arm_func_start ValidateTeamMembers
+ValidateTeamMembers: ; 0x020580C4
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _02058134 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, #0
@@ -3991,7 +3991,7 @@ _020580F4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02058134: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_020580C4
+	arm_func_end ValidateTeamMembers
 
 	arm_func_start sub_02058138
 sub_02058138: ; 0x02058138
@@ -4279,8 +4279,8 @@ sub_020584F8: ; 0x020584F8
 	bx lr
 	arm_func_end sub_020584F8
 
-	arm_func_start sub_020584FC
-sub_020584FC: ; 0x020584FC
+	arm_func_start GetRecoloredNameOfTeamMemberAtIdx
+GetRecoloredNameOfTeamMemberAtIdx: ; 0x020584FC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
@@ -4293,9 +4293,9 @@ sub_020584FC: ; 0x020584FC
 	moveq r2, #0
 	mov r0, r4
 	and r2, r2, #0xff
-	bl sub_02054FA0
+	bl RecolorTeamMemberNameString
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020584FC
+	arm_func_end GetRecoloredNameOfTeamMemberAtIdx
 
 	arm_func_start sub_02058534
 sub_02058534: ; 0x02058534
@@ -4314,18 +4314,18 @@ sub_02058534: ; 0x02058534
 	moveq r2, #0
 	mov r0, r5
 	and r2, r2, #0xff
-	bl sub_02054FA0
+	bl RecolorTeamMemberNameString
 	ldmia sp!, {r3, r4, r5, pc}
 _02058578:
 	mov r0, r5
 	mov r2, r4
 	add r1, r1, #0x5e
-	bl sub_02054F44
+	bl RecolorNameString
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_02058534
 
-	arm_func_start sub_0205858C
-sub_0205858C: ; 0x0205858C
+	arm_func_start GetNameOfTeamMemberAtIdx
+GetNameOfTeamMemberAtIdx: ; 0x0205858C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
@@ -4336,12 +4336,12 @@ sub_0205858C: ; 0x0205858C
 	mov r2, #0xa
 	bl StrncpySimpleNoPadSafe
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0205858C
+	arm_func_end GetNameOfTeamMemberAtIdx
 
-	arm_func_start sub_020585B4
-sub_020585B4: ; 0x020585B4
+	arm_func_start GetRecoloredTeamMemberName
+GetRecoloredTeamMemberName: ; 0x020585B4
 	ldrb r2, [r1, #1]
-	ldr ip, _020585D4 ; =sub_02054FA0
+	ldr ip, _020585D4 ; =RecolorTeamMemberNameString
 	add r1, r1, #0x5e
 	cmp r2, #0
 	movne r2, #1
@@ -4349,8 +4349,8 @@ sub_020585B4: ; 0x020585B4
 	and r2, r2, #0xff
 	bx ip
 	.align 2, 0
-_020585D4: .word sub_02054FA0
-	arm_func_end sub_020585B4
+_020585D4: .word RecolorTeamMemberNameString
+	arm_func_end GetRecoloredTeamMemberName
 
 	arm_func_start ChangeGiratinaFormIfSkyDungeon
 ChangeGiratinaFormIfSkyDungeon: ; 0x020585D8

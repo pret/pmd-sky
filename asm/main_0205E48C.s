@@ -1,30 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0205E448.inc"
+	.include "main_0205E48C.inc"
 
 	.text
-
-	arm_func_start sub_0205E448
-sub_0205E448: ; 0x0205E448
-	stmdb sp!, {r4, lr}
-	mov lr, #0
-	mov r4, lr
-	mov r2, lr
-	mov r3, #1
-	b _0205E47C
-_0205E460:
-	ldrb ip, [r1, r4, lsl #5]
-	add r4, r4, #1
-	cmp ip, #0
-	moveq ip, r3
-	movne ip, r2
-	tst ip, #0xff
-	addeq lr, lr, #1
-_0205E47C:
-	cmp r4, r0
-	blt _0205E460
-	mov r0, lr
-	ldmia sp!, {r4, pc}
-	arm_func_end sub_0205E448
 
 	arm_func_start sub_0205E48C
 sub_0205E48C: ; 0x0205E48C
@@ -176,7 +153,7 @@ _0205E62C:
 	bl GenerateAllPossibleDungeonsList
 	bl GenerateAllPossibleDeliverList
 	mov r0, #3
-	bl sub_02062290
+	bl SumValidMissionCategoryWeights
 	cmp r0, #0
 	beq _0205E70C
 	mov sl, #0
@@ -189,7 +166,7 @@ _0205E6A0:
 	ldr r0, [r4, #0x18]
 	add r0, r0, #0x320
 	add sb, r0, sl, lsl #5
-	bl sub_02062578
+	bl GetRandomMissionTemplate
 	cmp r0, #0
 	moveq r0, r5
 	beq _0205E6DC
@@ -199,7 +176,7 @@ _0205E6A0:
 	bne _0205E6DC
 	mov r0, sb
 	mov r1, fp
-	bl sub_0206315C
+	bl GenerateMissionRewards
 	mov r0, #0
 _0205E6DC:
 	cmp r0, #2
@@ -219,7 +196,7 @@ _0205E704:
 _0205E70C:
 	bl sub_02062548
 	mov r0, #2
-	bl sub_02062290
+	bl SumValidMissionCategoryWeights
 	cmp r0, #0
 	beq _0205E7AC
 	mov fp, #1
@@ -232,7 +209,7 @@ _0205E738:
 	ldr r0, [r4, #0x18]
 	add r0, r0, #0x300
 	add r6, r0, sb, lsl #5
-	bl sub_02062578
+	bl GetRandomMissionTemplate
 	cmp r0, #0
 	moveq r0, r5
 	beq _0205E77C
@@ -242,7 +219,7 @@ _0205E738:
 	bne _0205E77C
 	mov r0, r6
 	mov r1, fp
-	bl sub_0206315C
+	bl GenerateMissionRewards
 	mov r0, r6
 	bl sub_0205EB5C
 	mov r0, #0
@@ -264,7 +241,7 @@ _0205E7A4:
 _0205E7AC:
 	bl sub_02062548
 	mov r0, #0
-	bl sub_02062290
+	bl SumValidMissionCategoryWeights
 	cmp r0, #0
 	beq _0205E840
 	mov sb, #0
@@ -276,7 +253,7 @@ _0205E7AC:
 _0205E7D8:
 	ldr r0, [r4, #0x18]
 	add r6, r0, sb, lsl #5
-	bl sub_02062578
+	bl GetRandomMissionTemplate
 	cmp r0, #0
 	moveq r0, r5
 	beq _0205E810
@@ -286,7 +263,7 @@ _0205E7D8:
 	bne _0205E810
 	mov r0, r6
 	mov r1, fp
-	bl sub_0206315C
+	bl GenerateMissionRewards
 	mov r0, #0
 _0205E810:
 	cmp r0, #2
@@ -306,7 +283,7 @@ _0205E838:
 _0205E840:
 	bl sub_02062548
 	mov r0, #1
-	bl sub_02062290
+	bl SumValidMissionCategoryWeights
 	cmp r0, #0
 	beq _0205E8DC
 	mov sb, #0
@@ -320,7 +297,7 @@ _0205E870:
 	ldr r0, [r4, #0x18]
 	add r0, r0, #0x200
 	add r7, r0, sb, lsl #5
-	bl sub_02062578
+	bl GetRandomMissionTemplate
 	cmp r0, #0
 	moveq r0, r6
 	beq _0205E8AC
@@ -330,7 +307,7 @@ _0205E870:
 	bne _0205E8AC
 	mov r0, r7
 	mov r1, r5
-	bl sub_0206315C
+	bl GenerateMissionRewards
 	mov r0, fp
 _0205E8AC:
 	cmp r0, #2

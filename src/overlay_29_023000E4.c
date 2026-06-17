@@ -24,8 +24,8 @@ enum display_name_type GetMonsterDisplayNameType(struct monster *monster) {
 
 extern void GetNameWithGender(char *dst, s16 monster_id, char color_id);
 extern struct ground_monster *GetExplorerMazeMonster(u8 entry_number);
-extern void sub_02056084(char *dst, struct ground_monster *ground_monster, u8 unk);
-extern void sub_020585B4(char *dst, struct team_member *team_member);
+extern void GetRecoloredGroundMonsterName(char *dst, struct ground_monster *ground_monster, u8 unk);
+extern void GetRecoloredTeamMemberName(char *dst, struct team_member *team_member);
 extern struct team_member *GetActiveTeamMember(int roster_idx);
 
 void GetMonsterName(char *buffer, struct monster *target_info) {
@@ -45,11 +45,11 @@ void GetMonsterName(char *buffer, struct monster *target_info) {
 #endif
     else if (target_info->is_not_team_member) {
         enum monster_behavior behavior = target_info->monster_behavior;
-        if (behavior == BEHAVIOR_EXPLORER_MAZE_1) sub_02056084(buffer, GetExplorerMazeMonster(0), 0x4e);
-        else if (behavior == BEHAVIOR_EXPLORER_MAZE_2) sub_02056084(buffer, GetExplorerMazeMonster(1), 0x4e);
-        else if (behavior == BEHAVIOR_EXPLORER_MAZE_3) sub_02056084(buffer, GetExplorerMazeMonster(2), 0x4e);
-        else if (behavior == BEHAVIOR_EXPLORER_MAZE_4) sub_02056084(buffer, GetExplorerMazeMonster(3), 0x4e);
+        if (behavior == BEHAVIOR_EXPLORER_MAZE_1) GetRecoloredGroundMonsterName(buffer, GetExplorerMazeMonster(0), 0x4e);
+        else if (behavior == BEHAVIOR_EXPLORER_MAZE_2) GetRecoloredGroundMonsterName(buffer, GetExplorerMazeMonster(1), 0x4e);
+        else if (behavior == BEHAVIOR_EXPLORER_MAZE_3) GetRecoloredGroundMonsterName(buffer, GetExplorerMazeMonster(2), 0x4e);
+        else if (behavior == BEHAVIOR_EXPLORER_MAZE_4) GetRecoloredGroundMonsterName(buffer, GetExplorerMazeMonster(3), 0x4e);
         else GetNameWithGender(buffer, target_info->apparent_id, 'N');
     }
-    else sub_020585B4(buffer, GetActiveTeamMember(target_info->team_index));
+    else GetRecoloredTeamMemberName(buffer, GetActiveTeamMember(target_info->team_index));
 }

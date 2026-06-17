@@ -30,6 +30,7 @@
 .public Debug_GetLogFlag
 .public Debug_Print
 .public Debug_Print0
+.public DecrementEggHatchTimer
 .public DefaultInitScriptVariable
 .public DrawTeamStats
 .public DungeonRequestsDoneWrapper
@@ -44,6 +45,7 @@
 .public FileRom_InitDataTransfer
 .public FileRom_StopDataTransfer
 .public FileRom_Veneer_FileInit
+.public FreeMissionRewardStructMain
 .public FreeTeamStats
 .public G3X_Reset
 .public GenerateCroagunkItems
@@ -72,6 +74,8 @@
 .public GetPartyMembers
 .public GetPressedButtons
 .public GetRank
+.public GetRecoloredTeamMemberName
+.public GetRecruitMentryIdBySpecies
 .public GetReleasedStylus
 .public GetResolvedPerformanceProgressFlag
 .public GetScenarioBalance
@@ -82,6 +86,7 @@
 .public GetTalkLine
 .public GetTeamMember
 .public GetType
+.public GetUnitNpcIds
 .public GROUND_MEMORY_ARENA_1
 .public GroupOamAttributesBothScreens
 .public HandleFadesVeneer
@@ -117,6 +122,7 @@
 .public LoadAndCompareScriptVars
 .public LoadFileFromRom
 .public LoadOverlay
+.public LoadRecycleShopOverlay
 .public LoadScriptVariableValue
 .public LoadScriptVariableValueAtIndex
 .public LoadScriptVariableValueSum
@@ -127,6 +133,7 @@
 .public MemFree
 .public MemsetSimple
 .public MemZero
+.public MissionRewardValidateDungeonId
 .public ov10_022BDB54
 .public ov10_022BDB60
 .public ov10_022BDBA4
@@ -283,7 +290,6 @@
 .public ov11_0230CD84
 .public ov11_0230CDA4
 .public ov11_0230CDB8
-.public ov11_0230CDCC
 .public ov11_0230CDE0
 .public ov11_0230CDF4
 .public ov11_0230CE08
@@ -495,6 +501,7 @@
 .public RECRUITMENT_TABLE_SPECIES
 .public RemoveBulkItemInStorage
 .public RemoveItemNoHole
+.public RollRandomItemReward
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueAtIndex
 .public SCRIPT_COMMAND_PARSING_DATA
@@ -509,6 +516,7 @@
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public SetPortraitOffset
+.public SetRandomRequestNpcs1And2
 .public SetResolvedPerformanceProgressFlag
 .public SetScenarioProgressScriptVar
 .public SetSpecialEpisodeBeaten
@@ -575,9 +583,7 @@
 .public sub_0200BCB0
 .public sub_0200BD14
 .public sub_0200BD50
-.public sub_0201080C
 .public sub_02011220
-.public sub_02011FA0
 .public sub_02017A68
 .public sub_02017A80
 .public sub_02017AB0
@@ -634,7 +640,6 @@
 .public sub_02035098
 .public sub_0203D438
 .public sub_0203D538
-.public sub_0203EFD4
 .public sub_02046D20
 .public sub_02047FFC
 .public sub_0204804C
@@ -653,7 +658,6 @@
 .public sub_0204F024
 .public sub_0204F034
 .public sub_0204F050
-.public sub_0204F158
 .public sub_0204F1B4
 .public sub_0204F1F0
 .public sub_0204F244
@@ -661,16 +665,13 @@
 .public sub_0204F9CC
 .public sub_02055410
 .public sub_02055474
-.public sub_020555D0
 .public sub_02055CCC
 .public sub_02056410
 .public sub_020564B0
-.public sub_02056E04
 .public sub_02056EB8
 .public sub_0205730C
 .public sub_020573A0
 .public sub_020582E0
-.public sub_020585B4
 .public sub_0205B584
 .public sub_0205B77C
 .public sub_0205BB7C
@@ -680,7 +681,6 @@
 .public sub_0205EC38
 .public sub_0205EC50
 .public sub_0205EC78
-.public sub_0205F118
 .public sub_0205F2B8
 .public sub_0205F464
 .public sub_0205F504
@@ -688,10 +688,8 @@
 .public sub_0205F710
 .public sub_02062DC4
 .public sub_0206309C
-.public sub_020630A4
 .public sub_02064FFC
 .public sub_02065050
-.public sub_02065B80
 .public sub_02065BC8
 .public sub_02065BD8
 .public sub_02065C08
@@ -713,9 +711,11 @@
 .public UnlockMainRoutine
 .public UnlockObjectRoutines
 .public UnlockPerformerRoutines
+.public UpdateRecycleShop
 .public UpdateScriptVarWithParam
 .public UpdateScriptVarWithVar
 .public UpdateTeamStats
+.public WasMissionCompletedToday
 .public WorldMapSetCamera
 .public WorldMapSetMode
 .public ZeroInitScriptVariable

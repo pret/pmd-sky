@@ -438,7 +438,7 @@ _022EE868:
 	beq _022EE8AC
 	mov r0, r5
 	mov r1, #0x20
-	bl ov29_022EF478
+	bl ChangeTrapOnTile
 	mov r0, r6
 #else
 	cmp r5, #0
@@ -450,7 +450,7 @@ _022EE868:
 	beq _022EE8AC
 	mov r0, r6
 	mov r1, #0x20
-	bl ov29_022EF478
+	bl ChangeTrapOnTile
 	mov r0, r7
 #endif
 	mov r1, #0x308
@@ -558,7 +558,7 @@ _022EE968:
 	mov r0, r6
 #endif
 	mov r1, #5
-	bl ov29_022EF478
+	bl ChangeTrapOnTile
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 #ifdef JAPAN
@@ -1526,8 +1526,8 @@ _022F0A78: .word ov10_022C45CC
 #endif
 	arm_func_end ApplyTrapEffect
 
-	arm_func_start ov29_022EF478
-ov29_022EF478: ; 0x022EF478
+	arm_func_start ChangeTrapOnTile
+ChangeTrapOnTile: ; 0x022EF478
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, [r0, #0x10]
 	mov r5, r1
@@ -1544,7 +1544,7 @@ ov29_022EF478: ; 0x022EF478
 _022EF4AC:
 	bl UpdateTrapsVisibility
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022EF478
+	arm_func_end ChangeTrapOnTile
 
 	arm_func_start SpawnMonstersAroundPos
 SpawnMonstersAroundPos: ; 0x022EF4B4
@@ -1656,7 +1656,7 @@ _022EF614:
 _022EF620:
 	mov r0, r7
 	mov r1, r4
-	bl ov29_022EF700
+	bl RevealTrapAtPos
 	orr r5, r5, r0
 	add r7, r7, #1
 _022EF634:
@@ -1692,7 +1692,7 @@ _022EF680:
 _022EF68C:
 	mov r0, r7
 	mov r1, r6
-	bl ov29_022EF700
+	bl RevealTrapAtPos
 	orr r5, r5, r0
 	add r7, r7, #1
 _022EF6A0:
@@ -1731,8 +1731,8 @@ _022EF6FC: .word 0x00000E03
 #endif
 	arm_func_end RevealTrapsNearby
 
-	arm_func_start ov29_022EF700
-ov29_022EF700: ; 0x022EF700
+	arm_func_start RevealTrapAtPos
+RevealTrapAtPos: ; 0x022EF700
 	stmdb sp!, {r3, lr}
 	bl GetTile
 	ldr r1, [r0, #0x10]
@@ -1748,7 +1748,7 @@ ov29_022EF700: ; 0x022EF700
 _022EF730:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022EF700
+	arm_func_end RevealTrapAtPos
 
 	arm_func_start ov29_022EF738
 ov29_022EF738: ; 0x022EF738

@@ -26,6 +26,7 @@
 .public HasLowHealth
 .public InitMove
 .public InitPortraitDungeon
+.public InteractWithSecretBazaarNpc
 .public IsFloorOver
 .public IsMarowakTrainingMaze
 .public IsMonsterIdInNormalRangeVeneer
@@ -43,7 +44,6 @@
 .public ov29_0231AE3C
 .public ov29_02322374
 .public ov29_0233A248
-.public ov29_02344544
 .public ov29_02348C64
 .public ov29_0234A2D4
 .public ov29_0234A5E4

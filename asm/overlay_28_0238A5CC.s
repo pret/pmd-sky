@@ -22,7 +22,7 @@ _0238A5EC: ; jump table
 	b _0238AAC0 ; case 5
 	b _0238AA90 ; case 6
 _0238A608:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238AB44
 	ldr r0, _0238AB54 ; =ov28_0238ADA0
@@ -53,18 +53,18 @@ _0238A664:
 	str r1, [r0]
 	b _0238AB44
 _0238A678:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	beq _0238AB44
 	mov r0, #1
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, r6
 	ldr r0, [r0]
 	mov r1, #3
 	str r1, [r0]
 	b _0238AB44
 _0238A6A0:
-	bl ov11_022E6EC8
+	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	movne r0, r6
 	ldrne r0, [r0]
@@ -325,7 +325,7 @@ _0238AA48:
 	mov r1, #1
 	mov r0, #2
 	strb r1, [r2, #8]
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 _0238AA78:
 	cmp r5, #0
 	ldreq r0, _0238AB50 ; =ov28_0238AD80
@@ -343,14 +343,14 @@ _0238AA90:
 	mov r0, #0
 	bl sub_02025B80
 	mov r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	mov r0, #4
 	b _0238AB48
 _0238AAC0:
 	mvn r0, #3
 	bl ov28_0238AB5C
 	mov r0, #0
-	bl ov11_022E6E8C
+	bl ReturnScriptMenuResult
 	ldr r0, _0238AB54 ; =ov28_0238ADA0
 	ldr r0, [r0]
 	cmp r0, #5

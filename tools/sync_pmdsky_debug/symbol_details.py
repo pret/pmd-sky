@@ -101,6 +101,13 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'MTX_LookAt': 'Mtx_LookAt',
     'MTX_OrthoW': 'Mtx_OrthoW',
     'OS_GetDTCMAddress': 'OS_GetDtcmAddress',
+    'OSi_DebuggerHandler': 'OSI_DEBUGGER_HANDLER',
+    'OSi_ExContext': 'OSI_EX_CONTEXT',
+    'OSi_Initialized': 'OSI_INITIALIZED',
+    'OSi_IsInitReset': 'OSI_IS_INIT_RESET',
+    'OSi_IsThreadInitialized': 'OSI_IS_THREAD_INITIALIZED',
+    'OSi_ThreadInfo': 'OSI_THREAD_INFO',
+    'OSi_TickCounter': 'OSI_TICK_COUNTER',
     'OSi_TimerReserved': 'OSI_TIMER_RESERVED',
     'OSi_UseAlarm': 'OSI_USE_ALARM',
     'OSi_UseTick': 'OSI_USE_TICK',
@@ -119,8 +126,11 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'sIsDispOn': 'IS_DISP_ON',
     'SND_CommandInit': 'Snd_CommandInit',
     'SND_Init': 'Snd_Init',
+    'SNDi_SharedWork': 'SNDI_SHARED_WORK',
     'SOC_Startup': 'Soc_Startup',
     'SOCL_Startup': 'Socl_Startup',
+    'sReserveList': 'RESERVE_LIST',
+    'sSndMutex': 'SND_MUTEX',
     'sSubBGExtPltt': 'SUB_BG_EXT_PLTT',
     'sTexPlttStartAddrTable': 'TEX_PLTT_START_ADDR_TABLE',
     'sTexStartAddrTable': 'TEX_START_ADDR_TABLE',
@@ -131,6 +141,7 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'VEC_Distance': 'Vec_Distance',
     'VEC_DotProduct': 'Vec_DotProduct',
     'VEC_Normalize': 'Vec_Normalize',
+    'VolumeTable': 'VOLUME_TABLE',
 }
 
 NONMATCHING_SYMBOLS_ARM7 = {

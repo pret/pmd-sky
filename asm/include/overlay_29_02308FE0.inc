@@ -66,7 +66,6 @@
 .public ov29_022F0518
 .public ov29_022F0534
 .public ov29_022F05E4
-.public ov29_022F0604
 .public ov29_022F0780
 .public ov29_022F9058
 .public ov29_022F9AF4
@@ -109,6 +108,7 @@
 .public SpawnDroppedItemWrapper
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
+.public TalkToSecretBazaarNpcStandard
 .public TryEndPetrifiedOrSleepStatus
 .public TryIncreaseHp
 .public TryRecruit

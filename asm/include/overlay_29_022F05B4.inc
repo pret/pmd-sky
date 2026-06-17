@@ -8,12 +8,15 @@
 .public AddSimpleObjToOam
 .public AdvanceFrame
 .public AnimationDelayOrSomething
+.public AppendStandardStringToMission
 .public BAG_ITEMS_PTR_MIRROR
 .public CanMonsterMoveInDirection
 .public CanMonsterMoveOrSwapWithAllyInDirection
 .public CanSeeTarget
 .public CeilFixedPoint
 .public ChangeMonsterAnimation
+.public ChangeMonsterAnimationToIdle
+.public CheckMonsterTeamMemberIdx
 .public CheckTeamItemsFlags
 .public CheckTouchscreenArea
 .public CloseTextBox
@@ -105,10 +108,8 @@
 .public ov29_022F87C0
 .public ov29_022F89AC
 .public ov29_022F9C34
-.public ov29_022F9C4C
 .public ov29_022F9EA0
 .public ov29_022FA2F0
-.public ov29_022FA360
 .public ov29_022FB920
 .public ov29_022FF3F4
 .public ov29_022FF958
@@ -189,7 +190,6 @@
 .public sub_02001AB0
 .public sub_02006B70
 .public sub_0201CF90
-.public sub_02026268
 .public sub_02027B1C
 .public SubstitutePlaceholderStringTags
 .public TryAddMonsterToActiveTeam

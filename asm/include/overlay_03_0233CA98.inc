@@ -13,6 +13,7 @@
 .public CreateScrollBoxSingle
 .public Debug_Print0
 .public DrawTextInWindow
+.public FreeMissionRewardStructMain
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
 .public GetHeldButtons
@@ -186,6 +187,7 @@
 .public PlaySeVolumeWrapper
 .public PrintIqSkillsMenu
 .public RandInt
+.public RollRandomItemReward
 .public SetQuestionMarks
 .public ShowKeyboard
 .public StrcpyName
@@ -219,7 +221,6 @@
 .public sub_0203C774
 .public sub_0203D438
 .public sub_0203D538
-.public sub_0203EFD4
 .public sub_0203F150
 .public sub_0203F398
 .public sub_0203F990
@@ -286,8 +287,6 @@
 .public sub_0205BD90
 .public sub_0205C700
 .public sub_02062E34
-.public sub_020630A4
-.public sub_0206351C
 .public sub_020663C8
 .public sub_020663DC
 .public sub_02066408
@@ -311,3 +310,4 @@
 .public sub_02069904
 .public sub_02069940
 .public UnloadFile
+.public ZeroInitMissionRewardDataStruct

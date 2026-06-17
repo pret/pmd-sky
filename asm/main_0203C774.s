@@ -720,14 +720,14 @@ sub_0203CFCC: ; 0x0203CFCC
 	ldr r3, _0203D408 ; =0x00000976
 	mov r0, r6
 	mov r2, r1
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, r8
 	bl GetTypeStringId
 	mov r3, r0
 	mov r0, r6
 	mov r1, #0x38
 	mov r2, r5
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	cmp r7, #0
 	beq _0203D098
 	mov r0, r7
@@ -736,7 +736,7 @@ sub_0203CFCC: ; 0x0203CFCC
 	mov r0, r6
 	mov r1, #0x68
 	mov r2, r5
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _0203D098:
 	add r0, r5, #0xc
 	mov r1, r0, lsl #0x10
@@ -997,11 +997,11 @@ sub_0203D438: ; 0x0203D438
 	mov r1, #8
 	mov r4, r2
 	bl MemAlloc
-	ldr r2, _0203D534 ; =_020AFE74
+	ldr r2, _0203D534 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x3c0
 	str r0, [r2]
 	bl MemZero
-	ldr r0, _0203D534 ; =_020AFE74
+	ldr r0, _0203D534 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov ip, #2
 	ldr r7, [r0]
 	add lr, r7, #0x14
@@ -1013,7 +1013,7 @@ _0203D474:
 	ldmia r6, {r0, r1, r2}
 	stmia lr, {r0, r1, r2}
 	mov r1, #0
-	ldr r0, _0203D534 ; =_020AFE74
+	ldr r0, _0203D534 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	str r1, [r7, #0x10]
 	ldr r1, [r0]
 	str r5, [r1, #8]
@@ -1022,7 +1022,7 @@ _0203D474:
 	ldr r0, [r0]
 	add r0, r0, #0x8c
 	bl InitPreprocessorArgs
-	ldr r0, _0203D534 ; =_020AFE74
+	ldr r0, _0203D534 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r2, #0x70000
 	ldr r1, [r0]
 	str r2, [r1, #0xd8]
@@ -1032,7 +1032,7 @@ _0203D474:
 	ldr r0, [r0]
 	add r0, r0, #0x190
 	bl InitPortraitParams
-	ldr r0, _0203D534 ; =_020AFE74
+	ldr r0, _0203D534 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldrsh r1, [r0, #0x14]
 	cmp r1, #0
@@ -1040,7 +1040,7 @@ _0203D474:
 	add r0, r0, #0x190
 	bl InitPortraitParamsWithMonsterId
 _0203D4F8:
-	ldr r1, _0203D534 ; =_020AFE74
+	ldr r1, _0203D534 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r4, #1
 	ldr r0, [r1]
 	mov r3, #0
@@ -1056,7 +1056,7 @@ _0203D4F8:
 	strb r4, [r1, #0x1a0]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0203D534: .word _020AFE74
+_0203D534: .word MISSION_REWARD_STRUCT_MAIN_PTR
 	arm_func_end sub_0203D438
 
 	arm_func_start sub_0203D538
@@ -1070,7 +1070,7 @@ sub_0203D538: ; 0x0203D538
 #endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x11c + SUB_0203D538_STACK_OFFSET_2
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r4, [r1]
 	ldr r0, [r4]
 	cmp r0, #0x4c
@@ -1158,7 +1158,7 @@ _0203D68C:
 	ldrb r0, [r4, #0x36]
 	cmp r0, #0
 	beq _0203D6E4
-	bl sub_0201077C
+	bl GetEggSpecies
 	cmp r0, #0
 	bne _0203D6B4
 	mov r0, #0x1e
@@ -1166,7 +1166,7 @@ _0203D68C:
 	cmp r0, #0
 	bne _0203D73C
 _0203D6B4:
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r0, #0
 	ldr r4, [r1]
 	mov r2, #0
@@ -1186,14 +1186,14 @@ _0203D6E4:
 	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0203D718
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x38]
 	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	beq _0203D73C
 _0203D718:
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0
 	ldr r2, [r1]
 	sub r0, r3, #1
@@ -1203,7 +1203,7 @@ _0203D718:
 	mul r0, r1, r0
 	str r0, [r2, #0x1c]
 _0203D73C:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0xe4]
 	tst r0, #0x10
@@ -1214,7 +1214,7 @@ _0203D73C:
 	bne _0203D7C0
 	mov r5, #0
 	mov r4, r5
-	ldr sb, _0203E4B0 ; =_020AFE74
+	ldr sb, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r7, #0
 	mov r8, #6
 	b _0203D7B0
@@ -1240,7 +1240,7 @@ _0203D7B0:
 	cmp r5, r0
 	blt _0203D778
 _0203D7C0:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1316,13 +1316,13 @@ _0203D838:
 	mov r4, r0, lsr #0x10
 	bl sub_0203F00C
 _0203D864:
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r2, [r1]
 	mov r1, r4
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1339,8 +1339,8 @@ _0203D89C:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #3
@@ -1360,11 +1360,11 @@ _0203D8CC:
 _0203D8EC:
 	mov r0, #4
 	bl sub_02017C50
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1c]
 	bl AddMoneyCarried
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r0]
 	ldr r0, [r2, #8]
 	cmp r0, #2
@@ -1384,7 +1384,7 @@ _0203D934:
 	ldr r0, _0203E4B8 ; =0x0000101C
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #5
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1393,8 +1393,8 @@ _0203D954:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #6
@@ -1455,13 +1455,13 @@ _0203DA00:
 	mov r4, r0, lsr #0x10
 	bl sub_0203F00C
 _0203DA2C:
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4D0 ; =0x00003008
 	ldr r2, [r1]
 	mov r1, r4
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #8
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1479,7 +1479,7 @@ _0203DA64:
 	mov r2, r0
 	mov r1, #0x11
 	bl CreateParentMenuFromStringIds
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r2, #9
 	ldr r3, [r1]
 	strb r0, [r3, #4]
@@ -1491,15 +1491,15 @@ _0203DAA0:
 	bl IsParentMenuActive
 	cmp r0, #0
 	bne _0203EF9C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl GetSimpleMenuResult__0202AEA4
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r1, [r1]
 	str r0, [r1, #0x18c]
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r2, #0xa
 	ldr r1, [r0]
 	str r2, [r1, #0x188]
@@ -1534,7 +1534,7 @@ _0203DB2C:
 	mov r2, #1
 	mov r3, #0
 	bl sub_02053A0C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	add r1, sp, #0x22 + SUB_0203D538_STACK_OFFSET
 	ldr r0, [r0]
 	ldr r3, _0203E4DC ; =_0209C844
@@ -1543,11 +1543,11 @@ _0203DB2C:
 	add r0, r0, #0x40
 	mov r2, #0
 	bl sub_02052E2C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x40
 	bl sub_02055D4C
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r1]
 	str r0, [r2, #0x3b8]
 	ldr r1, [r1]
@@ -1568,7 +1568,7 @@ _0203DBB0:
 	mov r2, #1
 	bl ApplyLevelUpBoostsToGroundMonster
 _0203DBD0:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r0]
 	ldrsh r1, [r2, #0x38]
 	str r1, [r2, #0x8c]
@@ -1581,7 +1581,7 @@ _0203DBD0:
 	add r2, r4, #0x8c
 	bl sub_02046BE8
 	bl sub_0203F00C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0xd
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1607,7 +1607,7 @@ _0203DC18:
 	add r2, r4, #0x8c
 	bl sub_02046BE8
 	bl sub_0203F00C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0xd
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1616,8 +1616,8 @@ _0203DC68:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0xe
@@ -1640,7 +1640,7 @@ _0203DCB8:
 	add r0, r0, #0x200
 	mov r2, #0x4e
 	bl GetNameWithGender
-	ldr r3, _0203E4B0 ; =_020AFE74
+	ldr r3, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4E4 ; =0x0000100C
 	ldr r4, [r3]
 	ldr r1, _0203E4E8 ; =0x000002A6
@@ -1650,7 +1650,7 @@ _0203DCB8:
 	ldr r2, [r3]
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 #ifndef JAPAN
 	mov r2, #0xa
 #endif
@@ -1664,7 +1664,7 @@ _0203DCB8:
 #else
 	bl StrncpySimple
 #endif
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r2, #0xa
 	ldr r0, [r0]
 	ldr r1, [r0, #0x3b8]
@@ -1672,7 +1672,7 @@ _0203DCB8:
 	add r0, r0, #0x100
 	add r1, r1, #0x3a
 	bl MemcpySimple
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r2, #0xa
 	ldr r1, [r0]
 	add r0, r1, #0xb5
@@ -1680,7 +1680,7 @@ _0203DCB8:
 	add r1, r1, #0xab
 	add r1, r1, #0x100
 	bl StrncpySimpleNoPadSafe
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x10
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1696,7 +1696,7 @@ _0203DD68:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r2, #0x11
 	ldr r3, [r1]
 	strb r0, [r3, #0x1a0]
@@ -1709,18 +1709,18 @@ _0203DDAC:
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0203EF9C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0xa0]
 	bl GetSimpleMenuResult__0202B870
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0xa0]
 	bl CloseSimpleMenu
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x1a0]
@@ -1730,20 +1730,20 @@ _0203DDAC:
 	cmp r4, #1
 	b _0203DE24
 _0203DE10:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x12
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203DE24:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x20
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203DE38:
 	bl ov11_0230D92C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x13
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1751,7 +1751,7 @@ _0203DE38:
 _0203DE50:
 	bl ov11_0230D220
 	cmp r0, #0
-	ldreq r0, _0203E4B0 ; =_020AFE74
+	ldreq r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	moveq r1, #0x14
 	ldreq r0, [r0]
 	streq r1, [r0]
@@ -1765,7 +1765,7 @@ _0203DE6C:
 	mov r2, #0
 	bl ShowKeyboard
 	bl ov11_02310BDC
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x15
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1773,7 +1773,7 @@ _0203DE6C:
 _0203DEA0:
 	bl ov11_0230D220
 	cmp r0, #0
-	ldreq r0, _0203E4B0 ; =_020AFE74
+	ldreq r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	moveq r1, #0x16
 	ldreq r0, [r0]
 	streq r1, [r0]
@@ -1783,14 +1783,14 @@ _0203DEBC:
 	cmp r0, #3
 	bne _0203EF9C
 	bl GetKeyboardStringResult
-	ldr r2, _0203E4B0 ; =_020AFE74
+	ldr r2, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, r0
 	ldr r0, [r2]
 	mov r2, #0xa
 	add r0, r0, #0xab
 	add r0, r0, #0x100
 	bl MemcpySimple
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r2, #0xa
 	ldr r1, [r0]
 	add r0, r1, #0xb5
@@ -1798,7 +1798,7 @@ _0203DEBC:
 	add r0, r0, #0x100
 	add r1, r1, #0x100
 	bl StrncpySimpleNoPadSafe
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1808,7 +1808,7 @@ _0203DF1C:
 	cmp r0, #0
 	beq _0203EF9C
 	bl ov11_0230D92C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x18
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1816,14 +1816,14 @@ _0203DF1C:
 _0203DF40:
 	bl ov11_0230D220
 	cmp r0, #0
-	ldreq r0, _0203E4B0 ; =_020AFE74
+	ldreq r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	moveq r1, #0x19
 	ldreq r0, [r0]
 	streq r1, [r0]
 	b _0203EF9C
 _0203DF5C:
 	bl ov11_0230D92C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x1a
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1831,7 +1831,7 @@ _0203DF5C:
 _0203DF74:
 	bl ov11_0230D220
 	cmp r0, #0
-	ldreq r0, _0203E4B0 ; =_020AFE74
+	ldreq r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	moveq r1, #0x1b
 	ldreq r0, [r0]
 	streq r1, [r0]
@@ -1840,14 +1840,14 @@ _0203DF90:
 	add r0, r4, #0xb5
 	add r0, r0, #0x100
 	bl sub_0203909C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x1c
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203DFB0:
 	bl sub_0203931C
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r1]
 	str r0, [r2, #0x3bc]
 	ldr r1, [r1]
@@ -1860,7 +1860,7 @@ _0203DFD8:
 	bl sub_02039218
 	cmp r0, #0
 	beq _0203EF9C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x3bc]
 	cmp r0, #0
@@ -1874,7 +1874,7 @@ _0203E000:
 	add r1, r1, #0x100
 	mov r2, #0xa
 	bl MemcpySimple
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x20
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1894,7 +1894,7 @@ _0203E038:
 	add r0, r0, #0x100
 	add r1, r1, #0x100
 	bl StrncpySimpleNoPadSafe
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r1]
 	add r0, r2, #0xb5
 	add r0, r0, #0x100
@@ -1906,13 +1906,13 @@ _0203E038:
 	mov r0, #5
 	ldrne r4, _0203E4FC ; =0x00000281
 	bl sub_02017C50
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r2, [r1]
 	mov r1, r4
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x21
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1921,8 +1921,8 @@ _0203E0BC:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x22
@@ -1941,7 +1941,7 @@ _0203E0EC:
 	b _0203EF9C
 _0203E10C:
 	bl sub_02046D20
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #8]
 	sub r0, r0, #2
@@ -1954,7 +1954,7 @@ _0203E10C:
 _0203E138:
 	bl ov11_023061CC
 _0203E13C:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x1f
 	ldr r0, [r0]
 	str r1, [r0]
@@ -1966,12 +1966,12 @@ _0203E150:
 	bne _0203EF9C
 	bl ov11_02306C64
 	cmp r0, #0
-	ldreq r0, _0203E4B0 ; =_020AFE74
+	ldreq r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	moveq r1, #0x23
 	ldreq r0, [r0]
 	streq r1, [r0]
 	beq _0203EF9C
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r2, #0xc
 	ldr r3, [r1]
 	str r0, [r3, #0x3b8]
@@ -1982,7 +1982,7 @@ _0203E198:
 	ldrsh r1, [r4, #0x38]
 	add r0, r4, #0xe8
 	bl GetNameRaw
-	ldr r2, _0203E4B0 ; =_020AFE74
+	ldr r2, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r4, [r2]
 #ifdef JAPAN
@@ -1995,7 +1995,7 @@ _0203E198:
 	ldr r2, [r2]
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x24
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2004,8 +2004,8 @@ _0203E1DC:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x25
@@ -2027,7 +2027,7 @@ _0203E22C:
 	bl sub_02017C50
 	mov r0, #0x3e8
 	bl AddMoneyCarried
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0x3e8
 	ldr r2, [r1]
 	ldr r0, _0203E4B8 ; =0x0000101C
@@ -2036,7 +2036,7 @@ _0203E22C:
 	ldr r1, _0203E500 ; =0x00000285
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x27
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2045,8 +2045,8 @@ _0203E274:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x28
@@ -2090,7 +2090,7 @@ _0203E2C4:
 	cmp r1, r0
 	bgt _0203E348
 _0203E328:
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r0, #6
 	ldr r2, [r1]
 	ldr r1, [r2, #0x10]
@@ -2102,7 +2102,7 @@ _0203E348:
 	mov r0, #0
 	strh r0, [sp, #0x1e + SUB_0203D538_STACK_OFFSET]
 _0203E350:
-	ldr r3, _0203E4B0 ; =_020AFE74
+	ldr r3, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r0, #1
 	ldr r6, [r3]
 	strb r0, [sp, #0x1c + SUB_0203D538_STACK_OFFSET]
@@ -2125,7 +2125,7 @@ _0203E350:
 	ldr r0, [r3]
 	add r0, r0, #0xe8
 	bl sub_0200D670
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r0]
 	add r1, r2, #0xe8
 	str r1, [r2, #0xc4]
@@ -2158,13 +2158,13 @@ _0203E400:
 #endif
 	bl sub_0203F00C
 _0203E414:
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r2, [r1]
 	mov r1, r4
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x2a
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2174,7 +2174,7 @@ _0203E440:
 	str r0, [r1]
 	b _0203EF9C
 _0203E44C:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x33
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2183,8 +2183,8 @@ _0203E460:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x2b
@@ -2207,7 +2207,7 @@ _0203E490:
 #else
 #define SUB_0203D538_DATA_OFFSET 0
 #endif
-_0203E4B0: .word _020AFE74
+_0203E4B0: .word MISSION_REWARD_STRUCT_MAIN_PTR
 _0203E4B4: .word 0x00000289 + SUB_0203D538_DATA_OFFSET
 #ifdef JAPAN
 _0203E89C: .word 0x0000245E
@@ -2254,7 +2254,7 @@ _0203E518:
 	bl AddItemToStorage
 	cmp r0, #0
 	beq _0203E5A0
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0xe4]
 	tst r0, #2
@@ -2262,7 +2262,7 @@ _0203E518:
 	mov r0, #4
 	bl sub_02017C50
 _0203E550:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r0]
 	ldr r0, [r2, #0xe4]
 	tst r0, #4
@@ -2271,7 +2271,7 @@ _0203E550:
 	add r2, r2, #0x8c
 	mov r0, #0x1c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x2e
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2284,7 +2284,7 @@ _0203E588:
 	streq r0, [r2]
 	b _0203EF9C
 _0203E5A0:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x34
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2302,7 +2302,7 @@ _0203E5B4:
 	strh r0, [sp, #0x18 + SUB_0203D538_STACK_OFFSET]
 	strb r1, [sp, #0x16 + SUB_0203D538_STACK_OFFSET]
 	bl sub_02046D20
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0xe4]
 	tst r0, #1
@@ -2311,7 +2311,7 @@ _0203E5B4:
 	add r0, sp, #0x16 + SUB_0203D538_STACK_OFFSET
 	and r1, r1, #0xff
 	bl sub_020453F8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x35
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2324,7 +2324,7 @@ _0203E61C:
 	beq _0203E688
 	cmp r0, #4
 	bne _0203EF9C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x2d
@@ -2333,11 +2333,11 @@ _0203E61C:
 	str r1, [r0]
 	b _0203EF9C
 _0203E658:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xde
 	bl sub_02045FD0
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x36
@@ -2346,11 +2346,11 @@ _0203E658:
 	str r1, [r0]
 	b _0203EF9C
 _0203E688:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xde
 	bl sub_02045FD0
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x38
@@ -2375,7 +2375,7 @@ _0203E6D8:
 	bl AddItemToStorage
 	cmp r0, #0
 	beq _0203E7D8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0xe4]
 	tst r0, #2
@@ -2383,7 +2383,7 @@ _0203E6D8:
 	mov r0, #4
 	bl sub_02017C50
 _0203E710:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #6
 	ldr r5, [r0]
 	mov r6, #0
@@ -2410,13 +2410,13 @@ _0203E710:
 	ldr r3, [r5, #0x10]
 	mla r1, r3, r1, r4
 	bl sub_0200D670
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, _0203E508 ; =_0209C850
 	ldr r0, [r0]
 	add r1, sp, #0x10 + SUB_0203D538_STACK_OFFSET
 	add r0, r0, #0x138
 	bl sub_0200D670
-	ldr r2, _0203E4B0 ; =_020AFE74
+	ldr r2, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r4, [r2]
 	ldr r1, _0203EFAC ; =0x00000275
@@ -2428,13 +2428,13 @@ _0203E710:
 	ldr r2, [r2]
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x2e
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203E7D8:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x34
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2456,7 +2456,7 @@ _0203E80C:
 	bl AddItemToStorage
 	cmp r0, #0
 	beq _0203E8D4
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0xe4]
 	tst r0, #2
@@ -2464,7 +2464,7 @@ _0203E80C:
 	mov r0, #4
 	bl sub_02017C50
 _0203E844:
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r0, #6
 	ldr r6, [r1]
 	mov r5, #0
@@ -2486,7 +2486,7 @@ _0203E844:
 	mla r1, r3, r0, r1
 	add r0, r4, #0xe8
 	bl sub_0200D670
-	ldr r2, _0203E4B0 ; =_020AFE74
+	ldr r2, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r4, [r2]
 	ldr r1, _0203EFB0 ; =0x00000277
@@ -2495,13 +2495,13 @@ _0203E844:
 	ldr r2, [r2]
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x2e
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203E8D4:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x34
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2517,11 +2517,11 @@ _0203E8E8:
 	ldr r1, _0203EFB4 ; =0x00000286
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xde
 	bl sub_02045FD0
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x2e
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2530,8 +2530,8 @@ _0203E934:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x2f
@@ -2558,7 +2558,7 @@ _0203E984:
 	mov r1, #0x2cc
 #endif
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x31
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2567,8 +2567,8 @@ _0203E9A8:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x32
@@ -2628,13 +2628,13 @@ _0203EA6C:
 #endif
 	bl sub_0203F00C
 _0203EA80:
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r2, [r1]
 	mov r1, r4
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x3b
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2647,8 +2647,8 @@ _0203EAB8:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x3c
@@ -2668,23 +2668,23 @@ _0203EAE8:
 _0203EB08:
 	mov r0, #5
 	bl sub_02017C50
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x38]
-	bl sub_02010794
+	bl SetEggSpecies
 	mov r0, #4
 	bl RandIntSafe
 	add r0, r0, #6
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_020107F4
-	ldr r1, _0203E4B0 ; =_020AFE74
+	bl SetEggHatchTimer
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r2, [r1]
 	ldr r1, _0203EFC4 ; =0x00000272
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x3e
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2693,8 +2693,8 @@ _0203EB64:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	bl sub_0203F05C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r3, #0xa
 	ldr r2, [r0]
 	mov r1, #0x3f
@@ -2720,7 +2720,7 @@ _0203EBB4:
 	add r0, sp, #0xcc + SUB_0203D538_STACK_OFFSET_2
 	bl InitPreprocessorArgs
 	bl GetRank
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r1]
 	strb r0, [r2, #0xc]
 	ldr r0, [r1]
@@ -2728,7 +2728,7 @@ _0203EBB4:
 	bl sub_02050C10
 	mov r0, #4
 	bl sub_02017C50
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r2, [r1]
 	ldr r1, _0203EFC8 ; =0x000002A1
@@ -2736,7 +2736,7 @@ _0203EBB4:
 	add r2, sp, #0xcc + SUB_0203D538_STACK_OFFSET_2
 	str r3, [sp, #0xf0 + SUB_0203D538_STACK_OFFSET_2]
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x41
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2745,7 +2745,7 @@ _0203EC28:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0203EF9C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r4, [r0]
 	bl GetRank
 	ldrb r1, [r4, #0xc]
@@ -2760,7 +2760,7 @@ _0203EC5C:
 	bl sub_02017C50
 	add r0, sp, #0x7c + SUB_0203D538_STACK_OFFSET_2
 	bl InitPreprocessorArgs
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0xc]
 	str r0, [sp, #0x94 + SUB_0203D538_STACK_OFFSET_2]
@@ -2770,7 +2770,7 @@ _0203EC5C:
 	ldr r1, _0203EFCC ; =0x000002A2
 	add r2, sp, #0x7c + SUB_0203D538_STACK_OFFSET_2
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x43
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2778,7 +2778,7 @@ _0203EC5C:
 _0203ECA8:
 	bl sub_02046C78
 	cmp r0, #0
-	ldrne r0, _0203E4B0 ; =_020AFE74
+	ldrne r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	movne r1, #0x44
 	ldrne r0, [r0]
 	strne r1, [r0]
@@ -2786,7 +2786,7 @@ _0203ECA8:
 _0203ECC4:
 	add r0, sp, #0x2c + SUB_0203D538_STACK_OFFSET_2
 	bl InitPreprocessorArgs
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0xc]
 	bl GetRankUpEntry
@@ -2798,7 +2798,7 @@ _0203ECC4:
 	ldr r0, [sp, #0x50 + SUB_0203D538_STACK_OFFSET_2]
 	str r1, [sp, #0x54 + SUB_0203D538_STACK_OFFSET_2]
 	cmp r0, r1
-	ldreq r0, _0203E4B0 ; =_020AFE74
+	ldreq r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	moveq r1, #0x46
 	ldreq r0, [r0]
 	streq r1, [r0]
@@ -2807,7 +2807,7 @@ _0203ECC4:
 	ldr r1, _0203EFD0 ; =0x000002A3
 	add r2, sp, #0x2c + SUB_0203D538_STACK_OFFSET_2
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x45
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2815,7 +2815,7 @@ _0203ECC4:
 _0203ED34:
 	bl sub_02046C78
 	cmp r0, #0
-	ldrne r0, _0203E4B0 ; =_020AFE74
+	ldrne r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	movne r1, #0x46
 	ldrne r0, [r0]
 	strne r1, [r0]
@@ -2828,7 +2828,7 @@ _0203ED50:
 	cmp r0, #0
 	bne _0203ED80
 	bl sub_02046D20
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x4c
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2845,7 +2845,7 @@ _0203ED80:
 	strh r0, [r4, #0x86]
 	mov r0, #1
 	strb r0, [r4, #0x84]
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldrsh r3, [r4, #0x88]
 	ldr r1, [r0]
 	mov r2, #0
@@ -2854,7 +2854,7 @@ _0203ED80:
 	mov r0, #4
 	str r2, [r1, #0xb0]
 	bl sub_02017C50
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r2, [r1]
 #ifdef JAPAN
@@ -2864,14 +2864,14 @@ _0203ED80:
 #endif
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x47
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203EDFC:
 	bl sub_02046D20
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x4c
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2879,7 +2879,7 @@ _0203EDFC:
 _0203EE14:
 	bl sub_02046C78
 	cmp r0, #0
-	ldrne r0, _0203E4B0 ; =_020AFE74
+	ldrne r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	movne r1, #0x48
 	ldrne r0, [r0]
 	strne r1, [r0]
@@ -2888,13 +2888,13 @@ _0203EE30:
 	add r0, r4, #0x84
 	bl AddItemToStorage
 	cmp r0, #0
-	ldreq r0, _0203E4B0 ; =_020AFE74
+	ldreq r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	moveq r1, #0x49
 	ldreq r0, [r0]
 	streq r1, [r0]
 	beq _0203EF9C
 	bl sub_02046D20
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x4c
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2907,7 +2907,7 @@ _0203EE68:
 	strh r1, [sp, #0xc + SUB_0203D538_STACK_OFFSET]
 	strb r0, [sp, #0xa + SUB_0203D538_STACK_OFFSET]
 	bl sub_02046D20
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0xe4]
 	tst r0, #1
@@ -2916,7 +2916,7 @@ _0203EE68:
 	add r0, sp, #0xa + SUB_0203D538_STACK_OFFSET
 	and r1, r1, #0xff
 	bl sub_020453F8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x4a
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2929,7 +2929,7 @@ _0203EEBC:
 	beq _0203EF64
 	cmp r0, #4
 	bne _0203EF9C
-	ldr r1, _0203E4B0 ; =_020AFE74
+	ldr r1, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r2, [r1]
 	ldr r1, _0203EFB4 ; =0x0000245A
@@ -2942,7 +2942,7 @@ _0203EEBC:
 	ldrsh r0, [sp, #8]
 	cmp r0, #0
 	bne _0203EF00
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r1, [r0]
 	ldrh r0, [r1, #0x84]
 	strh r0, [sp, #4]
@@ -2956,13 +2956,13 @@ _0203EF00:
 	beq _0203EF64
 	cmp r4, #4
 	bne _0203EF9C
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, _0203E508 ; =_0209C850
 	ldr r0, [r0]
 	add r1, sp, #4
 	add r0, r0, #0xe8
 	bl sub_0200D670
-	ldr r2, _0203E4B0 ; =_020AFE74
+	ldr r2, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r4, [r2]
 	ldr r1, _0203EFB4 ; =0x00000286
@@ -2972,13 +2972,13 @@ _0203EF00:
 #endif
 	add r2, r2, #0x8c
 	bl sub_02046BE8
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x4b
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203EF64:
-	ldr r0, _0203E4B0 ; =_020AFE74
+	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x48
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2986,7 +2986,7 @@ _0203EF64:
 _0203EF78:
 	bl sub_02046C78
 	cmp r0, #0
-	ldrne r0, _0203E4B0 ; =_020AFE74
+	ldrne r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	movne r1, #0x4c
 	ldrne r0, [r0]
 	strne r1, [r0]
@@ -3022,29 +3022,29 @@ _0203F370: .word 0x00002478
 #endif
 	arm_func_end sub_0203D538
 
-	arm_func_start sub_0203EFD4
-sub_0203EFD4: ; 0x0203EFD4
+	arm_func_start FreeMissionRewardStructMain
+FreeMissionRewardStructMain: ; 0x0203EFD4
 	stmdb sp!, {r3, lr}
-	ldr r0, _0203F008 ; =_020AFE74
+	ldr r0, _0203F008 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_0203F05C
-	ldr r0, _0203F008 ; =_020AFE74
+	bl MissionRewardCloseAllBoxes
+	ldr r0, _0203F008 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0203F008 ; =_020AFE74
+	ldr r0, _0203F008 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0203F008: .word _020AFE74
-	arm_func_end sub_0203EFD4
+_0203F008: .word MISSION_REWARD_STRUCT_MAIN_PTR
+	arm_func_end FreeMissionRewardStructMain
 
 	arm_func_start sub_0203F00C
 sub_0203F00C: ; 0x0203F00C
 	stmdb sp!, {r3, lr}
-	ldr r1, _0203F058 ; =_020AFE74
+	ldr r1, _0203F058 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r0, #1
 	ldr r1, [r1]
 	ldrsb r1, [r1, #6]
@@ -3054,7 +3054,7 @@ sub_0203F00C: ; 0x0203F00C
 	mov r1, #3
 	mov r2, #1
 	bl CreatePortraitBox
-	ldr r1, _0203F058 ; =_020AFE74
+	ldr r1, _0203F058 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r1]
 	strb r0, [r2, #6]
 	ldr r1, [r1]
@@ -3063,44 +3063,44 @@ sub_0203F00C: ; 0x0203F00C
 	bl ShowPortraitInPortraitBox
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0203F058: .word _020AFE74
+_0203F058: .word MISSION_REWARD_STRUCT_MAIN_PTR
 	arm_func_end sub_0203F00C
 
-	arm_func_start sub_0203F05C
-sub_0203F05C: ; 0x0203F05C
+	arm_func_start MissionRewardCloseAllBoxes
+MissionRewardCloseAllBoxes: ; 0x0203F05C
 	stmdb sp!, {r3, lr}
-	ldr r0, _0203F0EC ; =_020AFE74
+	ldr r0, _0203F0EC ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _0203F08C
 	bl CloseParentMenu
-	ldr r0, _0203F0EC ; =_020AFE74
+	ldr r0, _0203F0EC ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #4]
 _0203F08C:
-	ldr r0, _0203F0EC ; =_020AFE74
+	ldr r0, _0203F0EC ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	beq _0203F0B8
 	bl CloseDialogueBox
-	ldr r0, _0203F0EC ; =_020AFE74
+	ldr r0, _0203F0EC ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #5]
 _0203F0B8:
-	ldr r0, _0203F0EC ; =_020AFE74
+	ldr r0, _0203F0EC ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	cmp r0, r1
 	beq _0203F0E4
 	bl ClosePortraitBox
-	ldr r0, _0203F0EC ; =_020AFE74
+	ldr r0, _0203F0EC ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #6]
@@ -3108,8 +3108,8 @@ _0203F0E4:
 	bl sub_02046D20
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0203F0EC: .word _020AFE74
-	arm_func_end sub_0203F05C
+_0203F0EC: .word MISSION_REWARD_STRUCT_MAIN_PTR
+	arm_func_end MissionRewardCloseAllBoxes
 
 	arm_func_start sub_0203F0F0
 sub_0203F0F0: ; 0x0203F0F0
@@ -9374,7 +9374,7 @@ sub_02044210: ; 0x02044210
 #ifndef JAPAN
 	mov r3, #0x300
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	bl sub_020434FC
 	str r0, [sp, #0x28]
 	add r1, sp, #4
@@ -9646,7 +9646,7 @@ sub_020444F0: ; 0x020444F0
 	mov r0, r4
 	mov r2, r1
 	mov r3, r3, lsr #0x10
-	bl sub_02026268
+	bl AppendStandardStringToMission
 _02044558:
 	mov r0, r4
 	bl UpdateWindow
@@ -9726,7 +9726,7 @@ sub_02044604: ; 0x02044604
 #ifndef JAPAN
 	mov r3, #0x334
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	bl GetMoneyCarried
 	mov r1, #0x18
 	str r1, [sp, #0x2c]
@@ -10018,7 +10018,7 @@ sub_020449AC: ; 0x020449AC
 	add r2, r6, #0x2e
 	mov r1, r0
 	add r0, r2, #0x700
-	bl sub_020584FC
+	bl GetRecoloredNameOfTeamMemberAtIdx
 	b _02044A30
 _020449E8:
 #endif
@@ -10035,7 +10035,7 @@ _020449E8:
 #endif
 	mov r2, r4
 	ldr r7, [r1, #0xb4]
-	bl ov29_022E2A78
+	bl GetMonsterOrTrapName
 	ldrb r0, [r7, #0xbc]
 	cmp r0, #7
 	beq _02044A2C
@@ -10381,7 +10381,7 @@ _02044E28:
 	mov r0, r1, lsl #0x10
 	mov r1, r0, asr #0x10
 	ldr r0, [sp, #0x14]
-	bl sub_020584FC
+	bl GetRecoloredNameOfTeamMemberAtIdx
 	b _02044EC4
 _02044E8C:
 	ldr r3, _020451A0 ; =DUNGEON_PTR
@@ -12223,8 +12223,8 @@ _02046738: .word 0x00001815
 _0204673C: .word sub_02046798
 	arm_func_end sub_02046698
 
-	arm_func_start sub_02046740
-sub_02046740: ; 0x02046740
+	arm_func_start PlayMissionClearBgm
+PlayMissionClearBgm: ; 0x02046740
 	stmdb sp!, {r3, lr}
 	ldr r1, _02046774 ; =_020AFED8
 	ldr r0, _02046778 ; =0x00000279
@@ -12242,7 +12242,7 @@ _02046768:
 	.align 2, 0
 _02046774: .word _020AFED8
 _02046778: .word 0x00000279
-	arm_func_end sub_02046740
+	arm_func_end PlayMissionClearBgm
 
 	arm_func_start sub_0204677C
 sub_0204677C: ; 0x0204677C
@@ -14626,27 +14626,27 @@ _02048518: ; jump table
 _0204852C:
 	ldr r1, _020485AC ; =_020A2830
 	mov r0, #2
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 	b _02048578
 _0204853C:
 	ldr r1, _020485B0 ; =_020A2808
 	mov r0, #2
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 	b _02048578
 _0204854C:
 	ldr r1, _020485B4 ; =_020A2844
 	mov r0, #2
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 	b _02048578
 _0204855C:
 	ldr r1, _020485B8 ; =_020A2880
 	mov r0, #2
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 	b _02048578
 _0204856C:
 	ldr r1, _020485BC ; =_020A2894
 	mov r0, #2
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 _02048578:
 	mov r0, #2
 	bl GetTeamMember
@@ -15035,20 +15035,20 @@ _02048A20: ; jump table
 _02048A34:
 	ldr r1, _02048A74 ; =_020A28A8
 	mov r0, #3
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 	b _02048A6C
 _02048A44:
 	ldr r1, _02048A78 ; =_020A2858
 	mov r0, #3
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 	ldr r1, _02048A7C ; =_020A281C
 	mov r0, #4
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 	b _02048A6C
 _02048A60:
 	ldr r1, _02048A80 ; =_020A286C
 	mov r0, #3
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 _02048A6C:
 	bl SetTeamSetupHeroAndPartnerOnly
 	ldmia sp!, {r3, pc}
@@ -15075,7 +15075,7 @@ _02048A98: ; jump table
 _02048AAC:
 	ldr r1, _02048AC0 ; =SPECIAL_EPISODE_MAIN_CHARACTERS
 	mov r0, #4
-	bl sub_02048AC4
+	bl AssignSpecialEpisodePc
 _02048AB8:
 	bl SetTeamSetupHeroAndPartnerOnly
 	ldmia sp!, {r3, pc}
@@ -15083,8 +15083,8 @@ _02048AB8:
 _02048AC0: .word SPECIAL_EPISODE_MAIN_CHARACTERS
 	arm_func_end InitSpecialEpisodeExtraPartner
 
-	arm_func_start sub_02048AC4
-sub_02048AC4: ; 0x02048AC4
+	arm_func_start AssignSpecialEpisodePc
+AssignSpecialEpisodePc: ; 0x02048AC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	ldrsh r1, [r5]
@@ -15119,7 +15119,7 @@ sub_02048AC4: ; 0x02048AC4
 _02048B40:
 	bl GetInfoGroundMoveset
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02048AC4
+	arm_func_end AssignSpecialEpisodePc
 
 	arm_func_start sub_02048B48
 sub_02048B48: ; 0x02048B48
@@ -15132,7 +15132,7 @@ sub_02048B48: ; 0x02048B48
 	bl ResetGlobalProgress
 	bl sub_0205B478
 	bl sub_0205C75C
-	bl sub_02012AB8
+	bl ClearCroagunkItems
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02048B48
 
@@ -15565,7 +15565,7 @@ _0204900C:
 	add r0, r5, #0x11
 	add r0, r0, #0xb000
 	mov r1, #0xb
-	bl sub_020131F0
+	bl SaveCroagunkItems
 	add r1, r5, #0x1c
 	str r0, [r4, #0x45c]
 	add r0, r1, #0xb000
@@ -15943,7 +15943,7 @@ _020494B8:
 	add r0, r0, #0xb000
 	mov r1, #0xb
 	movne r5, #3
-	bl sub_02013190
+	bl LoadCroagunkItems
 	ldr r1, [r4, #0x45c]
 	cmp r0, r1
 	add r0, r6, #0x1c

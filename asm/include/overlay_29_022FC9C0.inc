@@ -30,7 +30,7 @@
 .public GetLeader
 .public GetLvlUpEntry
 .public GetMissionDestination
-.public GetMissionRank
+.public GetMissionRank__0204FB4C
 .public GetMonsterApparentId
 .public GetMonsterIdToSpawn
 .public GetMonsterLevelToSpawn
@@ -56,6 +56,8 @@
 .public LEADER_PTR
 .public MemZero
 .public MewSpawnCheck
+.public ModifyDefensiveStat
+.public ModifyOffensiveStat
 .public MoveMonsterToPos
 .public MultiplyByFixedPoint
 .public OUTLAW_LEVEL_TABLE
@@ -93,7 +95,5 @@
 .public SetTargetMonsterNotFoundFlag
 .public ShuffleHiddenPower
 .public sub_02050FF8
-.public sub_02054FEC
-.public sub_02055020
 .public UpdateEntityPixelPos
 .public UpdateStatusIconFlags

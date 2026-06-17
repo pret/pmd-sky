@@ -601,7 +601,7 @@ _0238AF4C:
 	blx r2
 	b _0238AF88
 _0238AF84:
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 _0238AF88:
 	mov r0, #4
 	b _0238AF94

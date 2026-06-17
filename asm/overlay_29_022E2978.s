@@ -92,8 +92,8 @@ _022E2A64:
 _022E2A74: .word DUNGEON_PTR
 	arm_func_end GetTeamMemberIndex
 
-	arm_func_start ov29_022E2A78
-ov29_022E2A78: ; 0x022E2A78
+	arm_func_start GetMonsterOrTrapName
+GetMonsterOrTrapName: ; 0x022E2A78
 	stmdb sp!, {r4, lr}
 	ldr r2, [r1]
 	mov r4, r0
@@ -111,7 +111,7 @@ _022E2AA0:
 _022E2AAC:
 	ldr r1, [r1, #0xb4]
 	ldrb r1, [r1]
-	bl ov29_022ED82C
+	bl GetTrapName
 	ldmia sp!, {r4, pc}
 _022E2ABC:
 	ldr r0, _022E2AD4 ; =0x00000A42
@@ -126,7 +126,7 @@ _022E2AD4: .word 0x00000B42
 #else
 _022E2AD4: .word 0x00000A42
 #endif
-	arm_func_end ov29_022E2A78
+	arm_func_end GetMonsterOrTrapName
 
 	arm_func_start SubstitutePlaceholderStringTags
 SubstitutePlaceholderStringTags: ; 0x022E2AD8

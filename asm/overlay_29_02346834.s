@@ -402,7 +402,7 @@ _02346CDC:
 	cmp r0, #0xb7
 	bne _02346D78
 	mov r0, sl
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	bl AddMoneyCarried
 	ldrb r0, [sl, #1]
 	cmp r0, #0
@@ -478,7 +478,7 @@ _02346DC8:
 	cmp r0, #0xb7
 	bne _02346E30
 	add r0, sb, #0x3e
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	bl AddMoneyCarried
 	add r0, sb, #0x3e
 	bl ItemZInit

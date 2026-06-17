@@ -16,6 +16,8 @@
 .public _020A3918
 .public _020A3954
 .public _020A3984
+.public CheckItemForMissionType
+.public CheckMonsterForMissionType
 .public Debug_Print0
 .public GetBaseForm
 .public GetMaxItemsAllowed
@@ -24,6 +26,4 @@
 .public IsMonsterMissionAllowed
 .public IsStorableItem
 .public sub_0205CF58
-.public sub_0205D008
-.public sub_0205D11C
 .public sub_0205E1E8

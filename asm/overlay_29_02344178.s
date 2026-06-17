@@ -313,8 +313,8 @@ IsSecretBazaarVeneer: ; 0x02344538
 _02344540: .word IsSecretBazaar
 	arm_func_end IsSecretBazaarVeneer
 
-	arm_func_start ov29_02344544
-ov29_02344544: ; 0x02344544
+	arm_func_start InteractWithSecretBazaarNpc
+InteractWithSecretBazaarNpc: ; 0x02344544
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r5, r0
@@ -350,11 +350,11 @@ _023445B4:
 	mov r0, r4
 	mov r1, r5
 	str r3, [r2]
-	bl ov29_022F0654
+	bl MakeTargetFaceUserAndIdle
 	ldr r0, _02344A64 ; =0x00000F32
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _023445E0:
 	ldr r2, _02344A60 ; =ov29_0237CFFC
@@ -362,7 +362,7 @@ _023445E0:
 	mov r0, r4
 	mov r1, r5
 	str r3, [r2]
-	bl ov29_022F0654
+	bl MakeTargetFaceUserAndIdle
 	ldr r0, _02344A68 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x77e]
@@ -371,7 +371,7 @@ _023445E0:
 	ldr r0, _02344A6C ; =0x00000F4C
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _02344620:
 	mov r0, #0
@@ -380,19 +380,19 @@ _02344620:
 	ldr r0, _02344A70 ; =0x00000F4A
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	ldr r1, _02344A74 ; =ov29_02353798
 	ldr r0, _02344A78 ; =0x00000F4B
 	ldr r3, [r1, #4]
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F062C
+	bl TalkToSecretBazaarNpcWithYesNoMenu
 	cmp r0, #0
 	bne _02344670
 	ldr r0, _02344A7C ; =0x00000F4D
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _02344670:
 	bl GetMoneyCarried
@@ -401,15 +401,15 @@ _02344670:
 	ldr r0, _02344A80 ; =0x00000F4E
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _02344690:
 	mov r0, #0x64
-	bl ov29_022F07BC
+	bl SubtractMoneyCarriedWithSfx
 	ldr r0, _02344A84 ; =0x00000F4F
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	bl ov29_022F05E4
 	mov r0, #4
 	mov r1, #0x4000
@@ -441,7 +441,7 @@ _02344690:
 	mov r1, r4
 	strb r3, [r2, #0x77e]
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _0234471C:
 	ldr r2, _02344A60 ; =ov29_0237CFFC
@@ -449,26 +449,26 @@ _0234471C:
 	mov r0, r4
 	mov r1, r5
 	str r3, [r2]
-	bl ov29_022F0654
+	bl MakeTargetFaceUserAndIdle
 	mov r0, #0
 	mov r1, #0x64
 	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r0, _02344A90 ; =0x00000F33
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	ldr r0, _02344A94 ; =0x00000F34
 	mov r1, r4
 	mov r2, #0
 	ldr r3, _02344A74 ; =ov29_02353798
 	ldr r3, [r3, #8]
-	bl ov29_022F062C
+	bl TalkToSecretBazaarNpcWithYesNoMenu
 	cmp r0, #0
 	bne _02344784
 	ldr r0, _02344A98 ; =0x00000F35
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _02344784:
 	bl IsBagFull
@@ -477,7 +477,7 @@ _02344784:
 	ldr r0, _02344A9C ; =0x00000F37
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _023447A4:
 	bl GetMoneyCarried
@@ -486,15 +486,15 @@ _023447A4:
 	ldr r0, _02344AA0 ; =0x00000F36
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _023447C4:
 	mov r0, #0x64
-	bl ov29_022F07BC
+	bl SubtractMoneyCarriedWithSfx
 	ldr r0, _02344AA4 ; =0x00000F38
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	bl ov29_022F05E4
 	mov r0, #0x64
 	bl DungeonRandInt
@@ -530,7 +530,7 @@ _023447FC:
 #endif
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _0234485C:
 	ldr r2, _02344A60 ; =ov29_0237CFFC
@@ -538,26 +538,26 @@ _0234485C:
 	mov r0, r4
 	mov r1, r5
 	str r3, [r2]
-	bl ov29_022F0654
+	bl MakeTargetFaceUserAndIdle
 	mov r0, #0
 	mov r1, #0x64
 	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r0, _02344AB8 ; =0x00000F54
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	ldr r0, _02344ABC ; =0x00000F55
 	mov r1, r4
 	mov r2, #0
 	ldr r3, _02344A74 ; =ov29_02353798
 	ldr r3, [r3, #0xc]
-	bl ov29_022F062C
+	bl TalkToSecretBazaarNpcWithYesNoMenu
 	cmp r0, #0
 	bne _023448C4
 	ldr r0, _02344AC0 ; =0x00000F56
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _023448C4:
 	bl CountStickyItemsInBag
@@ -566,7 +566,7 @@ _023448C4:
 	ldr r0, _02344AC4 ; =0x00000F58
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _023448E4:
 	bl GetMoneyCarried
@@ -575,11 +575,11 @@ _023448E4:
 	ldr r0, _02344AC8 ; =0x00000F57
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _02344904:
 	mov r0, #0x64
-	bl ov29_022F07BC
+	bl SubtractMoneyCarriedWithSfx
 #ifdef JAPAN
 	mov r1, r4
 	mov r0, #0x8d0
@@ -588,7 +588,7 @@ _02344904:
 	mov r1, r4
 #endif
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	bl ov29_022F05E4
 	ldr r2, _02344AD0 ; =0x000001A6
 	mov r0, r4
@@ -600,7 +600,7 @@ _02344904:
 	ldr r0, _02344AD8 ; =0x00000F5A
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _02344950:
 	ldr r2, _02344A60 ; =ov29_0237CFFC
@@ -608,14 +608,14 @@ _02344950:
 	mov r0, r4
 	mov r1, r5
 	str r3, [r2]
-	bl ov29_022F0654
+	bl MakeTargetFaceUserAndIdle
 	mov r0, #0
 	mov r1, #0x64
 	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r0, _02344ADC ; =0x00000F3F
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 #ifdef JAPAN
 	ldr r0, _02345EA0 ; =0x000008B7
 #else
@@ -625,13 +625,13 @@ _02344950:
 	mov r2, #0
 	ldr r3, _02344A74 ; =ov29_02353798
 	ldr r3, [r3, #0x10]
-	bl ov29_022F062C
+	bl TalkToSecretBazaarNpcWithYesNoMenu
 	cmp r0, #0
 	bne _023449B8
 	ldr r0, _02344AE0 ; =0x00000F41
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _023449B8:
 	bl GetMoneyCarried
@@ -640,7 +640,7 @@ _023449B8:
 	bge _023449D8
 	ldr r0, _02344AE4 ; =0x00000F42
 	mov r1, r4
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _023449D8:
 	ldr r1, _02344A74 ; =ov29_02353798
@@ -653,15 +653,15 @@ _023449D8:
 	ldr r0, _02344AEC ; =0x00000F44
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	b _02344A34
 _02344A08:
 	mov r0, #0x64
-	bl ov29_022F07BC
+	bl SubtractMoneyCarriedWithSfx
 	ldr r0, _02344AF0 ; =0x00000F45
 	mov r1, r4
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	bl ov29_022F05E4
 	ldr r2, _02344AF4 ; =0x000001A5
 	mov r0, r4
@@ -734,4 +734,4 @@ _02344AE8: .word 0x00000F43 + OV29_02344544_OFFSET
 _02344AEC: .word 0x00000F44 + OV29_02344544_OFFSET
 _02344AF0: .word 0x00000F45 + OV29_02344544_OFFSET
 _02344AF4: .word 0x000001A5
-	arm_func_end ov29_02344544
+	arm_func_end InteractWithSecretBazaarNpc

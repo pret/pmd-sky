@@ -8,6 +8,7 @@
 .public GetForcedLossReason
 .public GetMessageLogPreprocessorArgs
 .public GetMonsterName
+.public GetTrapName
 .public HasDropeyeStatus
 .public IsBlinded
 .public IsPositionActuallyInSight
@@ -15,7 +16,6 @@
 .public ov29_022E34C8
 .public ov29_022E3534
 .public ov29_022E3A58
-.public ov29_022ED82C
 .public ov29_023047DC
 .public ov29_02304954
 .public ov29_0233711C

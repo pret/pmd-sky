@@ -2138,19 +2138,19 @@ sub_020546E8: ; 0x020546E8
 	ldr r1, [sp]
 	str r1, [r4, #0x10]
 	ldrh r1, [sp, #4]
-	bl sub_02054FB8
+	bl ModifyHpStat
 	ldrb r1, [sp, #6]
 	add r0, r4, #0xc
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	ldrb r1, [sp, #7]
 	add r0, r4, #0xd
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	ldrb r1, [sp, #8]
 	add r0, r4, #0xe
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	ldrb r1, [sp, #9]
 	add r0, r4, #0xf
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end sub_020546E8

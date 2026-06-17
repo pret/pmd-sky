@@ -37,6 +37,7 @@
 .public ADVANCED_TEXT_BOX_DEFAULT_WINDOW_PARAMS
 .public ALERT_BOX_DEFAULT_WINDOW_PARAMS
 .public AnalyzeText
+.public AppendStandardStringToMission
 .public AREA_NAME_BOX_DEFAULT_WINDOW_PARAMS
 .public COLLECTION_MENU_DEFAULT_WINDOW_PARAMS
 .public CONTROLS_CHART_DEFAULT_WINDOW_PARAMS
@@ -104,7 +105,6 @@
 .public sub_020261E4
 .public sub_020261F4
 .public sub_02026204
-.public sub_02026268
 .public sub_02026358
 .public sub_020263C8
 .public sub_02026428

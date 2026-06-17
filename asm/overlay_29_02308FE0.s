@@ -2618,7 +2618,7 @@ _0230AEEC:
 	ldr r0, _0230A92C ; =0x00000C6B
 	mov r1, sb
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	mov r0, #4
 	bl ov29_022EAF34
 	mov r0, sb
@@ -3231,7 +3231,7 @@ _0230A4A0:
 	ldr r0, _0230A92C ; =0x00000C6B
 	mov r1, r7
 	mov r2, #0
-	bl ov29_022F0604
+	bl TalkToSecretBazaarNpcStandard
 	mov r0, #4
 	bl ov29_022EAF34
 	mov r0, r7

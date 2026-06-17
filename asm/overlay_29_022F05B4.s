@@ -32,40 +32,40 @@ ov29_022F05E4: ; 0x022F05E4
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022F05E4
 
-	arm_func_start ov29_022F0604
-ov29_022F0604: ; 0x022F0604
+	arm_func_start TalkToSecretBazaarNpcStandard
+TalkToSecretBazaarNpcStandard: ; 0x022F0604
 	stmdb sp!, {r3, lr}
 	mov r3, #0
 	str r3, [sp]
-	bl ov29_022F0984
+	bl TalkToSecretBazaarNpc
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022F0604
+	arm_func_end TalkToSecretBazaarNpcStandard
 
 	arm_func_start ov29_022F0618
 ov29_022F0618: ; 0x022F0618
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	str ip, [sp]
-	bl ov29_022F0984
+	bl TalkToSecretBazaarNpc
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022F0618
 
-	arm_func_start ov29_022F062C
-ov29_022F062C: ; 0x022F062C
+	arm_func_start TalkToSecretBazaarNpcWithYesNoMenu
+TalkToSecretBazaarNpcWithYesNoMenu: ; 0x022F062C
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, #1
 	str r4, [sp]
-	bl ov29_022F0984
+	bl TalkToSecretBazaarNpc
 	mov r4, r0
 	bl ov29_022F0AE0
 	mov r0, r4
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end ov29_022F062C
+	arm_func_end TalkToSecretBazaarNpcWithYesNoMenu
 
-	arm_func_start ov29_022F0654
-ov29_022F0654: ; 0x022F0654
+	arm_func_start MakeTargetFaceUserAndIdle
+MakeTargetFaceUserAndIdle: ; 0x022F0654
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r0, r4, #4
@@ -74,9 +74,9 @@ ov29_022F0654: ; 0x022F0654
 	mov r1, r0
 	mov r0, r4
 	and r1, r1, #0xff
-	bl ov29_022FA360
+	bl ChangeMonsterAnimationToIdle
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022F0654
+	arm_func_end MakeTargetFaceUserAndIdle
 
 	arm_func_start ov29_022F067C
 ov29_022F067C: ; 0x022F067C
@@ -174,8 +174,8 @@ ov29_022F0780: ; 0x022F0780
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end ov29_022F0780
 
-	arm_func_start ov29_022F07BC
-ov29_022F07BC: ; 0x022F07BC
+	arm_func_start SubtractMoneyCarriedWithSfx
+SubtractMoneyCarriedWithSfx: ; 0x022F07BC
 	stmdb sp!, {r3, lr}
 	rsb r0, r0, #0
 	bl AddMoneyCarried
@@ -184,7 +184,7 @@ ov29_022F07BC: ; 0x022F07BC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022F07D4: .word 0x00001308
-	arm_func_end ov29_022F07BC
+	arm_func_end SubtractMoneyCarriedWithSfx
 
 	arm_func_start ov29_022F07D8
 ov29_022F07D8: ; 0x022F07D8
@@ -211,7 +211,7 @@ _022F07E8:
 	beq _022F082C
 	mov r0, r7
 	mov r1, r4
-	bl ov29_022FA360
+	bl ChangeMonsterAnimationToIdle
 	mov r0, r7
 	bl UpdateAiTargetPos
 _022F082C:
@@ -319,8 +319,8 @@ _022F0964:
 _022F0980: .word DUNGEON_PTR
 	arm_func_end ov29_022F085C
 
-	arm_func_start ov29_022F0984
-ov29_022F0984: ; 0x022F0984
+	arm_func_start TalkToSecretBazaarNpc
+TalkToSecretBazaarNpc: ; 0x022F0984
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x1c
 	mov r6, r1
@@ -334,7 +334,7 @@ ov29_022F0984: ; 0x022F0984
 	cmp r0, #0
 	bne _022F09E0
 	mov r0, r6
-	bl ov29_022F9C4C
+	bl CheckMonsterTeamMemberIdx
 	cmp r0, #0
 	bne _022F09E0
 	mov r1, r6
@@ -399,7 +399,7 @@ _022F0A98:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F0AA0: .word ov29_022F0AA4
-	arm_func_end ov29_022F0984
+	arm_func_end TalkToSecretBazaarNpc
 
 	arm_func_start ov29_022F0AA4
 ov29_022F0AA4: ; 0x022F0AA4
@@ -465,7 +465,7 @@ ov29_022F0B10: ; 0x022F0B10
 	mov r0, r4
 	mov r2, r1
 #endif
-	bl sub_02026268
+	bl AppendStandardStringToMission
 	mov r0, r4
 	mov r1, #0xa
 	mov r2, #0x14

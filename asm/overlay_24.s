@@ -154,7 +154,7 @@ _0238A334:
 	cmp r0, #7
 	bne _0238A604
 	bl ov24_0238C47C
-	bl sub_020107DC
+	bl GetEggHatchTimer
 	cmp r0, #0
 	beq _0238A38C
 	cmp r0, #1
@@ -302,12 +302,12 @@ _0238A55C:
 	beq _0238A588
 	b _0238A604
 _0238A578:
-	bl sub_0203EFD4
+	bl FreeMissionRewardStructMain
 	mov r0, #4
 	bl ov24_0238A610
 	b _0238A604
 _0238A588:
-	bl sub_0203EFD4
+	bl FreeMissionRewardStructMain
 	mov r0, #4
 	bl ov24_0238A610
 	b _0238A604
@@ -724,7 +724,7 @@ _0238AB50:
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
 	bl SetPortraitEmotion
-	bl sub_0201077C
+	bl GetEggSpecies
 	ldr r1, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r1]
 	str r0, [r1, #0x1f8]
@@ -777,7 +777,7 @@ _0238AC2C:
 	ldr r2, [r1]
 	add r1, r2, #0x52
 	str r1, [r2, #0x230]
-	bl sub_02010794
+	bl SetEggSpecies
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r2, _0238B3BC ; =0x00000397
 	ldr r3, [r0]
@@ -870,13 +870,13 @@ _0238AD90:
 	b _0238B37C
 _0238ADB8:
 	add r0, r1, #0x1bc
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r1, #0x71
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r1, [r0, #0xbc]
-	bl sub_0201077C
+	bl GetEggSpecies
 	ldr r2, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r4, #6
 	ldr r1, [r2]
@@ -887,13 +887,13 @@ _0238ADB8:
 	strb r4, [r0, #0x1be]
 	ldr r0, [r2]
 	str r3, [r0, #0x1c4]
-	bl sub_0201077C
+	bl GetEggSpecies
 	mov r1, r0
 	add r0, sp, #8
 	mov r2, #1
 	mov r3, #0
 	bl sub_02053B60
-	bl sub_0201077C
+	bl GetEggSpecies
 	add r2, sp, #8
 	mov r1, r0
 	mov r0, #1
@@ -1075,7 +1075,7 @@ _0238B0A8:
 	b _0238B37C
 _0238B0CC:
 	add r0, r1, #0x1bc
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	ldr r3, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r2, #1
 	ldr r0, [r3]
@@ -1093,13 +1093,13 @@ _0238B0CC:
 	bl sub_0203D438
 	b _0238B37C
 _0238B114:
-	bl sub_0201077C
+	bl GetEggSpecies
 	mov r1, r0
 	add r0, sp, #8
 	mov r2, #1
 	mov r3, #0
 	bl sub_02053B60
-	bl sub_0201077C
+	bl GetEggSpecies
 	mov r2, #1
 	str r2, [sp]
 	ldr r1, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
@@ -1156,14 +1156,14 @@ _0238B170:
 	ldrb r1, [r2, #0xf]
 	add r0, r1, r0
 	strb r0, [r2, #0xf]
-	bl sub_0201077C
+	bl GetEggSpecies
 	bl SetPokemonJoined
 	ldr r1, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r0, #0
 	ldr r2, [r1]
 	add r1, r2, #0x22
 	str r1, [r2, #0x230]
-	bl sub_02010794
+	bl SetEggSpecies
 	mov r3, #0x15
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r1, #0x1b
@@ -1677,7 +1677,7 @@ _0238B92C:
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
 	bl SetPortraitEmotion
-	bl sub_0201077C
+	bl GetEggSpecies
 	ldr r1, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r1]
 	str r0, [r1, #0x1f8]
@@ -1730,7 +1730,7 @@ _0238BA08:
 	ldr r2, [r1]
 	add r1, r2, #0x52
 	str r1, [r2, #0x230]
-	bl sub_02010794
+	bl SetEggSpecies
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r2, _0238C198 ; =0x00000397
 	ldr r3, [r0]
@@ -1823,13 +1823,13 @@ _0238BB6C:
 	b _0238C158
 _0238BB94:
 	add r0, r1, #0x1bc
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r1, #0x71
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r1, [r0, #0xbc]
-	bl sub_0201077C
+	bl GetEggSpecies
 	ldr r2, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r4, #6
 	ldr r1, [r2]
@@ -1840,13 +1840,13 @@ _0238BB94:
 	strb r4, [r0, #0x1be]
 	ldr r0, [r2]
 	str r3, [r0, #0x1c4]
-	bl sub_0201077C
+	bl GetEggSpecies
 	mov r1, r0
 	add r0, sp, #0x12
 	mov r2, #1
 	mov r3, #0
 	bl sub_02053B60
-	bl sub_0201077C
+	bl GetEggSpecies
 	add r2, sp, #0x12
 	mov r1, r0
 	mov r0, #1
@@ -2028,7 +2028,7 @@ _0238BE84:
 	b _0238C158
 _0238BEA8:
 	add r0, r1, #0x1bc
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	ldr r3, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r2, #1
 	ldr r0, [r3]
@@ -2046,13 +2046,13 @@ _0238BEA8:
 	bl sub_0203D438
 	b _0238C158
 _0238BEF0:
-	bl sub_0201077C
+	bl GetEggSpecies
 	mov r1, r0
 	add r0, sp, #0x12
 	mov r2, #1
 	mov r3, #0
 	bl sub_02053B60
-	bl sub_0201077C
+	bl GetEggSpecies
 	mov r2, #1
 	str r2, [sp]
 	ldr r1, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
@@ -2109,14 +2109,14 @@ _0238BF4C:
 	ldrb r1, [r2, #0xf]
 	add r0, r1, r0
 	strb r0, [r2, #0xf]
-	bl sub_0201077C
+	bl GetEggSpecies
 	bl SetPokemonJoined
 	ldr r1, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r0, #0
 	ldr r2, [r1]
 	add r1, r2, #0x22
 	str r1, [r2, #0x230]
-	bl sub_02010794
+	bl SetEggSpecies
 	mov r3, #0x15
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r1, #0x1b
@@ -2273,7 +2273,7 @@ ov24_0238C1D4: ; 0x0238C1D4
 	strb r2, [r0, #0x28c]
 	ldr r0, [r1]
 	strb r2, [r0, #0x28d]
-	bl sub_0201077C
+	bl GetEggSpecies
 	ldr r2, _0238C33C ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r1, r0
 	ldr r0, [r2]
@@ -2300,7 +2300,7 @@ ov24_0238C1D4: ; 0x0238C1D4
 	add r1, r1, #0x66
 	add r1, r1, #0x100
 	bl StrcpySimple
-	bl sub_0201077C
+	bl GetEggSpecies
 	mov r1, r0
 	ldr r0, _0238C33C ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r2, #0x4e
@@ -2322,7 +2322,7 @@ ov24_0238C1D4: ; 0x0238C1D4
 	str r2, [r1, #0xc]
 	ldr r0, [r0]
 	str r2, [r0, #0x2a4]
-	bl sub_0201077C
+	bl GetEggSpecies
 	cmp r0, #0
 	bne _0238C2FC
 	mov r0, #8
@@ -2334,17 +2334,17 @@ ov24_0238C1D4: ; 0x0238C1D4
 	ldr r1, [r1]
 	mov r0, #1
 	strb r2, [r1, #0x21]
-	bl sub_020107C4
+	bl SetUnkGameState0x13a6
 	b _0238C32C
 _0238C2FC:
-	bl sub_020107AC
+	bl GetUnkGameState0x13a6
 	ldr r1, _0238C33C ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r2, #1
 	ldr r3, [r1]
 	strb r0, [r3, #0x20]
 	ldr r0, [r1]
 	strb r2, [r0, #0x21]
-	bl sub_0201077C
+	bl GetEggSpecies
 	bl ReturnEggExclusiveItem
 	ldr r1, _0238C33C ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r1]
@@ -2445,7 +2445,7 @@ _0238C43C:
 	strb r1, [r0, #0x28d]
 	b _0238C470
 _0238C464:
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _0238C470:

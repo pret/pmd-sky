@@ -16,6 +16,7 @@
 .public GetExclusiveItem
 .public GetItemInfo
 .public GetItemSpriteId
+.public GetMissionRank__0204FAE0
 .public GetTile
 .public GetTileSafe
 .public GetTreasureBoxChances
@@ -48,6 +49,5 @@
 .public SinAbs4096
 .public SpawnItem
 .public sub_0200D1FC
-.public sub_0204F7A8
 .public SubstitutePlaceholderItemTags
 .public UNOWN_STONE_DROP_CHANCE

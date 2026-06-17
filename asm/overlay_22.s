@@ -175,7 +175,7 @@ _0238A334:
 	strb r2, [r1, #0x390]
 	cmp r3, #8
 	blt _0238A334
-	bl sub_02010830
+	bl RemoveInvalidKecleonShop1Items
 	mov sl, #0
 	ldr r4, _0238A4C0 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC60
 	mov r8, #3
@@ -3719,7 +3719,7 @@ ov22_0238D528: ; 0x0238D528
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	beq _0238D548
-	bl sub_02010830
+	bl RemoveInvalidKecleonShop1Items
 	ldmia sp!, {r3, pc}
 _0238D548:
 	bl sub_02010B3C
@@ -5043,7 +5043,7 @@ _0238E7A8:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
 	bl CloseDialogueBox
-	bl ov11_022E6E68
+	bl ReturnScriptMenuResultZero
 	mov r0, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0238E7DC:

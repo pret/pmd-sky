@@ -79,7 +79,7 @@ GetDisplayedBuyPrice: ; 0x0200D0D0
 	ldrsh r1, [r4, #4]
 	cmp r1, #0xb7
 	bne _0200D0EC
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	ldmia sp!, {r4, pc}
 _0200D0EC:
 	mov r0, r1
@@ -103,7 +103,7 @@ GetDisplayedSellPrice: ; 0x0200D118
 	ldrsh r1, [r4, #4]
 	cmp r1, #0xb7
 	bne _0200D134
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	ldmia sp!, {r4, pc}
 _0200D134:
 	mov r0, r1
@@ -359,7 +359,7 @@ _0200D440:
 	cmp r0, #0xb7
 	bne _0200D4AC
 	mov r0, sb
-	bl sub_0200D8AC
+	bl GetMoneyQuantity
 	mov r1, r0
 	add r0, sp, #0
 	bl sub_020238E0
@@ -766,8 +766,8 @@ sub_0200D894: ; 0x0200D894
 	bx lr
 	arm_func_end sub_0200D894
 
-	arm_func_start sub_0200D8AC
-sub_0200D8AC: ; 0x0200D8AC
+	arm_func_start GetMoneyQuantity
+GetMoneyQuantity: ; 0x0200D8AC
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0]
 	ldrh r2, [r0, #2]
@@ -783,7 +783,7 @@ sub_0200D8AC: ; 0x0200D8AC
 	.align 2, 0
 _0200D8DC: .word MONEY_QUANTITY_TABLE
 _0200D8E0: .word 0x00000133
-	arm_func_end sub_0200D8AC
+	arm_func_end GetMoneyQuantity
 
 	arm_func_start sub_0200D8E4
 sub_0200D8E4: ; 0x0200D8E4

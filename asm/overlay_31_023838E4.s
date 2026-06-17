@@ -265,7 +265,7 @@ _02383C44:
 	ldr r0, [r0, #0x1a8]
 	mov r1, r6
 	add r3, r3, #0x1000
-	bl ov10_022BD474
+	bl CreateInventoryMenuOuter
 	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	cmp r6, #0
 	ldr r1, [r1]
@@ -397,7 +397,7 @@ _02383D8C:
 	add r1, r1, #0x12000
 	ldr r1, [r1, #0xb24 + OV31_023838E4_OFFSET]
 	mov r2, #0
-	bl ov29_022E2A78
+	bl GetMonsterOrTrapName
 	add r0, sp, #0x400
 	add r0, r0, #0x4c
 	str r0, [sp, #0x584]
@@ -3908,7 +3908,7 @@ _02386B98:
 	beq _02386C00
 	add r0, sp, #0x54
 	mov r2, #0
-	bl ov29_022E2A78
+	bl GetMonsterOrTrapName
 	ldr r0, [r4, #0x10]
 	bl ov29_022E1618
 	ldrb r1, [r0]
@@ -5271,7 +5271,7 @@ _02387DCC:
 	add r0, r0, #0x500
 	mov r1, r7
 	mov r2, #0
-	bl ov29_022E2A78
+	bl GetMonsterOrTrapName
 	ldrb r0, [r8, #0xbc]
 	cmp r0, #7
 	beq _02387E24
@@ -5281,7 +5281,7 @@ _02387DCC:
 	add r0, r0, #0x500
 	mov r1, r8
 	mov r2, #0
-	bl ov29_022E2A78
+	bl GetMonsterOrTrapName
 	ldrb r0, [r7, #0xbc]
 	cmp r0, #7
 	beq _02387E24
@@ -5633,7 +5633,7 @@ _02388218:
 	ldrb r2, [r1, #0x1e]
 	ldr r1, [sp, #8]
 	add r1, r1, r7, lsl #5
-	bl sub_02054F44
+	bl RecolorNameString
 	b _0238826C
 _02388264:
 	mov r1, r6
@@ -5670,7 +5670,7 @@ _023882A0:
 	str r0, [sp, #4]
 	mov r1, r6
 	add r0, sp, #0xc
-	bl sub_020585B4
+	bl GetRecoloredTeamMemberName
 _023882E8:
 	add r0, sp, #0xc
 	str r0, [sp, #0xc4]

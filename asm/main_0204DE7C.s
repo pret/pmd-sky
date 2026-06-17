@@ -823,7 +823,7 @@ _0204E83C:
 	cmp r1, #0
 	beq _0204E8A0
 	add r0, r0, #4
-	bl sub_0204F7A8
+	bl GetMissionRank__0204FAE0
 	ldr r1, _0204E8E8 ; =CLIENT_LEVEL_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r1, [r1, r0]

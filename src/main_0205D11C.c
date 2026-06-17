@@ -52,7 +52,7 @@ bool8 sub_0205CF58(enum mission_type type, union mission_subtype* subtype, struc
     return TRUE;
 }
 
-bool8 sub_0205D008(enum mission_type type, union mission_subtype* subtype, enum monster_id outlaw_backup_species, bool8 arg3)
+bool8 CheckMonsterForMissionType(enum mission_type type, union mission_subtype* subtype, enum monster_id outlaw_backup_species, bool8 arg3)
 {
     if (arg3 && outlaw_backup_species == MONSTER_NONE) {
         Debug_Print0(&_020A3A08);
@@ -93,7 +93,7 @@ bool8 sub_0205D008(enum mission_type type, union mission_subtype* subtype, enum 
     return TRUE;
 }
 
-bool8 sub_0205D11C(u32 r0, u32 r1, s16 r2)
+bool8 CheckItemForMissionType(u32 r0, u32 r1, s16 r2)
 {
     if (r2 == 0) {
         Debug_Print0(_020A3AD4, r2);

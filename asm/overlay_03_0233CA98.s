@@ -2669,7 +2669,7 @@ _0233EE98:
 	b _0233F2C4
 _0233EEB4:
 	add r0, r2, #0xd4
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	mov r1, r4
 	ldr r2, [r1]
 	mov r3, #2
@@ -2693,7 +2693,7 @@ _0233EEB4:
 	ldr r3, [r3]
 	add r0, r0, #4
 	strh r4, [r3, #0xe6]
-	bl sub_020630A4
+	bl RollRandomItemReward
 	ldr r0, _0233EE08 ; =ov03_02346BC0
 	ldrsh r1, [sp, #4]
 	ldr r0, [r0]
@@ -2705,7 +2705,7 @@ _0233EEB4:
 	b _0233EF68
 _0233EF40:
 	add r0, r0, #4
-	bl sub_020630A4
+	bl RollRandomItemReward
 	mov r0, r4
 	ldr r0, [r0]
 	ldrsh r1, [sp, #4]
@@ -2734,7 +2734,7 @@ _0233EFA4:
 	bl sub_0203D538
 	cmp r0, #1
 	bne _0233F2C4
-	bl sub_0203EFD4
+	bl FreeMissionRewardStructMain
 	mov r0, r4
 	ldr r0, [r0]
 	mov r1, #0x400
@@ -4246,7 +4246,7 @@ _023404A8:
 	b _023406AC
 _023404C4:
 	add r0, r4, #0x198
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	mov r1, r5
 	ldr r2, [r1]
 	mov r3, #2
@@ -4272,7 +4272,7 @@ _023404C4:
 	add r0, r0, #4
 	add r3, r3, #0x100
 	strh r5, [r3, #0xaa]
-	bl sub_020630A4
+	bl RollRandomItemReward
 	mov r0, r4
 	ldr r0, [r0]
 	ldrsh r1, [sp, #4]
@@ -4285,7 +4285,7 @@ _023404C4:
 	b _02340584
 _0234055C:
 	add r0, r0, #4
-	bl sub_020630A4
+	bl RollRandomItemReward
 	ldr r0, _02340318 ; =ov03_02346BC4
 	ldrsh r1, [sp, #4]
 	ldr r0, [r0]
@@ -4314,7 +4314,7 @@ _023405C0:
 	bl sub_0203D538
 	cmp r0, #1
 	bne _023406AC
-	bl sub_0203EFD4
+	bl FreeMissionRewardStructMain
 	mov r0, r5
 	ldr r0, [r0]
 	mov r1, #0x8000
@@ -8286,7 +8286,7 @@ _02343DC0:
 _02343DEC:
 	add r0, r5, #0x1a8
 	add r0, r0, #0x1800
-	bl sub_0206351C
+	bl ZeroInitMissionRewardDataStruct
 	mov r2, r4
 	ldr r0, [r2]
 	mov r3, #2
@@ -8315,7 +8315,7 @@ _02343DEC:
 	add r0, r0, #4
 	add r3, r3, #0x1900
 	strh r5, [r3, #0xba]
-	bl sub_020630A4
+	bl RollRandomItemReward
 	mov r0, r4
 	ldr r0, [r0]
 	ldrsh r1, [sp, #0x10]
@@ -8328,7 +8328,7 @@ _02343DEC:
 	b _02343EC0
 _02343E94:
 	add r0, r0, #4
-	bl sub_020630A4
+	bl RollRandomItemReward
 	mov r0, r4
 	ldr r0, [r0]
 	ldrsh r1, [sp, #0x10]
@@ -8362,7 +8362,7 @@ _02343F08:
 	cmp r0, #1
 	bne _02344184
 	mov r4, #0
-	bl sub_0203EFD4
+	bl FreeMissionRewardStructMain
 	ldr r0, _02343FF0 ; =ov03_02346BC8
 	ldr r2, [r0]
 	ldr r1, [r2, #8]

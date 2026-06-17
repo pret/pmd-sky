@@ -637,19 +637,19 @@ _022FD224:
 	ldr r1, _022FD314 ; =ov10_022C489C
 	add r0, r5, #0x1a
 	ldrb r1, [r1]
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	ldr r1, _022FD314 ; =ov10_022C489C
 	add r0, r5, #0x1b
 	ldrb r1, [r1, #1]
-	bl sub_02054FEC
+	bl ModifyOffensiveStat
 	ldr r1, _022FD314 ; =ov10_022C489C
 	add r0, r5, #0x1c
 	ldrb r1, [r1, #2]
-	bl sub_02055020
+	bl ModifyDefensiveStat
 	ldr r1, _022FD314 ; =ov10_022C489C
 	add r0, r5, #0x1d
 	ldrb r1, [r1, #3]
-	bl sub_02055020
+	bl ModifyDefensiveStat
 _022FD278:
 	ldrsh r2, [r5, #0x12]
 	ldrsh r1, [r5, #0x16]
@@ -1956,7 +1956,7 @@ GetOutlawSpawnData: ; 0x022FE420
 	ldr r0, [r1]
 	add r0, r0, #0x348
 	add r0, r0, #0x400
-	bl GetMissionRank
+	bl GetMissionRank__0204FB4C
 	mov r5, r0
 	bl GetMissionDestination
 	ldrsh r2, [r0, #0xe]

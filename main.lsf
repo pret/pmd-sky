@@ -48,6 +48,8 @@ Static main
 	Object src/directory_file_mngr.o
 	Object src/directory_file.o
 	Object asm/main_0200C4CC.o
+	Object src/main_0200C4FC.o
+	Object asm/main_0200C5B4.o
 	Object src/item_util.o
 	Object src/item_util_4.o
 	Object asm/main_0200CAFC.o
@@ -102,7 +104,7 @@ Static main
 	Object src/script_variable_2.o
 	Object asm/main_0204CDB8.o
 	Object src/main_0204DA2C.o
-	Object asm/main_0204DB08.o
+	Object asm/main_0204DBA0.o
 	Object src/main_0204DD80.o
 	Object asm/main_0204DE7C.o
 	Object src/dungeon_init.o
@@ -139,7 +141,8 @@ Static main
 	Object src/main_02054AA4.o
 	Object asm/main_02054AD4.o
 	Object src/main_02054BE0.o
-	Object asm/main_02054C24.o
+	Object src/main_02054C24.o
+	Object asm/main_02054CD8.o
 	Object src/main_02054DC4.o
 	Object asm/main_02054E4C.o
 	Object src/main_02058C3C.o
@@ -190,7 +193,7 @@ Static main
 	Object src/main_0205E01C.o
 	Object asm/main_0205E090.o
 	Object src/main_0205E288.o
-	Object asm/main_0205E448.o
+	Object asm/main_0205E48C.o
 	Object src/main_0205E954.o
 	Object asm/main_0205E984.o
 	Object src/main_0205EAC8.o

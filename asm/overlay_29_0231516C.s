@@ -148,7 +148,7 @@ _02315348:
 	bl IqSkillIsEnabled
 	cmp r0, #0
 	beq _0231537C
-	ldr r1, _023155F0 ; =ov10_022C4470
+	ldr r1, _023155F0 ; =WISE_HEALER_PERCENTAGE
 	mov r0, r5, lsl #8
 	ldrsh r1, [r1]
 	mov r1, r1, lsl #8
@@ -334,7 +334,7 @@ _023155E4:
 #define TRY_INCREASE_HP_OFFSET 0
 #endif
 _023155EC: .word 0x00000D83 + TRY_INCREASE_HP_OFFSET
-_023155F0: .word ov10_022C4470
+_023155F0: .word WISE_HEALER_PERCENTAGE
 _023155F4: .word 0x000003E7
 _023155F8: .word 0x00000CFD + TRY_INCREASE_HP_OFFSET
 _023155FC: .word 0x00000CFA + TRY_INCREASE_HP_OFFSET
@@ -1539,7 +1539,7 @@ TryInflictStockpileStatus: ; 0x023164D8
 	strb r1, [r5, #0x11e + TRY_INFLICT_STOCKPILE_STATUS_OFFSET]
 	bl AnimationDelayOrSomething
 	mov r0, r6
-	bl ov29_022E46D4
+	bl DisplayStockpileNumbers
 	ldrb r1, [r5, #0x11e + TRY_INFLICT_STOCKPILE_STATUS_OFFSET]
 	mov r0, r4
 	bl SetMessageLogPreprocessorArgsNumberVal
@@ -1599,7 +1599,7 @@ TryInflictInvisibleStatus: ; 0x0231657C
 	add r1, r0, #1
 	mov r0, r5
 	strb r1, [r4, #0xf0]
-	bl ov29_022E4704
+	bl PlayInvisifySeIfShouldDisplayEntity
 	ldr r2, _02316624 ; =0x00000D4D
 	mov r0, r6
 	mov r1, r5

@@ -27,14 +27,12 @@
 .public InitPreprocessorArgs
 .public IsDialogueBoxActive
 .public IsEmptyString
+.public IsScriptMenuReturnDisabled
 .public IsScrollBoxActive
 .public IsStorableItem
 .public MemAlloc
 .public MemFree
 .public ov11_022DC504
-.public ov11_022E6E68
-.public ov11_022E6E8C
-.public ov11_022E6EC8
 .public ov11_0230CE58
 .public ov11_02324DB8
 .public PlaySeVolumeWrapper
@@ -44,6 +42,8 @@
 .public RemoveItem
 .public RemoveItemAtIdxInStorage
 .public RemoveItemNoHole
+.public ReturnScriptMenuResult
+.public ReturnScriptMenuResultZero
 .public SetPortraitLayout
 .public ShowDialogueBox
 .public ShowStringIdInDialogueBox

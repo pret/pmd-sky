@@ -1,5 +1,6 @@
 #pragma once
 .public AddMoneyCarried
+.public AppendStandardStringToMission
 .public CloseAdvancedMenu
 .public CloseAdvancedTextBox
 .public CloseDialogueBox
@@ -34,7 +35,6 @@
 .public MemAlloc
 .public memcpy
 .public MemFree
-.public ov11_022E6E68
 .public ov11_0238A090
 .public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
@@ -42,6 +42,7 @@
 .public PreprocessString
 .public PrintIqSkillsMenu
 .public ResumeAdvancedMenu
+.public ReturnScriptMenuResultZero
 .public SetAdvancedTextBoxState5
 .public SetPortraitEmotion
 .public SetPortraitLayout
@@ -51,7 +52,6 @@
 .public ShowStringIdInDialogueBox
 .public StrncpySimpleNoPadSafe
 .public sub_02017C74
-.public sub_02026268
 .public sub_02027B1C
 .public sub_0202BC60
 .public sub_0202C1E4

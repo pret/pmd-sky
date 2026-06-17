@@ -4,14 +4,14 @@
 extern struct mission_deliver_list MISSION_DELIVER_LIST_PTR;
 extern u8 _022B6F10[];
 
-extern void sub_020600CC(void);
+extern void ReadRescueBinFile(void);
 extern void ClearMissionData(struct mission* mission);
 extern bool8 IsMissionValid(struct mission *mission);
 
 void sub_0205C73C(void)
 {
     MISSION_DELIVER_LIST_PTR.unk18 = _022B6F10;
-    sub_020600CC();
+    ReadRescueBinFile();
 }
 
 void sub_0205C75C(void)

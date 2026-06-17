@@ -22,7 +22,9 @@
 .public GetLvlUpEntry
 .public GetMinimapDataE447
 .public GetMonsterName
+.public GetMonsterOrTrapName
 .public GetNumberOfAttacks
+.public GetRecoloredTeamMemberName
 .public GetStatBoostsForMonsterSummary
 .public GetTile
 .public GetTileAtEntity
@@ -43,7 +45,6 @@
 .public ov29_022DDB68
 .public ov29_022E1C0C
 .public ov29_022E2470
-.public ov29_022E2A78
 .public ov29_022E68BC
 .public ov29_022E8104
 .public ov29_022E81F8
@@ -75,7 +76,6 @@
 .public sub_0205349C
 .public sub_02056228
 .public sub_020566C4
-.public sub_020585B4
 .public TEAM_MEMBER_TABLE_PTR
 .public UpdateMapSurveyorFlag
 .public UpdateMinimap

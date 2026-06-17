@@ -136,7 +136,7 @@ _023003D4:
 _023003F0:
 	ldrsh r1, [r1, #0xc]
 	mov r0, r4
-	bl sub_0205858C
+	bl GetNameOfTeamMemberAtIdx
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02300400: .word DUNGEON_PTR
