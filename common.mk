@@ -77,7 +77,7 @@ PRECOMPILE_OBJ_DIR := $(dir $(PRECOMPILE_OBJ))
 PRECOMPILE_DEPFILE := $(BUILD_DIR)/precompile/global.d
 
 # Directories
-NITROSDK_SRC_SUBDIRS      := os mi snd
+NITROSDK_SRC_SUBDIRS      := os mi snd fs
 
 LIB_SUBDIRS               := DSE NitroSDK MSL_C
 SRC_SUBDIR                := src

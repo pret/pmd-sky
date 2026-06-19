@@ -242,7 +242,7 @@ Static main
     Object lib/NitroSDK/asm/os_spinlock.o
     Object lib/NitroSDK/asm/os_thread.o
     Object lib/NitroSDK/src/os/os_context.o
-    Object lib/NitroSDK/asm/os_emulator.o
+    Object lib/NitroSDK/src/os/os_emulator.o
     Object lib/NitroSDK/src/os/os_message.o
     Object lib/NitroSDK/src/os/os_mutex.o
     Object lib/NitroSDK/src/os/os_cache.o
@@ -281,7 +281,7 @@ Static main
     Object lib/NitroSDK/asm/pxi_fifo.o
     Object lib/NitroSDK/asm/fs_command.o
     Object lib/NitroSDK/asm/fs_command_default.o
-    Object lib/NitroSDK/src/fs_command_default_1.o
+    Object lib/NitroSDK/src/fs/fs_command_default_1.o
 	Object lib/NitroSDK/asm/fs_archive.o
 	Object src/main_0207F3E4.o
 	Object lib/NitroSDK/asm/fs_file.o
