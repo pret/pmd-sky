@@ -241,41 +241,41 @@ Static main
     Object lib/NitroSDK/asm/os_interrupt.o
     Object lib/NitroSDK/asm/os_spinlock.o
     Object lib/NitroSDK/asm/os_thread.o
-    Object lib/NitroSDK/src/os_context.o
+    Object lib/NitroSDK/src/os/os_context.o
     Object lib/NitroSDK/asm/os_emulator.o
-    Object lib/NitroSDK/src/os_message.o
-    Object lib/NitroSDK/src/os_mutex.o
-    Object lib/NitroSDK/src/os_cache.o
-    Object lib/NitroSDK/src/os_init.o
+    Object lib/NitroSDK/src/os/os_message.o
+    Object lib/NitroSDK/src/os/os_mutex.o
+    Object lib/NitroSDK/src/os/os_cache.o
+    Object lib/NitroSDK/src/os/os_init.o
     Object lib/NitroSDK/asm/os_arena.o
     ### Object lib/NitroSDK/asm/os_alloc.o ###
-    Object lib/NitroSDK/src/os_tcm.o
-    Object lib/NitroSDK/src/os_protectionUnit.o
-    Object lib/NitroSDK/src/os_protectionRegion.o
+    Object lib/NitroSDK/src/os/os_tcm.o
+    Object lib/NitroSDK/src/os/os_protectionUnit.o
+    Object lib/NitroSDK/src/os/os_protectionRegion.o
     Object lib/NitroSDK/asm/os_exception.o
-    Object lib/NitroSDK/src/os_timer.o
+    Object lib/NitroSDK/src/os/os_timer.o
     Object lib/NitroSDK/asm/os_tick.o
     Object lib/NitroSDK/asm/os_alarm.o
     Object lib/NitroSDK/asm/os_valarm.o
-	Object lib/NitroSDK/src/os_system.o
+	Object lib/NitroSDK/src/os/os_system.o
 	object lib/NitroSDK/asm/os_reset.o
-	object lib/NitroSDK/src/os_ownerinfo.o
-	Object lib/NitroSDK/src/os_vramExclusive.o
-	Object lib/NitroSDK/src/os_entropy.o
-	Object lib/NitroSDK/src/os_terminate_proc.o
-	Object lib/NitroSDK/src/mi_wram.o
+	object lib/NitroSDK/src/os/os_ownerinfo.o
+	Object lib/NitroSDK/src/os/os_vramExclusive.o
+	Object lib/NitroSDK/src/os/os_entropy.o
+	Object lib/NitroSDK/src/os/os_terminate_proc.o
+	Object lib/NitroSDK/src/mi/mi_wram.o
 	Object lib/NitroSDK/asm/mi_dma.o
-	Object lib/NitroSDK/src/mi_memory.o
+	Object lib/NitroSDK/src/mi/mi_memory.o
 	Object lib/NitroSDK/asm/mi_memory_1.o
-    Object lib/NitroSDK/src/mi_uncompress.o
+    Object lib/NitroSDK/src/mi/mi_uncompress.o
     Object lib/NitroSDK/asm/mi_dma_card.o
-    Object lib/NitroSDK/src/mi_init.o
+    Object lib/NitroSDK/src/mi/mi_init.o
     Object lib/NitroSDK/asm/snd_interface.o
-    Object lib/NitroSDK/src/snd_main.o
+    Object lib/NitroSDK/src/snd/snd_main.o
     Object lib/NitroSDK/asm/snd_command.o
     Object lib/NitroSDK/asm/snd_alarm.o
     Object lib/NitroSDK/asm/snd_work.o
-    Object lib/NitroSDK/src/snd_util.o
+    Object lib/NitroSDK/src/snd/snd_util.o
     Object lib/NitroSDK/asm/snd_bank.o
     Object lib/NitroSDK/src/pxi_init.o
     Object lib/NitroSDK/asm/pxi_fifo.o
@@ -310,7 +310,7 @@ Static main
 	Object lib/NitroSDK/asm/math_dgt.o
 	Object lib/NitroSDK/asm/math_crc.o
 	Object lib/NitroSDK/asm/std_string.o
-	Object lib/NitroSDK/src/os_printf_1.o
+	Object lib/NitroSDK/src/os/os_printf_1.o
 	Object lib/NitroSDK/asm/os_printf.o
 	Object lib/MSL_C/asm/msl.o
 	Object lib/MSL_C/src/arith.o
