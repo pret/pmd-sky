@@ -222,7 +222,7 @@ _0205D51C:
 	mov r0, r5
 	b _0205DF9C
 _0205D534:
-	bl sub_02051134
+	bl MtNext
 	bic r0, r0, #0xff000000
 	str r0, [r8, #8]
 	mov r0, #0

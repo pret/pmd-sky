@@ -147,7 +147,7 @@ _02348EF4:
 _02348F08:
 	cmp r1, #3
 	bne _02348F18
-	bl ov29_0234AC8C
+	bl TreasureMemoComplete
 	mov r2, #1
 _02348F18:
 	mov r0, r2
@@ -251,7 +251,7 @@ _02349058:
 	bl GetItemToRetrieve
 	mov r1, r0
 	mov r0, #0
-	bl ov29_02349AD4
+	bl TryCompleteMission
 	ldr r0, _02349088 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
@@ -308,7 +308,7 @@ _02349118:
 	bl GetItemToRetrieve
 	mov r1, r0
 	mov r0, #0
-	bl ov29_02349AD4
+	bl TryCompleteMission
 	ldr r0, _02349148 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
@@ -343,13 +343,13 @@ _02349184: .word DUNGEON_PTR
 	arm_func_start ov29_02349188
 ov29_02349188: ; 0x02349188
 	ldr r0, _0234919C ; =DUNGEON_PTR
-	ldr ip, _023491A0 ; =ov29_023496EC
+	ldr ip, _023491A0 ; =ClearMissionDestinationInfo
 	ldr r0, [r0]
 	add r0, r0, #0x760
 	bx ip
 	.align 2, 0
 _0234919C: .word DUNGEON_PTR
-_023491A0: .word ov29_023496EC
+_023491A0: .word ClearMissionDestinationInfo
 	arm_func_end ov29_02349188
 
 	arm_func_start GetMissionDestination
@@ -855,8 +855,8 @@ GetTargetMonsterNotFoundFlag: ; 0x023496D8
 _023496E8: .word DUNGEON_PTR
 	arm_func_end GetTargetMonsterNotFoundFlag
 
-	arm_func_start ov29_023496EC
-ov29_023496EC: ; 0x023496EC
+	arm_func_start ClearMissionDestinationInfo
+ClearMissionDestinationInfo: ; 0x023496EC
 	mov ip, #0
 	strb ip, [r0]
 	strb ip, [r0, #0x18]
@@ -881,7 +881,7 @@ _02349724:
 	blt _02349724
 	strh r3, [r0, #0x14]
 	bx lr
-	arm_func_end ov29_023496EC
+	arm_func_end ClearMissionDestinationInfo
 
 	arm_func_start FloorHasMissionMonster
 FloorHasMissionMonster: ; 0x02349748

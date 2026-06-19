@@ -4,7 +4,7 @@
 void InitWorldMapScriptVars();
 void sub_0204CDB8(void);
 s8 sub_0204CDCC(void);
-void sub_0204CDE8(s32 value);
+void SetWorldMapLevel(s32 value);
 bool8 sub_0204CE00(u32 idx);
 void sub_0204CE48(u32 idx, s32 value);
 void InitDungeonListScriptVars(void);

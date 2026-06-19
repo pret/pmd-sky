@@ -2620,7 +2620,7 @@ _0230AEEC:
 	mov r2, #0
 	bl TalkToSecretBazaarNpcStandard
 	mov r0, #4
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	mov r0, sb
 	bl ov29_022F0518
 	mov r0, sb
@@ -2649,7 +2649,7 @@ _0230AEEC:
 	bl MusicTableIdxToMusicId
 	bl ChangeDungeonMusic
 	mov r0, r4
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	mov r0, sb
 	bl ov29_0230D628
 	b _0230B04C
@@ -3233,7 +3233,7 @@ _0230A4A0:
 	mov r2, #0
 	bl TalkToSecretBazaarNpcStandard
 	mov r0, #4
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	mov r0, r7
 	bl ov29_022F0518
 	mov r0, r7
@@ -3262,7 +3262,7 @@ _0230A4A0:
 	bl MusicTableIdxToMusicId
 	bl ChangeDungeonMusic
 	mov r0, r6
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	mov r0, r7
 	bl ov29_0230D628
 _0230A5E0:

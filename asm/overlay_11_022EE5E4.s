@@ -24429,7 +24429,7 @@ _023023B8:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsh r0, [r0, #0x4c]
-	bl sub_02065BC8
+	bl SetNewFriendActor
 	ldr r0, _023025E4 ; =ov11_02324D48
 	mov r1, #0xf
 	ldr r0, [r0]
@@ -49190,7 +49190,7 @@ ov11_023168E0: ; 0x023168E0
 _0231691C:
 	mov r0, r8, lsl #0x18
 	mov r0, r0, asr #0x18
-	bl sub_0205F0F0
+	bl IsAcceptedMissionSlotEmpty
 	cmp r0, #0
 	bne _023169F0
 	mov r0, r8, lsl #0x18

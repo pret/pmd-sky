@@ -2,6 +2,7 @@
 .public _020A1878
 .public AdvanceFrame
 .public CanSeeTarget
+.public ClearMissionDestinationInfo
 .public DisplayMessage
 .public DisplayMessage2
 .public DUNGEON_BUTTON_INPUT
@@ -37,10 +38,8 @@
 .public ov29_022FB9BC
 .public ov29_023009CC
 .public ov29_02344B9C
-.public ov29_023496EC
 .public ov29_023497C8
 .public ov29_02349818
-.public ov29_02349AD4
 .public ov29_0234C738
 .public ov29_023537C4
 .public PrepareItemForPrinting__02345728
@@ -60,5 +59,6 @@
 .public sub_02051EB8
 .public SubstitutePlaceholderStringTags
 .public THROWN_ITEM_HIT_CHANCE
+.public TryCompleteMission
 .public TrySpawnGoldenChamber
 .public YesNoMenu

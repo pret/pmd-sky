@@ -6613,7 +6613,7 @@ _022E1E60:
 	mov r4, r0
 	mov r0, r4, lsl #0x18
 	mov r0, r0, asr #0x18
-	bl sub_0204CDE8
+	bl SetWorldMapLevel
 	mov r0, r4, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl ov11_0230F050
@@ -6624,7 +6624,7 @@ _022E1E88:
 	mov r4, r0
 	mov r0, r4, lsl #0x18
 	mov r0, r0, asr #0x18
-	bl sub_0204CDE8
+	bl SetWorldMapLevel
 	mov r0, r4, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl ov11_0230F08C
@@ -7572,7 +7572,7 @@ _022E2BC8:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	moveq r0, #2
 	movne r5, #0
@@ -13116,7 +13116,7 @@ _022E7680:
 	bl ov11_022E8090
 	add r0, sp, #0x100
 	ldrsh r0, [r0, #0x78]
-	bl sub_02065BC8
+	bl SetNewFriendActor
 	add r0, sp, #0x100
 	add r0, r0, #0xae
 	mov r1, #0xa

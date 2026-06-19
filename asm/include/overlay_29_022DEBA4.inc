@@ -5,6 +5,7 @@
 .public CloseFixedBin
 .public CopySpawnEntriesOnce
 .public CountItemsOnFloorForAcuteSniffer
+.public CreateMonsterSummaryFromEntityOuter
 .public Debug_Print0
 .public DeleteAllMonsterSpriteFiles
 .public DetermineAllMonsterShadow
@@ -58,6 +59,8 @@
 .public LoadScriptVariableValue
 .public LoadWeather3DFiles
 .public MemZero
+.public MtInit
+.public MtNext
 .public OpenFixedBin
 .public ov10_022BDAB0
 .public ov10_022BDB54
@@ -107,9 +110,7 @@
 .public ov29_022EA418
 .public ov29_022EAD68
 .public ov29_022EAEAC
-.public ov29_022EAF34
 .public ov29_022EAF48
-.public ov29_022ECDE4
 .public ov29_022ECF78
 .public ov29_022ECFB8
 .public ov29_022ED030
@@ -210,6 +211,7 @@
 .public ov29_023510C8
 .public ov29_02353563
 .public Rand16Bit
+.public ReadMissionMtStateLower
 .public ReevaluateSnatchMonster
 .public RefillTeam
 .public ResetGravity
@@ -227,6 +229,7 @@
 .public SetMessageLogPreprocessorArgsFlagVal
 .public SetMessageLogPreprocessorArgsNumberVal
 .public SetMinimapDataE447
+.public SetUnkMusicFlag
 .public SpawnInitialMonsters
 .public SpawnShopkeepers
 .public SpawnTeam
@@ -237,16 +240,12 @@
 .public sub_020091B0
 .public sub_02017B00
 .public sub_0204F1B4
-.public sub_020510E8
-.public sub_02051134
 .public sub_02051DFC
 .public sub_02051ED4
 .public sub_02057E90
 .public sub_02057EF4
 .public sub_02058644
 .public sub_0205B77C
-.public sub_020634F4
-.public sub_02063504
 .public TryActivateArtificialWeatherAbilities
 .public TryActivateIqBooster
 .public TryActivateSlowStart
@@ -260,3 +259,4 @@
 .public UpdateShouldBoostKecleonShopSpawnChance
 .public UpdateTrapsVisibility
 .public WaitUntilAlertBoxTextIsLoaded
+.public WriteMissionMtState

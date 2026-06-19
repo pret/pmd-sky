@@ -28,6 +28,7 @@
 .public InitPortraitParamsWithMonsterId
 .public IsDialogueBoxActive
 .public IsMainCharacter
+.public IsMePlaying
 .public IsSimpleMenuActive
 .public ov11_022DC504
 .public ov17_0238A278
@@ -42,7 +43,6 @@
 .public ShowDialogueBox
 .public ShowPortraitInPortraitBox
 .public ShowStringIdInDialogueBox
-.public sub_02017C10
 .public sub_02017C50
 .public sub_020307EC
 .public sub_02039C3C

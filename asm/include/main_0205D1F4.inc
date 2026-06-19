@@ -19,10 +19,10 @@
 .public MemAlloc
 .public MemFree
 .public MISSION_DELIVER_LIST_PTR
+.public MtNext
 .public RandInt
 .public RandIntSafe
 .public RollRandomItemReward
-.public sub_02051134
 .public sub_0205CF58
 .public sub_0205E090
 .public sub_0205E1E8

@@ -147,8 +147,8 @@ PlaySeByIdIfNotSilence: ; 0x022EACCC
 	ldmia sp!, {r3, pc}
 	arm_func_end PlaySeByIdIfNotSilence
 
-	arm_func_start ov29_022EACE4
-ov29_022EACE4: ; 0x022EACE4
+	arm_func_start PlayMeByIdIfNot998
+PlayMeByIdIfNot998: ; 0x022EACE4
 	stmdb sp!, {r3, lr}
 	ldr r1, _022EACFC ; =0x000003E6
 	cmp r0, r1
@@ -157,7 +157,7 @@ ov29_022EACE4: ; 0x022EACE4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022EACFC: .word 0x000003E6
-	arm_func_end ov29_022EACE4
+	arm_func_end PlayMeByIdIfNot998
 
 	arm_func_start MusicTableIdxToMusicId
 MusicTableIdxToMusicId: ; 0x022EAD00
@@ -365,15 +365,15 @@ ov29_022EAF20: ; 0x022EAF20
 _022EAF30: .word DUNGEON_PTR
 	arm_func_end ov29_022EAF20
 
-	arm_func_start ov29_022EAF34
-ov29_022EAF34: ; 0x022EAF34
+	arm_func_start SetUnkMusicFlag
+SetUnkMusicFlag: ; 0x022EAF34
 	ldr r1, _022EAF44 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x792]
 	bx lr
 	.align 2, 0
 _022EAF44: .word DUNGEON_PTR
-	arm_func_end ov29_022EAF34
+	arm_func_end SetUnkMusicFlag
 
 	arm_func_start ov29_022EAF48
 ov29_022EAF48: ; 0x022EAF48

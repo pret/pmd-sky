@@ -566,7 +566,7 @@ _022F6014:
 	ldr r1, [sb, #0xb4]
 	mov r0, sb
 	ldrb r1, [r1, #0x54]
-	bl ov29_022FA574
+	bl DisplayLinkedMovesWarnings
 _022F6040:
 	mov r0, sb
 	bl TryActivateTruant

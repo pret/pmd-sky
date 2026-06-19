@@ -59,7 +59,6 @@
 .public ov29_022DE5F0
 .public ov29_022E2CA0
 .public ov29_022EA370
-.public ov29_022EACE4
 .public ov29_022ED0F4
 .public ov29_0230D618
 .public ov29_02339148
@@ -80,6 +79,7 @@
 .public ov29_023515CC
 .public ov29_0235354C
 .public PlayEffectAnimationEntity
+.public PlayMeByIdIfNot998
 .public PlaySeByIdIfNotSilence
 .public RandIntSafe
 .public SetMonsterId

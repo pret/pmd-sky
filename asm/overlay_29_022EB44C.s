@@ -189,8 +189,8 @@ _022EB658:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end RemoveUsedItem
 
-	arm_func_start ov29_022EB668
-ov29_022EB668: ; 0x022EB668
+	arm_func_start ConvertTmToUsedTm
+ConvertTmToUsedTm: ; 0x022EB668
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #8
 	mov r8, r1
@@ -304,7 +304,7 @@ _022EB7F8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022EB800: .word DUNGEON_PTR
-	arm_func_end ov29_022EB668
+	arm_func_end ConvertTmToUsedTm
 
 	arm_func_start ov29_022EB804
 ov29_022EB804: ; 0x022EB804

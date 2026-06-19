@@ -116,7 +116,7 @@ ov29_022DEBBC: ; 0x022DEBBC
 	strb r0, [r1, #0x790]
 	ldr r1, [r2]
 	strb r0, [r1, #0x791]
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	ldr r0, _022DEF2C ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r2, [r0]
@@ -492,15 +492,15 @@ _022DF238:
 	ldreq r0, [sl, #0x18]
 	streq r0, [sb, #0x7a0]
 	beq _022DF2C4
-	bl sub_02063504
+	bl ReadMissionMtStateLower
 	mov r4, r0
 	bl Rand16Bit
 	orr r0, r0, r4, lsl #16
-	bl sub_020510E8
-	bl sub_02051134
+	bl MtInit
+	bl MtNext
 	bic r0, r0, #0xff000000
 	str r0, [sb, #0x7a0]
-	bl sub_020634F4
+	bl WriteMissionMtState
 _022DF2C4:
 	ldr r0, [sb, #0x7a0]
 	bl SetDungeonRngPreseed23Bit
@@ -1259,14 +1259,14 @@ _022DFC60:
 	add r3, r2, #0x248
 	mov r2, r4
 	add r3, r3, #0x400
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	b _022DFDB0
 _022DFD9C:
 	ldr r0, _022DFF74 ; =0x00000261
 	mov r1, r4
 	mov r2, r4
 	mov r3, #0
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 _022DFDB0:
 	bl UpdateShouldBoostKecleonShopSpawnChance
 	bl UpdateShouldBoostHiddenStairsSpawnChance
@@ -1326,7 +1326,7 @@ _022DFE64:
 	mov r1, #0
 	ldr r0, _022DFF78 ; =0x00000279
 	mov r3, r1
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	mov r1, #1
 	b _022DFF8C
 _022DFE94:
@@ -1337,7 +1337,7 @@ _022DFE94:
 	mov r2, r0
 	mov r3, r1
 	mov r0, #0x27c
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	ldr r0, _022DFF40 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x790]
@@ -1355,7 +1355,7 @@ _022DFED4:
 	mov r1, #0
 	ldr r0, _022DFF7C ; =0x0000027D
 	mov r3, r1
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	ldr r0, _022DFF40 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x790]
@@ -1373,7 +1373,7 @@ _022DFF14:
 	mov r1, #0
 	ldr r0, _022DFF80 ; =0x0000027A
 	mov r3, r1
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	mov r1, #1
 	b _022DFF8C
 	.align 2, 0
@@ -1426,7 +1426,7 @@ _022DFF8C:
 	mov r1, #0
 	ldr r0, _022E034C ; =0x0000027B
 	mov r3, r1
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	ldr r0, _022DFF40 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x790]
@@ -1458,7 +1458,7 @@ _022E0014:
 	mov r1, #0
 	ldr r0, _022DFF80 ; =0x0000027A
 	mov r3, r1
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	b _022E00EC
 _022E005C:
 	ldr r1, _022DFF40 ; =DUNGEON_PTR
@@ -1487,7 +1487,7 @@ _022E008C:
 	mov r1, #0
 	ldr r0, _022DFF80 ; =0x0000027A
 	mov r3, r1
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	b _022E00EC
 _022E00C8:
 	bl GetHiddenFloorField
@@ -1514,7 +1514,7 @@ _022E00EC:
 	mov r0, #0
 	ldr r1, [r1]
 	strb r0, [r1, #0x791]
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	ldr r1, _022DFF40 ; =DUNGEON_PTR
 	mov r3, #0
 	ldr r0, [r1]

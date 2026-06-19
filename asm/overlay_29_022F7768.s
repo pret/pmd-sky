@@ -288,7 +288,7 @@ _022F7AE8:
 	mov r0, r5
 	mov r1, sl
 	mov r3, r4
-	bl sub_02053250
+	bl InitializeTeamMemberFromMentry
 	ldr r0, _022F7BE8 ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, r4, lsl #1
 	ldr r0, [r0]
@@ -440,7 +440,7 @@ _022F7CE4:
 	mov r0, r5
 	mov r1, r6
 	mov r3, r4
-	bl sub_02053250
+	bl InitializeTeamMemberFromMentry
 	ldr r0, _022F7E28 ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, r4, lsl #1
 	ldr r0, [r0]
@@ -1001,14 +1001,14 @@ _022F8284:
 	add r3, r2, #0x248
 	mov r2, sl
 	add r3, r3, #0x400
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	b _022F82C8
 _022F82B4:
 	mov r0, sb
 	mov r1, r8
 	mov r2, sl
 	mov r3, #0
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 _022F82C8:
 	ldr r0, _022F85E8 ; =0x0000025E
 	cmp sb, r0

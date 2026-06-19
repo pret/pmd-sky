@@ -2156,8 +2156,8 @@ ov29_022DE2C8: ; 0x022DE2C8
 _022DE2FC: .word DUNGEON_PTR
 	arm_func_end ov29_022DE2C8
 
-	arm_func_start ov29_022DE300
-ov29_022DE300: ; 0x022DE300
+	arm_func_start InitDungeonPaletteStruct
+InitDungeonPaletteStruct: ; 0x022DE300
 	stmdb sp!, {r3, lr}
 	mov r0, #0x74
 	mov r1, #0
@@ -2233,7 +2233,7 @@ _022DE414: .word 0x000003FE
 #else
 _022DE414: .word 0x0000040A
 #endif
-	arm_func_end ov29_022DE300
+	arm_func_end InitDungeonPaletteStruct
 
 	arm_func_start ov29_022DE418
 ov29_022DE418: ; 0x022DE418

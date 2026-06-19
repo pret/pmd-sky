@@ -89,7 +89,7 @@ _0231A984:
 	bl UpdateMovePp
 	ldrb r1, [r4, #0x4e]
 	mov r0, sb
-	bl ov29_022FA574
+	bl DisplayLinkedMovesWarnings
 _0231A9BC:
 	mov r0, sb
 	bl TryActivateTruant

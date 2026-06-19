@@ -480,7 +480,7 @@ sub_020530D4: ; 0x020530D4
 	strh lr, [sp, #2]
 	strh ip, [sp, #4]
 	ldrb r5, [r4]
-	bl sub_02053250
+	bl InitializeTeamMemberFromMentry
 	ldrh r2, [sp]
 	ldrh r1, [sp, #2]
 	ldrh r0, [sp, #4]
@@ -493,7 +493,7 @@ _02053158:
 	mov r0, r4
 	mov r2, r1
 	add r1, r7, r6
-	bl sub_02053250
+	bl InitializeTeamMemberFromMentry
 _02053168:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -562,14 +562,14 @@ sub_02053224: ; 0x02053224
 	smlabb r1, ip, r1, r3
 	mov r3, r2
 	mov r2, ip
-	bl sub_02053250
+	bl InitializeTeamMemberFromMentry
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0205324C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02053224
 
-	arm_func_start sub_02053250
-sub_02053250: ; 0x02053250
+	arm_func_start InitializeTeamMemberFromMentry
+InitializeTeamMemberFromMentry: ; 0x02053250
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r5, r1
@@ -644,7 +644,7 @@ _020532D4:
 	strh r0, [r6, #0x4a]
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_02053250
+	arm_func_end InitializeTeamMemberFromMentry
 
 	arm_func_start sub_02053374
 sub_02053374: ; 0x02053374

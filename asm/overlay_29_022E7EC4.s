@@ -286,7 +286,7 @@ _022E8210:
 	cmp r0, #1
 	beq _022E8238
 	mov r0, #1
-	bl ov29_022E8CA8
+	bl DungeonChangeTopScreenType
 _022E8238:
 	bl ov29_022E8CE8
 	ldmia sp!, {r3, pc}
@@ -712,25 +712,25 @@ ov29_022E8708: ; 0x022E8708
 	cmp r0, #3
 	bne _022E8724
 	mov r0, #3
-	bl ov29_022E8CA8
+	bl DungeonChangeTopScreenType
 	ldmia sp!, {r3, pc}
 _022E8724:
 	cmp r0, #2
 	bne _022E8738
 	mov r0, #0
-	bl ov29_022E8CA8
+	bl DungeonChangeTopScreenType
 	ldmia sp!, {r3, pc}
 _022E8738:
 	cmp r0, #0
 	bne _022E874C
 	mov r0, #2
-	bl ov29_022E8CA8
+	bl DungeonChangeTopScreenType
 	ldmia sp!, {r3, pc}
 _022E874C:
 	cmp r0, #4
 	bne _022E8760
 	mov r0, #4
-	bl ov29_022E8CA8
+	bl DungeonChangeTopScreenType
 	ldmia sp!, {r3, pc}
 _022E8760:
 	bl ov29_022E81F8
@@ -739,11 +739,11 @@ _022E8760:
 
 	arm_func_start ov29_022E8768
 ov29_022E8768: ; 0x022E8768
-	ldr ip, _022E8774 ; =ov29_022E8CA8
+	ldr ip, _022E8774 ; =DungeonChangeTopScreenType
 	mov r0, #5
 	bx ip
 	.align 2, 0
-_022E8774: .word ov29_022E8CA8
+_022E8774: .word DungeonChangeTopScreenType
 	arm_func_end ov29_022E8768
 
 	arm_func_start ov29_022E8778
@@ -1153,8 +1153,8 @@ _022E8C9C:
 _022E8CA4: .word TOP_SCREEN_STATUS_PTR
 	arm_func_end FreeTopScreen
 
-	arm_func_start ov29_022E8CA8
-ov29_022E8CA8: ; 0x022E8CA8
+	arm_func_start DungeonChangeTopScreenType
+DungeonChangeTopScreenType: ; 0x022E8CA8
 	ldr r1, _022E8CE4 ; =TOP_SCREEN_STATUS_PTR
 	ldr r3, [r1]
 	ldrsh r2, [r3, #8]
@@ -1172,7 +1172,7 @@ ov29_022E8CA8: ; 0x022E8CA8
 	bx lr
 	.align 2, 0
 _022E8CE4: .word TOP_SCREEN_STATUS_PTR
-	arm_func_end ov29_022E8CA8
+	arm_func_end DungeonChangeTopScreenType
 
 	arm_func_start ov29_022E8CE8
 ov29_022E8CE8: ; 0x022E8CE8

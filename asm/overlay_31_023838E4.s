@@ -6151,7 +6151,7 @@ _02388908:
 	mov r1, #0
 	ldr r0, _023889D4 ; =0x0000025A
 	mov r3, r1
-	bl ov29_022ECDE4
+	bl CreateMonsterSummaryFromEntityOuter
 	ldr r0, _023889D8 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]

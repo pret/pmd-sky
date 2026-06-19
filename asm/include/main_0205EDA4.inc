@@ -31,7 +31,6 @@
 .public _020A93B4
 .public _020AFC70
 .public _020B0A54
-.public _020B0AD8
 .public _020B0AFC
 .public _020B0B04
 .public _020B0B08
@@ -224,6 +223,7 @@
 .public ReadSaveHeader
 .public REMOTE_STRING_PTR_TABLE
 .public RemoveFirstUnequippedItemOfType
+.public RESCUE_BIN_UNPACK
 .public RetrieveFromItemList2
 .public SaveScriptVariableValue
 .public SetAdventureLogStructLocation

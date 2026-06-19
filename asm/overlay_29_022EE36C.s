@@ -677,7 +677,7 @@ _022EEA68:
 	add r1, sp, #0
 	ldr r1, [r1, r6, lsl #2]
 	mov r0, r4
-	bl ov29_022FA574
+	bl DisplayLinkedMovesWarnings
 	mov r8, #1
 _022EEADC:
 	cmp r8, #0

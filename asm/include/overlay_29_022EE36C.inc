@@ -9,6 +9,7 @@
 .public ChangeMonsterAnimation
 .public DIRECTIONS_XY
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
+.public DisplayLinkedMovesWarnings
 .public DrawMinimapTile
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -51,7 +52,6 @@
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
-.public ov29_022FA574
 .public ov29_022FB920
 .public ov29_022FBD80
 .public ov29_02304A48

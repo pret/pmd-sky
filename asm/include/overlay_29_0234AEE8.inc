@@ -18,6 +18,7 @@
 .public MemFree
 .public MemZero
 .public MESSAGE_LOG_INFO
+.public MissionExitPrompt
 .public MusicTableIdxToMusicId
 .public ov10_022BFD20
 .public ov29_022E0B60
@@ -25,12 +26,11 @@
 .public ov29_022E68F0
 .public ov29_022E9FC0
 .public ov29_022EAEFC
-.public ov29_022EAF34
 .public ov29_022F2FE4
 .public ov29_0233A248
-.public ov29_02348A18
 .public ov29_02353214
 .public PreprocessString
+.public SetUnkMusicFlag
 .public ShouldDisplayEntityWrapper
 .public StringFromId
 .public strlen

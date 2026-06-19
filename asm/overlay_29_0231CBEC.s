@@ -1011,7 +1011,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	bl ov29_022EAF20
 	mov r4, r0
 	mov r0, #3
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	ldr r1, _0231D9B0 ; =0x000003FF
 	mov r0, #4
 	add r2, sp, #4
@@ -1029,7 +1029,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	bl ov29_022DD828
 	ldr r0, [sp]
 	mov r1, #6
-	bl ov29_022F085C
+	bl GonePebbleGradualPaletteShift
 	ldr r0, _0231D9B4 ; =0x00000C65
 	bl ov29_022F0780
 	bl ov29_022F05E4
@@ -1059,7 +1059,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	bl MusicTableIdxToMusicId
 	bl ChangeDungeonMusic
 	mov r0, r4
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 #ifndef JAPAN
 	bl UpdateMinimap
 	mov r0, #1
@@ -1069,7 +1069,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	bl GetApparentWeather
 	bl GetWeatherColorTable
 	mov r1, #6
-	bl ov29_022F085C
+	bl GonePebbleGradualPaletteShift
 	mov r0, r5
 	bl ov29_022F0518
 	add r0, sp, #4
@@ -1282,7 +1282,7 @@ _0231DB70:
 	ldr r2, _0231DBEC ; =0x00000141
 	mov r0, sl
 	mov r1, #0
-	bl ov29_022EB668
+	bl ConvertTmToUsedTm
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -1402,7 +1402,7 @@ _0231DCEC:
 	mov r0, sl
 	mov r1, #0
 	str r4, [r3, #0xc8]
-	bl ov29_022EB668
+	bl ConvertTmToUsedTm
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0

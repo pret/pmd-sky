@@ -356,7 +356,7 @@ FillMissionDestinationInfo: ; 0x023484A0
 	add r0, r0, #0x348
 	add r7, r0, #0x400
 	add r0, r7, #0x18
-	bl ov29_023496EC
+	bl ClearMissionDestinationInfo
 	ldr r0, _02348804 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x700
@@ -659,10 +659,10 @@ _02348884: .word DUNGEON_PTR
 
 	arm_func_start ov29_02348888
 ov29_02348888: ; 0x02348888
-	ldr ip, _02348890 ; =ov29_02349AD4
+	ldr ip, _02348890 ; =TryCompleteMission
 	bx ip
 	.align 2, 0
-_02348890: .word ov29_02349AD4
+_02348890: .word TryCompleteMission
 	arm_func_end ov29_02348888
 
 	arm_func_start ov29_02348894
@@ -787,8 +787,8 @@ _02348A04:
 _02348A14: .word DUNGEON_PTR
 	arm_func_end ov29_02348994
 
-	arm_func_start ov29_02348A18
-ov29_02348A18: ; 0x02348A18
+	arm_func_start MissionExitPrompt
+MissionExitPrompt: ; 0x02348A18
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, #0
 	mov r5, #1
@@ -837,7 +837,7 @@ _02348AB8: .word 0x00000B65
 #else
 _02348AB8: .word 0x00000E24
 #endif
-	arm_func_end ov29_02348A18
+	arm_func_end MissionExitPrompt
 
 	arm_func_start ov29_02348ABC
 ov29_02348ABC: ; 0x02348ABC
@@ -854,13 +854,13 @@ ov29_02348ABC: ; 0x02348ABC
 	ldr r1, [r1]
 	mov r2, #0
 	strb r2, [r1, #0x777]
-	bl ov29_02348A18
+	bl MissionExitPrompt
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl GetItemToRetrieve
 	mov r1, r0
 	mov r0, #0
-	bl ov29_02349AD4
+	bl TryCompleteMission
 	ldr r0, _02348B20 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
@@ -898,7 +898,7 @@ ov29_02348B28: ; 0x02348B28
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
 	ldr r0, _02348B9C ; =0x00000E44
-	bl ov29_02348A18
+	bl MissionExitPrompt
 	mov r1, #1
 	ldr r0, _02348B94 ; =DUNGEON_PTR
 	ldr r0, [r0]

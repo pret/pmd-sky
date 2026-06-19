@@ -131,6 +131,7 @@
 .public InitPreprocessorArgs
 .public InitRender3dElement64
 .public InitScriptRoutine
+.public IsAcceptedMissionSlotEmpty
 .public IsAdvancedMenuActive
 .public IsAdvancedMenuActive2
 .public IsAdvancedTextBoxActive
@@ -770,6 +771,7 @@
 .public SetInventoryMenuState0
 .public SetInventoryMenuState6
 .public SetItemAcquired
+.public SetNewFriendActor
 .public SetParentMenuState7
 .public SetSpriteIdForAnimationControl
 .public ShowDialogueBox
@@ -963,7 +965,6 @@
 .public sub_0205882C
 .public sub_02058AFC
 .public sub_0205B028
-.public sub_0205F0F0
 .public sub_02061F44
 .public sub_02061F90
 .public sub_02062DB4
@@ -972,7 +973,6 @@
 .public sub_02065014
 .public sub_02065050
 .public sub_0206549C
-.public sub_02065BC8
 .public sub_02065C08
 .public sub_020664B8
 .public sub_02066510

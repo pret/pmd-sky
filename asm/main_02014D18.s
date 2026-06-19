@@ -4099,8 +4099,8 @@ sub_02017C04: ; 0x02017C04
 _02017C0C: .word sub_02018194
 	arm_func_end sub_02017C04
 
-	arm_func_start sub_02017C10
-sub_02017C10: ; 0x02017C10
+	arm_func_start IsMePlaying
+IsMePlaying: ; 0x02017C10
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_020181E0
@@ -4120,7 +4120,7 @@ _02017C44:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02017C4C: .word 0x000003E6
-	arm_func_end sub_02017C10
+	arm_func_end IsMePlaying
 
 	arm_func_start sub_02017C50
 sub_02017C50: ; 0x02017C50

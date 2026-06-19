@@ -11,6 +11,7 @@
 .public CheckVariousStatuses2__02301244
 .public CheckVariousStatuses2__02301308
 .public ClearMonsterActionFields
+.public ConvertTmToUsedTm
 .public DirectoryFileMngr_OpenDirectoryFile
 .public DisplayMessage2
 .public DoesMonsterHaveMove
@@ -33,6 +34,7 @@
 .public GetResolvedPerformanceProgressFlag
 .public GetWeatherColorTable
 .public GINSENG_CHANCE_3
+.public GonePebbleGradualPaletteShift
 .public GUMMI_BELLY_RESTORE_TABLE
 .public GUMMI_IQ_STRING_IDS
 .public GUMMI_LIKE_STRING_IDS
@@ -63,15 +65,12 @@
 .public ov29_022E5BD8
 .public ov29_022EA370
 .public ov29_022EAF20
-.public ov29_022EAF34
-.public ov29_022EB668
 .public ov29_022EFB20
 .public ov29_022EFB84
 .public ov29_022F04F0
 .public ov29_022F0518
 .public ov29_022F05E4
 .public ov29_022F0780
-.public ov29_022F085C
 .public ov29_022F8830
 .public ov29_022F9C34
 .public ov29_022FA02C
@@ -95,6 +94,7 @@
 .public SetMessageLogPreprocessorArgsNumberVal
 .public SetMonsterActionFields
 .public SetPreprocessorArgsIdVal
+.public SetUnkMusicFlag
 .public ShouldDisplayEntityWrapper
 .public SPATK_STAT_IDX
 .public sub_02050FF8

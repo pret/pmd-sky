@@ -67,10 +67,10 @@ _0205EB90:
 	ldmleia sp!, {r3, r4, r5, pc}
 	b _0205EB90
 _0205EBC4:
-	bl sub_02065B94
+	bl SetRandomRequestNpc03KindVar
 	ldmia sp!, {r3, r4, r5, pc}
 _0205EBCC:
 	ldrsh r0, [r4, #0xe]
-	bl sub_02065B94
+	bl SetRandomRequestNpc03KindVar
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0205EB5C

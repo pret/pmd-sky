@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022ECDE4
-ov29_022ECDE4: ; 0x022ECDE4
+	arm_func_start CreateMonsterSummaryFromEntityOuter
+CreateMonsterSummaryFromEntityOuter: ; 0x022ECDE4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r4, _022ECF34 ; =DUNGEON_PTR
 	mov r6, r1
@@ -107,7 +107,7 @@ _022ECF3C: .word 0x00000889
 _022ECF3C: .word 0x00000A41
 #endif
 _022ECF40: .word 0x000003E7
-	arm_func_end ov29_022ECDE4
+	arm_func_end CreateMonsterSummaryFromEntityOuter
 
 	arm_func_start IsDungeonEndReasonFailure
 IsDungeonEndReasonFailure: ; 0x022ECF44

@@ -216,8 +216,8 @@ ov29_0234D6C8: ; 0x0234D6C8
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	arm_func_end ov29_0234D6C8
 
-	arm_func_start ov29_0234D70C
-ov29_0234D70C: ; 0x0234D70C
+	arm_func_start PrintMissionCompleteString
+PrintMissionCompleteString: ; 0x0234D70C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r2
 	mov r7, r1
@@ -235,7 +235,7 @@ ov29_0234D70C: ; 0x0234D70C
 	bl ov29_0234DC3C
 	bl ov29_0234D9C0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_0234D70C
+	arm_func_end PrintMissionCompleteString
 
 	arm_func_start ov29_0234D750
 ov29_0234D750: ; 0x0234D750

@@ -15,7 +15,7 @@ extern void CopyBitsFrom(struct bitstream *stream, void *buf_read, s32 nbits);
 extern void* memset(void *s, s32 c, u32 n);
 extern void Copy16BitsFrom(struct bitstream *stream, void *buf_read);
 extern void BitstreamDebug(struct bitstream *stream);
-extern void sub_020634F4(void);
+extern void WriteMissionMtState(void);
 extern void InitBitstreamForRead(struct bitstream *stream, u32 p1, u32 p2);
 extern void CopyBitsTo(struct bitstream *stream, void* buf_write, s32 nbits);
 extern void Copy16BitsTo(struct bitstream *stream, void *buf_write);
@@ -97,7 +97,7 @@ u32 sub_0205BD9C(u32 arg0, u32 arg1)
 
     BitstreamDebug(&stream);
     Rand16Bit();
-    sub_020634F4();
+    WriteMissionMtState();
 
     return stream.bit_idx;
 }

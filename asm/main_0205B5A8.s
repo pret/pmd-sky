@@ -28,21 +28,21 @@ _0205B5CC:
 	bl RandInt
 	orr r0, r0, #2
 	strb r0, [sp, #0xc2]
-	bl sub_02063504
+	bl ReadMissionMtStateLower
 	mov r5, r0
 	bl Rand16Bit
 	orr r0, r0, r5, lsl #16
-	bl sub_020510E8
+	bl MtInit
 	strb r4, [sp, #0x14]
-	bl sub_02051134
+	bl MtNext
 	str r0, [sp, #0x2c]
-	bl sub_02051134
+	bl MtNext
 	str r0, [sp, #0xbc]
-	bl sub_02051134
+	bl MtNext
 	bic r0, r0, #0xff000000
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0xbc]
-	bl sub_020634F4
+	bl WriteMissionMtState
 	ldr r1, _0205B68C ; =0x000038C9
 	add r0, sp, #0
 	bl GetStringFromFileVeneer
