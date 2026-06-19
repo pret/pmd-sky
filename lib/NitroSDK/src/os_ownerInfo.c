@@ -1,7 +1,6 @@
 #include <nitro.h>
 
 extern void MTi_CpuCopy16(void *, void *, u32);
-extern void MI_CpuCopy8(void *, void *, u32);
 
 void OS_GetMacAddress(u8 *macAddr) {
     MI_CpuCopy8(OS_GetSystemWork()->nvramUserInfo + ((sizeof(NVRAMConfig) + 3) & ~3), macAddr, 6);

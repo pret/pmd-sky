@@ -294,7 +294,7 @@ Static main
 	Object lib/NitroSDK/asm/spi_tp.o
 	Object lib/NitroSDK/asm/spi_pm.o
 	Object lib/NitroSDK/asm/rtc_external.o
-	Object lib/NitroSDK/asm/rtc_internal.o
+	Object lib/NitroSDK/src/rtc_internal.o
 	Object lib/NitroSDK/asm/rtc_convert.o
 	Object lib/NitroSDK/asm/card_common.o
 	Object lib/NitroSDK/asm/card_spi.o
