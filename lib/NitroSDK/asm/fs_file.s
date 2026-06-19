@@ -138,7 +138,7 @@ FS_ConvertPathToFileID: ; 0x0207F5CC
 	mov r5, r0
 	add r0, sp, #0
 	mov r4, r1
-	bl FileInit
+	bl FS_InitFile
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, r5

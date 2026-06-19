@@ -34,7 +34,7 @@
 .public Dwci_BackuplWritePage
 .public Dwci_BM_GetWiFiInfo
 .public EnableIrqFlag
-.public FileInit
+.public FS_InitFile
 .public FS_ChangeDir
 .public FS_CloseFile
 .public FS_Init

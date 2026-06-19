@@ -4970,7 +4970,7 @@ sub_02007F0C: ; 0x02007F0C
 	mov r4, r1
 	bl sub_02002CB4
 	add r0, r5, #0x40
-	bl FileInit
+	bl FS_InitFile
 	add r1, sp, #0
 	mov r0, r4
 	bl sub_0200733C
@@ -5025,7 +5025,7 @@ sub_02007FCC: ; 0x02007FCC
 	mov r4, r1
 	bl sub_02002CB4
 	add r0, r5, #0x40
-	bl FileInit
+	bl FS_InitFile
 	add r1, sp, #0
 	mov r0, r4
 	bl sub_0200733C
@@ -5221,5 +5221,5 @@ FileRom_Veneer_FileInit: ; 0x02008204
 	ldr ip, _0200820C ; =FileInit
 	bx ip
 	.align 2, 0
-_0200820C: .word FileInit
+_0200820C: .word FS_InitFile
 	arm_func_end FileRom_Veneer_FileInit

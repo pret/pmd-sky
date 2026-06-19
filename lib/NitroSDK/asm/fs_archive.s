@@ -182,7 +182,7 @@ _0207EA7C:
 	tst r0, #0x400
 	beq _0207EAC8
 	add r0, sp, #0
-	bl FileInit
+	bl FS_InitFile
 	str r6, [sp, #8]
 	ldr r2, [r6, #0x54]
 	add r0, sp, #0
@@ -628,7 +628,7 @@ FS_LoadArchiveTables: ; 0x0207F05C
 	add r1, r6, #0x1f
 	add r0, sp, #4
 	bic r5, r1, #0x1f
-	bl FileInit
+	bl FS_InitFile
 	ldr r2, [r7, #0x2c]
 	mvn r0, #0
 	str r0, [sp]
@@ -866,18 +866,3 @@ _0207F38C:
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end FS_NotifyArchiveAsyncEnd
-
-	arm_func_start FS_Init
-FS_Init: ; 0x0207F3BC
-	stmdb sp!, {r3, lr}
-	ldr r1, _0207F3E0 ; =_022BB5F8
-	ldr r2, [r1]
-	cmp r2, #0
-	ldmneia sp!, {r3, pc}
-	mov r2, #1
-	str r2, [r1]
-	bl FSi_InitRom
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0207F3E0: .word _022BB5F8
-	arm_func_end FS_Init

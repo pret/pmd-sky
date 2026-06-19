@@ -31,3 +31,5 @@ u32 FS_SeekFile(struct file_stream* file, s32 offset, u32 whence)
     file->current_address = (void*) offset;
     return 1;
 }
+
+

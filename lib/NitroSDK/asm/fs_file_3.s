@@ -9,7 +9,7 @@ FS_ChangeDir: ; 0x0207F894
 	sub sp, sp, #0x54
 	mov r4, r0
 	add r0, sp, #0xc
-	bl FileInit
+	bl FS_InitFile
 	add r0, sp, #0xc
 	add r3, sp, #0
 	mov r1, r4

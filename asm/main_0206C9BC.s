@@ -1002,7 +1002,7 @@ _0206D6EC: .word DRIVER_WORK
 	arm_func_start DseSwd_InitMainBankFileReader
 DseSwd_InitMainBankFileReader: ; 0x0206D6F0
 	stmdb sp!, {r3, lr}
-	bl FileInit
+	bl FS_InitFile
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end DseSwd_InitMainBankFileReader

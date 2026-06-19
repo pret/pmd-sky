@@ -54,7 +54,7 @@
 .public DC_WaitWriteBufferEmpty
 .public EnableIrqFlag
 .public fflush
-.public FileInit
+.public FS_InitFile
 .public FS_CloseFile
 .public FS_InitArchive
 .public FS_LoadArchive

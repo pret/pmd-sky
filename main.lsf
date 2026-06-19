@@ -283,10 +283,10 @@ Static main
     Object lib/NitroSDK/asm/fs_command_default.o
     Object lib/NitroSDK/src/fs/fs_command_default_1.o
 	Object lib/NitroSDK/asm/fs_archive.o
-	Object src/main_0207F3E4.o
+	Object lib/NitroSDK/src/fs/fs_file_1.o
 	Object lib/NitroSDK/asm/fs_file.o
-	Object src/main_0207F818.o
-	Object asm/main_0207F894.o
+	Object lib/NitroSDK/src/fs/fs_file_2.o
+	Object lib/NitroSDK/asm/fs_file_3.o
 	Object lib/NitroSDK/asm/fs_rom.o
 	Object lib/NitroSDK/asm/fs_overlay.o
 	Object lib/NitroSDK/asm/md5.o
