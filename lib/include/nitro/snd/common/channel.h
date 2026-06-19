@@ -3,16 +3,16 @@
 
 #include <nitro/types.h>
 
-// #if !(defined(SDK_WIN32) || defined(SDK_FROM_TOOL))
-//     #include <nitro/misc.h>
-//     #include <nitro/hw/common/armArch.h>
-//
-//     #ifdef SDK_ARM7
-//         #include <nitro/hw/ARM7/ioreg_SND.h>
-//     #endif
-// #else
-//     #define HW_CPU_CLOCK_ARM7    33513982
-// #endif
+#if !(defined(SDK_WIN32) || defined(SDK_FROM_TOOL))
+    #include <nitro/misc.h>
+    //#include <nitro/hw/common/armArch.h>
+
+    #ifdef SDK_ARM7
+        #include <nitro/hw/ARM7/ioreg_SND.h>
+    #endif
+#else
+    #define HW_CPU_CLOCK_ARM7    33513982
+#endif
 
 #ifdef __cplusplus
 extern "C" {

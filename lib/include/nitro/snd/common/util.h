@@ -3,11 +3,11 @@
 
 #include <nitro/types.h>
 
-// #if !(defined(SDK_WIN32) || defined(SDK_FROM_TOOL))
-//     #include <nitro/misc.h>
-// #else
-//     #define SDK_MINMAX_ASSERT(exp, min, max)           ((void) 0)
-// #endif
+#if !(defined(SDK_WIN32) || defined(SDK_FROM_TOOL))
+    #include <nitro/misc.h>
+#else
+    #define SDK_MINMAX_ASSERT(exp, min, max)           ((void) 0)
+#endif
 
 #ifdef __cplusplus
 extern "C" {

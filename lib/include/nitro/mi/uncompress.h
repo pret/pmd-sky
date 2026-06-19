@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-//#include <nitro/misc.h>
+#include <nitro/misc.h>
 #include <nitro/types.h>
 
 typedef enum {
