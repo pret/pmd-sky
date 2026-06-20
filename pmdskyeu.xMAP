@@ -703,7 +703,7 @@
                                                                                                        102](GetItemIdToSpawn,func) found in global spawn_1.o
                                                                                                        102](DungeonRandOutcome__022EAB20,func) found in global dg_random.o
                                                                                                        102](IsSpecialStoryAllyOrClient,func) found in global overlay_29_022FBA70.o
-                                                                                                       102](ov29_022FBC4C,func) found in global overlay_29_022FBC4C.o
+                                                                                                       102](CountActiveMonsters,func) found in global overlay_29_022FBC4C.o
                                                                                                        102](GetChanceAsleep,func) found in global main_0205283C.o
                                                                                                        102](GetMonsterIdToSpawn,func) found in global spawn_2.o
                                                                                                         103](GetKecleonIdToSpawnByFloor,func) found in global overlay_29_022F73B4.o
@@ -985,7 +985,7 @@
                                                                                                                    114](ov29_022E1640,func) found in global overlay_29_022E1640.o
                                                                                                                    114](ov29_022DEB40,func) found in global overlay_29_022DEAB0.o
                                                                                                                    114](sub_0205B77C,func) found in global main_0205B77C.o
-                                                                                                                   114](sub_02051134,func) found in global main_02051098.o
+                                                                                                                   114](MtNext,func) found in global main_02051098.o
                                                                                                                    114](ov29_022DEADC,func) found in global overlay_29_022DEAB0.o
                                                                                                                    114](GetMaxRescueAttempts,func) found in global dungeon_recruitment_2.o
                                                                                                                    114](DungeonGoesUp,func) found in global dungeon_recruitment_2.o
@@ -1280,7 +1280,7 @@
                                       37](CompareScriptVariablesVeneer,func) found in global script_variable.o
                                        38](CompareScriptVariables,func) found in global script_variable.o
                                       37](sub_0204CE48,func) found in global script_variable_2.o
-                                      37](sub_0204CDE8,func) found in global script_variable_2.o
+                                      37](SetWorldMapLevel,func) found in global script_variable_2.o
                                       37](CalcScriptVariablesVeneer,func) found in global script_variable.o
                                       37](IsStoryAfterPoint,func) found in global story_progress.o
                                       37](IsStoryAtOrAfterPoint,func) found in global story_progress.o
@@ -3572,7 +3572,7 @@
   02017CA0 00000000 .text   $a	(main_02014D18.o)
   02017CA0 0000000C .text   sub_02017C04	(main_02014D18.o)
   02017CA8 00000000 .text   $d	(main_02014D18.o)
-  02017CAC 00000040 .text   sub_02017C10	(main_02014D18.o)
+  02017CAC 00000040 .text   IsMePlaying	(main_02014D18.o)
   02017CAC 00000000 .text   $a	(main_02014D18.o)
   02017CE8 00000000 .text   $d	(main_02014D18.o)
   02017CEC 0000000C .text   sub_02017C50	(main_02014D18.o)
@@ -5194,15 +5194,15 @@
   020333E0 000000C0 .text   sub_020330EC	(main_0202A3E4.o)
   020334A0 00000028 .text   sub_020331AC	(main_0202A3E4.o)
   020334C8 000000B0 .text   sub_020331D4	(main_0202A3E4.o)
-  02033578 00000028 .text   sub_02033284	(main_0202A3E4.o)
+  02033578 00000028 .text   InventoryMenuNextPage	(main_0202A3E4.o)
   0203359C 00000000 .text   $d	(main_0202A3E4.o)
-  020335A0 00000020 .text   sub_020332AC	(main_0202A3E4.o)
+  020335A0 00000020 .text   InventoryMenuPreviousPage	(main_0202A3E4.o)
   020335A0 00000000 .text   $a	(main_0202A3E4.o)
   020335BC 00000000 .text   $d	(main_0202A3E4.o)
-  020335C0 00000024 .text   sub_020332CC	(main_0202A3E4.o)
+  020335C0 00000024 .text   InventoryMenuNext10Pages	(main_0202A3E4.o)
   020335C0 00000000 .text   $a	(main_0202A3E4.o)
   020335E0 00000000 .text   $d	(main_0202A3E4.o)
-  020335E4 0000001C .text   sub_020332F0	(main_0202A3E4.o)
+  020335E4 0000001C .text   InventoryMenuPrevious10Pages	(main_0202A3E4.o)
   020335E4 00000000 .text   $a	(main_0202A3E4.o)
   020335FC 00000000 .text   $d	(main_0202A3E4.o)
   02033600 00000044 .text   sub_0203330C	(main_0202A3E4.o)
@@ -6731,7 +6731,7 @@
   0204D104 0000001C .text   sub_0204CDCC	(script_variable_2.o)
   0204D104 00000000 .text   $a	(script_variable_2.o)
   0204D120 00000000 .text   $a	(script_variable_2.o)
-  0204D120 00000018 .text   sub_0204CDE8	(script_variable_2.o)
+  0204D120 00000018 .text   SetWorldMapLevel	(script_variable_2.o)
   0204D134 00000000 .text   $d	(script_variable_2.o)
   0204D138 00000048 .text   sub_0204CE00	(script_variable_2.o)
   0204D138 00000000 .text   $a	(script_variable_2.o)
@@ -7188,10 +7188,10 @@
   020513D0 000001F0 .text   .text	(main_02051098.o)
   020513D0 00000000 .text   $a	(main_02051098.o)
   020513F8 00000028 .text   sub_020510C0	(main_02051098.o)
-  02051420 0000004C .text   sub_020510E8	(main_02051098.o)
+  02051420 0000004C .text   MtInit	(main_02051098.o)
   02051460 00000000 .text   $d	(main_02051098.o)
   0205146C 00000000 .text   $a	(main_02051098.o)
-  0205146C 00000154 .text   sub_02051134	(main_02051098.o)
+  0205146C 00000154 .text   MtNext	(main_02051098.o)
   020515A4 00000000 .text   $d	(main_02051098.o)
   020515C0 00000000 .text   $a	(dungeon_recruitment_2.o)
   020515C0 00000028 .text   DungeonGoesUp	(dungeon_recruitment_2.o)
@@ -7502,7 +7502,7 @@
   020535A0 00000000 .text   $a	(main_02052B44.o)
   020535C8 00000000 .text   $d	(main_02052B44.o)
   020535CC 00000000 .text   $a	(main_02052B44.o)
-  020535CC 00000124 .text   sub_02053250	(main_02052B44.o)
+  020535CC 00000124 .text   InitializeTeamMemberFromMentry	(main_02052B44.o)
   020536F0 00000128 .text   sub_02053374	(main_02052B44.o)
   02053818 00000020 .text   sub_0205349C	(main_02052B44.o)
   02053830 00000000 .text   $d	(main_02052B44.o)
@@ -8350,7 +8350,7 @@
   0205F454 00000000 .text   $a	(main_0205EDA4.o)
   0205F468 00000000 .text   $d	(main_0205EDA4.o)
   0205F46C 00000000 .text   $a	(main_0205EDA4.o)
-  0205F46C 00000028 .text   sub_0205F0F0	(main_0205EDA4.o)
+  0205F46C 00000028 .text   IsAcceptedMissionSlotEmpty	(main_0205EDA4.o)
   0205F490 00000000 .text   $d	(main_0205EDA4.o)
   0205F494 00000000 .text   $a	(main_0205EDA4.o)
   0205F494 000001A0 .text   WasMissionCompletedToday	(main_0205EDA4.o)
@@ -8464,7 +8464,7 @@
   02062578 00000000 .text   $d	(main_0205EDA4.o)
   02062588 00000000 .text   $a	(main_0205EDA4.o)
   02062588 0000003C .text   sub_0206220C	(main_0205EDA4.o)
-  020625C4 00000048 .text   sub_02062248	(main_0205EDA4.o)
+  020625C4 00000048 .text   RandomizeMissionCategory	(main_0205EDA4.o)
   0206260C 000002B8 .text   SumValidMissionCategoryWeights	(main_0205EDA4.o)
   020628C0 00000000 .text   $d	(main_0205EDA4.o)
   020628C4 00000000 .text   $a	(main_0205EDA4.o)
@@ -8540,9 +8540,9 @@
   02063824 0000004C .text   GetAvailableItemDeliveryList	(main_0205EDA4.o)
   0206386C 00000000 .text   $d	(main_0205EDA4.o)
   02063870 00000000 .text   $a	(main_0205EDA4.o)
-  02063870 00000010 .text   sub_020634F4	(main_0205EDA4.o)
+  02063870 00000010 .text   WriteMissionMtState	(main_0205EDA4.o)
   0206387C 00000000 .text   $d	(main_0205EDA4.o)
-  02063880 00000018 .text   sub_02063504	(main_0205EDA4.o)
+  02063880 00000018 .text   ReadMissionMtStateLower	(main_0205EDA4.o)
   02063880 00000000 .text   $a	(main_0205EDA4.o)
   02063894 00000000 .text   $d	(main_0205EDA4.o)
   02063898 00000044 .text   ZeroInitMissionRewardDataStruct	(main_0205EDA4.o)
@@ -8718,14 +8718,14 @@
   02065EFC 00000014 .text   SetRandomRequestNpcs1And2	(main_0205EDA4.o)
   02065EFC 00000000 .text   $a	(main_0205EDA4.o)
   02065F0C 00000000 .text   $d	(main_0205EDA4.o)
-  02065F10 00000018 .text   sub_02065B94	(main_0205EDA4.o)
+  02065F10 00000018 .text   SetRandomRequestNpc03KindVar	(main_0205EDA4.o)
   02065F10 00000000 .text   $a	(main_0205EDA4.o)
   02065F24 00000000 .text   $d	(main_0205EDA4.o)
   02065F28 00000000 .text   $a	(main_0205EDA4.o)
   02065F28 0000001C .text   SetAllEventNpcs	(main_0205EDA4.o)
   02065F40 00000000 .text   $d	(main_0205EDA4.o)
   02065F44 00000000 .text   $a	(main_0205EDA4.o)
-  02065F44 00000010 .text   sub_02065BC8	(main_0205EDA4.o)
+  02065F44 00000010 .text   SetNewFriendActor	(main_0205EDA4.o)
   02065F50 00000000 .text   $d	(main_0205EDA4.o)
   02065F54 00000000 .text   $a	(main_0205EDA4.o)
   02065F54 00000018 .text   sub_02065BD8	(main_0205EDA4.o)
@@ -13857,7 +13857,7 @@
   020B088C 00000000 .rodata GAME_MODE	(main_rodata_020A2808.o)
   020B0890 00000000 .rodata GLOBAL_PROGRESS_PTR	(main_rodata_020A2808.o)
   020B0894 00000000 .rodata ADVENTURE_LOG_PTR	(main_rodata_020A2808.o)
-  020B0898 00000000 .rodata _020AFF7C	(main_rodata_020A2808.o)
+  020B0898 00000000 .rodata MT_TABLE	(main_rodata_020A2808.o)
   020B089C 00000000 .rodata _020AFF80	(main_rodata_020A2808.o)
   020B08A4 00000000 .rodata _020AFF88	(main_rodata_020A2808.o)
   020B1264 00000000 .rodata ITEM_TABLES_PTRS_1	(main_rodata_020A2808.o)
@@ -13876,7 +13876,7 @@
   020B13A4 00000000 .rodata MISSION_DELIVER_LIST_PTR	(main_rodata_020A2808.o)
   020B13C0 00000000 .rodata REMOTE_STRING_PTR_TABLE	(main_rodata_020A2808.o)
   020B13DC 00000000 .rodata RANK_STRING_PTR_TABLE	(main_rodata_020A2808.o)
-  020B141C 00000000 .rodata _020B0AD8	(main_rodata_020A2808.o)
+  020B141C 00000000 .rodata RESCUE_BIN_UNPACK	(main_rodata_020A2808.o)
   020B1440 00000000 .rodata _020B0AFC	(main_rodata_020A2808.o)
   020B1448 00000000 .rodata _020B0B04	(main_rodata_020A2808.o)
   020B144C 00000000 .rodata _020B0B08	(main_rodata_020A2808.o)
@@ -34900,7 +34900,7 @@
   022DEC08 00000038 .text   ov29_022DE2C8	(overlay_29_022DC65C.o)
   022DEC08 00000000 .text   $a	(overlay_29_022DC65C.o)
   022DEC3C 00000000 .text   $d	(overlay_29_022DC65C.o)
-  022DEC40 00000118 .text   ov29_022DE300	(overlay_29_022DC65C.o)
+  022DEC40 00000118 .text   InitDungeonPaletteStruct	(overlay_29_022DC65C.o)
   022DEC40 00000000 .text   $a	(overlay_29_022DC65C.o)
   022DED50 00000000 .text   $d	(overlay_29_022DC65C.o)
   022DED58 00000064 .text   ov29_022DE418	(overlay_29_022DC65C.o)
@@ -35103,7 +35103,7 @@
   022E1C44 00000208 .text   ov29_022E1304	(overlay_29_022E08A0.o)
   022E1E2C 00000000 .text   $d	(overlay_29_022E08A0.o)
   022E1E4C 00000000 .text   $a	(overlay_29_022E08A0.o)
-  022E1E4C 00000044 .text   ov29_022E150C	(overlay_29_022E08A0.o)
+  022E1E4C 00000044 .text   ResetDungeonColorPalette	(overlay_29_022E08A0.o)
   022E1E8C 00000000 .text   $d	(overlay_29_022E08A0.o)
   022E1E90 00000000 .text   $a	(overlay_29_022E08A0.o)
   022E1E90 00000078 .text   ov29_022E1550	(overlay_29_022E08A0.o)
@@ -35790,7 +35790,7 @@
   022E95FC 0000005C .text   FreeTopScreen	(overlay_29_022E7EC4.o)
   022E9654 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E9658 00000000 .text   $a	(overlay_29_022E7EC4.o)
-  022E9658 00000040 .text   ov29_022E8CA8	(overlay_29_022E7EC4.o)
+  022E9658 00000040 .text   DungeonChangeTopScreenType	(overlay_29_022E7EC4.o)
   022E9694 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E9698 00000000 .text   $a	(overlay_29_022E7EC4.o)
   022E9698 00000178 .text   ov29_022E8CE8	(overlay_29_022E7EC4.o)
@@ -35979,7 +35979,7 @@
   022EB678 00000000 .text   $d	(overlay_29_022EAB50.o)
   022EB67C 00000018 .text   PlaySeByIdIfNotSilence	(overlay_29_022EAB50.o)
   022EB67C 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022EB694 0000001C .text   ov29_022EACE4	(overlay_29_022EAB50.o)
+  022EB694 0000001C .text   PlayMeByIdIfNot998	(overlay_29_022EAB50.o)
   022EB6AC 00000000 .text   $d	(overlay_29_022EAB50.o)
   022EB6B0 00000068 .text   MusicTableIdxToMusicId	(overlay_29_022EAB50.o)
   022EB6B0 00000000 .text   $a	(overlay_29_022EAB50.o)
@@ -36006,7 +36006,7 @@
   022EB8D0 00000000 .text   $a	(overlay_29_022EAB50.o)
   022EB8E0 00000000 .text   $d	(overlay_29_022EAB50.o)
   022EB8E4 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022EB8E4 00000014 .text   ov29_022EAF34	(overlay_29_022EAB50.o)
+  022EB8E4 00000014 .text   SetUnkMusicFlag	(overlay_29_022EAB50.o)
   022EB8F4 00000000 .text   $d	(overlay_29_022EAB50.o)
   022EB8F8 00000000 .text   $a	(overlay_29_022EAB50.o)
   022EB8F8 00000068 .text   ov29_022EAF48	(overlay_29_022EAB50.o)
@@ -36047,7 +36047,7 @@
   022EBFB4 00000000 .text   $d	(overlay_29_022EB44C.o)
   022EBFBC 00000000 .text   $a	(overlay_29_022EB44C.o)
   022EBFBC 0000005C .text   RemoveUsedItem	(overlay_29_022EB44C.o)
-  022EC018 0000019C .text   ov29_022EB668	(overlay_29_022EB44C.o)
+  022EC018 0000019C .text   ConvertTmToUsedTm	(overlay_29_022EB44C.o)
   022EC1B0 00000000 .text   $d	(overlay_29_022EB44C.o)
   022EC1B4 00000018 .text   ov29_022EB804	(overlay_29_022EB44C.o)
   022EC1B4 00000000 .text   $a	(overlay_29_022EB44C.o)
@@ -36147,7 +36147,7 @@
   022ED770 00000024 .text   EntityIsValid__022ECDC0	(overlay_29_022ECDC0.o)
   022ED770 00000000 .text   $a	(overlay_29_022ECDC0.o)
   022ED794 00000000 .text   $a	(overlay_29_022ECDE4.o)
-  022ED794 00000160 .text   ov29_022ECDE4	(overlay_29_022ECDE4.o)
+  022ED794 00000160 .text   CreateMonsterSummaryFromEntityOuter	(overlay_29_022ECDE4.o)
   022ED794 00000E4C .text   .text	(overlay_29_022ECDE4.o)
   022ED8E4 00000000 .text   $d	(overlay_29_022ECDE4.o)
   022ED8F4 00000034 .text   IsDungeonEndReasonFailure	(overlay_29_022ECDE4.o)
@@ -36338,7 +36338,7 @@
   022F11FC 00000014 .text   ov29_022F0848	(overlay_29_022F05B4.o)
   022F120C 00000000 .text   $d	(overlay_29_022F05B4.o)
   022F1210 00000000 .text   $a	(overlay_29_022F05B4.o)
-  022F1210 00000128 .text   ov29_022F085C	(overlay_29_022F05B4.o)
+  022F1210 00000128 .text   GonePebbleGradualPaletteShift	(overlay_29_022F05B4.o)
   022F1334 00000000 .text   $d	(overlay_29_022F05B4.o)
   022F1338 00000000 .text   $a	(overlay_29_022F05B4.o)
   022F1338 00000120 .text   TalkToSecretBazaarNpc	(overlay_29_022F05B4.o)
@@ -36681,7 +36681,7 @@
   022FAF30 00000774 .text   .text	(overlay_29_022FA524.o)
   022FAF7C 00000000 .text   $d	(overlay_29_022FA524.o)
   022FAF80 00000000 .text   $a	(overlay_29_022FA524.o)
-  022FAF80 0000007C .text   ov29_022FA574	(overlay_29_022FA524.o)
+  022FAF80 0000007C .text   DisplayLinkedMovesWarnings	(overlay_29_022FA524.o)
   022FAFF0 00000000 .text   $d	(overlay_29_022FA524.o)
   022FAFFC 00000000 .text   $a	(overlay_29_022FA524.o)
   022FAFFC 00000058 .text   MewSpawnCheck	(overlay_29_022FA524.o)
@@ -36771,7 +36771,7 @@
   022FC5E8 00000060 .text   FindMonsterWithBehavior	(overlay_29_022FBBEC.o)
   022FC644 00000000 .text   $d	(overlay_29_022FBBEC.o)
   022FC648 00000194 .text   .text	(overlay_29_022FBC4C.o)
-  022FC648 00000048 .text   ov29_022FBC4C	(overlay_29_022FBC4C.o)
+  022FC648 00000048 .text   CountActiveMonsters	(overlay_29_022FBC4C.o)
   022FC648 00000000 .text   $a	(overlay_29_022FBC4C.o)
   022FC68C 00000000 .text   $d	(overlay_29_022FBC4C.o)
   022FC690 00000074 .text   ov29_022FBC94	(overlay_29_022FBC4C.o)
@@ -39798,7 +39798,7 @@
   02349594 00000084 .text   ov29_02348994	(overlay_29_02348020.o)
   02349594 00000000 .text   $a	(overlay_29_02348020.o)
   02349614 00000000 .text   $d	(overlay_29_02348020.o)
-  02349618 000000A4 .text   ov29_02348A18	(overlay_29_02348020.o)
+  02349618 000000A4 .text   MissionExitPrompt	(overlay_29_02348020.o)
   02349618 00000000 .text   $a	(overlay_29_02348020.o)
   023496B8 00000000 .text   $d	(overlay_29_02348020.o)
   023496BC 0000006C .text   ov29_02348ABC	(overlay_29_02348020.o)
@@ -39919,7 +39919,7 @@
   0234A2D8 00000000 .text   $a	(overlay_29_02348D3C.o)
   0234A2D8 00000014 .text   GetTargetMonsterNotFoundFlag	(overlay_29_02348D3C.o)
   0234A2E8 00000000 .text   $d	(overlay_29_02348D3C.o)
-  0234A2EC 0000005C .text   ov29_023496EC	(overlay_29_02348D3C.o)
+  0234A2EC 0000005C .text   ClearMissionDestinationInfo	(overlay_29_02348D3C.o)
   0234A2EC 00000000 .text   $a	(overlay_29_02348D3C.o)
   0234A348 00000048 .text   FloorHasMissionMonster	(overlay_29_02348D3C.o)
   0234A390 00000038 .text   GetMissionIfActiveOnFloor	(overlay_29_02348D3C.o)
@@ -39935,7 +39935,7 @@
   0234A670 00000064 .text   GetFirstExperienceLockedTeamMember	(overlay_29_023498A0.o)
   0234A6D0 00000000 .text   $d	(overlay_29_023498A0.o)
   0234A6D4 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234A6D4 000001B0 .text   ov29_02349AD4	(overlay_29_023498A0.o)
+  0234A6D4 000001B0 .text   TryCompleteMission	(overlay_29_023498A0.o)
   0234A880 00000000 .text   $d	(overlay_29_023498A0.o)
   0234A884 000005C0 .text   ov29_02349C84	(overlay_29_023498A0.o)
   0234A884 00000000 .text   $a	(overlay_29_023498A0.o)
@@ -39966,7 +39966,7 @@
   0234B7B0 000000DC .text   ov29_0234ABB0	(overlay_29_023498A0.o)
   0234B880 00000000 .text   $d	(overlay_29_023498A0.o)
   0234B88C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234B88C 00000084 .text   ov29_0234AC8C	(overlay_29_023498A0.o)
+  0234B88C 00000084 .text   TreasureMemoComplete	(overlay_29_023498A0.o)
   0234B908 00000000 .text   $d	(overlay_29_023498A0.o)
   0234B910 00000000 .text   $a	(overlay_29_023498A0.o)
   0234B910 000000BC .text   ov29_0234AD10	(overlay_29_023498A0.o)
@@ -40225,7 +40225,7 @@
   0234E290 00000000 .text   $a	(overlay_29_0234D484.o)
   0234E290 00000038 .text   ov29_0234D690	(overlay_29_0234D484.o)
   0234E2C8 00000044 .text   ov29_0234D6C8	(overlay_29_0234D484.o)
-  0234E30C 00000044 .text   ov29_0234D70C	(overlay_29_0234D484.o)
+  0234E30C 00000044 .text   PrintMissionCompleteString	(overlay_29_0234D484.o)
   0234E350 00000070 .text   ov29_0234D750	(overlay_29_0234D484.o)
   0234E3BC 00000000 .text   $d	(overlay_29_0234D484.o)
   0234E3C0 00000078 .text   ov29_0234D7C0	(overlay_29_0234D484.o)
@@ -41751,5 +41751,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Jun 17 00:26:07 2026
-# Link end time: Wed Jun 17 00:26:07 2026
+# Link start time: Sat Jun 20 04:52:19 2026
+# Link end time: Sat Jun 20 04:52:20 2026
