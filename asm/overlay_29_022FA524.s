@@ -34,8 +34,8 @@ _022FA560:
 _022FA570: .word DUNGEON_PTR
 	arm_func_end ov29_022FA524
 
-	arm_func_start ov29_022FA574
-ov29_022FA574: ; 0x022FA574
+	arm_func_start DisplayLinkedMovesWarnings
+DisplayLinkedMovesWarnings: ; 0x022FA574
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -80,7 +80,7 @@ _022FA5E4: .word 0x00000C1D
 _022FA5E8: .word 0x00000C1E
 _022FA5EC: .word 0x00000C1F
 #endif
-	arm_func_end ov29_022FA574
+	arm_func_end DisplayLinkedMovesWarnings
 
 	arm_func_start MewSpawnCheck
 MewSpawnCheck: ; 0x022FA5F0

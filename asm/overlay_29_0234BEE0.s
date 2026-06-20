@@ -75,7 +75,7 @@ RunDungeonMode: ; 0x0234BF28
 	bl DungeonZInit
 	bl ov29_022DDFF0
 	bl ov29_022DDFFC
-	bl ov29_022DE300
+	bl InitDungeonPaletteStruct
 	ldr r0, _0234C1C8 ; =ov29_023537D8
 	mov ip, r5
 	ldr r0, [r0, #4]

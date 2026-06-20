@@ -1099,7 +1099,7 @@ _0238B530: .word OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 ov17_0238B534: ; 0x0238B534
 	stmdb sp!, {r3, lr}
 	mov r0, #5
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	ldr r0, _0238B578 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
@@ -1173,7 +1173,7 @@ ov17_0238B5FC: ; 0x0238B5FC
 	ldrsh r1, [r1, #0x58]
 	orr r1, r1, #0x20000
 	str r1, [r2, #0xc]
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	ldr r0, _0238B684 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
@@ -1219,7 +1219,7 @@ _0238B6A8: .word OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 ov17_0238B6AC: ; 0x0238B6AC
 	stmdb sp!, {r3, lr}
 	mov r0, #7
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	ldr r0, _0238B6D8 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
@@ -1359,7 +1359,7 @@ _0238B850: .word OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 ov17_0238B854: ; 0x0238B854
 	stmdb sp!, {r3, lr}
 	mov r0, #3
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	ldreq r0, _0238B878 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	moveq r1, #0

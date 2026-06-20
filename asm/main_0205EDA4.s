@@ -270,8 +270,8 @@ GetAcceptedMission: ; 0x0205F0D8
 _0205F0EC: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end GetAcceptedMission
 
-	arm_func_start sub_0205F0F0
-sub_0205F0F0: ; 0x0205F0F0
+	arm_func_start IsAcceptedMissionSlotEmpty
+IsAcceptedMissionSlotEmpty: ; 0x0205F0F0
 	ldr r1, _0205F114 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r0, r1, r0, lsl #5
@@ -283,7 +283,7 @@ sub_0205F0F0: ; 0x0205F0F0
 	bx lr
 	.align 2, 0
 _0205F114: .word MISSION_DELIVER_LIST_PTR
-	arm_func_end sub_0205F0F0
+	arm_func_end IsAcceptedMissionSlotEmpty
 
 	arm_func_start WasMissionCompletedToday
 WasMissionCompletedToday: ; 0x0205F118
@@ -1139,7 +1139,7 @@ _0205FBAC:
 	add r0, sp, #0
 	bl BitstreamDebug
 	bl Rand16Bit
-	bl sub_020634F4
+	bl WriteMissionMtState
 	ldr r0, [sp, #8]
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -1490,7 +1490,7 @@ _020600B8:
 	arm_func_start ReadRescueBinFile
 ReadRescueBinFile: ; 0x020600CC
 	stmdb sp!, {r3, lr}
-	ldr r0, _02060144 ; =_020B0AD8
+	ldr r0, _02060144 ; =RESCUE_BIN_UNPACK
 	ldr r0, [r0, #0x24]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
@@ -1498,7 +1498,7 @@ ReadRescueBinFile: ; 0x020600CC
 	ldr r1, _0206014C ; =_020A462C
 	mov r2, #1
 	bl LoadFileFromRom
-	ldr r0, _02060144 ; =_020B0AD8
+	ldr r0, _02060144 ; =RESCUE_BIN_UNPACK
 	ldr r2, [r0, #0x24]
 	ldr r1, [r2]
 	add r1, r2, r1
@@ -1520,7 +1520,7 @@ ReadRescueBinFile: ; 0x020600CC
 	str r1, [r0, #0xc]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02060144: .word _020B0AD8
+_02060144: .word RESCUE_BIN_UNPACK
 _02060148: .word _020B0AFC
 _0206014C: .word _020A462C
 	arm_func_end ReadRescueBinFile
@@ -2157,7 +2157,7 @@ MatchMissionTemplateToMission: ; 0x0206096C
 	ldr r5, [r2, r8, lsl #2]
 	mov r4, #0
 	mov sb, #0x22
-	ldr sl, _020609E4 ; =_020B0AD8
+	ldr sl, _020609E4 ; =RESCUE_BIN_UNPACK
 	b _020609BC
 _02060990:
 	mul r6, r4, sb
@@ -2166,7 +2166,7 @@ _02060990:
 	add r0, r0, r6
 	blx r5
 	cmp r0, #0
-	ldrne r0, _020609E4 ; =_020B0AD8
+	ldrne r0, _020609E4 ; =RESCUE_BIN_UNPACK
 	ldrne r0, [r0, #0x18]
 	addne r0, r0, r6
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -2183,7 +2183,7 @@ _020609BC:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _020609E0: .word MISSION_VALIDATION_FUNCTION_LIST
-_020609E4: .word _020B0AD8
+_020609E4: .word RESCUE_BIN_UNPACK
 	arm_func_end MatchMissionTemplateToMission
 
 	arm_func_start SprintfStatic__020609E8
@@ -2225,7 +2225,7 @@ AppendMissionTitle: ; 0x02060A10
 	ldr fp, _02060AF0 ; =0x00000FFF
 	ldr sb, _02060AF4 ; =MISSION_STRING_IDS
 	add r7, fp, #0xf000
-	ldr r8, _02060AF8 ; =_020B0AD8
+	ldr r8, _02060AF8 ; =RESCUE_BIN_UNPACK
 	b _02060AD4
 _02060A74:
 	and r0, sl, fp
@@ -2264,7 +2264,7 @@ _02060AE4:
 _02060AEC: .word _020A4644
 _02060AF0: .word 0x00000FFF
 _02060AF4: .word MISSION_STRING_IDS
-_02060AF8: .word _020B0AD8
+_02060AF8: .word RESCUE_BIN_UNPACK
 	arm_func_end AppendMissionTitle
 
 	arm_func_start FormatMissionHeader
@@ -2572,7 +2572,7 @@ AppendMissionSummary: ; 0x02060EB4
 	ldr r2, [r3, #4]
 	ldrb r3, [r3, #1]
 	add r1, r2, r1
-	ldr sb, _02060FCC ; =_020B0AD8
+	ldr sb, _02060FCC ; =RESCUE_BIN_UNPACK
 	add r1, r3, r1
 	str r1, [sp, #4]
 	ldr r1, [r8, #0x60]
@@ -2630,7 +2630,7 @@ _02060FA8:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02060FCC: .word _020B0AD8
+_02060FCC: .word RESCUE_BIN_UNPACK
 _02060FD0: .word 0x00000FFF
 _02060FD4: .word MISSION_STRING_IDS
 	arm_func_end AppendMissionSummary
@@ -4061,12 +4061,12 @@ _02062234:
 	cmp r3, ip
 	blo _02062224
 	mov r1, ip
-	bl sub_02062248
+	bl RandomizeMissionCategory
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0206220C
 
-	arm_func_start sub_02062248
-sub_02062248: ; 0x02062248
+	arm_func_start RandomizeMissionCategory
+RandomizeMissionCategory: ; 0x02062248
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, #0
 	mov r6, r1
@@ -4087,7 +4087,7 @@ _02062280:
 	blo _02062264
 	mvn r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_02062248
+	arm_func_end RandomizeMissionCategory
 
 	arm_func_start SumValidMissionCategoryWeights
 SumValidMissionCategoryWeights: ; 0x02062290
@@ -4110,7 +4110,7 @@ _020622C8:
 	bl GetRank
 	mov r8, r0
 	bl GetScenarioBalance
-	ldr r4, _02062544 ; =_020B0AD8
+	ldr r4, _02062544 ; =RESCUE_BIN_UNPACK
 	mov sb, r0
 	mov sl, r6
 	mov fp, #0x16
@@ -4153,7 +4153,7 @@ _02062360:
 	bl GetRank
 	mov r8, r0
 	bl GetScenarioBalance
-	ldr r4, _02062544 ; =_020B0AD8
+	ldr r4, _02062544 ; =RESCUE_BIN_UNPACK
 	mov sb, r0
 	mov sl, r6
 	mov fp, #0x16
@@ -4196,7 +4196,7 @@ _020623F8:
 	bl GetRank
 	mov r8, r0
 	bl GetScenarioBalance
-	ldr r4, _02062544 ; =_020B0AD8
+	ldr r4, _02062544 ; =RESCUE_BIN_UNPACK
 	mov sb, r0
 	mov sl, r6
 	mov fp, #0x16
@@ -4239,7 +4239,7 @@ _02062490:
 	bl GetRank
 	mov r8, r0
 	bl GetScenarioBalance
-	ldr r4, _02062544 ; =_020B0AD8
+	ldr r4, _02062544 ; =RESCUE_BIN_UNPACK
 	mov sb, r0
 	mov sl, r6
 	mov fp, #0x16
@@ -4278,7 +4278,7 @@ _0206250C:
 	add r6, r6, r0
 	blt _020624B0
 _02062524:
-	ldr r0, _02062544 ; =_020B0AD8
+	ldr r0, _02062544 ; =RESCUE_BIN_UNPACK
 	cmp r6, #0
 	str r6, [r0, #0x20]
 	str r7, [r0, #0x1c]
@@ -4287,42 +4287,42 @@ _02062524:
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02062544: .word _020B0AD8
+_02062544: .word RESCUE_BIN_UNPACK
 	arm_func_end SumValidMissionCategoryWeights
 
 	arm_func_start sub_02062548
 sub_02062548: ; 0x02062548
 	stmdb sp!, {r3, lr}
-	ldr r0, _02062574 ; =_020B0AD8
+	ldr r0, _02062574 ; =RESCUE_BIN_UNPACK
 	ldr r0, [r0, #0x1c]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _02062574 ; =_020B0AD8
+	ldr r0, _02062574 ; =RESCUE_BIN_UNPACK
 	mov r1, #0
 	str r1, [r0, #0x1c]
 	str r1, [r0, #0x20]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02062574: .word _020B0AD8
+_02062574: .word RESCUE_BIN_UNPACK
 	arm_func_end sub_02062548
 
 	arm_func_start GetRandomMissionTemplate
 GetRandomMissionTemplate: ; 0x02062578
 	stmdb sp!, {r4, lr}
-	ldr r2, _02062768 ; =_020B0AD8
+	ldr r2, _02062768 ; =RESCUE_BIN_UNPACK
 	mov r1, #0x258
 	ldr r0, [r2, #0x20]
 	ldr r2, [r2, #0x1c]
-	bl sub_02062248
+	bl RandomizeMissionCategory
 	movs r4, r0
 	bmi _02062760
-	ldr r0, _02062768 ; =_020B0AD8
+	ldr r0, _02062768 ; =RESCUE_BIN_UNPACK
 	ldr r0, [r0, #0xc]
 	add r0, r0, r4, lsl #4
 	ldrh r0, [r0, #0xc]
 	bl RandInt
-	ldr r2, _02062768 ; =_020B0AD8
+	ldr r2, _02062768 ; =RESCUE_BIN_UNPACK
 	mov r1, #0x22
 	ldr r3, [r2, #0xc]
 	ldr r2, [r2, #0x18]
@@ -4446,13 +4446,13 @@ _02062760:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02062768: .word _020B0AD8
+_02062768: .word RESCUE_BIN_UNPACK
 	arm_func_end GetRandomMissionTemplate
 
 	arm_func_start sub_0206276C
 sub_0206276C: ; 0x0206276C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r5, _020627F0 ; =_020B0AD8
+	ldr r5, _020627F0 ; =RESCUE_BIN_UNPACK
 	mov ip, #0
 	ldr r4, [r5, #0xc]
 	ldr r5, [r5, #0x18]
@@ -4488,25 +4488,25 @@ _020627E0:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020627F0: .word _020B0AD8
+_020627F0: .word RESCUE_BIN_UNPACK
 	arm_func_end sub_0206276C
 
 	arm_func_start sub_020627F4
 sub_020627F4: ; 0x020627F4
-	ldr r0, _02062800 ; =_020B0AD8
+	ldr r0, _02062800 ; =RESCUE_BIN_UNPACK
 	ldr r0, [r0, #8]
 	bx lr
 	.align 2, 0
-_02062800: .word _020B0AD8
+_02062800: .word RESCUE_BIN_UNPACK
 	arm_func_end sub_020627F4
 
 	arm_func_start LoadMissionTemplates
 LoadMissionTemplates: ; 0x02062804
-	ldr r0, _02062810 ; =_020B0AD8
+	ldr r0, _02062810 ; =RESCUE_BIN_UNPACK
 	ldr r0, [r0, #0x10]
 	bx lr
 	.align 2, 0
-_02062810: .word _020B0AD8
+_02062810: .word RESCUE_BIN_UNPACK
 	arm_func_end LoadMissionTemplates
 
 	arm_func_start sub_02062814
@@ -5532,25 +5532,25 @@ _020634BC:
 _020634F0: .word ITEM_DELIVERY_TABLE
 	arm_func_end GetAvailableItemDeliveryList
 
-	arm_func_start sub_020634F4
-sub_020634F4: ; 0x020634F4
-	ldr r1, _02063500 ; =_020B0AD8
+	arm_func_start WriteMissionMtState
+WriteMissionMtState: ; 0x020634F4
+	ldr r1, _02063500 ; =RESCUE_BIN_UNPACK
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_02063500: .word _020B0AD8
-	arm_func_end sub_020634F4
+_02063500: .word RESCUE_BIN_UNPACK
+	arm_func_end WriteMissionMtState
 
-	arm_func_start sub_02063504
-sub_02063504: ; 0x02063504
-	ldr r0, _02063518 ; =_020B0AD8
+	arm_func_start ReadMissionMtStateLower
+ReadMissionMtStateLower: ; 0x02063504
+	ldr r0, _02063518 ; =RESCUE_BIN_UNPACK
 	ldr r0, [r0]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bx lr
 	.align 2, 0
-_02063518: .word _020B0AD8
-	arm_func_end sub_02063504
+_02063518: .word RESCUE_BIN_UNPACK
+	arm_func_end ReadMissionMtStateLower
 
 	arm_func_start ZeroInitMissionRewardDataStruct
 ZeroInitMissionRewardDataStruct: ; 0x0206351C
@@ -8578,8 +8578,8 @@ SetRandomRequestNpcs1And2: ; 0x02065B80
 _02065B90: .word _020B0B08
 	arm_func_end SetRandomRequestNpcs1And2
 
-	arm_func_start sub_02065B94
-sub_02065B94: ; 0x02065B94
+	arm_func_start SetRandomRequestNpc03KindVar
+SetRandomRequestNpc03KindVar: ; 0x02065B94
 	ldr ip, _02065BA8 ; =SaveScriptVariableValue
 	mov r2, r0
 	mov r0, #0
@@ -8587,7 +8587,7 @@ sub_02065B94: ; 0x02065B94
 	bx ip
 	.align 2, 0
 _02065BA8: .word SaveScriptVariableValue
-	arm_func_end sub_02065B94
+	arm_func_end SetRandomRequestNpc03KindVar
 
 	arm_func_start SetAllEventNpcs
 SetAllEventNpcs: ; 0x02065BAC
@@ -8601,14 +8601,14 @@ SetAllEventNpcs: ; 0x02065BAC
 _02065BC4: .word _020B0B08
 	arm_func_end SetAllEventNpcs
 
-	arm_func_start sub_02065BC8
-sub_02065BC8: ; 0x02065BC8
+	arm_func_start SetNewFriendActor
+SetNewFriendActor: ; 0x02065BC8
 	ldr r1, _02065BD4 ; =_020B0B08
 	strh r0, [r1, #0xc]
 	bx lr
 	.align 2, 0
 _02065BD4: .word _020B0B08
-	arm_func_end sub_02065BC8
+	arm_func_end SetNewFriendActor
 
 	arm_func_start sub_02065BD8
 sub_02065BD8: ; 0x02065BD8
@@ -11846,7 +11846,7 @@ _02068650:
 _02068654:
 	mov r0, r6, lsl #0x18
 	mov r0, r0, asr #0x18
-	bl sub_0205F0F0
+	bl IsAcceptedMissionSlotEmpty
 	cmp r0, #0
 	moveq r0, r4, lsl #1
 	streqh r6, [r5, r0]
@@ -12188,7 +12188,7 @@ _02068B08:
 	mov r1, r6, lsl #0x18
 	mov r5, r0
 	mov r0, r1, asr #0x18
-	bl sub_0205F0F0
+	bl IsAcceptedMissionSlotEmpty
 	cmp r0, #0
 	bne _02068B64
 	bl GetAdventureLogDungeonFloor
@@ -12216,7 +12216,7 @@ _02068B74:
 _02068B78:
 	mov r0, r5, lsl #0x18
 	mov r0, r0, asr #0x18
-	bl sub_0205F0F0
+	bl IsAcceptedMissionSlotEmpty
 	cmp r0, #0
 	addeq r0, r7, r4, lsl #1
 	streqh r5, [r0, #0xc]

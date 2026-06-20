@@ -17,7 +17,7 @@ s8 sub_0204CDCC(void) {
     return LoadScriptVariableValue(0, VAR_WORLD_MAP_LEVEL);
 }
 
-void sub_0204CDE8(s32 value) {
+void SetWorldMapLevel(s32 value) {
     SaveScriptVariableValue(0, VAR_WORLD_MAP_LEVEL, value);
 }
 

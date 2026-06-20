@@ -2599,7 +2599,7 @@ ov29_022E56F4: ; 0x022E56F4
 	cmp r0, #0
 	bne _022E5710
 	mov r0, r4
-	bl ov29_022EACE4
+	bl PlayMeByIdIfNot998
 	ldmia sp!, {r4, pc}
 _022E5710:
 	bl ShouldDisplayEntityAdvanced
@@ -3137,7 +3137,7 @@ _022E5DFC:
 	ldr r0, _022E5E7C ; =ov29_0235119C
 	mov r1, r4, lsl #1
 	ldrh r0, [r0, r1]
-	bl ov29_022EACE4
+	bl PlayMeByIdIfNot998
 	b _022E5E3C
 _022E5E10:
 	cmp r4, #3
@@ -3151,7 +3151,7 @@ _022E5E2C:
 	ldr r0, _022E5E7C ; =ov29_0235119C
 	mov r1, r4, lsl #1
 	ldrh r0, [r0, r1]
-	bl ov29_022EACE4
+	bl PlayMeByIdIfNot998
 _022E5E3C:
 	mov r0, r5
 	mov r1, r4

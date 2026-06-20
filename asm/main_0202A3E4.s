@@ -10426,13 +10426,13 @@ sub_02032BB8: ; 0x02032BB8
 	tst r6, #0x10
 	beq _02032C30
 	mov r0, sb
-	bl sub_020332AC
+	bl InventoryMenuPreviousPage
 	b _02032C74
 _02032C30:
 	tst r6, #0x20
 	beq _02032C74
 	mov r0, sb
-	bl sub_02033284
+	bl InventoryMenuNextPage
 	b _02032C74
 _02032C44:
 	tst r1, #0x1000000
@@ -10463,25 +10463,25 @@ _02032C74:
 	tst r6, #0x40
 	beq _02032CB4
 	mov r0, sb
-	bl sub_020332F0
+	bl InventoryMenuPrevious10Pages
 	b _02032CEC
 _02032CB4:
 	tst r6, #0x80
 	beq _02032CEC
 	mov r0, sb
-	bl sub_020332CC
+	bl InventoryMenuNext10Pages
 	b _02032CEC
 _02032CC8:
 	tst r6, #0x40
 	beq _02032CDC
 	mov r0, sb
-	bl sub_020332AC
+	bl InventoryMenuPreviousPage
 	b _02032CEC
 _02032CDC:
 	tst r6, #0x80
 	beq _02032CEC
 	mov r0, sb
-	bl sub_02033284
+	bl InventoryMenuNextPage
 _02032CEC:
 	ldr r0, [sb, #0x10]
 	tst r0, #1
@@ -10914,8 +10914,8 @@ sub_020331D4: ; 0x020331D4
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020331D4
 
-	arm_func_start sub_02033284
-sub_02033284: ; 0x02033284
+	arm_func_start InventoryMenuNextPage
+InventoryMenuNextPage: ; 0x02033284
 	ldr r1, [r0, #0xcc]
 	ldr r2, [r0, #0xc8]
 	sub r1, r1, #1
@@ -10927,10 +10927,10 @@ sub_02033284: ; 0x02033284
 	bx ip
 	.align 2, 0
 _020332A8: .word sub_020331D4
-	arm_func_end sub_02033284
+	arm_func_end InventoryMenuNextPage
 
-	arm_func_start sub_020332AC
-sub_020332AC: ; 0x020332AC
+	arm_func_start InventoryMenuPreviousPage
+InventoryMenuPreviousPage: ; 0x020332AC
 	ldr r1, [r0, #0xc8]
 	ldr ip, _020332C8 ; =sub_020331D4
 	cmp r1, #0
@@ -10940,10 +10940,10 @@ sub_020332AC: ; 0x020332AC
 	bx ip
 	.align 2, 0
 _020332C8: .word sub_020331D4
-	arm_func_end sub_020332AC
+	arm_func_end InventoryMenuPreviousPage
 
-	arm_func_start sub_020332CC
-sub_020332CC: ; 0x020332CC
+	arm_func_start InventoryMenuNext10Pages
+InventoryMenuNext10Pages: ; 0x020332CC
 	ldr r2, [r0, #0xc8]
 	ldr r1, [r0, #0xcc]
 	add r2, r2, #0xa
@@ -10954,10 +10954,10 @@ sub_020332CC: ; 0x020332CC
 	bx ip
 	.align 2, 0
 _020332EC: .word sub_020331D4
-	arm_func_end sub_020332CC
+	arm_func_end InventoryMenuNext10Pages
 
-	arm_func_start sub_020332F0
-sub_020332F0: ; 0x020332F0
+	arm_func_start InventoryMenuPrevious10Pages
+InventoryMenuPrevious10Pages: ; 0x020332F0
 	ldr r1, [r0, #0xc8]
 	ldr ip, _02033308 ; =sub_020331D4
 	subs r1, r1, #0xa
@@ -10966,7 +10966,7 @@ sub_020332F0: ; 0x020332F0
 	bx ip
 	.align 2, 0
 _02033308: .word sub_020331D4
-	arm_func_end sub_020332F0
+	arm_func_end InventoryMenuPrevious10Pages
 
 	arm_func_start sub_0203330C
 sub_0203330C: ; 0x0203330C
@@ -11948,7 +11948,7 @@ _0203401C:
 	cmp r0, #0
 	beq _02034098
 	mov r0, r8
-	bl sub_020332F0
+	bl InventoryMenuPrevious10Pages
 	mov r0, r8
 	mov r1, #4
 	bl sub_020333D8
@@ -11971,7 +11971,7 @@ _02034098:
 	cmp r0, #0
 	beq _020340F0
 	mov r0, r8
-	bl sub_020332CC
+	bl InventoryMenuNext10Pages
 	mov r0, r8
 	mov r1, #4
 	bl sub_020333D8
@@ -11991,7 +11991,7 @@ _020340F0:
 	cmp r0, #0
 	beq _0203413C
 	mov r0, r8
-	bl sub_020332AC
+	bl InventoryMenuPreviousPage
 	mov r0, r8
 	mov r1, #4
 	bl sub_020333D8
@@ -12011,7 +12011,7 @@ _0203413C:
 	cmp r0, #0
 	beq _02034188
 	mov r0, r8
-	bl sub_02033284
+	bl InventoryMenuNextPage
 	mov r0, r8
 	mov r1, #4
 	bl sub_020333D8
@@ -12053,7 +12053,7 @@ _020341B8:
 	tst r0, #0x20000
 	mov r0, r8
 	beq _02034224
-	bl sub_020332AC
+	bl InventoryMenuPreviousPage
 	mov r0, r8
 	mov r1, #4
 	bl sub_020333D8
@@ -12087,7 +12087,7 @@ _02034230:
 	tst r0, #0x20000
 	mov r0, r8
 	beq _020342A0
-	bl sub_02033284
+	bl InventoryMenuNextPage
 	mov r0, r8
 	mov r1, #4
 	bl sub_020333D8

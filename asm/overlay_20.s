@@ -848,7 +848,7 @@ _0238AC84:
 	b _0238B05C
 _0238AC98:
 	mov r0, #4
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	moveq r0, #0x36
 	streq r0, [sb, #0xc]
@@ -936,7 +936,7 @@ _0238ADC8:
 	b _0238B05C
 _0238ADDC:
 	mov r0, #4
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	bne _0238B05C
 	mov r0, #0x2e

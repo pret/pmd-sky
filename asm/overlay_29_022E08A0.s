@@ -867,7 +867,7 @@ _022E1300: .word ov29_022E11F8
 ov29_022E1304: ; 0x022E1304
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
-	bl ov29_022E150C
+	bl ResetDungeonColorPalette
 	ldr r1, _022E14EC ; =0x000003FE
 	add r2, sp, #8
 	mov r0, #4
@@ -1063,8 +1063,8 @@ _022E1508: .word 0x0001212C
 #endif
 	arm_func_end ov29_022E1304
 
-	arm_func_start ov29_022E150C
-ov29_022E150C: ; 0x022E150C
+	arm_func_start ResetDungeonColorPalette
+ResetDungeonColorPalette: ; 0x022E150C
 	ldr r0, _022E154C ; =DUNGEON_PTR
 	mov r3, #0
 _022E1514:
@@ -1084,7 +1084,7 @@ _022E1514:
 	bx lr
 	.align 2, 0
 _022E154C: .word DUNGEON_PTR
-	arm_func_end ov29_022E150C
+	arm_func_end ResetDungeonColorPalette
 
 	arm_func_start ov29_022E1550
 ov29_022E1550: ; 0x022E1550

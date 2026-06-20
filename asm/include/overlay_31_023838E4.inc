@@ -26,6 +26,7 @@
 .public CreateDialogueBox
 .public CreateInventoryMenu
 .public CreateInventoryMenuOuter
+.public CreateMonsterSummaryFromEntityOuter
 .public CreateMonsterSummaryFromMonster
 .public CreateParentMenu
 .public CreateParentMenuFromStringIds
@@ -160,7 +161,6 @@
 .public ov29_022EBBA8
 .public ov29_022EBBE8
 .public ov29_022EBC2C
-.public ov29_022ECDE4
 .public ov29_022F9C34
 .public ov29_023002F0
 .public ov29_023021F0

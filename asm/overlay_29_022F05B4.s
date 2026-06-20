@@ -235,8 +235,8 @@ ov29_022F0848: ; 0x022F0848
 _022F0858: .word UnkMapRelatedFunc
 	arm_func_end ov29_022F0848
 
-	arm_func_start ov29_022F085C
-ov29_022F085C: ; 0x022F085C
+	arm_func_start GonePebbleGradualPaletteShift
+GonePebbleGradualPaletteShift: ; 0x022F085C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov r8, r1
@@ -317,7 +317,7 @@ _022F0964:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022F0980: .word DUNGEON_PTR
-	arm_func_end ov29_022F085C
+	arm_func_end GonePebbleGradualPaletteShift
 
 	arm_func_start TalkToSecretBazaarNpc
 TalkToSecretBazaarNpc: ; 0x022F0984

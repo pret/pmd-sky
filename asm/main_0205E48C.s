@@ -144,11 +144,11 @@ _0205E62C:
 	strb r2, [r1, #0x300]
 	ldr r0, [r0, #0x18]
 	strb r2, [r0, #0x320]
-	bl sub_02063504
+	bl ReadMissionMtStateLower
 	mov r4, r0
 	bl Rand16Bit
 	orr r0, r0, r4, lsl #16
-	bl sub_020510E8
+	bl MtInit
 	bl GenerateAllPossibleMonstersList
 	bl GenerateAllPossibleDungeonsList
 	bl GenerateAllPossibleDeliverList
@@ -349,8 +349,8 @@ _0205E8DC:
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x200
 	bl sub_0205E50C
-	bl sub_02051134
-	bl sub_020634F4
+	bl MtNext
+	bl WriteMissionMtState
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0205E948: .word MISSION_DELIVER_LIST_PTR

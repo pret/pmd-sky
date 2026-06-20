@@ -174,8 +174,8 @@ _02349AC0:
 _02349AD0: .word DUNGEON_PTR
 	arm_func_end GetFirstExperienceLockedTeamMember
 
-	arm_func_start ov29_02349AD4
-ov29_02349AD4: ; 0x02349AD4
+	arm_func_start TryCompleteMission
+TryCompleteMission: ; 0x02349AD4
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r2, _02349C80 ; =DUNGEON_PTR
 	mov r5, r0
@@ -295,7 +295,7 @@ _02349C78:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02349C80: .word DUNGEON_PTR
-	arm_func_end ov29_02349AD4
+	arm_func_end TryCompleteMission
 
 	arm_func_start ov29_02349C84
 ov29_02349C84: ; 0x02349C84
@@ -487,7 +487,7 @@ _02349F1C:
 	add r0, r0, #4
 	bl ov29_022FA3D4
 	mov r0, #1
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	bl GetMissionTargetEnemy
 	mov r1, r0
 	mov r0, #1
@@ -657,7 +657,7 @@ _0234A148:
 	mov r2, #1
 	bl DisplayMessage
 	mov r0, #2
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	b _0234A1D4
 _0234A198:
 	mov r0, #0
@@ -1225,7 +1225,7 @@ _0234A84C:
 	b _0234A898
 _0234A890:
 	ldr r0, _0234A8B8 ; =0x00000E44
-	bl ov29_02348A18
+	bl MissionExitPrompt
 _0234A898:
 	mov r0, #0
 	mov r1, r0
@@ -1539,7 +1539,7 @@ ov29_0234ABB0: ; 0x0234ABB0
 	bl ChangeDungeonMusic
 _0234AC38:
 	mov r0, #0
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 _0234AC40:
 	mov r0, r4
 	mov r1, #0
@@ -1553,7 +1553,7 @@ _0234AC40:
 	b _0234AC70
 _0234AC68:
 	ldr r0, _0234AC88 ; =0x00000E43
-	bl ov29_02348A18
+	bl MissionExitPrompt
 _0234AC70:
 	mov r0, #0
 	mov r1, r0
@@ -1571,8 +1571,8 @@ _0234AC88: .word 0x00000E43
 #endif
 	arm_func_end ov29_0234ABB0
 
-	arm_func_start ov29_0234AC8C
-ov29_0234AC8C: ; 0x0234AC8C
+	arm_func_start TreasureMemoComplete
+TreasureMemoComplete: ; 0x0234AC8C
 	stmdb sp!, {r3, r4, r5, lr}
 	bl GetSpecialTargetItem
 	mov r1, r0
@@ -1586,9 +1586,9 @@ ov29_0234AC8C: ; 0x0234AC8C
 	mov r2, #0
 	ldr r0, _0234AD08 ; =0x00000E12
 	mov r3, r2
-	bl ov29_0234D70C
+	bl PrintMissionCompleteString
 	mov r0, #9
-	bl ov29_022EACE4
+	bl PlayMeByIdIfNot998
 	mov r5, #0x62
 	mov r4, #9
 	b _0234ACE0
@@ -1597,14 +1597,14 @@ _0234ACD8:
 	bl AdvanceFrame
 _0234ACE0:
 	mov r0, r4
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	bne _0234ACD8
 	bl ov29_0234D838
 	mov r0, #0
 	bl ov29_0234D8A0
 	ldr r0, _0234AD0C ; =0x00000E43
-	bl ov29_02348A18
+	bl MissionExitPrompt
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 #ifdef JAPAN
@@ -1614,7 +1614,7 @@ _0234AD0C: .word 0x00000B84
 _0234AD08: .word 0x00000E12
 _0234AD0C: .word 0x00000E43
 #endif
-	arm_func_end ov29_0234AC8C
+	arm_func_end TreasureMemoComplete
 
 	arm_func_start ov29_0234AD10
 ov29_0234AD10: ; 0x0234AD10
@@ -1699,7 +1699,7 @@ _0234AE0C:
 	bl ov29_022FA3D4
 _0234AE1C:
 	mov r0, #1
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	ldr r1, _0234AE3C ; =0x00000E05
 	mov r0, #0
 	mov r2, #1

@@ -760,7 +760,7 @@ _0238ABF8:
 	cmp r0, #0
 	bgt _0238B37C
 	mov r0, #3
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	bne _0238AC2C
 	mov r0, #3
@@ -1713,7 +1713,7 @@ _0238B9D4:
 	cmp r0, #0
 	bgt _0238C158
 	mov r0, #3
-	bl sub_02017C10
+	bl IsMePlaying
 	cmp r0, #0
 	bne _0238BA08
 	mov r0, #3

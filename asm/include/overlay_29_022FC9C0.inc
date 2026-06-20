@@ -2,6 +2,7 @@
 .public AddHeldItemToBag
 .public CalcSpeedStageWrapper
 .public CASTFORM_WEATHER_ATTRIBUTE_TABLE
+.public CountActiveMonsters
 .public CreateEnemyEntity
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
@@ -81,7 +82,6 @@
 .public ov29_022F9EA0
 .public ov29_022FA1D8
 .public ov29_022FB83C
-.public ov29_022FBC4C
 .public ov29_022FBF08
 .public ov29_022FBF30
 .public ov29_022FC468

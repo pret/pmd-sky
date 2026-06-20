@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022FBC4C
-ov29_022FBC4C: ; 0x022FBC4C
+	arm_func_start CountActiveMonsters
+CountActiveMonsters: ; 0x022FBC4C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
 	ldr r4, _022FBC90 ; =DUNGEON_PTR
@@ -30,7 +30,7 @@ _022FBC80:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022FBC90: .word DUNGEON_PTR
-	arm_func_end ov29_022FBC4C
+	arm_func_end CountActiveMonsters
 
 	arm_func_start ov29_022FBC94
 ov29_022FBC94: ; 0x022FBC94

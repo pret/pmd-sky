@@ -3,6 +3,7 @@
 .public CanAttackInDirection
 .public CeilFixedPoint
 .public CheckTeamMemberIdx
+.public CreateMonsterSummaryFromEntityOuter
 .public DeleteWanTableEntryVeneer
 .public DetermineMonsterShadow
 .public DIRECTIONS_XY
@@ -29,6 +30,7 @@
 .public GetTile
 .public GetTileAtEntity
 .public GetTileSafe
+.public InitializeTeamMemberFromMentry
 .public IQ_SKILLS
 .public IsBehaviorLoneOutlaw
 .public IsLevelResetDungeon
@@ -49,7 +51,6 @@
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
-.public ov29_022ECDE4
 .public ov29_022EF7C4
 .public ov29_022F9B8C
 .public ov29_022FE048
@@ -72,7 +73,6 @@
 .public SetMissionTargetEnemyDefeated
 .public ShouldMonsterRunAway
 .public StoryRestrictionsEnabled
-.public sub_02053250
 .public sub_0205349C
 .public sub_02056228
 .public sub_020566C4

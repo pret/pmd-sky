@@ -26,7 +26,7 @@ ov29_0234AEE8: ; 0x0234AEE8
 	bl ChangeDungeonMusic
 _0234AF24:
 	mov r0, #0
-	bl ov29_022EAF34
+	bl SetUnkMusicFlag
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234AF30: .word DUNGEON_PTR
@@ -61,7 +61,7 @@ _0234AF8C:
 	mov r0, #1
 	bl AnimationDelayOrSomething
 	mov r0, r4
-	bl ov29_02348A18
+	bl MissionExitPrompt
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0234AFA0: .word 0x0000025B

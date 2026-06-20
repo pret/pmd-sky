@@ -12,12 +12,12 @@
 .public ov29_02348ABC
 .public ov29_02348B28
 .public ov29_02348BA0
-.public ov29_02349AD4
 .public ov29_0234A244
 .public ov29_0234A790
 .public ov29_0234A8BC
 .public ov29_0234AA98
 .public ov29_0234ABB0
-.public ov29_0234AC8C
 .public PrepareItemForPrinting__02345728
 .public SubstitutePlaceholderStringTags
+.public TreasureMemoComplete
+.public TryCompleteMission

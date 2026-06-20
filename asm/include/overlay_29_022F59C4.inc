@@ -5,6 +5,7 @@
 .public CheckTeamMemberIdxVeneer
 .public CheckVariousStatuses2__02301244
 .public DIRECTIONS_XY
+.public DisplayLinkedMovesWarnings
 .public DisplayMessage
 .public DisplayMessage2
 .public DUNGEON_PTR
@@ -38,7 +39,6 @@
 .public ov29_022F3B8C
 .public ov29_022F6748
 .public ov29_022F87C0
-.public ov29_022FA574
 .public ov29_023009CC
 .public ov29_02304AFC
 .public ov29_0231AE3C

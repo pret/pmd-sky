@@ -31,8 +31,8 @@ sub_020510C0: ; 0x020510C0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020510C0
 
-	arm_func_start sub_020510E8
-sub_020510E8: ; 0x020510E8
+	arm_func_start MtInit
+MtInit: ; 0x020510E8
 	ldr r3, _02051128 ; =_020AFF88
 	mov ip, #1
 	str r0, [r3]
@@ -48,19 +48,19 @@ _020510FC:
 _02051114:
 	cmp ip, #0x270
 	blt _020510FC
-	ldr r0, _02051130 ; =_020AFF7C
+	ldr r0, _02051130 ; =MT_TABLE
 	str ip, [r0]
 	bx lr
 	.align 2, 0
 _02051128: .word _020AFF88
 _0205112C: .word 0x6C078965
-_02051130: .word _020AFF7C
-	arm_func_end sub_020510E8
+_02051130: .word MT_TABLE
+	arm_func_end MtInit
 
-	arm_func_start sub_02051134
-sub_02051134: ; 0x02051134
+	arm_func_start MtNext
+MtNext: ; 0x02051134
 	stmdb sp!, {r4, lr}
-	ldr r0, _0205126C ; =_020AFF7C
+	ldr r0, _0205126C ; =MT_TABLE
 	ldr r1, [r0]
 	cmp r1, #0x270
 	blt _02051230
@@ -68,7 +68,7 @@ sub_02051134: ; 0x02051134
 	cmp r1, r0
 	bne _0205115C
 	add r0, r0, #0x1300
-	bl sub_020510E8
+	bl MtInit
 _0205115C:
 	ldr ip, _02051274 ; =_020AFF88
 	ldr r2, _02051278 ; =_020AFF80
@@ -122,12 +122,12 @@ _020511E8:
 	ldr r0, [r0, r2, lsl #2]
 	eor r2, r3, ip, lsr #1
 	eor r2, r2, r0
-	ldr r0, _0205126C ; =_020AFF7C
+	ldr r0, _0205126C ; =MT_TABLE
 	str r2, [r1, #0x9bc]
 	mov r1, #0
 	str r1, [r0]
 _02051230:
-	ldr r1, _0205126C ; =_020AFF7C
+	ldr r1, _0205126C ; =MT_TABLE
 	ldr r2, _02051274 ; =_020AFF88
 	ldr r3, [r1]
 	ldr r0, _02051280 ; =0x9D2C5680
@@ -143,12 +143,12 @@ _02051230:
 	eor r0, r0, r0, lsr #18
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0205126C: .word _020AFF7C
+_0205126C: .word MT_TABLE
 _02051270: .word 0x00000271
 _02051274: .word _020AFF88
 _02051278: .word _020AFF80
 _0205127C: .word 0x0000026F
 _02051280: .word 0x9D2C5680
 _02051284: .word 0xEFC60000
-	arm_func_end sub_02051134
+	arm_func_end MtNext
 

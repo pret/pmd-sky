@@ -9,6 +9,7 @@
 .public GetAndStoreButtonInput
 .public GroupOamAttributesBothScreens
 .public HandleMenus
+.public InitDungeonPaletteStruct
 .public InitRender3dElement64
 .public MemAlloc
 .public MemFree
@@ -25,7 +26,6 @@
 .public ov29_022DDFFC
 .public ov29_022DE0A0
 .public ov29_022DE0CC
-.public ov29_022DE300
 .public ov29_022DE498
 .public ov29_022DE868
 .public ov29_022E0CFC

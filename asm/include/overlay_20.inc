@@ -33,6 +33,7 @@
 .public InitStandardItem
 .public IsBagFull
 .public IsCollectionMenuActive
+.public IsMePlaying
 .public IsScriptMenuReturnDisabled
 .public IsScrollBoxActive
 .public IsSimpleMenuActive
@@ -75,7 +76,6 @@
 .public sub_020125CC
 .public sub_0201271C
 .public sub_02012874
-.public sub_02017C10
 .public sub_02017C50
 .public sub_02025D50
 .public sub_02027B1C

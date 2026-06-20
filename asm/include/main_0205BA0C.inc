@@ -4,10 +4,10 @@
 .public GetLanguageType
 .public GetMainTeamNameWithCheck
 .public GetMaxRescueAttempts
+.public MtInit
+.public MtNext
 .public Rand16Bit
 .public RandInt
-.public sub_020510E8
-.public sub_02051134
+.public ReadMissionMtStateLower
 .public sub_0205B560
-.public sub_020634F4
-.public sub_02063504
+.public WriteMissionMtState

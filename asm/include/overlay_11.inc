@@ -107,6 +107,7 @@
 .public IqSkillFlagTest
 .public IsBagFull
 .public IsDialogueBoxActive
+.public IsMePlaying
 .public IsMonsterOnTeam
 .public IsStorageFull
 .public IsStoryAfterPoint
@@ -513,6 +514,7 @@
 .public SetDungeonConquest
 .public SetEnterDungeon
 .public SetMemAllocatorParams
+.public SetNewFriendActor
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public SetPortraitOffset
@@ -523,6 +525,7 @@
 .public SetTeamSetupHeroAndPartnerOnly
 .public SetTeamSetupHeroOnly
 .public SetupAndShowKeyboard
+.public SetWorldMapLevel
 .public ShowPortraitInPortraitBox
 .public ShowStringIdInDialogueBox
 .public SpecialProcAddItemToBag
@@ -598,7 +601,6 @@
 .public sub_02017BEC
 .public sub_02017BF8
 .public sub_02017C04
-.public sub_02017C10
 .public sub_02017C50
 .public sub_02017C5C
 .public sub_02017C68
@@ -646,7 +648,6 @@
 .public sub_02048614
 .public sub_02049338
 .public sub_0204964C
-.public sub_0204CDE8
 .public sub_0204CE48
 .public sub_0204D018
 .public sub_0204E6FC
@@ -690,7 +691,6 @@
 .public sub_0206309C
 .public sub_02064FFC
 .public sub_02065050
-.public sub_02065BC8
 .public sub_02065BD8
 .public sub_02065C08
 .public sub_02065CB0

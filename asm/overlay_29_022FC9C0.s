@@ -708,7 +708,7 @@ ov29_022FD318: ; 0x022FD318
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ov29_022FBC4C
+	bl CountActiveMonsters
 	cmp r0, #0
 	moveq r0, #0
 	beq _022FD3AC

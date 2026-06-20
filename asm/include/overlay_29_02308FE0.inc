@@ -59,7 +59,6 @@
 .public ov29_022E81F8
 .public ov29_022EA370
 .public ov29_022EAF20
-.public ov29_022EAF34
 .public ov29_022ECD84
 .public ov29_022EFB20
 .public ov29_022EFB84
@@ -104,6 +103,7 @@
 .public SetMessageLogPreprocessorArgsNumberVal
 .public SetMonsterFlag2
 .public SetPokemonBattled
+.public SetUnkMusicFlag
 .public ShouldDisplayEntityWrapper
 .public SpawnDroppedItemWrapper
 .public SubInitMonster
