@@ -102,7 +102,7 @@ Static main
 	Object src/progression.o
 	Object src/scenario_flag.o
 	Object src/script_variable_2.o
-	Object asm/main_0204CDB8.o
+	Object asm/main_0204CF9C.o
 	Object src/main_0204DA2C.o
 	Object asm/main_0204DBA0.o
 	Object src/main_0204DD80.o

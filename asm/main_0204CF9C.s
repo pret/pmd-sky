@@ -1,39 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204CDB8.inc"
+	.include "main_0204CF9C.inc"
 
 	.text
-
-	arm_func_start SetDungeonConquest
-SetDungeonConquest: ; 0x0204CF38
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r0, r0, lsl #0x10
-	mov r3, r1
-	mov r2, r0, lsr #0x10
-	mov r0, #0
-	mov r1, #0x52
-	bl SaveScriptVariableValueAtIndex
-	mov r7, #0
-	ldr r6, _0204CF98 ; =_0209E008
-	mov r5, r7
-	mov r4, #0x52
-_0204CF64:
-	ldrb r2, [r6, r7]
-	add r7, r7, #1
-	cmp r2, #0xff
-	bne _0204CF80
-	mov r0, #0x23
-	bl SetAdventureLogCompleted
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-_0204CF80:
-	mov r0, r5
-	mov r1, r4
-	bl LoadScriptVariableValueAtIndex
-	cmp r0, #0
-	bne _0204CF64
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
-_0204CF98: .word _0209E008
-	arm_func_end SetDungeonConquest
 
 	arm_func_start GetDungeonMode
 GetDungeonMode: ; 0x0204CF9C

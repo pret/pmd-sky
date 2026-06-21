@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/FPdo0
 	arm_func_start sub_0200EB64
 sub_0200EB64: ; 0x0200EB64
 	ldr r1, _0200EB88 ; =ITEM_DATA_TABLE_PTRS
