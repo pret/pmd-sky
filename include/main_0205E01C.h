@@ -13,5 +13,6 @@ struct unkStruct_0205E01C {
 };
 
 bool8 sub_0205E01C(struct unkStruct_0205E01C *ptr, s32 arg1, s32 arg2, s32 arg3);
+s32 sub_0205E090(s32 arg0, s32 arg1, s32 arg2);
 
 #endif //PMDSKY_MAIN_0205E01C_H

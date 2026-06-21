@@ -509,6 +509,7 @@ _022FD070:
 _022FD080: .word DUNGEON_PTR
 	arm_func_end SpawnInitialMonsters
 
+; https://decomp.me/scratch/x6LAV
 	arm_func_start SpawnMonster
 SpawnMonster: ; 0x022FD084
 #ifdef JAPAN
