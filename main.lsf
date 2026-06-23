@@ -232,7 +232,7 @@ Static main
     Object lib/NitroSDK/asm/gx_vramcnt.o
     Object lib/NitroSDK/asm/gx_bgcnt.o
     Object lib/NitroSDK/src/gx/g2.o
-    Object lib/NitroSDK/asm/g3imm.o
+    Object lib/NitroSDK/src/gx/g3imm.o
     Object lib/NitroSDK/asm/g3x.o
     Object lib/NitroSDK/asm/g3_util.o
     Object lib/NitroSDK/asm/gx_load2d.o
