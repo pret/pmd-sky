@@ -227,6 +227,8 @@ Static main
     Object lib/NitroSDK/asm/mtx.o
     Object lib/NitroSDK/asm/fx_cp.o
     Object lib/NitroSDK/asm/fx_vec.o
+    Object lib/NitroSDK/asm/fx_atanidx.o
+    Object lib/NitroSDK/asm/fx_fx.o
     Object lib/NitroSDK/asm/gx.o
     Object lib/NitroSDK/asm/gxstate.o
     Object lib/NitroSDK/asm/gx_vramcnt.o
@@ -276,7 +278,7 @@ Static main
     Object lib/NitroSDK/asm/snd_alarm.o
     Object lib/NitroSDK/asm/snd_work.o
     Object lib/NitroSDK/src/snd/snd_util.o
-    Object lib/NitroSDK/asm/snd_bank.o
+    Object lib/NitroSDK/src/snd/snd_bank.o
     Object lib/NitroSDK/src/pxi_init.o
     Object lib/NitroSDK/asm/pxi_fifo.o
     Object lib/NitroSDK/asm/fs_command.o

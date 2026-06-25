@@ -144,7 +144,7 @@ typedef enum {
 
 #ifdef SDK_ARM7
     #if !(defined(SDK_WIN32) || defined(SDK_FROM_TOOL))
-        static inline void SND_StartChannel (int chNo)
+        static inline void Snd_StartChannel (int chNo)
         {
             SDK_MINMAX_ASSERT(chNo, SND_CHANNEL_MIN, SND_CHANNEL_MAX);
 
@@ -152,34 +152,34 @@ typedef enum {
                 |= REG_SND_SOUND0CNT_8_E_MASK;
         }
     #else
-        void SND_StartChannel(int chNo);
+        void Snd_StartChannel(int chNo);
     #endif
 #endif
 
 #ifdef SDK_ARM7
-    void SND_SetupChannelPcm(int chNo,
+    void Snd_SetupChannelPcm(int chNo,
                             const void * dataaddr,
                             SNDWaveFormat format,
                             SNDChannelLoop loop,
                             int loopStart,
                             int loopLen, int volume, SNDChannelDataShift shift, int timer, int pan);
 
-    void SND_SetupChannelPsg(int chNo,
+    void Snd_SetupChannelPsg(int chNo,
                             SNDDuty duty,
                             int volume, SNDChannelDataShift shift, int timer, int pan);
 
-    void SND_SetupChannelNoise(int chNo, int volume, SNDChannelDataShift shift, int timer, int pan);
-    void SND_StopChannel(int chNo, s32 flags);
-    void SND_SetChannelVolume(int chNo, int volume, SNDChannelDataShift shift);
-    void SND_SetChannelTimer(int chNo, int timer);
-    void SND_SetChannelPan(int chNo, int pan);
-    BOOL SND_IsChannelActive(int chNo);
-    void SND_SetMasterPan(int pan);
-    u32 SND_GetChannelControl(int chNo);
+    void Snd_SetupChannelNoise(int chNo, int volume, SNDChannelDataShift shift, int timer, int pan);
+    void Snd_StopChannel(int chNo, s32 flags);
+    void Snd_SetChannelVolume(int chNo, int volume, SNDChannelDataShift shift);
+    void Snd_SetChannelTimer(int chNo, int timer);
+    void Snd_SetChannelPan(int chNo, int pan);
+    BOOL Snd_IsChannelActive(int chNo);
+    void Snd_SetMasterPan(int pan);
+    u32 Snd_GetChannelControl(int chNo);
 #endif
 
 #ifdef SDK_ARM7
-    void SNDi_SetSurroundDecay(int decay);
+    void Sndi_SetSurroundDecay(int decay);
 #endif
 
 #ifdef __cplusplus
