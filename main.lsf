@@ -225,9 +225,9 @@ Static main
 
     ### NitroSDK ###
     Object lib/NitroSDK/asm/mtx.o
-    Object lib/NitroSDK/asm/fx_cp.o
+    Object lib/NitroSDK/src/fx/fx_cp.o
     Object lib/NitroSDK/asm/fx_vec.o
-    Object lib/NitroSDK/asm/fx_atanidx.o
+    Object lib/NitroSDK/src/fx/fx_atanidx.o
     Object lib/NitroSDK/asm/fx_fx.o
     Object lib/NitroSDK/asm/gx.o
     Object lib/NitroSDK/asm/gxstate.o

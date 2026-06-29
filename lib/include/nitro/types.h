@@ -52,5 +52,9 @@ typedef int BOOL;
 #endif
 
 #define SDK_FORCE_EXPORT __declspec(force_export)
+
+#define SDK_INLINE      static inline
+#define SDK_DECL_INLINE static
+
 #endif //SDK_ASM
 #endif //NITRO_TYPES_H_
