@@ -40,13 +40,13 @@ s32 FX_ModS32(s32 a, s32 b);
 #define FX_DIVISION_BY_ZERO(a, b) \
 	SDK_WARNING(b != 0, "Division by zero(%d / %d)", a, b)
 
-// SDK_INLINE void FX_InvAsyncImm (fx32 denom)
-// {
-// 	SDK_ASSERT(!CP_IsDivBusy());
-// 	FX_DIVISION_BY_ZERO(FX32_ONE, denom);
-//
-// 	CP_SetDivImm64_32((u64)FX32_ONE << 32, (u32)denom);
-// }
+SDK_INLINE void FX_InvAsyncImm (fx32 denom)
+{
+	SDK_ASSERT(!CP_IsDivBusy());
+	FX_DIVISION_BY_ZERO(FX32_ONE, denom);
+
+	CP_SetDivImm64_32((u64)FX32_ONE << 32, (u32)denom);
+}
 
 SDK_INLINE fx64c FX_GetInvResultFx64c (void)
 {

@@ -185,62 +185,62 @@ typedef struct {
 
 void FX_Init(void);
 
-// #if !(defined(SDK_WIN32) || defined(SDK_FROM_TOOL))
-//
-//     SDK_DECL_INLINE s32 FX_Whole(fx32 v);
-//     SDK_DECL_INLINE fx32 FX_Floor(fx32 v);
-//
-//     fx32 FX_Modf(fx32 x, fx32 * iPtr);
-//
-//     SDK_INLINE s32 FX_Whole (fx32 v)
-//     {
-//         return (s32)(v >> FX32_SHIFT);
-//     }
-//
-//     SDK_INLINE fx32 FX_Floor (fx32 v)
-//     {
-//         return (fx32)(v & (FX32_INT_MASK | FX32_SIGN_MASK));
-//     }
-//
-//     SDK_INLINE fx32 FX32_CAST (s64 res)
-//     {
-//         SDK_WARNING(res >= FX32_MIN && res <= FX32_MAX, "FX_Mul: Overflow/Underflow");
-//         return (fx32)res;
-//     }
-//
-//     fx32 FX_MulFunc(fx32 v1, fx32 v2);
-//     SDK_DECL_INLINE fx32 FX_MulInline(fx32 v1, fx32 v2);
-//
-//     SDK_INLINE fx32 FX_MulInline (fx32 v1, fx32 v2)
-//     {
-//         return FX32_CAST(((s64)(v1) * v2 + 0x800LL) >> FX32_SHIFT);
-//     }
-//
-//     #ifndef FX_Mul
-//         #ifdef SDK_CODE_ARM
-//             #define FX_Mul(v1, v2) FX_MulInline(v1, v2)
-//         #else
-//             #define FX_Mul(v1, v2) FX_MulFunc(v1, v2)
-//         #endif
-//     #endif
-//
-//     #ifndef FX_Mul32x64c
-//         #ifdef SDK_CODE_ARM
-//             #define FX_Mul32x64c(v32, v64c) FX_Mul32x64cInline(v32, v64c)
-//         #else
-//             #define FX_Mul32x64c(v32, v64c) FX_Mul32x64cFunc(v32, v64c)
-//         #endif
-//     #endif
-//
-//     fx32 FX_Mul32x64cFunc(fx32 v32, fx64c v64c);
-//     SDK_DECL_INLINE fx32 FX_Mul32x64cInline(fx32 v32, fx64c v64c);
-//
-//     SDK_INLINE fx32 FX_Mul32x64cInline (fx32 v32, fx64c v64c)
-//     {
-//         fx64c tmp = v64c * v32 + 0x80000000LL;
-//         return FX32_CAST(tmp >> FX64C_SHIFT);
-//     }
-// #endif
+#if !(defined(SDK_WIN32) || defined(SDK_FROM_TOOL))
+
+    SDK_DECL_INLINE s32 FX_Whole(fx32 v);
+    SDK_DECL_INLINE fx32 FX_Floor(fx32 v);
+
+    fx32 FX_Modf(fx32 x, fx32 * iPtr);
+
+    SDK_INLINE s32 FX_Whole (fx32 v)
+    {
+        return (s32)(v >> FX32_SHIFT);
+    }
+
+    SDK_INLINE fx32 FX_Floor (fx32 v)
+    {
+        return (fx32)(v & (FX32_INT_MASK | FX32_SIGN_MASK));
+    }
+
+    SDK_INLINE fx32 FX32_CAST (s64 res)
+    {
+        SDK_WARNING(res >= FX32_MIN && res <= FX32_MAX, "FX_Mul: Overflow/Underflow");
+        return (fx32)res;
+    }
+
+    fx32 FX_MulFunc(fx32 v1, fx32 v2);
+    SDK_DECL_INLINE fx32 FX_MulInline(fx32 v1, fx32 v2);
+
+    SDK_INLINE fx32 FX_MulInline (fx32 v1, fx32 v2)
+    {
+        return FX32_CAST(((s64)(v1) * v2 + 0x800LL) >> FX32_SHIFT);
+    }
+
+    #ifndef FX_Mul
+        #ifdef SDK_CODE_ARM
+            #define FX_Mul(v1, v2) FX_MulInline(v1, v2)
+        #else
+            #define FX_Mul(v1, v2) FX_MulFunc(v1, v2)
+        #endif
+    #endif
+
+    #ifndef FX_Mul32x64c
+        #ifdef SDK_CODE_ARM
+            #define FX_Mul32x64c(v32, v64c) FX_Mul32x64cInline(v32, v64c)
+        #else
+            #define FX_Mul32x64c(v32, v64c) FX_Mul32x64cFunc(v32, v64c)
+        #endif
+    #endif
+
+    fx32 FX_Mul32x64cFunc(fx32 v32, fx64c v64c);
+    SDK_DECL_INLINE fx32 FX_Mul32x64cInline(fx32 v32, fx64c v64c);
+
+    SDK_INLINE fx32 FX_Mul32x64cInline (fx32 v32, fx64c v64c)
+    {
+        fx64c tmp = v64c * v32 + 0x80000000LL;
+        return FX32_CAST(tmp >> FX64C_SHIFT);
+    }
+#endif
 
 #ifdef __cplusplus
 }

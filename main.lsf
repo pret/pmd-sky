@@ -224,7 +224,8 @@ Static main
 	Object asm/main_02075600.o
 
     ### NitroSDK ###
-    Object lib/NitroSDK/asm/mtx.o
+    Object lib/NitroSDK/src/fx/fx_mtx43.o
+    Object lib/NitroSDK/src/fx/fx_mtx44.o
     Object lib/NitroSDK/src/fx/fx_cp.o
     Object lib/NitroSDK/src/fx/fx_vec.o
     Object lib/NitroSDK/src/fx/fx_atanidx.o
@@ -236,7 +237,7 @@ Static main
     Object lib/NitroSDK/src/gx/g2.o
     Object lib/NitroSDK/src/gx/g3imm.o
     Object lib/NitroSDK/asm/g3x.o
-    Object lib/NitroSDK/asm/g3_util.o
+    Object lib/NitroSDK/src/gx/g3_util.o
     Object lib/NitroSDK/asm/gx_load2d.o
     Object lib/NitroSDK/asm/gx_load3d.o
     Object lib/NitroSDK/src/gxasm.o
