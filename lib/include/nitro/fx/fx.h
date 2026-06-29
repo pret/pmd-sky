@@ -183,8 +183,9 @@ typedef struct {
     } MtxFx22;
 #endif
 
+void FX_Init(void);
+
 // #if !(defined(SDK_WIN32) || defined(SDK_FROM_TOOL))
-//     void FX_Init(void);
 //
 //     SDK_DECL_INLINE s32 FX_Whole(fx32 v);
 //     SDK_DECL_INLINE fx32 FX_Floor(fx32 v);
