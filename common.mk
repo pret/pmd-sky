@@ -70,6 +70,17 @@ NATIVE_TOOLS := \
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 
+# TODO: move to NitroSDK makefile
+FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
+PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
+$(FX_CONST_H): $(MKFXCONST) $(TOOLSDIR)/gen_fx_consts/fx_const.csv
+	$(MKFXCONST) $@
+
+# $(ALL_LIB_OBJS): $(FX_CONST_H)
+# sdk9: $(ALL_LIB_OBJS)
+# $(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
+
+
 PRECOMPILE_SRC := include/global.pch
 PRECOMPILE_OBJ := $(BUILD_DIR)/precompile/global.mch
 PRECOMPILE_OBJ_BASENAME := global.mch
@@ -77,10 +88,12 @@ PRECOMPILE_OBJ_DIR := $(dir $(PRECOMPILE_OBJ))
 PRECOMPILE_DEPFILE := $(BUILD_DIR)/precompile/global.d
 
 # Directories
+NITROSDK_SRC_SUBDIRS      := os mi snd fs gx fx
+
 LIB_SUBDIRS               := DSE NitroSDK MSL_C
 SRC_SUBDIR                := src
 ASM_SUBDIR                := asm
-LIB_SRC_SUBDIR            := lib/src $(LIB_SUBDIRS:%=lib/%/src)
+LIB_SRC_SUBDIR            := lib/src $(LIB_SUBDIRS:%=lib/%/src) $(NITROSDK_SRC_SUBDIRS:%=lib/NitroSDK/src/%)
 LIB_ASM_SUBDIR            := lib/asm $(LIB_SUBDIRS:%=lib/%/asm)
 ALL_SUBDIRS               := $(SRC_SUBDIR) $(ASM_SUBDIR) $(LIB_SRC_SUBDIR) $(LIB_ASM_SUBDIR)
 
@@ -194,7 +207,7 @@ ifeq ($(NODEP),)
 $(PRECOMPILE_DEPFILE):
 $(DEPFILES):
 
-$(PRECOMPILE_OBJ): $(PRECOMPILE_SRC)
+$(PRECOMPILE_OBJ): $(PRECOMPILE_SRC) $(FX_CONST_H)
 	$(MW_COMPILE_SRC_PRECOMPILE) $(PRECOMPILE_SRC) -precompile $(PRECOMPILE_OBJ)
 	@$(call fixdep_precompile,$(PRECOMPILE_DEPFILE))
 

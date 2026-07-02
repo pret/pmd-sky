@@ -14,7 +14,7 @@
 .public DC_InvalidateRange
 .public DC_StoreRange
 .public EnableIrqFlag
-.public FileInit
+.public FS_InitFile
 .public InitDmaTransfer_Standard
 .public MI_CpuCopy8
 .public MI_SetWramBank

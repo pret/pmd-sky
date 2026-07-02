@@ -9412,7 +9412,7 @@ MBi_ReloadCache: ; 0x022C4118
 	movs r6, r0
 	add r0, sp, #4
 	ldreq r6, [r5, #0x18]
-	bl FileInit
+	bl FS_InitFile
 	ldr r2, [r4]
 	mvn r0, #0
 	str r0, [sp]
@@ -9888,7 +9888,7 @@ _022C4790:
 	cmp r7, #0
 	moveq r7, #0x1000000
 	str r1, [sp, #0xc]
-	bl FileInit
+	bl FS_InitFile
 	ldr r0, _022C4B80 ; =ov00_0231881C
 	mov r1, #3
 	bl FS_FindArchive
@@ -10862,7 +10862,7 @@ MBi_ReadIconInfo: ; 0x022C54F0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	add r0, sp, #0
-	bl FileInit
+	bl FS_InitFile
 	add r0, sp, #0
 	mov r1, r6
 	bl FS_OpenFile

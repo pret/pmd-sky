@@ -46034,7 +46034,7 @@ Dwci_Mov_Mbp_RegistFile: ; 0x0234A0A4
 	moveq r4, r5
 	beq _0234A0EC
 	add r0, sp, #0
-	bl FileInit
+	bl FS_InitFile
 	ldr r1, [r6]
 	add r0, sp, #0
 	bl FS_OpenFile
@@ -49342,7 +49342,7 @@ Dwci_ArclInit: ; 0x0234CB8C
 	ldr r1, _0234CD1C ; =ov02_0235AB70
 	str r0, [r1]
 	add r0, sp, #0xa0
-	bl FileInit
+	bl FS_InitFile
 	ldr r1, _0234CD20 ; =ov02_02354438
 	add r0, sp, #0xa0
 	bl FS_OpenFile
@@ -49570,7 +49570,7 @@ Dwci_ArclReadEx: ; 0x0234CE84
 	mov r4, r2
 	bl Dwci_QuelPopBack
 	add r0, sp, #4
-	bl FileInit
+	bl FS_InitFile
 	add r0, sp, #4
 	mov r1, r6
 	bl FS_OpenFile

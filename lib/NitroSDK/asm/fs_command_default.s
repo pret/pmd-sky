@@ -405,7 +405,7 @@ FSi_GetPathCommand: ; 0x0207E3F0
 	ldr r1, [sl, #8]
 	add r0, sp, #4
 	str r1, [sp]
-	bl FileInit
+	bl FS_InitFile
 	ldr r0, [sl, #8]
 	str r0, [sp, #0xc]
 	ldr r0, [sl, #0xc]

@@ -1,3 +1,4 @@
+#include <nitro.h>
 #include "main_02009F9C.h"
 
 extern s32 _02092A04[];
@@ -16,7 +17,7 @@ extern u8 _022A37F0[];
 extern u8 _022A37F1[];
 extern u8 _022A37F2[];
 
-extern void G2x_SetBlendAlpha_(s32, s32, s32, s32, s32);
+//extern void G2x_SetBlendAlpha_(s32, s32, s32, s32, s32);
 extern void sub_02009B98(s32, u8);
 extern void sub_02009BC0(s32, u8);
 extern void sub_02009BE8(s32, u8);

@@ -6,7 +6,9 @@
 #include <nitro/cp.h>
 #include <nitro/pxi.h>
 #include <nitro/gx.h>
+#include <nitro/math.h>
 #include <nitro/mi.h>
+#include <nitro/rtc.h>
 #include <nitro/snd.h>
 #include <nitro/spi.h>
 

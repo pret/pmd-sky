@@ -65,7 +65,7 @@ FSi_LoadOverlayInfoCore: ; 0x0207FBA4
 	movls r0, #0
 	ldmlsia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	add r0, sp, #0xc
-	bl FileInit
+	bl FS_InitFile
 	mvn ip, #0
 	add r0, sp, #0xc
 	mov r1, r8
@@ -138,7 +138,7 @@ GetOverlayInfo: ; 0x0207FC9C
 	bl MI_CpuCopy8
 	add r0, sp, #0x18
 	str r4, [r5, #0x20]
-	bl FileInit
+	bl FS_InitFile
 	add r0, sp, #0x10
 	mov r1, r5
 	bl FS_GetOverlayFileID
@@ -190,7 +190,7 @@ LoadOverlayInternal: ; 0x0207FD98
 	sub sp, sp, #0x50
 	mov r5, r0
 	add r0, sp, #8
-	bl FileInit
+	bl FS_InitFile
 	add r0, sp, #0
 	mov r1, r5
 	bl FS_GetOverlayFileID
