@@ -1,7 +1,7 @@
 #pragma once
 .public _022BB5EC
 .public EnableIrqFlag
-.public FileInit
+.public FS_InitFile
 .public FS_FindArchive
 .public FSi_ExecuteSyncCommand
 .public FSi_SendCommand

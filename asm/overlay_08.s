@@ -755,7 +755,7 @@ _0233D318:
 	strb r3, [r8, #0x18]
 	str r2, [r8, #4]
 	str r1, [r8, #8]
-	bl FileInit
+	bl FS_InitFile
 	ldr r1, [r8]
 	add r0, sp, #0x58
 	bl FS_OpenFile

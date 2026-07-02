@@ -37,3 +37,6 @@ toolchain_tmp/
 
 # Windows when copying files
 *.Identifier
+
+# Generated files
+lib/include/nitro/fx/fx_const.h

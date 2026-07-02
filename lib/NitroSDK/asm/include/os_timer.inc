@@ -2,7 +2,7 @@
 
 .public _0200002B
 .public _020B2B9C
-.public _020B2BAC
+.public OSi_ConsoleTypeCache
 .public _022B9208
 .public _022B958E
 .public _022B9590
