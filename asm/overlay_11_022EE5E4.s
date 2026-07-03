@@ -1439,14 +1439,14 @@ _022EF904:
 	ldr r2, _022EFB6C ; =ov11_02320BF4
 	add r0, r5, r4
 	mov r1, r8
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	add r1, r8, #1
 	mov r1, r1, lsl #0x10
 	ldr r2, [r6, #8]
 	add r0, r5, r4
 	mov r1, r1, lsr #0x10
 	mov r3, #0xf
-	bl sub_0200A5B0
+	bl FillPaletteDataRgba
 	ldr r0, [r6, #8]
 	add r0, r0, #0x3c
 	str r0, [r6, #8]
@@ -1472,7 +1472,7 @@ _022EF974:
 	cmp r0, #0
 	beq _022EF9A0
 	add r0, r5, r4
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 _022EF9A0:
 	ldrb r0, [sl, #0x1f8]
 	strb r0, [sl, #0x1f9]
@@ -7676,9 +7676,9 @@ _022F45E4:
 	add r2, r2, #0xc
 	blt _022F45E4
 	ldr r0, _022F4680 ; =ov11_0238A034
-	bl sub_0201C000
+	bl InitOamAdjustmentInfo
 	ldr r0, _022F4684 ; =ov11_0238A040
-	bl sub_0201C000
+	bl InitOamAdjustmentInfo
 	ldr r1, _022F4688 ; =ov11_0238A020
 	mov r2, #2
 	ldrh ip, [r1, #0x18]
@@ -7733,7 +7733,7 @@ ov11_022F46B4: ; 0x022F46B4
 	ldr r4, _022F472C ; =ov11_0238A05C
 	mov r5, r0
 	mov r0, r4
-	bl sub_0201C000
+	bl InitOamAdjustmentInfo
 	mov r0, r5
 	bl sub_02065014
 	cmp r0, #0
@@ -7772,7 +7772,7 @@ ov11_022F4734: ; 0x022F4734
 	ldr r4, _022F47B4 ; =ov11_0238A068
 	mov r5, r0
 	mov r0, r4
-	bl sub_0201C000
+	bl InitOamAdjustmentInfo
 	mov r0, r5
 	bl sub_02065014
 	cmp r0, #0
@@ -22268,7 +22268,7 @@ ov11_02300728: ; 0x02300728
 	mov r1, r6
 	ldr r0, [r0, #4]
 	add r0, r0, #8
-	bl sub_020236FC
+	bl CopyOrInitPreprocessorArgs
 	ldr r1, _023007A4 ; =ov11_02324D24
 	ldr r0, _023007A8 ; =ov11_023225BC
 	ldr r3, [r1, #4]
@@ -22547,7 +22547,7 @@ ov11_02300ACC: ; 0x02300ACC
 	mov r1, r6
 	ldr r0, [r0, #4]
 	add r0, r0, #8
-	bl sub_020236FC
+	bl CopyOrInitPreprocessorArgs
 	ldr r1, _02300B48 ; =ov11_02324D2C
 	ldr r0, _02300B4C ; =ov11_023225DC
 	ldr r3, [r1, #4]
@@ -25573,7 +25573,7 @@ _02303248:
 	str r1, [sp]
 	ldr r1, [r0, #0xc]
 	add r0, r0, #0x3c
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	ldr r0, _023032B8 ; =ov11_02324D4C
 	ldr r0, [r0, #4]
 	add r0, r0, #0x13c
@@ -26391,7 +26391,7 @@ _02303D24:
 	str r1, [r2, #0x194]
 	ldr r0, [r0, #4]
 	add r0, r0, #0x190
-	bl sub_02039460
+	bl DigitInputMenuInit
 	ldmia sp!, {r3, pc}
 _02303D4C:
 	ldrsb r0, [r3, #2]
@@ -26700,7 +26700,7 @@ _02304150:
 _0230417C:
 	add r0, r2, #0x190
 	ldr r4, [r2, #0x190]
-	bl sub_02039528
+	bl DigitInputMenuReturn
 	mvn r1, #1
 	cmp r0, r1
 	beq _023041D8
@@ -27817,7 +27817,7 @@ _02304F24:
 	ldr r2, _0230544C ; =ov11_02322B8C
 	add r0, r1, #0x5a
 	mov r3, #1
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	ldr r0, _02305444 ; =ov11_02324D84
 	ldr r2, _02305450 ; =0x000002D9
 	ldr r5, [r0]
@@ -27873,7 +27873,7 @@ _02304FE4:
 	str r3, [lr, #0x3c]
 	ldr r0, [r0]
 	add r0, r0, #0xda
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _02305444 ; =ov11_02324D84
 	ldr r1, [r0]
 	add r0, r1, #0xda
@@ -27979,7 +27979,7 @@ _02305138:
 	ldr r0, [r0]
 	ldr r2, _0230544C ; =ov11_02322B8C
 	add r0, r0, #0x5a
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _02305444 ; =ov11_02324D84
 	ldr r2, _0230544C ; =ov11_02322B8C
 	ldr r3, [r0]
@@ -27990,7 +27990,7 @@ _02305138:
 	str r1, [r3, #0x174]
 	ldr r1, [r0]
 	add r0, r1, #0xda
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _02305444 ; =ov11_02324D84
 	ldr r2, _0230546C ; =0x000002DF
 	ldr r4, [r0]
@@ -28316,7 +28316,7 @@ _023055DC:
 	ldr r2, _02305B04 ; =ov11_02322B8C
 	add r0, r1, #0x5a
 	mov r3, #1
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	ldr r0, _02305AFC ; =ov11_02324D84
 	ldr r2, _02305B08 ; =0x000002D9
 	ldr r5, [r0]
@@ -28372,7 +28372,7 @@ _0230569C:
 	str r3, [lr, #0x3c]
 	ldr r0, [r0]
 	add r0, r0, #0xda
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _02305AFC ; =ov11_02324D84
 	ldr r1, [r0]
 	add r0, r1, #0xda
@@ -28478,7 +28478,7 @@ _023057F0:
 	ldr r0, [r0]
 	ldr r2, _02305B04 ; =ov11_02322B8C
 	add r0, r0, #0x5a
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _02305AFC ; =ov11_02324D84
 	ldr r2, _02305B04 ; =ov11_02322B8C
 	ldr r3, [r0]
@@ -28489,7 +28489,7 @@ _023057F0:
 	str r1, [r3, #0x174]
 	ldr r1, [r0]
 	add r0, r1, #0xda
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _02305AFC ; =ov11_02324D84
 	ldr r2, _02305B24 ; =0x000002DF
 	ldr r4, [r0]
@@ -35024,7 +35024,7 @@ GetExclusiveItemRequirements: ; 0x0230AF38
 	strh r2, [sp, #6]
 	strb r3, [sp, #4]
 	mov sb, #0x10
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	add r0, sp, #0x10c
 	bl InitPreprocessorArgs
 	mov r0, r7
@@ -35623,7 +35623,7 @@ ov11_0230B78C: ; 0x0230B78C
 	beq _0230B868
 	add r0, r4, #0x1400
 	ldrsb r0, [r0, #0xe4]
-	bl sub_0202C748
+	bl GetWindowIdSelectedMenuItemIdx
 	add r1, r4, #0xe6
 	add r2, r1, #0x1400
 	mov r1, #6
@@ -36086,7 +36086,7 @@ ov11_0230BD5C: ; 0x0230BD5C
 	tst r0, #2
 	beq _0230BDEC
 	add r0, sp, #6
-	bl sub_0200D65C
+	bl MaybeGetUncoloredFormattedItemName
 	ldr r1, _0230BE2C ; =SWAP_SHOP_RED_TEXT_TAG_STR
 	mov r0, r6
 	bl strcpy
@@ -36099,7 +36099,7 @@ ov11_0230BD5C: ; 0x0230BD5C
 	b _0230BDF4
 _0230BDEC:
 	mov r0, r6
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 _0230BDF4:
 	ldr r1, _0230BE28 ; =SWAP_SHOP_INVENTORY_PTRS
 	mov r0, #6
@@ -36151,7 +36151,7 @@ ov11_0230BE34: ; 0x0230BE34
 	mov r2, #0
 	strh ip, [sp, #2]
 	strb r3, [sp]
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldrsh r0, [sp, #4]
 	bl ov11_0230C068
 	cmp r0, #3
@@ -37186,28 +37186,28 @@ ov11_0230CB88: ; 0x0230CB88
 _0230CBAC: .word OVERLAY11_OVERLAY_LOAD_TABLE
 	arm_func_end ov11_0230CB88
 
-	arm_func_start ov11_0230CBB0
-ov11_0230CBB0: ; 0x0230CBB0
+	arm_func_start LoadDuskullBankOverlay
+LoadDuskullBankOverlay: ; 0x0230CBB0
 	ldr ip, _0230CBBC ; =InitMenu
 	ldr r0, _0230CBC0 ; =ov11_0232307C
 	bx ip
 	.align 2, 0
 _0230CBBC: .word InitMenu
 _0230CBC0: .word ov11_0232307C
-	arm_func_end ov11_0230CBB0
+	arm_func_end LoadDuskullBankOverlay
 
-	arm_func_start ov11_0230CBC4
-ov11_0230CBC4: ; 0x0230CBC4
+	arm_func_start LoadLuminousSpringOverlay
+LoadLuminousSpringOverlay: ; 0x0230CBC4
 	ldr ip, _0230CBD0 ; =InitMenu
 	ldr r0, _0230CBD4 ; =ov11_0232308C
 	bx ip
 	.align 2, 0
 _0230CBD0: .word InitMenu
 _0230CBD4: .word ov11_0232308C
-	arm_func_end ov11_0230CBC4
+	arm_func_end LoadLuminousSpringOverlay
 
-	arm_func_start ov11_0230CBD8
-ov11_0230CBD8: ; 0x0230CBD8
+	arm_func_start LoadChimechoAssemblyOverlay
+LoadChimechoAssemblyOverlay: ; 0x0230CBD8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _0230CBF8 ; =ov11_0232309C
@@ -37219,10 +37219,10 @@ ov11_0230CBD8: ; 0x0230CBD8
 	.align 2, 0
 _0230CBF8: .word ov11_0232309C
 _0230CBFC: .word ov11_0238A08C
-	arm_func_end ov11_0230CBD8
+	arm_func_end LoadChimechoAssemblyOverlay
 
-	arm_func_start ov11_0230CC00
-ov11_0230CC00: ; 0x0230CC00
+	arm_func_start LoadElectivireLinkShopOverlay
+LoadElectivireLinkShopOverlay: ; 0x0230CC00
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _0230CC20 ; =ov11_023230AC
@@ -37234,62 +37234,62 @@ ov11_0230CC00: ; 0x0230CC00
 	.align 2, 0
 _0230CC20: .word ov11_023230AC
 _0230CC24: .word ov11_0238A090
-	arm_func_end ov11_0230CC00
+	arm_func_end LoadElectivireLinkShopOverlay
 
-	arm_func_start ov11_0230CC28
-ov11_0230CC28: ; 0x0230CC28
+	arm_func_start LoadSpindaCafeOverlayInit
+LoadSpindaCafeOverlayInit: ; 0x0230CC28
 	stmdb sp!, {r3, lr}
 	ldr r0, _0230CC44 ; =ov11_023230CC
 	bl InitMenu
-	ldr r0, _0230CC48 ; =ov11_02324DAC
+	ldr r0, _0230CC48 ; =SPINDA_CAFE_OVERLAY_STATUS
 	mov r1, #0
 	strb r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230CC44: .word ov11_023230CC
-_0230CC48: .word ov11_02324DAC
-	arm_func_end ov11_0230CC28
+_0230CC48: .word SPINDA_CAFE_OVERLAY_STATUS
+	arm_func_end LoadSpindaCafeOverlayInit
 
-	arm_func_start ov11_0230CC4C
-ov11_0230CC4C: ; 0x0230CC4C
+	arm_func_start LoadSpindaCafeOverlayResume
+LoadSpindaCafeOverlayResume: ; 0x0230CC4C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0230CC68 ; =ov11_023230BC
 	bl InitMenu
-	ldr r0, _0230CC6C ; =ov11_02324DAC
+	ldr r0, _0230CC6C ; =SPINDA_CAFE_OVERLAY_STATUS
 	mov r1, #0
 	strb r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230CC68: .word ov11_023230BC
-_0230CC6C: .word ov11_02324DAC
-	arm_func_end ov11_0230CC4C
+_0230CC6C: .word SPINDA_CAFE_OVERLAY_STATUS
+	arm_func_end LoadSpindaCafeOverlayResume
 
-	arm_func_start ov11_0230CC70
-ov11_0230CC70: ; 0x0230CC70
-	ldr r0, _0230CC7C ; =ov11_02324DAC
+	arm_func_start IsSpindaCafeOverlaySuspended
+IsSpindaCafeOverlaySuspended: ; 0x0230CC70
+	ldr r0, _0230CC7C ; =SPINDA_CAFE_OVERLAY_STATUS
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_0230CC7C: .word ov11_02324DAC
-	arm_func_end ov11_0230CC70
+_0230CC7C: .word SPINDA_CAFE_OVERLAY_STATUS
+	arm_func_end IsSpindaCafeOverlaySuspended
 
-	arm_func_start ov11_0230CC80
-ov11_0230CC80: ; 0x0230CC80
+	arm_func_start LoadRecycleShopOverlayInit
+LoadRecycleShopOverlayInit: ; 0x0230CC80
 	stmdb sp!, {r3, lr}
 	bl sub_020017EC
 	ldr r0, _0230CCA0 ; =ov11_023230EC
 	bl InitMenu
-	ldr r0, _0230CCA4 ; =ov11_02324DB4
+	ldr r0, _0230CCA4 ; =RECYCLE_SHOP_OVERLAY_STATUS
 	mov r1, #0
 	strb r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230CCA0: .word ov11_023230EC
-_0230CCA4: .word ov11_02324DB4
-	arm_func_end ov11_0230CC80
+_0230CCA4: .word RECYCLE_SHOP_OVERLAY_STATUS
+	arm_func_end LoadRecycleShopOverlayInit
 
-	arm_func_start ov11_0230CCA8
-ov11_0230CCA8: ; 0x0230CCA8
+	arm_func_start LoadRecycleShopOverlayResume
+LoadRecycleShopOverlayResume: ; 0x0230CCA8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0230CCD4 ; =ov11_023230EC
 	bl sub_02034840
@@ -37298,29 +37298,29 @@ ov11_0230CCA8: ; 0x0230CCA8
 	ldr r0, _0230CCD8 ; =ov11_023230DC
 	bl InitMenu
 _0230CCC4:
-	ldr r0, _0230CCDC ; =ov11_02324DB4
+	ldr r0, _0230CCDC ; =RECYCLE_SHOP_OVERLAY_STATUS
 	mov r1, #0
 	strb r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230CCD4: .word ov11_023230EC
 _0230CCD8: .word ov11_023230DC
-_0230CCDC: .word ov11_02324DB4
-	arm_func_end ov11_0230CCA8
+_0230CCDC: .word RECYCLE_SHOP_OVERLAY_STATUS
+	arm_func_end LoadRecycleShopOverlayResume
 
-	arm_func_start ov11_0230CCE0
-ov11_0230CCE0: ; 0x0230CCE0
-	ldr r0, _0230CCEC ; =ov11_02324DB4
+	arm_func_start IsRecycleShopOverlaySuspended
+IsRecycleShopOverlaySuspended: ; 0x0230CCE0
+	ldr r0, _0230CCEC ; =RECYCLE_SHOP_OVERLAY_STATUS
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_0230CCEC: .word ov11_02324DB4
-	arm_func_end ov11_0230CCE0
+_0230CCEC: .word RECYCLE_SHOP_OVERLAY_STATUS
+	arm_func_end IsRecycleShopOverlaySuspended
 
 	arm_func_start ov11_0230CCF0
 ov11_0230CCF0: ; 0x0230CCF0
 	stmdb sp!, {r4, lr}
-	ldr r1, _0230CD3C ; =ov11_02324DB4
+	ldr r1, _0230CD3C ; =RECYCLE_SHOP_OVERLAY_STATUS
 	mov r4, r0
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -37341,23 +37341,23 @@ _0230CD34:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0230CD3C: .word ov11_02324DB4
+_0230CD3C: .word RECYCLE_SHOP_OVERLAY_STATUS
 _0230CD40: .word ov11_0238A098
 _0230CD44: .word ov11_0238A094
 	arm_func_end ov11_0230CCF0
 
-	arm_func_start ov11_0230CD48
-ov11_0230CD48: ; 0x0230CD48
+	arm_func_start LoadCroagunkSwapShopOverlay
+LoadCroagunkSwapShopOverlay: ; 0x0230CD48
 	ldr ip, _0230CD54 ; =InitMenu
 	ldr r0, _0230CD58 ; =ov11_023230FC
 	bx ip
 	.align 2, 0
 _0230CD54: .word InitMenu
 _0230CD58: .word ov11_023230FC
-	arm_func_end ov11_0230CD48
+	arm_func_end LoadCroagunkSwapShopOverlay
 
-	arm_func_start ov11_0230CD5C
-ov11_0230CD5C: ; 0x0230CD5C
+	arm_func_start LoadKecleonShopOverlay
+LoadKecleonShopOverlay: ; 0x0230CD5C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _0230CD7C ; =ov11_0232310C
@@ -37369,10 +37369,10 @@ ov11_0230CD5C: ; 0x0230CD5C
 	.align 2, 0
 _0230CD7C: .word ov11_0232310C
 _0230CD80: .word ov11_0238A130
-	arm_func_end ov11_0230CD5C
+	arm_func_end LoadKecleonShopOverlay
 
-	arm_func_start ov11_0230CD84
-ov11_0230CD84: ; 0x0230CD84
+	arm_func_start LoadKangaskhanOverlay
+LoadKangaskhanOverlay: ; 0x0230CD84
 	ldr r1, _0230CD98 ; =ov11_0238A134
 	ldr ip, _0230CD9C ; =InitMenu
 	str r0, [r1]
@@ -37382,27 +37382,27 @@ ov11_0230CD84: ; 0x0230CD84
 _0230CD98: .word ov11_0238A134
 _0230CD9C: .word InitMenu
 _0230CDA0: .word ov11_0232311C
-	arm_func_end ov11_0230CD84
+	arm_func_end LoadKangaskhanOverlay
 
-	arm_func_start ov11_0230CDA4
-ov11_0230CDA4: ; 0x0230CDA4
+	arm_func_start LoadChanseyDaycareOverlay
+LoadChanseyDaycareOverlay: ; 0x0230CDA4
 	ldr ip, _0230CDB0 ; =InitMenu
 	ldr r0, _0230CDB4 ; =ov11_0232312C
 	bx ip
 	.align 2, 0
 _0230CDB0: .word InitMenu
 _0230CDB4: .word ov11_0232312C
-	arm_func_end ov11_0230CDA4
+	arm_func_end LoadChanseyDaycareOverlay
 
-	arm_func_start ov11_0230CDB8
-ov11_0230CDB8: ; 0x0230CDB8
+	arm_func_start LoadXatuAppraisalOverlay
+LoadXatuAppraisalOverlay: ; 0x0230CDB8
 	ldr ip, _0230CDC4 ; =InitMenu
 	ldr r0, _0230CDC8 ; =ov11_0232313C
 	bx ip
 	.align 2, 0
 _0230CDC4: .word InitMenu
 _0230CDC8: .word ov11_0232313C
-	arm_func_end ov11_0230CDB8
+	arm_func_end LoadXatuAppraisalOverlay
 
 	arm_func_start LoadRecycleShopOverlay
 LoadRecycleShopOverlay: ; 0x0230CDCC
@@ -37414,15 +37414,15 @@ _0230CDD8: .word InitMenu
 _0230CDDC: .word ov11_0232314C
 	arm_func_end LoadRecycleShopOverlay
 
-	arm_func_start ov11_0230CDE0
-ov11_0230CDE0: ; 0x0230CDE0
+	arm_func_start LoadRuleDungeonEffectsOverlay
+LoadRuleDungeonEffectsOverlay: ; 0x0230CDE0
 	ldr ip, _0230CDEC ; =InitMenu
 	ldr r0, _0230CDF0 ; =ov11_0232315C
 	bx ip
 	.align 2, 0
 _0230CDEC: .word InitMenu
 _0230CDF0: .word ov11_0232315C
-	arm_func_end ov11_0230CDE0
+	arm_func_end LoadRuleDungeonEffectsOverlay
 
 	arm_func_start ov11_0230CDF4
 ov11_0230CDF4: ; 0x0230CDF4
@@ -37454,25 +37454,25 @@ _0230CE28: .word InitMenu
 _0230CE2C: .word ov11_0232318C
 	arm_func_end ov11_0230CE1C
 
-	arm_func_start ov11_0230CE30
-ov11_0230CE30: ; 0x0230CE30
+	arm_func_start LoadSpecialEpisodeDiscardOverlay1
+LoadSpecialEpisodeDiscardOverlay1: ; 0x0230CE30
 	ldr ip, _0230CE3C ; =InitMenu
 	ldr r0, _0230CE40 ; =ov11_0232319C
 	bx ip
 	.align 2, 0
 _0230CE3C: .word InitMenu
 _0230CE40: .word ov11_0232319C
-	arm_func_end ov11_0230CE30
+	arm_func_end LoadSpecialEpisodeDiscardOverlay1
 
-	arm_func_start ov11_0230CE44
-ov11_0230CE44: ; 0x0230CE44
+	arm_func_start LoadSpecialEpisodeDiscardOverlay2
+LoadSpecialEpisodeDiscardOverlay2: ; 0x0230CE44
 	ldr ip, _0230CE50 ; =InitMenu
 	ldr r0, _0230CE54 ; =ov11_023231AC
 	bx ip
 	.align 2, 0
 _0230CE50: .word InitMenu
 _0230CE54: .word ov11_023231AC
-	arm_func_end ov11_0230CE44
+	arm_func_end LoadSpecialEpisodeDiscardOverlay2
 
 	arm_func_start ov11_0230CE58
 ov11_0230CE58: ; 0x0230CE58

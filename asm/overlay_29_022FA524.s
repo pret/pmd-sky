@@ -455,8 +455,8 @@ _022FAA0C:
 	bx lr
 	arm_func_end ov29_022FAA04
 
-	arm_func_start ov29_022FAA58
-ov29_022FAA58: ; 0x022FAA58
+	arm_func_start TryActivateNewFloorPpRestoration
+TryActivateNewFloorPpRestoration: ; 0x022FAA58
 #ifdef JAPAN
 #define OV29_022FAA58_OFFSET -4
 #else
@@ -634,4 +634,4 @@ _022FAC94: .word 0x00000962
 #else
 _022FAC94: .word 0x00000C23
 #endif
-	arm_func_end ov29_022FAA58
+	arm_func_end TryActivateNewFloorPpRestoration

@@ -2059,8 +2059,8 @@ _0230D868:
 _0230D870: .word ov29_023535D4
 	arm_func_end ov29_0230D7D4
 
-	arm_func_start ov29_0230D874
-ov29_0230D874: ; 0x0230D874
+	arm_func_start SwapDefensiveStages
+SwapDefensiveStages: ; 0x0230D874
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -2095,10 +2095,10 @@ _0230D8E4: .word 0x00002494
 #else
 _0230D8E4: .word 0x00000F2D
 #endif
-	arm_func_end ov29_0230D874
+	arm_func_end SwapDefensiveStages
 
-	arm_func_start ov29_0230D8E8
-ov29_0230D8E8: ; 0x0230D8E8
+	arm_func_start SwapDefensiveMultipliers
+SwapDefensiveMultipliers: ; 0x0230D8E8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -2133,10 +2133,10 @@ _0230D958: .word 0x00002495
 #else
 _0230D958: .word 0x00000F2E
 #endif
-	arm_func_end ov29_0230D8E8
+	arm_func_end SwapDefensiveMultipliers
 
-	arm_func_start ov29_0230D95C
-ov29_0230D95C: ; 0x0230D95C
+	arm_func_start SwapOffensiveStages
+SwapOffensiveStages: ; 0x0230D95C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -2171,10 +2171,10 @@ _0230D9CC: .word 0x00002492
 #else
 _0230D9CC: .word 0x00000F2B
 #endif
-	arm_func_end ov29_0230D95C
+	arm_func_end SwapOffensiveStages
 
-	arm_func_start ov29_0230D9D0
-ov29_0230D9D0: ; 0x0230D9D0
+	arm_func_start SwapOffensiveMultipliers
+SwapOffensiveMultipliers: ; 0x0230D9D0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -2209,10 +2209,10 @@ _0230DA40: .word 0x00002493
 #else
 _0230DA40: .word 0x00000F2C
 #endif
-	arm_func_end ov29_0230D9D0
+	arm_func_end SwapOffensiveMultipliers
 
-	arm_func_start ov29_0230DA44
-ov29_0230DA44: ; 0x0230DA44
+	arm_func_start SwapHitChanceStages
+SwapHitChanceStages: ; 0x0230DA44
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -2247,10 +2247,10 @@ _0230DAB4: .word 0x00002496
 #else
 _0230DAB4: .word 0x00000F2F
 #endif
-	arm_func_end ov29_0230DA44
+	arm_func_end SwapHitChanceStages
 
-	arm_func_start ov29_0230DAB8
-ov29_0230DAB8: ; 0x0230DAB8
+	arm_func_start SwapUserAtkAndDefModifiers
+SwapUserAtkAndDefModifiers: ; 0x0230DAB8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr ip, [r5, #0xb4]
@@ -2283,4 +2283,4 @@ ov29_0230DAB8: ; 0x0230DAB8
 #ifdef JAPAN
 _0230F050: .word 0x00002497
 #endif
-	arm_func_end ov29_0230DAB8
+	arm_func_end SwapUserAtkAndDefModifiers

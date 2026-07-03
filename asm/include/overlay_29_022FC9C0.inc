@@ -85,7 +85,6 @@
 .public ov29_022FBF08
 .public ov29_022FBF30
 .public ov29_022FC468
-.public ov29_023021F0
 .public ov29_02304A48
 .public ov29_02307DC0
 .public ov29_02351E28
@@ -96,4 +95,5 @@
 .public ShuffleHiddenPower
 .public sub_02050FF8
 .public UpdateEntityPixelPos
+.public UpdateIqSkillsWrapper
 .public UpdateStatusIconFlags

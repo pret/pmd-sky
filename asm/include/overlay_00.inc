@@ -29,10 +29,10 @@
 .public Debug_GetDebugFlag
 .public EnableIrqFlag
 .public fclose
-.public FS_InitFile
 .public fread
 .public FS_CloseFile
 .public FS_FindArchive
+.public FS_InitFile
 .public FS_OpenFile
 .public FS_OpenFileDirect
 .public FS_ReadFile

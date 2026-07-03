@@ -1516,7 +1516,7 @@ _02347908:
 	ldr r1, [r7, #0xc]
 #endif
 	mov r0, sl
-	bl ov29_022FAFD4
+	bl ShouldTreatMonsterAsAlly
 	cmp r0, #0
 #ifdef JAPAN
 	movne r7, #0

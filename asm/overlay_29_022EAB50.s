@@ -92,23 +92,23 @@ ov29_022EAC78: ; 0x022EAC78
 	bx lr
 	arm_func_end ov29_022EAC78
 
-	arm_func_start ov29_022EAC7C
-ov29_022EAC7C: ; 0x022EAC7C
+	arm_func_start PlayLevelUpSound
+PlayLevelUpSound: ; 0x022EAC7C
 	ldr ip, _022EAC88 ; =sub_02017C50
 	mov r0, #1
 	bx ip
 	.align 2, 0
 _022EAC88: .word sub_02017C50
-	arm_func_end ov29_022EAC7C
+	arm_func_end PlayLevelUpSound
 
-	arm_func_start ov29_022EAC8C
-ov29_022EAC8C: ; 0x022EAC8C
+	arm_func_start PlayDungeonTipSound__022EB63C
+PlayDungeonTipSound__022EB63C: ; 0x022EAC8C
 	ldr ip, _022EAC98 ; =sub_02017C50
 	mov r0, #7
 	bx ip
 	.align 2, 0
 _022EAC98: .word sub_02017C50
-	arm_func_end ov29_022EAC8C
+	arm_func_end PlayDungeonTipSound__022EB63C
 
 	arm_func_start ov29_022EAC9C
 ov29_022EAC9C: ; 0x022EAC9C
@@ -128,14 +128,14 @@ ov29_022EACAC: ; 0x022EACAC
 _022EACB8: .word sub_02017C50
 	arm_func_end ov29_022EACAC
 
-	arm_func_start ov29_022EACBC
-ov29_022EACBC: ; 0x022EACBC
+	arm_func_start PlayDungeonTipSound__022EB66C
+PlayDungeonTipSound__022EB66C: ; 0x022EACBC
 	ldr ip, _022EACC8 ; =sub_02017C50
 	mov r0, #7
 	bx ip
 	.align 2, 0
 _022EACC8: .word sub_02017C50
-	arm_func_end ov29_022EACBC
+	arm_func_end PlayDungeonTipSound__022EB66C
 
 	arm_func_start PlaySeByIdIfNotSilence
 PlaySeByIdIfNotSilence: ; 0x022EACCC

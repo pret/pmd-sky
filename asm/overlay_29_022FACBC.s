@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022FACBC
-ov29_022FACBC: ; 0x022FACBC
+	arm_func_start TryActivateNewFloorHpRestoration
+TryActivateNewFloorHpRestoration: ; 0x022FACBC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
 	ldr r1, _022FAD44 ; =DUNGEON_PTR
@@ -48,10 +48,10 @@ _022FAD28:
 	.align 2, 0
 _022FAD44: .word DUNGEON_PTR
 _022FAD48: .word 0x000003E7
-	arm_func_end ov29_022FACBC
+	arm_func_end TryActivateNewFloorHpRestoration
 
-	arm_func_start ov29_022FAD4C
-ov29_022FAD4C: ; 0x022FAD4C
+	arm_func_start TryActivateStairSensor
+TryActivateStairSensor: ; 0x022FAD4C
 #ifdef JAPAN
 #define OV29_022FAD4C_OFFSET -0xA4
 #else
@@ -176,7 +176,7 @@ _022FAEC8:
 _022FAEDC:
 	mov r0, r5
 	mov r1, r4
-	bl ov29_022E6928
+	bl PlayStairSensorArrowEffect
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _022FAEEC:
 	bl GetFloorType
@@ -189,10 +189,10 @@ _022FAF00: .word DUNGEON_PTR
 #ifndef JAPAN
 _022FAF04: .word 0x00000C21
 #endif
-	arm_func_end ov29_022FAD4C
+	arm_func_end TryActivateStairSensor
 
-	arm_func_start ov29_022FAF08
-ov29_022FAF08: ; 0x022FAF08
+	arm_func_start TryActivateAcuteSniffer
+TryActivateAcuteSniffer: ; 0x022FAF08
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r1, _022FAFC8 ; =DUNGEON_PTR
 	mov r6, r0
@@ -258,10 +258,10 @@ _022FAFD0: .word 0x00000961
 _022FAFCC: .word 0x00012AF8
 _022FAFD0: .word 0x00000C22
 #endif
-	arm_func_end ov29_022FAF08
+	arm_func_end TryActivateAcuteSniffer
 
-	arm_func_start ov29_022FAFD4
-ov29_022FAFD4: ; 0x022FAFD4
+	arm_func_start ShouldTreatMonsterAsAlly
+ShouldTreatMonsterAsAlly: ; 0x022FAFD4
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, #0
@@ -271,7 +271,7 @@ ov29_022FAFD4: ; 0x022FAFD4
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022FAFD4
+	arm_func_end ShouldTreatMonsterAsAlly
 
 	arm_func_start GetTeamMemberWithIqSkill
 GetTeamMemberWithIqSkill: ; 0x022FAFF8

@@ -316,20 +316,20 @@ sub_02029EC4: ; 0x02029EC4
 
 	arm_func_start Arm9LoadUnkFieldNa0x2029EC8
 Arm9LoadUnkFieldNa0x2029EC8: ; 0x02029EC8
-	ldr r1, _02029ED4 ; =_022AAC68
+	ldr r1, _02029ED4 ; =PREV_MENU_ITEMS
 	ldrb r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_02029ED4: .word _022AAC68
+_02029ED4: .word PREV_MENU_ITEMS
 	arm_func_end Arm9LoadUnkFieldNa0x2029EC8
 
 	arm_func_start Arm9StoreUnkFieldNa0x2029ED8
 Arm9StoreUnkFieldNa0x2029ED8: ; 0x02029ED8
-	ldr r2, _02029EE4 ; =_022AAC68
+	ldr r2, _02029EE4 ; =PREV_MENU_ITEMS
 	strb r1, [r2, r0]
 	bx lr
 	.align 2, 0
-_02029EE4: .word _022AAC68
+_02029EE4: .word PREV_MENU_ITEMS
 	arm_func_end Arm9StoreUnkFieldNa0x2029ED8
 
 	arm_func_start LoadAlert

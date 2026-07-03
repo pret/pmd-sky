@@ -111,12 +111,12 @@ _022ED810:
 	mov r7, r0, lsr #0x10
 	ldr r2, _022EDD08 ; =ov11_02320BF4
 	add r0, r5, r4
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	add r0, r5, r4
 	mov r1, r7
 	mov r2, fp
 	mov r3, #0xf
-	bl sub_0200A5B0
+	bl FillPaletteDataRgba
 	add r0, r7, #0xf
 	mov r0, r0, lsl #0x10
 	mov r7, r0, lsr #0x10
@@ -141,7 +141,7 @@ _022ED87C:
 	mov r7, r0, lsr #0x10
 	ldr r2, _022EDD08 ; =ov11_02320BF4
 	add r0, r5, r4
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	mov fp, #1
 _022ED89C:
 	add r0, r7, #1
@@ -150,7 +150,7 @@ _022ED89C:
 	mov r7, r0, lsr #0x10
 	ldr r2, _022EDD0C ; =ov11_02320BE8
 	add r0, r5, r4
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	add fp, fp, #1
 	cmp fp, #0x10
 	blt _022ED89C
@@ -161,7 +161,7 @@ _022ED8C8:
 	cmp r8, r0
 	blt _022ED87C
 	add r0, r5, r4
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	ldrsh r2, [r6, #2]
 	add r0, sl, #4
 	mov r1, #0
@@ -662,7 +662,7 @@ _022EDFB4:
 	mov r7, r0, lsr #0x10
 	add r0, r4, fp
 	add r2, sp, #0x14
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	add r8, r8, #1
 	add sb, sb, #4
 _022EDFE8:
@@ -672,7 +672,7 @@ _022EDFE8:
 	cmp r8, r0, asr #2
 	blt _022EDF6C
 	add r0, r4, fp
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	add r0, sl, #0x200
 	ldrsh r2, [r0, #0xbe]
 	ldr r1, [r5, #8]

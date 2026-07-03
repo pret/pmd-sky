@@ -32,7 +32,6 @@
 .public ov10_022C44C8
 .public ov10_022C48EC
 .public ov29_022E563C
-.public ov29_022EACBC
 .public ov29_022FB51C
 .public ov29_02344BF8
 .public ov29_02347378
@@ -40,6 +39,7 @@
 .public ov29_023537B4
 .public ov29_023537BC
 .public ov29_0237C864
+.public PlayDungeonTipSound__022EB66C
 .public RetrieveFromItemList1
 .public RevealAttackedTile
 .public SECONDARY_TERRAIN_TYPES

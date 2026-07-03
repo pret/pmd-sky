@@ -574,7 +574,7 @@ ov10_022BD394: ; 0x022BD394
 	mov r1, r5
 	mov r3, r7
 	str ip, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	ldrb r0, [r5, #1]
 	cmp r0, #0
 	ldrneb r2, [r6, r0]
@@ -6505,7 +6505,7 @@ _022C1F2C:
 	ldr r0, [r8, #0x10]
 	mov r2, r4
 	mov r1, r1, lsr #0x10
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	add r5, r5, #1
 	cmp r5, #0xa0
 	add r4, r4, #4
@@ -6513,7 +6513,7 @@ _022C1F2C:
 	cmp r6, #0
 	beq _022C1F80
 	ldr r0, [r8, #0x10]
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	mov r1, #1
 	mov r2, r1
 	mov r0, #0
@@ -6803,7 +6803,7 @@ ov10_022C231C: ; 0x022C231C
 	ldr r2, [r4, #8]
 	bl Memcpy32
 	ldr r0, [r4, #0x34]
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	ldmia sp!, {r4, pc}
 	arm_func_end ov10_022C231C
 

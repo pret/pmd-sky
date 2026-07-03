@@ -5,6 +5,7 @@
 .public ClosePortraitBox
 .public CloseTextBox
 .public CloseTextBox2
+.public CopyColorToPaletteDataRgba
 .public CreateInventoryMenu
 .public CreatePortraitBox
 .public CreateTextBox
@@ -32,6 +33,8 @@
 .public ITEM_ANIMATION_INFO
 .public LoadObjPalette
 .public LoadWanTableEntryFromPack
+.public MarkPaletteDataAsNeedingUpdate
+.public MaybeGetFormattedItemName
 .public MemAlloc
 .public Memcpy32
 .public MemFree
@@ -107,11 +110,8 @@
 .public strcmp
 .public strcpy
 .public sub_02001808
-.public sub_0200A504
-.public sub_0200A590
 .public sub_0200B330
 .public sub_0200B3FC
-.public sub_0200D310
 .public sub_0201C108
 .public sub_0201C138
 .public sub_0201CF5C

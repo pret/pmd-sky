@@ -123,9 +123,11 @@
 .public IsParentMenuActive
 .public IsRecruitingAllowed
 .public IsScrollBoxActive
+.public IsTextboxState3
 .public ItemZInit
 .public JoinedAtRangeCheck2Veneer
 .public LogMessageByIdWithPopupCheckUser
+.public MaybeGetFormattedItemName
 .public MemAlloc
 .public memcpy
 .public MemFree
@@ -163,7 +165,6 @@
 .public ov29_022EBC2C
 .public ov29_022F9C34
 .public ov29_023002F0
-.public ov29_023021F0
 .public ov29_02302388
 .public ov29_0233A0E8
 .public ov29_023468FC
@@ -240,7 +241,6 @@
 .public StringFromId
 .public sub_02001808
 .public sub_0200B3D4
-.public sub_0200D310
 .public sub_02017C74
 .public sub_02027B1C
 .public sub_0202810C
@@ -252,7 +252,6 @@
 .public sub_0202F334
 .public sub_0202F474
 .public sub_0202F954
-.public sub_0202F9B8
 .public sub_020307EC
 .public sub_02030A2C
 .public sub_0203F150
@@ -286,6 +285,7 @@
 .public TeamMemberHasEnabledIqSkill
 .public TryPointCameraToMonster
 .public UnkMapRelatedFunc
+.public UpdateIqSkillsWrapper
 .public UpdateMapSurveyorFlag
 .public UpdateWindow
 .public vsprintf

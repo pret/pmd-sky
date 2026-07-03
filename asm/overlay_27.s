@@ -785,8 +785,8 @@ _0238AAE0:
 _0238AB60:
 	ldr r0, _0238B934 ; =ov27_0238CAA4
 	bl Debug_Print0
-	bl sub_02042AF8
-	bl sub_020434D4
+	bl ClearBagSelectedItemTable
+	bl ClearStorageSelectedItemTable
 	bl ov27_0238C900
 	mov r3, #0
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
@@ -977,7 +977,7 @@ _0238AD8C:
 	ldr r1, [r0]
 	add r0, r1, #0x124
 	add r1, r1, #0x10
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r2, _0238B964 ; =0x000004CA
 	ldr r4, [r0]
@@ -1087,7 +1087,7 @@ _0238AEF8:
 	mov r1, #0
 	mov r2, #8
 	mov r3, #1
-	bl sub_02042258
+	bl InitUnkStorageStruct0xA0
 	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x8f]
@@ -1107,7 +1107,7 @@ _0238AF48:
 	mov r1, #0
 	mov r2, #8
 	mov r3, #1
-	bl sub_02042258
+	bl InitUnkStorageStruct0xA0
 	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x8f]
@@ -1244,7 +1244,7 @@ _0238B134:
 	ldr r1, [r0]
 	add r0, r1, #0x124
 	add r1, r1, #0x10
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
@@ -1276,7 +1276,7 @@ _0238B1B0:
 	ldr r1, [r0]
 	add r0, r1, #0x124
 	add r1, r1, #0x10
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
@@ -1350,8 +1350,8 @@ _0238B294:
 	ldreq r0, [r0]
 	streq r1, [r0, #4]
 _0238B2E8:
-	bl sub_02042AF8
-	bl sub_020434D4
+	bl ClearBagSelectedItemTable
+	bl ClearStorageSelectedItemTable
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #1
 	ldr r1, [r0]
@@ -1360,7 +1360,7 @@ _0238B2E8:
 	ldr r1, [r0]
 	add r0, r1, #0x124
 	add r1, r1, #0x10
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 #ifdef JAPAN
 	mov ip, #0x73
@@ -1401,8 +1401,8 @@ _0238B34C:
 _0238B37C:
 	ldr r0, [r0]
 	str r1, [r0, #4]
-	bl sub_02042AF8
-	bl sub_020434D4
+	bl ClearBagSelectedItemTable
+	bl ClearStorageSelectedItemTable
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #1
 	ldr r1, [r0]
@@ -1483,7 +1483,7 @@ _0238B4A0:
 	mov r0, #4
 	mov r1, #0
 	mov r2, #8
-	bl sub_02042CF0
+	bl InitUnkStorageStruct0x18c0
 	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x90]
@@ -1502,7 +1502,7 @@ _0238B4C0:
 	mov r0, #4
 	mov r1, #0
 	mov r2, #8
-	bl sub_02042CF0
+	bl InitUnkStorageStruct0x18c0
 	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x90]
@@ -1601,7 +1601,7 @@ _0238B628:
 	ldr r1, [r0]
 	add r0, r1, #0x124
 	add r1, r1, #0x10
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
@@ -1658,7 +1658,7 @@ _0238B6DC:
 	ldr r1, [r0]
 	add r0, r1, #0x124
 	add r1, r1, #0x10
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
@@ -1704,8 +1704,8 @@ _0238B78C:
 	moveq r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #4]
-	bl sub_02042AF8
-	bl sub_020434D4
+	bl ClearBagSelectedItemTable
+	bl ClearStorageSelectedItemTable
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #1
 	ldr r1, [r0]
@@ -1714,7 +1714,7 @@ _0238B78C:
 	ldr r1, [r0]
 	add r0, r1, #0x124
 	add r1, r1, #0x10
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
@@ -1746,8 +1746,8 @@ _0238B820:
 	moveq r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #4]
-	bl sub_02042AF8
-	bl sub_020434D4
+	bl ClearBagSelectedItemTable
+	bl ClearStorageSelectedItemTable
 	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #1
 	ldr r1, [r0]
@@ -1939,9 +1939,9 @@ _0238D008: .word 0x00000537
 	arm_func_start ov27_0238BA7C
 ov27_0238BA7C: ; 0x0238BA7C
 	stmdb sp!, {r3, lr}
-	bl sub_02044094
+	bl AllocStorageSelectedItemTable
 	bl sub_020440DC
-	bl sub_02042B98
+	bl AllocUnkBagStruct
 	mov r0, #0x250
 	mov r1, #8
 	bl MemAlloc
@@ -2115,7 +2115,7 @@ _0238BCDC:
 	beq _0238BD24
 	b _0238BD84
 _0238BCF4:
-	bl sub_02042664
+	bl FreeUnkStorageStruct0xA0
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
 	ldr r1, [r0]
@@ -2178,7 +2178,7 @@ _0238BD84:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl CopyItemAtIdx
-	bl sub_02042664
+	bl FreeUnkStorageStruct0xA0
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2242,7 +2242,7 @@ _0238BEB0:
 	str r1, [r0, #4]
 _0238BEC4:
 	bl ov27_0238C900
-	bl sub_02042664
+	bl FreeUnkStorageStruct0xA0
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2258,7 +2258,7 @@ _0238BEC4:
 	b _0238C860
 _0238BF00:
 	bl ov27_0238C900
-	bl sub_02042664
+	bl FreeUnkStorageStruct0xA0
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2322,7 +2322,7 @@ _0238BFC4:
 	bl sub_020582E0
 	cmp r0, #0
 	bne _0238BFFC
-	bl sub_02042AF8
+	bl ClearBagSelectedItemTable
 	b _0238C028
 _0238BFFC:
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
@@ -2335,7 +2335,7 @@ _0238BFFC:
 	ldr r0, [r0]
 	add r0, r0, #0x10
 	bl AddItemToStorage
-	bl sub_02042AF8
+	bl ClearBagSelectedItemTable
 _0238C028:
 	bl ov27_0238C900
 	mov r0, #0x14
@@ -2373,7 +2373,7 @@ _0238C09C:
 	add r4, sp, #4
 _0238C0A4:
 	mov r0, r5
-	bl sub_02042B84
+	bl IsBagItemIndexSelected
 	tst r0, #1
 	beq _0238C0F8
 	mov r0, r5, lsl #0x10
@@ -2399,9 +2399,9 @@ _0238C0F8:
 	cmp r5, #0x32
 	blt _0238C0A4
 	bl RemoveEmptyItemsInBag
-	bl sub_020434D4
+	bl ClearStorageSelectedItemTable
 	bl ov27_0238C900
-	bl sub_02042AF8
+	bl ClearBagSelectedItemTable
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #6
 	ldr r1, [r0]
@@ -2438,7 +2438,7 @@ _0238C17C:
 	mvn r0, #0
 	cmp r4, r0
 	bne _0238C1D0
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	bl ov27_0238C900
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
@@ -2452,7 +2452,7 @@ _0238C17C:
 	str r1, [r0]
 	b _0238C860
 _0238C1D0:
-	bl sub_020434FC
+	bl CountSelectedStorageItems
 	mov r5, r0
 	mov r0, r4
 	bl sub_0204323C
@@ -2466,7 +2466,7 @@ _0238C1F4:
 	ldrne r0, [r0]
 	strneh r4, [r0, #0x1c]
 	bne _0238C214
-	bl sub_0204352C
+	bl GetFirstSelectedStorageItemIndex
 	ldr r1, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strh r0, [r1, #0x1c]
@@ -2515,7 +2515,7 @@ _0238C234:
 	strh r0, [r4, #0x12]
 	ldr r0, [r2]
 	strb r3, [r0, #0x10]
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	bl ov27_0238C900
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r3, #1
@@ -2539,7 +2539,7 @@ _0238C2F0:
 	b _0238C860
 _0238C314:
 	bl ov27_0238C900
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	bl ov27_0238C900
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
@@ -2558,7 +2558,7 @@ _0238C314:
 	b _0238C860
 _0238C35C:
 	bl ov27_0238C900
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	bl ov27_0238C900
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
@@ -2610,7 +2610,7 @@ _0238C410:
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x1c]
 	bl sub_02010154
-	bl sub_020434D4
+	bl ClearStorageSelectedItemTable
 	bl ov27_0238C900
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
@@ -2662,7 +2662,7 @@ _0238C4D0:
 _0238C4D8:
 	mov r0, r5, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_02043568
+	bl IsStorageItemIndexSelected
 	tst r0, #1
 	beq _0238C510
 	mov r0, r5, lsl #0x10
@@ -2679,10 +2679,10 @@ _0238C510:
 	cmp r5, #0x3e8
 	blt _0238C4D8
 	bl RemoveEmptyItemsInBag
-	bl sub_0201007C
-	bl sub_02042AF8
+	bl MaybeUpdateStorage
+	bl ClearBagSelectedItemTable
 	bl ov27_0238C900
-	bl sub_020434D4
+	bl ClearStorageSelectedItemTable
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
 	ldr r1, [r0]
@@ -2726,7 +2726,7 @@ _0238C5C0:
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x1c]
 	bl sub_02010154
-	bl sub_020434D4
+	bl ClearStorageSelectedItemTable
 	bl ov27_0238C900
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
@@ -2931,8 +2931,8 @@ _0238C864:
 _0238C89C:
 	mov r0, #3
 	str r0, [r1, #0x84]
-	bl sub_020440B8
-	bl sub_02042BBC
+	bl FreeStorageSelectedItemTable
+	bl FreeUnkBagStruct
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]

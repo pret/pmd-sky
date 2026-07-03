@@ -89,6 +89,7 @@
 .public InitBitstreamForRead
 .public InitBitstreamForWrite
 .public InitMenu
+.public InitOamAdjustmentInfo
 .public InitPreprocessorArgs
 .public IsAdvancedMenuActive
 .public IsAdvancedMenuActive2
@@ -110,6 +111,7 @@
 .public LoadScriptVariableValueAtIndex
 .public LoadWanTableEntry
 .public LoadWanTableEntryFromPack
+.public MaybeGetFormattedItemName
 .public MemAlloc
 .public MemcpySimple
 .public MemFree
@@ -240,11 +242,9 @@
 .public sub_02009194
 .public sub_020091B0
 .public sub_0200D214
-.public sub_0200D310
 .public sub_0200DFBC
 .public sub_0200DFE4
 .public sub_0200EB64
-.public sub_0201C000
 .public sub_0201C138
 .public sub_0201CF5C
 .public sub_0201D12C

@@ -157,7 +157,7 @@ _02052264:
 	add r2, sp, #0x24
 	add r0, r3, r6
 	mov r1, r1, lsr #0x10
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	add r4, r4, #1
 	add r5, r5, #4
 _020522B0:
@@ -172,7 +172,7 @@ _020522C8:
 	ldr r0, [r0]
 	add r0, r0, #0x1cc
 	add r0, r0, r6
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0

@@ -1,11 +1,14 @@
 #pragma once
 .public BmaLayerNrlDecompressor
+.public CopyColorToPaletteDataRgba
 .public DecompressAtNormalVeneer
+.public FillPaletteDataRgba
 .public GetAtSize
 .public GroundBg_CloseOpenedFiles
 .public GroundBg_Init
 .public LoadBackgroundAttributes
 .public LoadFileFromRom
+.public MarkPaletteDataAsNeedingUpdate
 .public MemAlloc
 .public Memcpy16
 .public MemFree
@@ -22,9 +25,6 @@
 .public ov11_02324CBC
 .public PointsToZero
 .public sprintf
-.public sub_0200A504
-.public sub_0200A590
-.public sub_0200A5B0
 .public sub_02015328
 .public sub_02016300
 .public sub_02016378

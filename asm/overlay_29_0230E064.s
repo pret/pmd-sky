@@ -197,7 +197,7 @@ _0230E2D4:
 	ldrsh r1, [r8, #2]
 	ldrsh r2, [r8, #4]
 	mov r0, sb
-	bl ov29_02337EC0
+	bl RemoveMonsterFromTile
 	ldrsh r2, [r8, #2]
 	ldrsh r3, [r8, #4]
 	mov r0, sl

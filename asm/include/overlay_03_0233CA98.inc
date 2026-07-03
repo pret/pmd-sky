@@ -2,6 +2,7 @@
 .public _ll_udiv
 .public _ull_mod
 .public AddItemToStorage
+.public AllocStorageSelectedItemTable
 .public CanSendItem
 .public CloseAdvancedMenu
 .public CloseAdvancedTextBox
@@ -14,6 +15,8 @@
 .public Debug_Print0
 .public DrawTextInWindow
 .public FreeMissionRewardStructMain
+.public FreeStorageSelectedItemTable
+.public FreeUnkStorageStruct0x18c0
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
 .public GetHeldButtons
@@ -36,6 +39,7 @@
 .public IncrementNbSkyGiftsSent
 .public InitPreprocessorArgs
 .public InitStandardItem
+.public InitUnkStorageStruct0x18c0
 .public IsAdvancedMenuActive2
 .public IsAdvancedTextBoxActive
 .public IsItemInTimeDarkness
@@ -46,6 +50,7 @@
 .public IsTouchScreenNotOff
 .public ItemZInit
 .public LoadFileFromRom
+.public MaybeGetFormattedItemName
 .public MemAlloc
 .public MemcpySimple
 .public MemFree
@@ -198,7 +203,6 @@
 .public sub_02003BFC
 .public sub_02006BFC
 .public sub_02006C8C
-.public sub_0200D310
 .public sub_02010044
 .public sub_02010154
 .public sub_02025404
@@ -236,9 +240,7 @@
 .public sub_02041A18
 .public sub_02041B7C
 .public sub_020420F4
-.public sub_02042CF0
 .public sub_0204316C
-.public sub_0204317C
 .public sub_02043218
 .public sub_0204322C
 .public sub_02043254
@@ -248,8 +250,6 @@
 .public sub_02043400
 .public sub_02043434
 .public sub_02043468
-.public sub_02044094
-.public sub_020440B8
 .public sub_020440DC
 .public sub_02046BB4
 .public sub_02046D20

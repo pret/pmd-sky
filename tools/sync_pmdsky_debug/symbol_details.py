@@ -101,6 +101,7 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'MTX_LookAt': 'Mtx_LookAt',
     'MTX_OrthoW': 'Mtx_OrthoW',
     'OS_GetDTCMAddress': 'OS_GetDtcmAddress',
+    'OSi_ConsoleTypeCache': 'OSI_CONSOLE_TYPE_CACHE',
     'OSi_DebuggerHandler': 'OSI_DEBUGGER_HANDLER',
     'OSi_ExContext': 'OSI_EX_CONTEXT',
     'OSi_Initialized': 'OSI_INITIALIZED',

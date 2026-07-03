@@ -1068,7 +1068,7 @@ _0238B00C:
 	ldr r0, [r0]
 	ldr r2, _0238B12C ; =OVERLAY25_UNKNOWN_STRUCT__NA_238B498
 	add r0, r0, #0xb8
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r2, [r0]
 	add r1, r2, #0xb8

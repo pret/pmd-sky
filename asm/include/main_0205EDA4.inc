@@ -74,6 +74,7 @@
 .public Copy16BitsTo
 .public CopyBitsFrom
 .public CopyBitsTo
+.public CopyColorToPaletteDataRgba
 .public CopyFrameTypeOption
 .public CountJobListMissions
 .public CreateCollectionMenu
@@ -93,6 +94,7 @@
 .public EVENTS
 .public ExplorersOfSkyMain
 .public FemaleToMaleForm
+.public FillPaletteDataRgba
 .public GetAdventureLogDungeonFloor
 .public GetAdventureNpcIds
 .public GetAppointedLeaderMemberIdx
@@ -130,6 +132,7 @@
 .public GetStringFromFileVeneer
 .public GetType
 .public GetUnitNpcIds
+.public GetWindowIdSelectedMenuItemIdx
 .public GlobalProgressAlloc
 .public HandleSir0TranslationVeneer
 .public HasMonsterBeenAttackedInDungeons
@@ -176,6 +179,8 @@
 .public LoadTblTalk
 .public LoadWazaP
 .public MainGame
+.public MarkPaletteDataAsNeedingUpdate
+.public MaybeGetFormattedItemName
 .public MemAlloc
 .public MemcpySimple
 .public MemFree
@@ -257,14 +262,10 @@
 .public sub_020094E8
 .public sub_0200A174
 .public sub_0200A29C
-.public sub_0200A504
-.public sub_0200A590
-.public sub_0200A5B0
 .public sub_0200B330
 .public sub_0200B3FC
 .public sub_0200C020
 .public sub_0200CA8C
-.public sub_0200D310
 .public sub_0201D7A8
 .public sub_0201DD90
 .public sub_0201E050
@@ -284,7 +285,6 @@
 .public sub_0202C620
 .public sub_0202C654
 .public sub_0202C6F0
-.public sub_0202C748
 .public sub_0202C75C
 .public sub_0202D07C
 .public sub_020346C0

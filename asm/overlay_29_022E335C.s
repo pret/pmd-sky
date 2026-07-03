@@ -339,7 +339,7 @@ _022E36F4:
 	cmp r3, #0
 	bne _022E3740
 	add r0, sp, #0x20
-	bl sub_0201C000
+	bl InitOamAdjustmentInfo
 	b _022E3758
 _022E3740:
 	add r2, sp, #0x20

@@ -42,7 +42,6 @@
 .public ov29_022EA370
 .public ov29_022EF938
 .public ov29_022F87C0
-.public ov29_023021F0
 .public ov29_02304A48
 .public ov29_02307CE0
 .public ov29_02307DD0
@@ -61,5 +60,6 @@
 .public TryInflictBurnStatus
 .public TryInflictPausedStatus
 .public UpdateCamera
+.public UpdateIqSkillsWrapper
 .public UpdateMinimap
 .public UpdateStatusIconFlags

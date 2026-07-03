@@ -620,7 +620,7 @@ _0233D1D4: .word ov04_0233F670
 ov04_0233D1D8: ; 0x0233D1D8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	bl sub_02044094
+	bl AllocStorageSelectedItemTable
 	bl sub_020440DC
 	bl sub_02043218
 	ldr r0, _0233D2A4 ; =0x00001D28
@@ -692,7 +692,7 @@ ov04_0233D2B4: ; 0x0233D2B4
 	ldr r0, _0233D2F4 ; =ov04_0233F644
 	mov r1, #0
 	str r1, [r0]
-	bl sub_020440B8
+	bl FreeStorageSelectedItemTable
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233D2F4: .word ov04_0233F644
@@ -1078,7 +1078,7 @@ _0233D848:
 	mov r0, r5
 	mov r1, #0
 	mov r2, #8
-	bl sub_02042CF0
+	bl InitUnkStorageStruct0x18c0
 	ldr r1, _0233E290 ; =0x00001002
 	strb r0, [r4, #8]
 	str r1, [r4]
@@ -1092,13 +1092,13 @@ _0233D874:
 	mvn r0, #0
 	cmp r5, r0
 	bne _0233D8A8
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	mvn r0, #1
 	strb r0, [r4, #8]
 	mov r0, #1
 	b _0233EEB8
 _0233D8A8:
-	bl sub_020434FC
+	bl CountSelectedStorageItems
 	mov r6, r0
 	mov r0, r5
 	bl sub_02043254
@@ -1130,7 +1130,7 @@ _0233D8E4:
 _0233D918:
 	mov r0, r5, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_02043568
+	bl IsStorageItemIndexSelected
 	tst r0, #1
 	beq _0233D950
 	mov r0, r5
@@ -1169,7 +1169,7 @@ _0233D95C:
 _0233D9A4:
 	cmp r6, #1
 	bne _0233D9B4
-	bl sub_0204352C
+	bl GetFirstSelectedStorageItemIndex
 	b _0233D9B8
 _0233D9B4:
 	bl sub_02043468
@@ -1237,7 +1237,7 @@ _0233DA6C:
 	ldr r1, _0233E28C ; =ov01_0233C1DC
 	strh r0, [r1]
 	str r5, [r4, #0xc]
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	mvn r1, #1
 	ldr r0, _0233E2A8 ; =0x00001004
 	strb r1, [r4, #8]
@@ -1253,7 +1253,7 @@ _0233DAC4:
 	bl ov01_02337658
 	cmp r5, #3
 	bne _0233DC88
-	bl sub_020434FC
+	bl CountSelectedStorageItems
 	mov r3, #0
 	ldr r5, [r4, #0xc]
 	mov r2, r3
@@ -1280,7 +1280,7 @@ _0233DB0C:
 _0233DB40:
 	mov r0, sb, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_02043568
+	bl IsStorageItemIndexSelected
 	tst r0, #1
 	beq _0233DBB0
 	mul sl, r8, fp
@@ -1311,7 +1311,7 @@ _0233DBB0:
 	add sb, sb, #1
 	cmp sb, #0x3e8
 	blt _0233DB40
-	bl sub_0201007C
+	bl MaybeUpdateStorage
 	strh r8, [r4, #0x7a]
 	ldrh r1, [r4, #0x7a]
 	add r0, r4, #0x1800
@@ -1360,7 +1360,7 @@ _0233DC64:
 	mov r0, r0, asr #0x10
 	bl sub_02010154
 _0233DC70:
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	mvn r1, #1
 	ldr r0, _0233E2AC ; =0x00001006
 	strb r1, [r4, #8]
@@ -1369,7 +1369,7 @@ _0233DC70:
 _0233DC88:
 	cmp r5, #5
 	bne _0233DCA8
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	mvn r1, #1
 	ldr r0, _0233E2A8 ; =0x00001004
 	strb r1, [r4, #8]
@@ -1672,7 +1672,7 @@ _0233E0D0:
 	mov r0, r6
 	mov r3, #1
 	str r7, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	add r2, sp, #0x400
 	ldr r1, _0233E2D8 ; =0x000037CC
 	add r2, r2, #0x54
@@ -1707,7 +1707,7 @@ _0233E150:
 	mov r0, r6
 	add r1, r4, #0x70
 	mov r3, #1
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	add r2, sp, #0x400
 	str r5, [sp, #0x48c]
 	str r6, [sp, #0x490]
@@ -2250,7 +2250,7 @@ _0233E8D8:
 	add r1, sp, #0x16
 	mov r0, r6
 	mov r3, #1
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	str r5, [sp, #0x264]
 	str r6, [sp, #0x268]
 	ldrh r0, [r4, #0x7a]
@@ -2289,7 +2289,7 @@ _0233E968:
 	mov r0, r6
 	add r1, r4, #0x7c
 	mov r3, #1
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	str r5, [sp, #0x264]
 	str r6, [sp, #0x268]
 	ldrh r0, [r4, #0x7a]
@@ -2348,7 +2348,7 @@ _0233EA44:
 	add r1, r4, #0x70
 	mov r3, #1
 	str r5, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 #ifdef JAPAN
 	mov r0, #0x1c
 	add r2, sp, #0x1dc
@@ -2397,7 +2397,7 @@ _0233EADC:
 	add r1, r4, #0x7c
 	mov r3, #1
 	str r5, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 #ifdef JAPAN
 	mov r0, #0x1c
 	add r2, sp, #0x1dc

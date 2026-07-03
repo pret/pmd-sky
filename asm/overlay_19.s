@@ -4047,7 +4047,7 @@ _0238D780:
 	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238D798
-	bl ov11_0230CC70
+	bl IsSpindaCafeOverlaySuspended
 	cmp r0, #0
 	beq _0238DAC4
 _0238D798:
@@ -4058,7 +4058,7 @@ _0238D7A4:
 	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238D7BC
-	bl ov11_0230CC70
+	bl IsSpindaCafeOverlaySuspended
 	cmp r0, #0
 	beq _0238DAC4
 _0238D7BC:
@@ -4198,7 +4198,7 @@ _0238D958:
 	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238D970
-	bl ov11_0230CC70
+	bl IsSpindaCafeOverlaySuspended
 	cmp r0, #0
 	beq _0238DAC4
 _0238D970:
@@ -4288,7 +4288,7 @@ _0238DA74:
 	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238DA8C
-	bl ov11_0230CC70
+	bl IsSpindaCafeOverlaySuspended
 	cmp r0, #0
 	beq _0238DAC4
 _0238DA8C:

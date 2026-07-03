@@ -268,6 +268,7 @@
 .public CopyAndInterleave
 .public CopyAndInterleave0
 .public CopyAttributesToOam
+.public CopyColorToPaletteDataRgba
 .public CopyStringFromId
 .public DC_FlushRange
 .public Debug_FatalError
@@ -311,6 +312,7 @@
 .public FileRom_InitDataTransfer
 .public FileRom_StopDataTransfer
 .public FileRom_Veneer_FileInit
+.public FillPaletteDataRgba
 .public G3i_LookAt_
 .public G3i_OrthoW_
 .public GetAbility
@@ -362,6 +364,8 @@
 .public LoadScriptVariableValueAtIndex
 .public LoadScriptVariableValueString
 .public LoadStringFile
+.public MarkPaletteDataAsNeedingUpdate
+.public MaybeGetFormattedItemName
 .public MemAlloc
 .public MemArenaAlloc
 .public Memcpy32
@@ -430,10 +434,7 @@
 .public sub_0200A29C
 .public sub_0200A2B4
 .public sub_0200A478
-.public sub_0200A504
 .public sub_0200A510
-.public sub_0200A590
-.public sub_0200A5B0
 .public sub_0200A5F8
 .public sub_0200A618
 .public sub_0200B330
@@ -441,7 +442,6 @@
 .public sub_0200B3D4
 .public sub_0200B3FC
 .public sub_0200B768
-.public sub_0200D310
 .public sub_02025480
 .public sub_020257FC
 .public sub_0204E530

@@ -4,6 +4,7 @@
 .public CalcSpeedStage
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration
+.public CONFUSED_TURN_RANGE
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EntityIsValid__023118B4
@@ -15,7 +16,6 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerSpeed
 .public ov10_022C4618
-.public ov10_022C4890
 .public ov29_022E41CC
 .public ov29_022E543C
 .public ov29_022E60E4

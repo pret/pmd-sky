@@ -44,7 +44,6 @@
 .public MusicTableIdxToMusicId
 .public ov29_022E550C
 .public ov29_022E8244
-.public ov29_022EAC8C
 .public ov29_022EAEFC
 .public ov29_022FA3D4
 .public ov29_023009CC
@@ -59,6 +58,7 @@
 .public ov29_0234D838
 .public ov29_0234D8A0
 .public ov29_023537C8
+.public PlayDungeonTipSound__022EB63C
 .public PlayMeByIdIfNot998
 .public PositionIsOnStairs
 .public PrepareItemForPrinting__02345728

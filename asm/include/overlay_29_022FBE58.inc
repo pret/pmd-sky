@@ -30,8 +30,8 @@
 .public LoadWazaP2
 .public ov29_022FB83C
 .public ov29_022FCD04
-.public ov29_023021F0
 .public ov29_02351E28
 .public SetMonsterLevelAndId
 .public sub_0200F9B4
 .public UnloadCurrentWazaP
+.public UpdateIqSkillsWrapper

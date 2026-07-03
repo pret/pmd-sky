@@ -43,11 +43,11 @@ extern struct UnkStruct_2324CBC *ov11_02324CBC;
 
 extern void FileClose(struct file_stream* file);
 extern void* MemAlloc(u32 len, u32 flags);
-extern void sub_0200A590(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src);
-extern void sub_0200A504(struct UnkStruct_2324CBC_Sub98 *);
+extern void CopyColorToPaletteDataRgba(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src);
+extern void MarkPaletteDataAsNeedingUpdate(struct UnkStruct_2324CBC_Sub98 *);
 extern s32 sprintf(u8* str, const u8* format, ...);
 extern void LoadFileFromRom(struct iovec* iov, const char* filepath, u32 flags);
-extern void sub_0200A5B0(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src, s32);
+extern void FillPaletteDataRgba(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src, s32);
 
 #define FREE_AND_SET_NULL(ptr)          \
 {                                       \
@@ -316,12 +316,12 @@ void ov11_022EC08C(GroundBg *groundBg)
     unkSubPtr = &ov11_02324CBC->unk98[unkId];
     palId = groundBg->unk2BC.unk6 * 16;
     for (i = 0; i < groundBg->unk2BC.unk8; i++) {
-        sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
+        CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BF4);
         for (j = 1; j < 16; j++) {
-            sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
+            CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BE8);
         }
     }
-    sub_0200A504(unkSubPtr);
+    MarkPaletteDataAsNeedingUpdate(unkSubPtr);
 
     if (groundBg->unk2BC.numLayers > 0) {
         ov11_022EE620(groundBg, 1);
@@ -448,18 +448,18 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
     unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk2BC.unk0];
     palId = groundBg->unk2BC.unk6 * 16;
     for (i = 0; i < bplHeader->numPalettes && i < groundBg->unk2BC.unk8; i++) {
-        sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
-        sub_0200A5B0(unkSubPtr, palId, rgbPal, 15);
+        CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BF4);
+        FillPaletteDataRgba(unkSubPtr, palId, rgbPal, 15);
         palId += 15;
         rgbPal += 15;
     }
     for (; i < groundBg->unk2BC.unk8; i++) {
-        sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
+        CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BF4);
         for (j = 1; j < 16; j++) {
-            sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
+            CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BE8);
         }
     }
-    sub_0200A504(unkSubPtr);
+    MarkPaletteDataAsNeedingUpdate(unkSubPtr);
 
     // Bpc decompressor
     sp20 = groundBg->unk2BC.unk2;
@@ -930,12 +930,12 @@ _022EC4D8:
 	mov r8, r0, lsr #0x10
 	ldr r2, =ov11_02320BF4
 	add r0, r7, r6
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	ldr r2, [sp, #0x1c]
 	add r0, r7, r6
 	mov r1, r8
 	mov r3, #0xf
-	bl sub_0200A5B0
+	bl FillPaletteDataRgba
 	add r0, r8, #0xf
 	mov r0, r0, lsl #0x10
 	mov r8, r0, lsr #0x10
@@ -963,7 +963,7 @@ _022EC550:
 	mov r8, r0, lsr #0x10
 	ldr r2, =ov11_02320BF4
 	add r0, r7, r6
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	mov r0, #1
 	str r0, [sp, #0x18]
 _022EC574:
@@ -973,7 +973,7 @@ _022EC574:
 	mov r8, r0, lsr #0x10
 	ldr r2, =ov11_02320BE8
 	add r0, r7, r6
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	ldr r0, [sp, #0x18]
 	add r0, r0, #1
 	str r0, [sp, #0x18]
@@ -986,7 +986,7 @@ _022EC5A8:
 	cmp r9, r0
 	blt _022EC550
 	add r0, r7, r6
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	add r0, r10, #0x200
 	ldrsh r0, [r0, #0xbe]
 	mov r8, #0
@@ -1640,7 +1640,7 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
         s32 i, j;
 
         for (i = 0; i < 12 && i < groundBg->unk2BC.unk8; i++) {
-            sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
+            CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BF4);
             strPtr++;
             for (j = 1; j < 16; j++) {
                 RGB_Array sp20;
@@ -1650,18 +1650,18 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
                 sp1C.c[2] = strPtr->c[2];
                 sp1C.c[3] = strPtr->c[3];
                 sp20 = sp1C;
-                sub_0200A590(unkSubPtr, palId++, &sp20);
+                CopyColorToPaletteDataRgba(unkSubPtr, palId++, &sp20);
                 strPtr++;
             }
         }
 
         for (; i < groundBg->unk2BC.unk8; i++) {
-            sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
+            CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BF4);
             for (j = 1; j < 16; j++) {
-                sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
+                CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BE8);
             }
         }
-        sub_0200A504(unkSubPtr);
+        MarkPaletteDataAsNeedingUpdate(unkSubPtr);
     }
 
     groundBg->unk1EE = 0;
@@ -1781,7 +1781,7 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
         s32 i, j;
 
         for (i = 0; i < 12 && i < groundBg->unk2BC.unk8; i++) {
-            sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
+            CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BF4);
             strPtr++;
             for (j = 1; j < 16; j++) {
                 RGB_Array sp20;
@@ -1791,18 +1791,18 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
                 sp1C.c[2] = strPtr->c[2];
                 sp1C.c[3] = strPtr->c[3];
                 sp20 = sp1C;
-                sub_0200A590(unkSubPtr, palId++, &sp20);
+                CopyColorToPaletteDataRgba(unkSubPtr, palId++, &sp20);
                 strPtr++;
             }
         }
 
         for (; i < groundBg->unk2BC.unk8; i++) {
-            sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
+            CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BF4);
             for (j = 1; j < 16; j++) {
-                sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
+                CopyColorToPaletteDataRgba(unkSubPtr, palId++, &ov11_02320BE8);
             }
         }
-        sub_0200A504(unkSubPtr);
+        MarkPaletteDataAsNeedingUpdate(unkSubPtr);
     }
 
     groundBg->unk1EE = 0;

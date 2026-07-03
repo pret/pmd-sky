@@ -133,10 +133,6 @@
 .public ov29_022FA524
 .public ov29_022FA648
 .public ov29_022FA750
-.public ov29_022FAA58
-.public ov29_022FACBC
-.public ov29_022FAD4C
-.public ov29_022FAF08
 .public ov29_022FBB1C
 .public ov29_022FC9C0
 .public ov29_022FCD04
@@ -246,9 +242,13 @@
 .public sub_02057EF4
 .public sub_02058644
 .public sub_0205B77C
+.public TryActivateAcuteSniffer
 .public TryActivateArtificialWeatherAbilities
 .public TryActivateIqBooster
+.public TryActivateNewFloorHpRestoration
+.public TryActivateNewFloorPpRestoration
 .public TryActivateSlowStart
+.public TryActivateStairSensor
 .public TryActivateWeather
 .public TryForcedLoss
 .public TryInflictBurnStatusWholeTeam

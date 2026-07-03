@@ -26,6 +26,7 @@
 .public GetRecycleOfferCooldown
 .public GetSimpleMenuField0x1A4
 .public GetSimpleMenuResult__0202B870
+.public GetWindowIdSelectedMenuItemIdx
 .public HidePortraitBox
 .public IncrementRecycleCountVar
 .public InitPortraitParamsWithMonsterId
@@ -34,14 +35,16 @@
 .public IsBagFull
 .public IsCollectionMenuActive
 .public IsMePlaying
+.public IsRecycleShopOverlaySuspended
 .public IsScriptMenuReturnDisabled
 .public IsScrollBoxActive
 .public IsSimpleMenuActive
+.public IsTextboxState3
 .public IsTicketItem
+.public MaybeGetColoredFormattedItemName
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public ov11_0230CCE0
 .public ov11_0230CCF0
 .public ov11_0230D220
 .public ov11_0230D71C
@@ -64,7 +67,6 @@
 .public StringFromId
 .public sub_020017EC
 .public sub_020037A4
-.public sub_0200D670
 .public sub_02010044
 .public sub_02011CF4
 .public sub_02011D9C
@@ -84,12 +86,10 @@
 .public sub_0202B544
 .public sub_0202B568
 .public sub_0202C620
-.public sub_0202C748
 .public sub_0202C75C
 .public sub_0202C7E4
 .public sub_0202D0EC
 .public sub_0202D16C
-.public sub_0202F9B8
 .public sub_020327CC
 .public sub_02046A20
 .public sub_02046B04

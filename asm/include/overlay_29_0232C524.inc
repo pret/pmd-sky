@@ -77,12 +77,6 @@
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022FD7A0
-.public ov29_0230D874
-.public ov29_0230D8E8
-.public ov29_0230D95C
-.public ov29_0230D9D0
-.public ov29_0230DA44
-.public ov29_0230DAB8
 .public ov29_02318BBC
 .public ov29_02318D58
 .public ov29_02332F18
@@ -106,6 +100,12 @@
 .public SpawnDroppedItemWrapper
 .public StringFromId
 .public SubstitutePlaceholderStringTags
+.public SwapDefensiveMultipliers
+.public SwapDefensiveStages
+.public SwapHitChanceStages
+.public SwapOffensiveMultipliers
+.public SwapOffensiveStages
+.public SwapUserAtkAndDefModifiers
 .public THUNDER_FANG_CRINGE_CHANCE
 .public THUNDER_FANG_PARALYZE_CHANCE
 .public TransferNegativeStatusCondition

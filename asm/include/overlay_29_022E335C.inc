@@ -7,6 +7,7 @@
 .public EntityIsValid__022E37B8
 .public GetEffectAnimationField0x19
 .public GetTileSafe
+.public InitOamAdjustmentInfo
 .public LogMessageByIdWithPopupCheckUser
 .public ov10_022BF274
 .public ov10_022BF2B4
@@ -16,7 +17,6 @@
 .public ov29_0235110C
 .public ov29_0235354C
 .public ShouldDisplayEntityAdvanced
-.public sub_0201C000
 .public sub_0201CF90
 .public UpdateCamera
 .public UpdateMinimap

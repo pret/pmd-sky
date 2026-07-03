@@ -1,8 +1,8 @@
 #pragma once
 .public _022BB5EC
 .public EnableIrqFlag
-.public FS_InitFile
 .public FS_FindArchive
+.public FS_InitFile
 .public FSi_ExecuteSyncCommand
 .public FSi_SendCommand
 .public OS_SleepThread

@@ -4,8 +4,8 @@
 	.text
 
 ; https://decomp.me/scratch/RJN4g
-	arm_func_start ov15_0238ADC4
-ov15_0238ADC4: ; 0x0238ADC4
+	arm_func_start DuskullBankTextboxGoldStatusCallback
+DuskullBankTextboxGoldStatusCallback: ; 0x0238ADC4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x54
 	sub sp, sp, #0x400
@@ -62,4 +62,4 @@ _0238C3E0: .word 0x00003239
 _0238AE64: .word 0x00000373
 _0238AE68: .word 0x0000C402
 #endif
-	arm_func_end ov15_0238ADC4
+	arm_func_end DuskullBankTextboxGoldStatusCallback

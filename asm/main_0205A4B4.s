@@ -222,7 +222,7 @@ _0205A7D0:
 	ldr r2, _0205ADD0 ; =_020A34B8
 	add r1, r6, #0x1c
 	mov r7, r0
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 #ifdef JAPAN
 	ldr r2, _0205B0D0 ; =0x00002330
 #endif

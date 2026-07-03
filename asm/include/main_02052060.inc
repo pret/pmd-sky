@@ -9,15 +9,15 @@
 .public _020B09C0
 .public _s32_div_f
 .public ARM9_UNKNOWN_PTR__NA_20A2C84
+.public CopyColorToPaletteDataRgba
 .public GetBaseForm
 .public LoadFileFromRom
 .public LoadM2nAndN2m
+.public MarkPaletteDataAsNeedingUpdate
 .public MemFree
 .public MONSTER_DATA_TABLE_PTR
 .public StringFromId
 .public strncpy
-.public sub_0200A504
-.public sub_0200A590
 .public sub_02051804
 .public sub_02051D8C
 .public sub_02051E60

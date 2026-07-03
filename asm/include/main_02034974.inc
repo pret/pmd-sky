@@ -92,6 +92,7 @@
 .public CloseTeamSelectionMenu
 .public CloseTextBox
 .public CopyFrameTypeOption
+.public CopyOrInitPreprocessorArgs
 .public CreateAdvancedMenu
 .public CreateAdvancedTextBox
 .public CreateDebugMenu
@@ -116,6 +117,7 @@
 .public GetAdvancedMenuResult
 .public GetAppointedLeaderMemberIdx
 .public GetDexNumber
+.public GetDigitInputResult
 .public GetEvolutionPossibilities
 .public GetHeldButtons
 .public GetHero
@@ -153,6 +155,7 @@
 .public IsSimpleMenuActive
 .public IsTeamSelectionMenuActive
 .public IsTeamSelectionMenuState3
+.public IsTextboxState3
 .public IsValidPortrait
 .public IsValidTeamMember
 .public KEYBOARD_STRING_IDS
@@ -187,7 +190,6 @@
 .public StrncpySimpleNoPadSafe
 .public sub_020063F4
 .public sub_0202065C
-.public sub_020236FC
 .public sub_0202372C
 .public sub_02024B94
 .public sub_020251F0
@@ -212,8 +214,6 @@
 .public sub_0202F334
 .public sub_0202F3F8
 .public sub_0202F954
-.public sub_0202F9B8
-.public sub_02030940
 .public sub_020309B8
 .public sub_0203111C
 .public sub_0203115C

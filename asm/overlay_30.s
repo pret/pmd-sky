@@ -3698,7 +3698,7 @@ _02385988:
 	bl ov29_02338F24
 _023859BC:
 	mov r0, r7
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	mov r0, r7
 	mov r1, #0
 	bl UpdateEntityPixelPos

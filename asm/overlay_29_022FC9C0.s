@@ -552,7 +552,7 @@ SpawnMonster: ; 0x022FD084
 	mov r0, r4
 	ldrsh r1, [r2, r1]
 	strh r1, [r5, #0xe]
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	ldrb r0, [r7, #2]
 	bl IsBehaviorLoneOutlaw
 	cmp r0, #0
@@ -587,7 +587,7 @@ _022FD154:
 	str ip, [sp, #4]
 	bl ov29_022FC468
 	mov r0, r4
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	b _022FD1F0
 _022FD194:
 	ldrsh r2, [r5, #2]
@@ -936,7 +936,7 @@ _022FD570:
 	strb r6, [r8, #0x23c + INIT_TEAM_MEMBER_OFFSET]
 	strb r6, [r8, #0x23d + INIT_TEAM_MEMBER_OFFSET]
 	strh r6, [r8, #0x68]
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	ldrb r1, [sp, #0x44]
 	mov r0, r7
 	bl ov29_022FB83C
@@ -1418,7 +1418,7 @@ _022FDB18:
 	ldr r0, [r4, #0xb0]
 	bl ov29_022DDA54
 	mov r0, r7
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	mov r1, #0
 	mov r0, r7
 	mov r2, r1

@@ -29,6 +29,7 @@
 .public IsBagFull
 .public IsDialogueBoxActive
 .public IsMePlaying
+.public MaybeGetColoredFormattedItemName
 .public MemAlloc
 .public MemFree
 .public ov11_022DC504
@@ -55,7 +56,6 @@
 .public StrcpySimple
 .public StrncpySimple
 .public StrncpySimpleNoPadSafe
-.public sub_0200D670
 .public sub_02017C50
 .public sub_02017CB4
 .public sub_02025304_JP

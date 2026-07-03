@@ -1072,7 +1072,7 @@ _0238AFB8:
 	cmp r5, r0
 	blt _0238AFA4
 	bl RemoveEmptyItemsInBag
-	bl sub_0201007C
+	bl MaybeUpdateStorage
 	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xe]

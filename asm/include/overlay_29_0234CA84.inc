@@ -18,7 +18,6 @@
 .public LoadOverlay
 .public LoadScriptVariableValue
 .public LogMessageByIdQuiet
-.public ov29_022EACBC
 .public ov29_0231ADA8
 .public ov29_02337EE8
 .public ov29_0233804C
@@ -60,6 +59,7 @@
 .public ov29_0237D000
 .public ov30_023842F4
 .public OverlayIsLoaded
+.public PlayDungeonTipSound__022EB66C
 .public SetBothScreensWindowsColor
 .public SetDungeonTipShown
 .public StringFromId

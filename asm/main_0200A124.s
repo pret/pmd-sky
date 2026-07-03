@@ -344,12 +344,12 @@ sub_0200A4C4: ; 0x0200A4C4
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0200A4C4
 
-	arm_func_start sub_0200A504
-sub_0200A504: ; 0x0200A504
+	arm_func_start MarkPaletteDataAsNeedingUpdate
+MarkPaletteDataAsNeedingUpdate: ; 0x0200A504
 	mov r1, #1
 	strb r1, [r0, #8]
 	bx lr
-	arm_func_end sub_0200A504
+	arm_func_end MarkPaletteDataAsNeedingUpdate
 
 	arm_func_start sub_0200A510
 sub_0200A510: ; 0x0200A510
@@ -394,8 +394,8 @@ _0200A56C:
 _0200A58C: .word sub_0200A73C
 	arm_func_end sub_0200A544
 
-	arm_func_start sub_0200A590
-sub_0200A590: ; 0x0200A590
+	arm_func_start CopyColorToPaletteDataRgba
+CopyColorToPaletteDataRgba: ; 0x0200A590
 	ldr r0, [r0, #0x18]
 	mov r3, #4
 	add r1, r0, r1, lsl #2
@@ -405,10 +405,10 @@ _0200A59C:
 	strb r0, [r1], #1
 	bne _0200A59C
 	bx lr
-	arm_func_end sub_0200A590
+	arm_func_end CopyColorToPaletteDataRgba
 
-	arm_func_start sub_0200A5B0
-sub_0200A5B0: ; 0x0200A5B0
+	arm_func_start FillPaletteDataRgba
+FillPaletteDataRgba: ; 0x0200A5B0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, [r0, #0x18]
 	mov lr, #0
@@ -430,7 +430,7 @@ _0200A5EC:
 	cmp lr, r3
 	blt _0200A5C4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0200A5B0
+	arm_func_end FillPaletteDataRgba
 
 	arm_func_start sub_0200A5F8
 sub_0200A5F8: ; 0x0200A5F8

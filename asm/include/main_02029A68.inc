@@ -2,7 +2,6 @@
 .public _0209AE20
 .public _020AFDA0
 .public _020AFDA8
-.public _022AAC68
 .public ALERT_ANIMATION_CONTROL
 .public ALERT_SPRITE_ID
 .public CURSOR_16_ANIMATION_CONTROL
@@ -12,6 +11,7 @@
 .public InitRender3dElement64
 .public LoadWanTableEntry
 .public MemAlloc
+.public PREV_MENU_ITEMS
 .public SetAnimationForAnimationControl
 .public SetSpriteIdForAnimationControl
 .public sub_0201C028

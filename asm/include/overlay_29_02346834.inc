@@ -48,7 +48,6 @@
 .public ov29_022E9488
 .public ov29_022EBB8C
 .public ov29_022EBB98
-.public ov29_022FAFD4
 .public ov29_022FB920
 .public ov29_023009A0
 .public ov29_023457C8
@@ -61,6 +60,7 @@
 .public SetDungeonEscapeFields
 .public SetEntityPixelPosXY
 .public SetItemAcquired
+.public ShouldTreatMonsterAsAlly
 .public SinAbs4096
 .public SpawnDroppedItem
 .public sub_0200CF6C

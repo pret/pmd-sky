@@ -4084,7 +4084,7 @@ _02340280:
 	mov r0, r4
 	add r1, r1, #0x100
 	mov r3, #1
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 #ifdef JAPAN
 	mov r0, #0x1c
 	add r2, sp, #0x54
@@ -5741,7 +5741,7 @@ _02341960:
 	add r1, r5, #0xae
 	mov r3, #1
 	str r4, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 #ifdef JAPAN
 	mov r0, #0x1c
 	add r2, sp, #0x2c0
@@ -9261,7 +9261,7 @@ ov03_023449C4: ; 0x023449C4
 	bl MemAlloc
 	ldr r1, _02344A50 ; =ov03_02346BDC
 	str r0, [r1]
-	bl sub_02044094
+	bl AllocStorageSelectedItemTable
 	bl sub_020440DC
 	bl sub_02043218
 	ldr r0, _02344A50 ; =ov03_02346BDC
@@ -9300,7 +9300,7 @@ ov03_02344A58: ; 0x02344A58
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_020440B8
+	bl FreeStorageSelectedItemTable
 	ldr r0, _02344A8C ; =ov03_02346BDC
 	ldr r0, [r0]
 	bl MemFree
@@ -9944,7 +9944,7 @@ _0234533C:
 	add r1, r7, #0x9e
 	mov r3, #1
 	str r5, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	add r0, sp, #0x31c
 	mov r1, #0x98
 	str r4, [sp, #0x304]
@@ -10290,7 +10290,7 @@ _02345818:
 	bl sub_0204316C
 	mov r1, #0
 	mov r2, #8
-	bl sub_02042CF0
+	bl InitUnkStorageStruct0x18c0
 	ldr r1, _02345A5C ; =ov03_02346BDC
 	ldr r1, [r1]
 	strb r0, [r1, #0x14]
@@ -10315,7 +10315,7 @@ _02345898:
 	mvn r0, #0
 	cmp r4, r0
 	bne _023458DC
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	ldr r0, _02345A5C ; =ov03_02346BDC
 	mvn r3, #1
 	ldr r2, [r0]
@@ -10388,7 +10388,7 @@ _0234598C:
 	ldr r1, [r1]
 	strh r0, [r2]
 	str r4, [r1, #0x10]
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	ldr r0, _02345A5C ; =ov03_02346BDC
 	mvn r3, #1
 	ldr r2, [r0]
@@ -10414,7 +10414,7 @@ _023459F8:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ConvertStorageItemAtIdxToItem
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	ldr r0, _02345A5C ; =ov03_02346BDC
 	mvn r3, #1
 	ldr r2, [r0]
@@ -10487,7 +10487,7 @@ _02345B2C: .word 0x00003035
 _02345B30:
 	cmp r4, #4
 	bne _02345B5C
-	bl sub_0204317C
+	bl FreeUnkStorageStruct0x18c0
 	ldr r0, _02345A5C ; =ov03_02346BDC
 	mvn r3, #1
 	ldr r2, [r0]

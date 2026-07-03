@@ -876,7 +876,7 @@ _022FA1B0:
 	mov r2, r6
 	bl ov29_022FA02C
 	mov r0, r7
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022FA1CC: .word 0x000003E7

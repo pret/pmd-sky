@@ -501,7 +501,7 @@ _0230309C:
 	bl TryPointCameraToMonster
 	cmp r6, #0
 	bne _023030F0
-	bl ov29_022EAC7C
+	bl PlayLevelUpSound
 _023030F0:
 	mov r0, #0
 	mov r1, r5
@@ -524,7 +524,7 @@ _023030F0:
 _02303124:
 	cmp r6, #0
 	bne _02303130
-	bl ov29_022EAC7C
+	bl PlayLevelUpSound
 _02303130:
 	mov r0, #0
 	mov r1, r5
@@ -589,7 +589,7 @@ _023031B8:
 	ldr r0, _02303280 ; =ov29_0237C9C5
 	bl ModifyDefensiveStat
 	mov r0, sl
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	mov r0, sl
 	bl ov29_02318D58
 	ldr r0, _02303278 ; =ov29_0237C9C8
@@ -736,7 +736,7 @@ _023033B0:
 	rsb r1, r1, #0
 	bl ModifyDefensiveStat
 	mov r0, sl
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	mov r0, sl
 	bl ov29_02318D58
 	ldr r0, _023034CC ; =ov29_0237C9C8

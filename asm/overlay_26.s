@@ -863,7 +863,7 @@ _0238AC90:
 	bl sub_0205633C
 	cmp r0, #0
 	bne _0238ACA8
-	bl ov11_0230CDE0
+	bl LoadRuleDungeonEffectsOverlay
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _0238ACA8:

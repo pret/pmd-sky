@@ -238,9 +238,9 @@
 .public ov11_023163E0
 .public ov14_0238B708
 .public SentryRunState
-.public ov15_0238AE88
-.public ov15_0238AE98
-.public ov15_0238AF54
+.public DuskullBankEntryPoint
+.public DuskullBankDestructor
+.public DuskullBankFrameUpdate
 .public ov16_0238C148
 .public ov16_0238C1CC
 .public ov16_0238C1F8
@@ -265,12 +265,12 @@
 .public SwapShopEntryPoint
 .public SwapShopDestructor
 .public SwapShopMainManager
-.public ov22_0238D640
-.public ov22_0238D7B0
-.public ov22_0238D800
-.public ov23_0238C328
-.public ov23_0238C448
-.public ov23_0238C474
+.public KecleonShopEntryPoint
+.public KecleonShopDestructor
+.public KecleonShopFrameUpdate
+.public KangaskhanStorageEntryPoint
+.public KangaskhanStorageDestructor
+.public KangaskhanStorageFrameUpdate
 .public ov24_0238C1D4
 .public ov24_0238C340
 .public ov24_0238C36C
@@ -1884,9 +1884,9 @@ OVERLAY11_OVERLAY_LOAD_TABLE:
 	.global ov11_0232307C
 ov11_0232307C:
 	.byte 0x13, 0x00, 0x00, 0x00
-	.word ov15_0238AE88
-	.word ov15_0238AE98
-	.word ov15_0238AF54
+	.word DuskullBankEntryPoint
+	.word DuskullBankDestructor
+	.word DuskullBankFrameUpdate
 	.global ov11_0232308C
 ov11_0232308C:
 	.byte 0x14, 0x00, 0x00, 0x00
@@ -1938,15 +1938,15 @@ ov11_023230FC:
 	.global ov11_0232310C
 ov11_0232310C:
 	.byte 0x1A, 0x00, 0x00, 0x00
-	.word ov22_0238D640
-	.word ov22_0238D7B0
-	.word ov22_0238D800
+	.word KecleonShopEntryPoint
+	.word KecleonShopDestructor
+	.word KecleonShopFrameUpdate
 	.global ov11_0232311C
 ov11_0232311C:
 	.byte 0x1B, 0x00, 0x00, 0x00
-	.word ov23_0238C328
-	.word ov23_0238C448
-	.word ov23_0238C474
+	.word KangaskhanStorageEntryPoint
+	.word KangaskhanStorageDestructor
+	.word KangaskhanStorageFrameUpdate
 	.global ov11_0232312C
 ov11_0232312C:
 	.byte 0x1C, 0x00, 0x00, 0x00
@@ -3088,14 +3088,14 @@ EXCLUSIVE_ITEM_REQUIREMENTS_PTR:
 	.global SWAP_SHOP_INVENTORY_PTRS
 SWAP_SHOP_INVENTORY_PTRS:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324DAC
-ov11_02324DAC:
+	.global SPINDA_CAFE_OVERLAY_STATUS
+SPINDA_CAFE_OVERLAY_STATUS:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324DB0
 ov11_02324DB0:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324DB4
-ov11_02324DB4:
+	.global RECYCLE_SHOP_OVERLAY_STATUS
+RECYCLE_SHOP_OVERLAY_STATUS:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324DB8
 ov11_02324DB8:

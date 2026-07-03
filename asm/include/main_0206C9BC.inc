@@ -55,8 +55,8 @@
 .public DseVoice_ReleaseNote
 .public DseVoice_UpdateHardware
 .public DseVoice_UpdateParameters
-.public FS_InitFile
 .public FS_CloseFile
+.public FS_InitFile
 .public FS_OpenFile
 .public FS_ReadFileAsync
 .public FS_SeekFile

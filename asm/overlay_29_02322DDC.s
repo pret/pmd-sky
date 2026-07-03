@@ -695,7 +695,7 @@ _0232374C:
 _023237A8:
 	mov r0, r8
 	ldr r1, [sl, #0xc]
-	bl ov29_022FAFD4
+	bl ShouldTreatMonsterAsAlly
 	cmp r0, #0
 	bne _02323818
 _023237BC:

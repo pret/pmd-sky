@@ -8635,7 +8635,7 @@ ov01_02330224: ; 0x02330224
 	strh r0, [r2, #0x92]
 	ldr r0, [r1]
 	add r0, r0, #0x84
-	bl sub_0201C000
+	bl InitOamAdjustmentInfo
 	ldr r0, _02330584 ; =ov01_0233C164
 	ldr r2, [r0]
 	ldrh r1, [r2, #0x88]
@@ -12281,7 +12281,7 @@ _023333E4:
 	add r0, sp, #0xb4
 	add r1, r1, #0x44
 	mov r3, #1
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	add r0, sp, #0x400
 	add r2, sp, #0xb4
 	ldr r1, _02333664 ; =0x00000215

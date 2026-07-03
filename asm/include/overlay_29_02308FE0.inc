@@ -20,6 +20,7 @@
 .public EntityIsValid__02308FBC
 .public ExclusiveItemEffectIsActive__0230A9B8
 .public ExclusiveItemEffectIsActiveWithLogging
+.public FillRecruitInfo
 .public FreeOtherWrappedMonsters
 .public GetActiveTeamMember
 .public GetDamageTurnOption
@@ -66,7 +67,6 @@
 .public ov29_022F0534
 .public ov29_022F05E4
 .public ov29_022F0780
-.public ov29_022F9058
 .public ov29_022F9AF4
 .public ov29_022FB98C
 .public ov29_022FBD24

@@ -1630,7 +1630,7 @@ _02015E88:
 	ldmia sp!, {r3, pc}
 _02015EA4:
 	ldr r0, [r1, #0xc]
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02015EB0: .word _020AF710
@@ -1873,12 +1873,12 @@ _0201619C:
 	ldr r0, [r6, #0xc]
 	mov r1, r1, lsr #0x10
 	add r2, r4, r7, lsl #2
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	add r7, r7, #1
 	cmp r7, #0x10
 	blt _0201619C
 	ldr r0, [r6, #0xc]
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_0201614C
 
@@ -7950,9 +7950,9 @@ _0201ADF8:
 	mov r3, r0
 	add r0, r4, #0x14
 	mov r1, r1, lsr #0x10
-	bl sub_0200A5B0
+	bl FillPaletteDataRgba
 	add r0, r4, #0x14
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0201AD8C
 
@@ -7995,9 +7995,9 @@ _0201AE90:
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0x50
 	mov r1, r1, lsr #0x10
-	bl sub_0200A5B0
+	bl FillPaletteDataRgba
 	add r0, r4, #0x50
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_0201AE1C
 
@@ -8621,8 +8621,8 @@ sub_0201B678: ; 0x0201B678
 _0201B6D0: .word 0x0000FCFF
 	arm_func_end sub_0201B678
 
-	arm_func_start sub_0201B6D4
-sub_0201B6D4: ; 0x0201B6D4
+	arm_func_start AddWanFragmentToOam
+AddWanFragmentToOam: ; 0x0201B6D4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
 	mov r5, r0
@@ -8814,7 +8814,7 @@ _0201B9A4:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0201B9AC: .word 0x0000013F
-	arm_func_end sub_0201B6D4
+	arm_func_end AddWanFragmentToOam
 
 	arm_func_start sub_0201B9B0
 sub_0201B9B0: ; 0x0201B9B0
@@ -9343,8 +9343,8 @@ CopyAndInterleaveWrapper: ; 0x0201BFF0
 _0201BFFC: .word CopyAndInterleave
 	arm_func_end CopyAndInterleaveWrapper
 
-	arm_func_start sub_0201C000
-sub_0201C000: ; 0x0201C000
+	arm_func_start InitOamAdjustmentInfo
+InitOamAdjustmentInfo: ; 0x0201C000
 	ldr r2, _0201C024 ; =0x0000FFFF
 	mov r1, #0
 	strh r2, [r0]
@@ -9356,7 +9356,7 @@ sub_0201C000: ; 0x0201C000
 	bx lr
 	.align 2, 0
 _0201C024: .word 0x0000FFFF
-	arm_func_end sub_0201C000
+	arm_func_end InitOamAdjustmentInfo
 
 	arm_func_start sub_0201C028
 sub_0201C028: ; 0x0201C028
@@ -9390,7 +9390,7 @@ InitAnimationControl: ; 0x0201C050
 	mov r0, #9
 	strb r0, [r4, #0x40]
 	add r0, r4, #0x10
-	bl sub_0201C000
+	bl InitOamAdjustmentInfo
 	ldrh r0, [r4, #2]
 	bic r0, r0, #0x8000
 	strh r0, [r4, #2]
@@ -10337,7 +10337,7 @@ _0201CD38:
 	mov r1, r6
 	add r0, r0, r5
 	add r2, sp, #0x4c
-	bl sub_0201B6D4
+	bl AddWanFragmentToOam
 	cmp r0, #0
 	movne r0, #1
 	moveq r4, #1
@@ -12424,13 +12424,13 @@ sub_0201E774: ; 0x0201E774
 	ldrsh r1, [sp, #8]
 	strh r3, [r4, #0x1c]
 	str r2, [r4, #0x20]
-	bl sub_0201E7BC
+	bl GetPaletteBaseAddress__0201E858
 	str r0, [r4, #0x24]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0201E774
 
-	arm_func_start sub_0201E7BC
-sub_0201E7BC: ; 0x0201E7BC
+	arm_func_start GetPaletteBaseAddress__0201E858
+GetPaletteBaseAddress__0201E858: ; 0x0201E7BC
 	ldr r2, _0201E7D4 ; =_020AFC70
 	add r0, r1, r0, lsl #8
 	ldr r1, [r2]
@@ -12439,7 +12439,7 @@ sub_0201E7BC: ; 0x0201E7BC
 	bx lr
 	.align 2, 0
 _0201E7D4: .word _020AFC70
-	arm_func_end sub_0201E7BC
+	arm_func_end GetPaletteBaseAddress__0201E858
 
 	arm_func_start sub_0201E7D8
 sub_0201E7D8: ; 0x0201E7D8
@@ -12467,7 +12467,7 @@ sub_0201E7D8: ; 0x0201E7D8
 	ldrsh r2, [r2, #6]
 	strh r2, [r4, #0x1c]
 	str r3, [r4, #0x20]
-	bl sub_0201E7BC
+	bl GetPaletteBaseAddress__0201E858
 	str r0, [r4, #0x24]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0201E7D8
@@ -17246,7 +17246,7 @@ _020226BC:
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
-	bl sub_020238F0
+	bl BankQuantityToString
 	mov r7, r0
 	b _020232F0
 _020226F0:
@@ -17260,7 +17260,7 @@ _020226F0:
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
-	bl sub_02023900
+	bl MoneyQuantityToString__02023B58
 	mov r7, r0
 	b _020232F0
 _02022724:
@@ -17423,7 +17423,7 @@ _02022938:
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
-	bl sub_02023910
+	bl ExpQuantityToString
 	mov r7, r0
 	b _020232F0
 _0202296C:
@@ -17521,7 +17521,7 @@ _02022A7C:
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
-	bl sub_020238E0
+	bl MoneyQuantityToString__02023B30
 	mov r7, r0
 	b _020232F0
 _02022AB0:
@@ -18483,8 +18483,8 @@ _020236E4:
 	bx lr
 	arm_func_end InitPreprocessorArgs
 
-	arm_func_start sub_020236FC
-sub_020236FC: ; 0x020236FC
+	arm_func_start CopyOrInitPreprocessorArgs
+CopyOrInitPreprocessorArgs: ; 0x020236FC
 	stmdb sp!, {r4, lr}
 	movs lr, r1
 	mov r4, r0
@@ -18499,7 +18499,7 @@ _02023710:
 _02023724:
 	bl InitPreprocessorArgs
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020236FC
+	arm_func_end CopyOrInitPreprocessorArgs
 
 	arm_func_start sub_0202372C
 sub_0202372C: ; 0x0202372C
@@ -18548,8 +18548,8 @@ SprintfStatic__0202378C: ; 0x0202378C
 	bx lr
 	arm_func_end SprintfStatic__0202378C
 
-	arm_func_start sub_020237B4
-sub_020237B4: ; 0x020237B4
+	arm_func_start QuantityToString
+QuantityToString: ; 0x020237B4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x100
 #ifdef EUROPE
@@ -18719,67 +18719,67 @@ _02023B14: .word _020B05BC_EU
 _020238C8: .word _02099D0C
 #endif
 _020238CC: .word _02099D10
-	arm_func_end sub_020237B4
+	arm_func_end QuantityToString
 
 	arm_func_start sub_020238D0
 sub_020238D0: ; 0x020238D0
-	ldr ip, _020238DC ; =sub_020237B4
+	ldr ip, _020238DC ; =QuantityToString
 	mov r2, #5
 #ifdef EUROPE
 	mov r3, #1
 #endif
 	bx ip
 	.align 2, 0
-_020238DC: .word sub_020237B4
+_020238DC: .word QuantityToString
 	arm_func_end sub_020238D0
 
-	arm_func_start sub_020238E0
-sub_020238E0: ; 0x020238E0
-	ldr ip, _020238EC ; =sub_020237B4
+	arm_func_start MoneyQuantityToString__02023B30
+MoneyQuantityToString__02023B30: ; 0x020238E0
+	ldr ip, _020238EC ; =QuantityToString
 	mov r2, #0
 #ifdef EUROPE
 	mov r3, #1
 #endif
 	bx ip
 	.align 2, 0
-_020238EC: .word sub_020237B4
-	arm_func_end sub_020238E0
+_020238EC: .word QuantityToString
+	arm_func_end MoneyQuantityToString__02023B30
 
-	arm_func_start sub_020238F0
-sub_020238F0: ; 0x020238F0
-	ldr ip, _020238FC ; =sub_020237B4
+	arm_func_start BankQuantityToString
+BankQuantityToString: ; 0x020238F0
+	ldr ip, _020238FC ; =QuantityToString
 	mov r2, #7
 #ifdef EUROPE
 	mov r3, #1
 #endif
 	bx ip
 	.align 2, 0
-_020238FC: .word sub_020237B4
-	arm_func_end sub_020238F0
+_020238FC: .word QuantityToString
+	arm_func_end BankQuantityToString
 
-	arm_func_start sub_02023900
-sub_02023900: ; 0x02023900
-	ldr ip, _0202390C ; =sub_020237B4
+	arm_func_start MoneyQuantityToString__02023B58
+MoneyQuantityToString__02023B58: ; 0x02023900
+	ldr ip, _0202390C ; =QuantityToString
 	mov r2, #0
 #ifdef EUROPE
 	mov r3, #1
 #endif
 	bx ip
 	.align 2, 0
-_0202390C: .word sub_020237B4
-	arm_func_end sub_02023900
+_0202390C: .word QuantityToString
+	arm_func_end MoneyQuantityToString__02023B58
 
-	arm_func_start sub_02023910
-sub_02023910: ; 0x02023910
-	ldr ip, _0202391C ; =sub_020237B4
+	arm_func_start ExpQuantityToString
+ExpQuantityToString: ; 0x02023910
+	ldr ip, _0202391C ; =QuantityToString
 	mov r2, #0
 #ifdef EUROPE
 	mov r3, r2
 #endif
 	bx ip
 	.align 2, 0
-_0202391C: .word sub_020237B4
-	arm_func_end sub_02023910
+_0202391C: .word QuantityToString
+	arm_func_end ExpQuantityToString
 
 	arm_func_start sub_02023920
 sub_02023920: ; 0x02023920
@@ -19496,7 +19496,7 @@ _0202426C:
 	strh r5, [sp, #0xe]
 	mov r3, #1
 	str ip, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	mov r0, r4
 	b _020242E4
 _0202429C:
@@ -19515,7 +19515,7 @@ _020242AC:
 	mov r0, r4
 	mov r3, #1
 	str ip, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	mov r0, r4
 	b _020242E4
 _020242E0:
@@ -20823,7 +20823,7 @@ sub_0202507C: ; 0x0202507C
 	add r2, r2, r3
 	mov r3, #1
 	str ip, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	ldmia sp!, {r3, pc}
 _020250BC:
 	ldr r1, _020250DC ; =_022A596A
@@ -20831,7 +20831,7 @@ _020250BC:
 	add r1, r1, r3
 	mov r3, #1
 	str r2, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020250D8: .word _022A5969

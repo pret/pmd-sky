@@ -1,7 +1,6 @@
 #pragma once
 .public _0200002B
 .public _020B2B9C
-.public OSi_ConsoleTypeCache
 .public _022B9208
 .public _022B958E
 .public _022B9590
@@ -64,6 +63,7 @@
 .public OS_InitReset
 .public OS_IRQTable
 .public OS_VsNPrintfEx
+.public OSi_ConsoleTypeCache
 .public OSi_DebuggerHandler
 .public OSi_DisplayExContext_Helper
 .public OSi_ExContext

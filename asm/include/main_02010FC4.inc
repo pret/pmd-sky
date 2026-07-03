@@ -74,6 +74,7 @@
 .public LIFE_SEED_HP_BOOST
 .public LoadFileFromRom
 .public LoadScriptVariableValue
+.public MaybeUpdateStorage
 .public MemAlloc
 .public MemFree
 .public MemZero
@@ -100,7 +101,6 @@
 .public StringFromId
 .public sub_0200D1F0
 .public sub_02010044
-.public sub_0201007C
 .public SYNTH_BIN_FILE_PTR
 .public TYPE_SPECIFIC_EXCLUSIVE_ITEMS
 .public UnloadFile

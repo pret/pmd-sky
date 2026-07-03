@@ -36,7 +36,6 @@
 .public ov29_0230E5A8
 .public ov29_0230E5FC
 .public ov29_0230E658
-.public ov29_02337EC0
 .public ov29_0234B1A4
 .public ov29_0234BA54
 .public ov29_0234D630
@@ -45,6 +44,7 @@
 .public ov29_0234D8A0
 .public ov29_0234EE10
 .public RECRUITMENT_LEVEL_BOOST_TABLE
+.public RemoveMonsterFromTile
 .public SetMessageLogPreprocessorArgsString
 .public SetPokemonJoined
 .public SetPreprocessorArgsIdVal

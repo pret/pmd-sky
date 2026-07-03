@@ -27,12 +27,12 @@
 .public GetType
 .public GetTypeStringId
 .public IqSkillFlagTest
+.public MaybeGetColoredFormattedItemName
 .public PreprocessString
 .public PreprocessStringFromId
 .public STATUS_NAME_STRING_IDS
 .public strcpy
 .public StringFromId
-.public sub_0200D670
 .public sub_02026358
 .public sub_02058C30
 .public sub_0205B120

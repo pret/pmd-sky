@@ -2824,7 +2824,7 @@ _0230B290:
 	beq _0230B338
 	add r0, sp, #0x1c
 	mov r1, sb
-	bl ov29_022F9058
+	bl FillRecruitInfo
 	mov r0, sl
 	mov r1, sb
 	bl RecruitCheck
@@ -3432,7 +3432,7 @@ _0230A824:
 	beq _0230A8CC
 	add r0, sp, #0x1c
 	mov r1, r7
-	bl ov29_022F9058
+	bl FillRecruitInfo
 	mov r0, r8
 	mov r1, r7
 	bl RecruitCheck

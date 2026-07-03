@@ -40,10 +40,10 @@
 .public MemAlloc
 .public MemFree
 .public MONEY_QUANTITY_TABLE
+.public MoneyQuantityToString__02023B30
 .public MultiplyByFixedPoint
 .public RandRangeSafe
 .public strcpy
 .public strncpy
 .public sub_0200EB64
-.public sub_020238E0
 .public vsprintf

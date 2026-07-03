@@ -1,5 +1,7 @@
 #pragma once
 .public _020B09B0
+.public CopyColorToPaletteDataRgba
+.public MarkPaletteDataAsNeedingUpdate
 .public MemAlloc
 .public MemFree
 .public MemZero
@@ -13,9 +15,7 @@
 .public sub_0200A184
 .public sub_0200A478
 .public sub_0200A4C4
-.public sub_0200A504
 .public sub_0200A510
-.public sub_0200A590
 .public sub_0200B2C4
 .public sub_0200B314
 .public sub_0200B330

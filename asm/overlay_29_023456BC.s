@@ -650,7 +650,7 @@ _02345F7C:
 	bl SubstitutePlaceholderItemTags
 	cmp r4, #0
 	beq _02345FC4
-	bl ov29_022EACBC
+	bl PlayDungeonTipSound__022EB66C
 	ldr r1, _02346058 ; =0x00000B74
 	mov r0, #0
 	mov r2, #1
