@@ -313,7 +313,7 @@ ov29_02349C84: ; 0x02349C84
 	bl GetTargetMonsterNotFoundFlag
 	cmp r0, #0
 	beq _02349CD4
-	bl ov29_022EAC8C
+	bl PlayDungeonTipSound__022EB63C
 	ldr r1, _0234A204 ; =0x00000E11
 	mov r0, #0
 	mov r2, #1
@@ -341,7 +341,7 @@ _02349CE4: ; jump table
 	b _0234A1D4 ; case 13
 	b _0234A1D4 ; case 14
 _02349D20:
-	bl ov29_022EAC8C
+	bl PlayDungeonTipSound__022EB63C
 	ldr r1, _0234A208 ; =0x00000E04
 	mov r0, #0
 	mov r2, #1
@@ -351,7 +351,7 @@ _02349D38:
 	ldrb r0, [r4, #2]
 	cmp r0, #3
 	beq _0234A1D4
-	bl ov29_022EAC8C
+	bl PlayDungeonTipSound__022EB63C
 	ldr r1, _0234A208 ; =0x00000E04
 	mov r0, #0
 	mov r2, #1
@@ -432,7 +432,7 @@ _02349DC8:
 	bl ov29_0234AF34
 	b _0234A1D4
 _02349E6C:
-	bl ov29_022EAC8C
+	bl PlayDungeonTipSound__022EB63C
 	ldr r1, _0234A208 ; =0x00000E04
 	mov r0, #0
 	mov r2, #1
@@ -1678,7 +1678,7 @@ ov29_0234ADCC: ; 0x0234ADCC
 	stmdb sp!, {r3, lr}
 	cmp r0, #3
 	bne _0234ADF0
-	bl ov29_022EAC8C
+	bl PlayDungeonTipSound__022EB63C
 	ldr r1, _0234AE38 ; =0x00000E04
 	mov r0, #0
 	mov r2, #1

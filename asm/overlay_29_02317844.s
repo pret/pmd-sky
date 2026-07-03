@@ -46,7 +46,7 @@ TryInflictCrossEyedStatus: ; 0x02317844
 	mov r1, r5
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r3, #2
-	ldr r1, _02317954 ; =ov10_022C4830
+	ldr r1, _02317954 ; =CROSS_EYED_TURN_RANGE
 	mov r0, r5
 	mov r2, #1
 	strb r3, [r4, #0xf1]
@@ -77,11 +77,11 @@ _02317940:
 	.align 2, 0
 #ifdef JAPAN
 _02317950: .word 0x00000A76
-_02317954: .word ov10_022C4830
+_02317954: .word CROSS_EYED_TURN_RANGE
 _02317958: .word 0x00000A77
 #else
 _02317950: .word 0x00000D36
-_02317954: .word ov10_022C4830
+_02317954: .word CROSS_EYED_TURN_RANGE
 _02317958: .word 0x00000D37
 #endif
 	arm_func_end TryInflictCrossEyedStatus
@@ -103,7 +103,7 @@ TryInflictEyedropStatus: ; 0x0231795C
 	ldrb r0, [r4, #0xf1]
 	cmp r0, #3
 	beq _023179E4
-	ldr r1, _02317A00 ; =ov10_022C4838
+	ldr r1, _02317A00 ; =EYEDROP_TURN_RANGE
 	mov r3, #3
 	mov r0, r5
 	mov r2, #0
@@ -132,7 +132,7 @@ _023179F4:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02317A00: .word ov10_022C4838
+_02317A00: .word EYEDROP_TURN_RANGE
 #ifdef JAPAN
 _02317A04: .word 0x00000A78
 _02317A08: .word 0x00000A79
@@ -173,7 +173,7 @@ _02317A54:
 	mov r2, #0
 	bl EndInvisibleClassStatus
 	mov r3, #4
-	ldr r1, _02317AE8 ; =ov10_022C486C
+	ldr r1, _02317AE8 ; =SLIP_TURN_RANGE
 	mov r0, r4
 	mov r2, #1
 	strb r3, [r6, #0xef]
@@ -204,7 +204,7 @@ _02317AD8:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02317AE8: .word ov10_022C486C
+_02317AE8: .word SLIP_TURN_RANGE
 #ifdef JAPAN
 _02317AEC: .word 0x00000A7A
 _02317AF0: .word 0x00000A7B
@@ -257,7 +257,7 @@ _02317B70:
 	ldrb r0, [r4, #0xf1]
 	cmp r0, #4
 	beq _02317BEC
-	ldr r1, _02317C10 ; =ov10_022C487C
+	ldr r1, _02317C10 ; =DROPEYE_TURN_RANGE
 	mov r3, #4
 	mov r0, r5
 	mov r2, #1
@@ -298,7 +298,7 @@ _02317BFC:
 #define TRY_INFLICT_DROPEYE_STATUS_OFFSET 0
 #endif
 _02317C0C: .word 0x00000D3E + TRY_INFLICT_DROPEYE_STATUS_OFFSET
-_02317C10: .word ov10_022C487C
+_02317C10: .word DROPEYE_TURN_RANGE
 _02317C14: .word 0x00000115
 _02317C18: .word 0x00000D3C + TRY_INFLICT_DROPEYE_STATUS_OFFSET
 _02317C1C: .word 0x00000D3D + TRY_INFLICT_DROPEYE_STATUS_OFFSET
@@ -999,7 +999,7 @@ TryInflictAquaRingStatus: ; 0x0231845C
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0x10
 	beq _023184E0
-	ldr r1, _023184FC ; =ov10_022C4764
+	ldr r1, _023184FC ; =AQUA_RING_TURN_RANGE
 	mov r3, #0x10
 	mov r0, r5
 	mov r2, #0
@@ -1024,7 +1024,7 @@ _023184F0:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023184FC: .word ov10_022C4764
+_023184FC: .word AQUA_RING_TURN_RANGE
 #ifdef JAPAN
 _02318500: .word 0x00000ABD
 _02318504: .word 0x00000ABE
@@ -1257,7 +1257,7 @@ TryInflictEmbargoStatus: ; 0x0231872C
 	mov r1, r5
 	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	mov r3, #6
-	ldr r1, _02318844 ; =ov10_022C4778
+	ldr r1, _02318844 ; =EMBARGO_TURN_RANGE
 	mov r0, r5
 	mov r2, #1
 	strb r3, [r7, #0xd8]
@@ -1288,7 +1288,7 @@ _02318834:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02318844: .word ov10_022C4778
+_02318844: .word EMBARGO_TURN_RANGE
 #ifdef JAPAN
 _02318848: .word 0x00000AC4
 _0231884C: .word 0x00000AC5
@@ -1352,7 +1352,7 @@ _02318900:
 	ldrb r0, [r4, #0xf5]
 	cmp r0, #1
 	beq _02318954
-	ldr r1, _02318978 ; =ov10_022C477C
+	ldr r1, _02318978 ; =MIRACLE_EYE_TURN_RANGE
 	mov r2, #1
 	mov r0, r6
 	strb r2, [r4, #0xf5]
@@ -1384,7 +1384,7 @@ _02318964:
 #define TRY_INFLICT_MIRACLE_EYE_STATUS_OFFSET 0
 #endif
 _02318974: .word 0x00000D89 + TRY_INFLICT_MIRACLE_EYE_STATUS_OFFSET
-_02318978: .word ov10_022C477C
+_02318978: .word MIRACLE_EYE_TURN_RANGE
 _0231897C: .word 0x00000D87 + TRY_INFLICT_MIRACLE_EYE_STATUS_OFFSET
 _02318980: .word 0x00000D88 + TRY_INFLICT_MIRACLE_EYE_STATUS_OFFSET
 	arm_func_end TryInflictMiracleEyeStatus
@@ -1419,7 +1419,7 @@ _023189B0:
 	ldrb r0, [r4, #0xf7]
 	cmp r0, #1
 	beq _02318A20
-	ldr r1, _02318A40 ; =ov10_022C4780
+	ldr r1, _02318A40 ; =MAGNET_RISE_TURN_RANGE
 	mov r2, #1
 	mov r0, r5
 	strb r2, [r4, #0xf7]
@@ -1447,7 +1447,7 @@ _02318A30:
 #define TRY_INFLICT_MAGNET_RISE_STATUS_OFFSET 0
 #endif
 _02318A3C: .word 0x00000D8C + TRY_INFLICT_MAGNET_RISE_STATUS_OFFSET
-_02318A40: .word ov10_022C4780
+_02318A40: .word MAGNET_RISE_TURN_RANGE
 _02318A44: .word 0x00000D8A + TRY_INFLICT_MAGNET_RISE_STATUS_OFFSET
 _02318A48: .word 0x00000D8B + TRY_INFLICT_MAGNET_RISE_STATUS_OFFSET
 	arm_func_end TryInflictMagnetRiseStatus

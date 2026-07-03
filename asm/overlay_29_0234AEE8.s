@@ -723,8 +723,8 @@ LogMessageById: ; 0x0234B714
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end LogMessageById
 
-	arm_func_start ov29_0234B73C
-ov29_0234B73C: ; 0x0234B73C
+	arm_func_start AlertBoxIsActive
+AlertBoxIsActive: ; 0x0234B73C
 	ldr r0, _0234B764 ; =MESSAGE_LOG_INFO
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -737,7 +737,7 @@ ov29_0234B73C: ; 0x0234B73C
 	bx lr
 	.align 2, 0
 _0234B764: .word MESSAGE_LOG_INFO
-	arm_func_end ov29_0234B73C
+	arm_func_end AlertBoxIsActive
 
 	arm_func_start ov29_0234B768
 ov29_0234B768: ; 0x0234B768

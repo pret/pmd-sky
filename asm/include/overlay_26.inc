@@ -21,6 +21,7 @@
 .public IsDialogueBoxActive
 .public IsMoneyAllowed
 .public IsMonsterOnTeam
+.public LoadRuleDungeonEffectsOverlay
 .public LoadScriptVariableValue
 .public LoadScriptVarValuePair
 .public MemAlloc
@@ -29,7 +30,6 @@
 .public ov10_022BD56C
 .public ov10_022BD5AC
 .public ov10_022BD718
-.public ov11_0230CDE0
 .public PlayMissionClearBgm
 .public RemoveAllItemsStartingAt
 .public ReturnScriptMenuResult

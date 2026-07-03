@@ -1050,7 +1050,7 @@ _0238AFC0:
 	ldr r2, _0238B3E0 ; =OVERLAY24_UNKNOWN_STRUCT__NA_238C514
 	add r1, sp, #0x14
 	add r0, r0, #0x100
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r0]
 	add r0, r1, #0x7a
@@ -2003,7 +2003,7 @@ _0238BD9C:
 	ldr r2, _0238C1BC ; =OVERLAY24_UNKNOWN_STRUCT__NA_238C514
 	add r1, sp, #8
 	add r0, r0, #0x100
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r0]
 	add r0, r1, #0x7a

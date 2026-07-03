@@ -109,12 +109,6 @@
 .public _020AFE8C
 .public _020AFE90
 .public _020AFE98
-.public _020AFEA8
-.public _020AFEB4
-.public _020AFEC8
-.public _020AFECC
-.public _020AFED0
-.public _020AFED4
 .public _020AFED8
 .public _020AFEDC
 .public _020AFEE0
@@ -232,6 +226,7 @@
 .public GetAdventureLogDungeonFloor
 .public GetCurrentBagCapacity
 .public GetDexNumber
+.public GetDigitInputResult
 .public GetDungeonResultString
 .public GetEggSpecies
 .public GetExecuteSpecialEpisodeType
@@ -280,6 +275,7 @@
 .public GetTypeStringId
 .public GetWindowIdPageStart
 .public GetWindowIdSelectedItemOnPage
+.public GetWindowIdSelectedMenuItemIdx
 .public HidePortraitBox
 .public InitBitstreamForRead
 .public InitBitstreamForWrite
@@ -312,6 +308,7 @@
 .public IsSimpleMenuActive
 .public IsStorableItem
 .public IsStorageFull
+.public IsTextboxState3
 .public IsThrownItem
 .public IsTouchScreenNotOff
 .public IsTreasureBox
@@ -319,6 +316,9 @@
 .public LearnMoves
 .public LoadCroagunkItems
 .public LoadScriptVariableValue
+.public MaybeGetColoredFormattedItemName
+.public MaybeGetFormattedItemName
+.public MaybeGetUncoloredFormattedItemName
 .public MemAlloc
 .public memcpy
 .public MemcpySimple
@@ -416,9 +416,6 @@
 .public sub_0200CABC
 .public sub_0200CAD4
 .public sub_0200CAE4
-.public sub_0200D310
-.public sub_0200D65C
-.public sub_0200D670
 .public sub_0200FD48
 .public sub_02010044
 .public sub_02010060
@@ -455,7 +452,6 @@
 .public sub_0202C620
 .public sub_0202C654
 .public sub_0202C6D4
-.public sub_0202C748
 .public sub_0202C75C
 .public sub_0202D068
 .public sub_0202D0EC
@@ -465,11 +461,9 @@
 .public sub_0202F2C4
 .public sub_0202F334
 .public sub_0202F954
-.public sub_0202F9B8
 .public sub_020307EC
 .public sub_020308E4
 .public sub_02030908
-.public sub_02030940
 .public sub_02030978
 .public sub_02030A50
 .public sub_02030A64
@@ -523,6 +517,12 @@
 .public sub_0206637C
 .public TEAM_MEMBER_TABLE_PTR
 .public TryPointCameraToMonster
+.public UNK_STORAGE_STRUCT_0X14
+.public UNK_STORAGE_STRUCT_0X410_PTR
+.public UNK_STORAGE_STRUCT_0X8_PTR_1
+.public UNK_STORAGE_STRUCT_0X8_PTR_2
+.public UNK_STORAGE_STRUCT_0XC
+.public UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 .public UpdateWindow
 .public vsprintf
 .public WriteItemsToSave

@@ -15,6 +15,7 @@
 .public GetMainTeamNameWithCheck
 .public GetOptionsMenuResult
 .public GetStringFromFileVeneer
+.public GetWindowIdSelectedMenuItemIdx
 .public InitPreprocessorArgs
 .public IsCollectionMenuActive
 .public IsOptionsMenuActive
@@ -123,7 +124,6 @@
 .public sub_02029F88
 .public sub_02029FBC
 .public sub_0202C620
-.public sub_0202C748
 .public sub_0202C75C
 .public sub_0202D07C
 .public sub_0202D59C

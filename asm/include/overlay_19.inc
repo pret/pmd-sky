@@ -51,6 +51,7 @@
 .public IsMonsterAffectedByGravelyrockGroundMode
 .public IsScriptMenuReturnDisabled
 .public IsScrollBoxActive
+.public IsSpindaCafeOverlaySuspended
 .public ItemToBulkItem
 .public MemAlloc
 .public MemcpySimple
@@ -71,7 +72,6 @@
 .public ov11_0230A31C
 .public ov11_0230A390
 .public ov11_0230AD50
-.public ov11_0230CC70
 .public ov11_0230D220
 .public ov11_02311D6C
 .public ov11_02324DB0

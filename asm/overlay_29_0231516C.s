@@ -40,7 +40,7 @@ TryInflictCoweringStatus: ; 0x0231516C
 	ldrb r0, [r6, #0xd0]
 	cmp r0, #4
 	beq _02315240
-	ldr r1, _02315260 ; =ov10_022C47B0
+	ldr r1, _02315260 ; =COWERING_TURN_RANGE
 	mov r3, #4
 	mov r0, r4
 	mov r2, #1
@@ -69,7 +69,7 @@ _02315250:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02315260: .word ov10_022C47B0
+_02315260: .word COWERING_TURN_RANGE
 #ifdef JAPAN
 _02315264: .word 0x00000A83
 _02315268: .word 0x00000A84
@@ -582,7 +582,7 @@ _023158E8:
 	mov r1, r5
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02315908:
-	ldr r1, _023159C8 ; =ov10_022C4790
+	ldr r1, _023159C8 ; =LEECH_SEED_TURN_RANGE
 	mov r2, #1
 	mov r0, r5
 	strb r2, [r4, #0xe0]
@@ -638,7 +638,7 @@ _02315960:
 _023159BC: .word 0x00000DE1 + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
 _023159C0: .word 0x00000DE2 + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
 _023159C4: .word 0x00000CAF + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
-_023159C8: .word ov10_022C4790
+_023159C8: .word LEECH_SEED_TURN_RANGE
 _023159CC: .word 0x00000CE1 + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
 _023159D0: .word DUNGEON_PTR
 	arm_func_end TryInflictLeechSeedStatus
@@ -714,7 +714,7 @@ TryInflictDestinyBondStatus: ; 0x02315A50
 	mov r1, r5
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02315AB8:
-	ldr r1, _02315B60 ; =ov10_022C47D4
+	ldr r1, _02315B60 ; =DESTINY_BOND_TURN_RANGE
 	mov r3, #2
 	mov r0, r5
 	mov r2, #1
@@ -769,7 +769,7 @@ _02315B10:
 #define TRY_INFLICT_DESTINY_BOND_OFFSET 0
 #endif
 _02315B5C: .word 0x00000C94 + TRY_INFLICT_DESTINY_BOND_OFFSET
-_02315B60: .word ov10_022C47D4
+_02315B60: .word DESTINY_BOND_TURN_RANGE
 _02315B64: .word 0x00000D54 + TRY_INFLICT_DESTINY_BOND_OFFSET
 _02315B68: .word DUNGEON_PTR
 _02315B6C: .word 0x00000D53 + TRY_INFLICT_DESTINY_BOND_OFFSET
@@ -913,7 +913,7 @@ TryInflictSetDamageStatus: ; 0x02315CE8
 	ldrb r0, [r4, #0xec]
 	cmp r0, #3
 	beq _02315D60
-	ldr r1, _02315D7C ; =ov10_022C47A4
+	ldr r1, _02315D7C ; =SET_DAMAGE_TURN_RANGE
 	mov r3, #3
 	mov r0, r5
 	mov r2, #0
@@ -942,7 +942,7 @@ _02315D70:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02315D7C: .word ov10_022C47A4
+_02315D7C: .word SET_DAMAGE_TURN_RANGE
 #ifdef JAPAN
 _02315D80: .word 0x00000A7F
 #else
@@ -967,7 +967,7 @@ TryInflictFocusEnergyStatus: ; 0x02315D84
 	ldrb r0, [r4, #0xec]
 	cmp r0, #4
 	beq _02315DFC
-	ldr r1, _02315E18 ; =ov10_022C47AC
+	ldr r1, _02315E18 ; =FOCUS_ENERGY_TURN_RANGE
 	mov r3, #4
 	mov r0, r5
 	mov r2, #0
@@ -992,7 +992,7 @@ _02315E0C:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02315E18: .word ov10_022C47AC
+_02315E18: .word FOCUS_ENERGY_TURN_RANGE
 #ifdef JAPAN
 _02315E1C: .word 0x00000A81
 _02315E20: .word 0x00000A82
@@ -1265,7 +1265,7 @@ TryInflictCurseStatus: ; 0x023160DC
 	mov r1, r7
 	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	mov r2, #1
-	ldr r1, _02316274 ; =ov10_022C4784
+	ldr r1, _02316274 ; =CURSE_TURN_RANGE
 	mov r0, r7
 	strb r2, [r5, #0xd8]
 	bl CalcStatusDuration
@@ -1316,7 +1316,7 @@ _0231626C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02316274: .word ov10_022C4784
+_02316274: .word CURSE_TURN_RANGE
 #ifdef JAPAN
 _02316278: .word 0x00000A2C
 #else
@@ -1376,7 +1376,7 @@ _02316304:
 	ldrb r0, [r6, #0xd8]
 	cmp r0, #3
 	beq _02316350
-	ldr r1, _023163A0 ; =ov10_022C4788
+	ldr r1, _023163A0 ; =SNATCH_TURN_RANGE
 	mov r3, #3
 	mov r0, r4
 	mov r2, #0
@@ -1408,7 +1408,7 @@ _02316350:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0231639C: .word DUNGEON_PTR
-_023163A0: .word ov10_022C4788
+_023163A0: .word SNATCH_TURN_RANGE
 #ifdef JAPAN
 _023163A4: .word 0x00000A2D
 #else
@@ -1468,7 +1468,7 @@ TryInflictTauntStatus: ; 0x023163A8
 	ldrb r0, [r6, #0xd0]
 	cmp r0, #5
 	beq _023164A4
-	ldr r1, _023164CC ; =ov10_022C47BC
+	ldr r1, _023164CC ; =TAUNT_TURN_RANGE
 	mov r3, #5
 	mov r0, r4
 	mov r2, #1
@@ -1500,12 +1500,12 @@ _023164C0:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 #ifdef JAPAN
-_023164CC: .word ov10_022C47BC
+_023164CC: .word TAUNT_TURN_RANGE
 _023164D0: .word 0x00000A89
 _023164D4: .word 0x00000A8A
 #else
 _023164C8: .word 0x00000C39
-_023164CC: .word ov10_022C47BC
+_023164CC: .word TAUNT_TURN_RANGE
 _023164D0: .word 0x00000D49
 _023164D4: .word 0x00000D4A
 #endif
@@ -1591,7 +1591,7 @@ TryInflictInvisibleStatus: ; 0x0231657C
 	mov r2, #0
 	bl EndInvisibleClassStatus
 	mov r3, #1
-	ldr r1, _02316620 ; =ov10_022C47C8
+	ldr r1, _02316620 ; =INVISIBLE_TURN_RANGE
 	mov r0, r5
 	mov r2, #0
 	strb r3, [r4, #0xef]
@@ -1615,7 +1615,7 @@ _02316614:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02316620: .word ov10_022C47C8
+_02316620: .word INVISIBLE_TURN_RANGE
 #ifdef JAPAN
 _02316624: .word 0x00000A8D
 _02316628: .word 0x00000A8E
@@ -1807,7 +1807,7 @@ _02316834:
 	ldrb r0, [r4, #0xd0]
 	cmp r0, #6
 	beq _023168A4
-	ldr r1, _023168CC ; =ov10_022C47D8
+	ldr r1, _023168CC ; =ENCORE_TURN_RANGE
 	mov r3, #6
 	mov r0, r6
 	mov r2, #1
@@ -1845,7 +1845,7 @@ _023168B4:
 _023168C4: .word 0x00000C39
 #endif
 _023168C8: .word 0x00000D57 + TRY_INFLICT_ENCORE_STATUS_OFFSET
-_023168CC: .word ov10_022C47D8
+_023168CC: .word ENCORE_TURN_RANGE
 _023168D0: .word 0x00000D55 + TRY_INFLICT_ENCORE_STATUS_OFFSET
 _023168D4: .word 0x00000D56 + TRY_INFLICT_ENCORE_STATUS_OFFSET
 	arm_func_end TryInflictEncoreStatus
@@ -2463,7 +2463,7 @@ TryInflictMuzzledStatus: ; 0x02317124
 	ldrb r0, [r4, #0xf3]
 	cmp r0, #1
 	beq _023171F0
-	ldr r1, _02317210 ; =ov10_022C4848
+	ldr r1, _02317210 ; =MUZZLED_TURN_RANGE
 	mov r2, #1
 	mov r0, r5
 	strb r2, [r4, #0xf3]
@@ -2491,7 +2491,7 @@ _02317200:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02317210: .word ov10_022C4848
+_02317210: .word MUZZLED_TURN_RANGE
 #ifdef JAPAN
 _02317214: .word 0x00000AB2
 _02317218: .word 0x00000AB3
@@ -2662,7 +2662,7 @@ TryInflictMobileStatus: ; 0x0231740C
 	mov r2, #1
 	bl EndInvisibleClassStatus
 	mov r3, #3
-	ldr r1, _023174C0 ; =ov10_022C480C
+	ldr r1, _023174C0 ; =MOBILE_TURN_RANGE
 	mov r0, r5
 	mov r2, #0
 	strb r3, [r4, #0xef]
@@ -2698,7 +2698,7 @@ _023174B4:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023174C0: .word ov10_022C480C
+_023174C0: .word MOBILE_TURN_RANGE
 #ifdef JAPAN
 _023174C4: .word 0x00000AB1
 #else
@@ -2904,7 +2904,7 @@ TryInflictBlinkerStatus: ; 0x023176CC
 	strb r2, [r6, #0xf1]
 	movne r0, #0x7f
 	bne _0231777C
-	ldr r1, _023177D8 ; =ov10_022C4828
+	ldr r1, _023177D8 ; =BLINKER_TURN_RANGE
 	mov r0, r4
 	bl CalcStatusDuration
 	add r0, r0, #1
@@ -2935,7 +2935,7 @@ _023177C8:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_023177D8: .word ov10_022C4828
+_023177D8: .word BLINKER_TURN_RANGE
 #ifdef JAPAN
 _023177DC: .word 0x00000A74
 _023177E0: .word 0x00000A75

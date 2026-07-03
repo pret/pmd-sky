@@ -1999,7 +1999,7 @@ _02027704:
 	ldr r2, [r0, #0x54]
 	str r2, [r5, #0x94]
 	ldrsh r0, [r0, #0x58]
-	bl GetPaletteBaseAddress
+	bl GetPaletteBaseAddress__02027B9C
 	str r0, [r5, #0x98]
 	mov r0, #6
 	strb r0, [r5, #0xb0]
@@ -2027,8 +2027,8 @@ _020278A0: .word _022A7A74
 _020278A4: .word _022A7A6C
 	arm_func_end NewWindow
 
-	arm_func_start GetPaletteBaseAddress
-GetPaletteBaseAddress: ; 0x020278A8
+	arm_func_start GetPaletteBaseAddress__02027B9C
+GetPaletteBaseAddress__02027B9C: ; 0x020278A8
 	ldr r2, _020278C0 ; =_020AFC70
 	add r0, r1, r0, lsl #8
 	ldr r1, [r2]
@@ -2037,7 +2037,7 @@ GetPaletteBaseAddress: ; 0x020278A8
 	bx lr
 	.align 2, 0
 _020278C0: .word _020AFC70
-	arm_func_end GetPaletteBaseAddress
+	arm_func_end GetPaletteBaseAddress__02027B9C
 
 	arm_func_start sub_020278C4
 sub_020278C4: ; 0x020278C4
@@ -3541,7 +3541,7 @@ _02028A94:
 	ldr r2, _02028E00 ; =_0209AC64
 	mov r3, r3, lsl #1
 	ldrsb r8, [r2, r3]
-	bl GetPaletteBaseAddress
+	bl GetPaletteBaseAddress__02027B9C
 	mov r1, r5, lsl #1
 	str r0, [r6, #0x98]
 	add r0, r1, #9
@@ -4383,7 +4383,7 @@ _02029508: .word CURSOR_16_ANIMATION_CONTROL
 LoadCursors: ; 0x0202950C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
-	ldr r0, _02029654 ; =_022AAC68
+	ldr r0, _02029654 ; =PREV_MENU_ITEMS
 	mov r1, #0
 	mov r2, #0x15
 	bl memset
@@ -4464,7 +4464,7 @@ LoadCursors: ; 0x0202950C
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02029654: .word _022AAC68
+_02029654: .word PREV_MENU_ITEMS
 _02029658: .word WAN_TABLE
 _0202965C: .word _0209ADF0
 _02029660: .word CURSOR_16_SPRITE_ID

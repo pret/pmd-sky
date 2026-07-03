@@ -28,6 +28,7 @@
 .public IsScriptMenuReturnDisabled
 .public IsScrollBoxActive
 .public ItemToBulkItem
+.public MaybeUpdateStorage
 .public MemAlloc
 .public MemcpySimple
 .public MemFree
@@ -69,7 +70,6 @@
 .public ShowPortraitInPortraitBox
 .public ShowStringIdInDialogueBox
 .public SpecialProcAddItemToBag
-.public sub_0201007C
 .public sub_02017C74
 .public sub_02027B1C
 .public sub_0202836C

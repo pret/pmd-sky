@@ -31,8 +31,10 @@
 .public CloseSynthBin
 .public CloseTextBox
 .public CloseTextBox2
+.public CopyColorToPaletteDataRgba
 .public CopyItemAtIdx
 .public CopyMenuControlWindowExtraInfo
+.public CopyOrInitPreprocessorArgs
 .public CountNbItemsOfTypeInBag
 .public CountNbItemsOfTypeInStorage
 .public CreateAdvancedMenu
@@ -57,6 +59,8 @@
 .public DelayWteFree
 .public DeleteWanTableEntryVeneer
 .public DeleteWindow
+.public DigitInputMenuInit
+.public DigitInputMenuReturn
 .public DrawTextInWindow
 .public DungeonMoveToGroundMove
 .public DungeonSwapIdxToId
@@ -68,6 +72,7 @@
 .public EXCLUSIVE_ITEM_REQUIREMENTS_PTR
 .public FemaleToMaleForm
 .public FillOamAttributeInfo
+.public FillPaletteDataRgba
 .public FreeMissionRewardStructMain
 .public FuncThatCallsRunNextOpcode
 .public FX_Atan2Idx
@@ -117,6 +122,7 @@
 .public GetWindowContents
 .public GetWindowIdPageStart
 .public GetWindowIdSelectedItemOnPage
+.public GetWindowIdSelectedMenuItemIdx
 .public GpiCheckForBuddy
 .public GROUND_STATE_MAP
 .public GROUND_STATE_PTRS
@@ -127,6 +133,7 @@
 .public InitMenu
 .public InitMenuWithWindowExtraInfo
 .public InitMove
+.public InitOamAdjustmentInfo
 .public InitPortraitParams
 .public InitPreprocessorArgs
 .public InitRender3dElement64
@@ -161,6 +168,10 @@
 .public LoadWanTableEntry
 .public LoadWanTableEntryFromPack
 .public LoadWteFromRom
+.public MarkPaletteDataAsNeedingUpdate
+.public MaybeGetColoredFormattedItemName
+.public MaybeGetFormattedItemName
+.public MaybeGetUncoloredFormattedItemName
 .public MemAlloc
 .public memcpy
 .public Memcpy32
@@ -694,8 +705,6 @@
 .public ov11_02324D90
 .public ov11_02324D94
 .public ov11_02324D98
-.public ov11_02324DAC
-.public ov11_02324DB4
 .public ov11_02324DBC
 .public ov11_02324DC0
 .public ov11_02324DC4
@@ -749,6 +758,7 @@
 .public PrintIqSkillsMenu
 .public RandInt
 .public RecolorNameString
+.public RECYCLE_SHOP_OVERLAY_STATUS
 .public RemoveItemNoHole
 .public RemoveItemNoHoleCheck
 .public Render3dElement64
@@ -779,6 +789,7 @@
 .public ShowStringIdInDialogueBox
 .public ShowStringInDialogueBox
 .public SortItemsInBag
+.public SPINDA_CAFE_OVERLAY_STATUS
 .public sprintf
 .public strcat
 .public StrcmpMonsterName
@@ -812,25 +823,18 @@
 .public sub_020094C4
 .public sub_0200A180
 .public sub_0200A184
-.public sub_0200A504
 .public sub_0200A510
-.public sub_0200A590
-.public sub_0200A5B0
 .public sub_0200B330
 .public sub_0200B33C
 .public sub_0200B340
 .public sub_0200B3C0
 .public sub_0200CF6C
-.public sub_0200D310
-.public sub_0200D65C
-.public sub_0200D670
 .public sub_0200FD48
 .public sub_02010044
 .public sub_02011420
 .public sub_020163AC
 .public sub_02017C50
 .public sub_02017C74
-.public sub_0201C000
 .public sub_0201C108
 .public sub_0201CF5C
 .public sub_0201CF90
@@ -845,7 +849,6 @@
 .public sub_0201F324
 .public sub_0201F348
 .public sub_0201F36C
-.public sub_020236FC
 .public sub_02025304_JP
 .public sub_020262E0
 .public sub_020265A8
@@ -858,7 +861,6 @@
 .public sub_0202A03C
 .public sub_0202B030
 .public sub_0202C620
-.public sub_0202C748
 .public sub_0202C75C
 .public sub_0202D07C
 .public sub_0202D0EC
@@ -877,8 +879,6 @@
 .public sub_0203909C
 .public sub_02039218
 .public sub_0203931C
-.public sub_02039460
-.public sub_02039528
 .public sub_02039C2C
 .public sub_0203A51C
 .public sub_0203A5A8

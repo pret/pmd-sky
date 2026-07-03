@@ -20,9 +20,9 @@
 .public ItemZInit
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
-.public ov29_022E6928
 .public ov29_022EA370
 .public ov29_0230F9A4
+.public PlayStairSensorArrowEffect
 .public PrepareItemForPrinting__02345728
 .public RandInt
 .public RemoveEquivItem

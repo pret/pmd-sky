@@ -12,13 +12,13 @@
 .public GetStringFromFileVeneer
 .public GetWindow
 .public LoadItemPspi2n
+.public MaybeGetColoredFormattedItemName
 .public PreprocessString
 .public RescueInventoryZInit
 .public SetActiveInventoryToMain
 .public SpecialEpisodeInventoryZInit
 .public SpecialEpisodeKecleonShopZInit
 .public StringFromId
-.public sub_0200D670
 .public sub_0200FD38
 .public sub_0200FD3C
 .public sub_02010590

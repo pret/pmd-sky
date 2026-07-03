@@ -1920,7 +1920,7 @@ _02012854:
 	cmp r8, r0
 	blt _0201273C
 	bl RemoveEmptyItemsInBag
-	bl sub_0201007C
+	bl MaybeUpdateStorage
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -1957,7 +1957,7 @@ _020128C4:
 	cmp r4, r0
 	blt _02012884
 	bl RemoveEmptyItemsInBag
-	bl sub_0201007C
+	bl MaybeUpdateStorage
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_02012874
 

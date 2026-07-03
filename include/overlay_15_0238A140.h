@@ -35,6 +35,6 @@ typedef struct {
     portrait_params* unkDC;
 } unkBankStruct;
 
-u16 ov15_0238A140(void);
+u16 InitDuskullBankStruct(void);
 
 #endif //PMDSKY_OVERLAY_15_0238A140_H

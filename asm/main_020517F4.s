@@ -404,13 +404,13 @@ sub_02051D68: ; 0x02051D68
 	ldr r2, _02051D84 ; =_020B09B0
 	mov r1, #0x28
 	ldr r2, [r2]
-	ldr ip, _02051D88 ; =sub_0200A504
+	ldr ip, _02051D88 ; =MarkPaletteDataAsNeedingUpdate
 	add r2, r2, #0x1cc
 	mla r0, r1, r0, r2
 	bx ip
 	.align 2, 0
 _02051D84: .word _020B09B0
-_02051D88: .word sub_0200A504
+_02051D88: .word MarkPaletteDataAsNeedingUpdate
 	arm_func_end sub_02051D68
 
 	arm_func_start sub_02051D8C
@@ -592,7 +592,7 @@ _02051F84:
 	mla r0, r2, r0, r3
 	add r2, sp, #0
 	mov r1, r1, lsr #0x10
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02051FB0: .word _020B09B0

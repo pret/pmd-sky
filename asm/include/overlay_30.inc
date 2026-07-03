@@ -18,7 +18,6 @@
 .public ov29_022E1EC4
 .public ov29_022E2018
 .public ov29_022FB920
-.public ov29_023021F0
 .public ov29_02338768
 .public ov29_02338F24
 .public ov29_02344B1C
@@ -36,4 +35,5 @@
 .public sub_02034EB4
 .public sub_02048DC4
 .public UpdateEntityPixelPos
+.public UpdateIqSkillsWrapper
 .public WriteQuickSaveInfo

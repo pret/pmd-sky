@@ -47,7 +47,6 @@
 .public _022A92B8_JP
 .public _022A9A5C
 .public _022AA35C
-.public _022AAC68
 .public CURSOR_16_ANIMATION_CONTROL
 .public CURSOR_16_SPRITE_ID
 .public CURSOR_ANIMATION_CONTROL
@@ -66,6 +65,7 @@
 .public memset
 .public MemZero
 .public MENU_CONTROL_PTR
+.public PREV_MENU_ITEMS
 .public SetAnimationForAnimationControl
 .public SetSpriteIdForAnimationControl
 .public sub_0200302C

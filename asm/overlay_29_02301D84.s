@@ -24,7 +24,7 @@ _023032F4:
 	beq _02303348
 	mov r0, r5
 	mov r1, r8
-	bl ov29_022FAFD4
+	bl ShouldTreatMonsterAsAlly
 	cmp r0, #0
 	beq _02303348
 	mov r0, r5
@@ -63,7 +63,7 @@ _02301DA0:
 	beq _02301DF8
 	mov r0, r7
 	mov r1, sb
-	bl ov29_022FAFD4
+	bl ShouldTreatMonsterAsAlly
 	cmp r0, #0
 	beq _02301DF8
 	mov r0, r7

@@ -71,7 +71,7 @@ YesNoMenu: ; 0x0234D518
 	arm_func_start ov29_0234D558
 ov29_0234D558: ; 0x0234D558
 	stmdb sp!, {r4, lr}
-	bl ov29_0234B73C
+	bl AlertBoxIsActive
 	mov r4, r0
 	mov r0, #2
 	mov r1, #0

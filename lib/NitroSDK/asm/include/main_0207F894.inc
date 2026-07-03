@@ -80,9 +80,9 @@
 .public Dgt_Hash2Update
 .public EnableIrqFlag
 .public fflush
-.public FS_InitFile
 .public FS_CloseFile
 .public FS_InitArchive
+.public FS_InitFile
 .public FS_LoadArchive
 .public FS_NotifyArchiveAsyncEnd
 .public FS_OpenFileDirect

@@ -26,6 +26,7 @@
 .public IsScrollBoxActive
 .public IsThrownItem
 .public ItemToBulkItem
+.public MaybeGetColoredFormattedItemName
 .public MemAlloc
 .public MemFree
 .public ov11_022DC504
@@ -46,7 +47,6 @@
 .public ShowDialogueBox
 .public ShowPortraitInPortraitBox
 .public ShowStringIdInDialogueBox
-.public sub_0200D670
 .public sub_02017C74
 .public sub_02027B1C
 .public sub_0202836C

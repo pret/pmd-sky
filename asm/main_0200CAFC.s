@@ -267,8 +267,8 @@ _0200D2FC:
 _0200D30C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end FindItemInInventory
 
-	arm_func_start sub_0200D310
-sub_0200D310: ; 0x0200D310
+	arm_func_start MaybeGetFormattedItemName
+MaybeGetFormattedItemName: ; 0x0200D310
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xa0
 	mov sb, r1
@@ -362,7 +362,7 @@ _0200D440:
 	bl GetMoneyQuantity
 	mov r1, r0
 	add r0, sp, #0
-	bl sub_020238E0
+	bl MoneyQuantityToString__02023B30
 	cmp r7, #0
 	add r0, sp, #0x50
 	add r2, sp, #0
@@ -496,7 +496,7 @@ _0200D624: .word _02097F90
 _0200D628: .word _02097F9C
 _0200D62C: .word _02097FAC
 _0200D630: .word _02097FB8
-	arm_func_end sub_0200D310
+	arm_func_end MaybeGetFormattedItemName
 
 	arm_func_start SprintfStatic__0200D634
 SprintfStatic__0200D634: ; 0x0200D634
@@ -512,24 +512,24 @@ SprintfStatic__0200D634: ; 0x0200D634
 	bx lr
 	arm_func_end SprintfStatic__0200D634
 
-	arm_func_start sub_0200D65C
-sub_0200D65C: ; 0x0200D65C
+	arm_func_start MaybeGetUncoloredFormattedItemName
+MaybeGetUncoloredFormattedItemName: ; 0x0200D65C
 	stmdb sp!, {r3, lr}
 	mov r3, #0
 	str r3, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0200D65C
+	arm_func_end MaybeGetUncoloredFormattedItemName
 
-	arm_func_start sub_0200D670
-sub_0200D670: ; 0x0200D670
+	arm_func_start MaybeGetColoredFormattedItemName
+MaybeGetColoredFormattedItemName: ; 0x0200D670
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	mov r3, #1
 	str ip, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0200D670
+	arm_func_end MaybeGetColoredFormattedItemName
 
 	arm_func_start sub_0200D688
 sub_0200D688: ; 0x0200D688

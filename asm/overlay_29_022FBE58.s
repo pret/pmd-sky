@@ -48,7 +48,7 @@ InitOtherMonsterData: ; 0x022FBE58
 	ldrsh r2, [ip, #0xe]
 	bl EnableAllLearnableIqSkills
 	mov r0, r4
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	mov r0, r4
 	mov r1, #1
 	bl ov29_022FB83C

@@ -11624,28 +11624,28 @@ _022E6294:
 	b _022E68AC
 _022E62D4:
 	mov r0, #0
-	bl ov11_0230CD84
+	bl LoadKangaskhanOverlay
 	b _022E68AC
 _022E62E0:
-	bl ov11_0230CBB0
+	bl LoadDuskullBankOverlay
 	b _022E68AC
 _022E62E8:
 	mov r0, #0
-	bl ov11_0230CD5C
+	bl LoadKecleonShopOverlay
 	b _022E68AC
 _022E62F4:
-	bl ov11_0230CD5C
+	bl LoadKecleonShopOverlay
 	b _022E68AC
 _022E62FC:
-	bl ov11_0230CD84
+	bl LoadKangaskhanOverlay
 	b _022E68AC
 _022E6304:
 	mov r0, #0
-	bl ov11_0230CBD8
+	bl LoadChimechoAssemblyOverlay
 	b _022E68AC
 _022E6310:
 	mov r0, #0
-	bl ov11_0230CC00
+	bl LoadElectivireLinkShopOverlay
 	b _022E68AC
 _022E631C:
 	add r1, sp, #0x5a
@@ -11686,28 +11686,28 @@ _022E638C:
 	bl ov11_023039AC
 	b _022E68AC
 _022E6398:
-	bl ov11_0230CBC4
+	bl LoadLuminousSpringOverlay
 	b _022E68AC
 _022E63A0:
-	bl ov11_0230CD48
+	bl LoadCroagunkSwapShopOverlay
 	b _022E68AC
 _022E63A8:
-	bl ov11_0230CDB8
+	bl LoadXatuAppraisalOverlay
 	b _022E68AC
 _022E63B0:
-	bl ov11_0230CC28
+	bl LoadSpindaCafeOverlayInit
 	b _022E68AC
 _022E63B8:
-	bl ov11_0230CC4C
+	bl LoadSpindaCafeOverlayResume
 	b _022E68AC
 _022E63C0:
-	bl ov11_0230CC80
+	bl LoadRecycleShopOverlayInit
 	b _022E68AC
 _022E63C8:
-	bl ov11_0230CCA8
+	bl LoadRecycleShopOverlayResume
 	b _022E68AC
 _022E63D0:
-	bl ov11_0230CDA4
+	bl LoadChanseyDaycareOverlay
 	b _022E68AC
 _022E63D8:
 	mov r0, #0x12
@@ -11938,7 +11938,7 @@ _022E6704:
 	mov r0, #1
 	b _022E68BC
 _022E6718:
-	bl ov11_0230CDE0
+	bl LoadRuleDungeonEffectsOverlay
 	b _022E68AC
 _022E6720:
 	bl ov11_0230CDF4
@@ -12000,10 +12000,10 @@ _022E67B8:
 	str r1, [r4]
 	b _022E68BC
 _022E67D4:
-	bl ov11_0230CE30
+	bl LoadSpecialEpisodeDiscardOverlay1
 	b _022E68AC
 _022E67DC:
-	bl ov11_0230CE44
+	bl LoadSpecialEpisodeDiscardOverlay2
 	b _022E68AC
 _022E67E4:
 	bl GetRank

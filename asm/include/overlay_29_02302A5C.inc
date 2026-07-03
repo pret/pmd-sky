@@ -49,12 +49,10 @@
 .public ov29_022E6724
 .public ov29_022E6E80
 .public ov29_022EA370
-.public ov29_022EAC7C
 .public ov29_022EAC9C
 .public ov29_022EBCE8
 .public ov29_022ECB38
 .public ov29_023009CC
-.public ov29_023021F0
 .public ov29_02304830
 .public ov29_02318D58
 .public ov29_02338988
@@ -73,6 +71,7 @@
 .public ov29_0237C9C5
 .public ov29_0237C9C8
 .public ov29_0237C9C9
+.public PlayLevelUpSound
 .public PlaySeByIdIfShouldDisplayEntity
 .public Rand16Bit
 .public SetAndPlayAnimationForAnimationControl
@@ -97,3 +96,4 @@
 .public SubstitutePlaceholderStringTags
 .public SwitchAnimationControlToNextFrame
 .public TryPointCameraToMonster
+.public UpdateIqSkillsWrapper

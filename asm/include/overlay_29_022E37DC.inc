@@ -29,6 +29,7 @@
 .public GetSecondFormIfValid
 .public GetSpriteFileSize
 .public HandleSir0Translation
+.public InitOamAdjustmentInfo
 .public IsBossFight
 .public IsCurrentFixedRoomBossFight
 .public IsCurrentMissionType
@@ -99,7 +100,6 @@
 .public STATUS_ICON_ARRAY_REFLECT
 .public STATUS_ICON_ARRAY_SLEEP
 .public STATUS_ICON_ARRAY_SURE_SHOT
-.public sub_0201C000
 .public sub_0201CF90
 .public sub_0201D034
 .public SubstitutePlaceholderStringTags

@@ -975,12 +975,12 @@ _022DF944:
 	bl ov29_02335044
 _022DF974:
 	mov r0, #1
-	bl ov29_022FACBC
+	bl TryActivateNewFloorHpRestoration
 	mov r0, #0
-	bl ov29_022FAA58
+	bl TryActivateNewFloorPpRestoration
 	bl TryActivateIqBooster
 	mov r0, #0
-	bl ov29_022FAF08
+	bl TryActivateAcuteSniffer
 	bl TryActivateSlowStart
 	bl ov29_02349C84
 	ldr r0, _022DFF40 ; =DUNGEON_PTR
@@ -1051,7 +1051,7 @@ _022DFA78:
 	cmp r5, #0
 	bne _022DFAA4
 	mov r0, #0
-	bl ov29_022FAD4C
+	bl TryActivateStairSensor
 _022DFAA4:
 	mov r7, #0
 	cmp r5, #0

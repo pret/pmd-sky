@@ -75,7 +75,6 @@
 .public ov29_022F9C34
 .public ov29_022FA02C
 .public ov29_023009A0
-.public ov29_023021F0
 .public ov29_02339FF4
 .public ov29_0234BA54
 .public ov29_023529AC
@@ -112,6 +111,7 @@
 .public TryWarp
 .public UnkMapRelatedFunc
 .public UnloadFile
+.public UpdateIqSkillsWrapper
 .public UpdateMinimap
 .public WONDER_GUMMI_IQ_GAIN
 .public YesNoMenu

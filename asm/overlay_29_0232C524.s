@@ -1235,11 +1235,11 @@ DoMoveGuardSwap: ; 0x0232D378
 	mov r5, r0
 	mov r4, r1
 	mov r2, #0
-	bl ov29_0230D874
+	bl SwapDefensiveStages
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0230D8E8
+	bl SwapDefensiveMultipliers
 	mov r0, #0
 	mov r1, r5
 	mov r2, r0
@@ -2267,23 +2267,23 @@ DoMoveHeartSwap: ; 0x0232DF38
 	mov r5, r0
 	mov r4, r1
 	mov r2, #0
-	bl ov29_0230D95C
+	bl SwapOffensiveStages
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0230D9D0
+	bl SwapOffensiveMultipliers
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0230D874
+	bl SwapDefensiveStages
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0230D8E8
+	bl SwapDefensiveMultipliers
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0230DA44
+	bl SwapHitChanceStages
 	mov r0, #0
 	mov r1, r5
 	mov r2, r0
@@ -2370,11 +2370,11 @@ DoMovePowerSwap: ; 0x0232E084
 	mov r5, r0
 	mov r4, r1
 	mov r2, #0
-	bl ov29_0230D95C
+	bl SwapOffensiveStages
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0230D9D0
+	bl SwapOffensiveMultipliers
 	mov r0, #0
 	mov r1, r5
 	mov r2, r0
@@ -2401,7 +2401,7 @@ _0232E0E0: .word 0x00000F2B
 DoMovePowerTrick: ; 0x0232E0E4
 	stmdb sp!, {r3, lr}
 	mov r2, #1
-	bl ov29_0230DAB8
+	bl SwapUserAtkAndDefModifiers
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end DoMovePowerTrick

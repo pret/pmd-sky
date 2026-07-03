@@ -50,7 +50,7 @@ PlayEffectAnimationPixelPos: ; 0x022E3820
 	strh ip, [sp, #0x10]
 	strh ip, [sp, #0x12]
 	str r1, [sp, #0x18]
-	bl sub_0201C000
+	bl InitOamAdjustmentInfo
 	add r0, sp, #0
 	mov r1, #0
 	bl ov10_022BF2B4
@@ -3015,7 +3015,7 @@ ov29_022E5BD8: ; 0x022E5BD8
 	strh r5, [sp, #0x26]
 	strb r1, [sp, #0x28]
 	str sl, [sp, #0x2c]
-	bl sub_0201C000
+	bl InitOamAdjustmentInfo
 	add r0, sp, #0x14
 	mov r1, r5
 	bl ov10_022BF2B4
@@ -4057,8 +4057,8 @@ _022E6920: .word ov29_022E67E4
 _022E6924: .word 0x0000013E
 	arm_func_end ov29_022E690C
 
-	arm_func_start ov29_022E6928
-ov29_022E6928: ; 0x022E6928
+	arm_func_start PlayStairSensorArrowEffect
+PlayStairSensorArrowEffect: ; 0x022E6928
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x1c
 	ldr r3, _022E69F8 ; =ov29_023511B0
@@ -4119,7 +4119,7 @@ _022E69F0:
 	.align 2, 0
 _022E69F8: .word ov29_023511B0
 _022E69FC: .word 0x0000027A
-	arm_func_end ov29_022E6928
+	arm_func_end PlayStairSensorArrowEffect
 
 	arm_func_start ov29_022E6A00
 ov29_022E6A00: ; 0x022E6A00

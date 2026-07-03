@@ -1326,7 +1326,7 @@ _022F8658:
 	cmpge r2, #0
 	blt _022F8690
 	mov r0, sb
-	bl ov29_02337EC0
+	bl RemoveMonsterFromTile
 	ldrsh r0, [sb, #4]
 	ldrsh r1, [sb, #6]
 	bl DrawMinimapTile
@@ -2035,8 +2035,8 @@ _022F9050: .word DIRECTIONS_XY
 _022F9054: .word DIRECTIONS_XY + 2
 	arm_func_end ov29_022F8FF8
 
-	arm_func_start ov29_022F9058
-ov29_022F9058: ; 0x022F9058
+	arm_func_start FillRecruitInfo
+FillRecruitInfo: ; 0x022F9058
 #ifdef JAPAN
 #define OV29_022F9058_OFFSET -4
 #else
@@ -2102,4 +2102,4 @@ _022F90F8:
 	strh r0, [r5, #0x46]
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
-	arm_func_end ov29_022F9058
+	arm_func_end FillRecruitInfo

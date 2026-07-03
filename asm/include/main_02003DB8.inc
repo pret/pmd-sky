@@ -54,8 +54,8 @@
 .public Debug_FatalError
 .public Debug_Print
 .public Debug_Print0
-.public FS_InitFile
 .public FS_CloseFile
+.public FS_InitFile
 .public FS_OpenFile
 .public FS_ReadFile
 .public FS_SeekFile

@@ -4776,7 +4776,7 @@ _0238776C:
 	mov r1, #0
 	bl UnkMapRelatedFunc
 	mov r0, sb
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	add sp, sp, #0x78
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -5338,7 +5338,7 @@ _02387E6C:
 #endif
 	add r0, r0, #0x600
 	mov r3, #1
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 _02387E90:
 	ldr r0, [sp, #0xc + OV31_023877EC_OFFSET_2]
 	bl SetAdvancedTextBoxField0x1C2
@@ -6231,7 +6231,7 @@ _02388A2C:
 _02388A44:
 	bl sub_020420F4
 	mov r0, r6
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 	ldr r0, [r6, #0xb4]
 	add r3, sp, #0
 	add r0, r0, #0x9c
@@ -7812,7 +7812,7 @@ ov31_023899B8: ; 0x023899B8
 	cmp r2, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	ldmia sp!, {r3, pc}
 	arm_func_end ov31_023899B8
 

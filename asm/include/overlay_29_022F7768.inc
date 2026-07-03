@@ -56,7 +56,6 @@
 .public ov29_022FE048
 .public ov29_022FFB90
 .public ov29_023159D4
-.public ov29_02337EC0
 .public ov29_02338F24
 .public ov29_02339F88
 .public ov29_02349688
@@ -66,6 +65,7 @@
 .public ov29_0237C9B0
 .public PopulateActiveMonsterPtrs
 .public RemoveHolderForItemInBag
+.public RemoveMonsterFromTile
 .public RevertGiratinaAndShaymin
 .public SetForcedLossReason
 .public SetMessageLogPreprocessorArgsFlagVal

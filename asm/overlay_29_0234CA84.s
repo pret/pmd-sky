@@ -359,7 +359,7 @@ DisplayDungeonTip: ; 0x0234CEF0
 	beq _0234CF58
 	ldr r0, [r5]
 	bl SetDungeonTipShown
-	bl ov29_022EACBC
+	bl PlayDungeonTipSound__022EB66C
 	ldrh r1, [r5, #4]
 	mov r0, #0
 	mov r2, #1

@@ -81,7 +81,7 @@ _0238A210:
 	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238A228
-	bl ov11_0230CCE0
+	bl IsRecycleShopOverlaySuspended
 	cmp r0, #0
 	beq _0238B288
 _0238A228:
@@ -1221,7 +1221,7 @@ _0238B1A4:
 	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238B1BC
-	bl ov11_0230CCE0
+	bl IsRecycleShopOverlaySuspended
 	cmp r0, #0
 	beq _0238B288
 _0238B1BC:
@@ -1232,7 +1232,7 @@ _0238B1C8:
 	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238B1E0
-	bl ov11_0230CCE0
+	bl IsRecycleShopOverlaySuspended
 	cmp r0, #0
 	beq _0238B288
 _0238B1E0:
@@ -1277,7 +1277,7 @@ _0238B260:
 	bl IsScriptMenuReturnDisabled
 	cmp r0, #0
 	bne _0238B278
-	bl ov11_0230CCE0
+	bl IsRecycleShopOverlaySuspended
 	cmp r0, #0
 	beq _0238B288
 _0238B278:
@@ -1742,7 +1742,7 @@ ov20_0238B824: ; 0x0238B824
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238B85C
-	bl sub_0202F9B8
+	bl IsTextboxState3
 _0238B85C:
 	ldr r0, _0238B8C8 ; =RECYCLE_SHOP_UNK_STRUCT_SIZE_84H_PTR
 	mvn r1, #1
@@ -1750,7 +1750,7 @@ _0238B85C:
 	ldrsb r0, [r0, #0x15]
 	cmp r0, r1
 	beq _0238B898
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	b _0238B898
 _0238B87C:
 	mov r0, #1
@@ -2079,7 +2079,7 @@ _0238BCA0:
 	mov r1, r6
 	mov r2, r4
 	add r0, r0, sb, lsl #2
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, [sl]
 	ldr r0, [r0, #0x33c]
 	add r0, r0, sb, lsl #2
@@ -2845,7 +2845,7 @@ _0238C724:
 	ldr r0, _0238C9C8 ; =RECYCLE_SHOP_UNK_STRUCT_SIZE_1CCH_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_0202C748
+	bl GetWindowIdSelectedMenuItemIdx
 	ldr r1, _0238C9C8 ; =RECYCLE_SHOP_UNK_STRUCT_SIZE_1CCH_PTR
 	ldr r2, [r1]
 	str r0, [r2, #0xc]
@@ -3256,7 +3256,7 @@ ov20_0238CC14: ; 0x0238CC14
 	mov r1, r0
 	mov r0, r5
 	mov r2, #0
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	b _0238CC9C
 _0238CC60:
 	cmp r0, #1
@@ -3270,7 +3270,7 @@ _0238CC60:
 	add r1, sp, #0
 	mov r0, r5
 	mov r2, #0
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	b _0238CC9C
 _0238CC94:
 	mov r0, #0
@@ -3305,11 +3305,11 @@ ov20_0238CCC0: ; 0x0238CCC0
 	ldr r0, _0238CD1C ; =RECYCLE_SHOP_UNK_STRUCT_SIZE_1CCH_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	ldr r0, _0238CD1C ; =RECYCLE_SHOP_UNK_STRUCT_SIZE_1CCH_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	mov r0, r4
 	bl sub_0202C7E4
 	mov r0, #1
@@ -3362,7 +3362,7 @@ _0238CD98:
 	strb r1, [r5, #6]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	mov r0, #6
 	bl PlaySeVolumeWrapper
 	b _0238CDFC

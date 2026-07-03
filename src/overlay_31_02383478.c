@@ -9,7 +9,7 @@ extern struct bag_items* BAG_ITEMS_PTR_MIRROR;
 extern u32 OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0;
 extern u8 ov31_02389F5C[];
 
-extern void sub_0200D310(char*, struct item*, u32*, u32, u32);
+extern void MaybeGetFormattedItemName(char*, struct item*, u32*, u32, u32);
 extern u8* strcpy(u8* dest, const u8* src);
 extern void sub_0200D894(struct item*);
 extern void ov10_022BD394(char*, s32, u32, u32);
@@ -37,7 +37,7 @@ char* ov31_02383478(char* arg1, s32 arg2, u32 arg3)
         struct item* item = GetItemInfo(tile->object);
 
         if (GET_BIT(item->flags, 0)) {
-            sub_0200D310(arg1, item, &OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0, a, 1);
+            MaybeGetFormattedItemName(arg1, item, &OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0, a, 1);
             OVERLAY31_UNKNOWN_POINTER__NA_238A26C->field_0x1277 = 0;
         } else {
             strcpy(arg1, ov31_02389F5C);

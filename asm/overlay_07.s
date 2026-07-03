@@ -624,7 +624,7 @@ _0233D238:
 	b _0233D8C8
 _0233D244:
 	ldrsb r0, [r6, #4]
-	bl sub_0202C748
+	bl GetWindowIdSelectedMenuItemIdx
 	mov r1, r0
 	mov r1, r1, lsl #0x18
 	str r0, [r6, #0x1cc + OV07_0233CFF0_LOAD_OFFSET_2]
@@ -1286,7 +1286,7 @@ ov07_0233DAA8: ; 0x0233DAA8
 	mov r6, r0
 	ldr r4, [r1]
 	ldrsb r0, [r4, #4]
-	bl sub_0202C748
+	bl GetWindowIdSelectedMenuItemIdx
 	mov r5, r0
 	tst r6, #0x400
 	beq _0233DB44

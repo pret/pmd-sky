@@ -1545,8 +1545,8 @@ sub_02010060: ; 0x02010060
 _02010078: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010060
 
-	arm_func_start sub_0201007C
-sub_0201007C: ; 0x0201007C
+	arm_func_start MaybeUpdateStorage
+MaybeUpdateStorage: ; 0x0201007C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02010150 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
@@ -1610,7 +1610,7 @@ _02010144:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02010150: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0201007C
+	arm_func_end MaybeUpdateStorage
 
 	arm_func_start sub_02010154
 sub_02010154: ; 0x02010154
@@ -1629,7 +1629,7 @@ sub_02010154: ; 0x02010154
 	add r0, r1, r0, lsl #1
 	add r0, r0, #0xb00
 	strh r3, [r0, #0x5a]
-	bl sub_0201007C
+	bl MaybeUpdateStorage
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -1683,7 +1683,7 @@ _020101F8:
 	add r0, r0, lr, lsl #1
 	add r0, r0, #0xb00
 	strh r1, [r0, #0x5a]
-	bl sub_0201007C
+	bl MaybeUpdateStorage
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _02010248:
@@ -1722,7 +1722,7 @@ _02010274:
 	add r0, r0, lr, lsl #1
 	add r0, r0, #0xb00
 	strh r1, [r0, #0x5a]
-	bl sub_0201007C
+	bl MaybeUpdateStorage
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _020102C4:
@@ -2224,8 +2224,8 @@ RemoveItemFromKecleonShop1: ; 0x0201086C
 _02010894: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveItemFromKecleonShop1
 
-	arm_func_start sub_02010898
-sub_02010898: ; 0x02010898
+	arm_func_start GetCurrentKecleonShop1ItemByIndex
+GetCurrentKecleonShop1ItemByIndex: ; 0x02010898
 	ldr r1, _020108B0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1000
@@ -2234,7 +2234,7 @@ sub_02010898: ; 0x02010898
 	bx lr
 	.align 2, 0
 _020108B0: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010898
+	arm_func_end GetCurrentKecleonShop1ItemByIndex
 
 	arm_func_start sub_020108B4
 sub_020108B4: ; 0x020108B4
@@ -2434,8 +2434,8 @@ _02010B28:
 _02010B38: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end AddItemToKecleonShop1
 
-	arm_func_start sub_02010B3C
-sub_02010B3C: ; 0x02010B3C
+	arm_func_start RemoveInvalidKecleonShop2Items
+RemoveInvalidKecleonShop2Items: ; 0x02010B3C
 	ldr r1, _02010B74 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r1, [r1]
@@ -2453,7 +2453,7 @@ _02010B54:
 	bx lr
 	.align 2, 0
 _02010B74: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010B3C
+	arm_func_end RemoveInvalidKecleonShop2Items
 
 	arm_func_start RemoveItemFromKecleonShop2
 RemoveItemFromKecleonShop2: ; 0x02010B78
@@ -2471,8 +2471,8 @@ RemoveItemFromKecleonShop2: ; 0x02010B78
 _02010BA0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveItemFromKecleonShop2
 
-	arm_func_start sub_02010BA4
-sub_02010BA4: ; 0x02010BA4
+	arm_func_start GetCurrentKecleonShop2ItemByIndex
+GetCurrentKecleonShop2ItemByIndex: ; 0x02010BA4
 	ldr r1, _02010BBC ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1000
@@ -2481,7 +2481,7 @@ sub_02010BA4: ; 0x02010BA4
 	bx lr
 	.align 2, 0
 _02010BBC: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010BA4
+	arm_func_end GetCurrentKecleonShop2ItemByIndex
 
 	arm_func_start sub_02010BC0
 sub_02010BC0: ; 0x02010BC0

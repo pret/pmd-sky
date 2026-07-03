@@ -2683,14 +2683,14 @@ IsCollectionMenuActive: ; 0x0202C728
 	ldmia sp!, {r3, pc}
 	arm_func_end IsCollectionMenuActive
 
-	arm_func_start sub_0202C748
-sub_0202C748: ; 0x0202C748
+	arm_func_start GetWindowIdSelectedMenuItemIdx
+GetWindowIdSelectedMenuItemIdx: ; 0x0202C748
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
 	bl GetSelectedMenuItemIdx
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202C748
+	arm_func_end GetWindowIdSelectedMenuItemIdx
 
 	arm_func_start sub_0202C75C
 sub_0202C75C: ; 0x0202C75C
@@ -6501,8 +6501,8 @@ _0202F9AC:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202F954
 
-	arm_func_start sub_0202F9B8
-sub_0202F9B8: ; 0x0202F9B8
+	arm_func_start IsTextboxState3
+IsTextboxState3: ; 0x0202F9B8
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r1, [r0, #0x10]
@@ -6512,7 +6512,7 @@ sub_0202F9B8: ; 0x0202F9B8
 	moveq r0, #1
 	movne r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202F9B8
+	arm_func_end IsTextboxState3
 
 	arm_func_start CreateTextBoxInternal
 CreateTextBoxInternal: ; 0x0202F9DC
@@ -7693,8 +7693,8 @@ _02030938:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02030908
 
-	arm_func_start sub_02030940
-sub_02030940: ; 0x02030940
+	arm_func_start GetDigitInputResult
+GetDigitInputResult: ; 0x02030940
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldrb r1, [r0, #0x1c0]
@@ -7710,7 +7710,7 @@ sub_02030940: ; 0x02030940
 _02030970:
 	mvn r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_02030940
+	arm_func_end GetDigitInputResult
 
 	arm_func_start sub_02030978
 sub_02030978: ; 0x02030978

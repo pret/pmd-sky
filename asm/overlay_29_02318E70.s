@@ -126,7 +126,7 @@ TryInflictWishStatus: ; 0x02318FAC
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #6
 	beq _02319024
-	ldr r1, _02319040 ; =ov10_022C4794
+	ldr r1, _02319040 ; =WISH_TURN_RANGE
 	mov r3, #6
 	mov r0, r5
 	mov r2, #0
@@ -151,7 +151,7 @@ _02319034:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319040: .word ov10_022C4794
+_02319040: .word WISH_TURN_RANGE
 #ifdef JAPAN
 _02319044: .word 0x00000A1E
 _02319048: .word 0x00000A1F
@@ -332,7 +332,7 @@ TryInflictProtectStatus: ; 0x0231922C
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #7
 	beq _023192A4
-	ldr r1, _023192D0 ; =ov10_022C47B8
+	ldr r1, _023192D0 ; =PROTECT_TURN_RANGE
 	mov r3, #7
 	mov r0, r5
 	mov r2, #0
@@ -363,7 +363,7 @@ _023192C4:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023192D0: .word ov10_022C47B8
+_023192D0: .word PROTECT_TURN_RANGE
 #ifdef JAPAN
 _023192D4: .word 0x00000A87
 _023192D8: .word 0x00000A88
@@ -390,7 +390,7 @@ TryInflictMirrorCoatStatus: ; 0x023192DC
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #8
 	beq _02319354
-	ldr r1, _02319370 ; =ov10_022C47CC
+	ldr r1, _02319370 ; =MIRROR_COAT_TURN_RANGE
 	mov r3, #8
 	mov r0, r5
 	mov r2, #0
@@ -419,7 +419,7 @@ _02319364:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319370: .word ov10_022C47CC
+_02319370: .word MIRROR_COAT_TURN_RANGE
 #ifdef JAPAN
 _02319374: .word 0x00000A8F
 #else
@@ -559,7 +559,7 @@ _02319500:
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0xc
 	beq _02319558
-	ldr r1, _02319578 ; =ov10_022C4854
+	ldr r1, _02319578 ; =CONVERSION2_TURN_RANGE
 	mov r3, #0xc
 	mov r0, r5
 	mov r2, #0
@@ -590,7 +590,7 @@ _02319568:
 #define TRY_INFLICT_CONVERSION2_STATUS_OFFSET 0
 #endif
 _02319574: .word 0x00000DC4 + TRY_INFLICT_CONVERSION2_STATUS_OFFSET
-_02319578: .word ov10_022C4854
+_02319578: .word CONVERSION2_TURN_RANGE
 _0231957C: .word 0x00000D5C + TRY_INFLICT_CONVERSION2_STATUS_OFFSET
 _02319580: .word 0x00000D5D + TRY_INFLICT_CONVERSION2_STATUS_OFFSET
 	arm_func_end TryInflictConversion2Status
@@ -612,7 +612,7 @@ TryInflictVitalThrowStatus: ; 0x02319584
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0xd
 	beq _023195FC
-	ldr r1, _02319618 ; =ov10_022C485C
+	ldr r1, _02319618 ; =VITAL_THROW_TURN_RANGE
 	mov r3, #0xd
 	mov r0, r5
 	mov r2, #0
@@ -637,7 +637,7 @@ _0231960C:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319618: .word ov10_022C485C
+_02319618: .word VITAL_THROW_TURN_RANGE
 #ifdef JAPAN
 _0231961C: .word 0x00000A9E
 _02319620: .word 0x00000A9F

@@ -3477,7 +3477,7 @@ _02061AAC:
 	add r1, sb, #0x28
 	mov r3, #1
 	str r6, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 	ldr r0, _02061C54 ; =0x00003C2E
 	str r5, [sp, #0x94]
 	bl StringFromId
@@ -5818,9 +5818,9 @@ sub_020637FC: ; 0x020637FC
 	mov r3, r3, lsl #0x10
 	mov r2, r1
 	mov r1, r3, lsr #0x10
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	mov r0, r4
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020637FC
 
@@ -6765,7 +6765,7 @@ _020643D4:
 	blt _020643D4
 	mov r0, r4
 	bl sub_02063E7C
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 	mov r1, r4
 	mov r0, #3
 	bl sub_02063BCC
@@ -7159,9 +7159,9 @@ sub_020648FC: ; 0x020648FC
 	mov r2, r6
 	mov r3, r5
 	mov r1, #0xe0
-	bl sub_0200A5B0
+	bl FillPaletteDataRgba
 	ldr r0, [r7, #0x10]
-	bl sub_0200A504
+	bl MarkPaletteDataAsNeedingUpdate
 _02064930:
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
@@ -9805,7 +9805,7 @@ _02066AF4:
 	b _02067494
 _02066B08:
 	ldrsb r0, [r6, #0x7d]
-	bl sub_0202C748
+	bl GetWindowIdSelectedMenuItemIdx
 	ldr r1, [r6, #0xef0]
 	mov r4, r0
 	cmp r1, #0
@@ -13007,7 +13007,7 @@ sub_02069598: ; 0x02069598
 	beq _02069654
 	ldrsb r0, [r5, #0x7d]
 	ldr r6, [r5, #8]
-	bl sub_0202C748
+	bl GetWindowIdSelectedMenuItemIdx
 	ldr r1, [r5, #8]
 	cmp r1, r0
 	bne _0206964C

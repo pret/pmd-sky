@@ -1,5 +1,6 @@
 #pragma once
 .public AdvanceFrame
+.public AlertBoxIsActive
 .public CloseDialogueBox
 .public CloseParentMenu
 .public ClosePortraitBox
@@ -22,7 +23,6 @@
 .public ov29_02339148
 .public ov29_0234B1A4
 .public ov29_0234B4CC
-.public ov29_0234B73C
 .public ov29_0234D304
 .public ov29_02353398
 .public OverlayIsLoaded

@@ -34,11 +34,11 @@
 .public Dwci_BackuplWritePage
 .public Dwci_BM_GetWiFiInfo
 .public EnableIrqFlag
-.public FS_InitFile
 .public FS_ChangeDir
 .public FS_CloseFile
 .public FS_Init
 .public FS_InitArchive
+.public FS_InitFile
 .public FS_LoadArchive
 .public FS_LoadArchiveTables
 .public FS_NotifyArchiveAsyncEnd

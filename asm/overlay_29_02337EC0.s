@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_02337EC0
-ov29_02337EC0: ; 0x02337EC0
+	arm_func_start RemoveMonsterFromTile
+RemoveMonsterFromTile: ; 0x02337EC0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
@@ -15,7 +15,7 @@ ov29_02337EC0: ; 0x02337EC0
 	moveq r1, #0
 	streq r1, [r0, #0xc]
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_02337EC0
+	arm_func_end RemoveMonsterFromTile
 
 	arm_func_start ov29_02337EE8
 ov29_02337EE8: ; 0x02337EE8
@@ -277,7 +277,7 @@ _023381DC:
 	beq _02338250
 	mov r0, sb
 	mov r1, r8
-	bl ov29_022FAFD4
+	bl ShouldTreatMonsterAsAlly
 	cmp r0, #0
 	beq _02338268
 	mov r0, sb
@@ -285,7 +285,7 @@ _023381DC:
 _02338250:
 	mov r0, r8
 	mov r1, sb
-	bl ov29_022FAFD4
+	bl ShouldTreatMonsterAsAlly
 	cmp r0, #0
 	movne r0, sb
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}

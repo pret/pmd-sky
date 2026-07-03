@@ -28,7 +28,6 @@
 .public ov10_022BFDAC
 .public ov29_022E2CA0
 .public ov29_022EA370
-.public ov29_022FAFD4
 .public ov29_023024E0
 .public ov29_02304A48
 .public ov29_023243B4
@@ -43,6 +42,7 @@
 .public SetPreprocessorArgsIdVal
 .public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper
+.public ShouldTreatMonsterAsAlly
 .public SinAbs4096
 .public sub_0201CF90
 .public TwoTurnMoveForcedMiss

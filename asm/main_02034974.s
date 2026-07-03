@@ -428,7 +428,7 @@ sub_02034EB4: ; 0x02034EB4
 	strh r5, [r2, #0x16]
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x18
-	bl sub_020236FC
+	bl CopyOrInitPreprocessorArgs
 	ldr r1, _02034F18 ; =_020AFDBC
 	ldr r0, _02034F1C ; =_0209B09C
 	ldr r1, [r1, #0xc]
@@ -463,7 +463,7 @@ sub_02034F20: ; 0x02034F20
 	mov r1, r4
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x18
-	bl sub_020236FC
+	bl CopyOrInitPreprocessorArgs
 	ldr r1, _02034F90 ; =_020AFDBC
 	ldr r0, _02034F94 ; =_0209B09C
 	ldr r1, [r1, #0xc]
@@ -6281,8 +6281,8 @@ SprintfStatic__02039438: ; 0x02039438
 	bx lr
 	arm_func_end SprintfStatic__02039438
 
-	arm_func_start sub_02039460
-sub_02039460: ; 0x02039460
+	arm_func_start DigitInputMenuInit
+DigitInputMenuInit: ; 0x02039460
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x18
 	ldr r1, _02039514 ; =_020AFE58
@@ -6304,7 +6304,7 @@ sub_02039460: ; 0x02039460
 	ldr r1, _0203951C ; =0x00001007
 	strb r0, [sp, #0xd]
 	str r2, [sp]
-	ldr r3, _02039520 ; =sub_02039C14
+	ldr r3, _02039520 ; =DigitInputMenuDrawDigitsCallback
 	mov r0, ip
 	str r2, [sp, #4]
 	bl CreateAdvancedTextBox
@@ -6320,32 +6320,32 @@ _020394C8:
 	ldr r1, _0203951C ; =0x00001007
 	strb r0, [sp, #0xd]
 	str r2, [sp]
-	ldr r3, _02039520 ; =sub_02039C14
+	ldr r3, _02039520 ; =DigitInputMenuDrawDigitsCallback
 	mov r0, ip
 	str r2, [sp, #4]
 	bl CreateAdvancedTextBox
 _02039500:
 	strb r0, [r4, #0x14]
 	mov r0, r4
-	bl sub_020395CC
+	bl DigitInputMenuInitDigits
 	add sp, sp, #0x18
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02039514: .word _020AFE58
 _02039518: .word _0209C5C0
 _0203951C: .word 0x00001007
-_02039520: .word sub_02039C14
+_02039520: .word DigitInputMenuDrawDigitsCallback
 _02039524: .word _0209C5D0
-	arm_func_end sub_02039460
+	arm_func_end DigitInputMenuInit
 
-	arm_func_start sub_02039528
-sub_02039528: ; 0x02039528
+	arm_func_start DigitInputMenuReturn
+DigitInputMenuReturn: ; 0x02039528
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5]
 	ldr r1, _020395C8 ; =_020AFE58
 	str r5, [r1]
-	bl sub_020396E4
+	bl DigitInputMenuFrameUpdate
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _020395AC
@@ -6387,10 +6387,10 @@ _020395C0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020395C8: .word _020AFE58
-	arm_func_end sub_02039528
+	arm_func_end DigitInputMenuReturn
 
-	arm_func_start sub_020395CC
-sub_020395CC: ; 0x020395CC
+	arm_func_start DigitInputMenuInitDigits
+DigitInputMenuInitDigits: ; 0x020395CC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x28
 	ldr r1, _0203967C ; =_020AFE58
@@ -6399,7 +6399,7 @@ sub_020395CC: ; 0x020395CC
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #0x10]
 	add r0, sp, #0
-	bl sub_02039680
+	bl DigitInputMenuGetDigits
 	ldr r0, [r4, #0x10]
 	add r1, sp, #0
 	strb r0, [r4, #0x29]
@@ -6421,7 +6421,7 @@ _02039628:
 	add r0, sp, #0
 	str r1, [r4]
 	ldr r2, [r4, #0x10]
-	bl sub_02039680
+	bl DigitInputMenuGetDigits
 	ldrb r0, [r4, #0x29]
 	add r1, sp, #0
 	sub r0, r0, #1
@@ -6443,10 +6443,10 @@ _02039674:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0203967C: .word _020AFE58
-	arm_func_end sub_020395CC
+	arm_func_end DigitInputMenuInitDigits
 
-	arm_func_start sub_02039680
-sub_02039680: ; 0x02039680
+	arm_func_start DigitInputMenuGetDigits
+DigitInputMenuGetDigits: ; 0x02039680
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sb, r1
 	cmp sb, #0
@@ -6474,10 +6474,10 @@ _020396D4:
 	blt _020396B0
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end sub_02039680
+	arm_func_end DigitInputMenuGetDigits
 
-	arm_func_start sub_020396E4
-sub_020396E4: ; 0x020396E4
+	arm_func_start DigitInputMenuFrameUpdate
+DigitInputMenuFrameUpdate: ; 0x020396E4
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x34
 	mov r4, r0
@@ -6489,7 +6489,7 @@ sub_020396E4: ; 0x020396E4
 	cmp r0, #0
 	bne _02039730
 	ldrsb r0, [r4, #0x14]
-	bl sub_02030940
+	bl GetDigitInputResult
 	mvn r1, #0
 	cmp r0, r1
 	bne _02039728
@@ -6549,7 +6549,7 @@ _020397A0:
 	mov r0, #0
 	bl sub_020063F4
 	mov r0, r4
-	bl sub_0203994C
+	bl DigitInputMenuCheckValidTouchScreenInput
 	cmp r0, #0
 	ldreqh r0, [sp, #8]
 	cmp r0, #0x40
@@ -6608,7 +6608,7 @@ _020398B0:
 	movne r0, #1
 	bne _02039940
 	mov r0, r4
-	bl sub_0203994C
+	bl DigitInputMenuCheckValidTouchScreenInput
 	cmp r0, #0
 	ldreqh r0, [sp, #0xc]
 	cmp r0, #1
@@ -6631,7 +6631,7 @@ _020398EC:
 	mov r0, r4
 	mov r1, r1, lsr #0x10
 	mov r2, r2, lsr #0x10
-	bl sub_020399FC
+	bl DigitInputMenuCheckTouchUpDownArrow
 	cmp r0, #0
 	blt _0203993C
 	ldrb r1, [r4, #0x28]
@@ -6648,10 +6648,10 @@ _02039940:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _02039948: .word _0209C5E0
-	arm_func_end sub_020396E4
+	arm_func_end DigitInputMenuFrameUpdate
 
-	arm_func_start sub_0203994C
-sub_0203994C: ; 0x0203994C
+	arm_func_start DigitInputMenuCheckValidTouchScreenInput
+DigitInputMenuCheckValidTouchScreenInput: ; 0x0203994C
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x24
 	mov r4, r0
@@ -6675,7 +6675,7 @@ sub_0203994C: ; 0x0203994C
 	mov r0, r4
 	mov r1, r1, lsr #0x10
 	mov r2, r2, lsr #0x10
-	bl sub_020399FC
+	bl DigitInputMenuCheckTouchUpDownArrow
 	ldrb r1, [r4, #0x28]
 	cmp r1, r0
 	movne r0, #0
@@ -6698,10 +6698,10 @@ _020399F0:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _020399F8: .word 0x0000FFFF
-	arm_func_end sub_0203994C
+	arm_func_end DigitInputMenuCheckValidTouchScreenInput
 
-	arm_func_start sub_020399FC
-sub_020399FC: ; 0x020399FC
+	arm_func_start DigitInputMenuCheckTouchUpDownArrow
+DigitInputMenuCheckTouchUpDownArrow: ; 0x020399FC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, r0
 	ldrsb r0, [r6, #0x14]
@@ -6771,17 +6771,17 @@ sub_020399FC: ; 0x020399FC
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02039B08: .word 0x0000FFFF
-	arm_func_end sub_020399FC
+	arm_func_end DigitInputMenuCheckTouchUpDownArrow
 
-	arm_func_start sub_02039B0C
-sub_02039B0C: ; 0x02039B0C
+	arm_func_start DigitInputMenuDrawDigits
+DigitInputMenuDrawDigits: ; 0x02039B0C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x2c
 	mov r8, r0
 	ldr r1, [r8]
 	ldr r2, [r8, #0x10]
 	add r0, sp, #4
-	bl sub_02039680
+	bl DigitInputMenuGetDigits
 	ldr r0, [r8, #0x10]
 	add r2, sp, #4
 	sub r3, r0, #1
@@ -6856,18 +6856,18 @@ _02039C00:
 	blt _02039BD0
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_02039B0C
+	arm_func_end DigitInputMenuDrawDigits
 
-	arm_func_start sub_02039C14
-sub_02039C14: ; 0x02039C14
+	arm_func_start DigitInputMenuDrawDigitsCallback
+DigitInputMenuDrawDigitsCallback: ; 0x02039C14
 	ldr r0, _02039C24 ; =_020AFE58
-	ldr ip, _02039C28 ; =sub_02039B0C
+	ldr ip, _02039C28 ; =DigitInputMenuDrawDigits
 	ldr r0, [r0]
 	bx ip
 	.align 2, 0
 _02039C24: .word _020AFE58
-_02039C28: .word sub_02039B0C
-	arm_func_end sub_02039C14
+_02039C28: .word DigitInputMenuDrawDigits
+	arm_func_end DigitInputMenuDrawDigitsCallback
 
 	arm_func_start sub_02039C2C
 sub_02039C2C: ; 0x02039C2C
@@ -7684,7 +7684,7 @@ _0203A6F0:
 	strb r0, [r1, #0x469]
 	ldmia sp!, {r3, pc}
 _0203A748:
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0203A750: .word _020AFE5C
@@ -8867,7 +8867,7 @@ _0203B714:
 	ldrsb r0, [r0, #0x69]
 	cmp r0, r1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0203B738: .word _020AFE5C
@@ -9021,7 +9021,7 @@ _0203B8DC:
 	ldrsb r0, [r0, #0x69]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0203B918: .word _020AFE5C
@@ -9328,14 +9328,14 @@ _0203BCC8: .word _020AFE5C
 	arm_func_start sub_0203BCCC
 sub_0203BCCC: ; 0x0203BCCC
 	ldr r0, _0203BCE4 ; =_020AFE5C
-	ldr ip, _0203BCE8 ; =sub_02039B0C
+	ldr ip, _0203BCE8 ; =DigitInputMenuDrawDigits
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x1a8
 	add r0, r0, #0x400
 	bx ip
 	.align 2, 0
 _0203BCE4: .word _020AFE5C
-_0203BCE8: .word sub_02039B0C
+_0203BCE8: .word DigitInputMenuDrawDigits
 	arm_func_end sub_0203BCCC
 
 	arm_func_start sub_0203BCEC
@@ -9735,7 +9735,7 @@ sub_0203C124: ; 0x0203C124
 	ldr r0, [r1, #0x10]
 	add r0, r0, #0x1a8
 	add r0, r0, #0x400
-	bl sub_020395CC
+	bl DigitInputMenuInitDigits
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -9752,7 +9752,7 @@ sub_0203C1F8: ; 0x0203C1F8
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x1a8
 	add r0, r0, #0x400
-	bl sub_020396E4
+	bl DigitInputMenuFrameUpdate
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	ldmia sp!, {r3, pc}

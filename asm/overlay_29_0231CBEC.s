@@ -540,7 +540,7 @@ _0231D23C:
 	mov r2, #0
 	bl ov29_022FA02C
 	mov r0, sb
-	bl ov29_023021F0
+	bl UpdateIqSkillsWrapper
 _0231D284:
 	cmp r5, #3
 	beq _0231D460

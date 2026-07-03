@@ -2,8 +2,8 @@
 .public _022BB5E8
 .public _022BB5F8
 .public EnableIrqFlag
-.public FS_InitFile
 .public FS_CloseFile
+.public FS_InitFile
 .public FS_OpenFileDirect
 .public FS_ReadFile
 .public FSi_InitRom

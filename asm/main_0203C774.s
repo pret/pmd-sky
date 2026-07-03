@@ -547,11 +547,11 @@ _0203CD8C:
 	ldr r0, _0203CE04 ; =_020AFE70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	ldr r0, _0203CE04 ; =_020AFE70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -2124,7 +2124,7 @@ _0203E350:
 	str r4, [r0, #0xb0]
 	ldr r0, [r3]
 	add r0, r0, #0xe8
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, [r0]
 	add r1, r2, #0xe8
@@ -2310,7 +2310,7 @@ _0203E5B4:
 	movne r1, #0
 	add r0, sp, #0x16 + SUB_0203D538_STACK_OFFSET
 	and r1, r1, #0xff
-	bl sub_020453F8
+	bl InitUnkStorageStruct0x410
 	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x35
 	ldr r0, [r0]
@@ -2409,13 +2409,13 @@ _0203E710:
 	strh r3, [sp, #0x12 + SUB_0203D538_STACK_OFFSET]
 	ldr r3, [r5, #0x10]
 	mla r1, r3, r1, r4
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r2, _0203E508 ; =_0209C850
 	ldr r0, [r0]
 	add r1, sp, #0x10 + SUB_0203D538_STACK_OFFSET
 	add r0, r0, #0x138
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r2, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r4, [r2]
@@ -2485,7 +2485,7 @@ _0203E844:
 	add r1, r4, #0x24
 	mla r1, r3, r0, r1
 	add r0, r4, #0xe8
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r2, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r4, [r2]
@@ -2915,7 +2915,7 @@ _0203EE68:
 	movne r1, #0
 	add r0, sp, #0xa + SUB_0203D538_STACK_OFFSET
 	and r1, r1, #0xff
-	bl sub_020453F8
+	bl InitUnkStorageStruct0x410
 	ldr r0, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	mov r1, #0x4a
 	ldr r0, [r0]
@@ -2961,7 +2961,7 @@ _0203EF00:
 	ldr r0, [r0]
 	add r1, sp, #4
 	add r0, r0, #0xe8
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r2, _0203E4B0 ; =MISSION_REWARD_STRUCT_MAIN_PTR
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r4, [r2]
@@ -4856,7 +4856,7 @@ _0204087C:
 	ldr r0, _02040F94 ; =_020AFE7C
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
-	bl sub_02030940
+	bl GetDigitInputResult
 	mvn r1, #0
 	cmp r0, r1
 	bne _020408B8
@@ -6882,8 +6882,8 @@ _02042250: .word _0209C9D4
 _02042254: .word _0209C9DC
 	arm_func_end GetCheckIqMenuSkillString
 
-	arm_func_start sub_02042258
-sub_02042258: ; 0x02042258
+	arm_func_start InitUnkStorageStruct0xA0
+InitUnkStorageStruct0xA0: ; 0x02042258
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0xc
 	mov r6, r0
@@ -6892,13 +6892,13 @@ sub_02042258: ; 0x02042258
 	mov r5, r2
 	mov r4, r3
 	bl MemAlloc
-	ldr r1, _020423B4 ; =_020AFEA8
+	ldr r1, _020423B4 ; =UNK_STORAGE_STRUCT_0XC
 	str r0, [r1, #4]
 	str r6, [r0]
 	bl RemoveEmptyItemsInBag
 	mov r0, #0x14
 	bl Arm9LoadUnkFieldNa0x2029EC8
-	ldr r1, _020423B4 ; =_020AFEA8
+	ldr r1, _020423B4 ; =UNK_STORAGE_STRUCT_0XC
 	cmp r4, #0
 	ldr r3, [r1, #4]
 	ldrne r4, _020423B8 ; =sub_020423D8
@@ -6919,7 +6919,7 @@ sub_02042258: ; 0x02042258
 	bl GetNbItemsInBag
 	str r4, [sp]
 	str r0, [sp, #4]
-	ldr r0, _020423B4 ; =_020AFEA8
+	ldr r0, _020423B4 ; =UNK_STORAGE_STRUCT_0XC
 	str r5, [sp, #8]
 	ldr r2, [r0, #4]
 	ldr r0, _020423C4 ; =_0209C9E4
@@ -6927,24 +6927,24 @@ sub_02042258: ; 0x02042258
 	ldr r3, _020423CC ; =sub_02042760
 	add r2, r2, #8
 	bl CreateCollectionMenu
-	ldr r2, _020423B4 ; =_020AFEA8
+	ldr r2, _020423B4 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r1, _020423D0 ; =sub_0204262C
 	ldr r3, [r2, #4]
 	strb r0, [r3, #4]
 	ldr r0, [r2, #4]
 	ldrsb r0, [r0, #4]
 	bl sub_0202D068
-	ldr r0, _020423B4 ; =_020AFEA8
+	ldr r0, _020423B4 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r1, _020423D4 ; =sub_0204263C
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
 	bl SetCollectionMenuVoidFn
-	ldr r0, _020423B4 ; =_020AFEA8
+	ldr r0, _020423B4 ; =UNK_STORAGE_STRUCT_0XC
 	mov r1, #0xd
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
 	bl SetCollectionMenuField0x1BC
-	ldr r0, _020423B4 ; =_020AFEA8
+	ldr r0, _020423B4 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r1, [r0, #4]
 	ldr r0, [r1]
 	cmp r0, #3
@@ -6968,7 +6968,7 @@ _0204237C:
 #ifdef EUROPE
 	mov r1, #9
 	bl SetCollectionMenuField0x1BC
-	ldr r0, _020423B4 ; =_020AFEA8
+	ldr r0, _020423B4 ; =UNK_STORAGE_STRUCT_0XC
 #endif
 	mov r1, #0x76
 #ifdef EUROPE
@@ -6983,13 +6983,13 @@ _0204237C:
 	mov r0, #0
 	bl sub_02044568
 _020423A0:
-	ldr r0, _020423B4 ; =_020AFEA8
+	ldr r0, _020423B4 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_020423B4: .word _020AFEA8
+_020423B4: .word UNK_STORAGE_STRUCT_0XC
 _020423B8: .word sub_020423D8
 #ifdef JAPAN
 _020423BC: .word 0x000031F4
@@ -7002,12 +7002,12 @@ _020423C8: .word 0x00443C33
 _020423CC: .word sub_02042760
 _020423D0: .word sub_0204262C
 _020423D4: .word sub_0204263C
-	arm_func_end sub_02042258
+	arm_func_end InitUnkStorageStruct0xA0
 
 	arm_func_start sub_020423D8
 sub_020423D8: ; 0x020423D8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r1, _02042618 ; =_020AFEA8
+	ldr r1, _02042618 ; =UNK_STORAGE_STRUCT_0XC
 	mov r5, #0
 	ldr r2, [r1, #4]
 	ldr r1, [r2]
@@ -7018,7 +7018,7 @@ sub_020423D8: ; 0x020423D8
 	bl sub_02042B20
 	cmp r0, #0
 	ble _0204241C
-	bl sub_02042AF8
+	bl ClearBagSelectedItemTable
 	mov r0, #6
 	bl PlaySeVolumeWrapper
 	mov r5, #1
@@ -7030,7 +7030,7 @@ _0204241C:
 	sub r7, r4, r0
 	mov r8, r5
 	mov r6, #1
-	ldr r4, _02042618 ; =_020AFEA8
+	ldr r4, _02042618 ; =UNK_STORAGE_STRUCT_0XC
 	b _02042470
 _0204243C:
 	cmp r7, #0
@@ -7064,7 +7064,7 @@ _02042498:
 	beq _020425D8
 	ldrsb r0, [r2, #4]
 	bl sub_0202D0EC
-	ldr r1, _02042618 ; =_020AFEA8
+	ldr r1, _02042618 ; =UNK_STORAGE_STRUCT_0XC
 	mov r4, r0
 	ldr r0, [r1, #4]
 	ldr r0, [r0]
@@ -7081,7 +7081,7 @@ _020424CC:
 	bl IsStorableItem
 	cmp r0, #0
 	beq _02042560
-	ldr r0, _02042618 ; =_020AFEA8
+	ldr r0, _02042618 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r2, [r0, #8]
 	ldr r0, [r2, r4, lsl #2]
 	tst r0, #1
@@ -7103,7 +7103,7 @@ _02042514:
 	bge _02042550
 	mov r0, #6
 	bl PlaySeVolumeWrapper
-	ldr r0, _02042618 ; =_020AFEA8
+	ldr r0, _02042618 ; =UNK_STORAGE_STRUCT_0XC
 	mov r5, #1
 	ldr r0, [r0, #8]
 	str r5, [r0, r4, lsl #2]
@@ -7126,7 +7126,7 @@ _02042570:
 	bl IsShoppableItem
 	cmp r0, #0
 	beq _020425CC
-	ldr r0, _02042618 ; =_020AFEA8
+	ldr r0, _02042618 ; =UNK_STORAGE_STRUCT_0XC
 	mov r5, #1
 	ldr r2, [r0, #8]
 	ldr r0, [r2, r4, lsl #2]
@@ -7139,7 +7139,7 @@ _02042570:
 	b _020425D8
 _020425B8:
 	bl PlaySeVolumeWrapper
-	ldr r0, _02042618 ; =_020AFEA8
+	ldr r0, _02042618 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #8]
 	str r5, [r0, r4, lsl #2]
 	b _020425D8
@@ -7151,14 +7151,14 @@ _020425D8:
 	bl sub_02042B20
 	cmp r0, #0
 	beq _020425FC
-	ldr r0, _02042618 ; =_020AFEA8
+	ldr r0, _02042618 ; =UNK_STORAGE_STRUCT_0XC
 	mov r1, #1
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
 	bl sub_0202D16C
 	b _02042610
 _020425FC:
-	ldr r0, _02042618 ; =_020AFEA8
+	ldr r0, _02042618 ; =UNK_STORAGE_STRUCT_0XC
 	mov r1, #0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
@@ -7167,7 +7167,7 @@ _02042610:
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02042618: .word _020AFEA8
+_02042618: .word UNK_STORAGE_STRUCT_0XC
 	arm_func_end sub_020423D8
 
 	arm_func_start sub_0204261C
@@ -7201,35 +7201,35 @@ _0204265C: .word BAG_ITEMS_PTR_MIRROR
 _02042660: .word sub_020444B0
 	arm_func_end sub_0204263C
 
-	arm_func_start sub_02042664
-sub_02042664: ; 0x02042664
+	arm_func_start FreeUnkStorageStruct0xA0
+FreeUnkStorageStruct0xA0: ; 0x02042664
 	stmdb sp!, {r3, lr}
-	ldr r0, _020426B0 ; =_020AFEA8
+	ldr r0, _020426B0 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl sub_02044474
 	bl sub_020442CC
 	bl sub_020445C8
-	ldr r0, _020426B0 ; =_020AFEA8
+	ldr r0, _020426B0 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
 	bl CloseCollectionMenu
-	ldr r0, _020426B0 ; =_020AFEA8
+	ldr r0, _020426B0 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #4]
 	bl MemFree
-	ldr r0, _020426B0 ; =_020AFEA8
+	ldr r0, _020426B0 ; =UNK_STORAGE_STRUCT_0XC
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020426B0: .word _020AFEA8
-	arm_func_end sub_02042664
+_020426B0: .word UNK_STORAGE_STRUCT_0XC
+	arm_func_end FreeUnkStorageStruct0xA0
 
 	arm_func_start sub_020426B4
 sub_020426B4: ; 0x020426B4
 	stmdb sp!, {r3, lr}
-	ldr r0, _0204272C ; =_020AFEA8
+	ldr r0, _0204272C ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	moveq r0, #0
@@ -7238,50 +7238,50 @@ sub_020426B4: ; 0x020426B4
 	bl IsCollectionMenuActive
 	cmp r0, #0
 	bne _02042708
-	ldr r0, _0204272C ; =_020AFEA8
+	ldr r0, _0204272C ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
 	bl sub_0202C75C
 	mvn r1, #0
 	cmp r0, r1
-	ldrne r1, _0204272C ; =_020AFEA8
+	ldrne r1, _0204272C ; =UNK_STORAGE_STRUCT_0XC
 	moveq r0, #2
 	strneh r0, [r1]
 	movne r0, #3
 	ldmia sp!, {r3, pc}
 _02042708:
-	ldr r0, _0204272C ; =_020AFEA8
+	ldr r0, _0204272C ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
-	bl sub_0202C748
+	bl GetWindowIdSelectedMenuItemIdx
 	and r1, r0, #0xff
 	mov r0, #0x14
 	bl Arm9StoreUnkFieldNa0x2029ED8
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204272C: .word _020AFEA8
+_0204272C: .word UNK_STORAGE_STRUCT_0XC
 	arm_func_end sub_020426B4
 
 	arm_func_start sub_02042730
 sub_02042730: ; 0x02042730
-	ldr r0, _02042740 ; =_020AFEA8
+	ldr r0, _02042740 ; =UNK_STORAGE_STRUCT_0XC
 	mov r1, #0
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
-_02042740: .word _020AFEA8
+_02042740: .word UNK_STORAGE_STRUCT_0XC
 	arm_func_end sub_02042730
 
 	arm_func_start sub_02042744
 sub_02042744: ; 0x02042744
-	ldr r0, _02042758 ; =_020AFEA8
+	ldr r0, _02042758 ; =UNK_STORAGE_STRUCT_0XC
 	ldr ip, _0204275C ; =sub_0202C620
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_02042758: .word _020AFEA8
+_02042758: .word UNK_STORAGE_STRUCT_0XC
 _0204275C: .word sub_0202C620
 	arm_func_end sub_02042744
 
@@ -7294,7 +7294,7 @@ sub_02042760: ; 0x02042760
 	ldr r3, _02042A64 ; =BAG_ITEMS_PTR_MIRROR
 	mul r4, r5, r1
 	ldr r1, [r3]
-	ldr r3, _02042A68 ; =_020AFEA8
+	ldr r3, _02042A68 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r6, [r1, #0x384]
 	ldr r7, [r3, #4]
 	ldrh r1, [r6, r4]
@@ -7320,7 +7320,7 @@ _020427C0: ; jump table
 	b _020429E8 ; case 5
 _020427D8:
 	mov r2, #0
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	b _02042A3C
 _020427E4:
 	mov r7, #0
@@ -7330,7 +7330,7 @@ _020427E4:
 	strb r7, [sp, #0xc]
 	strb r3, [sp, #0x10]
 	strb r3, [sp]
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	b _02042A3C
 _02042808:
 	mov r1, #0
@@ -7354,7 +7354,7 @@ _0204284C:
 	add r0, sp, #0x14
 	add r1, sp, #0
 	add r2, sp, #8
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldrb r2, [sp, #1]
 	cmp r2, #0
 	beq _0204287C
@@ -7373,7 +7373,7 @@ _02042890:
 	add r0, sp, #0x14
 	add r1, sp, #0
 	add r2, sp, #8
-	bl sub_0200D65C
+	bl MaybeGetUncoloredFormattedItemName
 	ldrb r2, [sp, #1]
 	cmp r2, #0
 	beq _020428C0
@@ -7413,7 +7413,7 @@ _020428D4:
 	add r1, sp, #0
 	add r2, sp, #8
 	bgt _0204296C
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldrb r2, [sp, #1]
 	cmp r2, #0
 	beq _02042958
@@ -7429,7 +7429,7 @@ _02042958:
 	bl SprintfStatic__02042A84
 	b _02042A3C
 _0204296C:
-	bl sub_0200D65C
+	bl MaybeGetUncoloredFormattedItemName
 	ldrb r2, [sp, #1]
 	cmp r2, #0
 	beq _02042990
@@ -7448,7 +7448,7 @@ _020429A4:
 	add r0, sp, #0x14
 	add r1, sp, #0
 	mov r2, #0
-	bl sub_0200D65C
+	bl MaybeGetUncoloredFormattedItemName
 	ldrb r2, [sp, #1]
 	cmp r2, #0
 	beq _020429D4
@@ -7477,17 +7477,17 @@ _020429E8:
 	add r2, sp, #8
 	beq _02042A24
 	mov r0, r6
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	b _02042A3C
 _02042A24:
 	add r0, sp, #0x14
-	bl sub_0200D65C
+	bl MaybeGetUncoloredFormattedItemName
 	ldr r1, _02042A80 ; =_0209CA2C
 	add r2, sp, #0x14
 	mov r0, r6
 	bl SprintfStatic__02042A84
 _02042A3C:
-	ldr r0, _02042A68 ; =_020AFEA8
+	ldr r0, _02042A68 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #8]
 	ldr r0, [r0, r5, lsl #2]
 	tst r0, #1
@@ -7499,7 +7499,7 @@ _02042A3C:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _02042A64: .word BAG_ITEMS_PTR_MIRROR
-_02042A68: .word _020AFEA8
+_02042A68: .word UNK_STORAGE_STRUCT_0XC
 _02042A6C: .word _0209C9F4
 _02042A70: .word _0209C9FC
 _02042A74: .word _0209CA08
@@ -7525,7 +7525,7 @@ SprintfStatic__02042A84: ; 0x02042A84
 	arm_func_start sub_02042AAC
 sub_02042AAC: ; 0x02042AAC
 	stmdb sp!, {r3, lr}
-	ldr r0, _02042AD8 ; =_020AFEA8
+	ldr r0, _02042AD8 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldrnesb r0, [r0, #4]
@@ -7536,25 +7536,25 @@ sub_02042AAC: ; 0x02042AAC
 	bl IsCollectionMenuState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02042AD8: .word _020AFEA8
+_02042AD8: .word UNK_STORAGE_STRUCT_0XC
 	arm_func_end sub_02042AAC
 
 	arm_func_start sub_02042ADC
 sub_02042ADC: ; 0x02042ADC
-	ldr r0, _02042AF0 ; =_020AFEA8
+	ldr r0, _02042AF0 ; =UNK_STORAGE_STRUCT_0XC
 	ldr ip, _02042AF4 ; =sub_0202D0EC
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_02042AF0: .word _020AFEA8
+_02042AF0: .word UNK_STORAGE_STRUCT_0XC
 _02042AF4: .word sub_0202D0EC
 	arm_func_end sub_02042ADC
 
-	arm_func_start sub_02042AF8
-sub_02042AF8: ; 0x02042AF8
+	arm_func_start ClearBagSelectedItemTable
+ClearBagSelectedItemTable: ; 0x02042AF8
 	mov r3, #0
-	ldr r0, _02042B1C ; =_020AFEA8
+	ldr r0, _02042B1C ; =UNK_STORAGE_STRUCT_0XC
 	mov r2, r3
 _02042B04:
 	ldr r1, [r0, #8]
@@ -7564,12 +7564,12 @@ _02042B04:
 	blt _02042B04
 	bx lr
 	.align 2, 0
-_02042B1C: .word _020AFEA8
-	arm_func_end sub_02042AF8
+_02042B1C: .word UNK_STORAGE_STRUCT_0XC
+	arm_func_end ClearBagSelectedItemTable
 
 	arm_func_start sub_02042B20
 sub_02042B20: ; 0x02042B20
-	ldr r1, _02042B4C ; =_020AFEA8
+	ldr r1, _02042B4C ; =UNK_STORAGE_STRUCT_0XC
 	mov r0, #0
 	ldr r3, [r1, #8]
 	mov r2, r0
@@ -7582,12 +7582,12 @@ _02042B30:
 	blt _02042B30
 	bx lr
 	.align 2, 0
-_02042B4C: .word _020AFEA8
+_02042B4C: .word UNK_STORAGE_STRUCT_0XC
 	arm_func_end sub_02042B20
 
 	arm_func_start sub_02042B50
 sub_02042B50: ; 0x02042B50
-	ldr r1, _02042B80 ; =_020AFEA8
+	ldr r1, _02042B80 ; =UNK_STORAGE_STRUCT_0XC
 	mov r0, #0
 	ldr r2, [r1, #8]
 	b _02042B70
@@ -7602,46 +7602,46 @@ _02042B70:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_02042B80: .word _020AFEA8
+_02042B80: .word UNK_STORAGE_STRUCT_0XC
 	arm_func_end sub_02042B50
 
-	arm_func_start sub_02042B84
-sub_02042B84: ; 0x02042B84
-	ldr r1, _02042B94 ; =_020AFEA8
+	arm_func_start IsBagItemIndexSelected
+IsBagItemIndexSelected: ; 0x02042B84
+	ldr r1, _02042B94 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r1, [r1, #8]
 	ldr r0, [r1, r0, lsl #2]
 	bx lr
 	.align 2, 0
-_02042B94: .word _020AFEA8
-	arm_func_end sub_02042B84
+_02042B94: .word UNK_STORAGE_STRUCT_0XC
+	arm_func_end IsBagItemIndexSelected
 
-	arm_func_start sub_02042B98
-sub_02042B98: ; 0x02042B98
+	arm_func_start AllocUnkBagStruct
+AllocUnkBagStruct: ; 0x02042B98
 	stmdb sp!, {r3, lr}
 	mov r0, #0xc8
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _02042BB8 ; =_020AFEA8
+	ldr r1, _02042BB8 ; =UNK_STORAGE_STRUCT_0XC
 	str r0, [r1, #8]
-	bl sub_02042AF8
+	bl ClearBagSelectedItemTable
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02042BB8: .word _020AFEA8
-	arm_func_end sub_02042B98
+_02042BB8: .word UNK_STORAGE_STRUCT_0XC
+	arm_func_end AllocUnkBagStruct
 
-	arm_func_start sub_02042BBC
-sub_02042BBC: ; 0x02042BBC
+	arm_func_start FreeUnkBagStruct
+FreeUnkBagStruct: ; 0x02042BBC
 	stmdb sp!, {r3, lr}
-	ldr r0, _02042BDC ; =_020AFEA8
+	ldr r0, _02042BDC ; =UNK_STORAGE_STRUCT_0XC
 	ldr r0, [r0, #8]
 	bl MemFree
-	ldr r0, _02042BDC ; =_020AFEA8
+	ldr r0, _02042BDC ; =UNK_STORAGE_STRUCT_0XC
 	mov r1, #0
 	str r1, [r0, #8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02042BDC: .word _020AFEA8
-	arm_func_end sub_02042BBC
+_02042BDC: .word UNK_STORAGE_STRUCT_0XC
+	arm_func_end FreeUnkBagStruct
 
 	arm_func_start sub_02042BE0
 sub_02042BE0: ; 0x02042BE0
@@ -7650,7 +7650,7 @@ sub_02042BE0: ; 0x02042BE0
 	mov r1, #6
 	mov r4, r0
 	mov r0, #0
-	ldr ip, _02042CE8 ; =_020AFEA8
+	ldr ip, _02042CE8 ; =UNK_STORAGE_STRUCT_0XC
 	ldr r3, _02042CEC ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, r1
 	b _02042C44
@@ -7681,7 +7681,7 @@ _02042C44:
 	mov r0, #1
 	mov r3, #6
 	ldr lr, _02042CEC ; =BAG_ITEMS_PTR_MIRROR
-	ldr ip, _02042CE8 ; =_020AFEA8
+	ldr ip, _02042CE8 ; =UNK_STORAGE_STRUCT_0XC
 	b _02042CA4
 _02042C6C:
 	mul r1, r2, r3
@@ -7701,14 +7701,14 @@ _02042C6C:
 _02042CA4:
 	cmp r2, r4
 	blt _02042C6C
-	ldr r1, _02042CE8 ; =_020AFEA8
+	ldr r1, _02042CE8 ; =UNK_STORAGE_STRUCT_0XC
 	mvn r0, #1
 	ldr r1, [r1, #4]
 	ldrsb r1, [r1, #4]
 	cmp r1, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	bl GetNbItemsInBag
-	ldr r2, _02042CE8 ; =_020AFEA8
+	ldr r2, _02042CE8 ; =UNK_STORAGE_STRUCT_0XC
 	mov r1, r0
 	ldr r0, [r2, #4]
 	mov r2, #8
@@ -7717,12 +7717,12 @@ _02042CA4:
 	bl sub_0202C654
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02042CE8: .word _020AFEA8
+_02042CE8: .word UNK_STORAGE_STRUCT_0XC
 _02042CEC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02042BE0
 
-	arm_func_start sub_02042CF0
-sub_02042CF0: ; 0x02042CF0
+	arm_func_start InitUnkStorageStruct0x18c0
+InitUnkStorageStruct0x18c0: ; 0x02042CF0
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	mov r5, r0
@@ -7730,7 +7730,7 @@ sub_02042CF0: ; 0x02042CF0
 	mov r1, #8
 	mov r4, r2
 	bl MemAlloc
-	ldr r2, _02042F88 ; =_020AFEB4
+	ldr r2, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r3, #1
 	str r0, [r2, #4]
 	str r5, [r0]
@@ -7752,7 +7752,7 @@ sub_02042CF0: ; 0x02042CF0
 	strh r1, [r0, #0x10]
 	ldr r0, [r2, #0x10]
 	bl sub_02043BFC
-	ldr r2, _02042F88 ; =_020AFEB4
+	ldr r2, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r2, #4]
 	add r1, r1, #0x900
 	strh r0, [r1, #0x10]
@@ -7768,12 +7768,12 @@ sub_02042CF0: ; 0x02042CF0
 	cmp r0, #0
 	beq _02042DB4
 	bl sub_020440F8
-	ldr r1, _02042F88 ; =_020AFEB4
+	ldr r1, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r1, #4]
 	add r1, r1, #0x900
 	strh r0, [r1, #0x10]
 _02042DB4:
-	ldr r0, _02042F88 ; =_020AFEB4
+	ldr r0, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x900
 	ldrsh r0, [r0, #0x10]
@@ -7782,14 +7782,14 @@ _02042DB4:
 	mov r0, #9
 	mov r1, #0
 	bl sub_02043BFC
-	ldr r2, _02042F88 ; =_020AFEB4
+	ldr r2, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	mov r3, #9
 	ldr r1, [r2, #4]
 	add r1, r1, #0x900
 	strh r0, [r1, #0x10]
 	str r3, [r2, #0x10]
 _02042DF0:
-	ldr r1, _02042F88 ; =_020AFEB4
+	ldr r1, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	sub r2, r5, #2
 	ldr r0, [r1, #4]
 	ldr r5, _02042F8C ; =0x000002F3
@@ -7821,11 +7821,11 @@ _02042DF0:
 	tst r1, #0x2b
 	movne r5, r0
 _02042E6C:
-	ldr r1, _02042F88 ; =_020AFEB4
+	ldr r1, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	cmp r5, #0
 	movne r2, #0
 	ldr r3, [r1, #4]
-	ldreq r2, _02042F98 ; =sub_02042FB8
+	ldreq r2, _02042F98 ; =MaybeTrySelectStorageItem
 	ldr r0, _02042F9C ; =_0209CA58
 	str r2, [sp]
 	add r2, r3, #0x900
@@ -7837,7 +7837,7 @@ _02042E6C:
 	add r2, r2, #0x400
 	str r4, [sp, #8]
 	bl CreateCollectionMenu
-	ldr r2, _02042F88 ; =_020AFEB4
+	ldr r2, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, _02042FA8 ; =sub_020430F4
 	ldr r3, [r2, #4]
 	strb r0, [r3, #0x7d4]
@@ -7845,13 +7845,13 @@ _02042E6C:
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl sub_0202D068
-	ldr r0, _02042F88 ; =_020AFEB4
+	ldr r0, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, _02042FAC ; =sub_02043148
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl SetCollectionMenuVoidFn
-	ldr r0, _02042F88 ; =_020AFEB4
+	ldr r0, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
 	cmp r0, #7
@@ -7880,7 +7880,7 @@ _02042F3C:
 	ldr r0, _02042FB0 ; =_0209CA48
 	ldr r1, _02042FB4 ; =sub_02044210
 	bl CreateTextBox
-	ldr r1, _02042F88 ; =_020AFEB4
+	ldr r1, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0x7d5]
 	mov r0, #1
@@ -7892,14 +7892,14 @@ _02042F60:
 	mov r0, #1
 	bl sub_0204426C
 _02042F70:
-	ldr r0, _02042F88 ; =_020AFEB4
+	ldr r0, _02042F88 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_02042F88: .word _020AFEB4
+_02042F88: .word UNK_STORAGE_STRUCT_0X14
 #ifdef JAPAN
 _02042F8C: .word 0x0000239B
 #else
@@ -7907,7 +7907,7 @@ _02042F8C: .word 0x000002F3
 #endif
 _02042F90: .word sub_0204357C
 _02042F94: .word sub_020441BC
-_02042F98: .word sub_02042FB8
+_02042F98: .word MaybeTrySelectStorageItem
 _02042F9C: .word _0209CA58
 _02042FA0: .word 0x00447C33
 _02042FA4: .word sub_020432B4
@@ -7915,15 +7915,15 @@ _02042FA8: .word sub_020430F4
 _02042FAC: .word sub_02043148
 _02042FB0: .word _0209CA48
 _02042FB4: .word sub_02044210
-	arm_func_end sub_02042CF0
+	arm_func_end InitUnkStorageStruct0x18c0
 
-	arm_func_start sub_02042FB8
-sub_02042FB8: ; 0x02042FB8
+	arm_func_start MaybeTrySelectStorageItem
+MaybeTrySelectStorageItem: ; 0x02042FB8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	tst r0, #0x400
 	mov r4, #0
 	beq _020430A8
-	ldr r0, _020430F0 ; =_020AFEB4
+	ldr r0, _020430F0 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
 	cmp r0, #1
@@ -7931,7 +7931,7 @@ sub_02042FB8: ; 0x02042FB8
 	cmpne r0, #6
 	bne _020430A8
 	bl sub_02043468
-	ldr r1, _020430F0 ; =_020AFEB4
+	ldr r1, _020430F0 ; =UNK_STORAGE_STRUCT_0X14
 	mov r5, r0
 	ldr r0, [r1, #8]
 	ldrb r0, [r0, r5]
@@ -7944,7 +7944,7 @@ sub_02042FB8: ; 0x02042FB8
 	bne _02043038
 	bl GetNbItemsInBag
 	mov r7, r0
-	bl sub_020434FC
+	bl CountSelectedStorageItems
 	mov r6, r0
 	bl GetCurrentBagCapacity
 	add r1, r7, r6
@@ -7958,7 +7958,7 @@ _0204303C:
 	beq _020430A0
 	mov r0, #6
 	bl PlaySeVolumeWrapper
-	ldr r0, _020430F0 ; =_020AFEB4
+	ldr r0, _020430F0 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r1, #1
 	ldr r3, [r0, #8]
 	ldrb r2, [r3, r5]
@@ -7969,25 +7969,25 @@ _0204303C:
 	ldrsb r0, [r0, #0xd6]
 	cmp r0, r1
 	beq _0204307C
-	bl sub_0202F9B8
+	bl IsTextboxState3
 _0204307C:
-	ldr r0, _020430F0 ; =_020AFEB4
+	ldr r0, _020430F0 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r0, #4]
 	ldr r0, [r1]
 	cmp r0, #6
 	bne _020430A8
 	add r0, r1, #0x700
 	ldrsb r0, [r0, #0xd5]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	b _020430A8
 _020430A0:
 	mov r0, #2
 	bl PlaySeVolumeWrapper
 _020430A8:
-	bl sub_020434FC
+	bl CountSelectedStorageItems
 	cmp r0, #0
 	ble _020430D0
-	ldr r0, _020430F0 ; =_020AFEB4
+	ldr r0, _020430F0 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
@@ -7995,7 +7995,7 @@ _020430A8:
 	bl sub_0202D16C
 	b _020430E8
 _020430D0:
-	ldr r0, _020430F0 ; =_020AFEB4
+	ldr r0, _020430F0 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
@@ -8005,17 +8005,17 @@ _020430E8:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020430F0: .word _020AFEB4
-	arm_func_end sub_02042FB8
+_020430F0: .word UNK_STORAGE_STRUCT_0X14
+	arm_func_end MaybeTrySelectStorageItem
 
 	arm_func_start sub_020430F4
 sub_020430F4: ; 0x020430F4
 	stmdb sp!, {r3, lr}
-	ldr r0, _02043144 ; =_020AFEB4
+	ldr r0, _02043144 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #1
 	ldr r0, [r0, #0x10]
 	bl sub_02043BFC
-	ldr r2, _02043144 ; =_020AFEB4
+	ldr r2, _02043144 ; =UNK_STORAGE_STRUCT_0X14
 	mov r3, #0
 	ldr r1, [r2, #4]
 	add r1, r1, #0x900
@@ -8031,13 +8031,13 @@ sub_020430F4: ; 0x020430F4
 	bl sub_02044308
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02043144: .word _020AFEB4
+_02043144: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_020430F4
 
 	arm_func_start sub_02043148
 sub_02043148: ; 0x02043148
 	stmdb sp!, {r3, lr}
-	ldr r1, _02043168 ; =_020AFEB4
+	ldr r1, _02043168 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #1
 	ldrsh r0, [r0, #4]
@@ -8045,7 +8045,7 @@ sub_02043148: ; 0x02043148
 	bl sub_020444B0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02043168: .word _020AFEB4
+_02043168: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043148
 
 	arm_func_start sub_0204316C
@@ -8056,17 +8056,17 @@ sub_0204316C: ; 0x0204316C
 	bx lr
 	arm_func_end sub_0204316C
 
-	arm_func_start sub_0204317C
-sub_0204317C: ; 0x0204317C
+	arm_func_start FreeUnkStorageStruct0x18c0
+FreeUnkStorageStruct0x18c0: ; 0x0204317C
 	stmdb sp!, {r3, lr}
-	ldr r0, _02043214 ; =_020AFEB4
+	ldr r0, _02043214 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl sub_02044474
 	bl sub_020442CC
 	bl sub_020445C8
-	ldr r0, _02043214 ; =_020AFEB4
+	ldr r0, _02043214 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r0, #4]
 	ldr r0, [r1]
 	cmp r0, #6
@@ -8075,7 +8075,7 @@ sub_0204317C: ; 0x0204317C
 	ldrsb r0, [r0, #0xd5]
 	bl CloseTextBox
 _020431BC:
-	ldr r0, _02043214 ; =_020AFEB4
+	ldr r0, _02043214 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
@@ -8084,57 +8084,57 @@ _020431BC:
 	beq _020431DC
 	bl CloseTextBox
 _020431DC:
-	ldr r1, _02043214 ; =_020AFEB4
+	ldr r1, _02043214 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r1, #4]
 	ldr r2, [r0]
 	add r0, r0, #0x700
 	str r2, [r1, #0xc]
 	ldrsb r0, [r0, #0xd4]
 	bl CloseCollectionMenu
-	ldr r0, _02043214 ; =_020AFEB4
+	ldr r0, _02043214 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	bl MemFree
-	ldr r0, _02043214 ; =_020AFEB4
+	ldr r0, _02043214 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02043214: .word _020AFEB4
-	arm_func_end sub_0204317C
+_02043214: .word UNK_STORAGE_STRUCT_0X14
+	arm_func_end FreeUnkStorageStruct0x18c0
 
 	arm_func_start sub_02043218
 sub_02043218: ; 0x02043218
-	ldr r0, _02043228 ; =_020AFEB4
+	ldr r0, _02043228 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	strh r1, [r0, #2]
 	bx lr
 	.align 2, 0
-_02043228: .word _020AFEB4
+_02043228: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043218
 
 	arm_func_start sub_0204322C
 sub_0204322C: ; 0x0204322C
-	ldr r1, _02043238 ; =_020AFEB4
+	ldr r1, _02043238 ; =UNK_STORAGE_STRUCT_0X14
 	strh r0, [r1, #2]
 	bx lr
 	.align 2, 0
-_02043238: .word _020AFEB4
+_02043238: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_0204322C
 
 	arm_func_start sub_0204323C
 sub_0204323C: ; 0x0204323C
 	stmdb sp!, {r3, lr}
 	bl sub_02043254
-	ldr r1, _02043250 ; =_020AFEB4
+	ldr r1, _02043250 ; =UNK_STORAGE_STRUCT_0X14
 	strh r0, [r1, #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02043250: .word _020AFEB4
+_02043250: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_0204323C
 
 	arm_func_start sub_02043254
 sub_02043254: ; 0x02043254
-	ldr r1, _02043298 ; =_020AFEB4
+	ldr r1, _02043298 ; =UNK_STORAGE_STRUCT_0X14
 	mov r3, #0
 	ldr ip, [r1, #4]
 	mvn r1, #0
@@ -8155,25 +8155,25 @@ _02043290:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_02043298: .word _020AFEB4
+_02043298: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043254
 
 	arm_func_start sub_0204329C
 sub_0204329C: ; 0x0204329C
-	ldr r1, _020432B0 ; =_020AFEB4
+	ldr r1, _020432B0 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #1
 	ldrsh r0, [r0, #4]
 	bx lr
 	.align 2, 0
-_020432B0: .word _020AFEB4
+_020432B0: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_0204329C
 
 	arm_func_start sub_020432B4
 sub_020432B4: ; 0x020432B4
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
-	ldr r3, _02043318 ; =_020AFEB4
+	ldr r3, _02043318 ; =UNK_STORAGE_STRUCT_0X14
 	mov r5, r0
 	ldr r0, [r3, #4]
 	mov r4, r2
@@ -8185,8 +8185,8 @@ sub_020432B4: ; 0x020432B4
 	ldr r2, _0204331C ; =_0209CA3C
 	add r1, sp, #0
 	mov r0, r5
-	bl sub_0200D670
-	ldr r0, _02043318 ; =_020AFEB4
+	bl MaybeGetColoredFormattedItemName
+	ldr r0, _02043318 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #8]
 	ldrb r0, [r0, r6]
 	tst r0, #1
@@ -8197,7 +8197,7 @@ sub_020432B4: ; 0x020432B4
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02043318: .word _020AFEB4
+_02043318: .word UNK_STORAGE_STRUCT_0X14
 _0204331C: .word _0209CA3C
 	arm_func_end sub_020432B4
 
@@ -8244,7 +8244,7 @@ sub_02043380: ; 0x02043380
 	arm_func_start sub_02043398
 sub_02043398: ; 0x02043398
 	stmdb sp!, {r3, lr}
-	ldr r0, _020433BC ; =_020AFEB4
+	ldr r0, _020433BC ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -8253,25 +8253,25 @@ sub_02043398: ; 0x02043398
 	bl sub_0202D134
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020433BC: .word _020AFEB4
+_020433BC: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043398
 
 	arm_func_start sub_020433C0
 sub_020433C0: ; 0x020433C0
-	ldr r0, _020433D8 ; =_020AFEB4
+	ldr r0, _020433D8 ; =UNK_STORAGE_STRUCT_0X14
 	ldr ip, _020433DC ; =sub_0202C620
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bx ip
 	.align 2, 0
-_020433D8: .word _020AFEB4
+_020433D8: .word UNK_STORAGE_STRUCT_0X14
 _020433DC: .word sub_0202C620
 	arm_func_end sub_020433C0
 
 	arm_func_start sub_020433E0
 sub_020433E0: ; 0x020433E0
-	ldr r0, _020433FC ; =_020AFEB4
+	ldr r0, _020433FC ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	movne r0, #1
@@ -8279,13 +8279,13 @@ sub_020433E0: ; 0x020433E0
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_020433FC: .word _020AFEB4
+_020433FC: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_020433E0
 
 	arm_func_start sub_02043400
 sub_02043400: ; 0x02043400
 	stmdb sp!, {r3, lr}
-	ldr r0, _02043430 ; =_020AFEB4
+	ldr r0, _02043430 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	addne r0, r0, #0x700
@@ -8297,13 +8297,13 @@ sub_02043400: ; 0x02043400
 	bl IsCollectionMenuActive
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02043430: .word _020AFEB4
+_02043430: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043400
 
 	arm_func_start sub_02043434
 sub_02043434: ; 0x02043434
 	stmdb sp!, {r3, lr}
-	ldr r0, _02043464 ; =_020AFEB4
+	ldr r0, _02043464 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	addne r0, r0, #0x700
@@ -8315,47 +8315,47 @@ sub_02043434: ; 0x02043434
 	bl IsCollectionMenuState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02043464: .word _020AFEB4
+_02043464: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043434
 
 	arm_func_start sub_02043468
 sub_02043468: ; 0x02043468
 	stmdb sp!, {r3, lr}
-	ldr r0, _020434D0 ; =_020AFEB4
+	ldr r0, _020434D0 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl IsCollectionMenuActive
 	cmp r0, #0
 	beq _020434A0
-	ldr r0, _020434D0 ; =_020AFEB4
+	ldr r0, _020434D0 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
-	bl sub_0202C748
+	bl GetWindowIdSelectedMenuItemIdx
 	b _020434B4
 _020434A0:
-	ldr r0, _020434D0 ; =_020AFEB4
+	ldr r0, _020434D0 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl sub_0202C75C
 _020434B4:
 	cmp r0, #0
-	ldrge r1, _020434D0 ; =_020AFEB4
+	ldrge r1, _020434D0 ; =UNK_STORAGE_STRUCT_0X14
 	mvnlt r0, #0
 	ldrge r1, [r1, #4]
 	addge r0, r1, r0, lsl #1
 	ldrgesh r0, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020434D0: .word _020AFEB4
+_020434D0: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043468
 
-	arm_func_start sub_020434D4
-sub_020434D4: ; 0x020434D4
+	arm_func_start ClearStorageSelectedItemTable
+ClearStorageSelectedItemTable: ; 0x020434D4
 	mov r3, #0
-	ldr r0, _020434F8 ; =_020AFEB4
+	ldr r0, _020434F8 ; =UNK_STORAGE_STRUCT_0X14
 	mov r2, r3
 _020434E0:
 	ldr r1, [r0, #8]
@@ -8365,12 +8365,12 @@ _020434E0:
 	blt _020434E0
 	bx lr
 	.align 2, 0
-_020434F8: .word _020AFEB4
-	arm_func_end sub_020434D4
+_020434F8: .word UNK_STORAGE_STRUCT_0X14
+	arm_func_end ClearStorageSelectedItemTable
 
-	arm_func_start sub_020434FC
-sub_020434FC: ; 0x020434FC
-	ldr r1, _02043528 ; =_020AFEB4
+	arm_func_start CountSelectedStorageItems
+CountSelectedStorageItems: ; 0x020434FC
+	ldr r1, _02043528 ; =UNK_STORAGE_STRUCT_0X14
 	mov r0, #0
 	ldr r3, [r1, #8]
 	mov r2, r0
@@ -8383,12 +8383,12 @@ _0204350C:
 	blt _0204350C
 	bx lr
 	.align 2, 0
-_02043528: .word _020AFEB4
-	arm_func_end sub_020434FC
+_02043528: .word UNK_STORAGE_STRUCT_0X14
+	arm_func_end CountSelectedStorageItems
 
-	arm_func_start sub_0204352C
-sub_0204352C: ; 0x0204352C
-	ldr r0, _02043564 ; =_020AFEB4
+	arm_func_start GetFirstSelectedStorageItemIndex
+GetFirstSelectedStorageItemIndex: ; 0x0204352C
+	ldr r0, _02043564 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	ldr r2, [r0, #8]
 	b _02043554
@@ -8405,18 +8405,18 @@ _02043554:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_02043564: .word _020AFEB4
-	arm_func_end sub_0204352C
+_02043564: .word UNK_STORAGE_STRUCT_0X14
+	arm_func_end GetFirstSelectedStorageItemIndex
 
-	arm_func_start sub_02043568
-sub_02043568: ; 0x02043568
-	ldr r1, _02043578 ; =_020AFEB4
+	arm_func_start IsStorageItemIndexSelected
+IsStorageItemIndexSelected: ; 0x02043568
+	ldr r1, _02043578 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r1, #8]
 	ldrb r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_02043578: .word _020AFEB4
-	arm_func_end sub_02043568
+_02043578: .word UNK_STORAGE_STRUCT_0X14
+	arm_func_end IsStorageItemIndexSelected
 
 	arm_func_start sub_0204357C
 sub_0204357C: ; 0x0204357C
@@ -8428,7 +8428,7 @@ sub_0204357C: ; 0x0204357C
 	mov ip, lr
 	stmia lr!, {r0, r1, r2, r3}
 	ldmia r4, {r0, r1, r2}
-	ldr r3, _020435C8 ; =_020AFEB4
+	ldr r3, _020435C8 ; =UNK_STORAGE_STRUCT_0X14
 	stmia lr, {r0, r1, r2}
 	ldr r0, [r3, #4]
 	ldr r0, [r0, #0x90c]
@@ -8441,14 +8441,14 @@ _020435BC:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _020435C4: .word _0209CA98
-_020435C8: .word _020AFEB4
+_020435C8: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_0204357C
 
 	arm_func_start sub_020435CC
 sub_020435CC: ; 0x020435CC
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r0, _02043760 ; =_020AFEB4
+	ldr r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
@@ -8462,7 +8462,7 @@ sub_020435CC: ; 0x020435CC
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _02043760 ; =_020AFEB4
+	ldr r1, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0x7d8]
 	b _02043758
@@ -8470,18 +8470,18 @@ _0204361C:
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _02043758
-	ldr r0, _02043760 ; =_020AFEB4
+	ldr r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd8]
 	bl GetSimpleMenuResult__0202B870
-	ldr r1, _02043760 ; =_020AFEB4
+	ldr r1, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	mov r4, r0
 	ldr r0, [r1, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd8]
 	bl CloseSimpleMenu
-	ldr r0, _02043760 ; =_020AFEB4
+	ldr r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r2, #1
 	ldr r1, [r0, #4]
 	cmp r4, #8
@@ -8495,7 +8495,7 @@ _0204361C:
 	mvn r1, #0
 	cmp r0, r1
 	bne _020436F4
-	ldr r0, _02043760 ; =_020AFEB4
+	ldr r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	sub r1, r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
@@ -8504,7 +8504,7 @@ _0204361C:
 	beq _020436AC
 	bl sub_0202812C
 _020436AC:
-	ldr r0, _02043760 ; =_020AFEB4
+	ldr r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
@@ -8513,18 +8513,18 @@ _020436AC:
 	beq _020436CC
 	bl sub_0202812C
 _020436CC:
-	ldr r0, _02043760 ; =_020AFEB4
+	ldr r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl sub_0202812C
-	ldr r0, _02043760 ; =_020AFEB4
+	ldr r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #1
 	ldr r0, [r0, #4]
 	str r1, [r0, #0x90c]
 	b _02043758
 _020436F4:
-	ldr r2, _02043760 ; =_020AFEB4
+	ldr r2, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r2, #4]
 	add r1, r1, #0x900
 	strh r0, [r1, #0x10]
@@ -8535,17 +8535,17 @@ _020436F4:
 	ldrsh r1, [r1, #0x10]
 	bl sub_0202C6D4
 	cmp r4, #5
-	ldreq r0, _02043760 ; =_020AFEB4
+	ldreq r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	moveq r1, #4
 	ldreq r0, [r0, #4]
 	streq r1, [r0, #0x90c]
 	beq _02043758
-	ldr r0, _02043760 ; =_020AFEB4
+	ldr r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	ldr r0, [r0, #4]
 	str r1, [r0, #0x90c]
 _02043744:
-	ldr r0, _02043760 ; =_020AFEB4
+	ldr r0, _02043760 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
@@ -8554,7 +8554,7 @@ _02043758:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_02043760: .word _020AFEB4
+_02043760: .word UNK_STORAGE_STRUCT_0X14
 _02043764: .word _0209CA68
 _02043768: .word _0209CAB4
 	arm_func_end sub_020435CC
@@ -8564,7 +8564,7 @@ sub_0204376C: ; 0x0204376C
 	stmdb sp!, {r3, lr}
 	ldr r0, _020437B4 ; =_0209CA88
 	bl CreateDialogueBox
-	ldr r3, _020437B8 ; =_020AFEB4
+	ldr r3, _020437B8 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, _020437BC ; =0x00000418
 	ldr ip, [r3, #4]
 	ldr r2, _020437C0 ; =0x000002FF
@@ -8574,14 +8574,14 @@ sub_0204376C: ; 0x0204376C
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd7]
 	bl ShowStringIdInDialogueBox
-	ldr r0, _020437B8 ; =_020AFEB4
+	ldr r0, _020437B8 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #2
 	ldr r0, [r0, #4]
 	str r1, [r0, #0x90c]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020437B4: .word _0209CA88
-_020437B8: .word _020AFEB4
+_020437B8: .word UNK_STORAGE_STRUCT_0X14
 _020437BC: .word 0x00000418
 #ifdef JAPAN
 _020437C0: .word 0x000023A7
@@ -8593,7 +8593,7 @@ _020437C0: .word 0x000002FF
 	arm_func_start sub_020437C4
 sub_020437C4: ; 0x020437C4
 	stmdb sp!, {r3, lr}
-	ldr r0, _02043840 ; =_020AFEB4
+	ldr r0, _02043840 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd7]
@@ -8603,7 +8603,7 @@ sub_020437C4: ; 0x020437C4
 	mov r0, #9
 	mov r1, #0
 	bl sub_02043BFC
-	ldr r2, _02043840 ; =_020AFEB4
+	ldr r2, _02043840 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r1, [r2, #4]
 	add r1, r1, #0x900
 	strh r0, [r1, #0x10]
@@ -8613,24 +8613,24 @@ sub_020437C4: ; 0x020437C4
 	ldrsb r0, [r0, #0xd4]
 	ldrsh r1, [r1, #0x10]
 	bl sub_0202C6D4
-	ldr r0, _02043840 ; =_020AFEB4
+	ldr r0, _02043840 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd7]
 	bl sub_0202F2C4
-	ldr r0, _02043840 ; =_020AFEB4
+	ldr r0, _02043840 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #3
 	ldr r0, [r0, #4]
 	str r1, [r0, #0x90c]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02043840: .word _020AFEB4
+_02043840: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_020437C4
 
 	arm_func_start sub_02043844
 sub_02043844: ; 0x02043844
 	stmdb sp!, {r3, lr}
-	ldr r0, _02043940 ; =_020AFEB4
+	ldr r0, _02043940 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
@@ -8638,7 +8638,7 @@ sub_02043844: ; 0x02043844
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
 	bl CloseDialogueBox
-	ldr r0, _02043940 ; =_020AFEB4
+	ldr r0, _02043940 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r2, #1
 	ldr r1, [r0, #4]
 	strb r2, [r1, #0x7d7]
@@ -8650,13 +8650,13 @@ sub_02043844: ; 0x02043844
 	bl sub_02028354
 	cmp r0, #3
 	bne _020438AC
-	ldr r0, _02043940 ; =_020AFEB4
+	ldr r0, _02043940 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd5]
 	bl sub_0202810C
 _020438AC:
-	ldr r0, _02043940 ; =_020AFEB4
+	ldr r0, _02043940 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
@@ -8666,55 +8666,55 @@ _020438AC:
 	bl sub_02028354
 	cmp r0, #3
 	bne _020438E8
-	ldr r0, _02043940 ; =_020AFEB4
+	ldr r0, _02043940 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd6]
 	bl sub_0202810C
 _020438E8:
-	ldr r0, _02043940 ; =_020AFEB4
+	ldr r0, _02043940 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl sub_02028354
 	cmp r0, #3
 	bne _02043918
-	ldr r0, _02043940 ; =_020AFEB4
+	ldr r0, _02043940 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl sub_0202810C
 _02043918:
-	ldr r0, _02043940 ; =_020AFEB4
+	ldr r0, _02043940 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl sub_0202C620
-	ldr r0, _02043940 ; =_020AFEB4
+	ldr r0, _02043940 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	ldr r0, [r0, #4]
 	str r1, [r0, #0x90c]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02043940: .word _020AFEB4
+_02043940: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043844
 
 	arm_func_start sub_02043944
 sub_02043944: ; 0x02043944
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r0, _020439E8 ; =_020AFEB4
+	ldr r0, _020439E8 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0xb4
 	add r0, r0, #0x1800
 	bl sub_020547C8
-	ldr r0, _020439E8 ; =_020AFEB4
+	ldr r0, _020439E8 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	ldr r0, [r0, #4]
 	add r0, r0, #0xb4
 	add r0, r0, #0x1800
 	bl sub_02054804
-	ldr r1, _020439E8 ; =_020AFEB4
+	ldr r1, _020439E8 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r2, _020439EC ; =0x000002FE
 	ldr r0, [r1, #4]
 	mov r3, #0x10
@@ -8734,7 +8734,7 @@ sub_02043944: ; 0x02043944
 	add r2, r2, #0x800
 	str ip, [sp, #4]
 	bl CreateAdvancedMenu
-	ldr r1, _020439E8 ; =_020AFEB4
+	ldr r1, _020439E8 ; =UNK_STORAGE_STRUCT_0X14
 	mov r2, #5
 	ldr r3, [r1, #4]
 	strb r0, [r3, #0x7d9]
@@ -8743,7 +8743,7 @@ sub_02043944: ; 0x02043944
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020439E8: .word _020AFEB4
+_020439E8: .word UNK_STORAGE_STRUCT_0X14
 #ifdef JAPAN
 _020439EC: .word 0x000023A6
 #else
@@ -8757,31 +8757,31 @@ _020439F8: .word sub_02043BAC
 	arm_func_start sub_020439FC
 sub_020439FC: ; 0x020439FC
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _02043B78 ; =_020AFEB4
+	ldr r0, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd9]
 	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	ldr r0, _02043B78 ; =_020AFEB4
+	ldr r0, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd9]
 	bl GetAdvancedMenuCurrentOption
-	ldr r1, _02043B78 ; =_020AFEB4
+	ldr r1, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	mov r4, r0, lsl #0x10
 	ldr r0, [r1, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd9]
 	bl GetAdvancedMenuResult
-	ldr r1, _02043B78 ; =_020AFEB4
+	ldr r1, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	mov r5, r0, lsl #0x10
 	ldr r0, [r1, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd9]
 	bl CloseAdvancedMenu
-	ldr r0, _02043B78 ; =_020AFEB4
+	ldr r0, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r3, #1
 	ldr r1, [r0, #4]
 	mov r2, r4, asr #0xf
@@ -8796,7 +8796,7 @@ sub_020439FC: ; 0x020439FC
 	mvn r0, #0
 	cmp r0, r5, asr #16
 	bne _02043AB8
-	ldr r0, _02043B78 ; =_020AFEB4
+	ldr r0, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	strh r1, [r0]
 	ldr r0, [r0, #4]
@@ -8808,7 +8808,7 @@ _02043AB8:
 	bl sub_020440F8
 	cmp r0, #0
 	bgt _02043B38
-	ldr r0, _02043B78 ; =_020AFEB4
+	ldr r0, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	strh r1, [r0]
 	ldr r0, [r0, #4]
@@ -8819,7 +8819,7 @@ _02043AB8:
 	beq _02043AF0
 	bl sub_0202812C
 _02043AF0:
-	ldr r0, _02043B78 ; =_020AFEB4
+	ldr r0, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
@@ -8828,18 +8828,18 @@ _02043AF0:
 	beq _02043B10
 	bl sub_0202812C
 _02043B10:
-	ldr r0, _02043B78 ; =_020AFEB4
+	ldr r0, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl sub_0202812C
-	ldr r0, _02043B78 ; =_020AFEB4
+	ldr r0, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #1
 	ldr r0, [r0, #4]
 	str r1, [r0, #0x90c]
 	ldmia sp!, {r3, r4, r5, pc}
 _02043B38:
-	ldr r2, _02043B78 ; =_020AFEB4
+	ldr r2, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	strh r4, [r2]
 	ldr r1, [r2, #4]
 	add r1, r1, #0x900
@@ -8850,30 +8850,30 @@ _02043B38:
 	ldrsb r0, [r0, #0xd4]
 	ldrsh r1, [r1, #0x10]
 	bl sub_0202C6D4
-	ldr r0, _02043B78 ; =_020AFEB4
+	ldr r0, _02043B78 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #6
 	ldr r0, [r0, #4]
 	str r1, [r0, #0x90c]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02043B78: .word _020AFEB4
+_02043B78: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_020439FC
 
 	arm_func_start sub_02043B7C
 sub_02043B7C: ; 0x02043B7C
 	stmdb sp!, {r3, lr}
-	ldr r0, _02043BA8 ; =_020AFEB4
+	ldr r0, _02043BA8 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
 	bl sub_0202C620
-	ldr r0, _02043BA8 ; =_020AFEB4
+	ldr r0, _02043BA8 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	ldr r0, [r0, #4]
 	str r1, [r0, #0x90c]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02043BA8: .word _020AFEB4
+_02043BA8: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043B7C
 
 	arm_func_start sub_02043BAC
@@ -8882,7 +8882,7 @@ sub_02043BAC: ; 0x02043BAC
 	mov r4, r0
 	cmp r1, #0
 	blt _02043BD4
-	ldr r2, _02043BF8 ; =_020AFEB4
+	ldr r2, _02043BF8 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r3, [r2, #4]
 	add r2, r3, #0x1800
 	ldrsh r2, [r2, #0xb4]
@@ -8900,13 +8900,13 @@ _02043BDC:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02043BF8: .word _020AFEB4
+_02043BF8: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_02043BAC
 
 	arm_func_start sub_02043BFC
 sub_02043BFC: ; 0x02043BFC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r2, _0204408C ; =_020AFEB4
+	ldr r2, _0204408C ; =UNK_STORAGE_STRUCT_0X14
 	mov sb, r0
 	ldr r0, [r2, #4]
 	mov r4, r1
@@ -8926,7 +8926,7 @@ sub_02043BFC: ; 0x02043BFC
 	bl MemAlloc
 	mov r8, r0
 	mov sl, #0
-	ldr r0, _0204408C ; =_020AFEB4
+	ldr r0, _0204408C ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, sl
 	mov r2, #1
 _02043C5C:
@@ -8944,7 +8944,7 @@ _02043C5C:
 	mov r0, r8
 	bl SortItemsInStorage
 	mov sl, #0
-	ldr r0, _0204408C ; =_020AFEB4
+	ldr r0, _0204408C ; =UNK_STORAGE_STRUCT_0X14
 	mov r2, sl
 	mov r3, #1
 _02043CA0:
@@ -8959,23 +8959,23 @@ _02043CA0:
 	blt _02043CA0
 	mov r0, r8
 	bl MemFree
-	ldr r0, _0204408C ; =_020AFEB4
+	ldr r0, _0204408C ; =UNK_STORAGE_STRUCT_0X14
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd5]
 	cmp r0, r1
 	beq _02043CEC
-	bl sub_0202F9B8
+	bl IsTextboxState3
 _02043CEC:
-	ldr r0, _0204408C ; =_020AFEB4
+	ldr r0, _0204408C ; =UNK_STORAGE_STRUCT_0X14
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd6]
 	cmp r0, r1
 	beq _02043D0C
-	bl sub_0202F9B8
+	bl IsTextboxState3
 _02043D0C:
 	mov r8, #0
 	b _02043DE4
@@ -9027,7 +9027,7 @@ _02043DB4:
 	cmp r0, #0
 	beq _02043DD8
 _02043DBC:
-	ldr r0, _0204408C ; =_020AFEB4
+	ldr r0, _0204408C ; =UNK_STORAGE_STRUCT_0X14
 	add r2, r7, #1
 	ldr r0, [r0, #4]
 	add r1, r0, r7, lsl #1
@@ -9044,7 +9044,7 @@ _02043DE4:
 _02043DEC:
 	mov r4, r7
 	mvn r3, #0
-	ldr r1, _0204408C ; =_020AFEB4
+	ldr r1, _0204408C ; =UNK_STORAGE_STRUCT_0X14
 	b _02043E14
 _02043DFC:
 	ldr r2, [r1, #4]
@@ -9057,7 +9057,7 @@ _02043E14:
 	cmp r4, r5
 	blt _02043DFC
 	mov r0, r7, lsl #0x10
-	ldr r4, _0204408C ; =_020AFEB4
+	ldr r4, _0204408C ; =UNK_STORAGE_STRUCT_0X14
 	mov r5, r0, asr #0x10
 	cmp r5, #0
 	str sb, [r4, #0x10]
@@ -9232,48 +9232,48 @@ _02044070:
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0204408C: .word _020AFEB4
+_0204408C: .word UNK_STORAGE_STRUCT_0X14
 _02044090: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02043BFC
 
-	arm_func_start sub_02044094
-sub_02044094: ; 0x02044094
+	arm_func_start AllocStorageSelectedItemTable
+AllocStorageSelectedItemTable: ; 0x02044094
 	stmdb sp!, {r3, lr}
 	mov r0, #0x3e8
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _020440B4 ; =_020AFEB4
+	ldr r1, _020440B4 ; =UNK_STORAGE_STRUCT_0X14
 	str r0, [r1, #8]
-	bl sub_020434D4
+	bl ClearStorageSelectedItemTable
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020440B4: .word _020AFEB4
-	arm_func_end sub_02044094
+_020440B4: .word UNK_STORAGE_STRUCT_0X14
+	arm_func_end AllocStorageSelectedItemTable
 
-	arm_func_start sub_020440B8
-sub_020440B8: ; 0x020440B8
+	arm_func_start FreeStorageSelectedItemTable
+FreeStorageSelectedItemTable: ; 0x020440B8
 	stmdb sp!, {r3, lr}
-	ldr r0, _020440D8 ; =_020AFEB4
+	ldr r0, _020440D8 ; =UNK_STORAGE_STRUCT_0X14
 	ldr r0, [r0, #8]
 	bl MemFree
-	ldr r0, _020440D8 ; =_020AFEB4
+	ldr r0, _020440D8 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #0
 	str r1, [r0, #8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020440D8: .word _020AFEB4
-	arm_func_end sub_020440B8
+_020440D8: .word UNK_STORAGE_STRUCT_0X14
+	arm_func_end FreeStorageSelectedItemTable
 
 	arm_func_start sub_020440DC
 sub_020440DC: ; 0x020440DC
-	ldr r0, _020440F4 ; =_020AFEB4
+	ldr r0, _020440F4 ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #9
 	str r1, [r0, #0x10]
 	mov r1, #0
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
-_020440F4: .word _020AFEB4
+_020440F4: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_020440DC
 
 	arm_func_start sub_020440F8
@@ -9289,7 +9289,7 @@ sub_020440F8: ; 0x020440F8
 	bl GetType
 	mov r7, r0
 	mov r8, sb
-	ldr r4, _020441B4 ; =_020AFEB4
+	ldr r4, _020441B4 ; =UNK_STORAGE_STRUCT_0X14
 	ldr fp, _020441B8 ; =BAG_ITEMS_PTR_MIRROR
 	b _02044198
 _02044130:
@@ -9329,18 +9329,18 @@ _02044198:
 	mov r0, sb
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020441B4: .word _020AFEB4
+_020441B4: .word UNK_STORAGE_STRUCT_0X14
 _020441B8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020440F8
 
 	arm_func_start sub_020441BC
 sub_020441BC: ; 0x020441BC
 	stmdb sp!, {r3, lr}
-	ldr r0, _0204420C ; =_020AFEB4
+	ldr r0, _0204420C ; =UNK_STORAGE_STRUCT_0X14
 	mov r1, #1
 	ldr r0, [r0, #0x10]
 	bl sub_02043BFC
-	ldr r2, _0204420C ; =_020AFEB4
+	ldr r2, _0204420C ; =UNK_STORAGE_STRUCT_0X14
 	mov r3, #0
 	ldr r1, [r2, #4]
 	add r1, r1, #0x900
@@ -9356,7 +9356,7 @@ sub_020441BC: ; 0x020441BC
 	bl sub_02044308
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204420C: .word _020AFEB4
+_0204420C: .word UNK_STORAGE_STRUCT_0X14
 	arm_func_end sub_020441BC
 
 	arm_func_start sub_02044210
@@ -9375,7 +9375,7 @@ sub_02044210: ; 0x02044210
 	mov r3, #0x300
 #endif
 	bl AppendStandardStringToMission
-	bl sub_020434FC
+	bl CountSelectedStorageItems
 	str r0, [sp, #0x28]
 	add r1, sp, #4
 	str r1, [sp]
@@ -9404,7 +9404,7 @@ sub_0204426C: ; 0x0204426C
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _020442C0 ; =_020AFEC8
+	ldr r1, _020442C0 ; =UNK_STORAGE_STRUCT_0X8_PTR_1
 	mov r3, #1
 	str r0, [r1]
 	str r4, [r0]
@@ -9416,12 +9416,12 @@ sub_0204426C: ; 0x0204426C
 	ldr r0, [r0]
 	add r0, r2, r0, lsl #4
 	bl CreateTextBox
-	ldr r1, _020442C0 ; =_020AFEC8
+	ldr r1, _020442C0 ; =UNK_STORAGE_STRUCT_0X8_PTR_1
 	ldr r1, [r1]
 	strb r0, [r1, #5]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020442C0: .word _020AFEC8
+_020442C0: .word UNK_STORAGE_STRUCT_0X8_PTR_1
 _020442C4: .word _0209CB0C
 _020442C8: .word sub_02044338
 	arm_func_end sub_0204426C
@@ -9429,27 +9429,27 @@ _020442C8: .word sub_02044338
 	arm_func_start sub_020442CC
 sub_020442CC: ; 0x020442CC
 	stmdb sp!, {r3, lr}
-	ldr r0, _02044304 ; =_020AFEC8
+	ldr r0, _02044304 ; =UNK_STORAGE_STRUCT_0X8_PTR_1
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0, #5]
 	bl CloseTextBox2
-	ldr r0, _02044304 ; =_020AFEC8
+	ldr r0, _02044304 ; =UNK_STORAGE_STRUCT_0X8_PTR_1
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _02044304 ; =_020AFEC8
+	ldr r0, _02044304 ; =UNK_STORAGE_STRUCT_0X8_PTR_1
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02044304: .word _020AFEC8
+_02044304: .word UNK_STORAGE_STRUCT_0X8_PTR_1
 	arm_func_end sub_020442CC
 
 	arm_func_start sub_02044308
 sub_02044308: ; 0x02044308
 	stmdb sp!, {r3, lr}
-	ldr r0, _02044334 ; =_020AFEC8
+	ldr r0, _02044334 ; =UNK_STORAGE_STRUCT_0X8_PTR_1
 	ldr r2, [r0]
 	cmp r2, #0
 	ldmeqia sp!, {r3, pc}
@@ -9457,17 +9457,17 @@ sub_02044308: ; 0x02044308
 	strb r1, [r2, #4]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02044334: .word _020AFEC8
+_02044334: .word UNK_STORAGE_STRUCT_0X8_PTR_1
 	arm_func_end sub_02044308
 
 	arm_func_start sub_02044338
 sub_02044338: ; 0x02044338
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x54
-	ldr r1, _02044404 ; =_020AFEC8
+	ldr r1, _02044404 ; =UNK_STORAGE_STRUCT_0X8_PTR_1
 	mov r5, r0
 	ldr r2, [r1]
 	ldrb r1, [r2, #4]
@@ -9477,7 +9477,7 @@ sub_02044338: ; 0x02044338
 	strb r1, [r2, #4]
 	mov r4, #2
 	bl sub_02027B1C
-	ldr r0, _02044404 ; =_020AFEC8
+	ldr r0, _02044404 ; =UNK_STORAGE_STRUCT_0X8_PTR_1
 	ldr r0, [r0]
 	ldr r0, [r0]
 	cmp r0, #0
@@ -9506,7 +9506,7 @@ sub_02044338: ; 0x02044338
 	bl sub_020262E0
 	add r4, r4, #0x10
 _020443B0:
-	ldr r0, _02044404 ; =_020AFEC8
+	ldr r0, _02044404 ; =UNK_STORAGE_STRUCT_0X8_PTR_1
 	ldr r0, [r0]
 	ldr r0, [r0]
 	sub r0, r0, #1
@@ -9530,7 +9530,7 @@ _020443FC:
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_02044404: .word _020AFEC8
+_02044404: .word UNK_STORAGE_STRUCT_0X8_PTR_1
 #ifdef JAPAN
 _0204477C: .word 0x000031F7
 _02044408: .word 0x000031F8
@@ -9546,7 +9546,7 @@ sub_0204440C: ; 0x0204440C
 	mov r0, #0xc
 	mov r1, #8
 	bl MemAlloc
-	ldr r2, _02044468 ; =_020AFECC
+	ldr r2, _02044468 ; =UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	mov ip, #0
 	str r0, [r2]
 	str r4, [r0]
@@ -9560,12 +9560,12 @@ sub_0204440C: ; 0x0204440C
 	mov r3, #1
 	strb r3, [r2, #4]
 	bl CreateTextBox
-	ldr r1, _02044468 ; =_020AFECC
+	ldr r1, _02044468 ; =UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02044468: .word _020AFECC
+_02044468: .word UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 _0204446C: .word _0209CB3C
 _02044470: .word sub_020444F0
 	arm_func_end sub_0204440C
@@ -9573,27 +9573,27 @@ _02044470: .word sub_020444F0
 	arm_func_start sub_02044474
 sub_02044474: ; 0x02044474
 	stmdb sp!, {r3, lr}
-	ldr r0, _020444AC ; =_020AFECC
+	ldr r0, _020444AC ; =UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0, #0xa]
 	bl CloseTextBox2
-	ldr r0, _020444AC ; =_020AFECC
+	ldr r0, _020444AC ; =UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _020444AC ; =_020AFECC
+	ldr r0, _020444AC ; =UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020444AC: .word _020AFECC
+_020444AC: .word UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	arm_func_end sub_02044474
 
 	arm_func_start sub_020444B0
 sub_020444B0: ; 0x020444B0
 	stmdb sp!, {r3, lr}
-	ldr r1, _020444EC ; =_020AFECC
+	ldr r1, _020444EC ; =UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	ldr r3, [r1]
 	cmp r3, #0
 	ldrnesh r2, [r3, #6]
@@ -9605,16 +9605,16 @@ sub_020444B0: ; 0x020444B0
 	strb r2, [r0, #4]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xa]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020444EC: .word _020AFECC
+_020444EC: .word UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	arm_func_end sub_020444B0
 
 	arm_func_start sub_020444F0
 sub_020444F0: ; 0x020444F0
 	stmdb sp!, {r4, lr}
-	ldr r1, _02044564 ; =_020AFECC
+	ldr r1, _02044564 ; =UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	mov r4, r0
 	ldr r2, [r1]
 	ldrb r1, [r2, #4]
@@ -9623,7 +9623,7 @@ sub_020444F0: ; 0x020444F0
 	mov r1, #0
 	strb r1, [r2, #4]
 	bl sub_02027B1C
-	ldr r0, _02044564 ; =_020AFECC
+	ldr r0, _02044564 ; =UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	ldr r2, [r0]
 	ldrsh r1, [r2, #6]
 	strh r1, [r2, #8]
@@ -9652,7 +9652,7 @@ _02044558:
 	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02044564: .word _020AFECC
+_02044564: .word UNK_STORAGE_WINDOW_STRUCT_0XC_PTR
 	arm_func_end sub_020444F0
 
 	arm_func_start sub_02044568
@@ -9662,7 +9662,7 @@ sub_02044568: ; 0x02044568
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _020445BC ; =_020AFED0
+	ldr r1, _020445BC ; =UNK_STORAGE_STRUCT_0X8_PTR_2
 	mov r3, #1
 	str r0, [r1]
 	str r4, [r0]
@@ -9674,12 +9674,12 @@ sub_02044568: ; 0x02044568
 	ldr r0, [r0]
 	add r0, r2, r0, lsl #4
 	bl CreateTextBox
-	ldr r1, _020445BC ; =_020AFED0
+	ldr r1, _020445BC ; =UNK_STORAGE_STRUCT_0X8_PTR_2
 	ldr r1, [r1]
 	strb r0, [r1, #5]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020445BC: .word _020AFED0
+_020445BC: .word UNK_STORAGE_STRUCT_0X8_PTR_2
 _020445C0: .word _0209CB4C
 _020445C4: .word sub_02044604
 	arm_func_end sub_02044568
@@ -9687,28 +9687,28 @@ _020445C4: .word sub_02044604
 	arm_func_start sub_020445C8
 sub_020445C8: ; 0x020445C8
 	stmdb sp!, {r3, lr}
-	ldr r0, _02044600 ; =_020AFED0
+	ldr r0, _02044600 ; =UNK_STORAGE_STRUCT_0X8_PTR_2
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0, #5]
 	bl CloseTextBox2
-	ldr r0, _02044600 ; =_020AFED0
+	ldr r0, _02044600 ; =UNK_STORAGE_STRUCT_0X8_PTR_2
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _02044600 ; =_020AFED0
+	ldr r0, _02044600 ; =UNK_STORAGE_STRUCT_0X8_PTR_2
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02044600: .word _020AFED0
+_02044600: .word UNK_STORAGE_STRUCT_0X8_PTR_2
 	arm_func_end sub_020445C8
 
 	arm_func_start sub_02044604
 sub_02044604: ; 0x02044604
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x54
-	ldr r1, _02044680 ; =_020AFED0
+	ldr r1, _02044680 ; =UNK_STORAGE_STRUCT_0X8_PTR_2
 	mov r4, r0
 	ldr r2, [r1]
 	ldrb r1, [r2, #4]
@@ -9744,7 +9744,7 @@ _02044678:
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_02044680: .word _020AFED0
+_02044680: .word UNK_STORAGE_STRUCT_0X8_PTR_2
 #ifdef JAPAN
 _020449FC: .word 0x000031F9
 _02044684: .word 0x000031FA
@@ -10092,7 +10092,7 @@ _02044AB8:
 	mov r3, #1
 	add r0, r0, #0x800
 	str r3, [sp]
-	bl sub_0200D310
+	bl MaybeGetFormattedItemName
 _02044ACC:
 	add r0, r6, #0x700
 	ldrsb r0, [r0, #0x2d]
@@ -10797,10 +10797,10 @@ _020453EC:
 _020453F4: .word DUNGEON_PTR
 	arm_func_end sub_02045360
 
-	arm_func_start sub_020453F8
-sub_020453F8: ; 0x020453F8
+	arm_func_start InitUnkStorageStruct0x410
+InitUnkStorageStruct0x410: ; 0x020453F8
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _020454DC ; =_020AFED4
+	ldr r2, _020454DC ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r5, r0
 	ldr r0, [r2]
 	mov r4, r1
@@ -10809,12 +10809,12 @@ sub_020453F8: ; 0x020453F8
 	mov r0, #0x410
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _020454DC ; =_020AFED4
+	ldr r1, _020454DC ; =UNK_STORAGE_STRUCT_0X410_PTR
 	str r0, [r1]
 _02045428:
-	bl sub_02044094
+	bl AllocStorageSelectedItemTable
 	bl sub_020440DC
-	ldr r1, _020454DC ; =_020AFED4
+	ldr r1, _020454DC ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	strb r4, [r0, #0x386]
@@ -10826,7 +10826,7 @@ _02045428:
 	ldr r0, [r1]
 	add r0, r0, #0x1c
 	bl InitPreprocessorArgs
-	ldr r1, _020454DC ; =_020AFED4
+	ldr r1, _020454DC ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r0, #0
 	ldr r2, [r1]
 	sub r3, r0, #2
@@ -10858,14 +10858,14 @@ _02045428:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020454DC: .word _020AFED4
-	arm_func_end sub_020453F8
+_020454DC: .word UNK_STORAGE_STRUCT_0X410_PTR
+	arm_func_end InitUnkStorageStruct0x410
 
 	arm_func_start sub_020454E0
 sub_020454E0: ; 0x020454E0
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x194
-	ldr r1, _02045A1C ; =_020AFED4
+	ldr r1, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, [r1]
 	str r0, [r2, #4]
 	ldr r4, [r1]
@@ -10897,8 +10897,8 @@ _02045508: ; jump table
 _02045558:
 	mov r0, #2
 	str r0, [r4, #8]
-	bl sub_02046624
-	ldr r0, _02045A1C ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, _02045A20 ; =0x000002CD
 	ldr r3, [r0]
 	mov r1, #8
@@ -10909,12 +10909,12 @@ _02045558:
 _02045584:
 	mov r0, #2
 	str r0, [r4, #8]
-	bl sub_02046624
-	ldr r0, _02045A1C ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
 	bl ShowDialogueBox
-	ldr r0, _02045A1C ; =_020AFED4
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r3, #2
 	ldr r1, [r0]
 	ldr r2, _02045A24 ; =0x000002D5
@@ -10933,13 +10933,13 @@ _020455CC:
 	add r0, sp, #0x14
 	str r1, [r4, #0x170]
 	bl InitPreprocessorArgs
-	ldr r0, _02045A1C ; =_020AFED4
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, _02045A2C ; =_0209CC0C
 	ldr r1, [r0]
 	add r0, r1, #0x390
 	add r1, r1, #0x380
-	bl sub_0200D670
-	ldr r0, _02045A1C ; =_020AFED4
+	bl MaybeGetColoredFormattedItemName
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, _02045A30 ; =0x000002CF
 	ldr r5, [r0]
 	add ip, sp, #0x14
@@ -10963,13 +10963,13 @@ _020455CC:
 	mov r0, #1
 	str r0, [r4, #0x378]
 	str r1, [sp]
-	ldr r3, _02045A1C ; =_020AFED4
+	ldr r3, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, _02045A34 ; =_0209CC38
 	ldr r3, [r3]
 	ldr r1, _02045A38 ; =0x00300011
 	add r3, r3, #0x70
 	bl CreateSimpleMenu
-	ldr r1, _02045A1C ; =_020AFED4
+	ldr r1, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045A14
@@ -10981,7 +10981,7 @@ _02045688:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010044
-	ldr r2, _02045A1C ; =_020AFED4
+	ldr r2, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x88]
@@ -10993,7 +10993,7 @@ _02045688:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010060
-	ldr r3, _02045A1C ; =_020AFED4
+	ldr r3, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, _02045A2C ; =_0209CC0C
 	ldr r4, [r3]
 	add r1, sp, #0xc
@@ -11004,8 +11004,8 @@ _02045688:
 	add r0, r0, #0x390
 	strh r4, [sp, #0xe]
 	strb r3, [sp, #0xc]
-	bl sub_0200D670
-	ldr r0, _02045A1C ; =_020AFED4
+	bl MaybeGetColoredFormattedItemName
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, [r0]
 	add r1, r2, #0x390
 	str r1, [r2, #0x54]
@@ -11013,12 +11013,12 @@ _02045688:
 	add r0, r1, #0x300
 	ldrsh r0, [r0, #0x88]
 	str r0, [r1, #0x2c]
-	bl sub_02046624
-	ldr r0, _02045A1C ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
 	bl ShowDialogueBox
-	ldr r0, _02045A1C ; =_020AFED4
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r4, #0x11
 	ldr r3, [r0]
 #ifdef JAPAN
@@ -11046,7 +11046,7 @@ _02045764:
 	add r2, sp, #0x64
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _02045A1C ; =_020AFED4
+	ldr r1, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045A14
@@ -11055,7 +11055,7 @@ _02045798:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010044
-	ldr r2, _02045A1C ; =_020AFED4
+	ldr r2, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x88]
@@ -11064,7 +11064,7 @@ _02045798:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010060
-	ldr r4, _02045A1C ; =_020AFED4
+	ldr r4, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, _02045A44 ; =0x00001013
 	ldr r2, [r4]
 	ldr r3, _02045A48 ; =0x000008E4
@@ -11098,7 +11098,7 @@ _02045798:
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
 	bl CreateScrollBoxSingle
-	ldr r1, _02045A1C ; =_020AFED4
+	ldr r1, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x17]
 	b _02045A14
@@ -11107,7 +11107,7 @@ _02045844:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010044
-	ldr r2, _02045A1C ; =_020AFED4
+	ldr r2, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x88]
@@ -11116,7 +11116,7 @@ _02045844:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010060
-	ldr r1, _02045A1C ; =_020AFED4
+	ldr r1, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r2, #3
 	ldr r3, [r1]
 	str r0, [r3, #0x38c]
@@ -11127,7 +11127,7 @@ _02045844:
 	ldr r0, [r1]
 	str r2, [r0, #4]
 	bl sub_02045A5C
-	ldr r0, _02045A1C ; =_020AFED4
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldr r0, [r0]
 	mov r0, r0, lsl #0x10
@@ -11140,12 +11140,12 @@ _020458C0:
 	ldr r0, [r1]
 	mov r1, #7
 	str r1, [r0, #8]
-	bl sub_02046624
-	ldr r0, _02045A1C ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
 	bl ShowDialogueBox
-	ldr r0, _02045A1C ; =_020AFED4
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r3, #7
 	ldr r1, [r0]
 	ldr r2, _02045A50 ; =0x000002D6
@@ -11166,7 +11166,7 @@ _02045914:
 	add r2, sp, #0xfc
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _02045A1C ; =_020AFED4
+	ldr r1, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045A14
@@ -11183,14 +11183,14 @@ _02045958:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _02045A1C ; =_020AFED4
+	ldr r1, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045A14
 _02045984:
 	ldrsb r0, [r4, #0x14]
 	bl CloseDialogueBox
-	ldr r0, _02045A1C ; =_020AFED4
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x14]
@@ -11198,8 +11198,8 @@ _02045984:
 	mov r0, #2
 	mov r1, #0
 	mov r2, #8
-	bl sub_02042CF0
-	ldr r1, _02045A1C ; =_020AFED4
+	bl InitUnkStorageStruct0x18c0
+	ldr r1, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x15]
 	b _02045A14
@@ -11207,8 +11207,8 @@ _020459C0:
 	mov r0, #2
 	mov r1, #0
 	mov r2, #8
-	bl sub_02042CF0
-	ldr r1, _02045A1C ; =_020AFED4
+	bl InitUnkStorageStruct0x18c0
+	ldr r1, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x15]
 	b _02045A14
@@ -11218,8 +11218,8 @@ _020459E0:
 	ldr r0, [r1]
 	mov r1, #0x12
 	str r1, [r0, #4]
-	bl sub_02046624
-	ldr r0, _02045A1C ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045A1C ; =UNK_STORAGE_STRUCT_0X410_PTR
 #ifdef JAPAN
 	ldr r2, _02045DC0 ; =0x00002FC4
 	ldr r3, [r0]
@@ -11241,7 +11241,7 @@ _02045A14:
 #else
 #define SUB_020454E0_OFFSET 0
 #endif
-_02045A1C: .word _020AFED4
+_02045A1C: .word UNK_STORAGE_STRUCT_0X410_PTR
 _02045A20: .word 0x000002CD + SUB_020454E0_OFFSET
 _02045A24: .word 0x000002D5 + SUB_020454E0_OFFSET
 _02045A28: .word 0x000002CE + SUB_020454E0_OFFSET
@@ -11273,7 +11273,7 @@ _02045DC0: .word 0x00002FC4
 sub_02045A5C: ; 0x02045A5C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x194
-	ldr r0, _02045F90 ; =_020AFED4
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r4, [r0]
 	ldr r1, [r4, #4]
 	cmp r1, #0x13
@@ -11303,8 +11303,8 @@ _02045A7C: ; jump table
 _02045ACC:
 	mov r0, #2
 	str r0, [r4, #8]
-	bl sub_02046624
-	ldr r0, _02045F90 ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, _02045F94 ; =0x000002CD
 	ldr r3, [r0]
 	mov r1, #8
@@ -11315,12 +11315,12 @@ _02045ACC:
 _02045AF8:
 	mov r0, #2
 	str r0, [r4, #8]
-	bl sub_02046624
-	ldr r0, _02045F90 ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
 	bl ShowDialogueBox
-	ldr r0, _02045F90 ; =_020AFED4
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r3, #2
 	ldr r1, [r0]
 	ldr r2, _02045F98 ; =0x000002D5
@@ -11339,13 +11339,13 @@ _02045B40:
 	add r0, sp, #0x144
 	str r1, [r4, #0x170]
 	bl InitPreprocessorArgs
-	ldr r0, _02045F90 ; =_020AFED4
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, _02045FA0 ; =_0209CC0C
 	ldr r1, [r0]
 	add r0, r1, #0x390
 	add r1, r1, #0x380
-	bl sub_0200D670
-	ldr r0, _02045F90 ; =_020AFED4
+	bl MaybeGetColoredFormattedItemName
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, _02045FA4 ; =0x000002CF
 	ldr r5, [r0]
 	add ip, sp, #0x144
@@ -11369,13 +11369,13 @@ _02045B40:
 	mov r0, #1
 	str r0, [r4, #0x378]
 	str r1, [sp]
-	ldr r3, _02045F90 ; =_020AFED4
+	ldr r3, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, _02045FA8 ; =_0209CC38
 	ldr r3, [r3]
 	ldr r1, _02045FAC ; =0x00300011
 	add r3, r3, #0x70
 	bl CreateSimpleMenu
-	ldr r1, _02045F90 ; =_020AFED4
+	ldr r1, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045F88
@@ -11387,7 +11387,7 @@ _02045BFC:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010044
-	ldr r2, _02045F90 ; =_020AFED4
+	ldr r2, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x88]
@@ -11399,7 +11399,7 @@ _02045BFC:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010060
-	ldr r3, _02045F90 ; =_020AFED4
+	ldr r3, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, _02045FA0 ; =_0209CC0C
 	ldr r4, [r3]
 	add r1, sp, #0xc
@@ -11410,8 +11410,8 @@ _02045BFC:
 	add r0, r0, #0x390
 	strh r4, [sp, #0xe]
 	strb r3, [sp, #0xc]
-	bl sub_0200D670
-	ldr r0, _02045F90 ; =_020AFED4
+	bl MaybeGetColoredFormattedItemName
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, [r0]
 	add r1, r2, #0x390
 	str r1, [r2, #0x54]
@@ -11419,12 +11419,12 @@ _02045BFC:
 	add r0, r1, #0x300
 	ldrsh r0, [r0, #0x88]
 	str r0, [r1, #0x2c]
-	bl sub_02046624
-	ldr r0, _02045F90 ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
 	bl ShowDialogueBox
-	ldr r0, _02045F90 ; =_020AFED4
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r4, #0x11
 	ldr r3, [r0]
 #ifdef JAPAN
@@ -11452,7 +11452,7 @@ _02045CD8:
 	add r2, sp, #0xac
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _02045F90 ; =_020AFED4
+	ldr r1, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045F88
@@ -11461,7 +11461,7 @@ _02045D0C:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010044
-	ldr r2, _02045F90 ; =_020AFED4
+	ldr r2, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x88]
@@ -11470,7 +11470,7 @@ _02045D0C:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010060
-	ldr r4, _02045F90 ; =_020AFED4
+	ldr r4, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, _02045FB8 ; =0x00001013
 	ldr r2, [r4]
 	ldr r3, _02045FBC ; =0x000008E4
@@ -11504,7 +11504,7 @@ _02045D0C:
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
 	bl CreateScrollBoxSingle
-	ldr r1, _02045F90 ; =_020AFED4
+	ldr r1, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x17]
 	b _02045F88
@@ -11513,7 +11513,7 @@ _02045DB8:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010044
-	ldr r2, _02045F90 ; =_020AFED4
+	ldr r2, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x88]
@@ -11522,7 +11522,7 @@ _02045DB8:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010060
-	ldr r1, _02045F90 ; =_020AFED4
+	ldr r1, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r2, #3
 	ldr r3, [r1]
 	str r0, [r3, #0x38c]
@@ -11533,7 +11533,7 @@ _02045DB8:
 	ldr r0, [r1]
 	str r2, [r0, #4]
 	bl sub_02045A5C
-	ldr r0, _02045F90 ; =_020AFED4
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldr r0, [r0]
 	mov r0, r0, lsl #0x10
@@ -11546,12 +11546,12 @@ _02045E34:
 	ldr r0, [r0]
 	mov r1, #7
 	str r1, [r0, #8]
-	bl sub_02046624
-	ldr r0, _02045F90 ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
 	bl ShowDialogueBox
-	ldr r0, _02045F90 ; =_020AFED4
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r3, #7
 	ldr r1, [r0]
 	ldr r2, _02045FC4 ; =0x000002D6
@@ -11572,7 +11572,7 @@ _02045E88:
 	add r2, sp, #0x14
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _02045F90 ; =_020AFED4
+	ldr r1, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045F88
@@ -11589,14 +11589,14 @@ _02045ECC:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _02045F90 ; =_020AFED4
+	ldr r1, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045F88
 _02045EF8:
 	ldrsb r0, [r4, #0x14]
 	bl CloseDialogueBox
-	ldr r0, _02045F90 ; =_020AFED4
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x14]
@@ -11604,8 +11604,8 @@ _02045EF8:
 	mov r0, #2
 	mov r1, #0
 	mov r2, #8
-	bl sub_02042CF0
-	ldr r1, _02045F90 ; =_020AFED4
+	bl InitUnkStorageStruct0x18c0
+	ldr r1, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x15]
 	b _02045F88
@@ -11613,8 +11613,8 @@ _02045F34:
 	mov r0, #2
 	mov r1, #0
 	mov r2, #8
-	bl sub_02042CF0
-	ldr r1, _02045F90 ; =_020AFED4
+	bl InitUnkStorageStruct0x18c0
+	ldr r1, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x15]
 	b _02045F88
@@ -11624,8 +11624,8 @@ _02045F54:
 	ldr r0, [r0]
 	mov r1, #0x12
 	str r1, [r0, #4]
-	bl sub_02046624
-	ldr r0, _02045F90 ; =_020AFED4
+	bl UnkStorageStruct0x410CreateDialogueBox
+	ldr r0, _02045F90 ; =UNK_STORAGE_STRUCT_0X410_PTR
 #ifdef JAPAN
 	ldr r2, _0204633C ; =0x00002FC4
 	ldr r3, [r0]
@@ -11647,7 +11647,7 @@ _02045F88:
 #else
 #define SUB_02045A5C_OFFSET 0
 #endif
-_02045F90: .word _020AFED4
+_02045F90: .word UNK_STORAGE_STRUCT_0X410_PTR
 _02045F94: .word 0x000002CD + SUB_02045A5C_OFFSET
 _02045F98: .word 0x000002D5 + SUB_02045A5C_OFFSET
 _02045F9C: .word 0x000002CE + SUB_02045A5C_OFFSET
@@ -11678,7 +11678,7 @@ _0204633C: .word 0x00002FC4
 	arm_func_start sub_02045FD0
 sub_02045FD0: ; 0x02045FD0
 	stmdb sp!, {r3, lr}
-	ldr r2, _02046024 ; =_020AFED4
+	ldr r2, _02046024 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r2]
 	cmp r1, #0
 	moveq r1, #0
@@ -11690,23 +11690,23 @@ sub_02045FD0: ; 0x02045FD0
 	ldr r1, [r2]
 	ldr r1, [r1, #0x38c]
 	strh r1, [r0, #2]
-	bl sub_020440B8
-	ldr r0, _02046024 ; =_020AFED4
+	bl FreeStorageSelectedItemTable
+	ldr r0, _02046024 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _02046024 ; =_020AFED4
+	ldr r0, _02046024 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02046024: .word _020AFED4
+_02046024: .word UNK_STORAGE_STRUCT_0X410_PTR
 	arm_func_end sub_02045FD0
 
 	arm_func_start sub_02046028
 sub_02046028: ; 0x02046028
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r2, [r0]
 	ldr r1, [r2, #0x18]
 	cmp r1, #3
@@ -11750,7 +11750,7 @@ _020460C0:
 	ldrsb r0, [r2, #0x16]
 	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
-	ldrne r1, _020465D8 ; =_020AFED4
+	ldrne r1, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldrne r1, [r1]
 	strne r0, [r1, #0x10]
 	cmp r0, #1
@@ -11761,12 +11761,12 @@ _020460C0:
 	beq _02046104
 	b _0204653C
 _020460F4:
-	bl sub_020465DC
+	bl UnkStorageStruct0x410CloseSimpleMenu
 	mov r0, #0x13
 	bl sub_020454E0
 	b _0204653C
 _02046104:
-	bl sub_020465DC
+	bl UnkStorageStruct0x410CloseSimpleMenu
 	mov r0, #6
 	bl sub_020454E0
 	b _0204653C
@@ -11774,7 +11774,7 @@ _02046114:
 	ldrsb r0, [r2, #0x16]
 	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
-	ldrne r1, _020465D8 ; =_020AFED4
+	ldrne r1, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldrne r1, [r1]
 	strne r0, [r1, #0x10]
 	cmp r0, #1
@@ -11785,12 +11785,12 @@ _02046114:
 	beq _02046158
 	b _0204653C
 _02046148:
-	bl sub_020465DC
+	bl UnkStorageStruct0x410CloseSimpleMenu
 	mov r0, #8
 	bl sub_020454E0
 	b _0204653C
 _02046158:
-	bl sub_020465DC
+	bl UnkStorageStruct0x410CloseSimpleMenu
 	mov r0, #0x13
 	bl sub_020454E0
 	b _0204653C
@@ -11798,7 +11798,7 @@ _02046168:
 	ldrsb r0, [r2, #0x16]
 	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
-	ldrne r1, _020465D8 ; =_020AFED4
+	ldrne r1, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldrne r1, [r1]
 	strne r0, [r1, #0x10]
 	cmp r0, #1
@@ -11809,12 +11809,12 @@ _02046168:
 	beq _020461AC
 	b _0204653C
 _0204619C:
-	bl sub_020465DC
+	bl UnkStorageStruct0x410CloseSimpleMenu
 	mov r0, #9
 	bl sub_020454E0
 	b _0204653C
 _020461AC:
-	bl sub_020465DC
+	bl UnkStorageStruct0x410CloseSimpleMenu
 	mov r0, #0
 	bl sub_020454E0
 	b _0204653C
@@ -11827,8 +11827,8 @@ _020461BC:
 	mvn r0, #0
 	cmp r4, r0
 	bne _02046214
-	bl sub_0204317C
-	ldr r0, _020465D8 ; =_020AFED4
+	bl FreeUnkStorageStruct0x18c0
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #2
@@ -11842,7 +11842,7 @@ _020461BC:
 	bl sub_020454E0
 	b _0204653C
 _02046214:
-	ldr r1, _020465D8 ; =_020AFED4
+	ldr r1, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	str r4, [r1]
@@ -11862,18 +11862,18 @@ _02046234:
 	beq _020462F4
 	mov r0, #0
 	bl PlaySeVolumeWrapper
-	ldr r1, _020465D8 ; =_020AFED4
+	ldr r1, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	str r4, [r1]
 	bl sub_0204323C
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldr r0, [r0]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010044
-	ldr r2, _020465D8 ; =_020AFED4
+	ldr r2, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x88]
@@ -11882,12 +11882,12 @@ _02046234:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02010060
-	ldr r1, _020465D8 ; =_020AFED4
+	ldr r1, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	str r0, [r1, #0x38c]
-	bl sub_020465DC
-	bl sub_0204317C
-	ldr r0, _020465D8 ; =_020AFED4
+	bl UnkStorageStruct0x410CloseSimpleMenu
+	bl FreeUnkStorageStruct0x18c0
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #2
@@ -11906,7 +11906,7 @@ _020462F4:
 	cmp r4, r0
 	bge _0204653C
 	bl sub_02043398
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r3, #0xa
 	ldr r1, [r0]
 	mov r2, #5
@@ -11937,13 +11937,13 @@ _02046364:
 	ldr r0, [r0, #0xc]
 	cmp r0, #1
 	bgt _02046394
-	bl sub_0204317C
-	ldr r0, _020465D8 ; =_020AFED4
+	bl FreeUnkStorageStruct0x18c0
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x15]
 _02046394:
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0xc]
 	cmp r0, #0
@@ -11966,9 +11966,9 @@ _020463C8: ; jump table
 	b _02046420 ; case 5
 	b _0204645C ; case 6
 _020463E4:
-	bl sub_020465DC
-	bl sub_0204317C
-	ldr r0, _020465D8 ; =_020AFED4
+	bl UnkStorageStruct0x410CloseSimpleMenu
+	bl FreeUnkStorageStruct0x18c0
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #2
@@ -11982,9 +11982,9 @@ _020463E4:
 	bl sub_020454E0
 	b _0204653C
 _02046420:
-	bl sub_020465DC
-	bl sub_0204317C
-	ldr r0, _020465D8 ; =_020AFED4
+	bl UnkStorageStruct0x410CloseSimpleMenu
+	bl FreeUnkStorageStruct0x18c0
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #2
@@ -11998,9 +11998,9 @@ _02046420:
 	bl sub_020454E0
 	b _0204653C
 _0204645C:
-	bl sub_020465DC
+	bl UnkStorageStruct0x410CloseSimpleMenu
 	bl sub_020433C0
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r1, #0xa
 	ldr r0, [r0]
 	str r1, [r0, #4]
@@ -12010,11 +12010,11 @@ _02046478:
 	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0204653C
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x17]
 	bl CloseScrollBox
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0xb
@@ -12035,11 +12035,11 @@ _020464CC:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0204653C
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
 	bl ShowDialogueBox
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mov r2, #0x14
 	ldr r1, [r0]
 	str r2, [r1, #4]
@@ -12052,18 +12052,18 @@ _0204650C:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0204653C
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
 	bl ShowDialogueBox
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
 	bl sub_020454E0
 _0204653C:
 	mov r2, #1
 _02046540:
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r0]
 	str r2, [r1, #0x6c]
 	ldr r2, [r0]
@@ -12078,7 +12078,7 @@ _02046540:
 	cmp r0, r1
 	beq _020465CC
 	bl sub_0202836C
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
 	bl sub_0202F2C4
@@ -12092,7 +12092,7 @@ _02046590:
 	cmp r0, r1
 	beq _020465CC
 	bl CloseDialogueBox
-	ldr r0, _020465D8 ; =_020AFED4
+	ldr r0, _020465D8 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x14]
@@ -12106,36 +12106,36 @@ _020465D0:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_020465D8: .word _020AFED4
+_020465D8: .word UNK_STORAGE_STRUCT_0X410_PTR
 	arm_func_end sub_02046028
 
-	arm_func_start sub_020465DC
-sub_020465DC: ; 0x020465DC
+	arm_func_start UnkStorageStruct0x410CloseSimpleMenu
+UnkStorageStruct0x410CloseSimpleMenu: ; 0x020465DC
 	stmdb sp!, {r3, lr}
-	ldr r0, _02046620 ; =_020AFED4
+	ldr r0, _02046620 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x16]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
 	bl sub_0202836C
-	ldr r0, _02046620 ; =_020AFED4
+	ldr r0, _02046620 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x16]
 	bl CloseSimpleMenu
-	ldr r0, _02046620 ; =_020AFED4
+	ldr r0, _02046620 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x16]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02046620: .word _020AFED4
-	arm_func_end sub_020465DC
+_02046620: .word UNK_STORAGE_STRUCT_0X410_PTR
+	arm_func_end UnkStorageStruct0x410CloseSimpleMenu
 
-	arm_func_start sub_02046624
-sub_02046624: ; 0x02046624
+	arm_func_start UnkStorageStruct0x410CreateDialogueBox
+UnkStorageStruct0x410CreateDialogueBox: ; 0x02046624
 	stmdb sp!, {r3, lr}
-	ldr r1, _02046658 ; =_020AFED4
+	ldr r1, _02046658 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	mvn r0, #1
 	ldr r1, [r1]
 	ldrsb r1, [r1, #0x14]
@@ -12143,13 +12143,13 @@ sub_02046624: ; 0x02046624
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
 	bl CreateDialogueBox
-	ldr r1, _02046658 ; =_020AFED4
+	ldr r1, _02046658 ; =UNK_STORAGE_STRUCT_0X410_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x14]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02046658: .word _020AFED4
-	arm_func_end sub_02046624
+_02046658: .word UNK_STORAGE_STRUCT_0X410_PTR
+	arm_func_end UnkStorageStruct0x410CreateDialogueBox
 
 	arm_func_start sub_0204665C
 sub_0204665C: ; 0x0204665C
@@ -13071,7 +13071,7 @@ sub_02047188: ; 0x02047188
 	ldrsb r0, [r4]
 	bl sub_02027B1C
 	ldrsb r0, [r4]
-	bl sub_0202F9B8
+	bl IsTextboxState3
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02047188
 

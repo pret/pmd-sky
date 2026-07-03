@@ -7,8 +7,8 @@
 .public AllocateTemp1024ByteBufferFromPool
 .public Debug_Print0
 .public DS_DOWNLOAD_TEAMS
-.public FS_InitFile
 .public FS_CloseFile
+.public FS_InitFile
 .public FS_OpenFile
 .public GetDsFirmwareUserSettings
 .public GetLanguage

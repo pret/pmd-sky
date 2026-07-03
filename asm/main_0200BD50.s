@@ -259,7 +259,7 @@ _0200C0BC:
 	mov r1, r2, lsl #0x10
 	add r2, sp, #0
 	mov r1, r1, lsr #0x10
-	bl sub_0200A590
+	bl CopyColorToPaletteDataRgba
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end sub_0200C020

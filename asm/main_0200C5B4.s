@@ -295,7 +295,7 @@ _0200C984:
 	ldr r2, _0200CA48 ; =_02094C0C
 	add r1, r5, #0x5e
 	str r0, [sp, #0x3c]
-	bl sub_0200D670
+	bl MaybeGetColoredFormattedItemName
 	ldr r0, _0200CA4C ; =0x000009DA
 	bl StringFromId
 	add r1, sp, #4
