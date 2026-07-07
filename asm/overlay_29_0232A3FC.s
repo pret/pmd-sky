@@ -2443,7 +2443,7 @@ DoMoveSkullBash: ; 0x0232C064
 	moveq r1, #0
 	mov r0, r7
 	and r4, r1, #0xff
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	b _0232C0E4
 _0232C0C0:
 	ldr r0, _0232C0F0 ; =0x00000CEB
@@ -2453,7 +2453,7 @@ _0232C0C0:
 	mov r1, r6
 	mov r3, r5
 	mov r2, #6
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r4, #1
 _0232C0E4:
 	mov r0, r4

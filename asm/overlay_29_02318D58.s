@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_02318D58
-ov29_02318D58: ; 0x02318D58
+	arm_func_start EndTwoTurnMove
+EndTwoTurnMove: ; 0x02318D58
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EntityIsValid__02318D34
@@ -26,7 +26,7 @@ ov29_02318D58: ; 0x02318D58
 	mov r0, r4
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_02318D58
+	arm_func_end EndTwoTurnMove
 
 	arm_func_start SetReflectStatus
 SetReflectStatus: ; 0x02318D98

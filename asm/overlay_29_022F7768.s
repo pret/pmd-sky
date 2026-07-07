@@ -736,7 +736,7 @@ _022F7FC4:
 	bl FreeOtherWrappedMonsters
 _022F8008:
 	mov r0, sl
-	bl ov29_023159D4
+	bl EndLeechSeedStatusForAllTargets
 	mov r1, #0
 	strb r1, [sl, #0x22]
 	ldr r0, _022F85D4 ; =LEADER_PTR
@@ -1170,7 +1170,7 @@ _022F8460:
 	movne r2, #0
 	mov r0, sl
 	and r2, r2, #0xff
-	bl ov29_022EF7C4
+	bl CheckBossFightVictory
 _022F84AC:
 	ldrb r0, [r7, #6]
 	cmp r0, #0

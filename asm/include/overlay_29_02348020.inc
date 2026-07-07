@@ -40,7 +40,6 @@
 .public ov29_02344B9C
 .public ov29_023497C8
 .public ov29_02349818
-.public ov29_0234C738
 .public ov29_023537C4
 .public PrepareItemForPrinting__02345728
 .public SetDungeonEscapeFields
@@ -61,4 +60,5 @@
 .public THROWN_ITEM_HIT_CHANCE
 .public TryCompleteMission
 .public TrySpawnGoldenChamber
+.public WaitUntilFadeIsFinished
 .public YesNoMenu

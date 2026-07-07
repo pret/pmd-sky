@@ -5,6 +5,7 @@
 .public AddHeldItemToBag
 .public ApplyDamageAndEffectsWrapper
 .public ATK_STAT_IDX
+.public BeginChargedMove
 .public BoostDefensiveStat
 .public BoostHitChanceStat
 .public BoostOffensiveStat
@@ -22,6 +23,7 @@
 .public DungeonRandOutcomeUserAction
 .public DungeonRandOutcomeUserTargetInteraction
 .public EndFrozenStatus
+.public EndTwoTurnMove
 .public EntityIsValidMoveEffects__0232800C
 .public EntityIsValidMoveEffects__0232A3D8
 .public ExclusiveItemEffectFlagTest
@@ -59,12 +61,7 @@
 .public ov29_022ECAFC
 .public ov29_022F9EA0
 .public ov29_0230D4A4
-.public ov29_02318AD4
-.public ov29_02318B48
-.public ov29_02318BBC
-.public ov29_02318D58
 .public ov29_0232A834
-.public ov29_0234C738
 .public ov29_02352B18
 .public PlaySeByIdIfShouldDisplayEntity
 .public POISON_FANG_POISON_CHANCE
@@ -110,5 +107,8 @@
 .public TWINEEDLE_HIT_TRACKER
 .public TWINEEDLE_POISON_CHANCE
 .public TWISTER_CRINGE_CHANCE
+.public WaitUntilFadeIsFinished
+.public WaitUntilMonsterFliesOffscreen
+.public WaitUntilMonsterIsBackOnGround
 .public WATERFALL_CRINGE_CHANCE
 .public WEATHER_MOVE_TURN_COUNT

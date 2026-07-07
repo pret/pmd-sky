@@ -9,7 +9,7 @@ void sub_020091B0(s32, s32);
 void sub_02009194(s32, s32);
 void sub_020091B0(s32, s32);
 void StartFadeDungeonWrapper(s32, s32, s32);
-void ov29_0234C738(s32);
+void WaitUntilFadeIsFinished(s32);
 
 extern struct dungeon *DUNGEON_PTR[];
 
@@ -56,13 +56,13 @@ void ov29_022DEADC()
     sub_02009194(3, 0);
     sub_020091B0(4, 0);
     StartFadeDungeonWrapper(1, 0x4000, 0);
-    ov29_0234C738(0);
+    WaitUntilFadeIsFinished(0);
 }
 
 void ov29_022DEB40()
 {
     StartFadeDungeonWrapper(2, 0x4000, 0);
-    ov29_0234C738(0);
+    WaitUntilFadeIsFinished(0);
     ov29_0234C654(1);
     sub_020091B0(0, 0);
     sub_020091B0(1, 0);

@@ -38,7 +38,7 @@ void ov29_022DE418();
 void sub_020091B0(s32, s32);
 void sub_02009194(s32, s32);
 void StartFadeDungeonWrapper(s32, s32, s32);
-void ov29_0234C738(s32);
+void WaitUntilFadeIsFinished(s32);
 void SetAdventureLogDungeonFloor(void *);
 void StopBgmCommand();
 void ov30_023829CC(s32, s32, s32);
@@ -135,7 +135,7 @@ void ov29_0234BBE8(void)
     sub_02009194(3,0);
     sub_020091B0(4,0);
     StartFadeDungeonWrapper(1,0x4000,0);
-    ov29_0234C738(0);
+    WaitUntilFadeIsFinished(0);
     SetAdventureLogDungeonFloor(&(iVar7[12].v4));
     sub_02017B70();
     if (iVar7[12].v0 != -2 && IsGameModeRescue())
@@ -160,7 +160,7 @@ void ov29_0234BBE8(void)
     ov29_0234CACC();
     ov29_022DDE00(2);
     StartFadeDungeonWrapper(2,0x4000,0);
-    ov29_0234C738(0);
+    WaitUntilFadeIsFinished(0);
 _0234beb8:
     ov29_022DC65C();
     ov29_023537D8.v4[0x1b].v0xd = 1;

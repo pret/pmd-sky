@@ -4,6 +4,7 @@
 .public AreLateGameTrapsEnabledWrapper
 .public ATK_STAT_IDX
 .public BAG_ITEMS_PTR_MIRROR
+.public BeginChargedMove
 .public BoostDefensiveStat
 .public BoostOffensiveStat
 .public BoostOrLowerSpeed
@@ -24,6 +25,7 @@
 .public EndNegativeStatusConditionWrapper
 .public EndProtectStatus
 .public EndReflectClassStatus
+.public EndTwoTurnMove
 .public EntityIsValidMoveEffects__0232C500
 .public EntityIsValidMoveEffects__0232E250
 .public FixedRoomIsSubstituteRoom
@@ -77,11 +79,8 @@
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022FD7A0
-.public ov29_02318BBC
-.public ov29_02318D58
 .public ov29_02332F18
 .public ov29_02336694
-.public ov29_0234BA54
 .public ov29_02352B38
 .public ov29_02352B3C
 .public PrepareTrapperTrap
@@ -144,5 +143,6 @@
 .public TryWarp
 .public UpdateMinimap
 .public UpdateTrapsVisibility
+.public WaitUntilAlertBoxPauseIsOver
 .public WEATHER_MOVE_TURN_COUNT
 .public WRING_OUT_DAMAGE_MULT_TABLE

@@ -81,7 +81,6 @@
 .public ov29_022FB9BC
 .public ov29_02304830
 .public ov29_0230F9A4
-.public ov29_0234BA54
 .public PlaySeByIdIfNotSilence
 .public PrepareItemForPrinting__02345728
 .public PROTEIN_STAT_BOOST
@@ -113,5 +112,6 @@
 .public TryInflictSlipStatus
 .public TryWarp
 .public UpdateShopkeeperModeAfterAttack
+.public WaitUntilAlertBoxPauseIsOver
 .public WONDER_GUMMI_STAT_BOOST
 .public ZINC_STAT_BOOST

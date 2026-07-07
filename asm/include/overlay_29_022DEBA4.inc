@@ -191,7 +191,6 @@
 .public ov29_0234B010
 .public ov29_0234B1A4
 .public ov29_0234B4CC
-.public ov29_0234BA54
 .public ov29_0234BB10
 .public ov29_0234BB20
 .public ov29_0234BB2C
@@ -199,7 +198,6 @@
 .public ov29_0234C584
 .public ov29_0234C5EC
 .public ov29_0234C654
-.public ov29_0234C738
 .public ov29_0234CA84
 .public ov29_0234CB34
 .public ov29_0234CB54
@@ -258,5 +256,7 @@
 .public UpdateShouldBoostHiddenStairsSpawnChance
 .public UpdateShouldBoostKecleonShopSpawnChance
 .public UpdateTrapsVisibility
+.public WaitUntilAlertBoxPauseIsOver
 .public WaitUntilAlertBoxTextIsLoaded
+.public WaitUntilFadeIsFinished
 .public WriteMissionMtState

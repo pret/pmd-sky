@@ -893,7 +893,7 @@ _022DF82C:
 	mov r1, #0x1000
 	bl StartFadeDungeonWrapper
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 	bl ov29_022E0E44
 	mov r0, #1
 	bl ov29_022E8BFC
@@ -1143,7 +1143,7 @@ _022DFBC4:
 	mov r0, #0x4f
 	bl WaitUntilAlertBoxTextIsLoaded
 	mov r0, #0x4f
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 _022DFBE4:
 	mov r0, #0
 	bl ov29_02338F38
@@ -1211,7 +1211,7 @@ _022DFC60:
 	mov r2, #0
 	bl StartFadeDungeonWrapper
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 	mov r0, #0
 #ifdef JAPAN
 	mov r1, #0x880
@@ -1225,7 +1225,7 @@ _022DFC60:
 	mov r2, #0
 	bl StartFadeDungeonWrapper
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 	mov r0, #1
 	bl ov29_0234C654
 	mov r0, #0

@@ -172,6 +172,9 @@ XMAP_TO_PMDSKY_DEBUG_SYMBOL_MAPPING = {
 IGNORE_DUPLICATE_SYMBOLS = set([
     'GUEST_MONSTER_DATA',
     'GUEST_MONSTER_BANETTE',
+    'MT_TABLE',
+    'MT_TABLE_INDEX',
+    'TWIST_LOW_BIT_MULTS',
 ])
 
 # Symbols to always append the address onto.

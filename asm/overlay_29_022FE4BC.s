@@ -58,7 +58,7 @@ _022FEF64:
 	cmp r0, #0
 	beq _022FEF94
 	mov r0, r6
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 _022FEF94:
 	mov r8, #0
 	add r3, r5, #0x124
@@ -106,7 +106,7 @@ _022FF034:
 	cmp r0, #0
 	bne _022FF048
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 _022FF048:
 	ldrb r0, [r5, #0x23c]
 	cmp r0, #0
@@ -524,7 +524,7 @@ _022FF5E0:
 	mov r1, #0
 	mov r0, r6
 	strb r1, [r2, #0x154]
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 _022FF61C:
 	mov r0, #0
 	bl ov29_022E3A58
@@ -693,7 +693,7 @@ _022FE538:
 	cmp r0, #0
 	beq _022FE568
 	mov r0, sb
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 _022FE568:
 	mov r4, #0
 	add r3, r6, #0x124 + EXECUTE_MONSTER_ACTION_OFFSET
@@ -741,7 +741,7 @@ _022FE608:
 	cmp r0, #0
 	bne _022FE61C
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 _022FE61C:
 	ldrb r0, [r6, #0x23c + EXECUTE_MONSTER_ACTION_OFFSET]
 	cmp r0, #0
@@ -1190,7 +1190,7 @@ _022FEBB4:
 	mov r1, #0
 	mov r0, sb
 	strb r1, [r2, #0x154 + EXECUTE_MONSTER_ACTION_OFFSET]
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 _022FEBF0:
 	mov r0, #0
 	bl ov29_022E3A58

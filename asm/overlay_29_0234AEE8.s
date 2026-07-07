@@ -552,15 +552,15 @@ ov29_0234B4E0: ; 0x0234B4E0
 _0234B4F0: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B4E0
 
-	arm_func_start ov29_0234B4F4
-ov29_0234B4F4: ; 0x0234B4F4
+	arm_func_start GetAlertBoxLoadingStatus
+GetAlertBoxLoadingStatus: ; 0x0234B4F4
 	ldr r0, _0234B504 ; =MESSAGE_LOG_INFO
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc98]
 	bx lr
 	.align 2, 0
 _0234B504: .word MESSAGE_LOG_INFO
-	arm_func_end ov29_0234B4F4
+	arm_func_end GetAlertBoxLoadingStatus
 
 	arm_func_start LogMessage
 LogMessage: ; 0x0234B508
@@ -959,8 +959,8 @@ _0234BA4C:
 _0234BA50: .word MESSAGE_LOG_INFO
 	arm_func_end WaitUntilAlertBoxTextIsLoaded
 
-	arm_func_start ov29_0234BA54
-ov29_0234BA54: ; 0x0234BA54
+	arm_func_start WaitUntilAlertBoxPauseIsOver
+WaitUntilAlertBoxPauseIsOver: ; 0x0234BA54
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r1, _0234BAB8 ; =MESSAGE_LOG_INFO
 	mov r5, r0
@@ -991,7 +991,7 @@ _0234BAAC:
 	.align 2, 0
 _0234BAB8: .word MESSAGE_LOG_INFO
 _0234BABC: .word DUNGEON_BUTTON_INPUT
-	arm_func_end ov29_0234BA54
+	arm_func_end WaitUntilAlertBoxPauseIsOver
 
 	arm_func_start InitPortraitDungeon
 InitPortraitDungeon: ; 0x0234BAC0

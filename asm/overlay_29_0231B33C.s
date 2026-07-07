@@ -1761,7 +1761,7 @@ _0231CB58:
 	cmp r4, r1
 	bne _0231CB8C
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	ldr r0, _0231CBC4 ; =ov10_022C4864
 	mov r4, #1
 	ldr r2, [r0]

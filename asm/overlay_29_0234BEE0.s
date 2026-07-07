@@ -647,8 +647,8 @@ ov29_0234C70C: ; 0x0234C70C
 _0234C734: .word DUNGEON_FADES_PTR
 	arm_func_end ov29_0234C70C
 
-	arm_func_start ov29_0234C738
-ov29_0234C738: ; 0x0234C738
+	arm_func_start WaitUntilFadeIsFinished
+WaitUntilFadeIsFinished: ; 0x0234C738
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	mov r0, #0x9c
@@ -695,7 +695,7 @@ _0234C7CC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0234C7D0: .word DUNGEON_FADES_PTR
-	arm_func_end ov29_0234C738
+	arm_func_end WaitUntilFadeIsFinished
 
 	arm_func_start HandleFadesDungeon
 HandleFadesDungeon: ; 0x0234C7D4

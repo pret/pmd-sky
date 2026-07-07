@@ -483,7 +483,7 @@ _0232CAB4:
 	mov r1, r4
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 _0232CAE8:
 	mov r0, #1
 	mov r1, r0
@@ -1658,7 +1658,7 @@ DoMoveShadowForce: ; 0x0232D860
 	movne r4, #1
 	moveq r4, #0
 	mov r0, r7
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	tst r4, #0xff
 	beq _0232D8EC
 	mov r0, r7
@@ -1673,7 +1673,7 @@ _0232D8CC:
 	mov r1, r6
 	mov r3, r5
 	mov r2, #0xd
-	bl ov29_02318BBC
+	bl BeginChargedMove
 _0232D8EC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}

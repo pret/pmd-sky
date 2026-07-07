@@ -2,6 +2,7 @@
 .public AbilityIsActiveVeneer
 .public CanAttackInDirection
 .public CeilFixedPoint
+.public CheckBossFightVictory
 .public CheckTeamMemberIdx
 .public CreateMonsterSummaryFromEntityOuter
 .public DeleteWanTableEntryVeneer
@@ -14,6 +15,7 @@
 .public DUNGEON_PTR
 .public EnableAllLearnableIqSkills
 .public EndFrozenClassStatus
+.public EndLeechSeedStatusForAllTargets
 .public EntityIsValid__022F7364
 .public FreeOtherWrappedMonsters
 .public GetActiveTeamMember
@@ -51,11 +53,9 @@
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
-.public ov29_022EF7C4
 .public ov29_022F9B8C
 .public ov29_022FE048
 .public ov29_022FFB90
-.public ov29_023159D4
 .public ov29_02338F24
 .public ov29_02339F88
 .public ov29_02349688

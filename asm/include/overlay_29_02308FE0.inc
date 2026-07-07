@@ -11,12 +11,14 @@
 .public ChangeDungeonMusic
 .public ChangeMonsterAnimation
 .public DAMAGE_STRING_IDS
+.public DEFEAT_STRING_IDS
 .public DefenderAbilityIsActive__0230A940
 .public DisplayAnimatedNumbers
 .public DUNGEON_PTR
 .public DungeonRandOutcome__022EAB20
 .public EndCurseClassStatus
 .public EndInvisibleClassStatus
+.public EndLeechSeedStatusForAllTargets
 .public EntityIsValid__02308FBC
 .public ExclusiveItemEffectIsActive__0230A9B8
 .public ExclusiveItemEffectIsActiveWithLogging
@@ -78,14 +80,11 @@
 .public ov29_0230D628
 .public ov29_0230D688
 .public ov29_0230D7D4
-.public ov29_023159D4
 .public ov29_0233847C
 .public ov29_02344B9C
 .public ov29_0234969C
 .public ov29_0234B1A4
-.public ov29_0234BA54
 .public ov29_02353218
-.public ov29_0235321C
 .public ov29_02353220
 .public ov29_02353224
 .public ov29_02353228
@@ -119,3 +118,4 @@
 .public UpdateShopkeeperModeAfterAttack
 .public UpdateStatusIconFlags
 .public UpdateTrapsVisibility
+.public WaitUntilAlertBoxPauseIsOver

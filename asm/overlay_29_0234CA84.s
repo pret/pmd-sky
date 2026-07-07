@@ -628,8 +628,8 @@ DisplayMessage: ; 0x0234D258
 	mov r5, r1
 	mov r4, r2
 	mov r0, #0xa
-	bl ov29_0234BA54
-	bl ov29_0234D558
+	bl WaitUntilAlertBoxPauseIsOver
+	bl CloseMinimap
 	bl GetMessageLogPreprocessorArgs
 	mov r1, r4
 	mov r2, r6
@@ -653,8 +653,8 @@ DisplayMessage2: ; 0x0234D2AC
 	mov r5, r1
 	mov r4, r2
 	mov r0, #0xa
-	bl ov29_0234BA54
-	bl ov29_0234D558
+	bl WaitUntilAlertBoxPauseIsOver
+	bl CloseMinimap
 	bl GetMessageLogPreprocessorArgs
 	mov r1, r4
 	mov r2, r6
@@ -684,9 +684,9 @@ ov29_0234D304: ; 0x0234D304
 	cmp r0, #0
 	beq _0234D334
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 _0234D334:
-	bl ov29_0234D558
+	bl CloseMinimap
 	mov r0, r8
 	bl IsMonster__0234D460
 	cmp r0, #0

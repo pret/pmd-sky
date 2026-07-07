@@ -1641,7 +1641,7 @@ _0234AD44:
 	cmp r0, #3
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r4
-	bl ov29_02300B04
+	bl HasStatusThatPreventsOutlawEscaping
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldrsh r0, [r4, #4]

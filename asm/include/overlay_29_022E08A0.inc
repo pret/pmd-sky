@@ -36,7 +36,6 @@
 .public ov29_02335804
 .public ov29_0233A248
 .public ov29_0234B1A4
-.public ov29_0234C738
 .public ov29_023510E0
 .public ov29_02353540
 .public ov29_02353544
@@ -60,3 +59,4 @@
 .public sub_0201E380
 .public UnloadFile
 .public UnloadWte
+.public WaitUntilFadeIsFinished

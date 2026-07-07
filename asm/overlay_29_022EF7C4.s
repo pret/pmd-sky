@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022EF7C4
-ov29_022EF7C4: ; 0x022EF7C4
+	arm_func_start CheckBossFightVictory
+CheckBossFightVictory: ; 0x022EF7C4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r0
 	mov r7, r2
@@ -56,7 +56,7 @@ _022EF854:
 	cmp r5, #0
 	beq _022EF874
 	mov r0, #0x64
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	ldr r0, _022EF89C ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
@@ -75,7 +75,7 @@ _022EF874:
 	.align 2, 0
 _022EF89C: .word DUNGEON_PTR
 _022EF8A0: .word 0x000003E7
-	arm_func_end ov29_022EF7C4
+	arm_func_end CheckBossFightVictory
 
 	arm_func_start ov29_022EF8A4
 ov29_022EF8A4: ; 0x022EF8A4

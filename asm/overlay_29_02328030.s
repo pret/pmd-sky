@@ -235,7 +235,7 @@ DoMoveCharge: ; 0x023282C8
 	mov r1, r5
 	mov r3, r4
 	mov r2, #0xb
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	ldr r2, _02328324 ; =SPATK_STAT_IDX
 	mov r0, r6
 	mov r1, r5
@@ -1066,7 +1066,7 @@ _02328CDC:
 	moveq r1, #0
 	mov r0, r7
 	and r4, r1, #0xff
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	b _02328D30
 _02328D0C:
 	ldr r0, _02328D40 ; =0x00000CD2
@@ -1076,7 +1076,7 @@ _02328D0C:
 	mov r1, r7
 	mov r3, r5
 	mov r2, #2
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r4, #1
 _02328D30:
 	mov r0, r4
@@ -1159,7 +1159,7 @@ DoMoveFly: ; 0x02328DE4
 	moveq r1, #0
 	mov r0, r7
 	and r4, r1, #0xff
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	b _02328E64
 _02328E40:
 	ldr r0, _02328E70 ; =0x00000CD3
@@ -1169,7 +1169,7 @@ _02328E40:
 	mov r1, r7
 	mov r3, r5
 	mov r2, #7
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r4, #1
 _02328E64:
 	mov r0, r4
@@ -1245,7 +1245,7 @@ _02328F0C:
 	moveq r1, r4
 	mov r0, r8
 	and r4, r1, #0xff
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	b _02328F7C
 _02328F58:
 	ldr r0, _02328F90 ; =0x00000CD5
@@ -1255,7 +1255,7 @@ _02328F58:
 	mov r1, r8
 	mov r3, r6
 	mov r2, #9
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r4, #1
 _02328F7C:
 	mov r0, r4
@@ -1521,7 +1521,7 @@ DoMoveSeismicToss: ; 0x02329258
 	mov r0, r5
 	bl PlaySeByIdIfShouldDisplayEntity
 	mov r0, r5
-	bl ov29_02318AD4
+	bl WaitUntilMonsterFliesOffscreen
 	mov r0, #0x10
 	mov r1, #0x67
 	bl ov29_022EA370
@@ -1536,7 +1536,7 @@ DoMoveSeismicToss: ; 0x02329258
 	add r2, r3, r2, ror #29
 	bl ChangeMonsterAnimation
 	mov r0, r5
-	bl ov29_02318B48
+	bl WaitUntilMonsterIsBackOnGround
 	mov r0, r5
 	mov r1, #0x210
 	bl PlaySeByIdIfShouldDisplayEntity
@@ -1545,7 +1545,7 @@ DoMoveSeismicToss: ; 0x02329258
 	mov r2, #0
 	bl StartFadeDungeonWrapper
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 	mov r0, #4
 	mov r1, #0x400
 	mov r2, #0
@@ -1553,7 +1553,7 @@ DoMoveSeismicToss: ; 0x02329258
 	mov r0, #1
 	bl ov29_022ECAFC
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 _02329350:
 	mov r0, r4
 	bl GetMoveType
@@ -2188,7 +2188,7 @@ DoMoveBounce: ; 0x02329A9C
 	bl TryInflictParalysisStatus
 _02329B20:
 	mov r0, r8
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	b _02329B50
 _02329B2C:
 	ldr r0, _02329B64 ; =0x00000CD4
@@ -2198,7 +2198,7 @@ _02329B2C:
 	mov r1, r8
 	mov r3, r6
 	mov r2, #8
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r4, #1
 _02329B50:
 	mov r0, r4

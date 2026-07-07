@@ -13,6 +13,7 @@
 .public DungeonRandInt
 .public EndFrozenClassStatus
 .public EndLeechSeedClassStatus
+.public EndTwoTurnMove
 .public EnemyEvolution
 .public EntityIsValid__02321438
 .public ExecuteMoveEffect
@@ -51,7 +52,6 @@
 .public ov29_022F9840
 .public ov29_022FAA04
 .public ov29_02304B14
-.public ov29_02318D58
 .public ov29_02321288
 .public ov29_02322DDC
 .public ov29_023230FC
