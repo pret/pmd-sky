@@ -877,7 +877,7 @@
                                                                                                          104](GetForcedLossReason,func) found in global overlay_29_022ECDE4.o
                                                                                                           105](GetRandomSpawnTrapId,func) found in global random_trap.o
                                                                                                          104](TrySpawnGoldenChamber,func) found in global overlay_29_02336224.o
-                                                                                                         104](ov29_0234C738,func) found in global overlay_29_0234BEE0.o
+                                                                                                         104](WaitUntilFadeIsFinished,func) found in global overlay_29_0234BEE0.o
                                                                                                          104](ExclusiveItemEffectIsActive__02347B80,func) found in global dungeon_projectile_throw.o
                                                                                                          104](ItemIsActive__02347B50,func) found in global dungeon_projectile_throw.o
                                                                                                         103](TestItemAiFlag,func) found in global item_util_1.o
@@ -970,8 +970,8 @@
                                                                                                       101](MonsterHasNegativeStatus,func) found in global dungeon_logic_1.o
                                                                                                       101](EntityIsValid__0230558C,func) found in global overlay_29_0230558C.o
                                                                                                       101](TryNonLeaderItemPickUp,func) found in global overlay_29_0230F02C.o
-                                                                                                     100](ov29_022FF3F4,func) found in global overlay_29_022FF3F4.o
-                                                                                                      101](ov29_02318D58,func) found in global overlay_29_02318D58.o
+                                                                                                     100](HasStatusThatPreventsLeaderActing,func) found in global overlay_29_022FF3F4.o
+                                                                                                      101](EndTwoTurnMove,func) found in global overlay_29_02318D58.o
                                                                                                        102](EntityIsValid__02318D34,func) found in global overlay_29_02318D34.o
                                                                                                       101](IsChargingTwoTurnMove,func) found in global dungeon_move.o
                                                                                                      100](SetTopScreenOption,func) found in global options.o
@@ -1056,7 +1056,7 @@
                                                                                                          104](GetMoveCritChance,func) found in global moves.o
                                                                                                          104](GetMovePower,func) found in global dungeon_logic_5.o
                                                                                                         103](TryActivateGravity,func) found in global overlay_29_0233836C.o
-                                                                                                        103](ov29_02318BBC,func) found in global overlay_29_02318AD4.o
+                                                                                                        103](BeginChargedMove,func) found in global overlay_29_02318AD4.o
                                                                                                          104](IsMonster__02318AB0,func) found in global overlay_29_02318AB0.o
                                                                                                         103](TryInflictCringeStatus,func) found in global move_orb_effects.o
                                                                                                         103](LowerHitChanceStat,func) found in global move_orb_effects.o
@@ -4665,7 +4665,7 @@
   02027A20 00000000 .text   $a	(main_0202676C.o)
   02027A20 000001E8 .text   NewWindow	(main_0202676C.o)
   02027BF8 00000000 .text   $d	(main_0202676C.o)
-  02027C08 0000001C .text   GetPaletteBaseAddress__02027B9C	(main_0202676C.o)
+  02027C08 0000001C .text   GetPaletteBaseAddress__020278A8	(main_0202676C.o)
   02027C08 00000000 .text   $a	(main_0202676C.o)
   02027C20 00000000 .text   $d	(main_0202676C.o)
   02027C24 00000000 .text   $a	(main_0202676C.o)
@@ -36548,7 +36548,7 @@
   022F0DA4 00000024 .text   EntityIsValid__022EF7A0	(overlay_29_022EF7A0.o)
   022F0DA4 00000000 .text   $a	(overlay_29_022EF7A0.o)
   022F0DC8 00000228 .text   .text	(overlay_29_022EF7C4.o)
-  022F0DC8 000000E0 .text   ov29_022EF7C4	(overlay_29_022EF7C4.o)
+  022F0DC8 000000E0 .text   CheckBossFightVictory	(overlay_29_022EF7C4.o)
   022F0DC8 00000000 .text   $a	(overlay_29_022EF7C4.o)
   022F0EA0 00000000 .text   $d	(overlay_29_022EF7C4.o)
   022F0EA8 00000094 .text   ov29_022EF8A4	(overlay_29_022EF7C4.o)
@@ -36610,7 +36610,7 @@
   022F1DDC 00000000 .text   $a	(overlay_29_022F05B4.o)
   022F1E48 00000000 .text   $d	(overlay_29_022F05B4.o)
   022F1E4C 00000000 .text   $a	(overlay_29_022F05B4.o)
-  022F1E4C 00000014 .text   ov29_022F0848	(overlay_29_022F05B4.o)
+  022F1E4C 00000014 .text   ReopenMinimap	(overlay_29_022F05B4.o)
   022F1E5C 00000000 .text   $d	(overlay_29_022F05B4.o)
   022F1E60 00000000 .text   $a	(overlay_29_022F05B4.o)
   022F1E60 00000128 .text   GonePebbleGradualPaletteShift	(overlay_29_022F05B4.o)
@@ -37152,7 +37152,7 @@
   023007CC 00000000 .text   $d	(status_checks.o)
   023007E4 00000000 .text   $a	(overlay_29_022FF3F4.o)
   023007E4 00000238 .text   .text	(overlay_29_022FF3F4.o)
-  023007E4 00000238 .text   ov29_022FF3F4	(overlay_29_022FF3F4.o)
+  023007E4 00000238 .text   HasStatusThatPreventsLeaderActing	(overlay_29_022FF3F4.o)
   023009FC 00000000 .text   $d	(overlay_29_022FF3F4.o)
   02300A1C 00000000 .text   $a	(dungeon_mobility.o)
   02300A1C 00000048 .text   GetMobilityTypeCheckSlip	(dungeon_mobility.o)
@@ -37237,7 +37237,7 @@
   02301D84 0000002C .text   ov29_023009A0	(overlay_29_023009A0.o)
   02301D84 00000000 .text   $a	(overlay_29_023009A0.o)
   02301DB0 00000138 .text   ov29_023009CC	(overlay_29_023009A0.o)
-  02301EE8 0000003C .text   ov29_02300B04	(overlay_29_023009A0.o)
+  02301EE8 0000003C .text   HasStatusThatPreventsOutlawEscaping	(overlay_29_023009A0.o)
   02301F24 000000B8 .text   CheckVariousConditions__0230156C	(dungeon_capabilities_1.o)
   02301F24 00000000 .text   $a	(dungeon_capabilities_1.o)
   02301FDC 000000B8 .text   CheckVariousConditions__02301624	(dungeon_capabilities_1.o)
@@ -37918,7 +37918,7 @@
   02316CC4 000001E8 .text   TryInflictLeechSeedStatus	(overlay_29_0231516C.o)
   02316E94 00000000 .text   $d	(overlay_29_0231516C.o)
   02316EAC 00000000 .text   $a	(overlay_29_0231516C.o)
-  02316EAC 0000007C .text   ov29_023159D4	(overlay_29_0231516C.o)
+  02316EAC 0000007C .text   EndLeechSeedStatusForAllTargets	(overlay_29_0231516C.o)
   02316F24 00000000 .text   $d	(overlay_29_0231516C.o)
   02316F28 00000000 .text   $a	(overlay_29_0231516C.o)
   02316F28 00000120 .text   TryInflictDestinyBondStatus	(overlay_29_0231516C.o)
@@ -38062,15 +38062,15 @@
   02319F80 00000000 .text   $a	(overlay_29_02318AB0.o)
   02319FA4 00000000 .text   $a	(overlay_29_02318AD4.o)
   02319FA4 00000260 .text   .text	(overlay_29_02318AD4.o)
-  02319FA4 00000074 .text   ov29_02318AD4	(overlay_29_02318AD4.o)
-  0231A018 00000074 .text   ov29_02318B48	(overlay_29_02318AD4.o)
-  0231A08C 00000178 .text   ov29_02318BBC	(overlay_29_02318AD4.o)
+  02319FA4 00000074 .text   WaitUntilMonsterFliesOffscreen	(overlay_29_02318AD4.o)
+  0231A018 00000074 .text   WaitUntilMonsterIsBackOnGround	(overlay_29_02318AD4.o)
+  0231A08C 00000178 .text   BeginChargedMove	(overlay_29_02318AD4.o)
   0231A1F0 00000000 .text   $d	(overlay_29_02318AD4.o)
   0231A204 00000024 .text   EntityIsValid__02318D34	(overlay_29_02318D34.o)
   0231A204 00000000 .text   $a	(overlay_29_02318D34.o)
   0231A228 00000000 .text   $a	(overlay_29_02318D58.o)
   0231A228 000000F4 .text   .text	(overlay_29_02318D58.o)
-  0231A228 00000040 .text   ov29_02318D58	(overlay_29_02318D58.o)
+  0231A228 00000040 .text   EndTwoTurnMove	(overlay_29_02318D58.o)
   0231A268 000000B4 .text   SetReflectStatus	(overlay_29_02318D58.o)
   0231A310 00000000 .text   $d	(overlay_29_02318D58.o)
   0231A31C 00000024 .text   EntityIsValid__02318E4C	(overlay_29_02318E4C.o)
@@ -39317,7 +39317,7 @@
   02336BD4 00000004 .text   ov29_02335804	(overlay_29_023350FC.o)
   02336BD8 0000005C .text   InitUi3dElement	(overlay_29_023350FC.o)
   02336C30 00000000 .text   $d	(overlay_29_023350FC.o)
-  02336C34 0000001C .text   GetPaletteBaseAddress__02027B9C	(overlay_29_023350FC.o)
+  02336C34 0000001C .text   GetPaletteBaseAddressOv29	(overlay_29_023350FC.o)
   02336C34 00000000 .text   $a	(overlay_29_023350FC.o)
   02336C4C 00000000 .text   $d	(overlay_29_023350FC.o)
   02336C50 00000108 .text   DisplayNumberTextureUi	(overlay_29_023350FC.o)
@@ -40303,7 +40303,7 @@
   0234C750 00000014 .text   ov29_0234B4E0	(overlay_29_0234AEE8.o)
   0234C750 00000000 .text   $a	(overlay_29_0234AEE8.o)
   0234C760 00000000 .text   $d	(overlay_29_0234AEE8.o)
-  0234C764 00000014 .text   ov29_0234B4F4	(overlay_29_0234AEE8.o)
+  0234C764 00000014 .text   GetAlertBoxLoadingStatus	(overlay_29_0234AEE8.o)
   0234C764 00000000 .text   $a	(overlay_29_0234AEE8.o)
   0234C774 00000000 .text   $d	(overlay_29_0234AEE8.o)
   0234C778 00000000 .text   $a	(overlay_29_0234AEE8.o)
@@ -40326,7 +40326,7 @@
   0234CC7C 00000000 .text   $a	(overlay_29_0234AEE8.o)
   0234CCB4 00000000 .text   $d	(overlay_29_0234AEE8.o)
   0234CCB8 00000000 .text   $a	(overlay_29_0234AEE8.o)
-  0234CCB8 0000006C .text   ov29_0234BA54	(overlay_29_0234AEE8.o)
+  0234CCB8 0000006C .text   WaitUntilAlertBoxPauseIsOver	(overlay_29_0234AEE8.o)
   0234CD1C 00000000 .text   $d	(overlay_29_0234AEE8.o)
   0234CD24 00000050 .text   InitPortraitDungeon	(overlay_29_0234AEE8.o)
   0234CD24 00000000 .text   $a	(overlay_29_0234AEE8.o)
@@ -40392,7 +40392,7 @@
   0234D970 0000002C .text   ov29_0234C70C	(overlay_29_0234BEE0.o)
   0234D970 00000000 .text   $a	(overlay_29_0234BEE0.o)
   0234D998 00000000 .text   $d	(overlay_29_0234BEE0.o)
-  0234D99C 0000009C .text   ov29_0234C738	(overlay_29_0234BEE0.o)
+  0234D99C 0000009C .text   WaitUntilFadeIsFinished	(overlay_29_0234BEE0.o)
   0234D99C 00000000 .text   $a	(overlay_29_0234BEE0.o)
   0234DA34 00000000 .text   $d	(overlay_29_0234BEE0.o)
   0234DA38 00000000 .text   $a	(overlay_29_0234BEE0.o)
@@ -40453,7 +40453,7 @@
   0234E710 0000094C .text   .text	(overlay_29_0234D484.o)
   0234E748 0000005C .text   ov29_0234D4BC	(overlay_29_0234D484.o)
   0234E7A4 00000040 .text   YesNoMenu	(overlay_29_0234D484.o)
-  0234E7E4 00000038 .text   ov29_0234D558	(overlay_29_0234D484.o)
+  0234E7E4 00000038 .text   CloseMinimap	(overlay_29_0234D484.o)
   0234E81C 00000040 .text   DisplayMessageInternal	(overlay_29_0234D484.o)
   0234E85C 00000060 .text   ov29_0234D5D0	(overlay_29_0234D484.o)
   0234E8BC 00000020 .text   ov29_0234D630	(overlay_29_0234D484.o)
@@ -40995,7 +40995,7 @@
   0235444C 00000000 .rodata ov29_023531CC	(overlay_29_rodata_02352A6C.o)
   02354494 00000000 .rodata ov29_02353214	(overlay_29_rodata_02352A6C.o)
   02354498 00000000 .rodata ov29_02353218	(overlay_29_rodata_02352A6C.o)
-  0235449C 00000000 .rodata ov29_0235321C	(overlay_29_rodata_02352A6C.o)
+  0235449C 00000000 .rodata DEFEAT_STRING_IDS	(overlay_29_rodata_02352A6C.o)
   023544A0 00000000 .rodata ov29_02353220	(overlay_29_rodata_02352A6C.o)
   023544A4 00000000 .rodata ov29_02353224	(overlay_29_rodata_02352A6C.o)
   023544A8 00000000 .rodata ov29_02353228	(overlay_29_rodata_02352A6C.o)
@@ -41991,5 +41991,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Jul 03 01:20:29 2026
-# Link end time: Fri Jul 03 01:20:30 2026
+# Link start time: Wed Jul 08 01:11:44 2026
+# Link end time: Wed Jul 08 01:11:45 2026
