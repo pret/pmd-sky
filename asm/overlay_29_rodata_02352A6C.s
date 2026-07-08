@@ -324,8 +324,8 @@ ov29_02353218:
 	.global ov29_0235322C
 ov29_0235322C:
 	.byte 0x39, 0x0B, 0x3A, 0x0B
-	.global ov29_0235321C
-ov29_0235321C:
+	.global DEFEAT_STRING_IDS
+DEFEAT_STRING_IDS:
 	.byte 0x2F, 0x0B, 0x30, 0x0B
 	.global ov29_02353278
 ov29_02353278:
@@ -443,8 +443,8 @@ ov29_02353310:
 	.global ov29_02353218
 ov29_02353218:
 	.byte 0x35, 0x06, 0x36, 0x06
-	.global ov29_0235321C
-ov29_0235321C:
+	.global DEFEAT_STRING_IDS
+DEFEAT_STRING_IDS:
 	.byte 0x31, 0x06, 0x32, 0x06
 	.global ov29_02353220
 ov29_02353220:
@@ -580,8 +580,8 @@ ov29_02353310:
 	.global ov29_02353218
 ov29_02353218:
 	.byte 0x33, 0x0B, 0x34, 0x0B
-	.global ov29_0235321C
-ov29_0235321C:
+	.global DEFEAT_STRING_IDS
+DEFEAT_STRING_IDS:
 	.byte 0x2F, 0x0B, 0x30, 0x0B
 	.global ov29_02353220
 ov29_02353220:

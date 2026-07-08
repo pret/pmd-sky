@@ -9,6 +9,7 @@
 .public AreLateGameTrapsEnabledWrapper
 .public ATK_STAT_IDX
 .public BAG_ITEMS_PTR_MIRROR
+.public BeginChargedMove
 .public BLAZE_KICK_BURN_CHANCE
 .public BoostDefensiveStat
 .public BoostOffensiveStat
@@ -29,6 +30,7 @@
 .public DungeonRandOutcomeUserAction
 .public DungeonRandOutcomeUserTargetInteraction
 .public EndFrozenStatus
+.public EndTwoTurnMove
 .public EntityIsValidMoveEffects__0232A3D8
 .public EntityIsValidMoveEffects__0232C500
 .public ERUPTION_DAMAGE_MULT_TABLE
@@ -72,8 +74,6 @@
 .public ov29_022F8FF8
 .public ov29_022F9EA0
 .public ov29_022FFB90
-.public ov29_02318BBC
-.public ov29_02318D58
 .public ov29_02321164
 .public ov29_02321260
 .public ov29_02324D60

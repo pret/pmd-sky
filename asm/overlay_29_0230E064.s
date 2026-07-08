@@ -23,7 +23,7 @@ TryRecruit: ; 0x0230E064
 	mov r5, #0
 	mov sb, r1
 	mov r8, r2
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, r5
 	bl ov29_0234B1A4
 	bl ov29_0234D630

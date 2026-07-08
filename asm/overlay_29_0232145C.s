@@ -1776,7 +1776,7 @@ _02322C68:
 	mov r1, #0
 	mov r0, r6
 	strb r1, [r2, #0x154 + OV29_02322374_OFFSET]
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 _02322C88:
 	add r7, r7, #1
 _02322C8C:

@@ -27,6 +27,7 @@
 .public GetSpecialTargetItem
 .public GetTargetMonsterNotFoundFlag
 .public HandleFaint
+.public HasStatusThatPreventsOutlawEscaping
 .public InitPortraitDungeon
 .public IsCastform
 .public IsCherrim
@@ -47,7 +48,6 @@
 .public ov29_022EAEFC
 .public ov29_022FA3D4
 .public ov29_023009CC
-.public ov29_02300B04
 .public ov29_02344B9C
 .public ov29_02348888
 .public ov29_023491B8

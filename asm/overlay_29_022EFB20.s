@@ -9,7 +9,7 @@ ov29_022EFB20: ; 0x022EFB20
 	cmp r0, #0
 	beq _022EFB48
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #0
 	bl ov29_0234B1A4
 	mov r0, #0xa

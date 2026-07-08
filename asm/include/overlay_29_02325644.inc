@@ -7,6 +7,7 @@
 .public ApplyOffensiveStatMultiplier
 .public ATK_STAT_IDX
 .public AURORA_BEAM_LOWER_ATTACK_CHANCE
+.public BeginChargedMove
 .public BITE_CRINGE_CHANCE
 .public BoostDefensiveStat
 .public BoostHitChanceStat
@@ -29,6 +30,7 @@
 .public EndFrozenStatus
 .public EndNegativeStatusConditionWrapper
 .public EndReflectClassStatus
+.public EndTwoTurnMove
 .public EntityIsValid__02325620
 .public EntityIsValidMoveEffects__0232800C
 .public ExclusiveItemEffectFlagTest
@@ -71,10 +73,7 @@
 .public ov29_022E2CA0
 .public ov29_022E5474
 .public ov29_022E6D68
-.public ov29_02318BBC
-.public ov29_02318D58
 .public ov29_02332F18
-.public ov29_0234BA54
 .public ov29_02352AD8
 .public POWDER_SNOW_FREEZE_CHANCE
 .public PSYBEAM_CONFUSE_CHANCE
@@ -124,6 +123,7 @@
 .public TryInflictYawningStatus
 .public TryResetStatChanges
 .public UnkMapRelatedFunc
+.public WaitUntilAlertBoxPauseIsOver
 .public WATER_SPOUT_DAMAGE_MULT_TABLE
 .public WEATHER_BALL_DAMAGE_MULT_TABLE
 .public WEATHER_BALL_TYPE_TABLE

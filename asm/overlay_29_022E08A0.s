@@ -100,7 +100,7 @@ FadeToBlack: ; 0x022E0968
 	mov r2, #1
 	bl StartFadeDungeonWrapper
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 	bl ov29_022E0E44
 	mov r0, #1
 	bl ov29_0233A248

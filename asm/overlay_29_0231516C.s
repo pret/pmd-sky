@@ -643,8 +643,8 @@ _023159CC: .word 0x00000CE1 + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
 _023159D0: .word DUNGEON_PTR
 	arm_func_end TryInflictLeechSeedStatus
 
-	arm_func_start ov29_023159D4
-ov29_023159D4: ; 0x023159D4
+	arm_func_start EndLeechSeedStatusForAllTargets
+EndLeechSeedStatusForAllTargets: ; 0x023159D4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r4, #0
 	ldr r5, [r0, #0xb4]
@@ -683,7 +683,7 @@ _02315A3C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02315A4C: .word DUNGEON_PTR
-	arm_func_end ov29_023159D4
+	arm_func_end EndLeechSeedStatusForAllTargets
 
 	arm_func_start TryInflictDestinyBondStatus
 TryInflictDestinyBondStatus: ; 0x02315A50

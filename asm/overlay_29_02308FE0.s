@@ -888,7 +888,7 @@ _0230A680:
 	bl LogMessageByIdWithPopup
 	b _0230A7E8
 _0230A6AC:
-	ldr r0, _02309FF8 ; =ov29_0235321C
+	ldr r0, _02309FF8 ; =DEFEAT_STRING_IDS
 	mov r1, r4, lsl #1
 	ldrh r2, [r0, r1]
 	mov r0, sl
@@ -1049,7 +1049,7 @@ _0230A8E0:
 	bl EndCurseClassStatus
 _0230A8FC:
 	mov r0, sb
-	bl ov29_023159D4
+	bl EndLeechSeedStatusForAllTargets
 	mov r0, r7
 	mov r1, #0
 	bl SubInitMonster
@@ -1993,7 +1993,7 @@ _02309C50:
 	bl LogMessageByIdWithPopup
 	b _02309DC8
 _02309C7C:
-	ldr r0, _02309FF8 ; =ov29_0235321C
+	ldr r0, _02309FF8 ; =DEFEAT_STRING_IDS
 	mov r1, sb, lsl #1
 	ldrh r2, [r0, r1]
 	mov r0, r8
@@ -2158,7 +2158,7 @@ _02309EC0:
 	bl EndCurseClassStatus
 _02309EDC:
 	mov r0, r7
-	bl ov29_023159D4
+	bl EndLeechSeedStatusForAllTargets
 	mov r0, r4
 	mov r1, #0
 	bl SubInitMonster
@@ -2240,7 +2240,7 @@ _02309FE8: .word ov10_022C4834
 _02309FEC: .word ov10_022C45FC
 _02309FF0: .word 0x00000C4B + APPLY_DAMAGE_DATA_OFFSET
 _02309FF4: .word ov29_02353220
-_02309FF8: .word ov29_0235321C
+_02309FF8: .word DEFEAT_STRING_IDS
 _02309FFC: .word DUNGEON_PTR
 _0230A000: .word ov29_02353228
 _0230A004: .word ov29_02353234
@@ -2360,7 +2360,7 @@ _0230ABAC:
 	bl EndCurseClassStatus
 _0230ABC8:
 	mov r0, sb
-	bl ov29_023159D4
+	bl EndLeechSeedStatusForAllTargets
 	mov r0, r7
 	mov r1, #0
 	bl SubInitMonster
@@ -2520,7 +2520,7 @@ _0230AE08:
 	bl EndCurseClassStatus
 _0230AE24:
 	mov r0, sb
-	bl ov29_023159D4
+	bl EndLeechSeedStatusForAllTargets
 	mov r0, r7
 	mov r1, #0
 	bl SubInitMonster
@@ -2605,7 +2605,7 @@ _0230AEEC:
 	ldr r1, _0230A01C ; =0x00000C4C
 	bl LogMessageByIdWithPopup
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #0
 	bl ov29_0234B1A4
 	mov r0, #1
@@ -2639,7 +2639,7 @@ _0230AEEC:
 	ldr r1, _0230A934 ; =0x00000C6D
 	bl LogMessageByIdWithPopup
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #0
 	bl ov29_022F0534
 	ldr r0, _02309FFC ; =DUNGEON_PTR
@@ -2979,7 +2979,7 @@ _0230A190:
 	bl EndCurseClassStatus
 _0230A1AC:
 	mov r0, r7
-	bl ov29_023159D4
+	bl EndLeechSeedStatusForAllTargets
 	mov r0, r4
 	mov r1, #0
 	bl SubInitMonster
@@ -3139,7 +3139,7 @@ _0230A3F4:
 	bl ov29_02307DC0
 #endif
 	mov r0, r7
-	bl ov29_023159D4
+	bl EndLeechSeedStatusForAllTargets
 	mov r0, r4
 	mov r1, #0
 	bl SubInitMonster
@@ -3218,7 +3218,7 @@ _0230A4A0:
 	ldr r1, _0230A01C ; =0x00000C4C
 	bl LogMessageByIdWithPopup
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #0
 	bl ov29_0234B1A4
 	mov r0, #1
@@ -3252,7 +3252,7 @@ _0230A4A0:
 	ldr r1, _0230A934 ; =0x00000C6D
 	bl LogMessageByIdWithPopup
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #0
 	bl ov29_022F0534
 	ldr r0, _02309FFC ; =DUNGEON_PTR

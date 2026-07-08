@@ -1,4 +1,5 @@
 #pragma once
+.public CloseMinimap
 .public Debug_Print0
 .public DisplayMessageInternal
 .public DUNGEON_PTR
@@ -21,8 +22,6 @@
 .public ov29_0231ADA8
 .public ov29_02337EE8
 .public ov29_0233804C
-.public ov29_0234BA54
-.public ov29_0234D558
 .public ov29_0234D5D0
 .public ov29_02353238
 .public ov29_02353240
@@ -66,4 +65,5 @@
 .public sub_02025784
 .public UnkMapRelatedFunc
 .public UnloadOverlay
+.public WaitUntilAlertBoxPauseIsOver
 .public WriteQuicksaveData

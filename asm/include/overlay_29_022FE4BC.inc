@@ -8,6 +8,7 @@
 .public DIRECTIONS_XY
 .public DisplayActions
 .public DUNGEON_PTR
+.public EndTwoTurnMove
 .public EnemyEvolution
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__022FED98
@@ -53,12 +54,10 @@
 .public ov29_0230F140
 .public ov29_0230F14C
 .public ov29_0230F158
-.public ov29_02318D58
 .public ov29_0231A8A0
 .public ov29_0231A9F8
 .public ov29_02337CCC
 .public ov29_02346888
-.public ov29_0234BA54
 .public ov29_0237C9C0
 .public ov29_0237CA68
 .public ov29_0237CA6C
@@ -71,3 +70,4 @@
 .public TryTriggerTrap
 .public UseSingleUseItemWrapper
 .public UseThrowableItem
+.public WaitUntilAlertBoxPauseIsOver

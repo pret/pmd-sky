@@ -142,7 +142,7 @@ _022F0700:
 	bl ExecuteMoveEffect
 	bl ov29_022E81F8
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #0
 	bl ov29_0234B1A4
 	bl GetLeader
@@ -225,15 +225,15 @@ _022F082C:
 _022F0844: .word DUNGEON_PTR
 	arm_func_end ov29_022F07D8
 
-	arm_func_start ov29_022F0848
-ov29_022F0848: ; 0x022F0848
+	arm_func_start ReopenMinimap
+ReopenMinimap: ; 0x022F0848
 	ldr ip, _022F0858 ; =UnkMapRelatedFunc
 	mov r0, #0
 	mov r1, r0
 	bx ip
 	.align 2, 0
 _022F0858: .word UnkMapRelatedFunc
-	arm_func_end ov29_022F0848
+	arm_func_end ReopenMinimap
 
 	arm_func_start GonePebbleGradualPaletteShift
 GonePebbleGradualPaletteShift: ; 0x022F085C
@@ -782,7 +782,7 @@ SetLeaderAction: ; 0x022F0EDC
 	bl SetDecoyAiTracker
 #endif
 	bl GetLeader
-	bl ov29_022FF3F4
+	bl HasStatusThatPreventsLeaderActing
 	cmp r0, #0
 	beq _022F0F58
 	mov r0, #0x3c
@@ -818,7 +818,7 @@ _022F0FAC:
 	cmp r0, #0
 	bne _022F1000
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #1
 	bl ResetLeaderActionFields
 	bl ov29_022F2FE4

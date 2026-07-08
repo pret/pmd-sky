@@ -591,7 +591,7 @@ _023031B8:
 	mov r0, sl
 	bl UpdateIqSkillsWrapper
 	mov r0, sl
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	ldr r0, _02303278 ; =ov29_0237C9C8
 	mov r1, sl
 	ldrb r2, [r0]
@@ -738,7 +738,7 @@ _023033B0:
 	mov r0, sl
 	bl UpdateIqSkillsWrapper
 	mov r0, sl
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	ldr r0, _023034CC ; =ov29_0237C9C8
 	ldrb r0, [r0]
 	strb r0, [r7, #0x1a]

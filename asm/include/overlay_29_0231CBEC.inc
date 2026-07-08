@@ -76,7 +76,6 @@
 .public ov29_022FA02C
 .public ov29_023009A0
 .public ov29_02339FF4
-.public ov29_0234BA54
 .public ov29_023529AC
 .public ov29_023529B0
 .public ov31_02385FE0
@@ -113,5 +112,6 @@
 .public UnloadFile
 .public UpdateIqSkillsWrapper
 .public UpdateMinimap
+.public WaitUntilAlertBoxPauseIsOver
 .public WONDER_GUMMI_IQ_GAIN
 .public YesNoMenu

@@ -160,7 +160,7 @@ _0232586C:
 	cmp r0, #0
 	beq _02325894
 	mov r0, #0x5d
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #0x5d
 	bl AdvanceFrame
 _02325894:
@@ -302,7 +302,7 @@ _02325A3C:
 	cmp r0, #0
 	beq _02325A9C
 	mov r0, #0x5d
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #0x5d
 	bl AdvanceFrame
 _02325A9C:
@@ -542,7 +542,7 @@ ov29_02325D7C: ; 0x02325D7C
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, #0x5d
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, #0x5d
 	bl AdvanceFrame
 	cmp r4, #0
@@ -760,7 +760,7 @@ _02326014:
 	str r5, [sp]
 	bl DealDamage
 	mov r0, r8
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	b _02326070
 _02326050:
 	ldr r0, _02326084 ; =0x00000CD6
@@ -770,7 +770,7 @@ _02326050:
 	mov r1, r8
 	mov r3, r6
 	mov r2, #0xa
-	bl ov29_02318BBC
+	bl BeginChargedMove
 _02326070:
 	mov r4, #1
 _02326074:
@@ -962,7 +962,7 @@ DoMoveRage: ; 0x02326220
 	mov r1, r5
 	mov r3, r4
 	mov r2, #0xc
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r0, #1
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -2034,7 +2034,7 @@ DoMoveRazorWind: ; 0x02326EB8
 	moveq r1, #0
 	mov r0, r7
 	and r4, r1, #0xff
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	b _02326F38
 _02326F14:
 	ldr r0, _02326F44 ; =0x00000CCD
@@ -2044,7 +2044,7 @@ _02326F14:
 	mov r1, r7
 	mov r3, r5
 	mov r2, #4
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r4, #1
 _02326F38:
 	mov r0, r4
@@ -2072,7 +2072,7 @@ DoMoveBide: ; 0x02326F48
 	mov r1, r5
 	mov r3, r4
 	mov r2, #1
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r0, #1
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -2432,7 +2432,7 @@ DoMoveFocusPunch: ; 0x023273CC
 	moveq r1, #0
 	mov r0, r7
 	and r4, r1, #0xff
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	b _0232744C
 _02327428:
 #ifdef JAPAN
@@ -2446,7 +2446,7 @@ _02327428:
 	mov r1, r7
 	mov r3, r5
 	mov r2, #5
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r4, #1
 _0232744C:
 	mov r0, r4
@@ -2968,7 +2968,7 @@ DoMoveSkyAttack: ; 0x02327A28
 	bl TryInflictCringeStatus
 _02327AAC:
 	mov r0, r8
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 	b _02327ADC
 _02327AB8:
 	ldr r0, _02327AF0 ; =0x00000CD1
@@ -2978,7 +2978,7 @@ _02327AB8:
 	mov r1, r8
 	mov r3, r6
 	mov r2, #3
-	bl ov29_02318BBC
+	bl BeginChargedMove
 	mov r4, #1
 _02327ADC:
 	mov r0, r4

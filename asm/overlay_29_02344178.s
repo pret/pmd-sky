@@ -416,13 +416,13 @@ _02344690:
 	mov r2, #0
 	bl StartFadeDungeonWrapper
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 	mov r0, #4
 	mov r1, #0x4000
 	mov r2, #0
 	bl StartFadeDungeonWrapper
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 	mov r0, r4
 	mov r1, #0
 	ldr r2, _02344A88 ; =0x000001A7
@@ -676,7 +676,7 @@ _02344A34:
 	bl ov29_022F05B4
 	mov r0, #0
 	bl ov29_022EFB84
-	bl ov29_022F0848
+	bl ReopenMinimap
 _02344A58:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}

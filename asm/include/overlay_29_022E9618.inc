@@ -15,6 +15,7 @@
 .public DungeonRandInt
 .public EntityIsValid__022E95F4
 .public FlashLeaderIcon
+.public GetAlertBoxLoadingStatus
 .public GetBottomScreenOption
 .public GetLeader
 .public GetTile
@@ -39,7 +40,6 @@
 .public ov29_02339FF4
 .public ov29_0233A248
 .public ov29_0234B1A4
-.public ov29_0234B4F4
 .public ov29_0234B854
 .public ov29_02351628
 .public ov29_02351658

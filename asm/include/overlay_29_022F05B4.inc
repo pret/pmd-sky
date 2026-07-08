@@ -56,6 +56,7 @@
 .public GetTrapInfo
 .public GetTreatmentBetweenMonsters
 .public HasHeldItem
+.public HasStatusThatPreventsLeaderActing
 .public HiddenStairsTrigger
 .public HideTileGrid
 .public InitMove
@@ -111,7 +112,6 @@
 .public ov29_022F9EA0
 .public ov29_022FA2F0
 .public ov29_022FB920
-.public ov29_022FF3F4
 .public ov29_022FF958
 .public ov29_022FFA94
 .public ov29_023009CC
@@ -136,7 +136,6 @@
 .public ov29_0234A980
 .public ov29_0234B1A4
 .public ov29_0234B4CC
-.public ov29_0234BA54
 .public ov29_0234BB38
 .public ov29_0234D650
 .public ov29_0234D65C
@@ -202,4 +201,5 @@
 .public UpdateMinimap
 .public UpdateTrapsVisibility
 .public UpdateWindow
+.public WaitUntilAlertBoxPauseIsOver
 .public YesNoMenu

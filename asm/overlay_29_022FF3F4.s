@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022FF3F4
-ov29_022FF3F4: ; 0x022FF3F4
+	arm_func_start HasStatusThatPreventsLeaderActing
+HasStatusThatPreventsLeaderActing: ; 0x022FF3F4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r0
 	mov r4, #0
@@ -165,7 +165,7 @@ _022FF5F4:
 	blt _022FF578
 _022FF5FC:
 	mov r0, r7
-	bl ov29_02318D58
+	bl EndTwoTurnMove
 _022FF604:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -183,4 +183,4 @@ _022FF61C: .word 0x00000C2B + OV29_022FF3F4_OFFSET
 _022FF620: .word 0x00000C2C + OV29_022FF3F4_OFFSET
 _022FF624: .word 0x00000C2D + OV29_022FF3F4_OFFSET
 _022FF628: .word 0x00000C2F + OV29_022FF3F4_OFFSET
-	arm_func_end ov29_022FF3F4
+	arm_func_end HasStatusThatPreventsLeaderActing

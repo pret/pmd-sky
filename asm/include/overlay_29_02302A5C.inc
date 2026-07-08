@@ -9,6 +9,7 @@
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonRandInt
+.public EndTwoTurnMove
 .public EntityIsValid__02302A38
 .public EntityIsValid__023047B8
 .public FillOamAttributeInfo
@@ -54,7 +55,6 @@
 .public ov29_022ECB38
 .public ov29_023009CC
 .public ov29_02304830
-.public ov29_02318D58
 .public ov29_02338988
 .public ov29_0234B4E0
 .public ov29_0234CFA0

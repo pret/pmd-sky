@@ -100,8 +100,8 @@ ov29_023009CC: ; 0x023009CC
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_023009CC
 
-	arm_func_start ov29_02300B04
-ov29_02300B04: ; 0x02300B04
+	arm_func_start HasStatusThatPreventsOutlawEscaping
+HasStatusThatPreventsOutlawEscaping: ; 0x02300B04
 	ldr r1, [r0, #0xb4]
 	ldrb r0, [r1, #0xbd]
 	cmp r0, #1
@@ -119,4 +119,4 @@ _02300B30:
 _02300B38:
 	mov r0, #1
 	bx lr
-	arm_func_end ov29_02300B04
+	arm_func_end HasStatusThatPreventsOutlawEscaping

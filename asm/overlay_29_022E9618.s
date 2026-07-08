@@ -910,7 +910,7 @@ _022EA1D0:
 	ldrb r0, [r0, #0x24a + OV29_022EA008_OFFSET]
 	cmp r0, #0
 	beq _022EA214
-	bl ov29_0234B4F4
+	bl GetAlertBoxLoadingStatus
 	cmp r0, #3
 	beq _022EA214
 	ldr r1, _022EA290 ; =DUNGEON_PTR

@@ -942,7 +942,7 @@ _0231D788:
 	mov r1, r4
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 _0231D7A0:
 	mov r2, #0
 	mov r0, r5
@@ -1044,7 +1044,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	mov r1, r5
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, r6
 	mov r1, r5
 	bl TryInflictEndureStatus
@@ -1093,7 +1093,7 @@ _0231D978:
 	mov r0, r5
 	bl LogMessageByIdWithPopup
 	mov r0, #0xa
-	bl ov29_0234BA54
+	bl WaitUntilAlertBoxPauseIsOver
 	mov r0, r6
 	mov r1, r5
 	bl TryInflictEndureStatus

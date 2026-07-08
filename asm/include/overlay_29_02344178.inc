@@ -31,13 +31,12 @@
 .public ov29_022F067C
 .public ov29_022F0780
 .public ov29_022F07D8
-.public ov29_022F0848
 .public ov29_02344B9C
 .public ov29_02345004
 .public ov29_0234B1A4
-.public ov29_0234C738
 .public ov29_02353798
 .public ov29_0237CFFC
+.public ReopenMinimap
 .public SetMessageLogPreprocessorArgsNumberVal
 .public SpawnItem
 .public StartFadeDungeonWrapper
@@ -46,3 +45,4 @@
 .public SubtractMoneyCarriedWithSfx
 .public TalkToSecretBazaarNpcStandard
 .public TalkToSecretBazaarNpcWithYesNoMenu
+.public WaitUntilFadeIsFinished

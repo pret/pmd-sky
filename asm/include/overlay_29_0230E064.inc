@@ -37,7 +37,6 @@
 .public ov29_0230E5FC
 .public ov29_0230E658
 .public ov29_0234B1A4
-.public ov29_0234BA54
 .public ov29_0234D630
 .public ov29_0234D7C0
 .public ov29_0234D838
@@ -55,3 +54,4 @@
 .public StrncpySimpleNoPad
 .public sub_02056698
 .public SubstitutePlaceholderStringTags
+.public WaitUntilAlertBoxPauseIsOver

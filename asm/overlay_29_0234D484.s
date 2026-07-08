@@ -28,7 +28,7 @@ ov29_0234D4BC: ; 0x0234D4BC
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ov29_0234D558
+	bl CloseMinimap
 	bl ov29_0234D630
 	bl GetMessageLogPreprocessorArgs
 	mov r1, r0
@@ -68,8 +68,8 @@ YesNoMenu: ; 0x0234D518
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	arm_func_end YesNoMenu
 
-	arm_func_start ov29_0234D558
-ov29_0234D558: ; 0x0234D558
+	arm_func_start CloseMinimap
+CloseMinimap: ; 0x0234D558
 	stmdb sp!, {r4, lr}
 	bl AlertBoxIsActive
 	mov r4, r0
@@ -84,7 +84,7 @@ ov29_0234D558: ; 0x0234D558
 	mov r1, r0
 	bl ov29_022EA370
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_0234D558
+	arm_func_end CloseMinimap
 
 	arm_func_start DisplayMessageInternal
 DisplayMessageInternal: ; 0x0234D590

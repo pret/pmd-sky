@@ -1999,7 +1999,7 @@ _02027704:
 	ldr r2, [r0, #0x54]
 	str r2, [r5, #0x94]
 	ldrsh r0, [r0, #0x58]
-	bl GetPaletteBaseAddress__02027B9C
+	bl GetPaletteBaseAddress__020278A8
 	str r0, [r5, #0x98]
 	mov r0, #6
 	strb r0, [r5, #0xb0]
@@ -2027,8 +2027,8 @@ _020278A0: .word _022A7A74
 _020278A4: .word _022A7A6C
 	arm_func_end NewWindow
 
-	arm_func_start GetPaletteBaseAddress__02027B9C
-GetPaletteBaseAddress__02027B9C: ; 0x020278A8
+	arm_func_start GetPaletteBaseAddress__020278A8
+GetPaletteBaseAddress__020278A8: ; 0x020278A8
 	ldr r2, _020278C0 ; =_020AFC70
 	add r0, r1, r0, lsl #8
 	ldr r1, [r2]
@@ -2037,7 +2037,7 @@ GetPaletteBaseAddress__02027B9C: ; 0x020278A8
 	bx lr
 	.align 2, 0
 _020278C0: .word _020AFC70
-	arm_func_end GetPaletteBaseAddress__02027B9C
+	arm_func_end GetPaletteBaseAddress__020278A8
 
 	arm_func_start sub_020278C4
 sub_020278C4: ; 0x020278C4
@@ -3541,7 +3541,7 @@ _02028A94:
 	ldr r2, _02028E00 ; =_0209AC64
 	mov r3, r3, lsl #1
 	ldrsb r8, [r2, r3]
-	bl GetPaletteBaseAddress__02027B9C
+	bl GetPaletteBaseAddress__020278A8
 	mov r1, r5, lsl #1
 	str r0, [r6, #0x98]
 	add r0, r1, #9

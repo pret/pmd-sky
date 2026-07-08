@@ -295,7 +295,7 @@ _023483E8:
 	bl sub_020178A8
 _023483F8:
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 	mov r6, #2
 	ldr r4, _0234849C ; =DUNGEON_BUTTON_INPUT
 	b _02348424
@@ -315,7 +315,7 @@ _0234842C:
 	mov r2, #0
 	bl StartFadeDungeonWrapper
 	mov r0, #0
-	bl ov29_0234C738
+	bl WaitUntilFadeIsFinished
 	mov r0, #1
 	mov r1, #0
 	bl ov29_022E0DE4

@@ -7,5 +7,5 @@
 .public MoveMonsterToPos
 .public ov29_023444D4
 .public ov29_02348F20
-.public ov29_0234BA54
 .public UpdateEntityPixelPos
+.public WaitUntilAlertBoxPauseIsOver

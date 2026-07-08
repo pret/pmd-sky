@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_02318AD4
-ov29_02318AD4: ; 0x02318AD4
+	arm_func_start WaitUntilMonsterFliesOffscreen
+WaitUntilMonsterFliesOffscreen: ; 0x02318AD4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, r0
 	mov r8, #1
@@ -44,10 +44,10 @@ _02318B3C:
 	cmp sb, #0x190
 	blt _02318B04
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov29_02318AD4
+	arm_func_end WaitUntilMonsterFliesOffscreen
 
-	arm_func_start ov29_02318B48
-ov29_02318B48: ; 0x02318B48
+	arm_func_start WaitUntilMonsterIsBackOnGround
+WaitUntilMonsterIsBackOnGround: ; 0x02318B48
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, r0
 	mov r8, #1
@@ -87,10 +87,10 @@ _02318BB0:
 	cmp sb, #0x190
 	blt _02318B78
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov29_02318B48
+	arm_func_end WaitUntilMonsterIsBackOnGround
 
-	arm_func_start ov29_02318BBC
-ov29_02318BBC: ; 0x02318BBC
+	arm_func_start BeginChargedMove
+BeginChargedMove: ; 0x02318BBC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r1
 	mov sb, r0
@@ -201,7 +201,7 @@ _02318CF0:
 	mov r0, r8
 	bl UpdateStatusIconFlags
 	mov r0, r8
-	bl ov29_02318AD4
+	bl WaitUntilMonsterFliesOffscreen
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 #ifdef JAPAN
@@ -213,4 +213,4 @@ _02318D24: .word ov10_022C4754
 _02318D28: .word 0x00000166
 _02318D2C: .word 0x00000217
 _02318D30: .word ov10_022C475C
-	arm_func_end ov29_02318BBC
+	arm_func_end BeginChargedMove
