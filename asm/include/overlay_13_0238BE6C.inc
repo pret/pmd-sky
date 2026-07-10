@@ -1,9 +1,0 @@
-#pragma once
-.public DrawTextInWindow
-.public ExitOverlay13
-.public InitPreprocessorArgs
-.public PERSONALITY_TEST_PTR
-.public PersonalityTestFrameUpdate
-.public PreprocessStringFromId
-.public sub_02027B1C
-.public UpdateWindow

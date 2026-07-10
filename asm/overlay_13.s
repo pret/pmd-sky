@@ -1424,7 +1424,7 @@ _0238B970:
 	ldr r2, [r1]
 	ldr r1, _0238BD9C ; =0x00001011
 	ldr r2, [r2, #0x370]
-	ldr r3, _0238BDA0 ; =GetOptionStringFromID
+	ldr r3, _0238BDA0 ; =GetPartnerOptionString
 	str r2, [sp]
 	mov r4, #6
 	mov r2, #0
@@ -1694,6 +1694,6 @@ _0238BD90: .word STARTERS_TYPE_INCOMPATIBILITY_TABLE
 _0238BD94: .word STARTERS_PARTNER_IDS
 _0238BD98: .word QUIZ_WINDOW_PARAMS_6
 _0238BD9C: .word 0x00001011
-_0238BDA0: .word GetOptionStringFromID
+_0238BDA0: .word GetPartnerOptionString
 _0238BDA4: .word PORTRAIT_ATTRIBUTES
 	arm_func_end PersonalityTestMainManager

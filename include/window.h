@@ -7,7 +7,7 @@
 typedef struct {
     enum monster_id monster_id; // 0x0: The species id, or the set index inside kaomado.kao
     // 0x2: Index of the emote in the species set of portraits
-    u32 portrait_emotion;
+    u8 portrait_emotion;
     u8 layout_idx; // 0x3: Represents the current layout to display the portrait
     u32 offset_x;  // 0x4: Tile offset (x / 8) in the X axis to draw the portrait
     u32 offset_y;  // 0x8: Tile offset (y / 8) in the Y axis to draw the portrait
