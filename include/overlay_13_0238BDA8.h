@@ -121,5 +121,6 @@ struct personality_test
 // return: Personality (0-15)
 s32 GetPersonality(void);
 char* GetPartnerOptionString(char* output, s32 option_id);
+void WaitForNextStep(enum personality_test_state state);
 
 #endif //PMDSKY_OVERLAY_13_0238BDA8_H

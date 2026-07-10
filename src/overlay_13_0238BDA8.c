@@ -31,3 +31,8 @@ char* GetPartnerOptionString(char* output, s32 option_id)
     PreprocessString(output, 0x400, (char*)&ov13_0238CE70, 0xC402, &args);
     return output;
 }
+
+void WaitForNextStep(enum personality_test_state state) {
+    PERSONALITY_TEST_PTR->state = QUIZ_WAIT_NEXT_STEP;
+    PERSONALITY_TEST_PTR->future_state = state;
+}
