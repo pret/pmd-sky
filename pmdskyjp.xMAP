@@ -554,15 +554,15 @@
                                         39](GetTopScreenOption,func) found in global options.o
                                         39](InitMenu,func) found in global main_020348E4.o
                                         39](EntryOverlay13,func) found in global overlay_13_EntryOverlay13.o
-                                         40](PERSONALITY_TEST_PTR,notype) found in global overlay_13_0238BE6C.o
-                                         40](OVERLAY13_LOAD_ENTRY,notype) found in global overlay_13_0238BE6C.o
+                                         40](PERSONALITY_TEST_PTR,notype) found in global overlay_13_0238C010.o
+                                         40](OVERLAY13_LOAD_ENTRY,notype) found in global overlay_13_0238C010.o
                                           41](PersonalityTestFrameUpdate,func) found in global overlay_13_EntryOverlay13.o
                                            42](PersonalityTestMainManager,func) found in global overlay_13.o
-                                            43](PORTRAIT_ATTRIBUTES,notype) found in global overlay_13_0238BE6C.o
-                                            43](GetOptionStringFromID,func) found in global overlay_13_0238BDF0.o
+                                            43](PORTRAIT_ATTRIBUTES,notype) found in global overlay_13_0238C010.o
+                                            43](GetPartnerOptionString,func) found in global overlay_13_0238BDA8.o
                                             43](GetPersonality,func) found in global overlay_13_0238BDA8.o
-                                            43](WaitForNextStep,func) found in global overlay_13_0238BE4C.o
-                                            43](DrawPersonalityTestDebug,func) found in global overlay_13_0238BE6C.o
+                                            43](WaitForNextStep,func) found in global overlay_13_0238BDA8.o
+                                            43](DrawPersonalityTestDebug,func) found in global overlay_13_0238BDA8.o
                                           41](ExitOverlay13,func) found in global overlay_13_EntryOverlay13.o
                                         39](InitMove,func) found in global moves_1.o
                                         39](StrncpySimpleNoPad,func) found in global main_020251AC.o
@@ -33068,45 +33068,43 @@
   0238D30C 00000000 .text   $a	(overlay_13_0238BDA8.o)
   0238D30C 00000048 .text   GetPersonality	(overlay_13_0238BDA8.o)
   0238D350 00000000 .text   $d	(overlay_13_0238BDA8.o)
-  0238D354 00000000 .text   $a	(overlay_13_0238BDF0.o)
-  0238D354 0000005C .text   .text	(overlay_13_0238BDF0.o)
-  0238D354 0000005C .text   GetOptionStringFromID	(overlay_13_0238BDF0.o)
-  0238D3A4 00000000 .text   $d	(overlay_13_0238BDF0.o)
-  0238D3B0 00000000 .text   $a	(overlay_13_0238BE4C.o)
-  0238D3B0 00000020 .text   WaitForNextStep	(overlay_13_0238BE4C.o)
-  0238D3CC 00000000 .text   $d	(overlay_13_0238BE4C.o)
-  0238D3D0 00000000 .text   $a	(overlay_13_0238BE6C.o)
-  0238D3D0 000001A8 .text   .text	(overlay_13_0238BE6C.o)
-  0238D3D0 000001A8 .text   DrawPersonalityTestDebug	(overlay_13_0238BE6C.o)
-  0238D560 00000000 .text   $d	(overlay_13_0238BE6C.o)
-  0238D578 00000E80 .rodata .rodata	(overlay_13_0238BE6C.o)
-  0238D578 00000000 .rodata QUIZ_BORDER_COLOR_TABLE	(overlay_13_0238BE6C.o)
-  0238D57C 00000000 .rodata PORTRAIT_ATTRIBUTES	(overlay_13_0238BE6C.o)
-  0238D584 00000000 .rodata QUIZ_MALE_FEMALE_BOOST_TABLE	(overlay_13_0238BE6C.o)
-  0238D58C 00000000 .rodata OVERLAY13_LOAD_ENTRY	(overlay_13_0238BE6C.o)
-  0238D59C 00000000 .rodata QUIZ_WINDOW_PARAMS_1	(overlay_13_0238BE6C.o)
-  0238D5AC 00000000 .rodata QUIZ_WINDOW_PARAMS_2	(overlay_13_0238BE6C.o)
-  0238D5BC 00000000 .rodata QUIZ_WINDOW_PARAMS_3	(overlay_13_0238BE6C.o)
-  0238D5CC 00000000 .rodata QUIZ_WINDOW_PARAMS_4	(overlay_13_0238BE6C.o)
-  0238D5DC 00000000 .rodata QUIZ_MENU_ITEMS_1	(overlay_13_0238BE6C.o)
-  0238D5F4 00000000 .rodata STARTERS_PARTNER_IDS	(overlay_13_0238BE6C.o)
-  0238D620 00000000 .rodata STARTERS_HERO_IDS	(overlay_13_0238BE6C.o)
-  0238D660 00000000 .rodata STARTERS_TYPE_INCOMPATIBILITY_TABLE	(overlay_13_0238BE6C.o)
-  0238D6B4 00000000 .rodata STARTERS_STRINGS	(overlay_13_0238BE6C.o)
-  0238D714 00000000 .rodata QUIZ_QUESTION_STRINGS	(overlay_13_0238BE6C.o)
-  0238D798 00000000 .rodata QUIZ_ANSWER_STRINGS	(overlay_13_0238BE6C.o)
-  0238D8F8 00000000 .rodata QUIZ_ANSWER_POINTS	(overlay_13_0238BE6C.o)
-  0238E3D8 00000000 .rodata ov13_0238CE70	(overlay_13_0238BE6C.o)
+  0238D354 00000000 .text   $a	(overlay_13_0238BDA8.o)
+  0238D354 0000005C .text   GetPartnerOptionString	(overlay_13_0238BDA8.o)
+  0238D3A4 00000000 .text   $d	(overlay_13_0238BDA8.o)
+  0238D3B0 00000000 .text   $a	(overlay_13_0238BDA8.o)
+  0238D3B0 00000020 .text   WaitForNextStep	(overlay_13_0238BDA8.o)
+  0238D3CC 00000000 .text   $d	(overlay_13_0238BDA8.o)
+  0238D3D0 00000000 .text   $a	(overlay_13_0238BDA8.o)
+  0238D3D0 000001A8 .text   DrawPersonalityTestDebug	(overlay_13_0238BDA8.o)
+  0238D560 00000000 .text   $d	(overlay_13_0238BDA8.o)
+  0238D578 00000E80 .rodata .rodata	(overlay_13_0238C010.o)
+  0238D578 00000000 .rodata QUIZ_BORDER_COLOR_TABLE	(overlay_13_0238C010.o)
+  0238D57C 00000000 .rodata PORTRAIT_ATTRIBUTES	(overlay_13_0238C010.o)
+  0238D584 00000000 .rodata QUIZ_MALE_FEMALE_BOOST_TABLE	(overlay_13_0238C010.o)
+  0238D58C 00000000 .rodata OVERLAY13_LOAD_ENTRY	(overlay_13_0238C010.o)
+  0238D59C 00000000 .rodata QUIZ_WINDOW_PARAMS_1	(overlay_13_0238C010.o)
+  0238D5AC 00000000 .rodata QUIZ_WINDOW_PARAMS_2	(overlay_13_0238C010.o)
+  0238D5BC 00000000 .rodata QUIZ_WINDOW_PARAMS_3	(overlay_13_0238C010.o)
+  0238D5CC 00000000 .rodata QUIZ_WINDOW_PARAMS_4	(overlay_13_0238C010.o)
+  0238D5DC 00000000 .rodata QUIZ_MENU_ITEMS_1	(overlay_13_0238C010.o)
+  0238D5F4 00000000 .rodata STARTERS_PARTNER_IDS	(overlay_13_0238C010.o)
+  0238D620 00000000 .rodata STARTERS_HERO_IDS	(overlay_13_0238C010.o)
+  0238D660 00000000 .rodata STARTERS_TYPE_INCOMPATIBILITY_TABLE	(overlay_13_0238C010.o)
+  0238D6B4 00000000 .rodata STARTERS_STRINGS	(overlay_13_0238C010.o)
+  0238D714 00000000 .rodata QUIZ_QUESTION_STRINGS	(overlay_13_0238C010.o)
+  0238D798 00000000 .rodata QUIZ_ANSWER_STRINGS	(overlay_13_0238C010.o)
+  0238D8F8 00000000 .rodata QUIZ_ANSWER_POINTS	(overlay_13_0238C010.o)
+  0238E3D8 00000000 .rodata ov13_0238CE70	(overlay_13_0238C010.o)
 #>0238E3F8          SDK_OVERLAY.OVY_13.SINIT_START (linker command file)
 #>0238E3FC          SDK_OVERLAY.OVY_13.SINIT_END (linker command file)
 #>0238E400          SDK_OVERLAY.OVY_13.TEXT_END (linker command file)
 #>0238E400          SDK_OVERLAY.OVY_13.DATA_START (linker command file)
-  0238E400 00000000 .data   PERSONALITY_TEST_PTR	(overlay_13_0238BE6C.o)
-  0238E400 00000110 .data   .data	(overlay_13_0238BE6C.o)
-  0238E40C 00000000 .data   QUIZ_WINDOW_PARAMS_5	(overlay_13_0238BE6C.o)
-  0238E41C 00000000 .data   QUIZ_WINDOW_PARAMS_6	(overlay_13_0238BE6C.o)
-  0238E42C 00000000 .data   QUIZ_DEBUG_MENU_ITEMS	(overlay_13_0238BE6C.o)
-  0238E484 00000000 .data   QUIZ_QUESTION_ANSWER_ASSOCIATIONS	(overlay_13_0238BE6C.o)
+  0238E400 00000000 .data   PERSONALITY_TEST_PTR	(overlay_13_0238C010.o)
+  0238E400 00000110 .data   .data	(overlay_13_0238C010.o)
+  0238E40C 00000000 .data   QUIZ_WINDOW_PARAMS_5	(overlay_13_0238C010.o)
+  0238E41C 00000000 .data   QUIZ_WINDOW_PARAMS_6	(overlay_13_0238C010.o)
+  0238E42C 00000000 .data   QUIZ_DEBUG_MENU_ITEMS	(overlay_13_0238C010.o)
+  0238E484 00000000 .data   QUIZ_QUESTION_ANSWER_ASSOCIATIONS	(overlay_13_0238C010.o)
 #>0238E520          SDK_OVERLAY.OVY_13.DATA_END (linker command file)
 #>0238E520          SDK_OVERLAY.OVY_13.END (linker command file)
 #>00002D60          SDK_OVERLAY.OVY_13.TEXT_SIZE (linker command file)
@@ -41991,5 +41989,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Jul 08 01:11:44 2026
-# Link end time: Wed Jul 08 01:11:45 2026
+# Link start time: Fri Jul 10 22:34:43 2026
+# Link end time: Fri Jul 10 22:34:43 2026
