@@ -20,7 +20,7 @@
 .public GetKeyboardStringResult
 .public GetMonsterGenderVeneer
 .public GetNameRaw
-.public GetOptionStringFromID
+.public GetPartnerOptionString
 .public GetPersonality
 .public GetPressedButtons
 .public GetReleasedStylus

@@ -4,9 +4,11 @@
 #include "enums.h"
 
 struct preprocessor_args {
-    u8 buf00[0x10];
-    u32 unk1c;
-    u8 buf1e[0x50-0x10-0x4];
+    u32 flag_vals[4];
+    u32 id_vals[5];
+    s32 number_vals[5];
+    char* strings[5];
+    u32 speaker_id;
 };
 
 // Gets the message that is shown on the dungeon results ("The Last Outing") screen, right after the leader's name.

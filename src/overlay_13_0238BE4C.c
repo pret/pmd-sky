@@ -1,9 +1,9 @@
-#include "overlay_13_0238BE4C.h"
 #include "overlay_13_0238BDA8.h"
+#include "overlay_13_0238BE4C.h"
 
-extern struct Overlay13Main *PERSONALITY_TEST_PTR;
+extern struct personality_test *PERSONALITY_TEST_PTR;
 
-void WaitForNextStep(s32 state) {
-    PERSONALITY_TEST_PTR->unk20 = 0x3A;
-    PERSONALITY_TEST_PTR->unk30 = state;
+void WaitForNextStep(enum personality_test_state state) {
+    PERSONALITY_TEST_PTR->state = QUIZ_WAIT_NEXT_STEP;
+    PERSONALITY_TEST_PTR->future_state = state;
 }

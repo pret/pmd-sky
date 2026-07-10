@@ -23,7 +23,7 @@ void GetDungeonResultMsg(s32 damage_source_or_result, char* buffer, int buffer_s
         InitMoveCheckId(&move, damage_source_or_result);
         char* rs = GetDungeonResultString(0);
         FormatMoveString(rs, &move, 0);
-        scratch_2.unk1c = (u16) move.id;
+        scratch_2.id_vals[0] = (u16) move.id;
         rs = StringFromId(DUNGEON_RESULT_STRING);
         PreprocessString(buffer, buffer_size, rs, 0, &scratch_2);
     } else {
