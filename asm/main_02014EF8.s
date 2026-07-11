@@ -1,52 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02014E64.inc"
+	.include "main_02014EF8.inc"
 
 	.text
-
-	arm_func_start IsRealMove
-IsRealMove: ; 0x02014E64
-	cmp r0, #0
-	moveq r0, #0
-	bxeq lr
-	ldr r1, _02014EEC ; =0x000001D3
-	cmp r0, r1
-	moveq r0, #0
-	bxeq lr
-	cmp r0, #0x160
-	moveq r0, #0
-	bxeq lr
-	sub r1, r1, #0x70
-	cmp r0, r1
-	blo _02014EA4
-	cmp r0, #0x168
-	movlo r0, #0
-	bxlo lr
-_02014EA4:
-	cmp r0, #0x168
-	bls _02014EBC
-	ldr r1, _02014EF0 ; =0x0000018A
-	cmp r0, r1
-	movlo r0, #0
-	bxlo lr
-_02014EBC:
-	ldr r1, _02014EF0 ; =0x0000018A
-	cmp r0, r1
-	bls _02014ED8
-	add r1, r1, #0x23
-	cmp r0, r1
-	movls r0, #0
-	bxls lr
-_02014ED8:
-	ldr r1, _02014EF4 ; =0x0000021F
-	cmp r0, r1
-	movhs r0, #0
-	movlo r0, #1
-	bx lr
-	.align 2, 0
-_02014EEC: .word 0x000001D3
-_02014EF0: .word 0x0000018A
-_02014EF4: .word 0x0000021F
-	arm_func_end IsRealMove
 
 	arm_func_start IsMovesetValid
 IsMovesetValid: ; 0x02014EF8
