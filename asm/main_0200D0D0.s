@@ -1,23 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0200D0A0.inc"
+	.include "main_0200D0D0.inc"
 
 	.text
-
-	arm_func_start ItemToBulkItem
-ItemToBulkItem: ; 0x0200D0A0
-	ldrb r2, [r1]
-	tst r2, #1
-	movne r2, #1
-	moveq r2, #0
-	tst r2, #0xff
-	ldrnesh r2, [r1, #4]
-	strneh r2, [r0]
-	ldrneh r1, [r1, #2]
-	moveq r1, #0
-	streqh r1, [r0]
-	strh r1, [r0, #2]
-	bx lr
-	arm_func_end ItemToBulkItem
 
 	arm_func_start GetDisplayedBuyPrice
 GetDisplayedBuyPrice: ; 0x0200D0D0

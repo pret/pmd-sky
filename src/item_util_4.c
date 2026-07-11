@@ -189,3 +189,15 @@ void BulkItemToItem(struct item* item, struct bulk_item* bulk_item)
         ItemZInit();
     }
 }
+
+void ItemToBulkItem(struct bulk_item* bulk, struct item* item)
+{
+    if (GET_FLAG(item->flags, ITEM_FLAG_EXISTS)) {
+        bulk->id = item->id;
+        bulk->quantity = item->quantity;
+    }
+    else {
+        bulk->id = 0;
+        bulk->quantity = 0;
+    }
+}
