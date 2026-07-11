@@ -1,19 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_020151C8.inc"
+	.include "main_020151E4.inc"
 
 	.text
-
-	arm_func_start GetMoveCategory
-GetMoveCategory: ; 0x020151C8
-	ldr r2, _020151E0 ; =DUNGEON_MOVE_TABLES
-	mov r1, #0x1a
-	ldr r2, [r2, #8]
-	mla r1, r0, r1, r2
-	ldrb r0, [r1, #3]
-	bx lr
-	.align 2, 0
-_020151E0: .word DUNGEON_MOVE_TABLES
-	arm_func_end GetMoveCategory
 
 	arm_func_start GetPpIncrease
 GetPpIncrease: ; 0x020151E4

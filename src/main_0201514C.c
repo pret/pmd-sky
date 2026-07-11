@@ -1,5 +1,7 @@
 #include "main_0201514C.h"
 
+extern struct move_data_table_outer DUNGEON_MOVE_TABLES;
+
 bool8 IsSameMove(struct move* moveset, struct move* move) {
     if (!GET_FLAG(move->flags0, MOVE_FLAG_EXISTS)) {
         return FALSE;
@@ -16,4 +18,9 @@ bool8 IsSameMove(struct move* moveset, struct move* move) {
     }
     
     return FALSE;
+}
+
+u8 GetMoveCategory(enum move_id move_id)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move_id].category;
 }
