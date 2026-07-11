@@ -1,30 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02014D18.inc"
+	.include "main_02014D58.inc"
 
 	.text
-
-	arm_func_start IsPunchMove
-IsPunchMove: ; 0x02014D18
-	mov r3, #0
-	ldr r2, _02014D54 ; =PUNCH_MOVE_LIST
-	b _02014D3C
-_02014D24:
-	cmp r0, r1
-	moveq r0, #1
-	bxeq lr
-	add r1, r3, #1
-	mov r1, r1, lsl #0x10
-	mov r3, r1, asr #0x10
-_02014D3C:
-	mov r1, r3, lsl #1
-	ldrh r1, [r2, r1]
-	cmp r1, #0
-	bne _02014D24
-	mov r0, #0
-	bx lr
-	.align 2, 0
-_02014D54: .word PUNCH_MOVE_LIST
-	arm_func_end IsPunchMove
 
 	arm_func_start IsHealingWishOrLunarDance
 IsHealingWishOrLunarDance: ; 0x02014D58

@@ -1,6 +1,8 @@
 #include "main_02014CEC.h"
 #include "enums.h"
 
+extern u16 PUNCH_MOVE_LIST[];
+
 bool8 Is2TurnsMove(enum move_id move_id)
 {
     if (move_id == MOVE_SOLARBEAM) return TRUE;
@@ -22,4 +24,14 @@ bool8 IsRegularAttackOrProjectile(enum move_id move_id)
         return TRUE;
 
     return move_id == MOVE_PROJECTILE;
+}
+
+bool8 IsPunchMove(enum move_id move_id)
+{
+    for (s16 i = 0; PUNCH_MOVE_LIST[i] != 0; i++) {
+        if (PUNCH_MOVE_LIST[i] == move_id) {
+            return TRUE;
+        }
+    }
+    return FALSE;
 }
