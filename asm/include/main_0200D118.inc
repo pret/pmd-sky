@@ -4,6 +4,7 @@
 .public BitstreamDebug
 .public CopyBitsFrom
 .public CopyBitsTo
+.public GetDisplayedBuyPrice
 .public GetDungeonGroup
 .public GetExclusiveItemType
 .public GetItemActionName

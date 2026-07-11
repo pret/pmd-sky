@@ -1,31 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0200D0D0.inc"
+	.include "main_0200D118.inc"
 
 	.text
-
-	arm_func_start GetDisplayedBuyPrice
-GetDisplayedBuyPrice: ; 0x0200D0D0
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	ldrsh r1, [r4, #4]
-	cmp r1, #0xb7
-	bne _0200D0EC
-	bl GetMoneyQuantity
-	ldmia sp!, {r4, pc}
-_0200D0EC:
-	mov r0, r1
-	bl IsThrownItem
-	cmp r0, #0
-	ldrsh r0, [r4, #4]
-	beq _0200D110
-	bl GetItemBuyPrice
-	ldrh r1, [r4, #2]
-	mul r0, r1, r0
-	ldmia sp!, {r4, pc}
-_0200D110:
-	bl GetItemBuyPrice
-	ldmia sp!, {r4, pc}
-	arm_func_end GetDisplayedBuyPrice
 
 	arm_func_start GetDisplayedSellPrice
 GetDisplayedSellPrice: ; 0x0200D118
