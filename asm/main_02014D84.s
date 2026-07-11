@@ -1,23 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02014D58.inc"
+	.include "main_02014D84.inc"
 
 	.text
-
-	arm_func_start IsHealingWishOrLunarDance
-IsHealingWishOrLunarDance: ; 0x02014D58
-	ldr r1, _02014D80 ; =0x000001B7
-	cmp r0, r1
-	moveq r0, #1
-	bxeq lr
-	add r1, r1, #0x57
-	cmp r0, r1
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_02014D80: .word 0x000001B7
-	arm_func_end IsHealingWishOrLunarDance
 
 	arm_func_start IsCopyingMove
 IsCopyingMove: ; 0x02014D84

@@ -13,4 +13,7 @@ bool8 Is2TurnsMove(enum move_id move_id);
 // Checks if the move is a punch move
 bool8 IsPunchMove(enum move_id move_id);
 
+// Checks if the move is a Healing Wish or Lunar Dance
+bool8 IsHealingWishOrLunarDance(enum move_id move_id);
+
 #endif //PMDSKY_MAIN_02014CEC_H

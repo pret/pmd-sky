@@ -35,3 +35,11 @@ bool8 IsPunchMove(enum move_id move_id)
     }
     return FALSE;
 }
+
+bool8 IsHealingWishOrLunarDance(enum move_id move_id)
+{
+    if (move_id == MOVE_HEALING_WISH) return TRUE;
+    if (move_id == MOVE_LUNAR_DANCE) return TRUE;
+    
+    return FALSE;
+}
