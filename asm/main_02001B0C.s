@@ -1,34 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02001AB0.inc"
+	.include "main_02001B0C.inc"
 
 	.text
-
-	arm_func_start sub_02001AB0
-sub_02001AB0: ; 0x02001AB0
-	stmdb sp!, {r3, r4, r5, lr}
-	tst r0, #0x80000000
-	movne r2, #1
-	moveq r2, #0
-	tst r1, #0x80000000
-	and r4, r2, #0xff
-	movne r2, #1
-	moveq r2, #0
-	cmp r1, #0
-	and r5, r2, #0xff
-	mvneq r0, #0x80000000
-	ldmeqia sp!, {r3, r4, r5, pc}
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	cmp r4, #0
-	rsbne r0, r0, #0
-	cmp r5, #0
-	rsbne r1, r1, #0
-	bl sub_02001BB4
-	cmp r4, r5
-	rsbne r0, r0, #0
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02001AB0
 
 	arm_func_start UMultiplyByFixedPoint
 UMultiplyByFixedPoint: ; 0x02001B0C
