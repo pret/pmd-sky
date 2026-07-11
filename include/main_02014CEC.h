@@ -31,5 +31,8 @@ bool8 IsNot2TurnsMoveOrSketch(enum move_id move_id);
 
 bool8 IsRealMove(enum move_id move_id);
 bool8 IsMovesetValid(struct ground_move* move);
+bool8 IsRealMoveInTimeDarkness(enum move_id move_id);
+bool8 IsMovesetValidInTimeDarkness(struct ground_move* moveset);
+s32 GetFirstNotRealMoveInTimeDarkness(struct ground_move* moveset);
 
 #endif //PMDSKY_MAIN_02014CEC_H
