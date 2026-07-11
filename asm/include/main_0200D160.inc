@@ -5,6 +5,7 @@
 .public CopyBitsFrom
 .public CopyBitsTo
 .public GetDisplayedBuyPrice
+.public GetDisplayedSellPrice
 .public GetDungeonGroup
 .public GetExclusiveItemType
 .public GetItemActionName

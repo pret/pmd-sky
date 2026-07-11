@@ -8,6 +8,7 @@ extern s16 RandRangeSafe(s32, s32);
 extern s16 _020A18BC[10];
 extern void ItemZInit();
 extern u16 GetItemBuyPrice(s16);
+extern u16 GetItemSellPrice(s16);
 extern s32 GetMoneyQuantity(struct item*);
 extern bool8 IsThrownItem(s16);
 
@@ -214,4 +215,15 @@ s32 GetDisplayedBuyPrice(struct item* item)
         return item->quantity * GetItemBuyPrice(item->id);
     }
     return GetItemBuyPrice(item->id);
+}
+
+s32 GetDisplayedSellPrice(struct item* item)
+{
+    if (item->id == ITEM_POKE) {
+        return GetMoneyQuantity(item);
+    }
+    if (IsThrownItem(item->id)) {
+        return item->quantity * GetItemSellPrice(item->id);
+    }
+    return GetItemSellPrice(item->id);
 }
