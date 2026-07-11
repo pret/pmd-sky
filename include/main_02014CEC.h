@@ -19,4 +19,7 @@ bool8 IsHealingWishOrLunarDance(enum move_id move_id);
 // Checks if the move is a copying move
 bool8 IsCopyingMove(enum move_id move_id);
 
+// Checks if the move is a trapping move
+bool8 IsTrappingMove(enum move_id move_id);
+
 #endif //PMDSKY_MAIN_02014CEC_H

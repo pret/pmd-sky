@@ -52,3 +52,13 @@ bool8 IsCopyingMove(enum move_id move_id)
     
     return FALSE;
 }
+
+bool8 IsTrappingMove(enum move_id move_id)
+{
+    if (move_id == MOVE_SPIKES) return TRUE;
+    if (move_id == MOVE_TOXIC_SPIKES) return TRUE;
+    if (move_id == MOVE_STEALTH_ROCK) return TRUE;
+    if (move_id == MOVE_TRAPPER) return TRUE;
+    
+    return FALSE;
+}

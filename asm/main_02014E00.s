@@ -1,29 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02014DBC.inc"
+	.include "main_02014E00.inc"
 
 	.text
-
-	arm_func_start IsTrappingMove
-IsTrappingMove: ; 0x02014DBC
-	ldr r1, _02014DFC ; =0x00000127
-	cmp r0, r1
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x1f0
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x1e0
-	moveq r0, #1
-	bxeq lr
-	add r1, r1, #0x6a
-	cmp r0, r1
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_02014DFC: .word 0x00000127
-	arm_func_end IsTrappingMove
 
 	arm_func_start IsOneHitKoMove
 IsOneHitKoMove: ; 0x02014E00
