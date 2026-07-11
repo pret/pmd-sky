@@ -7,3 +7,20 @@ void ItemZInit(struct item* item)
     item->flags = 0;
     item->held_by = 0;
 }
+
+bool8 AreItemsEquivalent(struct item* item1, struct item* item2, s32 bitmask)
+{
+    if ((item1->flags & bitmask) != (item2->flags & bitmask)) {
+        return FALSE;
+    }
+    if (item1->held_by != item2->held_by) {
+        return FALSE;
+    }
+    if (item1->quantity != item2->quantity) {
+        return FALSE;
+    }
+    if (item1->id != item2->id) {
+        return FALSE;
+    }
+    return TRUE;
+}

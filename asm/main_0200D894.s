@@ -1,35 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0200D834.inc"
+	.include "main_0200D894.inc"
 
 	.text
-
-	arm_func_start AreItemsEquivalent
-AreItemsEquivalent: ; 0x0200D834
-	ldrb ip, [r0]
-	ldrb r3, [r1]
-	and ip, ip, r2
-	and r2, r3, r2
-	cmp ip, r2
-	movne r0, #0
-	bxne lr
-	ldrb r3, [r0, #1]
-	ldrb r2, [r1, #1]
-	cmp r3, r2
-	movne r0, #0
-	bxne lr
-	ldrh r3, [r0, #2]
-	ldrh r2, [r1, #2]
-	cmp r3, r2
-	movne r0, #0
-	bxne lr
-	ldrsh r2, [r0, #4]
-	ldrsh r0, [r1, #4]
-	cmp r2, r0
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end AreItemsEquivalent
 
 	arm_func_start sub_0200D894
 sub_0200D894: ; 0x0200D894
