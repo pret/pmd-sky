@@ -23,3 +23,12 @@ void NegateFixedPoint64(struct fixed_point_64* x)
         x->upper = x->upper + 1;
     }
 }
+
+bool8 FixedPoint64IsZero(struct fixed_point_64* x)
+{
+    if (x->upper != 0) {
+        return FALSE;
+    }
+    
+    return x->lower == 0;
+}
