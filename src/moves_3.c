@@ -64,8 +64,6 @@ u8 *GetMoveMessageFromId(s32 move_id)
     return StringFromId((u16)(DUNGEON_MOVE_TABLES.moves->moves[move_id].message_string_idx + MESSAGE_ID));
 }
 
-#define GET_BIT(BYTE, N) ((u8)(BYTE & (1 << N) ? 1 : 0))
-
 s32 GetNbMoves(struct moves *moves)
 {
     s32 index;
@@ -81,7 +79,7 @@ s32 GetNbMoves(struct moves *moves)
         // fake
         u8 flag = *(u8*)((u32)moves + (index * 6));
 
-        if(GET_BIT(flag, 0))
+        if(GET_FLAG(flag, MOVE_FLAG_EXISTS))
             num_moves++;
         
     }

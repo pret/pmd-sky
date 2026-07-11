@@ -64,4 +64,6 @@ static inline s32 Max(s32 a, s32 b)
     b = temp;               \
 }
 
+#define GET_FLAG(FLAG, BIT) ((bool8) (((FLAG) & (BIT)) ? TRUE : FALSE))
+
 #endif //PMDSKY_UTIL_H
