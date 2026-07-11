@@ -359,12 +359,3 @@ _02002224: .word NATURAL_LOG_VALUE_TABLE
 sub_02002228: ; 0x02002228
 	bx lr
 	arm_func_end sub_02002228
-
-	arm_func_start GetRngSeed
-GetRngSeed: ; 0x0200222C
-	ldr r0, _02002238 ; =PRNG_SEQUENCE_NUM
-	ldrh r0, [r0]
-	bx lr
-	.align 2, 0
-_02002238: .word PRNG_SEQUENCE_NUM
-	arm_func_end GetRngSeed

@@ -2,6 +2,11 @@
 
 extern u16 PRNG_SEQUENCE_NUM;
 
+u16 GetRngSeed(void)
+{
+    return PRNG_SEQUENCE_NUM;
+}
+
 void SetRngSeed(u16 seed)
 {
     PRNG_SEQUENCE_NUM = seed;
