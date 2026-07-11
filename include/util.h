@@ -32,6 +32,13 @@ struct fixed_point {
     s16 fractional;
 };
 
+// 64-bit signed fixed-point number with 16 fraction bits.
+// Represents the number ((upper << 16) + (lower >> 16) + (lower & 0xFFFF) * 2^-16)
+struct fixed_point_64 {
+    s32 upper;  // sign bit, plus the 31 most significant integer bits
+    u32 lower; // the 32 least significant bits (16 integer + 16 fraction)
+};
+
 // Compares two numbers and return the minimum
 #define MIN(A, B) ((A > B) ? B : A)
 

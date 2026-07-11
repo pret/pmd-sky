@@ -61,3 +61,12 @@ u32 sub_02001BB4(s32 x, s32 y)
     
     return var_r8;
 }
+
+void IntToFixedPoint64(struct fixed_point_64* out, s32 x)
+{
+    out->upper = (u32) (x & ~0xFFFF) >> 0x10;
+    out->lower = x << 0x10;
+    if (x & 0x8000) {
+        out->upper = out->upper | ~0xFFFF;
+    }
+}

@@ -1,23 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02001C80.inc"
+	.include "main_02001CB0.inc"
 
 	.text
-
-	arm_func_start IntToFixedPoint64
-IntToFixedPoint64: ; 0x02001C80
-	mov r2, #0x10000
-	rsb r2, r2, #0
-	and r3, r1, r2
-	mov r3, r3, lsr #0x10
-	str r3, [r0]
-	mov r3, r1, lsl #0x10
-	str r3, [r0, #4]
-	tst r1, #0x8000
-	ldrne r1, [r0]
-	orrne r1, r1, r2
-	strne r1, [r0]
-	bx lr
-	arm_func_end IntToFixedPoint64
 
 	arm_func_start FixedPoint64ToInt
 FixedPoint64ToInt: ; 0x02001CB0
