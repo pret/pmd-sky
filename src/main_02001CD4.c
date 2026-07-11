@@ -11,3 +11,15 @@ void FixedPoint32To64(struct fixed_point_64* out, s32 x)
         out->upper &= 0x7F;
     }
 }
+
+void NegateFixedPoint64(struct fixed_point_64* x)
+{
+    x->upper = x->upper ^ -1;
+    
+    x->lower = x->lower ^ -1;
+    x->lower += 1;
+    
+    if (x->lower == 0) {
+        x->upper = x->upper + 1;
+    }
+}

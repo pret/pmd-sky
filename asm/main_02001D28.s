@@ -1,23 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02001CF8.inc"
+	.include "main_02001D28.inc"
 
 	.text
-
-	arm_func_start NegateFixedPoint64
-NegateFixedPoint64: ; 0x02001CF8
-	ldr r2, [r0]
-	mvn r1, #0
-	eor r2, r2, r1
-	str r2, [r0]
-	ldr r2, [r0, #4]
-	eor r2, r2, r1
-	adds r1, r2, #1
-	str r1, [r0, #4]
-	ldreq r1, [r0]
-	addeq r1, r1, #1
-	streq r1, [r0]
-	bx lr
-	arm_func_end NegateFixedPoint64
 
 	arm_func_start FixedPoint64IsZero
 FixedPoint64IsZero: ; 0x02001D28

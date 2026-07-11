@@ -23,7 +23,7 @@ Static main
 	Object src/main_02001BB4.o
 	Object asm/main_02001CB0.o
 	Object src/main_02001CD4.o
-	Object asm/main_02001CF8.o
+	Object asm/main_02001D28.o
 	Object src/main_0200224C.o
 	Object asm/main_020022C4.o
 	Object src/main_0200330C.o
