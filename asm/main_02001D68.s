@@ -1,17 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02001D50.inc"
+	.include "main_02001D68.inc"
 
 	.text
-
-	arm_func_start FixedPoint64IsNegative
-FixedPoint64IsNegative: ; 0x02001D50
-	ldr r0, [r0]
-	tst r0, #0x80000000
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end FixedPoint64IsNegative
 
 	arm_func_start FixedPoint64CmpLt
 FixedPoint64CmpLt: ; 0x02001D68

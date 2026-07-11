@@ -6,5 +6,6 @@
 void FixedPoint32To64(struct fixed_point_64* out, s32 x);
 void NegateFixedPoint64(struct fixed_point_64* x);
 bool8 FixedPoint64IsZero(struct fixed_point_64* x);
+bool8 FixedPoint64IsNegative(struct fixed_point_64* x);
 
 #endif //PMDSKY_MAIN_02001CD4_H

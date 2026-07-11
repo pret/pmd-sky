@@ -32,3 +32,8 @@ bool8 FixedPoint64IsZero(struct fixed_point_64* x)
     
     return x->lower == 0;
 }
+
+bool8 FixedPoint64IsNegative(struct fixed_point_64* x)
+{
+    return (x->upper & 0x80000000) != 0;
+}
