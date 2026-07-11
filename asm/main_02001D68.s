@@ -368,12 +368,3 @@ GetRngSeed: ; 0x0200222C
 	.align 2, 0
 _02002238: .word PRNG_SEQUENCE_NUM
 	arm_func_end GetRngSeed
-
-	arm_func_start SetRngSeed
-SetRngSeed: ; 0x0200223C
-	ldr r1, _02002248 ; =PRNG_SEQUENCE_NUM
-	strh r0, [r1]
-	bx lr
-	.align 2, 0
-_02002248: .word PRNG_SEQUENCE_NUM
-	arm_func_end SetRngSeed

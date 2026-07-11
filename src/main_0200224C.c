@@ -2,6 +2,11 @@
 
 extern u16 PRNG_SEQUENCE_NUM;
 
+void SetRngSeed(u16 seed)
+{
+    PRNG_SEQUENCE_NUM = seed;
+}
+
 u16 Rand16Bit() {
     PRNG_SEQUENCE_NUM = (PRNG_SEQUENCE_NUM * 0x6D) + 0x3FD;
     return PRNG_SEQUENCE_NUM;

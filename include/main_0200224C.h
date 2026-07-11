@@ -1,6 +1,7 @@
 #ifndef PMDSKY_MAIN_0200224C_H
 #define PMDSKY_MAIN_0200224C_H
 
+void SetRngSeed(u16 seed);
 u16 Rand16Bit();
 u32 RandInt(u32 n);
 s32 RandRange(s32 x, s32 y);
