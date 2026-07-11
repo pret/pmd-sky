@@ -10,6 +10,7 @@ extern void ItemZInit();
 extern u16 GetItemBuyPrice(s16);
 extern u16 GetItemSellPrice(s16);
 extern s32 GetMoneyQuantity(struct item*);
+extern bool8 IsShoppableItem(s16);
 extern bool8 IsThrownItem(s16);
 
 BOOL IsLosableItem(struct item* item)
@@ -226,4 +227,15 @@ s32 GetDisplayedSellPrice(struct item* item)
         return item->quantity * GetItemSellPrice(item->id);
     }
     return GetItemSellPrice(item->id);
+}
+
+s32 GetActualBuyPrice(struct item* item)
+{
+    if (!IsShoppableItem(item->id)) {
+        return 0;
+    }
+    if (IsThrownItem(item->id)) {
+        return item->quantity * GetItemBuyPrice(item->id);
+    }
+    return GetItemBuyPrice(item->id);
 }

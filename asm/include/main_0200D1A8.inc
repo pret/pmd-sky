@@ -9,7 +9,6 @@
 .public GetDungeonGroup
 .public GetExclusiveItemType
 .public GetItemActionName
-.public GetItemBuyPrice
 .public GetItemCategory
 .public GetItemName
 .public GetItemPaletteId

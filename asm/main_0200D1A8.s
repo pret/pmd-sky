@@ -1,30 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0200D160.inc"
+	.include "main_0200D1A8.inc"
 
 	.text
-
-	arm_func_start GetActualBuyPrice
-GetActualBuyPrice: ; 0x0200D160
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	ldrsh r0, [r4, #4]
-	bl IsShoppableItem
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r4, pc}
-	ldrsh r0, [r4, #4]
-	bl IsThrownItem
-	cmp r0, #0
-	ldrsh r0, [r4, #4]
-	beq _0200D1A0
-	bl GetItemBuyPrice
-	ldrh r1, [r4, #2]
-	mul r0, r1, r0
-	ldmia sp!, {r4, pc}
-_0200D1A0:
-	bl GetItemBuyPrice
-	ldmia sp!, {r4, pc}
-	arm_func_end GetActualBuyPrice
 
 	arm_func_start GetActualSellPrice
 GetActualSellPrice: ; 0x0200D1A8
