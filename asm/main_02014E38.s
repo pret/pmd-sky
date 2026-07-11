@@ -1,25 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02014E00.inc"
+	.include "main_02014E38.inc"
 
 	.text
-
-	arm_func_start IsOneHitKoMove
-IsOneHitKoMove: ; 0x02014E00
-	cmp r0, #0x83
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x96
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0xb1
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0xf7
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end IsOneHitKoMove
 
 	arm_func_start IsNot2TurnsMoveOrSketch
 IsNot2TurnsMoveOrSketch: ; 0x02014E38

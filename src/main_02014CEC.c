@@ -62,3 +62,13 @@ bool8 IsTrappingMove(enum move_id move_id)
     
     return FALSE;
 }
+
+bool8 IsOneHitKoMove(enum move_id move_id)
+{
+    if (move_id == MOVE_FISSURE) return TRUE;
+    if (move_id == MOVE_SHEER_COLD) return TRUE;
+    if (move_id == MOVE_HORN_DRILL) return TRUE;
+    if (move_id == MOVE_GUILLOTINE) return TRUE;
+
+    return FALSE;
+}
