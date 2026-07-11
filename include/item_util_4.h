@@ -19,6 +19,7 @@ void ItemToBulkItem(struct bulk_item* bulk, struct item* item);
 s32 GetDisplayedBuyPrice(struct item* item);
 s32 GetDisplayedSellPrice(struct item* item);
 s32 GetActualBuyPrice(struct item* item);
+s32 GetActualSellPrice(struct item* item);
 
 #endif //PMDSKY_ITEM_UTIL_4_H
 

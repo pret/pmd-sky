@@ -239,3 +239,14 @@ s32 GetActualBuyPrice(struct item* item)
     }
     return GetItemBuyPrice(item->id);
 }
+
+s32 GetActualSellPrice(struct item* item)
+{
+    if (!IsShoppableItem(item->id)) {
+        return 0;
+    }
+    if (IsThrownItem(item->id)) {
+        return item->quantity * GetItemSellPrice(item->id);
+    }
+    return GetItemSellPrice(item->id);
+}

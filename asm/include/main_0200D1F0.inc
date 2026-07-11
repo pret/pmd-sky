@@ -12,12 +12,10 @@
 .public GetItemCategory
 .public GetItemName
 .public GetItemPaletteId
-.public GetItemSellPrice
 .public ITEM_TABLES_PTRS_1
 .public InitBitstreamForRead
 .public InitBitstreamForWrite
 .public InitItem
-.public IsShoppableItem
 .public IsThrownItem
 .public MONEY_QUANTITY_TABLE
 .public MemAlloc
