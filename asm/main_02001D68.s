@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/LEHLv
 	arm_func_start FixedPoint64CmpLt
 FixedPoint64CmpLt: ; 0x02001D68
 	stmdb sp!, {r3, lr}

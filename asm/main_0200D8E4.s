@@ -946,6 +946,7 @@ _0200E5F4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end SortItemList
 
+; https://decomp.me/scratch/3UbRu
 	arm_func_start RemoveEmptyItems
 RemoveEmptyItems: ; 0x0200E610
 	stmdb sp!, {r4, r5, r6, lr}

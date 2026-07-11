@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/bOtSO
 	arm_func_start UFixedPoint64CmpLt
 UFixedPoint64CmpLt: ; 0x02001A30
 	cmp r0, r2

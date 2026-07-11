@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/CGSpp
 	arm_func_start UMultiplyByFixedPoint
 UMultiplyByFixedPoint: ; 0x02001B0C
 	stmdb sp!, {r3, r4, r5, lr}
