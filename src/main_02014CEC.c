@@ -43,3 +43,12 @@ bool8 IsHealingWishOrLunarDance(enum move_id move_id)
     
     return FALSE;
 }
+
+bool8 IsCopyingMove(enum move_id move_id)
+{
+    if (move_id == MOVE_MIMIC) return TRUE;
+    if (move_id == MOVE_SKETCH) return TRUE;
+    if (move_id == MOVE_COPYCAT) return TRUE;
+    
+    return FALSE;
+}

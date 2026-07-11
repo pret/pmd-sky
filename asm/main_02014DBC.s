@@ -1,26 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02014D84.inc"
+	.include "main_02014DBC.inc"
 
 	.text
-
-	arm_func_start IsCopyingMove
-IsCopyingMove: ; 0x02014D84
-	ldr r1, _02014DB8 ; =0x00000147
-	cmp r0, r1
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #0x8a
-	moveq r0, #1
-	bxeq lr
-	add r1, r1, #0xc6
-	cmp r0, r1
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_02014DB8: .word 0x00000147
-	arm_func_end IsCopyingMove
 
 	arm_func_start IsTrappingMove
 IsTrappingMove: ; 0x02014DBC
