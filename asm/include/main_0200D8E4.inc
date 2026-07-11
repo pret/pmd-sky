@@ -12,9 +12,7 @@
 .public InitBitstreamForWrite
 .public IsThrownItem
 .public ItemZInit
-.public MONEY_QUANTITY_TABLE
 .public MemAlloc
 .public MemFree
-.public MultiplyByFixedPoint
 .public _02094D20
 .public sub_0200EB64

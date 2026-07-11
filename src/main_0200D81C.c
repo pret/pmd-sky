@@ -1,5 +1,8 @@
 #include "main_0200D81C.h"
 
+extern s32 MultiplyByFixedPoint(s32, s32);
+extern s32 MONEY_QUANTITY_TABLE[];
+
 void ItemZInit(struct item* item)
 {
     item->id = 0;
@@ -29,4 +32,15 @@ void sub_0200D894(struct item* item)
 {
     item->held_by = 0;
     item->flags = item->flags & ~(ITEM_FLAG_STICKY | ITEM_FLAG_SET);
+}
+
+s32 GetMoneyQuantity(struct item* item)
+{
+    s32 moneyQuantity = MONEY_QUANTITY_TABLE[item->quantity];
+    
+    if (!(item->flags & ITEM_FLAG_UNK_MONEY_QUANTITY)) {
+        return moneyQuantity;
+    }
+
+    return MultiplyByFixedPoint(moneyQuantity << 8, 0x133) >> 8;
 }

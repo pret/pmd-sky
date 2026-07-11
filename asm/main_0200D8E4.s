@@ -1,26 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0200D8AC.inc"
+	.include "main_0200D8E4.inc"
 
 	.text
-
-	arm_func_start GetMoneyQuantity
-GetMoneyQuantity: ; 0x0200D8AC
-	stmdb sp!, {r3, lr}
-	ldrb r1, [r0]
-	ldrh r2, [r0, #2]
-	ldr r0, _0200D8DC ; =MONEY_QUANTITY_TABLE
-	tst r1, #0x20
-	ldr r0, [r0, r2, lsl #2]
-	ldmeqia sp!, {r3, pc}
-	ldr r1, _0200D8E0 ; =0x00000133
-	mov r0, r0, lsl #8
-	bl MultiplyByFixedPoint
-	mov r0, r0, asr #8
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0200D8DC: .word MONEY_QUANTITY_TABLE
-_0200D8E0: .word 0x00000133
-	arm_func_end GetMoneyQuantity
 
 	arm_func_start sub_0200D8E4
 sub_0200D8E4: ; 0x0200D8E4
