@@ -25,4 +25,7 @@ bool8 IsTrappingMove(enum move_id move_id);
 // Checks if the move is a one hit KO move
 bool8 IsOneHitKoMove(enum move_id move_id);
 
+// Checks if the move is not a two turn move or sketch
+bool8 IsNot2TurnsMoveOrSketch(enum move_id move_id);
+
 #endif //PMDSKY_MAIN_02014CEC_H

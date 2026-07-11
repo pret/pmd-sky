@@ -1,22 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02014E38.inc"
+	.include "main_02014E64.inc"
 
 	.text
-
-	arm_func_start IsNot2TurnsMoveOrSketch
-IsNot2TurnsMoveOrSketch: ; 0x02014E38
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl Is2TurnsMove
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r4, pc}
-	cmp r4, #0x8a
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r4, pc}
-	arm_func_end IsNot2TurnsMoveOrSketch
 
 	arm_func_start IsRealMove
 IsRealMove: ; 0x02014E64

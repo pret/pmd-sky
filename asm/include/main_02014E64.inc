@@ -95,7 +95,6 @@
 .public GroupOamObjs
 .public InitOamInfo
 .public IqSkillFlagTest
-.public Is2TurnsMove
 .public LANGUAGE_INFO_DATA
 .public LoadFileFromRom
 .public LoadScriptVariableValue

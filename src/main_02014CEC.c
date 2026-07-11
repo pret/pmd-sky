@@ -72,3 +72,11 @@ bool8 IsOneHitKoMove(enum move_id move_id)
 
     return FALSE;
 }
+
+bool8 IsNot2TurnsMoveOrSketch(enum move_id move_id)
+{
+    if (Is2TurnsMove(move_id)) return FALSE;
+    if (move_id == MOVE_SKETCH) return FALSE;
+    
+    return TRUE;
+}
