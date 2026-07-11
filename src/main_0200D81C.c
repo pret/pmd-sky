@@ -24,3 +24,9 @@ bool8 AreItemsEquivalent(struct item* item1, struct item* item2, s32 bitmask)
     }
     return TRUE;
 }
+
+void sub_0200D894(struct item* item)
+{
+    item->held_by = 0;
+    item->flags = item->flags & ~(ITEM_FLAG_STICKY | ITEM_FLAG_SET);
+}

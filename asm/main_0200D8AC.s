@@ -1,17 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0200D894.inc"
+	.include "main_0200D8AC.inc"
 
 	.text
-
-	arm_func_start sub_0200D894
-sub_0200D894: ; 0x0200D894
-	mov r1, #0
-	strb r1, [r0, #1]
-	ldrb r1, [r0]
-	bic r1, r1, #0x18
-	strb r1, [r0]
-	bx lr
-	arm_func_end sub_0200D894
 
 	arm_func_start GetMoneyQuantity
 GetMoneyQuantity: ; 0x0200D8AC
