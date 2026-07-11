@@ -1,60 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0200CAFC.inc"
+	.include "main_0200D0A0.inc"
 
 	.text
-
-	arm_func_start BulkItemToItem
-BulkItemToItem: ; 0x0200CFF0
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r4, r1
-	ldrsh r1, [r4]
-	mov r5, r0
-	cmp r1, #0
-	beq _0200D098
-	mov r0, #1
-	strb r0, [r5]
-	ldrsh r1, [r4]
-	mov r0, #0
-	strh r1, [r5, #4]
-	strb r0, [r5, #1]
-	ldrsh r0, [r5, #4]
-	bl IsThrownItem
-	cmp r0, #0
-	ldrneh r0, [r4, #2]
-	strneh r0, [r5, #2]
-	ldmneia sp!, {r3, r4, r5, pc}
-	ldrsh r0, [r5, #4]
-	bl GetItemCategory
-	cmp r0, #0xe
-	bgt _0200D078
-	subs r1, r0, #6
-	addpl pc, pc, r1, lsl #2
-	b _0200D08C
-_0200D054: ; jump table
-	b _0200D080 ; case 0
-	b _0200D08C ; case 1
-	b _0200D08C ; case 2
-	b _0200D08C ; case 3
-	b _0200D08C ; case 4
-	b _0200D08C ; case 5
-	b _0200D080 ; case 6
-	b _0200D080 ; case 7
-	b _0200D080 ; case 8
-_0200D078:
-	cmp r0, #0xbb
-	bne _0200D08C
-_0200D080:
-	ldrh r0, [r4, #2]
-	strh r0, [r5, #2]
-	ldmia sp!, {r3, r4, r5, pc}
-_0200D08C:
-	mov r0, #0
-	strh r0, [r5, #2]
-	ldmia sp!, {r3, r4, r5, pc}
-_0200D098:
-	bl ItemZInit
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end BulkItemToItem
 
 	arm_func_start ItemToBulkItem
 ItemToBulkItem: ; 0x0200D0A0

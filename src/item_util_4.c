@@ -6,6 +6,7 @@
 
 extern s16 RandRangeSafe(s32, s32);
 extern s16 _020A18BC[10];
+extern void ItemZInit();
 
 BOOL IsLosableItem(struct item* item)
 {
@@ -159,5 +160,32 @@ void InitBulkItem(struct bulk_item* item, s16 id) {
     else
     {
         item->quantity = 0;
+    }
+}
+
+void BulkItemToItem(struct item* item, struct bulk_item* bulk_item)
+{
+    if (bulk_item->id != 0) {
+        item->flags = ITEM_FLAG_EXISTS;
+        item->id = bulk_item->id;
+        item->held_by = 0;
+        if (IsThrownItem(item->id)) {
+            item->quantity = bulk_item->quantity;
+            return;
+        }
+        
+        switch(GetItemCategory(item->id)) {
+            case CATEGORY_POKE:
+            case CATEGORY_TREASURE_BOXES_1:
+            case CATEGORY_TREASURE_BOXES_2:
+            case CATEGORY_TREASURE_BOXES_3:
+            case 0xBB:
+                item->quantity = bulk_item->quantity;
+                return;
+            default:
+                 item->quantity = 0;
+        }
+    } else {
+        ItemZInit();
     }
 }

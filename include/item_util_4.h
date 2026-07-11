@@ -14,6 +14,7 @@ void InitItem(struct item* item, s16 id, s16 quantity, bool8 isSticky);
 void InitStandardItem(struct item* item, s16 id, bool8 isSticky);
 void sub_0200CF6C(struct item* item, s16 id, s16 quantity, bool8 isSticky);
 void InitBulkItem(struct bulk_item* item, s16 id);
+void BulkItemToItem(struct item* item, struct bulk_item* bulk_item);
 
 #endif //PMDSKY_ITEM_UTIL_4_H
 
