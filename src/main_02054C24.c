@@ -1,6 +1,10 @@
 #include "main_02054C24.h"
 
+extern enum monster_id FemaleToMaleForm(enum monster_id);
+extern enum monster_id GetBaseFormBurmyWormadamShellosGastrodonCherrim(enum monster_id);
+extern s16 GetDexNumber(enum monster_id);
 extern bool8 IsDeoxys(enum monster_id monster_id);
+extern bool8 IsUnown(enum monster_id);
 
 enum monster_id GetBaseFormCastformDeoxysCherrim(enum monster_id monster_id)
 {
@@ -20,4 +24,37 @@ enum monster_id GetBaseFormCastformDeoxysCherrim(enum monster_id monster_id)
         return MONSTER_CHERRIM_OVERCAST_SECONDARY;
     }
     return monster_id;
+}
+
+bool8 BaseFormsEqual(enum monster_id monster1, enum monster_id monster2)
+{
+    monster1 = FemaleToMaleForm(monster1);
+    monster2 = FemaleToMaleForm(monster2);
+    
+    monster1 = GetBaseFormCastformDeoxysCherrim(monster1);
+    monster2 = GetBaseFormCastformDeoxysCherrim(monster2);
+    
+    if (monster1 == monster2) {
+        return TRUE;
+    }
+    
+    if (IsUnown(monster1) && IsUnown(monster2)) {
+        return FALSE;
+    }
+    
+    enum monster_id monster1Base = GetBaseFormBurmyWormadamShellosGastrodonCherrim(monster1);
+    enum monster_id monster2Base = GetBaseFormBurmyWormadamShellosGastrodonCherrim(monster2);
+
+    if ((monster1Base == MONSTER_BURMY_SANDY && monster2Base == MONSTER_BURMY_SANDY) || 
+        (monster1Base == MONSTER_WORMADAM_SANDY && monster2Base == MONSTER_WORMADAM_SANDY) || 
+        (monster1Base == MONSTER_SHELLOS_EAST && monster2Base == MONSTER_SHELLOS_EAST) || 
+        (monster1Base == MONSTER_GASTRODON_EAST && monster2Base == MONSTER_GASTRODON_EAST)) {
+        return FALSE;
+    }
+
+    if (GetDexNumber(monster1) == GetDexNumber(monster2)) {
+        return TRUE;
+    }
+    
+    return FALSE;
 }
