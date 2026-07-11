@@ -1,41 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02014EF8.inc"
+	.include "main_02014F64.inc"
 
 	.text
-
-	arm_func_start IsMovesetValid
-IsMovesetValid: ; 0x02014EF8
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	mov r8, #0
-	mov r4, r0
-	mov r6, r8
-	mov r7, #1
-	mov r5, #6
-	b _02014F54
-_02014F14:
-	smulbb r1, r8, r5
-	ldrb r0, [r4, r1]
-	add r1, r4, r1
-	tst r0, #1
-	movne r0, r7
-	moveq r0, r6
-	tst r0, #0xff
-	beq _02014F48
-	ldrh r0, [r1, #2]
-	bl IsRealMove
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
-_02014F48:
-	add r0, r8, #1
-	mov r0, r0, lsl #0x10
-	mov r8, r0, asr #0x10
-_02014F54:
-	cmp r8, #4
-	blt _02014F14
-	mov r0, #1
-	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end IsMovesetValid
 
 	arm_func_start IsRealMoveInTimeDarkness
 IsRealMoveInTimeDarkness: ; 0x02014F64

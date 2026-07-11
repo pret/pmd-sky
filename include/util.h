@@ -64,6 +64,13 @@ static inline s32 Max(s32 a, s32 b)
     b = temp;               \
 }
 
+// Returns a bool8 given a flag and the target bit
 #define GET_FLAG(FLAG, BIT) ((bool8) (((FLAG) & (BIT)) ? TRUE : FALSE))
+
+// Same as GET_FLAG but as a static inline, since the macro doesn't match in some places
+static inline bool8 GetFlag(u8 flag, u8 bit)
+{
+    return (flag & bit) != 0;
+}
 
 #endif //PMDSKY_UTIL_H

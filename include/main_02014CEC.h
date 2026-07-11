@@ -1,6 +1,7 @@
 #ifndef PMDSKY_MAIN_02014CEC_H
 #define PMDSKY_MAIN_02014CEC_H
 
+#include "common.h"
 #include "enums.h"
 #include "util.h"
 
@@ -29,5 +30,6 @@ bool8 IsOneHitKoMove(enum move_id move_id);
 bool8 IsNot2TurnsMoveOrSketch(enum move_id move_id);
 
 bool8 IsRealMove(enum move_id move_id);
+bool8 IsMovesetValid(struct ground_move* move);
 
 #endif //PMDSKY_MAIN_02014CEC_H

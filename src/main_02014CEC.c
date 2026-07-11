@@ -195,3 +195,14 @@ bool8 IsRealMove(enum move_id move_id)
     
     return TRUE;
 }
+
+bool8 IsMovesetValid(struct ground_move* move)
+{
+    for (s16 i = 0; i < 4; i++) {
+        if (GetFlag(move[i].flags0, ITEM_FLAG_EXISTS) && !IsRealMove(move[i].id)) {
+            return FALSE;
+        }
+    }
+    
+    return TRUE;
+}
