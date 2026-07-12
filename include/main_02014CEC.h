@@ -1,6 +1,7 @@
 #ifndef PMDSKY_MAIN_02014CEC_H
 #define PMDSKY_MAIN_02014CEC_H
 
+#include "common.h"
 #include "enums.h"
 #include "util.h"
 
@@ -9,5 +10,29 @@ bool8 IsRegularAttackOrProjectile(enum move_id move_id);
 
 // Checks if the move is a two turn move
 bool8 Is2TurnsMove(enum move_id move_id);
+
+// Checks if the move is a punch move
+bool8 IsPunchMove(enum move_id move_id);
+
+// Checks if the move is a Healing Wish or Lunar Dance
+bool8 IsHealingWishOrLunarDance(enum move_id move_id);
+
+// Checks if the move is a copying move
+bool8 IsCopyingMove(enum move_id move_id);
+
+// Checks if the move is a trapping move
+bool8 IsTrappingMove(enum move_id move_id);
+
+// Checks if the move is a one hit KO move
+bool8 IsOneHitKoMove(enum move_id move_id);
+
+// Checks if the move is not a two turn move or sketch
+bool8 IsNot2TurnsMoveOrSketch(enum move_id move_id);
+
+bool8 IsRealMove(enum move_id move_id);
+bool8 IsMovesetValid(struct ground_move* move);
+bool8 IsRealMoveInTimeDarkness(enum move_id move_id);
+bool8 IsMovesetValidInTimeDarkness(struct ground_move* moveset);
+s32 GetFirstNotRealMoveInTimeDarkness(struct ground_move* moveset);
 
 #endif //PMDSKY_MAIN_02014CEC_H

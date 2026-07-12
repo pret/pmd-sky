@@ -5,5 +5,6 @@
 #include "util.h"
 
 enum monster_id GetBaseFormCastformDeoxysCherrim(enum monster_id monster_id);
+bool8 BaseFormsEqual(enum monster_id monster1, enum monster_id monster2);
 
 #endif //PMDSKY_MAIN_02054C24_H

@@ -6,6 +6,11 @@
 
 #define MAX_GROUND_TEAM_MEMBERS 555
 
+struct baby_exclusive_item_pair {
+    s16 exc_item_id;
+    s16 baby_monster;
+};
+
 struct ground_move {
     // 0x0: flags: 1-byte bitfield
     // See move::flags0 for details

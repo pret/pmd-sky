@@ -14,8 +14,6 @@ extern u8* strcpy(u8* dest, const u8* src);
 extern void sub_0200D894(struct item*);
 extern void ov10_022BD394(char*, s32, u32, u32);
 
-#define GET_BIT(BYTE, N) ((u8)(BYTE & (1 << N) ? 1 : 0))
-
 char* ov31_02383478(char* arg1, s32 arg2, u32 arg3)
 {
     u32 a = 1;
@@ -36,7 +34,7 @@ char* ov31_02383478(char* arg1, s32 arg2, u32 arg3)
         struct tile* tile = GetTile(x, y);
         struct item* item = GetItemInfo(tile->object);
 
-        if (GET_BIT(item->flags, 0)) {
+        if (GET_FLAG(item->flags, ITEM_FLAG_EXISTS)) {
             MaybeGetFormattedItemName(arg1, item, &OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0, a, 1);
             OVERLAY31_UNKNOWN_POINTER__NA_238A26C->field_0x1277 = 0;
         } else {
@@ -44,7 +42,7 @@ char* ov31_02383478(char* arg1, s32 arg2, u32 arg3)
             OVERLAY31_UNKNOWN_POINTER__NA_238A26C->field_0x1277 = 3;
         }
     } else {
-        if (GET_BIT(BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].flags, 0) &&
+        if (GET_FLAG(BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].flags, ITEM_FLAG_EXISTS) &&
             BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].held_by) {
             u32 r1 = (BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].held_by - 1);
             if (EntityIsValidOverlay31(DUNGEON_PTR[0]->monster_slots.party_members[r1]) == 0) {

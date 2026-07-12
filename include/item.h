@@ -1435,6 +1435,7 @@ enum item_flag {
     ITEM_FLAG_UNPAID = 1 << 2, // Picked up in Kecleon shop but not paid for yet
     ITEM_FLAG_STICKY = 1 << 3,
     ITEM_FLAG_SET = 1 << 4, // This item can be thrown by pressing L+R instead of having to go to the bag menu.
+    ITEM_FLAG_UNK_MONEY_QUANTITY = 1 << 5, // Something related to money quantity
     ITEM_FLAG_UNK_MISSION_ITEM_1 = 1 << 6,
     ITEM_FLAG_UNK_MISSION_ITEM_2 = 1 << 7
 };

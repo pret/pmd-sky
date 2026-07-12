@@ -1,6 +1,11 @@
 #ifndef PMDSKY_MAIN_0200ECFC_H
 #define PMDSKY_MAIN_0200ECFC_H
 
+#include "common.h"
+#include "enums.h"
+
+s16 ReturnEggExclusiveItem(enum monster_id monster_id);
+
 // Set the active inventory to the main inventory
 void SetActiveInventoryToMain(void);
 

@@ -18,6 +18,12 @@ Static main
 	Object asm/main_020018A4.o
 	Object src/main_020018D0.o
 	Object asm/main_02001A30.o
+	Object src/main_02001A54.o
+	Object asm/main_02001B0C.o
+	Object src/main_02001BB4.o
+	Object asm/main_02001CB0.o
+	Object src/main_02001CD4.o
+	Object asm/main_02001D68.o
 	Object src/main_0200224C.o
 	Object asm/main_020022C4.o
 	Object src/main_0200330C.o
@@ -52,7 +58,9 @@ Static main
 	Object asm/main_0200C5B4.o
 	Object src/item_util.o
 	Object src/item_util_4.o
-	Object asm/main_0200CAFC.o
+	Object asm/main_0200D1F0.o
+	Object src/main_0200D81C.o
+	Object asm/main_0200D8E4.o
 	Object src/item_util_1.o
 	Object asm/main_0200EB30.o
 	Object src/main_0200ECFC.o
@@ -71,7 +79,9 @@ Static main
 	Object src/main_02014A4C.o
 	Object asm/main_02014B1C.o
 	Object src/main_02014CEC.o
-	Object asm/main_02014D18.o
+	Object asm/main_02015090.o
+	Object src/main_0201514C.o
+	Object asm/main_020151E4.o
 	Object src/main_020251AC.o
 	Object asm/main_020251F0.o
 	Object src/main_02025788.o
@@ -139,10 +149,8 @@ Static main
 	Object src/main_02052B28.o
 	Object asm/main_02052B44.o
 	Object src/main_02054AA4.o
-	Object asm/main_02054AD4.o
 	Object src/main_02054BE0.o
 	Object src/main_02054C24.o
-	Object asm/main_02054CD8.o
 	Object src/main_02054DC4.o
 	Object asm/main_02054E4C.o
 	Object src/main_02058C3C.o

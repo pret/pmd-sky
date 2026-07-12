@@ -1,9 +1,21 @@
 #include "main_0200ECFC.h"
 #include "item.h"
 
+extern struct baby_exclusive_item_pair BABY_EXCLUSIVE_ITEM_PAIRS[16];
 extern struct bag_items* BAG_ITEMS_PTR_MIRROR;
 
 extern void ItemZInit(struct item *item);
+
+s16 ReturnEggExclusiveItem(enum monster_id monster_id)
+{
+    for (int i = 0; i < 16; i++) {
+        if (monster_id == BABY_EXCLUSIVE_ITEM_PAIRS[i].baby_monster) {
+            return BABY_EXCLUSIVE_ITEM_PAIRS[i].exc_item_id;
+        }
+    }
+    
+    return 0;
+}
 
 void SetActiveInventoryToMain(void)
 {

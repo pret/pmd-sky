@@ -6,6 +6,12 @@
 
 extern s16 RandRangeSafe(s32, s32);
 extern s16 _020A18BC[10];
+extern void ItemZInit();
+extern u16 GetItemBuyPrice(s16);
+extern u16 GetItemSellPrice(s16);
+extern s32 GetMoneyQuantity(struct item*);
+extern bool8 IsShoppableItem(s16);
+extern bool8 IsThrownItem(s16);
 
 BOOL IsLosableItem(struct item* item)
 {
@@ -160,4 +166,87 @@ void InitBulkItem(struct bulk_item* item, s16 id) {
     {
         item->quantity = 0;
     }
+}
+
+void BulkItemToItem(struct item* item, struct bulk_item* bulk_item)
+{
+    if (bulk_item->id != 0) {
+        item->flags = ITEM_FLAG_EXISTS;
+        item->id = bulk_item->id;
+        item->held_by = 0;
+        if (IsThrownItem(item->id)) {
+            item->quantity = bulk_item->quantity;
+            return;
+        }
+        
+        switch(GetItemCategory(item->id)) {
+            case CATEGORY_POKE:
+            case CATEGORY_TREASURE_BOXES_1:
+            case CATEGORY_TREASURE_BOXES_2:
+            case CATEGORY_TREASURE_BOXES_3:
+            case 0xBB:
+                item->quantity = bulk_item->quantity;
+                return;
+            default:
+                 item->quantity = 0;
+        }
+    } else {
+        ItemZInit();
+    }
+}
+
+void ItemToBulkItem(struct bulk_item* bulk, struct item* item)
+{
+    if (GET_FLAG(item->flags, ITEM_FLAG_EXISTS)) {
+        bulk->id = item->id;
+        bulk->quantity = item->quantity;
+    }
+    else {
+        bulk->id = 0;
+        bulk->quantity = 0;
+    }
+}
+
+s32 GetDisplayedBuyPrice(struct item* item)
+{
+    if (item->id == ITEM_POKE) {
+        return GetMoneyQuantity(item);
+    }
+    if (IsThrownItem(item->id)) {
+        return item->quantity * GetItemBuyPrice(item->id);
+    }
+    return GetItemBuyPrice(item->id);
+}
+
+s32 GetDisplayedSellPrice(struct item* item)
+{
+    if (item->id == ITEM_POKE) {
+        return GetMoneyQuantity(item);
+    }
+    if (IsThrownItem(item->id)) {
+        return item->quantity * GetItemSellPrice(item->id);
+    }
+    return GetItemSellPrice(item->id);
+}
+
+s32 GetActualBuyPrice(struct item* item)
+{
+    if (!IsShoppableItem(item->id)) {
+        return 0;
+    }
+    if (IsThrownItem(item->id)) {
+        return item->quantity * GetItemBuyPrice(item->id);
+    }
+    return GetItemBuyPrice(item->id);
+}
+
+s32 GetActualSellPrice(struct item* item)
+{
+    if (!IsShoppableItem(item->id)) {
+        return 0;
+    }
+    if (IsThrownItem(item->id)) {
+        return item->quantity * GetItemSellPrice(item->id);
+    }
+    return GetItemSellPrice(item->id);
 }
