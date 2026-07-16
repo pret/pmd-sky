@@ -482,7 +482,7 @@ _0231F4B4:
 	ldr r1, [r7, #0xb4]
 	mov r0, r7
 	ldrb r1, [r1, #0x4c]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _0231F4D4:
 	mov r3, #0
 	str r3, [sp]
@@ -504,7 +504,7 @@ _0231F4D4:
 	ldr r1, [r4, #0xb4]
 	mov r0, r4
 	ldrb r1, [r1, #0x4c]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _0231F528:
 	mov r0, #0x1e
 	mov r1, #0x3b

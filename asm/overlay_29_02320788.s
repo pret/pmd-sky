@@ -537,7 +537,7 @@ _02320E60:
 	mov r0, r8
 	mov r1, sl
 	strb sl, [r5, #0x4c]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _02320E98:
 	mov r0, #0x22
 	bl AdvanceFrame
@@ -686,7 +686,7 @@ _0232105C:
 	mov r0, r8
 	mov r1, sl
 	strb sl, [r5, #0x4c]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _02321094:
 	mov r0, fp
 	bl AdvanceFrame
@@ -732,7 +732,7 @@ EnsureCanStandCurrentTile: ; 0x02321104
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r1, r4, #4
-	bl CannotStandOnTile
+	bl CannotStandOnTile__023006C8
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
@@ -748,7 +748,7 @@ ov29_02321134: ; 0x02321134
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r1, r4, #4
-	bl ov29_022FF958
+	bl CannotStandOnTile__02300384
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
@@ -766,7 +766,7 @@ ov29_02321164: ; 0x02321164
 	mov r5, r0
 	mov r0, r4
 	add r1, r4, #4
-	bl CannotStandOnTile
+	bl CannotStandOnTile__023006C8
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -796,7 +796,7 @@ _023211C4:
 	beq _023211E0
 	mov r0, r4
 	mov r1, #8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _023211E0:
 	ldr r0, [r4, #0xb4]
 	ldrb r0, [r0, #7]

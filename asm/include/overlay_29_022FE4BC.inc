@@ -4,7 +4,7 @@
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public CanMonsterMoveInDirection
-.public CannotStandOnTile
+.public CannotStandOnTile__023006C8
 .public DIRECTIONS_XY
 .public DisplayActions
 .public DUNGEON_PTR

@@ -1,5 +1,6 @@
 #pragma once
 .public AllocateTemp1024ByteBufferFromPool
+.public CreateTemporaryEntity
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonRandInt
@@ -13,7 +14,6 @@
 .public IsOnMonsterSpawnList
 .public LevelUp
 .public LogMessageByIdWithPopup
-.public ov29_022E2470
 .public ov29_02302C04
 .public ov29_02302CC8
 .public ov29_023527F8

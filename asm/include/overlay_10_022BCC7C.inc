@@ -13,6 +13,7 @@
 .public DeleteWanTableEntryVeneer
 .public DeleteWindow
 .public DirectoryFileMngr_GetDirectoryFileSize
+.public DisplayAndSwitchAnimationControlCurrentFrame
 .public DrawTextInWindow
 .public EFFECT_ANIMATION_INFO
 .public FillOamAttributeInfo
@@ -114,7 +115,6 @@
 .public sub_0200B3FC
 .public sub_0201C108
 .public sub_0201C138
-.public sub_0201CF5C
 .public sub_0201CF80
 .public sub_0201D034
 .public sub_0201D0F8

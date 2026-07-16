@@ -25,14 +25,14 @@ extern struct dungeon *DUNGEON_PTR[];
 extern bool8 ov29_022E2CA0(struct position *pos);
 extern void ov29_0234B4CC(bool8 val);
 extern s32 SinAbs4096(s32 x);
-extern bool8 ov29_022E9488(s32 inX, s32 inY, u8 index);
-extern bool8 ov29_023457C8(struct entity *entity, bool8 hallucinating, u8 a2, u8 a3, u8 a4);
+extern bool8 DisplayThrownItemShadow(s32 inX, s32 inY, u8 index);
+extern bool8 DisplayItem(struct entity *entity, bool8 hallucinating, u8 a2, u8 a3, u8 a4);
 extern void AdvanceFrame(u32);
 extern bool8 TwoTurnMoveForcedMiss(struct entity *target, struct move *move);
 extern bool8 DoesProjectileHitTarget(struct entity *user, struct entity *target);
 extern void PrepareItemForPrinting__02345754(u8 *buffer, struct item *item);
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
-extern void ov29_02304A84(struct entity *entity, u32 new_dir);
+extern void ChangeMonsterAnimationToHurt(struct entity *entity, u32 new_dir);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 extern void ApplyItemEffect(char param_1, u8 param_2, u8 param_3, struct entity *attacker, struct entity *defender, struct item *thrown_item);
@@ -155,9 +155,9 @@ void HandleCurvedProjectileThrow(struct entity *user, struct item *item, struct 
             if (IsWaterTileset()) terrainArg = 3;
             else terrainArg = 0;
 
-            if (ov29_022E9488(unkX, unkY, terrainArg))
+            if (DisplayThrownItemShadow(unkX, unkY, terrainArg))
                 runFrameActions = TRUE;
-            if (ov29_023457C8(projectile, hallucinating, 0, 0xFF, 1))
+            if (DisplayItem(projectile, hallucinating, 0, 0xFF, 1))
                 runFrameActions = TRUE;
 
             if (runFrameActions)
@@ -199,7 +199,7 @@ void HandleCurvedProjectileThrow(struct entity *user, struct item *item, struct 
             if (hitResult.did_hit) {
                 bool8 immobiSlpEndMsg;
 
-                ov29_02304A84(hitResult.target, 8);
+                ChangeMonsterAnimationToHurt(hitResult.target, 8);
                 LogMessageByIdWithPopupCheckUserTarget(user, hitResult.target, CURVED_PROJECTILE_LOG_MESSAGE_1);
                 immobiSlpEndMsg = TryEndPetrifiedOrSleepStatus(user, hitResult.target);
                 ApplyItemEffect(1, (lockOnSpecs || projectile_throw_info->unk0 != 0) ? 1 : 0, immobiSlpEndMsg, user, hitResult.target, item);

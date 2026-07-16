@@ -847,7 +847,7 @@ _022EA0DC:
 	bl sub_02051E20
 _022EA0F8:
 	bl ov29_0230473C
-	bl ov29_022E1854
+	bl DisplayMonstersAndItems
 	bl ov29_022E335C
 	ldr r0, _022EA290 ; =DUNGEON_PTR
 	ldr r1, [r0]

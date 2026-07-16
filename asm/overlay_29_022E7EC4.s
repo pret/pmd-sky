@@ -1290,8 +1290,8 @@ _022E8E58: .word DUNGEON_PTR
 _022E8E5C: .word TOP_SCREEN_STATUS_PTR
 	arm_func_end ov29_022E8CE8
 
-	arm_func_start ov29_022E8E60
-ov29_022E8E60: ; 0x022E8E60
+	arm_func_start DrawDungeonControlsText
+DrawDungeonControlsText: ; 0x022E8E60
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _022E8E90 ; =0x00003FCB
@@ -1312,7 +1312,7 @@ _022E8E90: .word 0x000049CE
 #else
 _022E8E90: .word 0x00003FCB
 #endif
-	arm_func_end ov29_022E8E60
+	arm_func_end DrawDungeonControlsText
 
 	arm_func_start ov29_022E8E94
 ov29_022E8E94: ; 0x022E8E94
@@ -1334,7 +1334,7 @@ ov29_022E8E94: ; 0x022E8E94
 	add ip, sp, #0
 	ldmia r0, {r0, r1, r2, r3}
 	stmia ip, {r0, r1, r2, r3}
-	ldr r1, _022E8F24 ; =ov29_022E8E60
+	ldr r1, _022E8F24 ; =DrawDungeonControlsText
 	mov r0, ip
 	bl CreateTextBox
 	ldr r1, _022E8F1C ; =ov29_02353558
@@ -1354,7 +1354,7 @@ _022E8F14:
 	.align 2, 0
 _022E8F1C: .word ov29_02353558
 _022E8F20: .word ov29_023515F4
-_022E8F24: .word ov29_022E8E60
+_022E8F24: .word DrawDungeonControlsText
 	arm_func_end ov29_022E8E94
 
 	arm_func_start ov29_022E8F28

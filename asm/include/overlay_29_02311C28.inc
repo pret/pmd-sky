@@ -3,6 +3,8 @@
 .public BADLY_POISONED_TURN_RANGE
 .public BURN_TURN_RANGE
 .public CalcStatusDuration
+.public ChangeMonsterAnimationToHurt
+.public ChangeMonsterAnimationToIdle
 .public ChangeShayminForme
 .public CONSTRICTION_TURN_RANGE
 .public CopyStringFromId
@@ -39,8 +41,6 @@
 .public ov29_022E4C4C
 .public ov29_022E4D24
 .public ov29_022E53EC
-.public ov29_02304A48
-.public ov29_02304A84
 .public PETRIFIED_TURN_RANGE
 .public PLAYER_PETRIFIED_TURN_RANGE
 .public POISONED_TURN_RANGE

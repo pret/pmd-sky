@@ -5,6 +5,7 @@
 .public CheckBossFightVictory
 .public CheckTeamMemberIdx
 .public CreateMonsterSummaryFromEntityOuter
+.public CreateTemporaryEntity
 .public DeleteWanTableEntryVeneer
 .public DetermineMonsterShadow
 .public DIRECTIONS_XY
@@ -48,7 +49,6 @@
 .public OpenMessageLog
 .public ov29_022DDB68
 .public ov29_022E1C0C
-.public ov29_022E2470
 .public ov29_022E68BC
 .public ov29_022E8104
 .public ov29_022E81F8

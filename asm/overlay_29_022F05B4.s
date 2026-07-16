@@ -74,7 +74,7 @@ MakeTargetFaceUserAndIdle: ; 0x022F0654
 	mov r1, r0
 	mov r0, r4
 	and r1, r1, #0xff
-	bl ChangeMonsterAnimationToIdle
+	bl MakeMonsterIdleInDirection2
 	ldmia sp!, {r4, pc}
 	arm_func_end MakeTargetFaceUserAndIdle
 
@@ -211,7 +211,7 @@ _022F07E8:
 	beq _022F082C
 	mov r0, r7
 	mov r1, r4
-	bl ChangeMonsterAnimationToIdle
+	bl MakeMonsterIdleInDirection2
 	mov r0, r7
 	bl UpdateAiTargetPos
 _022F082C:
@@ -2388,7 +2388,7 @@ _022F25D8:
 	beq _022F2748
 	ldr r0, [sp, #0x14]
 	add r1, r6, #4
-	bl ov29_022FF958
+	bl CannotStandOnTile__02300384
 	cmp r0, #0
 	beq _022F26B8
 	mov r0, #0
@@ -4415,7 +4415,7 @@ ov29_022F426C: ; 0x022F426C
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022FF958
+	bl CannotStandOnTile__02300384
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}

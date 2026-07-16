@@ -1286,7 +1286,7 @@ _0206BA14:
 	mov r4, #0x7c
 _0206BA3C:
 	mla r0, r6, r4, r5
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	add r6, r6, #1
 	cmp r6, #7
 	blt _0206BA3C

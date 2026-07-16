@@ -163,8 +163,8 @@ _022E184C: .word ov29_0237C754
 _022E1850: .word ov29_0237C79C
 	arm_func_end ov29_022E1640
 
-	arm_func_start ov29_022E1854
-ov29_022E1854: ; 0x022E1854
+	arm_func_start DisplayMonstersAndItems
+DisplayMonstersAndItems: ; 0x022E1854
 #ifdef JAPAN
 #define OV29_022E1854_OFFSET -0xA4
 #else
@@ -197,14 +197,14 @@ _022E1884:
 	cmp r5, r0
 	mov r0, r5
 	bne _022E18C4
-	bl ov29_02303F18
+	bl DisplayMonster
 	b _022E18F0
 _022E18C4:
 	ldr sb, [r5, #0xb4]
-	bl ov29_023046E8
+	bl AnimateFlyingMoves
 	mov r0, r8
 	mov r1, r5
-	bl ov29_022E3A40
+	bl CopyStatusIconFlags
 	str r7, [sp]
 	ldrsh r1, [sb, #4]
 	ldr r0, [sb, #0xb0]
@@ -232,7 +232,7 @@ _022E1908:
 	cmp r0, #1
 	bne _022E196C
 	mov r0, r7
-	bl ov29_02303F18
+	bl DisplayMonster
 	ldr r0, [r7, #0xb4]
 #ifdef JAPAN
 	ldrb r0, [r0, #0x161]
@@ -265,7 +265,7 @@ _022E1980:
 	cmp r0, #0
 	beq _022E19A8
 	mov r0, r6
-	bl ov29_02303F18
+	bl DisplayMonster
 _022E19A8:
 	add r5, r5, #1
 	cmp r5, #0x10
@@ -284,7 +284,7 @@ _022E19CC:
 	mov r1, r8
 	mov r2, r6
 	mov r3, r5
-	bl ov29_023457C8
+	bl DisplayItem
 	add sb, sb, #1
 _022E19F0:
 	ldr r1, [r4]
@@ -294,10 +294,10 @@ _022E19F0:
 	blt _022E19CC
 	cmp r8, #0
 	beq _022E1A10
-	bl ov29_022ED9D0
+	bl CreateTrapAndStairsHallucinations
 _022E1A10:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022E1A18: .word DUNGEON_PTR
-	arm_func_end ov29_022E1854
+	arm_func_end DisplayMonstersAndItems

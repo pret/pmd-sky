@@ -2890,7 +2890,7 @@ _02017438:
 	b _020174A8
 _02017464:
 	add r0, r4, #0x98
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	add r0, r4, #0x98
 	bl sub_0201D1B0
 	cmp r0, #0
@@ -2916,7 +2916,7 @@ _020174A8:
 	mov r5, #0x7c
 _020174C0:
 	mla r0, r7, r5, r6
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	add r7, r7, #1
 	cmp r7, #7
 	blt _020174C0
@@ -2956,7 +2956,7 @@ _020174EC:
 	bl SetAnimationForAnimationControl
 _02017554:
 	mov r0, sb
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02017568
 _02017560:
 	sub r0, r0, #1
@@ -9398,8 +9398,8 @@ LoadAnimationFrameAndIncrementInAnimationControl: ; 0x0201C560
 	bx lr
 	arm_func_end LoadAnimationFrameAndIncrementInAnimationControl
 
-	arm_func_start sub_0201C5C4
-sub_0201C5C4: ; 0x0201C5C4
+	arm_func_start DisplayAnimationControlCurrentFrame
+DisplayAnimationControlCurrentFrame: ; 0x0201C5C4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x90
 	mov r8, r0
@@ -10058,20 +10058,20 @@ _0201CF4C: .word _020AFC50
 _0201CF50: .word _020AFC30
 _0201CF54: .word OBJ_GRAPHICS_CONTROLS_PTR
 _0201CF58: .word 0x0000FFFF
-	arm_func_end sub_0201C5C4
+	arm_func_end DisplayAnimationControlCurrentFrame
 
-	arm_func_start sub_0201CF5C
-sub_0201CF5C: ; 0x0201CF5C
+	arm_func_start DisplayAndSwitchAnimationControlCurrentFrame
+DisplayAndSwitchAnimationControlCurrentFrame: ; 0x0201CF5C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0201C5C4
+	bl DisplayAnimationControlCurrentFrame
 	ldrh r0, [r4, #2]
 	tst r0, #0x10
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
 	bl SwitchAnimationControlToNextFrame
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201CF5C
+	arm_func_end DisplayAndSwitchAnimationControlCurrentFrame
 
 	arm_func_start sub_0201CF80
 sub_0201CF80: ; 0x0201CF80
@@ -11205,7 +11205,7 @@ _0201DD58:
 	ldrh r1, [r0, #2]
 	tst r1, #1
 	beq _0201DD70
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 _0201DD70:
 	add r0, r6, #1
 	mov r0, r0, lsl #0x10

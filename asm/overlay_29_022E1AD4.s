@@ -839,8 +839,8 @@ ov29_022E2418: ; 0x022E2418
 _022E246C: .word DUNGEON_PTR
 	arm_func_end ov29_022E2418
 
-	arm_func_start ov29_022E2470
-ov29_022E2470: ; 0x022E2470
+	arm_func_start CreateTemporaryEntity
+CreateTemporaryEntity: ; 0x022E2470
 	mov r1, #6
 	str r1, [r0]
 	mov r1, #0
@@ -851,7 +851,7 @@ ov29_022E2470: ; 0x022E2470
 	strh r1, [r0, #0x26]
 	strb r1, [r0, #0x22]
 	bx lr
-	arm_func_end ov29_022E2470
+	arm_func_end CreateTemporaryEntity
 
 	arm_func_start ShouldMinimapDisplayEntity
 ShouldMinimapDisplayEntity: ; 0x022E2498

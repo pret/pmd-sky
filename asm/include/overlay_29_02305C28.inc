@@ -4,6 +4,7 @@
 .public ApplyDamageAndEffectsWrapper
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration
+.public ChangeMonsterAnimationToIdle
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public EndNegativeStatusCondition
@@ -29,7 +30,6 @@
 .public ov29_022FA1D8
 .public ov29_022FB984
 .public ov29_02304830
-.public ov29_02304A48
 .public ov29_02311C28
 .public ov29_02321134
 .public SafeguardIsActive

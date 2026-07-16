@@ -966,7 +966,7 @@ _022FA2B8:
 	cmp r5, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r6
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022FA2E8: .word DIRECTIONS_XY
@@ -1012,8 +1012,8 @@ _022FA34C:
 _022FA35C: .word DUNGEON_PTR
 	arm_func_end ov29_022FA2F0
 
-	arm_func_start ChangeMonsterAnimationToIdle
-ChangeMonsterAnimationToIdle: ; 0x022FA360
+	arm_func_start MakeMonsterIdleInDirection2
+MakeMonsterIdleInDirection2: ; 0x022FA360
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -1030,7 +1030,7 @@ ChangeMonsterAnimationToIdle: ; 0x022FA360
 	mov r0, r6
 	bl ChangeMonsterAnimation
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ChangeMonsterAnimationToIdle
+	arm_func_end MakeMonsterIdleInDirection2
 
 	arm_func_start ov29_022FA3A0
 ov29_022FA3A0: ; 0x022FA3A0
@@ -1045,7 +1045,7 @@ ov29_022FA3A0: ; 0x022FA3A0
 	bl GetDirectionTowardsPosition
 	and r1, r0, #0xff
 	mov r0, r5
-	bl ChangeMonsterAnimationToIdle
+	bl MakeMonsterIdleInDirection2
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022FA3A0
 
@@ -1082,6 +1082,6 @@ ov29_022FA418: ; 0x022FA418
 	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov29_022EF938
+	bl ChangeTeamAnimationsToIdle
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022FA418

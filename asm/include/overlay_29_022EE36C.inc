@@ -7,6 +7,7 @@
 .public BAG_ITEMS_PTR_MIRROR
 .public CalcStatusDuration
 .public ChangeMonsterAnimation
+.public ChangeMonsterAnimationToIdle
 .public DIRECTIONS_XY
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DisplayLinkedMovesWarnings
@@ -54,7 +55,6 @@
 .public ov29_022EA370
 .public ov29_022FB920
 .public ov29_022FBD80
-.public ov29_02304A48
 .public ov29_02346344
 .public PITFALL_TRAP_DAMAGE
 .public PlaySeByIdIfShouldDisplayEntity

@@ -278,7 +278,7 @@ _0232EC0C:
 _0232EC24:
 	mov r0, r4
 	mov r1, r5
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	mov r0, #2
 	mov r1, #0x43
 	bl ov29_022EA370
@@ -293,7 +293,7 @@ _0232EC24:
 _0232EC5C:
 	mov r0, r4
 	mov r1, r5
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	mov r0, #2
 	mov r1, #0x43
 	bl ov29_022EA370
@@ -305,7 +305,7 @@ _0232EC7C:
 	bne _0232EC5C
 	mov r1, r5
 	mov r0, r4
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	mov r0, #2
 	mov r1, #0x43
 	bl ov29_022EA370
@@ -2173,7 +2173,7 @@ _0233077C: ; 0x0233077C
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl DoMoveDamageParalyze10
+	bl DoMoveDamageParalyze15
 	mov sl, r0
 	b _023326CC
 _02330798: ; 0x02330798
@@ -4496,7 +4496,7 @@ _02332738:
 	mov r1, r0
 	ldr r1, [r1, #0xb4]
 	ldrb r1, [r1, #0x4c]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _0233275C:
 	cmp sl, #0
 	bne _02332790

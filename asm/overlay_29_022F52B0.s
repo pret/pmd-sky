@@ -504,7 +504,7 @@ _022F5928:
 	add r1, sp, #0xc
 	mov r0, sb
 	add r2, sb, #4
-	bl ov29_02347518
+	bl HandleRegularProjectileThrow
 _022F5944:
 	mov r0, sb
 	bl EntityIsValid__022F528C
@@ -512,7 +512,7 @@ _022F5944:
 	beq _022F5978
 	ldrb r1, [r8, #0x4c]
 	mov r0, sb
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	ldr r1, _022F5990 ; =DUNGEON_PTR
 	mov r0, sb
 	ldr r1, [r1]

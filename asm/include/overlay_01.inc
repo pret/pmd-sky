@@ -35,6 +35,7 @@
 .public DC_InvalidateRange
 .public Debug_Print0
 .public DeleteWanTableEntryVeneer
+.public DisplayAndSwitchAnimationControlCurrentFrame
 .public DrawChar
 .public DrawTextInWindow
 .public Dwc_ProcessFriendsMatch
@@ -246,7 +247,6 @@
 .public sub_0200DFE4
 .public sub_0200EB64
 .public sub_0201C138
-.public sub_0201CF5C
 .public sub_0201D12C
 .public sub_0202065C
 .public sub_0202380C_EU

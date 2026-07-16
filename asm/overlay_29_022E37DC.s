@@ -191,8 +191,8 @@ _022E3A38: .word DUNGEON_PTR
 _022E3A3C: .word ov29_0235354C
 	arm_func_end AnimationDelayOrSomething
 
-	arm_func_start ov29_022E3A40
-ov29_022E3A40: ; 0x022E3A40
+	arm_func_start CopyStatusIconFlags
+CopyStatusIconFlags: ; 0x022E3A40
 	ldr r1, [r1, #0xb4]
 #ifdef JAPAN
 	ldr r2, [r1, #0x214]
@@ -204,7 +204,7 @@ ov29_022E3A40: ; 0x022E3A40
 	str r2, [r0]
 	str r1, [r0, #4]
 	bx lr
-	arm_func_end ov29_022E3A40
+	arm_func_end CopyStatusIconFlags
 
 	arm_func_start ov29_022E3A58
 ov29_022E3A58: ; 0x022E3A58

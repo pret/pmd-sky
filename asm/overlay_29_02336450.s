@@ -1249,7 +1249,7 @@ _023374D4:
 _02337544:
 	ldr r0, [sp, #0x20]
 	add r1, sp, #0x28
-	bl ov29_022FF958
+	bl CannotStandOnTile__02300384
 	cmp r0, #0
 	bne _023375DC
 	ldr r0, [sp, #0x20]
@@ -1365,7 +1365,7 @@ _0233762C:
 _023376A8:
 	ldr r0, [sp, #0x20]
 	add r1, sp, #0x28
-	bl ov29_022FF958
+	bl CannotStandOnTile__02300384
 	cmp r0, #0
 	bne _0233772C
 	ldr r0, [sp, #0x20]

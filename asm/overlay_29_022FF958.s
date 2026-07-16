@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022FF958
-ov29_022FF958: ; 0x022FF958
+	arm_func_start CannotStandOnTile__02300384
+CannotStandOnTile__02300384: ; 0x022FF958
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r0
@@ -123,7 +123,7 @@ _022FFA84:
 _022FFA8C:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_022FF958
+	arm_func_end CannotStandOnTile__02300384
 
 	arm_func_start ov29_022FFA94
 ov29_022FFA94: ; 0x022FFA94
@@ -294,8 +294,8 @@ _022FFC94:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_022FFB90
 
-	arm_func_start CannotStandOnTile
-CannotStandOnTile: ; 0x022FFC9C
+	arm_func_start CannotStandOnTile__023006C8
+CannotStandOnTile__023006C8: ; 0x022FFC9C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r0
@@ -423,7 +423,7 @@ _022FFDE4:
 _022FFDEC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end CannotStandOnTile
+	arm_func_end CannotStandOnTile__023006C8
 
 	arm_func_start CalcSpeedStage
 CalcSpeedStage: ; 0x022FFDF4

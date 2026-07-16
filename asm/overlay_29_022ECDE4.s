@@ -917,8 +917,8 @@ _022ED9C8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end SpawnEnemyTrapAtPos
 
-	arm_func_start ov29_022ED9D0
-ov29_022ED9D0: ; 0x022ED9D0
+	arm_func_start CreateTrapAndStairsHallucinations
+CreateTrapAndStairsHallucinations: ; 0x022ED9D0
 #ifdef JAPAN
 #define OV29_022ED9D0_OFFSET -0xA4
 #else
@@ -1060,7 +1060,7 @@ _022EDBC4: .word 0x0000013E
 _022EDBC8: .word ov29_0237C864
 _022EDBCC: .word 0xFFFF000F
 _022EDBD0: .word OBJ_GRAPHICS_CONTROLS_PTR
-	arm_func_end ov29_022ED9D0
+	arm_func_end CreateTrapAndStairsHallucinations
 
 	arm_func_start PrepareTrapperTrap
 PrepareTrapperTrap: ; 0x022EDBD4

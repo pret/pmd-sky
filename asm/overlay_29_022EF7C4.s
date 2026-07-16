@@ -126,8 +126,8 @@ _022EF918:
 _022EF934: .word DUNGEON_PTR
 	arm_func_end ov29_022EF8A4
 
-	arm_func_start ov29_022EF938
-ov29_022EF938: ; 0x022EF938
+	arm_func_start ChangeTeamAnimationsToIdle
+ChangeTeamAnimationsToIdle: ; 0x022EF938
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r5, _022EF9B4 ; =DUNGEON_PTR
 	mov r4, #0
@@ -158,11 +158,11 @@ _022EF948:
 	mov r0, r7
 	cmp r1, #0xff
 	beq _022EF994
-	bl ChangeMonsterAnimationToIdle
+	bl MakeMonsterIdleInDirection2
 	b _022EF99C
 _022EF994:
 	mov r1, r6
-	bl ChangeMonsterAnimationToIdle
+	bl MakeMonsterIdleInDirection2
 _022EF99C:
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
@@ -172,7 +172,7 @@ _022EF99C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022EF9B4: .word DUNGEON_PTR
-	arm_func_end ov29_022EF938
+	arm_func_end ChangeTeamAnimationsToIdle
 
 	arm_func_start ov29_022EF9B8
 ov29_022EF9B8: ; 0x022EF9B8
@@ -187,8 +187,8 @@ ov29_022EF9BC: ; 0x022EF9BC
 _022EF9C4: .word ov29_02348F20
 	arm_func_end ov29_022EF9BC
 
-	arm_func_start ov29_022EF9C8
-ov29_022EF9C8: ; 0x022EF9C8
+	arm_func_start IsFloorOver2
+IsFloorOver2: ; 0x022EF9C8
 	stmdb sp!, {r3, lr}
 	bl IsFloorOver
 	cmp r0, #0
@@ -199,4 +199,4 @@ ov29_022EF9C8: ; 0x022EF9C8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022EF9E8: .word DUNGEON_PTR
-	arm_func_end ov29_022EF9C8
+	arm_func_end IsFloorOver2

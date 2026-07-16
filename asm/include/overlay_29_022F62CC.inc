@@ -5,6 +5,7 @@
 .public AnimationDelayOrSomething
 .public BAG_ITEMS_PTR_MIRROR
 .public CalcSpeedStageWrapper
+.public ChangeMonsterAnimationToIdle
 .public DeleteWanTableEntryVeneer
 .public DisplayMessage2
 .public DUNGEON_PTR
@@ -42,7 +43,6 @@
 .public ov29_022FF764
 .public ov29_023009CC
 .public ov29_02304A00
-.public ov29_02304A48
 .public ov29_0231B490
 .public ov29_0231B4AC
 .public ov29_02352760

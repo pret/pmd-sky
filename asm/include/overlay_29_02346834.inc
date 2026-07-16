@@ -8,6 +8,8 @@
 .public CleanStickyItemsInBag
 .public ClearItem
 .public DIRECTIONS_XY
+.public DisplayItem
+.public DisplayThrownItemShadow
 .public DoesMonsterHaveMove
 .public DoesProjectileHitTarget
 .public DUNGEON_PTR
@@ -45,12 +47,10 @@
 .public MONEY_QUANTITY_TABLE
 .public MonsterHasEmbargoStatus
 .public ov10_022C4CD8
-.public ov29_022E9488
 .public ov29_022EBB8C
 .public ov29_022EBB98
 .public ov29_022FB920
 .public ov29_023009A0
-.public ov29_023457C8
 .public ov29_0234B4CC
 .public ov29_023516FC
 .public ov29_023531C8

@@ -105,7 +105,7 @@ _02322F24:
 	ldr r1, [sl, #0xb4]
 	mov r0, sl
 	ldrb r1, [r1, #0x4c]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	mov r0, #1
 	bl AnimationDelayOrSomething
 _02322F4C:
@@ -117,7 +117,7 @@ _02322F5C:
 	ldr r1, [sl, #0xb4]
 	mov r0, sl
 	ldrb r1, [r1, #0x4c]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _02322F6C:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

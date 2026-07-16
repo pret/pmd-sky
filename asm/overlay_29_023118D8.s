@@ -46,7 +46,7 @@ _02311954:
 	mov r4, r0
 	mov r0, r6
 	mov r1, #8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	cmp r4, #1
 	bne _02311994
 	ldr r2, _023119D8 ; =0x00000D06

@@ -1,6 +1,7 @@
 #pragma once
 .public AbilityIsActiveVeneer
 .public CanMonsterSpawn
+.public ChangeMonsterAnimationToIdle
 .public CheckTeamMemberIdx
 .public DefenderAbilityIsActive__022F96CC
 .public DUNGEON_PTR
@@ -26,7 +27,6 @@
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
-.public ov29_02304A48
 .public PrepareItemForPrinting__02345728
 .public RestoreAllMovePP
 .public SetPreprocessorArgsIdVal

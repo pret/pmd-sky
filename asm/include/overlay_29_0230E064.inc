@@ -1,6 +1,7 @@
 #pragma once
 .public abs
 .public CanSeeTarget
+.public ChangeMonsterAnimationToIdle
 .public DUNGEON_PTR
 .public DungeonModeSetupAndShowNameKeyboard
 .public EnableAllLearnableIqSkills
@@ -31,7 +32,6 @@
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EACAC
-.public ov29_02304A48
 .public ov29_02305F60
 .public ov29_0230E5A8
 .public ov29_0230E5FC

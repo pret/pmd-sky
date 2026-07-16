@@ -31,7 +31,7 @@ EnemyEvolution: ; 0x023026FC
 	cmp r0, #0
 	bne _02302758
 	add r0, sp, #0xb0
-	bl ov29_022E2470
+	bl CreateTemporaryEntity
 	add sl, sp, #0xb0
 _02302758:
 	ldr r0, _02302A2C ; =ov29_023527F8

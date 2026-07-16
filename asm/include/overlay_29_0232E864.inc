@@ -8,6 +8,7 @@
 .public CanBeSnatched
 .public CanHitWithRegularAttack
 .public CeilFixedPoint
+.public ChangeMonsterAnimationToIdle
 .public DefenderAbilityIsActive__02332A0C
 .public DIRECTIONS_XY
 .public DisplayAnimatedNumbers
@@ -75,7 +76,7 @@
 .public DoMoveDamageLowerSpeed20
 .public DoMoveDamageMultihitFatigue
 .public DoMoveDamageMultihitUntilMiss
-.public DoMoveDamageParalyze10
+.public DoMoveDamageParalyze15
 .public DoMoveDamageParalyze20
 .public DoMoveDamagePoison18
 .public DoMoveDamagePoison40
@@ -382,7 +383,6 @@
 .public ov29_02300D50
 .public ov29_02300DC0
 .public ov29_02301C2C
-.public ov29_02304A48
 .public ov29_02304C3C
 .public ov29_02314DC4
 .public ov29_0231AD38

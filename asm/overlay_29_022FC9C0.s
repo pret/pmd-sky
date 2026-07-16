@@ -682,7 +682,7 @@ _022FD278:
 	bl InflictSleepStatusSingle
 	mov r0, r4
 	mov r1, #8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _022FD2F4:
 	mov r0, r4
 _022FD2F8:

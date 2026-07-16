@@ -24,7 +24,7 @@ _022FA530:
 	ldr r1, [r6, #0xb4]
 	mov r0, r6
 	ldrb r1, [r1, #0x4c]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _022FA560:
 	add r5, r5, #1
 	cmp r5, #0x14

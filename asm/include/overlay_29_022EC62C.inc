@@ -12,11 +12,11 @@
 .public GetLeader
 .public GetMonsterName
 .public HandleFaint
+.public IsFloorOver2
 .public LogMessageByIdWithPopupCheckUser
 .public ov10_022C6320
 .public ov29_022E5DBC
 .public ov29_022EAEF0
-.public ov29_022EF9C8
 .public ov29_022F2FE4
 .public ov29_023522B6
 .public ov29_02352380

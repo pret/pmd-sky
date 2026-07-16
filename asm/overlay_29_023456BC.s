@@ -86,8 +86,8 @@ _02345784:
 _023457C4: .word DUNGEON_PTR
 	arm_func_end RemoveGroundItem
 
-	arm_func_start ov29_023457C8
-ov29_023457C8: ; 0x023457C8
+	arm_func_start DisplayItem
+DisplayItem: ; 0x023457C8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r7, r0
 	mov r6, r1
@@ -259,7 +259,7 @@ _02345A2C: .word ov29_023537BC
 _02345A30: .word ov29_023537B4
 _02345A34: .word 0xFFFF000F
 _02345A38: .word OBJ_GRAPHICS_CONTROLS_PTR
-	arm_func_end ov29_023457C8
+	arm_func_end DisplayItem
 
 	arm_func_start SpawnDroppedItemWrapper
 SpawnDroppedItemWrapper: ; 0x02345A3C
@@ -605,7 +605,7 @@ _02345EE0:
 	mov r1, fp
 	mov r3, r2
 	str r2, [sp]
-	bl ov29_023457C8
+	bl DisplayItem
 	mov r0, #0x13
 	bl AdvanceFrame
 	add r6, r6, #1
@@ -621,7 +621,7 @@ _02345EE0:
 	mov r1, fp
 	mov r3, r2
 	str r2, [sp]
-	bl ov29_023457C8
+	bl DisplayItem
 	mov r0, #0x13
 	bl AdvanceFrame
 	ldr r1, [sp, #4]
@@ -1171,7 +1171,7 @@ _0234665C:
 	str r1, [sp]
 	ldr r1, [sp, #0x10]
 	mov r2, #1
-	bl ov29_023457C8
+	bl DisplayItem
 _023466E0:
 	add r8, r8, #1
 _023466E4:

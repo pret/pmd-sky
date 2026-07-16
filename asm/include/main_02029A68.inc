@@ -6,6 +6,7 @@
 .public ALERT_SPRITE_ID
 .public CURSOR_16_ANIMATION_CONTROL
 .public CURSOR_ANIMATION_CONTROL
+.public DisplayAndSwitchAnimationControlCurrentFrame
 .public FillOamAttributeInfo
 .public InitAnimationControlWithSet__0201C0B0
 .public InitRender3dElement64
@@ -15,7 +16,6 @@
 .public SetAnimationForAnimationControl
 .public SetSpriteIdForAnimationControl
 .public sub_0201C028
-.public sub_0201CF5C
 .public sub_02025D90
 .public sub_02029478
 .public sub_020334A8
