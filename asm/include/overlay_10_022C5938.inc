@@ -37,7 +37,7 @@
 .public DoMoveDamageLowerSpeed100
 .public DoMoveDamageLowerSpeed20
 .public DoMoveDamageMultihitFatigue
-.public DoMoveDamageParalyze10
+.public DoMoveDamageParalyze15
 .public DoMoveDamageParalyze20
 .public DoMoveDamagePoison18
 .public DoMoveDamagePoison40

@@ -114,8 +114,8 @@ _02328164: .word NATURE_POWER_TABLE
 _02328168: .word ov10_022C4E44
 	arm_func_end DoMoveNaturePower
 
-	arm_func_start DoMoveDamageParalyze10
-DoMoveDamageParalyze10: ; 0x0232816C
+	arm_func_start DoMoveDamageParalyze15
+DoMoveDamageParalyze15: ; 0x0232816C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -145,7 +145,7 @@ _023281C8:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _023281D4: .word LICK_PARALYZE_CHANCE
-	arm_func_end DoMoveDamageParalyze10
+	arm_func_end DoMoveDamageParalyze15
 
 	arm_func_start DoMoveSelfdestruct
 DoMoveSelfdestruct: ; 0x023281D8

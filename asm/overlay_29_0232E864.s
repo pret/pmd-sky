@@ -2173,7 +2173,7 @@ _0233077C: ; 0x0233077C
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl DoMoveDamageParalyze10
+	bl DoMoveDamageParalyze15
 	mov sl, r0
 	b _023326CC
 _02330798: ; 0x02330798
