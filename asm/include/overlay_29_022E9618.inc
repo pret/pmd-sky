@@ -7,6 +7,7 @@
 .public DISPLACEMENTS_WITHIN_2_LARGEST_FIRST
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DISPLACEMENTS_WITHIN_3
+.public DisplayMonstersAndItems
 .public DisplayUi
 .public DUNGEON_BUTTON_INPUT
 .public DUNGEON_FRAMES_PASSED
@@ -31,7 +32,6 @@
 .public ov29_022DE11C
 .public ov29_022DE134
 .public ov29_022DE638
-.public ov29_022E1854
 .public ov29_022E335C
 .public ov29_022E8C10
 .public ov29_022ED800

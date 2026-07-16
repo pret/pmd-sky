@@ -7,6 +7,7 @@
 .public DetermineAllMonsterShadow
 .public DetermineTileWalkableNeighbors
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
+.public DisplayItem
 .public DrawMinimapTile
 .public DUNGEON_PTR
 .public EntityIsValid__0231FBFC
@@ -20,7 +21,6 @@
 .public MemFree
 .public ov29_022F62CC
 .public ov29_02336694
-.public ov29_023457C8
 .public PlaySeByIdIfShouldDisplayEntity
 .public RemoveGroundItem
 .public SetEntityPixelPosXY

@@ -2,6 +2,7 @@
 .public AddHeldItemToBag
 .public CalcSpeedStageWrapper
 .public CASTFORM_WEATHER_ATTRIBUTE_TABLE
+.public ChangeMonsterAnimationToIdle
 .public CountActiveMonsters
 .public CreateEnemyEntity
 .public DIRECTIONS_XY
@@ -85,7 +86,6 @@
 .public ov29_022FBF08
 .public ov29_022FBF30
 .public ov29_022FC468
-.public ov29_02304A48
 .public ov29_02307DC0
 .public ov29_02351E28
 .public ov29_0235276C

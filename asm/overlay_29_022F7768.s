@@ -672,7 +672,7 @@ HandleFaint: ; 0x022F7F30
 #endif
 	bne _022F7F64
 	add r0, sp, #4
-	bl ov29_022E2470
+	bl CreateTemporaryEntity
 	add r8, sp, #4
 _022F7F64:
 	ldr r0, [r4, #0xc]

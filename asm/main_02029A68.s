@@ -90,14 +90,14 @@ _02029B70:
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02029EB0
 _02029BA4:
 	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02029EB0
 _02029BBC:
 	mov r0, r4
@@ -111,14 +111,14 @@ _02029BBC:
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02029EB0
 _02029BF0:
 	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02029EB0
 _02029C08:
 	mov r0, r4
@@ -134,7 +134,7 @@ _02029C08:
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #4
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02029EB0
 _02029C44:
 	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
@@ -143,7 +143,7 @@ _02029C44:
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #4
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02029EB0
 _02029C64:
 	ldr r1, _02029EC0 ; =0x0000FFFF
@@ -175,7 +175,7 @@ _02029C64:
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #0x10
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	ldrh r1, [r0, #2]
 	bic r1, r1, #0x20
@@ -194,7 +194,7 @@ _02029CF0:
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #0x10
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	ldrh r1, [r0, #2]
 	bic r1, r1, #0x20
@@ -214,7 +214,7 @@ _02029D38:
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #4
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02029EB0
 _02029D74:
 	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
@@ -223,7 +223,7 @@ _02029D74:
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #4
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02029EB0
 _02029D94:
 	mov r0, r4
@@ -239,7 +239,7 @@ _02029D94:
 	ldr r1, [r4, #0x14]
 	sub r1, r1, #4
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02029DEC
 _02029DD0:
 	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
@@ -248,7 +248,7 @@ _02029DD0:
 	ldr r1, [r4, #0x14]
 	sub r1, r1, #4
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 _02029DEC:
 	mov ip, #0
 	ldr r1, _02029EC0 ; =0x0000FFFF
@@ -276,7 +276,7 @@ _02029DEC:
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #0x10
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	ldrh r1, [r0, #2]
 	bic r1, r1, #0x20
@@ -295,7 +295,7 @@ _02029E6C:
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #0x10
 	strh r1, [r0, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	ldrh r1, [r0, #2]
 	bic r1, r1, #0x20
@@ -428,10 +428,10 @@ sub_02029FE8: ; 0x02029FE8
 	ldr r1, [r1, #4]
 	tst r1, #0x10
 	ldmneia sp!, {r3, pc}
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldmia sp!, {r3, pc}
 _0202A02C:
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0202A034: .word ALERT_ANIMATION_CONTROL

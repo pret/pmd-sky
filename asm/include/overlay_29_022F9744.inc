@@ -6,6 +6,8 @@
 .public BELLY_DRAIN_IN_WALLS_INT
 .public CeilFixedPoint
 .public ChangeMonsterAnimation
+.public ChangeMonsterAnimationToIdle
+.public ChangeTeamAnimationsToIdle
 .public CheckTeamMemberIdx
 .public CheckVariousStatuses2__02301244
 .public CheckVariousStatuses__023016DC
@@ -40,9 +42,7 @@
 .public ov29_022E4160
 .public ov29_022E81F8
 .public ov29_022EA370
-.public ov29_022EF938
 .public ov29_022F87C0
-.public ov29_02304A48
 .public ov29_02307CE0
 .public ov29_02307DD0
 .public PointCameraToMonster

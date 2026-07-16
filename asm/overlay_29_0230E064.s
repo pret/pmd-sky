@@ -40,7 +40,7 @@ TryRecruit: ; 0x0230E064
 	bl ov29_02305F60
 	mov r1, r6
 	mov r0, sb
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	ldrsh r0, [r4, #2]
 	mov r1, #1
 	bl IsMonsterOnTeam

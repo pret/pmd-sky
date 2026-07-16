@@ -3191,7 +3191,7 @@ _022BF648:
 	strh r7, [r6, #0x86]
 	add r0, r6, #0x68
 	strh r5, [r6, #0xa0]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 _022BF6D4:
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
@@ -5348,7 +5348,7 @@ _022C1178:
 	cmp r5, sb
 	blt _022C1164
 	mov r0, r4
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	add r0, sp, #0x10
 	mov r2, r4
 	mov r1, #4
@@ -5389,7 +5389,7 @@ ov10_022C11D8: ; 0x022C11D8
 	strh r2, [r3, #0x24]
 	add r0, r3, #8
 	strh r1, [r3, #0x26]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldr r0, _022C138C ; =ov10_022DC1D0
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x5f4]
@@ -5470,7 +5470,7 @@ _022C12EC:
 	strh r1, [r6, #0x14]
 	strh sl, [r6, #0x1c]
 	strh sb, [r6, #0x1e]
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	mov r2, r6
 	add r0, sp, #0x10
 	mov r1, #4

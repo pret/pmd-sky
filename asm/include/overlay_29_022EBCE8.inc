@@ -13,8 +13,8 @@
 .public FRACTIONAL_TURN_SEQUENCE
 .public GetLeader
 .public IsFloorOver
+.public IsFloorOver2
 .public ov29_022E81F8
-.public ov29_022EF9C8
 .public ov29_02348FD8
 .public ov29_023522B6
 .public RunMonsterAi

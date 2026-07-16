@@ -888,7 +888,7 @@ ApplyTripTrapEffect: ; 0x022EED2C
 	bl ov29_022EA370
 	mov r0, r5
 	mov r1, #8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	mov r0, r5
 	mov r1, #0x2c
 	ldr r4, [r5, #0xb4]

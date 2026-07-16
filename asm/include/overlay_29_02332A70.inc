@@ -3,6 +3,7 @@
 .public ApplyDamageAndEffects
 .public CalcDamage
 .public CanAttackInDirection
+.public ChangeMonsterAnimationToIdle
 .public DefenderAbilityIsActive__02332A0C
 .public DisplayAnimatedNumbers
 .public DUNGEON_PTR
@@ -18,7 +19,6 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MoveHitCheck
 .public ov29_022E576C
-.public ov29_02304A48
 .public ov29_0230D088
 .public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper

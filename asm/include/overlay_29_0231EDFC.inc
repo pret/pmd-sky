@@ -5,6 +5,7 @@
 .public CalcDamageFixedNoCategory
 .public CanSeeTarget
 .public ChangeMonsterAnimation
+.public ChangeMonsterAnimationToIdle
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -21,7 +22,6 @@
 .public ov29_022E9298
 .public ov29_022EA370
 .public ov29_022FF764
-.public ov29_02304A48
 .public ov29_0232033C
 .public ov29_02321238
 .public PlaySeByIdIfNotSilence

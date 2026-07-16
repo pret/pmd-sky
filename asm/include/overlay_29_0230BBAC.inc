@@ -10,6 +10,7 @@
 .public CalcTypeBasedDamageEffects
 .public CeilFixedPoint
 .public ClampedLn
+.public CreateTemporaryEntity
 .public DAMAGE_FORMULA_AT_PREFACTOR
 .public DAMAGE_FORMULA_CONSTANT_SHIFT
 .public DAMAGE_FORMULA_DEF_PREFACTOR
@@ -71,7 +72,6 @@
 .public ov10_022BDE50
 .public ov10_022BF964
 .public ov10_022C45B4
-.public ov29_022E2470
 .public ov29_02352838
 .public ov29_02352894
 .public ov29_02352984

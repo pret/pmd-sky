@@ -744,7 +744,7 @@ _0230A47C:
 	beq _0230A4A4
 	mov r0, sb
 	mov r1, #8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _0230A4A4:
 	ldr r0, [r5, #4]
 	cmp r0, #0xe
@@ -1850,7 +1850,7 @@ _02309A50:
 	beq _02309A78
 	mov r0, r7
 	mov r1, #8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _02309A78:
 	ldr r0, [r6, #4]
 	cmp r0, #0xe

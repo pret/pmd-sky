@@ -4,7 +4,9 @@
 .public AreTileJumpsAllowed
 .public CalcDamageFixedNoCategory
 .public CanMonsterUseMove
-.public CannotStandOnTile
+.public CannotStandOnTile__02300384
+.public CannotStandOnTile__023006C8
+.public ChangeMonsterAnimationToIdle
 .public DetermineTileWalkableNeighbors
 .public DiscoverMinimap
 .public DUNGEON_FRAMES_PASSED
@@ -33,8 +35,6 @@
 .public ov29_022F87C0
 .public ov29_022F9C74
 .public ov29_022FAA04
-.public ov29_022FF958
-.public ov29_02304A48
 .public ov29_02305814
 .public ov29_02322374
 .public ov29_023247B4

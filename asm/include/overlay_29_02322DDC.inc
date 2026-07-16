@@ -2,6 +2,7 @@
 .public _s32_div_f
 .public AdvanceFrame
 .public AnimationDelayOrSomething
+.public ChangeMonsterAnimationToIdle
 .public CosAbs4096
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
@@ -29,7 +30,6 @@
 .public ov29_022E2CA0
 .public ov29_022EA370
 .public ov29_023024E0
-.public ov29_02304A48
 .public ov29_023243B4
 .public ov29_02324D60
 .public ov29_02324E78

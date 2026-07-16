@@ -2,7 +2,9 @@
 .public AddSimpleObjToOam
 .public AllocateTemp1024ByteBufferFromPool
 .public ChangeMonsterAnimation
+.public CopyStatusIconFlags
 .public DIRECTIONS_XY
+.public DisplayAndSwitchAnimationControlCurrentFrame
 .public DisplayMessage
 .public DisplayMessage2
 .public DUNGEON_FRAMES_PASSED
@@ -46,7 +48,6 @@
 .public ov29_022E273C
 .public ov29_022E3570
 .public ov29_022E3580
-.public ov29_022E3A40
 .public ov29_022E6724
 .public ov29_022E6E80
 .public ov29_022EA370
@@ -86,7 +87,6 @@
 .public strcpy
 .public StringFromId
 .public sub_020149C0
-.public sub_0201CF5C
 .public sub_0201D034
 .public sub_0201D198
 .public sub_0201D1B0

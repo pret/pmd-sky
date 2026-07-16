@@ -1497,7 +1497,7 @@ ApplyDamageAndEffectsWrapper: ; 0x0230D11C
 	mov r4, r3
 	bl ResetDamageData
 	add r0, sp, #0x24
-	bl ov29_022E2470
+	bl CreateTemporaryEntity
 	mov r3, #0
 	mov r0, #2
 	str r0, [sp, #0x18]

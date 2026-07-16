@@ -102,7 +102,7 @@ _022F63D8:
 	bl GetDirectionTowardsPosition
 	mov r1, r0
 	mov r0, r5
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _022F6434:
 	ldr r1, _022F6700 ; =0x00000E53
 	add r0, sp, #0x18
@@ -237,7 +237,7 @@ _022F65F8:
 	bl GetDirectionTowardsPosition
 	mov r1, r0
 	mov r0, sl
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	b _022F6620
 _022F6614:
 	add r8, r8, #1
@@ -296,7 +296,7 @@ _022F66A8:
 	bl GetDirectionTowardsPosition
 	mov r1, r0
 	mov r0, r5
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _022F66E4:
 	ldr r1, _022F6708 ; =0x00000E52
 	add r0, sp, #0x18

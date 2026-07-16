@@ -1,4 +1,5 @@
 #pragma once
+.public CannotStandOnTile__02300384
 .public CanSeePosition
 .public Debug_Print0
 .public DEFAULT_TILE
@@ -27,7 +28,6 @@
 .public ov29_022DE0EC
 .public ov29_022E66C4
 .public ov29_022E9F80
-.public ov29_022FF958
 .public ov29_02352B60
 .public ov29_02352B74
 .public ov29_02352B88

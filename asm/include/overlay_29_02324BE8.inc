@@ -3,6 +3,7 @@
 .public AnimationDelayOrSomething
 .public AnimationHasMoreFrames
 .public ChangeMonsterAnimation
+.public ChangeMonsterAnimationToIdle
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__02321438
@@ -31,7 +32,6 @@
 .public ov29_022EA370
 .public ov29_022ED0C4
 .public ov29_022ED0D4
-.public ov29_02304A48
 .public ov29_02325644
 .public ov29_02325D20
 .public ov29_02325D7C

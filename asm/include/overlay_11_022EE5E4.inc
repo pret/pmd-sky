@@ -61,6 +61,7 @@
 .public DeleteWindow
 .public DigitInputMenuInit
 .public DigitInputMenuReturn
+.public DisplayAndSwitchAnimationControlCurrentFrame
 .public DrawTextInWindow
 .public DungeonMoveToGroundMove
 .public DungeonSwapIdxToId
@@ -836,7 +837,6 @@
 .public sub_02017C50
 .public sub_02017C74
 .public sub_0201C108
-.public sub_0201CF5C
 .public sub_0201CF90
 .public sub_0201D100
 .public sub_0201D18C

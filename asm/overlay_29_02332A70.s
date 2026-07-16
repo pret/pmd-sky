@@ -453,6 +453,6 @@ ov29_02333044: ; 0x02333044
 	and r2, r1, #7
 	mov r0, r5
 	strb r2, [r4, #0x4c]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_02333044

@@ -1,4 +1,5 @@
 #pragma once
+.public ChangeMonsterAnimationToIdle
 .public DefenderAbilityIsActive__02311B94
 .public EntityIsValid__023118B4
 .public ExclusiveItemEffectIsActiveWithLogging
@@ -8,7 +9,6 @@
 .public ItemIsActive__02311BF8
 .public LogMessageByIdWithPopupCheckUserTarget
 .public ov29_022E3E74
-.public ov29_02304A48
 .public SafeguardIsActive
 .public SubstitutePlaceholderStringTags
 .public TryActivateQuickFeet

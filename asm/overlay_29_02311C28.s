@@ -64,7 +64,7 @@ _02311CE4:
 	mov r0, r6
 	mov r1, #8
 	strb r2, [r5, #0xbd]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	cmp r4, #0
 	beq _02311D14
 	ldr r2, _02311D54 ; =0x00000D0D
@@ -154,7 +154,7 @@ _02311E00:
 	mov r0, r7
 	mov r1, #8
 	strb r2, [r5, #0xbd]
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	cmp r4, #0
 	beq _02311E30
 	ldr r2, _02311E64 ; =0x00000D08
@@ -215,7 +215,7 @@ TryInflictYawningStatus: ; 0x02311E70
 	bl ov29_022E53EC
 	mov r0, r5
 	mov r1, #8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	ldr r2, _02311F74 ; =0x00000D0F
 	mov r0, r6
 	mov r1, r5
@@ -324,7 +324,7 @@ TryInflictSleeplessStatus: ; 0x02311F80
 	bl ov29_022E4BB4
 	mov r0, r6
 	mov r1, #8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	cmp r4, #0
 	beq _0231202C
 	ldr r2, _02312060 ; =0x00000D13
@@ -934,7 +934,7 @@ _02312798:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, sb
 	mov r1, #8
-	bl ov29_02304A84
+	bl ChangeMonsterAnimationToHurt
 	mov r0, sl
 	mov r1, sb
 	bl TryActivateQuickFeet
@@ -1140,7 +1140,7 @@ _02312A70:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, sb
 	mov r1, #8
-	bl ov29_02304A84
+	bl ChangeMonsterAnimationToHurt
 	mov r0, sl
 	mov r1, sb
 	bl TryActivateQuickFeet
@@ -1452,7 +1452,7 @@ _02312ECC:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r6
 	mov r1, #8
-	bl ov29_02304A84
+	bl ChangeMonsterAnimationToHurt
 	mov r0, r7
 	mov r1, r6
 	bl TryActivateQuickFeet
@@ -1579,7 +1579,7 @@ _02313084:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r5
 	mov r1, #8
-	bl ov29_02304A84
+	bl ChangeMonsterAnimationToHurt
 	mov r0, r6
 	mov r1, r5
 	bl TryActivateQuickFeet
@@ -1747,7 +1747,7 @@ TryInflictWrappedStatus: ; 0x023131F4
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r6
 	mov r1, #8
-	bl ov29_02304A84
+	bl ChangeMonsterAnimationToHurt
 	mov r0, r7
 	mov r1, r6
 	bl TryActivateQuickFeet

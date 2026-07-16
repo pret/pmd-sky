@@ -19,11 +19,11 @@
 .public GetTileAtEntity
 .public IncrementEntityPixelPosXY
 .public IsFloorOver
+.public IsFloorOver2
 .public IsWaterTileset
 .public ov29_022E8104
 .public ov29_022EA370
 .public ov29_022EF9BC
-.public ov29_022EF9C8
 .public ov29_022F62CC
 .public ov29_022F9C74
 .public ov29_02305814

@@ -1573,8 +1573,8 @@ _02303F10: .word 0xFFFF000F
 _02303F14: .word OBJ_GRAPHICS_CONTROLS_PTR
 	arm_func_end DisplayMonsterShadow
 
-	arm_func_start ov29_02303F18
-ov29_02303F18: ; 0x02303F18
+	arm_func_start DisplayMonster
+DisplayMonster: ; 0x02303F18
 #ifdef JAPAN
 #define OV29_02303F18_OFFSET -4
 #define OV29_02303F18_OFFSET_2 -0xA4
@@ -1884,7 +1884,7 @@ _02304310:
 	bl ov29_022DDB98
 	add r0, sp, #0x10
 	mov r1, r7
-	bl ov29_022E3A40
+	bl CopyStatusIconFlags
 	cmp r4, #0
 	ldrneb r0, [r5, #0x156 + OV29_02303F18_OFFSET]
 	cmpne r0, #0
@@ -1901,7 +1901,7 @@ _02304310:
 	mov r1, sl
 	bl ov29_022E6E80
 	mov r0, r7
-	bl ov29_023046E8
+	bl AnimateFlyingMoves
 	cmp r4, #0
 	beq _0230464C
 	ldr r0, [r7, #0xb4]
@@ -2016,7 +2016,7 @@ _02304558:
 	cmp r0, #0
 	bne _02304570
 	add r0, r7, #0x2c
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	b _02304590
 _02304570:
 	cmp r0, #1
@@ -2026,7 +2026,7 @@ _02304570:
 	tst r0, #1
 	beq _02304590
 	add r0, r7, #0x2c
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 _02304590:
 	ldrsh r2, [r7, #0x50]
 	add r1, r5, #0x100
@@ -2120,10 +2120,10 @@ _023046D8: .word DUNGEON_FRAMES_PASSED
 _023046DC: .word ov29_0235280C
 _023046E0: .word 0x0000F3FF
 _023046E4: .word 0xFFFFFE5D
-	arm_func_end ov29_02303F18
+	arm_func_end DisplayMonster
 
-	arm_func_start ov29_023046E8
-ov29_023046E8: ; 0x023046E8
+	arm_func_start AnimateFlyingMoves
+AnimateFlyingMoves: ; 0x023046E8
 #ifdef JAPAN
 #define OV29_023046E8_OFFSET -4
 #else
@@ -2155,7 +2155,7 @@ _02304728:
 	movmi r0, #0
 	strmi r0, [r1, #0x188 + OV29_023046E8_OFFSET]
 	bx lr
-	arm_func_end ov29_023046E8
+	arm_func_end AnimateFlyingMoves
 
 	arm_func_start ov29_0230473C
 ov29_0230473C: ; 0x0230473C

@@ -413,7 +413,7 @@ _02306164:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r8
 	mov r1, #8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 #ifdef JAPAN
@@ -1521,7 +1521,7 @@ _02306EBC:
 	beq _02306EE4
 	mov r0, sb
 	mov r1, #0x378
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 _02306EE4:
 	mov r0, sb
 	bl UpdateStatusIconFlags

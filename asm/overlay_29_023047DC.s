@@ -205,8 +205,8 @@ ov29_02304A00: ; 0x02304A00
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_02304A00
 
-	arm_func_start ov29_02304A48
-ov29_02304A48: ; 0x02304A48
+	arm_func_start ChangeMonsterAnimationToIdle
+ChangeMonsterAnimationToIdle: ; 0x02304A48
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r2, [r5]
@@ -222,10 +222,10 @@ ov29_02304A48: ; 0x02304A48
 	cmp r4, #8
 	strltb r4, [r5, #0xb0]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02304A48
+	arm_func_end ChangeMonsterAnimationToIdle
 
-	arm_func_start ov29_02304A84
-ov29_02304A84: ; 0x02304A84
+	arm_func_start ChangeMonsterAnimationToHurt
+ChangeMonsterAnimationToHurt: ; 0x02304A84
 	ldr r2, [r0]
 	cmp r2, #1
 	bxne lr
@@ -238,7 +238,7 @@ ov29_02304A84: ; 0x02304A84
 	cmp r1, #8
 	strltb r1, [r0, #0xb0]
 	bx lr
-	arm_func_end ov29_02304A84
+	arm_func_end ChangeMonsterAnimationToHurt
 
 	arm_func_start GetIdleAnimationId
 GetIdleAnimationId: ; 0x02304AB4
@@ -263,16 +263,16 @@ _02304AE8:
 	bx lr
 	arm_func_end GetIdleAnimationId
 
-	arm_func_start ov29_02304AFC
-ov29_02304AFC: ; 0x02304AFC
+	arm_func_start MakeMonsterIdleInDirection
+MakeMonsterIdleInDirection: ; 0x02304AFC
 	ldr r2, [r0, #0xb4]
 	and r1, r1, #7
-	ldr ip, _02304B10 ; =ov29_02304A48
+	ldr ip, _02304B10 ; =ChangeMonsterAnimationToIdle
 	strb r1, [r2, #0x4c]
 	bx ip
 	.align 2, 0
-_02304B10: .word ov29_02304A48
-	arm_func_end ov29_02304AFC
+_02304B10: .word ChangeMonsterAnimationToIdle
+	arm_func_end MakeMonsterIdleInDirection
 
 	arm_func_start ov29_02304B14
 ov29_02304B14: ; 0x02304B14
@@ -405,7 +405,7 @@ ov29_02304C3C: ; 0x02304C3C
 _02304C8C:
 	mov r0, r4
 	mov r1, r8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	mov r0, r6
 	mov r1, r5
 	bl ov29_022EA370
@@ -425,7 +425,7 @@ _02304CC0:
 _02304CD4:
 	mov r0, r4
 	mov r1, r8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	mov r0, r6
 	mov r1, r5
 	bl ov29_022EA370
@@ -438,7 +438,7 @@ _02304CFC:
 	bne _02304CD4
 	mov r0, r4
 	mov r1, r8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	mov r0, #2
 	mov r1, #0x43
 	bl ov29_022EA370
@@ -712,7 +712,7 @@ _023050C0:
 	cmp r1, r0
 	beq _02305160
 	mov r0, r8
-	bl ov29_02304A48
+	bl ChangeMonsterAnimationToIdle
 	b _02305160
 _023050EC:
 	ldrh r2, [sb]
@@ -1013,7 +1013,7 @@ _02305538:
 	add r8, r8, #1
 	cmp r8, #2
 	blt _02305390
-	bl ov29_022EF9C8
+	bl IsFloorOver2
 	bl IsFloorOver
 	cmp r0, #0
 	ldrne r1, _02305588 ; =DUNGEON_PTR

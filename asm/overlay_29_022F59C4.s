@@ -145,7 +145,7 @@ _022F5B4C:
 	bl GetDirectionTowardsPosition
 	mov r1, r0
 	mov r0, r6
-	bl ov29_02304AFC
+	bl MakeMonsterIdleInDirection
 	ldr r1, _022F5DA0 ; =0x00000BC2
 	mov r0, #0
 	mov r2, #1
@@ -157,18 +157,18 @@ _022F5B78:
 	bl GetDirectionTowardsPosition
 	mov r1, r0
 	mov r0, r6
-	bl ov29_02304AFC
+	bl MakeMonsterIdleInDirection
 	cmp r5, #0
 	blt _022F5BA8
 	mov r0, sl
 	mov r1, r5
-	bl ov29_02304AFC
+	bl MakeMonsterIdleInDirection
 	b _022F5BB8
 _022F5BA8:
 	ldrb r1, [r8, #0x4c]
 	mov r0, sl
 	add r1, r1, #4
-	bl ov29_02304AFC
+	bl MakeMonsterIdleInDirection
 _022F5BB8:
 	cmp r4, #0
 	beq _022F5BD0

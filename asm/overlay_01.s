@@ -3776,7 +3776,7 @@ _0232C270:
 	strb r1, [r0]
 _0232C294:
 	ldr r0, _0232C2A8 ; =ov01_0233C784
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0232C2A0: .word ov01_0233C140
@@ -3976,7 +3976,7 @@ _0232C504:
 	strb r1, [r0]
 _0232C528:
 	ldr r0, _0232C53C ; =ov01_0233C880
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0232C534: .word ov01_0233C144
@@ -9403,11 +9403,11 @@ _02330D94:
 	cmp r0, #0
 	beq _02330DC0
 	add r0, r1, #0x94
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldr r0, _02330DFC ; =ov01_0233C164
 	ldr r0, [r0]
 	add r0, r0, #0x110
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 _02330DC0:
 	ldr r0, _02330DFC ; =ov01_0233C164
 	ldr r1, [r0]
@@ -9415,14 +9415,14 @@ _02330DC0:
 	cmp r0, #3
 	ldmneia sp!, {r3, pc}
 	add r0, r1, #0x208
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldr r0, _02330DFC ; =ov01_0233C164
 	ldr r1, [r0]
 	ldr r0, [r1, #0x7c]
 	cmp r0, #0
 	ldmleia sp!, {r3, pc}
 	add r0, r1, #0x18c
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02330DFC: .word ov01_0233C164
@@ -9629,7 +9629,7 @@ _02331094:
 	ldrh r1, [r0, #2]
 	tst r1, #2
 	ldmneia sp!, {r4, pc}
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023310AC: .word ov01_0233C174

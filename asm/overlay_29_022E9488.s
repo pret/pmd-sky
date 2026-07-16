@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022E9488
-ov29_022E9488: ; 0x022E9488
+	arm_func_start DisplayThrownItemShadow
+DisplayThrownItemShadow: ; 0x022E9488
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, _022E955C ; =DUNGEON_PTR
 	ldr r3, _022E9560 ; =0x0001A224
@@ -73,4 +73,4 @@ _022E9570: .word ov29_0237C892
 _022E9574: .word 0xFFFF000F
 _022E9578: .word OBJ_GRAPHICS_CONTROLS_PTR
 _022E957C: .word ov29_0237C888
-	arm_func_end ov29_022E9488
+	arm_func_end DisplayThrownItemShadow

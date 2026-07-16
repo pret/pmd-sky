@@ -602,7 +602,7 @@ _022FF704:
 	bne _022FF794
 	mov r0, r6
 	add r1, r6, #4
-	bl CannotStandOnTile
+	bl CannotStandOnTile__023006C8
 	cmp r0, #0
 	beq _022FF784
 	ldr r0, [r5, #0x110]
@@ -1268,7 +1268,7 @@ _022FECD8:
 	bne _022FED68
 	mov r0, sb
 	add r1, sb, #4
-	bl CannotStandOnTile
+	bl CannotStandOnTile__023006C8
 	cmp r0, #0
 	beq _022FED58
 	ldr r0, [r6, #0x110 + EXECUTE_MONSTER_ACTION_OFFSET]

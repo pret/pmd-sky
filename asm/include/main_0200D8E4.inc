@@ -1,4 +1,5 @@
 #pragma once
+.public _02094D20
 .public AVAILABLE_ITEMS_IN_GROUP_TABLE
 .public BAG_ITEMS_PTR_MIRROR
 .public BitstreamDebug
@@ -7,12 +8,11 @@
 .public GetDungeonGroup
 .public GetExclusiveItemType
 .public GetItemCategory
-.public ITEM_TABLES_PTRS_1
 .public InitBitstreamForRead
 .public InitBitstreamForWrite
 .public IsThrownItem
+.public ITEM_TABLES_PTRS_1
 .public ItemZInit
 .public MemAlloc
 .public MemFree
-.public _02094D20
 .public sub_0200EB64

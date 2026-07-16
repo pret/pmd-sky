@@ -29,6 +29,7 @@
 .public Debug_Print0
 .public DelayWteFree
 .public DeleteWanTableEntryVeneer
+.public DisplayAndSwitchAnimationControlCurrentFrame
 .public DRIVER_WORK
 .public DseBgm_StopAll
 .public DseBgm_SysSetupNoteList
@@ -64,7 +65,6 @@
 .public SetAnimationForAnimationControl
 .public SetSpriteIdForAnimationControl
 .public SinAbs4096
-.public sub_0201CF5C
 .public sub_0201D12C
 .public sub_0201D9C8
 .public sub_0201DF38

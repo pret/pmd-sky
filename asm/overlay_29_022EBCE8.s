@@ -223,7 +223,7 @@ _022EBFC8:
 	bl RunMonsterAi
 	mov r0, r4
 	bl ExecuteMonsterAction
-	bl ov29_022EF9C8
+	bl IsFloorOver2
 	mov r0, r6
 	bl TryForcedLoss
 	mov r0, r4
@@ -337,7 +337,7 @@ _022EC0BC:
 	bne _022EC1C8
 	mov r0, r8
 	bl ExecuteMonsterAction
-	bl ov29_022EF9C8
+	bl IsFloorOver2
 	mov r0, #0
 	bl TryForcedLoss
 	bl IsFloorOver
@@ -416,7 +416,7 @@ _022EC2AC:
 	mov r0, #1
 	mov r1, #0
 	bl TryActivateWeather
-	bl ov29_022EF9C8
+	bl IsFloorOver2
 	mov r0, #0
 	bl TryForcedLoss
 _022EC2C4:
@@ -548,7 +548,7 @@ _022EC434:
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, sb
 	bl ExecuteMonsterAction
-	bl ov29_022EF9C8
+	bl IsFloorOver2
 	mov r0, #0
 	bl TryForcedLoss
 	bl IsFloorOver

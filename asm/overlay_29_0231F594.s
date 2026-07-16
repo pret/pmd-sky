@@ -418,7 +418,7 @@ _0231FA9C:
 	ldr r1, [sp, #8]
 	add r0, r4, fp
 	mov r2, #0
-	bl ov29_023457C8
+	bl DisplayItem
 _0231FB08:
 	add sb, sb, #1
 _0231FB0C:

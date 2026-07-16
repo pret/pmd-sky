@@ -9013,7 +9013,7 @@ _022F5768:
 	strh r2, [r5, #0xe]
 	bl FillOamAttributeInfo
 	add r0, r5, #0xc
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	mov r0, #0
 	strb r0, [r5, #0xb6]
 	ldrh r0, [r5, #0x90]
@@ -9049,7 +9049,7 @@ _022F5808:
 	strh r2, [r5, #0xe]
 	bl FillOamAttributeInfo
 	add r0, r5, #0xc
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	mov r0, #0
 	strb r0, [r5, #0xb6]
 	ldrh r0, [r5, #0x90]
@@ -9085,7 +9085,7 @@ _022F5870:
 	strh r2, [r5, #0xe]
 	bl FillOamAttributeInfo
 	add r0, r5, #0xc
-	bl sub_0201CF5C
+	bl DisplayAndSwitchAnimationControlCurrentFrame
 	mov r0, #0
 	strb r0, [r5, #0xb6]
 	ldrh r0, [r5, #0x90]

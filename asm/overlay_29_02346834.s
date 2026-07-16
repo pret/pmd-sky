@@ -1079,7 +1079,7 @@ _0234744C:
 	mov r1, fp
 	mov r2, #0
 	and r3, r6, #0xff
-	bl ov29_023457C8
+	bl DisplayItem
 	mov r0, #0x13
 	bl AdvanceFrame
 	tst r5, #3
@@ -1103,7 +1103,7 @@ _023474CC:
 	mov r2, #1
 	mov r3, #0xff
 	str r5, [sp]
-	bl ov29_023457C8
+	bl DisplayItem
 _02347504:
 	mov r0, #0x13
 	bl AdvanceFrame
@@ -1113,8 +1113,8 @@ _02347504:
 _02347514: .word DUNGEON_PTR
 	arm_func_end ov29_02347378
 
-	arm_func_start ov29_02347518
-ov29_02347518: ; 0x02347518
+	arm_func_start HandleRegularProjectileThrow
+HandleRegularProjectileThrow: ; 0x02347518
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x248
 	ldr r4, _02347B3C ; =DUNGEON_PTR
@@ -1359,7 +1359,7 @@ _02347750:
 	moveq r2, #0
 	add r0, r0, #8
 	add r1, r1, #0x10
-	bl ov29_022E9488
+	bl DisplayThrownItemShadow
 	cmp r0, #0
 	movne r0, #1
 	strne r0, [sp, #0x18]
@@ -1373,7 +1373,7 @@ _02347750:
 #endif
 	add r0, r4, #0xcc
 	mov r2, #0
-	bl ov29_023457C8
+	bl DisplayItem
 	cmp r0, #0
 	movne r0, #1
 	strne r0, [sp, #0x18]
@@ -1785,4 +1785,4 @@ _02347B4C: .word 0x00000924
 _02347B48: .word 0x00000BE1
 _02347B4C: .word 0x00000BE5
 #endif
-	arm_func_end ov29_02347518
+	arm_func_end HandleRegularProjectileThrow

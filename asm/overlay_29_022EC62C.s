@@ -47,7 +47,7 @@ _022EC668:
 	bl RunMonsterAi
 	mov r0, r5
 	bl ExecuteMonsterAction
-	bl ov29_022EF9C8
+	bl IsFloorOver2
 	mov r0, r8
 	bl TryForcedLoss
 _022EC6C8:

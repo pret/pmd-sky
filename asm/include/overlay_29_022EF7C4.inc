@@ -1,9 +1,9 @@
 #pragma once
 .public ChangeDungeonMusic
-.public ChangeMonsterAnimationToIdle
 .public DUNGEON_PTR
 .public EntityIsValid__022EF7A0
 .public IsFloorOver
+.public MakeMonsterIdleInDirection2
 .public MoveMonsterToPos
 .public ov29_023444D4
 .public ov29_02348F20
