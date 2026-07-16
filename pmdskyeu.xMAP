@@ -665,7 +665,7 @@
                                                                           73](EntityIsValid__022ECDC0,func) found in global overlay_29_022ECDC0.o
                                                                           73](DisplayActions,func) found in global overlay_29_023047DC.o
                                                                           73](TryPointCameraToMonster,func) found in global overlay_29_022F9744.o
-                                                                           74](ov29_022EF938,func) found in global overlay_29_022EF7C4.o
+                                                                           74](ChangeTeamAnimationsToIdle,func) found in global overlay_29_022EF7C4.o
                                                                            74](IsFullFloorFixedRoom,func) found in global fixed_room_data_1.o
                                                                            74](GetDirectionTowardsPosition,func) found in global position_util.o
                                                                             75](POSITION_DISPLACEMENT_TO_DIRECTION,object) found in global position_util.o
@@ -860,7 +860,7 @@
                                                                                                        102](HandleCurvedProjectileThrow,func) found in global dungeon_projectile_throw.o
                                                                                                         103](ItemIsActive__02347B50,func) found in global dungeon_projectile_throw.o
                                                                                                         103](IsWaterTileset,func) found in global dungeon_map_access_1.o
-                                                                                                        103](ov29_022E9488,func) found in global overlay_29_022E9488.o
+                                                                                                        103](DisplayThrownItemShadow,func) found in global overlay_29_022E9488.o
                                                                                                         103](ExclusiveItemEffectIsActive__02347B80,func) found in global dungeon_projectile_throw.o
                                                                                                         103](DoesProjectileHitTarget,func) found in global overlay_29_02348020.o
                                                                                                          104](DisplayMessage2,func) found in global overlay_29_0234CA84.o
@@ -4084,9 +4084,9 @@
   0201C4B4 00000000 .text   $a	(main_020151E4.o)
   0201C4F4 00000108 .text   SwitchAnimationControlToNextFrame	(main_020151E4.o)
   0201C5FC 00000064 .text   LoadAnimationFrameAndIncrementInAnimationControl	(main_020151E4.o)
-  0201C660 00000998 .text   sub_0201C5C4	(main_020151E4.o)
+  0201C660 00000998 .text   DisplayAnimationControlCurrentFrame	(main_020151E4.o)
   0201CFE4 00000000 .text   $d	(main_020151E4.o)
-  0201CFF8 00000024 .text   sub_0201CF5C	(main_020151E4.o)
+  0201CFF8 00000024 .text   DisplayAndSwitchAnimationControlCurrentFrame	(main_020151E4.o)
   0201CFF8 00000000 .text   $a	(main_020151E4.o)
   0201D01C 00000010 .text   sub_0201CF80	(main_020151E4.o)
   0201D02C 000000A4 .text   sub_0201CF90	(main_020151E4.o)
@@ -35242,7 +35242,7 @@
   022E1F80 00000000 .text   $a	(overlay_29_022E1640.o)
   022E2188 00000000 .text   $d	(overlay_29_022E1640.o)
   022E2194 00000000 .text   $a	(overlay_29_022E1640.o)
-  022E2194 000001C8 .text   ov29_022E1854	(overlay_29_022E1640.o)
+  022E2194 000001C8 .text   DisplayMonstersAndItems	(overlay_29_022E1640.o)
   022E2358 00000000 .text   $d	(overlay_29_022E1640.o)
   022E235C 00000024 .text   EntityIsValid__022E1A1C	(dg_object.o)
   022E235C 00000000 .text   $a	(dg_object.o)
@@ -35296,7 +35296,7 @@
   022E2D58 00000058 .text   ov29_022E2418	(overlay_29_022E1AD4.o)
   022E2DAC 00000000 .text   $d	(overlay_29_022E1AD4.o)
   022E2DB0 00000000 .text   $a	(overlay_29_022E1AD4.o)
-  022E2DB0 00000028 .text   ov29_022E2470	(overlay_29_022E1AD4.o)
+  022E2DB0 00000028 .text   CreateTemporaryEntity	(overlay_29_022E1AD4.o)
   022E2DD8 000000DC .text   ShouldMinimapDisplayEntity	(overlay_29_022E1AD4.o)
   022E2EB0 00000000 .text   $d	(overlay_29_022E1AD4.o)
   022E2EB4 00000000 .text   $a	(overlay_29_022E1AD4.o)
@@ -35402,7 +35402,7 @@
   022E4290 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E4290 00000160 .text   AnimationDelayOrSomething	(overlay_29_022E37DC.o)
   022E43E8 00000000 .text   $d	(overlay_29_022E37DC.o)
-  022E43F0 00000018 .text   ov29_022E3A40	(overlay_29_022E37DC.o)
+  022E43F0 00000018 .text   CopyStatusIconFlags	(overlay_29_022E37DC.o)
   022E43F0 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E4408 0000005C .text   ov29_022E3A58	(overlay_29_022E37DC.o)
   022E4460 00000000 .text   $d	(overlay_29_022E37DC.o)
@@ -35910,7 +35910,7 @@
   022E9698 00000178 .text   ov29_022E8CE8	(overlay_29_022E7EC4.o)
   022E9804 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E9810 00000000 .text   $a	(overlay_29_022E7EC4.o)
-  022E9810 00000034 .text   ov29_022E8E60	(overlay_29_022E7EC4.o)
+  022E9810 00000034 .text   DrawDungeonControlsText	(overlay_29_022E7EC4.o)
   022E9840 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E9844 00000000 .text   $a	(overlay_29_022E7EC4.o)
   022E9844 00000094 .text   ov29_022E8E94	(overlay_29_022E7EC4.o)
@@ -35949,7 +35949,7 @@
   022E9D0C 00000000 .text   $a	(dungeon_range_2.o)
   022E9E38 00000000 .text   $a	(overlay_29_022E9488.o)
   022E9E38 000000F8 .text   .text	(overlay_29_022E9488.o)
-  022E9E38 000000F8 .text   ov29_022E9488	(overlay_29_022E9488.o)
+  022E9E38 000000F8 .text   DisplayThrownItemShadow	(overlay_29_022E9488.o)
   022E9F0C 00000000 .text   $d	(overlay_29_022E9488.o)
   022E9F30 00000000 .text   $a	(dg_uty.o)
   022E9F30 00000074 .text   GetLeader	(dg_uty.o)
@@ -36308,7 +36308,7 @@
   022EE31C 00000000 .text   $d	(overlay_29_022ECDE4.o)
   022EE320 00000000 .text   $a	(overlay_29_022ECDE4.o)
   022EE320 00000060 .text   SpawnEnemyTrapAtPos	(overlay_29_022ECDE4.o)
-  022EE380 00000204 .text   ov29_022ED9D0	(overlay_29_022ECDE4.o)
+  022EE380 00000204 .text   CreateTrapAndStairsHallucinations	(overlay_29_022ECDE4.o)
   022EE568 00000000 .text   $d	(overlay_29_022ECDE4.o)
   022EE584 00000000 .text   $a	(overlay_29_022ECDE4.o)
   022EE584 0000005C .text   PrepareTrapperTrap	(overlay_29_022ECDE4.o)
@@ -36394,14 +36394,14 @@
   022F0258 00000000 .text   $a	(overlay_29_022EF7C4.o)
   022F02E8 00000000 .text   $d	(overlay_29_022EF7C4.o)
   022F02EC 00000000 .text   $a	(overlay_29_022EF7C4.o)
-  022F02EC 00000080 .text   ov29_022EF938	(overlay_29_022EF7C4.o)
+  022F02EC 00000080 .text   ChangeTeamAnimationsToIdle	(overlay_29_022EF7C4.o)
   022F0368 00000000 .text   $d	(overlay_29_022EF7C4.o)
   022F036C 00000004 .text   ov29_022EF9B8	(overlay_29_022EF7C4.o)
   022F036C 00000000 .text   $a	(overlay_29_022EF7C4.o)
   022F0370 0000000C .text   ov29_022EF9BC	(overlay_29_022EF7C4.o)
   022F0378 00000000 .text   $d	(overlay_29_022EF7C4.o)
   022F037C 00000000 .text   $a	(overlay_29_022EF7C4.o)
-  022F037C 00000024 .text   ov29_022EF9C8	(overlay_29_022EF7C4.o)
+  022F037C 00000024 .text   IsFloorOver2	(overlay_29_022EF7C4.o)
   022F039C 00000000 .text   $d	(overlay_29_022EF7C4.o)
   022F03A0 00000080 .text   ShouldRunMonsterAi	(dungeon_util.o)
   022F03A0 00000000 .text   $a	(dungeon_util.o)
@@ -36781,7 +36781,7 @@
   022FACFC 00000070 .text   ov29_022FA2F0	(overlay_29_022F9744.o)
   022FAD68 00000000 .text   $d	(overlay_29_022F9744.o)
   022FAD6C 00000000 .text   $a	(overlay_29_022F9744.o)
-  022FAD6C 00000040 .text   ChangeMonsterAnimationToIdle	(overlay_29_022F9744.o)
+  022FAD6C 00000040 .text   MakeMonsterIdleInDirection2	(overlay_29_022F9744.o)
   022FADAC 00000034 .text   ov29_022FA3A0	(overlay_29_022F9744.o)
   022FADE0 00000044 .text   ov29_022FA3D4	(overlay_29_022F9744.o)
   022FAE20 00000000 .text   $d	(overlay_29_022F9744.o)
@@ -37022,12 +37022,12 @@
   023002F4 00000000 .text   $a	(overlay_29_022FF8C8.o)
   02300334 00000050 .text   CanMoveThroughWalls	(dungeon_logic_8.o)
   02300334 00000000 .text   $a	(dungeon_logic_8.o)
-  02300384 0000013C .text   ov29_022FF958	(overlay_29_022FF958.o)
+  02300384 0000013C .text   CannotStandOnTile__02300384	(overlay_29_022FF958.o)
   02300384 000005D0 .text   .text	(overlay_29_022FF958.o)
   02300384 00000000 .text   $a	(overlay_29_022FF958.o)
   023004C0 000000FC .text   ov29_022FFA94	(overlay_29_022FF958.o)
   023005BC 0000010C .text   ov29_022FFB90	(overlay_29_022FF958.o)
-  023006C8 00000158 .text   CannotStandOnTile	(overlay_29_022FF958.o)
+  023006C8 00000158 .text   CannotStandOnTile__023006C8	(overlay_29_022FF958.o)
   02300820 00000134 .text   CalcSpeedStage	(overlay_29_022FF958.o)
   02300944 00000000 .text   $d	(overlay_29_022FF958.o)
   02300954 00000024 .text   ExclusiveItemEffectIsActive__022FFF28	(overlay_29_022FFF28.o)
@@ -37271,10 +37271,10 @@
   02304888 000000BC .text   DisplayMonsterShadow	(overlay_29_02302A5C.o)
   02304938 00000000 .text   $d	(overlay_29_02302A5C.o)
   02304944 00000000 .text   $a	(overlay_29_02302A5C.o)
-  02304944 000007D0 .text   ov29_02303F18	(overlay_29_02302A5C.o)
+  02304944 000007D0 .text   DisplayMonster	(overlay_29_02302A5C.o)
   023050F4 00000000 .text   $d	(overlay_29_02302A5C.o)
   02305114 00000000 .text   $a	(overlay_29_02302A5C.o)
-  02305114 00000054 .text   ov29_023046E8	(overlay_29_02302A5C.o)
+  02305114 00000054 .text   AnimateFlyingMoves	(overlay_29_02302A5C.o)
   02305168 0000007C .text   ov29_0230473C	(overlay_29_02302A5C.o)
   023051E0 00000000 .text   $d	(overlay_29_02302A5C.o)
   023051E4 00000024 .text   EntityIsValid__023047B8	(overlay_29_023047B8.o)
@@ -37293,10 +37293,10 @@
   023053D4 0000002C .text   ChangeMonsterAnimation	(overlay_29_023047DC.o)
   02305400 0000002C .text   ov29_023049D4	(overlay_29_023047DC.o)
   0230542C 00000048 .text   ov29_02304A00	(overlay_29_023047DC.o)
-  02305474 0000003C .text   ov29_02304A48	(overlay_29_023047DC.o)
-  023054B0 00000030 .text   ov29_02304A84	(overlay_29_023047DC.o)
+  02305474 0000003C .text   ChangeMonsterAnimationToIdle	(overlay_29_023047DC.o)
+  023054B0 00000030 .text   ChangeMonsterAnimationToHurt	(overlay_29_023047DC.o)
   023054E0 00000048 .text   GetIdleAnimationId	(overlay_29_023047DC.o)
-  02305528 00000018 .text   ov29_02304AFC	(overlay_29_023047DC.o)
+  02305528 00000018 .text   MakeMonsterIdleInDirection	(overlay_29_023047DC.o)
   0230553C 00000000 .text   $d	(overlay_29_023047DC.o)
   02305540 00000050 .text   ov29_02304B14	(overlay_29_023047DC.o)
   02305540 00000000 .text   $a	(overlay_29_023047DC.o)
@@ -38578,7 +38578,7 @@
   02328B7C 00000000 .text   $a	(overlay_29_02328030.o)
   02328BD0 00000000 .text   $d	(overlay_29_02328030.o)
   02328BD8 00000000 .text   $a	(overlay_29_02328030.o)
-  02328BD8 0000006C .text   DoMoveDamageParalyze10	(overlay_29_02328030.o)
+  02328BD8 0000006C .text   DoMoveDamageParalyze15	(overlay_29_02328030.o)
   02328C40 00000000 .text   $d	(overlay_29_02328030.o)
   02328C44 00000058 .text   DoMoveSelfdestruct	(overlay_29_02328030.o)
   02328C44 00000000 .text   $a	(overlay_29_02328030.o)
@@ -39793,7 +39793,7 @@
   023462A8 0000010C .text   RemoveGroundItem	(overlay_29_023456BC.o)
   023463B0 00000000 .text   $d	(overlay_29_023456BC.o)
   023463B4 00000000 .text   $a	(overlay_29_023456BC.o)
-  023463B4 00000274 .text   ov29_023457C8	(overlay_29_023456BC.o)
+  023463B4 00000274 .text   DisplayItem	(overlay_29_023456BC.o)
   0234660C 00000000 .text   $d	(overlay_29_023456BC.o)
   02346628 00000000 .text   $a	(overlay_29_023456BC.o)
   02346628 0000009C .text   SpawnDroppedItemWrapper	(overlay_29_023456BC.o)
@@ -39866,7 +39866,7 @@
   02347F78 00000000 .text   $a	(overlay_29_02346834.o)
   02347F78 000001A0 .text   ov29_02347378	(overlay_29_02346834.o)
   02348114 00000000 .text   $d	(overlay_29_02346834.o)
-  02348118 00000638 .text   ov29_02347518	(overlay_29_02346834.o)
+  02348118 00000638 .text   HandleRegularProjectileThrow	(overlay_29_02346834.o)
   02348118 00000000 .text   $a	(overlay_29_02346834.o)
   0234873C 00000000 .text   $d	(overlay_29_02346834.o)
   02348750 00000030 .text   ItemIsActive__02347B50	(dungeon_projectile_throw.o)
@@ -41864,5 +41864,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Jul 12 04:00:08 2026
-# Link end time: Sun Jul 12 04:00:09 2026
+# Link start time: Thu Jul 16 04:24:03 2026
+# Link end time: Thu Jul 16 04:24:04 2026
