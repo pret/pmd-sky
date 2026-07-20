@@ -191,15 +191,3 @@ IsExpEnabledInDungeon: ; 0x0205171C
 	.align 2, 0
 _02051740: .word DUNGEON_RESTRICTIONS
 	arm_func_end IsExpEnabledInDungeon
-
-	arm_func_start IsSkyExclusiveDungeon
-IsSkyExclusiveDungeon: ; 0x02051744
-	cmp r0, #0x67
-	blo _02051758
-	cmp r0, #0xb0
-	movls r0, #1
-	bxls lr
-_02051758:
-	mov r0, #0
-	bx lr
-	arm_func_end IsSkyExclusiveDungeon
