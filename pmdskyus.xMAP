@@ -1221,6 +1221,7 @@
                                                                         71](IsSameMove,func) found in global main_0201514C.o
                                                                         71](EntityIsValidMoveEffects__0232800C,func) found in global overlay_29_0232800C.o
                                                                       69](SwapMonsterWanFileIndex,func) found in global overlay_29_022F7654.o
+                                                                      69](IsSkyExclusiveDungeon,func) found in global main_02051760.o
                                                                      68](ShouldTryEatItem,func) found in global overlay_29_0231E990.o
                                                                      68](IsOneHitKoMove,func) found in global main_02014CEC.o
                                                                     67](GetMoveBasePp,func) found in global moves_4.o
@@ -7328,12 +7329,12 @@
   020514CC 00000000 .text   $a	(main_020514CC.o)
   020514E8 0000001C .text   IsSpecialEpisodeDungeon	(main_020514CC.o)
   020514E8 00000000 .text   $a	(main_020514CC.o)
-  02051504 0000025C .text   .text	(main_02051504.o)
+  02051504 00000240 .text   .text	(main_02051504.o)
   02051504 00000000 .text   $a	(main_02051504.o)
   02051504 00000064 .text   RetrieveFromItemList1	(main_02051504.o)
   02051564 00000000 .text   $d	(main_02051504.o)
-  02051568 00000000 .text   $a	(main_02051504.o)
   02051568 0000005C .text   IsForbiddenFloor	(main_02051504.o)
+  02051568 00000000 .text   $a	(main_02051504.o)
   020515C0 00000000 .text   $d	(main_02051504.o)
   020515C4 00000028 .text   Copy16BitsTo	(main_02051504.o)
   020515C4 00000000 .text   $a	(main_02051504.o)
@@ -7348,8 +7349,8 @@
   0205171C 00000028 .text   IsExpEnabledInDungeon	(main_02051504.o)
   0205171C 00000000 .text   $a	(main_02051504.o)
   02051740 00000000 .text   $d	(main_02051504.o)
-  02051744 0000001C .text   IsSkyExclusiveDungeon	(main_02051504.o)
-  02051744 00000000 .text   $a	(main_02051504.o)
+  02051744 0000001C .text   IsSkyExclusiveDungeon	(main_02051760.o)
+  02051744 00000000 .text   $a	(main_02051760.o)
   02051760 00000028 .text   JoinedAtRangeCheck2	(main_02051760.o)
   02051760 00000000 .text   $a	(main_02051760.o)
   02051788 0000004C .text   .text	(main_02051788.o)
@@ -41819,5 +41820,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Jul 16 04:22:20 2026
-# Link end time: Thu Jul 16 04:22:21 2026
+# Link start time: Mon Jul 20 21:59:50 2026
+# Link end time: Mon Jul 20 21:59:51 2026
