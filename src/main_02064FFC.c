@@ -260,7 +260,7 @@ int sub_0206549C(s16* p, s16* out)
                     return -1;
                 }
             } else if (i < GetUnitNpcIds(unit_buf)) {
-                *out = TEAM_MEMBER_TABLE_PTR[unit_buf[i]].field_0x4;
+                *out = TEAM_MEMBER_TABLE_PTR->members[unit_buf[i]].id;
                 return -1;
             }
         } else if (id >= 0x1a && id <= 0x1d) {
@@ -274,7 +274,7 @@ int sub_0206549C(s16* p, s16* out)
             }
             if (Debug_GetDebugFlag(DEBUG_FLAG_STAGE_NPC_DUMMY)) {
                 if (*p == 0x1a) {
-                    *out = GetPartner()->field_0x4;
+                    *out = GetPartner()->id;
                     return -1;
                 }
                 if (*p == 0x1b) {
@@ -286,7 +286,7 @@ int sub_0206549C(s16* p, s16* out)
                     return -1;
                 }
             } else if (i < GetAdventureNpcIds(adv_buf)) {
-                *out = TEAM_MEMBER_TABLE_PTR[adv_buf[i]].field_0x4;
+                *out = TEAM_MEMBER_TABLE_PTR->members[adv_buf[i]].id;
                 return -1;
             }
         }
@@ -298,28 +298,28 @@ int sub_0206549C(s16* p, s16* out)
         case 1:
         case 12:
         case 0x3c:
-            *out = GetMainCharacter1()->field_0x4;
+            *out = GetMainCharacter1()->id;
             break;
         case 2:
         case 13:
         case 0x3d:
-            *out = GetMainCharacter2()->field_0x4;
+            *out = GetMainCharacter2()->id;
             break;
         case 3:
         case 14:
         case 0x3e:
-            *out = GetMainCharacter3()->field_0x4;
+            *out = GetMainCharacter3()->id;
             break;
         case 4:
         case 15:
         case 0x3f:
-            *out = sub_02056914()->field_0x4;
+            *out = sub_02056914()->id;
             break;
         case 0x40:
-            *out = GetHero()->field_0x4;
+            *out = GetHero()->id;
             break;
         case 0x41:
-            *out = GetPartner()->field_0x4;
+            *out = GetPartner()->id;
             break;
         case 0x42:
             *out = LoadScriptVariableValue(0, 0x3e);
