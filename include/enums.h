@@ -1412,6 +1412,7 @@ enum shopkeeper_mode {
 
 // Monster ID. Add 600 to the base value to get secondary genders (typically female).
 enum monster_id {
+    MONSTER_INVALID = -1,
     _MONSTER_ID_GENDERED(NONE, 0),
     _MONSTER_ID_GENDERED(BULBASAUR, 1),
     _MONSTER_ID_GENDERED(IVYSAUR, 2),

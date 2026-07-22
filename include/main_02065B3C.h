@@ -5,7 +5,7 @@
 
 struct unk_020A7FF0 {
     s16 field_0x0;
-    u16 field_0x2;
+    s16 field_0x2;
     char *field_0x4;
     u16 field_0x8;
     u8 field_0xa;
