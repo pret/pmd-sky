@@ -25,9 +25,21 @@ extern u8 *_020AFC70;
 
 void sub_0201E380(u8* a, u32* b, s16 c, s16 d);
 
+int GetAppointedLeaderMemberIdx(void);
+int GetMainCharacter1MemberIdx(void);
+int GetMainCharacter2MemberIdx(void);
+int OverlayIsLoaded(s32 overlay_id);
+int ov11_022E96E4(void);
+int GetUnitNpcIds(void* buf);
+int GetAdventureNpcIds(void* buf);
+int sub_02055410(int a);
+int sub_02055474(int a);
+int sub_020554D8(int a);
+
 void sub_02064F94(struct unk_02064F94* a, u32* data, int count);
 void sub_02064FE4(struct unk_02064F94* a, struct unk_02064FE4* b);
 char* sub_02064FFC(s16 id);
 int sub_02065014(s16 id);
+int sub_02065050(s16* p);
 
 #endif

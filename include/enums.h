@@ -2017,6 +2017,7 @@ enum monster_id {
 
 // Script entity IDs. While a few script entities differ between versions, the IDs are the same.
 enum script_entity_id {
+    ENTITY_NONE = -1,
     ENTITY_PLAYER = 0,
     ENTITY_PLAYER_HERO = 1,
     ENTITY_PLAYER_PARTNER = 2,

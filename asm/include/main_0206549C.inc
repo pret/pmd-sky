@@ -3,12 +3,9 @@
 .public Debug_GetDebugFlag
 .public ENTITIES
 .public GetAdventureNpcIds
-.public GetAppointedLeaderMemberIdx
 .public GetHero
 .public GetMainCharacter1
-.public GetMainCharacter1MemberIdx
 .public GetMainCharacter2
-.public GetMainCharacter2MemberIdx
 .public GetMainCharacter3
 .public GetPartner
 .public GetUnitNpcIds
@@ -17,7 +14,5 @@
 .public SPECIAL_ACTORS
 .public TEAM_MEMBER_TABLE_PTR
 .public ov11_022E96E4
-.public sub_02055410
-.public sub_02055474
-.public sub_020554D8
 .public sub_02056914
+.public sub_02065050
