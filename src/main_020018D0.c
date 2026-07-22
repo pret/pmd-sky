@@ -36,3 +36,14 @@ s32 CosAbs4096(s32 x)
             return 0;
     }
 }
+
+BOOL UFixedPoint64CmpLt(u32 a_hi, u32 a_lo, u32 b_hi, u32 b_lo)
+{
+    if (a_hi < b_hi) {
+        return TRUE;
+    }
+    if (a_hi > b_hi) {
+        return FALSE;
+    }
+    return a_lo < b_lo;
+}
