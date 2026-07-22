@@ -3,6 +3,17 @@
 
 #include "enums.h"
 
+struct unk_020A7FF0 {
+    u16 field_0x0;
+    u16 field_0x2;
+    char *field_0x4;
+    u16 field_0x8;
+    u8 field_0xa;
+    u8 field_0xb;
+};
+
+extern struct unk_020A7FF0 ENTITIES[];
+
 //The earlier fields in this were changed from script_entity_id to monster_id based on how they are handled; if evidence suggests they can handle both, they should be converted into a union.
 struct special_actors {
     enum monster_id event_npc02;
@@ -23,6 +34,7 @@ struct special_actors {
 
 extern struct special_actors SPECIAL_ACTORS;
 
+u16 sub_02065B14(s16 id);
 void SetActorTalkMainAndActorTalkSub(enum script_entity_id talk_main, enum script_entity_id talk_sub);
 void SetActorTalkMain(enum script_entity_id talk_main);
 void SetActorTalkSub(enum script_entity_id talk_sub);
