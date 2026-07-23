@@ -3,6 +3,7 @@
 
 #include "common.h"
 #include "main_02055770.h"
+#include "main_0205567C.h"
 
 struct unk_02064F94 {
     u8 field_0x0[8];
@@ -31,8 +32,6 @@ extern struct team_member_table *TEAM_MEMBER_TABLE_PTR;
 void sub_0201E380(u8* a, u32* b, s16 c, s16 d);
 
 int GetAppointedLeaderMemberIdx(void);
-int GetMainCharacter1MemberIdx(void);
-int GetMainCharacter2MemberIdx(void);
 int OverlayIsLoaded(s32 overlay_id);
 int ov11_022E96E4(void);
 int GetUnitNpcIds(void* buf);
