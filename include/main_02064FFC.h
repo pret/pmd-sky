@@ -2,6 +2,7 @@
 #define PMDSKY_MAIN_02064FFC_H
 
 #include "common.h"
+#include "main_02055770.h"
 
 struct unk_02064F94 {
     u8 field_0x0[8];
@@ -39,11 +40,6 @@ int GetAdventureNpcIds(void* buf);
 int sub_02055410(int a);
 int sub_02055474(int a);
 int sub_020554D8(int a);
-struct ground_monster* GetMainCharacter1(void);
-struct ground_monster* GetMainCharacter2(void);
-struct ground_monster* GetMainCharacter3(void);
-struct ground_monster* GetHero(void);
-struct ground_monster* GetPartner(void);
 struct ground_monster* sub_02056914(void);
 
 void sub_02064F94(struct unk_02064F94* a, u32* data, int count);
