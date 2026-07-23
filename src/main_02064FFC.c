@@ -41,8 +41,8 @@ int sub_02065050(s16* p)
     int a;
     int b;
     int member;
-    u8 unit_buf[8];
-    u8 adv_buf[8];
+    s16 unit_buf[4];
+    s16 adv_buf[4];
 
     id = *p;
     ret = -1;
