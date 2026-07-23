@@ -10,6 +10,7 @@
 #include "main_02056D70.h"
 #include "main_0201E380.h"
 #include "main_020564B0.h"
+#include "overlay_11_022E96E4.h"
 
 struct unk_02064F94 {
     u8 field_0x0[8];
@@ -36,7 +37,6 @@ extern s16 ARM9_UNKNOWN_TABLE__NA_20A68BC[];
 extern struct team_member_table *TEAM_MEMBER_TABLE_PTR;
 
 int OverlayIsLoaded(s32 overlay_id);
-int ov11_022E96E4(void);
 
 void sub_02064F94(struct unk_02064F94* a, u32* data, int count);
 void sub_02064FE4(struct unk_02064F94* a, struct unk_02064FE4* b);
