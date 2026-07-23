@@ -6,6 +6,7 @@
 #include "main_0205567C.h"
 #include "main_020568A4.h"
 #include "main_02056914.h"
+#include "main_02055410.h"
 
 struct unk_02064F94 {
     u8 field_0x0[8];
@@ -37,9 +38,6 @@ int OverlayIsLoaded(s32 overlay_id);
 int ov11_022E96E4(void);
 int GetUnitNpcIds(void* buf);
 int GetAdventureNpcIds(void* buf);
-int sub_02055410(int a);
-int sub_02055474(int a);
-int sub_020554D8(int a);
 
 void sub_02064F94(struct unk_02064F94* a, u32* data, int count);
 void sub_02064FE4(struct unk_02064F94* a, struct unk_02064FE4* b);
