@@ -8,7 +8,7 @@ void sub_02064F94(struct unk_02064F94* a, u32* data, int count)
     int i;
 
     for (i = 0; i < count; i++, data++) {
-        sub_0201E380(_020AFC70 + 0xcc, data, a->field_0x8, i);
+        sub_0201E380((struct unk_0201E380*)(_020AFC70 + 0xcc), data, a->field_0x8, i);
     }
 }
 
