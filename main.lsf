@@ -31,6 +31,10 @@ Static main
 	Object asm/main_020038D8.o
 	Object src/main_02003D2C.o
 	Object asm/main_02003DB8.o
+	Object src/main_02003ED0.o
+	Object asm/main_rodata_02092580.o
+	Object asm/main_rodata_020925A0.o
+	Object asm/main_020040AC.o
 	Object src/main_02008210.o
 	Object asm/main_02008240.o
 	Object src/main_02008254.o
