@@ -3,6 +3,7 @@
 
 #include "enums.h"
 
+//The earlier fields in this were changed from script_entity_id to monster_id based on how they are handled; if evidence suggests they can handle both, they should be converted into a union.
 struct special_actors {
     enum monster_id event_npc02;
     enum monster_id event_npc01;
