@@ -1,9 +1,9 @@
 #include "main_0206C98C.h"
-#include "dc_envelope.h"
+#include "dse.h"
 
 void DseMem_Quit(void)
 {
-    DRIVER_WORK.heap_start=0;
+    DRIVER_WORK.heap_node_list=0;
     DRIVER_WORK.heap_end=0;
     DRIVER_WORK.heap_size=0;
 }

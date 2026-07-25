@@ -7,7 +7,7 @@
 PXI_InitFifo: ; 0x0207D9B0
 	stmdb sp!, {r3, r4, r5, lr}
 	bl EnableIrqFlag
-	ldr r1, _0207DA94 ; =_022BB564
+	ldr r1, _0207DA94 ; =FifoCtrlInit
 	mov r4, r0
 	ldrh r0, [r1]
 	cmp r0, #0
@@ -69,7 +69,7 @@ _0207DA88:
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0207DA94: .word _022BB564
+_0207DA94: .word FifoCtrlInit
 _0207DA98: .word 0x027FFC00
 _0207DA9C: .word _022BB568
 _0207DAA0: .word 0x0000C408

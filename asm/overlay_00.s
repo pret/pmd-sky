@@ -36235,14 +36235,14 @@ _022DA63C:
 	add r0, r0, #0x1a00
 	add r1, r1, #0x1800
 	add r2, r4, r7
-	bl Mathi_Crc16Update
+	bl MATHi_CRC16Update
 	ldr r0, _022DA86C ; =ov00_02326CA4
 	add r1, r4, r7
 	ldr r0, [r0]
 	mov r2, #0x6e
 	add r0, r0, #0x96
 	add r0, r0, #0x1a00
-	bl Math_CalcCrc16
+	bl MATH_CalcCRC16
 	ldr r1, _022DA86C ; =ov00_02326CA4
 	mov r2, #0x70
 	ldr r4, [r1]
@@ -36364,7 +36364,7 @@ Wds_Initialize: ; 0x022DA884
 	ldr r0, [r2]
 	add r0, r0, #0x96
 	add r0, r0, #0x1a00
-	bl Mathi_Crc16InitTable
+	bl MATHi_CRC16InitTable
 	ldr r0, _022DA914 ; =ov00_02326CA4
 	mov r1, r6
 	ldr r0, [r0]
@@ -37254,11 +37254,11 @@ Dwc_Acc_CreateFriendKey: ; 0x022DB358
 _022DB37C:
 	add r0, sp, #0x70
 	mov r1, #7
-	bl Mathi_Crc8InitTable
+	bl MATHi_CRC8InitTable
 	add r0, sp, #0x70
 	add r1, sp, #0
 	mov r2, #8
-	bl Math_CalcCrc8
+	bl MATH_CalcCRC8
 	and r0, r0, #0x7f
 	b _022DB3D0
 _022DB3A0:
@@ -37452,11 +37452,11 @@ Dwci_Acc_CreateUserData: ; 0x022DB5B8
 	bl Dwci_Acc_SetFlag_DataType
 	ldr r1, _022DB630 ; =0xEDB88320
 	add r0, sp, #0
-	bl Mathi_Crc32InitTable
+	bl MATHi_CRC32InitTable
 	add r0, sp, #0
 	mov r1, r5
 	mov r2, #0x3c
-	bl Math_CalcCrc32
+	bl MATH_CalcCRC32
 	str r0, [r5, #0x3c]
 	ldr r0, [r5, #0x20]
 	orr r0, r0, #1
@@ -37608,11 +37608,11 @@ Dwc_CheckUserData: ; 0x022DB7BC
 	ldr r1, _022DB7FC ; =0xEDB88320
 	mov r4, r0
 	add r0, sp, #0
-	bl Mathi_Crc32InitTable
+	bl MATHi_CRC32InitTable
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x3c
-	bl Math_CalcCrc32
+	bl MATH_CalcCRC32
 	ldr r1, [r4, #0x3c]
 	cmp r0, r1
 	moveq r0, #1
@@ -37682,11 +37682,11 @@ Dwci_Acc_SetLoginIdToUserData: ; 0x022DB898
 	ldr r1, _022DB8EC ; =0xEDB88320
 	add r0, sp, #0
 	str ip, [r4, #0x1c]
-	bl Mathi_Crc32InitTable
+	bl MATHi_CRC32InitTable
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x3c
-	bl Math_CalcCrc32
+	bl MATH_CalcCRC32
 	str r0, [r4, #0x3c]
 	ldr r0, [r4, #0x20]
 	orr r0, r0, #1
@@ -37733,11 +37733,11 @@ Dwci_Acc_ClearDirty: ; 0x022DB920
 	bic r2, r1, #1
 	ldr r1, _022DB960 ; =0xEDB88320
 	str r2, [r4, #0x20]
-	bl Mathi_Crc32InitTable
+	bl MATHi_CRC32InitTable
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x3c
-	bl Math_CalcCrc32
+	bl MATH_CalcCRC32
 	str r0, [r4, #0x3c]
 	add sp, sp, #0x400
 	ldmia sp!, {r4, pc}
@@ -58594,7 +58594,7 @@ Dwci_BM_SetWiFiInfo: ; 0x022ED540
 	bl Dwci_BackuplConvWifiInfo
 	ldr r1, _022ED614 ; =0x0000A001
 	add r0, sl, #0x200
-	bl Mathi_Crc16InitTable
+	bl MATHi_CRC16InitTable
 	mov r5, #0x100
 	ldr r6, _022ED618 ; =ov00_023276E0
 	mov r8, #0
@@ -58619,7 +58619,7 @@ _022ED59C:
 	mov r1, sl
 	mov r2, #0xfe
 	add r0, sl, #0x200
-	bl Math_CalcCrc16
+	bl MATH_CalcCRC16
 	strh r0, [sl, #0xfe]
 _022ED5C0:
 	mov r0, sb
@@ -58743,7 +58743,7 @@ _022ED738:
 	mov r1, r7
 	mov r2, r4
 	add r0, r8, #0x500
-	bl Math_CalcCrc16
+	bl MATH_CalcCRC16
 	add r1, r8, r5, lsl #8
 	strh r0, [r1, #0xfe]
 _022ED750:
@@ -59426,7 +59426,7 @@ Dwc_BM_Init: ; 0x022EE018
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	ldr r1, _022EE310 ; =0x0000A001
 	add r0, r8, #0x500
-	bl Mathi_Crc16InitTable
+	bl MATHi_CRC16InitTable
 	mov r0, r8
 	bl Dwci_BackuplRead
 	cmp r0, #0
@@ -59447,7 +59447,7 @@ _022EE094:
 	mov r1, r6
 	mov r2, r4
 	add r0, r8, #0x500
-	bl Math_CalcCrc16
+	bl MATH_CalcCRC16
 	add r1, r8, r5, lsl #8
 	ldrh r1, [r1, #0xfe]
 	cmp r0, r1
@@ -59465,7 +59465,7 @@ _022EE0C4:
 	add r0, r8, #0x500
 	add r1, r8, #0x300
 	mov r2, #0xfe
-	bl Math_CalcCrc16
+	bl MATH_CalcCRC16
 	add r1, r8, #0x300
 	ldrh r1, [r1, #0xfe]
 	cmp r0, r1

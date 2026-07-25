@@ -60,16 +60,19 @@ struct sound_envelope_parameters {
     u8 sustain_time;
     u8 release_time;
     u8 unk_0xf;
+    //+0x10
 };
 
 struct sound_envelope {
     struct sound_envelope_parameters parameters;
+    //+0x10
     s32 current_volume;
     s32 volume_delta;
     s32 ticks_left;
     u8 state;
     u8 target_volume;
     u8 update_volume;
+    //+0x20
 };
 
 struct dse_track {
@@ -460,5 +463,7 @@ struct dse_driver_work {
     struct dse_wavebank* loading_bank;
     void* loading_bank_pcm_data;
 };
+
+extern struct dse_driver_work DRIVER_WORK;
 
 #endif //PMDSKY_DSE_H

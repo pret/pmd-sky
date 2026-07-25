@@ -108,9 +108,9 @@ FSi_InitRom: ; 0x0207F9DC
 	str r2, [r1, #0x10]
 	str r2, [r1, #0x14]
 	bl CARD_Init
-	ldr r0, _0207FB00 ; =_022BB614
+	ldr r0, _0207FB00 ; =fsi_arc_rom
 	bl FS_InitArchive
-	ldr r0, _0207FB00 ; =_022BB614
+	ldr r0, _0207FB00 ; =fsi_arc_rom
 	ldr r1, _0207FB04 ; =_020B2BB4
 	mov r2, #3
 	bl FS_RegisterArchiveName
@@ -124,7 +124,7 @@ FSi_InitRom: ; 0x0207F9DC
 	mov ip, #0
 	str ip, [r3, #0xc]
 	str r2, [r3, #0x10]
-	ldr r0, _0207FB00 ; =_022BB614
+	ldr r0, _0207FB00 ; =fsi_arc_rom
 	ldr r1, _0207FB0C ; =_0207F9D4
 	str ip, [r3, #0x14]
 	bl FS_SetArchiveProc
@@ -134,7 +134,7 @@ FSi_InitRom: ; 0x0207F9DC
 	str r1, [sp, #4]
 	str r0, [sp, #8]
 	ldr ip, _0207FB14 ; =_0207F958
-	ldr r0, _0207FB00 ; =_022BB614
+	ldr r0, _0207FB00 ; =fsi_arc_rom
 	mov r2, r1
 	mov r3, r1
 	str ip, [sp, #0xc]
@@ -142,7 +142,7 @@ FSi_InitRom: ; 0x0207F9DC
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 _0207FA94:
-	ldr r0, _0207FB00 ; =_022BB614
+	ldr r0, _0207FB00 ; =fsi_arc_rom
 	ldr r1, _0207FB18 ; =FSi_RomArchiveProc
 	ldr r2, _0207FB1C ; =0x00000602
 	bl FS_SetArchiveProc
@@ -163,14 +163,14 @@ _0207FA94:
 	str r1, [sp, #8]
 	str r0, [sp, #0xc]
 	ldr r3, [r4, #0x20c]
-	ldr r0, _0207FB00 ; =_022BB614
+	ldr r0, _0207FB00 ; =fsi_arc_rom
 	mov r1, #0
 	bl FS_LoadArchive
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207FAFC: .word _022BB5FC
-_0207FB00: .word _022BB614
+_0207FB00: .word fsi_arc_rom
 _0207FB04: .word _020B2BB4
 _0207FB08: .word 0x027FFC40
 _0207FB0C: .word FSi_EmptyArchiveProc

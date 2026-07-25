@@ -56,5 +56,12 @@ typedef int BOOL;
 #define SDK_INLINE      static inline
 #define SDK_DECL_INLINE static
 
+#if defined(SDK_CW) || defined(__MWERKS__)
+    #define SDK_WEAK_SYMBOL __declspec(weak)
+#elif defined(SDK_PRODG)
+    #define SDK_WEAK_SYMBOL
+#endif
+
+
 #endif //SDK_ASM
 #endif //NITRO_TYPES_H_

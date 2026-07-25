@@ -112,8 +112,8 @@
 .public GXS_SetGraphicsMode
 .public GXx_SetMasterBrightness_
 .public InitWfc
-.public Math_CalcCrc16
-.public Mathi_Crc16InitTable
+.public MATH_CalcCRC16
+.public MATHi_CRC16InitTable
 .public MB_CommGetChildUser
 .public MB_CommIsBootable
 .public MB_CommResponseRequest

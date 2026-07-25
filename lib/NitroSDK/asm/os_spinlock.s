@@ -157,7 +157,7 @@ _02078EF8:
 	mov r5, r0
 	mov r0, sb
 	mov r1, r8
-	bl AtomicExchange
+	bl MI_SwapWord
 	movs r4, r0
 	bne _02078F20
 	cmp r7, #0

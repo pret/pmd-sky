@@ -356,7 +356,7 @@ _02004270:
 	ldr r2, _020047D8 ; =0x00000000
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -366,7 +366,7 @@ _02004294:
 	ldr r2, _020047DC ; =0x0000000A
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -376,7 +376,7 @@ _020042B8:
 	ldr r2, _020047E0 ; =0x00000023
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -386,7 +386,7 @@ _020042DC:
 	ldr r2, _020047E4 ; =0x00000001
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -396,7 +396,7 @@ _02004300:
 	ldr r2, _020047E8 ; =0x00000002
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -406,7 +406,7 @@ _02004324:
 	ldr r2, _020047EC ; =0x00000003
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -416,7 +416,7 @@ _02004348:
 	ldr r2, _020047F0 ; =0x00000006
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -426,7 +426,7 @@ _0200436C:
 	ldr r2, _020047F4 ; =0x00000004
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -436,7 +436,7 @@ _02004390:
 	ldr r2, _020047F8 ; =0x00000005
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -446,7 +446,7 @@ _020043B4:
 	ldr r2, _020047FC ; =0x00000007
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -456,7 +456,7 @@ _020043D8:
 	ldr r2, _02004800 ; =0x00000008
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -466,7 +466,7 @@ _020043FC:
 	ldr r2, _02004804 ; =0x00000009
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -476,7 +476,7 @@ _02004420:
 	ldr r2, _02004808 ; =0x0000000B
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -486,7 +486,7 @@ _02004444:
 	ldr r2, _0200480C ; =0x0000001D
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -496,7 +496,7 @@ _02004468:
 	ldr r2, _02004810 ; =0x00000022
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -506,7 +506,7 @@ _0200448C:
 	ldr r2, _02004814 ; =0x0000000C
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -516,7 +516,7 @@ _020044B0:
 	ldr r2, _02004818 ; =0x0000000D
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -526,7 +526,7 @@ _020044D4:
 	ldr r2, _0200481C ; =0x0000000E
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -536,7 +536,7 @@ _020044F8:
 	ldr r2, _02004820 ; =0x0000000F
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -546,7 +546,7 @@ _0200451C:
 	ldr r2, _02004824 ; =0x00000010
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -556,7 +556,7 @@ _02004540:
 	ldr r2, _02004828 ; =0x00000011
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -566,7 +566,7 @@ _02004564:
 	ldr r2, _0200482C ; =0x00000012
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -576,7 +576,7 @@ _02004588:
 	ldr r2, _02004830 ; =0x00000013
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -586,7 +586,7 @@ _020045AC:
 	ldr r2, _02004834 ; =0x00000014
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -596,7 +596,7 @@ _020045D0:
 	ldr r2, _02004838 ; =0x00000015
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -606,7 +606,7 @@ _020045F4:
 	ldr r2, _0200483C ; =0x00000016
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -616,7 +616,7 @@ _02004618:
 	ldr r2, _02004840 ; =0x00000017
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -626,7 +626,7 @@ _0200463C:
 	ldr r2, _02004844 ; =0x00000018
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -636,7 +636,7 @@ _02004660:
 	ldr r2, _02004848 ; =0x00000019
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -646,7 +646,7 @@ _02004684:
 	ldr r2, _0200484C ; =0x0000001A
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -656,7 +656,7 @@ _020046A8:
 	ldr r2, _02004850 ; =0x0000001B
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -666,7 +666,7 @@ _020046CC:
 	ldr r2, _02004854 ; =0x0000001C
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -676,7 +676,7 @@ _020046F0:
 	ldr r2, _02004858 ; =0x0000001E
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -686,7 +686,7 @@ _02004714:
 	ldr r2, _0200485C ; =0x0000001F
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -696,7 +696,7 @@ _02004738:
 	ldr r2, _02004860 ; =0x00000020
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -706,7 +706,7 @@ _0200475C:
 	ldr r2, _02004864 ; =0x00000021
 	add r0, sp, #0x10
 	mov r1, #0
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	bne _020047A0
 	mov r0, #1
@@ -723,14 +723,14 @@ _02004780:
 	bl Debug_FatalError
 _020047A0:
 	add r0, sp, #0x10
-	bl LoadOverlayInternal
+	bl FS_LoadOverlayImage
 	cmp r0, #0
 	bne _020047B8
 	mov r0, #1
 	bl CardPullOutWithStatus
 _020047B8:
 	add r0, sp, #0x10
-	bl InitOverlay
+	bl FS_StartOverlay
 	bl FileRom_StopDataTransfer
 _020047C4:
 	add sp, sp, #0x3c
@@ -1300,11 +1300,11 @@ sub_02004F80: ; 0x02004F80
 	bl MemAlloc
 	ldr r1, _02004FC8 ; =0xEDB88320
 	mov r5, r0
-	bl Mathi_Crc32InitTable
+	bl MATHi_CRC32InitTable
 	mov r0, r5
 	mov r1, r6
 	mov r2, r4
-	bl Math_CalcCrc32
+	bl MATH_CalcCRC32
 	mov r4, r0
 	mov r0, r5
 	bl MemFree

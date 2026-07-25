@@ -91,19 +91,3 @@ DseTrackEvent_SetBankMsb: ; 0x02071B8C
 	add r0, r4, #1
 	ldmia sp!, {r4, pc}
 	arm_func_end DseTrackEvent_SetBankMsb
-
-	arm_func_start DseTrackEvent_SetBankLsb
-DseTrackEvent_SetBankLsb: ; 0x02071BBC
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	ldrh r2, [r3, #0xe]
-	ldrb r1, [r4]
-	mov r0, r3
-	bic r2, r2, #0xff
-	add r1, r2, r1
-	mov r1, r1, lsl #0x10
-	mov r1, r1, lsr #0x10
-	bl DseChannel_SetBank
-	add r0, r4, #1
-	ldmia sp!, {r4, pc}
-	arm_func_end DseTrackEvent_SetBankLsb

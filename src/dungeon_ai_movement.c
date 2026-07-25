@@ -1816,3 +1816,15 @@ bool8 CalculateAiTargetPos(struct entity *monster)
     pokemon_info->ai_target.ai_target_pos.y = monster->pos.y + DIRECTIONS_XY[target_facing_dir].y;
     return TRUE;
 }
+
+void sub_01FFB62C(struct entity *entity) {
+    struct monster *mon = entity->info;
+
+    mon->ai_target.ai_objective = AI_UNKNOWN;
+    mon->ai_target.ai_target_pos.x = *(u16 *)&entity->pos.x;
+    mon->ai_target.ai_target_pos.y = *(u16 *)&entity->pos.y;
+    mon->ai_target.ai_target = 0;
+    mon->ai_target.ai_target_spawn_genid = 0;
+}
+
+enum type_id _01FFB654[4] = { TYPE_ELECTRIC, TYPE_WATER, TYPE_NONE, TYPE_NONE};

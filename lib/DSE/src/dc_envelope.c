@@ -1,4 +1,5 @@
 #include "dc_envelope.h"
+#include "dse.h"
 
 extern u16 MUSIC_DURATION_LOOKUP_TABLE_1[128];
 extern u32 MUSIC_DURATION_LOOKUP_TABLE_2[128];
@@ -102,11 +103,11 @@ void SoundEnvelope_SetSlide(struct sound_envelope *envelope, s32 target_volume, 
 
     if (slide_time_multiplier == 0)
     {
-        envelope->ticks_left = MUSIC_DURATION_LOOKUP_TABLE_2[msec_tab_index] * 1000 / DRIVER_WORK.usec_per_sound_driver_tick;
+        envelope->ticks_left = MUSIC_DURATION_LOOKUP_TABLE_2[msec_tab_index] * 1000 / DRIVER_WORK.microseconds_per_driver_tick; 
     }
     else
     {
-        envelope->ticks_left = slide_time_multiplier * MUSIC_DURATION_LOOKUP_TABLE_1[msec_tab_index] * 1000 / DRIVER_WORK.usec_per_sound_driver_tick;
+        envelope->ticks_left = slide_time_multiplier * MUSIC_DURATION_LOOKUP_TABLE_1[msec_tab_index] * 1000 / DRIVER_WORK.microseconds_per_driver_tick; 
     }
 
     if (envelope->ticks_left != 0)

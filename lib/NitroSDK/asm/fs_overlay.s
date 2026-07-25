@@ -37,7 +37,7 @@ FS_ClearOverlayImage: ; 0x0207FB40
 FS_GetOverlayFileID: ; 0x0207FB7C
 	sub sp, sp, #8
 	ldr r1, [r1, #0x18]
-	ldr r2, _0207FBA0 ; =_022BB614
+	ldr r2, _0207FBA0 ; =fsi_arc_rom
 	str r1, [sp, #4]
 	str r2, [r0]
 	str r2, [sp]
@@ -45,7 +45,7 @@ FS_GetOverlayFileID: ; 0x0207FB7C
 	add sp, sp, #8
 	bx lr
 	.align 2, 0
-_0207FBA0: .word _022BB614
+_0207FBA0: .word fsi_arc_rom
 	arm_func_end FS_GetOverlayFileID
 
 	arm_func_start FSi_LoadOverlayInfoCore
@@ -115,8 +115,8 @@ _0207FC3C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end FSi_LoadOverlayInfoCore
 
-	arm_func_start GetOverlayInfo
-GetOverlayInfo: ; 0x0207FC9C
+	arm_func_start FS_LoadOverlayInfo
+FS_LoadOverlayInfo: ; 0x0207FC9C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x60
 	movs r4, r1
@@ -163,7 +163,7 @@ GetOverlayInfo: ; 0x0207FC9C
 	ldmia sp!, {r3, r4, r5, pc}
 _0207FD4C:
 	ldr ip, _0207FD90 ; =0x027FFE50
-	ldr r3, _0207FD94 ; =_022BB614
+	ldr r3, _0207FD94 ; =fsi_arc_rom
 	ldr r1, [ip]
 	mov r0, r5
 	str r1, [sp]
@@ -181,11 +181,11 @@ _0207FD4C:
 _0207FD88: .word _022BB604
 _0207FD8C: .word _022BB60C
 _0207FD90: .word 0x027FFE50
-_0207FD94: .word _022BB614
-	arm_func_end GetOverlayInfo
+_0207FD94: .word fsi_arc_rom
+	arm_func_end FS_LoadOverlayInfo
 
-	arm_func_start LoadOverlayInternal
-LoadOverlayInternal: ; 0x0207FD98
+	arm_func_start FS_LoadOverlayImage
+FS_LoadOverlayImage: ; 0x0207FD98
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x50
 	mov r5, r0
@@ -223,7 +223,7 @@ _0207FE18:
 	mov r0, #1
 	add sp, sp, #0x50
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end LoadOverlayInternal
+	arm_func_end FS_LoadOverlayImage
 
 	arm_func_start FSi_CompareDigest
 FSi_CompareDigest: ; 0x0207FE28
@@ -236,11 +236,11 @@ FSi_CompareDigest: ; 0x0207FE28
 	mov r1, #0
 	mov r2, #0x14
 	bl MI_CpuFill8
-	ldr r2, _0207FEB8 ; =_020B2BB8
+	ldr r2, _0207FEB8 ; =fsi_digest_key_len
 	add r1, sp, #4
 	ldmia r2, {r0, r2}
 	bl MI_CpuCopy8
-	ldr r3, _0207FEB8 ; =_020B2BB8
+	ldr r3, _0207FEB8 ; =fsi_digest_key_len
 	mov r1, r6
 	ldr ip, [r3, #4]
 	mov r2, r5
@@ -266,11 +266,11 @@ _0207FEA4:
 	add sp, sp, #0x58
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0207FEB8: .word _020B2BB8
+_0207FEB8: .word fsi_digest_key_len
 	arm_func_end FSi_CompareDigest
 
-	arm_func_start InitOverlay
-InitOverlay: ; 0x0207FEBC
+	arm_func_start FS_StartOverlay
+FS_StartOverlay: ; 0x0207FEBC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl FSi_GetOverlayBinarySize
@@ -338,7 +338,7 @@ _0207FFA0: .word 0x027FFC40
 _0207FFA4: .word _020B3364
 _0207FFA8: .word _020B3364
 _0207FFAC: .word 0x66666667
-	arm_func_end InitOverlay
+	arm_func_end FS_StartOverlay
 
 	arm_func_start FS_EndOverlay
 FS_EndOverlay: ; 0x0207FFB0
@@ -431,7 +431,7 @@ FS_UnloadOverlay: ; 0x020800B0
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl GetOverlayInfo
+	bl FS_LoadOverlayInfo
 	cmp r0, #0
 	beq _020800E4
 	add r0, sp, #0

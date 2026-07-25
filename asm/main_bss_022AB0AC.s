@@ -319,14 +319,14 @@ _022BAA20:
 	.global _022BB4E8
 _022BB4E8:
 	.space 0x18
-	.global _022BB500
-_022BB500:
+	.global sCallbackTable
+sCallbackTable:
 	.space 0x60
 	.global SNDi_SharedWork
 SNDi_SharedWork:
 	.space 0x4
-	.global _022BB564
-_022BB564:
+	.global FifoCtrlInit
+FifoCtrlInit:
 	.space 0x4
 	.global _022BB568
 _022BB568:
@@ -349,8 +349,8 @@ _022BB604:
 	.global _022BB60C
 _022BB60C:
 	.space 0x8
-	.global _022BB614
-_022BB614:
+	.global fsi_arc_rom
+fsi_arc_rom:
 	.space 0x5C
 	.global _022BB670
 _022BB670:

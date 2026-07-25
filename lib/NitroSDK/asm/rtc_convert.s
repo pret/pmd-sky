@@ -29,7 +29,7 @@ _02082F80:
 	mvn r0, #0
 	bx lr
 _02082F88:
-	ldr r0, _02082FBC ; =_020B2E9C
+	ldr r0, _02082FBC ; =sDayOfYear
 	sub r1, r1, #1
 	ldr r0, [r0, r2, lsl #2]
 	cmp r2, #3
@@ -44,7 +44,7 @@ _02082FA8:
 	add r0, r0, r1, lsr #2
 	bx lr
 	.align 2, 0
-_02082FBC: .word _020B2E9C
+_02082FBC: .word sDayOfYear
 _02082FC0: .word 0x0000016D
 	arm_func_end Rtc_ConvertDateToDay
 

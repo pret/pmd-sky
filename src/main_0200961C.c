@@ -1,14 +1,5 @@
+#include "nitro.h"
 #include "main_0200961C.h"
-
-extern void GX_DisableBankForBG();
-extern void GX_DisableBankForBGExtPltt();
-extern void GX_DisableBankForOBJ();
-extern void GX_DisableBankForOBJExtPltt();
-extern void GX_DisableBankForSubBG();
-extern void GX_DisableBankForSubBGExtPltt();
-extern void GX_DisableBankForSubOBJ();
-extern void GX_DisableBankForTex();
-extern void GX_DisableBankForTexPltt();
 
 void sub_0200961C(void)
 {

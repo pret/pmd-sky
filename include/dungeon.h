@@ -32,6 +32,11 @@ struct monster_slots {
     struct entity* wild_pokemon[DUNGEON_MAX_WILD_POKEMON];
 };
 
+struct monster_id_struct {
+    struct entity *entity;
+    u32 entity_id; // 0x198E8: statuses::unique_id from that monster?
+};
+
 struct weather {
     enum weather_id weather; // 0x0: current weather
     // 0x1: Default weather on the floor that will be reverted to if the current weather is
@@ -1615,17 +1620,8 @@ struct dungeon {
     struct entity entities[149];    // 0x12DCC / 0x2A4 : All the entities in a dungeon
 
     // 0x198E4: An ally monster related to storm drain/lightning rod and maybe other checks?
-    struct entity* unk_ally_monster1;
-    u32 unk_ally_monster_unique_id1; // 0x198E8: statuses::unique_id from that monster?
-    // 0x198EC: An ally monster related to storm drain/lightning rod and maybe other checks?
-    struct entity* unk_ally_monster2;
-    u32 unk_ally_monster_unique_id2; // 0x198F0: statuses::unique_id from that monster?
-    // 0x198F4: An enemy monster related to storm drain/lightning rod and maybe other checks?
-    struct entity* unk_enemy_monster1;
-    u32 unk_enemy_monster_unique_id1; // 0x198F8: statuses::unique_id from that monster?
-    // 0x198FC: An enemy monster related to storm drain/lightning rod and maybe other checks?
-    struct entity* unk_enemy_monster2;
-    u32 unk_enemy_monster_unique_id2; // 0x19900: statuses::unique_id from that monster?
+    struct monster_id_struct storm_drain_lightning_rod[4]; // 0 = ally, 1 = enemy
+
     // 0x19904: Pointer to the monster that will snatch the effect of a move.
     struct entity* snatch_monster;
     // 0x19908: Pointer to the entity to be spawned by the effect of Illuminate

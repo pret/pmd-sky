@@ -1,10 +1,5 @@
 #include <nitro.h>
 
-static u8 MI_ReadByte (const void * address)
-{
-    return *(u8 *)address;
-}
-
 #ifdef _MSC_VER
     #pragma warning(disable : 4018)
     #pragma warning(disable : 4311)

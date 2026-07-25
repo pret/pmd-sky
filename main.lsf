@@ -224,8 +224,6 @@ Static main
 	Object lib/DSE/src/main_02071A98.o
 	Object lib/DSE/asm/main_02071AC0.o
 	Object lib/DSE/src/main_02071BF4.o
-	Object lib/DSE/asm/main_02071CC8.o
-	Object lib/DSE/src/main_02071E34.o
 	Object lib/DSE/asm/main_02071EB4.o
 	Object lib/DSE/src/dc_envelope.o
 	Object lib/DSE/src/dc_lfo.o
@@ -241,16 +239,18 @@ Static main
     Object lib/NitroSDK/src/fx/fx_atanidx.o
     Object lib/NitroSDK/src/fx/fx.o
     Object lib/NitroSDK/asm/gx.o
-    Object lib/NitroSDK/asm/gxstate.o
+    Object lib/NitroSDK/src/gx/gxstate.o
     Object lib/NitroSDK/asm/gx_vramcnt.o
     Object lib/NitroSDK/asm/gx_bgcnt.o
     Object lib/NitroSDK/src/gx/g2.o
     Object lib/NitroSDK/src/gx/g3imm.o
-    Object lib/NitroSDK/asm/g3x.o
+    Object lib/NitroSDK/src/gx/g3x.o
     Object lib/NitroSDK/src/gx/g3_util.o
     Object lib/NitroSDK/asm/gx_load2d.o
     Object lib/NitroSDK/asm/gx_load3d.o
     Object lib/NitroSDK/src/gxasm.o
+    Object lib/NitroSDK/asm/os_irqHandler.o
+    Object lib/NitroSDK/asm/os_irqTable.o
     Object lib/NitroSDK/asm/os_interrupt.o
     Object lib/NitroSDK/asm/os_spinlock.o
     Object lib/NitroSDK/asm/os_thread.o
@@ -277,16 +277,16 @@ Static main
 	Object lib/NitroSDK/src/os/os_entropy.o
 	Object lib/NitroSDK/src/os/os_terminate_proc.o
 	Object lib/NitroSDK/src/mi/mi_wram.o
-	Object lib/NitroSDK/asm/mi_dma.o
+	Object lib/NitroSDK/src/mi/mi_dma.o
 	Object lib/NitroSDK/src/mi/mi_memory.o
-	Object lib/NitroSDK/asm/mi_memory_1.o
+	Object lib/NitroSDK/src/mi/mi_swap.o
     Object lib/NitroSDK/src/mi/mi_uncompress.o
-    Object lib/NitroSDK/asm/mi_dma_card.o
+    Object lib/NitroSDK/src/mi/mi_dma_card.o
     Object lib/NitroSDK/src/mi/mi_init.o
     Object lib/NitroSDK/asm/snd_interface.o
     Object lib/NitroSDK/src/snd/snd_main.o
     Object lib/NitroSDK/asm/snd_command.o
-    Object lib/NitroSDK/asm/snd_alarm.o
+    Object lib/NitroSDK/src/snd/snd_alarm.o
     Object lib/NitroSDK/asm/snd_work.o
     Object lib/NitroSDK/src/snd/snd_util.o
     Object lib/NitroSDK/src/snd/snd_bank.o
@@ -308,7 +308,7 @@ Static main
 	Object lib/NitroSDK/asm/spi_tp.o
 	Object lib/NitroSDK/asm/spi_pm.o
 	Object lib/NitroSDK/asm/rtc_external.o
-	Object lib/NitroSDK/src/rtc_internal.o
+	Object lib/NitroSDK/src/rtc/rtc_internal.o
 	Object lib/NitroSDK/asm/rtc_convert.o
 	Object lib/NitroSDK/asm/card_common.o
 	Object lib/NitroSDK/asm/card_spi.o
@@ -319,9 +319,10 @@ Static main
 	Object lib/NitroSDK/asm/ctrdg.o
 	Object lib/NitroSDK/asm/ctrdg_proc.o
 	Object lib/NitroSDK/asm/ctrdg_task.o
-	Object lib/NitroSDK/src/math_math.o
-	Object lib/NitroSDK/asm/math_dgt.o
+	Object lib/NitroSDK/src/math/math.o
+	Object lib/NitroSDK/src/math/math_dgt.o
 	Object lib/NitroSDK/asm/math_crc.o
+	Object lib/NitroSDK/src/std/string.o
 	Object lib/NitroSDK/asm/std_string.o
 	Object lib/NitroSDK/src/os/os_printf_1.o
 	Object lib/NitroSDK/asm/os_printf.o
@@ -340,10 +341,11 @@ Autoload ITCM
 {
 	Address 0x01FF8000
 	Object asm/itcm.o (.itcm)
+	Object asm/os_reset_itcm.o (.itcm)
+	Object lib/NitroSDK/src/mi/mi_dma.o (.itcm)
+	Object asm/itcm_1.o (.itcm)
 	Object src/dungeon_ai_movement.o (.itcm)
-	Object asm/itcm_01FFB62C.o (.itcm)
 	Object src/dungeon_ai_itcm.o (.itcm)
-	Object asm/itcm_01FFBD20.o (.itcm)
 }
 
 Autoload DTCM

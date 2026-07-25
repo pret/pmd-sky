@@ -3,8 +3,8 @@
 
 	.text
 
-    arm_func_start Dgt_Hash2Init
-Dgt_Hash2Init: ; 0x02080670
+    arm_func_start DGT_Hash2Reset
+DGT_Hash2Reset: ; 0x02080670
 	ldr r1, _020806AC ; =0x67452301
 	ldr r2, _020806B0 ; =0xEFCDAB89
 	str r1, [r0]
@@ -26,10 +26,10 @@ _020806B0: .word 0xEFCDAB89
 _020806B4: .word 0x98BADCFE
 _020806B8: .word 0x10325476
 _020806BC: .word 0xC3D2E1F0
-	arm_func_end Dgt_Hash2Init
+	arm_func_end DGT_Hash2Reset
 
-	arm_func_start Dgt_Hash2Update
-Dgt_Hash2Update: ; 0x020806C0
+	arm_func_start DGT_Hash2SetSource
+DGT_Hash2SetSource: ; 0x020806C0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	movs r8, r2
@@ -121,10 +121,10 @@ _020807F0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02080810: .word _020B2D88
-	arm_func_end Dgt_Hash2Update
+	arm_func_end DGT_Hash2SetSource
 
-	arm_func_start Dgt_Hash2GetHash
-Dgt_Hash2GetHash: ; 0x02080814
+	arm_func_start DGT_Hash2GetDigest
+DGT_Hash2GetDigest: ; 0x02080814
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, [sp, #0x10]
@@ -260,7 +260,7 @@ _020808D4:
 	bx lr
 	.align 2, 0
 _02080A0C: .word _020B2D88
-	arm_func_end Dgt_Hash2GetHash
+	arm_func_end DGT_Hash2GetDigest
 
 	arm_func_start Dgt_Hash2CalcHmac
 Dgt_Hash2CalcHmac: ; 0x02080A10
@@ -280,11 +280,11 @@ Dgt_Hash2CalcHmac: ; 0x02080A10
 	add lr, sp, #0x38
 	add ip, sp, #0x24
 	str lr, [sp, #0x10]
-	ldr lr, _02080A98 ; =Dgt_Hash2Init
+	ldr lr, _02080A98 ; =DGT_Hash2Reset
 	str ip, [sp, #0x14]
-	ldr ip, _02080A9C ; =Dgt_Hash2Update
+	ldr ip, _02080A9C ; =DGT_Hash2SetSource
 	str lr, [sp, #0x18]
-	ldr lr, _02080AA0 ; =Dgt_Hash2GetHash
+	ldr lr, _02080AA0 ; =DGT_Hash2GetDigest
 	str ip, [sp, #0x1c]
 	ldr ip, [sp, #0xb8]
 	str lr, [sp, #0x20]
@@ -299,9 +299,9 @@ Dgt_Hash2CalcHmac: ; 0x02080A10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02080A94: .word _020AEC5C
-_02080A98: .word Dgt_Hash2Init
-_02080A9C: .word Dgt_Hash2Update
-_02080AA0: .word Dgt_Hash2GetHash
+_02080A98: .word DGT_Hash2Reset
+_02080A9C: .word DGT_Hash2SetSource
+_02080AA0: .word DGT_Hash2GetDigest
 	arm_func_end Dgt_Hash2CalcHmac
 
 	arm_func_start Dgti_CalcHmac

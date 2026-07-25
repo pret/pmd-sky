@@ -42705,7 +42705,7 @@ Dwci_SettignlInit: ; 0x023474C0
 	str r0, [r1]
 	ldr r1, _02347500 ; =0x0000A001
 	add r0, r2, #0x400
-	bl Mathi_Crc16InitTable
+	bl MATHi_CRC16InitTable
 	ldr r0, _023474FC ; =ov02_0235AB48
 	ldr r0, [r0]
 	bl Dwci_BackuplRead
@@ -43525,7 +43525,7 @@ _02347F08:
 	add r0, r1, #0xf8
 	add r0, r0, #0x400
 	add r1, r1, r7
-	bl Math_CalcCrc16
+	bl MATH_CalcCRC16
 	ldr r1, [r8]
 	add r1, r1, r6, lsl #8
 	strh r0, [r1, #0xfe]

@@ -88,7 +88,7 @@ PRECOMPILE_OBJ_DIR := $(dir $(PRECOMPILE_OBJ))
 PRECOMPILE_DEPFILE := $(BUILD_DIR)/precompile/global.d
 
 # Directories
-NITROSDK_SRC_SUBDIRS      := os mi snd fs gx fx
+NITROSDK_SRC_SUBDIRS      := os mi snd fs gx fx rtc math std
 
 LIB_SUBDIRS               := DSE NitroSDK MSL_C
 SRC_SUBDIR                := src
@@ -132,6 +132,7 @@ XMAP              := $(NEF).xMAP
 EXCCFLAGS         := -Cpp_exceptions off
 
 MWCFLAGS           = $(DEFINES) -enum min -lang c99 $(EXCCFLAGS) -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./include -i ./include/library -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -interworking -inline on,noauto -char signed -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
+MWCFLAGS_LIB       = $(DEFINES) -enum int -lang c99 $(EXCCFLAGS) -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./include -i ./include/library -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -interworking -inline on,noauto -char signed -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error -stdinc
 
 MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -gccinc -i . -i ./include -i $(WORK_DIR)/asm/include -i $(WORK_DIR)/files -i $(WORK_DIR)/lib/asm/include -i $(WORK_DIR)/lib/syscall/asm/include -I$(WORK_DIR)/lib/include -DSDK_ASM
 MWLDFLAGS         := -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
@@ -146,7 +147,7 @@ SRC_INCLUDE_FLAGS := -i ./include -i ./include/library -i $(WORK_DIR)/files $(LI
 SDK_INCLUDE_FLAGS := $(LIBRARY_INCLUDE_FLAGS)
 
 MW_COMPILE_SRC = $(WINE) $(MWCC) $(OPTFLAGS) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
-MW_COMPILE_LIB = $(WINE) $(MWCC) $(OPTFLAGS_SDK) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
+MW_COMPILE_LIB = $(WINE) $(MWCC) $(OPTFLAGS_SDK) $(MWCFLAGS_LIB) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
 MW_COMPILE_SRC_PRECOMPILE = $(WINE) $(MWCC) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS)
 
 MW_ASSEMBLE = $(WINE) $(MWAS) $(MWASFLAGS)

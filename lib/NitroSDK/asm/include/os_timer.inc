@@ -33,7 +33,7 @@
 .public _ll_udiv
 .public _s32_div_f
 .public _secure
-.public AtomicExchange
+.public MI_SwapWord
 .public CARD_Init
 .public ClearIrqFlag
 .public CP_SaveContext

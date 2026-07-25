@@ -83,7 +83,7 @@ sub_02083D78: ; 0x02083D78
 	ldr r2, [r4, #0x20]
 	mov r3, #0x200
 	ldr r5, _02083DC4 ; =_022BBE20
-	bl MTi_CardDmaCopy32
+	bl MIi_CardDmaCopy32
 	ldr r1, [r4, #0x1c]
 	mov r0, r1, lsr #8
 	orr r0, r0, #0xb7000000

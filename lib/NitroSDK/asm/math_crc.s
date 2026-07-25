@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start Mathi_Crc8InitTable
-Mathi_Crc8InitTable: ; 0x02084FB8
+	arm_func_start MATHi_CRC8InitTable
+MATHi_CRC8InitTable: ; 0x02084FB8
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	mov r2, ip
@@ -23,10 +23,10 @@ _02084FCC:
 	cmp ip, #0x100
 	blo _02084FC4
 	ldmia sp!, {r3, pc}
-	arm_func_end Mathi_Crc8InitTable
+	arm_func_end MATHi_CRC8InitTable
 
-	arm_func_start Mathi_Crc8Update
-Mathi_Crc8Update: ; 0x02084FF8
+	arm_func_start MATHi_CRC8Update
+MATHi_CRC8Update: ; 0x02084FF8
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldrb lr, [r1]
@@ -43,10 +43,10 @@ _0208500C:
 _02085028:
 	strb lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end Mathi_Crc8Update
+	arm_func_end MATHi_CRC8Update
 
-	arm_func_start Mathi_Crc16InitTable
-Mathi_Crc16InitTable: ; 0x02085030
+	arm_func_start MATHi_CRC16InitTable
+MATHi_CRC16InitTable: ; 0x02085030
 	stmdb sp!, {r3, lr}
 	mov lr, #0
 	mov r3, lr
@@ -66,10 +66,10 @@ _02085044:
 	cmp lr, #0x100
 	blo _0208503C
 	ldmia sp!, {r3, pc}
-	arm_func_end Mathi_Crc16InitTable
+	arm_func_end MATHi_CRC16InitTable
 
-	arm_func_start Mathi_Crc16Update
-Mathi_Crc16Update: ; 0x02085074
+	arm_func_start MATHi_CRC16Update
+MATHi_CRC16Update: ; 0x02085074
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldrh lr, [r1]
@@ -88,10 +88,10 @@ _02085088:
 _020850AC:
 	strh lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end Mathi_Crc16Update
+	arm_func_end MATHi_CRC16Update
 
-	arm_func_start Mathi_Crc32InitTable
-Mathi_Crc32InitTable: ; 0x020850B4
+	arm_func_start MATHi_CRC32InitTable
+MATHi_CRC32InitTable: ; 0x020850B4
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	mov r2, ip
@@ -110,10 +110,10 @@ _020850C8:
 	cmp ip, #0x100
 	blo _020850C0
 	ldmia sp!, {r3, pc}
-	arm_func_end Mathi_Crc32InitTable
+	arm_func_end MATHi_CRC32InitTable
 
-	arm_func_start Mathi_Crc32Update
-Mathi_Crc32Update: ; 0x020850F4
+	arm_func_start MATHi_CRC32Update
+MATHi_CRC32Update: ; 0x020850F4
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldr lr, [r1]
@@ -131,10 +131,10 @@ _02085108:
 _02085128:
 	str lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end Mathi_Crc32Update
+	arm_func_end MATHi_CRC32Update
 
-	arm_func_start Math_CalcCrc8
-Math_CalcCrc8: ; 0x02085130
+	arm_func_start MATH_CalcCRC8
+MATH_CalcCRC8: ; 0x02085130
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, #0
@@ -142,13 +142,13 @@ Math_CalcCrc8: ; 0x02085130
 	add r1, sp, #0
 	mov r2, lr
 	strb ip, [sp]
-	bl Mathi_Crc8Update
+	bl MATHi_CRC8Update
 	ldrb r0, [sp]
 	ldmia sp!, {r3, pc}
-	arm_func_end Math_CalcCrc8
+	arm_func_end MATH_CalcCRC8
 
-	arm_func_start Math_CalcCrc16
-Math_CalcCrc16: ; 0x02085158
+	arm_func_start MATH_CalcCRC16
+MATH_CalcCRC16: ; 0x02085158
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, #0
@@ -156,13 +156,13 @@ Math_CalcCrc16: ; 0x02085158
 	add r1, sp, #0
 	mov r2, lr
 	strh ip, [sp]
-	bl Mathi_Crc16Update
+	bl MATHi_CRC16Update
 	ldrh r0, [sp]
 	ldmia sp!, {r3, pc}
-	arm_func_end Math_CalcCrc16
+	arm_func_end MATH_CalcCRC16
 
-	arm_func_start Math_CalcCrc32
-Math_CalcCrc32: ; 0x02085180
+	arm_func_start MATH_CalcCRC32
+MATH_CalcCRC32: ; 0x02085180
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mvn ip, #0
@@ -170,11 +170,11 @@ Math_CalcCrc32: ; 0x02085180
 	add r1, sp, #0
 	mov r2, lr
 	str ip, [sp]
-	bl Mathi_Crc32Update
+	bl MATHi_CRC32Update
 	ldr r0, [sp]
 	mvn r0, r0
 	ldmia sp!, {r3, pc}
-	arm_func_end Math_CalcCrc32
+	arm_func_end MATH_CalcCRC32
 
 	arm_func_start sub_020851AC
 sub_020851AC: ; 0x020851AC

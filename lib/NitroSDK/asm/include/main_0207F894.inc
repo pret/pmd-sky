@@ -2,12 +2,12 @@
 .public _02000BC4
 .public _020AEC5C
 .public _020B2BB4
-.public _020B2BB8
+.public fsi_digest_key_len
 .public _020B2BC0
 .public _020B2BC4
 .public _020B2C84
 .public _020B2D88
-.public _020B2E9C
+.public sDayOfYear
 .public _020B2ED0
 .public _020B2ED4
 .public _020B2FBC
@@ -16,7 +16,7 @@
 .public _022BB5FC
 .public _022BB604
 .public _022BB60C
-.public _022BB614
+.public fsi_arc_rom
 .public _022BB670
 .public _022BB68C
 .public _022BB6AC
@@ -75,9 +75,9 @@
 .public DC_InvalidateRange
 .public DC_StoreRange
 .public DC_WaitWriteBufferEmpty
-.public Dgt_Hash2GetHash
-.public Dgt_Hash2Init
-.public Dgt_Hash2Update
+.public DGT_Hash2GetDigest
+.public DGT_Hash2Reset
+.public DGT_Hash2SetSource
 .public EnableIrqFlag
 .public fflush
 .public FS_CloseFile
@@ -99,7 +99,7 @@
 .public MI_DmaCopy16
 .public MI_StopDma
 .public MIi_UncompressBackward
-.public MTi_CardDmaCopy32
+.public MIi_CardDmaCopy32
 .public MTi_CpuClear32
 .public MTi_CpuClearFast
 .public MTi_CpuCopy32

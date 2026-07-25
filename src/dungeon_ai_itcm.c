@@ -6,6 +6,7 @@
 #include "dungeon_ai_attack.h"
 #include "dungeon_ai_parameters.h"
 #include "dungeon_ai_targeting.h"
+#include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities_3.h"
 #include "dungeon_capabilities_4.h"
 #include "dungeon_logic_5.h"
@@ -17,11 +18,15 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
+#include "dungeon_visibility.h"
 #include "fixed_room_data.h"
 #include "main_0201398C.h"
 #include "moves_1.h"
 #include "overlay_29_022EBC50.h"
 #include "overlay_29_02338350.h"
+#include "overlay_29_0231A9D4.h"
+#include "overlay_29_0231ACAC.h"
+#include "targeting.h"
 
 #ifdef SDK_ARM9
 #include <nitro/itcm_begin.h>
@@ -784,6 +789,114 @@ _01FFBD0C:
 	ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 }
 #endif
+
+extern bool8 sub_01FFBF78(struct entity *pokemon, struct entity *target);
+extern void ov29_0231B008(); 
+
+void sub_01FFBD20(struct entity *monster, struct entity *target)
+{
+    s32 index;
+    struct monster_id_struct* temp_r4;
+    struct monster* info;
+
+    if (!IsMonster__0231A9D4(target)) return;
+
+    info = GetEntInfo(target);
+    if (info->is_not_team_member && !info->is_ally) 
+    {
+        index = 1;
+    } else {
+        index = 0;
+    }
+
+    temp_r4 = &DUNGEON_PTR[0]->storm_drain_lightning_rod[index * 2];
+    if ((AbilityIsActiveVeneer(target, ABILITY_LIGHTNINGROD)) && (temp_r4->entity == NULL) && (sub_01FFBF78(monster, target)))
+    {
+        temp_r4->entity = target;
+        temp_r4->entity_id = info->unique_id;
+    }
+
+    if (!AbilityIsActiveVeneer(target, ABILITY_STORM_DRAIN)) return;
+
+    temp_r4++;
+    if (temp_r4->entity != NULL) return;
+
+    if (sub_01FFBF78(monster, target))
+    {
+        temp_r4->entity = target;
+        temp_r4->entity_id = info->unique_id;
+    }
+}
+
+void sub_01FFBDF4(struct entity *monster)
+{
+    ov29_0231B008();
+
+    if (!EntityIsValid__02319F8C(monster)) return;
+
+    for(s32 index = 0; index < DUNGEON_MAX_POKEMON; index++)
+    {
+        struct entity *target = DUNGEON_PTR[0]->active_monster_ptrs[index];
+        if ((EntityIsValid__02319F8C(target)) && (monster != target))
+        {
+            sub_01FFBD20(monster, target);
+        }
+    }
+}
+
+extern enum type_id _01FFB654[4];
+
+struct entity *LightningRodStormDrainCheck(struct entity *monster, struct entity* target, struct move *move, s32 arg3)
+{
+    s32 index;
+    struct monster_id_struct* temp_r6;
+    s32 var_r0;
+    
+    for(index = 0; index < 2; index++)
+    {
+        temp_r6 = &DUNGEON_PTR[0]->storm_drain_lightning_rod[index * 2];
+        if ((!AbilityIsActiveVeneer(monster, ABILITY_MOLD_BREAKER)) && 
+            (_01FFB654[arg3] == GetMoveTypeForMonster(monster, move)) && 
+            ((GetEntityMoveTargetAndRange(monster, move, 0) & 0xF0) != 0x70)
+        ) {
+            if ((IsMonster__0231A9D4(temp_r6[arg3].entity)) && 
+                (temp_r6[arg3].entity_id == GetEntInfo(temp_r6[arg3].entity)->unique_id) && 
+                (GetTreatmentBetweenMonsters(temp_r6[arg3].entity, monster, TRUE, FALSE) == TREATMENT_TREAT_AS_ENEMY)
+            ) {
+                struct monster* info1 = GetEntInfo(target);
+                struct monster* info2 = GetEntInfo(temp_r6[arg3].entity);
+                
+                if ((!info1->two_turn_move_invincible && !info2->two_turn_move_invincible) || target == temp_r6[arg3].entity) {
+                    var_r0 = 1;
+                } else {
+                    goto _branch_0;
+                }
+            } else {
+_branch_0:
+                var_r0 = 0;
+            }
+            if (var_r0 != 0) {
+                return temp_r6[arg3].entity;
+            }
+        }
+    }
+
+    return 0;
+}
+
+bool8 sub_01FFBF78(struct entity *pokemon, struct entity *target)
+{
+    struct move move;
+    s32 result;
+
+    result = FALSE;
+    ResetAiCanAttackInDirection();
+    if (CanSeeTarget(pokemon, target)) {
+        InitMove(&move, MOVE_NOTHING);
+        result = TryAddTargetToAiTargetList(0, 0x30, pokemon, target, &move, TRUE);
+    }
+    return result != 0;
+}
 
 #ifdef SDK_ARM9
 #include <nitro/itcm_end.h>

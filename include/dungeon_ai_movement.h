@@ -15,4 +15,6 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect);
 // Calculates the target position of an AI-controlled monster and stores it in the monster's ai_target_pos field
 bool8 CalculateAiTargetPos(struct entity *monster);
 
+void sub_01FFB62C(struct entity *entity);
+
 #endif //PMDSKY_DUNGEON_AI_MOVEMENT_H
