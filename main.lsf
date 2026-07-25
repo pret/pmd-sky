@@ -222,8 +222,6 @@ Static main
 	Object lib/DSE/src/main_02071A98.o
 	Object lib/DSE/asm/main_02071AC0.o
 	Object lib/DSE/src/main_02071BF4.o
-	Object lib/DSE/asm/main_02071CC8.o
-	Object lib/DSE/src/main_02071E34.o
 	Object lib/DSE/asm/main_02071EB4.o
 	Object lib/DSE/src/dc_envelope.o
 	Object lib/DSE/src/dc_lfo.o
