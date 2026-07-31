@@ -25,6 +25,7 @@
 .public EndFrozenClassStatus
 .public EntityIsValid__0231CBC8
 .public FemaleToMaleForm
+.public FreezeAnim
 .public GetActiveTeamMember
 .public GetApparentWeather
 .public GetDoughSeedFlag
@@ -67,8 +68,6 @@
 .public ov29_022EAF20
 .public ov29_022EFB20
 .public ov29_022EFB84
-.public ov29_022F04F0
-.public ov29_022F0518
 .public ov29_022F05E4
 .public ov29_022F0780
 .public ov29_022F8830
@@ -108,6 +107,7 @@
 .public TryInflictPoisonedStatus
 .public TryInflictShadowHoldStatus
 .public TryWarp
+.public UnfreezeAnim
 .public UnkMapRelatedFunc
 .public UnloadFile
 .public UpdateIqSkillsWrapper

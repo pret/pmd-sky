@@ -15,6 +15,7 @@
 .public GetApparentWeather
 .public GetEntityMoveTargetAndRange
 .public GetMonsterGenderVeneer
+.public GetMonsterInFront
 .public GetMoveAccuracyOrAiChance
 .public GetMoveAnimationSpeed
 .public GetMoveNbStrikes
@@ -30,7 +31,6 @@
 .public ov10_022BEB2C
 .public ov29_022E2CA0
 .public ov29_022EA370
-.public ov29_022F87C0
 .public ov29_022F8830
 .public ov29_022F88C0
 .public ov29_023024E0

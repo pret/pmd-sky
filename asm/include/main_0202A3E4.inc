@@ -31,7 +31,6 @@
 .public _0209B07C
 .public _0209B084
 .public _020AFDAC
-.public _020AFDB8
 .public _s32_div_f
 .public ADVANCED_MENU_DEFAULT_WINDOW_PARAMS
 .public ADVANCED_TEXT_BOX_DEFAULT_WINDOW_PARAMS
@@ -69,6 +68,7 @@
 .public MemcpySimple
 .public MemFree
 .public MemZero
+.public MENU_CONTROL_PTR
 .public NewWindowScreenCheck
 .public NULL_OVERLAY_LOAD_ENTRY
 .public OPTIONS_MENU_DEFAULT_WINDOW_PARAMS

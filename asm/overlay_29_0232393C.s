@@ -548,7 +548,7 @@ _023240C0:
 	ands r0, r5, #0xf0
 	bne _023240FC
 	mov r0, sb
-	bl ov29_022F87C0
+	bl GetMonsterInFront
 	cmp r0, #0
 	beq _0232439C
 	stmia sp, {r0, r8}

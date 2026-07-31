@@ -56,12 +56,14 @@
 .public Debug_Print0
 .public FS_CloseFile
 .public FS_InitFile
+.public FS_LoadOverlayImage
+.public FS_LoadOverlayInfo
 .public FS_OpenFile
 .public FS_ReadFile
 .public FS_SeekFile
+.public FS_StartOverlay
 .public FS_UnloadOverlay
 .public GetDsFirmwareUserSettings
-.public FS_LoadOverlayInfo
 .public GX_BeginLoadBGExtPltt
 .public GX_BeginLoadOBJExtPltt
 .public GX_EndLoadBGExtPltt
@@ -69,9 +71,7 @@
 .public GXS_BeginLoadBGExtPltt
 .public GXS_EndLoadBGExtPltt
 .public IC_InvalidateAll
-.public FS_StartOverlay
 .public LOADED_OVERLAY_GROUP_0
-.public FS_LoadOverlayImage
 .public MATH_CalcCRC32
 .public MATHi_CRC32InitTable
 .public MemAlloc

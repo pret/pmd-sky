@@ -346,10 +346,10 @@ _022FF388:
 	b _022FF5E0
 _022FF3C8:
 	mov r0, r6
-	bl ov29_0231A8A0
+	bl AiUseMove
 	b _022FF5E0
 _022FF3D4:
-	bl ov29_022E5D68
+	bl PlayStairsSfx
 	ldr r0, _022FED70 ; =0x02354138
 	mov r2, #1
 	ldr r0, [r0]
@@ -427,7 +427,7 @@ _022FF4B0:
 	b _022FF5E0
 _022FF4D0:
 	mov r0, r6
-	bl ov29_022F4BF8
+	bl TryPlaceItem
 	b _022FF5E0
 _022FF4DC:
 	mov r0, r6
@@ -458,21 +458,21 @@ _022FF518:
 	b _022FF5E0
 _022FF538:
 	mov r0, r6
-	bl ov29_022F59C4
+	bl TalkToTeamMemberInFront
 	b _022FF5E0
 _022FF544:
 	mov r0, r6
-	bl ov29_022F5F18
+	bl PlayerUseMove
 	b _022FF5E0
 _022FF550:
 	mov r0, r6
 	mov r1, #0x160
-	bl ov29_022F6058
+	bl UseRegularAttackOrStruggle
 	b _022FF5E0
 _022FF560:
 	mov r0, r6
 	rsb r1, r1, #0x164
-	bl ov29_022F6058
+	bl UseRegularAttackOrStruggle
 	b _022FF5E0
 _022FF570:
 	mov r0, r6
@@ -983,10 +983,10 @@ _022FE95C:
 	b _022FEBB4
 _022FE99C:
 	mov r0, sb
-	bl ov29_0231A8A0
+	bl AiUseMove
 	b _022FEBB4
 _022FE9A8:
-	bl ov29_022E5D68
+	bl PlayStairsSfx
 	ldr r0, _022FED70 ; =DUNGEON_PTR
 	mov r2, #1
 	ldr r0, [r0]
@@ -1084,7 +1084,7 @@ _022FEA84:
 	b _022FEBB4
 _022FEAA4:
 	mov r0, sb
-	bl ov29_022F4BF8
+	bl TryPlaceItem
 	b _022FEBB4
 _022FEAB0:
 	mov r0, sb
@@ -1119,16 +1119,16 @@ _022FEAEC:
 	b _022FEBB4
 _022FEB0C:
 	mov r0, sb
-	bl ov29_022F59C4
+	bl TalkToTeamMemberInFront
 	b _022FEBB4
 _022FEB18:
 	mov r0, sb
-	bl ov29_022F5F18
+	bl PlayerUseMove
 	b _022FEBB4
 _022FEB24:
 	mov r0, sb
 	mov r1, #0x160
-	bl ov29_022F6058
+	bl UseRegularAttackOrStruggle
 	b _022FEBB4
 _022FEB34:
 #ifdef JAPAN
@@ -1138,7 +1138,7 @@ _022FEB34:
 	mov r0, sb
 	rsb r1, r1, #0x164
 #endif
-	bl ov29_022F6058
+	bl UseRegularAttackOrStruggle
 	b _022FEBB4
 _022FEB44:
 	mov r0, sb

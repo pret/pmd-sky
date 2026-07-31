@@ -360,6 +360,7 @@
 .public LightningRodStormDrainCheck
 .public LogMessageByIdWithPopupCheckParticipants
 .public LogMessageByIdWithPopupCheckUserTarget
+.public LogMessageWithTargetAndExclusiveItemName
 .public LowerOffensiveStat
 .public MirrorMoveIsActive
 .public MonsterCannotAttack
@@ -384,7 +385,6 @@
 .public ov29_02300DC0
 .public ov29_02301C2C
 .public ov29_02304C3C
-.public ov29_02314DC4
 .public ov29_0231AD38
 .public ov29_023201D0
 .public ov29_0232393C

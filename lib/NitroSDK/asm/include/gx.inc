@@ -32,7 +32,6 @@
 .public _ll_udiv
 .public _s32_div_f
 .public _secure
-.public MI_SwapWord
 .public CARD_Init
 .public ClearIrqFlag
 .public CP_SaveContext
@@ -56,6 +55,7 @@
 .public MI_DmaFill32
 .public MI_DmaFill32Async
 .public MI_Init
+.public MI_SwapWord
 .public MI_WaitDma
 .public MTi_CpuClear32
 .public MTi_CpuCopy16

@@ -201,14 +201,14 @@ ov29_022E3570: ; 0x022E3570
 _022E357C: .word ov29_0235354C
 	arm_func_end ov29_022E3570
 
-	arm_func_start ov29_022E3580
-ov29_022E3580: ; 0x022E3580
-	ldr ip, _022E358C ; =ov10_022BF8E8
+	arm_func_start DungeonScreenEffectActive
+DungeonScreenEffectActive: ; 0x022E3580
+	ldr ip, _022E358C ; =ScreenEffectActive
 	mov r0, #0
 	bx ip
 	.align 2, 0
-_022E358C: .word ov10_022BF8E8
-	arm_func_end ov29_022E3580
+_022E358C: .word ScreenEffectActive
+	arm_func_end DungeonScreenEffectActive
 
 	arm_func_start ov29_022E3590
 ov29_022E3590: ; 0x022E3590

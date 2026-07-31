@@ -879,7 +879,7 @@ ov29_02321288: ; 0x02321288
 	mov r7, r3
 	ldr r6, [sp, #0x34]
 	ldr r5, [sl, #0xb4]
-	bl ov29_022F87C0
+	bl GetMonsterInFront
 	movs r4, r0
 	bne _023212E0
 	mov r0, sl

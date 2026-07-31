@@ -3,11 +3,11 @@
 
 	.text
 
-	arm_func_start ov29_022F59C4
-ov29_022F59C4: ; 0x022F59C4
+	arm_func_start TalkToTeamMemberInFront
+TalkToTeamMemberInFront: ; 0x022F59C4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov29_022F87C0
+	bl GetMonsterInFront
 	movs r1, r0
 	moveq r1, #0
 	beq _022F59FC
@@ -24,7 +24,7 @@ _022F59FC:
 	mvn r2, #0
 	bl ov29_022F5A40
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022F59C4
+	arm_func_end TalkToTeamMemberInFront
 
 	arm_func_start ov29_022F5A0C
 ov29_022F5A0C: ; 0x022F5A0C
@@ -476,8 +476,8 @@ _022F5F14: .word 0x00000BCA
 #endif
 	arm_func_end ov29_022F5DF4
 
-	arm_func_start ov29_022F5F18
-ov29_022F5F18: ; 0x022F5F18
+	arm_func_start PlayerUseMove
+PlayerUseMove: ; 0x022F5F18
 #ifdef JAPAN
 #define OV29_022F5F18_OFFSET -4
 #else
@@ -580,10 +580,10 @@ _022F6054: .word 0x00000B3D
 #else
 _022F6054: .word 0x00000DFD
 #endif
-	arm_func_end ov29_022F5F18
+	arm_func_end PlayerUseMove
 
-	arm_func_start ov29_022F6058
-ov29_022F6058: ; 0x022F6058
+	arm_func_start UseRegularAttackOrStruggle
+UseRegularAttackOrStruggle: ; 0x022F6058
 #ifdef JAPAN
 #define OV29_022F6058_OFFSET -4
 #else
@@ -714,7 +714,7 @@ _022F6204: .word 0x00000BCE
 #endif
 _022F6208: .word DIRECTIONS_XY
 _022F620C: .word DIRECTIONS_XY + 2
-	arm_func_end ov29_022F6058
+	arm_func_end UseRegularAttackOrStruggle
 
 	arm_func_start ov29_022F6210
 ov29_022F6210: ; 0x022F6210

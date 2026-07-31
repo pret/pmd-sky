@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_0231A8A0
-ov29_0231A8A0: ; 0x0231A8A0
+	arm_func_start AiUseMove
+AiUseMove: ; 0x0231A8A0
 #ifdef JAPAN
 #define OV29_0231A8A0_OFFSET -4
 #else
@@ -103,4 +103,4 @@ _0231A9D0: .word 0x00000B3D
 #else
 _0231A9D0: .word 0x00000DFD
 #endif
-	arm_func_end ov29_0231A8A0
+	arm_func_end AiUseMove

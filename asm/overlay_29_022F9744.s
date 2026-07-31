@@ -317,7 +317,7 @@ ov29_022F9AF4: ; 0x022F9AF4
 	ldr r1, [sb, #0xb4]
 	mov r5, #0
 	ldrb r8, [r1, #6]
-	bl ov29_022F87C0
+	bl GetMonsterInFront
 	cmp r0, #0
 	moveq r0, r5
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}

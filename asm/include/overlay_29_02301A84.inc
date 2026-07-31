@@ -5,8 +5,8 @@
 .public GetApparentWeather
 .public GetExclusiveItemWithEffectFromBag
 .public LogMessageByIdWithPopupCheckUserTarget
+.public LogMessageWithTargetAndExclusiveItemName
 .public MistIsActive
-.public ov29_02314DC4
 .public ov29_02324BE8
 .public PrepareItemForPrinting__02345728
 .public SubstitutePlaceholderStringTags

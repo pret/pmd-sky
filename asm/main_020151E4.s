@@ -10253,15 +10253,15 @@ sub_0201D18C: ; 0x0201D18C
 	bx lr
 	arm_func_end sub_0201D18C
 
-	arm_func_start sub_0201D198
-sub_0201D198: ; 0x0201D198
+	arm_func_start SetAnimationControlPausedFlag
+SetAnimationControlPausedFlag: ; 0x0201D198
 	cmp r1, #0
 	ldrh r1, [r0]
 	orrne r1, r1, #0x4000
 	biceq r1, r1, #0x4000
 	strh r1, [r0]
 	bx lr
-	arm_func_end sub_0201D198
+	arm_func_end SetAnimationControlPausedFlag
 
 	arm_func_start sub_0201D1B0
 sub_0201D1B0: ; 0x0201D1B0

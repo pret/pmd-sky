@@ -2025,8 +2025,8 @@ _023439BC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_02343980
 
-	arm_func_start ov29_023439D8
-ov29_023439D8: ; 0x023439D8
+	arm_func_start TryOpenKeyDoor
+TryOpenKeyDoor: ; 0x023439D8
 #ifdef JAPAN
 #define OV29_023439D8_OFFSET -0xA4
 #else
@@ -2238,7 +2238,7 @@ _02343C6C:
 	movne r1, #0
 	add r0, sp, #0xc
 	and r1, r1, #0xff
-	bl ov29_022E6694
+	bl PlayKeyDoorUnlockEffect
 	ldr r1, [sp, #4]
 	mov r0, sl
 	bl LogMessageByIdWithPopupCheckUser
@@ -2255,7 +2255,7 @@ _02343CC8:
 	.align 2, 0
 _02343CD0: .word DUNGEON_PTR
 _02343CD4: .word 0xFFFFCFEF
-	arm_func_end ov29_023439D8
+	arm_func_end TryOpenKeyDoor
 
 	arm_func_start ApplyKeyEffect
 ApplyKeyEffect: ; 0x02343CD8
@@ -2277,7 +2277,7 @@ _02343D10:
 	ldr r2, _02343D2C ; =0x00000B93
 	mov r0, r4
 	add r3, r2, #1
-	bl ov29_023439D8
+	bl TryOpenKeyDoor
 	bl UpdateMinimap
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -2312,7 +2312,7 @@ _02343D68:
 	mov r0, r5
 	mov r1, r4
 	add r3, r2, #2
-	bl ov29_023439D8
+	bl TryOpenKeyDoor
 	bl UpdateMinimap
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0

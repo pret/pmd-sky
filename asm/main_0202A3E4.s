@@ -12399,7 +12399,7 @@ sub_020346C0: ; 0x020346C0
 	mov r1, #1
 	bl MemAlloc
 	mov r4, r0
-	ldr ip, _02034708 ; =_020AFDB8
+	ldr ip, _02034708 ; =MENU_CONTROL_PTR
 	ldr r0, _0203470C ; =NULL_OVERLAY_LOAD_ENTRY
 	str r4, [ip]
 	add lr, r4, #0xc4
@@ -12413,7 +12413,7 @@ sub_020346C0: ; 0x020346C0
 	bl sub_020469BC
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02034708: .word _020AFDB8
+_02034708: .word MENU_CONTROL_PTR
 _0203470C: .word NULL_OVERLAY_LOAD_ENTRY
 	arm_func_end sub_020346C0
 
@@ -12421,7 +12421,7 @@ _0203470C: .word NULL_OVERLAY_LOAD_ENTRY
 sub_02034710: ; 0x02034710
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
-	ldr r1, _02034798 ; =_020AFDB8
+	ldr r1, _02034798 ; =MENU_CONTROL_PTR
 	ldr r0, _0203479C ; =NULL_OVERLAY_LOAD_ENTRY
 	ldr r1, [r1]
 	add r4, r1, #0xc4
@@ -12435,7 +12435,7 @@ _0203473C:
 	add r7, sp, #0
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r7, {r0, r1, r2, r3}
-	ldr ip, _02034798 ; =_020AFDB8
+	ldr ip, _02034798 ; =MENU_CONTROL_PTR
 	ldmia r7, {r0, r1, r2, r3}
 	ldr r5, [ip]
 	mov r6, #0
@@ -12455,7 +12455,7 @@ _0203473C:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02034798: .word _020AFDB8
+_02034798: .word MENU_CONTROL_PTR
 _0203479C: .word NULL_OVERLAY_LOAD_ENTRY
 	arm_func_end sub_02034710
 
@@ -12487,33 +12487,33 @@ _020347EC: .word NULL_OVERLAY_LOAD_ENTRY
 	arm_func_start FreeActiveMenu
 FreeActiveMenu: ; 0x020347F0
 	stmdb sp!, {r4, lr}
-	ldr r0, _0203483C ; =_020AFDB8
+	ldr r0, _0203483C ; =MENU_CONTROL_PTR
 	ldr r4, [r0]
 	ldr r0, [r4, #0xcc]
 	cmp r0, #0
 	beq _0203480C
 	blx r0
 _0203480C:
-	ldr r0, _0203483C ; =_020AFDB8
+	ldr r0, _0203483C ; =MENU_CONTROL_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0xd8]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r0, [r4, #0xc4]
 	bl UnloadOverlay
-	ldr r0, _0203483C ; =_020AFDB8
+	ldr r0, _0203483C ; =MENU_CONTROL_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0xd8]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0203483C: .word _020AFDB8
+_0203483C: .word MENU_CONTROL_PTR
 	arm_func_end FreeActiveMenu
 
 	arm_func_start sub_02034840
 sub_02034840: ; 0x02034840
 	stmdb sp!, {r4, lr}
-	ldr r1, _020348DC ; =_020AFDB8
+	ldr r1, _020348DC ; =MENU_CONTROL_PTR
 	mov r4, r0
 	ldr r2, [r1]
 	ldrb r1, [r2, #0x10]
@@ -12537,14 +12537,14 @@ _0203487C:
 _02034894:
 	cmp r4, #0
 	beq _020348B4
-	ldr r1, _020348DC ; =_020AFDB8
+	ldr r1, _020348DC ; =MENU_CONTROL_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0xc4
 	bl OverlayLoadEntriesEqual
 	ldmia sp!, {r4, pc}
 _020348B4:
-	ldr r1, _020348DC ; =_020AFDB8
+	ldr r1, _020348DC ; =MENU_CONTROL_PTR
 	ldr r0, _020348E0 ; =NULL_OVERLAY_LOAD_ENTRY
 	ldr r1, [r1]
 	add r1, r1, #0x14
@@ -12555,6 +12555,6 @@ _020348B4:
 	and r0, r0, #0xff
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020348DC: .word _020AFDB8
+_020348DC: .word MENU_CONTROL_PTR
 _020348E0: .word NULL_OVERLAY_LOAD_ENTRY
 	arm_func_end sub_02034840

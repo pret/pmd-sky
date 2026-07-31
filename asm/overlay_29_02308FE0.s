@@ -96,7 +96,7 @@ _02309A88:
 	beq _02309B50
 	mov r0, sl
 	mov r1, sb
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 _02309B50:
 	mov r0, #1
 	strb r0, [r5, #0x10]
@@ -126,7 +126,7 @@ _02309B60:
 	cmp r0, #0
 	beq _02309BC0
 	mov r0, sb
-	bl ov29_022E57A0
+	bl PlayMissSfx__022E6150
 _02309BC0:
 	mov r0, #1
 	strb r0, [r5, #0x10]
@@ -160,7 +160,7 @@ _02309BD0:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, sl
 	mov r1, sb
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 	mov r0, #1
 	strb r0, [r5, #0x10]
 	mov r0, #0
@@ -181,7 +181,7 @@ _02309C50:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, sl
 	mov r1, sb
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 _02309C90:
 	mov r0, #1
 	strb r0, [r5, #0x10]
@@ -439,7 +439,7 @@ _02309FCC_EU:
 _0230A034:
 	mov r0, sl
 	mov r1, sb
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 	b _0230A06C
 _0230A044:
 	ldrb r0, [r7, #0x15c + APPLY_DAMAGE_OFFSET]
@@ -1178,7 +1178,7 @@ _0230905C:
 	beq _02309124
 	mov r0, r8
 	mov r1, r7
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 _02309124:
 	mov r0, #1
 	strb r0, [r6, #0x10]
@@ -1208,7 +1208,7 @@ _02309134:
 	cmp r0, #0
 	beq _02309194
 	mov r0, r7
-	bl ov29_022E57A0
+	bl PlayMissSfx__022E6150
 _02309194:
 	mov r0, #1
 	strb r0, [r6, #0x10]
@@ -1250,7 +1250,7 @@ _023091A4:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r8
 	mov r1, r7
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 	mov r0, #1
 	strb r0, [r6, #0x10]
 	mov r0, #0
@@ -1277,7 +1277,7 @@ _02309224:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r8
 	mov r1, r7
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 _02309264:
 	mov r0, #1
 	strb r0, [r6, #0x10]
@@ -1543,7 +1543,7 @@ _023095A0:
 _02309608:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 	b _02309640
 _02309618:
 	ldrb r0, [r4, #0x15c + APPLY_DAMAGE_OFFSET]
@@ -2622,7 +2622,7 @@ _0230AEEC:
 	mov r0, #4
 	bl SetUnkMusicFlag
 	mov r0, sb
-	bl ov29_022F0518
+	bl UnfreezeAnim
 	mov r0, sb
 	mov r1, #6
 	bl ov29_02304830
@@ -3235,7 +3235,7 @@ _0230A4A0:
 	mov r0, #4
 	bl SetUnkMusicFlag
 	mov r0, r7
-	bl ov29_022F0518
+	bl UnfreezeAnim
 	mov r0, r7
 	mov r1, #6
 	bl ov29_02304830

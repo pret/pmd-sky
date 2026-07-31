@@ -9,14 +9,14 @@ ov29_022F05B4: ; 0x022F05B4
 	mov r4, r1
 	cmp r2, #0
 	bne _022F05D4
-	bl ov29_022F0518
+	bl UnfreezeAnim
 	mov r0, r4
-	bl ov29_022F0518
+	bl UnfreezeAnim
 	ldmia sp!, {r4, pc}
 _022F05D4:
-	bl ov29_022F04F0
+	bl FreezeAnim
 	mov r0, r4
-	bl ov29_022F04F0
+	bl FreezeAnim
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022F05B4
 
@@ -1366,7 +1366,7 @@ _022F17B8:
 	and r1, r0, #7
 	mov r0, r6
 	strb r1, [sb, #0x4c]
-	bl ov29_022F87C0
+	bl GetMonsterInFront
 	cmp r0, #0
 	moveq r1, #0
 	streqb r8, [sb, #0x4c]
@@ -1386,7 +1386,7 @@ _022F17E0:
 	tst r0, #2
 	beq _022F1868
 	mov r0, r6
-	bl ov29_022F87C0
+	bl GetMonsterInFront
 	cmp r0, #0
 	beq _022F1838
 	mov r0, r6
@@ -2605,7 +2605,7 @@ _022F2980:
 	cmpne r0, #0x13
 	bne _022F29B0
 	mov r0, r6
-	bl ov29_022F59C4
+	bl TalkToTeamMemberInFront
 	bl IsFloorOver
 	cmp r0, #0
 	bne _022F2B34
@@ -3614,7 +3614,7 @@ ov29_022F37D0: ; 0x022F37D0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r4, r1
-	bl ov29_022F87C0
+	bl GetMonsterInFront
 	movs r5, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -5149,8 +5149,8 @@ ov29_022F4BDC: ; 0x022F4BDC
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022F4BDC
 
-	arm_func_start ov29_022F4BF8
-ov29_022F4BF8: ; 0x022F4BF8
+	arm_func_start TryPlaceItem
+TryPlaceItem: ; 0x022F4BF8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r1, #0
@@ -5277,7 +5277,7 @@ _022F4D9C: .word 0x00000BB8 + OV29_022F4BF8_OFFSET
 _022F4DA0: .word 0x00001317
 _022F4DA4: .word 0x00000BB9 + OV29_022F4BF8_OFFSET
 _022F4DA8: .word DUNGEON_PTR
-	arm_func_end ov29_022F4BF8
+	arm_func_end TryPlaceItem
 
 	arm_func_start ov29_022F4DAC
 ov29_022F4DAC: ; 0x022F4DAC
