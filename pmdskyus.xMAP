@@ -719,7 +719,7 @@
                                                                            74](PrepareItemForPrinting__02345728,func) found in global overlay_29_02344B1C.o
                                                                             75](ov29_022FB920,func) found in global overlay_29_022FB678.o
                                                                              76](IsSecretBazaarNpcBehavior,func) found in global dungeon_logic_6.o
-                                                                             76](ov29_022E576C,func) found in global overlay_29_022E37DC.o
+                                                                             76](PlayMissSfx__022E611C,func) found in global overlay_29_022E37DC.o
                                                                              76](DisplayAnimatedNumbers,func) found in global overlay_29_022E9618.o
                                                                               77](ov29_02335F40,func) found in global overlay_29_023350FC.o
                                                                               77](ov29_02339FF4,func) found in global overlay_29_0233861C.o
@@ -921,7 +921,7 @@
                                                                                                             107](ov29_023009A0,func) found in global overlay_29_023009A0.o
                                                                                                             107](TryInflictEndureStatus,func) found in global overlay_29_02318E70.o
                                                                                                              108](EntityIsValid__02318E4C,func) found in global overlay_29_02318E4C.o
-                                                                                                            107](ov29_022F0518,func) found in global overlay_29_022EFB20.o
+                                                                                                            107](UnfreezeAnim,func) found in global overlay_29_022EFB20.o
                                                                                                              108](EntityIsValid__022F0590,func) found in global overlay_29_022F0590.o
                                                                                                             107](TryIncreaseBelly,func) found in global overlay_29_0231516C.o
                                                                                                             107](SetDoughSeedFlag,func) found in global overlay_29_02338548.o
@@ -1056,7 +1056,7 @@
                                                                                                             107](IsUsableWhileTaunted,func) found in global moves_3.o
                                                                                                           105](EndTwoTurnMove,func) found in global overlay_29_02318D58.o
                                                                                                            106](EntityIsValid__02318D34,func) found in global overlay_29_02318D34.o
-                                                                                                          105](ov29_022F6058,func) found in global overlay_29_022F59C4.o
+                                                                                                          105](UseRegularAttackOrStruggle,func) found in global overlay_29_022F59C4.o
                                                                                                            106](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
                                                                                                            106](ShouldUsePp,func) found in global overlay_29_0231A7A0.o
                                                                                                             107](ExclusiveItemEffectIsActive__0231A87C,func) found in global overlay_29_0231A87C.o
@@ -1100,7 +1100,7 @@
                                                                                                                110](@2480,object) found in local dungeon_damage.o
                                                                                                              108](AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS,object) found in global dungeon_ai_attack.o
                                                                                                             107](IsTargetInRange,func) found in global dungeon_ai_attack.o
-                                                                                                          105](ov29_0231A8A0,func) found in global overlay_29_0231A8A0.o
+                                                                                                          105](AiUseMove,func) found in global overlay_29_0231A8A0.o
                                                                                                           105](CanMonsterMoveInDirection,func) found in global dungeon_capabilities_3.o
                                                                                                            106](DIRECTIONAL_BIT_MASKS__02352798,object) found in global directional_bit_masks.o
                                                                                                           105](ov29_023085DC,func) found in global overlay_29_023085DC.o
@@ -4150,7 +4150,7 @@
   0201D170 0000001C .text   AnimationControlGetAllocForMaxFrame	(main_020151E4.o)
   0201D170 00000000 .text   $a	(main_020151E4.o)
   0201D18C 0000000C .text   sub_0201D18C	(main_020151E4.o)
-  0201D198 00000018 .text   sub_0201D198	(main_020151E4.o)
+  0201D198 00000018 .text   SetAnimationControlPausedFlag	(main_020151E4.o)
   0201D1B0 00000024 .text   sub_0201D1B0	(main_020151E4.o)
   0201D1D4 00000008 .text   sub_0201D1D4	(main_020151E4.o)
   0201D1DC 00000068 .text   DeleteWanTableEntry	(main_020151E4.o)
@@ -13900,12 +13900,12 @@
   020AFD5C 00000000 .rodata _020AFD5C	(main_rodata_020A2808.o)
   020AFD60 00000000 .rodata _020AFD60	(main_rodata_020A2808.o)
   020AFD94 00000000 .rodata _020AFD94	(main_rodata_020A2808.o)
-  020AFD98 00000000 .rodata MENU_CONTROL_PTR	(main_rodata_020A2808.o)
+  020AFD98 00000000 .rodata _020AFD98	(main_rodata_020A2808.o)
   020AFD9C 00000000 .rodata _020AFD9C	(main_rodata_020A2808.o)
   020AFDA0 00000000 .rodata _020AFDA0	(main_rodata_020A2808.o)
   020AFDA8 00000000 .rodata _020AFDA8	(main_rodata_020A2808.o)
   020AFDAC 00000000 .rodata _020AFDAC	(main_rodata_020A2808.o)
-  020AFDB8 00000000 .rodata _020AFDB8	(main_rodata_020A2808.o)
+  020AFDB8 00000000 .rodata MENU_CONTROL_PTR	(main_rodata_020A2808.o)
   020AFDBC 00000000 .rodata _020AFDBC	(main_rodata_020A2808.o)
   020AFDD0 00000000 .rodata _020AFDD0	(main_rodata_020A2808.o)
   020AFDD8 00000000 .rodata _020AFDD8	(main_rodata_020A2808.o)
@@ -27233,7 +27233,7 @@
   022BD744 00000018 .text   ov10_022BD744	(overlay_10_022BCC7C.o)
   022BD744 00000000 .text   $a	(overlay_10_022BCC7C.o)
   022BD758 00000000 .text   $d	(overlay_10_022BCC7C.o)
-  022BD75C 000000D0 .text   ov10_022BD75C	(overlay_10_022BCC7C.o)
+  022BD75C 000000D0 .text   LoadPaletteBase	(overlay_10_022BCC7C.o)
   022BD75C 00000000 .text   $a	(overlay_10_022BCC7C.o)
   022BD824 00000000 .text   $d	(overlay_10_022BCC7C.o)
   022BD82C 00000000 .text   $a	(overlay_10_022BCC7C.o)
@@ -27350,7 +27350,7 @@
   022BF864 00000084 .text   ov10_022BF864	(overlay_10_022BCC7C.o)
   022BF8E0 00000000 .text   $d	(overlay_10_022BCC7C.o)
   022BF8E8 00000000 .text   $a	(overlay_10_022BCC7C.o)
-  022BF8E8 0000001C .text   ov10_022BF8E8	(overlay_10_022BCC7C.o)
+  022BF8E8 0000001C .text   ScreenEffectActive	(overlay_10_022BCC7C.o)
   022BF900 00000000 .text   $d	(overlay_10_022BCC7C.o)
   022BF904 00000000 .text   $a	(overlay_10_022BCC7C.o)
   022BF904 00000060 .text   AnimationHasMoreFrames	(overlay_10_022BCC7C.o)
@@ -35418,7 +35418,7 @@
   022E3570 00000000 .text   $a	(overlay_29_022E335C.o)
   022E357C 00000000 .text   $d	(overlay_29_022E335C.o)
   022E3580 00000000 .text   $a	(overlay_29_022E335C.o)
-  022E3580 00000010 .text   ov29_022E3580	(overlay_29_022E335C.o)
+  022E3580 00000010 .text   DungeonScreenEffectActive	(overlay_29_022E335C.o)
   022E358C 00000000 .text   $d	(overlay_29_022E335C.o)
   022E3590 00000000 .text   $a	(overlay_29_022E335C.o)
   022E3590 00000054 .text   ov29_022E3590	(overlay_29_022E335C.o)
@@ -35649,10 +35649,10 @@
   022E5728 00000044 .text   ov29_022E5728	(overlay_29_022E37DC.o)
   022E5760 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E576C 00000000 .text   $a	(overlay_29_022E37DC.o)
-  022E576C 00000034 .text   ov29_022E576C	(overlay_29_022E37DC.o)
+  022E576C 00000034 .text   PlayMissSfx__022E611C	(overlay_29_022E37DC.o)
   022E5798 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E57A0 00000000 .text   $a	(overlay_29_022E37DC.o)
-  022E57A0 00000034 .text   ov29_022E57A0	(overlay_29_022E37DC.o)
+  022E57A0 00000034 .text   PlayMissSfx__022E6150	(overlay_29_022E37DC.o)
   022E57CC 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E57D4 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E57D4 00000090 .text   ov29_022E57D4	(overlay_29_022E37DC.o)
@@ -35669,7 +35669,7 @@
   022E5BD8 00000190 .text   ov29_022E5BD8	(overlay_29_022E37DC.o)
   022E5D58 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E5D68 00000000 .text   $a	(overlay_29_022E37DC.o)
-  022E5D68 00000054 .text   ov29_022E5D68	(overlay_29_022E37DC.o)
+  022E5D68 00000054 .text   PlayStairsSfx	(overlay_29_022E37DC.o)
   022E5DB0 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E5DBC 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E5DBC 000000C8 .text   ov29_022E5DBC	(overlay_29_022E37DC.o)
@@ -35727,7 +35727,7 @@
   022E6644 00000050 .text   ov29_022E6644	(overlay_29_022E37DC.o)
   022E6644 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E6690 00000000 .text   $d	(overlay_29_022E37DC.o)
-  022E6694 00000030 .text   ov29_022E6694	(overlay_29_022E37DC.o)
+  022E6694 00000030 .text   PlayKeyDoorUnlockEffect	(overlay_29_022E37DC.o)
   022E6694 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E66C0 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E66C4 00000014 .text   ov29_022E66C4	(overlay_29_022E37DC.o)
@@ -35868,14 +35868,14 @@
   022E84B0 00000050 .text   ov29_022E84B0	(overlay_29_022E7EC4.o)
   022E84B0 00000000 .text   $a	(overlay_29_022E7EC4.o)
   022E84FC 00000000 .text   $d	(overlay_29_022E7EC4.o)
-  022E8500 0000004C .text   ov29_022E8500	(overlay_29_022E7EC4.o)
+  022E8500 0000004C .text   InitDungeonControlsMenuWithBg	(overlay_29_022E7EC4.o)
   022E8500 00000000 .text   $a	(overlay_29_022E7EC4.o)
   022E8548 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E854C 00000000 .text   $a	(overlay_29_022E7EC4.o)
   022E854C 0000003C .text   ov29_022E854C	(overlay_29_022E7EC4.o)
   022E8584 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E8588 00000000 .text   $a	(overlay_29_022E7EC4.o)
-  022E8588 00000020 .text   ov29_022E8588	(overlay_29_022E7EC4.o)
+  022E8588 00000020 .text   FreeDungeonControlsMenuWithBg	(overlay_29_022E7EC4.o)
   022E85A4 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E85A8 00000000 .text   $a	(overlay_29_022E7EC4.o)
   022E85A8 0000004C .text   ov29_022E85A8	(overlay_29_022E7EC4.o)
@@ -35945,10 +35945,10 @@
   022E8E60 00000034 .text   DrawDungeonControlsText	(overlay_29_022E7EC4.o)
   022E8E90 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E8E94 00000000 .text   $a	(overlay_29_022E7EC4.o)
-  022E8E94 00000094 .text   ov29_022E8E94	(overlay_29_022E7EC4.o)
+  022E8E94 00000094 .text   InitDungeonControlsMenu	(overlay_29_022E7EC4.o)
   022E8F1C 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E8F28 00000000 .text   $a	(overlay_29_022E7EC4.o)
-  022E8F28 00000050 .text   ov29_022E8F28	(overlay_29_022E7EC4.o)
+  022E8F28 00000050 .text   FreeDungeonControlsMenu	(overlay_29_022E7EC4.o)
   022E8F74 00000000 .text   $d	(overlay_29_022E7EC4.o)
   022E8F78 00000000 .text   $a	(overlay_29_022E7EC4.o)
   022E8F78 00000054 .text   ov29_022E8F78	(overlay_29_022E7EC4.o)
@@ -36454,9 +36454,9 @@
   022EFB84 00000028 .text   ov29_022EFB84	(overlay_29_022EFB20.o)
   022EFBAC 00000944 .text   ov29_022EFBAC	(overlay_29_022EFB20.o)
   022F04E4 00000000 .text   $d	(overlay_29_022EFB20.o)
-  022F04F0 00000028 .text   ov29_022F04F0	(overlay_29_022EFB20.o)
+  022F04F0 00000028 .text   FreezeAnim	(overlay_29_022EFB20.o)
   022F04F0 00000000 .text   $a	(overlay_29_022EFB20.o)
-  022F0518 0000001C .text   ov29_022F0518	(overlay_29_022EFB20.o)
+  022F0518 0000001C .text   UnfreezeAnim	(overlay_29_022EFB20.o)
   022F0530 00000000 .text   $d	(overlay_29_022EFB20.o)
   022F0534 0000005C .text   ov29_022F0534	(overlay_29_022EFB20.o)
   022F0534 00000000 .text   $a	(overlay_29_022EFB20.o)
@@ -36568,7 +36568,7 @@
   022F4BC8 00000000 .text   $d	(overlay_29_022F05B4.o)
   022F4BDC 00000000 .text   $a	(overlay_29_022F05B4.o)
   022F4BDC 0000001C .text   ov29_022F4BDC	(overlay_29_022F05B4.o)
-  022F4BF8 000001B4 .text   ov29_022F4BF8	(overlay_29_022F05B4.o)
+  022F4BF8 000001B4 .text   TryPlaceItem	(overlay_29_022F05B4.o)
   022F4D94 00000000 .text   $d	(overlay_29_022F05B4.o)
   022F4DAC 00000000 .text   $a	(overlay_29_022F05B4.o)
   022F4DAC 000002B0 .text   ov29_022F4DAC	(overlay_29_022F05B4.o)
@@ -36582,7 +36582,7 @@
   022F52B0 0000000C .text   ov29_022F52B0	(overlay_29_022F52B0.o)
   022F52B0 00000000 .text   $a	(overlay_29_022F52B0.o)
   022F52B8 00000000 .text   $d	(overlay_29_022F52B0.o)
-  022F52BC 00000010 .text   ov29_022F52BC	(overlay_29_022F52B0.o)
+  022F52BC 00000010 .text   UseSingleUseItemSelf	(overlay_29_022F52B0.o)
   022F52BC 00000000 .text   $a	(overlay_29_022F52B0.o)
   022F52C8 00000000 .text   $d	(overlay_29_022F52B0.o)
   022F52CC 00000000 .text   $a	(overlay_29_022F52B0.o)
@@ -36598,7 +36598,7 @@
   022F5994 00000000 .text   $a	(overlay_29_022F5994.o)
   022F59C4 000008E4 .text   .text	(overlay_29_022F59C4.o)
   022F59C4 00000000 .text   $a	(overlay_29_022F59C4.o)
-  022F59C4 00000048 .text   ov29_022F59C4	(overlay_29_022F59C4.o)
+  022F59C4 00000048 .text   TalkToTeamMemberInFront	(overlay_29_022F59C4.o)
   022F5A0C 00000034 .text   ov29_022F5A0C	(overlay_29_022F59C4.o)
   022F5A3C 00000000 .text   $d	(overlay_29_022F59C4.o)
   022F5A40 00000000 .text   $a	(overlay_29_022F59C4.o)
@@ -36610,11 +36610,11 @@
   022F5DF4 00000000 .text   $a	(overlay_29_022F59C4.o)
   022F5DF4 00000124 .text   ov29_022F5DF4	(overlay_29_022F59C4.o)
   022F5F0C 00000000 .text   $d	(overlay_29_022F59C4.o)
-  022F5F18 00000140 .text   ov29_022F5F18	(overlay_29_022F59C4.o)
+  022F5F18 00000140 .text   PlayerUseMove	(overlay_29_022F59C4.o)
   022F5F18 00000000 .text   $a	(overlay_29_022F59C4.o)
   022F6050 00000000 .text   $d	(overlay_29_022F59C4.o)
   022F6058 00000000 .text   $a	(overlay_29_022F59C4.o)
-  022F6058 000001B8 .text   ov29_022F6058	(overlay_29_022F59C4.o)
+  022F6058 000001B8 .text   UseRegularAttackOrStruggle	(overlay_29_022F59C4.o)
   022F61F8 00000000 .text   $d	(overlay_29_022F59C4.o)
   022F6210 00000000 .text   $a	(overlay_29_022F59C4.o)
   022F6210 00000098 .text   ov29_022F6210	(overlay_29_022F59C4.o)
@@ -36666,10 +36666,10 @@
   022F7104 0000002C .text   ov29_022F7104	(overlay_29_022F62CC.o)
   022F712C 00000000 .text   $d	(overlay_29_022F62CC.o)
   022F7130 00000000 .text   $a	(overlay_29_022F62CC.o)
-  022F7130 000001D8 .text   ov29_022F7130	(overlay_29_022F62CC.o)
+  022F7130 000001D8 .text   LoadMonsterSprites	(overlay_29_022F62CC.o)
   022F72F8 00000000 .text   $d	(overlay_29_022F62CC.o)
   022F7308 00000000 .text   $a	(overlay_29_022F62CC.o)
-  022F7308 0000005C .text   ov29_022F7308	(overlay_29_022F62CC.o)
+  022F7308 0000005C .text   LoadActiveMonsterSprites	(overlay_29_022F62CC.o)
   022F7360 00000000 .text   $d	(overlay_29_022F62CC.o)
   022F7364 00000024 .text   EntityIsValid__022F7364	(overlay_29_022F7364.o)
   022F7364 00000000 .text   $a	(overlay_29_022F7364.o)
@@ -36706,7 +36706,7 @@
   022F7804 00000030 .text   DeleteAllMonsterSpriteFiles	(overlay_29_022F7768.o)
   022F7830 00000000 .text   $d	(overlay_29_022F7768.o)
   022F7834 00000000 .text   $a	(overlay_29_022F7768.o)
-  022F7834 000000DC .text   ov29_022F7834	(overlay_29_022F7768.o)
+  022F7834 000000DC .text   CanMonsterBeAddedToTeam	(overlay_29_022F7768.o)
   022F7910 000002E4 .text   ov29_022F7910	(overlay_29_022F7768.o)
   022F7BD4 00000000 .text   $d	(overlay_29_022F7768.o)
   022F7BF4 00000000 .text   $a	(overlay_29_022F7768.o)
@@ -36724,7 +36724,7 @@
   022F85F0 000001D0 .text   MoveMonsterToPos	(overlay_29_022F7768.o)
   022F87BC 00000000 .text   $d	(overlay_29_022F7768.o)
   022F87C0 00000000 .text   $a	(overlay_29_022F7768.o)
-  022F87C0 00000070 .text   ov29_022F87C0	(overlay_29_022F7768.o)
+  022F87C0 00000070 .text   GetMonsterInFront	(overlay_29_022F7768.o)
   022F8828 00000000 .text   $d	(overlay_29_022F7768.o)
   022F8830 00000090 .text   ov29_022F8830	(overlay_29_022F7768.o)
   022F8830 00000000 .text   $a	(overlay_29_022F7768.o)
@@ -36957,7 +36957,7 @@
   022FC234 00000000 .text   $a	(overlay_29_022FBE58.o)
   022FC464 00000000 .text   $d	(overlay_29_022FBE58.o)
   022FC468 00000000 .text   $a	(overlay_29_022FBE58.o)
-  022FC468 000000A4 .text   ov29_022FC468	(overlay_29_022FBE58.o)
+  022FC468 000000A4 .text   InitExplorerMazeMonsterStatsMovesAndIq	(overlay_29_022FBE58.o)
   022FC508 00000000 .text   $d	(overlay_29_022FBE58.o)
   022FC50C 00000000 .text   $a	(overlay_29_022FBE58.o)
   022FC50C 00000490 .text   SpawnTeam	(overlay_29_022FBE58.o)
@@ -37771,7 +37771,7 @@
   02314D3C 00000000 .text   $d	(overlay_29_02314810.o)
   02314D40 00000084 .text   ExclusiveItemEffectIsActiveWithLogging	(overlay_29_02314810.o)
   02314D40 00000000 .text   $a	(overlay_29_02314810.o)
-  02314DC4 00000058 .text   ov29_02314DC4	(overlay_29_02314810.o)
+  02314DC4 00000058 .text   LogMessageWithTargetAndExclusiveItemName	(overlay_29_02314810.o)
   02314E1C 00000044 .text   TryActivateQuickFeet	(overlay_29_02314810.o)
   02314E60 00000058 .text   TryInflictTerrifiedStatus	(overlay_29_02314810.o)
   02314EB0 00000000 .text   $d	(overlay_29_02314810.o)
@@ -38045,7 +38045,7 @@
   0231A87C 00000000 .text   $a	(overlay_29_0231A87C.o)
   0231A8A0 00000000 .text   $a	(overlay_29_0231A8A0.o)
   0231A8A0 00000134 .text   .text	(overlay_29_0231A8A0.o)
-  0231A8A0 00000134 .text   ov29_0231A8A0	(overlay_29_0231A8A0.o)
+  0231A8A0 00000134 .text   AiUseMove	(overlay_29_0231A8A0.o)
   0231A9CC 00000000 .text   $d	(overlay_29_0231A8A0.o)
   0231A9D4 00000024 .text   IsMonster__0231A9D4	(overlay_29_0231A9D4.o)
   0231A9D4 00000000 .text   $a	(overlay_29_0231A9D4.o)
@@ -39434,7 +39434,7 @@
   023388B0 00000000 .text   $a	(overlay_29_0233861C.o)
   02338974 00000000 .text   $d	(overlay_29_0233861C.o)
   02338988 00000000 .text   $a	(overlay_29_0233861C.o)
-  02338988 0000003C .text   ov29_02338988	(overlay_29_0233861C.o)
+  02338988 0000003C .text   Weather3DEffectActive	(overlay_29_0233861C.o)
   023389BC 00000000 .text   $d	(overlay_29_0233861C.o)
   023389C4 00000088 .text   ov29_023389C4	(overlay_29_0233861C.o)
   023389C4 00000000 .text   $a	(overlay_29_0233861C.o)
@@ -39709,7 +39709,7 @@
   0234396C 00000000 .text   $a	(overlay_29_02341E6C.o)
   0234396C 00000014 .text   FixedRoomActionParamToDirection	(overlay_29_02341E6C.o)
   02343980 00000058 .text   ov29_02343980	(overlay_29_02341E6C.o)
-  023439D8 00000300 .text   ov29_023439D8	(overlay_29_02341E6C.o)
+  023439D8 00000300 .text   TryOpenKeyDoor	(overlay_29_02341E6C.o)
   02343CD0 00000000 .text   $d	(overlay_29_02341E6C.o)
   02343CD8 00000000 .text   $a	(overlay_29_02341E6C.o)
   02343CD8 00000058 .text   ApplyKeyEffect	(overlay_29_02341E6C.o)
@@ -40216,7 +40216,7 @@
   0234B73C 0000002C .text   AlertBoxIsActive	(overlay_29_0234AEE8.o)
   0234B764 00000000 .text   $d	(overlay_29_0234AEE8.o)
   0234B768 00000000 .text   $a	(overlay_29_0234AEE8.o)
-  0234B768 00000084 .text   ov29_0234B768	(overlay_29_0234AEE8.o)
+  0234B768 00000084 .text   FullyCloseAlertBox	(overlay_29_0234AEE8.o)
   0234B7E8 00000000 .text   $d	(overlay_29_0234AEE8.o)
   0234B7EC 00000000 .text   $a	(overlay_29_0234AEE8.o)
   0234B7EC 00000068 .text   AlertBoxIsScrolling	(overlay_29_0234AEE8.o)
@@ -40760,7 +40760,7 @@
   023515B0 00000000 .rodata ov29_023515B0	(overlay_29_rodata_0234FD04.o)
   023515CC 00000000 .rodata ov29_023515CC	(overlay_29_rodata_0234FD04.o)
   023515E8 00000000 .rodata ov29_023515E8	(overlay_29_rodata_0234FD04.o)
-  023515F4 00000000 .rodata ov29_023515F4	(overlay_29_rodata_0234FD04.o)
+  023515F4 00000000 .rodata DUNGEON_CONTROLS_MENU_WINDOW_PARAMS	(overlay_29_rodata_0234FD04.o)
   02351604 00000024 .rodata POSITION_DISPLACEMENT_TO_DIRECTION	(position_util.o)
   02351604 00000000 .rodata .rodata	(position_util.o)
   02351628 00000000 .rodata ov29_02351628	(overlay_29_rodata_02351628.o)
@@ -40970,7 +40970,7 @@
   02353544 00000000 .data   ov29_02353544	(overlay_29_data_023534E0.o)
   0235354C 00000000 .data   ov29_0235354C	(overlay_29_data_023534E0.o)
   02353554 00000000 .data   TOP_SCREEN_STATUS_PTR	(overlay_29_data_023534E0.o)
-  02353558 00000000 .data   ov29_02353558	(overlay_29_data_023534E0.o)
+  02353558 00000000 .data   DUNGEON_CONTROLS_MENU_PTR	(overlay_29_data_023534E0.o)
   0235355C 00000000 .data   LEADER_PTR	(overlay_29_data_023534E0.o)
   02353560 00000000 .data   ov29_02353560	(overlay_29_data_023534E0.o)
   02353562 00000000 .data   ov29_02353562	(overlay_29_data_023534E0.o)
@@ -41901,5 +41901,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Jul 26 04:36:22 2026
-# Link end time: Sun Jul 26 04:36:23 2026
+# Link start time: Fri Jul 31 22:23:31 2026
+# Link end time: Fri Jul 31 22:23:32 2026
