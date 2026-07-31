@@ -100,6 +100,7 @@
 .public PreprocessString
 .public Rand16Bit
 .public SetAndPlayAnimationForAnimationControl
+.public SetAnimationControlPausedFlag
 .public SetAnimationForAnimationControl
 .public SetPortraitEmotion
 .public SetPortraitLayout
@@ -119,7 +120,6 @@
 .public sub_0201D034
 .public sub_0201D0F8
 .public sub_0201D12C
-.public sub_0201D198
 .public sub_0201D1B0
 .public sub_0201D9C8
 .public sub_0201DA20

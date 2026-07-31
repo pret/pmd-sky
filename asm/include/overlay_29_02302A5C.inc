@@ -11,6 +11,7 @@
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonRandInt
+.public DungeonScreenEffectActive
 .public EndTwoTurnMove
 .public EntityIsValid__02302A38
 .public EntityIsValid__023047B8
@@ -47,7 +48,6 @@
 .public ov29_022DDB98
 .public ov29_022E273C
 .public ov29_022E3570
-.public ov29_022E3580
 .public ov29_022E6724
 .public ov29_022E6E80
 .public ov29_022EA370
@@ -56,7 +56,6 @@
 .public ov29_022ECB38
 .public ov29_023009CC
 .public ov29_02304830
-.public ov29_02338988
 .public ov29_0234B4E0
 .public ov29_0234CFA0
 .public ov29_0234D234
@@ -76,6 +75,7 @@
 .public PlaySeByIdIfShouldDisplayEntity
 .public Rand16Bit
 .public SetAndPlayAnimationForAnimationControl
+.public SetAnimationControlPausedFlag
 .public SetMessageLogPreprocessorArgsFlagVal
 .public SetMessageLogPreprocessorArgsNumberVal
 .public SetMonsterTypeAndAbility
@@ -88,7 +88,6 @@
 .public StringFromId
 .public sub_020149C0
 .public sub_0201D034
-.public sub_0201D198
 .public sub_0201D1B0
 .public sub_0204F610
 .public sub_02053904
@@ -97,3 +96,4 @@
 .public SwitchAnimationControlToNextFrame
 .public TryPointCameraToMonster
 .public UpdateIqSkillsWrapper
+.public Weather3DEffectActive

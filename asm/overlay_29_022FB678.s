@@ -293,7 +293,7 @@ ov29_022FB98C: ; 0x022FB98C
 	bl DisplayAnimatedNumbers
 	mov r0, r5
 	mov r1, r4
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022FB9B8: .word 0x0000270F

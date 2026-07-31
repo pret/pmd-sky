@@ -5,10 +5,10 @@
 
 	arm_func_start ov29_0230F140
 ov29_0230F140: ; 0x0230F140
-	ldr ip, _0230F148 ; =ov29_022F52BC
+	ldr ip, _0230F148 ; =UseSingleUseItemSelf
 	bx ip
 	.align 2, 0
-_0230F148: .word ov29_022F52BC
+_0230F148: .word UseSingleUseItemSelf
 	arm_func_end ov29_0230F140
 
 	arm_func_start ov29_0230F14C

@@ -1730,7 +1730,7 @@ _023040EC:
 	beq _023041E4
 	add r0, r7, #0x2c
 	mov r1, #1
-	bl sub_0201D198
+	bl SetAnimationControlPausedFlag
 	b _023041E4
 _0230414C:
 	cmp r0, #0
@@ -1947,7 +1947,7 @@ _02304458:
 	moveq r0, #1
 	cmp r0, #0
 	beq _023044B8
-	bl ov29_02338988
+	bl Weather3DEffectActive
 	cmp r0, #0
 	beq _02304498
 	ldr r0, _023046D8 ; =DUNGEON_FRAMES_PASSED
@@ -1956,7 +1956,7 @@ _02304458:
 	beq _023044B8
 	b _023046C0
 _02304498:
-	bl ov29_022E3580
+	bl DungeonScreenEffectActive
 	cmp r0, #0
 	bne _023044B8
 	bl ov29_022E3570

@@ -1133,8 +1133,8 @@ ov29_022F7104: ; 0x022F7104
 _022F712C: .word DUNGEON_PTR
 	arm_func_end ov29_022F7104
 
-	arm_func_start ov29_022F7130
-ov29_022F7130: ; 0x022F7130
+	arm_func_start LoadMonsterSprites
+LoadMonsterSprites: ; 0x022F7130
 #ifdef JAPAN
 #define OV29_022F7130_OFFSET -0xA4
 #else
@@ -1277,10 +1277,10 @@ _022F72F8: .word DUNGEON_PTR
 _022F72FC: .word 0x00000483
 _022F7300: .word 0x00000229
 _022F7304: .word 0x00000217
-	arm_func_end ov29_022F7130
+	arm_func_end LoadMonsterSprites
 
-	arm_func_start ov29_022F7308
-ov29_022F7308: ; 0x022F7308
+	arm_func_start LoadActiveMonsterSprites
+LoadActiveMonsterSprites: ; 0x022F7308
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, #0
 	ldr r4, _022F7360 ; =DUNGEON_PTR
@@ -1311,4 +1311,4 @@ _022F7350:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F7360: .word DUNGEON_PTR
-	arm_func_end ov29_022F7308
+	arm_func_end LoadActiveMonsterSprites

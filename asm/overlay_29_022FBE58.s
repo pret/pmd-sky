@@ -462,8 +462,8 @@ _022FC45C:
 _022FC464: .word DUNGEON_PTR
 	arm_func_end InitEnemyStatsAndMoves
 
-	arm_func_start ov29_022FC468
-ov29_022FC468: ; 0x022FC468
+	arm_func_start InitExplorerMazeMonsterStatsMovesAndIq
+InitExplorerMazeMonsterStatsMovesAndIq: ; 0x022FC468
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r4, [sp, #0x24]
 	mov sb, r0
@@ -507,7 +507,7 @@ _022FC4C4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022FC508: .word IQ_SKILLS
-	arm_func_end ov29_022FC468
+	arm_func_end InitExplorerMazeMonsterStatsMovesAndIq
 
 	arm_func_start SpawnTeam
 SpawnTeam: ; 0x022FC50C

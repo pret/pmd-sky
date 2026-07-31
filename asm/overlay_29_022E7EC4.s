@@ -518,8 +518,8 @@ _022E84E4:
 _022E84FC: .word TOP_SCREEN_STATUS_PTR
 	arm_func_end ov29_022E84B0
 
-	arm_func_start ov29_022E8500
-ov29_022E8500: ; 0x022E8500
+	arm_func_start InitDungeonControlsMenuWithBg
+InitDungeonControlsMenuWithBg: ; 0x022E8500
 	stmdb sp!, {lr}
 	sub sp, sp, #0x14
 	add r0, sp, #0
@@ -535,12 +535,12 @@ ov29_022E8500: ; 0x022E8500
 	ldr r0, [r0]
 	add r0, r0, #0x80
 	bl ov10_022C21D8
-	bl ov29_022E8E94
+	bl InitDungeonControlsMenu
 	add sp, sp, #0x14
 	ldmia sp!, {pc}
 	.align 2, 0
 _022E8548: .word TOP_SCREEN_STATUS_PTR
-	arm_func_end ov29_022E8500
+	arm_func_end InitDungeonControlsMenuWithBg
 
 	arm_func_start ov29_022E854C
 ov29_022E854C: ; 0x022E854C
@@ -562,18 +562,18 @@ ov29_022E854C: ; 0x022E854C
 _022E8584: .word TOP_SCREEN_STATUS_PTR
 	arm_func_end ov29_022E854C
 
-	arm_func_start ov29_022E8588
-ov29_022E8588: ; 0x022E8588
+	arm_func_start FreeDungeonControlsMenuWithBg
+FreeDungeonControlsMenuWithBg: ; 0x022E8588
 	stmdb sp!, {r3, lr}
 	ldr r0, _022E85A4 ; =TOP_SCREEN_STATUS_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x80
 	bl ov10_022C2278
-	bl ov29_022E8F28
+	bl FreeDungeonControlsMenu
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E85A4: .word TOP_SCREEN_STATUS_PTR
-	arm_func_end ov29_022E8588
+	arm_func_end FreeDungeonControlsMenuWithBg
 
 	arm_func_start ov29_022E85A8
 ov29_022E85A8: ; 0x022E85A8
@@ -913,8 +913,8 @@ _022E8940:
 	bl AssignTopScreenHandlers
 	b _022E89DC
 _022E8960:
-	ldr ip, _022E8BC0 ; =ov29_022E8588
-	ldr r1, _022E8BC4 ; =ov29_022E8500
+	ldr ip, _022E8BC0 ; =FreeDungeonControlsMenuWithBg
+	ldr r1, _022E8BC4 ; =InitDungeonControlsMenuWithBg
 	ldr r3, _022E8BC8 ; =ov29_022E854C
 	add r0, r4, #0x14
 	mov r2, #0
@@ -1076,8 +1076,8 @@ _022E8BB0: .word FreeTeamStatsWrapper
 _022E8BB4: .word InitializeTeamStats
 _022E8BB8: .word UpdateTeamStatsWrapper
 _022E8BBC: .word ov29_022E81C8
-_022E8BC0: .word ov29_022E8588
-_022E8BC4: .word ov29_022E8500
+_022E8BC0: .word FreeDungeonControlsMenuWithBg
+_022E8BC4: .word InitDungeonControlsMenuWithBg
 _022E8BC8: .word ov29_022E854C
 _022E8BCC: .word ov29_022E80D0
 _022E8BD0: .word ov29_022E7F94
@@ -1314,11 +1314,11 @@ _022E8E90: .word 0x00003FCB
 #endif
 	arm_func_end DrawDungeonControlsText
 
-	arm_func_start ov29_022E8E94
-ov29_022E8E94: ; 0x022E8E94
+	arm_func_start InitDungeonControlsMenu
+InitDungeonControlsMenu: ; 0x022E8E94
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
-	ldr r0, _022E8F1C ; =ov29_02353558
+	ldr r0, _022E8F1C ; =DUNGEON_CONTROLS_MENU_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	movne r0, #0
@@ -1326,24 +1326,24 @@ ov29_022E8E94: ; 0x022E8E94
 	mov r0, #0x54
 	mov r1, #8
 	bl MemAlloc
-	ldr r2, _022E8F1C ; =ov29_02353558
+	ldr r2, _022E8F1C ; =DUNGEON_CONTROLS_MENU_PTR
 	mov r1, #0x54
 	str r0, [r2]
 	bl MemZero
-	ldr r0, _022E8F20 ; =ov29_023515F4
+	ldr r0, _022E8F20 ; =DUNGEON_CONTROLS_MENU_WINDOW_PARAMS
 	add ip, sp, #0
 	ldmia r0, {r0, r1, r2, r3}
 	stmia ip, {r0, r1, r2, r3}
 	ldr r1, _022E8F24 ; =DrawDungeonControlsText
 	mov r0, ip
 	bl CreateTextBox
-	ldr r1, _022E8F1C ; =ov29_02353558
+	ldr r1, _022E8F1C ; =DUNGEON_CONTROLS_MENU_PTR
 	ldr r2, [r1]
 	strb r0, [r2]
 	ldr r0, [r1]
 	add r0, r0, #4
 	bl InitPreprocessorArgs
-	ldr r0, _022E8F1C ; =ov29_02353558
+	ldr r0, _022E8F1C ; =DUNGEON_CONTROLS_MENU_PTR
 	mov r2, #0x10000
 	ldr r1, [r0]
 	mov r0, #1
@@ -1352,35 +1352,35 @@ _022E8F14:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E8F1C: .word ov29_02353558
-_022E8F20: .word ov29_023515F4
+_022E8F1C: .word DUNGEON_CONTROLS_MENU_PTR
+_022E8F20: .word DUNGEON_CONTROLS_MENU_WINDOW_PARAMS
 _022E8F24: .word DrawDungeonControlsText
-	arm_func_end ov29_022E8E94
+	arm_func_end InitDungeonControlsMenu
 
-	arm_func_start ov29_022E8F28
-ov29_022E8F28: ; 0x022E8F28
+	arm_func_start FreeDungeonControlsMenu
+FreeDungeonControlsMenu: ; 0x022E8F28
 	stmdb sp!, {r3, lr}
-	ldr r0, _022E8F74 ; =ov29_02353558
+	ldr r0, _022E8F74 ; =DUNGEON_CONTROLS_MENU_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
 	bl CloseTextBox2
-	ldr r0, _022E8F74 ; =ov29_02353558
+	ldr r0, _022E8F74 ; =DUNGEON_CONTROLS_MENU_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1]
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022E8F74 ; =ov29_02353558
+	ldr r0, _022E8F74 ; =DUNGEON_CONTROLS_MENU_PTR
 	mov r1, #0
 	str r1, [r0]
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E8F74: .word ov29_02353558
-	arm_func_end ov29_022E8F28
+_022E8F74: .word DUNGEON_CONTROLS_MENU_PTR
+	arm_func_end FreeDungeonControlsMenu
 
 	arm_func_start ov29_022E8F78
 ov29_022E8F78: ; 0x022E8F78
@@ -1390,7 +1390,7 @@ ov29_022E8F78: ; 0x022E8F78
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	strb r1, [r0]
-	ldr r1, _022E8FC4 ; =ov29_02353558
+	ldr r1, _022E8FC4 ; =DUNGEON_CONTROLS_MENU_PTR
 	ldr r0, _022E8FC8 ; =0x00003FCB
 	ldr r1, [r1]
 	ldrsb r4, [r1]
@@ -1404,7 +1404,7 @@ ov29_022E8F78: ; 0x022E8F78
 	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022E8FC4: .word ov29_02353558
+_022E8FC4: .word DUNGEON_CONTROLS_MENU_PTR
 #if defined(EUROPE)
 _022E8FC8: .word 0x00003FCD
 #elif defined(JAPAN)

@@ -64,7 +64,6 @@
 .public _0209C764
 .public _0209C798
 .public _0209C7B8
-.public _020AFDB8
 .public _020AFDBC
 .public _020AFDD0
 .public _020AFDD8
@@ -164,6 +163,7 @@
 .public MemcpySimple
 .public MemFree
 .public MemZero
+.public MENU_CONTROL_PTR
 .public NULL_OVERLAY_LOAD_ENTRY
 .public ov11_0230D71C
 .public OverlayIsLoaded

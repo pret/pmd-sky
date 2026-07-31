@@ -12056,8 +12056,8 @@ _020AFD60:
 	.word _0209AD28
 	.word _0209AD3C
 #ifdef JAPAN
-	.global MENU_CONTROL_PTR
-MENU_CONTROL_PTR:
+	.global _020AFD98
+_020AFD98:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020AFD94
 _020AFD94:
@@ -12065,8 +12065,8 @@ _020AFD94:
 	.global _020AFD94
 _020AFD94:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global MENU_CONTROL_PTR
-MENU_CONTROL_PTR:
+	.global _020AFD98
+_020AFD98:
 #endif
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020AFD9C
@@ -12084,8 +12084,8 @@ _020AFDAC:
 	.word _0209AE54
 	.word _0209AE68
 	.word _0209AE7C
-	.global _020AFDB8
-_020AFDB8:
+	.global MENU_CONTROL_PTR
+MENU_CONTROL_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020AFDBC
 _020AFDBC:

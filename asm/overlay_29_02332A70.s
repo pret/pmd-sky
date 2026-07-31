@@ -310,7 +310,7 @@ _02332E3C:
 	bl LogMessageByIdQuietCheckUserTarget
 	mov r0, r8
 	mov r1, r7
-	bl ov29_022E576C
+	bl PlayMissSfx__022E611C
 	b _02332EB8
 _02332EA8:
 	ldr r2, _02332F14 ; =0x00000EC3

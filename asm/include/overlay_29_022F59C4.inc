@@ -17,6 +17,7 @@
 .public GetLeader
 .public GetMessageLogPreprocessorArgs
 .public GetMissionDestination
+.public GetMonsterInFront
 .public GetNumberOfAttacks
 .public GetPersonalityIndex
 .public GetSize0x80Buffer
@@ -39,7 +40,6 @@
 .public ov29_022E81F8
 .public ov29_022F3B8C
 .public ov29_022F6748
-.public ov29_022F87C0
 .public ov29_023009CC
 .public ov29_0231AE3C
 .public ov29_02322374

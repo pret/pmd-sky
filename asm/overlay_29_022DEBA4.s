@@ -711,14 +711,14 @@ _022DF574:
 	bl ov29_022DD5B4
 	bl ov29_023369F8
 	bl CopySpawnEntriesOnce
-	bl ov29_022F7130
+	bl LoadMonsterSprites
 	cmp r5, #0
 	bne _022DF5C4
 	bl ov29_0231B460
 	bl ov29_022F7104
 	b _022DF5CC
 _022DF5C4:
-	bl ov29_022F7308
+	bl LoadActiveMonsterSprites
 	bl ov29_022FBB1C
 _022DF5CC:
 	bl ov29_022FE2E4

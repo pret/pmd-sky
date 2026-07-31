@@ -641,7 +641,7 @@ _0232F090:
 	bne _0232F14C
 	ldr r2, _0232F814 ; =0x00000EB7
 	mov r3, #0x25
-	bl ov29_02314DC4
+	bl LogMessageWithTargetAndExclusiveItemName
 	b _0232F154
 _0232F14C:
 	ldr r2, _0232F818 ; =0x00000EB6

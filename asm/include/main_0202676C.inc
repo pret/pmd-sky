@@ -20,6 +20,7 @@
 .public _020AFD5C
 .public _020AFD60
 .public _020AFD94
+.public _020AFD98
 .public _020AFD9C
 .public _022A7A5C
 .public _022A7A6C
@@ -64,7 +65,6 @@
 .public MemFree
 .public memset
 .public MemZero
-.public MENU_CONTROL_PTR
 .public PREV_MENU_ITEMS
 .public SetAnimationForAnimationControl
 .public SetSpriteIdForAnimationControl

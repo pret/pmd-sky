@@ -686,8 +686,8 @@ _022F04E8: .word 0x00000112
 _022F04EC: .word 0x0000037F
 	arm_func_end ov29_022EFBAC
 
-	arm_func_start ov29_022F04F0
-ov29_022F04F0: ; 0x022F04F0
+	arm_func_start FreezeAnim
+FreezeAnim: ; 0x022F04F0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xb4]
@@ -702,13 +702,13 @@ ov29_022F04F0: ; 0x022F04F0
 	strneb r0, [r4, #0x171]
 #endif
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022F04F0
+	arm_func_end FreezeAnim
 
-	arm_func_start ov29_022F0518
-ov29_022F0518: ; 0x022F0518
+	arm_func_start UnfreezeAnim
+UnfreezeAnim: ; 0x022F0518
 	ldr r2, [r0, #0xb4]
 	mov r1, #0
-	ldr ip, _022F0530 ; =sub_0201D198
+	ldr ip, _022F0530 ; =SetAnimationControlPausedFlag
 	add r0, r0, #0x2c
 #ifdef JAPAN
 	strb r1, [r2, #0x16d]
@@ -717,8 +717,8 @@ ov29_022F0518: ; 0x022F0518
 #endif
 	bx ip
 	.align 2, 0
-_022F0530: .word sub_0201D198
-	arm_func_end ov29_022F0518
+_022F0530: .word SetAnimationControlPausedFlag
+	arm_func_end UnfreezeAnim
 
 	arm_func_start ov29_022F0534
 ov29_022F0534: ; 0x022F0534
@@ -742,10 +742,10 @@ _022F0544:
 	cmp r7, #0
 	mov r0, r6
 	bne _022F0578
-	bl ov29_022F0518
+	bl UnfreezeAnim
 	b _022F057C
 _022F0578:
-	bl ov29_022F04F0
+	bl FreezeAnim
 _022F057C:
 	add r5, r5, #1
 	cmp r5, #0x14

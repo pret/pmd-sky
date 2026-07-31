@@ -84,8 +84,8 @@ _022F7810:
 _022F7830: .word 0x00000483
 	arm_func_end DeleteAllMonsterSpriteFiles
 
-	arm_func_start ov29_022F7834
-ov29_022F7834: ; 0x022F7834
+	arm_func_start CanMonsterBeAddedToTeam
+CanMonsterBeAddedToTeam: ; 0x022F7834
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r4, #0
 	mov r5, r0
@@ -144,7 +144,7 @@ _022F78D4:
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov29_022F7834
+	arm_func_end CanMonsterBeAddedToTeam
 
 	arm_func_start ov29_022F7910
 ov29_022F7910: ; 0x022F7910
@@ -168,7 +168,7 @@ ov29_022F7910: ; 0x022F7910
 	b _022F7AA4
 _022F7958:
 	mov r0, sl
-	bl ov29_022F7834
+	bl CanMonsterBeAddedToTeam
 	cmp r0, #0
 	beq _022F7AA0
 	ldrsh r1, [sl, #4]
@@ -394,7 +394,7 @@ _022F7C5C:
 	b _022F7E10
 _022F7C7C:
 	mov r0, r6
-	bl ov29_022F7834
+	bl CanMonsterBeAddedToTeam
 	cmp r0, #0
 	beq _022F7CD4
 	ldrsh r1, [r6, #4]
@@ -1415,8 +1415,8 @@ _022F87A8:
 _022F87BC: .word DUNGEON_PTR
 	arm_func_end MoveMonsterToPos
 
-	arm_func_start ov29_022F87C0
-ov29_022F87C0: ; 0x022F87C0
+	arm_func_start GetMonsterInFront
+GetMonsterInFront: ; 0x022F87C0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	ldr r5, [r4, #0xb4]
@@ -1447,7 +1447,7 @@ _022F8820:
 	.align 2, 0
 _022F8828: .word DIRECTIONS_XY
 _022F882C: .word DIRECTIONS_XY + 2
-	arm_func_end ov29_022F87C0
+	arm_func_end GetMonsterInFront
 
 	arm_func_start ov29_022F8830
 ov29_022F8830: ; 0x022F8830

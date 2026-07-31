@@ -41,6 +41,7 @@
 .public EntityIsValid__0231CBC8
 .public ExclusiveItemEffectFlagTest
 .public FemaleToMaleForm
+.public FreezeAnim
 .public GEO_PEBBLE_DAMAGE
 .public GetActiveTeamMember
 .public GetIdleAnimationId
@@ -74,8 +75,6 @@
 .public ov29_022E81F8
 .public ov29_022E9FD0
 .public ov29_022EA370
-.public ov29_022F04F0
-.public ov29_022F0518
 .public ov29_022F9EA0
 .public ov29_022FB920
 .public ov29_022FB9BC
@@ -111,6 +110,7 @@
 .public TryInflictSleepStatus
 .public TryInflictSlipStatus
 .public TryWarp
+.public UnfreezeAnim
 .public UpdateShopkeeperModeAfterAttack
 .public WaitUntilAlertBoxPauseIsOver
 .public WONDER_GUMMI_STAT_BOOST

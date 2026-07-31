@@ -24,7 +24,6 @@
 .public IsItemUnkMissionItem2
 .public ItemIsActive__0230F810
 .public LogMessageByIdWithPopup
-.public ov29_022F52BC
 .public ov29_022F9EA0
 .public ov29_02345004
 .public ov29_02347040
@@ -36,4 +35,5 @@
 .public RemoveGroundItem
 .public ShouldMonsterRunAwayAndShowEffect
 .public SubstitutePlaceholderStringTags
+.public UseSingleUseItemSelf
 .public UseThrowableItem

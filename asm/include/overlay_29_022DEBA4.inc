@@ -55,7 +55,9 @@
 .public IsSecretBazaarVeneer
 .public IsTrapInvisibleWhenAttacking
 .public LEADER_PTR
+.public LoadActiveMonsterSprites
 .public LoadMappaFileAttributes
+.public LoadMonsterSprites
 .public LoadScriptVariableValue
 .public LoadWeather3DFiles
 .public MemZero
@@ -122,8 +124,6 @@
 .public ov29_022F6E40
 .public ov29_022F6EF4
 .public ov29_022F7104
-.public ov29_022F7130
-.public ov29_022F7308
 .public ov29_022F7910
 .public ov29_022F7BF4
 .public ov29_022F7E34

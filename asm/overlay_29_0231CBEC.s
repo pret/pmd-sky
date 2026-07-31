@@ -1021,7 +1021,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	add r0, sp, #0
 	bl HandleSir0Translation
 	mov r0, r5
-	bl ov29_022F04F0
+	bl FreezeAnim
 	ldrb r0, [r5, #0xaa]
 	mov r1, #1
 	bl ov29_022DE47C
@@ -1071,7 +1071,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	mov r1, #6
 	bl GonePebbleGradualPaletteShift
 	mov r0, r5
-	bl ov29_022F0518
+	bl UnfreezeAnim
 	add r0, sp, #4
 	bl UnloadFile
 	ldrb r0, [r5, #0xaa]
