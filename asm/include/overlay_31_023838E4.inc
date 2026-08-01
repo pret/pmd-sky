@@ -234,6 +234,7 @@
 .public SetAdvancedTextBoxState5
 .public SetMonsterActionFields
 .public SetPreprocessorArgsIdVal
+.public SetWindowTitle
 .public ShowStringInDialogueBox
 .public SortItemsInBag
 .public SpecificRecruitCheck
@@ -253,7 +254,6 @@
 .public sub_0202F474
 .public sub_0202F954
 .public sub_020307EC
-.public sub_02030A2C
 .public sub_0203F150
 .public sub_0203F398
 .public sub_0203F990
