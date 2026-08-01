@@ -9229,7 +9229,7 @@ ov03_02344970: ; 0x02344970
 	mov r1, r0, lsl #0x10
 	mov r0, r4
 	mov r1, r1, lsr #0x10
-	bl sub_02030A2C
+	bl SetWindowTitle
 #if defined(EUROPE)
 	add r0, r5, #0x5c
 	add r0, r0, #0x3c00

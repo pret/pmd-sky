@@ -6911,7 +6911,7 @@ DrawDungeonHintContents: ; 0x023891A8
 	mov r1, r4, lsl #3
 	ldrh r1, [r0, r1]
 	mov r0, r5
-	bl sub_02030A2C
+	bl SetWindowTitle
 #if defined(EUROPE)
 	add r0, r4, #0xb2
 	add r0, r0, #0x3f00
