@@ -5229,7 +5229,7 @@
   02030978 00000040 .text   sub_02030978	(main_0202A3E4.o)
   020309B8 00000060 .text   sub_020309B8	(main_0202A3E4.o)
   02030A18 00000014 .text   GetWindowIdPageStart	(main_0202A3E4.o)
-  02030A2C 00000014 .text   sub_02030A2C	(main_0202A3E4.o)
+  02030A2C 00000014 .text   SetWindowTitle	(main_0202A3E4.o)
   02030A40 00000010 .text   GetAdvancedTextBoxFlags2	(main_0202A3E4.o)
   02030A50 00000014 .text   sub_02030A50	(main_0202A3E4.o)
   02030A64 00000010 .text   sub_02030A64	(main_0202A3E4.o)
@@ -41901,5 +41901,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Jul 31 22:23:31 2026
-# Link end time: Fri Jul 31 22:23:32 2026
+# Link start time: Sat Aug 01 22:59:35 2026
+# Link end time: Sat Aug 01 22:59:35 2026
