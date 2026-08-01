@@ -512,6 +512,7 @@ Overlay OVY_23
 Overlay OVY_24
 {
 	After OVY_11
+	Object src/overlay_24_init.o
 	Object asm/overlay_24.o
 }
 Overlay OVY_25
