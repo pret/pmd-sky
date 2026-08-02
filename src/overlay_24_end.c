@@ -21,6 +21,7 @@ void* MemAlloc(s32, s32);
 s16 ReturnEggExclusiveItem(s32);
 void SetUnkGameState0x13a6(s32);
 void StrcpyName(const unsigned char*, const unsigned char*);
+void sub_02025304_JP(const unsigned char*, const unsigned char*);
 void ov24_0238A610(s32);
 
 extern u8* strcpy(u8* dest, const u8* src);
@@ -33,7 +34,11 @@ s32 ov24_0238C1D4(void)
     OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk28C = -2;
     OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk28D = -2;
     GetNameRaw(OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk52, GetEggSpecies());
+#ifdef JAPAN
+    sub_02025304_JP(OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk166, OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk52);
+#else
     StrcpyName(OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk166, OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk52);
+#endif
     strcpy(OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk22, OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk52);
     StrcpySimple(OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk42, OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk166);
     GetNameWithGender(OVERLAY24_UNKNOWN_POINTER__NA_238C600->unk66, GetEggSpecies(), 0x4E);
