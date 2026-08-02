@@ -13,7 +13,7 @@ extern void ShowDialogueBox(s8);
 extern void StrcpySimple(unsigned char* dest, const unsigned char* src);                         
 extern void StrncpySimpleNoPadSafe(u8* dest, const u8* src, u32 n);          
 extern void ov11_022DC504();                                  
-extern s32 ov11_02306C64();                                
+extern struct overlay_24_unk1E8_sub *ov11_02306C64();                                
 extern s32 ov11_02306C9C();                                
 extern s32 ov11_0230D220();                                
 extern void ov24_0238A610(s32);                               
