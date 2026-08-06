@@ -1015,7 +1015,7 @@
                                                                                                                  112](ov29_02337D68,func) found in global overlay_29_02337CCC.o
                                                                                                                   113](EntityIsValid__02337CA8,func) found in global overlay_29_02337CA8.o
                                                                                                                 111](MultiplyFixedPoint64,func) found in global main_02001D68.o
-                                                                                                                 112](UFixedPoint64CmpLt,func) found in global main_02001A30.o
+                                                                                                                 112](UFixedPoint64CmpLt,func) found in global main_020018D0.o
                                                                                                                  112](FixedPoint64IsZero,func) found in global main_02001CD4.o
                                                                                                                  112](NegateFixedPoint64,func) found in global main_02001CD4.o
                                                                                                                  112](FixedPoint64IsNegative,func) found in global main_02001CD4.o
@@ -1766,9 +1766,8 @@
   02001980 00000000 .text   $a	(main_020018D0.o)
   02001980 000000B0 .text   CosAbs4096	(main_020018D0.o)
   02001A28 00000000 .text   $d	(main_020018D0.o)
-  02001A30 00000024 .text   .text	(main_02001A30.o)
-  02001A30 00000024 .text   UFixedPoint64CmpLt	(main_02001A30.o)
-  02001A30 00000000 .text   $a	(main_02001A30.o)
+  02001A30 00000024 .text   UFixedPoint64CmpLt	(main_020018D0.o)
+  02001A30 00000000 .text   $a	(main_020018D0.o)
   02001A54 0000005C .text   MultiplyByFixedPoint	(main_02001A54.o)
   02001A54 00000000 .text   $a	(main_02001A54.o)
   02001AB0 0000005C .text   sub_02001AB0	(main_02001A54.o)
@@ -41901,5 +41900,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Aug 01 22:59:35 2026
-# Link end time: Sat Aug 01 22:59:35 2026
+# Link start time: Thu Aug 06 01:17:45 2026
+# Link end time: Thu Aug 06 01:17:46 2026
