@@ -18,6 +18,7 @@
 .public FindUnoccupiedTileWithin3
 .public GetApparentWeather
 .public GetLeader
+.public GetMonsterInFront
 .public GetRandomTile
 .public GetTileSafe
 .public InitMove
@@ -32,7 +33,6 @@
 .public ov29_022E5650
 .public ov29_022F42F8
 .public ov29_022F62CC
-.public ov29_022F87C0
 .public ov29_022F9C74
 .public ov29_022FAA04
 .public ov29_02305814

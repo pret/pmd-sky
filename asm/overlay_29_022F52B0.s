@@ -11,14 +11,14 @@ ov29_022F52B0: ; 0x022F52B0
 _022F52B8: .word ov29_02343D30
 	arm_func_end ov29_022F52B0
 
-	arm_func_start ov29_022F52BC
-ov29_022F52BC: ; 0x022F52BC
+	arm_func_start UseSingleUseItemSelf
+UseSingleUseItemSelf: ; 0x022F52BC
 	ldr ip, _022F52C8 ; =UseSingleUseItem
 	mov r1, r0
 	bx ip
 	.align 2, 0
 _022F52C8: .word UseSingleUseItem
-	arm_func_end ov29_022F52BC
+	arm_func_end UseSingleUseItemSelf
 
 	arm_func_start UseSingleUseItemWrapper
 UseSingleUseItemWrapper: ; 0x022F52CC

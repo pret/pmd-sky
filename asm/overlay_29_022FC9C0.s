@@ -585,7 +585,7 @@ _022FD154:
 	add r2, r5, #0x1a
 	add r3, r5, #0x1c
 	str ip, [sp, #4]
-	bl ov29_022FC468
+	bl InitExplorerMazeMonsterStatsMovesAndIq
 	mov r0, r4
 	bl UpdateIqSkillsWrapper
 	b _022FD1F0

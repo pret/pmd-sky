@@ -29,6 +29,7 @@
 .public DungeonRandInt
 .public EntityIsValid__022F0590
 .public ExecuteMoveEffect
+.public FreezeAnim
 .public GetActiveTeamMember
 .public GetBottomScreenOption
 .public GetCheckDirectionOption
@@ -47,6 +48,7 @@
 .public GetMessageLogPreprocessorArgs
 .public GetMoneyCarried
 .public GetMonsterGenderVeneer
+.public GetMonsterInFront
 .public GetPressedButtons
 .public GetTeamMemberIndex
 .public GetTile
@@ -102,12 +104,8 @@
 .public ov29_022EB568
 .public ov29_022EB594
 .public ov29_022EB944
-.public ov29_022F04F0
-.public ov29_022F0518
-.public ov29_022F59C4
 .public ov29_022F62CC
 .public ov29_022F670C
-.public ov29_022F87C0
 .public ov29_022F89AC
 .public ov29_022F9C34
 .public ov29_022F9EA0
@@ -191,11 +189,13 @@
 .public sub_0201CF90
 .public sub_02027B1C
 .public SubstitutePlaceholderStringTags
+.public TalkToTeamMemberInFront
 .public TryAddMonsterToActiveTeam
 .public TryLeaderItemPickUp
 .public TryPointCameraToMonster
 .public TryTriggerMonsterHouse
 .public TryTriggerTrap
+.public UnfreezeAnim
 .public UnkMapRelatedFunc
 .public UpdateAiTargetPos
 .public UpdateMinimap

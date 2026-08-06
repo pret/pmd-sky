@@ -30,6 +30,7 @@
 .public GetMessageLogPreprocessorArgs
 .public GetMobilityType
 .public GetMonsterEvoStatus
+.public GetMonsterInFront
 .public GetMoveTypeForMonster
 .public GetTileAtEntity
 .public GetTileSafe
@@ -42,7 +43,6 @@
 .public ov29_022E4160
 .public ov29_022E81F8
 .public ov29_022EA370
-.public ov29_022F87C0
 .public ov29_02307CE0
 .public ov29_02307DD0
 .public PointCameraToMonster

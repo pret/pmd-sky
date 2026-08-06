@@ -11,6 +11,7 @@
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange
+.public DungeonScreenEffectActive
 .public FLOOR_GENERATION_STATUS
 .public GenerateSecondaryTerrainFormations
 .public GetBottomScreenOption
@@ -53,7 +54,6 @@
 .public ov10_022C6326
 .public ov29_022DE288
 .public ov29_022E2418
-.public ov29_022E3580
 .public ov29_022E7F7C
 .public ov29_022EA408
 .public ov29_0234217C

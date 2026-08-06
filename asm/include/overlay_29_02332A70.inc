@@ -18,7 +18,7 @@
 .public LogMessageByIdQuietCheckUserTarget
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MoveHitCheck
-.public ov29_022E576C
 .public ov29_0230D088
+.public PlayMissSfx__022E611C
 .public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper

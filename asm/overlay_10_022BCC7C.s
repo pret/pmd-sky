@@ -850,8 +850,8 @@ ov10_022BD744: ; 0x022BD744
 _022BD758: .word ov10_022DC1C0
 	arm_func_end ov10_022BD744
 
-	arm_func_start ov10_022BD75C
-ov10_022BD75C: ; 0x022BD75C
+	arm_func_start LoadPaletteBase
+LoadPaletteBase: ; 0x022BD75C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x18
 	cmp r1, #1
@@ -908,7 +908,7 @@ _022BD81C:
 	.align 2, 0
 _022BD824: .word WAN_TABLE
 _022BD828: .word OBJ_GRAPHICS_CONTROLS_PTR
-	arm_func_end ov10_022BD75C
+	arm_func_end LoadPaletteBase
 
 	arm_func_start ov10_022BD82C
 ov10_022BD82C: ; 0x022BD82C
@@ -982,7 +982,7 @@ _022BD888:
 	mov r1, #0
 	mov r2, r1
 	mov r4, r0
-	bl ov10_022BD75C
+	bl LoadPaletteBase
 	ldr r0, _022BDA80 ; =WAN_TABLE
 	mov r1, r4
 	ldr r0, [r0]
@@ -1009,7 +1009,7 @@ _022BD888:
 	mov r0, r4
 	mov r1, #1
 	ldrsh r2, [sp, #0x18]
-	bl ov10_022BD75C
+	bl LoadPaletteBase
 	ldr r1, _022BDA78 ; =ov10_022DC1C0
 	ldrsh r2, [sp, #0x18]
 	ldr r0, [r1]
@@ -1040,7 +1040,7 @@ _022BD9D0:
 	mov r1, #0
 	mov r0, r4
 	mov r2, r1
-	bl ov10_022BD75C
+	bl LoadPaletteBase
 	ldr r0, _022BDA80 ; =WAN_TABLE
 	mov r1, r4
 	ldr r0, [r0]
@@ -1127,7 +1127,7 @@ ov10_022BDADC: ; 0x022BDADC
 	add r2, r0, #0x2700
 	ldrsh r0, [r2, #0x88]
 	ldrsh r2, [r2, #0x90]
-	bl ov10_022BD75C
+	bl LoadPaletteBase
 _022BDB48:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
@@ -2977,7 +2977,7 @@ _022BF3CC:
 	ldmeqia sp!, {r4, pc}
 	add r0, r4, #0x68
 	mov r1, #1
-	bl sub_0201D198
+	bl SetAnimationControlPausedFlag
 	ldmia sp!, {r4, pc}
 	arm_func_end ov10_022BF394
 
@@ -3004,7 +3004,7 @@ _022BF424:
 	ldmeqia sp!, {r4, pc}
 	add r0, r4, #0x68
 	mov r1, #0
-	bl sub_0201D198
+	bl SetAnimationControlPausedFlag
 	ldmia sp!, {r4, pc}
 	arm_func_end ov10_022BF3EC
 
@@ -3358,8 +3358,8 @@ _022BF8E0: .word ov10_022DC1C0
 _022BF8E4: .word ov10_022C7870
 	arm_func_end ov10_022BF864
 
-	arm_func_start ov10_022BF8E8
-ov10_022BF8E8: ; 0x022BF8E8
+	arm_func_start ScreenEffectActive
+ScreenEffectActive: ; 0x022BF8E8
 	ldr r1, _022BF900 ; =ov10_022DC1C0
 	ldr r1, [r1]
 	add r0, r1, r0
@@ -3368,7 +3368,7 @@ ov10_022BF8E8: ; 0x022BF8E8
 	bx lr
 	.align 2, 0
 _022BF900: .word ov10_022DC1C0
-	arm_func_end ov10_022BF8E8
+	arm_func_end ScreenEffectActive
 
 	arm_func_start AnimationHasMoreFrames
 AnimationHasMoreFrames: ; 0x022BF904

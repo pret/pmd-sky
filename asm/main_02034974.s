@@ -6,7 +6,7 @@
 	arm_func_start InitMenuWithWindowExtraInfo
 InitMenuWithWindowExtraInfo: ; 0x02034974
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r3, _02034A34 ; =_020AFDB8
+	ldr r3, _02034A34 ; =MENU_CONTROL_PTR
 	mov r5, r1
 	ldr r1, [r3]
 	mov r6, r0
@@ -15,7 +15,7 @@ InitMenuWithWindowExtraInfo: ; 0x02034974
 	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	bne _02034A2C
-	ldr r0, _02034A34 ; =_020AFDB8
+	ldr r0, _02034A34 ; =MENU_CONTROL_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x10]
 	cmp r0, #0
@@ -27,7 +27,7 @@ InitMenuWithWindowExtraInfo: ; 0x02034974
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 _020349C8:
-	ldr ip, _02034A34 ; =_020AFDB8
+	ldr ip, _02034A34 ; =MENU_CONTROL_PTR
 	mov r2, #1
 	ldr r0, [ip]
 	mov r1, #0
@@ -58,13 +58,13 @@ _02034A2C:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02034A34: .word _020AFDB8
+_02034A34: .word MENU_CONTROL_PTR
 	arm_func_end InitMenuWithWindowExtraInfo
 
 	arm_func_start CopyMenuControlWindowExtraInfo
 CopyMenuControlWindowExtraInfo: ; 0x02034A38
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _02034A7C ; =_020AFDB8
+	ldr r1, _02034A7C ; =MENU_CONTROL_PTR
 	mov r5, r0
 	ldr r4, [r1]
 	ldr r0, [r4, #0x24]
@@ -83,14 +83,14 @@ _02034A74:
 	ldr r0, [r4, #0x24]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02034A7C: .word _020AFDB8
+_02034A7C: .word MENU_CONTROL_PTR
 	arm_func_end CopyMenuControlWindowExtraInfo
 
 	arm_func_start HandleMenus
 HandleMenus: ; 0x02034A80
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
-	ldr r0, _02034C9C ; =_020AFDB8
+	ldr r0, _02034C9C ; =MENU_CONTROL_PTR
 	ldr ip, [r0]
 	ldr r0, [ip, #0xd4]
 	add r4, ip, #0xc4
@@ -112,7 +112,7 @@ _02034AAC:
 	stmia r6, {r0, r1, r2, r3}
 	strb r5, [ip, #0x10]
 _02034AD8:
-	ldr ip, _02034C9C ; =_020AFDB8
+	ldr ip, _02034C9C ; =MENU_CONTROL_PTR
 	ldr r6, [ip]
 	ldrb r0, [r6, #0xc0]
 	cmp r0, #0
@@ -132,7 +132,7 @@ _02034B0C:
 	bne _02034B34
 	ldr r0, [r4]
 	bl LoadOverlay
-	ldr r0, _02034C9C ; =_020AFDB8
+	ldr r0, _02034C9C ; =MENU_CONTROL_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xd8]
@@ -142,13 +142,13 @@ _02034B34:
 	beq _02034B5C
 	blx r0
 	cmp r0, #0
-	ldreq r0, _02034C9C ; =_020AFDB8
+	ldreq r0, _02034C9C ; =MENU_CONTROL_PTR
 	moveq r1, #3
 	ldreq r0, [r0]
 	streq r1, [r0, #0xd4]
 	beq _02034C94
 _02034B5C:
-	ldr r0, _02034C9C ; =_020AFDB8
+	ldr r0, _02034C9C ; =MENU_CONTROL_PTR
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #0xd4]
@@ -167,7 +167,7 @@ _02034B6C:
 	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	beq _02034BE4
-	ldr r0, _02034C9C ; =_020AFDB8
+	ldr r0, _02034C9C ; =MENU_CONTROL_PTR
 	mov r1, #3
 	ldr r0, [r0]
 	cmp r5, #4
@@ -175,7 +175,7 @@ _02034B6C:
 	bne _02034BE4
 	bl FreeActiveMenu
 	ldr r0, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
-	ldr ip, _02034C9C ; =_020AFDB8
+	ldr ip, _02034C9C ; =MENU_CONTROL_PTR
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
 	ldr r0, [ip]
@@ -184,7 +184,7 @@ _02034B6C:
 	ldr r0, [ip]
 	str r1, [r0, #0xd4]
 _02034BE4:
-	ldr r0, _02034C9C ; =_020AFDB8
+	ldr r0, _02034C9C ; =MENU_CONTROL_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x10]
 	cmp r0, #0
@@ -196,7 +196,7 @@ _02034BE4:
 	bne _02034C10
 	bl FreeActiveMenu
 _02034C10:
-	ldr ip, _02034C9C ; =_020AFDB8
+	ldr ip, _02034C9C ; =MENU_CONTROL_PTR
 	mov r5, #0
 	ldr r6, [ip]
 	ldr lr, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
@@ -223,7 +223,7 @@ _02034C4C:
 	bl FreeActiveMenu
 _02034C70:
 	ldr r0, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
-	ldr ip, _02034C9C ; =_020AFDB8
+	ldr ip, _02034C9C ; =MENU_CONTROL_PTR
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
 	ldr r0, [ip]
@@ -235,7 +235,7 @@ _02034C94:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02034C9C: .word _020AFDB8
+_02034C9C: .word MENU_CONTROL_PTR
 _02034CA0: .word NULL_OVERLAY_LOAD_ENTRY
 	arm_func_end HandleMenus
 

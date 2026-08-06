@@ -250,8 +250,8 @@ _02314DBC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ExclusiveItemEffectIsActiveWithLogging
 
-	arm_func_start ov29_02314DC4
-ov29_02314DC4: ; 0x02314DC4
+	arm_func_start LogMessageWithTargetAndExclusiveItemName
+LogMessageWithTargetAndExclusiveItemName: ; 0x02314DC4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r7, r0
@@ -274,7 +274,7 @@ ov29_02314DC4: ; 0x02314DC4
 	bl LogMessageByIdWithPopupCheckUserTarget
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_02314DC4
+	arm_func_end LogMessageWithTargetAndExclusiveItemName
 
 	arm_func_start TryActivateQuickFeet
 TryActivateQuickFeet: ; 0x02314E1C

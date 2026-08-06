@@ -47,7 +47,6 @@
 .public ov10_022C6C77
 .public ov10_022C6C78
 .public ov10_022C6C79
-.public ov29_022E6694
 .public ov29_022E7BD0
 .public ov29_022EA370
 .public ov29_023365E8
@@ -60,6 +59,7 @@
 .public ov29_02353110
 .public ov29_023534F0
 .public ov29_0237CFC0
+.public PlayKeyDoorUnlockEffect
 .public PointsToZero
 .public SetMonsterLevelAndId
 .public SetShouldBoostHiddenStairsSpawnChance

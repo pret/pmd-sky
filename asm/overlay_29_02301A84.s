@@ -89,7 +89,7 @@ _02301B8C:
 	mov r0, r7
 	mov r1, r6
 	mov r3, #0x26
-	bl ov29_02314DC4
+	bl LogMessageWithTargetAndExclusiveItemName
 _02301BA8:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}

@@ -346,8 +346,8 @@ _02338980: .word ov29_0237CD40
 _02338984: .word ov29_02352F7C
 	arm_func_end LoadWeather3DFiles
 
-	arm_func_start ov29_02338988
-ov29_02338988: ; 0x02338988
+	arm_func_start Weather3DEffectActive
+Weather3DEffectActive: ; 0x02338988
 	stmdb sp!, {r3, lr}
 	ldr r0, _023389BC ; =ov29_0237CACC
 	bl ov29_02338D58
@@ -366,7 +366,7 @@ _023389B4:
 	.align 2, 0
 _023389BC: .word ov29_0237CACC
 _023389C0: .word ov29_0237CD40
-	arm_func_end ov29_02338988
+	arm_func_end Weather3DEffectActive
 
 	arm_func_start ov29_023389C4
 ov29_023389C4: ; 0x023389C4
@@ -456,7 +456,7 @@ _02338ACC:
 	ldrb r0, [r6, #0x240]
 	cmp r0, #0
 	beq _02338D18
-	bl ov29_022E3580
+	bl DungeonScreenEffectActive
 	cmp r0, #0
 	movne r0, #0
 	strneb r0, [r6, #0x26d]

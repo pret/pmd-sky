@@ -268,7 +268,7 @@ _0231B5F4:
 	cmp r6, #0
 	beq _0231B678
 	mov r0, r8
-	bl ov29_022F04F0
+	bl FreezeAnim
 #ifdef JAPAN
 	mov r0, #2
 #else
@@ -276,7 +276,7 @@ _0231B5F4:
 #endif
 	bl AnimationDelayOrSomething
 	mov r0, r8
-	bl ov29_022F0518
+	bl UnfreezeAnim
 _0231B678:
 	mov r0, #3
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}

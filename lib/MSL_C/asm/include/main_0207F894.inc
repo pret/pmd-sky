@@ -2,12 +2,10 @@
 .public _02000BC4
 .public _020AEC5C
 .public _020B2BB4
-.public fsi_digest_key_len
 .public _020B2BC0
 .public _020B2BC4
 .public _020B2C84
 .public _020B2D88
-.public sDayOfYear
 .public _020B2ED0
 .public _020B2ED4
 .public _020B2FBC
@@ -16,7 +14,6 @@
 .public _022BB5FC
 .public _022BB604
 .public _022BB60C
-.public fsi_arc_rom
 .public _022BB670
 .public _022BB68C
 .public _022BB6AC
@@ -64,6 +61,8 @@
 .public FS_ReadFile
 .public FS_RegisterArchiveName
 .public FS_SetArchiveProc
+.public fsi_arc_rom
+.public fsi_digest_key_len
 .public FSi_FindPath
 .public GetIrqFlag
 .public IC_InvalidateAll
@@ -72,8 +71,8 @@
 .public MI_CpuFill8
 .public MI_DmaCopy16
 .public MI_StopDma
-.public MIi_UncompressBackward
 .public MIi_CardDmaCopy32
+.public MIi_UncompressBackward
 .public MTi_CpuClear32
 .public MTi_CpuClearFast
 .public MTi_CpuCopy32
@@ -106,6 +105,7 @@
 .public PXI_SendWordByFifo
 .public PXI_SetFifoRecvCallback
 .public PXIi_HandlerRecvFifoNotEmpty
+.public sDayOfYear
 .public SetIrqFlag
 .public SVC_CpuSet
 .public SVC_WaitByLoop

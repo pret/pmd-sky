@@ -41,6 +41,7 @@
 .public GetType
 .public InflictSleepStatusSingle
 .public InitEnemyStatsAndMoves
+.public InitExplorerMazeMonsterStatsMovesAndIq
 .public InitStandardItem
 .public IsBagFull
 .public IsBehaviorLoneOutlaw
@@ -85,7 +86,6 @@
 .public ov29_022FB83C
 .public ov29_022FBF08
 .public ov29_022FBF30
-.public ov29_022FC468
 .public ov29_02307DC0
 .public ov29_02351E28
 .public ov29_0235276C

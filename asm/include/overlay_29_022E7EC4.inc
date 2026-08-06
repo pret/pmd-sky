@@ -2,6 +2,8 @@
 .public CloseTextBox2
 .public CreateTextBox
 .public DrawTextInWindow
+.public DUNGEON_CONTROLS_MENU_PTR
+.public DUNGEON_CONTROLS_MENU_WINDOW_PARAMS
 .public DUNGEON_FRAMES_PASSED
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
@@ -41,9 +43,7 @@
 .public ov29_0234F290
 .public ov29_0234F2B8
 .public ov29_023515E8
-.public ov29_023515F4
 .public ov29_0235352C
-.public ov29_02353558
 .public SetMinimapDataE447
 .public SetMinimapDataE448
 .public StartFadeDungeonWrapper

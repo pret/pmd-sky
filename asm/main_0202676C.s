@@ -2189,13 +2189,13 @@ _02027A64: .word _020AFD4C
 
 	arm_func_start SetScreenWindowsColor
 SetScreenWindowsColor: ; 0x02027A68
-	ldr r2, _02027A7C ; =MENU_CONTROL_PTR
+	ldr r2, _02027A7C ; =_020AFD98
 	cmp r1, #2
 	moveq r1, #1
 	strb r0, [r2, r1]
 	bx lr
 	.align 2, 0
-_02027A7C: .word MENU_CONTROL_PTR
+_02027A7C: .word _020AFD98
 	arm_func_end SetScreenWindowsColor
 
 	arm_func_start SetBothScreensWindowsColor
@@ -2323,7 +2323,7 @@ _02027B9C:
 	ldrsb r0, [r0, r1]
 	cmp r0, #0
 	bne _02027DF0
-	ldr r0, _02027E20 ; =MENU_CONTROL_PTR
+	ldr r0, _02027E20 ; =_020AFD98
 	ldrb r1, [r4, #4]
 	ldrb r3, [r0, #1]
 	ldr r2, _02027E24 ; =_0209ACAC
@@ -2485,7 +2485,7 @@ _02027E00:
 _02027E14: .word _022A7A6C
 _02027E18: .word WINDOW_LIST
 _02027E1C: .word _0209AC64
-_02027E20: .word MENU_CONTROL_PTR
+_02027E20: .word _020AFD98
 _02027E24: .word _0209ACAC
 _02027E28: .word _022A7AE4
 _02027E2C: .word _020AFD4C
@@ -3530,7 +3530,7 @@ _02028A94:
 	strb r1, [r7]
 	cmp r0, #0
 	bne _02028BC4
-	ldr r0, _02028DF8 ; =MENU_CONTROL_PTR
+	ldr r0, _02028DF8 ; =_020AFD98
 	ldrsb r3, [r6, #9]
 	ldrb r2, [r0]
 	ldr r0, _02028DEC ; =_022A7A6C
@@ -3819,7 +3819,7 @@ _02028DE8: .word _020AFD4C
 _02028DEC: .word _022A7A6C
 _02028DF0: .word WINDOW_LIST
 _02028DF4: .word _022A7B1C
-_02028DF8: .word MENU_CONTROL_PTR
+_02028DF8: .word _020AFD98
 _02028DFC: .word _0209ACA8
 _02028E00: .word _0209AC64
 _02028E04: .word _0209AC78

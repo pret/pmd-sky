@@ -306,7 +306,7 @@ _0234B1C4:
 	strh r3, [r1, #0x92]
 	ldr r1, [r2, #4]
 	str r0, [r1, #0xc98]
-	bl ov29_0234B768
+	bl FullyCloseAlertBox
 	cmp r0, #0
 	cmpne r4, #0
 	ldmeqia sp!, {r4, pc}
@@ -739,8 +739,8 @@ AlertBoxIsActive: ; 0x0234B73C
 _0234B764: .word MESSAGE_LOG_INFO
 	arm_func_end AlertBoxIsActive
 
-	arm_func_start ov29_0234B768
-ov29_0234B768: ; 0x0234B768
+	arm_func_start FullyCloseAlertBox
+FullyCloseAlertBox: ; 0x0234B768
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234B7E8 ; =MESSAGE_LOG_INFO
 	mvn r1, #1
@@ -775,7 +775,7 @@ ov29_0234B768: ; 0x0234B768
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B7E8: .word MESSAGE_LOG_INFO
-	arm_func_end ov29_0234B768
+	arm_func_end FullyCloseAlertBox
 
 	arm_func_start AlertBoxIsScrolling
 AlertBoxIsScrolling: ; 0x0234B7EC
@@ -927,7 +927,7 @@ _0234B9C8:
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #0
 	str r0, [r4, #0xc98]
-	bl ov29_0234B768
+	bl FullyCloseAlertBox
 	mov r0, #0
 	mov r1, r0
 	bl UnkMapRelatedFunc

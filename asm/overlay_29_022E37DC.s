@@ -2634,8 +2634,8 @@ _022E5764: .word 0x0000130D
 _022E5768: .word 0x0000130C
 	arm_func_end ov29_022E5728
 
-	arm_func_start ov29_022E576C
-ov29_022E576C: ; 0x022E576C
+	arm_func_start PlayMissSfx__022E611C
+PlayMissSfx__022E611C: ; 0x022E576C
 	stmdb sp!, {r3, lr}
 	ldr r0, [r1, #0xb4]
 	ldrb r0, [r0, #6]
@@ -2651,10 +2651,10 @@ _022E578C:
 	.align 2, 0
 _022E5798: .word 0x00001306
 _022E579C: .word 0x00001307
-	arm_func_end ov29_022E576C
+	arm_func_end PlayMissSfx__022E611C
 
-	arm_func_start ov29_022E57A0
-ov29_022E57A0: ; 0x022E57A0
+	arm_func_start PlayMissSfx__022E6150
+PlayMissSfx__022E6150: ; 0x022E57A0
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0, #0xb4]
 	ldrb r0, [r0, #6]
@@ -2670,7 +2670,7 @@ _022E57C0:
 	.align 2, 0
 _022E57CC: .word 0x00001306
 _022E57D0: .word 0x00001307
-	arm_func_end ov29_022E57A0
+	arm_func_end PlayMissSfx__022E6150
 
 	arm_func_start ov29_022E57D4
 ov29_022E57D4: ; 0x022E57D4
@@ -3086,8 +3086,8 @@ _022E5D60: .word 0x00000165
 _022E5D64: .word DIRECTIONS_XY
 	arm_func_end ov29_022E5BD8
 
-	arm_func_start ov29_022E5D68
-ov29_022E5D68: ; 0x022E5D68
+	arm_func_start PlayStairsSfx
+PlayStairsSfx: ; 0x022E5D68
 	stmdb sp!, {r4, lr}
 	mov r4, #0x3f00
 	bl GetFloorType
@@ -3112,7 +3112,7 @@ _022E5DA4:
 _022E5DB0: .word DUNGEON_PTR
 _022E5DB4: .word 0x0000130A
 _022E5DB8: .word 0x00001309
-	arm_func_end ov29_022E5D68
+	arm_func_end PlayStairsSfx
 
 	arm_func_start ov29_022E5DBC
 ov29_022E5DBC: ; 0x022E5DBC
@@ -3827,8 +3827,8 @@ ov29_022E6644: ; 0x022E6644
 _022E6690: .word 0x0000011D
 	arm_func_end ov29_022E6644
 
-	arm_func_start ov29_022E6694
-ov29_022E6694: ; 0x022E6694
+	arm_func_start PlayKeyDoorUnlockEffect
+PlayKeyDoorUnlockEffect: ; 0x022E6694
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	ldr r1, _022E66C0 ; =0x0000019E
@@ -3842,7 +3842,7 @@ ov29_022E6694: ; 0x022E6694
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E66C0: .word 0x0000019E
-	arm_func_end ov29_022E6694
+	arm_func_end PlayKeyDoorUnlockEffect
 
 	arm_func_start ov29_022E66C4
 ov29_022E66C4: ; 0x022E66C4

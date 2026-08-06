@@ -57,8 +57,6 @@
 .public ov10_022C593C
 .public ov29_022E5478
 .public ov29_022E550C
-.public ov29_022E576C
-.public ov29_022E57A0
 .public ov29_022E66D8
 .public ov29_022E81F8
 .public ov29_022EA370
@@ -66,7 +64,6 @@
 .public ov29_022ECD84
 .public ov29_022EFB20
 .public ov29_022EFB84
-.public ov29_022F0518
 .public ov29_022F0534
 .public ov29_022F05E4
 .public ov29_022F0780
@@ -94,6 +91,8 @@
 .public ov29_023535D4
 .public ov29_0237CA6C
 .public PlayEffectAnimationEntity
+.public PlayMissSfx__022E611C
+.public PlayMissSfx__022E6150
 .public RecruitCheck
 .public RemoveHolderForItemInBag
 .public RestorePpAllMovesSetFlags
@@ -113,6 +112,7 @@
 .public TryRecruit
 .public TrySpawnEnemyItemDrop
 .public TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS
+.public UnfreezeAnim
 .public UpdateAiTargetPos
 .public UpdateEntityPixelPos
 .public UpdateShopkeeperModeAfterAttack
