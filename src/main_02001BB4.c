@@ -1,6 +1,5 @@
+#include "main_020018D0.h"
 #include "main_02001BB4.h"
-
-extern s32 UFixedPoint64CmpLt(s32, u32, s32, u32);
 
 u32 sub_02001BB4(s32 x, s32 y)
 {
