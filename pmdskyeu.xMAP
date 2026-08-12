@@ -349,23 +349,35 @@
                                          40](SaveScriptVariableValue,func) found in global script_variable.o
                                           41](SetDebugSpecialEpisodeNumber,func) found in global special_episode.o
                                          40](LoadScriptVarValuePair,func) found in global script_variable.o
-                                        39](ov25_0238B1F8,func) found in global overlay_25.o
-                                         40](.rodata,section) found in local overlay_25.o
-                                         40](.data,section) found in local overlay_25.o
-                                         40](ItemToBulkItem,func) found in global item_util_4.o
-                                        39](ov24_0238C36C,func) found in global overlay_24.o
-                                         40](.data,section) found in local overlay_24.o
+                                        39](ov25_0238B1F8,func) found in global overlay_25_init.o
+                                         40](ov25_0238A140,func) found in global overlay_25_init.o
+                                          41](ov25_0238A694,func) found in global overlay_25_init.o
+                                           42](ov25_0238B380,func) found in global overlay_25_init.o
+                                            43](OVERLAY25_UNKNOWN_POINTER__NA_238B5E0,notype) found in global overlay_25.o
+                                           42](ItemToBulkItem,func) found in global item_util_4.o
+                                           42](APPRAISAL_WINDOW_PARAMS_1,notype) found in global overlay_25.o
+                                           42](ov25_0238B414,func) found in global overlay_25_init.o
+                                        39](ov25_0238B1CC,func) found in global overlay_25_init.o
+                                        39](ov25_0238B134,func) found in global overlay_25_init.o
+                                        39](ov24_0238C36C,func) found in global overlay_24_end.o
+                                         40](ov24_0238A140,func) found in global overlay_24_init.o
+                                          41](ov24_0238A610,func) found in global overlay_24.o
+                                           42](_020A18E0,notype) found in global main_rodata_020A18BC.o
+                                           42](OVERLAY24_UNKNOWN_STRUCT__NA_238C514,notype) found in global overlay_24_rodata.o
+                                           42](OVERLAY24_UNKNOWN_POINTER__NA_238C600,notype) found in global overlay_24_rodata.o
+                                           42](ov24_0238C4CC,func) found in global overlay_24_end.o
+                                           42](SetPokemonJoined,func) found in global main_0204FDFC.o
+                                           42](IsBagFull,func) found in global main_0200EDC0.o
+                                            43](GetCurrentBagCapacity,func) found in global main_0200EDC0.o
+                                             44](GetExecuteSpecialEpisodeType,func) found in global special_episode.o
+                                             44](GetScenarioBalance,func) found in global progression.o
+                                             44](GetBagCapacity,func) found in global main_020517D4.o
+                                              45](BAG_CAPACITY_TABLE,object) found in global main_020517D4.o
+                                             44](GetBagCapacitySpecialEpisode,func) found in global main_020517D4.o
+                                           42](ov24_0238C47C,func) found in global overlay_24_end.o
+                                        39](ov24_0238C340,func) found in global overlay_24_end.o
+                                        39](ov24_0238C1D4,func) found in global overlay_24_end.o
                                          40](ReturnEggExclusiveItem,func) found in global main_0200ECFC.o
-                                         40](_020A18E0,notype) found in global main_rodata_020A18BC.o
-                                         40](.rodata,section) found in local overlay_24.o
-                                         40](SetPokemonJoined,func) found in global main_0204FDFC.o
-                                         40](IsBagFull,func) found in global main_0200EDC0.o
-                                          41](GetCurrentBagCapacity,func) found in global main_0200EDC0.o
-                                           42](GetExecuteSpecialEpisodeType,func) found in global special_episode.o
-                                           42](GetScenarioBalance,func) found in global progression.o
-                                           42](GetBagCapacity,func) found in global main_020517D4.o
-                                            43](BAG_CAPACITY_TABLE,object) found in global main_020517D4.o
-                                           42](GetBagCapacitySpecialEpisode,func) found in global main_020517D4.o
                                         39](KangaskhanStorageFrameUpdate,func) found in global overlay_23.o
                                          40](.data,section) found in local overlay_23.o
                                          40](ov11_0238A134,notype) found in global overlay_11_022EE5E4.o
@@ -34568,44 +34580,44 @@
 #>00000018          SDK_OVERLAY.OVY_24.ID (linker command file)
 #>0238AC80          SDK_OVERLAY.OVY_24.START (linker command file)
 #>0238AC80          SDK_OVERLAY.OVY_24.TEXT_START (linker command file)
-  0238AC80 000023C8 .text   .text	(overlay_24.o)
-  0238AC80 00000000 .text   $a	(overlay_24.o)
-  0238AC80 000004D0 .text   ov24_0238A140	(overlay_24.o)
-  0238B14C 00000000 .text   $d	(overlay_24.o)
+  0238AC80 00000000 .text   $a	(overlay_24_init.o)
+  0238AC80 000004D0 .text   ov24_0238A140	(overlay_24_init.o)
+  0238B14C 00000000 .text   $d	(overlay_24_init.o)
+  0238B150 00001BC4 .text   .text	(overlay_24.o)
   0238B150 00000DE8 .text   ov24_0238A610	(overlay_24.o)
   0238B150 00000000 .text   $a	(overlay_24.o)
   0238BEC4 00000000 .text   $d	(overlay_24.o)
   0238BF38 00000000 .text   $a	(overlay_24.o)
   0238BF38 00000DDC .text   ov24_0238B3F8	(overlay_24.o)
   0238CCA0 00000000 .text   $d	(overlay_24.o)
-  0238CD14 00000000 .text   $a	(overlay_24.o)
-  0238CD14 0000016C .text   ov24_0238C1D4	(overlay_24.o)
-  0238CE7C 00000000 .text   $d	(overlay_24.o)
-  0238CE80 0000002C .text   ov24_0238C340	(overlay_24.o)
-  0238CE80 00000000 .text   $a	(overlay_24.o)
-  0238CEA8 00000000 .text   $d	(overlay_24.o)
-  0238CEAC 00000110 .text   ov24_0238C36C	(overlay_24.o)
-  0238CEAC 00000000 .text   $a	(overlay_24.o)
-  0238CFB8 00000000 .text   $d	(overlay_24.o)
-  0238CFBC 00000000 .text   $a	(overlay_24.o)
-  0238CFBC 00000050 .text   ov24_0238C47C	(overlay_24.o)
-  0238D008 00000000 .text   $d	(overlay_24.o)
-  0238D00C 00000000 .text   $a	(overlay_24.o)
-  0238D00C 0000003C .text   ov24_0238C4CC	(overlay_24.o)
-  0238D044 00000000 .text   $d	(overlay_24.o)
-  0238D048 00000000 .rodata OVERLAY24_UNKNOWN_STRUCT__NA_238C508	(overlay_24.o)
-  0238D048 000000D8 .rodata .rodata	(overlay_24.o)
-  0238D04A 00000000 .rodata ov24_0238C50A	(overlay_24.o)
-  0238D054 00000000 .rodata OVERLAY24_UNKNOWN_STRUCT__NA_238C514	(overlay_24.o)
-  0238D060 00000000 .rodata DAYCARE_MENU_ITEMS_CONFIRM	(overlay_24.o)
-  0238D078 00000000 .rodata DAYCARE_MAIN_MENU_ITEMS	(overlay_24.o)
-  0238D100 00000000 .rodata DAYCARE_WINDOW_PARAMS_4	(overlay_24.o)
+  0238CD14 00000000 .text   $a	(overlay_24_end.o)
+  0238CD14 0000016C .text   ov24_0238C1D4	(overlay_24_end.o)
+  0238CE7C 00000000 .text   $d	(overlay_24_end.o)
+  0238CE80 00000000 .text   $a	(overlay_24_end.o)
+  0238CE80 0000002C .text   ov24_0238C340	(overlay_24_end.o)
+  0238CEA8 00000000 .text   $d	(overlay_24_end.o)
+  0238CEAC 00000000 .text   $a	(overlay_24_end.o)
+  0238CEAC 00000110 .text   ov24_0238C36C	(overlay_24_end.o)
+  0238CFB8 00000000 .text   $d	(overlay_24_end.o)
+  0238CFBC 00000000 .text   $a	(overlay_24_end.o)
+  0238CFBC 00000050 .text   ov24_0238C47C	(overlay_24_end.o)
+  0238D008 00000000 .text   $d	(overlay_24_end.o)
+  0238D00C 00000000 .text   $a	(overlay_24_end.o)
+  0238D00C 0000003C .text   ov24_0238C4CC	(overlay_24_end.o)
+  0238D044 00000000 .text   $d	(overlay_24_end.o)
+  0238D048 00000000 .rodata OVERLAY24_UNKNOWN_STRUCT__NA_238C508	(overlay_24_rodata.o)
+  0238D048 000000D8 .rodata .rodata	(overlay_24_rodata.o)
+  0238D04A 00000000 .rodata ov24_0238C50A	(overlay_24_rodata.o)
+  0238D054 00000000 .rodata OVERLAY24_UNKNOWN_STRUCT__NA_238C514	(overlay_24_rodata.o)
+  0238D060 00000000 .rodata DAYCARE_MENU_ITEMS_CONFIRM	(overlay_24_rodata.o)
+  0238D078 00000000 .rodata DAYCARE_MAIN_MENU_ITEMS	(overlay_24_rodata.o)
+  0238D100 00000000 .rodata DAYCARE_WINDOW_PARAMS_4	(overlay_24_rodata.o)
 #>0238D120          SDK_OVERLAY.OVY_24.SINIT_START (linker command file)
 #>0238D124          SDK_OVERLAY.OVY_24.SINIT_END (linker command file)
 #>0238D140          SDK_OVERLAY.OVY_24.TEXT_END (linker command file)
 #>0238D140          SDK_OVERLAY.OVY_24.DATA_START (linker command file)
-  0238D140 00000000 .data   OVERLAY24_UNKNOWN_POINTER__NA_238C600	(overlay_24.o)
-  0238D140 00000010 .data   .data	(overlay_24.o)
+  0238D140 00000000 .data   OVERLAY24_UNKNOWN_POINTER__NA_238C600	(overlay_24_rodata.o)
+  0238D140 00000010 .data   .data	(overlay_24_rodata.o)
 #>0238D160          SDK_OVERLAY.OVY_24.DATA_END (linker command file)
 #>0238D160          SDK_OVERLAY.OVY_24.END (linker command file)
 #>000024C0          SDK_OVERLAY.OVY_24.TEXT_SIZE (linker command file)
@@ -34622,28 +34634,27 @@
 #>00000019          SDK_OVERLAY.OVY_25.ID (linker command file)
 #>0238AC80          SDK_OVERLAY.OVY_25.START (linker command file)
 #>0238AC80          SDK_OVERLAY.OVY_25.TEXT_START (linker command file)
-  0238AC80 00000554 .text   ov25_0238A140	(overlay_25.o)
-  0238AC80 00000000 .text   $a	(overlay_25.o)
-  0238AC80 00001358 .text   .text	(overlay_25.o)
-  0238B1BC 00000000 .text   $d	(overlay_25.o)
-  0238B1D4 00000000 .text   $a	(overlay_25.o)
-  0238B1D4 00000AA0 .text   ov25_0238A694	(overlay_25.o)
-  0238BC10 00000000 .text   $d	(overlay_25.o)
-  0238BC74 00000000 .text   $a	(overlay_25.o)
-  0238BC74 00000098 .text   ov25_0238B134	(overlay_25.o)
-  0238BD08 00000000 .text   $d	(overlay_25.o)
-  0238BD0C 00000000 .text   $a	(overlay_25.o)
-  0238BD0C 0000002C .text   ov25_0238B1CC	(overlay_25.o)
-  0238BD34 00000000 .text   $d	(overlay_25.o)
-  0238BD38 00000188 .text   ov25_0238B1F8	(overlay_25.o)
-  0238BD38 00000000 .text   $a	(overlay_25.o)
-  0238BEBC 00000000 .text   $d	(overlay_25.o)
-  0238BEC0 00000000 .text   $a	(overlay_25.o)
-  0238BEC0 00000094 .text   ov25_0238B380	(overlay_25.o)
-  0238BF50 00000000 .text   $d	(overlay_25.o)
-  0238BF54 00000000 .text   $a	(overlay_25.o)
-  0238BF54 00000084 .text   ov25_0238B414	(overlay_25.o)
-  0238BFCC 00000000 .text   $d	(overlay_25.o)
+  0238AC80 00000000 .text   $a	(overlay_25_init.o)
+  0238AC80 00000554 .text   ov25_0238A140	(overlay_25_init.o)
+  0238B1BC 00000000 .text   $d	(overlay_25_init.o)
+  0238B1D4 00000000 .text   $a	(overlay_25_init.o)
+  0238B1D4 00000AA0 .text   ov25_0238A694	(overlay_25_init.o)
+  0238BC10 00000000 .text   $d	(overlay_25_init.o)
+  0238BC74 00000000 .text   $a	(overlay_25_init.o)
+  0238BC74 00000098 .text   ov25_0238B134	(overlay_25_init.o)
+  0238BD08 00000000 .text   $d	(overlay_25_init.o)
+  0238BD0C 00000000 .text   $a	(overlay_25_init.o)
+  0238BD0C 0000002C .text   ov25_0238B1CC	(overlay_25_init.o)
+  0238BD34 00000000 .text   $d	(overlay_25_init.o)
+  0238BD38 00000000 .text   $a	(overlay_25_init.o)
+  0238BD38 00000188 .text   ov25_0238B1F8	(overlay_25_init.o)
+  0238BEBC 00000000 .text   $d	(overlay_25_init.o)
+  0238BEC0 00000000 .text   $a	(overlay_25_init.o)
+  0238BEC0 00000094 .text   ov25_0238B380	(overlay_25_init.o)
+  0238BF50 00000000 .text   $d	(overlay_25_init.o)
+  0238BF54 00000000 .text   $a	(overlay_25_init.o)
+  0238BF54 00000084 .text   ov25_0238B414	(overlay_25_init.o)
+  0238BFCC 00000000 .text   $d	(overlay_25_init.o)
   0238BFD8 00000000 .rodata OVERLAY25_UNKNOWN_STRUCT__NA_238B498	(overlay_25.o)
   0238BFD8 0000012C .rodata .rodata	(overlay_25.o)
   0238BFE4 00000000 .rodata APPRAISAL_WINDOW_PARAMS_1	(overlay_25.o)
@@ -41934,5 +41945,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Aug 06 01:19:54 2026
-# Link end time: Thu Aug 06 01:19:55 2026
+# Link start time: Wed Aug 12 22:44:11 2026
+# Link end time: Wed Aug 12 22:44:12 2026
