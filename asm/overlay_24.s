@@ -18,6 +18,8 @@
 	.public DAYCARE_WINDOW_PARAMS_4
 	.public OVERLAY24_UNKNOWN_POINTER__NA_238C600
 
+    ; https://decomp.me/scratch/txHQv 
+
 	arm_func_start ov24_0238A610
 ov24_0238A610: ; 0x0238A610
 	stmdb sp!, {r3, r4, lr}
@@ -973,6 +975,8 @@ _0238B3F4: .word 0x000003A3 + OV24_0238A610_OFFSET
 _0238C958: .word 0x00002448
 #endif
 	arm_func_end ov24_0238A610
+
+    ; https://decomp.me/scratch/nS1Al 
 
 	arm_func_start ov24_0238B3F8
 ov24_0238B3F8: ; 0x0238B3F8
