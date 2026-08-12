@@ -194,6 +194,7 @@
 .public RandInt
 .public RollRandomItemReward
 .public SetQuestionMarks
+.public SetWindowTitle
 .public ShowKeyboard
 .public StrcpyName
 .public StringFromId
@@ -210,7 +211,6 @@
 .public sub_0202836C
 .public sub_02029F88
 .public sub_02029FBC
-.public sub_02030A2C
 .public sub_02037468
 .public sub_02037570
 .public sub_020376EC

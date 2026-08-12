@@ -785,6 +785,7 @@
 .public SetNewFriendActor
 .public SetParentMenuState7
 .public SetSpriteIdForAnimationControl
+.public SetWindowTitle
 .public ShowDialogueBox
 .public ShowKeyboard
 .public ShowStringIdInDialogueBox
@@ -871,7 +872,6 @@
 .public sub_0202F3F8
 .public sub_0202F954
 .public sub_020307EC
-.public sub_02030A2C
 .public sub_02034840
 .public sub_0203559C
 .public sub_02035CE4

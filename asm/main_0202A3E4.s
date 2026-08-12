@@ -7769,14 +7769,14 @@ GetWindowIdPageStart: ; 0x02030A18
 	ldmia sp!, {r3, pc}
 	arm_func_end GetWindowIdPageStart
 
-	arm_func_start sub_02030A2C
-sub_02030A2C: ; 0x02030A2C
+	arm_func_start SetWindowTitle
+SetWindowTitle: ; 0x02030A2C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	strh r4, [r0, #0x20]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02030A2C
+	arm_func_end SetWindowTitle
 
 	arm_func_start GetAdvancedTextBoxFlags2
 GetAdvancedTextBoxFlags2: ; 0x02030A40

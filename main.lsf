@@ -17,7 +17,6 @@ Static main
 	Object src/main_02001894.o
 	Object asm/main_020018A4.o
 	Object src/main_020018D0.o
-	Object asm/main_02001A30.o
 	Object src/main_02001A54.o
 	Object asm/main_02001B0C.o
 	Object src/main_02001BB4.o
