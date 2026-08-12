@@ -42,7 +42,7 @@ extern void InitPreprocessorArgs(void*);
 extern s32 IsThrownItem(s16);                              
 extern void ItemToBulkItem(struct bulk_item* bulk, struct item* item);
 extern void MaybeGetColoredFormattedItemName(void*, struct item*, void*); 
-extern void PreprocessString(void*, s32, void*, s32, void*);       
+extern int PreprocessString(char *output,int output_size,char *format,u16 flags,struct preprocessor_args *args);
 extern void RemoveItemByIdAndStackNoHole(void*);                 
 extern void SetPortraitEmotion(void*, s8);                    
 extern void SetPortraitLayout(void*, s32);                      
@@ -52,9 +52,9 @@ extern void ov11_022DC504();
 extern void ov11_0230C910();
 extern void* MemAlloc(s32, s32);                               
 extern void MemFree(void *ptr);
-extern s32 IsScriptMenuReturnDisabled();                   
+extern BOOL IsScriptMenuReturnDisabled();                   
 extern void ReturnScriptMenuResult(s32);                        
-extern void ReturnScriptMenuResultZero();                     
+extern void ReturnScriptMenuResultZero(void);                     
 extern void UpdateWindow(char *);                                  
 extern void sub_02027B1C(char *);                                   
 extern void AppendStandardStringToMission(char *, s32, s32, s32);      
@@ -80,7 +80,7 @@ s32 ov25_0238A140(void)
     u16 sp0;
     s32 temp_r0_4;
 
-    switch (OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0) {                              
+    switch (OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state) {                              
         case 0:                                         
         case 1:                                         
             if (IsDialogueBoxActive(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk138) == 0) {
@@ -92,7 +92,7 @@ s32 ov25_0238A140(void)
         case 13:                                        
             switch (ov11_0230BA64()) {                          
                 case 2:                                     
-                    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x1FU;
+                    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x1F;
                     OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 1;
                     break;
                 case 3:                                     
@@ -107,7 +107,7 @@ s32 ov25_0238A140(void)
                             ov11_0230B8C0(&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkC);
                             ov25_0238B380();
                             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 0xF;
-                            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x1FU;
+                            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x1F;
                         }
                     }
                     break;
@@ -118,16 +118,16 @@ s32 ov25_0238A140(void)
                 case 7:                                     
                     OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 0x10;
                     ov25_0238B380();
-                    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x1FU;
+                    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x1F;
                     break;
                 case 6:                                     
                     ov25_0238B380();
                     OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 0xF;
-                    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x1FU;
+                    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x1F;
                     break;
                 case 1:                                     
                     ov25_0238B380();
-                    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0xDU;
+                    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0xD;
                     ov11_0230BCF8();
                     break;
             }
@@ -164,7 +164,7 @@ s32 ov25_0238A140(void)
         case 25:                                        
             if (IsDialogueBoxActive(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk138) == 0) {
                 ShowDialogueBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk138);
-                OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x20U;
+                OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x20;
                 sub_0202F2C4(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk138);
                 HidePortraitBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk139);
             }
@@ -233,7 +233,7 @@ s32 ov25_0238A140(void)
             ShowStringIdInDialogueBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk138, 0x3008, 0x3E2, &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk28);
 #endif
             
-            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x1B;
+            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x1B;
             break;
         case 20:                                        
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk50 = 4;
@@ -243,7 +243,7 @@ s32 ov25_0238A140(void)
 #else
             ShowStringIdInDialogueBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk138, 0x3018, 0x3E3, &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk28);
 #endif
-            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x1B;
+            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x1B;
             break;
         default:                                        
         case 2:                                         
@@ -278,13 +278,13 @@ s32 ov25_0238A140(void)
     #define OV25_0238A694_OFFSET 0
 #endif
 
-void ov25_0238A694(s32 arg0) {
-    struct preprocessor_args sp18;
-    struct bulk_item sp12;
-    struct item spC;
+void ov25_0238A694(s32 state) {
+    struct preprocessor_args args;
+    struct bulk_item bulkItem;
+    struct item item;
 
-    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = arg0;
-    switch (OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0) {
+    OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = state;
+    switch (OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state) {
         case 0:
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4C = 0x96;
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk138 = CreateDialogueBox(0);
@@ -382,14 +382,14 @@ void ov25_0238A694(s32 arg0) {
         case 10:
             ov25_0238B380();
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 0xC;
-            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x19U;
+            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x19;
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk20 = 0;
             SetPortraitEmotion(&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140,  OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk20);
             ShowPortraitInPortraitBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk139, &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140);
             break;
         case 11:
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 0xD;
-            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x19U;
+            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x19;
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk20 = 0;
             SetPortraitEmotion(&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140,  OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk20);
             ShowPortraitInPortraitBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk139, &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140);
@@ -397,7 +397,7 @@ void ov25_0238A694(s32 arg0) {
             break;
         case 18:
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 0xD;
-            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x1BU;
+            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x1B;
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk20 = 0;
             SetPortraitEmotion(&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140,  OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk20);
             ShowPortraitInPortraitBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk139, &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140);
@@ -423,16 +423,16 @@ void ov25_0238A694(s32 arg0) {
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk28 = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkE;
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk38 = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkC;
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4C = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkE;
-            PreprocessString(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk78, 0x400, &ov25_0238B5A4, 0xC402, &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk28);
-            InitPreprocessorArgs(&sp18);
-            sp18.strings[0] = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk78;
+            PreprocessString(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk78, 0x400, (char *)&ov25_0238B5A4, 0xC402, (struct preprocessor_args *)&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk28);
+            InitPreprocessorArgs(&args);
+            args.strings[0] = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk78;
 
 #ifdef EUROPE
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk13B = CreateScrollBoxSingle(&APPRAISAL_WINDOW_PARAMS_8, 0x1013, 0, 0x33E, &sp18, (s32) (u16) (OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkC + 0x29D3), &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk28);
 #elif defined (JAPAN)
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk13B = CreateScrollBoxSingle(&APPRAISAL_WINDOW_PARAMS_8, 0x1013, 0, 0x3203, &sp18, (s32) (u16) (OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkC + 0x41CE), &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk28);
 #else
-            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk13B = CreateScrollBoxSingle(&APPRAISAL_WINDOW_PARAMS_8, 0x1013, 0, 0x33E, &sp18, (s32) (u16) (OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkC + 0x29D1), &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk28);
+            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk13B = CreateScrollBoxSingle(&APPRAISAL_WINDOW_PARAMS_8, 0x1013, 0, 0x33E, &args, (s32) (u16) (OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkC + 0x29D1), &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk28);
 #endif
             
             
@@ -440,7 +440,7 @@ void ov25_0238A694(s32 arg0) {
         case 16:
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk20 = 0;
             SetPortraitEmotion(&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140,  OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk20);
-            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk0 = 0x1BU;
+            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->state = 0x1B;
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 0x1D;
             ShowPortraitInPortraitBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk139, &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140);
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk3C = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkC;
@@ -467,36 +467,36 @@ void ov25_0238A694(s32 arg0) {
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 1;
             break;
         case 17:
-            AddMoneyCarried(-0x96);
-            spC.id = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkC;
-            spC.quantity = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkE;
-            spC.flags = 1;
-            ItemToBulkItem(&sp12, &spC);
-            RemoveItemByIdAndStackNoHole(&sp12);
+            AddMoneyCarried(-150);
+            item.id = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkC;
+            item.quantity = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkE;
+            item.flags = ITEM_FLAG_EXISTS;
+            ItemToBulkItem(&bulkItem, &item);
+            RemoveItemByIdAndStackNoHole(&bulkItem);
     
-            spC.id = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkE;
-            spC.quantity = 0;
-            if (IsThrownItem(spC.id) != 0) {
-                spC.quantity = 0xA;
+            item.id = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkE;
+            item.quantity = 0;
+            if (IsThrownItem(item.id) != 0) {
+                item.quantity = 10;
             } else {
-                if (spC.id == 0xBB) {
-                    spC.id = 0x55;
+                if (item.id == ITEM_TM_USED_TM) {
+                    item.id = ITEM_PLAIN_SEED;
                 }
-                if (( spC.id >= 0x16C) && ( spC.id <= 0x18F)) {
-                    spC.id = 0x55;
+                if (( item.id >= ITEM_GORGEOUS_BOX_1) && ( item.id <= ITEM_SINISTER_BOX_3)) {
+                    item.id = ITEM_PLAIN_SEED;
                 }
-                if (spC.id == 0xB7) {
-                    spC.id = 0x55;
+                if (item.id == ITEM_POKE) {
+                    item.id = ITEM_PLAIN_SEED;
                 }
             }
-            spC.flags = 1;
-            AddItemToBagNoHeld(&spC);
+            item.flags = ITEM_FLAG_EXISTS;
+            AddItemToBagNoHeld(&item);
             ov11_022DC504();
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk4 = 0x13;
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk24 = 6;
-            MaybeGetColoredFormattedItemName(&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkB8, &spC, &OVERLAY25_UNKNOWN_STRUCT__NA_238B498);
+            MaybeGetColoredFormattedItemName(&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkB8, &item, &OVERLAY25_UNKNOWN_STRUCT__NA_238B498);
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk60 = (&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkB8);
-            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk3C = spC.id;
+            OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk3C = item.id;
             OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk50 = OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unkE;
             SetPortraitEmotion(&OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140,  OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk20);
             ShowPortraitInPortraitBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk139, &OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk140);
@@ -555,19 +555,19 @@ s32 ov25_0238B1F8(void)
             }
             break;
         case 6:
-            if (IsScriptMenuReturnDisabled() != 0) {
+            if (IsScriptMenuReturnDisabled()) {
                 ReturnScriptMenuResult(1);
                 OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk24 = 4;
             }
             break;
         case 7:
-            if (IsScriptMenuReturnDisabled() != 0) {
+            if (IsScriptMenuReturnDisabled()) {
                 ReturnScriptMenuResult(2);
                 OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk24 = 4;
             }
             break;
         case 8:
-            if (IsScriptMenuReturnDisabled() != 0) {
+            if (IsScriptMenuReturnDisabled()) {
                 ReturnScriptMenuResult(3);
                 OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk24 = 4;
             }
@@ -578,7 +578,7 @@ s32 ov25_0238B1F8(void)
             ClosePortraitBox(OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk139);
             break;
         case 4:
-            if (IsScriptMenuReturnDisabled() != 0) {
+            if (IsScriptMenuReturnDisabled()) {
                 OVERLAY25_UNKNOWN_POINTER__NA_238B5E0->unk24 = 1;
             }
             break;
@@ -607,7 +607,7 @@ void ov25_0238B414(char *output)
 {
    
     struct preprocessor_args args;
-    u8 buffer[0x400];
+    char buffer[0x400];
 
     sub_02027B1C(output);
     args.number_vals[0] = GetMoneyCarried();

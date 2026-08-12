@@ -5,7 +5,7 @@ struct overlay_25 {
 
     // size: 0x150
 
-    s32 unk0;
+    s32 state;
     s32 unk4;
     s32 unk8;
     s16 unkC;
@@ -33,7 +33,7 @@ struct overlay_25 {
     s32 *unk60;
     u8 fill64[0x74 - 0x64];
     s32 unk74;
-    u8 unk78[0x40];
+    char unk78[0x40];
     s32 unkB8;
     u8 fillBC[0x138 - 0xBC];
     s8 unk138;
