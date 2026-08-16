@@ -71,6 +71,14 @@ Static main
 	Object src/main_0200ECFC.o
 	Object src/main_0200EDC0.o
 	Object asm/main_0200EDFC.o
+	Object src/main_0201070C.o
+	Object asm/main_02010724.o
+	Object src/main_0201077C.o
+	Object asm/main_02010794.o
+	Object src/main_020107AC.o
+	Object asm/main_020107C4.o
+	Object src/main_020107DC.o
+	Object asm/main_020107F4.o
 	Object src/exclusive_item.o
 	Object asm/main_02010FC4.o
 	Object src/moves_1.o

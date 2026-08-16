@@ -1656,6 +1656,10 @@ struct bag_items {
     /* 0x388 */ u8 active_inventory_idx;
     u8 fill2[0x1009];
     u32 maybeMoney[NUM_INVENTORIES]; // indexed with an u8, uses same indexes as Inventory
+    u32 field_0x13A0;
+    s16 field_0x13A4;
+    u16 field_0x13A6;
+    u16 field_0x13A8;
 };
 
 struct bulk_item
