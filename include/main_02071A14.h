@@ -3,8 +3,8 @@
 
 #include "dse.h"
 
-u8* DseTrackEvent_MainLoopBegin(u8* position, struct dse_sequence* seq, struct dse_track* track, struct dse_channel* channel);
-u8* DseTrackEvent_SubLoopBegin(u8* position, struct dse_sequence* seq, struct dse_track* track, struct dse_channel* channel);
-u8* DseTrackEvent_SubLoopEnd(u8* position, struct dse_sequence* seq, struct dse_track* track, struct dse_channel* channel);
+u8* DseTrackEvent_MainLoopBegin(u8 *ptr_next_byte, struct dse_sequence *sequence, struct dse_track *track, struct dse_channel *channel);
+u8* DseTrackEvent_SubLoopBegin(u8 *ptr_next_byte, struct dse_sequence *sequence, struct dse_track *track, struct dse_channel *channel);
+u8* DseTrackEvent_SubLoopEnd(u8 *ptr_next_byte, struct dse_sequence *sequence, struct dse_track *track, struct dse_channel *channel);
 
 #endif
