@@ -1,9 +1,7 @@
 #pragma once
-.public AreItemsEquivalent
+.public AddItemToBag
 .public BAG_ITEMS_PTR_MIRROR
-.public GetItemCategoryVeneer
-.public IsStorableItem
-.public IsThrownItem
+.public BulkItemToItem
 .public ItemZInit
 .public RemoveEmptyItems
 .public sub_020582E0
