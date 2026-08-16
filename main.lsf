@@ -260,7 +260,10 @@ Static main
 	Object lib/DSE/src/main_02071B60.o
 	Object lib/DSE/src/main_02071B8C.o
 	Object lib/DSE/src/main_02071BF4.o
-	Object lib/DSE/asm/main_02071EB4.o
+	Object lib/DSE/src/main_02071EB4.o
+	Object lib/DSE/src/main_02071F3C.o
+	Object lib/DSE/src/main_02071FC4.o
+	Object lib/DSE/asm/main_02072054.o
 	Object lib/DSE/src/main_02072144.o
 	Object lib/DSE/src/main_0207216C.o
 	Object lib/DSE/src/main_02072184.o
