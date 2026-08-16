@@ -195,17 +195,3 @@ _0207212C:
 	.align 2, 0
 _02072140: .word 0x04000208
 	arm_func_end DseTrackEvent_TuningFade
-
-	arm_func_start DseTrackEvent_SetNoteRandomRegion
-DseTrackEvent_SetNoteRandomRegion: ; 0x02072144
-	ldrb r1, [r0]
-	ldrb ip, [r0, #1]
-	add r0, r0, #2
-	mov r2, r1
-	cmp r1, ip
-	movhi r2, ip
-	movhi ip, r1
-	strb r2, [r3, #0xc]
-	strb ip, [r3, #0xd]
-	bx lr
-	arm_func_end DseTrackEvent_SetNoteRandomRegion
