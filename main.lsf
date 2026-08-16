@@ -274,13 +274,14 @@ Static main
 	Object lib/DSE/src/main_02072310.o
 	Object lib/DSE/asm/main_020723C0.o
 	Object lib/DSE/src/main_0207241C.o
-	Object lib/DSE/asm/main_020724A8.o
+	Object lib/DSE/src/main_020724A8.o
 	Object lib/DSE/src/main_02072504.o
 	Object lib/DSE/src/main_02072554.o
 	Object lib/DSE/src/main_020725D4.o
 	Object lib/DSE/asm/main_02072668.o
+	Object lib/DSE/src/main_020726C4.o
 	Object lib/DSE/src/main_02072720.o
-	Object lib/DSE/asm/main_02072770.o
+	Object lib/DSE/src/main_02072770.o
 	Object lib/DSE/src/main_020727C8.o
 	Object lib/DSE/asm/main_020727FC.o
 	Object lib/DSE/src/main_02072938.o
