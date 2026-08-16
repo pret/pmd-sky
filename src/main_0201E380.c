@@ -1,6 +1,5 @@
 #include "main_0201E380.h"
-
-extern void Rgb8ToRgb5(u16* dest, u32* color);
+#include "main_02004FCC.h"
 
 void sub_0201E380(struct unk_0201E380* a, u32* color, s16 c, s16 d)
 {

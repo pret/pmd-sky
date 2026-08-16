@@ -2,9 +2,9 @@
 #include "common.h"
 #include "main_02055410.h"
 #include "main_020564B0.h"
+#include "main_02056294.h"
 
 extern struct team_member_table *TEAM_MEMBER_TABLE_PTR;
-extern bool8 IsMonsterIdInNormalRange(s16 idx);
 
 int GetAdventureNpcIds(s16* buf)
 {

@@ -1,3 +1,4 @@
+#include "main_02029EC8.h"
 #include "overlay_31_02382820.h"
 #include "dg_uty.h"
 #include "dungeon_ai_targeting.h"
@@ -39,12 +40,10 @@ extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern struct Window* GetWindow(struct Window*);
 extern s32 sub_020265A8(u8*); // Measures the text's width in pixels
 
-extern u32 Arm9LoadUnkFieldNa0x2029EC8(u32, u8*);
 extern u8 CreateParentMenuFromStringIds(u32*, u32, struct struct_2*, u32*);
 extern u8 CreateTextBox(u32*, void (*fun)(struct Window*));
 extern u32 IsParentMenuActive(s8);
 extern u32 GetWindowIdSelectedItemOnPage(s8);
-extern void Arm9StoreUnkFieldNa0x2029ED8(u32, u8);
 extern u32 GetPressedButtons(u32, u16*);
 extern void sub_0202AB94(s8, u32);
 extern void sub_0202B030(s8);

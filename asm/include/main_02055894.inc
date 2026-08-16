@@ -10,6 +10,7 @@
 .public IsValidTeamMember
 .public RecolorNameString
 .public RecolorTeamMemberNameString
+.public SetActiveTeam
 .public SetPokemonJoined
 .public StrcmpMonsterName
 .public StrncpyName

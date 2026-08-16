@@ -35,6 +35,8 @@ Static main
 	Object asm/main_rodata_02092580.o
 	Object asm/main_rodata_020925A0.o
 	Object asm/main_020040AC.o
+	Object src/main_02004FCC.o
+	Object asm/main_02004FF8.o
 	Object src/main_02008210.o
 	Object asm/main_02008240.o
 	Object src/main_02008254.o
@@ -96,6 +98,8 @@ Static main
 	Object asm/main_0202676C.o
 	Object src/main_02029A50.o
 	Object asm/main_02029A68.o
+	Object src/main_02029EC8.o
+	Object asm/main_02029EE8.o
 	Object src/main_0202A388.o
 	Object asm/main_0202A3E4.o
 	Object src/main_020348E4.o
@@ -163,6 +167,8 @@ Static main
 	Object src/main_0205567C.o
 	Object src/main_02055770.o
 	Object asm/main_02055894.o
+	Object src/main_02056294.o
+	Object asm/main_020562B8.o
 	Object src/main_020564B0.o
 	Object asm/main_02056504.o
 	Object src/main_020568A4.o
@@ -231,6 +237,8 @@ Static main
 	Object asm/main_0205EC98.o
 	Object src/main_0205ED84.o
 	Object asm/main_0205EDA4.o
+	Object src/main_02062A58.o
+	Object asm/main_02062A68.o
 	Object src/main_02064FFC.o
 	Object src/main_02065974.o
 	Object asm/main_02065998.o
