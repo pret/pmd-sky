@@ -1,3 +1,0 @@
-#pragma once
-.public DseChannel_DeallocateVoices
-.public DseVoice_CountNumActiveInChannel
