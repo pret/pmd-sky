@@ -72,7 +72,9 @@ Static main
 	Object src/main_0200EDC0.o
 	Object asm/main_0200EE4C.o
 	Object src/main_0200EEE0.o
-	Object asm/main_0200EF20.o
+	Object asm/main_0200EF6C.o
+	Object src/main_0200F14C.o
+	Object asm/main_0200F18C.o
 	Object src/main_0200F370.o
 	Object asm/main_0200F390.o
 	Object src/main_0200F798.o
