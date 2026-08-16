@@ -4,7 +4,7 @@
 	.text
 
 	arm_func_start DseTrackEvent_SetBpm
-DseTrackEvent_SetBpm:
+DseTrackEvent_SetBpm: ; 0x02071AE0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -25,7 +25,7 @@ _02071B1C: .word 0x03938700
 	arm_func_end DseTrackEvent_SetBpm
 
 	arm_func_start DseTrackEvent_SetBpm2
-DseTrackEvent_SetBpm2:
+DseTrackEvent_SetBpm2: ; 0x02071B20
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -44,34 +44,3 @@ DseTrackEvent_SetBpm2:
 	.align 2, 0
 _02071B5C: .word 0x03938700
 	arm_func_end DseTrackEvent_SetBpm2
-
-	arm_func_start DseTrackEvent_SetBank
-DseTrackEvent_SetBank:
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	ldrb r2, [r4]
-	ldrb r1, [r4, #1]
-	mov r0, r3
-	add r1, r1, r2, lsl #8
-	mov r1, r1, lsl #0x10
-	mov r1, r1, lsr #0x10
-	bl DseChannel_SetBank
-	add r0, r4, #2
-	ldmia sp!, {r4, pc}
-	arm_func_end DseTrackEvent_SetBank
-
-	arm_func_start DseTrackEvent_SetBankMsb
-DseTrackEvent_SetBankMsb:
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	ldrh r1, [r3, #0xe]
-	ldrb r2, [r4]
-	mov r0, r3
-	and r1, r1, #0xff
-	add r1, r1, r2, lsl #8
-	mov r1, r1, lsl #0x10
-	mov r1, r1, lsr #0x10
-	bl DseChannel_SetBank
-	add r0, r4, #1
-	ldmia sp!, {r4, pc}
-	arm_func_end DseTrackEvent_SetBankMsb
