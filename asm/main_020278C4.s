@@ -121,32 +121,3 @@ _020279FC: .word _022A7A6C
 _02027A00: .word WINDOW_LIST
 _02027A04: .word _022A8991
 	arm_func_end sub_02027974
-
-	arm_func_start sub_02027A08
-sub_02027A08: ; 0x02027A08
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r6, r0
-	mov r5, r1
-	bl sub_02027974
-	mov r0, #0xe0
-	mul r4, r6, r0
-	ldr r1, _02027A5C ; =_022A8990
-	mov r0, r6
-	strb r5, [r1, r4]
-	bl sub_020278C4
-	ldr r1, _02027A60 ; =_022A88E4
-	ldr r0, _02027A64 ; =_020AFD4C
-	ldrb r3, [r1, r4]
-	ldr r2, [r0, #8]
-	mov r1, #1
-	orr r1, r2, r1, lsl r3
-	str r1, [r0, #8]
-	cmp r3, #1
-	ldmneia sp!, {r4, r5, r6, pc}
-	bl sub_02027B88
-	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
-_02027A5C: .word _022A8990
-_02027A60: .word _022A88E4
-_02027A64: .word _020AFD4C
-	arm_func_end sub_02027A08

@@ -2,6 +2,7 @@
 #define PMDSKY_MAIN_0202AAA8_H
 
 #include "util.h"
+#include "main_02028080.h"
 
 struct unk_0202AAA8 {
     u8 field_0x0[8];
@@ -25,7 +26,6 @@ struct unk_0202AAA8 {
 };
 
 void *GetWindowContents(s32 window_id);
-void DeleteWindow(s32 window_id);
 
 void SetParentMenuState7(s32 window_id);
 void CloseParentMenu(s32 window_id);

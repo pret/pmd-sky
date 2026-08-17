@@ -118,6 +118,17 @@ struct unk_022A7A6C {
 extern struct unk_022A7A6C _022A7A6C;
 extern u16 _022A7A74[2];
 
+struct unk_020AFD4C {
+    u8 field_0x0[8];
+    u32 field_0x8;
+};
+
+extern struct unk_020AFD4C _020AFD4C;
+
+void sub_02027974(s32 window_id);
+void sub_020278C4(s32 window_id);
+void sub_02027B88(void);
+
 s32 NewWindow(s32 a, s32 b);
 
 #endif //PMDSKY_WINDOW_H
