@@ -15,3 +15,8 @@ bool8 CheckParentMenuField0x1A0(s32 window_id)
 
     return menu->field_0x1A0 == 0;
 }
+
+s32 GetWindowIdSelectedItemOnPage(s32 window_id)
+{
+    return GetSelectedItemOnPage(GetWindowContents(window_id) + 4);
+}

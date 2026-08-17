@@ -1,7 +1,5 @@
 #include "main_0202AAA8.h"
-
-void MemFree(void *ptr);
-void DeleteWindow(s32 window_id);
+#include "main_02001188.h"
 
 void SetParentMenuState7(s32 window_id)
 {

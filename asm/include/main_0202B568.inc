@@ -38,7 +38,6 @@
 .public PreprocessString
 .public PreprocessStringFromId
 .public SCROLL_BOX_DEFAULT_WINDOW_PARAMS
-.public SIMPLE_MENU_DEFAULT_WINDOW_PARAMS
 .public TEAM_SELECTION_MENU_DEFAULT_WINDOW_PARAMS
 .public TEXT_BOX_DEFAULT_WINDOW_PARAMS
 .public UnloadOverlay
