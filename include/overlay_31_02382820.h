@@ -1,15 +1,13 @@
 #ifndef PMDSKY_OVERLAY_31_02382820_H
 #define PMDSKY_OVERLAY_31_02382820_H
 
+#include "window.h"
+
 #include "main_020348E4.h"
 #include "util.h"
 #include "preprocessString.h"
 #include "dungeon.h"
 
-struct Window {
-    u8 PAD[6];
-    u8 width; // 0x6: Window width in multiples of 8 pixels
-};
 
 void EntryOverlay31(void);
 
@@ -33,8 +31,8 @@ void EntryOverlay31(void);
 #define LINE_HEIGHT 12
 #define X_OFFSET 115
 // Draws the contents shown in the main dungeon menu status window showing the player's belly, money, play time, etc.
-void DrawDungeonMenuStatusWindow(struct Window* window);
-void DungeonMenuSwitch(struct Window* window);
+void DrawDungeonMenuStatusWindow(s32 window_id);
+void DungeonMenuSwitch(s32 window_id);
 
 struct struct_2 {
     u32 b;        // 0x0
@@ -89,7 +87,7 @@ void StairsMenu(struct entity* arg_1, u32 arg_2);
 // r0: Entity pointer (in practice, always the leader)
 void CreateStairsMenuState(struct entity* entity);
 // Callback function passed to CreateAdvancedTextBox for creating the subheading for the stairs menu.
-void StairsSubheadingCallback(struct Window* window);
+void StairsSubheadingCallback(s32 window_id);
 
 
 

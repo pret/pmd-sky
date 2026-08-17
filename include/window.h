@@ -17,4 +17,17 @@ typedef struct {
     u8 allow_default; // 0xF: If true, try using emote index 0 if the desired emote can't be found
 } portrait_params;
 
+
+#include "util.h"
+
+struct Window {
+    u8 PAD[6];
+    u8 width;
+    u8 pad2[0xD9];
+};
+
+extern struct Window WINDOW_LIST[];
+
+struct Window *GetWindow(s32 window_id);
+
 #endif //PMDSKY_WINDOW_H
