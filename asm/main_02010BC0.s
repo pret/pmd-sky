@@ -140,7 +140,7 @@ _02010D64:
 	ldr r0, _02010DC4 ; =KECLEON_SHOP_ITEM_TABLE_LISTS_2
 	mov r7, #0
 	ldr r6, [r0, r5, lsl #2]
-	ldr r5, _02010DC8
+	ldr r5, _02010DC8 ; =0x0000270F
 _02010D88:
 	mov r0, r5
 	bl RandIntSafe

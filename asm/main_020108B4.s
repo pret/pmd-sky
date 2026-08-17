@@ -138,7 +138,7 @@ _02010A58:
 	cmp r4, #8
 	blt _02010A58
 	ldr r0, _02010AC0 ; =KECLEON_SHOP_ITEM_TABLE_LISTS_1
-	ldr r5, _02010AC4
+	ldr r5, _02010AC4 ; =0x0000270F
 	ldr r6, [r0, r8, lsl #2]
 	mov r7, #0
 _02010A7C:

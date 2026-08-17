@@ -45,7 +45,7 @@ _020720D4:
 	mov r0, r0, lsl #0x10
 	ldrsh r2, [r4, #4]
 	add r0, r1, r0, lsr #16
-	ldr r1, _02072140
+	ldr r1, _02072140 ; =0x04000208
 	add r0, r2, r0
 	strh r0, [r6, #0x16]
 	ldrh r3, [r1]
@@ -62,7 +62,7 @@ _02072114:
 	cmp r1, #0
 	bne _02072114
 _0207212C:
-	ldr r2, _02072140
+	ldr r2, _02072140 ; =0x04000208
 	add r0, r7, #3
 	ldrh r1, [r2]
 	strh r3, [r2]
