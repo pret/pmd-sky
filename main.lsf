@@ -191,6 +191,16 @@ Static main
 	Object asm/main_02034974.o
 	Object src/main_0203C760.o
 	Object asm/main_0203C774.o
+	Object src/main_02042AF8.o
+	Object asm/main_02042B20.o
+	Object src/main_02042B84.o
+	Object asm/main_02042B98.o
+	Object src/main_02043568.o
+	Object asm/main_0204357C.o
+	Object src/main_020484A0.o
+	Object asm/main_020484C0.o
+	Object src/main_02048758.o
+	Object asm/main_02048764.o
 	Object asm/main_bss_020B3380.o
 	Object src/options.o
 	Object asm/main_bss_022AB0AC.o
