@@ -17,5 +17,6 @@ struct unk_02032558 {
 s32 GetSelectedItemOnPage(struct unk_02032558* p);
 s32 GetCurrentPage(struct unk_02032558* p);
 s32 GetPageStart(struct unk_02032558* p);
+s32 GetSelectedMenuItemIdx(struct unk_02032558* p);
 
 #endif
