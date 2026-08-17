@@ -8,8 +8,6 @@
 .public DeleteWindow
 .public DrawTextInWindow
 .public GetPressedButtons
-.public GetSelectedItemOnPage
-.public GetSelectedMenuItemIdx
 .public GetWindowContents
 .public GetWindowRectangle
 .public InitPortraitParams
@@ -54,8 +52,4 @@
 .public sub_0202812C
 .public sub_0202836C
 .public sub_02028770
-.public sub_020288DC
-.public sub_020289B8
-.public sub_02028A08
-.public sub_02032984
 .public sub_02048240
