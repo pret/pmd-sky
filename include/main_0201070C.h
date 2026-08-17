@@ -2,5 +2,6 @@
 #define PMDSKY_MAIN_0201070C_H
 
 u32 GetMoneyStored(void);
+void SetMoneyStored(s32 money);
 
 #endif
