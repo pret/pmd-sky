@@ -1660,6 +1660,10 @@ struct bag_items {
     s16 field_0x13A4;
     u16 field_0x13A6;
     u16 field_0x13A8;
+    u8 field_0x13AA;
+    u32 field_0x13AC;
+    s16 field_0x13B0;
+    s16 field_0x13B2;
 };
 
 struct bulk_item

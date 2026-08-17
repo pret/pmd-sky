@@ -1,32 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_020107F4.inc"
+	.include "main_02010830.inc"
 
 	.text
-
-	arm_func_start SetEggHatchTimer
-SetEggHatchTimer: ; 0x020107F4
-	ldr r1, _02010808 ; =BAG_ITEMS_PTR_MIRROR
-	ldr r1, [r1]
-	add r1, r1, #0x1300
-	strh r0, [r1, #0xa8]
-	bx lr
-	.align 2, 0
-_02010808: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end SetEggHatchTimer
-
-	arm_func_start DecrementEggHatchTimer
-DecrementEggHatchTimer: ; 0x0201080C
-	ldr r0, _0201082C ; =BAG_ITEMS_PTR_MIRROR
-	ldr r0, [r0]
-	add r0, r0, #0x1300
-	ldrh r1, [r0, #0xa8]
-	cmp r1, #0
-	subne r1, r1, #1
-	strneh r1, [r0, #0xa8]
-	bx lr
-	.align 2, 0
-_0201082C: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end DecrementEggHatchTimer
 
 	arm_func_start RemoveInvalidKecleonShop1Items
 RemoveInvalidKecleonShop1Items: ; 0x02010830
@@ -212,7 +187,7 @@ _02010A58:
 	cmp r4, #8
 	blt _02010A58
 	ldr r0, _02010AC0 ; =KECLEON_SHOP_ITEM_TABLE_LISTS_1
-	ldr r5, _02010AC4 ; =0x0000270F
+	ldr r5, _02010AC4
 	ldr r6, [r0, r8, lsl #2]
 	mov r7, #0
 _02010A7C:
@@ -461,7 +436,7 @@ _02010D64:
 	ldr r0, _02010DC4 ; =KECLEON_SHOP_ITEM_TABLE_LISTS_2
 	mov r7, #0
 	ldr r6, [r0, r5, lsl #2]
-	ldr r5, _02010DC8 ; =0x0000270F
+	ldr r5, _02010DC8
 _02010D88:
 	mov r0, r5
 	bl RandIntSafe
