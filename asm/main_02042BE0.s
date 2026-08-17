@@ -1,35 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02042B98.inc"
+	.include "main_02042BE0.inc"
 
 	.text
-
-	arm_func_start AllocUnkBagStruct
-AllocUnkBagStruct: ; 0x02042B98
-	stmdb sp!, {r3, lr}
-	mov r0, #0xc8
-	mov r1, #8
-	bl MemAlloc
-	ldr r1, _02042BB8 ; =UNK_STORAGE_STRUCT_0XC
-	str r0, [r1, #8]
-	bl ClearBagSelectedItemTable
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_02042BB8: .word UNK_STORAGE_STRUCT_0XC
-	arm_func_end AllocUnkBagStruct
-
-	arm_func_start FreeUnkBagStruct
-FreeUnkBagStruct: ; 0x02042BBC
-	stmdb sp!, {r3, lr}
-	ldr r0, _02042BDC ; =UNK_STORAGE_STRUCT_0XC
-	ldr r0, [r0, #8]
-	bl MemFree
-	ldr r0, _02042BDC ; =UNK_STORAGE_STRUCT_0XC
-	mov r1, #0
-	str r1, [r0, #8]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_02042BDC: .word UNK_STORAGE_STRUCT_0XC
-	arm_func_end FreeUnkBagStruct
 
 	arm_func_start sub_02042BE0
 sub_02042BE0: ; 0x02042BE0
