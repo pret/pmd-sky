@@ -43,3 +43,17 @@ u32 GetNbItemsInBag(void)
     }
     return count;
 }
+
+u32 CountNbItemsOfTypeInBag(s16 id)
+{
+    struct item *item = BAG_ITEMS_PTR_MIRROR->bag_items->bag_items;
+    s32 count = 0;
+    s32 i;
+
+    for (i = 0; i < INVENTORY_SIZE; i++, item++) {
+        if (item->id == id) {
+            count++;
+        }
+    }
+    return count;
+}

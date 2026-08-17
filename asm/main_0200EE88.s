@@ -1,28 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0200EE4C.inc"
+	.include "main_0200EE88.inc"
 
 	.text
-
-	arm_func_start CountNbItemsOfTypeInBag
-CountNbItemsOfTypeInBag: ; 0x0200EE4C
-	ldr r1, _0200EE84 ; =BAG_ITEMS_PTR_MIRROR
-	mov r3, #0
-	ldr r1, [r1]
-	mov ip, r3
-	ldr r2, [r1, #0x384]
-_0200EE60:
-	ldrsh r1, [r2, #4]
-	add ip, ip, #1
-	add r2, r2, #6
-	cmp r1, r0
-	addeq r3, r3, #1
-	cmp ip, #0x32
-	blt _0200EE60
-	mov r0, r3
-	bx lr
-	.align 2, 0
-_0200EE84: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end CountNbItemsOfTypeInBag
 
 	arm_func_start CountItemTypeInBag
 CountItemTypeInBag: ; 0x0200EE88

@@ -122,37 +122,3 @@ _0200F0D0:
 	.align 2, 0
 _0200F0E0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end IsItemForSpecialSpawnInBag
-
-	arm_func_start HasStorableItems
-HasStorableItems: ; 0x0200F0E4
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r0, _0200F148 ; =BAG_ITEMS_PTR_MIRROR
-	mov r7, #0
-	ldr r0, [r0]
-	mov r4, r7
-	ldr r6, [r0, #0x384]
-	mov r5, #1
-	b _0200F138
-_0200F104:
-	ldrb r0, [r6]
-	tst r0, #1
-	movne r0, r5
-	moveq r0, r4
-	tst r0, #0xff
-	beq _0200F130
-	ldrsh r0, [r6, #4]
-	bl IsStorableItem
-	cmp r0, #0
-	movne r0, #1
-	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-_0200F130:
-	add r7, r7, #1
-	add r6, r6, #6
-_0200F138:
-	cmp r7, #0x32
-	blt _0200F104
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
-_0200F148: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end HasStorableItems

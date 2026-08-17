@@ -2,4 +2,3 @@
 .public AreItemsEquivalent
 .public BAG_ITEMS_PTR_MIRROR
 .public GetItemCategoryVeneer
-.public IsStorableItem

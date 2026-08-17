@@ -3,6 +3,7 @@
 
 #include "item.h"
 
+u32 HasStorableItems(void);
 s16 GetItemIndex(struct item* item);
 
 #endif
