@@ -109,4 +109,14 @@ extern Window WINDOW_LIST[20];
 struct Window *GetWindow(s32 window_id);
 void *GetWindowContents(s32 window_id);
 
+struct unk_022A7A6C {
+    u8 field_0x0[8];
+    u16 field_0x8;
+    u16 field_0xA;
+};
+
+extern struct unk_022A7A6C _022A7A6C;
+
+s32 NewWindow(s32 a, s32 b);
+
 #endif //PMDSKY_WINDOW_H
