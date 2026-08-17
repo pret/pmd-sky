@@ -1,5 +1,6 @@
 #include "main_0202AB40.h"
 #include "main_0202AAA8.h"
+#include "main_02032558.h"
 
 u32 IsParentMenuActive(s32 window_id)
 {

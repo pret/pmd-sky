@@ -156,6 +156,10 @@ Static main
 	Object asm/main_0202B530.o
 	Object src/main_0202B558.o
 	Object asm/main_0202B568.o
+	Object src/main_02032558.o
+	Object asm/main_02032578.o
+	Object src/main_0203258C.o
+	Object asm/main_020325AC.o
 	Object src/main_020348E4.o
 	Object asm/main_02034974.o
 	Object src/main_0203C760.o
