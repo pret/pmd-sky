@@ -21,13 +21,20 @@ typedef struct {
 #include "util.h"
 
 struct Window {
-    u8 PAD[6];
+    u8 PAD[4];
+    u8 field_0x4;
+    u8 field_0x5;
     u8 width;
-    u8 pad2[0xD9];
+    u8 field_0x7;
+    u8 field_0x8;
+    u8 field_0x9[3];
+    void *field_0xC;
+    u8 field_0x10[0xD0];
 };
 
 extern struct Window WINDOW_LIST[];
 
 struct Window *GetWindow(s32 window_id);
+void *GetWindowContents(s32 window_id);
 
 #endif //PMDSKY_WINDOW_H
