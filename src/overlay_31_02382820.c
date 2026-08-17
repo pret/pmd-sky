@@ -151,7 +151,7 @@ void DungeonMenuSwitch(s32 window_id)
     PreprocessString(str_buff, 0x400, DUNGEON_MENU_SWITCH_STR1, 0, &str_values);
     struct Window* window2 = GetWindow(window_id);
     s32 text_width = sub_020265A8(str_buff);
-    s32 x_offset = (window2->width * 8 - text_width) / 2;
+    s32 x_offset = (window2->template.width * 8 - text_width) / 2;
     DrawTextInWindow(window_id, x_offset, 2, str_buff);
     UpdateWindow(window_id);
 }

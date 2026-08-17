@@ -3,7 +3,7 @@
 
 void* GetWindowContents(s32 window_id)
 {
-    struct Window *w = &WINDOW_LIST[window_id];
+    WindowTemplate *tmpl = &WINDOW_LIST[window_id].template;
 
-    return w->field_0xC;
+    return (void *)tmpl->unk0C;
 }
