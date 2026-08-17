@@ -7,6 +7,7 @@
 #include "weather.h"
 #include "main_02001188.h"
 #include "window.h"
+#include "main_02027AF0.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
@@ -35,7 +36,6 @@ extern void GetMonsterOrTrapName(u8*, void*, u32); // The third argument isn't a
 extern u8* StringFromId(u32);
 extern void PreprocessString(u8* dst, u32 dsize, const u8* src, u32 flags, struct PPStrValues* ptr);
 extern void DrawTextInWindow(s32, u32, u32, u8*);
-extern void UpdateWindow(s32);
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern s32 sub_020265A8(u8*); // Measures the text's width in pixels

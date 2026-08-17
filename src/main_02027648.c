@@ -1,6 +1,13 @@
 #include "main_02027648.h"
 #include "window.h"
 
+u32 sub_02027624(s32 window_id)
+{
+    WindowTemplate *tmpl = &WINDOW_LIST[window_id].template;
+
+    return (tmpl->width * tmpl->height) << 5;
+}
+
 s32 NewWindowScreenCheck(s32 a, s32 b)
 {
     s8 i;

@@ -1,0 +1,17 @@
+#pragma once
+.public InitWindowTrailer
+.public MemFree
+.public UpdateWindow
+.public WINDOW_LIST
+.public _0209AC64
+.public _0209ACAC
+.public _020AFD4C
+.public _020AFD98
+.public _022A7A6C
+.public _022A7A74
+.public _022A7AE4
+.public _022A88E4
+.public _022A8992
+.public sub_0200B3FC
+.public sub_02027974
+.public sub_0202836C

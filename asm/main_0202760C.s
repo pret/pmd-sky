@@ -30,17 +30,3 @@ sub_0202796C_JP: ; 0x0202796C
 _02027980: .word _022A88F0
 	arm_func_end sub_0202796C_JP
 #endif
-
-	arm_func_start sub_02027624
-sub_02027624: ; 0x02027624
-	ldr r2, _02027644 ; =WINDOW_LIST
-	mov r1, #0xe0
-	mla r2, r0, r1, r2
-	ldrb r1, [r2, #6]
-	ldrb r0, [r2, #7]
-	smulbb r0, r1, r0
-	mov r0, r0, lsl #5
-	bx lr
-	.align 2, 0
-_02027644: .word WINDOW_LIST
-	arm_func_end sub_02027624

@@ -116,6 +116,7 @@ struct unk_022A7A6C {
 };
 
 extern struct unk_022A7A6C _022A7A6C;
+extern u16 _022A7A74[2];
 
 s32 NewWindow(s32 a, s32 b);
 
