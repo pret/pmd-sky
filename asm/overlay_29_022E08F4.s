@@ -1,43 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022E08A0.inc"
+	.include "overlay_29_022E08F4.inc"
 
 	.text
-
-	arm_func_start IsMarowakTrainingMaze
-IsMarowakTrainingMaze: ; 0x022E08A0
-	ldr r0, _022E08C8 ; =DUNGEON_PTR
-	ldr r0, [r0]
-	ldrb r0, [r0, #0x748]
-	cmp r0, #0xb4
-	blo _022E08C0
-	cmp r0, #0xbe
-	movls r0, #1
-	bxls lr
-_022E08C0:
-	mov r0, #0
-	bx lr
-	.align 2, 0
-_022E08C8: .word DUNGEON_PTR
-	arm_func_end IsMarowakTrainingMaze
-
-	arm_func_start FixedRoomIsSubstituteRoom
-FixedRoomIsSubstituteRoom: ; 0x022E08CC
-	ldr r0, _022E08F0 ; =DUNGEON_PTR
-	ldr r0, [r0]
-	add r0, r0, #0x4000
-#ifdef JAPAN
-	ldrb r0, [r0, #0x36]
-#else
-	ldrb r0, [r0, #0xda]
-#endif
-	cmp r0, #0x6e
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_022E08F0: .word DUNGEON_PTR
-	arm_func_end FixedRoomIsSubstituteRoom
 
 	arm_func_start ov29_022E08F4
 ov29_022E08F4: ; 0x022E08F4

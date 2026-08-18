@@ -4,7 +4,6 @@
 .public EntityIsValid__022ECDC0
 .public GetMonsterName
 .public GetStringFromFileVeneer
-.public MemZero
 .public memset
 .public ov29_0237C974
 .public strcpy
