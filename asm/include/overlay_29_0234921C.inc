@@ -1,5 +1,5 @@
 #pragma once
 .public DUNGEON_PTR
-.public GetAcceptedMission
+.public FloorHasMissionMonster
 .public GetSpriteFileSize
 .public LoadMonsterSprite
