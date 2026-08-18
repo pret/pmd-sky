@@ -1,4 +1,4 @@
-#include "overlay_29_02349620.h"
+#include "overlay_29_02349314.h"
 #include "dungeon.h"
 #include "mission.h"
 
@@ -10,14 +10,15 @@ bool8 FloorHasMissionMonster(struct mission_destination_info *info);
 bool8 IsCurrentMissionType(enum mission_type type);
 bool8 IsCurrentMissionTypeExact(enum mission_type type, u8 subtype);
 
-enum monster_id GetMissionTargetEnemy(void)
+bool8 IsJirachiChallengeFloor(void)
 {
-    return DUNGEON_PTR->mission_destination.enemy_species[0];
+    if (IsCurrentMissionType(MISSION_CHALLENGE_REQUEST) && DUNGEON_PTR->mission_destination.subtype == 5) {
+        return TRUE;
+    }
+    return FALSE;
 }
 
-enum monster_id GetMissionEnemyMinionGroup(s32 index)
+bool8 IsDestinationFloorWithMonster(void)
 {
-    s32 i = index + 1;
-
-    return DUNGEON_PTR->mission_destination.enemy_species[i];
+    return FloorHasMissionMonster(&DUNGEON_PTR->mission_destination) != 0;
 }

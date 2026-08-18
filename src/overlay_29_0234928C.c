@@ -1,4 +1,4 @@
-#include "overlay_29_02349620.h"
+#include "overlay_29_0234928C.h"
 #include "dungeon.h"
 #include "mission.h"
 
@@ -10,14 +10,12 @@ bool8 FloorHasMissionMonster(struct mission_destination_info *info);
 bool8 IsCurrentMissionType(enum mission_type type);
 bool8 IsCurrentMissionTypeExact(enum mission_type type, u8 subtype);
 
-enum monster_id GetMissionTargetEnemy(void)
+bool8 IsOutlawMonsterHouseFloor(void)
 {
-    return DUNGEON_PTR->mission_destination.enemy_species[0];
+    return IsCurrentMissionTypeExact(MISSION_ARREST_OUTLAW, 7) != 0;
 }
 
-enum monster_id GetMissionEnemyMinionGroup(s32 index)
+bool8 IsGoldenChamber(void)
 {
-    s32 i = index + 1;
-
-    return DUNGEON_PTR->mission_destination.enemy_species[i];
+    return IsCurrentMissionTypeExact(MISSION_EXPLORE_WITH_CLIENT, 2) != 0;
 }

@@ -5,5 +5,6 @@
 #include "util.h"
 
 enum monster_id GetMissionTargetEnemy(void);
+enum monster_id GetMissionEnemyMinionGroup(s32 index);
 
 #endif
