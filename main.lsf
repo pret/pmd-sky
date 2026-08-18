@@ -249,11 +249,12 @@ Static main
 	Object asm/main_0204FD38.o
 	Object src/main_0204FD3C.o
 	Object src/main_0204FDFC.o
-	Object asm/main_0204FE58.o
 	Object src/main_0204FEB4.o
 	Object asm/main_0204FFEC.o
 	Object src/main_020502B0.o
 	Object asm/main_02050300.o
+	Object src/main_020503CC.o
+	Object asm/main_02050420.o
 	Object src/main_020504A4.o
 	Object asm/main_020504BC.o
 	Object src/number_util.o

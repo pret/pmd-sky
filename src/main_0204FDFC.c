@@ -15,3 +15,16 @@ void SetPokemonJoined(u32 monster_id)
 
     ADVENTURE_LOG_PTR->pokemon_joined_flags[word] |= (1 << bit);
 }
+
+void SetPokemonBattled(u32 monster_id)
+{
+    s32 dex_num = GetDexNumberVeneer(monster_id);
+    if (dex_num == 0) return;
+
+    ADVENTURE_LOG_PTR->completion_flags[0] |= 2;
+
+    u32 word = dex_num / 32;
+    u32 bit  = dex_num % 32;
+
+    ADVENTURE_LOG_PTR->pokemon_battled_flags[word] |= (1 << bit);
+}
