@@ -243,8 +243,19 @@ Static main
 	Object src/dungeon_init.o
 	Object src/main_0204F050.o
 	Object asm/main_0204F0A0.o
+	Object src/main_0204FA24.o
+	Object asm/main_0204FA70.o
+	Object src/main_0204FB9C.o
+	Object asm/main_0204FD38.o
+	Object src/main_0204FD3C.o
 	Object src/main_0204FDFC.o
 	Object asm/main_0204FE58.o
+	Object src/main_0204FEB4.o
+	Object asm/main_0204FFEC.o
+	Object src/main_020502B0.o
+	Object asm/main_02050300.o
+	Object src/main_020504A4.o
+	Object asm/main_020504BC.o
 	Object src/number_util.o
 	Object asm/main_02051098.o
 	Object src/dungeon_recruitment_2.o

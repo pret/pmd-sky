@@ -1,8 +1,6 @@
 #include "main_0204FDFC.h"
 #include "adventure_log.h"
 
-extern struct adventure_log* ADVENTURE_LOG_PTR;
-
 extern s32 GetDexNumberVeneer();
 
 void SetPokemonJoined(u32 monster_id)
