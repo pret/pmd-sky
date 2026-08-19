@@ -1,6 +1,4 @@
 #pragma once
-.public BeginChargedMove
-.public BoostDefensiveStat
 .public DUNGEON_PTR
 .public DealDamage
 .public DungeonRandOutcomeUserTargetInteraction
@@ -8,12 +6,7 @@
 .public GetMoveType
 .public InitMove
 .public LICK_PARALYZE_CHANCE
-.public LowerDefensiveStat
 .public NATURE_POWER_TABLE
-.public SHADOW_BALL_LOWER_SPECIAL_DEFENSE_CHANCE
-.public SPATK_STAT_IDX
-.public StringFromId
-.public THUNDERBOLT_PARALYZE_CHANCE
 .public TryExplosion
 .public TryIncreaseHp
 .public TryInflictParalysisStatus

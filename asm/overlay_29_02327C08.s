@@ -1,17 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02327BF0.inc"
+	.include "overlay_29_02327C08.inc"
 
 	.text
-
-	arm_func_start DoMoveLowerSpeed1
-DoMoveLowerSpeed1: ; 0x02327BF0
-	stmdb sp!, {r3, lr}
-	mov r2, #1
-	mov r3, r2
-	bl LowerSpeed
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end DoMoveLowerSpeed1
 
 	arm_func_start DoMoveDamageConfuse10
 DoMoveDamageConfuse10: ; 0x02327C08

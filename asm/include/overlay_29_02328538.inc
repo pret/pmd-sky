@@ -52,7 +52,6 @@
 .public TryExplosion
 .public TryIncreaseHp
 .public TryInflictBurnStatus
-.public TryInflictConfusedStatus
 .public TryInflictCringeStatus
 .public TryInflictPoisonedStatus
 .public TryInflictStockpileStatus

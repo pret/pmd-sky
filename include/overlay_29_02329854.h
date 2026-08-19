@@ -6,5 +6,7 @@
 #include "move.h"
 
 bool8 DoMoveBlock(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
+bool8 DoMovePoison(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
+bool8 DoMoveToxic(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 
 #endif

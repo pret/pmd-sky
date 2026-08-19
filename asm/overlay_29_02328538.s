@@ -1173,13 +1173,3 @@ _02329350:
 	.align 2, 0
 _023293C8: .word 0x00000221
 	arm_func_end DoMoveSeismicToss
-
-	arm_func_start DoMoveConfuse
-DoMoveConfuse: ; 0x023293CC
-	stmdb sp!, {r3, lr}
-	mov r2, #1
-	mov r3, #0
-	bl TryInflictConfusedStatus
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end DoMoveConfuse

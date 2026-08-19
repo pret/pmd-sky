@@ -1,27 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02329868.inc"
+	.include "overlay_29_02329898.inc"
 
 	.text
-
-	arm_func_start DoMovePoison
-DoMovePoison: ; 0x02329868
-	stmdb sp!, {r3, lr}
-	mov r2, #1
-	mov r3, #0
-	bl TryInflictPoisonedStatus
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end DoMovePoison
-
-	arm_func_start DoMoveToxic
-DoMoveToxic: ; 0x02329880
-	stmdb sp!, {r3, lr}
-	mov r2, #1
-	mov r3, #0
-	bl TryInflictBadlyPoisonedStatus
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end DoMoveToxic
 
 	arm_func_start DoMovePoisonFang
 DoMovePoisonFang: ; 0x02329898

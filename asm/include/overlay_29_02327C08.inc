@@ -5,7 +5,6 @@
 .public DungeonRandRange
 .public LowerDefensiveStat
 .public LowerOffensiveStat
-.public LowerSpeed
 .public PSYBEAM_CONFUSE_CHANCE
 .public SPATK_STAT_IDX
 .public TryInflictConfusedStatus
