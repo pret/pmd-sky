@@ -1,0 +1,13 @@
+#pragma once
+.public AbilityIsActiveVeneer
+.public CalcDamageFixedWrapper
+.public DealDamage
+.public DungeonRandOutcomeUserTargetInteraction
+.public EXTRASENSORY_CRINGE_CHANCE
+.public GetDamageSourceWrapper
+.public GetMoveCategory
+.public GetMoveType
+.public LevitateIsActive
+.public LogMessageByIdWithPopupCheckUserTarget
+.public TryInflictCringeStatus
+.public ov29_0230D4A4

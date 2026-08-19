@@ -1,0 +1,15 @@
+#pragma once
+.public ATK_STAT_IDX
+.public ActivateMotorDrive
+.public BoostDefensiveStat
+.public BoostOffensiveStat
+.public DealDamage
+.public DefenderAbilityIsActiveMoveEffects__02328634
+.public DungeonRandOutcomeUserTargetInteraction
+.public GetMoveType
+.public GetMoveTypeForMonster
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SPATK_STAT_IDX
+.public THUNDERSHOCK_PARALYZE_CHANCE
+.public TryInflictParalysisStatus
+.public TryWarp
