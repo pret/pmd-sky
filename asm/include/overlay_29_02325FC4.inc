@@ -1,0 +1,17 @@
+#pragma once
+.public ATK_STAT_IDX
+.public ApplyOffensiveStatMultiplier
+.public BeginChargedMove
+.public DIG_DAMAGE_MULTIPLIER
+.public DUNGEON_PTR
+.public DealDamage
+.public EndTwoTurnMove
+.public GetTileAtEntity
+.public IsChargingTwoTurnMove
+.public IsTileGround
+.public LogMessageByIdWithPopupCheckUserTarget
+.public LowerHitChanceStat
+.public SPATK_STAT_IDX
+.public StringFromId
+.public TryActivateWeather
+.public WEATHER_MOVE_TURN_COUNT

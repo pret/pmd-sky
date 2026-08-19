@@ -1,0 +1,13 @@
+#pragma once
+.public BoostDefensiveStat
+.public BoostOffensiveStat
+.public BoostSpeedOneStage
+.public DealDamage
+.public DungeonRandOutcomeUserAction
+.public GetApparentWeather
+.public GetWeightMultiplier
+.public MULTIHIT_FATIGUE_MOVE_USED
+.public SILVER_WIND_BOOST_CHANCE
+.public SPATK_STAT_IDX
+.public SYNTHESIS_HP_RESTORATION_TABLE
+.public TryIncreaseHp
