@@ -1,10 +1,6 @@
 #pragma once
-.public CalcDamageFixedWrapper
 .public DUNGEON_PTR
 .public EntityIsValidMoveEffects__0232C500
-.public GetDamageSourceWrapper
-.public GetMoveCategory
-.public GetMoveType
 .public GetTileAtEntity
 .public GetTileSafe
 .public GetTrapInfo
@@ -14,7 +10,6 @@
 .public IsFullFloorFixedRoom
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
-.public TryInflictInvisibleStatus
 .public TryRemoveTrap
 .public TryWarp
 .public UpdateMinimap

@@ -1,0 +1,17 @@
+#pragma once
+.public AbilityIsActiveVeneer
+.public DealDamage
+.public GetApparentWeather
+.public LogMessageByIdWithPopupCheckUser
+.public LogMessageByIdWithPopupCheckUserTarget
+.public ROOST_HP_RESTORATION_TABLE
+.public SetPreprocessorArgsIdVal
+.public SubstitutePlaceholderStringTags
+.public SwapDefensiveMultipliers
+.public SwapDefensiveStages
+.public SwapHitChanceStages
+.public SwapOffensiveMultipliers
+.public SwapOffensiveStages
+.public TryIncreaseHp
+.public TryInflictSleeplessStatus
+.public WRING_OUT_DAMAGE_MULT_TABLE

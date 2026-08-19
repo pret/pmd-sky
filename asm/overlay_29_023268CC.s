@@ -321,12 +321,3 @@ _02326C98: .word ov10_022C4C0C
 _02326C9C: .word 0x000003E7
 _02326CA0: .word ov10_022C4C0E
 	arm_func_end DoMoveReturn
-
-	arm_func_start DoMoveGrudge
-DoMoveGrudge: ; 0x02326CA4
-	ldr ip, _02326CB0 ; =TryInflictGrudgeStatus
-	mov r2, #1
-	bx ip
-	.align 2, 0
-_02326CB0: .word TryInflictGrudgeStatus
-	arm_func_end DoMoveGrudge

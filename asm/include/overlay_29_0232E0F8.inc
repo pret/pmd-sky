@@ -1,0 +1,10 @@
+#pragma once
+.public AbilityIsActiveVeneer
+.public CalcRecoilDamageFixed
+.public DealDamage
+.public DungeonRandOutcomeUserTargetInteraction
+.public EndFrozenStatus
+.public EndProtectStatus
+.public EntityIsValidMoveEffects__0232E250
+.public FLARE_BLITZ_BURN_CHANCE
+.public TryInflictBurnStatus

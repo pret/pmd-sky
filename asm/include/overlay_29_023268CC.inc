@@ -21,7 +21,6 @@
 .public SubstitutePlaceholderStringTags
 .public TryInflictBurnStatus
 .public TryInflictConfusedStatus
-.public TryInflictGrudgeStatus
 .public TryInflictMirrorMoveStatus
 .public TryInflictWhifferStatus
 .public ov10_022C4C0C
