@@ -51,7 +51,7 @@ bool8 MonsterCannotAttack(struct entity *entity, bool8 skip_sleep)
     return FALSE;
 }
 
-bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction)
+bool8 CanMonsterMoveInDirection(struct entity *monster, s32 direction)
 {
     struct monster *monster_info = GetEntInfo(monster);
     enum mobility_type mobility = GetMobilityTypeCheckSlipAndFloating(monster, monster_info->id);

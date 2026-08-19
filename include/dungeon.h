@@ -346,12 +346,10 @@ struct dungeon {
     struct damage_calc_diag last_damage_calc;
     // 0x1D8: Somehow related to executing a monster's actions (including leader).
     // Initialized to 0xFFFF
-    u16 field_0x1d8;
     // 0x1DA: Somehow related to executing the leader's actions. Also maybe when leader opens
     // some menus? Initialized to 0xFFFF
-    u16 field_0x1da;
-    u16 field_0x1dc; // 0x1DC: Initialized to 0xFFFF
-    u16 field_0x1de; // 0x1DE: Initialized to 0xFFFF
+    struct position field_0x1d8;
+    struct position field_0x1dc;
     // 0x1E0: Color table. Used to apply a tint to the colors shown on screen.
     // Changes depending on the current weather.
     struct rgba color_table[256];
@@ -360,7 +358,7 @@ struct dungeon {
     struct spawned_shopkeeper_data shopkeeper_spawns[8];
     // 0x610: Number of valid shopkeeper spawns
     int shopkeeper_spawn_count;
-    u32 field_0x614;
+    s32 field_0x614;
     // 0x618: Something related to animiations?  Could be ID?
     u32 unk1_animation1_value;
     u32 unk2_animation1_value;

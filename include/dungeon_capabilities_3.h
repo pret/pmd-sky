@@ -10,7 +10,7 @@
 bool8 MonsterCannotAttack(struct entity *entity, bool8 skip_sleep);
 // Checks if the given monster can move in the specified direction
 // Returns false if any monster is standing on the target tile
-bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction);
+bool8 CanMonsterMoveInDirection(struct entity *monster, s32 direction);
 #ifndef JAPAN
 // Returns the mobility type of a monster, after accounting for things that could affect it.
 // List of checks: Mobile status, Mobile Scarf, All-Terrain Hiker and Absolute Mover.
