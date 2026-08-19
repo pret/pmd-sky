@@ -1,12 +1,8 @@
 #pragma once
-.public ATK_STAT_IDX
-.public BoostDefensiveStat
-.public BoostHitChanceStat
 .public DealDamage
 .public DungeonRandOutcomeUserTargetInteraction
 .public EndFrozenStatus
 .public FLAMETHROWER_BURN_CHANCE
 .public FLAME_WHEEL_BURN_CHANCE
-.public SPATK_STAT_IDX
 .public TryInflictBurnStatus
 .public TryInflictExposedStatus

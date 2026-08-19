@@ -4,7 +4,6 @@
 .public ApplyDamageAndEffectsWrapper
 .public BITE_CRINGE_CHANCE
 .public BeginChargedMove
-.public BoostOffensiveStat
 .public CONSTRICT_LOWER_SPEED_CHANCE
 .public CRUNCH_LOWER_DEFENSE_CHANCE
 .public CalcDamageFixedWrapper

@@ -1,0 +1,9 @@
+#pragma once
+.public DoMoveCleanse
+.public DoMoveEscape
+.public EndNegativeStatusConditionWrapper
+.public EntityIsValid__0232E840
+.public RestoreAllMovePP
+.public TryRestoreHp
+.public ov29_0234AFFC
+.public ov29_02353718

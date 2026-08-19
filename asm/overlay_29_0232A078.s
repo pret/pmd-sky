@@ -1,20 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0232A058.inc"
+	.include "overlay_29_0232A078.inc"
 
 	.text
-
-	arm_func_start DoMoveAmnesia
-DoMoveAmnesia: ; 0x0232A058
-	stmdb sp!, {r3, lr}
-	ldr r2, _0232A074 ; =SPATK_STAT_IDX
-	mov r3, #2
-	ldr r2, [r2]
-	bl BoostDefensiveStat
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0232A074: .word SPATK_STAT_IDX
-	arm_func_end DoMoveAmnesia
 
 	arm_func_start DoMoveNightShade
 DoMoveNightShade: ; 0x0232A078

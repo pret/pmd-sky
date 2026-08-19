@@ -1,6 +1,4 @@
 #pragma once
-.public ATK_STAT_IDX
-.public BoostDefensiveStat
 .public DealDamage
 .public DungeonRandOutcomeUserTargetInteraction
 .public LowerOffensiveStat

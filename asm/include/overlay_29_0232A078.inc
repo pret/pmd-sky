@@ -1,6 +1,5 @@
 #pragma once
 .public ATK_STAT_IDX
-.public BoostDefensiveStat
 .public CalcDamageFixedWrapper
 .public DUNGEON_PTR
 .public DealDamage
@@ -11,7 +10,6 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerDefensiveStat
 .public LowerOffensiveStat
-.public SPATK_STAT_IDX
 .public TryActivateWeather
 .public TryEndStatusWithAbility
 .public WEATHER_MOVE_TURN_COUNT

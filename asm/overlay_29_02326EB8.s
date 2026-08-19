@@ -1,20 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02326E98.inc"
+	.include "overlay_29_02326EB8.inc"
 
 	.text
-
-	arm_func_start DoMoveBoostAttack1
-DoMoveBoostAttack1: ; 0x02326E98
-	stmdb sp!, {r3, lr}
-	ldr r2, _02326EB4 ; =ATK_STAT_IDX
-	mov r3, #1
-	ldr r2, [r2]
-	bl BoostOffensiveStat
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_02326EB4: .word ATK_STAT_IDX
-	arm_func_end DoMoveBoostAttack1
 
 	arm_func_start DoMoveRazorWind
 DoMoveRazorWind: ; 0x02326EB8

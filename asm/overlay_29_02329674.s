@@ -38,16 +38,3 @@ _023296CC: .word 0x00000EDA
 _023296D0: .word ATK_STAT_IDX
 _023296D4: .word SPATK_STAT_IDX
 	arm_func_end DoMoveHelpingHand
-
-	arm_func_start DoMoveBoostDefense2
-DoMoveBoostDefense2: ; 0x023296D8
-	stmdb sp!, {r3, lr}
-	ldr r2, _023296F4 ; =ATK_STAT_IDX
-	mov r3, #2
-	ldr r2, [r2]
-	bl BoostDefensiveStat
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_023296F4: .word ATK_STAT_IDX
-	arm_func_end DoMoveBoostDefense2

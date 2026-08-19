@@ -1,10 +1,9 @@
 #include "overlay_29_0232E250.h"
 #include "dungeon_util_static.h"
+#include "move_orb_effects.h"
 
-extern s32 ATK_STAT_IDX;
-extern s32 SPATK_STAT_IDX;
-
-extern void BoostDefensiveStat(struct entity* user, struct entity* target, s32 stat_idx, s16 n_stages);
+extern struct StatIndex ATK_STAT_IDX;
+extern struct StatIndex SPATK_STAT_IDX;
 
 bool8 EntityIsValidMoveEffects__0232E250(struct entity *entity)
 {

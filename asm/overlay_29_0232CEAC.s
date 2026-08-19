@@ -48,16 +48,3 @@ DoMoveEcho: ; 0x0232CEAC
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end DoMoveEcho
-
-	arm_func_start DoMoveFamish
-DoMoveFamish: ; 0x0232CF54
-	stmdb sp!, {r3, lr}
-	ldr r2, _0232CF70 ; =ov10_022C45BC
-	mov r3, #0
-	ldrsh r2, [r2]
-	bl TryDecreaseBelly
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0232CF70: .word ov10_022C45BC
-	arm_func_end DoMoveFamish

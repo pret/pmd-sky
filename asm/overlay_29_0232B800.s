@@ -1,20 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0232B7E0.inc"
+	.include "overlay_29_0232B800.inc"
 
 	.text
-
-	arm_func_start DoMoveDefenseCurl
-DoMoveDefenseCurl: ; 0x0232B7E0
-	stmdb sp!, {r3, lr}
-	ldr r2, _0232B7FC ; =ATK_STAT_IDX
-	mov r3, #1
-	ldr r2, [r2]
-	bl BoostDefensiveStat
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0232B7FC: .word ATK_STAT_IDX
-	arm_func_end DoMoveDefenseCurl
 
 	arm_func_start DoMoveDecoy
 DoMoveDecoy: ; 0x0232B800

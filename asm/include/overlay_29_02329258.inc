@@ -1,0 +1,15 @@
+#pragma once
+.public CalcDamageFixedWrapper
+.public ChangeMonsterAnimation
+.public GetDamageSourceWrapper
+.public GetMoveCategory
+.public GetMoveType
+.public PlaySeByIdIfShouldDisplayEntity
+.public SetTwoTurnInvincibility
+.public ShouldDisplayEntityAdvanced
+.public StartFadeDungeonWrapper
+.public WaitUntilFadeIsFinished
+.public WaitUntilMonsterFliesOffscreen
+.public WaitUntilMonsterIsBackOnGround
+.public ov29_022EA370
+.public ov29_022ECAFC
