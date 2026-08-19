@@ -191,7 +191,9 @@ void SetLeaderAction(void)
     MemZero(buf, 5);
     *(u16 *)&DUNGEON_PTR->field_0x1c = 0;
     TryPointCameraToMonster(GetLeader(), 1, 1);
+#ifndef JAPAN
     SetDecoyAiTracker(GetLeader());
+#endif
     if (HasStatusThatPreventsLeaderActing(GetLeader())) {
         ov29_022EA370(0x3C, 0x10);
         return;
@@ -997,6 +999,9 @@ void SetLeaderAction(void)
             sub_02006B70();
         }
         ov29_022E0B44();
+#ifdef EUROPE
+        ov29_022F2FE4();
+#endif
         ov29_0237C9A4.field_0x2 = 0;
         display->team_menu_or_grid = 0;
         HideTileGrid();
