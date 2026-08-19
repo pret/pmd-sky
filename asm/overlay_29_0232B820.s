@@ -1,19 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0232B800.inc"
+	.include "overlay_29_0232B820.inc"
 
 	.text
-
-	arm_func_start DoMoveDecoy
-DoMoveDecoy: ; 0x0232B800
-	stmdb sp!, {r3, lr}
-	mov r2, #1
-	mov ip, #0
-	mov r3, r2
-	str ip, [sp]
-	bl TryInflictDecoyStatus
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end DoMoveDecoy
 
 	arm_func_start DoMoveMistBall
 DoMoveMistBall: ; 0x0232B820

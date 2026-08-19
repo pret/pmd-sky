@@ -13,7 +13,6 @@
 .public SPATK_STAT_IDX
 .public THUNDER_FANG_CRINGE_CHANCE
 .public THUNDER_FANG_PARALYZE_CHANCE
-.public TransferNegativeStatusCondition
 .public TryActivateWeather
 .public TryInflictCringeStatus
 .public TryInflictFrozenStatus

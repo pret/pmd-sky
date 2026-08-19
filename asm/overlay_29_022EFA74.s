@@ -1,13 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022EFA6C.inc"
+	.include "overlay_29_022EFA74.inc"
 
 	.text
-
-	arm_func_start DebugRecruitingEnabled
-DebugRecruitingEnabled: ; 0x022EFA6C
-	mov r0, #1
-	bx lr
-	arm_func_end DebugRecruitingEnabled
 
 	arm_func_start TryActivateIqBooster
 TryActivateIqBooster: ; 0x022EFA74

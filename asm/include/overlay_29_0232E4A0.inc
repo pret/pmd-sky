@@ -1,6 +1,5 @@
 #pragma once
 .public AbilityIsActiveVeneer
-.public BoostOffensiveStat
 .public BoostSpeedOneStage
 .public CalcRecoilDamageFixed
 .public DealDamage

@@ -1,17 +1,12 @@
 #pragma once
-.public ATK_STAT_IDX
 .public AbilityIsActiveVeneer
-.public BoostOffensiveStat
 .public CalcDamageFixedWrapper
-.public DungeonRandInt
 .public GetApparentWeather
 .public GetDamageSourceWrapper
 .public GetMoveCategory
 .public GetMoveType
-.public GetMoveTypeForMonster
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MOONLIGHT_HP_RESTORATION_TABLE
-.public SetPreprocessorArgsIdVal
 .public SubstitutePlaceholderStringTags
 .public TryIncreaseHp
 .public ov29_0230D4A4

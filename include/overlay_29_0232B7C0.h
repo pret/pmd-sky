@@ -8,5 +8,6 @@
 bool8 DoMoveMagicCoat(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 bool8 DoMoveProtect(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 bool8 DoMoveDefenseCurl(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
+bool8 DoMoveDecoy(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 
 #endif

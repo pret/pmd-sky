@@ -1,5 +1,4 @@
 #pragma once
-.public ATK_STAT_IDX
 .public AbilityIsActiveVeneer
 .public ApplyDamageAndEffectsWrapper
 .public CalcRecoilDamageFixed
@@ -13,12 +12,9 @@
 .public InitMove
 .public IsSameMove
 .public LogMessageByIdWithPopupCheckUserTarget
-.public LowerHitChanceStat
-.public SMOG_POISON_CHANCE
 .public SetPreprocessorArgsIdVal
 .public TryActivateWeather
 .public TryEndStatusWithAbility
 .public TryIncreaseHp
 .public TryInflictCringeStatus
-.public TryInflictPoisonedStatus
 .public WEATHER_MOVE_TURN_COUNT

@@ -208,16 +208,3 @@ _0232D6A0:
 _0232D6A8: .word ICE_FANG_FREEZE_CHANCE
 _0232D6AC: .word ICE_FANG_CRINGE_CHANCE
 	arm_func_end DoMoveIceFang
-
-	arm_func_start DoMovePsychoShift
-DoMovePsychoShift: ; 0x0232D6B0
-	stmdb sp!, {r3, lr}
-	cmp r0, r1
-	beq _0232D6C8
-	mov r2, #0
-	mov r3, r2
-	bl TransferNegativeStatusCondition
-_0232D6C8:
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end DoMovePsychoShift

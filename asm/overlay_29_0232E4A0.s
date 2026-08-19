@@ -197,16 +197,3 @@ DoMoveRockPolish: ; 0x0232E6E0
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end DoMoveRockPolish
-
-	arm_func_start DoMoveNastyPlot
-DoMoveNastyPlot: ; 0x0232E714
-	stmdb sp!, {r3, lr}
-	ldr r2, _0232E730 ; =SPATK_STAT_IDX
-	mov r3, #2
-	ldr r2, [r2]
-	bl BoostOffensiveStat
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0232E730: .word SPATK_STAT_IDX
-	arm_func_end DoMoveNastyPlot
