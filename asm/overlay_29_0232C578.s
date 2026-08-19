@@ -1,47 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0232C524.inc"
+	.include "overlay_29_0232C578.inc"
 
 	.text
-
-	arm_func_start DoMoveRebound
-DoMoveRebound: ; 0x0232C524
-	stmdb sp!, {r3, lr}
-	mov r2, #0xa
-	bl SetReflectStatus
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end DoMoveRebound
-
-	arm_func_start DoMoveSwitchPositions
-DoMoveSwitchPositions: ; 0x0232C538
-	stmdb sp!, {r3, lr}
-	ldr r3, [r0, #0xb4]
-#ifdef JAPAN
-	ldrb r2, [r3, #0x107]
-	cmp r2, #1
-	movlo r2, #1
-	strlob r2, [r3, #0x107]
-#else
-	ldrb r2, [r3, #0x108]
-	cmp r2, #1
-	movlo r2, #1
-	strlob r2, [r3, #0x108]
-#endif
-	mov r2, #1
-	bl TrySwitchPlace
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end DoMoveSwitchPositions
-
-	arm_func_start DoMoveStayAway
-DoMoveStayAway: ; 0x0232C560
-	stmdb sp!, {r3, lr}
-	mov r2, #1
-	mov r3, #0
-	bl TryWarp
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end DoMoveStayAway
 
 	arm_func_start DoMoveCleanse
 DoMoveCleanse: ; 0x0232C578

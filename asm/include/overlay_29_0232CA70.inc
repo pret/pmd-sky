@@ -1,0 +1,7 @@
+#pragma once
+.public DUNGEON_PTR
+.public IsSecretBazaarNpc
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SetDungeonEscapeFields
+.public SubstitutePlaceholderStringTags
+.public WaitUntilAlertBoxPauseIsOver

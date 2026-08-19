@@ -8,9 +8,6 @@
 .public GetMoveCategory
 .public LogMessageByIdWithPopupCheckUserTarget
 .public SLEEP_TURN_RANGE
-.public SetReflectStatus
 .public TryInflictSleepStatus
-.public TrySwitchPlace
-.public TryWarp
 .public ov29_022E8104
 .public ov29_022E81F8
