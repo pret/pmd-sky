@@ -1,15 +1,8 @@
 #pragma once
-.public AdvanceFrame
 .public AnimationDelayOrSomething
 .public ChangeDungeonMusic
 .public DUNGEON_PTR
-.public FullyCloseAlertBox
-.public GetName
-.public GetSize0x80Buffer
 .public HandleFaint
-.public InitPreprocessorArgs
-.public LogMessage
-.public LogMessageByIdWithPopupCheckUserTarget
 .public MESSAGE_LOG_INFO
 .public MemAlloc
 .public MemFree
@@ -17,10 +10,6 @@
 .public MissionExitPrompt
 .public MusicTableIdxToMusicId
 .public SetUnkMusicFlag
-.public ShouldDisplayEntityWrapper
-.public StringFromId
-.public UnkMapRelatedFunc
-.public WaitUntilAlertBoxTextIsLoaded
 .public ov29_022E68F0
-.public ov29_022E9FC0
 .public ov29_022EAEFC
+.public ov29_0234B130

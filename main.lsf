@@ -1256,6 +1256,12 @@ Overlay OVY_29
 	Object asm/overlay_29_023498A0.o
 	Object src/overlay_29_0234AEA4.o
 	Object asm/overlay_29_0234AEE8.o
+	Object src/overlay_29_0234AFFC.o
+	Object asm/overlay_29_0234B010.o
+	Object src/overlay_29_0234B024.o
+	Object asm/overlay_29_0234B0CC.o
+	Object src/overlay_29_0234B104.o
+	Object asm/overlay_29_0234B130.o
 	Object src/overlay_29_0234B340.o
 	Object asm/overlay_29_0234B350.o
 	Object src/overlay_29_0234B4BC.o
