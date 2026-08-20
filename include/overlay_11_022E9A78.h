@@ -8,12 +8,15 @@ struct unk_02388FC0 {
     u8 field_0x1;
     bool8 field_0x2;
     u8 field_0x3;
-    u8 field_0x4[8];
+    s32 field_0x4;
+    s32 field_0x8;
     s32 field_0xC;
 };
 
 struct unk_023890A0 {
-    u8 field_0x0[0x44];
+    u8 field_0x0[0x14];
+    s16 field_0x14;
+    u8 field_0x16[0x2E];
 };
 
 void ov11_022E9A78(s32 a);
@@ -26,5 +29,15 @@ void ov11_022E9B0C(s32 a);
 void ov11_022E9B24(s32 a);
 void ov11_022E9B40(s32 a);
 void ov11_022E9B5C(s32 a, s32 b, s32 c);
+void ov11_022E9B84(s32 a);
+void ov11_022E9BD0(s32 a);
+void ov11_022E9C20(s32 a);
+void ov11_022E9C70(s32 a, s32 b, s32 c);
+void ov11_022E9C98(s32 a);
+void ov11_022E9CB0(s32 a);
+void ov11_022E9CCC(s32 a);
+void ov11_022E9CE8(s32 a, s32 b, s32 c);
+void ov11_022E9D10(s32 a);
+void ov11_022E9D44(s32 a, s32 b, s32 c);
 
 #endif
