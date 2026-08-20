@@ -2,7 +2,7 @@
 
 extern const s16 HEAL_ORDER_HP_RESTORATION;
 
-extern void TryIncreaseHp(struct entity *user, struct entity *target, s16 hp, s32 a, bool8 b);
+extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
 
 bool8 DoMoveHealOrder(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)
 {

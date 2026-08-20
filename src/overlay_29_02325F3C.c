@@ -3,7 +3,7 @@
 
 extern const s16 MORNING_SUN_HP_RESTORATION_TABLE[];
 
-extern void TryIncreaseHp(struct entity *user, struct entity *target, s16 hp, s32 a, bool8 b);
+extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
 
 extern s32 NIGHTMARE_TURN_RANGE;
 
