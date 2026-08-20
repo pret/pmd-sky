@@ -21,3 +21,11 @@ enum monster_id GetMissionEnemyMinionGroup(s32 index)
 
     return DUNGEON_PTR->mission_destination.enemy_species[i];
 }
+
+void ov29_02349658(void)
+{
+    DUNGEON_PTR->field_0x0 = 0;
+    DUNGEON_PTR->target_enemy_defeated_message = FALSE;
+    DUNGEON_PTR->hidden_outlaw_defeated_message = FALSE;
+    DUNGEON_PTR->target_monster_not_found_flag = FALSE;
+}

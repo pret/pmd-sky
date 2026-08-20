@@ -44,6 +44,7 @@ extern struct unk_0237C9A4 ov29_0237C9A4;
 extern u16 DUNGEON_BUTTON_INPUT[8];
 extern u16 ov29_0237C6A4;
 
+extern s32 SetActionUseMovePlayer();
 extern void AdvanceFrame(u32);
 extern bool8 CanSeeTarget(struct entity *user, struct entity *target);
 extern bool8 IsBlinded(struct entity *entity, bool8 check_held_item);
@@ -68,7 +69,6 @@ extern s32 OpenMessageLog();
 extern s32 PlaySeVolumeWrapper();
 extern struct entity *PositionHasMonster();
 extern s32 ResetLeaderActionFields();
-extern s32 SetActionUseMovePlayer();
 extern s32 SetLeaderActionFields();
 extern s32 ShouldLeaderKeepRunning();
 extern s32 StairsMenuAfterStep();
