@@ -19,5 +19,15 @@ void Dwci_Acc_SetPlayerId(struct unk_022DB0E0* a, u32 v);
 void Dwci_Acc_SetFriendKey(struct unk_022DB0E0* a, u32 lo, u32 hi);
 void Dwci_Acc_SetGsProfileId(struct unk_022DB0E0* a, u32 v);
 u32 Dwci_Acc_GetFlags(struct unk_022DB0E0* a);
+u32 Dwci_Acc_GetFlag_DataType(struct unk_022DB0E0 *a);
+u32 Dwc_IsBuddyFriendData(struct unk_022DB0E0 *a);
+u32 Dwci_IsBuddyFriendData(struct unk_022DB0E0 *a);
+u32 Dwci_IsReverseBuddyFriendData(struct unk_022DB0E0 *a);
+u32 Dwci_IsBuddyMsgAlreadySent(struct unk_022DB0E0 *a);
+u32 Dwc_GetFriendDataType(struct unk_022DB0E0 *a);
+void Dwci_Acc_SetFlags(struct unk_022DB0E0 *a, u32 v);
+void Dwci_Acc_SetFlag_DataType(struct unk_022DB0E0 *a, u32 type);
+void Dwci_SetBuddyFriendData(struct unk_022DB0E0 *a);
+void Dwci_SetReverseBuddyFlag(struct unk_022DB0E0 *a, bool8 on);
 
 #endif
