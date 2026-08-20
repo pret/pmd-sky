@@ -2,7 +2,9 @@
 #define PMDSKY_OVERLAY_18_0238C950_H
 
 struct unk_0238C950 {
-    u8 field_0x0[0x80];
+    u8 field_0x0[4];
+    s8 field_0x4;
+    u8 field_0x5[0x7B];
     s32 field_0x80;
     s32 field_0x84;
     s32 field_0x88;
