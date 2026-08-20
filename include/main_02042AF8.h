@@ -9,10 +9,12 @@ struct unk_020AFED4 {
 };
 
 struct unk_02043148 {
-    u8 field_0x0[4];
+    s32 field_0x0;
     s16 field_0x4[1000];
     s8 field_0x7D4;
-    u8 field_0x7D5[0x13B];
+    s8 field_0x7D5;
+    s8 field_0x7D6;
+    u8 field_0x7D7[0x139];
     s16 field_0x910;
     u8 field_0x912[0xFAA];
     u32 field_0x18BC;
@@ -23,7 +25,7 @@ struct unk_020AFEE0 {
     u16 field_0x2;
     struct unk_02043148 *field_0x4;
     u8 *field_0x8;
-    u8 field_0xC[4];
+    s32 field_0xC;
     u32 field_0x10;
 };
 

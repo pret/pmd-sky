@@ -1,5 +1,7 @@
 #include "directory_file.h"
 
+extern const struct unk_02094C18 _02094C18;
+
 #include "file_rom.h"
 #include "debug.h"
 
@@ -36,4 +38,9 @@ u32 DirectoryFile_LoadDirectoryFile(struct directory *pack_file,void *output_buf
   FileRom_HandleRead(&pack_file->opened_file,output_buffer,toc_entry->length);
   FileRom_StopDataTransfer();
   return toc_entry->length;
+}
+
+void sub_0200C4CC(struct unk_02094C18* dst)
+{
+    *dst = _02094C18;
 }
