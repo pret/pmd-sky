@@ -1,68 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022F05B4.inc"
+	.include "overlay_29_022F0654.inc"
 
 	.text
-
-	arm_func_start ov29_022F05B4
-ov29_022F05B4: ; 0x022F05B4
-	stmdb sp!, {r4, lr}
-	mov r4, r1
-	cmp r2, #0
-	bne _022F05D4
-	bl UnfreezeAnim
-	mov r0, r4
-	bl UnfreezeAnim
-	ldmia sp!, {r4, pc}
-_022F05D4:
-	bl FreezeAnim
-	mov r0, r4
-	bl FreezeAnim
-	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022F05B4
-
-	arm_func_start ov29_022F05E4
-ov29_022F05E4: ; 0x022F05E4
-	stmdb sp!, {r3, lr}
-	bl ov29_022F0AE0
-	bl ov29_0234D668
-	bl ov29_0234D838
-	mov r0, #0x20
-	mov r1, #0x62
-	bl ov29_022EA370
-	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022F05E4
-
-	arm_func_start TalkToSecretBazaarNpcStandard
-TalkToSecretBazaarNpcStandard: ; 0x022F0604
-	stmdb sp!, {r3, lr}
-	mov r3, #0
-	str r3, [sp]
-	bl TalkToSecretBazaarNpc
-	ldmia sp!, {r3, pc}
-	arm_func_end TalkToSecretBazaarNpcStandard
-
-	arm_func_start ov29_022F0618
-ov29_022F0618: ; 0x022F0618
-	stmdb sp!, {r3, lr}
-	mov ip, #0
-	str ip, [sp]
-	bl TalkToSecretBazaarNpc
-	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022F0618
-
-	arm_func_start TalkToSecretBazaarNpcWithYesNoMenu
-TalkToSecretBazaarNpcWithYesNoMenu: ; 0x022F062C
-	stmdb sp!, {r3, r4, lr}
-	sub sp, sp, #4
-	mov r4, #1
-	str r4, [sp]
-	bl TalkToSecretBazaarNpc
-	mov r4, r0
-	bl ov29_022F0AE0
-	mov r0, r4
-	add sp, sp, #4
-	ldmia sp!, {r3, r4, pc}
-	arm_func_end TalkToSecretBazaarNpcWithYesNoMenu
 
 	arm_func_start MakeTargetFaceUserAndIdle
 MakeTargetFaceUserAndIdle: ; 0x022F0654

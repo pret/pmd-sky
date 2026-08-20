@@ -9,6 +9,7 @@
 .public FS_OpenFile
 .public FS_ReadFile
 .public FS_SeekFile
+.public FileRom_StopDataTransfer
 .public GXS_BeginLoadBGExtPltt
 .public GXS_EndLoadBGExtPltt
 .public GX_BeginLoadBGExtPltt
@@ -89,7 +90,6 @@
 .public sub_02002C40
 .public sub_02002CAC
 .public sub_02002CB4
-.public sub_02002E10
 .public sub_02002E98
 .public sub_0200302C
 .public sub_020030FC

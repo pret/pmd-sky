@@ -11,7 +11,6 @@
 .public DrawTextInWindow
 .public EntityIsValid__022F0590
 .public ExecuteMoveEffect
-.public FreezeAnim
 .public GetBottomScreenOption
 .public GetDirectionTowardsPosition
 .public GetLeader
@@ -34,7 +33,6 @@
 .public SetTopScreenOption
 .public SubstitutePlaceholderStringTags
 .public TryPointCameraToMonster
-.public UnfreezeAnim
 .public UnkMapRelatedFunc
 .public UpdateAiTargetPos
 .public UpdateMinimap
@@ -59,7 +57,6 @@
 .public ov29_0234D65C
 .public ov29_0234D668
 .public ov29_0234D690
-.public ov29_0234D838
 .public ov29_0234D860
 .public ov29_0234D878
 .public ov29_0234D88C

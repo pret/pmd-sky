@@ -1,5 +1,4 @@
 #pragma once
-.public _s32_div_f
 .public CloseAdvancedMenu
 .public CloseDialogueBox
 .public ClosePortraitBox
@@ -12,6 +11,12 @@
 .public EVOLUTION_HP_BONUS
 .public EVOLUTION_PHYSICAL_STAT_BONUSES
 .public EVOLUTION_SPECIAL_STAT_BONUSES
+.public EVO_MAIN_MENU_ITEMS
+.public EVO_MENU_ITEMS_CONFIRM
+.public EVO_SUBMENU_ITEMS
+.public EVO_WINDOW_PARAMS_4
+.public EVO_WINDOW_PARAMS_5
+.public EVO_WINDOW_PARAMS_6
 .public GetActiveTeamMember
 .public GetAdvancedMenuResult
 .public GetEvolutionPossibilities
@@ -39,8 +44,7 @@
 .public IsValidTeamMember
 .public MemAlloc
 .public MemFree
-.public ov11_0230D220
-.public ov11_02310BDC
+.public OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 .public PreprocessString
 .public Rand16Bit
 .public RemoveItemInStorage
@@ -59,6 +63,12 @@
 .public StrncpyName
 .public StrncpySimple
 .public StrncpySimpleNoPadSafe
+.public TEAM_MEMBER_TABLE_PTR
+.public _s32_div_f
+.public ov11_0230D220
+.public ov11_02310BDC
+.public ov16_0238CE04
+.public ov16_0238CE28
 .public sub_02017C50
 .public sub_02017C74
 .public sub_02017CB4
@@ -92,4 +102,3 @@
 .public sub_020582E0
 .public sub_02059B08
 .public sub_0205B008
-.public TEAM_MEMBER_TABLE_PTR
