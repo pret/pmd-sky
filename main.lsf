@@ -369,10 +369,14 @@ Static main
 	Object asm/main_02065BD8.o
 	Object src/main_02065C48.o
 	Object asm/main_02065C84.o
+	Object src/main_020663C8.o
+	Object asm/main_020664B8.o
 	Object src/dungeon_init_2.o
 	Object asm/main_0206A750.o
 	Object src/main_0206A84C.o
 	Object asm/main_0206A878.o
+	Object src/main_0206C0D8.o
+	Object asm/main_0206C1BC.o
 	Object src/main_0206C98C.o
 	Object asm/main_0206C9BC.o
 	Object src/main_0207191C.o
@@ -545,6 +549,8 @@ Overlay OVY_0
 {
 	After main
 	Object asm/overlay_00.o
+	Object src/overlay_00_022DB0E0.o
+	Object asm/overlay_00_022DB1A4.o
 	Object src/overlay_00_0230D388.o
 	Object asm/overlay_00_0230D398.o
 	Object src/overlay_00_0230E3E8.o
@@ -627,11 +633,15 @@ Overlay OVY_11
 	Object asm/overlay_11.o
 	Object src/overlay_11_022E96E4.o
 	Object asm/overlay_11_022E96F4.o
+	Object src/overlay_11_022E9A78.o
+	Object asm/overlay_11_022E9B84.o
 	Object src/ground_bg.o
 	Object asm/overlay_11_022ECD24_data.o
 	Object asm/overlay_11_022ECD24.o
 	Object src/ground_bg_1.o
 	Object asm/overlay_11_022EE5E4.o
+	Object src/overlay_11_0230CB88.o
+	Object asm/overlay_11_0230CCE0.o
 }
 Overlay OVY_12
 {
