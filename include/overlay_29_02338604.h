@@ -10,5 +10,6 @@ bool8 ShouldBoostHiddenStairsSpawnChance();
 // Sets the boost_hidden_stairs_spawn_chance field on the dungeon struct to the given value.
 // should_boost: bool8 to set the flag to
 void SetShouldBoostHiddenStairsSpawnChance(bool8 should_boost);
+void UpdateShouldBoostHiddenStairsSpawnChance(void);
 
 #endif //PMDSKY_OVERLAY_29_02338604_H
