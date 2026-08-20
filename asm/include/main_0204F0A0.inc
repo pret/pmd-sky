@@ -13,7 +13,6 @@
 .public GetNameString
 .public GetNbItemsInBag
 .public GetPartyMembers
-.public GetPlayTimeSeconds
 .public GetResolvedPerformanceProgressFlag
 .public GuestMonsterToGroundMonster
 .public IsLevelResetDungeon
@@ -23,9 +22,6 @@
 .public MISSION_FLOOR_RANKS_PTRS
 .public OUTLAW_LEVEL_TABLE
 .public OUTLAW_MINION_LEVEL_TABLE
-.public PLAY_TIME_SECONDS
-.public PlayTimerTick
-.public ResetPlayTimer
 .public SECONDARY_TERRAIN_TYPES
 .public StrncpyName
 .public TEAM_MEMBER_TABLE_PTR
@@ -35,6 +31,4 @@
 .public _022AB4F8
 .public _022AB5AC
 .public sub_0204CEE0
-.public sub_02050E5C
-.public sub_02050E8C
 .public sub_0205EE40

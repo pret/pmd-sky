@@ -44,6 +44,7 @@ Static main
 	Object asm/main_02008BF4.o
 	Object src/main_0200961C.o
 	Object asm/main_02009648.o
+	Object src/main_02009BE8.o
 	Object src/main_02009D48.o
 	Object src/main_02009F9C.o
 	Object asm/main_0200A124.o
@@ -118,7 +119,7 @@ Static main
 	Object src/main_02017B58.o
 	Object asm/main_02017B70.o
 	Object src/main_02017C80.o
-	Object asm/main_02017C90.o
+	Object asm/main_02017D20.o
 	Object src/main_0201BA9C.o
 	Object asm/main_0201BAC8.o
 	Object src/main_0201BFF0.o
@@ -189,7 +190,7 @@ Static main
 	Object asm/main_020308A0.o
 	Object src/main_02030A18.o
 	Object src/main_02030A40.o
-	Object asm/main_02030A50.o
+	Object asm/main_02030A90.o
 	Object src/main_02032558.o
 	Object src/main_0203258C.o
 	Object asm/main_020325AC.o
@@ -209,6 +210,7 @@ Static main
 	Object src/main_02043380.o
 	Object src/main_02043568.o
 	Object asm/main_0204357C.o
+	Object src/main_020483B8.o
 	Object src/main_020484A0.o
 	Object asm/main_020484C0.o
 	Object src/main_02048758.o
@@ -236,6 +238,8 @@ Static main
 	Object src/dungeon_init.o
 	Object src/main_0204F050.o
 	Object asm/main_0204F0A0.o
+	Object src/main_0204F9B8.o
+	Object asm/main_0204F9F4.o
 	Object src/main_0204FA24.o
 	Object asm/main_0204FA70.o
 	Object src/main_0204FB9C.o
@@ -557,7 +561,8 @@ Overlay OVY_3
 Overlay OVY_4
 {
 	After OVY_1
-	Object asm/overlay_04.o
+	Object src/overlay_04_0233CA80.o
+	Object asm/overlay_04_0233CAF8.o
 }
 Overlay OVY_5
 {
@@ -567,7 +572,8 @@ Overlay OVY_5
 Overlay OVY_6
 {
 	After OVY_1
-	Object asm/overlay_06.o
+	Object src/overlay_06_0233CA80.o
+	Object asm/overlay_06_0233CAB8.o
 }
 Overlay OVY_7
 {
@@ -1182,10 +1188,13 @@ Overlay OVY_29
 	Object asm/overlay_29_02341E6C.o
 	Object src/overlay_29_0234396C.o
 	Object asm/overlay_29_02343980.o
+	Object src/overlay_29_02344088.o
 	Object src/fixed_room_data.o
 	Object asm/overlay_29_02344178.o
 	Object src/overlay_29_02344AF8.o
-	Object asm/overlay_29_02344B1C.o
+	Object asm/overlay_29_02344B44.o
+	Object src/overlay_29_02344B9C.o
+	Object asm/overlay_29_02344BA8.o
 	Object src/overlay_29_02344BE4.o
 	Object asm/overlay_29_02344BF8.o
 	Object src/overlay_29_02345698.o

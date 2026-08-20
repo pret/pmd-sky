@@ -1,6 +1,7 @@
 #pragma once
 .public G2x_SetBlendAlpha_
 .public G3X_SetClearColor
+.public GXS_SetGraphicsMode
 .public GX_SetBankForBG
 .public GX_SetBankForBGExtPltt
 .public GX_SetBankForOBJ
@@ -11,7 +12,6 @@
 .public GX_SetBankForTex
 .public GX_SetBankForTexPltt
 .public GX_SetGraphicsMode
-.public GXS_SetGraphicsMode
 .public sub_02009120
 .public sub_020091CC
 .public sub_020091F8
@@ -20,3 +20,9 @@
 .public sub_020092F4
 .public sub_02009358
 .public sub_02009514
+.public sub_02009BE8
+.public sub_02009C10
+.public sub_02009CA8
+.public sub_02009CD0
+.public sub_02009CF8
+.public sub_02009D20

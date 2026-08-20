@@ -1,78 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02017C90.inc"
+	.include "main_02017D20.inc"
 
 	.text
-
-	arm_func_start sub_02017C90
-sub_02017C90: ; 0x02017C90
-	ldr ip, _02017C98 ; =sub_0201831C
-	bx ip
-	.align 2, 0
-_02017C98: .word sub_0201831C
-	arm_func_end sub_02017C90
-
-	arm_func_start sub_02017C9C
-sub_02017C9C: ; 0x02017C9C
-	ldr ip, _02017CA4 ; =sub_020183A0
-	bx ip
-	.align 2, 0
-_02017CA4: .word sub_020183A0
-	arm_func_end sub_02017C9C
-
-	arm_func_start sub_02017CA8
-sub_02017CA8: ; 0x02017CA8
-	ldr ip, _02017CB0 ; =sub_020183E4
-	bx ip
-	.align 2, 0
-_02017CB0: .word sub_020183E4
-	arm_func_end sub_02017CA8
-
-	arm_func_start sub_02017CB4
-sub_02017CB4: ; 0x02017CB4
-	ldr ip, _02017CBC ; =sub_02018428
-	bx ip
-	.align 2, 0
-_02017CBC: .word sub_02018428
-	arm_func_end sub_02017CB4
-
-	arm_func_start sub_02017CC0
-sub_02017CC0: ; 0x02017CC0
-	ldr ip, _02017CC8 ; =sub_02018460
-	bx ip
-	.align 2, 0
-_02017CC8: .word sub_02018460
-	arm_func_end sub_02017CC0
-
-	arm_func_start PlaySeVolumeWrapper
-PlaySeVolumeWrapper: ; 0x02017CCC
-	ldr r1, _02017CE4 ; =_0209915C
-	mov r0, r0, lsl #1
-	ldrh r0, [r1, r0]
-	ldr ip, _02017CE8 ; =PlaySeByIdVolume
-	mov r1, #0x100
-	bx ip
-	.align 2, 0
-_02017CE4: .word _0209915C
-_02017CE8: .word PlaySeByIdVolume
-	arm_func_end PlaySeVolumeWrapper
-
-	arm_func_start sub_02017CEC
-sub_02017CEC: ; 0x02017CEC
-	stmdb sp!, {r3, lr}
-	ldr r2, _02017D18 ; =_022A4BE8
-	ldrsh r0, [r2]
-	cmp r0, #0
-	ldmgtia sp!, {r3, pc}
-	ldr r0, _02017D1C ; =0x00003F05
-	mov r3, #3
-	mov r1, #0x100
-	strh r3, [r2]
-	bl PlaySeByIdVolume
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_02017D18: .word _022A4BE8
-_02017D1C: .word 0x00003F05
-	arm_func_end sub_02017CEC
 
 	arm_func_start sub_02017D20
 sub_02017D20: ; 0x02017D20

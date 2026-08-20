@@ -1,36 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_06.inc"
+	.include "overlay_06_0233CAB8.inc"
 
 	.text
-
-	arm_func_start ov06_0233CA80
-ov06_0233CA80: ; 0x0233CA80
-	ldr ip, _0233CA90 ; =MemZero
-	ldr r0, _0233CA94 ; =ov06_0233EEE0
-	mov r1, #0xc
-	bx ip
-	.align 2, 0
-_0233CA90: .word MemZero
-_0233CA94: .word ov06_0233EEE0
-	arm_func_end ov06_0233CA80
-
-	arm_func_start ov06_0233CA98
-ov06_0233CA98: ; 0x0233CA98
-	ldr r1, _0233CAA4 ; =ov06_0233EEE0
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-_0233CAA4: .word ov06_0233EEE0
-	arm_func_end ov06_0233CA98
-
-	arm_func_start ov06_0233CAA8
-ov06_0233CAA8: ; 0x0233CAA8
-	ldr r0, _0233CAB4 ; =ov06_0233EEE0
-	ldr r0, [r0]
-	bx lr
-	.align 2, 0
-_0233CAB4: .word ov06_0233EEE0
-	arm_func_end ov06_0233CAA8
 
 	arm_func_start ov06_0233CAB8
 ov06_0233CAB8: ; 0x0233CAB8

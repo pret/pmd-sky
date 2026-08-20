@@ -62,7 +62,6 @@
 .public Snd_LockChannel
 .public Snd_UnlockChannel
 .public ZInit8
-.public _0209915C
 .public _0209916C
 .public _0209918C
 .public _020991C8
@@ -124,7 +123,6 @@
 .public _020AFB6C
 .public _020AFC28
 .public _020AFC30
-.public _022A4BE8
 .public _022A4BEC
 .public _022A4C00
 .public _022A4C28

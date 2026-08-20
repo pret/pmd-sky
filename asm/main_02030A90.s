@@ -1,35 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02030A50.inc"
+	.include "main_02030A90.inc"
 
 	.text
-
-	arm_func_start sub_02030A50
-sub_02030A50: ; 0x02030A50
-	stmdb sp!, {r4, lr}
-	mov r4, r1
-	bl GetWindowContents
-	str r4, [r0, #0xc0]
-	ldmia sp!, {r4, pc}
-	arm_func_end sub_02030A50
-
-	arm_func_start sub_02030A64
-sub_02030A64: ; 0x02030A64
-	stmdb sp!, {r3, lr}
-	bl GetWindowContents
-	ldr r0, [r0, #0xc0]
-	ldmia sp!, {r3, pc}
-	arm_func_end sub_02030A64
-
-	arm_func_start sub_02030A74
-sub_02030A74: ; 0x02030A74
-	stmdb sp!, {r4, lr}
-	mov r4, r1
-	bl GetWindowContents
-	mov r1, r4
-	add r0, r0, #4
-	bl sub_02031C74
-	ldmia sp!, {r4, pc}
-	arm_func_end sub_02030A74
 
 	arm_func_start sub_02030A90
 sub_02030A90: ; 0x02030A90
