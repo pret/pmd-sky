@@ -180,20 +180,3 @@ _0232E6D4:
 	.align 2, 0
 _0232E6DC: .word SPATK_STAT_IDX
 	arm_func_end DoMoveDracoMeteor
-
-	arm_func_start DoMoveRockPolish
-DoMoveRockPolish: ; 0x0232E6E0
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r2, #0
-	mov r5, r0
-	mov r4, r1
-	mov r3, r2
-	bl BoostSpeedOneStage
-	mov r0, r5
-	mov r1, r4
-	mov r2, #0
-	mov r3, #1
-	bl BoostSpeedOneStage
-	mov r0, #1
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end DoMoveRockPolish

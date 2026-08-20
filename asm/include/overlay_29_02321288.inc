@@ -1,0 +1,12 @@
+#pragma once
+.public CanMonsterUseMove
+.public EntityIsValid__02321438
+.public GetMonsterInFront
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SubstitutePlaceholderStringTags
+.public UpdateMovePp
+.public ov29_022E4C84
+.public ov29_022E4CD4
+.public ov29_022FAA04
+.public ov29_02322374
+.public ov29_023247B4

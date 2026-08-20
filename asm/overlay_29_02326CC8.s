@@ -82,19 +82,3 @@ _02326DC8:
 	.align 2, 0
 _02326DD4: .word FLAMETHROWER_BURN_CHANCE
 	arm_func_end DoMoveDamageBurn10
-
-	arm_func_start DoMoveExpose
-DoMoveExpose: ; 0x02326DD8
-	stmdb sp!, {r3, lr}
-	ldrh r3, [r2, #4]
-	ldr r2, _02326E00 ; =0x0000013B
-	cmp r3, r2
-	moveq r2, #0x7a
-	movne r2, #0x51
-	mov r3, #0
-	bl TryInflictExposedStatus
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_02326E00: .word 0x0000013B
-	arm_func_end DoMoveExpose

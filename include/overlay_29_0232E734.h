@@ -5,6 +5,7 @@
 #include "item.h"
 #include "move.h"
 
+bool8 DoMoveRockPolish(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 bool8 DoMoveNastyPlot(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 bool8 DoMoveTag0x1AB(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 

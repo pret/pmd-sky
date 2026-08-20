@@ -6,5 +6,6 @@
 // Checks if a monster is a team member under the effects of a certain exclusive item effect.
 
 bool8 ExclusiveItemEffectIsActive__022FFF28(struct entity *entity, enum exclusive_item_effect_id effect_id);
+s32 CalcSpeedStageWrapper(struct entity *entity);
 
 #endif //PMDSKY_OVERLAY_29_022FFF28_H

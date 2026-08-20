@@ -1,6 +1,5 @@
 #pragma once
 .public AbilityIsActiveVeneer
-.public BoostSpeedOneStage
 .public CalcRecoilDamageFixed
 .public DealDamage
 .public DefenderAbilityIsActiveMoveEffects__0232DE20

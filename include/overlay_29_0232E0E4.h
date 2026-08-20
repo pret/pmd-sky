@@ -6,5 +6,6 @@
 #include "move.h"
 
 bool8 DoMovePowerTrick(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
+bool8 DoMoveFeint(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 
 #endif

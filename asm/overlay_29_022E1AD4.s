@@ -1050,21 +1050,3 @@ _022E271C:
 _022E2724: .word DUNGEON_PTR
 _022E2728: .word 0x0001A224 + SHOULD_DISPLAY_ENTITY_OFFSET
 	arm_func_end ShouldDisplayEntity
-
-	arm_func_start ShouldDisplayEntityWrapper
-ShouldDisplayEntityWrapper: ; 0x022E272C
-	ldr ip, _022E2738 ; =ShouldDisplayEntity
-	mov r1, #0
-	bx ip
-	.align 2, 0
-_022E2738: .word ShouldDisplayEntity
-	arm_func_end ShouldDisplayEntityWrapper
-
-	arm_func_start ov29_022E273C
-ov29_022E273C: ; 0x022E273C
-	ldr ip, _022E2748 ; =ShouldDisplayEntity
-	mov r1, #1
-	bx ip
-	.align 2, 0
-_022E2748: .word ShouldDisplayEntity
-	arm_func_end ov29_022E273C

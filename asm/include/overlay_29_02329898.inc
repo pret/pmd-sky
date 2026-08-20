@@ -1,7 +1,5 @@
 #pragma once
-.public ATK_STAT_IDX
 .public AbilityIsActiveVeneer
-.public ActivateSportCondition
 .public AddHeldItemToBag
 .public BOUNCE_DAMAGE_MULTIPLIER
 .public BOUNCE_PARALYZE_CHANCE
@@ -18,7 +16,6 @@
 .public GetMoveTypeForMonster
 .public IsChargingTwoTurnMove
 .public LogMessageByIdWithPopupCheckUserTarget
-.public LowerHitChanceStat
 .public POISON_FANG_POISON_CHANCE
 .public POISON_STING_POISON_CHANCE
 .public RemoveEmptyItemsInBagWrapper

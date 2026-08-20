@@ -3,13 +3,10 @@
 .public DungeonRandOutcomeUserTargetInteraction
 .public EndFrozenStatus
 .public EndNegativeStatusConditionWrapper
-.public EndSleepClassStatus
 .public FIRE_FANG_CRINGE_CHANCE
 .public FLARE_BLITZ_BURN_CHANCE
 .public HEALING_WISH_HP_RESTORATION
-.public ResetHitChanceStat
 .public RestoreAllMovePP
 .public TryIncreaseHp
 .public TryInflictBurnStatus
 .public TryInflictCringeStatus
-.public TryInflictMiracleEyeStatus

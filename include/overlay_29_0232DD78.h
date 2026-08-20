@@ -6,5 +6,6 @@
 #include "move.h"
 
 bool8 DoMoveTrickRoom(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
+bool8 DoMoveDamage__0232DD88(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 
 #endif
