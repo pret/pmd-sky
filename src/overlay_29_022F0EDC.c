@@ -54,7 +54,6 @@ extern s32 ChangeMonsterAnimation();
 extern s32 CheckTouchscreenArea();
 extern s32 GetEntityTouchscreenArea();
 extern s32 GetIdleAnimationId();
-extern struct monster *GetLeaderMonster();
 extern struct entity *GetMonsterInFront();
 extern void GetPressedButtons(u32 param_1, u16 *pressed);
 extern s32 GetTeamMemberIndex();

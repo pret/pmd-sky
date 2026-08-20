@@ -1,0 +1,14 @@
+#pragma once
+.public CheckVariousStatuses2__02301244
+.public DIRECTIONS_XY
+.public DUNGEON_FRAMES_PASSED
+.public DUNGEON_PTR
+.public EntityIsValid__022E95F4
+.public GetTreatmentBetweenMonsters
+.public ov29_02351628
+.public ov29_02351658
+.public ov29_0235179C
+.public ov29_023517A0
+.public ov29_023517A2
+.public ov29_02353560
+.public ov29_0237C888
