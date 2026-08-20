@@ -1,8 +1,6 @@
 #ifndef PMDSKY_MAIN_020663C8_H
 #define PMDSKY_MAIN_020663C8_H
 
-#include "util.h"
-
 void sub_020663C8(s32 a, s32 b, s32 c, s32 d, s8 e);
 void sub_020663DC(s32 a, s32 b, s32 c, s32 d, s32 e, u16 f);
 void sub_02066408(s32 a, s32 b, s32 c, s32 d, s32 e, u16 f, s32 g);

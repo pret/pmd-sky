@@ -1,8 +1,6 @@
 #ifndef PMDSKY_OVERLAY_00_0230E3E8_H
 #define PMDSKY_OVERLAY_00_0230E3E8_H
 
-#include "util.h"
-
 struct unk_0230E3E8 {
     u32 field_0x0;
     u16 field_0x4;

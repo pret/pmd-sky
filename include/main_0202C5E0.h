@@ -1,7 +1,6 @@
 #ifndef PMDSKY_MAIN_0202C5E0_H
 #define PMDSKY_MAIN_0202C5E0_H
 
-#include "util.h"
 #include "main_0202AAA8.h"
 
 struct unk_0202C5E0 {

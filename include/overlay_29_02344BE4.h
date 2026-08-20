@@ -1,8 +1,6 @@
 #ifndef PMDSKY_OVERLAY_29_02344BE4_H
 #define PMDSKY_OVERLAY_29_02344BE4_H
 
-#include "util.h"
-
 #include "dungeon_mode.h"
 #include "item.h"
 #include "move.h"

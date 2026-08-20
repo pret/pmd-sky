@@ -1,7 +1,6 @@
 #ifndef PMDSKY_OVERLAY_01_0233755C_H
 #define PMDSKY_OVERLAY_01_0233755C_H
 
-#include "util.h"
 #include "main_020348E4.h"
 
 void ov01_0233755C(void);

@@ -1,7 +1,6 @@
 #ifndef PMDSKY_MAIN_02026174_H
 #define PMDSKY_MAIN_02026174_H
 
-#include "util.h"
 #include "main_0202613C.h"
 
 void sub_02026174(struct unk_02026130* p);

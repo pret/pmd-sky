@@ -1,7 +1,6 @@
 #ifndef PMDSKY_OVERLAY_11_0230CD48_H
 #define PMDSKY_OVERLAY_11_0230CD48_H
 
-#include "util.h"
 #include "main_020348E4.h"
 
 u32 LoadCroagunkSwapShopOverlay(void);

@@ -1,7 +1,6 @@
 #ifndef PMDSKY_MAIN_02028284_H
 #define PMDSKY_MAIN_02028284_H
 
-#include "util.h"
 #include "window.h"
 
 void sub_0202825C(s32 index, u16 value);

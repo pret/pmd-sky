@@ -1,8 +1,6 @@
 #ifndef PMDSKY_MAIN_0206C0D8_H
 #define PMDSKY_MAIN_0206C0D8_H
 
-#include "util.h"
-
 struct unk_020B0B70 {
     s16 field_0x0;
     s16 field_0x2;

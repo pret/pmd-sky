@@ -2,8 +2,6 @@
 #define PMDSKY_MAIN_0204FD3C_H
 
 #include "adventure_log.h"
-#include "util.h"
-
 void IncrementNbEggsHatched(void);
 u32 GetNbEggsHatched(void);
 u32 GetNbPokemonJoined(void);

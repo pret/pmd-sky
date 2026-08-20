@@ -1,7 +1,6 @@
 #ifndef PMDSKY_MAIN_02008194_H
 #define PMDSKY_MAIN_02008194_H
 
-#include "util.h"
 #include "file.h"
 
 struct unk_020AF360 {

@@ -9,8 +9,6 @@ struct unk_0233F660 {
     u8 field_0xD[3];
 };
 
-#include "util.h"
-
 void ov04_0233CA80(void);
 void ov04_0233CA98(s32 a);
 s32 ov04_0233CAA8(void);

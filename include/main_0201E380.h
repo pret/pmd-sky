@@ -1,8 +1,6 @@
 #ifndef PMDSKY_MAIN_0201E380_H
 #define PMDSKY_MAIN_0201E380_H
 
-#include "util.h"
-
 struct unk_0201E380 {
     u8 field_0x0[0x18];
     u16* field_0x18;

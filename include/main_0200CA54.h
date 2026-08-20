@@ -1,7 +1,6 @@
 #ifndef PMDSKY_MAIN_0200CA54_H
 #define PMDSKY_MAIN_0200CA54_H
 
-#include "util.h"
 #include "item.h"
 
 s16 GetDamageSource(s32 a, enum item_id item_id);

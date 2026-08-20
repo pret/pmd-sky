@@ -1,8 +1,6 @@
 #ifndef PMDSKY_MAIN_02009BE8_H
 #define PMDSKY_MAIN_02009BE8_H
 
-#include "util.h"
-
 void sub_02009BE8(u32 value, s32 flag);
 void sub_02009C10(u32 value, s32 flag);
 void sub_02009C38(u32 value);
