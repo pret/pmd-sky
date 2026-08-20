@@ -17,7 +17,7 @@ void SetActionStruggle(struct action_data *monster_action, u8 direction)
         monster_action->direction = direction & DIRECTION_MASK;
 }
 
-void SetActionUseMovePlayer(struct action_data* action, u8 monster_index, u8 move_index)
+void SetActionUseMovePlayer(struct action_data* action, s32 monster_index, s16 move_index)
 {
     SetMonsterActionFields(action, ACTION_USE_MOVE_PLAYER);
     action->action_parameters[0].action_use_idx = monster_index;

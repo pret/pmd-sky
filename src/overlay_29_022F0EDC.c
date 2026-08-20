@@ -1,4 +1,5 @@
 #include "overlay_29_022F0EDC.h"
+#include "overlay_29_022EBC50.h"
 #include "dg_uty.h"
 #include "dungeon.h"
 #include "dungeon_action.h"
@@ -44,7 +45,6 @@ extern struct unk_0237C9A4 ov29_0237C9A4;
 extern u16 DUNGEON_BUTTON_INPUT[8];
 extern u16 ov29_0237C6A4;
 
-extern s32 SetActionUseMovePlayer();
 extern void AdvanceFrame(u32);
 extern bool8 CanSeeTarget(struct entity *user, struct entity *target);
 extern bool8 IsBlinded(struct entity *entity, bool8 check_held_item);
