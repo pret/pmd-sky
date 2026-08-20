@@ -3,10 +3,7 @@
 .public ChangeSimpleObjTexture
 .public DUNGEON_PTR
 .public DirectoryFileMngr_OpenDirectoryFile
-.public DrawTeamStats
 .public FillPaletteInitInfo
-.public FreeMapAndTeam
-.public FreeTeamStats
 .public GetDefaultTileTextureId
 .public HandleSir0Translation
 .public IsBackgroundTileset
@@ -16,15 +13,8 @@
 .public MemZero
 .public OBJ_GRAPHICS_CONTROLS_PTR
 .public UnloadFile
-.public UpdateTeamStats
 .public _s32_div_f
-.public ov10_022C0814
-.public ov10_022C096C
-.public ov10_022C0F6C
-.public ov10_022C11D8
-.public ov10_022C14D0
-.public ov10_022C159C
-.public ov10_022C22A0
+.public ov29_022DC78C
 .public ov29_02350F88
 .public ov29_02350F8C
 .public ov29_02350F90
