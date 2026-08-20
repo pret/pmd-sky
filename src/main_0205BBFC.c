@@ -39,3 +39,16 @@ void sub_0205BC94(struct unkStruct_0205BC94 *p)
     p->unk4 = inner->unk48;
     *(u8 *)p = 1;
 }
+
+void sub_0205BCC4(u16* src)
+{
+    if (src == NULL) {
+        MemsetSimple((u8 *) _020B0A54.struct1.unk8.unk8 + 0x44, 0, 6);
+    } else {
+        u16 *dst = (u16 *) ((u8 *) _020B0A54.struct1.unk8.unk8 + 0x44);
+
+        dst[0] = src[0];
+        dst[1] = src[1];
+        dst[2] = src[2];
+    }
+}

@@ -15,6 +15,8 @@ struct unk_0202AAA8 {
     void *field_0x198;
     s32 field_0x19C;
     u8 field_0x1A0;
+    u8 field_0x1A1;
+    u8 field_0x1A2[2];
     s32 field_0x1A4;
     u8 field_0x1A8[4];
     s32 field_0x1AC;
@@ -31,5 +33,6 @@ void *GetWindowContents(s32 window_id);
 
 void SetParentMenuState7(s32 window_id);
 void CloseParentMenu(s32 window_id);
+bool8 sub_0202AAE8(s32 window_id);
 
 #endif

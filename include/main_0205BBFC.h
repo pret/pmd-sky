@@ -1,6 +1,8 @@
 #ifndef PMDSKY_MAIN_0205BBFC_H
 #define PMDSKY_MAIN_0205BBFC_H
 
+#include "util.h"
+
 #include "common.h"
 
 struct unkStruct_0205BC94 {
@@ -12,5 +14,6 @@ struct unkStruct_0205BC94 {
 void sub_0205BBFC(struct ground_monster *dest);
 void sub_0205BC30(u32 a, u32 b);
 void sub_0205BC94(struct unkStruct_0205BC94 *p);
+void sub_0205BCC4(u16* src);
 
 #endif //PMDSKY_MAIN_0205BBFC_H

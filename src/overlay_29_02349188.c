@@ -1,4 +1,7 @@
 #include "overlay_29_02349188.h"
+#include "mission.h"
+
+extern bool8 IsCurrentMissionType(enum mission_type type);
 #include "dungeon.h"
 
 extern struct dungeon *DUNGEON_PTR;
@@ -19,4 +22,15 @@ struct mission_destination_info* GetMissionDestination(void)
 s32 ov29_023491B8(void)
 {
     return GetFirstExperienceLockedTeamMember();
+}
+
+bool8 IsOutlawOrChallengeRequestFloor(void)
+{
+    if (IsCurrentMissionType(MISSION_CHALLENGE_REQUEST) != 0 ||
+        IsCurrentMissionType(MISSION_ARREST_OUTLAW) != 0 ||
+        IsCurrentMissionType(MISSION_TAKE_ITEM_FROM_OUTLAW) != 0) {
+        return TRUE;
+    }
+
+    return FALSE;
 }
