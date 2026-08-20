@@ -1,0 +1,11 @@
+#pragma once
+.public DealDamage
+.public DungeonRandOutcomeUserAction
+.public DungeonRandOutcomeUserTargetInteraction
+.public EntityIsValidMoveEffects__0232A3D8
+.public FAKE_OUT_CRINGE_CHANCE
+.public GenerateStandardItem
+.public LogMessageByIdWithPopupCheckUserTarget
+.public TryInflictCringeStatus
+.public ov29_0232A834
+.public ov29_02352B18

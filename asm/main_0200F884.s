@@ -1,0 +1,1186 @@
+	.include "asm/macros.inc"
+	.include "main_0200F884.inc"
+
+	.text
+
+	arm_func_start AddItemToBag
+AddItemToBag: ; 0x0200F884
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r2, _0200F90C ; =BAG_ITEMS_PTR_MIRROR
+	mov r6, r0
+	ldr r0, [r2]
+	mov r5, r1
+	ldr r4, [r0, #0x384]
+	bl GetCurrentBagCapacity
+	mov ip, #0
+	mov r1, ip
+	mov r2, #1
+	b _0200F8FC
+_0200F8B0:
+	ldrb r3, [r4]
+	tst r3, #1
+	movne r3, r2
+	moveq r3, r1
+	tst r3, #0xff
+	bne _0200F8F4
+	ldrh r1, [r6]
+	mov r0, r6
+	strh r1, [r4]
+	ldrh r1, [r6, #2]
+	strh r1, [r4, #2]
+	ldrh r1, [r6, #4]
+	strh r1, [r4, #4]
+	strb r5, [r4, #1]
+	bl SetItemAcquired
+	mov r0, #1
+	ldmia sp!, {r4, r5, r6, pc}
+_0200F8F4:
+	add ip, ip, #1
+	add r4, r4, #6
+_0200F8FC:
+	cmp ip, r0
+	blt _0200F8B0
+	mov r0, #0
+	ldmia sp!, {r4, r5, r6, pc}
+	.align 2, 0
+_0200F90C: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end AddItemToBag
+
+	arm_func_start CleanStickyItemsInBag
+CleanStickyItemsInBag: ; 0x0200F910
+	ldr r0, _0200F93C ; =BAG_ITEMS_PTR_MIRROR
+	mov r2, #0
+	ldr r0, [r0]
+	ldr r1, [r0, #0x384]
+_0200F920:
+	ldrb r0, [r1]
+	add r2, r2, #1
+	cmp r2, #0x32
+	bic r0, r0, #8
+	strb r0, [r1], #6
+	blt _0200F920
+	bx lr
+	.align 2, 0
+_0200F93C: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end CleanStickyItemsInBag
+
+	arm_func_start CountStickyItemsInBag
+CountStickyItemsInBag: ; 0x0200F940
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r0, _0200F9B0 ; =BAG_ITEMS_PTR_MIRROR
+	mov lr, #0
+	ldr r0, [r0]
+	mov r3, #1
+	ldr ip, [r0, #0x384]
+	mov r4, lr
+	mov r2, lr
+	mov r0, lr
+	mov r1, r3
+_0200F968:
+	ldrb r5, [ip]
+	tst r5, #1
+	movne r6, r3
+	moveq r6, r2
+	tst r6, #0xff
+	beq _0200F994
+	tst r5, #8
+	movne r5, r1
+	moveq r5, r0
+	tst r5, #0xff
+	addne lr, lr, #1
+_0200F994:
+	add r4, r4, #1
+	cmp r4, #0x32
+	add ip, ip, #6
+	blt _0200F968
+	mov r0, lr, lsl #0x10
+	mov r0, r0, asr #0x10
+	ldmia sp!, {r4, r5, r6, pc}
+	.align 2, 0
+_0200F9B0: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end CountStickyItemsInBag
+
+	arm_func_start sub_0200F9B4
+sub_0200F9B4: ; 0x0200F9B4
+	stmdb sp!, {r3, lr}
+	ldr r1, _0200FA08 ; =BAG_ITEMS_PTR_MIRROR
+	mov lr, #0
+	ldr r1, [r1]
+	mov r2, lr
+	ldr ip, [r1, #0x384]
+	mov r3, #1
+_0200F9D0:
+	ldrb r1, [ip]
+	add lr, lr, #1
+	tst r1, #1
+	movne r1, r3
+	moveq r1, r2
+	tst r1, #0xff
+	ldrneb r1, [ip, #1]
+	cmpne r1, #0
+	ldrneb r1, [r0, r1]
+	strneb r1, [ip, #1]
+	cmp lr, #0x32
+	add ip, ip, #6
+	blt _0200F9D0
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_0200FA08: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end sub_0200F9B4
+
+	arm_func_start sub_0200FA0C
+sub_0200FA0C: ; 0x0200FA0C
+	stmdb sp!, {r3, lr}
+	ldr r3, _0200FA64 ; =BAG_ITEMS_PTR_MIRROR
+	mov r2, #0x12c
+	ldr r3, [r3]
+	mov lr, #0
+	mla ip, r1, r2, r3
+	mov r2, lr
+	mov r3, #1
+_0200FA2C:
+	ldrb r1, [ip]
+	add lr, lr, #1
+	tst r1, #1
+	movne r1, r3
+	moveq r1, r2
+	tst r1, #0xff
+	ldrneb r1, [ip, #1]
+	cmpne r1, #0
+	ldrneb r1, [r0, r1]
+	strneb r1, [ip, #1]
+	cmp lr, #0x32
+	add ip, ip, #6
+	blt _0200FA2C
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_0200FA64: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end sub_0200FA0C
+
+	arm_func_start TransmuteHeldItemInBag
+TransmuteHeldItemInBag: ; 0x0200FA68
+	stmdb sp!, {r4, lr}
+	ldr r1, _0200FAE8 ; =BAG_ITEMS_PTR_MIRROR
+	mov r4, #0
+	ldr r1, [r1]
+	mov r3, r4
+	ldr lr, [r1, #0x384]
+	mov ip, #1
+	b _0200FAD8
+_0200FA88:
+	ldrb r1, [lr]
+	tst r1, #1
+	movne r1, ip
+	moveq r1, r3
+	tst r1, #0xff
+	beq _0200FAD0
+	ldrb r2, [lr, #1]
+	ldrb r1, [r0, #1]
+	cmp r2, r1
+	bne _0200FAD0
+	ldrh r1, [r0]
+	strh r1, [lr]
+	ldrh r1, [r0, #2]
+	strh r1, [lr, #2]
+	ldrh r1, [r0, #4]
+	mov r0, #1
+	strh r1, [lr, #4]
+	ldmia sp!, {r4, pc}
+_0200FAD0:
+	add r4, r4, #1
+	add lr, lr, #6
+_0200FAD8:
+	cmp r4, #0x32
+	blt _0200FA88
+	mov r0, #0
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_0200FAE8: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end TransmuteHeldItemInBag
+
+	arm_func_start SetFlagsForHeldItemInBag
+SetFlagsForHeldItemInBag: ; 0x0200FAEC
+	stmdb sp!, {r4, lr}
+	cmp r0, #0
+	ldmeqia sp!, {r4, pc}
+	ldr r2, _0200FB50 ; =BAG_ITEMS_PTR_MIRROR
+	mov r4, #0
+	ldr r2, [r2]
+	mov r3, r4
+	ldr lr, [r2, #0x384]
+	mov ip, #1
+_0200FB10:
+	ldrb r2, [lr]
+	tst r2, #1
+	movne r2, ip
+	moveq r2, r3
+	tst r2, #0xff
+	beq _0200FB3C
+	ldrb r2, [lr, #1]
+	cmp r2, r0
+	ldreqb r2, [lr]
+	orreq r2, r2, r1
+	streqb r2, [lr]
+_0200FB3C:
+	add r4, r4, #1
+	cmp r4, #0x32
+	add lr, lr, #6
+	blt _0200FB10
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_0200FB50: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end SetFlagsForHeldItemInBag
+
+	arm_func_start RemoveHolderForItemInBag
+RemoveHolderForItemInBag: ; 0x0200FB54
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	ldr r1, _0200FBDC ; =BAG_ITEMS_PTR_MIRROR
+	mov r6, r0
+	ldr r0, [r1]
+	mov r5, #0
+	mov sb, #1
+	ldr r4, [r0, #0x384]
+	mov r8, r5
+	mov r7, sb
+	b _0200FBCC
+_0200FB7C:
+	ldrb r0, [r4]
+	tst r0, #1
+	movne r0, sb
+	moveq r0, r8
+	tst r0, #0xff
+	beq _0200FBC4
+	mov r0, r4
+	mov r1, r6
+	mov r2, r7
+	bl AreItemsEquivalent
+	cmp r0, #0
+	beq _0200FBC4
+	mov r0, #0
+	strb r0, [r4, #1]
+	ldrb r1, [r6]
+	mov r0, #1
+	strb r1, [r4]
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+_0200FBC4:
+	add r5, r5, #1
+	add r4, r4, #6
+_0200FBCC:
+	cmp r5, #0x32
+	blt _0200FB7C
+	mov r0, #0
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	.align 2, 0
+_0200FBDC: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end RemoveHolderForItemInBag
+
+	arm_func_start SetHolderForItemInBag
+SetHolderForItemInBag: ; 0x0200FBE0
+	stmdb sp!, {r4, lr}
+	ldr ip, _0200FC20 ; =BAG_ITEMS_PTR_MIRROR
+	mov r3, #6
+	ldr lr, [ip]
+	smulbb ip, r0, r3
+	ldr lr, [lr, #0x384]
+	and r0, r2, #0xff
+	ldrb r3, [lr, ip]
+	add r4, lr, ip
+	bic r3, r3, #0x10
+	strb r3, [lr, ip]
+	strb r2, [r1, #1]
+	strb r0, [r4, #1]
+	ldrb r0, [r1]
+	strb r0, [lr, ip]
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_0200FC20: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end SetHolderForItemInBag
+
+	arm_func_start SortItemsInBag
+SortItemsInBag: ; 0x0200FC24
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
+	mov r4, #0
+	ldr r7, _0200FCA8 ; =BAG_ITEMS_PTR_MIRROR
+	mov r8, r4
+	mov sb, #1
+	mov r6, #6
+_0200FC3C:
+	mul r1, r4, r6
+	ldr r0, [r7]
+	ldr r2, [r0, #0x384]
+	ldrb r0, [r2, r1]
+	add r5, r2, r1
+	tst r0, #1
+	movne r0, sb
+	moveq r0, r8
+	tst r0, #0xff
+	beq _0200FC84
+	ldrsh r0, [r5, #4]
+	cmp r0, #0xb7
+	bne _0200FC84
+	mov r0, r5
+	bl GetMoneyQuantity
+	bl AddMoneyCarried
+	mov r0, r5
+	bl ItemZInit
+_0200FC84:
+	add r4, r4, #1
+	cmp r4, #0x32
+	blt _0200FC3C
+	ldr r0, _0200FCA8 ; =BAG_ITEMS_PTR_MIRROR
+	mov r1, #0x32
+	ldr r0, [r0]
+	ldr r0, [r0, #0x384]
+	bl SortItemList
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	.align 2, 0
+_0200FCA8: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end SortItemsInBag
+
+	arm_func_start RemovePokeItemsInBag
+RemovePokeItemsInBag: ; 0x0200FCAC
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	ldr r0, _0200FD34 ; =BAG_ITEMS_PTR_MIRROR
+	mov r5, #0
+	ldr r0, [r0]
+	mov r6, r5
+	ldr r4, [r0, #0x384]
+	mov r7, #1
+_0200FCC8:
+	ldrb r0, [r4]
+	tst r0, #1
+	movne r0, r7
+	moveq r0, r6
+	tst r0, #0xff
+	beq _0200FD0C
+	ldrsh r0, [r4, #4]
+	cmp r0, #0xb7
+	bne _0200FD0C
+	ldrb r1, [r4]
+	mov r0, r4
+	bic r1, r1, #8
+	strb r1, [r4]
+	bl GetMoneyQuantity
+	bl AddMoneyCarried
+	mov r0, r4
+	bl ItemZInit
+_0200FD0C:
+	add r5, r5, #1
+	cmp r5, #0x32
+	add r4, r4, #6
+	blt _0200FCC8
+	ldr r0, _0200FD34 ; =BAG_ITEMS_PTR_MIRROR
+	mov r1, #0x32
+	ldr r0, [r0]
+	ldr r0, [r0, #0x384]
+	bl RemoveEmptyItems
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+	.align 2, 0
+_0200FD34: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end RemovePokeItemsInBag
+
+	arm_func_start sub_0200FD38
+sub_0200FD38: ; 0x0200FD38
+	bx lr
+	arm_func_end sub_0200FD38
+
+	arm_func_start sub_0200FD3C
+sub_0200FD3C: ; 0x0200FD3C
+	ldr ip, _0200FD44 ; =StorageZInit
+	bx ip
+	.align 2, 0
+_0200FD44: .word StorageZInit
+	arm_func_end sub_0200FD3C
+
+	arm_func_start sub_0200FD48
+sub_0200FD48: ; 0x0200FD48
+	ldr ip, _0200FD50 ; =GetRankStorageSize
+	bx ip
+	.align 2, 0
+_0200FD50: .word GetRankStorageSize
+	arm_func_end sub_0200FD48
+
+	arm_func_start IsStorageFull
+IsStorageFull: ; 0x0200FD54
+	stmdb sp!, {r4, lr}
+	bl GetRankStorageSize
+	mov r4, r0
+	bl CountNbOfItemsInStorage
+	cmp r0, r4
+	movge r0, #1
+	movlt r0, #0
+	and r0, r0, #0xff
+	ldmia sp!, {r4, pc}
+	arm_func_end IsStorageFull
+
+	arm_func_start CountNbOfItemsInStorage
+CountNbOfItemsInStorage: ; 0x0200FD78
+	ldr r1, _0200FDAC ; =BAG_ITEMS_PTR_MIRROR
+	mov r0, #0
+	ldr r3, [r1]
+	mov r2, r0
+_0200FD88:
+	add r1, r3, r2, lsl #1
+	add r1, r1, #0x300
+	ldrsh r1, [r1, #0x8a]
+	add r2, r2, #1
+	cmp r1, #0
+	addne r0, r0, #1
+	cmp r2, #0x3e8
+	blt _0200FD88
+	bx lr
+	.align 2, 0
+_0200FDAC: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end CountNbOfItemsInStorage
+
+	arm_func_start CountNbOfValidItemsInStorage
+CountNbOfValidItemsInStorage: ; 0x0200FDB0
+	stmdb sp!, {r4, r5, r6, lr}
+	mov r5, #0
+	ldr r4, _0200FDFC ; =BAG_ITEMS_PTR_MIRROR
+	mov r6, r5
+_0200FDC0:
+	ldr r0, [r4]
+	add r0, r0, r6, lsl #1
+	add r0, r0, #0x300
+	ldrsh r1, [r0, #0x8a]
+	cmp r1, #0
+	beq _0200FDE8
+	ldrsh r0, [r0, #0x8a]
+	bl IsItemValidVeneer
+	cmp r0, #0
+	addne r5, r5, #1
+_0200FDE8:
+	add r6, r6, #1
+	cmp r6, #0x3e8
+	blt _0200FDC0
+	mov r0, r5
+	ldmia sp!, {r4, r5, r6, pc}
+	.align 2, 0
+_0200FDFC: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end CountNbOfValidItemsInStorage
+
+	arm_func_start CountNbOfValidItemsInTimeDarknessInStorage
+CountNbOfValidItemsInTimeDarknessInStorage: ; 0x0200FE00
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	mov r4, #0
+	ldr r6, _0200FEA4 ; =BAG_ITEMS_PTR_MIRROR
+	mov r5, r4
+_0200FE10:
+	ldr r0, [r6]
+	add r0, r0, r5, lsl #1
+	add r0, r0, #0x300
+	ldrsh r7, [r0, #0x8a]
+	cmp r7, #0
+	beq _0200FE90
+	mov r0, r7
+	bl IsItemValidVeneer
+	cmp r0, #0
+	beq _0200FE90
+	mov r0, r7
+	bl IsItemInTimeDarkness
+	cmp r0, #0
+	beq _0200FE90
+	mov r0, r7
+	bl IsTreasureBox
+	cmp r0, #0
+	beq _0200FE8C
+	ldr r0, [r6]
+	add r0, r0, r5, lsl #1
+	add r0, r0, #0xb00
+	ldrsh r7, [r0, #0x5a]
+	mov r0, r7
+	bl IsItemValidVeneer
+	cmp r0, #0
+	beq _0200FE90
+	mov r0, r7
+	bl IsItemInTimeDarkness
+	cmp r0, #0
+	addne r4, r4, #1
+	b _0200FE90
+_0200FE8C:
+	add r4, r4, #1
+_0200FE90:
+	add r5, r5, #1
+	cmp r5, #0x3e8
+	blt _0200FE10
+	mov r0, r4
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+	.align 2, 0
+_0200FEA4: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end CountNbOfValidItemsInTimeDarknessInStorage
+
+	arm_func_start CountNbItemsOfTypeInStorage
+CountNbItemsOfTypeInStorage: ; 0x0200FEA8
+	ldr r1, _0200FEE0 ; =BAG_ITEMS_PTR_MIRROR
+	mov r2, #0
+	ldr ip, [r1]
+	mov r3, r2
+_0200FEB8:
+	add r1, ip, r3, lsl #1
+	add r1, r1, #0x300
+	ldrsh r1, [r1, #0x8a]
+	add r3, r3, #1
+	cmp r0, r1
+	addeq r2, r2, #1
+	cmp r3, #0x3e8
+	blt _0200FEB8
+	mov r0, r2
+	bx lr
+	.align 2, 0
+_0200FEE0: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end CountNbItemsOfTypeInStorage
+
+	arm_func_start CountItemTypeInStorage
+CountItemTypeInStorage: ; 0x0200FEE4
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	mov r4, #0
+	ldr r7, _0200FF4C ; =BAG_ITEMS_PTR_MIRROR
+	mov r6, r0
+	mov r5, r4
+_0200FEF8:
+	ldr r1, [r7]
+	ldrsh r0, [r6]
+	add r1, r1, r5, lsl #1
+	add r1, r1, #0x300
+	ldrsh r1, [r1, #0x8a]
+	cmp r0, r1
+	bne _0200FF38
+	bl IsThrownItem
+	cmp r0, #0
+	addeq r4, r4, #1
+	beq _0200FF38
+	ldr r0, [r7]
+	add r0, r0, r5, lsl #1
+	add r0, r0, #0xb00
+	ldrh r0, [r0, #0x5a]
+	add r4, r4, r0
+_0200FF38:
+	add r5, r5, #1
+	cmp r5, #0x3e8
+	blt _0200FEF8
+	mov r0, r4
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+	.align 2, 0
+_0200FF4C: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end CountItemTypeInStorage
+
+	arm_func_start GetEquivBulkItemIdxInStorage
+GetEquivBulkItemIdxInStorage: ; 0x0200FF50
+	stmdb sp!, {r3, lr}
+	ldr r1, _0200FFA8 ; =BAG_ITEMS_PTR_MIRROR
+	mov ip, #0
+	ldr lr, [r1]
+	b _0200FF98
+_0200FF64:
+	add r2, lr, ip, lsl #1
+	add r1, r2, #0x300
+	ldrsh r3, [r0]
+	ldrsh r1, [r1, #0x8a]
+	cmp r3, r1
+	addeq r1, r2, #0xb00
+	ldreqh r2, [r0, #2]
+	ldreqh r1, [r1, #0x5a]
+	cmpeq r2, r1
+	moveq r0, ip, lsl #0x10
+	moveq r0, r0, asr #0x10
+	ldmeqia sp!, {r3, pc}
+	add ip, ip, #1
+_0200FF98:
+	cmp ip, #0x3e8
+	blt _0200FF64
+	mvn r0, #0
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_0200FFA8: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end GetEquivBulkItemIdxInStorage
+
+	arm_func_start ConvertStorageItemAtIdxToBulkItem
+ConvertStorageItemAtIdxToBulkItem: ; 0x0200FFAC
+	ldr r3, _0200FFF0 ; =BAG_ITEMS_PTR_MIRROR
+	ldr r2, [r3]
+	add r2, r2, r0, lsl #1
+	add r2, r2, #0x300
+	ldrsh r2, [r2, #0x8a]
+	strh r2, [r1]
+	ldr r2, [r3]
+	add r0, r2, r0, lsl #1
+	add r0, r0, #0xb00
+	ldrh r0, [r0, #0x5a]
+	strh r0, [r1, #2]
+	ldrsh r0, [r1]
+	cmp r0, #0
+	movne r0, #1
+	moveq r0, #0
+	and r0, r0, #0xff
+	bx lr
+	.align 2, 0
+_0200FFF0: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end ConvertStorageItemAtIdxToBulkItem
+
+	arm_func_start ConvertStorageItemAtIdxToItem
+ConvertStorageItemAtIdxToItem: ; 0x0200FFF4
+	ldr r3, _02010040 ; =BAG_ITEMS_PTR_MIRROR
+	mov ip, #0
+	ldr r2, [r3]
+	add r2, r2, r0, lsl #1
+	add r2, r2, #0x300
+	ldrsh r2, [r2, #0x8a]
+	strh r2, [r1, #4]
+	ldr r2, [r3]
+	add r0, r2, r0, lsl #1
+	add r0, r0, #0xb00
+	ldrh r0, [r0, #0x5a]
+	strh r0, [r1, #2]
+	strb ip, [r1]
+	strb ip, [r1, #1]
+	ldrsh r0, [r1, #4]
+	cmp r0, #0
+	movne ip, #1
+	and r0, ip, #0xff
+	bx lr
+	.align 2, 0
+_02010040: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end ConvertStorageItemAtIdxToItem
+
+	arm_func_start sub_02010044
+sub_02010044: ; 0x02010044
+	ldr r1, _0201005C ; =BAG_ITEMS_PTR_MIRROR
+	ldr r1, [r1]
+	add r0, r1, r0, lsl #1
+	add r0, r0, #0x300
+	ldrsh r0, [r0, #0x8a]
+	bx lr
+	.align 2, 0
+_0201005C: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end sub_02010044
+
+	arm_func_start sub_02010060
+sub_02010060: ; 0x02010060
+	ldr r1, _02010078 ; =BAG_ITEMS_PTR_MIRROR
+	ldr r1, [r1]
+	add r0, r1, r0, lsl #1
+	add r0, r0, #0xb00
+	ldrh r0, [r0, #0x5a]
+	bx lr
+	.align 2, 0
+_02010078: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end sub_02010060
+
+	arm_func_start MaybeUpdateStorage
+MaybeUpdateStorage: ; 0x0201007C
+	stmdb sp!, {r3, lr}
+	ldr r1, _02010150 ; =BAG_ITEMS_PTR_MIRROR
+	mov r0, #0
+	ldr r2, [r1]
+	b _02010144
+_02010090:
+	add r1, r2, r0, lsl #1
+	add r1, r1, #0x300
+	ldrsh r1, [r1, #0x8a]
+	cmp r1, #0
+	bne _02010140
+	mov r1, r0
+	add r0, r0, #1
+	ldr r3, _02010150 ; =BAG_ITEMS_PTR_MIRROR
+	b _020100FC
+_020100B4:
+	ldr lr, [r3]
+	add r2, lr, r0, lsl #1
+	add r2, r2, #0x300
+	ldrsh ip, [r2, #0x8a]
+	cmp ip, #0
+	beq _020100F8
+	add r2, lr, r1, lsl #1
+	add r2, r2, #0x300
+	strh ip, [r2, #0x8a]
+	ldr lr, [r3]
+	add r2, lr, r0, lsl #1
+	add r2, r2, #0xb00
+	ldrh ip, [r2, #0x5a]
+	add r2, lr, r1, lsl #1
+	add r2, r2, #0xb00
+	strh ip, [r2, #0x5a]
+	add r1, r1, #1
+_020100F8:
+	add r0, r0, #1
+_020100FC:
+	cmp r0, #0x3e8
+	blt _020100B4
+	mov r3, #0
+	ldr r2, _02010150 ; =BAG_ITEMS_PTR_MIRROR
+	b _02010134
+_02010110:
+	ldr r0, [r2]
+	add r0, r0, r1, lsl #1
+	add r0, r0, #0x300
+	strh r3, [r0, #0x8a]
+	ldr r0, [r2]
+	add r0, r0, r1, lsl #1
+	add r0, r0, #0xb00
+	strh r3, [r0, #0x5a]
+	add r1, r1, #1
+_02010134:
+	cmp r1, #0x3e8
+	blt _02010110
+	ldmia sp!, {r3, pc}
+_02010140:
+	add r0, r0, #1
+_02010144:
+	cmp r0, #0x3e8
+	blt _02010090
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_02010150: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end MaybeUpdateStorage
+
+	arm_func_start sub_02010154
+sub_02010154: ; 0x02010154
+	stmdb sp!, {r3, lr}
+	ldr r2, _0201019C ; =BAG_ITEMS_PTR_MIRROR
+	ldr r1, [r2]
+	add r1, r1, r0, lsl #1
+	add r1, r1, #0x300
+	ldrsh r3, [r1, #0x8a]
+	cmp r3, #0
+	moveq r0, #0
+	ldmeqia sp!, {r3, pc}
+	mov r3, #0
+	strh r3, [r1, #0x8a]
+	ldr r1, [r2]
+	add r0, r1, r0, lsl #1
+	add r0, r0, #0xb00
+	strh r3, [r0, #0x5a]
+	bl MaybeUpdateStorage
+	mov r0, #1
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_0201019C: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end sub_02010154
+
+	arm_func_start RemoveItemAtIdxInStorage
+RemoveItemAtIdxInStorage: ; 0x020101A0
+	ldr r2, _020101E0 ; =BAG_ITEMS_PTR_MIRROR
+	ldr r1, [r2]
+	add r1, r1, r0, lsl #1
+	add r1, r1, #0x300
+	ldrsh r3, [r1, #0x8a]
+	cmp r3, #0
+	moveq r0, #0
+	bxeq lr
+	mov r3, #0
+	strh r3, [r1, #0x8a]
+	ldr r1, [r2]
+	add r0, r1, r0, lsl #1
+	add r0, r0, #0xb00
+	strh r3, [r0, #0x5a]
+	mov r0, #1
+	bx lr
+	.align 2, 0
+_020101E0: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end RemoveItemAtIdxInStorage
+
+	arm_func_start RemoveBulkItemInStorage
+RemoveBulkItemInStorage: ; 0x020101E4
+	stmdb sp!, {r4, lr}
+	ldr r1, _0201025C ; =BAG_ITEMS_PTR_MIRROR
+	mov lr, #0
+	ldr r4, [r1]
+	b _0201024C
+_020101F8:
+	add r3, r4, lr, lsl #1
+	add r2, r3, #0x300
+	ldrsh ip, [r0]
+	ldrsh r1, [r2, #0x8a]
+	cmp ip, r1
+	addeq r1, r3, #0xb00
+	ldreqh r3, [r0, #2]
+	ldreqh r1, [r1, #0x5a]
+	cmpeq r3, r1
+	bne _02010248
+	mov r1, #0
+	ldr r0, _0201025C ; =BAG_ITEMS_PTR_MIRROR
+	strh r1, [r2, #0x8a]
+	ldr r0, [r0]
+	add r0, r0, lr, lsl #1
+	add r0, r0, #0xb00
+	strh r1, [r0, #0x5a]
+	bl MaybeUpdateStorage
+	mov r0, #1
+	ldmia sp!, {r4, pc}
+_02010248:
+	add lr, lr, #1
+_0201024C:
+	cmp lr, #0x3e8
+	blt _020101F8
+	mov r0, #0
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_0201025C: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end RemoveBulkItemInStorage
+
+	arm_func_start RemoveItemInStorage
+RemoveItemInStorage: ; 0x02010260
+	stmdb sp!, {r4, lr}
+	ldr r1, _020102D8 ; =BAG_ITEMS_PTR_MIRROR
+	mov lr, #0
+	ldr r4, [r1]
+	b _020102C8
+_02010274:
+	add r3, r4, lr, lsl #1
+	add r2, r3, #0x300
+	ldrsh ip, [r0, #4]
+	ldrsh r1, [r2, #0x8a]
+	cmp ip, r1
+	addeq r1, r3, #0xb00
+	ldreqh r3, [r0, #2]
+	ldreqh r1, [r1, #0x5a]
+	cmpeq r3, r1
+	bne _020102C4
+	mov r1, #0
+	ldr r0, _020102D8 ; =BAG_ITEMS_PTR_MIRROR
+	strh r1, [r2, #0x8a]
+	ldr r0, [r0]
+	add r0, r0, lr, lsl #1
+	add r0, r0, #0xb00
+	strh r1, [r0, #0x5a]
+	bl MaybeUpdateStorage
+	mov r0, #1
+	ldmia sp!, {r4, pc}
+_020102C4:
+	add lr, lr, #1
+_020102C8:
+	cmp lr, #0x3e8
+	blt _02010274
+	mov r0, #0
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_020102D8: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end RemoveItemInStorage
+
+	arm_func_start StorageZInit
+StorageZInit: ; 0x020102DC
+	mov r3, #0
+	ldr r1, _02010318 ; =BAG_ITEMS_PTR_MIRROR
+	mov r2, r3
+_020102E8:
+	ldr r0, [r1]
+	add r0, r0, r3, lsl #1
+	add r0, r0, #0x300
+	strh r2, [r0, #0x8a]
+	ldr r0, [r1]
+	add r0, r0, r3, lsl #1
+	add r0, r0, #0xb00
+	add r3, r3, #1
+	strh r2, [r0, #0x5a]
+	cmp r3, #0x3e8
+	blt _020102E8
+	bx lr
+	.align 2, 0
+_02010318: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end StorageZInit
+
+	arm_func_start AddBulkItemToStorage
+AddBulkItemToStorage: ; 0x0201031C
+	stmdb sp!, {r3, r4, r5, lr}
+	sub sp, sp, #8
+	mov r4, r0
+	bl GetRankStorageSize
+	mov r5, r0
+	add r0, sp, #0
+	mov r1, r4
+	bl BulkItemToItem
+	ldr r0, _020103A8 ; =BAG_ITEMS_PTR_MIRROR
+	mov ip, #0
+	ldr r2, [r0]
+	b _02010394
+_0201034C:
+	add r0, r2, ip, lsl #1
+	add r1, r0, #0x300
+	ldrsh r0, [r1, #0x8a]
+	cmp r0, #0
+	bne _02010390
+	ldrsh r3, [r4]
+	ldr r2, _020103A8 ; =BAG_ITEMS_PTR_MIRROR
+	add r0, sp, #0
+	strh r3, [r1, #0x8a]
+	ldr r1, [r2]
+	ldrh r2, [r4, #2]
+	add r1, r1, ip, lsl #1
+	add r1, r1, #0xb00
+	strh r2, [r1, #0x5a]
+	bl SetItemAcquired
+	mov r0, #1
+	b _020103A0
+_02010390:
+	add ip, ip, #1
+_02010394:
+	cmp ip, r5
+	blt _0201034C
+	mov r0, #0
+_020103A0:
+	add sp, sp, #8
+	ldmia sp!, {r3, r4, r5, pc}
+	.align 2, 0
+_020103A8: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end AddBulkItemToStorage
+
+	arm_func_start AddItemToStorage
+AddItemToStorage: ; 0x020103AC
+	stmdb sp!, {r4, lr}
+	mov r4, r0
+	bl GetRankStorageSize
+	ldr r1, _02010420 ; =BAG_ITEMS_PTR_MIRROR
+	mov ip, #0
+	ldr r3, [r1]
+	b _02010410
+_020103C8:
+	add r1, r3, ip, lsl #1
+	add r1, r1, #0x300
+	ldrsh r2, [r1, #0x8a]
+	cmp r2, #0
+	bne _0201040C
+	ldrsh r3, [r4, #4]
+	ldr r2, _02010420 ; =BAG_ITEMS_PTR_MIRROR
+	mov r0, r4
+	strh r3, [r1, #0x8a]
+	ldr r1, [r2]
+	ldrh r2, [r4, #2]
+	add r1, r1, ip, lsl #1
+	add r1, r1, #0xb00
+	strh r2, [r1, #0x5a]
+	bl SetItemAcquired
+	mov r0, #1
+	ldmia sp!, {r4, pc}
+_0201040C:
+	add ip, ip, #1
+_02010410:
+	cmp ip, r0
+	blt _020103C8
+	mov r0, #0
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_02010420: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end AddItemToStorage
+
+	arm_func_start SortItemsInStorage
+SortItemsInStorage: ; 0x02010424
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	mov sb, r1
+	mov r1, #6
+	mov sl, r0
+	mul r0, sb, r1
+	mov r1, #0
+	bl MemAlloc
+	mov r5, #6
+	mov r7, r0
+	mov r8, #0
+	mov fp, #0x80
+	ldr r6, _0201058C ; =BAG_ITEMS_PTR_MIRROR
+	mov r4, r5
+	b _020104C8
+_0201045C:
+	ldr r0, [r6]
+	add r0, r0, r8, lsl #1
+	add r0, r0, #0x300
+	ldrsh r0, [r0, #0x8a]
+	cmp r0, #0
+	beq _020104D0
+	mla r0, r8, r5, r7
+	bl ItemZInit
+	ldrb r0, [sl, r8]
+	mul r2, r8, r4
+	cmp r0, #0
+	movne r0, fp
+	moveq r0, #0
+	orr r0, r0, #1
+	strb r0, [r7, r2]
+	ldr r1, [r6]
+	add r0, r7, r2
+	add r1, r1, r8, lsl #1
+	add r1, r1, #0x300
+	ldrsh r1, [r1, #0x8a]
+	strh r1, [r0, #4]
+	ldr r1, [r6]
+	add r1, r1, r8, lsl #1
+	add r1, r1, #0xb00
+	ldrh r1, [r1, #0x5a]
+	add r8, r8, #1
+	strh r1, [r0, #2]
+_020104C8:
+	cmp r8, sb
+	blt _0201045C
+_020104D0:
+	mov r0, r7
+	mov r1, r8
+	bl SortItemList
+	mov r6, #0
+	mov r1, r6
+	mov r2, #1
+	mov fp, #6
+	ldr r0, _0201058C ; =BAG_ITEMS_PTR_MIRROR
+	b _0201053C
+_020104F4:
+	mul r4, r6, fp
+	add r5, r7, r4
+	ldr ip, [r0]
+	ldrsh r3, [r5, #4]
+	add ip, ip, r6, lsl #1
+	add ip, ip, #0x300
+	strh r3, [ip, #0x8a]
+	ldr ip, [r0]
+	ldrh r3, [r5, #2]
+	add r5, ip, r6, lsl #1
+	add r5, r5, #0xb00
+	strh r3, [r5, #0x5a]
+	ldrb r3, [r7, r4]
+	tst r3, #0x80
+	movne r3, r2
+	moveq r3, r1
+	strb r3, [sl, r6]
+	add r6, r6, #1
+_0201053C:
+	cmp r6, r8
+	blt _020104F4
+	mov r2, #0
+	ldr r1, _0201058C ; =BAG_ITEMS_PTR_MIRROR
+	b _02010578
+_02010550:
+	ldr r0, [r1]
+	add r0, r0, r6, lsl #1
+	add r0, r0, #0x300
+	strh r2, [r0, #0x8a]
+	ldr r0, [r1]
+	add r0, r0, r6, lsl #1
+	add r0, r0, #0xb00
+	strh r2, [r0, #0x5a]
+	strb r2, [sl, r6]
+	add r6, r6, #1
+_02010578:
+	cmp r6, sb
+	blt _02010550
+	mov r0, r7
+	bl MemFree
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	.align 2, 0
+_0201058C: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end SortItemsInStorage
+
+	arm_func_start sub_02010590
+sub_02010590: ; 0x02010590
+	bx lr
+	arm_func_end sub_02010590
+
+	arm_func_start AllKecleonShopsZInit
+AllKecleonShopsZInit: ; 0x02010594
+	stmdb sp!, {r4, r5, r6, lr}
+	mov r2, #0
+	ldr ip, _02010650 ; =BAG_ITEMS_PTR_MIRROR
+	mov r5, r2
+	mov r0, r2
+	mov r1, r2
+_020105AC:
+	mov r6, r1
+_020105B0:
+	ldr r3, [ip]
+	mov r4, r6, lsl #2
+	add r3, r3, #0x330
+	add r3, r3, #0x1000
+	add r3, r3, r2, lsl #5
+	add lr, r3, r6, lsl #2
+	strh r5, [r3, r4]
+	add r6, r6, #1
+	strh r5, [lr, #2]
+	cmp r6, #8
+	blt _020105B0
+	mov r6, r5
+_020105E0:
+	ldr r3, [ip]
+	mov lr, r6, lsl #2
+	add r3, r3, #0x374
+	add r3, r3, #0x1000
+	add r3, r3, r2, lsl #4
+	add r4, r3, r6, lsl #2
+	strh r0, [r3, lr]
+	add r6, r6, #1
+	strh r0, [r4, #2]
+	cmp r6, #4
+	blt _020105E0
+	add r2, r2, #1
+	cmp r2, #2
+	blt _020105AC
+	ldr r2, _02010650 ; =BAG_ITEMS_PTR_MIRROR
+	ldr r1, [r2]
+	add r1, r1, #0x1000
+	str r0, [r1, #0x3a0]
+	ldr r1, [r2]
+	add r1, r1, #0x1300
+	strh r0, [r1, #0xa4]
+	ldr r1, [r2]
+	add r1, r1, #0x1300
+	strh r0, [r1, #0xa6]
+	ldr r1, [r2]
+	add r1, r1, #0x1300
+	strh r0, [r1, #0xa8]
+	ldmia sp!, {r4, r5, r6, pc}
+	.align 2, 0
+_02010650: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end AllKecleonShopsZInit
+
+	arm_func_start SpecialEpisodeKecleonShopZInit
+SpecialEpisodeKecleonShopZInit: ; 0x02010654
+	stmdb sp!, {r3, lr}
+	mov lr, #0
+	ldr r2, _020106C0 ; =BAG_ITEMS_PTR_MIRROR
+	mov r0, lr
+_02010664:
+	ldr r1, [r2]
+	mov r3, lr, lsl #2
+	add r1, r1, #0x350
+	add r1, r1, #0x1000
+	add ip, r1, lr, lsl #2
+	strh r0, [r1, r3]
+	add lr, lr, #1
+	strh r0, [ip, #2]
+	cmp lr, #8
+	blt _02010664
+	ldr r2, _020106C0 ; =BAG_ITEMS_PTR_MIRROR
+	mov r3, #0
+_02010694:
+	ldr r1, [r2]
+	mov ip, r0, lsl #2
+	add r1, r1, #0x384
+	add r1, r1, #0x1000
+	add lr, r1, r0, lsl #2
+	strh r3, [r1, ip]
+	add r0, r0, #1
+	strh r3, [lr, #2]
+	cmp r0, #4
+	blt _02010694
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_020106C0: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end SpecialEpisodeKecleonShopZInit
+
+	arm_func_start SetActiveKecleonShop
+SetActiveKecleonShop: ; 0x020106C4
+	ldr r2, _02010708 ; =BAG_ITEMS_PTR_MIRROR
+	ldr r1, [r2]
+	add r1, r1, #0x1000
+	strb r0, [r1, #0x32a]
+	ldr ip, [r2]
+	add r1, ip, #0x330
+	add r1, r1, #0x1000
+	add r3, r1, r0, lsl #5
+	add r1, ip, #0x1000
+	str r3, [r1, #0x32c]
+	ldr r2, [r2]
+	add r1, r2, #0x374
+	add r1, r1, #0x1000
+	add r1, r1, r0, lsl #4
+	add r0, r2, #0x1000
+	str r1, [r0, #0x370]
+	bx lr
+	.align 2, 0
+_02010708: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end SetActiveKecleonShop

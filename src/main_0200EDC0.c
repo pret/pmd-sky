@@ -1,4 +1,5 @@
 #include "main_0200EDC0.h"
+#include "item_util.h"
 #include "item.h"
 #include "main_020517D4.h"
 #include "progression.h"
@@ -26,4 +27,52 @@ bool8 IsBagFull()
     if (BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[last_item_index].flags & ITEM_FLAG_EXISTS)
         return TRUE;
     return FALSE;
+}
+
+u32 GetNbItemsInBag(void)
+{
+    struct item *item = BAG_ITEMS_PTR_MIRROR->bag_items->bag_items;
+    s32 count = 0;
+    s32 i;
+
+    for (i = 0; i < INVENTORY_SIZE; i++, item++) {
+        bool8 exists = (item->flags & ITEM_FLAG_EXISTS) != 0;
+
+        if (exists) {
+            count++;
+        }
+    }
+    return count;
+}
+
+u32 CountNbItemsOfTypeInBag(s16 id)
+{
+    struct item *item = BAG_ITEMS_PTR_MIRROR->bag_items->bag_items;
+    s32 count = 0;
+    s32 i;
+
+    for (i = 0; i < INVENTORY_SIZE; i++, item++) {
+        if (item->id == id) {
+            count++;
+        }
+    }
+    return count;
+}
+
+u32 CountItemTypeInBag(s16 id)
+{
+    struct item *item = BAG_ITEMS_PTR_MIRROR->bag_items->bag_items;
+    s32 count = 0;
+    s32 i;
+
+    for (i = 0; i < INVENTORY_SIZE; i++, item++) {
+        if (item->id == id) {
+            if (IsThrownItem(item->id)) {
+                count += item->quantity;
+            } else {
+                count++;
+            }
+        }
+    }
+    return count;
 }

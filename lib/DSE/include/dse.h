@@ -150,6 +150,7 @@ struct dse_lfo_settings {
     u16 lfo_phase_change_msec;
     u16 msec_until_lfo_started;
     u16 lfo_envelope_len_msec;
+    u8 field_0xE;
 };
 
 struct dse_wavebank {

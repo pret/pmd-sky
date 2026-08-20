@@ -1,0 +1,10 @@
+#pragma once
+.public DeleteWindow
+.public GetSelectedMenuItemIdx
+.public GetWindow
+.public GetWindowContents
+.public GetWindowRectangle
+.public InitWindowInput
+.public MemFree
+.public sub_0203271C
+.public sub_02032984

@@ -1,4 +1,9 @@
 #include "dungeon_ai_targeting.h"
+#include "util.h"
+
+extern bool8 UpdateStateFlags(struct monster *info, s32 flag, bool8 value);
+
+extern void PlayEffectAnimation0x29(struct entity *entity);
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
@@ -62,4 +67,28 @@ bool8 ShouldMonsterRunAwayAndShowEffect(struct entity *monster, bool8 show_run_a
     }
 
     return FALSE;
+}
+
+void DisplayRunAwayIfTriggered(struct entity* entity, bool8 show_effect)
+{
+    struct monster *info = GetEntInfo(entity);
+    s32 max_hp;
+    bool8 low;
+    bool8 result;
+
+    if (info->is_team_leader) {
+        return;
+    }
+
+    if (!AbilityIsActive(entity, ABILITY_RUN_AWAY)) {
+        return;
+    }
+
+    max_hp = info->max_hp_stat + info->max_hp_boost;
+    low = info->hp <= Min(999, max_hp) / 2;
+
+    result = UpdateStateFlags(info, 4, low);
+    if (show_effect && result) {
+        PlayEffectAnimation0x29(entity);
+    }
 }

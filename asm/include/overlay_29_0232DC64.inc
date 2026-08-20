@@ -1,0 +1,9 @@
+#pragma once
+.public AreLateGameTrapsEnabledWrapper
+.public CountMovesOutOfPp
+.public DealDamage
+.public LAST_RESORT_DAMAGE_MULT_TABLE
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SubstitutePlaceholderStringTags
+.public TrySpawnTrap
+.public UpdateTrapsVisibility

@@ -1,0 +1,15 @@
+#pragma once
+.public BAG_ITEMS_PTR_MIRROR
+.public CountValidRecycleShopItems
+.public FreeRecycleOfferItems
+.public GetRank
+.public GetScenarioBalance
+.public LoadScriptVariableValue
+.public RECYCLE_SHOP_ITEM_LIST
+.public Rand16Bit
+.public SaveScriptVariableValue
+.public SetNbRecycled
+.public _020988A4
+.public _020988A8
+.public _s32_div_f
+.public sub_02011B3C

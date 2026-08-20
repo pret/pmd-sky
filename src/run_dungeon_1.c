@@ -15,3 +15,18 @@ bool8 IsCurrentFixedRoomBossFight()
 {
     IsBossFight(DUNGEON_PTR[0]->gen_info.fixed_room_id);
 }
+
+bool8 IsMarowakTrainingMaze(void)
+{
+    enum dungeon_id id = DUNGEON_PTR[0]->id;
+
+    if (id >= DUNGEON_NORMAL_FLY_MAZE && id <= DUNGEON_EXPLORER_MAZE) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 FixedRoomIsSubstituteRoom(void)
+{
+    return DUNGEON_PTR[0]->gen_info.fixed_room_id == FIXED_SUBSTITUTE_ROOM;
+}

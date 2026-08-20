@@ -1,0 +1,15 @@
+#pragma once
+.public FixedRoomIsSubstituteRoom
+.public GetBodySize
+.public GetMonsterIdToSpawn
+.public GetNameWithGender
+.public GetSize0x80Buffer
+.public IsMonsterLoneOutlaw
+.public LogMessageByIdWithPopupCheckUserTarget
+.public MewSpawnCheck
+.public SetMessageLogPreprocessorArgsString
+.public SubstitutePlaceholderStringTags
+.public ov29_022E1AAC
+.public ov29_022E1AD4
+.public ov29_022E1EF8
+.public ov29_022FD7A0

@@ -1,4 +1,5 @@
 #include "overlay_29_02338604.h"
+#include "overlay_29_0230F810.h"
 
 #include "dungeon.h"
 
@@ -18,4 +19,12 @@ bool8 ShouldBoostHiddenStairsSpawnChance()
 void SetShouldBoostHiddenStairsSpawnChance(bool8 should_boost)
 {
     DUNGEON_PTR[0]->boost_hidden_stairs_spawn_chance=should_boost;
+}
+
+void UpdateShouldBoostHiddenStairsSpawnChance(void)
+{
+    DUNGEON_PTR[0]->boost_hidden_stairs_spawn_chance = FALSE;
+    if (TeamMemberHasExclusiveItemEffectActive(EXCLUSIVE_EFF_MORE_HIDDEN_STAIRS)) {
+        DUNGEON_PTR[0]->boost_hidden_stairs_spawn_chance = TRUE;
+    }
 }

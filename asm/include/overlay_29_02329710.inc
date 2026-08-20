@@ -1,0 +1,9 @@
+#pragma once
+.public ActivateMotorDrive
+.public DealDamage
+.public DefenderAbilityIsActiveMoveEffects__02328634
+.public DungeonRandOutcomeUserTargetInteraction
+.public GetMoveType
+.public GetMoveTypeForMonster
+.public THUNDERSHOCK_PARALYZE_CHANCE
+.public TryInflictParalysisStatus

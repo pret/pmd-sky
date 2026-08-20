@@ -1,0 +1,11 @@
+#pragma once
+.public DealDamage
+.public DungeonRandOutcomeUserAction
+.public DungeonRandOutcomeUserTargetInteraction
+.public DungeonRandRange
+.public LowerDefensiveStat
+.public LowerOffensiveStat
+.public PSYBEAM_CONFUSE_CHANCE
+.public SPATK_STAT_IDX
+.public TryInflictConfusedStatus
+.public ov29_02332F18

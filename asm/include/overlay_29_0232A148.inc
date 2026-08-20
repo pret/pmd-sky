@@ -1,0 +1,8 @@
+#pragma once
+.public DUNGEON_PTR
+.public DealDamage
+.public DefenderAbilityIsActiveMoveEffects__02329F14
+.public LogMessageByIdWithPopupCheckUserTarget
+.public TryActivateWeather
+.public TryEndStatusWithAbility
+.public WEATHER_MOVE_TURN_COUNT

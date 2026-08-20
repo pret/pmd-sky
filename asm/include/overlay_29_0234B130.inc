@@ -1,0 +1,12 @@
+#pragma once
+.public AdvanceFrame
+.public FullyCloseAlertBox
+.public InitPreprocessorArgs
+.public LogMessage
+.public LogMessageByIdWithPopupCheckUserTarget
+.public MESSAGE_LOG_INFO
+.public ShouldDisplayEntityWrapper
+.public StringFromId
+.public UnkMapRelatedFunc
+.public WaitUntilAlertBoxTextIsLoaded
+.public ov29_022E9FC0

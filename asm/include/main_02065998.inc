@@ -1,0 +1,13 @@
+#pragma once
+.public GetAdventureNpcIds
+.public GetAppointedLeaderMemberIdx
+.public GetHeroMemberIdx
+.public GetMainCharacter1MemberIdx
+.public GetMainCharacter2MemberIdx
+.public GetMainCharacter3MemberIdx
+.public GetPartnerMemberIdx
+.public GetRecruitMentryIdBySpecies
+.public GetUnitNpcIds
+.public OverlayIsLoaded
+.public ov11_022E96E4
+.public sub_02065050

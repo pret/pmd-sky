@@ -1,10 +1,9 @@
 #include "overlay_29_02338548.h"
 
 #include "dungeon.h"
+#include "overlay_29_0230F810.h"
 
 extern struct dungeon *DUNGEON_PTR[];
-
-bool8 TeamMemberHasExclusiveItemEffectActive(u8);
 
 bool8 ShouldBoostKecleonShopSpawnChance(void)
 {
@@ -19,7 +18,7 @@ void SetShouldBoostKecleonShopSpawnChance(bool8 boost)
 void UpdateShouldBoostKecleonShopSpawnChance(void)
 {
     DUNGEON_PTR[0]->boost_kecleon_shop_spawn_chance = FALSE;
-    if (TeamMemberHasExclusiveItemEffectActive(0x5e)) {
+    if (TeamMemberHasExclusiveItemEffectActive(EXCLUSIVE_EFF_MORE_KECLEON_SHOPS)) {
         DUNGEON_PTR[0]->boost_kecleon_shop_spawn_chance = TRUE;
     }
 }

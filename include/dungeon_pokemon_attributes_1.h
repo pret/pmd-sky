@@ -1,6 +1,8 @@
 #ifndef PMDSKY_DUNGEON_POKEMON_ATTRIBUTES_1_H
 #define PMDSKY_DUNGEON_POKEMON_ATTRIBUTES_1_H
 
+#include "util.h"
+
 #include "dungeon_mode.h"
 
 // Returns whether a certain monster can see other invisible monsters.
@@ -17,5 +19,6 @@ bool8 IqSkillIsEnabled(struct entity *entity, enum iq_skill_id iq_skill);
 // If the monster is an enemy, it also sets its tactic to TACTIC_GO_AFTER_FOES.
 // Called after exiting the IQ skills menu or after an enemy spawns.
 void UpdateIqSkills(struct monster *monster);
+void UpdateIqSkillsWrapper(struct entity* entity);
 
 #endif //PMDSKY_DUNGEON_POKEMON_ATTRIBUTES_1_H

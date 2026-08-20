@@ -1,0 +1,17 @@
+#pragma once
+.public ATK_STAT_IDX
+.public BeginChargedMove
+.public BoostDefensiveStat
+.public BoostOffensiveStat
+.public DealDamage
+.public DungeonRandOutcomeUserTargetInteraction
+.public EndTwoTurnMove
+.public IsChargingTwoTurnMove
+.public METEOR_MASH_BOOST_ATTACK_CHANCE
+.public POWDER_SNOW_FREEZE_CHANCE
+.public SKY_ATTACK_CRINGE_CHANCE
+.public SKY_ATTACK_DAMAGE_MULTIPLIER
+.public SPATK_STAT_IDX
+.public StringFromId
+.public TryInflictCringeStatus
+.public TryInflictFrozenStatus

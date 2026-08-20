@@ -1,0 +1,13 @@
+#pragma once
+.public BAG_ITEMS_PTR_MIRROR
+.public CalcDamageFixedWrapper
+.public CalcStatusDuration
+.public DUNGEON_PTR
+.public EntityIsValidMoveEffects__0232C500
+.public GetDamageSourceWrapper
+.public GetMoveCategory
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SLEEP_TURN_RANGE
+.public TryInflictSleepStatus
+.public ov29_022E8104
+.public ov29_022E81F8

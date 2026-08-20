@@ -1,0 +1,12 @@
+#pragma once
+.public DecompressAtNormalVeneer
+.public DirectoryFileMngr_GetDirectoryFileSize
+.public DirectoryFileMngr_LoadDirectoryFile
+.public GetAtSize
+.public HandleSir0TranslationVeneer
+.public LoadFileFromRom
+.public MemAlloc
+.public MemFree
+.public MemZero
+.public strcmp
+.public strcpy

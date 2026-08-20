@@ -1,7 +1,13 @@
 #ifndef PMDSKY_DIRECTORY_FILE_H
 #define PMDSKY_DIRECTORY_FILE_H
 
+#include "util.h"
+
 #include <file.h>
+
+struct unk_02094C18 {
+    u32 field_0x0[0x3A];
+};
 
 struct directory_entry {
     u32 offset; // The offset of the file relative to the start of the Pack file
@@ -38,5 +44,6 @@ u32 DirectoryFile_GetDirectoryFileSize(struct directory* pack_file, u32 file_ind
 // file_index: file index
 // return: number of read bytes (identical to the length of the pack from the Table of Content)
 u32 DirectoryFile_LoadDirectoryFile(struct directory *pack_file, void *output_buffer,u32 file_index);
+void sub_0200C4CC(struct unk_02094C18* dst);
 
 #endif //PMDSKY_DIRECTORY_FILE_H

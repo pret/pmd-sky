@@ -1,0 +1,12 @@
+#pragma once
+.public ADVANCED_MENU_DEFAULT_WINDOW_PARAMS
+.public CalcMenuHeightDiv8__02031AA4
+.public GetWindowContents
+.public GetWindowRectangle
+.public InitWindowInput
+.public MemAlloc
+.public NewWindowScreenCheck
+.public UpdateAdvancedMenu
+.public sub_020265A8
+.public sub_02031A5C
+.public sub_02032984

@@ -14,3 +14,8 @@ s32 sub_0205B690(void)
 
     return -1;
 }
+
+bool8 sub_0205B6CC(struct unk_0205B6CC* p)
+{
+    return p->field_0xC >= 2;
+}

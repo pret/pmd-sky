@@ -5,5 +5,6 @@
 #include "util.h"
 
 bool8 sub_0205B6EC(struct unkStruct_020B0A54 *src);
+bool8 sub_0205B738(struct unkStruct_020B0A54* src);
 
 #endif //PMDSKY_MAIN_0205B6EC_H

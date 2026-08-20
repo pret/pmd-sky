@@ -1,0 +1,13 @@
+#pragma once
+.public DUNGEON_PTR
+.public GetScenarioBalance
+.public StartFadeDungeonWrapper
+.public WaitUntilFadeIsFinished
+.public ov29_022DE15C
+.public ov29_022DE854
+.public ov29_022E0DFC
+.public ov29_022E0E44
+.public ov29_022E34B0
+.public ov29_022E8778
+.public ov29_022EA370
+.public ov29_0233A248

@@ -1,0 +1,13 @@
+#ifndef PMDSKY_OVERLAY_29_023268BC_H
+#define PMDSKY_OVERLAY_29_023268BC_H
+
+#include "util.h"
+
+#include "dungeon_mode.h"
+#include "item.h"
+#include "move.h"
+
+bool8 DoMoveFocusEnergy(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
+bool8 DoMoveSmokescreen(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
+
+#endif

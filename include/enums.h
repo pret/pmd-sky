@@ -1412,6 +1412,7 @@ enum shopkeeper_mode {
 
 // Monster ID. Add 600 to the base value to get secondary genders (typically female).
 enum monster_id {
+    MONSTER_INVALID = -1,
     _MONSTER_ID_GENDERED(NONE, 0),
     _MONSTER_ID_GENDERED(BULBASAUR, 1),
     _MONSTER_ID_GENDERED(IVYSAUR, 2),
@@ -2017,6 +2018,7 @@ enum monster_id {
 
 // Script entity IDs. While a few script entities differ between versions, the IDs are the same.
 enum script_entity_id {
+    ENTITY_NONE = -1,
     ENTITY_PLAYER = 0,
     ENTITY_PLAYER_HERO = 1,
     ENTITY_PLAYER_PARTNER = 2,

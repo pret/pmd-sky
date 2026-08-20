@@ -1,0 +1,8 @@
+#pragma once
+.public DealDamage
+.public DungeonRandOutcomeUserTargetInteraction
+.public IsFullFloorFixedRoom
+.public LogMessageByIdWithPopupCheckUserTarget
+.public POISON_TAIL_POISON_CHANCE
+.public TryInflictPoisonedStatus
+.public TryTransform

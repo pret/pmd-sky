@@ -1,0 +1,17 @@
+#pragma once
+.public DUNGEON_PTR
+.public EntityIsValidMoveEffects__0232C500
+.public GetTileAtEntity
+.public GetTileSafe
+.public GetTrapInfo
+.public GetTreatmentBetweenMonsters
+.public GetVisibilityRange
+.public HasDropeyeStatus
+.public IsFullFloorFixedRoom
+.public LogMessageByIdWithPopupCheckUser
+.public LogMessageByIdWithPopupCheckUserTarget
+.public TryRemoveTrap
+.public TryWarp
+.public UpdateMinimap
+.public UpdateTrapsVisibility
+.public ov29_02352B38

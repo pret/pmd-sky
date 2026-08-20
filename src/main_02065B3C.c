@@ -2,6 +2,17 @@
 #include "main_02065B3C.h"
 #include "script_variable.h"
 
+u16 sub_02065B14(s16 id)
+{
+    struct unk_020A7FF0 *entity;
+
+    if (id == -1) {
+        return 0;
+    }
+    entity = &ENTITIES[id];
+    return entity->field_0x8;
+}
+
 void SetActorTalkMainAndActorTalkSub(enum script_entity_id talk_main, enum script_entity_id talk_sub)
 {
     SPECIAL_ACTORS.talk_main = talk_main;

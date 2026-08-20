@@ -1,4 +1,7 @@
 #include "dungeon_pokemon_attributes_1.h"
+#include "dungeon_mode.h"
+
+extern void UpdateIqSkills(struct monster *monster);
 #include "dungeon_logic_7.h"
 #include "dungeon_parameters_3.h"
 #include "dungeon_parameters_4.h"
@@ -115,4 +118,9 @@ void UpdateIqSkills(struct monster *monster)
         if (IqSkillFlagTest(monster->iq_skill_menu_flags.flags, IQ_MULTITALENT))
             EnableIqSkill(monster->iq_skill_flags.flags, IQ_MULTITALENT);
     }
+}
+
+void UpdateIqSkillsWrapper(struct entity* entity)
+{
+    UpdateIqSkills(GetEntInfo(entity));
 }

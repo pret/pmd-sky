@@ -29,4 +29,7 @@ struct adventure_log {
     u16 padding;                        // 0x27A
 };
 
+extern struct adventure_log* ADVENTURE_LOG_PTR;
+extern struct adventure_log _022AB69C;
+
 #endif //PMDSKY_ADVENTURE_LOG_H

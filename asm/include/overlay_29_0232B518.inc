@@ -1,0 +1,8 @@
+#pragma once
+.public AbilityIsActiveVeneer
+.public AllocateTemp1024ByteBufferFromPool
+.public DUNGEON_PTR
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SetPreprocessorArgsIdVal
+.public SubstitutePlaceholderStringTags
+.public ov10_022C6322

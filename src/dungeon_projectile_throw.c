@@ -31,7 +31,7 @@ extern void AdvanceFrame(u32);
 extern bool8 TwoTurnMoveForcedMiss(struct entity *target, struct move *move);
 extern bool8 DoesProjectileHitTarget(struct entity *user, struct entity *target);
 extern void PrepareItemForPrinting__02345754(u8 *buffer, struct item *item);
-extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
+extern void SubstitutePlaceholderStringTags(s32 slot, struct entity *entity, u32 param_3);
 extern void ChangeMonsterAnimationToHurt(struct entity *entity, u32 new_dir);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);

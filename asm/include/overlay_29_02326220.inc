@@ -1,0 +1,12 @@
+#pragma once
+.public BeginChargedMove
+.public CalcDamageFixedWrapper
+.public FormatMoveStringMore
+.public GetDamageSourceWrapper
+.public GetMessageLogPreprocessorArgs
+.public GetMoveCategory
+.public GetMoveType
+.public InitMove
+.public LogMessageByIdWithPopupCheckUserTarget
+.public StringFromId
+.public SubstitutePlaceholderStringTags

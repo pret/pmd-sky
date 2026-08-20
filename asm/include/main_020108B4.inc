@@ -1,0 +1,9 @@
+#pragma once
+.public BAG_ITEMS_PTR_MIRROR
+.public GenerateKecleonItems2
+.public GetItemIdFromList
+.public InitBulkItem
+.public KECLEON_SHOP_ITEM_TABLE_LISTS_1
+.public RandIntSafe
+.public RemoveItemFromKecleonShop1
+.public sub_0200D1F0

@@ -3,6 +3,7 @@
 #include "main_0202593C.h"
 #include "overlay_31_02383478.h"
 #include "main_02001188.h"
+#include "main_020282F4.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
@@ -10,7 +11,6 @@ extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
 extern u8 PositionHasItem(struct position* pos);
 extern bool8 ov10_022BCD10(s8);
 extern void AdvanceFrame(u8);
-extern s32 sub_020282F4(s8);
 extern void CloseInventoryMenu(s8);
 extern void ov29_0234E988(u8*);
 extern void CloseTextBox2();

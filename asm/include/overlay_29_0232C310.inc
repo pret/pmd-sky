@@ -1,0 +1,12 @@
+#pragma once
+.public AddHeldItemToBag
+.public DealDamage
+.public DefenderAbilityIsActiveMoveEffects__0232BDD0
+.public DungeonRandOutcomeUserTargetInteraction
+.public EntityIsValidMoveEffects__0232C500
+.public IsBagFull
+.public ItemZInit
+.public LogMessageByIdWithPopupCheckUserTarget
+.public RemoveEquivItem
+.public SubstitutePlaceholderStringTags
+.public ov29_022F9EA0

@@ -1,6 +1,8 @@
 #ifndef PMDSKY_DUNGEON_AI_ITEM_WEIGHT_H
 #define PMDSKY_DUNGEON_AI_ITEM_WEIGHT_H
 
+#include "util.h"
+
 #include "dungeon_mode.h"
 
 // Called to get the probability of an item being used or thrown by an AI on the current turn.
@@ -12,5 +14,6 @@ u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32
 // Called to check if a hostile entity is present in any of the tiles adjacent to an entity.
 // return: True if yes, false if no
 bool8 IsAdjacentToEnemy(struct entity *entity);
+bool8 ShouldTryEatItem(s16 item_id);
 
 #endif //PMDSKY_DUNGEON_AI_ITEM_WEIGHT_H

@@ -33,3 +33,8 @@ bool8 EntityIsValid__022E95F4(struct entity *entity)
 
     return GetEntityType(entity) != ENTITY_NOTHING;
 }
+
+struct monster* GetLeaderMonster(void)
+{
+    return GetEntInfo(GetLeader());
+}

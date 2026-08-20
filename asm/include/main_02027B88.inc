@@ -1,0 +1,10 @@
+#pragma once
+.public InitWindowTrailer
+.public WINDOW_LIST
+.public _0209AC64
+.public _0209ACAC
+.public _020AFD4C
+.public _020AFD98
+.public _022A7A6C
+.public _022A7AE4
+.public sub_0200B3FC

@@ -1027,7 +1027,7 @@ struct display_data {
     bool8 team_menu_or_grid; // 0x35: True when the team menu is opened or while Y is being held
     // Derived from internal direction in leader info block
     enum direction_id leader_target_direction;        // 0x36
-    enum direction_id leader_target_direction_mirror; // 0x37
+    u8 leader_target_direction_mirror;
     u16 field_0x38;                                // 0x38: Initialized to 0xFFFF (-1).
     u16 field_0x3A;                                // 0x3A: Initialized to 0xFFFF (-1).
     s16 floor_touch_screen;         // 0x3C: Floor number displayed on the touch screen

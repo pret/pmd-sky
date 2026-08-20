@@ -1,0 +1,11 @@
+#pragma once
+.public BeginChargedMove
+.public BoostDefensiveStat
+.public DealDamage
+.public DungeonRandOutcomeUserTargetInteraction
+.public LowerDefensiveStat
+.public SHADOW_BALL_LOWER_SPECIAL_DEFENSE_CHANCE
+.public SPATK_STAT_IDX
+.public StringFromId
+.public THUNDERBOLT_PARALYZE_CHANCE
+.public TryInflictParalysisStatus

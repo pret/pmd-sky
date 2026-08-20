@@ -15,7 +15,6 @@ Static main
 	Object src/main_02001188.o
 	Object asm/main_0200119C.o
 	Object src/main_02001894.o
-	Object asm/main_020018A4.o
 	Object src/main_020018D0.o
 	Object src/main_02001A54.o
 	Object asm/main_02001B0C.o
@@ -31,6 +30,12 @@ Static main
 	Object asm/main_020038D8.o
 	Object src/main_02003D2C.o
 	Object asm/main_02003DB8.o
+	Object src/main_02003ED0.o
+	Object asm/main_rodata_02092580.o
+	Object asm/main_rodata_020925A0.o
+	Object asm/main_020040AC.o
+	Object src/main_02004FCC.o
+	Object asm/main_02004FF8.o
 	Object src/main_02008210.o
 	Object asm/main_02008240.o
 	Object src/main_02008254.o
@@ -40,7 +45,6 @@ Static main
 	Object src/main_0200961C.o
 	Object asm/main_02009648.o
 	Object src/main_02009D48.o
-	Object asm/main_02009DCC.o
 	Object src/main_02009F9C.o
 	Object asm/main_0200A124.o
 	Object src/main_0200B330.o
@@ -52,7 +56,6 @@ Static main
 	Object src/debug.o
 	Object src/directory_file_mngr.o
 	Object src/directory_file.o
-	Object asm/main_0200C4CC.o
 	Object src/main_0200C4FC.o
 	Object asm/main_0200C5B4.o
 	Object src/item_util.o
@@ -64,9 +67,40 @@ Static main
 	Object asm/main_0200EB30.o
 	Object src/main_0200ECFC.o
 	Object src/main_0200EDC0.o
-	Object asm/main_0200EDFC.o
+	Object src/main_0200EEE0.o
+	Object asm/main_0200EF6C.o
+	Object src/main_0200F14C.o
+	Object src/main_0200F208.o
+	Object asm/main_0200F26C.o
+	Object src/main_0200F370.o
+	Object asm/main_0200F390.o
+	Object src/main_0200F798.o
+	Object asm/main_0200F7A8.o
+	Object src/main_0200F874.o
+	Object asm/main_0200F884.o
+	Object src/main_0201070C.o
+	Object src/main_0201077C.o
+	Object src/main_020107AC.o
+	Object src/main_020107DC.o
+	Object asm/main_02010830.o
+	Object src/main_02010898.o
+	Object asm/main_020108B4.o
+	Object src/main_02010BA4.o
+	Object asm/main_02010BC0.o
+	Object src/main_02010E40.o
+	Object asm/main_02010E64.o
 	Object src/exclusive_item.o
 	Object asm/main_02010FC4.o
+	Object src/main_020114F8.o
+	Object asm/main_02011528.o
+	Object src/main_02011830.o
+	Object asm/main_02011850.o
+	Object src/main_02011DF0.o
+	Object asm/main_02011E24.o
+	Object src/main_02011F14.o
+	Object asm/main_02011F60.o
+	Object src/main_0201227C.o
+	Object asm/main_02012294.o
 	Object src/moves_1.o
 	Object src/moves_2.o
 	Object asm/main_02013884.o
@@ -81,6 +115,20 @@ Static main
 	Object asm/main_02015090.o
 	Object src/main_0201514C.o
 	Object asm/main_020151E4.o
+	Object src/main_02017B58.o
+	Object asm/main_02017B70.o
+	Object src/main_02017C80.o
+	Object asm/main_02017C90.o
+	Object src/main_0201BA9C.o
+	Object asm/main_0201BAC8.o
+	Object src/main_0201BFF0.o
+	Object asm/main_0201C000.o
+	Object src/main_0201D198.o
+	Object asm/main_0201D1B0.o
+	Object src/main_0201D72C.o
+	Object asm/main_0201D738.o
+	Object src/main_0201E380.o
+	Object asm/main_0201E3AC.o
 	Object src/main_020251AC.o
 	Object asm/main_020251F0.o
 	Object src/main_02025788.o
@@ -88,14 +136,83 @@ Static main
 	Object asm/main_0202598C.o
 	Object src/main_020265C4.o
 	Object asm/main_0202676C.o
+	Object src/main_020275F8.o
+	Object asm/main_0202760C.o
+	Object src/main_02027648.o
+	Object asm/main_020276C0.o
+	Object src/main_020278A8.o
+	Object asm/main_020278C4.o
+	Object src/main_02027A80.o
+	Object src/main_02027AF0.o
+	Object asm/main_02027B88.o
+	Object src/main_02028080.o
+	Object src/main_02028284.o
+	Object src/main_020282F4.o
+	Object src/main_0202833C.o
+	Object asm/main_02028354.o
 	Object src/main_02029A50.o
 	Object asm/main_02029A68.o
+	Object src/main_02029EC8.o
+	Object asm/main_02029EE8.o
 	Object src/main_0202A388.o
 	Object asm/main_0202A3E4.o
+	Object src/main_0202A66C.o
+	Object asm/main_0202A690.o
+	Object src/main_0202AAA8.o
+	Object src/main_0202AB40.o
+	Object asm/main_0202AB94.o
+	Object src/main_0202B4C4.o
+	Object asm/main_0202B530.o
+	Object src/main_0202B558.o
+	Object asm/main_0202B568.o
+	Object src/main_0202BA0C.o
+	Object asm/main_0202BA20.o
+	Object src/main_0202BC44.o
+	Object src/main_0202BCBC.o
+	Object src/main_0202BCFC.o
+	Object asm/main_0202BD10.o
+	Object src/main_0202C5E0.o
+	Object asm/main_0202C5F4.o
+	Object src/main_0202C748.o
+	Object src/main_0202C794.o
+	Object asm/main_0202C7E4.o
+	Object src/main_0202D0D8.o
+	Object asm/main_0202D0EC.o
+	Object src/main_0202F180.o
+	Object asm/main_0202F190.o
+	Object src/main_0202FD3C.o
+	Object asm/main_0202FD50.o
+	Object src/main_020307A4.o
+	Object asm/main_020307B8.o
+	Object src/main_0203083C.o
+	Object src/main_0203088C.o
+	Object asm/main_020308A0.o
+	Object src/main_02030A18.o
+	Object src/main_02030A40.o
+	Object asm/main_02030A50.o
+	Object src/main_02032558.o
+	Object src/main_0203258C.o
+	Object asm/main_020325AC.o
 	Object src/main_020348E4.o
 	Object asm/main_02034974.o
+	Object src/main_0203755C.o
+	Object asm/main_02037570.o
 	Object src/main_0203C760.o
 	Object asm/main_0203C774.o
+	Object src/main_02042AF8.o
+	Object asm/main_02042B20.o
+	Object src/main_02042B84.o
+	Object asm/main_02042BE0.o
+	Object src/main_02043148.o
+	Object src/main_02043218.o
+	Object asm/main_020432B4.o
+	Object src/main_02043380.o
+	Object src/main_02043568.o
+	Object asm/main_0204357C.o
+	Object src/main_020484A0.o
+	Object asm/main_020484C0.o
+	Object src/main_02048758.o
+	Object asm/main_02048764.o
 	Object asm/main_bss_020B3380.o
 	Object src/options.o
 	Object asm/main_bss_022AB0AC.o
@@ -119,8 +236,19 @@ Static main
 	Object src/dungeon_init.o
 	Object src/main_0204F050.o
 	Object asm/main_0204F0A0.o
+	Object src/main_0204FA24.o
+	Object asm/main_0204FA70.o
+	Object src/main_0204FB9C.o
+	Object src/main_0204FD3C.o
 	Object src/main_0204FDFC.o
-	Object asm/main_0204FE58.o
+	Object src/main_0204FEB4.o
+	Object asm/main_0204FFEC.o
+	Object src/main_020502B0.o
+	Object asm/main_02050300.o
+	Object src/main_020503CC.o
+	Object asm/main_02050420.o
+	Object src/main_020504A4.o
+	Object asm/main_020504BC.o
 	Object src/number_util.o
 	Object asm/main_02051098.o
 	Object src/dungeon_recruitment_2.o
@@ -152,6 +280,20 @@ Static main
 	Object src/main_02054C24.o
 	Object src/main_02054DC4.o
 	Object asm/main_02054E4C.o
+	Object src/main_02055410.o
+	Object asm/main_02055528.o
+	Object src/main_0205567C.o
+	Object src/main_02055770.o
+	Object asm/main_02055894.o
+	Object src/main_02056294.o
+	Object asm/main_020562B8.o
+	Object src/main_020564B0.o
+	Object asm/main_02056504.o
+	Object src/main_020568A4.o
+	Object src/main_02056914.o
+	Object asm/main_02056960.o
+	Object src/main_02056D70.o
+	Object asm/main_02056EB8.o
 	Object src/main_02058C3C.o
 	Object asm/main_02058C4C.o
 	Object src/main_02058CD8.o
@@ -180,15 +322,12 @@ Static main
 	Object src/main_0205B554.o
 	Object asm/main_0205B5A8.o
 	Object src/main_0205B690.o
-	Object asm/main_0205B6CC.o
 	Object src/main_0205B6EC.o
-	Object asm/main_0205B738.o
 	Object src/main_0205B77C.o
 	Object asm/main_0205B80C.o
 	Object src/main_0205B9C8.o
 	Object asm/main_0205BA0C.o
 	Object src/main_0205BBFC.o
-	Object asm/main_0205BCC4.o
 	Object src/main_0205BD14.o
 	Object asm/main_0205C2A4.o
 	Object src/main_0205C440.o
@@ -205,25 +344,64 @@ Static main
 	Object src/main_0205EAC8.o
 	Object asm/main_0205EB00.o
 	Object src/main_0205EBD8.o
-	Object asm/main_0205EBF0.o
 	Object src/main_0205EC18.o
 	Object asm/main_0205EC38.o
 	Object src/main_0205EC78.o
 	Object asm/main_0205EC98.o
 	Object src/main_0205ED84.o
 	Object asm/main_0205EDA4.o
+	Object src/main_02062A58.o
+	Object asm/main_02062A68.o
+	Object src/main_02064FFC.o
+	Object src/main_02065974.o
+	Object asm/main_02065998.o
 	Object src/main_02065B3C.o
 	Object asm/main_02065BD8.o
+	Object src/main_02065C48.o
+	Object asm/main_02065C84.o
 	Object src/dungeon_init_2.o
 	Object asm/main_0206A750.o
 	Object src/main_0206A84C.o
 	Object asm/main_0206A878.o
 	Object src/main_0206C98C.o
 	Object asm/main_0206C9BC.o
+	Object src/main_0207191C.o
+	Object src/main_02071A14.o
 	Object lib/DSE/src/main_02071A98.o
-	Object lib/DSE/asm/main_02071AC0.o
+	Object lib/DSE/src/main_02071AC0.o
+	Object lib/DSE/src/main_02071AE0.o
+	Object lib/DSE/src/main_02071B20.o
+	Object lib/DSE/src/main_02071B60.o
+	Object lib/DSE/src/main_02071B8C.o
 	Object lib/DSE/src/main_02071BF4.o
-	Object lib/DSE/asm/main_02071EB4.o
+	Object lib/DSE/src/main_02071EB4.o
+	Object lib/DSE/src/main_02071F3C.o
+	Object lib/DSE/src/main_02071FC4.o
+	Object lib/DSE/asm/main_02072054.o
+	Object lib/DSE/src/main_02072144.o
+	Object lib/DSE/src/main_0207216C.o
+	Object lib/DSE/src/main_02072184.o
+	Object lib/DSE/src/main_020721B0.o
+	Object lib/DSE/asm/main_020721D4.o
+	Object lib/DSE/src/main_0207222C.o
+	Object lib/DSE/src/main_0207227C.o
+	Object lib/DSE/src/main_02072310.o
+	Object lib/DSE/src/main_020723C0.o
+	Object lib/DSE/src/main_0207241C.o
+	Object lib/DSE/src/main_020724A8.o
+	Object lib/DSE/src/main_02072504.o
+	Object lib/DSE/src/main_02072554.o
+	Object lib/DSE/src/main_020725D4.o
+	Object lib/DSE/src/main_02072668.o
+	Object lib/DSE/src/main_020726C4.o
+	Object lib/DSE/src/main_02072720.o
+	Object lib/DSE/src/main_02072770.o
+	Object lib/DSE/src/main_020727C8.o
+	Object lib/DSE/asm/main_020727FC.o
+	Object lib/DSE/src/main_02072938.o
+	Object lib/DSE/src/main_0207296C.o
+	Object lib/DSE/src/main_0207299C.o
+	Object lib/DSE/asm/main_020729A4.o
 	Object lib/DSE/src/dc_envelope.o
 	Object lib/DSE/src/dc_lfo.o
 	Object lib/DSE/asm/dc_lfo_1.o
@@ -433,6 +611,8 @@ Overlay OVY_11
 {
 	After OVY_10
 	Object asm/overlay_11.o
+	Object src/overlay_11_022E96E4.o
+	Object asm/overlay_11_022E96F4.o
 	Object src/ground_bg.o
 	Object asm/overlay_11_022ECD24_data.o
 	Object asm/overlay_11_022ECD24.o
@@ -549,18 +729,23 @@ Overlay OVY_29
 	Object asm/overlay_29_022DC314.o
 	Object src/overlay_29_022DC61C.o
 	Object asm/overlay_29_022DC65C.o
+	Object src/overlay_29_022DC684.o
+	Object asm/overlay_29_022DC694.o
 	Object src/overlay_29_022DEAB0.o
 	Object asm/overlay_29_022DEBA4.o
 	Object src/dg.o
 	Object asm/overlay_29_022E0378.o
 	Object src/run_dungeon_1.o
-	Object asm/overlay_29_022E08A0.o
+	Object asm/overlay_29_022E08F4.o
+	Object src/overlay_29_022E0A04.o
+	Object asm/overlay_29_022E0A18.o
 	Object src/overlay_29_022E1610.o
 	Object asm/overlay_29_022E1618.o
 	Object src/dungeon_util_1.o
 	Object asm/overlay_29_022E1640.o
 	Object src/dg_object.o
 	Object asm/overlay_29_022E1AD4.o
+	Object src/overlay_29_022E272C.o
 	Object src/dungeon_visibility.o
 	Object asm/overlay_29_022E28D4.o
 	Object src/dungeon_util_2.o
@@ -569,10 +754,30 @@ Overlay OVY_29
 	Object asm/overlay_29_022E335C.o
 	Object src/dg_effect.o
 	Object asm/overlay_29_022E37DC.o
+	Object src/overlay_29_022E41CC.o
+	Object asm/overlay_29_022E41F0.o
+	Object src/overlay_29_022E45B8.o
+	Object asm/overlay_29_022E45CC.o
+	Object src/overlay_29_022E46C0.o
+	Object asm/overlay_29_022E46D0.o
+	Object src/overlay_29_022E4704.o
+	Object asm/overlay_29_022E4714.o
+	Object src/overlay_29_022E4B8C.o
+	Object asm/overlay_29_022E4BB4.o
+	Object src/overlay_29_022E563C.o
+	Object asm/overlay_29_022E5650.o
+	Object src/overlay_29_022E66C4.o
+	Object asm/overlay_29_022E66D8.o
+	Object src/overlay_29_022E6770.o
+	Object asm/overlay_29_022E6798.o
+	Object src/overlay_29_022E68BC.o
+	Object asm/overlay_29_022E6928.o
 	Object src/random_trap.o
 	Object src/spawn_1.o
 	Object src/spawn_2.o
 	Object asm/overlay_29_022E7EC4.o
+	Object src/overlay_29_022E869C.o
+	Object asm/overlay_29_022E86A4.o
 	Object src/position_util.o
 	Object asm/overlay_29_rodata_02351628.o
 	Object src/dungeon_range.o
@@ -580,19 +785,37 @@ Overlay OVY_29
 	Object src/dungeon_range_2.o
 	Object asm/overlay_29_022E9488.o
 	Object src/dg_uty.o
-	Object asm/overlay_29_022E9618.o
+	Object asm/overlay_29_022E9628.o
+	Object src/overlay_29_022E99F0.o
+	Object asm/overlay_29_022E9A44.o
+	Object src/overlay_29_022E9FC0.o
+	Object asm/overlay_29_022E9FE0.o
+	Object src/overlay_29_022EA968.o
+	Object src/overlay_29_022EA9CC.o
 	Object src/dg_random.o
 	Object asm/overlay_29_022EAB50.o
+	Object src/overlay_29_022EAC34.o
+	Object src/overlay_29_022EAC7C.o
+	Object asm/overlay_29_022EAD00.o
+	Object src/overlay_29_022EAE14.o
+	Object asm/overlay_29_022EAE40.o
+	Object src/overlay_29_022EAEFC.o
+	Object asm/overlay_29_022EAF48.o
 	Object src/dungeon_action.o
 	Object asm/overlay_29_022EB44C.o
 	Object src/overlay_29_022EBC50.o
-	Object asm/overlay_29_022EBC98.o
 	Object src/dungeon_action_helper.o
 	Object asm/overlay_29_022EBCE8.o
 	Object src/overlay_29_022EC608.o
 	Object asm/overlay_29_022EC62C.o
 	Object src/overlay_29_022ECDC0.o
 	Object asm/overlay_29_022ECDE4.o
+	Object src/overlay_29_022ECF44.o
+	Object asm/overlay_29_022ECF78.o
+	Object src/overlay_29_022ED01C.o
+	Object asm/overlay_29_022ED030.o
+	Object src/overlay_29_022ED868.o
+	Object asm/overlay_29_022ED888.o
 	Object src/trap.o
 	Object asm/overlay_29_022EDCBC.o
 	Object src/overlay_29_022EE348.o
@@ -603,13 +826,16 @@ Overlay OVY_29
 	Object asm/overlay_29_rodata_0235173C.o
 	Object src/dungeon_ai_movement.o
 	Object asm/overlay_29_rodata_0235179C.o
-	Object asm/overlay_29_022EFA6C.o
+	Object src/overlay_29_022EFA6C.o
 	Object src/dungeon_logic_6.o
 	Object asm/overlay_29_022EFB20.o
 	Object src/overlay_29_022F0590.o
 	Object asm/overlay_29_022F05B4.o
+	Object src/overlay_29_022F0EDC.o
+	Object asm/overlay_29_022F2B3C.o
 	Object src/overlay_29_022F528C.o
-	Object asm/overlay_29_022F52B0.o
+	Object src/overlay_29_022F52BC.o
+	Object asm/overlay_29_022F52CC.o
 	Object src/overlay_29_022F5994.o
 	Object asm/overlay_29_022F59C4.o
 	Object src/overlay_29_022F62A8.o
@@ -649,11 +875,10 @@ Overlay OVY_29
 	Object src/dungeon_mobility.o
 	Object asm/overlay_29_022FF6C4.o
 	Object src/overlay_29_022FF898.o
-	Object asm/overlay_29_022FF8C8.o
 	Object src/dungeon_logic_8.o
 	Object asm/overlay_29_022FF958.o
 	Object src/overlay_29_022FFF28.o
-	Object asm/overlay_29_022FFF4C.o
+	Object asm/overlay_29_022FFF5C.o
 	Object src/overlay_29_023000E4.o
 	Object asm/overlay_29_0230027C.o
 	Object src/dungeon_logic.o
@@ -667,7 +892,6 @@ Overlay OVY_29
 	Object asm/overlay_29_02300FCC.o
 	Object src/dungeon_capabilities_4.o
 	Object src/dungeon_ai_targeting.o
-	Object asm/overlay_29_023016D8.o
 	Object src/dungeon_ai_targeting_1.o
 	Object asm/overlay_29_rodata_023527C0.o
 	Object src/overlay_29_023018AC.o
@@ -678,7 +902,6 @@ Overlay OVY_29
 	Object asm/overlay_29_02301D84.o
 	Object src/dungeon_logic_3.o
 	Object src/dungeon_pokemon_attributes_1.o
-	Object asm/overlay_29_023021F0.o
 	Object src/dungeon_logic_5.o
 	Object src/dungeon_logic_2.o
 	Object asm/overlay_29_02302388.o
@@ -718,7 +941,6 @@ Overlay OVY_29
 	Object asm/overlay_29_data_02353700.o
 	Object asm/overlay_29_0230F02C.o
 	Object src/overlay_29_0230F810.o
-	Object asm/overlay_29_0230F840.o
 	Object src/overlay_29_0230F8AC.o
 	Object asm/overlay_29_0230F9A4.o
 	Object src/overlay_29_02311010.o
@@ -759,7 +981,6 @@ Overlay OVY_29
 	Object src/overlay_29_0231CBC8.o
 	Object asm/overlay_29_0231CBEC.o
 	Object src/dungeon_ai_item_weight.o
-	Object asm/overlay_29_0231E990.o
 	Object src/overlay_29_0231E9F0.o
 	Object asm/overlay_29_0231EA04.o
 	Object src/overlay_29_0231EDD8.o
@@ -772,6 +993,10 @@ Overlay OVY_29
 	Object asm/overlay_29_023201A0.o
 	Object src/overlay_29_02320764.o
 	Object asm/overlay_29_02320788.o
+	Object src/overlay_29_02321238.o
+	Object asm/overlay_29_0232124C.o
+	Object src/overlay_29_02321274.o
+	Object asm/overlay_29_02321288.o
 	Object src/overlay_29_02321438.o
 	Object asm/overlay_29_0232145C.o
 	Object src/overlay_29_02322DB8.o
@@ -785,14 +1010,136 @@ Overlay OVY_29
 	Object asm/overlay_29_02324BE8.o
 	Object src/overlay_29_02325620.o
 	Object asm/overlay_29_02325644.o
+	Object src/overlay_29_02325DC0.o
+	Object asm/overlay_29_02325DE4.o
+	Object src/overlay_29_02325F3C.o
+	Object src/overlay_29_02325FB4.o
+	Object asm/overlay_29_02325FC4.o
+	Object src/overlay_29_02326088.o
+	Object asm/overlay_29_023260D0.o
+	Object src/overlay_29_02326188.o
+	Object src/overlay_29_0232620C.o
+	Object asm/overlay_29_02326220.o
+	Object src/overlay_29_02326550.o
+	Object asm/overlay_29_02326568.o
+	Object src/overlay_29_02326648.o
+	Object asm/overlay_29_02326670.o
+	Object src/overlay_29_023267D8.o
+	Object asm/overlay_29_0232680C.o
+	Object src/overlay_29_023268BC.o
+	Object src/overlay_29_02326908.o
+	Object asm/overlay_29_0232692C.o
+	Object src/overlay_29_02326CB4.o
+	Object asm/overlay_29_02326CC8.o
+	Object src/overlay_29_02326E04.o
+	Object src/overlay_29_02326E80.o
+	Object asm/overlay_29_02326EB8.o
+	Object src/overlay_29_023276B4.o
+	Object src/overlay_29_02327744.o
+	Object asm/overlay_29_0232776C.o
+	Object src/overlay_29_02327928.o
+	Object src/overlay_29_023279AC.o
+	Object asm/overlay_29_023279E4.o
+	Object src/overlay_29_02327BE0.o
+	Object asm/overlay_29_02327C08.o
+	Object src/overlay_29_02327DD0.o
+	Object asm/overlay_29_02327DE0.o
 	Object src/overlay_29_0232800C.o
 	Object asm/overlay_29_02328030.o
+	Object src/overlay_29_02328230.o
+	Object asm/overlay_29_02328248.o
+	Object src/overlay_29_02328394.o
+	Object asm/overlay_29_023283A4.o
+	Object src/overlay_29_02328528.o
+	Object asm/overlay_29_02328538.o
+	Object src/overlay_29_02328A54.o
+	Object src/overlay_29_02328AE0.o
+	Object asm/overlay_29_02328B00.o
+	Object src/overlay_29_0232923C.o
+	Object asm/overlay_29_02329258.o
+	Object src/overlay_29_023293E4.o
+	Object asm/overlay_29_023293F8.o
+	Object src/overlay_29_02329534.o
+	Object asm/overlay_29_02329554.o
+	Object src/overlay_29_02329664.o
+	Object src/overlay_29_023296F8.o
+	Object asm/overlay_29_02329710.o
+	Object src/overlay_29_02329854.o
+	Object asm/overlay_29_02329898.o
+	Object src/overlay_29_02329FB4.o
+	Object src/overlay_29_0232A04C.o
+	Object src/overlay_29_0232A118.o
+	Object asm/overlay_29_0232A148.o
+	Object src/overlay_29_0232A2AC.o
+	Object asm/overlay_29_0232A2BC.o
 	Object src/overlay_29_0232A3D8.o
 	Object asm/overlay_29_0232A3FC.o
+	Object src/overlay_29_0232A480.o
+	Object src/overlay_29_0232A4E8.o
+	Object asm/overlay_29_0232A524.o
+	Object src/overlay_29_0232AC44.o
+	Object asm/overlay_29_0232AC54.o
+	Object src/overlay_29_0232AD08.o
+	Object asm/overlay_29_0232AD18.o
+	Object src/overlay_29_0232AFF0.o
+	Object asm/overlay_29_0232B024.o
+	Object src/overlay_29_0232B434.o
+	Object asm/overlay_29_0232B44C.o
+	Object src/overlay_29_0232B500.o
+	Object asm/overlay_29_0232B518.o
+	Object src/overlay_29_0232B5C8.o
+	Object asm/overlay_29_0232B5E8.o
+	Object src/overlay_29_0232B6A4.o
+	Object asm/overlay_29_0232B6C8.o
+	Object src/overlay_29_0232B7C0.o
+	Object src/overlay_29_0232B8A0.o
+	Object src/overlay_29_0232B8D4.o
+	Object src/overlay_29_0232B928.o
+	Object asm/overlay_29_0232B940.o
+	Object src/overlay_29_0232BE34.o
+	Object asm/overlay_29_0232BE44.o
+	Object src/overlay_29_0232BF78.o
+	Object asm/overlay_29_0232BF88.o
+	Object src/overlay_29_0232C300.o
+	Object asm/overlay_29_0232C310.o
 	Object src/overlay_29_0232C500.o
-	Object asm/overlay_29_0232C524.o
+	Object src/overlay_29_0232C560.o
+	Object asm/overlay_29_0232C578.o
+	Object src/overlay_29_0232C82C.o
+	Object asm/overlay_29_0232C84C.o
+	Object src/overlay_29_0232CA14.o
+	Object asm/overlay_29_0232CA70.o
+	Object src/overlay_29_0232CB08.o
+	Object asm/overlay_29_0232CB18.o
+	Object src/overlay_29_0232CD90.o
+	Object src/overlay_29_0232CE40.o
+	Object src/overlay_29_0232CE94.o
+	Object asm/overlay_29_0232CEAC.o
+	Object src/overlay_29_0232CF74.o
+	Object asm/overlay_29_0232CF84.o
+	Object src/overlay_29_0232D1DC.o
+	Object src/overlay_29_0232D270.o
+	Object asm/overlay_29_0232D298.o
+	Object src/overlay_29_0232D368.o
+	Object src/overlay_29_0232D400.o
+	Object asm/overlay_29_0232D418.o
+	Object src/overlay_29_0232D6D0.o
+	Object asm/overlay_29_0232D6E8.o
+	Object src/overlay_29_0232D8FC.o
+	Object asm/overlay_29_0232D90C.o
+	Object src/overlay_29_0232DC54.o
+	Object asm/overlay_29_0232DC64.o
+	Object src/overlay_29_0232DD78.o
+	Object asm/overlay_29_0232DDAC.o
+	Object src/overlay_29_0232E0E4.o
+	Object asm/overlay_29_0232E130.o
 	Object src/overlay_29_0232E250.o
 	Object asm/overlay_29_0232E2B8.o
+	Object src/overlay_29_0232E3D0.o
+	Object src/overlay_29_0232E48C.o
+	Object asm/overlay_29_0232E4A0.o
+	Object src/overlay_29_0232E734.o
+	Object asm/overlay_29_0232E744.o
 	Object src/overlay_29_0232E840.o
 	Object asm/overlay_29_0232E864.o
 	Object src/overlay_29_023329E8.o
@@ -819,15 +1166,28 @@ Overlay OVY_29
 	Object src/overlay_29_02338548.o
 	Object src/overlay_29_02338560.o
 	Object src/overlay_29_02338604.o
-	Object asm/overlay_29_0233861C.o
+	Object src/overlay_29_0233865C.o
+	Object asm/overlay_29_02338684.o
+	Object src/overlay_29_02338850.o
+	Object asm/overlay_29_023388B0.o
+	Object src/overlay_29_02339118.o
+	Object asm/overlay_29_02339138.o
+	Object src/overlay_29_0233A218.o
+	Object asm/overlay_29_0233A248.o
+	Object src/overlay_29_0233AE78.o
+	Object asm/overlay_29_0233AE84.o
 	Object src/overlay_29_02340CAC.o
 	Object asm/overlay_29_02340CE4.o
 	Object src/dungeon_generation.o
 	Object asm/overlay_29_02341E6C.o
+	Object src/overlay_29_0234396C.o
+	Object asm/overlay_29_02343980.o
 	Object src/fixed_room_data.o
 	Object asm/overlay_29_02344178.o
 	Object src/overlay_29_02344AF8.o
 	Object asm/overlay_29_02344B1C.o
+	Object src/overlay_29_02344BE4.o
+	Object asm/overlay_29_02344BF8.o
 	Object src/overlay_29_02345698.o
 	Object asm/overlay_29_023456BC.o
 	Object src/dungeon_items.o
@@ -836,10 +1196,31 @@ Overlay OVY_29
 	Object asm/overlay_29_02348020.o
 	Object src/overlay_29_02348D00.o
 	Object asm/overlay_29_02348D3C.o
+	Object src/overlay_29_02349188.o
+	Object src/overlay_29_02349208.o
+	Object asm/overlay_29_0234921C.o
+	Object src/overlay_29_0234928C.o
+	Object src/overlay_29_02349314.o
+	Object asm/overlay_29_02349378.o
+	Object src/overlay_29_02349470.o
+	Object asm/overlay_29_023494CC.o
+	Object src/overlay_29_023495C4.o
+	Object src/overlay_29_02349620.o
+	Object src/overlay_29_02349688.o
+	Object src/overlay_29_023496D8.o
+	Object asm/overlay_29_023496EC.o
 	Object src/overlay_29_0234987C.o
 	Object asm/overlay_29_023498A0.o
 	Object src/overlay_29_0234AEA4.o
 	Object asm/overlay_29_0234AEE8.o
+	Object src/overlay_29_0234AFFC.o
+	Object src/overlay_29_0234B024.o
+	Object src/overlay_29_0234B104.o
+	Object asm/overlay_29_0234B130.o
+	Object src/overlay_29_0234B340.o
+	Object asm/overlay_29_0234B350.o
+	Object src/overlay_29_0234B4BC.o
+	Object asm/overlay_29_0234B4CC.o
 	Object src/overlay_29_0234BBE8.o
 	Object asm/overlay_29_0234BEE0.o
 	Object src/overlay_29_0234CA68.o

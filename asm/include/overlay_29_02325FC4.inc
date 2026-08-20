@@ -1,0 +1,10 @@
+#pragma once
+.public BeginChargedMove
+.public DIG_DAMAGE_MULTIPLIER
+.public DealDamage
+.public EndTwoTurnMove
+.public GetTileAtEntity
+.public IsChargingTwoTurnMove
+.public IsTileGround
+.public LogMessageByIdWithPopupCheckUserTarget
+.public StringFromId

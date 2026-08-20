@@ -1,0 +1,10 @@
+#pragma once
+.public AbilityIsActiveVeneer
+.public CalcRecoilDamageFixed
+.public DealDamage
+.public DungeonRandOutcomeUserAction
+.public EntityIsValidMoveEffects__0232800C
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SubstitutePlaceholderStringTags
+.public WATER_SPOUT_DAMAGE_MULT_TABLE
+.public ov29_022E5474

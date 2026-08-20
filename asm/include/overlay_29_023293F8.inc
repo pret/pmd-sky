@@ -1,0 +1,12 @@
+#pragma once
+.public AbilityIsActiveVeneer
+.public CalcDamageFixedWrapper
+.public GetApparentWeather
+.public GetDamageSourceWrapper
+.public GetMoveCategory
+.public GetMoveType
+.public LogMessageByIdWithPopupCheckUserTarget
+.public MOONLIGHT_HP_RESTORATION_TABLE
+.public SubstitutePlaceholderStringTags
+.public TryIncreaseHp
+.public ov29_0230D4A4

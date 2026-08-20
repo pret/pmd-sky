@@ -1,0 +1,11 @@
+#pragma once
+.public BeginChargedMove
+.public DealDamage
+.public DealDamageWithTypeAndPowerBoost
+.public EndProtectStatus
+.public EndTwoTurnMove
+.public GetEntityNaturalGiftInfo
+.public IsChargingTwoTurnMove
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SHADOW_FORCE_DAMAGE_MULTIPLIER
+.public StringFromId

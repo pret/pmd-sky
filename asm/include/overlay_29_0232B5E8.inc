@@ -1,0 +1,6 @@
+#pragma once
+.public DealDamage
+.public DungeonRandOutcomeUserTargetInteraction
+.public EndFrozenStatus
+.public TryInflictConstrictionStatus
+.public WHIRLPOOL_CONSTRICTION_CHANCE

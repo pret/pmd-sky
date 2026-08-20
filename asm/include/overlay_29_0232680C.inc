@@ -1,0 +1,3 @@
+#pragma once
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SubstitutePlaceholderStringTags

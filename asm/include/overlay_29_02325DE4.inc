@@ -1,0 +1,14 @@
+#pragma once
+.public ATK_STAT_IDX
+.public CalcStatusDuration
+.public DealDamage
+.public DungeonRandOutcomeUserTargetInteraction
+.public IRON_TAIL_LOWER_DEFENSE_CHANCE
+.public LowerDefensiveStat
+.public ROLLOUT_DAMAGE_MULT_TABLE
+.public ROLLOUT_ICE_BALL_MISSED
+.public ROLLOUT_ICE_BALL_SUCCESSIVE_HITS
+.public SLEEP_TURN_RANGE
+.public TryInflictSleepStatus
+.public TryInflictYawningStatus
+.public YAWN_TURN_RANGE

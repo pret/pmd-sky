@@ -1,0 +1,11 @@
+#pragma once
+.public AbilityIsActiveVeneer
+.public CalcRecoilDamageFixed
+.public DealDamage
+.public DefenderAbilityIsActiveMoveEffects__0232DE20
+.public EntityIsValidMoveEffects__0232E250
+.public GendersNotEqualNotGenderless
+.public LogMessageByIdWithPopupCheckUserTarget
+.public LowerOffensiveStat
+.public SPATK_STAT_IDX
+.public SubstitutePlaceholderStringTags

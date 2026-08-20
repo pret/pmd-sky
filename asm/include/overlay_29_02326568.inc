@@ -1,0 +1,10 @@
+#pragma once
+.public ATK_STAT_IDX
+.public BoostOffensiveStat
+.public DealDamage
+.public DungeonRandOutcomeUserTargetInteraction
+.public IsMonsterSleeping
+.public LogMessageByIdWithPopupCheckUserTarget
+.public SNORE_CRINGE_CHANCE
+.public TryInflictConfusedStatus
+.public TryInflictCringeStatus

@@ -1,3 +1,4 @@
+#include "main_02029EC8.h"
 #include "overlay_31_02382820.h"
 #include "dg_uty.h"
 #include "dungeon_ai_targeting.h"
@@ -5,6 +6,8 @@
 #include "number_util.h"
 #include "weather.h"
 #include "main_02001188.h"
+#include "window.h"
+#include "main_02027AF0.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
@@ -32,19 +35,15 @@ extern void GetMonsterOrTrapName(u8*, void*, u32); // The third argument isn't a
                                      // function (../asm/overlay_29_022E1A40.s#L1378)
 extern u8* StringFromId(u32);
 extern void PreprocessString(u8* dst, u32 dsize, const u8* src, u32 flags, struct PPStrValues* ptr);
-extern void DrawTextInWindow(struct Window*, u32, u32, u8*);
-extern void UpdateWindow(struct Window*);
+extern void DrawTextInWindow(s32, u32, u32, u8*);
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
-extern struct Window* GetWindow(struct Window*);
 extern s32 sub_020265A8(u8*); // Measures the text's width in pixels
 
-extern u32 Arm9LoadUnkFieldNa0x2029EC8(u32, u8*);
 extern u8 CreateParentMenuFromStringIds(u32*, u32, struct struct_2*, u32*);
-extern u8 CreateTextBox(u32*, void (*fun)(struct Window*));
+extern u8 CreateTextBox(u32*, void (*fun)(s32));
 extern u32 IsParentMenuActive(s8);
 extern u32 GetWindowIdSelectedItemOnPage(s8);
-extern void Arm9StoreUnkFieldNa0x2029ED8(u32, u8);
 extern u32 GetPressedButtons(u32, u16*);
 extern void sub_0202AB94(s8, u32);
 extern void sub_0202B030(s8);
@@ -74,7 +73,7 @@ void EntryOverlay31(void) {
 }
 
 
-void DrawDungeonMenuStatusWindow(struct Window* window)
+void DrawDungeonMenuStatusWindow(s32 window_id)
 {
     struct PPStrValues str_values;
     u8 str_buff[DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE];
@@ -94,22 +93,22 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
 
     str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_1);
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
-    DrawTextInWindow(window, X_OFFSET, 0, str_buff);
+    DrawTextInWindow(window_id, X_OFFSET, 0, str_buff);
 
     str_values.gold_left_0 = GetMoneyCarried();
     str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_2);
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
-    DrawTextInWindow(window, X_OFFSET, LINE_HEIGHT, str_buff);
+    DrawTextInWindow(window_id, X_OFFSET, LINE_HEIGHT, str_buff);
 
     str_values.weather_0 = GetApparentWeather(NULL);
     str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_3);
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
-    DrawTextInWindow(window, X_OFFSET, LINE_HEIGHT * 2, str_buff);
+    DrawTextInWindow(window_id, X_OFFSET, LINE_HEIGHT * 2, str_buff);
 
     str_values.time_0 = sub_0204F9E0();
     str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_4);
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, DRAW_DUNGEON_MENU_STATUS_WINDOW_CONST_1, &str_values);
-    DrawTextInWindow(window, X_OFFSET, LINE_HEIGHT * 3, str_buff);
+    DrawTextInWindow(window_id, X_OFFSET, LINE_HEIGHT * 3, str_buff);
 
     line_offset = 0;
     for (i = 0; i < 4; i++) {
@@ -131,7 +130,7 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
 
             str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_5);
             PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
-            DrawTextInWindow(window, 4, line_offset, str_buff);
+            DrawTextInWindow(window_id, 4, line_offset, str_buff);
 
             line_offset += 12;
             if (line_offset >= 0x30) {
@@ -140,21 +139,21 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
         }
     }
 
-    UpdateWindow(window);
+    UpdateWindow(window_id);
 }
 
-void DungeonMenuSwitch(struct Window* window)
+void DungeonMenuSwitch(s32 window_id)
 {
     struct PPStrValues str_values;
     str_values.dungeon_0 = DUNGEON_PTR[0]->id | 0x40000;
     str_values.digits_0 = DUNGEON_PTR[0]->floor;
     u8* str_buff = AllocateTemp1024ByteBufferFromPool();
     PreprocessString(str_buff, 0x400, DUNGEON_MENU_SWITCH_STR1, 0, &str_values);
-    struct Window* window2 = GetWindow(window);
+    struct Window* window2 = GetWindow(window_id);
     s32 text_width = sub_020265A8(str_buff);
-    s32 x_offset = (window2->width * 8 - text_width) / 2;
-    DrawTextInWindow(window, x_offset, 2, str_buff);
-    UpdateWindow(window);
+    s32 x_offset = (window2->template.width * 8 - text_width) / 2;
+    DrawTextInWindow(window_id, x_offset, 2, str_buff);
+    UpdateWindow(window_id);
 }
 
 u32 DungeonMenuLoop(void)
@@ -296,11 +295,11 @@ void CreateStairsMenuState(struct entity* entity)
     ov31_0238A2A0.st3->d = r4;
 }
 
-void StairsSubheadingCallback(struct Window* window)
+void StairsSubheadingCallback(s32 window_id)
 {
     u8* str = StringFromId(ov31_02389E22[ov31_0238A2A0.st3->d * 2]);
 
     ov31_0238A2A0.str = str;
-    DrawTextInWindow(window, 16, 18, str);
-    UpdateWindow(window);
+    DrawTextInWindow(window_id, 16, 18, str);
+    UpdateWindow(window_id);
 }

@@ -1,4 +1,7 @@
 #include "dungeon_ai_item_weight.h"
+#include "item_util_1.h"
+
+extern const s16 EAT_ITEM_EFFECT_IGNORE_LIST[];
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_logic.h"
 #include "dungeon_map_access.h"
@@ -384,4 +387,25 @@ bool8 IsAdjacentToEnemy(struct entity *entity)
         }
     }
     return FALSE;
+}
+
+bool8 ShouldTryEatItem(s16 item_id)
+{
+    const s16 *p;
+
+    if (item_id < 0x45 || item_id > 0x8A) {
+        return FALSE;
+    }
+
+    if (!IsItemValidVeneer(item_id)) {
+        return FALSE;
+    }
+
+    for (p = EAT_ITEM_EFFECT_IGNORE_LIST; *p != 0; p++) {
+        if (item_id == *p) {
+            return FALSE;
+        }
+    }
+
+    return TRUE;
 }
