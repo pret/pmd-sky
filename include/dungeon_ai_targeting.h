@@ -1,6 +1,8 @@
 #ifndef PMDSKY_DUNGEON_AI_TARGETING_H
 #define PMDSKY_DUNGEON_AI_TARGETING_H
 
+#include "util.h"
+
 #include "dungeon_mode.h"
 
 // Checks whether an AI-controlled monster should try to avoid the first hit in battle.
@@ -16,5 +18,6 @@ bool8 ShouldMonsterRunAway(struct entity *monster);
 // show_run_away_effect: Boolean value. If true, display a visual "poof" effect if the Run Away ability caused the monster to run away.
 // return: Result of the call to ShouldMonsterRunAway
 bool8 ShouldMonsterRunAwayAndShowEffect(struct entity *monster, bool8 show_run_away_effect);
+void DisplayRunAwayIfTriggered(struct entity* entity, bool8 show_effect);
 
 #endif //PMDSKY_DUNGEON_AI_TARGETING_H

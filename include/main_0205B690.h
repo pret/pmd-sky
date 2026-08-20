@@ -15,6 +15,11 @@ union unkStruct_020B0A54_unk8 {
     struct unkStruct_020B0A54_unk8_inner *unk8;
 };
 
+struct unk_0205B6CC {
+    u8 field_0x0[0xC];
+    u64 field_0xC;
+};
+
 struct unkStruct_020B0A54 {
     u8 unk0;
     u32 unk4;
@@ -41,5 +46,6 @@ union unkStruct_020B0A54_union {
 };
 
 s32 sub_0205B690(void);
+bool8 sub_0205B6CC(struct unk_0205B6CC* p);
 
 #endif //PMDSKY_MAIN_0205B690_H

@@ -9,7 +9,9 @@ struct unk_0202C5E0 {
     s32 field_0x1A0;
     s32 field_0x1A4;
     void *field_0x1A8;
-    u8 field_0x1AC[6];
+    u8 field_0x1AC[4];
+    u8 field_0x1B0;
+    u8 field_0x1B1;
     u8 field_0x1B2;
     u8 field_0x1B3;
     u8 field_0x1B4[8];

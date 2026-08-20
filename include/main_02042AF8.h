@@ -40,7 +40,6 @@ void sub_0202D134(s8 a);
 s32 sub_0202C620(s8 a);
 bool8 IsCollectionMenuActive(s8 a);
 bool8 IsCollectionMenuState3(s8 a);
-s32 sub_0202C75C(s8 a);
 
 void ClearBagSelectedItemTable(void);
 
