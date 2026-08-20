@@ -13,5 +13,6 @@ void IncrementNbFriendRescues(void);
 u32 GetNbFriendRescues(void);
 void IncrementNbEvolutions(void);
 u32 GetNbEvolutions(void);
+void IncrementNbSteals(void);
 
 #endif

@@ -5,5 +5,6 @@
 #include "main_0200C4FC.h"
 
 void ov29_0234AFFC(u8 value);
+void ov29_0234B010(u8 value);
 
 #endif

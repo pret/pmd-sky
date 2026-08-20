@@ -10,3 +10,10 @@ u32 IsAdvancedMenuActive2(s32 window_id)
 
     return state != 7 && state != 8;
 }
+
+bool8 IsAdvancedMenuActive(s32 window_id)
+{
+    struct unk_0202AAA8 *w = GetWindowContents(window_id);
+
+    return w->field_0x1A0 == 0;
+}

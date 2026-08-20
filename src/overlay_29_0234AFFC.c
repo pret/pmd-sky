@@ -15,3 +15,8 @@ void ov29_0234AFFC(u8 value)
 {
     MESSAGE_LOG_INFO.field_0x4[0xCED] = value;
 }
+
+void ov29_0234B010(u8 value)
+{
+    MESSAGE_LOG_INFO.field_0x4[0xCEE] = value;
+}

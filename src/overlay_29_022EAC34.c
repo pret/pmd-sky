@@ -19,3 +19,8 @@ void DungeonRngSetPrimary(void)
 {
     DUNGEON_PRNG_STATE.use_secondary = FALSE;
 }
+
+void ov29_022EAC78(void)
+{
+
+}

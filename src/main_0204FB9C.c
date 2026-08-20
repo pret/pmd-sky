@@ -65,3 +65,8 @@ u32 GetNbEvolutions(void)
 {
     return ADVENTURE_LOG_PTR->nb_evolutions;
 }
+
+void IncrementNbSteals(void)
+{
+
+}
