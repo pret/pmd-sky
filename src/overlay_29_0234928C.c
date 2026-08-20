@@ -1,4 +1,5 @@
 #include "overlay_29_0234928C.h"
+
 #include "dungeon.h"
 #include "mission.h"
 
@@ -18,4 +19,15 @@ bool8 IsOutlawMonsterHouseFloor(void)
 bool8 IsGoldenChamber(void)
 {
     return IsCurrentMissionTypeExact(MISSION_EXPLORE_WITH_CLIENT, 2) != 0;
+}
+
+bool8 IsLegendaryChallengeFloor(void)
+{
+    if (IsCurrentMissionType(MISSION_CHALLENGE_REQUEST)) {
+        if ((u8) (DUNGEON_PTR->mission_destination.subtype + 0xFF) <= 4) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
 }

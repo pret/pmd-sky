@@ -14,3 +14,12 @@ bool8 IsDestinationFloorWithHiddenOutlaw(void)
 {
     return IsCurrentMissionTypeExact(MISSION_TAKE_ITEM_FROM_OUTLAW, 1) != 0;
 }
+
+bool8 IsDestinationFloorWithFleeingOutlaw(void)
+{
+    if (!IsCurrentMissionTypeExact(MISSION_ARREST_OUTLAW, 5) && !IsCurrentMissionTypeExact(MISSION_TAKE_ITEM_FROM_OUTLAW, 2)) {
+        return FALSE;
+    }
+
+    return TRUE;
+}

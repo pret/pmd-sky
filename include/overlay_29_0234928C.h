@@ -6,5 +6,6 @@
 
 bool8 IsOutlawMonsterHouseFloor(void);
 bool8 IsGoldenChamber(void);
+bool8 IsLegendaryChallengeFloor(void);
 
 #endif

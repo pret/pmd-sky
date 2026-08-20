@@ -1,4 +1,7 @@
 #include "overlay_29_0232D1DC.h"
+#include "move_orb_effects.h"
+
+extern s32 DealDamage(struct entity *attacker, struct entity *defender, struct move *move, s32 damageMultiplier, enum item_id item_id);
 
 extern void TryInflictPierceStatus(struct entity *user, struct entity *target);
 
@@ -41,6 +44,17 @@ bool8 DoMoveLongToss(struct entity* attacker, struct entity* defender, struct mo
 bool8 DoMovePierce(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)
 {
     TryInflictPierceStatus(attacker, defender);
+
+    return TRUE;
+}
+
+bool8 DoMoveHammerArm(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)
+{
+    if (DealDamage(attacker, defender, move, 0x100, item_id) == 0) {
+        return FALSE;
+    }
+
+    LowerSpeed(attacker, attacker, 1, TRUE);
 
     return TRUE;
 }

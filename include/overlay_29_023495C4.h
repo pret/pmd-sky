@@ -5,5 +5,6 @@
 #include "util.h"
 
 bool8 IsDestinationFloorWithHiddenOutlaw(void);
+bool8 IsDestinationFloorWithFleeingOutlaw(void);
 
 #endif
