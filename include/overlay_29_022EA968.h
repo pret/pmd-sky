@@ -4,5 +4,6 @@
 #include "util.h"
 
 void SetDungeonRngPreseed23Bit(u32 preseed);
+u32 GenerateDungeonRngSeed(void);
 
 #endif

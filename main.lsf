@@ -806,7 +806,6 @@ Overlay OVY_29
 	Object src/overlay_29_022E9FC0.o
 	Object asm/overlay_29_022E9FE0.o
 	Object src/overlay_29_022EA968.o
-	Object asm/overlay_29_022EA980.o
 	Object src/overlay_29_022EA9CC.o
 	Object src/dg_random.o
 	Object asm/overlay_29_022EAB50.o
@@ -1037,7 +1036,6 @@ Overlay OVY_29
 	Object src/overlay_29_02325DC0.o
 	Object asm/overlay_29_02325DE4.o
 	Object src/overlay_29_02325F3C.o
-	Object asm/overlay_29_02325F74.o
 	Object src/overlay_29_02325FB4.o
 	Object asm/overlay_29_02325FC4.o
 	Object src/overlay_29_02326088.o
@@ -1053,13 +1051,11 @@ Overlay OVY_29
 	Object src/overlay_29_023267D8.o
 	Object asm/overlay_29_0232680C.o
 	Object src/overlay_29_023268BC.o
-	Object asm/overlay_29_023268CC.o
 	Object src/overlay_29_02326908.o
 	Object asm/overlay_29_0232692C.o
 	Object src/overlay_29_02326CB4.o
 	Object asm/overlay_29_02326CC8.o
 	Object src/overlay_29_02326E04.o
-	Object asm/overlay_29_02326E20.o
 	Object src/overlay_29_02326E80.o
 	Object asm/overlay_29_02326EB8.o
 	Object src/overlay_29_023276B4.o
@@ -1263,7 +1259,6 @@ Overlay OVY_29
 	Object asm/overlay_29_0234AEE8.o
 	Object src/overlay_29_0234AFFC.o
 	Object src/overlay_29_0234B024.o
-	Object asm/overlay_29_0234B0CC.o
 	Object src/overlay_29_0234B104.o
 	Object asm/overlay_29_0234B130.o
 	Object src/overlay_29_0234B340.o
