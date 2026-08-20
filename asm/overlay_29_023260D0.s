@@ -1,22 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_023260A8.inc"
+	.include "overlay_29_023260D0.inc"
 
 	.text
-
-	arm_func_start DoMoveCharm
-DoMoveCharm: ; 0x023260A8
-	stmdb sp!, {r3, lr}
-	ldr r2, _023260CC ; =ATK_STAT_IDX
-	mov ip, #1
-	ldr r2, [r2]
-	mov r3, #0x80
-	str ip, [sp]
-	bl ApplyOffensiveStatMultiplier
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_023260CC: .word ATK_STAT_IDX
-	arm_func_end DoMoveCharm
 
 	arm_func_start DoMoveRainDance
 DoMoveRainDance: ; 0x023260D0

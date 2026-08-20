@@ -3,9 +3,9 @@
 extern void TryInflictDecoyStatus(struct entity *user, struct entity *target, s32 a, s32 b, s32 c);
 #include "move_orb_effects.h"
 
-extern struct StatIndex ATK_STAT_IDX;
+extern const struct StatIndex ATK_STAT_IDX;
 
-extern struct StatIndex SPATK_STAT_IDX;
+extern const struct StatIndex SPATK_STAT_IDX;
 
 extern void TryInflictMagicCoatStatus(struct entity *user, struct entity *target);
 extern void TryInflictProtectStatus(struct entity *user, struct entity *target);

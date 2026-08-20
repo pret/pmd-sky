@@ -1,15 +1,5 @@
 #pragma once
-.public ATK_STAT_IDX
 .public CalcDamageFixedWrapper
-.public DUNGEON_PTR
-.public DealDamage
-.public DefenderAbilityIsActiveMoveEffects__02329F14
 .public GetDamageSourceWrapper
 .public GetMoveCategory
 .public GetMoveType
-.public LogMessageByIdWithPopupCheckUserTarget
-.public LowerDefensiveStat
-.public LowerOffensiveStat
-.public TryActivateWeather
-.public TryEndStatusWithAbility
-.public WEATHER_MOVE_TURN_COUNT

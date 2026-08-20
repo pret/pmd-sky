@@ -1,0 +1,12 @@
+#pragma once
+.public DealDamage
+.public DealDamageWithType
+.public DungeonRandOutcomeUserTargetInteraction
+.public EndFrozenStatus
+.public GetApparentWeather
+.public ROCK_SLIDE_CRINGE_CHANCE
+.public TryInflictConstrictionStatus
+.public TryInflictCringeStatus
+.public WEATHER_BALL_DAMAGE_MULT_TABLE
+.public WEATHER_BALL_TYPE_TABLE
+.public WHIRLPOOL_CONSTRICTION_CHANCE

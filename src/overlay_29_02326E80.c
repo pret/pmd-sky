@@ -1,8 +1,8 @@
 #include "overlay_29_02326E80.h"
 
-extern struct StatIndex ATK_STAT_IDX;
+extern const struct StatIndex ATK_STAT_IDX;
 
-extern struct StatIndex SPATK_STAT_IDX;
+extern const struct StatIndex SPATK_STAT_IDX;
 #include "move_orb_effects.h"
 
 bool8 DoMoveBoostDefense1(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)

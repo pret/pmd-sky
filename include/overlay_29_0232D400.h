@@ -5,6 +5,7 @@
 #include "item.h"
 #include "move.h"
 
+bool8 DoMoveHealOrder(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 bool8 DoMoveHealBlock(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 
 #endif

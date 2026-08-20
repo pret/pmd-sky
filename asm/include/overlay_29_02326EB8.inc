@@ -22,12 +22,10 @@
 .public IsChargingTwoTurnMove
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerDefensiveStat
-.public LowerOffensiveStat
 .public LowerSpeed
 .public MirrorMoveIsActive
 .public RAZOR_WIND_DAMAGE_MULTIPLIER
 .public REVERSAL_DAMAGE_MULT_TABLE
-.public SPATK_STAT_IDX
 .public StringFromId
 .public THUNDER_PARALYZE_CHANCE
 .public TryIncreaseHp

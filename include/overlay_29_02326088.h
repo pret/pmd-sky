@@ -6,5 +6,6 @@
 #include "move.h"
 
 bool8 DoMoveSweetScent(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
+bool8 DoMoveCharm(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id);
 
 #endif

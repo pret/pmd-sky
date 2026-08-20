@@ -2,8 +2,8 @@
 #include "dungeon_util_static.h"
 #include "move_orb_effects.h"
 
-extern struct StatIndex ATK_STAT_IDX;
-extern struct StatIndex SPATK_STAT_IDX;
+extern const struct StatIndex ATK_STAT_IDX;
+extern const struct StatIndex SPATK_STAT_IDX;
 
 bool8 EntityIsValidMoveEffects__0232E250(struct entity *entity)
 {

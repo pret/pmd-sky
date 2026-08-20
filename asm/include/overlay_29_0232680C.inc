@@ -1,5 +1,3 @@
 #pragma once
 .public LogMessageByIdWithPopupCheckUserTarget
 .public SubstitutePlaceholderStringTags
-.public SwapDefensiveMultipliers
-.public SwapDefensiveStages
