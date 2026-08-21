@@ -9,11 +9,13 @@ struct unk_020332AC {
     u8 field_0x14[0xA0];
     s32 field_0xB4;
     s32 field_0xB8;
-    u8 field_0xBC[8];
+    s32 field_0xBC;
+    u8 field_0xC0[4];
     s32 field_0xC4;
     s32 field_0xC8;
     s32 field_0xCC;
-    u8 field_0xD0[0x14];
+    s32 field_0xD0;
+    u8 field_0xD4[0x10];
     s32 field_0xE4;
     s32 field_0xE8;
     s32 field_0xEC;

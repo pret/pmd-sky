@@ -1,0 +1,10 @@
+#pragma once
+.public CopyAttributesToOamBothScreens
+.public OBJ_GRAPHICS_CONTROLS_PTR
+.public sub_0200302C
+.public sub_020030FC
+.public sub_0201B004
+.public sub_0201B2A0
+.public sub_0201B2DC
+.public sub_0201BB20
+.public sub_0201BDEC
