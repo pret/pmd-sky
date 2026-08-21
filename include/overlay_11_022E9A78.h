@@ -39,5 +39,10 @@ void ov11_022E9CCC(s32 a);
 void ov11_022E9CE8(s32 a, s32 b, s32 c);
 void ov11_022E9D10(s32 a);
 void ov11_022E9D44(s32 a, s32 b, s32 c);
+void ov11_022E9D6C(s32 a, s32 b, s32 c);
+void ov11_022E9D94(s32 a, s32 b, s32 c);
+void ov11_022E9DBC(s32 a, s32 b, s32 c);
+void ov11_022E9DE4(s32 idx, u16 a, s32 b);
+void ov11_022E9E2C(s32 idx, u16 a, s32 b);
 
 #endif

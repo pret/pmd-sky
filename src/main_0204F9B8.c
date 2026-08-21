@@ -1,4 +1,8 @@
 #include "main_0204F9B8.h"
+
+extern void sub_02050E8C(u8 *p, s32 a);
+
+extern void sub_02050E5C(u8 *p, s32 a);
 #include "script_variable.h"
 
 extern u8 PLAY_TIME_SECONDS[];
@@ -24,4 +28,14 @@ void sub_0204F9CC(void)
 s32 sub_0204F9E0(void)
 {
     return GetPlayTimeSeconds(PLAY_TIME_SECONDS);
+}
+
+void sub_0204F9F4(s32 a)
+{
+    sub_02050E5C(PLAY_TIME_SECONDS, a);
+}
+
+void sub_0204FA0C(s32 a)
+{
+    sub_02050E8C(PLAY_TIME_SECONDS, a);
 }

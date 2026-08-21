@@ -27,5 +27,10 @@ void sub_0201BDEC(void);
 void sub_0201BE28(void);
 void GroupOamAttributesBothScreens(void);
 void sub_0201BE84(void);
+void sub_0201BEB0(void);
+void sub_0201BF10(void);
+void sub_0201BF4C(void);
+void sub_0201BF64(void);
+void sub_0201BFAC(s32 a, s32 b, s32 c, s32 d, s32 idx);
 
 #endif

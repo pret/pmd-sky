@@ -1,5 +1,9 @@
 #include "overlay_11_0230CB88.h"
 
+extern struct unk_0238A098 ov11_0238A098;
+
+extern s32 ov11_0238A094;
+
 extern struct struct_1 ov11_023230DC;
 
 extern u32 sub_02034840(struct struct_1 *p);
@@ -96,4 +100,19 @@ void LoadRecycleShopOverlayResume(void)
     }
 
     RECYCLE_SHOP_OVERLAY_STATUS = FALSE;
+}
+
+bool8 IsRecycleShopOverlaySuspended(void)
+{
+    return RECYCLE_SHOP_OVERLAY_STATUS;
+}
+
+s32 ov11_0230CCF0(struct unk_0238A098 *dst)
+{
+    if (RECYCLE_SHOP_OVERLAY_STATUS != 0) {
+        *dst = ov11_0238A098;
+        return ov11_0238A094;
+    }
+
+    return 0;
 }

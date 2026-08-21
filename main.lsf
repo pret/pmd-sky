@@ -123,13 +123,11 @@ Static main
 	Object src/main_0201514C.o
 	Object asm/main_020151E4.o
 	Object src/main_02017B58.o
-	Object asm/main_02017C50.o
 	Object src/main_02017C80.o
 	Object asm/main_02017D20.o
 	Object src/main_0201BA9C.o
 	Object asm/main_0201BAC8.o
 	Object src/main_0201BCCC.o
-	Object asm/main_0201BEB0.o
 	Object src/main_0201BFF0.o
 	Object asm/main_0201C000.o
 	Object src/main_0201D198.o
@@ -265,7 +263,6 @@ Static main
 	Object src/main_0204F050.o
 	Object asm/main_0204F0A0.o
 	Object src/main_0204F9B8.o
-	Object asm/main_0204F9F4.o
 	Object src/main_0204FA24.o
 	Object asm/main_0204FA70.o
 	Object src/main_0204FB9C.o
@@ -665,7 +662,6 @@ Overlay OVY_11
 	Object src/overlay_11_022E96E4.o
 	Object asm/overlay_11_022E96F4.o
 	Object src/overlay_11_022E9A78.o
-	Object asm/overlay_11_022E9D6C.o
 	Object src/overlay_11_022E9E74.o
 	Object asm/overlay_11_022EA024.o
 	Object src/ground_bg.o
@@ -682,7 +678,6 @@ Overlay OVY_11
 	Object src/overlay_11_022FE58C.o
 	Object asm/overlay_11_022FE5F8.o
 	Object src/overlay_11_0230CB88.o
-	Object asm/overlay_11_0230CCE0.o
 	Object src/overlay_11_0230CD48.o
 	Object asm/overlay_11_0230CE30.o
 }
@@ -1264,7 +1259,6 @@ Overlay OVY_29
 	Object src/fixed_room_data.o
 	Object asm/overlay_29_02344178.o
 	Object src/overlay_29_02344AF8.o
-	Object asm/overlay_29_02344B44.o
 	Object src/overlay_29_02344B9C.o
 	Object asm/overlay_29_02344BA8.o
 	Object src/overlay_29_02344BE4.o

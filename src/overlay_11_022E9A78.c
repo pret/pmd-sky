@@ -1,4 +1,11 @@
 #include "overlay_11_022E9A78.h"
+#include "overlay_11_022E9E74.h"
+
+extern struct unk_0238916C ov11_0238916C[];
+
+extern u16 ov11_02388FD4[];
+
+extern void sub_0200BCB0(struct unk_023890A0 *p, s32 a, s32 b, s32 c);
 
 extern void sub_0200BC60(struct unk_023890A0 *p, s32 a, s32 b, s32 c);
 
@@ -155,4 +162,33 @@ void ov11_022E9D10(s32 a)
 void ov11_022E9D44(s32 a, s32 b, s32 c)
 {
     sub_0200BC60(&ov11_023890E4, a, b, c);
+}
+
+void ov11_022E9D6C(s32 a, s32 b, s32 c)
+{
+    sub_0200BCB0(&ov11_023890E4, a, b, c);
+}
+
+void ov11_022E9D94(s32 a, s32 b, s32 c)
+{
+    sub_0200BC60(&ov11_023890A0, a, b, c);
+}
+
+void ov11_022E9DBC(s32 a, s32 b, s32 c)
+{
+    sub_0200BCB0(&ov11_023890A0, a, b, c);
+}
+
+void ov11_022E9DE4(s32 idx, u16 a, s32 b)
+{
+    ov11_02388FD4[idx] = a;
+    sub_0200BB74((struct unk_023890A0 *) &ov11_0238916C[idx], 1, 0);
+    sub_0200BB60((struct unk_023890A0 *) &ov11_0238916C[idx], b);
+}
+
+void ov11_022E9E2C(s32 idx, u16 a, s32 b)
+{
+    ov11_02388FD4[idx] = a;
+    sub_0200BB60((struct unk_023890A0 *) &ov11_0238916C[idx], 0);
+    sub_0200BB74((struct unk_023890A0 *) &ov11_0238916C[idx], 1, b);
 }

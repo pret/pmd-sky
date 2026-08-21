@@ -15,5 +15,9 @@ void sub_02017BEC(void);
 void sub_02017BF8(void);
 void sub_02017C04(void);
 bool8 IsMePlaying(s32 id);
+void sub_02017C50(s32 a);
+void sub_02017C5C(s32 a);
+void sub_02017C68(s32 a);
+void sub_02017C74(s32 se_id, s32 volume);
 
 #endif

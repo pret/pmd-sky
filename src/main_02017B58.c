@@ -1,5 +1,13 @@
 #include "main_02017B58.h"
 
+extern void PlayMeById(s32 a);
+
+extern void PlaySeByIdVolume(s32 se_id, s32 volume);
+
+extern void sub_020182AC(s32 a);
+
+extern void sub_02018278(s32 a);
+
 extern void StopBgmCommand(void);
 
 extern s32 sub_020181E0(void);
@@ -93,4 +101,24 @@ bool8 IsMePlaying(s32 id)
     }
 
     return cur == id;
+}
+
+void sub_02017C50(s32 a)
+{
+    PlayMeById(a);
+}
+
+void sub_02017C5C(s32 a)
+{
+    sub_02018278(a);
+}
+
+void sub_02017C68(s32 a)
+{
+    sub_020182AC(a);
+}
+
+void sub_02017C74(s32 se_id, s32 volume)
+{
+    PlaySeByIdVolume(se_id, volume);
 }
