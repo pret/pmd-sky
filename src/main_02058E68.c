@@ -1,4 +1,5 @@
 #include "main_02058E68.h"
+#include "main_02058CD8.h"
 #include "iq_skills.h"
 #include "main_02052B28.h"
 #include "monster_parameters.h"
@@ -33,4 +34,30 @@ void EnableIqSkill(u32 *iq_skills_flags, u32 iq_id)
 enum iq_skill_id GetSpeciesIqSkill(s16 monster_id, u8 index)
 {
     return IQ_GROUP_SKILLS[GetIqGroup(monster_id)][index];
+}
+
+void DisableAllIqSkills(u32 *flags)
+{
+    s16 i;
+
+    for (i = 0; i < 3; i++) {
+        flags[i] = 0;
+    }
+}
+
+void EnableAllLearnableIqSkills(u32 *flags, s16 monster_id, s32 iq)
+{
+    u8 skills[0x48];
+    s32 i;
+
+    GetLearnableIqSkills(skills, monster_id, iq);
+    DisableAllIqSkills(flags);
+
+    for (i = 0; i < 0x45; i++) {
+        if (skills[i] == 0) {
+            break;
+        }
+
+        EnableIqSkill(flags, *(volatile u8 *) &skills[i]);
+    }
 }

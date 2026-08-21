@@ -2,8 +2,6 @@
 #define PMDSKY_MAIN_0204FEB4_H
 
 #include "adventure_log.h"
-#include "util.h"
-
 u32 GetNbPokemonBattled(void);
 void IncrementNbBigTreasureWins(void);
 void SetNbBigTreasureWins(s32 value);

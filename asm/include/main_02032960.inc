@@ -1,0 +1,16 @@
+#pragma once
+.public InventoryMenuNext10Pages
+.public InventoryMenuPrevious10Pages
+.public InventoryMenuPreviousPage
+.public PlaySeVolumeWrapper
+.public _s32_div_f
+.public sub_02006BFC
+.public sub_02006C8C
+.public sub_02031908
+.public sub_02031914
+.public sub_0203330C
+.public sub_020333D8
+.public sub_020333FC
+.public sub_02033414
+.public sub_02033440
+.public sub_020336FC

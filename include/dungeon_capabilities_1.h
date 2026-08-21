@@ -1,6 +1,8 @@
 #ifndef PMDSKY_DUNGEON_CAPABILITIES_1_H
 #define PMDSKY_DUNGEON_CAPABILITIES_1_H
 
+#include "util.h"
+
 #include "dungeon_mode.h"
 
 // Returns 0 if none of these conditions holds for the given entity: is a rescue client,
@@ -15,5 +17,7 @@ bool8 CheckVariousConditions__02301624(struct entity *entity);
 bool8 CheckVariousStatuses__023016DC(struct entity *entity);
 // Returns false if none of these conditions holds for the given entity: asleep, frozen, petrified, biding.
 bool8 CheckVariousStatuses__0230172C(struct entity *entity);
+bool8 ov29_02300D50(struct entity *entity);
+bool8 ov29_02300DC0(struct entity *entity);
 
 #endif //PMDSKY_DUNGEON_CAPABILITIES_H

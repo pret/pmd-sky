@@ -59,3 +59,26 @@ bool8 CanTargetEntity(struct entity *user, struct entity *target)
     }
     return IsPositionInSight(&user->pos, &target->pos, HasDropeyeStatus(user));
 }
+
+bool8 IsValidTargetEntity(struct entity *user, struct entity *target)
+{
+    if (!EntityIsValid__022E1A1C(user)) {
+        return 0;
+    }
+
+    if (!EntityIsValid__022E1A1C(target)) {
+        return 0;
+    }
+
+    if (!target->is_visible) {
+        return 0;
+    }
+
+    return IsPositionActuallyInSight(&user->pos, &target->pos,
+                                     HasDropeyeStatus(user));
+}
+
+bool8 CanSeePosition(struct entity *user, struct position *target)
+{
+    return IsPositionActuallyInSight(&user->pos, target, HasDropeyeStatus(user));
+}

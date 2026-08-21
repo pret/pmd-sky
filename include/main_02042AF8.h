@@ -42,5 +42,7 @@ bool8 IsCollectionMenuActive(s8 a);
 bool8 IsCollectionMenuState3(s8 a);
 
 void ClearBagSelectedItemTable(void);
+s32 sub_02042B20(void);
+s32 sub_02042B50(void);
 
 #endif

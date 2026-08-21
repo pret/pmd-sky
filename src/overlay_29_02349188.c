@@ -24,6 +24,7 @@ s32 ov29_023491B8(void)
     return GetFirstExperienceLockedTeamMember();
 }
 
+#include "overlay_29_02349208.h"
 bool8 IsOutlawOrChallengeRequestFloor(void)
 {
     if (IsCurrentMissionType(MISSION_CHALLENGE_REQUEST) != 0 ||

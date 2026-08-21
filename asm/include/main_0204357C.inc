@@ -2,7 +2,6 @@
 .public AppendStandardStringToMission
 .public Arm9LoadUnkFieldNa0x2029EC8
 .public BAG_ITEMS_PTR_MIRROR
-.public ClearAdventureLogStruct
 .public ClearStorageSelectedItemTable
 .public CloseAdvancedMenu
 .public CloseAdvancedTextBox
@@ -28,7 +27,6 @@
 .public CreateTextBox
 .public CreateTextBoxWithArg
 .public DUNGEON_PTR
-.public DebugPrintEventFlagSize
 .public DrawTextInWindow
 .public DrawTileGrid
 .public FreeUnkStorageStruct0x18c0
@@ -183,16 +181,8 @@
 .public sub_02043400
 .public sub_02043434
 .public sub_02043468
-.public sub_02048B48
-.public sub_02048B74
-.public sub_02048C0C
-.public sub_02048C3C
-.public sub_02048C4C
-.public sub_02048C5C
-.public sub_0204F9B8
 .public sub_020547C8
 .public sub_020547D8
 .public sub_02054804
 .public sub_02056228
 .public sub_02058460
-.public sub_0206637C

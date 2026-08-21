@@ -26,10 +26,6 @@
 .public UpdateMinimap
 .public UpdateTrapsVisibility
 .public ZInit8
-.public ov10_022C6C75
-.public ov10_022C6C77
-.public ov10_022C6C78
-.public ov10_022C6C79
 .public ov29_022EA370
 .public ov29_02336694
 .public ov29_02342BEC

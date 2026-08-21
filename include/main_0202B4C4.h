@@ -6,5 +6,7 @@
 void CloseSimpleMenu(s32 window_id);
 u32 IsSimpleMenuActive(s32 window_id);
 bool8 CheckSimpleMenuField0x1A0(s32 window_id);
+s32 sub_0202B530(s32 window_id);
+s32 sub_0202B544(s32 window_id);
 
 #endif

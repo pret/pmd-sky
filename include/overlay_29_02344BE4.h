@@ -5,6 +5,7 @@
 #include "item.h"
 #include "move.h"
 
+void GenerateStandardItem(struct item* item, enum item_id item_id, s32 sticky);
 void GenerateCleanItem(struct item *item, enum item_id item_id);
 
 #endif

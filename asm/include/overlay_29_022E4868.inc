@@ -1,0 +1,4 @@
+#pragma once
+.public GetEffectAnimationField0x19
+.public PlayEffectAnimationEntity
+.public PlaySeByIdIfShouldDisplayEntity

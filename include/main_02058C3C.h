@@ -6,5 +6,7 @@
 
 // Returns whether or not the tactic involves following the team leader.
 bool8 DoesTacticFollowLeader(enum tactic_id tactic_id);
+void GetUnlockedTactics(u8 *out, s32 level);
+void GetUnlockedTacticFlags(u8 *out, s32 level);
 
 #endif //PMDSKY_MAIN_02058C3C_H

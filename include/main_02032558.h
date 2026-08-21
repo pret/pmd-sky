@@ -1,8 +1,6 @@
 #ifndef PMDSKY_MAIN_02032558_H
 #define PMDSKY_MAIN_02032558_H
 
-#include "util.h"
-
 struct unk_02032558 {
     u8 field_0x0[0xBC];
     s32 field_0xBC;

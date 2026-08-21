@@ -1,4 +1,17 @@
 #include "overlay_29_02344AF8.h"
+
+extern struct unk_023531A4 ov29_023531A4;
+
+extern struct unk_023531A4 ov29_023531BC;
+
+extern void SetPreprocessorArgsIdVal(s32 idx, u32 val);
+
+extern void SubstitutePlaceholderItemTags(s32 a, s32 b, struct unk_023531A4 *p);
+#include "main_02001188.h"
+#include "overlay_29_0234B024.h"
+
+extern bool8 ov29_023537B0;
+
 #include "dungeon_util_static.h"
 
 bool8 EntityIsValid__02344AF8(struct entity *entity)
@@ -7,4 +20,26 @@ bool8 EntityIsValid__02344AF8(struct entity *entity)
         return FALSE;
 
     return GetEntityType(entity) != ENTITY_NOTHING;
+}
+
+void ov29_02344B1C(void)
+{
+    ov29_023537B0 = TRUE;
+}
+
+void ov29_02344B30(void)
+{
+    ov29_023537B0 = FALSE;
+}
+
+void PrepareItemForPrinting__02345728(s32 a, s32 b)
+{
+    SetPreprocessorArgsIdVal(a, a | 0x40000);
+    SubstitutePlaceholderItemTags(a, b, &ov29_023531BC);
+}
+
+void PrepareItemForPrinting__02345754(s32 a, s32 b)
+{
+    SetPreprocessorArgsIdVal(a, a | 0x40000);
+    SubstitutePlaceholderItemTags(a, b, &ov29_023531A4);
 }
