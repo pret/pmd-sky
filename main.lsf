@@ -193,7 +193,6 @@ Static main
 	Object src/main_0202FD3C.o
 	Object asm/main_0202FD50.o
 	Object src/main_020307A4.o
-	Object asm/main_020307B8.o
 	Object src/main_0203083C.o
 	Object src/main_0203088C.o
 	Object asm/main_020308A0.o
@@ -319,11 +318,8 @@ Static main
 	Object src/main_02056D70.o
 	Object asm/main_02056EB8.o
 	Object src/main_02058C3C.o
-	Object asm/main_02058C4C.o
 	Object src/main_02058CD8.o
-	Object asm/main_02058D04.o
 	Object src/main_02058E68.o
-	Object asm/main_02058E8C.o
 	Object src/pokemon.o
 	Object asm/main_02058F24.o
 	Object src/main_02058FA4.o
@@ -384,7 +380,6 @@ Static main
 	Object src/main_020663C8.o
 	Object asm/main_020664B8.o
 	Object src/dungeon_init_2.o
-	Object asm/main_0206A750.o
 	Object src/main_0206A84C.o
 	Object asm/main_0206A878.o
 	Object src/main_0206C0D8.o
@@ -810,7 +805,6 @@ Overlay OVY_29
 	Object asm/overlay_29_022E1AD4.o
 	Object src/overlay_29_022E272C.o
 	Object src/dungeon_visibility.o
-	Object asm/overlay_29_022E28D4.o
 	Object src/dungeon_util_2.o
 	Object asm/overlay_29_022E2978.o
 	Object src/dg_camera.o
@@ -833,7 +827,6 @@ Overlay OVY_29
 	Object src/overlay_29_022E563C.o
 	Object asm/overlay_29_022E5650.o
 	Object src/overlay_29_022E66C4.o
-	Object asm/overlay_29_022E66D8.o
 	Object src/overlay_29_022E6770.o
 	Object asm/overlay_29_022E6798.o
 	Object src/overlay_29_022E68BC.o
@@ -952,7 +945,6 @@ Overlay OVY_29
 	Object src/dungeon_capabilities.o
 	Object asm/overlay_29_023009A0.o
 	Object src/dungeon_capabilities_1.o
-	Object asm/overlay_29_02300D50.o
 	Object src/directional_bit_masks.o
 	Object src/dungeon_capabilities_3.o
 	Object asm/overlay_29_02300FCC.o
@@ -1265,7 +1257,6 @@ Overlay OVY_29
 	Object asm/overlay_29_02348D3C.o
 	Object src/overlay_29_02349188.o
 	Object src/overlay_29_02349208.o
-	Object asm/overlay_29_0234921C.o
 	Object src/overlay_29_0234928C.o
 	Object src/overlay_29_02349314.o
 	Object asm/overlay_29_02349378.o

@@ -14,9 +14,9 @@
 #include "math.h"
 #include "overlay_29_0230E578.h" // ItemIsActive__0230E578
 #include "progression.h"
+#include "overlay_29_02349208.h"
 
 extern bool8 IsLegendaryChallengeFloor(void);
-extern bool8 IsCurrentMissionTypeExact(u32 mission_type, u32 mission_subtype);
 extern bool8 IsMonsterOnTeam(s16 monsterId, s32 checkType);
 extern void ov29_022E1B28(s32);
 extern void ov29_022E81F8(void);

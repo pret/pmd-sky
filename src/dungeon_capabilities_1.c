@@ -102,3 +102,45 @@ bool8 CheckVariousStatuses__0230172C(struct entity *entity)
 
     return FALSE;
 }
+
+bool8 ov29_02300D50(struct entity *entity)
+{
+    struct monster *m;
+
+    m = entity->info;
+
+    if (m->frozen_class_status.freeze == STATUS_FROZEN_WRAP) {
+        return 1;
+    }
+
+    if (m->frozen_class_status.freeze == STATUS_FROZEN_WRAPPED) {
+        return 1;
+    }
+
+    if (m->cringe_class_status.cringe == STATUS_CRINGE_INFATUATED) {
+        return 1;
+    }
+
+    if (m->cringe_class_status.cringe == STATUS_CRINGE_PAUSED) {
+        return 1;
+    }
+
+    if (m->burn_class_status.burn == STATUS_BURN_PARALYSIS) {
+        return 1;
+    }
+
+    if (m->frozen_class_status.freeze == STATUS_FROZEN_PETRIFIED) {
+        return 1;
+    }
+
+    if (m->cringe_class_status.cringe == STATUS_CRINGE_CRINGE) {
+        return 1;
+    }
+
+    return CheckVariousStatuses__023016DC(entity);
+}
+
+bool8 ov29_02300DC0(struct entity *entity)
+{
+    return ov29_02300D50(entity);
+}

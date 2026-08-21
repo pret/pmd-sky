@@ -13,7 +13,9 @@ struct unk_0202AAA8 {
     s32 field_0xA0;
     u8 field_0xA4[0x54];
     u32 field_0xF8;
-    u8 field_0xFC[0x9C];
+    u8 field_0xFC[8];
+    u32 field_0x104;
+    u8 field_0x108[0x90];
     void *field_0x198;
     s32 field_0x19C;
     u8 field_0x1A0;
