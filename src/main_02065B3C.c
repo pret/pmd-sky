@@ -1,4 +1,10 @@
 #include "enums.h"
+
+extern void StrncpySimpleNoPadSafe(u8 *dest, const u8 *src, u32 n);
+
+extern u8 _022B7310[];
+
+extern void StrncpySimple(u8 *dest, const u8 *src, s32 n);
 #include "main_02065B3C.h"
 #include "script_variable.h"
 
@@ -56,4 +62,33 @@ void SetAllEventNpcs(enum monster_id event_npc01, enum monster_id event_npc02, e
 void SetNewFriendActor(enum monster_id new_friend)
 {
     SPECIAL_ACTORS.new_friend = new_friend;
+}
+
+void sub_02065BD8(u8 *dst, s32 n)
+{
+    StrncpySimple(dst, _022B7310, n);
+}
+
+void sub_02065BF0(u8 *dst)
+{
+    StrncpySimpleNoPadSafe(dst, _022B7310, 10);
+}
+
+void sub_02065C08(u8 *src, s32 n)
+{
+    u8 *dst;
+    s32 i;
+
+    dst = _022B7310;
+    i = 0;
+
+    while (i < n) {
+        *dst++ = *src++;
+        i++;
+    }
+
+    while (i < 0x10) {
+        *dst++ = 0;
+        i++;
+    }
 }

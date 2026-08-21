@@ -43,5 +43,8 @@ void SetRandomRequestNpcs1And2(enum monster_id random_request_npc01, enum monste
 void SetRandomRequestNpc03KindVar(enum monster_id kind);
 void SetAllEventNpcs(enum monster_id event_npc01, enum monster_id event_npc02, enum monster_id event_npc03, enum monster_id event_npc04);
 void SetNewFriendActor(enum monster_id new_friend);
+void sub_02065BD8(u8 *dst, s32 n);
+void sub_02065BF0(u8 *dst);
+void sub_02065C08(u8 *src, s32 n);
 
 #endif

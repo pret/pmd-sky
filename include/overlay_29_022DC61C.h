@@ -3,5 +3,7 @@
 
 // mem init?
 void ov29_022DC61C();
+void ov29_022DC65C(void);
+void ov29_022DC670(void);
 
 #endif //PMDSKY_OVERLAY_29_022DC61C_H
