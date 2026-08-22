@@ -647,7 +647,8 @@ Overlay OVY_11
 	Object asm/overlay_11_022EA024.o
 	Object src/ground_bg.o
 	Object asm/overlay_11_022ECD24_data.o
-	Object asm/overlay_11_022ECD24.o
+	Object src/overlay_11_022ED69C.o
+	Object asm/overlay_11_022EDD14.o
 	Object src/ground_bg_1.o
 	Object asm/overlay_11_022EE5E4.o
 	Object src/overlay_11_022FAB44.o
