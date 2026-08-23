@@ -319,7 +319,7 @@ struct monster {
     // 0xB4: Unique number between the wrapped and wrapping target to connect them.
     u32 wrap_pair_unique_id;
     // 0xB8: Tracks the damage taken to deal when bide status ends. Max 0x3E7 (999).
-    u32 bide_damage_tally;
+    s32 bide_damage_tally;
     enum monster_behavior monster_behavior; // 0xBC
     struct sleep_class_status sleep_class_status; // 0xBD
     struct burn_class_status burn_class_status; // 0xBF

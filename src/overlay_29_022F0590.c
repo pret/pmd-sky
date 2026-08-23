@@ -13,7 +13,7 @@ extern void ov29_0234D838(void);
 
 extern void ov29_022EA370(s32 a, s32 b);
 
-extern s32 TalkToSecretBazaarNpc(struct entity *a, struct entity *b, s32 c, s32 d, s32 e);
+extern s32 TalkToSecretBazaarNpc(s32 a, struct entity *b, s32 c, s32 d, s32 e);
 #include "dungeon_util_static.h"
 
 bool8 EntityIsValid__022F0590(struct entity *entity)
@@ -43,17 +43,17 @@ void ov29_022F05E4(void)
     ov29_022EA370(0x20, 0x62);
 }
 
-s32 TalkToSecretBazaarNpcStandard(struct entity* a, struct entity* b, s32 c)
+s32 TalkToSecretBazaarNpcStandard(s32 a, struct entity* b, s32 c)
 {
     return TalkToSecretBazaarNpc(a, b, c, 0, 0);
 }
 
-s32 ov29_022F0618(struct entity* a, struct entity* b, s32 c, s32 d)
+s32 ov29_022F0618(s32 a, struct entity* b, s32 c, s32 d)
 {
     return TalkToSecretBazaarNpc(a, b, c, d, 0);
 }
 
-s32 TalkToSecretBazaarNpcWithYesNoMenu(struct entity* a, struct entity* b, s32 c, s32 d)
+s32 TalkToSecretBazaarNpcWithYesNoMenu(s32 a, struct entity* b, s32 c, s32 d)
 {
     s32 result = TalkToSecretBazaarNpc(a, b, c, d, 1);
 

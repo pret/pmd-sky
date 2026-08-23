@@ -85,7 +85,7 @@ struct dungeon_generation_info {
     enum hidden_stairs_type hidden_floor_type;
     s16 tileset_id; // 0x10
     // 0x12: Music table index (see the same field in struct floor_properties)
-    u16 music_table_idx;
+    s16 music_table_idx;
     // 0x14: Controls which trap graphics to use for the staircase. Usually 0x2B (27) and
     // 0x2C (28) for down and up respectively.
     u16 staircase_visual_idx;
