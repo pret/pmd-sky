@@ -1353,7 +1353,7 @@
                                                                                                                                                  144](DoMoveCamouflage,func) found in global overlay_29_0232B518.o
                                                                                                                                                  144](DoMoveSnatch,func) found in global overlay_29_0232BE34.o
                                                                                                                                                  144](DoMoveReturn,func) found in global overlay_29_0232692C.o
-                                                                                                                                                  145](GetFlashFireStatus,func) found in global move_orb_effects.o
+                                                                                                                                                  145](FlashFireShouldActivate,func) found in global move_orb_effects.o
                                                                                                                                                   145](ApplyOffensiveStatMultiplier,func) found in global move_orb_effects.o
                                                                                                                                                  144](DoMoveConversion,func) found in global overlay_29_02329554.o
                                                                                                                                                  144](DoMoveSkillSwap,func) found in global overlay_29_02328538.o
@@ -39363,7 +39363,7 @@
   02314568 00000000 .text   $a	(move_orb_effects.o)
   02314568 0000016C .text   BoostDefensiveStat	(move_orb_effects.o)
   023146BC 00000000 .text   $d	(move_orb_effects.o)
-  023146D4 00000070 .text   GetFlashFireStatus	(move_orb_effects.o)
+  023146D4 00000070 .text   FlashFireShouldActivate	(move_orb_effects.o)
   023146D4 00000000 .text   $a	(move_orb_effects.o)
   02314744 0000005C .text   ActivateFlashFire	(move_orb_effects.o)
   02314744 00000000 .text   $a	(move_orb_effects.o)
@@ -43701,5 +43701,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Aug 23 01:12:32 2026
-# Link end time: Sun Aug 23 01:12:32 2026
+# Link start time: Sun Aug 23 17:32:44 2026
+# Link end time: Sun Aug 23 17:32:45 2026
