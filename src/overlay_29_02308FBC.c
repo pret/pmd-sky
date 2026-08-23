@@ -137,6 +137,51 @@ bool8 EntityIsValid__02308FBC(struct entity *entity)
     return GetEntityType(entity) != ENTITY_NOTHING;
 }
 
+#ifdef JAPAN
+#define MESSAGE_C40 0x97F
+#define MESSAGE_C41 0x980
+#define MESSAGE_C42 0x981
+#define MESSAGE_C43 0x982
+#define MESSAGE_C44 0x983
+#define MESSAGE_C45 0x984
+#define MESSAGE_C46 0x985
+#define MESSAGE_C47 0x986
+#define MESSAGE_C48 0x987
+#define MESSAGE_C49 0x988
+#define MESSAGE_C4A 0x989
+#define MESSAGE_C4B 0x98A
+#define MESSAGE_C4C 0x98B
+#define MESSAGE_C4D 0x98C
+#define MESSAGE_C6A 0x9A9
+#define MESSAGE_C6B 0x9AA
+#define MESSAGE_C6C 0x9AB
+#define MESSAGE_C6D 0x9AC
+#else
+#define MESSAGE_C40 0xC40
+#define MESSAGE_C41 0xC41
+#define MESSAGE_C42 0xC42
+#define MESSAGE_C43 0xC43
+#define MESSAGE_C44 0xC44
+#define MESSAGE_C45 0xC45
+#define MESSAGE_C46 0xC46
+#define MESSAGE_C47 0xC47
+#define MESSAGE_C48 0xC48
+#define MESSAGE_C49 0xC49
+#define MESSAGE_C4A 0xC4A
+#define MESSAGE_C4B 0xC4B
+#define MESSAGE_C4C 0xC4C
+#define MESSAGE_C4D 0xC4D
+#define MESSAGE_C6A 0xC6A
+#define MESSAGE_C6B 0xC6B
+#define MESSAGE_C6C 0xC6C
+#define MESSAGE_C6D 0xC6D
+#endif
+
+extern void ov29_02307DC0(struct entity *entity);
+#ifdef EUROPE
+extern u16 ov29_02353E44[];
+#endif
+
 bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
                   struct unk_02308FE0 *damage_data, int a4, int a5,
                   enum damage_source_non_move damage_source, int a7)
@@ -167,6 +212,9 @@ bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
     u16 message_id;
     struct position revive_pos;
     u8 recruit_info[0x48];
+#ifdef EUROPE
+    bool8 defer_defeat_message;
+#endif
 
     damage_data->field_0x10 = FALSE;
     played_hurt_anim = FALSE;
@@ -180,10 +228,11 @@ bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
         return FALSE;
     }
 
-    dmon = defender->info;
-    if (dmon->is_not_team_member && !dmon->is_ally) {
+    if (((struct monster *)defender->info)->is_not_team_member
+        && !((struct monster *)defender->info)->is_ally) {
         is_wild_enemy = TRUE;
     }
+    dmon = defender->info;
 
     TryEndPetrifiedOrSleepStatus(attacker, defender);
     UpdateShopkeeperModeAfterAttack(attacker, defender);
@@ -195,14 +244,19 @@ bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
     }
 
     if (attacker->type == 1) {
+#ifdef JAPAN
+        if (DefenderAbilityIsActive__0230A940(attacker, defender,
+                                              ABILITY_MAGIC_GUARD)
+#else
         if (DefenderAbilityIsActive__0230A940(attacker, defender,
                                               ABILITY_MAGIC_GUARD, TRUE)
+#endif
             && damage_data->field_0x4 != 4
             && damage_data->field_0x4 != 0xE
             && damage_data->field_0x4 != 0
             && damage_data->field_0x4 != 0x17) {
             SubstitutePlaceholderStringTags(1, defender, 0);
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC46);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C46);
             if (ShouldDisplayEntityWrapper(attacker)
                 && ShouldDisplayEntityWrapper(defender)) {
                 PlayMissSfx__022E611C(attacker, defender);
@@ -216,7 +270,7 @@ bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
             && damage_data->field_0x4 != 0xE
             && damage_data->field_0x4 != 0x17) {
             SubstitutePlaceholderStringTags(1, defender, 0);
-            LogMessageByIdWithPopupCheckUser(defender, 0xC46);
+            LogMessageByIdWithPopupCheckUser(defender, MESSAGE_C46);
             if (ShouldDisplayEntityWrapper(defender)) {
                 PlayMissSfx__022E6150(defender);
             }
@@ -226,11 +280,15 @@ bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
     }
 
     if (damage_source != 0x24D && attacker->type == 1
+#ifdef JAPAN
+        && DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_STURDY)
+#else
         && DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_STURDY,
                                              TRUE)
+#endif
         && damage_data->field_0x0 == 0x270F) {
         SubstitutePlaceholderStringTags(1, defender, 0);
-        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC40);
+        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C40);
         PlayMissSfx__022E611C(attacker, defender);
         damage_data->field_0x10 = TRUE;
         return FALSE;
@@ -239,7 +297,7 @@ bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
     if (dmon->frozen_class_status.freeze == 1) {
         if (damage_source != 0x250) {
             SubstitutePlaceholderStringTags(1, defender, 0);
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC41);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C41);
             PlayMissSfx__022E611C(attacker, defender);
         }
         damage_data->field_0x10 = TRUE;
@@ -253,29 +311,49 @@ bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
     }
 
     if (attacker->type == 1) {
+#ifdef JAPAN
+        if (DefenderAbilityIsActive__0230A940(attacker, defender,
+                                              ABILITY_VOLT_ABSORB)
+#else
         if (DefenderAbilityIsActive__0230A940(attacker, defender,
                                               ABILITY_VOLT_ABSORB, TRUE)
+#endif
             && damage_data->field_0xc == 5) {
             TryIncreaseHp(attacker, defender, damage_data->field_0x0, 0, 0);
             damage_data->field_0x10 = TRUE;
             return FALSE;
         }
+#ifdef JAPAN
+        if (DefenderAbilityIsActive__0230A940(attacker, defender,
+                                              ABILITY_WATER_ABSORB)
+#else
         if (DefenderAbilityIsActive__0230A940(attacker, defender,
                                               ABILITY_WATER_ABSORB, TRUE)
+#endif
             && damage_data->field_0xc == 3) {
             TryIncreaseHp(attacker, defender, damage_data->field_0x0, 0, 0);
             damage_data->field_0x10 = TRUE;
             return FALSE;
         }
+#ifdef JAPAN
+        if (DefenderAbilityIsActive__0230A940(attacker, defender,
+                                              ABILITY_DRY_SKIN)
+#else
         if (DefenderAbilityIsActive__0230A940(attacker, defender,
                                               ABILITY_DRY_SKIN, TRUE)
+#endif
             && damage_data->field_0xc == 3) {
             TryIncreaseHp(attacker, defender, damage_data->field_0x0, 0, 0);
             damage_data->field_0x10 = TRUE;
             return FALSE;
         }
+#ifdef JAPAN
+        if (DefenderAbilityIsActive__0230A940(attacker, defender,
+                                              ABILITY_MOTOR_DRIVE)
+#else
         if (DefenderAbilityIsActive__0230A940(attacker, defender,
                                               ABILITY_MOTOR_DRIVE, TRUE)
+#endif
             && damage_data->field_0xc == 5) {
             ActivateMotorDrive(defender);
             damage_data->field_0x10 = TRUE;
@@ -325,17 +403,17 @@ negation_checked:
 
     if (!dmon->apply_flash_fire_boost) {
         if (damage_data->field_0xe) {
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC42);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C42);
         }
         switch (damage_data->field_0x8) {
         case 0:
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC43);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C43);
             break;
         case 1:
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC44);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C44);
             break;
         case 3:
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC45);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C45);
             break;
         }
     }
@@ -347,12 +425,12 @@ negation_checked:
         if (ShouldDisplayEntityWrapper(attacker)
             && ShouldDisplayEntityWrapper(defender)) {
             if (!dmon->apply_flash_fire_boost) {
-                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC47);
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C47);
             }
             PlayMissSfx__022E611C(attacker, defender);
         } else {
             if (!dmon->apply_flash_fire_boost) {
-                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC47);
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C47);
             }
             ov29_022EA370(0x1E, 0x18);
         }
@@ -375,7 +453,7 @@ negation_checked:
             }
         }
         if (!dmon->apply_flash_fire_boost) {
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC48);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C48);
         }
         dmon->bide_damage_tally = 0x3E7;
     } else {
@@ -456,18 +534,18 @@ negation_checked:
     if (dmon->reflect_class_status.reflect == 9) {
         if (dmon->hp == 0) {
             dmon->hp = 1;
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC49);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C49);
         }
     } else if (a4 == 1) {
         if (dmon->hp == 0) {
             dmon->hp = 1;
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC4A);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C4A);
         }
     } else if (ExclusiveItemEffectIsActive__0230A9B8(defender, EXCLUSIVE_EFF_MAY_ENDURE)
                && DungeonRandOutcome__022EAB20(ov10_022C4834)
                && dmon->hp == 0) {
         dmon->hp = 1;
-        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC49);
+        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C49);
     }
 
     ov29_022E81F8();
@@ -481,7 +559,9 @@ negation_checked:
         ov29_022EA370(0xA, 0x18);
     }
 
+#ifndef JAPAN
     UpdateStatusIconFlags(defender);
+#endif
 
     if (dmon->hp != 0) {
         if (played_hurt_anim) {
@@ -536,12 +616,16 @@ negation_checked:
     SubstitutePlaceholderStringTags(0, attacker, 0);
     SubstitutePlaceholderStringTags(1, defender, 0);
 
+#ifdef EUROPE
+    defer_defeat_message = FALSE;
+#endif
+
     if (damage_data->field_0x4 == 0x13 || damage_data->field_0x4 == 4
         || damage_data->field_0x4 == 0x14) {
         if (dmon->is_not_team_member) {
-            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, 0xC4B);
+            LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C4B);
         } else {
-            LogMessageByIdWithPopup(attacker, 0xC4B);
+            LogMessageByIdWithPopup(attacker, MESSAGE_C4B);
         }
     } else if (dmon->is_not_team_member) {
         if (dmon->monster_behavior == 7) {
@@ -571,7 +655,11 @@ negation_checked:
                 LogMessageByIdWithPopup(attacker, ov29_02353230[defeat_idx]);
             }
         } else {
+#ifdef EUROPE
+            defer_defeat_message = TRUE;
+#else
             LogMessageByIdWithPopup(attacker, ov29_02353218[defeat_idx]);
+#endif
         }
     }
 
@@ -611,7 +699,7 @@ negation_checked:
         ov29_02304830(defender, GetIdleAnimationId(defender));
         UpdateStatusIconFlags(defender);
         SubstitutePlaceholderStringTags(1, defender, 0);
-        LogMessageByIdWithPopup(attacker, 0xC4C);
+        LogMessageByIdWithPopup(attacker, MESSAGE_C4C);
         ov29_0230D628(defender);
         return FALSE;
     }
@@ -665,7 +753,7 @@ negation_checked:
             UpdateStatusIconFlags(defender);
             SubstitutePlaceholderStringTags(0, defender, 0);
             SubstitutePlaceholderStringTags(1, other, 0);
-            LogMessageByIdWithPopup(attacker, 0xC4D);
+            LogMessageByIdWithPopup(attacker, MESSAGE_C4D);
             ov29_0230D628(defender);
             return FALSE;
         }
@@ -701,7 +789,14 @@ negation_checked:
         }
 
         if (reviver_seed != NULL) {
+#ifdef EUROPE
+            if (defer_defeat_message) {
+                LogMessageByIdWithPopup(attacker, ov29_02353E44[defeat_idx]);
+            }
+#endif
+#ifndef JAPAN
             ov29_022FBD24(defender);
+#endif
             ov29_022E550C(defender);
             ov29_0230D688(reviver_seed);
             defender->transparent = 0;
@@ -722,6 +817,9 @@ negation_checked:
             } else if (dmon->curse_class_status.curse == 2) {
                 EndCurseClassStatus(attacker, defender, 2, 1);
             }
+#ifdef JAPAN
+            ov29_02307DC0(defender);
+#endif
             EndLeechSeedStatusForAllTargets(defender);
             SubInitMonster(dmon, 0);
             ov10_022BDC68();
@@ -729,13 +827,22 @@ negation_checked:
             ov29_02304830(defender, GetIdleAnimationId(defender));
             UpdateStatusIconFlags(defender);
             SubstitutePlaceholderStringTags(1, defender, 0);
-            LogMessageByIdWithPopup(attacker, 0xC4C);
+            LogMessageByIdWithPopup(attacker, MESSAGE_C4C);
             ov29_0230D628(defender);
             return FALSE;
         }
 
+#ifdef JAPAN
+        if (revival_item != NULL) {
+#else
         if (!DUNGEON_PTR->end_floor_no_death_check_flag
             && revival_item != NULL) {
+#endif
+#ifdef EUROPE
+            if (defer_defeat_message) {
+                LogMessageByIdWithPopup(attacker, ov29_02353E44[defeat_idx]);
+            }
+#endif
             music = ov29_022EAF20();
             if (dmon->curse_class_status.curse == 2) {
                 EndCurseClassStatus(defender, defender,
@@ -752,22 +859,22 @@ negation_checked:
             dmon->unk_revive_visual_tracker = TRUE;
             ov29_02304830(defender, GetIdleAnimationId(defender));
             SubstitutePlaceholderStringTags(1, defender, 0);
-            LogMessageByIdWithPopup(attacker, 0xC4C);
+            LogMessageByIdWithPopup(attacker, MESSAGE_C4C);
             WaitUntilAlertBoxPauseIsOver(0xA);
             ov29_0234B1A4(0);
             ov29_022F0534(1);
-            ov29_022F0780(0xC6A);
+            ov29_022F0780(MESSAGE_C6A);
             ov29_02304830(defender, 0xB);
-            TalkToSecretBazaarNpcStandard(0xC6B, defender, 0);
+            TalkToSecretBazaarNpcStandard(MESSAGE_C6B, defender, 0);
             SetUnkMusicFlag(4);
             UnfreezeAnim(defender);
             ov29_02304830(defender, 6);
-            ov29_022F0780(0xC6C);
+            ov29_022F0780(MESSAGE_C6C);
             ov29_022F05E4();
             ov29_022EFB84(1);
             defender->transparent = 1;
             dmon->unk_revive_visual_tracker = FALSE;
-            LogMessageByIdWithPopup(attacker, 0xC6D);
+            LogMessageByIdWithPopup(attacker, MESSAGE_C6D);
             WaitUntilAlertBoxPauseIsOver(0xA);
             ov29_022F0534(0);
             ChangeDungeonMusic(MusicTableIdxToMusicId(
@@ -775,6 +882,11 @@ negation_checked:
             SetUnkMusicFlag(music);
             ov29_0230D628(defender);
         }
+#ifdef EUROPE
+        else if (defer_defeat_message) {
+            LogMessageByIdWithPopup(attacker, ov29_02353218[defeat_idx]);
+        }
+#endif
     }
 
     if (!dmon->is_team_leader) {
