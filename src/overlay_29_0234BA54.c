@@ -1,50 +1,34 @@
 #include "overlay_29_0234BA54.h"
+#include "overlay_29_0234B024.h"
 
-extern void ov29_022E0B60(s32 a);
-
-extern void UnkMapRelatedFunc(u32 a, u32 b);
-
-extern void ov29_0233A248(s32 a);
-
-extern void sub_0204833C(void);
-
-extern s32 sub_02048360(void);
-
-extern void sub_02048240(s32 a);
-
-extern void sub_02048150(s32 a);
-
-extern void sub_02048134(s32 a);
-
-extern void sub_020480CC(s32 a);
-
-extern void sub_0204804C(s32 a);
-
-extern void sub_02047FFC(s32 a);
-
-extern void InitPortraitParams(struct unk_0234BAC0 *p);
-
-extern void AllowPortraitDefault(struct unk_0234BAC0 *p, s32 a);
-
-extern struct unk_023537CC MESSAGE_LOG_INFO;
-
+extern struct message_log_info MESSAGE_LOG_INFO;
 extern u16 DUNGEON_BUTTON_INPUT[8];
 
-extern void WaitUntilAlertBoxTextIsLoaded(u32 a);
+extern void ov29_022E0B60(s32 a);
+extern void UnkMapRelatedFunc(u32 switch_case, u32 param_2);
+extern void ov29_0233A248(s32 a);
+extern void sub_0204833C(void);
+extern s32 sub_02048360(void);
+extern void sub_02048240(s32 a);
+extern void sub_02048150(s32 a);
+extern void sub_02048134(s32 a);
+extern void sub_020480CC(s32 a);
+extern void sub_0204804C(s32 a);
+extern void sub_02047FFC(s32 a);
+extern void InitPortraitParams(portrait_params *portrait);
+extern void AllowPortraitDefault(portrait_params *portrait, bool32 allow);
+extern void WaitUntilAlertBoxTextIsLoaded(u32 param_1);
+extern void AdvanceFrame(u32 param_1);
 
-extern void AdvanceFrame(u32 a);
-
-void WaitUntilAlertBoxPauseIsOver(u32 a)
+void WaitUntilAlertBoxPauseIsOver(u32 param_1)
 {
-    u8 *p;
+    struct alert_box_info *alert_box_info = MESSAGE_LOG_INFO.alert_box_info;
     s32 i;
 
-    p = MESSAGE_LOG_INFO.field_0x4;
-    WaitUntilAlertBoxTextIsLoaded(a);
-    p += 0xC00;
+    WaitUntilAlertBoxTextIsLoaded(param_1);
 
-    for (i = 0; i < 0xF0; i++) {
-        if (*(s16 *) &p[0x90] < 0xB4) {
+    for (i = 0; i < 240; i++) {
+        if (alert_box_info->frames_until_close < 180) {
             return;
         }
 
@@ -52,26 +36,26 @@ void WaitUntilAlertBoxPauseIsOver(u32 a)
             return;
         }
 
-        if (DUNGEON_BUTTON_INPUT[1] & 0xF0) {
+        if (DUNGEON_BUTTON_INPUT[1] & 240) {
             return;
         }
 
-        AdvanceFrame(a);
+        AdvanceFrame(param_1);
     }
 }
 
-void InitPortraitDungeon(struct unk_0234BAC0 *p, s16 a, u8 b)
+void InitPortraitDungeon(portrait_params *portrait, enum monster_id monster_id, u8 emotion)
 {
-    InitPortraitParams(p);
-    p->field_0x0 = a;
-    p->field_0x2 = b;
-    p->field_0x3 = 0;
-    p->field_0x4 = 2;
-    p->field_0x8 = 9;
-    p->field_0xC = 0;
-    p->field_0xD = 0;
-    p->field_0xE = 0;
-    AllowPortraitDefault(p, 1);
+    InitPortraitParams(portrait);
+    portrait->monster_id = monster_id;
+    portrait->portrait_emotion = emotion;
+    portrait->layout_idx = 0;
+    portrait->offset_x = 2;
+    portrait->offset_y = 9;
+    portrait->try_flip = FALSE;
+    portrait->has_flip = FALSE;
+    portrait->hw_flip = FALSE;
+    AllowPortraitDefault(portrait, 1);
 }
 
 void ov29_0234BB10(void)
@@ -104,13 +88,13 @@ void ov29_0234BB50(s32 a)
     sub_02048240(a);
 }
 
-s32 OpenMessageLog(s32 a, s32 b)
+s32 OpenMessageLog(s32 param_1, s32 param_2)
 {
     s32 r;
 
     UnkMapRelatedFunc(6, 0);
 
-    if (a == 0) {
+    if (param_1 == 0) {
         ov29_0233A248(0);
     }
 
@@ -125,7 +109,7 @@ s32 OpenMessageLog(s32 a, s32 b)
 
     AdvanceFrame(0x62);
 
-    if (b != 0) {
+    if (param_2 != 0) {
         UnkMapRelatedFunc(0, 0);
     }
 

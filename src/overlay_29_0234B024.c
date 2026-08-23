@@ -1,62 +1,52 @@
 #include "overlay_29_0234B024.h"
 #include "dungeon_mode.h"
-
-extern char *GetSize0x80Buffer(void);
-
-extern void GetName(char *buffer, struct entity *entity, s32 a);
 #include "main_0200C4FC.h"
 
+extern struct message_log_info MESSAGE_LOG_INFO;
+
+extern char *GetSize0x80Buffer(void);
+extern void GetName(char *dst, enum monster_id monster_id, char color_id);
 extern void InitPreprocessorArgs(struct preprocessor_args *args);
 
-struct unk_023537CC {
-    bool8 field_0x0;
-    u8 field_0x1;
-    u8 field_0x2;
-    u8 field_0x3;
-    u8 *field_0x4;
-};
-
-extern struct unk_023537CC MESSAGE_LOG_INFO;
-
-void SetMessageLogGroupStartFlag(bool8 flag)
+void SetMessageLogGroupStartFlag(bool8 should_start_group)
 {
-    MESSAGE_LOG_INFO.field_0x0 = flag;
+    MESSAGE_LOG_INFO.should_start_group = should_start_group;
 }
 
 struct preprocessor_args* GetMessageLogPreprocessorArgs(void)
 {
-    return ((struct preprocessor_args *) (MESSAGE_LOG_INFO.field_0x4 + 0xC9C));
+    return &MESSAGE_LOG_INFO.alert_box_info->preprocessor_args;
 }
 
 void InitMessageLogPreprocessorArgs(void)
 {
-    InitPreprocessorArgs(((struct preprocessor_args *) (MESSAGE_LOG_INFO.field_0x4 + 0xC9C)));
+    InitPreprocessorArgs(&MESSAGE_LOG_INFO.alert_box_info->preprocessor_args);
 }
 
-void SetMessageLogPreprocessorArgsFlagVal(s32 idx, u32 val)
+void SetMessageLogPreprocessorArgsFlagVal(s32 pos, u32 val)
 {
-    ((struct preprocessor_args *) (MESSAGE_LOG_INFO.field_0x4 + 0xC9C))->flag_vals[idx] = val;
+    MESSAGE_LOG_INFO.alert_box_info->preprocessor_args.flag_vals[pos] = val;
 }
 
-void SetPreprocessorArgsIdVal(s32 idx, u32 val)
+void SetPreprocessorArgsIdVal(s32 pos, u32 val)
 {
-    ((struct preprocessor_args *) (MESSAGE_LOG_INFO.field_0x4 + 0xC9C))->id_vals[idx] = val;
+    MESSAGE_LOG_INFO.alert_box_info->preprocessor_args.id_vals[pos] = val;
 }
 
-void SetMessageLogPreprocessorArgsNumberVal(s32 idx, s32 val)
+void SetMessageLogPreprocessorArgsNumberVal(s32 pos, s32 val)
 {
-    ((struct preprocessor_args *) (MESSAGE_LOG_INFO.field_0x4 + 0xC9C))->number_vals[idx] = val;
+    MESSAGE_LOG_INFO.alert_box_info->preprocessor_args.number_vals[pos] = val;
 }
 
-void SetMessageLogPreprocessorArgsString(s32 idx, char *str)
+void SetMessageLogPreprocessorArgsString(s32 pos, char *string)
 {
-    ((struct preprocessor_args *) (MESSAGE_LOG_INFO.field_0x4 + 0xC9C))->strings[idx] = str;
+    MESSAGE_LOG_INFO.alert_box_info->preprocessor_args.strings[pos] = string;
 }
 
-void SetMessageLogPreprocessorArgsStringToName(s32 idx, struct entity* entity)
+void SetMessageLogPreprocessorArgsStringToName(u8 pos, enum monster_id monster_id)
 {
     char *buffer = GetSize0x80Buffer();
 
-    GetName(buffer, entity, 0x4E);
-    ((struct preprocessor_args *) (MESSAGE_LOG_INFO.field_0x4 + 0xC9C))->strings[idx] = buffer;
+    GetName(buffer, monster_id, 0x4E);
+    MESSAGE_LOG_INFO.alert_box_info->preprocessor_args.strings[pos] = buffer;
 }

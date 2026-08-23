@@ -1,48 +1,48 @@
 #include "dungeon_pokemon_attributes.h"
+#include "dungeon_map_access.h"
 #include "dungeon_util_static.h"
-#include "overlay_29_023118B4.h"
-#include "move_orb_effects.h"
-#include "overlay_29_02311BF8.h"
-#include "overlay_29_023018AC.h"
-#include "math.h"
 #include "dungeon_util.h"
 #include "exclusive_item.h"
+#include "math.h"
+#include "move_orb_effects.h"
+#include "overlay_29_023018AC.h"
+#include "overlay_29_023118B4.h"
+#include "overlay_29_02311BF8.h"
+#include "overlay_29_02344AF8.h"
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern void CopyStringFromId(u8* buf, u32 string_id);
 extern void SetMessageLogPreprocessorArgsString(u32 a, u8 *buf);
-extern bool8 IsProtectedFromStatDrops(struct entity *user, struct entity *target, bool8 logMsg);
-extern void SubstitutePlaceholderStringTags(int a, struct entity *entity, u32 param_3);
-extern void PlayOffensiveStatUpEffect(struct entity *user, struct StatIndex);
-extern void PlayDefensiveStatDownEffect(struct entity *user, struct StatIndex);
-extern void PlayDefensiveStatUpEffect(struct entity *user, struct StatIndex);
-extern void PlayOffensiveStatDownEffect(struct entity *user, struct StatIndex);
-extern void PlayOffensiveStatMultiplierDownEffect(struct entity *user, struct StatIndex);
-extern void PlayOffensiveStatMultiplierUpEffect(struct entity *user, struct StatIndex);
-extern void PlayDefensiveStatMultiplierDownEffect(struct entity *user, struct StatIndex);
-extern void PlayDefensiveStatMultiplierUpEffect(struct entity *user, struct StatIndex);
-extern void PlayHitChanceUpEffect(struct entity *user, struct StatIndex);
-extern void PlayHitChanceDownEffect(struct entity *user, struct StatIndex);
+extern bool8 IsProtectedFromStatDrops(struct entity *user, struct entity *target, bool8 log_message);
+extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
+extern void PlayOffensiveStatUpEffect(struct entity *entity, struct StatIndex stat_index);
+extern void PlayDefensiveStatDownEffect(struct entity *entity, struct StatIndex stat_index);
+extern void PlayDefensiveStatUpEffect(struct entity *entity, struct StatIndex stat_index);
+extern void PlayOffensiveStatDownEffect(struct entity *entity, struct StatIndex stat_index);
+extern void PlayOffensiveStatMultiplierDownEffect(struct entity *entity, struct StatIndex stat_index);
+extern void PlayOffensiveStatMultiplierUpEffect(struct entity *entity, struct StatIndex stat_index);
+extern void PlayDefensiveStatMultiplierDownEffect(struct entity *entity, struct StatIndex stat_index);
+extern void PlayDefensiveStatMultiplierUpEffect(struct entity *entity, struct StatIndex stat_index);
+extern void PlayHitChanceUpEffect(struct entity *entity, struct StatIndex stat_index);
+extern void PlayHitChanceDownEffect(struct entity *entity, struct StatIndex stat_index);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
-extern void UpdateStatusIconFlags(struct entity *);
+extern void UpdateStatusIconFlags(struct entity *entity);
 extern void ov29_022E4338(struct entity *);
-extern void PlayExclamationPointEffect__022E5D4C(struct entity *);
-extern void PlayParalysisEffect(struct entity *);
-extern void PlaySpeedUpEffect(struct entity *);
-extern void PlaySpeedDownEffect(struct entity *);
-extern fx32_8 MultiplyByFixedPoint(fx32_8 a, fx32_8 b);
-extern bool8 IsProtectedFromNegativeStatus(struct entity *user ,struct entity *target, bool8 displayMessage);
-extern bool8 SafeguardIsActive(struct entity *user ,struct entity *target, bool8 displayMessage);
-extern void TryActivateSteadfast(struct entity *user ,struct entity *target);
-extern void TryActivateQuickFeet(struct entity *user ,struct entity *target);
-extern s32 CalcStatusDuration(struct entity *target, const s16 *turnRange, bool8 factorCurerSkills);
-extern struct tile* GetTile(int x, int y);
-extern bool8 GetExclusiveItemWithEffectFromBag(struct entity *, enum exclusive_item_effect_id effect_id, struct item *);
+extern void PlayExclamationPointEffect__022E5D4C(struct entity *entity);
+extern void PlayParalysisEffect(struct entity *entity);
+extern void PlaySpeedUpEffect(struct entity *entity);
+extern void PlaySpeedDownEffect(struct entity *entity);
+extern fx32_8 MultiplyByFixedPoint(fx32_8 x, fx32_8 mult_fp);
+extern bool8 IsProtectedFromNegativeStatus(struct entity *user ,struct entity *target, bool8 log_message);
+extern bool8 SafeguardIsActive(struct entity *user ,struct entity *target, bool8 log_message);
+extern void TryActivateSteadfast(struct entity *attacker, struct entity *defender);
+extern void TryActivateQuickFeet(struct entity *attacker ,struct entity *defender);
+extern s32 CalcStatusDuration(struct entity *entity, const s16 *turn_range, bool8 iq_skill_effects);
+extern bool8 GetExclusiveItemWithEffectFromBag(struct entity *, enum exclusive_item_effect_id effect_id, struct item *item);
 extern struct preprocessor_args* GetMessageLogPreprocessorArgs(void);
-extern void SetPreprocessorArgsStringToName(struct preprocessor_args* preprocessor_args, u8 pos,struct monster* monster, u8 param_4, u8 name_type);
-extern void PrepareItemForPrinting__02345728(u8, struct item*);
+extern void SetPreprocessorArgsStringToName(struct preprocessor_args* preprocessor_args, u8 pos, struct monster* monster, u8 param_4, u8 name_type);
 extern int CalcSpeedStageWrapper(struct entity* entity);
-extern int CalcSpeedStage(struct entity *, int);
+extern int CalcSpeedStage(struct entity *entity, s32 counter_weight);
 
 extern const s16 CRINGE_TURN_RANGE[];
 extern const s16 PARALYSIS_TURN_RANGE[];
@@ -56,12 +56,12 @@ extern const u16 ov29_02353318[];
 #define JPN_MSG_OFFSET 0
 #endif // JAPAN
 
-void LowerOffensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 nStagesRaw, bool8 checkProtected, bool8 logMsgProtected)
+void LowerOffensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 n_stages, bool8 check_is_protected_from_stat_drops, bool8 log_message_if_protected_from_stat_drops)
 {
     struct monster *entityInfo;
     u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
     u8 *buffer2 = AllocateTemp1024ByteBufferFromPool();
-    s16 nStages = nStagesRaw;
+    s16 n_stages_internal = n_stages;
     s32 newStage;
 
     if (!EntityIsValid__023118B4(target))
@@ -76,8 +76,8 @@ void LowerOffensiveStat(struct entity *user, struct entity *target, struct StatI
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
 
-    if (checkProtected) {
-        if (IsProtectedFromStatDrops(user, target, logMsgProtected))
+    if (check_is_protected_from_stat_drops) {
+        if (IsProtectedFromStatDrops(user, target, log_message_if_protected_from_stat_drops))
             return;
 
         if (ItemIsActive__02311BF8(target, ITEM_TWIST_BAND)) {
@@ -102,9 +102,9 @@ void LowerOffensiveStat(struct entity *user, struct entity *target, struct StatI
     PlayOffensiveStatDownEffect(target,stat);
 
     if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
-        nStages *= 2;
+        n_stages_internal *= 2;
 
-    if (nStages == 1) {
+    if (n_stages_internal == 1) {
         CopyStringFromId(buffer2, 0xdcd + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
@@ -114,7 +114,7 @@ void LowerOffensiveStat(struct entity *user, struct entity *target, struct StatI
     }
 
     newStage = entityInfo->stat_modifiers.offensive_stages[stat.id];
-    newStage -= nStages;
+    newStage -= n_stages_internal;
     if (newStage < 0) {
         newStage = 0;
     }
@@ -129,12 +129,12 @@ void LowerOffensiveStat(struct entity *user, struct entity *target, struct StatI
     UpdateStatusIconFlags(target);
 }
 
-void LowerDefensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 nStagesRaw, bool8 checkProtected, bool8 logMsgProtected)
+void LowerDefensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 n_stages, bool8 check_is_protected_from_stat_drops, bool8 log_message_if_protected_from_stat_drops)
 {
     struct monster *entityInfo;
     u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
     u8 *buffer2 = AllocateTemp1024ByteBufferFromPool();
-    s16 nStages = nStagesRaw;
+    s16 n_stages_internal = n_stages;
     s32 newStage;
 
     if (!EntityIsValid__023118B4(target))
@@ -149,8 +149,8 @@ void LowerDefensiveStat(struct entity *user, struct entity *target, struct StatI
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
 
-    if (checkProtected) {
-        if (IsProtectedFromStatDrops(user, target, logMsgProtected))
+    if (check_is_protected_from_stat_drops) {
+        if (IsProtectedFromStatDrops(user, target, log_message_if_protected_from_stat_drops))
             return;
     }
 
@@ -159,9 +159,9 @@ void LowerDefensiveStat(struct entity *user, struct entity *target, struct StatI
     PlayDefensiveStatDownEffect(target,stat);
 
     if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
-        nStages *= 2;
+        n_stages_internal *= 2;
 
-    if (nStages == 1) {
+    if (n_stages_internal == 1) {
         CopyStringFromId(buffer2, 0xdcd + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
@@ -171,7 +171,7 @@ void LowerDefensiveStat(struct entity *user, struct entity *target, struct StatI
     }
 
     newStage = entityInfo->stat_modifiers.defensive_stages[stat.id];
-    newStage -= nStages;
+    newStage -= n_stages_internal;
     if (newStage < 0) {
         newStage = 0;
     }
@@ -186,12 +186,12 @@ void LowerDefensiveStat(struct entity *user, struct entity *target, struct StatI
     UpdateStatusIconFlags(target);
 }
 
-void BoostOffensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 nStagesRaw)
+void BoostOffensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 n_stages)
 {
     struct monster *entityInfo;
     u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
     u8 *buffer2 = AllocateTemp1024ByteBufferFromPool();
-    s16 nStages = nStagesRaw;
+    s16 n_stages_internal = n_stages;
     s32 newStage;
 
     if (!EntityIsValid__023118B4(target))
@@ -210,9 +210,9 @@ void BoostOffensiveStat(struct entity *user, struct entity *target, struct StatI
     }
 
     if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
-        nStages *= 2;
+        n_stages_internal *= 2;
 
-    if (nStages == 1) {
+    if (n_stages_internal == 1) {
         CopyStringFromId(buffer2, 0xdcd + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
@@ -222,7 +222,7 @@ void BoostOffensiveStat(struct entity *user, struct entity *target, struct StatI
     }
 
     newStage = entityInfo->stat_modifiers.offensive_stages[stat.id];
-    newStage += nStages;
+    newStage += n_stages_internal;
     if (newStage >= MAX_STAT_STAGE) {
         newStage = MAX_STAT_STAGE;
     }
@@ -237,12 +237,12 @@ void BoostOffensiveStat(struct entity *user, struct entity *target, struct StatI
     UpdateStatusIconFlags(target);
 }
 
-void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 nStagesRaw)
+void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 n_stages)
 {
     struct monster *entityInfo;
     u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
     u8 *buffer2 = AllocateTemp1024ByteBufferFromPool();
-    s16 nStages = nStagesRaw;
+    s16 n_stages_internal = n_stages;
     s32 newStage;
 
     if (!EntityIsValid__023118B4(target))
@@ -261,9 +261,9 @@ void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatI
     }
 
     if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
-        nStages *= 2;
+        n_stages_internal *= 2;
 
-    if (nStages == 1) {
+    if (n_stages_internal == 1) {
         CopyStringFromId(buffer2, 0xdcd + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
@@ -273,7 +273,7 @@ void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatI
     }
 
     newStage = entityInfo->stat_modifiers.defensive_stages[stat.id];
-    newStage += nStages;
+    newStage += n_stages_internal;
     if (newStage >= MAX_STAT_STAGE) {
         newStage = MAX_STAT_STAGE;
     }
@@ -288,7 +288,7 @@ void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatI
     UpdateStatusIconFlags(target);
 }
 
-enum flash_fire_status GetFlashFireStatus(struct entity *attacker, struct entity *defender)
+enum flash_fire_status FlashFireShouldActivate(struct entity *attacker, struct entity *defender)
 {
     if (!EntityIsValid__023118B4(defender))
         return FLASH_FIRE_STATUS_NONE;
@@ -309,26 +309,26 @@ enum flash_fire_status GetFlashFireStatus(struct entity *attacker, struct entity
     return FLASH_FIRE_STATUS_NOT_MAXED;
 }
 
-void ActivateFlashFire(struct entity *pokemon, struct entity *target)
+void ActivateFlashFire(struct entity *attacker, struct entity *defender)
 {
     s32 flashFireBoost;
 
-    if (EntityIsValid__023118B4(target)) {
-        struct monster * entityInfo = GetEntInfo(target);
-        SubstitutePlaceholderStringTags(0,target,0);
+    if (EntityIsValid__023118B4(defender)) {
+        struct monster * entityInfo = GetEntInfo(defender);
+        SubstitutePlaceholderStringTags(0,defender,0);
         flashFireBoost = entityInfo->stat_modifiers.flash_fire_boost;
         if (++flashFireBoost >= 2) {
             flashFireBoost = 2;
         }
         if (entityInfo->stat_modifiers.flash_fire_boost != flashFireBoost) {
             entityInfo->stat_modifiers.flash_fire_boost = flashFireBoost;
-            ov29_022E4338(target);
+            ov29_022E4338(defender);
         }
-        UpdateStatusIconFlags(target);
+        UpdateStatusIconFlags(defender);
     }
 }
 
-void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage)
+void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat_idx, fx32_8 multiplier, bool8 display_message)
 {
     struct monster *entityInfo;
     fx32_8 oldMulti;
@@ -337,7 +337,7 @@ void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, st
     if (!EntityIsValid__023118B4(target))
         return;
 
-    if (stat.id != STAT_INDEX_PHYSICAL) {
+    if (stat_idx.id != STAT_INDEX_PHYSICAL) {
         CopyStringFromId(buffer1, 0xdcb + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
@@ -346,7 +346,7 @@ void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, st
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
 
-    if (F248LessThanInt(multiplier, 1) && IsProtectedFromStatDrops(user,target,displayMessage))
+    if (F248LessThanInt(multiplier, 1) && IsProtectedFromStatDrops(user,target,display_message))
         return;
 
     if (ItemIsActive__02311BF8(target,ITEM_TWIST_BAND) && F248LessThanInt(multiplier, 1)) {
@@ -360,10 +360,10 @@ void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, st
     #else
     if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_HYPER_CUTTER, TRUE)
     #endif // JAPAN
-        && stat.id == STAT_INDEX_PHYSICAL
+        && stat_idx.id == STAT_INDEX_PHYSICAL
         && F248LessThanInt(multiplier, 1))
     {
-        if (displayMessage) {
+        if (display_message) {
             SubstitutePlaceholderStringTags(0,target,0);
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xd9e + JPN_MSG_OFFSET);
         }
@@ -372,28 +372,28 @@ void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, st
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    oldMulti = entityInfo->stat_modifiers.offensive_multipliers[stat.id];
+    oldMulti = entityInfo->stat_modifiers.offensive_multipliers[stat_idx.id];
 
     if (F248LessThanInt(multiplier, 1)) {
-        PlayOffensiveStatMultiplierDownEffect(target,stat);
+        PlayOffensiveStatMultiplierDownEffect(target,stat_idx);
     }
     else {
-        PlayOffensiveStatMultiplierUpEffect(target,stat);
+        PlayOffensiveStatMultiplierUpEffect(target,stat_idx);
     }
 
-    entityInfo->stat_modifiers.offensive_multipliers[stat.id] = MultiplyByFixedPoint(entityInfo->stat_modifiers.offensive_multipliers[stat.id],multiplier);
+    entityInfo->stat_modifiers.offensive_multipliers[stat_idx.id] = MultiplyByFixedPoint(entityInfo->stat_modifiers.offensive_multipliers[stat_idx.id],multiplier);
 
-    if (F248LessThanFloat(entityInfo->stat_modifiers.offensive_multipliers[stat.id], 0.01)) {
-        entityInfo->stat_modifiers.offensive_multipliers[stat.id] = IntToF248(0.01);
+    if (F248LessThanFloat(entityInfo->stat_modifiers.offensive_multipliers[stat_idx.id], 0.01)) {
+        entityInfo->stat_modifiers.offensive_multipliers[stat_idx.id] = IntToF248(0.01);
     }
-    if (FloatLessThanF248(99.99, entityInfo->stat_modifiers.offensive_multipliers[stat.id])) {
-        entityInfo->stat_modifiers.offensive_multipliers[stat.id] = IntToF248(99.99);
+    if (FloatLessThanF248(99.99, entityInfo->stat_modifiers.offensive_multipliers[stat_idx.id])) {
+        entityInfo->stat_modifiers.offensive_multipliers[stat_idx.id] = IntToF248(99.99);
     }
 
-    if (F248GreaterThan(oldMulti, entityInfo->stat_modifiers.offensive_multipliers[stat.id])) {
+    if (F248GreaterThan(oldMulti, entityInfo->stat_modifiers.offensive_multipliers[stat_idx.id])) {
         LogMessageByIdWithPopupCheckUserTarget(user,target,0xdd1 + JPN_MSG_OFFSET);
     }
-    else if (F248LessThan(oldMulti, entityInfo->stat_modifiers.offensive_multipliers[stat.id])) {
+    else if (F248LessThan(oldMulti, entityInfo->stat_modifiers.offensive_multipliers[stat_idx.id])) {
         LogMessageByIdWithPopupCheckUserTarget(user,target,0xdd0 + JPN_MSG_OFFSET);
     }
     else {
@@ -402,7 +402,7 @@ void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, st
     UpdateStatusIconFlags(target);
 }
 
-void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage)
+void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat_idx, fx32_8 multiplier, bool8 display_message)
 {
     struct monster *entityInfo;
     fx32_8 oldMulti;
@@ -411,7 +411,7 @@ void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, st
     if (!EntityIsValid__023118B4(target))
         return;
 
-    if (stat.id != STAT_INDEX_PHYSICAL) {
+    if (stat_idx.id != STAT_INDEX_PHYSICAL) {
         CopyStringFromId(buffer1, 0xdc9 + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
@@ -420,33 +420,33 @@ void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, st
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
 
-    if (F248LessThanInt(multiplier, 1) && IsProtectedFromStatDrops(user,target,displayMessage))
+    if (F248LessThanInt(multiplier, 1) && IsProtectedFromStatDrops(user,target,display_message))
         return;
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    oldMulti = entityInfo->stat_modifiers.defensive_multipliers[stat.id];
+    oldMulti = entityInfo->stat_modifiers.defensive_multipliers[stat_idx.id];
 
     if (F248LessThanInt(multiplier, 1)) {
-        PlayDefensiveStatMultiplierDownEffect(target,stat);
+        PlayDefensiveStatMultiplierDownEffect(target,stat_idx);
     }
     else {
-        PlayDefensiveStatMultiplierUpEffect(target,stat);
+        PlayDefensiveStatMultiplierUpEffect(target,stat_idx);
     }
 
-    entityInfo->stat_modifiers.defensive_multipliers[stat.id] = MultiplyByFixedPoint(entityInfo->stat_modifiers.defensive_multipliers[stat.id],multiplier);
+    entityInfo->stat_modifiers.defensive_multipliers[stat_idx.id] = MultiplyByFixedPoint(entityInfo->stat_modifiers.defensive_multipliers[stat_idx.id],multiplier);
 
-    if (F248LessThanFloat(entityInfo->stat_modifiers.defensive_multipliers[stat.id], 0.01)) {
-        entityInfo->stat_modifiers.defensive_multipliers[stat.id] = IntToF248(0.01);
+    if (F248LessThanFloat(entityInfo->stat_modifiers.defensive_multipliers[stat_idx.id], 0.01)) {
+        entityInfo->stat_modifiers.defensive_multipliers[stat_idx.id] = IntToF248(0.01);
     }
-    if (FloatLessThanF248(99.99, entityInfo->stat_modifiers.defensive_multipliers[stat.id])) {
-        entityInfo->stat_modifiers.defensive_multipliers[stat.id] = IntToF248(99.99);
+    if (FloatLessThanF248(99.99, entityInfo->stat_modifiers.defensive_multipliers[stat_idx.id])) {
+        entityInfo->stat_modifiers.defensive_multipliers[stat_idx.id] = IntToF248(99.99);
     }
 
-    if (F248GreaterThan(oldMulti, entityInfo->stat_modifiers.defensive_multipliers[stat.id])) {
+    if (F248GreaterThan(oldMulti, entityInfo->stat_modifiers.defensive_multipliers[stat_idx.id])) {
         LogMessageByIdWithPopupCheckUserTarget(user,target,0xdcf + JPN_MSG_OFFSET);
     }
-    else if (F248LessThan(oldMulti, entityInfo->stat_modifiers.defensive_multipliers[stat.id])) {
+    else if (F248LessThan(oldMulti, entityInfo->stat_modifiers.defensive_multipliers[stat_idx.id])) {
         LogMessageByIdWithPopupCheckUserTarget(user,target,0xdce + JPN_MSG_OFFSET);
     }
     else {
@@ -455,19 +455,19 @@ void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, st
     UpdateStatusIconFlags(target);
 }
 
-void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat)
+void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat_idx)
 {
     struct monster *entityInfo;
     u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
-    s16 nStages = 1;
+    s16 n_stages = 1;
 
     if (!EntityIsValid__023118B4(target))
         return;
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    PlayHitChanceUpEffect(target,stat);
-    if (stat.id != STAT_INDEX_ACCURACY) {
+    PlayHitChanceUpEffect(target,stat_idx);
+    if (stat_idx.id != STAT_INDEX_ACCURACY) {
         CopyStringFromId(buffer1, 0xdc7 + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
@@ -477,15 +477,15 @@ void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatI
     }
 
     if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
-        nStages *= 2;
+        n_stages *= 2;
 
-    if (entityInfo->stat_modifiers.hit_chance_stages[stat.id] < MAX_STAT_STAGE) {
-        entityInfo->stat_modifiers.hit_chance_stages[stat.id] += nStages;
-        if (entityInfo->stat_modifiers.hit_chance_stages[stat.id] > MAX_STAT_STAGE) {
-            entityInfo->stat_modifiers.hit_chance_stages[stat.id] = MAX_STAT_STAGE;
+    if (entityInfo->stat_modifiers.hit_chance_stages[stat_idx.id] < MAX_STAT_STAGE) {
+        entityInfo->stat_modifiers.hit_chance_stages[stat_idx.id] += n_stages;
+        if (entityInfo->stat_modifiers.hit_chance_stages[stat_idx.id] > MAX_STAT_STAGE) {
+            entityInfo->stat_modifiers.hit_chance_stages[stat_idx.id] = MAX_STAT_STAGE;
         }
 
-        if (nStages >= 2) {
+        if (n_stages >= 2) {
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xd95 + JPN_MSG_OFFSET);
         }
         else {
@@ -499,16 +499,16 @@ void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatI
     UpdateStatusIconFlags(target);
 }
 
-void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat, bool8 displayMessage)
+void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat_idx, bool8 display_message)
 {
     struct monster *entityInfo;
     u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
-    s16 nStages = 1;
+    s16 n_stages = 1;
 
     if (!EntityIsValid__023118B4(target))
         return;
 
-    if (stat.id != STAT_INDEX_ACCURACY) {
+    if (stat_idx.id != STAT_INDEX_ACCURACY) {
         CopyStringFromId(buffer1, 0xdc7 + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
@@ -517,15 +517,15 @@ void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatI
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
 
-    if (IsProtectedFromStatDrops(user,target,displayMessage))
+    if (IsProtectedFromStatDrops(user,target,display_message))
         return;
 
     #ifdef JAPAN
     if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_KEEN_EYE) && stat.id == STAT_INDEX_ACCURACY) {
     #else
-    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_KEEN_EYE, TRUE) && stat.id == STAT_INDEX_ACCURACY) {
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_KEEN_EYE, TRUE) && stat_idx.id == STAT_INDEX_ACCURACY) {
     #endif // JAPAN
-        if (displayMessage) {
+        if (display_message) {
             SubstitutePlaceholderStringTags(0,target,0);
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xd9f + JPN_MSG_OFFSET);
         }
@@ -533,19 +533,19 @@ void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatI
     }
 
     if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
-        nStages *= 2;
+        n_stages *= 2;
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    PlayHitChanceDownEffect(target,stat);
+    PlayHitChanceDownEffect(target,stat_idx);
 
-    if (entityInfo->stat_modifiers.hit_chance_stages[stat.id] > 0) {
-        entityInfo->stat_modifiers.hit_chance_stages[stat.id] -= nStages;
-        if (entityInfo->stat_modifiers.hit_chance_stages[stat.id] < 0) {
-            entityInfo->stat_modifiers.hit_chance_stages[stat.id] = 0;
+    if (entityInfo->stat_modifiers.hit_chance_stages[stat_idx.id] > 0) {
+        entityInfo->stat_modifiers.hit_chance_stages[stat_idx.id] -= n_stages;
+        if (entityInfo->stat_modifiers.hit_chance_stages[stat_idx.id] < 0) {
+            entityInfo->stat_modifiers.hit_chance_stages[stat_idx.id] = 0;
         }
 
-        if (nStages >= 2) {
+        if (n_stages >= 2) {
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xd94 + JPN_MSG_OFFSET);
         }
         else {
@@ -559,7 +559,7 @@ void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatI
     UpdateStatusIconFlags(target);
 }
 
-bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 displayMessage, bool8 onlyCheck)
+bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 log_failure, bool8 check_only)
 {
     struct monster *entityInfo;
     u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
@@ -567,10 +567,10 @@ bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 d
     if (!EntityIsValid__023118B4(target))
         return FALSE;
 
-    if (SafeguardIsActive(user, target, displayMessage))
+    if (SafeguardIsActive(user, target, log_failure))
         return FALSE;
 
-    if (IsProtectedFromNegativeStatus(user, target, displayMessage))
+    if (IsProtectedFromNegativeStatus(user, target, log_failure))
         return FALSE;
 
     #ifdef JAPAN
@@ -579,12 +579,12 @@ bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 d
     if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_INNER_FOCUS, TRUE)) {
     #endif
         SubstitutePlaceholderStringTags(0,target,0);
-        if (displayMessage)
+        if (log_failure)
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xda2 + JPN_MSG_OFFSET);
         return FALSE;
     }
 
-    if (onlyCheck)
+    if (check_only)
         return TRUE;
 
     entityInfo = GetEntInfo(target);
@@ -604,7 +604,7 @@ bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 d
     return TRUE;
 }
 
-bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool8 displayMessage, bool8 onlyCheck)
+bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool8 log_failure, bool8 check_only)
 {
     struct monster *entityInfo;
     bool8 alreadyParalyzed;
@@ -612,10 +612,10 @@ bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool
     if (!EntityIsValid__023118B4(target))
         return FALSE;
 
-    if (SafeguardIsActive(user, target, displayMessage))
+    if (SafeguardIsActive(user, target, log_failure))
         return FALSE;
 
-    if (IsProtectedFromNegativeStatus(user, target, displayMessage))
+    if (IsProtectedFromNegativeStatus(user, target, log_failure))
         return FALSE;
 
     #ifdef JAPAN
@@ -624,13 +624,13 @@ bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool
     if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_LIMBER, TRUE)) {
     #endif
         SubstitutePlaceholderStringTags(0,target,0);
-        if (displayMessage)
+        if (log_failure)
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xda0 + JPN_MSG_OFFSET);
         return FALSE;
     }
 
     if (ExclusiveItemEffectIsActive__023147EC(target, EXCLUSIVE_EFF_NO_PARALYSIS)) {
-        if (displayMessage) {
+        if (log_failure) {
             struct item item;
 
             SubstitutePlaceholderStringTags(0,target,0);
@@ -641,7 +641,7 @@ bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool
         return FALSE;
     }
 
-    if (onlyCheck)
+    if (check_only)
         return TRUE;
 
     alreadyParalyzed = TRUE;
@@ -676,7 +676,7 @@ bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool
                     LogMessageByIdWithPopupCheckUserTarget(user,target,0xdc5 + JPN_MSG_OFFSET);
                 }
                 if (GetTreatmentBetweenMonstersIgnoreStatus(target,mapMonster) == TREATMENT_TREAT_AS_ENEMY) {
-                    TryInflictParalysisStatus(user, mapMonster, displayMessage, FALSE);
+                    TryInflictParalysisStatus(user, mapMonster, log_failure, FALSE);
                 }
             }
         }
@@ -695,7 +695,7 @@ bool8 ExclusiveItemEffectIsActive__023147EC(struct entity *entity, enum exclusiv
     return FALSE;
 }
 
-void BoostSpeed(struct entity *user, struct entity *target, s32 nStages, s32 turns, bool8 displayMessage)
+void BoostSpeed(struct entity *user, struct entity *target, s32 n_stages, s32 turns, bool8 log_failure)
 {
     s32 speedBefore;
     s32 i;
@@ -711,9 +711,9 @@ void BoostSpeed(struct entity *user, struct entity *target, s32 nStages, s32 tur
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    speedBefore = CalcSpeedStage(target, nStages);
+    speedBefore = CalcSpeedStage(target, n_stages);
     if (speedBefore == MAX_SPEED_STAGE) {
-        if (displayMessage)
+        if (log_failure)
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xddb + JPN_MSG_OFFSET);
     }
     else {
@@ -724,7 +724,7 @@ void BoostSpeed(struct entity *user, struct entity *target, s32 nStages, s32 tur
             }
         }
 
-        speedAfter = CalcSpeedStage(target, nStages);
+        speedAfter = CalcSpeedStage(target, n_stages);
         if (speedBefore == speedAfter) {
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xdda + JPN_MSG_OFFSET);
         }
@@ -739,12 +739,12 @@ void BoostSpeed(struct entity *user, struct entity *target, s32 nStages, s32 tur
     UpdateStatusIconFlags(target);
 }
 
-void BoostSpeedOneStage(struct entity *user, struct entity *target, s32 turns, bool8 displayMessage)
+void BoostSpeedOneStage(struct entity *user, struct entity *target, s32 turns, bool8 log_failure)
 {
-    BoostSpeed(user, target, 1, turns, displayMessage);
+    BoostSpeed(user, target, 1, turns, log_failure);
 }
 
-void LowerSpeed(struct entity *user, struct entity *target, s32 nStages, bool8 displayMessage)
+void LowerSpeed(struct entity *user, struct entity *target, s32 n_stages, bool8 log_failure)
 {
     s32 speedBefore;
     s32 speedAfter;
@@ -753,22 +753,22 @@ void LowerSpeed(struct entity *user, struct entity *target, s32 nStages, bool8 d
     if (!EntityIsValid__023118B4(target))
         return;
 
-    if (SafeguardIsActive(user,target,displayMessage))
+    if (SafeguardIsActive(user,target,log_failure))
         return;
 
-    if (IsProtectedFromNegativeStatus(user, target, displayMessage))
+    if (IsProtectedFromNegativeStatus(user, target, log_failure))
         return;
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
     speedBefore = CalcSpeedStageWrapper(target);
     if (speedBefore == 0) {
-        if (displayMessage)
+        if (log_failure)
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xddc + JPN_MSG_OFFSET);
     }
     else {
         s32 counter, i;
-        for (counter = 0; counter < nStages; counter++) {
+        for (counter = 0; counter < n_stages; counter++) {
             for (i = 0; i < NUM_SPEED_COUNTERS; i++) {
                 if (entityInfo->speed_down_counters[i] == 0) {
                     entityInfo->speed_down_counters[i] = CalcStatusDuration(target,SPEED_LOWER_TURN_RANGE,TRUE) + 1;
@@ -778,7 +778,7 @@ void LowerSpeed(struct entity *user, struct entity *target, s32 nStages, bool8 d
         }
         speedAfter = CalcSpeedStageWrapper(target);
         if (speedBefore == speedAfter) {
-            if (displayMessage)
+            if (log_failure)
                 LogMessageByIdWithPopupCheckUserTarget(user,target,0xdda + JPN_MSG_OFFSET);
         }
         else {

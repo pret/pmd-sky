@@ -19,7 +19,7 @@
 #define INFATUATED_MESSAGE (0xC2C + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET)
 #define BIDE_MESSAGE (0xC2D + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET)
 
-extern void SubstitutePlaceholderStringTags(s32 slot, struct entity *entity, u32 param_3);
+extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 
 bool8 HasStatusThatPreventsActing(struct entity *monster)

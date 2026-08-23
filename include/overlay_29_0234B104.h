@@ -4,7 +4,7 @@
 #include "util.h"
 #include "main_0200C4FC.h"
 
-void SetMessageLogPreprocessorArgsSpeakerId(u32 speaker_id);
-void SetMessageLogPreprocessorArgsSpeakerId0x30000(u32 speaker_id);
+void SetMessageLogPreprocessorArgsSpeakerId(u32 monster_id);
+void SetMessageLogPreprocessorArgsSpeakerId0x30000(u32 team_index);
 
 #endif
