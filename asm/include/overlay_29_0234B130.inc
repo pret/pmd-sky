@@ -5,8 +5,8 @@
 .public LogMessage
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MESSAGE_LOG_INFO
+.public ov29_022E9FC0
 .public ShouldDisplayEntityWrapper
 .public StringFromId
 .public UnkMapRelatedFunc
 .public WaitUntilAlertBoxTextIsLoaded
-.public ov29_022E9FC0

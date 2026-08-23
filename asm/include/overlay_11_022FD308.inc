@@ -6,10 +6,6 @@
 .public InitScriptRoutine
 .public MemAlloc
 .public MemFree
-.public PERFORMER_FUNCTION_TABLE
-.public SetAnimDataFields2
-.public SetAnimDataFieldsWrapper
-.public UnlockRoutine
 .public ov11_022DC934
 .public ov11_022DC958
 .public ov11_022DC9A0
@@ -43,3 +39,7 @@
 .public ov11_02322324
 .public ov11_02324D00
 .public ov11_02324D04
+.public PERFORMER_FUNCTION_TABLE
+.public SetAnimDataFields2
+.public SetAnimDataFieldsWrapper
+.public UnlockRoutine

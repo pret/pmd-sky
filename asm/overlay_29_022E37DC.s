@@ -465,7 +465,7 @@ PlayQuestionMarkEffect: ; 0x022E3DD8
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x144
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -488,7 +488,7 @@ PlayExclamationPointEffect__022E47D4: ; 0x022E3E24
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E3E70 ; =0x00000143
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -513,7 +513,7 @@ ov29_022E3E74: ; 0x022E3E74
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x25
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -541,7 +541,7 @@ PlayExclamationPointEffect__022E4880: ; 0x022E3ED0
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E3F1C ; =0x00000143
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2

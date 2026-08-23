@@ -3,13 +3,13 @@
 .public ChangeDungeonMusic
 .public DUNGEON_PTR
 .public HandleFaint
-.public MESSAGE_LOG_INFO
 .public MemAlloc
 .public MemFree
 .public MemZero
+.public MESSAGE_LOG_INFO
 .public MissionExitPrompt
 .public MusicTableIdxToMusicId
-.public SetUnkMusicFlag
 .public ov29_022E68F0
 .public ov29_022EAEFC
 .public ov29_0234B130
+.public SetUnkMusicFlag

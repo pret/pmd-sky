@@ -49,7 +49,6 @@
 .public ov10_022C4714
 .public ov29_022E5864
 .public ov29_022EA370
-.public ov29_022F9840
 .public ov29_022FAA04
 .public ov29_02304B14
 .public ov29_02321288
@@ -85,6 +84,7 @@
 .public TryInflictPoisonedStatus
 .public TryInflictShadowHoldStatus
 .public TryInflictSleepStatus
+.public TryPointCameraToFarOffTeammate
 .public TrySealMove
 .public TryWarp
 .public UpdateAiTargetPos

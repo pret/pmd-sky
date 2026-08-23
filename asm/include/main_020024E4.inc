@@ -1,4 +1,9 @@
 #pragma once
+.public _020AEF30
+.public _0229AFC0
+.public _0229AFCC
+.public _0229AFE4
+.public _0229B004
 .public OS_CreateThread
 .public OS_GetThreadPriority
 .public OS_InitMutex
@@ -8,8 +13,3 @@
 .public OS_SleepThreadDirect
 .public OS_UnlockMutex
 .public OSi_ThreadInfo
-.public _020AEF30
-.public _0229AFC0
-.public _0229AFCC
-.public _0229AFE4
-.public _0229B004

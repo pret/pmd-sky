@@ -1,6 +1,7 @@
 #pragma once
-.public DUNGEON_PTR
+.public _s32_div_f
 .public DealDamage
+.public DUNGEON_PTR
 .public DungeonRandOutcomeUserTargetInteraction
 .public EndReflectClassStatus
 .public GetApparentWeather
@@ -18,4 +19,3 @@
 .public TryInflictFrozenStatus
 .public TryInflictParalysisStatus
 .public WEATHER_MOVE_TURN_COUNT
-.public _s32_div_f

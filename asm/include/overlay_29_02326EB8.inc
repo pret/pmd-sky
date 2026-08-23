@@ -1,12 +1,12 @@
 #pragma once
-.public ATK_STAT_IDX
 .public AbilityIsActiveVeneer
 .public ApplyDamageAndEffectsWrapper
-.public BITE_CRINGE_CHANCE
+.public ATK_STAT_IDX
 .public BeginChargedMove
+.public BITE_CRINGE_CHANCE
+.public CalcDamageFixedWrapper
 .public CONSTRICT_LOWER_SPEED_CHANCE
 .public CRUNCH_LOWER_DEFENSE_CHANCE
-.public CalcDamageFixedWrapper
 .public DealDamage
 .public DungeonRandOutcomeUserAction
 .public DungeonRandOutcomeUserTargetInteraction

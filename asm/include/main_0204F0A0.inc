@@ -1,4 +1,9 @@
 #pragma once
+.public _0209E3A1
+.public _0209E3A2
+.public _0209E3A3
+.public _022AB4F8
+.public _022AB5AC
 .public DUNGEON_DATA_LIST
 .public DungeonSwapIdToIdx
 .public DungeonSwapIdxToId
@@ -24,11 +29,6 @@
 .public OUTLAW_MINION_LEVEL_TABLE
 .public SECONDARY_TERRAIN_TYPES
 .public StrncpyName
-.public TEAM_MEMBER_TABLE_PTR
-.public _0209E3A1
-.public _0209E3A2
-.public _0209E3A3
-.public _022AB4F8
-.public _022AB5AC
 .public sub_0204CEE0
 .public sub_0205EE40
+.public TEAM_MEMBER_TABLE_PTR

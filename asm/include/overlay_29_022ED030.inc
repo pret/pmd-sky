@@ -1,14 +1,14 @@
 #pragma once
+.public _020AFC70
 .public AdvanceFrame
 .public InitRender3dElement64
 .public LoadWteFromFileDirectory
-.public ProcessWte
-.public StringFromId
-.public _020AFC70
 .public ov29_02352690
 .public ov29_02352698
 .public ov29_0235359C
 .public ov29_0237C99C
+.public ProcessWte
 .public strcpy
+.public StringFromId
 .public sub_0201E080
 .public sub_0201F2A0

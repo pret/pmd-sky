@@ -1,8 +1,8 @@
 #pragma once
+.public _020AFC28
 .public MemAlloc
 .public MemZero
 .public OBJ_GRAPHICS_CONTROLS_PTR
-.public _020AFC28
 .public sub_0201AB90
 .public sub_0201AC10
 .public sub_0201AC20

@@ -1,4 +1,6 @@
 #pragma once
+.public _0209CA48
+.public _0209CA58
 .public BAG_ITEMS_PTR_MIRROR
 .public CountSelectedStorageItems
 .public CreateCollectionMenu
@@ -10,10 +12,6 @@
 .public PlaySeVolumeWrapper
 .public SetCollectionMenuVoidFn
 .public SortItemsInBag
-.public UNK_STORAGE_STRUCT_0X14
-.public UNK_STORAGE_STRUCT_0XC
-.public _0209CA48
-.public _0209CA58
 .public sub_0202C654
 .public sub_0202D068
 .public sub_0202D16C
@@ -28,3 +26,5 @@
 .public sub_0204426C
 .public sub_02044308
 .public sub_0204440C
+.public UNK_STORAGE_STRUCT_0X14
+.public UNK_STORAGE_STRUCT_0XC

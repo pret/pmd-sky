@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public CardBackupError
 .public CreateMainMenus
 .public Debug_Print0
@@ -10,13 +11,10 @@
 .public InitPreprocessorArgs
 .public IsTouchScreenNotOff
 .public MemAlloc
+.public MemcpySimple
 .public MemFree
 .public MemZero
-.public MemcpySimple
 .public NoteSaveBase
-.public PRINTS_STRINGS
-.public StrcpyName
-.public _s32_div_f
 .public ov00_022BCA80
 .public ov00_022BCBAC
 .public ov00_022BCC30
@@ -290,6 +288,8 @@
 .public ov07_0233F6E0
 .public ov07_0233F758
 .public ov07_0233FCD8
+.public PRINTS_STRINGS
+.public StrcpyName
 .public sub_02003B5C
 .public sub_02003B94
 .public sub_02003BC8

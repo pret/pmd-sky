@@ -1,12 +1,12 @@
 #pragma once
+.public _02094C0C
 .public AllocateTemp1024ByteBufferFromPool
-.public DUNGEON_RETURN_STATUS_TABLE
 .public DrawTextInWindow
+.public DUNGEON_RETURN_STATUS_TABLE
 .public GetDungeonResultMsg
 .public GetStringFromFileVeneer
 .public GetWindow
 .public MaybeGetColoredFormattedItemName
 .public PreprocessString
 .public StringFromId
-.public _02094C0C
 .public sub_020265A8

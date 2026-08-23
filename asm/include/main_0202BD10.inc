@@ -1,6 +1,6 @@
 #pragma once
-.public COLLECTION_MENU_DEFAULT_WINDOW_PARAMS
 .public CalcMenuHeightDiv8__02031AA4
+.public COLLECTION_MENU_DEFAULT_WINDOW_PARAMS
 .public GetNumItemsOnPage
 .public GetPageItemYOffset
 .public GetPageStart
@@ -12,8 +12,6 @@
 .public MemAlloc
 .public NewWindowScreenCheck
 .public PlayWindowInputSound
-.public UpdateCollectionMenu
-.public UpdateWindow
 .public sub_02026358
 .public sub_02026428
 .public sub_020265A8
@@ -32,3 +30,5 @@
 .public sub_0203250C
 .public sub_02032684
 .public sub_02033758
+.public UpdateCollectionMenu
+.public UpdateWindow

@@ -32,12 +32,6 @@
 .public MemFree
 .public MemZero
 .public NoteSaveBase
-.public PlaySeVolumeWrapper
-.public RandInt
-.public RemoveItemAtIdxInStorage
-.public StrncpySimpleNoPadSafe
-.public UnloadFile
-.public ZeroInitMissionRewardDataStruct
 .public ov01_0232B540
 .public ov01_0232B5D0
 .public ov01_0232E94C
@@ -80,6 +74,10 @@
 .public ov04_0233F640
 .public ov04_0233F644
 .public ov04_0233F670
+.public PlaySeVolumeWrapper
+.public RandInt
+.public RemoveItemAtIdxInStorage
+.public StrncpySimpleNoPadSafe
 .public sub_02003B5C
 .public sub_02003B94
 .public sub_02003BC8
@@ -112,3 +110,5 @@
 .public sub_02046C78
 .public sub_02046D20
 .public sub_0204A018
+.public UnloadFile
+.public ZeroInitMissionRewardDataStruct

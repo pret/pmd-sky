@@ -1,4 +1,6 @@
 #pragma once
+.public _020A3350
+.public _022B5788
 .public Debug_Print0
 .public EnableAllLearnableIqSkills
 .public GetBaseDefensiveStat
@@ -15,12 +17,10 @@
 .public StrcmpMonsterName
 .public StrncpyName
 .public StrncpySimple
-.public TEAM_MEMBER_TABLE_PTR
-.public TryAddMonsterToActiveTeam
-.public _020A3350
-.public _022B5788
 .public sub_02052CF4
 .public sub_02053D1C
 .public sub_02053F10
 .public sub_020564B0
 .public sub_02056554
+.public TEAM_MEMBER_TABLE_PTR
+.public TryAddMonsterToActiveTeam

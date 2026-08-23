@@ -1,4 +1,5 @@
 #pragma once
+.public _0209AF6C
 .public AREA_NAME_BOX_DEFAULT_WINDOW_PARAMS
 .public DeleteWindow
 .public GetPressedButtons
@@ -7,15 +8,12 @@
 .public IsValidPortrait
 .public LoadPortrait
 .public MemAlloc
-.public MemFree
 .public MemcpySimple
+.public MemFree
 .public NewWindowScreenCheck
 .public PORTRAIT_BOX_DEFAULT_WINDOW_PARAMS
 .public PreprocessString
 .public PreprocessStringFromId
-.public TEXT_BOX_DEFAULT_WINDOW_PARAMS
-.public UpdateAreaNameBox
-.public _0209AF6C
 .public sub_0202613C
 .public sub_02026184
 .public sub_02026194
@@ -36,3 +34,5 @@
 .public sub_0202836C
 .public sub_02028770
 .public sub_02048240
+.public TEXT_BOX_DEFAULT_WINDOW_PARAMS
+.public UpdateAreaNameBox

@@ -805,7 +805,7 @@ _0230661C:
 	mov r0, r5
 	bl ov29_022E65F4
 	mov r0, r5
-	bl ov29_02307CE0
+	bl ResetTypeChanges
 	b _02306688
 _0230663C:
 	ldr r1, _023066C8 ; =0x00000CB4
@@ -2553,8 +2553,8 @@ _02307CDC: .word 0x00000C9F
 #endif
 	arm_func_end EndFrozenStatus
 
-	arm_func_start ov29_02307CE0
-ov29_02307CE0: ; 0x02307CE0
+	arm_func_start ResetTypeChanges
+ResetTypeChanges: ; 0x02307CE0
 	stmdb sp!, {r4, lr}
 	ldr r4, [r0, #0xb4]
 	mov r1, #0
@@ -2569,7 +2569,7 @@ ov29_02307CE0: ; 0x02307CE0
 	bl GetType
 	strb r0, [r4, #0x5f]
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_02307CE0
+	arm_func_end ResetTypeChanges
 
 	arm_func_start EndProtectStatus
 EndProtectStatus: ; 0x02307D18

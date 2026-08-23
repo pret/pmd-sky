@@ -13,8 +13,6 @@
 .public PlayWindowInputSound
 .public PreprocessStringFromId
 .public SIMPLE_MENU_DEFAULT_WINDOW_PARAMS
-.public UpdateSimpleMenu
-.public UpdateWindow
 .public sub_020263C8
 .public sub_020265A8
 .public sub_02027B1C
@@ -34,3 +32,5 @@
 .public sub_02032684
 .public sub_02032984
 .public sub_02033758
+.public UpdateSimpleMenu
+.public UpdateWindow

@@ -1,9 +1,9 @@
 #pragma once
 .public AbilityIsActiveVeneer
 .public AddHeldItemToBag
+.public BeginChargedMove
 .public BOUNCE_DAMAGE_MULTIPLIER
 .public BOUNCE_PARALYZE_CHANCE
-.public BeginChargedMove
 .public CalcDamage
 .public CalcRecoilDamageFixed
 .public DealDamage
@@ -16,6 +16,7 @@
 .public GetMoveTypeForMonster
 .public IsChargingTwoTurnMove
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ov29_022F9EA0
 .public POISON_FANG_POISON_CHANCE
 .public POISON_STING_POISON_CHANCE
 .public RemoveEmptyItemsInBagWrapper
@@ -23,11 +24,10 @@
 .public SetPreprocessorArgsStringToName
 .public StringFromId
 .public SubstitutePlaceholderStringTags
-.public TRIPLE_KICK_SUCCESSIVE_HITS
 .public TRI_ATTACK_STATUS_CHANCE
+.public TRIPLE_KICK_SUCCESSIVE_HITS
 .public TryInflictBadlyPoisonedStatus
 .public TryInflictBurnStatus
 .public TryInflictFrozenStatus
 .public TryInflictParalysisStatus
 .public TryInflictPoisonedStatus
-.public ov29_022F9EA0

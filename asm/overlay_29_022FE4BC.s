@@ -112,7 +112,7 @@ _022FF048:
 	cmp r0, #0
 	bne _022FF05C
 	mov r0, r6
-	bl ov29_022F9840
+	bl TryPointCameraToFarOffTeammate
 _022FF05C:
 	mov r0, #0xa
 	bl AdvanceFrame
@@ -747,7 +747,7 @@ _022FE61C:
 	cmp r0, #0
 	bne _022FE630
 	mov r0, sb
-	bl ov29_022F9840
+	bl TryPointCameraToFarOffTeammate
 _022FE630:
 	mov r0, #0xa
 	bl AdvanceFrame

@@ -1132,8 +1132,8 @@ sub_0201CF80: ; 0x0201CF80
 	bx lr
 	arm_func_end sub_0201CF80
 
-	arm_func_start sub_0201CF90
-sub_0201CF90: ; 0x0201CF90
+	arm_func_start GetPixelOffsetFromSprite
+GetPixelOffsetFromSprite: ; 0x0201CF90
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	strh ip, [r0]
@@ -1176,10 +1176,10 @@ _0201D024:
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0201CF90
+	arm_func_end GetPixelOffsetFromSprite
 
-	arm_func_start sub_0201D034
-sub_0201D034: ; 0x0201D034
+	arm_func_start FillPixelOffsetArrayFromSprite
+FillPixelOffsetArrayFromSprite: ; 0x0201D034
 	stmdb sp!, {r4, r5, r6, lr}
 	ldrh r3, [r2]
 	tst r3, #0x8000
@@ -1235,7 +1235,7 @@ _0201D0EC:
 	cmp r2, r1
 	blo _0201D0D8
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0201D034
+	arm_func_end FillPixelOffsetArrayFromSprite
 
 	arm_func_start sub_0201D0F8
 sub_0201D0F8: ; 0x0201D0F8

@@ -1427,7 +1427,7 @@ _022C1178:
 	add r0, sp, #0x10
 	mov r2, r4
 	mov r1, #4
-	bl sub_0201D034
+	bl FillPixelOffsetArrayFromSprite
 	ldrb r0, [sp, #0x48]
 	cmp r0, #0
 	beq _022C11C4
@@ -1549,7 +1549,7 @@ _022C12EC:
 	mov r2, r6
 	add r0, sp, #0x10
 	mov r1, #4
-	bl sub_0201D034
+	bl FillPixelOffsetArrayFromSprite
 	ldrb r0, [r7, #0x4f]
 	cmp r0, #0
 	beq _022C1378

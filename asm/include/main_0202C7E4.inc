@@ -6,7 +6,6 @@
 .public GetWindowContents
 .public IsMenuOptionActive
 .public PlayWindowInputSound
-.public UpdateWindow
 .public sub_02025D90
 .public sub_02026358
 .public sub_02026428
@@ -26,3 +25,4 @@
 .public sub_020324C4
 .public sub_02032684
 .public sub_02033758
+.public UpdateWindow

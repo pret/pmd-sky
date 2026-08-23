@@ -6,7 +6,6 @@
 .public IsAdvancedMenuActive2
 .public IsSimpleMenuActive
 .public LINK_SHOP_PTR
-.public ResumeAdvancedMenu
 .public memcpy
 .public ov18_0238ADA8
 .public ov18_0238BE28
@@ -65,6 +64,7 @@
 .public ov18_0238D22C
 .public ov18_0238D23C
 .public ov18_0238D260
+.public ResumeAdvancedMenu
 .public sub_0202C1E4
 .public sub_0203FD14
 .public sub_0203FD2C

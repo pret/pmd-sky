@@ -1,4 +1,6 @@
 #pragma once
+.public _s32_div_f
+.public abs
 .public ConvertSecondaryTerrainToChasms
 .public ConvertWallsToChasms
 .public DUNGEON_PTR
@@ -6,9 +8,9 @@
 .public DungeonRandInt
 .public DungeonRandRange
 .public EnsureImpassableTilesAreWalls
-.public FLOOR_GENERATION_STATUS
 .public FinalizeJunctions
 .public FlagHallwayJunctions
+.public FLOOR_GENERATION_STATUS
 .public GenerateBeetleFloor
 .public GenerateCrossFloor
 .public GenerateCrossroadsFloor
@@ -38,15 +40,6 @@
 .public MarkEnemySpawns
 .public MarkNonEnemySpawns
 .public MarkShopkeeperSpawn
-.public ResetFloor
-.public ResetHiddenStairsSpawn
-.public ResetImportantSpawnPositions
-.public ResetInnerBoundaryTileRows
-.public ResolveInvalidSpawns
-.public SECONDARY_TERRAIN_TYPES
-.public StairsAlwaysReachable
-.public _s32_div_f
-.public abs
 .public ov29_0233A0E8
 .public ov29_023427E4
 .public ov29_02343DC4
@@ -54,5 +47,12 @@
 .public ov29_0235352C
 .public ov29_0235376C
 .public ov29_0235377C
+.public ResetFloor
+.public ResetHiddenStairsSpawn
+.public ResetImportantSpawnPositions
+.public ResetInnerBoundaryTileRows
+.public ResolveInvalidSpawns
+.public SECONDARY_TERRAIN_TYPES
+.public StairsAlwaysReachable
 .public sub_0200A174
 .public sub_0200C008

@@ -9,5 +9,5 @@
 .public GetMoveType
 .public LevitateIsActive
 .public LogMessageByIdWithPopupCheckUserTarget
-.public TryInflictCringeStatus
 .public ov29_0230D4A4
+.public TryInflictCringeStatus

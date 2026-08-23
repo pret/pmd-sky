@@ -1,12 +1,12 @@
 #pragma once
+.public _022A7A6C
+.public _022A7A74
+.public _022A7B1C
 .public GetPaletteBaseAddress__020278A8
 .public InitRender3dElement64
 .public InitWindowTrailer
 .public MemAlloc
-.public WINDOW_LIST
-.public _022A7A6C
-.public _022A7A74
-.public _022A7B1C
 .public sub_020278C4
 .public sub_02027B1C
 .public sub_02029A50
+.public WINDOW_LIST

@@ -4,11 +4,6 @@
 .public GetSimpleMenuResult__0202B870
 .public IsMePlaying
 .public IsSimpleMenuActive
-.public OVERLAY17_UNKNOWN_POINTER__NA_238BE00
-.public PlaySeVolumeWrapper
-.public PrintIqSkillsMenu
-.public TEAM_MEMBER_TABLE_PTR
-.public TryAddMonsterToActiveTeam
 .public ov11_022DC504
 .public ov17_0238B028
 .public ov17_0238B048
@@ -24,6 +19,9 @@
 .public ov17_0238B260
 .public ov17_0238B278
 .public ov17_0238B290
+.public OVERLAY17_UNKNOWN_POINTER__NA_238BE00
+.public PlaySeVolumeWrapper
+.public PrintIqSkillsMenu
 .public sub_02017C50
 .public sub_020307EC
 .public sub_0203A51C
@@ -53,3 +51,5 @@
 .public sub_020572EC
 .public sub_02057444
 .public sub_02058138
+.public TEAM_MEMBER_TABLE_PTR
+.public TryAddMonsterToActiveTeam

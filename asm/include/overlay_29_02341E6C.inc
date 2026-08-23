@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public DUNGEON_PTR
 .public DungeonRand16Bit
 .public DungeonRandInt
@@ -7,8 +8,8 @@
 .public DungeonRngSetSecondary
 .public FIXED_ROOM_ENTITY_SPAWN_TABLE
 .public FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
-.public FLOOR_GENERATION_STATUS
 .public FixedRoomActionParamToDirection
+.public FLOOR_GENERATION_STATUS
 .public GenerateAndSpawnItem
 .public GetExplorerMazeMonster
 .public GetFloorType
@@ -23,8 +24,8 @@
 .public GetTileSafe
 .public HIDDEN_STAIRS_SPAWN_BLOCKED
 .public HIDDEN_STAIRS_SPAWN_CHANCE_MULTIPLIER
-.public InitOtherMonsterData
 .public InitializeTile
+.public InitOtherMonsterData
 .public IsDestinationFloor
 .public IsFullFloorFixedRoom
 .public IsGoldenChamber
@@ -33,15 +34,6 @@
 .public KECLEON_SHOP_BOOST_CHANCE_MULTIPLIER
 .public MemAlloc
 .public MultiplyByFixedPoint
-.public SHOP_ITEM_CHANCES
-.public SetShouldBoostHiddenStairsSpawnChance
-.public SetShouldBoostKecleonShopSpawnChance
-.public ShouldBoostHiddenStairsSpawnChance
-.public ShouldBoostKecleonShopSpawnChance
-.public SpawnEnemyTrapAtPos
-.public SpawnMonster
-.public TREASURE_BOX_1_ITEM_IDS
-.public _s32_div_f
 .public ov10_022C4B34
 .public ov29_023365E8
 .public ov29_023442B8
@@ -50,3 +42,11 @@
 .public ov29_02353050
 .public ov29_023534F0
 .public ov29_0237CFC0
+.public SetShouldBoostHiddenStairsSpawnChance
+.public SetShouldBoostKecleonShopSpawnChance
+.public SHOP_ITEM_CHANCES
+.public ShouldBoostHiddenStairsSpawnChance
+.public ShouldBoostKecleonShopSpawnChance
+.public SpawnEnemyTrapAtPos
+.public SpawnMonster
+.public TREASURE_BOX_1_ITEM_IDS

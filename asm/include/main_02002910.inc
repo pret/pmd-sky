@@ -1,4 +1,10 @@
 #pragma once
+.public _020AEF58
+.public _0229B0E8
+.public _0229B0F0
+.public _0229B0F8
+.public _0229B110
+.public _0229B114
 .public Card_LockBackup
 .public Card_LockRom
 .public Card_UnlockBackup
@@ -16,12 +22,6 @@
 .public OS_TryLockMutex
 .public OS_UnlockMutex
 .public OSi_ThreadInfo
-.public _020AEF58
-.public _0229B0E8
-.public _0229B0F0
-.public _0229B0F8
-.public _0229B110
-.public _0229B114
 .public sub_02002580
 .public sub_02002670
 .public sub_020026B8

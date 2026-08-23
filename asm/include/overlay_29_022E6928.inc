@@ -11,7 +11,7 @@
 .public DungeonRngSetPrimary
 .public DungeonRngSetSecondary
 .public FloorNumberIsEven
-.public GetEffectAnimationField0x19
+.public GetEffectAnimationWanOffset
 .public GetLeader
 .public GetMonsterGenderVeneer
 .public GetMonsterIdFromSpawnEntry
@@ -19,6 +19,7 @@
 .public GetNbFloorsPlusOne
 .public GetNbPrecedingFloors
 .public GetNbRecruited
+.public GetPixelOffsetFromSprite
 .public GetSecondFormIfValid
 .public GetSpriteFileSize
 .public HandleSir0Translation
@@ -35,10 +36,6 @@
 .public MemAlloc
 .public MemFree
 .public NeedsItemToSpawn
-.public PlayEffectAnimationEntity
-.public RandIntSafe
-.public SetMonsterId
-.public UnloadFile
 .public ov10_022BDC68
 .public ov10_022BDE50
 .public ov10_022BEFD8
@@ -56,4 +53,7 @@
 .public ov29_023515B0
 .public ov29_023515CC
 .public ov29_0235354C
-.public sub_0201CF90
+.public PlayEffectAnimationEntity
+.public RandIntSafe
+.public SetMonsterId
+.public UnloadFile

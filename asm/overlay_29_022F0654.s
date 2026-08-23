@@ -448,7 +448,7 @@ GetEntityTouchscreenArea: ; 0x022F0BAC
 	mov r2, #3
 	ldrsh r4, [r3, #0x48]
 	ldrsh r5, [r3, #0x4a]
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 	ldrsh r0, [sp]
 	add r0, r4, r0
 	sub r0, r0, #0xc

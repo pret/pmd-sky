@@ -198,7 +198,7 @@ _02322FC8:
 	add r0, sp, #0xc
 	add r1, r7, #0x2c
 	and r2, r2, #0xff
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 _02323084:
 	mov r0, r7
 	bl GetApparentWeather

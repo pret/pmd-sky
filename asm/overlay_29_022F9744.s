@@ -29,7 +29,7 @@ TryActivateConversion2: ; 0x022F9744
 	movs r4, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
-	bl ov29_02307CE0
+	bl ResetTypeChanges
 	mov r0, r6
 	strb r4, [r5, #0x5e]
 	mov r1, #0
@@ -80,8 +80,8 @@ _022F9838:
 	ldmia sp!, {r4, pc}
 	arm_func_end TryActivateTruant
 
-	arm_func_start ov29_022F9840
-ov29_022F9840: ; 0x022F9840
+	arm_func_start TryPointCameraToFarOffTeammate
+TryPointCameraToFarOffTeammate: ; 0x022F9840
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, #0
@@ -112,7 +112,7 @@ _022F987C:
 	mov r2, r1
 	bl TryPointCameraToMonster
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022F9840
+	arm_func_end TryPointCameraToFarOffTeammate
 
 	arm_func_start TryPointCameraToMonster
 TryPointCameraToMonster: ; 0x022F98B4

@@ -1,8 +1,9 @@
 #pragma once
+.public _s32_div_f
 .public AddSimpleObjToOam
 .public ChangeSimpleObjTexture
-.public DUNGEON_PTR
 .public DirectoryFileMngr_OpenDirectoryFile
+.public DUNGEON_PTR
 .public FillPaletteInitInfo
 .public GetDefaultTileTextureId
 .public HandleSir0Translation
@@ -12,8 +13,6 @@
 .public MemFree
 .public MemZero
 .public OBJ_GRAPHICS_CONTROLS_PTR
-.public UnloadFile
-.public _s32_div_f
 .public ov29_022DC78C
 .public ov29_02350F88
 .public ov29_02350F8C
@@ -66,3 +65,4 @@
 .public sub_02063734
 .public sub_02063770
 .public sub_02063830
+.public UnloadFile

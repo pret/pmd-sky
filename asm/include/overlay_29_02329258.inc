@@ -4,6 +4,8 @@
 .public GetDamageSourceWrapper
 .public GetMoveCategory
 .public GetMoveType
+.public ov29_022EA370
+.public ov29_022ECAFC
 .public PlaySeByIdIfShouldDisplayEntity
 .public SetTwoTurnInvincibility
 .public ShouldDisplayEntityAdvanced
@@ -11,5 +13,3 @@
 .public WaitUntilFadeIsFinished
 .public WaitUntilMonsterFliesOffscreen
 .public WaitUntilMonsterIsBackOnGround
-.public ov29_022EA370
-.public ov29_022ECAFC

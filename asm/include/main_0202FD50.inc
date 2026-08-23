@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public ADVANCED_TEXT_BOX_DEFAULT_WINDOW_PARAMS
 .public ALERT_BOX_DEFAULT_WINDOW_PARAMS
 .public AnalyzeText
@@ -14,9 +15,6 @@
 .public MemZero
 .public NewWindowScreenCheck
 .public PreprocessString
-.public UpdateAdvancedTextBox
-.public UpdateWindow
-.public _s32_div_f
 .public sub_01FF9128
 .public sub_01FF929C
 .public sub_02020B60
@@ -30,3 +28,5 @@
 .public sub_0202810C
 .public sub_0202812C
 .public sub_0202836C
+.public UpdateAdvancedTextBox
+.public UpdateWindow

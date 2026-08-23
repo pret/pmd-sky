@@ -1,13 +1,16 @@
 #pragma once
+.public _02092558
+.public _020925A0
+.public _020925B4
 .public CardPullOutWithStatus
 .public DC_FlushAll
 .public Debug_FatalError
+.public FileRom_InitDataTransfer
+.public FileRom_StopDataTransfer
 .public FS_LoadOverlayImage
 .public FS_LoadOverlayInfo
 .public FS_StartOverlay
 .public FS_UnloadOverlay
-.public FileRom_InitDataTransfer
-.public FileRom_StopDataTransfer
 .public GetDsFirmwareUserSettings
 .public IC_InvalidateAll
 .public LOADED_OVERLAY_GROUP_0
@@ -15,6 +18,3 @@
 .public MATHi_CRC32InitTable
 .public MemAlloc
 .public MemFree
-.public _02092558
-.public _020925A0
-.public _020925B4

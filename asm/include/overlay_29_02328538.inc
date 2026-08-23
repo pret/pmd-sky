@@ -2,8 +2,8 @@
 .public AbilityIsActiveVeneer
 .public ApplyDamageAndEffectsWrapper
 .public CalcRecoilDamageFixed
-.public DUNGEON_PTR
 .public DealDamage
+.public DUNGEON_PTR
 .public DungeonRandOutcomeUserAction
 .public DungeonRandOutcomeUserTargetInteraction
 .public EntityIsValidMoveEffects__0232800C

@@ -7,6 +7,6 @@
 .public IsBagFull
 .public ItemZInit
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ov29_022F9EA0
 .public RemoveEquivItem
 .public SubstitutePlaceholderStringTags
-.public ov29_022F9EA0

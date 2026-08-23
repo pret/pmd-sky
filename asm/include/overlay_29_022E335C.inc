@@ -5,7 +5,8 @@
 .public DisplayUi
 .public DUNGEON_PTR
 .public EntityIsValid__022E37B8
-.public GetEffectAnimationField0x19
+.public GetEffectAnimationWanOffset
+.public GetPixelOffsetFromSprite
 .public GetTileSafe
 .public InitOamAdjustmentInfo
 .public LogMessageByIdWithPopupCheckUser
@@ -17,7 +18,6 @@
 .public ov29_0235354C
 .public ScreenEffectActive
 .public ShouldDisplayEntityAdvanced
-.public sub_0201CF90
 .public UpdateCamera
 .public UpdateMinimap
 .public UpdateTrapsVisibility

@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public AdvanceFrame
 .public ChangeDungeonMusic
 .public DUNGEON_PTR
@@ -6,8 +7,7 @@
 .public FIXED_ROOM_PROPERTIES_TABLE
 .public IsCurrentFixedRoomBossFight
 .public MUSIC_ID_TABLE
-.public RANDOM_MUSIC_ID_TABLE
-.public _s32_div_f
 .public ov29_022EAE40
+.public RANDOM_MUSIC_ID_TABLE
 .public sub_02017B18
 .public sub_02017C68

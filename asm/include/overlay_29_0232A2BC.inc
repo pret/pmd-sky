@@ -6,6 +6,6 @@
 .public FAKE_OUT_CRINGE_CHANCE
 .public GenerateStandardItem
 .public LogMessageByIdWithPopupCheckUserTarget
-.public TryInflictCringeStatus
 .public ov29_0232A834
 .public ov29_02352B18
+.public TryInflictCringeStatus

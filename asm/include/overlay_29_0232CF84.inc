@@ -1,8 +1,8 @@
 #pragma once
 .public AreLateGameTrapsEnabledWrapper
-.public DIRECTIONS_XY
 .public DetermineAllMonsterShadow
 .public DetermineTileWalkableNeighbors
+.public DIRECTIONS_XY
 .public GenerateStandardItem
 .public GetItemIdToSpawn
 .public GetTileSafe
@@ -10,10 +10,10 @@
 .public IsCurrentFixedRoomBossFight
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ov29_022E6770
+.public ov29_022E6784
+.public ov29_02336694
 .public PrepareTrapperTrap
 .public SpawnDroppedItemWrapper
 .public UpdateMinimap
 .public UpdateTrapsVisibility
-.public ov29_022E6770
-.public ov29_022E6784
-.public ov29_02336694

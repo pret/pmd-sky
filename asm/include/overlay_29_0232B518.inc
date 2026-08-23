@@ -3,6 +3,6 @@
 .public AllocateTemp1024ByteBufferFromPool
 .public DUNGEON_PTR
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ov10_022C6322
 .public SetPreprocessorArgsIdVal
 .public SubstitutePlaceholderStringTags
-.public ov10_022C6322

@@ -9,7 +9,7 @@ ov29_022E41F0: ; 0x022E41F0
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E423C ; =0x000001A7
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -34,7 +34,7 @@ PlayParalysisEffect: ; 0x022E4240
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E428C ; =0x000001A7
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -64,7 +64,7 @@ ov29_022E4294: ; 0x022E4294
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x4c
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -98,7 +98,7 @@ PlayEffectAnimationEntityStandard: ; 0x022E42E8
 	mov r4, r1
 	mov r5, r0
 	mov r0, r4
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2

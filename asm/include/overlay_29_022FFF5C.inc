@@ -1,12 +1,12 @@
 #pragma once
 .public AbilityIsActive
-.public EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST
 .public EntityIsValid__023000E4
+.public EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST
 .public ExclusiveItemEffectIsActive__022FFF28
 .public GetApparentWeather
 .public GetExclusiveItemWithEffectFromBag
 .public LogMessageByIdWithPopupCheckUser
+.public ov29_022E655C
 .public PrepareItemForPrinting__02345728
 .public SubstitutePlaceholderStringTags
 .public UpdateStateFlags
-.public ov29_022E655C
