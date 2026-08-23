@@ -10,8 +10,8 @@
 .public IsFullFloorFixedRoom
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ov29_02352B38
 .public TryRemoveTrap
 .public TryWarp
 .public UpdateMinimap
 .public UpdateTrapsVisibility
-.public ov29_02352B38

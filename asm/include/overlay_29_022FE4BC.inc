@@ -40,7 +40,6 @@
 .public ov29_022F4DAC
 .public ov29_022F505C
 .public ov29_022F52B0
-.public ov29_022F9840
 .public ov29_022F996C
 .public ov29_022FBD08
 .public ov29_022FEDBC
@@ -65,6 +64,7 @@
 .public TalkToTeamMemberInFront
 .public TryActivateFlashFireOnAllMonsters
 .public TryPlaceItem
+.public TryPointCameraToFarOffTeammate
 .public TrySpawnTrapperTrap
 .public TryTriggerTrap
 .public UseRegularAttackOrStruggle

@@ -17,6 +17,7 @@
 .public GetMoveAnimation
 .public GetMoveAnimationId
 .public GetMoveAnimationSpeed
+.public GetPixelOffsetFromSprite
 .public GetTile
 .public IqSkillIsEnabled
 .public IsChargingTwoTurnMove
@@ -44,5 +45,4 @@
 .public ShouldDisplayEntityWrapper
 .public ShouldTreatMonsterAsAlly
 .public SinAbs4096
-.public sub_0201CF90
 .public TwoTurnMoveForcedMiss

@@ -9416,7 +9416,7 @@ _022F5CEC:
 	ldrb r2, [r7, #0xa4]
 	add r0, sp, #8
 	add r1, r7, #0xc
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 	ldrsh lr, [sp, #8]
 	ldrsh ip, [sp, #0xa]
 	add r2, sp, #0

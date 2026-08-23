@@ -9,7 +9,7 @@ ov29_022E4BB4: ; 0x022E4BB4
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x15
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -32,7 +32,7 @@ ov29_022E4C00: ; 0x022E4C00
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0xf
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -73,7 +73,7 @@ ov29_022E4C84: ; 0x022E4C84
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E4CD0 ; =0x000001F7
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -98,7 +98,7 @@ ov29_022E4CD4: ; 0x022E4CD4
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E4D20 ; =0x000001F9
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -132,7 +132,7 @@ PlayOffensiveStatDownEffect: ; 0x022E4D28
 	cmp r1, #0
 	bne _022E4D80
 	mov r0, #0x194
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -148,7 +148,7 @@ PlayOffensiveStatDownEffect: ; 0x022E4D28
 	b _022E4DB8
 _022E4D80:
 	ldr r0, _022E4DC8 ; =0x00000193
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -180,7 +180,7 @@ PlayDefensiveStatDownEffect: ; 0x022E4DCC
 	cmp r1, #0
 	bne _022E4E24
 	ldr r0, _022E4E6C ; =0x0000018F
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -196,7 +196,7 @@ PlayDefensiveStatDownEffect: ; 0x022E4DCC
 	b _022E4E5C
 _022E4E24:
 	ldr r0, _022E4E70 ; =0x00000191
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -229,7 +229,7 @@ PlayOffensiveStatUpEffect: ; 0x022E4E74
 	cmp r1, #0
 	bne _022E4ECC
 	ldr r0, _022E4F14 ; =0x000001A9
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -245,7 +245,7 @@ PlayOffensiveStatUpEffect: ; 0x022E4E74
 	b _022E4F04
 _022E4ECC:
 	ldr r0, _022E4F18 ; =0x00000192
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	mov ip, #0
 	mov r1, #2
@@ -278,7 +278,7 @@ PlayDefensiveStatUpEffect: ; 0x022E4F1C
 	cmp r1, #0
 	bne _022E4F74
 	ldr r0, _022E4FBC ; =0x0000018E
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	mov ip, #0
 	mov r1, #2
@@ -294,7 +294,7 @@ PlayDefensiveStatUpEffect: ; 0x022E4F1C
 	b _022E4FAC
 _022E4F74:
 	mov r0, #0x190
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -326,7 +326,7 @@ PlayOffensiveStatMultiplierUpEffect: ; 0x022E4FC0
 	cmp r1, #0
 	bne _022E5018
 	ldr r0, _022E5060 ; =0x000001A9
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -342,7 +342,7 @@ PlayOffensiveStatMultiplierUpEffect: ; 0x022E4FC0
 	b _022E5050
 _022E5018:
 	ldr r0, _022E5064 ; =0x00000192
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	mov ip, #0
 	mov r1, #2
@@ -375,7 +375,7 @@ PlayOffensiveStatMultiplierDownEffect: ; 0x022E5068
 	cmp r1, #0
 	bne _022E50C0
 	mov r0, #0x194
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -391,7 +391,7 @@ PlayOffensiveStatMultiplierDownEffect: ; 0x022E5068
 	b _022E50F8
 _022E50C0:
 	ldr r0, _022E5108 ; =0x00000193
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -423,7 +423,7 @@ PlayDefensiveStatMultiplierUpEffect: ; 0x022E510C
 	cmp r1, #0
 	bne _022E5164
 	ldr r0, _022E51AC ; =0x0000018E
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	mov ip, #0
 	mov r1, #2
@@ -439,7 +439,7 @@ PlayDefensiveStatMultiplierUpEffect: ; 0x022E510C
 	b _022E519C
 _022E5164:
 	mov r0, #0x190
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -471,7 +471,7 @@ PlayDefensiveStatMultiplierDownEffect: ; 0x022E51B0
 	cmp r1, #0
 	bne _022E5208
 	ldr r0, _022E5250 ; =0x0000018F
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -487,7 +487,7 @@ PlayDefensiveStatMultiplierDownEffect: ; 0x022E51B0
 	b _022E5240
 _022E5208:
 	ldr r0, _022E5254 ; =0x00000191
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -520,7 +520,7 @@ PlayHitChanceUpEffect: ; 0x022E5258
 	cmp r1, #0
 	bne _022E52B0
 	mov r0, #0x18c
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -536,7 +536,7 @@ PlayHitChanceUpEffect: ; 0x022E5258
 	b _022E52E8
 _022E52B0:
 	mov r0, #0xd
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -566,7 +566,7 @@ PlayHitChanceDownEffect: ; 0x022E52F8
 	cmp r1, #0
 	bne _022E5350
 	ldr r0, _022E5398 ; =0x0000018D
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -582,7 +582,7 @@ PlayHitChanceDownEffect: ; 0x022E52F8
 	b _022E5388
 _022E5350:
 	mov r0, #0xe
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -610,7 +610,7 @@ PlayExclamationPointEffect__022E5D4C: ; 0x022E539C
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E53E8 ; =0x00000143
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -640,7 +640,7 @@ ov29_022E53F0: ; 0x022E53F0
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x19
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -735,7 +735,7 @@ ov29_022E550C: ; 0x022E550C
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E5558 ; =0x0000013E
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	mov ip, #0
 	mov r1, #2
@@ -767,7 +767,7 @@ ov29_022E5560: ; 0x022E5560
 	cmp r2, #1
 	bne _022E55B0
 	mov r0, #0xf8
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -783,7 +783,7 @@ ov29_022E5560: ; 0x022E5560
 	b _022E55E8
 _022E55B0:
 	mov r0, #0xf9
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -807,7 +807,7 @@ ov29_022E55F0: ; 0x022E55F0
 	sub sp, sp, #0x10
 	mov r0, #0x2a
 	mov r4, r1
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2

@@ -1,4 +1,5 @@
 #pragma once
+.public _020A1878
 .public ApplyExclusiveItemStatBoosts
 .public BAG_ITEMS_PTR_MIRROR
 .public EXCLUSIVE_ITEM_EFFECT_DATA
@@ -15,4 +16,3 @@
 .public MemFree
 .public MemZero
 .public SetExclusiveItemEffect
-.public _020A1878

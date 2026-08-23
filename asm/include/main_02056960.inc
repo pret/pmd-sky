@@ -6,10 +6,10 @@
 .public GetMainCharacter3MemberIdx
 .public GetPartnerMemberIdx
 .public IsMainCharacter
-.public TEAM_MEMBER_TABLE_PTR
-.public TryAddMonsterToActiveTeam
 .public sub_02056410
 .public sub_020564B0
 .public sub_02056554
 .public sub_02057464
 .public sub_02058138
+.public TEAM_MEMBER_TABLE_PTR
+.public TryAddMonsterToActiveTeam

@@ -1,4 +1,6 @@
 #pragma once
+.public _0209E010
+.public _0209E011
 .public ARM9_UNKNOWN_TABLE__NA_209E164
 .public BitstreamDebug
 .public CopyBitsFrom
@@ -10,10 +12,10 @@
 .public FileRom_InitDataTransfer
 .public FileRom_StopDataTransfer
 .public FileRom_Veneer_FileInit
-.public GLOBAL_PROGRESS_PTR
 .public GetDexNumber
 .public GetDungeonTipShown
 .public GetMonsterFlag1
+.public GLOBAL_PROGRESS_PTR
 .public HasMonsterBeenAttackedInDungeons
 .public InitBitstreamForRead
 .public InitBitstreamForWrite
@@ -25,5 +27,3 @@
 .public SetMonsterFlag1
 .public SetMonsterFlag2
 .public VERSION_EXCLUSIVE_MONSTERS
-.public _0209E010
-.public _0209E011

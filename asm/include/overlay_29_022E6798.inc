@@ -2,7 +2,7 @@
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public DUNGEON_PTR
-.public GetEffectAnimationField0x19
+.public GetEffectAnimationWanOffset
+.public ov29_022EA370
 .public PlayEffectAnimationEntity
 .public ShouldDisplayEntityAdvanced
-.public ov29_022EA370

@@ -218,7 +218,7 @@ ov29_022E3590: ; 0x022E3590
 	mov r6, r0
 	mov r0, r5
 	mov r4, r2
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r3, r0
 	mov r0, #2
 	mov ip, #0
@@ -275,7 +275,7 @@ _022E365C:
 	add r0, sp, #0
 	mov r2, r7
 	add r1, r8, #0x2c
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 	ldrsh r7, [sp]
 	cmp r7, #0x63
 	ldrnesh r2, [sp, #2]

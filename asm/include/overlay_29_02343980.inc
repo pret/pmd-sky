@@ -1,6 +1,6 @@
 #pragma once
-.public DUNGEON_PTR
 .public DetermineAllTilesWalkableNeighbors
+.public DUNGEON_PTR
 .public FIXED_ROOM_DATA_PTR
 .public FIXED_ROOM_ENTITY_SPAWN_TABLE
 .public FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
@@ -18,6 +18,11 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
+.public ov29_022EA370
+.public ov29_02336694
+.public ov29_02342BEC
+.public ov29_02348BE8
+.public ov29_02353110
 .public PlaceFixedRoomTile
 .public PlayKeyDoorUnlockEffect
 .public PointsToZero
@@ -26,8 +31,3 @@
 .public UpdateMinimap
 .public UpdateTrapsVisibility
 .public ZInit8
-.public ov29_022EA370
-.public ov29_02336694
-.public ov29_02342BEC
-.public ov29_02348BE8
-.public ov29_02353110

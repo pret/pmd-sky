@@ -2,9 +2,9 @@
 .public AreLateGameTrapsEnabledWrapper
 .public DUNGEON_PTR
 .public LogMessageByIdWithPopupCheckUserTarget
-.public TrySpawnTrap
-.public UpdateTrapsVisibility
 .public ov10_022C4924
 .public ov29_02332F18
 .public ov29_02352B1C
 .public ov29_0237CA84
+.public TrySpawnTrap
+.public UpdateTrapsVisibility

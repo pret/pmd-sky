@@ -1,4 +1,5 @@
 #pragma once
+.public abs
 .public ChangeActorAnimation
 .public Debug_Print
 .public DeleteLiveActor
@@ -8,15 +9,8 @@
 .public LoadObjectAnimData
 .public MemAlloc
 .public MemFree
-.public OBJECTS
 .public OBJECT_FUNCTION_TABLE
-.public SetActorTalkSub
-.public SetAnimDataFields2
-.public SetAnimDataFieldsWrapper
-.public SetAttributeBitfieldLiveActor
-.public SetPositionLiveActor
-.public UnlockRoutine
-.public abs
+.public OBJECTS
 .public ov11_022DC934
 .public ov11_022DC958
 .public ov11_022DC9A0
@@ -62,6 +56,12 @@
 .public ov11_02322074
 .public ov11_02324CF8
 .public ov11_02324D00
+.public SetActorTalkSub
+.public SetAnimDataFields2
+.public SetAnimDataFieldsWrapper
+.public SetAttributeBitfieldLiveActor
+.public SetPositionLiveActor
 .public sub_02005430
 .public sub_020054C0
 .public sub_02006DC8
+.public UnlockRoutine

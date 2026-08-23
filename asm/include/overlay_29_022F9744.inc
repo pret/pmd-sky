@@ -43,9 +43,9 @@
 .public ov29_022E4160
 .public ov29_022E81F8
 .public ov29_022EA370
-.public ov29_02307CE0
 .public ov29_02307DD0
 .public PointCameraToMonster
+.public ResetTypeChanges
 .public SECONDARY_TERRAIN_TYPES
 .public SetActionPassTurnOrWalk
 .public SetPreprocessorArgsIdVal

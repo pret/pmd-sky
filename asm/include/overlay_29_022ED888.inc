@@ -6,6 +6,6 @@
 .public GetTile
 .public GetTileSafe
 .public OBJ_GRAPHICS_CONTROLS_PTR
-.public SpawnTrap
 .public ov29_023526A0
 .public ov29_0237C864
+.public SpawnTrap

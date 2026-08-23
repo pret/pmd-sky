@@ -1,4 +1,8 @@
 #pragma once
+.public _fdiv
+.public _ffix
+.public _fflt
+.public _s32_div_f
 .public AnimRelatedFunction__022F6F14
 .public AppendStandardStringToMission
 .public ClampComponentAbs
@@ -11,10 +15,9 @@
 .public Debug_Print
 .public DelayWteFree
 .public DrawTextInWindow
-.public EVENTS
 .public EuclideanNorm__020050B0
+.public EVENTS
 .public FX_Atan2Idx
-.public GROUND_WEATHER_TABLE
 .public GetAcceptedMission
 .public GetDungeonMode
 .public GetExecuteSpecialEpisodeType
@@ -25,6 +28,7 @@
 .public GetMissionRankWithCapAndModifiersAndCap
 .public GetPartner
 .public GetTopScreenOption
+.public GROUND_WEATHER_TABLE
 .public GroundBg_FreeAll
 .public GroundBg_Init
 .public InitAnimDataFromOtherAnimDataVeneer
@@ -39,17 +43,6 @@
 .public LoadWteFromRom
 .public MemAlloc
 .public MemFree
-.public OverlayIsLoaded
-.public SentryUpdateDisplay
-.public SetAnimDataFields2
-.public TRIG_TABLE
-.public UpdateWindow
-.public VEC_Distance
-.public WORLD_MAP_MODE
-.public _fdiv
-.public _ffix
-.public _fflt
-.public _s32_div_f
 .public ov11_022DC240
 .public ov11_022DC368
 .public ov11_022DC3A0
@@ -243,6 +236,9 @@
 .public ov16_0238CCBC
 .public ov16_0238CCD8
 .public ov16_0238CCF0
+.public OverlayIsLoaded
+.public SentryUpdateDisplay
+.public SetAnimDataFields2
 .public sub_0200514C
 .public sub_020055C8
 .public sub_02008F64
@@ -272,3 +268,7 @@
 .public sub_0206A96C
 .public sub_0206A9DC
 .public sub_0206AA40
+.public TRIG_TABLE
+.public UpdateWindow
+.public VEC_Distance
+.public WORLD_MAP_MODE

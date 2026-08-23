@@ -13,10 +13,6 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public SetMinimapDataE447
-.public SetMinimapDataE448
-.public TOP_SCREEN_STATUS_PTR
-.public UpdateMinimap
 .public ov10_022C1E50
 .public ov10_022C1E80
 .public ov10_022C21D8
@@ -43,7 +39,11 @@
 .public ov29_0233A0E8
 .public ov29_0233A1BC
 .public ov29_0234B4E0
+.public SetMinimapDataE447
+.public SetMinimapDataE448
 .public sub_02048384
 .public sub_020483B8
 .public sub_020483D8
 .public sub_02048400
+.public TOP_SCREEN_STATUS_PTR
+.public UpdateMinimap

@@ -8,6 +8,6 @@
 .public GetPartnerMemberIdx
 .public GetRecruitMentryIdBySpecies
 .public GetUnitNpcIds
-.public OverlayIsLoaded
 .public ov11_022E96E4
+.public OverlayIsLoaded
 .public sub_02065050

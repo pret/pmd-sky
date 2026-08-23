@@ -6,7 +6,7 @@
 .public InitWindowInput
 .public MemAlloc
 .public NewWindowScreenCheck
-.public UpdateAdvancedMenu
 .public sub_020265A8
 .public sub_02031A5C
 .public sub_02032984
+.public UpdateAdvancedMenu

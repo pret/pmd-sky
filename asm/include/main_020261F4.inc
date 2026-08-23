@@ -1,9 +1,9 @@
 #pragma once
+.public _020AFD04
 .public AnalyzeText
 .public DrawChar
 .public GetColorCodePaletteOffset
 .public PreprocessStringFromId
-.public _020AFD04
 .public sub_02020B4C
 .public sub_02020B60
 .public sub_02020B74

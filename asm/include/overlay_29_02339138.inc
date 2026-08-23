@@ -11,11 +11,9 @@
 .public IsBehaviorLoneOutlaw
 .public IsExperienceLocked
 .public IsMapShownOnEitherScreen
-.public MemZero
 .public Memcpy32
+.public MemZero
 .public OBJ_GRAPHICS_CONTROLS_PTR
-.public ShouldMinimapDisplayEntity
-.public TILESET_PROPERTIES
 .public ov10_022BFD20
 .public ov29_022E7F7C
 .public ov29_022EA408
@@ -28,5 +26,7 @@
 .public ov29_0235376C
 .public ov29_0235377C
 .public ov29_0237CFB8
+.public ShouldMinimapDisplayEntity
 .public sub_0200B330
 .public sub_0200B3FC
+.public TILESET_PROPERTIES

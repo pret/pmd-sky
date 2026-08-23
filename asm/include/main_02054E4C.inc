@@ -1,10 +1,10 @@
 #pragma once
+.public _020A333C
+.public _020A3340
+.public _020B0A4C
+.public _022B5788
 .public GetGameMode
 .public MemZero
 .public SprintfStatic__02054A60
 .public StrncpySimpleNoPadSafe
 .public TEAM_MEMBER_TABLE_PTR
-.public _020A333C
-.public _020A3340
-.public _020B0A4C
-.public _022B5788

@@ -284,7 +284,7 @@ TryTriggerTrap: ; 0x022EDFA0
 	strb r0, [r4, #0x20]
 	beq _022EE1D8
 	mov r0, r5
-	bl ov29_022F9840
+	bl TryPointCameraToFarOffTeammate
 	cmp r7, #0
 	ldrneb r0, [r6]
 	cmpne r0, #0x11

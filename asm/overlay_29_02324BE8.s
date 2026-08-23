@@ -292,7 +292,7 @@ ov29_02324E78: ; 0x02324E78
 	add r0, sp, #8
 	add r1, r7, #0x2c
 	and r2, r2, #0xff
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 _02324F98:
 	strh r4, [sp]
 	ldrsh r1, [r5, #4]
@@ -443,7 +443,7 @@ ov29_023250D4: ; 0x023250D4
 	add r0, sp, #0xc
 	add r1, sl, #0x2c
 	and r2, r2, #0xff
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 _023251A8:
 	strh r5, [sp, #4]
 	ldrsh r1, [r6, #4]

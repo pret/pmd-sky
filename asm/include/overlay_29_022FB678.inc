@@ -11,9 +11,9 @@
 .public IqSkillIsEnabled
 .public IsMonster__022F9720
 .public IsSecretBazaarNpcBehavior
-.public ov29_02307CE0
 .public ov29_02348100
 .public PlayMissSfx__022E611C
+.public ResetTypeChanges
 .public TeamMemberHasEnabledIqSkill
 .public UpdateMapSurveyorFlag
 .public UpdateMinimap

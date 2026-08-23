@@ -1,14 +1,14 @@
 #pragma once
-.public DUNGEON_PTR
 .public DealDamage
+.public DUNGEON_PTR
 .public DungeonRandOutcomeUserTargetInteraction
 .public GetDamageSourceWrapper
 .public GetMoveType
 .public InitMove
 .public LICK_PARALYZE_CHANCE
 .public NATURE_POWER_TABLE
+.public ov10_022C4E44
+.public ov10_022C6324
 .public TryExplosion
 .public TryIncreaseHp
 .public TryInflictParalysisStatus
-.public ov10_022C4E44
-.public ov10_022C6324

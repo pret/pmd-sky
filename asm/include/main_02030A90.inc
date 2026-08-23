@@ -16,8 +16,6 @@
 .public NewWindowScreenCheck
 .public PlaySeVolumeWrapper
 .public PlayWindowInputSound
-.public TEAM_SELECTION_MENU_DEFAULT_WINDOW_PARAMS
-.public UpdateWindow
 .public sub_020063A0
 .public sub_020063F4
 .public sub_02006BFC
@@ -54,3 +52,5 @@
 .public sub_020336FC
 .public sub_02033758
 .public sub_0203C984
+.public TEAM_SELECTION_MENU_DEFAULT_WINDOW_PARAMS
+.public UpdateWindow

@@ -1,8 +1,10 @@
 #pragma once
+.public _0209E6BD
+.public _022AB924
 .public ADVENTURE_LOG_PTR
 .public ARM9_UNKNOWN_DATA__NA_209E6BC
-.public CONVERSION2_TYPE_TABLE
 .public ComputeSpecialCounters
+.public CONVERSION2_TYPE_TABLE
 .public Copy16BitsFrom
 .public Copy16BitsTo
 .public CopyNStringFromId
@@ -14,5 +16,3 @@
 .public StrncpySimpleNoPad
 .public StrncpySimpleNoPadSafe
 .public TEAM_NAME
-.public _0209E6BD
-.public _022AB924

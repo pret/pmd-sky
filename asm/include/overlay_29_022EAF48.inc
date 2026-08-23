@@ -6,11 +6,6 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MoveMonsterToPos
 .public MusicTableIdxToMusicId
-.public PlayBgmByIdVeneer
-.public PlayBgmByIdVolumeVeneer
-.public StringFromId
-.public SubstitutePlaceholderStringTags
-.public UpdateEntityPixelPos
 .public ov29_022E555C
 .public ov29_022EAE40
 .public ov29_02321260
@@ -20,7 +15,12 @@
 .public ov29_02352070
 .public ov29_0237C91C
 .public ov29_0237C91E
+.public PlayBgmByIdVeneer
+.public PlayBgmByIdVolumeVeneer
 .public strcmp
+.public StringFromId
 .public sub_0200D208
 .public sub_02017B70
 .public sub_02017B7C
+.public SubstitutePlaceholderStringTags
+.public UpdateEntityPixelPos

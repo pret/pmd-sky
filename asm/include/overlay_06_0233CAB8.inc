@@ -20,13 +20,10 @@
 .public IsSpecialEpisodeOpen
 .public IsTouchScreenNotOff
 .public MemAlloc
+.public MemcpySimple
 .public MemFree
 .public MemZero
-.public MemcpySimple
 .public NoteSaveBase
-.public SetSpecialEpisodeOpen
-.public ShowKeyboard
-.public WonderMailPasswordToMission
 .public ov00_022BCA80
 .public ov00_022BCBAC
 .public ov00_022BD264
@@ -80,6 +77,8 @@
 .public ov06_0233EEE0
 .public ov06_0233EEEC
 .public ov06_0233EEF0
+.public SetSpecialEpisodeOpen
+.public ShowKeyboard
 .public sub_02003B94
 .public sub_02003BC8
 .public sub_02003BFC
@@ -116,3 +115,4 @@
 .public sub_02069D40
 .public sub_02069D94
 .public sub_02069DC0
+.public WonderMailPasswordToMission

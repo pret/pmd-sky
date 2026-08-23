@@ -18,7 +18,7 @@ _022E6944:
 	strh r0, [r2], #2
 	bne _022E6944
 	ldr r0, _022E69FC ; =0x0000027A
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r3, #2
 	mov r1, r4, lsr #0x1f
 	mov ip, r0
@@ -459,7 +459,7 @@ _022E6ED0:
 	and r2, r1, #0xff
 	add r0, sp, #0x14
 	add r1, sl, #0x2c
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 _022E6F54:
 	ldrb r0, [sb, #0x4c]
 	ldr r3, [sp, #4]

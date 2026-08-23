@@ -52,6 +52,9 @@
 .public LINK_SHOP_WINDOW_PARAMS_9
 .public MemAlloc
 .public MemFree
+.public ov11_0238A090
+.public ov18_0238D5F8
+.public ov18_0238D608
 .public OVERLAY18_FUNCTION_POINTER_TABLE
 .public PortraitBoxNeedsUpdate
 .public PreprocessString
@@ -64,11 +67,6 @@
 .public ShowPortraitInPortraitBox
 .public ShowStringIdInDialogueBox
 .public StrncpySimpleNoPadSafe
-.public TEAM_MEMBER_TABLE_PTR
-.public UpdateWindow
-.public ov11_0238A090
-.public ov18_0238D5F8
-.public ov18_0238D608
 .public sub_02027B1C
 .public sub_0202BC60
 .public sub_0202F334
@@ -97,4 +95,6 @@
 .public sub_020572EC
 .public sub_020573A0
 .public sub_0205B028
+.public TEAM_MEMBER_TABLE_PTR
+.public UpdateWindow
 .public vsprintf

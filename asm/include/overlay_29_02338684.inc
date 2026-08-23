@@ -1,11 +1,11 @@
 #pragma once
-.public DUNGEON_PTR
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public GetLeader
 .public GetTileSafe
 .public IsSecretBazaar
 .public IsSecretRoom
 .public LogMessageByIdWithPopupCheckUser
+.public ov29_022E2418
 .public PlayEffectAnimationPos
 .public UpdateTrapsVisibility
-.public ov29_022E2418

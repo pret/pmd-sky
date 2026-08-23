@@ -14,7 +14,7 @@ ov29_022E486C: ; 0x022E486C
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x41
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -37,7 +37,7 @@ ov29_022E48B8: ; 0x022E48B8
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E4910 ; =0x0000011E
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	mov ip, #0
 	mov r1, #2
@@ -65,7 +65,7 @@ ov29_022E4914: ; 0x022E4914
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E4960 ; =0x000001AE
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	mov ip, #0
 	mov r1, #2
@@ -90,7 +90,7 @@ ShowPpRestoreEffect: ; 0x022E4964
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E49B0 ; =0x000001B1
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -115,7 +115,7 @@ ov29_022E49B4: ; 0x022E49B4
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E4A00 ; =0x000001A9
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2
@@ -140,7 +140,7 @@ ov29_022E4A04: ; 0x022E4A04
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E4A50 ; =0x00000192
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	mov ip, #0
 	mov r1, #2
@@ -165,7 +165,7 @@ ov29_022E4A54: ; 0x022E4A54
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E4AA0 ; =0x0000018E
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	mov ip, #0
 	mov r1, #2
@@ -190,7 +190,7 @@ ov29_022E4AA4: ; 0x022E4AA4
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x190
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -213,7 +213,7 @@ ov29_022E4AF0: ; 0x022E4AF0
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x15
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -236,7 +236,7 @@ ov29_022E4B3C: ; 0x022E4B3C
 	sub sp, sp, #0x10
 	mov r4, r0
 	ldr r0, _022E4B88 ; =0x00000171
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r2, r0
 	and r3, r2, #0xff
 	mov r0, #2

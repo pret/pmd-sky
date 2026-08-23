@@ -1,12 +1,12 @@
 #pragma once
-.public Card_TerminateForPulledOut
-.public Debug_Print0
-.public OS_SleepThread
-.public OS_WaitIrq
 .public _02092540
 .public _020AEF7C
 .public _020AF050
 .public _020AF078
+.public Card_TerminateForPulledOut
+.public Debug_Print0
+.public OS_SleepThread
+.public OS_WaitIrq
 .public sub_02002448
 .public sub_02002580
 .public sub_020025F8

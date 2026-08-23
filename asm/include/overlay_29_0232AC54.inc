@@ -3,5 +3,5 @@
 .public BoostOffensiveStat
 .public CeilFixedPoint
 .public LogMessageByIdWithPopupCheckUserTarget
-.public SubstitutePlaceholderStringTags
 .public sub_02050FF8
+.public SubstitutePlaceholderStringTags

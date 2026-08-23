@@ -7,6 +7,6 @@
 .public GetMoveType
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MOONLIGHT_HP_RESTORATION_TABLE
+.public ov29_0230D4A4
 .public SubstitutePlaceholderStringTags
 .public TryIncreaseHp
-.public ov29_0230D4A4

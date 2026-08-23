@@ -25,6 +25,8 @@
 .public InitPortraitParamsWithMonsterId
 .public IsDialogueBoxActive
 .public IsMainCharacter
+.public ov17_0238A278
+.public ov17_0238A364
 .public OVERLAY17_FUNCTION_POINTER_TABLE
 .public OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 .public ReturnScriptMenuResultZero
@@ -33,8 +35,6 @@
 .public ShowDialogueBox
 .public ShowPortraitInPortraitBox
 .public ShowStringIdInDialogueBox
-.public ov17_0238A278
-.public ov17_0238A364
 .public sub_02039C3C
 .public sub_0203A998
 .public sub_0203C7E4

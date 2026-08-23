@@ -1,3 +1,3 @@
 #pragma once
-.public GetEffectAnimationField0x19
+.public GetEffectAnimationWanOffset
 .public PlayEffectAnimationEntity

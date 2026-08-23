@@ -15,7 +15,7 @@ ov29_022E45D0: ; 0x022E45D0
 	mov r5, r0
 	mov r0, #0x2f
 	mov r4, r1
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -29,7 +29,7 @@ ov29_022E45D0: ; 0x022E45D0
 	str ip, [sp, #0xc]
 	bl PlayEffectAnimationEntity
 	mov r0, #0x30
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r1, #2
@@ -83,7 +83,7 @@ ov29_022E4674: ; 0x022E4674
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x21
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2

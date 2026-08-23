@@ -1,4 +1,6 @@
 #pragma once
+.public _s32_div_f
+.public abs
 .public CORNER_CARDINAL_NEIGHBOR_IS_OPEN
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
@@ -13,10 +15,8 @@
 .public IsCurrentTilesetBackground
 .public IsDestinationFloorWithMonster
 .public IsOutlawMonsterHouseFloor
+.public ov29_0234217C
+.public ov29_02342594
 .public PlaceFixedRoomTile
 .public PosIsOutOfBounds
 .public ResetHiddenStairsSpawn
-.public _s32_div_f
-.public abs
-.public ov29_0234217C
-.public ov29_02342594

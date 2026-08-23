@@ -106,7 +106,7 @@ _02325740:
 	add r0, sp, #0xc
 	add r1, sb, #0x2c
 	and r2, r5, #0xff
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 	b _023257D8
 _023257C8:
 	ldrh r1, [sp]
@@ -267,11 +267,11 @@ _02325958:
 	add r0, sp, #0x20
 	mov r2, r6
 	add r1, r4, #0x2c
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 	add r0, sp, #0xc
 	mov r2, r6
 	add r1, r5, #0x2c
-	bl sub_0201CF90
+	bl GetPixelOffsetFromSprite
 	b _02325A3C
 _02325A24:
 	ldrh r1, [sp]

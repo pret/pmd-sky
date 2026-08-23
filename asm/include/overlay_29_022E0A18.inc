@@ -1,9 +1,11 @@
 #pragma once
+.public _020AFC28
+.public _020AFC70
 .public AnimationDelayOrSomething
 .public CopyAndInterleaveWrapper
+.public DirectoryFileMngr_OpenDirectoryFile
 .public DUNGEON_BUTTON_INPUT
 .public DUNGEON_PTR
-.public DirectoryFileMngr_OpenDirectoryFile
 .public DungeonGoesUp
 .public FadeToBlack
 .public FillPaletteInitInfo
@@ -21,11 +23,6 @@
 .public Memcpy32
 .public Memset32
 .public OBJ_GRAPHICS_CONTROLS_PTR
-.public SetMinimapDataE447
-.public UnloadFile
-.public UnloadWte
-.public _020AFC28
-.public _020AFC70
 .public ov10_022C4D54
 .public ov29_022E8BFC
 .public ov29_022E9FD0
@@ -41,6 +38,7 @@
 .public ov29_0237C6A4
 .public ov29_0237C6B8
 .public ov29_0237C6D4
+.public SetMinimapDataE447
 .public sub_020063F4
 .public sub_02006564
 .public sub_02006BFC
@@ -52,3 +50,5 @@
 .public sub_02009454
 .public sub_020094C4
 .public sub_0201E380
+.public UnloadFile
+.public UnloadWte

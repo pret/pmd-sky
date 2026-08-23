@@ -9,10 +9,10 @@
 .public MemFree
 .public NewWindowScreenCheck
 .public PARENT_MENU_DEFAULT_WINDOW_PARAMS
-.public UpdateParentMenu
-.public UpdateWindow
 .public strcpy
 .public sub_020265A8
 .public sub_020287C4
 .public sub_02031A5C
 .public sub_02032984
+.public UpdateParentMenu
+.public UpdateWindow

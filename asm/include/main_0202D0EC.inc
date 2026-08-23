@@ -1,8 +1,13 @@
 #pragma once
+.public _0209AEE0
+.public _0209AEEC
+.public _0209AEF4
+.public _0209AEFC
+.public _0209AF04
 .public CalcMenuHeightDiv8__02031AA4
 .public DEBUG_MENU_DEFAULT_WINDOW_PARAMS
-.public DIALOGUE_BOX_DEFAULT_WINDOW_PARAMS
 .public DeleteWindow
+.public DIALOGUE_BOX_DEFAULT_WINDOW_PARAMS
 .public DrawTextInWindow
 .public GetCurrentPage
 .public GetNumItemsOnPage
@@ -25,13 +30,6 @@
 .public PreprocessString
 .public PreprocessStringFromId
 .public SCROLL_BOX_DEFAULT_WINDOW_PARAMS
-.public UpdateDialogueBox
-.public UpdateWindow
-.public _0209AEE0
-.public _0209AEEC
-.public _0209AEF4
-.public _0209AEFC
-.public _0209AF04
 .public strcpy
 .public sub_02006C8C
 .public sub_02021F44
@@ -66,3 +64,5 @@
 .public sub_020323F8
 .public sub_02032684
 .public sub_02033758
+.public UpdateDialogueBox
+.public UpdateWindow

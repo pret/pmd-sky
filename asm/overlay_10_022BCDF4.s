@@ -1284,13 +1284,13 @@ _022BDEA4:
 _022BDEB0: .word ov10_022DC1C0
 	arm_func_end ov10_022BDE50
 
-	arm_func_start GetEffectAnimationField0x19
-GetEffectAnimationField0x19: ; 0x022BDEB4
+	arm_func_start GetEffectAnimationWanOffset
+GetEffectAnimationWanOffset: ; 0x022BDEB4
 	stmdb sp!, {r3, lr}
 	bl GetEffectAnimation
 	ldrsb r0, [r0, #0x19]
 	ldmia sp!, {r3, pc}
-	arm_func_end GetEffectAnimationField0x19
+	arm_func_end GetEffectAnimationWanOffset
 
 	arm_func_start ov10_022BDEC4
 ov10_022BDEC4: ; 0x022BDEC4

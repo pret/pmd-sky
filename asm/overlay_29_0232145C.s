@@ -1650,7 +1650,7 @@ _02322A68:
 	str r1, [sp, #0x20]
 	cmp r0, #0
 	beq _02322AC0
-	bl ov29_022F9840
+	bl TryPointCameraToFarOffTeammate
 _02322AC0:
 	ldr r1, [r6, #0xb4]
 	ldrb r0, [r1, #0xd0]

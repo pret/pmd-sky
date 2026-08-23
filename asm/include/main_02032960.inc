@@ -1,9 +1,9 @@
 #pragma once
+.public _s32_div_f
 .public InventoryMenuNext10Pages
 .public InventoryMenuPrevious10Pages
 .public InventoryMenuPreviousPage
 .public PlaySeVolumeWrapper
-.public _s32_div_f
 .public sub_02006BFC
 .public sub_02006C8C
 .public sub_02031908

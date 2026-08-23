@@ -1,8 +1,9 @@
 #pragma once
+.public _0209889C
 .public BAG_ITEMS_PTR_MIRROR
 .public CountValidRecycleShopItems
-.public GUMMI_STAT_BOOST
 .public GetType
+.public GUMMI_STAT_BOOST
 .public IQ_GUMMI_GAIN_TABLE
 .public IsGummi
 .public IsMonsterAffectedByGravelyrockGroundMode
@@ -14,8 +15,7 @@
 .public ModifyOffensiveStat
 .public RandIntSafe
 .public SaveScriptVariableValue
-.public WONDER_GUMMI_IQ_GAIN
-.public WONDER_GUMMI_STAT_BOOST
-.public _0209889C
 .public sub_0200D1F0
 .public sub_0201297C
+.public WONDER_GUMMI_IQ_GAIN
+.public WONDER_GUMMI_STAT_BOOST

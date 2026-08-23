@@ -1,10 +1,11 @@
 #pragma once
+.public _s32_div_f
 .public ChangeSimpleObjTexture
+.public DisplayMonstersAndItems
+.public DisplayUi
 .public DUNGEON_BUTTON_INPUT
 .public DUNGEON_FRAMES_PASSED
 .public DUNGEON_PTR
-.public DisplayMonstersAndItems
-.public DisplayUi
 .public FlashLeaderIcon
 .public GetAlertBoxLoadingStatus
 .public GetBottomScreenOption
@@ -13,10 +14,6 @@
 .public HandleTopScreenFades
 .public InitWeirdMinimapMatrix
 .public OBJ_GRAPHICS_CONTROLS_PTR
-.public RenderWeather3D
-.public UpdateCamera
-.public UpdateMinimap
-.public _s32_div_f
 .public ov29_022DD8B4
 .public ov29_022DDEF8
 .public ov29_022DE11C
@@ -33,4 +30,7 @@
 .public ov29_0234B854
 .public ov29_02353540
 .public ov29_02353560
+.public RenderWeather3D
 .public sub_02051E20
+.public UpdateCamera
+.public UpdateMinimap

@@ -1,4 +1,5 @@
 #pragma once
+.public _020AFC70
 .public DelayWteFree
 .public DirectoryFileMngr_OpenDirectoryFile
 .public DungeonRandInt
@@ -9,10 +10,6 @@
 .public LoadWteFromFileDirectory
 .public MemZero
 .public MultiplyByFixedPoint
-.public ProcessWte
-.public SinAbs4096
-.public UnloadFile
-.public _020AFC70
 .public ov10_022C6326
 .public ov29_022DE288
 .public ov29_022E7F7C
@@ -28,4 +25,7 @@
 .public ov29_0237CACC
 .public ov29_0237CD40
 .public ov29_0237CFB8
+.public ProcessWte
+.public SinAbs4096
 .public sub_0201F2A0
+.public UnloadFile

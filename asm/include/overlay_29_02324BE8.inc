@@ -12,6 +12,7 @@
 .public GetDamageSource
 .public GetMoveAnimation
 .public GetMoveAnimationId
+.public GetPixelOffsetFromSprite
 .public GetSpriteIndex__02052708
 .public Is2TurnsMove
 .public IsUsableWhileTaunted
@@ -44,6 +45,5 @@
 .public SetMessageLogPreprocessorArgsNumberVal
 .public ShouldDisplayEntityAdvanced
 .public ShouldMovePlayAlternativeAnimation
-.public sub_0201CF90
 .public sub_0201D1D4
 .public WanTableSpriteHasAnimationGroup

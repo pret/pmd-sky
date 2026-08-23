@@ -9,7 +9,7 @@ ov29_022E6798: ; 0x022E6798
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #0x18
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r1, r0
 	and r3, r1, #0xff
 	mov r0, #2
@@ -39,7 +39,7 @@ ov29_022E67E4: ; 0x022E67E4
 	cmp r0, #0
 	beq _022E68AC
 	mov r0, r7
-	bl GetEffectAnimationField0x19
+	bl GetEffectAnimationWanOffset
 	mov r3, r0
 	mov r0, #2
 	mov r2, #0

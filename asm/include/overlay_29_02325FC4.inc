@@ -1,7 +1,7 @@
 #pragma once
 .public BeginChargedMove
-.public DIG_DAMAGE_MULTIPLIER
 .public DealDamage
+.public DIG_DAMAGE_MULTIPLIER
 .public EndTwoTurnMove
 .public GetTileAtEntity
 .public IsChargingTwoTurnMove

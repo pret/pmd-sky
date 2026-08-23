@@ -1,9 +1,9 @@
 #pragma once
 .public ApplyGummiBoostsGroundMode
 .public CALCIUM_STAT_BOOST
-.public GINSENG_CHANCE_3
 .public GetMoveBasePowerGround
 .public GetMoveMaxGinsengBoostGround
+.public GINSENG_CHANCE_3
 .public IRON_STAT_BOOST
 .public LIFE_SEED_HP_BOOST
 .public ModifyDefensiveStat

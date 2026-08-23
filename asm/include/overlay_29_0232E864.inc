@@ -379,7 +379,6 @@
 .public ov29_022E6388
 .public ov29_022E6424
 .public ov29_022EA370
-.public ov29_022F9840
 .public ov29_022FB1A8
 .public ov29_02300D50
 .public ov29_02300DC0
@@ -414,6 +413,7 @@
 .public TryActivateNondamagingDefenderExclusiveItem
 .public TryActivateTraceAndColorChange
 .public TryEndPetrifiedOrSleepStatus
+.public TryPointCameraToFarOffTeammate
 .public TryWarp
 .public TwoTurnMoveForcedMiss
 .public UpdateShopkeeperModeAfterAttack

@@ -1,11 +1,11 @@
 #pragma once
-.public MemAlloc
-.public StringFromId
-.public UpdateWindow
 .public _0209C60C
 .public _020AFE5C
 .public _020AFE70
+.public MemAlloc
+.public StringFromId
 .public sub_020262E0
 .public sub_02027B1C
 .public sub_0203C984
 .public sub_0203C9A0
+.public UpdateWindow

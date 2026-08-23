@@ -1873,7 +1873,7 @@ _02304310:
 	sub r3, r6, r3
 	mov r3, r3, asr #8
 	strh r3, [sp, #0x1a]
-	bl sub_0201D034
+	bl FillPixelOffsetArrayFromSprite
 	ldr r1, _023046C8 ; =DUNGEON_PTR
 	ldr r0, [r5, #0xb0]
 	ldr r2, [r1]

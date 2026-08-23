@@ -16,6 +16,7 @@
 .public EntityIsValid__02302A38
 .public EntityIsValid__023047B8
 .public FillOamAttributeInfo
+.public FillPixelOffsetArrayFromSprite
 .public FormatMoveString
 .public GetEncodedHalfword
 .public GetIdleAnimationId
@@ -87,7 +88,6 @@
 .public strcpy
 .public StringFromId
 .public sub_020149C0
-.public sub_0201D034
 .public sub_0201D1B0
 .public sub_0204F610
 .public sub_02053904

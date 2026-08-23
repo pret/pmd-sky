@@ -3,15 +3,16 @@
 .public BoostDefensiveStat
 .public BoostOffensiveStat
 .public CalcStatusDuration
+.public DealDamage
 .public DIZZY_PUNCH_CONFUSE_CHANCE
 .public DUNGEON_PTR
-.public DealDamage
 .public DungeonRandOutcomeUserTargetInteraction
 .public IMPRISON_TURN_RANGE
 .public LowerDefensiveStat
 .public LowerHitChanceStat
 .public LowerOffensiveStat
 .public LowerSpeed
+.public ov10_022C6321
 .public SECRET_POWER_EFFECT_CHANCE
 .public SLEEP_TURN_RANGE
 .public TryInflictConfusedStatus
@@ -21,4 +22,3 @@
 .public TryInflictPausedStatus
 .public TryInflictPoisonedStatus
 .public TryInflictSleepStatus
-.public ov10_022C6321

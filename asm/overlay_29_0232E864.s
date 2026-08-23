@@ -463,7 +463,7 @@ _0232EE54:
 	ldrneh r1, [sb, #6]
 	strneh r1, [r0, #0x80 + EXECUTE_MOVE_EFFECT_OFFSET]
 	mov r0, r4
-	bl ov29_022F9840
+	bl TryPointCameraToFarOffTeammate
 	mov r0, sb
 	mov r1, r4
 	bl TryEndPetrifiedOrSleepStatus

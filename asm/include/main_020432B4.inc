@@ -1,8 +1,8 @@
 #pragma once
+.public _0209CA3C
 .public ConvertStorageItemAtIdxToItem
 .public CountNbOfItemsInStorage
 .public CountNbOfValidItemsInStorage
 .public CountNbOfValidItemsInTimeDarknessInStorage
 .public MaybeGetColoredFormattedItemName
 .public UNK_STORAGE_STRUCT_0X14
-.public _0209CA3C

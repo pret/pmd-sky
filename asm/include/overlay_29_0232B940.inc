@@ -17,11 +17,11 @@
 .public METAL_CLAW_BOOST_ATTACK_CHANCE
 .public METRONOME_NEXT_INDEX
 .public METRONOME_TABLE
-.public SubstitutePlaceholderStringTags
-.public TryIncreaseHp
-.public TryInflictInfatuatedStatus
-.public TryInflictLeechSeedStatus
 .public ov10_022C4C3C
 .public ov10_022C4C3E
 .public ov10_022C5DE0
 .public ov29_02324D60
+.public SubstitutePlaceholderStringTags
+.public TryIncreaseHp
+.public TryInflictInfatuatedStatus
+.public TryInflictLeechSeedStatus

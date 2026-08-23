@@ -1,4 +1,6 @@
 #pragma once
+.public _020A9208
+.public _022B7320
 .public BulkItemToItem
 .public CopyFrameTypeOption
 .public Debug_Print0
@@ -20,6 +22,8 @@
 .public LoadWazaP
 .public MainGame
 .public NoteLoadBase
+.public ov00_022BE0C8
+.public ov11_022E82CC
 .public OverlayIsLoaded
 .public ReadSaveHeader
 .public SetAdventureLogStructLocation
@@ -27,13 +31,6 @@
 .public SetGameMode
 .public SetScenarioProgressScriptVar
 .public SetSpecialEpisodeType
-.public UnloadOverlay
-.public WAN_TABLE
-.public ZeroInitScriptVariable
-.public _020A9208
-.public _022B7320
-.public ov00_022BE0C8
-.public ov11_022E82CC
 .public sub_020024A0
 .public sub_0200CA8C
 .public sub_0201D7A8
@@ -59,3 +56,6 @@
 .public sub_02052C3C
 .public sub_0205B44C
 .public sub_0205C73C
+.public UnloadOverlay
+.public WAN_TABLE
+.public ZeroInitScriptVariable

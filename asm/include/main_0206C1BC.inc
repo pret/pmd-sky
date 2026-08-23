@@ -1,4 +1,12 @@
 #pragma once
+.public _020B1290
+.public _022B7331
+.public _022B7334
+.public _022B7340
+.public _022B734C
+.public _022B7A30
+.public _022B8330
+.public _022B9130
 .public DRIVER_WORK
 .public DseBgm_StopAll
 .public DseBgm_SysSetupNoteList
@@ -16,14 +24,6 @@
 .public OS_InitAlarm
 .public OS_InitTick
 .public OS_SetTick
-.public _020B1290
-.public _022B7331
-.public _022B7334
-.public _022B7340
-.public _022B734C
-.public _022B7A30
-.public _022B8330
-.public _022B9130
 .public sub_0206C184
 .public sub_0206C19C
 .public sub_0206DC78

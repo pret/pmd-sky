@@ -1,7 +1,7 @@
 #pragma once
+.public ApplyOffensiveStatMultiplier
 .public ATK_STAT_IDX
 .public AURORA_BEAM_LOWER_ATTACK_CHANCE
-.public ApplyOffensiveStatMultiplier
 .public BoostOffensiveStat
 .public CalcDamageFixedWrapper
 .public DealDamage
@@ -15,9 +15,9 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerHitChanceStat
 .public OCTAZOOKA_LOWER_ACCURACY_CHANCE
+.public ov10_022C4C0C
+.public ov10_022C4C0E
 .public SPATK_STAT_IDX
 .public SubstitutePlaceholderStringTags
 .public TryInflictBurnStatus
 .public TryInflictConfusedStatus
-.public ov10_022C4C0C
-.public ov10_022C4C0E

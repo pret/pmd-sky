@@ -4,11 +4,10 @@
 .public GetSimpleMenuResult__0202B870
 .public IsSimpleMenuActive
 .public LINK_SHOP_PTR
+.public ov18_0238BE28
 .public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public PrintIqSkillsMenu
-.public TEAM_MEMBER_TABLE_PTR
-.public ov18_0238BE28
 .public sub_02017C74
 .public sub_020307EC
 .public sub_0203A51C
@@ -41,3 +40,4 @@
 .public sub_02041B7C
 .public sub_020420F4
 .public sub_020572EC
+.public TEAM_MEMBER_TABLE_PTR

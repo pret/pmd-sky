@@ -3,6 +3,9 @@
 .public ArrayFree_Gsi
 .public ArrayLength_Gsi
 .public ArrayNth_Gsi
+.public current_time_gsi
+.public gsifree
+.public gsimalloc
 .public Gt2StringToAddress
 .public Gti2CloseSocket
 .public Gti2CreateSocket
@@ -25,13 +28,10 @@
 .public Gti2SendReject
 .public Gti2SocketConnectionsThink
 .public Gti2SocketSend
-.public TableMap_Gsi
-.public TableRemove_Gsi
-.public current_time_gsi
-.public gsifree
-.public gsimalloc
 .public memcpy
 .public memmove
 .public msleep_gsi
 .public ov00_02328E18
 .public strlen
+.public TableMap_Gsi
+.public TableRemove_Gsi

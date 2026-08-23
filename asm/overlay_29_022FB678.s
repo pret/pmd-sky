@@ -118,7 +118,7 @@ _022FB7C0:
 	cmp r0, #0
 	bne _022FB7FC
 	mov r0, sl
-	bl ov29_02307CE0
+	bl ResetTypeChanges
 _022FB7FC:
 	ldrsh r1, [sb, #0x12]
 	ldrsh r0, [sb, #0x16]

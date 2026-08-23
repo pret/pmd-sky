@@ -1,4 +1,9 @@
 #pragma once
+.public _020A2808
+.public _020A2830
+.public _020A2844
+.public _020A2880
+.public _020A2894
 .public AssignSpecialEpisodePc
 .public EventFlagBackup
 .public EventFlagResume
@@ -15,11 +20,6 @@
 .public SetBothScreensWindowsColor
 .public SetSpecialEpisodeOpenOld
 .public SetTeamSetupHeroAndPartnerOnly
-.public _020A2808
-.public _020A2830
-.public _020A2844
-.public _020A2880
-.public _020A2894
 .public sub_0200CAD4
 .public sub_0200CAE4
 .public sub_02048B48
