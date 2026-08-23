@@ -1654,7 +1654,7 @@ struct dungeon {
     // 0x2C9E4: The total number of spawn entries loaded or to be loaded?
     u16 number_sprites_loaded;
     // 0x2C9E6: Highest level among all the enemies that spawn on this floor
-    u16 highest_enemy_level;
+    s16 highest_enemy_level;
     // 0x2C9E8: ID of an item guaranteed to spawn on the floor, if applicable
     // (e.g., certain mission types)
     enum item_id guaranteed_item_id;
