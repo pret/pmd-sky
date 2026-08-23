@@ -521,7 +521,7 @@ void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatI
         return;
 
     #ifdef JAPAN
-    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_KEEN_EYE) && stat.id == STAT_INDEX_ACCURACY) {
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_KEEN_EYE) && stat_idx.id == STAT_INDEX_ACCURACY) {
     #else
     if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_KEEN_EYE, TRUE) && stat_idx.id == STAT_INDEX_ACCURACY) {
     #endif // JAPAN
