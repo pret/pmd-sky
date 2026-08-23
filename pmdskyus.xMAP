@@ -5384,8 +5384,8 @@
   0201CF5C 00000000 .text   $a	(main_0201C000.o)
   0201CF5C 00000024 .text   DisplayAndSwitchAnimationControlCurrentFrame	(main_0201C000.o)
   0201CF80 00000010 .text   sub_0201CF80	(main_0201C000.o)
-  0201CF90 000000A4 .text   sub_0201CF90	(main_0201C000.o)
-  0201D034 000000C4 .text   sub_0201D034	(main_0201C000.o)
+  0201CF90 000000A4 .text   GetPixelOffsetFromSprite	(main_0201C000.o)
+  0201D034 000000C4 .text   FillPixelOffsetArrayFromSprite	(main_0201C000.o)
   0201D0F8 00000008 .text   sub_0201D0F8	(main_0201C000.o)
   0201D100 00000010 .text   sub_0201D100	(main_0201C000.o)
   0201D10C 00000000 .text   $d	(main_0201C000.o)
@@ -28745,7 +28745,7 @@
   022BDE50 00000064 .text   ov10_022BDE50	(overlay_10_022BCDF4.o)
   022BDE50 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022BDEB0 00000000 .text   $d	(overlay_10_022BCDF4.o)
-  022BDEB4 00000010 .text   GetEffectAnimationField0x19	(overlay_10_022BCDF4.o)
+  022BDEB4 00000010 .text   GetEffectAnimationWanOffset	(overlay_10_022BCDF4.o)
   022BDEB4 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022BDEC4 00000070 .text   ov10_022BDEC4	(overlay_10_022BCDF4.o)
   022BDF30 00000000 .text   $d	(overlay_10_022BCDF4.o)
@@ -32345,8 +32345,8 @@
   023168E0 00000000 .text   $a	(overlay_11_0230CE30.o)
   023168E0 0000015C .text   ov11_023168E0	(overlay_11_0230CE30.o)
   02316A2C 00000000 .text   $d	(overlay_11_0230CE30.o)
-  02316A3C 0000A1A8 .rodata .rodata	(overlay_11_022EA024.o)
   02316A3C 00000000 .rodata ov11_02316A3C	(overlay_11_022EA024.o)
+  02316A3C 0000A1A8 .rodata .rodata	(overlay_11_022EA024.o)
   02316A44 00000000 .rodata ov11_02316A44	(overlay_11_022EA024.o)
   02316A60 00000000 .rodata ov11_02316A60	(overlay_11_022EA024.o)
   02316AD8 00000000 .rodata SCRIPT_COMMAND_PARSING_DATA	(overlay_11_022EA024.o)
@@ -38367,7 +38367,7 @@
   022F97EC 00000000 .text   $d	(overlay_29_022F9744.o)
   022F97F0 00000000 .text   $a	(overlay_29_022F9744.o)
   022F97F0 00000050 .text   TryActivateTruant	(overlay_29_022F9744.o)
-  022F9840 00000074 .text   ov29_022F9840	(overlay_29_022F9744.o)
+  022F9840 00000074 .text   TryPointCameraToFarOffTeammate	(overlay_29_022F9744.o)
   022F98B4 000000B8 .text   TryPointCameraToMonster	(overlay_29_022F9744.o)
   022F9968 00000000 .text   $d	(overlay_29_022F9744.o)
   022F996C 00000000 .text   $a	(overlay_29_022F9744.o)
@@ -39023,7 +39023,7 @@
   02307C78 00000068 .text   EndFrozenStatus	(overlay_29_02305C28.o)
   02307CDC 00000000 .text   $d	(overlay_29_02305C28.o)
   02307CE0 00000000 .text   $a	(overlay_29_02305C28.o)
-  02307CE0 00000038 .text   ov29_02307CE0	(overlay_29_02305C28.o)
+  02307CE0 00000038 .text   ResetTypeChanges	(overlay_29_02305C28.o)
   02307D18 0000003C .text   EndProtectStatus	(overlay_29_02305C28.o)
   02307D54 0000006C .text   TryRestoreRoostTyping	(overlay_29_02305C28.o)
   02307DBC 00000000 .text   $d	(overlay_29_02305C28.o)
@@ -43665,5 +43665,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Aug 21 17:29:05 2026
-# Link end time: Fri Aug 21 17:29:07 2026
+# Link start time: Sun Aug 23 01:09:51 2026
+# Link end time: Sun Aug 23 01:09:52 2026

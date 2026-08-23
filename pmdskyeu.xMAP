@@ -5387,8 +5387,8 @@
   0201CFF8 00000000 .text   $a	(main_0201C000.o)
   0201CFF8 00000024 .text   DisplayAndSwitchAnimationControlCurrentFrame	(main_0201C000.o)
   0201D01C 00000010 .text   sub_0201CF80	(main_0201C000.o)
-  0201D02C 000000A4 .text   sub_0201CF90	(main_0201C000.o)
-  0201D0D0 000000C4 .text   sub_0201D034	(main_0201C000.o)
+  0201D02C 000000A4 .text   GetPixelOffsetFromSprite	(main_0201C000.o)
+  0201D0D0 000000C4 .text   FillPixelOffsetArrayFromSprite	(main_0201C000.o)
   0201D194 00000008 .text   sub_0201D0F8	(main_0201C000.o)
   0201D19C 00000010 .text   sub_0201D100	(main_0201C000.o)
   0201D1A8 00000000 .text   $d	(main_0201C000.o)
@@ -28769,7 +28769,7 @@
   022BE790 00000064 .text   ov10_022BDE50	(overlay_10_022BCDF4.o)
   022BE790 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022BE7F0 00000000 .text   $d	(overlay_10_022BCDF4.o)
-  022BE7F4 00000010 .text   GetEffectAnimationField0x19	(overlay_10_022BCDF4.o)
+  022BE7F4 00000010 .text   GetEffectAnimationWanOffset	(overlay_10_022BCDF4.o)
   022BE7F4 00000000 .text   $a	(overlay_10_022BCDF4.o)
   022BE804 00000070 .text   ov10_022BDEC4	(overlay_10_022BCDF4.o)
   022BE870 00000000 .text   $d	(overlay_10_022BCDF4.o)
@@ -38408,7 +38408,7 @@
   022FA1F8 00000000 .text   $d	(overlay_29_022F9744.o)
   022FA1FC 00000000 .text   $a	(overlay_29_022F9744.o)
   022FA1FC 00000050 .text   TryActivateTruant	(overlay_29_022F9744.o)
-  022FA24C 00000074 .text   ov29_022F9840	(overlay_29_022F9744.o)
+  022FA24C 00000074 .text   TryPointCameraToFarOffTeammate	(overlay_29_022F9744.o)
   022FA2C0 000000B8 .text   TryPointCameraToMonster	(overlay_29_022F9744.o)
   022FA374 00000000 .text   $d	(overlay_29_022F9744.o)
   022FA378 00000000 .text   $a	(overlay_29_022F9744.o)
@@ -39064,7 +39064,7 @@
   023086A4 00000068 .text   EndFrozenStatus	(overlay_29_02305C28.o)
   02308708 00000000 .text   $d	(overlay_29_02305C28.o)
   0230870C 00000000 .text   $a	(overlay_29_02305C28.o)
-  0230870C 00000038 .text   ov29_02307CE0	(overlay_29_02305C28.o)
+  0230870C 00000038 .text   ResetTypeChanges	(overlay_29_02305C28.o)
   02308744 0000003C .text   EndProtectStatus	(overlay_29_02305C28.o)
   02308780 0000006C .text   TryRestoreRoostTyping	(overlay_29_02305C28.o)
   023087E8 00000000 .text   $d	(overlay_29_02305C28.o)
@@ -43701,5 +43701,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Aug 21 17:32:30 2026
-# Link end time: Fri Aug 21 17:32:32 2026
+# Link start time: Sun Aug 23 01:12:32 2026
+# Link end time: Sun Aug 23 01:12:32 2026
