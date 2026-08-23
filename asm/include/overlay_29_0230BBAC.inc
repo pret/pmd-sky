@@ -45,7 +45,7 @@
 .public GenerateStandardItem
 .public GetApparentWeather
 .public GetEquivItemIndex
-.public GetFlashFireStatus
+.public FlashFireShouldActivate
 .public GetItemAtIdx
 .public GetMonsterGenderVeneer
 .public GetMoveCategory

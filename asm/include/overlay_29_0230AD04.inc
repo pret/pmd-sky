@@ -12,7 +12,7 @@
 .public FixedPoint32To64
 .public FixedPoint64IsZero
 .public GetApparentWeather
-.public GetFlashFireStatus
+.public FlashFireShouldActivate
 .public GetTypeMatchup
 .public GhostImmunityIsActive
 .public IntToFixedPoint64

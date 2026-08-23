@@ -1,22 +1,15 @@
 #include "overlay_29_0234B104.h"
 #include "main_0200C4FC.h"
+#include "overlay_29_0234B024.h"
 
-struct unk_023537CC {
-    bool8 field_0x0;
-    u8 field_0x1;
-    u8 field_0x2;
-    u8 field_0x3;
-    u8 *field_0x4;
-};
+extern struct message_log_info MESSAGE_LOG_INFO;
 
-extern struct unk_023537CC MESSAGE_LOG_INFO;
-
-void SetMessageLogPreprocessorArgsSpeakerId(u32 speaker_id)
+void SetMessageLogPreprocessorArgsSpeakerId(u32 monster_id)
 {
-    ((struct preprocessor_args *) (MESSAGE_LOG_INFO.field_0x4 + 0xC9C))->speaker_id = speaker_id;
+    MESSAGE_LOG_INFO.alert_box_info->preprocessor_args.speaker_id = monster_id;
 }
 
-void SetMessageLogPreprocessorArgsSpeakerId0x30000(u32 speaker_id)
+void SetMessageLogPreprocessorArgsSpeakerId0x30000(u32 team_index)
 {
-    ((struct preprocessor_args *) (MESSAGE_LOG_INFO.field_0x4 + 0xC9C))->speaker_id = speaker_id | 0x30000;
+    MESSAGE_LOG_INFO.alert_box_info->preprocessor_args.speaker_id = team_index | 0x30000;
 }

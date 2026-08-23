@@ -6,15 +6,10 @@
 #define GUARD_SWAP_LOG_MESSAGE 0xF2E
 #endif
 
-
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
-
-extern void SubstitutePlaceholderStringTags(s32 slot, struct entity *entity, u32 a);
-
-extern void SwapDefensiveStages(struct entity *user, struct entity *target, s32 a);
-
-extern void SwapDefensiveMultipliers(struct entity *user, struct entity *target, s32 a);
-
+extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
+extern void SwapDefensiveStages(struct entity *attacker, struct entity *defender, s32 log_message);
+extern void SwapDefensiveMultipliers(struct entity *attacker, struct entity *defender, s32 log_message);
 extern void TryInflictLuckyChantStatus(struct entity *user, struct entity *target);
 
 bool8 DoMoveLuckyChant(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)

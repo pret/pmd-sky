@@ -9,7 +9,7 @@
 .public DungeonRandOutcomeUserTargetInteraction
 .public EndFrozenStatus
 .public GetDamageSourceWrapper
-.public GetFlashFireStatus
+.public FlashFireShouldActivate
 .public GetMoveCategory
 .public GetMoveType
 .public LogMessageByIdWithPopupCheckUserTarget
