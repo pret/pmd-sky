@@ -1166,6 +1166,9 @@ struct damage_calc_diag {
     u8 field_0x2;
     u8 field_0x3;
     enum move_category move_category; // 0x4: The category of the last move used
+    u8 field_0x5;
+    u8 field_0x6;
+    u8 field_0x7;
     // 0x8: The type matchup of the last move used against the individual types of the defender
     enum type_matchup move_indiv_type_matchups[2];
     // 0xA: The modified offensive stat stage of the attacker for the last move used
