@@ -19,8 +19,9 @@ struct unk_02308FE0 {
 
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValid__02308FBC(struct entity *entity);
+int ApplyDamageAndEffects(struct entity *attacker, struct entity *defender, struct unk_02308FE0 *damage_data, int a4, int a5, s16 a6, int a7, int a8);
 bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
                   struct unk_02308FE0 *damage_data, int a4, int a5,
-                  enum damage_source_non_move damage_source, int a7);
+                  s16 damage_source, int a7);
 
 #endif //PMDSKY_OVERLAY_29_02308FBC_H

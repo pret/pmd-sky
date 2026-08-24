@@ -34,6 +34,23 @@
 #include "position_util.h"
 #include "util.h"
 #include "dungeon_util_static.h"
+#include "dungeon_capabilities_1.h"
+#include "dungeon_logic_3.h"
+#include "dungeon_logic_4.h"
+#include "item.h"
+#include "main_02054DC4.h"
+#include "move_orb_effects.h"
+#include "overlay_29_022E3F20.h"
+#include "overlay_29_022E406C.h"
+#include "overlay_29_0233836C.h"
+
+struct unk_023535DC {
+    u8 field_0x0;
+    u8 filler1[3];
+    s32 field_0x4;
+    bool8 (*field_0x8)(struct entity *attacker, struct entity *defender, s32 a);
+    u8 filler2[4];
+};
 
 struct unk_023528A4 {
     u8 field_0x0;
@@ -45,7 +62,34 @@ struct unk_022C593C {
     u8 filler[10];
 };
 
+extern const struct StatIndex ATK_STAT_IDX;
 extern void ActivateMotorDrive(struct entity* entity);
+extern void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a, s32 b);
+extern bool8 CategoryIsNotPhysical(s32 category);
+extern bool8 IsEitherMonsterInvalid(struct entity *a, struct entity *b);
+extern void ResetDamageData(struct unk_02308FE0 *damage_data);
+extern void TryHurl(struct entity *user, struct entity *target);
+extern void ov29_022E45D0(struct entity *a, struct entity *b);
+extern void ov29_022E57D4(struct entity *entity);
+extern void ov29_022E5E84(struct entity *a, struct entity *b);
+extern void ov29_0230F728(struct entity *attacker, struct entity *defender, enum exclusive_item_effect_id effect_id, s32 a);
+extern s32 ov29_023380FC(struct entity *entity, struct entity **targets);
+extern struct unk_023535DC ov29_023535DC[];
+extern s16 ARENA_TRAP_ACTIVATION_CHANCE;
+extern s16 CUTE_CHARM_INFATUATE_CHANCE;
+extern s16 MAGNET_PULL_ACTIVATION_CHANCE;
+extern u8 RAPID_SPIN_BINDING_REMOVAL;
+extern s16 SHADOW_TAG_ACTIVATION_CHANCE;
+extern s16 ov10_022C442C;
+extern s16 ov10_022C4464;
+extern s16 ov10_022C44C0;
+extern s16 ov10_022C4550;
+extern s16 ov10_022C45AC;
+extern s16 ov10_022C45B0;
+extern s16 ov10_022C45B4;
+extern s16 ov10_022C45C0;
+extern s16 ov10_022C4638;
+extern s16 ov10_022C467C;
 extern void AddExpSpecial(struct entity* attacker, struct entity* defender, s32 base_exp);
 extern void AdvanceFrame(u32);
 extern bool8 AftermathCheck(struct entity *attacker, struct entity *defender, s32 damage_source);
@@ -129,15 +173,8 @@ extern bool8 ov29_0237CA6C;
 extern struct dungeon *DUNGEON_PTR;
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
-bool8 EntityIsValid__02308FBC(struct entity *entity)
-{
-    if (entity == NULL)
-        return FALSE;
-
-    return GetEntityType(entity) != ENTITY_NOTHING;
-}
-
 #ifdef JAPAN
+#define MESSAGE_C3F 0x97E
 #define MESSAGE_C40 0x97F
 #define MESSAGE_C41 0x980
 #define MESSAGE_C42 0x981
@@ -157,6 +194,7 @@ bool8 EntityIsValid__02308FBC(struct entity *entity)
 #define MESSAGE_C6C 0x9AB
 #define MESSAGE_C6D 0x9AC
 #else
+#define MESSAGE_C3F 0xC3F
 #define MESSAGE_C40 0xC40
 #define MESSAGE_C41 0xC41
 #define MESSAGE_C42 0xC42
@@ -177,6 +215,331 @@ bool8 EntityIsValid__02308FBC(struct entity *entity)
 #define MESSAGE_C6D 0xC6D
 #endif
 
+int ApplyDamageAndEffects(struct entity *attacker, struct entity *defender,
+                          struct unk_02308FE0 *damage_data, int a4, int a5,
+                          s16 a6, int a7, int a8)
+{
+    struct unk_02308FE0 counter;
+    struct entity *targets[8];
+    struct monster *dmon;
+    s32 mult;
+    s32 i;
+    s32 n;
+    s32 not_physical;
+    bool8 grounded;
+    s32 result;
+    s32 k;
+
+    if ((result = ApplyDamage(attacker, defender, damage_data, a4, a5, a6, a8)) != 0
+        || (result = damage_data->field_0x10) != 0) {
+        return result;
+    }
+    if ((result = EntityIsValid__02308FBC(attacker)) == 0) {
+        return result;
+    }
+    if ((result = EntityIsValid__02308FBC(defender)) == 0) {
+        return result;
+    }
+    if ((result = attacker->type) != 1 || (result = defender->type) != 1) {
+        return result;
+    }
+
+    if (((struct monster *)defender->info)->bide_class_status.bide == 0xC) {
+        BoostOffensiveStat(attacker, defender, ATK_STAT_IDX, 1);
+    }
+
+    if ((result = a7) == 0) {
+        return result;
+    }
+
+    if (ov29_02300D50(defender)
+        || ((struct monster *)defender->info)->bide_class_status.bide != 0) {
+        result = FALSE;
+    } else if (IqSkillIsEnabled(attacker, IQ_HIT_AND_RUNNER)
+               && DungeonRandInt(100) < ov10_022C442C) {
+        result = FALSE;
+    } else {
+        if (CategoryIsNotPhysical(damage_data->field_0xd) || attacker == defender
+            || abs(attacker->pos.x - defender->pos.x) > 1
+            || abs(attacker->pos.y - defender->pos.y) > 1) {
+            result = FALSE;
+        } else {
+            if (((struct monster *)defender->info)->reflect_class_status.reflect
+                == 0xD) {
+                ov29_022E5E84(defender, attacker);
+                TryHurl(defender, attacker);
+            }
+            result = IsEitherMonsterInvalid(attacker, defender);
+        }
+        if (result) {
+            result = TRUE;
+        } else {
+
+            not_physical = CategoryIsNotPhysical(damage_data->field_0xd);
+            mult = 0;
+
+            if (attacker == defender
+                || abs(attacker->pos.x - defender->pos.x) > 1
+                || abs(attacker->pos.y - defender->pos.y) > 1) {
+                result = FALSE;
+            } else {
+            ResetDamageData(&counter);
+            dmon = defender->info;
+
+            if (!not_physical) {
+                if (dmon->reflect_class_status.reflect == 4) {
+                    ov29_022E3F24(defender);
+                    mult += 4;
+                }
+                if (((struct monster *)defender->info)->reflect_class_status.reflect
+                    == 0xA) {
+                    ov29_022E3F24(defender);
+                    mult += 1;
+                }
+                if (ExclusiveItemEffectIsActive__0230A9B8(defender, EXCLUSIVE_EFF_COUNTER_PHYSICAL_DAMAGE)) {
+                    mult += 4;
+                }
+                if (ExclusiveItemEffectIsActive__0230A9B8(defender, EXCLUSIVE_EFF_COUNTER_25_PCT_PHYSICAL_DAMAGE)) {
+                    mult += 1;
+                }
+                if (IqSkillIsEnabled(defender, IQ_COUNTER_BASHER)
+                    && ov10_022C44C0 > (s16)DungeonRandInt(100)) {
+                    mult += 4;
+                }
+                if (IqSkillIsEnabled(defender, IQ_COUNTER_HITTER)
+                    && ov10_022C4464 > (s16)DungeonRandInt(100)) {
+                    mult += 1;
+                }
+            } else if (dmon->reflect_class_status.reflect == 8) {
+                ov29_022E40C0(defender);
+                mult += 4;
+            }
+
+            if (((struct monster *)defender->info)->reflect_class_status.reflect
+                == 0xF) {
+                ov29_022E57D4(defender);
+                mult += 2;
+            }
+
+#ifdef JAPAN
+            if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_ROUGH_SKIN)) {
+#else
+            if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_ROUGH_SKIN, TRUE)) {
+#endif
+
+                mult += 2;
+            }
+
+            if (mult != 0) {
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C3F);
+                counter.field_0x0 = damage_data->field_0x0 * mult / 4;
+                counter.field_0xc = damage_data->field_0xc;
+                counter.field_0x4 = 6;
+                counter.field_0x8 = 2;
+                counter.field_0xd = damage_data->field_0xd;
+                counter.field_0xe = 0;
+                counter.field_0xf = 0;
+                counter.field_0x10 = 0;
+
+                if (((struct monster *)defender->info)->reflect_class_status.reflect
+                    == 0xF) {
+                    counter.field_0xd = 1;
+                    n = ov29_023380FC(defender, targets);
+                    for (k = 0; k < n; k = (s16)(k + 1)) {
+                        ApplyDamage(defender, targets[k], &counter, 0, a5, (s16)a6, a8);
+                    }
+                } else {
+                    ApplyDamage(defender, attacker, &counter, 0, a5, (s16)a6, a8);
+                }
+            }
+
+                result = IsEitherMonsterInvalid(attacker, defender);
+            }
+            if (result) {
+                result = TRUE;
+            } else {
+
+                if (attacker == defender
+                    || abs(attacker->pos.x - defender->pos.x) > 1
+                    || abs(attacker->pos.y - defender->pos.y) > 1) {
+                    result = FALSE;
+                } else {
+                {
+                s32 np3 = CategoryIsNotPhysical(damage_data->field_0xd);
+                struct unk_023535DC *eff3;
+                struct monster *amon3 = attacker->info;
+
+                if (ExclusiveItemEffectIsActive__0230A9B8(defender, EXCLUSIVE_EFF_MAY_POISON_PARALYZE_SLEEP_ATTACKERS) && !np3
+                    && DungeonRandInt(100) < ov10_022C45B4) {
+                    i = DungeonRandInt(300);
+                    if (i < 100) {
+                        ov29_0230F728(attacker, defender, EXCLUSIVE_EFF_MAY_POISON_PARALYZE_SLEEP_ATTACKERS, 0x40);
+                    } else if (i < 200) {
+                        ov29_0230F728(attacker, defender, EXCLUSIVE_EFF_MAY_POISON_PARALYZE_SLEEP_ATTACKERS, 0x10);
+                    } else {
+                        ov29_0230F728(attacker, defender, EXCLUSIVE_EFF_MAY_POISON_PARALYZE_SLEEP_ATTACKERS, 0x80);
+                    }
+                }
+
+                for (eff3 = ov29_023535DC; *(u8 *)eff3 != 0; eff3++) {
+                    if (ExclusiveItemEffectIsActive__0230A9B8(defender, (enum exclusive_item_effect_id)eff3->field_0x0)
+                        && eff3->field_0x8(attacker, defender, np3)) {
+                        ov29_0230F728(attacker, defender, (enum exclusive_item_effect_id)eff3->field_0x0,
+                                      eff3->field_0x4);
+                    }
+                }
+
+                if (ExclusiveItemEffectIsActive__0230A9B8(defender, EXCLUSIVE_EFF_MAY_WARP_WHEN_ATTACKED)
+                    && DungeonRandInt(100) < ov10_022C45B0 && HasLowHealth(defender)) {
+                    ov29_0230F728(attacker, defender, EXCLUSIVE_EFF_MAY_WARP_WHEN_ATTACKED, 0x40000);
+                }
+
+#ifdef JAPAN
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_ARENA_TRAP)) {
+#else
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_ARENA_TRAP, TRUE)) {
+#endif
+
+                    grounded = FALSE;
+                    if (amon3->magnet_rise == 1
+                        || HasTypeAffectedByGravity(attacker, TYPE_FLYING)
+                        || LevitateIsActive(attacker)) {
+                        if (!GravityIsActive()) {
+                            grounded = TRUE;
+                        }
+                    }
+                    if (!grounded && DungeonRandInt(100) < ARENA_TRAP_ACTIVATION_CHANCE) {
+                        amon3->contact_ability_trigger_bitflags |= 1;
+                    }
+                }
+
+#ifdef JAPAN
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_SHADOW_TAG)
+#else
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_SHADOW_TAG, TRUE)
+#endif
+                    && DungeonRandInt(100) < SHADOW_TAG_ACTIVATION_CHANCE) {
+                    amon3->contact_ability_trigger_bitflags |= 2;
+                    RAPID_SPIN_BINDING_REMOVAL = 0;
+                }
+
+#ifdef JAPAN
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_MAGNET_PULL)
+#else
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_MAGNET_PULL, TRUE)
+#endif
+                    && MonsterIsType(attacker, TYPE_STEEL)
+                    && DungeonRandInt(100) < MAGNET_PULL_ACTIVATION_CHANCE) {
+                    amon3->contact_ability_trigger_bitflags |= 4;
+                }
+
+#ifdef JAPAN
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_STATIC)
+#else
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_STATIC, TRUE)
+#endif
+                    && !np3 && DungeonRandInt(100) < ov10_022C4550) {
+                    amon3->contact_ability_trigger_bitflags |= 8;
+                }
+
+#ifdef JAPAN
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_POISON_POINT)
+#else
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_POISON_POINT, TRUE)
+#endif
+                    && DungeonRandInt(100) < ov10_022C45C0) {
+                    amon3->contact_ability_trigger_bitflags |= 0x20;
+                }
+
+#ifdef JAPAN
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_EFFECT_SPORE)
+#else
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_EFFECT_SPORE, TRUE)
+#endif
+                    && !np3 && DungeonRandInt(100) < ov10_022C45AC) {
+                    i = DungeonRandInt(3);
+                    if (i < 1) {
+                        amon3->contact_ability_trigger_bitflags |= 0x40;
+                    } else if (i < 2) {
+                        amon3->contact_ability_trigger_bitflags |= 0x10;
+                    } else {
+                        amon3->contact_ability_trigger_bitflags |= 0x80;
+                    }
+                }
+
+#ifdef JAPAN
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_FLAME_BODY)
+#else
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_FLAME_BODY, TRUE)
+#endif
+                    && DungeonRandInt(100) < ov10_022C467C) {
+                    amon3->contact_ability_trigger_bitflags |= 0x100;
+                }
+
+#ifdef JAPAN
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_CUTE_CHARM)
+#else
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_CUTE_CHARM, TRUE)
+#endif
+                    && GendersNotEqualNotGenderless(
+                           amon3->id, ((struct monster *)defender->info)->id)
+                    && !np3 && DungeonRandInt(100) < CUTE_CHARM_INFATUATE_CHANCE) {
+                    amon3->contact_ability_trigger_bitflags |= 0x200;
+                }
+
+#ifdef JAPAN
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_STENCH)
+#else
+                if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_STENCH, TRUE)
+#endif
+                    && DungeonRandInt(100) < ov10_022C4638) {
+                    amon3->contact_ability_trigger_bitflags |= 0x400;
+                }
+
+                    result = IsEitherMonsterInvalid(attacker, defender);
+                }
+                }
+                if (result) {
+                    result = TRUE;
+                } else {
+
+                    dmon = defender->info;
+                    if (dmon->leech_seed_class_status.leech_seed == STATUS_LEECH_SEED_DESTINY_BOND) {
+                        struct entity *bonded =
+                            DUNGEON_PTR->active_monster_ptrs[dmon->leech_seed_class_status
+                                                                 .leech_seed_source_monster_index];
+
+                        if (bonded == NULL) {
+                            dmon->leech_seed_class_status.leech_seed = STATUS_LEECH_SEED_NONE;
+                        } else if (dmon->leech_seed_class_status.statuses_applier_id
+                                   != ((struct monster *)bonded->info)->unique_id) {
+                            dmon->leech_seed_class_status.leech_seed = STATUS_LEECH_SEED_NONE;
+                        } else {
+                            ov29_022E45D0(bonded, defender);
+                            ApplyDamageAndEffectsWrapper(bonded, damage_data->field_0x0, 0xC,
+                                                         0x238);
+                        }
+                    }
+
+                    result = IsEitherMonsterInvalid(attacker, defender) != 0;
+                }
+            }
+        }
+    }
+    if (result) {
+        return result;
+    }
+    return (u32)result;
+}
+
+bool8 EntityIsValid__02308FBC(struct entity *entity)
+{
+    if (entity == NULL)
+        return FALSE;
+
+    return GetEntityType(entity) != ENTITY_NOTHING;
+}
+
 extern void ov29_02307DC0(struct entity *entity);
 #ifdef EUROPE
 extern u16 ov29_02353E44[];
@@ -184,7 +547,7 @@ extern u16 ov29_02353E44[];
 
 bool8 ApplyDamage(struct entity *attacker, struct entity *defender,
                   struct unk_02308FE0 *damage_data, int a4, int a5,
-                  enum damage_source_non_move damage_source, int a7)
+                  s16 damage_source, int a7)
 {
     bool8 played_hurt_anim;
     struct unk_023528A4 *neg;
