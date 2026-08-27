@@ -1,6 +1,8 @@
 #include "overlay_30.h"
 #include "dungeon.h"
 #include "overlay_29_022E1610.h"
+#include "overlay_29_02344AF8.h"
+#include "dungeon_map_access.h"
 
 extern struct dungeon *DUNGEON_PTR;
 
@@ -150,13 +152,6 @@ void sub_02029F88(s32, s32, s32);
 void sub_02029FBC();             
 s32 sub_02048DC4(s32);           
 void sub_02034D0C(void);
-void ov30_02382D80(void*);            
-void ov30_02382E94(void*);            
-void ov30_02382FB8(void*);            
-void ov30_02383084(void*);            
-void ov30_02383C70(void*);            
-void ov30_0238409C(void*);            
-void ov30_02384208(void*);            
 void ov30_02385C3C(void*, void*, s32);  
 void ov30_02385C54(void*, void*, s32);
 void ov30_02385CDC(void*);            
@@ -164,16 +159,17 @@ void ov30_02385CE0(void*, void*);
 void ov30_02385D14(void*, u16);       
 void ov30_02385D34(void*, s16);       
 struct trap* GetTrapInfo(struct entity*);
-void ov30_023831E8(void *, struct entity*);
 void ov30_02385D74(void *, s32);
 void ov30_02385DD4(void *, u8);
 void ov30_02385D54(void*, u8);                             /* extern */
 void memset(void*, s32, s32);                                 /* extern */
-void ov30_02384268(void*, void*);                          /* extern */
 void ov30_02385D94(void*, s32);                            /* extern */
 void ov30_02385DB4(void*, s32);                            /* extern */
 void ov30_02385DF8(void*, void*);                          /* extern */
 void ov30_02385EB8(void*, void*, s32);                       /* extern */
+void ov30_02385E20(void *, void *);
+void ov30_02385E48(void *, void *);
+void ov30_02385E90(void *, void *);
 
 s32 ov30_02382A34(void)
 {
@@ -413,9 +409,9 @@ void ov30_02383084(void *buffer)
     }
 }
 
-void ov30_023831E8(void *arg0, struct entity* arg1)
+void ov30_023831E8(void *buffer, struct entity* entity)
 {
-    struct monster sp1C;
+    struct monster monster;
     s32 sp18;
     s32 sp14;
     s32 sp10;
@@ -430,246 +426,677 @@ void ov30_023831E8(void *arg0, struct entity* arg1)
     u8 sp2;
     u8 sp1;
     u8 sp0;
-    struct monster* var_r6;
+    struct monster* monster_ptr;
     s32 var_r5;
-    u8 var_r0;
-    u8 var_r0_2;
+    bool8 valid_entity;
+    bool8 valid_entity_type;
 
     sp18 = 0;
     sp14 = 1;
-    ov30_02385D54(arg0, 0xAA);
-    ov30_02385D54(arg0, 0x55);
-    if (arg1 == NULL) {
-        var_r0 = 0;
+    ov30_02385D54(buffer, 0xAA);
+    ov30_02385D54(buffer, 0x55);
+    if (entity == NULL) {
+        valid_entity = FALSE;
     } else {
-        if (arg1->type != 0) {
-            var_r0_2 = 1;
+        if (entity->type != ENTITY_NOTHING) {
+            valid_entity_type = TRUE;
         } else {
-            var_r0_2 = 0;
+            valid_entity_type = FALSE;
         }
-        var_r0 = var_r0_2;
+        valid_entity = valid_entity_type;
     }
-    if (var_r0 != 0) {
-        var_r6 = (struct monster *)arg1->info;
-        ov30_02385C54(arg0, &sp14, 1);
-        ov30_02385C54(arg0, &arg1->pos.x, 1);
-        ov30_02385C54(arg0, &arg1->pos.y, 1);
-        ov30_02385C54(arg0, &arg1->is_visible, 1);
-        ov30_02385C54(arg0, &arg1->spawn_genid, 2);
+    if (valid_entity) {
+        monster_ptr = (struct monster *)entity->info;
+        ov30_02385C54(buffer, &sp14, 1);
+        ov30_02385C54(buffer, &entity->pos.x, 1);
+        ov30_02385C54(buffer, &entity->pos.y, 1);
+        ov30_02385C54(buffer, &entity->is_visible, 1);
+        ov30_02385C54(buffer, &entity->spawn_genid, 2);
     } else {
-        memset(&sp1C, 0, sizeof(struct monster));
-        var_r6 = &sp1C;
-        ov30_02385C54(arg0, &sp18, 1);
-        ov30_02385C54(arg0, &sp18, 1);
-        ov30_02385C54(arg0, &sp18, 1);
-        ov30_02385C54(arg0, &sp18, 1);
-        ov30_02385C54(arg0, &sp18, 2);
+        memset(&monster, 0, sizeof(struct monster));
+        monster_ptr = &monster;
+        ov30_02385C54(buffer, &sp18, 1);
+        ov30_02385C54(buffer, &sp18, 1);
+        ov30_02385C54(buffer, &sp18, 1);
+        ov30_02385C54(buffer, &sp18, 1);
+        ov30_02385C54(buffer, &sp18, 2);
     }
-    ov30_02385D14(arg0, var_r6->flags);
-    spC = var_r6->apparent_id;
-    ov30_02385C54(arg0, (s32* ) &spC, 2);
-    spA = var_r6->id;
-    ov30_02385C54(arg0, (s32* ) &spA, 2);
-    ov30_02385DD4(arg0, var_r6->is_not_team_member);
-    ov30_02385DD4(arg0, var_r6->is_team_leader);
-    ov30_02385DD4(arg0, var_r6->is_ally);
-    ov30_02385D54(arg0, var_r6->shopkeeper);
-    ov30_02385D54(arg0, var_r6->level);
-    ov30_02385D54(arg0, (u8) var_r6->team_index);
-    ov30_02385D54(arg0, var_r6->joined_at);
-    ov30_02385D54(arg0, var_r6->joined_at_floor);
-    ov30_02385D34(arg0, var_r6->iq);
-    ov30_02385D34(arg0, var_r6->hp);
-    ov30_02385D34(arg0, var_r6->max_hp_stat);
-    ov30_02385D34(arg0, var_r6->max_hp_boost);
-    ov30_02385D34(arg0, var_r6->field_0x14);
-    ov30_02385D54(arg0, var_r6->offensive_stats[0]);
-    ov30_02385D54(arg0, var_r6->offensive_stats[1]);
-    ov30_02385D54(arg0, var_r6->defensive_stats[0]);
-    ov30_02385D54(arg0, var_r6->defensive_stats[1]);
-    ov30_02385D74(arg0, var_r6->exp);
-    ov30_02385D34(arg0, var_r6->stat_modifiers.offensive_stages[0]);
-    ov30_02385D34(arg0, var_r6->stat_modifiers.offensive_stages[1]);
-    ov30_02385D34(arg0, var_r6->stat_modifiers.defensive_stages[0]);
-    ov30_02385D34(arg0, var_r6->stat_modifiers.defensive_stages[1]);
-    ov30_02385D34(arg0, var_r6->stat_modifiers.hit_chance_stages[0]);
-    ov30_02385D34(arg0, var_r6->stat_modifiers.hit_chance_stages[1]);
-    ov30_02385D34(arg0, var_r6->stat_modifiers.flash_fire_boost);
-    ov30_02385DB4(arg0, var_r6->stat_modifiers.offensive_multipliers[0]);
-    ov30_02385DB4(arg0, var_r6->stat_modifiers.offensive_multipliers[1]);
-    ov30_02385DB4(arg0, var_r6->stat_modifiers.defensive_multipliers[0]);
-    ov30_02385DB4(arg0, var_r6->stat_modifiers.defensive_multipliers[1]);
-    ov30_02385C54(arg0, &var_r6->action.direction, 1);
-    ov30_02385C54(arg0, &var_r6->action.item_target_position.x, 1);
-    ov30_02385C54(arg0, &var_r6->action.item_target_position.y, 1);
-    sp7 = var_r6->types[0];
-    ov30_02385C54(arg0, (s32* ) &sp7, 1);
-    sp6 = var_r6->types[1];
-    ov30_02385C54(arg0, (s32* ) &sp6, 1);
-    sp5 = var_r6->abilities[0];
-    ov30_02385C54(arg0, (s32* ) &sp5, 1);
-    sp4 = var_r6->abilities[1];
-    ov30_02385C54(arg0, (s32* ) &sp4, 1);
-    ov30_02384268(arg0, &var_r6->held_item);
-    sp8 = var_r6->previous_held_item_id;
-    ov30_02385C54(arg0, (s32* ) &sp8, 2);
+    ov30_02385D14(buffer, monster_ptr->flags);
+    spC = monster_ptr->apparent_id;
+    ov30_02385C54(buffer, (s32* ) &spC, 2);
+    spA = monster_ptr->id;
+    ov30_02385C54(buffer, (s32* ) &spA, 2);
+    ov30_02385DD4(buffer, monster_ptr->is_not_team_member);
+    ov30_02385DD4(buffer, monster_ptr->is_team_leader);
+    ov30_02385DD4(buffer, monster_ptr->is_ally);
+    ov30_02385D54(buffer, monster_ptr->shopkeeper);
+    ov30_02385D54(buffer, monster_ptr->level);
+    ov30_02385D54(buffer, (u8) monster_ptr->team_index);
+    ov30_02385D54(buffer, monster_ptr->joined_at);
+    ov30_02385D54(buffer, monster_ptr->joined_at_floor);
+    ov30_02385D34(buffer, monster_ptr->iq);
+    ov30_02385D34(buffer, monster_ptr->hp);
+    ov30_02385D34(buffer, monster_ptr->max_hp_stat);
+    ov30_02385D34(buffer, monster_ptr->max_hp_boost);
+    ov30_02385D34(buffer, monster_ptr->field_0x14);
+    ov30_02385D54(buffer, monster_ptr->offensive_stats[0]);
+    ov30_02385D54(buffer, monster_ptr->offensive_stats[1]);
+    ov30_02385D54(buffer, monster_ptr->defensive_stats[0]);
+    ov30_02385D54(buffer, monster_ptr->defensive_stats[1]);
+    ov30_02385D74(buffer, monster_ptr->exp);
+    ov30_02385D34(buffer, monster_ptr->stat_modifiers.offensive_stages[0]);
+    ov30_02385D34(buffer, monster_ptr->stat_modifiers.offensive_stages[1]);
+    ov30_02385D34(buffer, monster_ptr->stat_modifiers.defensive_stages[0]);
+    ov30_02385D34(buffer, monster_ptr->stat_modifiers.defensive_stages[1]);
+    ov30_02385D34(buffer, monster_ptr->stat_modifiers.hit_chance_stages[0]);
+    ov30_02385D34(buffer, monster_ptr->stat_modifiers.hit_chance_stages[1]);
+    ov30_02385D34(buffer, monster_ptr->stat_modifiers.flash_fire_boost);
+    ov30_02385DB4(buffer, monster_ptr->stat_modifiers.offensive_multipliers[0]);
+    ov30_02385DB4(buffer, monster_ptr->stat_modifiers.offensive_multipliers[1]);
+    ov30_02385DB4(buffer, monster_ptr->stat_modifiers.defensive_multipliers[0]);
+    ov30_02385DB4(buffer, monster_ptr->stat_modifiers.defensive_multipliers[1]);
+    ov30_02385C54(buffer, &monster_ptr->action.direction, 1);
+    ov30_02385C54(buffer, &monster_ptr->action.item_target_position.x, 1);
+    ov30_02385C54(buffer, &monster_ptr->action.item_target_position.y, 1);
+    sp7 = monster_ptr->types[0];
+    ov30_02385C54(buffer, (s32* ) &sp7, 1);
+    sp6 = monster_ptr->types[1];
+    ov30_02385C54(buffer, (s32* ) &sp6, 1);
+    sp5 = monster_ptr->abilities[0];
+    ov30_02385C54(buffer, (s32* ) &sp5, 1);
+    sp4 = monster_ptr->abilities[1];
+    ov30_02385C54(buffer, (s32* ) &sp4, 1);
+    ov30_02384268(buffer, &monster_ptr->held_item);
+    sp8 = monster_ptr->previous_held_item_id;
+    ov30_02385C54(buffer, (s32* ) &sp8, 2);
 
     for(var_r5 = 0; var_r5 < NUM_PREV_POS; var_r5++)
     {
-        ov30_02385DF8(arg0, &var_r6->prev_pos[var_r5]);
+        ov30_02385DF8(buffer, &monster_ptr->prev_pos[var_r5]);
     }
 
-    ov30_02385C54(arg0, &var_r6->ai_target.ai_objective, 1);
-    ov30_02385DD4(arg0, var_r6->ai_target.ai_not_next_to_target);
-    ov30_02385DD4(arg0, var_r6->ai_target.ai_targeting_enemy);
-    ov30_02385DD4(arg0, var_r6->ai_target.ai_turning_around);
-    ov30_02385D14(arg0, var_r6->ai_target.ai_target_spawn_genid);
-    ov30_02385DF8(arg0, &var_r6->ai_target.ai_target_pos);
+    ov30_02385C54(buffer, &monster_ptr->ai_target.ai_objective, 1);
+    ov30_02385DD4(buffer, monster_ptr->ai_target.ai_not_next_to_target);
+    ov30_02385DD4(buffer, monster_ptr->ai_target.ai_targeting_enemy);
+    ov30_02385DD4(buffer, monster_ptr->ai_target.ai_turning_around);
+    ov30_02385D14(buffer, monster_ptr->ai_target.ai_target_spawn_genid);
+    ov30_02385DF8(buffer, &monster_ptr->ai_target.ai_target_pos);
     
-    ov30_02385C54(arg0, &var_r6->iq_skill_menu_flags, 0x45);
-    ov30_02385C54(arg0, &var_r6->iq_skill_flags, 0x45);
+    ov30_02385C54(buffer, &monster_ptr->iq_skill_menu_flags, 0x45);
+    ov30_02385C54(buffer, &monster_ptr->iq_skill_flags, 0x45);
     
-    sp3 = var_r6->tactic;
-    ov30_02385C54(arg0, (s32* ) &sp3, 1);
-    ov30_02385D34(arg0, var_r6->hidden_power_base_power);
-    sp2 = var_r6->hidden_power_type;
-    ov30_02385C54(arg0, (s32* ) &sp2, 1);
-    ov30_02385D74(arg0, var_r6->unique_id);
-    ov30_02385D74(arg0, var_r6->wrap_pair_unique_id);
-    ov30_02385D74(arg0, var_r6->bide_damage_tally);
-    ov30_02385C54(arg0, &var_r6->sleep_class_status.sleep, 1);
-    ov30_02385D54(arg0, var_r6->sleep_class_status.sleep_turns);
-    ov30_02385C54(arg0, &var_r6->burn_class_status.burn, 1);
-    ov30_02385D54(arg0, var_r6->burn_class_status.burn_turns);
-    ov30_02385D54(arg0, var_r6->burn_class_status.burn_damage_countdown);
-    ov30_02385D54(arg0, var_r6->burn_class_status.badly_poisoned_damage_count);
-    ov30_02385C54(arg0, &var_r6->frozen_class_status.freeze, 1);
-    ov30_02385D54(arg0, var_r6->frozen_class_status.freeze_turns);
-    ov30_02385D54(arg0, var_r6->frozen_class_status.freeze_damage_countdown);
-    ov30_02385D74(arg0, var_r6->frozen_class_status.constriction_animation);
-    ov30_02385C54(arg0, &var_r6->cringe_class_status.cringe, 1);
-    ov30_02385D54(arg0, var_r6->cringe_class_status.cringe_turns);
-    ov30_02385C54(arg0, &var_r6->bide_class_status.bide, 1);
-    ov30_02385D54(arg0, var_r6->bide_class_status.bide_turns);
-    ov30_02385D54(arg0, var_r6->bide_class_status.bide_move_slot);
-    ov30_02385C54(arg0, &var_r6->reflect_class_status.reflect, 1);
-    ov30_02385D54(arg0, var_r6->reflect_class_status.reflect_turns);
-    ov30_02385D54(arg0, var_r6->reflect_class_status.reflect_damage_countdown);
+    sp3 = monster_ptr->tactic;
+    ov30_02385C54(buffer, (s32* ) &sp3, 1);
+    ov30_02385D34(buffer, monster_ptr->hidden_power_base_power);
+    sp2 = monster_ptr->hidden_power_type;
+    ov30_02385C54(buffer, (s32* ) &sp2, 1);
+    ov30_02385D74(buffer, monster_ptr->unique_id);
+    ov30_02385D74(buffer, monster_ptr->wrap_pair_unique_id);
+    ov30_02385D74(buffer, monster_ptr->bide_damage_tally);
+    ov30_02385C54(buffer, &monster_ptr->sleep_class_status.sleep, 1);
+    ov30_02385D54(buffer, monster_ptr->sleep_class_status.sleep_turns);
+    ov30_02385C54(buffer, &monster_ptr->burn_class_status.burn, 1);
+    ov30_02385D54(buffer, monster_ptr->burn_class_status.burn_turns);
+    ov30_02385D54(buffer, monster_ptr->burn_class_status.burn_damage_countdown);
+    ov30_02385D54(buffer, monster_ptr->burn_class_status.badly_poisoned_damage_count);
+    ov30_02385C54(buffer, &monster_ptr->frozen_class_status.freeze, 1);
+    ov30_02385D54(buffer, monster_ptr->frozen_class_status.freeze_turns);
+    ov30_02385D54(buffer, monster_ptr->frozen_class_status.freeze_damage_countdown);
+    ov30_02385D74(buffer, monster_ptr->frozen_class_status.constriction_animation);
+    ov30_02385C54(buffer, &monster_ptr->cringe_class_status.cringe, 1);
+    ov30_02385D54(buffer, monster_ptr->cringe_class_status.cringe_turns);
+    ov30_02385C54(buffer, &monster_ptr->bide_class_status.bide, 1);
+    ov30_02385D54(buffer, monster_ptr->bide_class_status.bide_turns);
+    ov30_02385D54(buffer, monster_ptr->bide_class_status.bide_move_slot);
+    ov30_02385C54(buffer, &monster_ptr->reflect_class_status.reflect, 1);
+    ov30_02385D54(buffer, monster_ptr->reflect_class_status.reflect_turns);
+    ov30_02385D54(buffer, monster_ptr->reflect_class_status.reflect_damage_countdown);
 
-    ov30_02385C54(arg0, &var_r6->curse_class_status.curse, 1);
-    ov30_02385DD4(arg0, var_r6->curse_class_status.curse_applier_non_team_member_flag);
-    ov30_02385DD4(arg0, var_r6->curse_class_status.dec);
-    ov30_02385D54(arg0, var_r6->curse_class_status.curse_turns);
-    ov30_02385D54(arg0, var_r6->curse_class_status.curse_damage_countdown);
+    ov30_02385C54(buffer, &monster_ptr->curse_class_status.curse, 1);
+    ov30_02385DD4(buffer, monster_ptr->curse_class_status.curse_applier_non_team_member_flag);
+    ov30_02385DD4(buffer, monster_ptr->curse_class_status.dec);
+    ov30_02385D54(buffer, monster_ptr->curse_class_status.curse_turns);
+    ov30_02385D54(buffer, monster_ptr->curse_class_status.curse_damage_countdown);
 
-    ov30_02385C54(arg0, &var_r6->leech_seed_class_status.leech_seed, 1);
-    ov30_02385D74(arg0, var_r6->leech_seed_class_status.statuses_applier_id);
-    ov30_02385D54(arg0, var_r6->leech_seed_class_status.leech_seed_source_monster_index);
-    ov30_02385D54(arg0, var_r6->leech_seed_class_status.leech_seed_turns);
-    ov30_02385D54(arg0, var_r6->leech_seed_class_status.leech_seed_damage_countdown);
+    ov30_02385C54(buffer, &monster_ptr->leech_seed_class_status.leech_seed, 1);
+    ov30_02385D74(buffer, monster_ptr->leech_seed_class_status.statuses_applier_id);
+    ov30_02385D54(buffer, monster_ptr->leech_seed_class_status.leech_seed_source_monster_index);
+    ov30_02385D54(buffer, monster_ptr->leech_seed_class_status.leech_seed_turns);
+    ov30_02385D54(buffer, monster_ptr->leech_seed_class_status.leech_seed_damage_countdown);
     
-    ov30_02385C54(arg0, &var_r6->sure_shot_class_status.sure_shot, 1);
-    ov30_02385D54(arg0, var_r6->sure_shot_class_status.sure_shot_turns);
+    ov30_02385C54(buffer, &monster_ptr->sure_shot_class_status.sure_shot, 1);
+    ov30_02385D54(buffer, monster_ptr->sure_shot_class_status.sure_shot_turns);
 
-    ov30_02385C54(arg0, &var_r6->long_toss_class_status.status, 1);
+    ov30_02385C54(buffer, &monster_ptr->long_toss_class_status.status, 1);
 
 
-    ov30_02385C54(arg0, &var_r6->invisible_class_status.status, 1);
-    ov30_02385D54(arg0, var_r6->invisible_class_status.turns);
-    ov30_02385C54(arg0, &var_r6->blinker_class_status.blinded, 1);
-    ov30_02385D54(arg0, var_r6->blinker_class_status.blinded_turns);
-    ov30_02385C54(arg0, &var_r6->muzzled, 1);
-    ov30_02385D54(arg0, var_r6->muzzled_turns);
-    ov30_02385C54(arg0, &var_r6->miracle_eye, 1);
-    ov30_02385D54(arg0, var_r6->miracle_eye_turns);
-    ov30_02385C54(arg0, &var_r6->magnet_rise, 1);
-    ov30_02385D54(arg0, var_r6->magnet_rise_turns);
-    ov30_02385DD4(arg0, var_r6->power_ears);
-    ov30_02385DD4(arg0, var_r6->scanning);
-    ov30_02385DD4(arg0, var_r6->stair_spotter);
-    ov30_02385DD4(arg0, var_r6->pickup_flag);
+    ov30_02385C54(buffer, &monster_ptr->invisible_class_status.status, 1);
+    ov30_02385D54(buffer, monster_ptr->invisible_class_status.turns);
+    ov30_02385C54(buffer, &monster_ptr->blinker_class_status.blinded, 1);
+    ov30_02385D54(buffer, monster_ptr->blinker_class_status.blinded_turns);
+    ov30_02385C54(buffer, &monster_ptr->muzzled, 1);
+    ov30_02385D54(buffer, monster_ptr->muzzled_turns);
+    ov30_02385C54(buffer, &monster_ptr->miracle_eye, 1);
+    ov30_02385D54(buffer, monster_ptr->miracle_eye_turns);
+    ov30_02385C54(buffer, &monster_ptr->magnet_rise, 1);
+    ov30_02385D54(buffer, monster_ptr->magnet_rise_turns);
+    ov30_02385DD4(buffer, monster_ptr->power_ears);
+    ov30_02385DD4(buffer, monster_ptr->scanning);
+    ov30_02385DD4(buffer, monster_ptr->stair_spotter);
+    ov30_02385DD4(buffer, monster_ptr->pickup_flag);
 #ifndef JAPAN
-    ov30_02385DD4(arg0, var_r6->in_action);
+    ov30_02385DD4(buffer, monster_ptr->in_action);
 #endif
-    ov30_02385DD4(arg0, var_r6->grudge);
-    ov30_02385D54(arg0, var_r6->exp_yield);
-    ov30_02385DD4(arg0, var_r6->exposed);
-    ov30_02385DD4(arg0, var_r6->type_changed);
-    ov30_02385DD4(arg0, var_r6->boss_flag);
-    ov30_02385D54(arg0, var_r6->terrified);
-    ov30_02385D54(arg0, var_r6->terrified_turns);
-    ov30_02385DD4(arg0, var_r6->use_held_item);
-    ov30_02385D54(arg0, var_r6->perish_song_turns);
-    ov30_02385D54(arg0, var_r6->no_slip_cap_counter);
-    ov30_02385D54(arg0, var_r6->field_0x10a);
-    sp1 = var_r6->two_turn_move_invincible;
-    ov30_02385C54(arg0, (s32* ) &sp1, 1);
-    sp0 = var_r6->decoy_ai_tracker;
-    ov30_02385C54(arg0, (s32* ) &sp0, 1);
-    sp10 = var_r6->speed_stage;
-    ov30_02385C54(arg0, &sp10, 4);
-    ov30_02385EB8(arg0, var_r6->speed_up_counters, 5);
-    ov30_02385EB8(arg0, var_r6->speed_down_counters, 5);
-    ov30_02385D54(arg0, var_r6->stockpile_stage);
-    ov30_02385D54(arg0, var_r6->field_0x11f);
-    ov30_02385D54(arg0, (u8) var_r6->random_movement);
+    ov30_02385DD4(buffer, monster_ptr->grudge);
+    ov30_02385D54(buffer, monster_ptr->exp_yield);
+    ov30_02385DD4(buffer, monster_ptr->exposed);
+    ov30_02385DD4(buffer, monster_ptr->type_changed);
+    ov30_02385DD4(buffer, monster_ptr->boss_flag);
+    ov30_02385D54(buffer, monster_ptr->terrified);
+    ov30_02385D54(buffer, monster_ptr->terrified_turns);
+    ov30_02385DD4(buffer, monster_ptr->use_held_item);
+    ov30_02385D54(buffer, monster_ptr->perish_song_turns);
+    ov30_02385D54(buffer, monster_ptr->no_slip_cap_counter);
+    ov30_02385D54(buffer, monster_ptr->field_0x10a);
+    sp1 = monster_ptr->two_turn_move_invincible;
+    ov30_02385C54(buffer, (s32* ) &sp1, 1);
+    sp0 = monster_ptr->decoy_ai_tracker;
+    ov30_02385C54(buffer, (s32* ) &sp0, 1);
+    sp10 = monster_ptr->speed_stage;
+    ov30_02385C54(buffer, &sp10, 4);
+    ov30_02385EB8(buffer, monster_ptr->speed_up_counters, 5);
+    ov30_02385EB8(buffer, monster_ptr->speed_down_counters, 5);
+    ov30_02385D54(buffer, monster_ptr->stockpile_stage);
+    ov30_02385D54(buffer, monster_ptr->field_0x11f);
+    ov30_02385D54(buffer, (u8) monster_ptr->random_movement);
 
     // moves
     for(int move_index = 0; move_index < MAX_MON_MOVES; move_index++)
     {
-        struct move *move = &var_r6->moves.moves[move_index];
-        ov30_02385D54(arg0, var_r6->moves.moves[move_index].flags0);
-        ov30_02385D54(arg0, var_r6->moves.moves[move_index].flags2);
-        ov30_02385C54(arg0, &move->id, 2);
-        ov30_02385D54(arg0, var_r6->moves.moves[move_index].pp);
-        ov30_02385D54(arg0, var_r6->moves.moves[move_index].ginseng);
+        struct move *move = &monster_ptr->moves.moves[move_index];
+        ov30_02385D54(buffer, monster_ptr->moves.moves[move_index].flags0);
+        ov30_02385D54(buffer, monster_ptr->moves.moves[move_index].flags2);
+        ov30_02385C54(buffer, &move->id, 2);
+        ov30_02385D54(buffer, monster_ptr->moves.moves[move_index].pp);
+        ov30_02385D54(buffer, monster_ptr->moves.moves[move_index].ginseng);
     }
     
-    ov30_02385D54(arg0, var_r6->moves.struggle_move_flags);
-    ov30_02385D34(arg0, var_r6->belly.integer);
-    ov30_02385D34(arg0, var_r6->belly.fractional);
-    ov30_02385D34(arg0, var_r6->max_belly.integer);
-    ov30_02385D34(arg0, var_r6->max_belly.fractional);
-    ov30_02385DD4(arg0, var_r6->ai_ally_skip);
-    ov30_02385DD4(arg0, var_r6->ai_next_to_target);
-    ov30_02385DD4(arg0, var_r6->waiting);
-    ov30_02385DD4(arg0, var_r6->famished);
-    ov30_02385DD4(arg0, var_r6->already_acted);
-    ov30_02385DD4(arg0, var_r6->should_evolve);
-    ov30_02385DD4(arg0, var_r6->using_charged_move);
-    ov30_02385DD4(arg0, var_r6->hit_grudge_monster);
-    ov30_02385DD4(arg0, var_r6->field_0x156);
-    ov30_02385D14(arg0, var_r6->state_flags);
-    ov30_02385D14(arg0, var_r6->prev_state_flags);
-    ov30_02385DD4(arg0, var_r6->apply_flash_fire_boost);
-    ov30_02385D54(arg0, var_r6->rollout_hit_counter);
-    ov30_02385DD4(arg0, var_r6->memento_warp_flag);
-    ov30_02385DD4(arg0, var_r6->overheat_special_attack_drop_flag);
-    ov30_02385DD4(arg0, var_r6->display_shadow);
-    ov30_02385D54(arg0, var_r6->sleep_talk_direction);
-    ov30_02385D54(arg0, var_r6->snore_direction);
-    ov30_02385D54(arg0, var_r6->field_0x179);
-    ov30_02385D54(arg0, var_r6->field_0x17a);
-    ov30_02385D54(arg0, var_r6->field_0x17b);
-    ov30_02385D54(arg0, var_r6->field_0x17c);
-    ov30_02385DF8(arg0, &var_r6->target_pos);
-    ov30_02385DB4(arg0, var_r6->field_0x188);
-    ov30_02385D14(arg0, var_r6->contact_ability_trigger_bitflags);
-    ov30_02385D94(arg0, var_r6->exclusive_item_trigger_bitflags);
-    ov30_02385D14(arg0, var_r6->field_0x190);
-    ov30_02385D34(arg0, var_r6->hp_fractional);
-    ov30_02385D34(arg0, var_r6->mobile_turn_timer);
-    ov30_02385D74(arg0, var_r6->unk_exp_tracker);
-    ov30_02385D54(arg0, var_r6->monster_behavior);
-    ov30_02385D54(arg0, var_r6->practice_swinger_flag);
-    ov30_02385D54(arg0, var_r6->anger_point_flag);
-    ov30_02385D34(arg0, var_r6->field_0x168);
-    ov30_02385D34(arg0, var_r6->bide_move_id);
-    ov30_02385D54(arg0, var_r6->force_turn);
+    ov30_02385D54(buffer, monster_ptr->moves.struggle_move_flags);
+    ov30_02385D34(buffer, monster_ptr->belly.integer);
+    ov30_02385D34(buffer, monster_ptr->belly.fractional);
+    ov30_02385D34(buffer, monster_ptr->max_belly.integer);
+    ov30_02385D34(buffer, monster_ptr->max_belly.fractional);
+    ov30_02385DD4(buffer, monster_ptr->ai_ally_skip);
+    ov30_02385DD4(buffer, monster_ptr->ai_next_to_target);
+    ov30_02385DD4(buffer, monster_ptr->waiting);
+    ov30_02385DD4(buffer, monster_ptr->famished);
+    ov30_02385DD4(buffer, monster_ptr->already_acted);
+    ov30_02385DD4(buffer, monster_ptr->should_evolve);
+    ov30_02385DD4(buffer, monster_ptr->using_charged_move);
+    ov30_02385DD4(buffer, monster_ptr->hit_grudge_monster);
+    ov30_02385DD4(buffer, monster_ptr->field_0x156);
+    ov30_02385D14(buffer, monster_ptr->state_flags);
+    ov30_02385D14(buffer, monster_ptr->prev_state_flags);
+    ov30_02385DD4(buffer, monster_ptr->apply_flash_fire_boost);
+    ov30_02385D54(buffer, monster_ptr->rollout_hit_counter);
+    ov30_02385DD4(buffer, monster_ptr->memento_warp_flag);
+    ov30_02385DD4(buffer, monster_ptr->overheat_special_attack_drop_flag);
+    ov30_02385DD4(buffer, monster_ptr->display_shadow);
+    ov30_02385D54(buffer, monster_ptr->sleep_talk_direction);
+    ov30_02385D54(buffer, monster_ptr->snore_direction);
+    ov30_02385D54(buffer, monster_ptr->field_0x179);
+    ov30_02385D54(buffer, monster_ptr->field_0x17a);
+    ov30_02385D54(buffer, monster_ptr->field_0x17b);
+    ov30_02385D54(buffer, monster_ptr->field_0x17c);
+    ov30_02385DF8(buffer, &monster_ptr->target_pos);
+    ov30_02385DB4(buffer, monster_ptr->field_0x188);
+    ov30_02385D14(buffer, monster_ptr->contact_ability_trigger_bitflags);
+    ov30_02385D94(buffer, monster_ptr->exclusive_item_trigger_bitflags);
+    ov30_02385D14(buffer, monster_ptr->field_0x190);
+    ov30_02385D34(buffer, monster_ptr->hp_fractional);
+    ov30_02385D34(buffer, monster_ptr->mobile_turn_timer);
+    ov30_02385D74(buffer, monster_ptr->unk_exp_tracker);
+    ov30_02385D54(buffer, monster_ptr->monster_behavior);
+    ov30_02385D54(buffer, monster_ptr->practice_swinger_flag);
+    ov30_02385D54(buffer, monster_ptr->anger_point_flag);
+    ov30_02385D34(buffer, monster_ptr->field_0x168);
+    ov30_02385D34(buffer, monster_ptr->bide_move_id);
+    ov30_02385D54(buffer, monster_ptr->force_turn);
 
     for(int var_r4 = 0; var_r4 < 5; var_r4++)
     {
-        ov30_02385D54(arg0, var_r6->unk16B[var_r4]);
+        ov30_02385D54(buffer, monster_ptr->unk16B[var_r4]);
     }
 }
 
+void ov30_02383C70(void *buffer)
+{
+    struct position pos;
+    struct weather* weather;
+    void* gravity;
+
+    int tile_index_x;
+    int tile_index_y;
+
+    ov30_02385CE0(buffer, OVERLAY30_JP_STRING_1);
+    ov30_02385DD4(buffer, DUNGEON_PTR->gen_info.force_create_monster_house);
+    ov30_02385DD4(buffer, DUNGEON_PTR->gen_info.locked_door_opened);
+    ov30_02385DD4(buffer, DUNGEON_PTR->gen_info.kecleon_shop_spawned);
+    ov30_02385DD4(buffer, DUNGEON_PTR->gen_info.unk_one_room_flag);
+    ov30_02385DD4(buffer, DUNGEON_PTR->gen_info.dough_seed_extra_poke_flag);
+    ov30_02385D54(buffer, DUNGEON_PTR->gen_info.monster_house_room);
+    ov30_02385D54(buffer, DUNGEON_PTR->gen_info.unk_fixed_room_static_monster_tracker);
+    ov30_02385D54(buffer, DUNGEON_PTR->gen_info.hidden_stairs_type);
+    ov30_02385D54(buffer, DUNGEON_PTR->gen_info.hidden_floor_type);
+    ov30_02385D34(buffer, DUNGEON_PTR->gen_info.tileset_id);
+    ov30_02385D34(buffer, DUNGEON_PTR->gen_info.music_table_idx);
+    ov30_02385D34(buffer, DUNGEON_PTR->gen_info.staircase_visual_idx);
+    ov30_02385D34(buffer, DUNGEON_PTR->gen_info.fixed_room_id);
+    ov30_02385D34(buffer, DUNGEON_PTR->gen_info.floor_generation_attempts);
+
+    for(tile_index_y = 0; tile_index_y < DUNGEON_MAX_SIZE_Y; tile_index_y++)
+    {
+        for(tile_index_x = 0; tile_index_x < DUNGEON_MAX_SIZE_X; tile_index_x++)
+        {
+            ov30_023842B0(buffer, &DUNGEON_PTR->gen_info.tiles[tile_index_y][tile_index_x]);
+        }
+    }
+    
+    ov30_02385DF8(buffer, &DUNGEON_PTR->gen_info.team_spawn_pos);
+    ov30_02385DF8(buffer, &DUNGEON_PTR->gen_info.stairs_pos);
+    
+    pos = DUNGEON_PTR->gen_info.hidden_stairs_pos;
+    if (pos.x == -1) {
+        pos.x = 0xFF;
+    }
+    if (pos.y == -1) {
+        pos.y = 0xFF;
+    }
+    ov30_02385DF8(buffer, &pos);
+    
+    for(int var_r5 = 0; var_r5 < 8; var_r5++)
+    {
+        ov30_02385E20(buffer, &DUNGEON_PTR->gen_info.individual_team_spawn_positions[var_r5]);
+    }
+    
+    for(int var_r5_2 = 0; var_r5_2 < 8; var_r5_2++)
+    {
+        ov30_02385D54(buffer, DUNGEON_PTR->unk_team_direction_array[var_r5_2]);
+    }
+    
+    ov30_02385E48(buffer, &DUNGEON_PTR->kecleon_shop_min_x);
+    ov30_02385E48(buffer, &DUNGEON_PTR->fixed_room_min_x);
+    ov30_02385E90(buffer, &DUNGEON_PTR->fixed_room_width);
+
+    for(tile_index_y = 0; tile_index_y < 8; tile_index_y++)
+    {
+        for(tile_index_x = 0; tile_index_x < 8; tile_index_x++)
+        {
+            ov30_023842B0(buffer, &DUNGEON_PTR->fixed_room_tiles[tile_index_y][tile_index_x]);
+            ov30_02385D34(buffer, DUNGEON_PTR->field_0xd260[tile_index_y][tile_index_x]);
+        }
+    }
+    
+    weather = &DUNGEON_PTR->weather;
+    ov30_02385C54(buffer, &weather->weather, 1);
+    ov30_02385C54(buffer, &weather->natural_weather, 1);
+    
+    for(int weather_index = 0; weather_index < 8; weather_index++)
+    {
+        ov30_02385D14(buffer, (weather->weather_turns[weather_index]));
+        ov30_02385D14(buffer, (weather->artificial_permaweather_turns[weather_index]));
+    }
+    
+    ov30_02385D54(buffer, weather->weather_damage_counter);
+    ov30_02385D54(buffer, weather->mud_sport_turns);
+    ov30_02385D54(buffer, weather->water_sport_turns);
+    ov30_02385DD4(buffer, weather->nullify_weather);
+    
+    gravity = &DUNGEON_PTR->gravity;
+    ov30_02385C54(buffer, gravity, 1);
+    ov30_02385C54(buffer, gravity + 1, 1);
+    
+    ov30_02385D34(buffer, DUNGEON_PTR->victory_counter);
+}
+
+void ov30_0238409C(void *buffer)
+{
+    ov30_02385CE0(buffer, OVERLAY30_JP_STRING_1);
+    ov30_02385D54(buffer, DUNGEON_PTR->display_data.field_0x20);
+    ov30_02385D54(buffer, DUNGEON_PTR->display_data.visibility_range);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.blinded);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.luminous);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.natural_lighting);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.can_see_enemies);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.field_0x33);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.can_see_items);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.field_0x32);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.field_0x34);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.can_see_traps);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.hallucinating);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.can_see_stairs);
+    ov30_02385DD4(buffer, DUNGEON_PTR->display_data.field_0x2C);
+}
+
+void ov30_02384208(void *buffer)
+{
+    ov30_02385D34(buffer, DUNGEON_PTR->field_0x2cb02);
+    ov30_02385D34(buffer, DUNGEON_PTR->field_0x2cb04);
+    ov30_02385D34(buffer, DUNGEON_PTR->dungeon_music_playing_id);
+}
+
+void ov30_02384268(void *buffer, struct item *item)
+{
+    ov30_02385C54(buffer, &item->flags, 1);
+    ov30_02385C54(buffer, &item->held_by, 1);
+    ov30_02385C54(buffer, &item->quantity, 2);
+    ov30_02385C54(buffer, &item->id, 2);
+}
+
+void ov30_023842B0(void *buffer, struct tile* tile)
+{
+    ov30_02385D14(buffer, tile->terrain_flags);
+    ov30_02385D14(buffer, tile->spawn_or_visibility_flags.spawn);
+    ov30_02385C54(buffer, &tile->room, 1);
+    ov30_02385C54(buffer, &tile->field_0x6, 1);
+}
+
+#ifndef EUROPE
+void ov29_022FB920();
+#else
+void ov29_022FB920(s32);
+#endif
+
+void ov30_02384C6C(void*);
+void ov30_02384CD4(void*);
+void ov30_02385C8C(void*, void *, s32);
+void ov30_02385CA4(void*, void*, s32);
+void ov30_02385CF0(void*, u8*);
+s16 ov30_02385EC4(void*);
+s16 ov30_02385EDC(void*);
+void SpawnItem(void*, struct item*, s32);
+void MemZero(void*, s32);
+s8 ov30_02385EF4(void *);                                /* extern */
+s8 ov30_02385F54(void *);                                /* extern */
+void ov30_02385F7C(void *, struct position*);
+void ov30_02385FB0(void *, void*);                          /* extern */
+void ov30_02385FE4(void *, void*);                          /* extern */
+void ov30_02386040(void *, void*);                          /* extern */
+void BindTrapToTile(struct tile*, struct trap*, s32);
+struct trap *SpawnTrap(u8, struct position*, u8, s32);
+void ov29_02338768(struct position*);
+s32 ov30_02385F0C(void *);
+void ov30_02384E28(void *, s32, s32);
+
+void ov30_023842F4(void *buffer, s32 arg1)
+{
+    u8 sp4[0xA];
+    u32 sp0;
+
+    ov30_02385C8C(&sp4, buffer, arg1);
+    ov30_02385CA4(&sp4, &sp0, 4);
+    ov30_02385CF0(&sp4, OVERLAY30_JP_STRING_1);
+    ov30_02385CA4(&sp4, &DUNGEON_PTR->id, 0xAC);
+    ov30_02385CF0(&sp4, OVERLAY30_JP_STRING_1);
+
+    DUNGEON_PTR->highest_enemy_level = ov30_02385EDC(&sp4);
+
+    for(int var_r4 = 0; var_r4 < 0x10; var_r4++)
+    {
+        DUNGEON_PTR->spawn_table_entries_chosen[var_r4] = ov30_02385EC4(&sp4);
+    }
+
+    ov30_02384400(&sp4);
+    ov30_023848A0(&sp4);
+    ov30_02384A20(&sp4);
+    ov30_02384A94(&sp4);
+    ov30_02384B84(&sp4);
+    ov30_02384C6C(&sp4);
+    ov30_02384CD4(&sp4);
+    ov30_02385CF0(&sp4, OVERLAY30_JP_STRING_2);
+    ov30_02385CDC(&sp4);
+#ifdef EUROPE
+    ov29_022FB920(0);
+#else
+    ov29_022FB920();
+#endif
+}
+
+void ov30_02384400(void *buffer) {
+   
+    struct weather* weather;
+    void* temp_r4_2;
+    s32 tile_index_y;
+    s32 tile_index_x;
+
+    ov30_02385CF0(buffer, OVERLAY30_JP_STRING_1);
+    DUNGEON_PTR->gen_info.force_create_monster_house = ov30_02385F54(buffer);
+    DUNGEON_PTR->gen_info.locked_door_opened = ov30_02385F54(buffer);
+    DUNGEON_PTR->gen_info.kecleon_shop_spawned = ov30_02385F54(buffer);
+    DUNGEON_PTR->gen_info.unk_one_room_flag = ov30_02385F54(buffer);
+    DUNGEON_PTR->gen_info.dough_seed_extra_poke_flag = ov30_02385F54(buffer);
+    DUNGEON_PTR->gen_info.monster_house_room = ov30_02385EF4(buffer);
+    DUNGEON_PTR->gen_info.unk_fixed_room_static_monster_tracker = ov30_02385EF4(buffer);
+    DUNGEON_PTR->gen_info.hidden_stairs_type = (enum hidden_stairs_type) ov30_02385EF4(buffer);
+    DUNGEON_PTR->gen_info.hidden_floor_type = (enum hidden_stairs_type) ov30_02385EF4(buffer);
+    
+    DUNGEON_PTR->gen_info.tileset_id = ov30_02385EDC(buffer);
+    DUNGEON_PTR->gen_info.music_table_idx = ov30_02385EDC(buffer);
+    DUNGEON_PTR->gen_info.staircase_visual_idx = ov30_02385EDC(buffer);
+    DUNGEON_PTR->gen_info.fixed_room_id = (enum fixed_room_id) ov30_02385EDC(buffer);
+    DUNGEON_PTR->gen_info.floor_generation_attempts = ov30_02385EDC(buffer);
+
+    for(tile_index_x = 0; tile_index_x < DUNGEON_MAX_SIZE_Y; tile_index_x++)
+    {
+        for(tile_index_y = 0; tile_index_y < DUNGEON_MAX_SIZE_X; tile_index_y++)
+        {
+            ov30_0238483C(buffer, &DUNGEON_PTR->gen_info.tiles[tile_index_x][tile_index_y]);
+        }
+    }
+    
+    ov30_02385F7C(buffer, &DUNGEON_PTR->gen_info.team_spawn_pos);
+    ov30_02385F7C(buffer, &DUNGEON_PTR->gen_info.stairs_pos);
+    ov30_02385F7C(buffer, &DUNGEON_PTR->gen_info.hidden_stairs_pos);
+    
+
+    if (DUNGEON_PTR->gen_info.hidden_stairs_pos.x == 0xFF) {
+        DUNGEON_PTR->gen_info.hidden_stairs_pos.x = -1;
+    }
+    if (DUNGEON_PTR->gen_info.hidden_stairs_pos.y == 0xFF) {
+        DUNGEON_PTR->gen_info.hidden_stairs_pos.y = -1;
+    }
+
+    for(int var_r5_2 = 0; var_r5_2 < 8; var_r5_2++)
+    {
+        ov30_02385FB0(buffer, &DUNGEON_PTR->gen_info.individual_team_spawn_positions[var_r5_2]);
+    }
+
+    for(int var_r5_2 = 0; var_r5_2 < 8; var_r5_2++)
+    {
+        DUNGEON_PTR->unk_team_direction_array[var_r5_2] = (enum direction_id) ov30_02385EF4(buffer);
+    }
+    
+    ov30_02385FE4(buffer, &DUNGEON_PTR->kecleon_shop_min_x);
+    ov30_02385FE4(buffer, &DUNGEON_PTR->fixed_room_min_x);
+    ov30_02386040(buffer, &DUNGEON_PTR->fixed_room_width);
+    
+
+
+    for(tile_index_x = 0; tile_index_x < 8; tile_index_x++)
+    {
+        for(tile_index_y = 0; tile_index_y < 8; tile_index_y++)
+        {
+            ov30_0238483C(buffer, &DUNGEON_PTR->fixed_room_tiles[tile_index_x][tile_index_y]);
+            DUNGEON_PTR->field_0xd260[tile_index_x][tile_index_y] = ov30_02385EDC(buffer);
+        }
+    }
+
+    
+    // weather
+    weather = &DUNGEON_PTR->weather;
+    memset(weather, 0, sizeof(struct weather));
+    ov30_02385CA4(buffer, &weather->weather, 1);
+    ov30_02385CA4(buffer, &weather->natural_weather, 1);
+
+
+    for(int weather_index = 0; weather_index < 8; weather_index++)
+    {
+        weather->weather_turns[weather_index] = ov30_02385EC4(buffer);
+        weather->artificial_permaweather_turns[weather_index] = ov30_02385EC4(buffer);
+    }
+    
+    weather->weather_damage_counter = ov30_02385EF4(buffer);
+    weather->mud_sport_turns = ov30_02385EF4(buffer);
+    weather->water_sport_turns = ov30_02385EF4(buffer);
+    weather->nullify_weather = ov30_02385F54(buffer);
+    
+    temp_r4_2 = &DUNGEON_PTR->gravity;
+    MemZero(temp_r4_2, 2);
+    ov30_02385CA4(buffer, temp_r4_2, 1);
+    ov30_02385CA4(buffer, temp_r4_2 + 1, 1);
+    DUNGEON_PTR->victory_counter = ov30_02385EDC(buffer);
+}
+
+void ov30_0238483C(void *buffer, struct tile* tile)
+{
+    memset(tile, 0, sizeof(struct tile));
+    tile->terrain_flags = ov30_02385EC4(buffer);
+    tile->spawn_or_visibility_flags.spawn = ov30_02385EC4(buffer);
+    ov30_02385CA4(buffer, &tile->room, 1);
+    ov30_02385CA4(buffer, &tile->field_0x6, 1);
+    tile->monster = NULL;
+    tile->object = NULL;
+}
+
+
+void ov30_023848A0(void *buffer)
+{
+    ov30_02385CF0(buffer, OVERLAY30_JP_STRING_1);
+
+    DUNGEON_PTR->display_data.camera_target = NULL;
+    DUNGEON_PTR->display_data.field_0x20 = ov30_02385EF4(buffer);
+    DUNGEON_PTR->display_data.visibility_range = ov30_02385EF4(buffer);
+    DUNGEON_PTR->display_data.blinded = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.luminous = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.natural_lighting = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.can_see_enemies = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.field_0x33 = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.can_see_items = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.field_0x32 = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.field_0x34 = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.can_see_traps = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.hallucinating = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.can_see_stairs = ov30_02385F54(buffer);
+    DUNGEON_PTR->display_data.field_0x2C = ov30_02385F54(buffer);
+}
+
+void ov30_02384A20(void *buffer)
+{
+    DUNGEON_PTR->field_0x2cb02 = ov30_02385EDC(buffer);
+    DUNGEON_PTR->field_0x2cb04 = ov30_02385EDC(buffer);
+    DUNGEON_PTR->dungeon_music_playing_id = (enum music_id) ov30_02385EDC(buffer);
+    DUNGEON_PTR->field_0x2cb04 = 0x3E7;
+}
+
+void ov30_02384A94(void *buffer)
+{
+    struct item item;
+    struct position sp0;
+    bool32 var_r0;
+
+    ov29_02344B1C();
+    ov30_02385CF0(buffer, OVERLAY30_JP_STRING_1);
+    for(int var_r6 = 0; var_r6 < 0x40; var_r6++)
+    {
+        ov30_02384B24(buffer, &item);
+        ov30_02385F7C(buffer, &sp0);
+        var_r0 = (item.flags & ITEM_FLAG_EXISTS) ? TRUE : FALSE;
+        if (var_r0 & 0xFF) {
+            SpawnItem(&sp0, &item, 0);
+        }
+    }
+    ov29_02344B30();
+}
+
+void ov30_02384B24(void *buffer, struct item *item)
+{
+    memset(item, 0, sizeof(struct item));
+    ov30_02385CA4(buffer, &item->flags, 1);
+    ov30_02385CA4(buffer, &item->held_by, 1);
+    ov30_02385CA4(buffer, &item->quantity, 2);
+    ov30_02385CA4(buffer, &item->id, 2);
+}
+
+void ov30_02384B84(void *buffer)
+{
+    struct position pos;
+    u8 sp3;
+    u8 sp2;
+    u8 sp1;
+    u8 sp0;
+    struct trap* trap;
+    struct tile* tile;
+    s32 temp_r5;
+
+    ov30_02385CF0(buffer, OVERLAY30_JP_STRING_1);
+    for(int trap_index = 0; trap_index < 0x40; trap_index++)
+    {
+        sp3 = 6;
+        sp2 = 0;
+        sp1 = 0;
+        ov30_02385CA4(buffer, &sp3, 1);
+        ov30_02385CA4(buffer, &sp2, 1);
+        ov30_02385CA4(buffer, &sp1, 1);
+        ov30_02385CA4(buffer, &sp0, 1);
+        temp_r5 = ov30_02385F54(buffer);
+        ov30_02385F7C(buffer, &pos);
+        if (sp3 != 0xFF) {
+            tile = GetTileSafe(pos.x, pos.y);
+            trap = SpawnTrap(sp3, &pos, sp2, 0);
+            if (trap != 0) {
+                BindTrapToTile(tile, trap, temp_r5);
+            }
+        }
+    }
+}
+
+void ov30_02384C6C(void *buffer)
+{
+    struct position sp0;
+    s8 temp_r4;
+    s8 temp_r5;
+
+    ov30_02385CF0(buffer, OVERLAY30_JP_STRING_1);
+    temp_r5 = ov30_02385F54(buffer);
+    temp_r4 = ov30_02385F54(buffer);
+    ov30_02385F7C(buffer, &sp0);
+    if (temp_r5 != 0) {
+        ov29_02338768(&sp0);
+        DUNGEON_PTR->entities[148].is_visible = temp_r4;
+    }
+}
+
+void ov30_02384CD4(void *buffer) 
+{
+    ov30_02385CF0(buffer, OVERLAY30_JP_STRING_1);
+    DUNGEON_PTR->monster_unique_id_counter = ov30_02385F0C(buffer);
+    DUNGEON_PTR->monster_unique_wrap_counter = ov30_02385F0C(buffer);
+    DUNGEON_PTR->plus_is_active[0] = ov30_02385F54(buffer);
+    DUNGEON_PTR->plus_is_active[1] = ov30_02385F54(buffer);
+    DUNGEON_PTR->minus_is_active[0] = ov30_02385F54(buffer);
+    DUNGEON_PTR->minus_is_active[1] = ov30_02385F54(buffer);
+    DUNGEON_PTR->decoy_is_active = ov30_02385F54(buffer);
+    DUNGEON_PTR->mew_cannot_spawn = ov30_02385F54(buffer);
+    DUNGEON_PTR->shaymin_sky_form_loaded = ov30_02385F54(buffer);
+    DUNGEON_PTR->deoxys_floor_id = (enum monster_id) ov30_02385EC4(buffer);    
+    
+    for(int var_r6 = 0; var_r6 < MAX_TEAM_MEMBERS; var_r6++)
+    {
+        ov30_02384E28(buffer, 1, var_r6);
+    }
+    
+    for(int var_r6_2 = 0; var_r6_2 < DUNGEON_MAX_WILD_POKEMON; var_r6_2++)
+    {
+        ov30_02384E28(buffer, 0, var_r6_2);
+    }
+}
