@@ -7,7 +7,7 @@
 
 #define MAX_TEAM_MEMBERS 4
 #define DUNGEON_MAX_WILD_POKEMON 16
-#define DUNGEON_MAX_POKEMON 20
+#define DUNGEON_MAX_POKEMON MAX_TEAM_MEMBERS + DUNGEON_MAX_WILD_POKEMON
 #define DUNGEON_MAX_SIZE_X 56
 #define DUNGEON_MAX_SIZE_Y 32
 #define CORRIDOR_ROOM 0xFF
@@ -811,7 +811,8 @@ struct dungeon {
     // 0x7F2: May always just be a copy of dungeon::some_monster_sprite_to_load, but may also
     // have another purpose.
     enum monster_id some_monster_sprite;
-    struct monster monsters[20]; // 0x7F4: Info for all the monsters currently in the dungeon
+    struct monster monsters[MAX_TEAM_MEMBERS]; // 0x7F4: Info for all the team monsters currently in the dungeon
+    struct monster wild_monsters[DUNGEON_MAX_WILD_POKEMON]; // 0x10F4: Info for all the wild monsters currently in the dungeon
     // 0x34F4: Array that contains the spawn stats for enemies, which are only calculated
     // once at the start of the floor.
     // Since the enemy spawn list of a floor can only have a maximum of 16 entries,

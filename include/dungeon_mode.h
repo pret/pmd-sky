@@ -715,10 +715,9 @@ struct entity {
     u8 field_0x2b;
     struct animation_control anim_ctrl;
     u16 sprite_index; // 0xA8
-    u8 field_0xaa;
+    s8 field_0xaa;
     u8 field_0xab;
-    u8 field_0xac;
-    u8 field_0xad;
+    s16 field_0xac;
     u8 animation_group_id;        // 0xAE
     u8 animation_group_id_mirror; // 0xAF
     u8 animation_id;              // 0xB0

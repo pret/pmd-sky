@@ -1,18 +1,12 @@
 #include "overlay_30.h"
 #include "dungeon.h"
-#include "overlay_29_022E1610.h"
 #include "overlay_29_02344AF8.h"
+#include "overlay_29_022E1610.h"
+#include "overlay_29_022F7364.h"
 #include "dungeon_map_access.h"
+#include <nitro.h>
 
 extern struct dungeon *DUNGEON_PTR;
-
-struct Overlay30Main {
-    s32 state;
-    s32 unk4;
-    s32 unk8;
-    u8 unkC;
-    s8 isGameModeRescue; // GAME_MODE_RESCUE
-};
 
 extern struct Overlay30Main* ov30_023860A0;
 
@@ -141,8 +135,8 @@ asm void ov30_023829CC(s32 arg0, s32 arg1, s8 arg2)
 	ldmia sp!, {r4, r5, r6, pc}
 }
 
-extern u8 OVERLAY30_JP_STRING_1[0xC]; // みさき様 
-extern u8 OVERLAY30_JP_STRING_2[0xC]; // やよい様
+extern const u8 OVERLAY30_JP_STRING_1[0xC]; // みさき様
+extern const u8 OVERLAY30_JP_STRING_2[0xC]; // やよい様
 
 s32 NoteSaveBase(s32);           
 s32 WriteQuickSaveInfo(s32, s32);
@@ -152,24 +146,9 @@ void sub_02029F88(s32, s32, s32);
 void sub_02029FBC();             
 s32 sub_02048DC4(s32);           
 void sub_02034D0C(void);
-void ov30_02385C3C(void*, void*, s32);  
-void ov30_02385C54(void*, void*, s32);
-void ov30_02385CDC(void*);            
-void ov30_02385CE0(void*, void*);     
-void ov30_02385D14(void*, u16);       
-void ov30_02385D34(void*, s16);       
+
 struct trap* GetTrapInfo(struct entity*);
-void ov30_02385D74(void *, s32);
-void ov30_02385DD4(void *, u8);
-void ov30_02385D54(void*, u8);                             /* extern */
 void memset(void*, s32, s32);                                 /* extern */
-void ov30_02385D94(void*, s32);                            /* extern */
-void ov30_02385DB4(void*, s32);                            /* extern */
-void ov30_02385DF8(void*, void*);                          /* extern */
-void ov30_02385EB8(void*, void*, s32);                       /* extern */
-void ov30_02385E20(void *, void *);
-void ov30_02385E48(void *, void *);
-void ov30_02385E90(void *, void *);
 
 s32 ov30_02382A34(void)
 {
@@ -266,7 +245,7 @@ void ov30_02382C30(void)
 
 void WriteQuicksaveData(void *buffer, s32 size) 
 {
-    u8 sp4[0xC];
+    struct DataSerializer sp4;
     s32 sp0;
     s32 index;
 
@@ -290,7 +269,7 @@ void WriteQuicksaveData(void *buffer, s32 size)
     ov30_02382FB8(&sp4);
     ov30_02383084(&sp4);
     ov30_02385CE0(&sp4, OVERLAY30_JP_STRING_2);
-    ov30_02385CDC(&sp4);
+    FinishBitSerializer(&sp4);
 }
 
 void ov30_02382D80(void *buffer)
@@ -320,7 +299,7 @@ void ov30_02382D80(void *buffer)
             valid_item = TRUE;
         }
         if (valid_item == FALSE) {
-            ov30_02385C54(buffer, &zeros, 8);
+            ov30_02385C54(buffer, zeros, 8);
         }
     }
 }
@@ -371,7 +350,7 @@ void ov30_02382FB8(void *buffer)
     }
     if (entity->type == ENTITY_HIDDEN_STAIRS) {
         sp1 = 1;
-        ov30_02385C54(buffer, (void*)&sp1, 1);
+        ov30_02385C54(buffer, &sp1, 1);
         ov30_02385C54(buffer, &entity->is_visible, 1);
         ov30_02385C54(buffer, &entity->pos.x, 1);
         ov30_02385C54(buffer, &entity->pos.y, 1);
@@ -379,10 +358,10 @@ void ov30_02382FB8(void *buffer)
     else 
     {
         sp0 = 0;
-        ov30_02385C54(buffer, (void*)&sp0, 1);
-        ov30_02385C54(buffer, (void*)&sp0, 1);
-        ov30_02385C54(buffer, (void*)&sp0, 1);
-        ov30_02385C54(buffer, (void*)&sp0, 1);
+        ov30_02385C54(buffer, &sp0, 1);
+        ov30_02385C54(buffer, &sp0, 1);
+        ov30_02385C54(buffer, &sp0, 1);
+        ov30_02385C54(buffer, &sp0, 1);
     }
 }
 
@@ -463,9 +442,9 @@ void ov30_023831E8(void *buffer, struct entity* entity)
     }
     ov30_02385D14(buffer, monster_ptr->flags);
     spC = monster_ptr->apparent_id;
-    ov30_02385C54(buffer, (s32* ) &spC, 2);
+    ov30_02385C54(buffer, &spC, 2);
     spA = monster_ptr->id;
-    ov30_02385C54(buffer, (s32* ) &spA, 2);
+    ov30_02385C54(buffer, &spA, 2);
     ov30_02385DD4(buffer, monster_ptr->is_not_team_member);
     ov30_02385DD4(buffer, monster_ptr->is_team_leader);
     ov30_02385DD4(buffer, monster_ptr->is_ally);
@@ -499,16 +478,16 @@ void ov30_023831E8(void *buffer, struct entity* entity)
     ov30_02385C54(buffer, &monster_ptr->action.item_target_position.x, 1);
     ov30_02385C54(buffer, &monster_ptr->action.item_target_position.y, 1);
     sp7 = monster_ptr->types[0];
-    ov30_02385C54(buffer, (s32* ) &sp7, 1);
+    ov30_02385C54(buffer,  &sp7, 1);
     sp6 = monster_ptr->types[1];
-    ov30_02385C54(buffer, (s32* ) &sp6, 1);
+    ov30_02385C54(buffer,  &sp6, 1);
     sp5 = monster_ptr->abilities[0];
-    ov30_02385C54(buffer, (s32* ) &sp5, 1);
+    ov30_02385C54(buffer,  &sp5, 1);
     sp4 = monster_ptr->abilities[1];
-    ov30_02385C54(buffer, (s32* ) &sp4, 1);
+    ov30_02385C54(buffer,  &sp4, 1);
     ov30_02384268(buffer, &monster_ptr->held_item);
     sp8 = monster_ptr->previous_held_item_id;
-    ov30_02385C54(buffer, (s32* ) &sp8, 2);
+    ov30_02385C54(buffer,  &sp8, 2);
 
     for(var_r5 = 0; var_r5 < NUM_PREV_POS; var_r5++)
     {
@@ -526,10 +505,10 @@ void ov30_023831E8(void *buffer, struct entity* entity)
     ov30_02385C54(buffer, &monster_ptr->iq_skill_flags, 0x45);
     
     sp3 = monster_ptr->tactic;
-    ov30_02385C54(buffer, (s32* ) &sp3, 1);
+    ov30_02385C54(buffer, &sp3, 1);
     ov30_02385D34(buffer, monster_ptr->hidden_power_base_power);
     sp2 = monster_ptr->hidden_power_type;
-    ov30_02385C54(buffer, (s32* ) &sp2, 1);
+    ov30_02385C54(buffer,  &sp2, 1);
     ov30_02385D74(buffer, monster_ptr->unique_id);
     ov30_02385D74(buffer, monster_ptr->wrap_pair_unique_id);
     ov30_02385D74(buffer, monster_ptr->bide_damage_tally);
@@ -599,9 +578,9 @@ void ov30_023831E8(void *buffer, struct entity* entity)
     ov30_02385D54(buffer, monster_ptr->no_slip_cap_counter);
     ov30_02385D54(buffer, monster_ptr->field_0x10a);
     sp1 = monster_ptr->two_turn_move_invincible;
-    ov30_02385C54(buffer, (s32* ) &sp1, 1);
+    ov30_02385C54(buffer, &sp1, 1);
     sp0 = monster_ptr->decoy_ai_tracker;
-    ov30_02385C54(buffer, (s32* ) &sp0, 1);
+    ov30_02385C54(buffer, &sp0, 1);
     sp10 = monster_ptr->speed_stage;
     ov30_02385C54(buffer, &sp10, 4);
     ov30_02385EB8(buffer, monster_ptr->speed_up_counters, 5);
@@ -724,8 +703,8 @@ void ov30_02383C70(void *buffer)
         ov30_02385D54(buffer, DUNGEON_PTR->unk_team_direction_array[var_r5_2]);
     }
     
-    ov30_02385E48(buffer, &DUNGEON_PTR->kecleon_shop_min_x);
-    ov30_02385E48(buffer, &DUNGEON_PTR->fixed_room_min_x);
+    ov30_02385E48(buffer, (s32 *)&DUNGEON_PTR->kecleon_shop_min_x);
+    ov30_02385E48(buffer, (s32 *)&DUNGEON_PTR->fixed_room_min_x);
     ov30_02385E90(buffer, &DUNGEON_PTR->fixed_room_width);
 
     for(tile_index_y = 0; tile_index_y < 8; tile_index_y++)
@@ -809,28 +788,16 @@ void ov29_022FB920(s32);
 
 void ov30_02384C6C(void*);
 void ov30_02384CD4(void*);
-void ov30_02385C8C(void*, void *, s32);
-void ov30_02385CA4(void*, void*, s32);
-void ov30_02385CF0(void*, u8*);
-s16 ov30_02385EC4(void*);
-s16 ov30_02385EDC(void*);
 void SpawnItem(void*, struct item*, s32);
 void MemZero(void*, s32);
-s8 ov30_02385EF4(void *);                                /* extern */
-s8 ov30_02385F54(void *);                                /* extern */
-void ov30_02385F7C(void *, struct position*);
-void ov30_02385FB0(void *, void*);                          /* extern */
-void ov30_02385FE4(void *, void*);                          /* extern */
-void ov30_02386040(void *, void*);                          /* extern */
 void BindTrapToTile(struct tile*, struct trap*, s32);
 struct trap *SpawnTrap(u8, struct position*, u8, s32);
 void ov29_02338768(struct position*);
-s32 ov30_02385F0C(void *);
 void ov30_02384E28(void *, s32, s32);
 
 void ov30_023842F4(void *buffer, s32 arg1)
 {
-    u8 sp4[0xA];
+    struct DataSerializer sp4;
     u32 sp0;
 
     ov30_02385C8C(&sp4, buffer, arg1);
@@ -854,7 +821,7 @@ void ov30_023842F4(void *buffer, s32 arg1)
     ov30_02384C6C(&sp4);
     ov30_02384CD4(&sp4);
     ov30_02385CF0(&sp4, OVERLAY30_JP_STRING_2);
-    ov30_02385CDC(&sp4);
+    FinishBitSerializer(&sp4);
 #ifdef EUROPE
     ov29_022FB920(0);
 #else
@@ -916,8 +883,8 @@ void ov30_02384400(void *buffer) {
         DUNGEON_PTR->unk_team_direction_array[var_r5_2] = (enum direction_id) ov30_02385EF4(buffer);
     }
     
-    ov30_02385FE4(buffer, &DUNGEON_PTR->kecleon_shop_min_x);
-    ov30_02385FE4(buffer, &DUNGEON_PTR->fixed_room_min_x);
+    ov30_02385FE4(buffer, (s32*)&DUNGEON_PTR->kecleon_shop_min_x);
+    ov30_02385FE4(buffer, (s32*)&DUNGEON_PTR->fixed_room_min_x);
     ov30_02386040(buffer, &DUNGEON_PTR->fixed_room_width);
     
 
@@ -1036,7 +1003,7 @@ void ov30_02384B84(void *buffer)
     u8 sp0;
     struct trap* trap;
     struct tile* tile;
-    s32 temp_r5;
+    u32 temp_r5;
 
     ov30_02385CF0(buffer, OVERLAY30_JP_STRING_1);
     for(int trap_index = 0; trap_index < 0x40; trap_index++)
@@ -1063,8 +1030,8 @@ void ov30_02384B84(void *buffer)
 void ov30_02384C6C(void *buffer)
 {
     struct position sp0;
-    s8 temp_r4;
-    s8 temp_r5;
+    u32 temp_r4;
+    u32 temp_r5;
 
     ov30_02385CF0(buffer, OVERLAY30_JP_STRING_1);
     temp_r5 = ov30_02385F54(buffer);
@@ -1100,3 +1067,1152 @@ void ov30_02384CD4(void *buffer)
         ov30_02384E28(buffer, 0, var_r6_2);
     }
 }
+
+void UpdateEntityPixelPos(void*, void *);
+void UpdateIqSkillsWrapper(void*); 
+void ov29_02338F24(s16, s16);
+extern struct entity* LEADER_PTR;
+
+// 98.65% matched - Seth
+// https://decomp.me/scratch/g3lUO 
+
+asm void ov30_02384E28(void *arg0, s32 arg1, s32 index) 
+{
+#ifdef JAPAN
+#define OV30_02384E28_OFFSET -4
+#define OV30_02384E28_OFFSET_2 -1
+#else
+#define OV30_02384E28_OFFSET 0
+#define OV30_02384E28_OFFSET_2 0
+#endif
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
+#else
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
+#endif
+	sub sp, sp, #0x258 + OV30_02384E28_OFFSET
+	mov r10, r0
+	mov r9, r1
+	mov r8, r2
+	add r0, sp, #0x18
+	mov r1, #0
+	mov r2, #0x240 + OV30_02384E28_OFFSET
+	bl memset
+	mov r0, r10
+	bl ov30_02385EF4
+	mov r0, r10
+	bl ov30_02385EF4
+	mov r0, r10
+	bl ov30_02385EF4
+	mov r11, r0
+	mov r0, r10
+	add r1, sp, #0x14
+	bl ov30_02385F7C
+	mov r0, r10
+	bl ov30_02385F54
+	mov r5, r0
+	mov r0, r10
+	bl ov30_02385EC4
+	mov r6, r0
+	ldr r1, =LEADER_PTR
+	mov r2, #0
+	mov r0, r10
+	str r2, [r1]
+	bl ov30_02385EC4
+	strh r0, [sp, #0x18]
+	add r0, sp, #0xe
+	mov r1, #0
+	mov r2, #2
+	bl memset
+	mov r0, r10
+	add r1, sp, #0xe
+	mov r2, #2
+	bl ov30_02385CA4
+	ldrsh r2, [sp, #0xe]
+	add r0, sp, #0xc
+	mov r1, #0
+	strh r2, [sp, #0x1c]
+	mov r2, #2
+	bl memset
+	mov r0, r10
+	add r1, sp, #0xc
+	mov r2, #2
+	bl ov30_02385CA4
+	ldrsh r1, [sp, #0xc]
+	mov r0, r10
+	strh r1, [sp, #0x1a]
+	bl ov30_02385F54
+	strb r0, [sp, #0x1e]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x1f]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x20]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x21]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x22]
+	mov r0, r10
+	bl ov30_02385EF4
+	strh r0, [sp, #0x24]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x60]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x61]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x26]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x28]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x2a]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x2e]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x2c]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x32]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x33]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x34]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x35]
+	mov r0, r10
+	bl ov30_02385F0C
+	str r0, [sp, #0x38]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x3c]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x3e]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x40]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x42]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x44]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x46]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0x48]
+	mov r0, r10
+	bl ov30_02385F3C
+	str r0, [sp, #0x4c]
+	mov r0, r10
+	bl ov30_02385F3C
+	str r0, [sp, #0x50]
+	mov r0, r10
+	bl ov30_02385F3C
+	str r0, [sp, #0x54]
+	mov r0, r10
+	bl ov30_02385F3C
+	str r0, [sp, #0x58]
+	mov r0, #0
+	strh r0, [sp, #0x62]
+	mov r0, r10
+	add r1, sp, #0x64
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, #7
+	strb r0, [sp, #0x65]
+	mov r0, r10
+	add r1, sp, #0x72
+	bl ov30_02385F7C
+	add r0, sp, #8
+	mov r1, #0
+	mov r2, #1
+	bl memset
+	mov r0, r10
+	add r1, sp, #8
+	mov r2, #1
+	bl ov30_02385CA4
+	ldrb r2, [sp, #8]
+	add r0, sp, #7
+	mov r1, #0
+	strb r2, [sp, #0x76]
+	mov r2, #1
+	bl memset
+	mov r0, r10
+	add r1, sp, #7
+	mov r2, #1
+	bl ov30_02385CA4
+	ldrb r2, [sp, #7]
+	add r0, sp, #6
+	mov r1, #0
+	strb r2, [sp, #0x77]
+	mov r2, #1
+	bl memset
+	mov r0, r10
+	add r1, sp, #6
+	mov r2, #1
+	bl ov30_02385CA4
+	ldrb r2, [sp, #6]
+	add r0, sp, #5
+	mov r1, #0
+	strb r2, [sp, #0x78]
+	mov r2, #1
+	bl memset
+	mov r0, r10
+	add r1, sp, #5
+	mov r2, #1
+	bl ov30_02385CA4
+	ldrb r2, [sp, #5]
+	mov r0, r10
+	add r1, sp, #0x7a
+	strb r2, [sp, #0x79]
+	bl ov30_02384B24
+	add r0, sp, #0xa
+	mov r1, #0
+	mov r2, #2
+	bl memset
+	add r1, sp, #0xa
+	mov r0, r10
+	mov r2, #2
+	bl ov30_02385CA4
+	ldrsh r0, [sp, #0xa]
+	mov r4, #0
+	add r7, sp, #0x82
+	strh r0, [sp, #0x80]
+_02385158:
+	mov r0, r10
+	add r1, r7, r4, lsl #2
+	bl ov30_02385F7C
+	add r4, r4, #1
+	cmp r4, #4
+	blt _02385158
+	add r1, sp, #0x94
+	mov r0, r10
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x95]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x96]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x97]
+	mov r0, r10
+	bl ov30_02385EC4
+	strh r0, [sp, #0x98]
+	mov r0, #0
+	str r0, [sp, #0x9c]
+	str r0, [sp, #0xa0]
+	mov r0, r10
+	add r1, sp, #0xa4
+	bl ov30_02385F7C
+	mov r0, r10
+	add r1, sp, #0xa8
+	mov r2, #0x45
+	bl ov30_02385CA4
+	mov r0, r10
+	add r1, sp, #0xb4
+	mov r2, #0x45
+	bl ov30_02385CA4
+	add r0, sp, #4
+	mov r1, #0
+	mov r2, #1
+	bl memset
+	mov r0, r10
+	add r1, sp, #4
+	mov r2, #1
+	bl ov30_02385CA4
+	ldrb r1, [sp, #4]
+	mov r0, r10
+	strb r1, [sp, #0xc0]
+	bl ov30_02385EDC
+	strh r0, [sp, #0x5c]
+	add r0, sp, #3
+	mov r1, #0
+	mov r2, #1
+	bl memset
+	mov r0, r10
+	add r1, sp, #3
+	mov r2, #1
+	bl ov30_02385CA4
+	ldrb r1, [sp, #3]
+	mov r0, r10
+	strb r1, [sp, #0x5e]
+	bl ov30_02385F0C
+	str r0, [sp, #0xc8]
+	mov r0, r10
+	bl ov30_02385F0C
+	str r0, [sp, #0xcc]
+	mov r0, r10
+	bl ov30_02385F0C
+	str r0, [sp, #0xd0]
+	mov r0, r10
+	add r1, sp, #0xd5
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xd6]
+	add r1, sp, #0xd7
+	mov r0, r10
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xd8]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xd9]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xda]
+	mov r0, r10
+	add r1, sp, #0xdc
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xe4]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xe5]
+	mov r0, r10
+	bl ov30_02385F0C
+	str r0, [sp, #0xe0]
+	mov r0, r10
+	add r1, sp, #0xe8
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xe9]
+	mov r0, r10
+	add r1, sp, #0xea
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xeb]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xec]
+	mov r0, r10
+	add r1, sp, #0xed
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xee]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xef]
+	mov r0, r10
+	add r1, sp, #0xf0
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0xf1]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0xf2]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xf3]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0xf4]
+	mov r0, r10
+	add r1, sp, #0xf8
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385F0C
+	str r0, [sp, #0xfc]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x100]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x101]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x102]
+	mov r0, r10
+	add r1, sp, #0x104
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, sp, #0x100
+	strb r0, [sp, #0x105]
+	mov r0, r10
+	add r1, r1, #6
+	mov r2, #1
+	bl ov30_02385CA4
+	add r1, sp, #0x100
+	mov r0, r10
+	add r1, r1, #7
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, sp, #0x100
+	strb r0, [sp, #0x108]
+	mov r0, r10
+	add r1, r1, #9
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, sp, #0x100
+	strb r0, [sp, #0x10a]
+	mov r0, r10
+	add r1, r1, #0xb
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, sp, #0x100
+	strb r0, [sp, #0x10c]
+	mov r0, r10
+	add r1, r1, #0xd
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, sp, #0x100
+	strb r0, [sp, #0x10e]
+	add r1, r1, #0xf
+	mov r0, r10
+	mov r2, #1
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x110]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x111]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x112]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x113]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x114]
+	mov r0, r10
+	bl ov30_02385F54
+#ifndef JAPAN
+	strb r0, [sp, #0x11b]
+	mov r0, r10
+	bl ov30_02385F54
+#endif
+	strb r0, [sp, #0x115]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x120 + OV30_02384E28_OFFSET_2]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x116]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x117]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x118]
+	mov r0, r10
+	bl ov30_02385EF4
+#ifdef JAPAN
+	strb r0, [sp, #0x11b]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x11c]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x120]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x11d]
+	mov r0, r10
+	bl ov30_02385EF4
+#else
+	strb r0, [sp, #0x11c]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x11d]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x121]
+	mov r0, r10
+	bl ov30_02385EF4
+#endif
+	strb r0, [sp, #0x11e]
+	mov r0, r10
+	bl ov30_02385EF4
+#ifndef JAPAN
+	strb r0, [sp, #0x11f]
+	mov r0, r10
+	bl ov30_02385EF4
+#endif
+	strb r0, [sp, #0x122 + OV30_02384E28_OFFSET_2]
+	add r0, sp, #2
+	mov r1, #0
+	mov r2, #1
+	bl memset
+	mov r0, r10
+	add r1, sp, #2
+	mov r2, #1
+	bl ov30_02385CA4
+	ldrb r3, [sp, #2]
+	add r0, sp, #1
+	mov r1, #0
+	mov r2, #1
+	strb r3, [sp, #0x123 + OV30_02384E28_OFFSET_2]
+	bl memset
+	add r1, sp, #1
+	mov r0, r10
+	mov r2, #1
+	bl ov30_02385CA4
+	ldrb r2, [sp, #1]
+	add r0, sp, #0x10
+	mov r1, #0
+	strb r2, [sp, #0x124 + OV30_02384E28_OFFSET_2]
+	mov r2, #4
+	bl memset
+	mov r0, r10
+	add r1, sp, #0x10
+	mov r2, #4
+	bl ov30_02385CA4
+	ldr r1, [sp, #0x10]
+	mov r0, r10
+	str r1, [sp, #0x128 + OV30_02384E28_OFFSET]
+	add r1, sp, #0x12c + OV30_02384E28_OFFSET
+	mov r2, #5
+	bl ov30_02386074
+	add r1, sp, #0x100
+	mov r0, r10
+	add r1, r1, #0x31 + OV30_02384E28_OFFSET
+	mov r2, #5
+	bl ov30_02386074
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x136 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x137 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	str r0, [sp, #0x138 + OV30_02384E28_OFFSET]
+	mov r7, #0
+	add r4, sp, #0x18
+_02385630:
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, r4, r7, lsl #3
+	strb r0, [r1, #0x124 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, r4, r7, lsl #3
+	add r1, r1, #0x100
+	strh r0, [r1, #0x26 + OV30_02384E28_OFFSET]
+	add r1, sp, #0x13c + OV30_02384E28_OFFSET
+	add r1, r1, r7, lsl #3
+	mov r0, r10
+	add r1, r1, #4
+	mov r2, #2
+	bl ov30_02385CA4
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, r4, r7, lsl #3
+	strb r0, [r1, #0x12a + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, r4, r7, lsl #3
+	add r7, r7, #1
+	strb r0, [r1, #0x12b + OV30_02384E28_OFFSET]
+	cmp r7, #4
+	blt _02385630
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x15c + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EDC
+	add r1, sp, #0x100
+	strh r0, [r1, #0x5e + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EDC
+	add r1, sp, #0x100
+	strh r0, [r1, #0x60 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EDC
+	add r1, sp, #0x100
+	strh r0, [r1, #0x62 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EDC
+	add r1, sp, #0x100
+	strh r0, [r1, #0x64 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x166 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x167 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x169 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x168 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x16a + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x16b + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x16c + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x16d + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x16e + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EC4
+	add r1, sp, #0x100
+	strh r0, [r1, #0x70 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EC4
+	add r1, sp, #0x100
+	strh r0, [r1, #0x72 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x174 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x175 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x176 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x177 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F54
+	strb r0, [sp, #0x178 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x18f + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x190 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x191 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x192 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x193 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, sp, #0x100
+	strb r0, [sp, #0x194 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	add r1, r1, #0x96 + OV30_02384E28_OFFSET
+	bl ov30_02385F7C
+	mov r0, r10
+	bl ov30_02385F3C
+	str r0, [sp, #0x1a0 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EC4
+	add r1, sp, #0x100
+	strh r0, [r1, #0xaa + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F24
+	str r0, [sp, #0x1a4 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EC4
+	add r1, sp, #0x100
+	strh r0, [r1, #0xa8 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EDC
+	add r1, sp, #0x200
+	strh r0, [r1, #0x28 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EDC
+	add r1, sp, #0x200
+	strh r0, [r1, #0x2a + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385F0C
+	str r0, [sp, #0x22c + OV30_02384E28_OFFSET]
+	add r0, sp, #0
+	mov r1, #0
+	mov r2, #1
+	bl memset
+	mov r0, r10
+	add r1, sp, #0
+	mov r2, #1
+	bl ov30_02385CA4
+	ldrb r1, [sp]
+	mov r0, r10
+	strb r1, [sp, #0xd4]
+	bl ov30_02385EF4
+	strb r0, [sp, #0x17e + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x17f + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EDC
+	add r1, sp, #0x100
+	strh r0, [r1, #0x80 + OV30_02384E28_OFFSET]
+	mov r0, r10
+	bl ov30_02385EDC
+	strh r0, [sp, #0xc4]
+	mov r0, r10
+	bl ov30_02385EF4
+	strb r0, [sp, #0x182 + OV30_02384E28_OFFSET]
+	mov r4, #0
+	add r7, sp, #0x18
+_023858D8:
+	mov r0, r10
+	bl ov30_02385EF4
+	add r1, r7, r4
+	add r4, r4, #1
+	strb r0, [r1, #0x16b + OV30_02384E28_OFFSET]
+	cmp r4, #5
+	blt _023858D8
+	ldr r0, =LEADER_PTR
+	mov r1, #0
+	str r1, [r0]
+	cmp r11, #0
+	beq _023859D0
+	cmp r9, #0
+	beq _02385924
+	ldrsh r0, [sp, #0x1a]
+	ldrsh r1, [sp, #0x1c]
+	mov r2, r8
+	bl ov30_023859DC
+	b _02385934
+_02385924:
+	ldrsh r0, [sp, #0x1a]
+	ldrsh r1, [sp, #0x1c]
+	mov r2, r8
+	bl ov30_02385B10
+_02385934:
+	mov r7, r0
+	cmp r7, #0
+	beq _023859D0
+	ldrsh r0, [sp, #0x14]
+	ldrsh r1, [sp, #0x16]
+	ldr r4, [r7, #0xb4]
+	bl GetTileSafe
+	ldrh r1, [sp, #0x14]
+	add r10, sp, #0x18
+	mov r9, r4
+	strh r1, [r7, #8]
+	ldrh r1, [sp, #0x16]
+	mov r8, #0x24 + OV30_02384E28_OFFSET_2
+	strh r1, [r7, #0xa]
+	ldrh r1, [sp, #0x14]
+	strh r1, [r7, #4]
+	ldrh r1, [sp, #0x16]
+	strh r1, [r7, #6]
+	str r7, [r0, #0xc]
+	strb r5, [r7, #0x20]
+	strh r6, [r7, #0x26]
+_02385988:
+	ldmia r10!, {r0, r1, r2, r3}
+	stmia r9!, {r0, r1, r2, r3}
+	subs r8, r8, #1
+	bne _02385988
+#ifdef JAPAN
+	ldmia r10, {r0, r1, r2}
+	stmia r9, {r0, r1, r2}
+#endif
+	ldr r0, =LEADER_PTR
+	mov r1, #0
+	str r1, [r0]
+	ldrb r0, [r4, #7]
+	cmp r0, #0
+	beq _023859BC
+	ldrsh r0, [r7, #4]
+	ldrsh r1, [r7, #6]
+	bl ov29_02338F24
+_023859BC:
+	mov r0, r7
+	bl UpdateIqSkillsWrapper
+	mov r0, r7
+	mov r1, #0
+	bl UpdateEntityPixelPos
+_023859D0:
+	add sp, sp, #0x258 + OV30_02384E28_OFFSET
+#ifdef JAPAN
+	ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
+#else
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
+#endif
+}
+
+void PopulateActiveMonsterPtrs(void);        
+void ov29_022DE9F8(u8);                      
+s32 ov29_022DEA10(u32);                      
+void ov29_022E1AF4(u16, u16);                
+void ov29_022E1EC4(u16, u16);
+s32 ov29_022E1C84(s32*, s32*, s16, s16, s32);
+s32 ov29_022E2018(s32*, s32*, s16, s16, s32);
+
+static inline struct monster *GetEntInfo(struct entity *ent)
+{
+    return ent->info;
+}
+
+struct entity* ov30_023859DC(s16 id, s16 apparent_id, s32 monster_slot_index)
+{
+    s32 sp8;
+    s32 sp4;
+    s16 sprite_index;
+    s32 temp_r5;
+    struct monster* monster;
+    struct entity* entity;
+
+    temp_r5 = ov29_022DEA10(1);
+    sprite_index = DungeonGetSpriteIndex(apparent_id);
+    if (ov29_022E1C84(&sp8, &sp4, apparent_id, sprite_index, temp_r5) == 0) {
+        return NULL;
+    }
+    entity = DUNGEON_PTR->monster_slot_ptrs[monster_slot_index];
+    
+    entity->type = ENTITY_MONSTER;
+    entity->field_0x24 = monster_slot_index;
+    
+    monster = &DUNGEON_PTR->monsters[monster_slot_index];
+    entity->info = monster;
+    
+    monster->id = id;
+    GetEntInfo(entity)->apparent_id = apparent_id;
+    GetEntInfo(entity)->is_not_team_member = 0;
+    GetEntInfo(entity)->is_ally = 0;
+    entity->sprite_index = sprite_index;
+    entity->field_0xac = (sp8 + 0x1A);
+    entity->animation_group_id = 7;
+    entity->animation_id = 0;
+    entity->animation_group_id_mirror = 0xFF;
+    entity->animation_id_mirror0 = 1;
+    entity->field_0xb3 = 1;
+    entity->elevation = 0;
+    PopulateActiveMonsterPtrs();
+    GetEntInfo(entity)->field_0x17a = sp8;
+    GetEntInfo(entity)->field_0x17b = sp4;
+    ov29_022E1AF4(sp8, sp4);
+    entity->field_0xaa = temp_r5;
+    ov29_022DE9F8(temp_r5);
+    entity->field_0x28 = 0;
+    return entity;
+}
+
+struct entity* ov30_02385B10(s16 id, s16 apparent_id, s32 monster_slot_index)
+{
+    s32 sp8;
+    s32 sp4;
+    s16 sprite_index;
+    s32 temp_r5;
+    struct monster* monster;
+    struct entity* entity;
+
+    temp_r5 = ov29_022DEA10(2);
+    sprite_index = DungeonGetSpriteIndex(apparent_id);
+
+    if(ov29_022E2018(&sp8, &sp4, apparent_id, sprite_index, temp_r5) == 0)
+    {
+        return NULL;
+    }
+    
+   
+    // NOTE: Wild Pokemon Ptrs are after Team members..
+    entity = DUNGEON_PTR->monster_slot_ptrs[MAX_TEAM_MEMBERS + monster_slot_index];
+
+    entity->type = ENTITY_MONSTER;
+    entity->field_0x24 = monster_slot_index;
+    entity->transparent = 0;
+    
+    monster = &DUNGEON_PTR->wild_monsters[monster_slot_index];
+    entity->info = monster;
+    
+    monster->id = id;
+    GetEntInfo(entity)->apparent_id = apparent_id;
+    GetEntInfo(entity)->is_not_team_member = TRUE;
+    entity->sprite_index = sprite_index;
+    entity->field_0xac = (sp8 + 0x62);
+    entity->animation_group_id = 7;
+    entity->animation_id = 0;
+    entity->animation_group_id_mirror = 0xFF;
+    entity->animation_id_mirror0 = 1;
+    entity->field_0xb3 = 1;
+    entity->elevation = 0;
+   
+    GetEntInfo(entity)->field_0x17a = sp8;
+    GetEntInfo(entity)->field_0x17b = sp4;
+    ov29_022E1EC4(sp8, sp4);
+    PopulateActiveMonsterPtrs();
+    entity->field_0xaa = temp_r5;
+    ov29_022DE9F8(temp_r5);
+    entity->field_0x28 = 0;
+    return entity;
+}
+
+
+void ov30_02385C3C(struct DataSerializer *r0, u8 *r1, s32 r2)
+{
+    r0->stream = r1;
+    r0->count = 0;
+    r0->end = r1 + r2;
+}
+
+void ov30_02385C54(struct DataSerializer *r0, const void* src, s32 numBits)
+{
+    u8 *temp = (u8*)src;
+    while (numBits != 0) {
+        *r0->stream = *temp;;
+        r0->stream++;
+        r0->count++;
+        temp++;
+        numBits--;
+    }
+}
+
+void ov30_02385C8C(struct DataSerializer *r0, u8 *r1, s32 r2)
+{
+    r0->stream = r1;
+    r0->count = 0;
+    r0->end = r1 + r2;
+}
+
+void ov30_02385CA4(struct DataSerializer* r0, void* src, s32 numBits)
+{
+    u8 *temp = (u8*)src;
+    while (numBits != 0) {
+        *temp = *r0->stream;
+        r0->stream++;
+        r0->count++;
+        temp++;
+        numBits--;
+    }
+}
+
+
+void FinishBitSerializer(struct DataSerializer *r0)
+{
+}
+
+void ov30_02385CE0(struct DataSerializer *arg0, const void *string)
+{
+    ov30_02385C54(arg0, string, 8);
+}
+
+void ov30_02385CF0(struct DataSerializer *arg0, const void *string)
+{
+    u8 buffer[0xC];
+    ov30_02385CA4(arg0, buffer, 8);
+    buffer[8] = 0;
+}
+
+void ov30_02385D14(struct DataSerializer *arg0, u16 r1)
+{
+    ov30_02385C54(arg0, &r1, 2);
+}
+
+void ov30_02385D34(struct DataSerializer *arg0, s16 r1)
+{
+    ov30_02385C54(arg0, &r1, 2);
+}
+
+void ov30_02385D54(struct DataSerializer *arg0, u8 r1)
+{
+    ov30_02385C54(arg0, &r1, 1);
+}
+
+void ov30_02385D74(struct DataSerializer *arg0, s32 r1)
+{
+    ov30_02385C54(arg0, &r1, 4);
+}
+
+void ov30_02385D94(struct DataSerializer *arg0, s32 r1)
+{
+    ov30_02385C54(arg0, &r1, 4);
+}
+
+void ov30_02385DB4(struct DataSerializer *arg0, s32 r1)
+{
+    ov30_02385C54(arg0, &r1, 4);
+}
+
+void ov30_02385DD4(struct DataSerializer *arg0, u8 arg1)
+{
+    u8 sp0;
+    u8 var_r3;
+
+    if (arg1 != 0) {
+        var_r3 = 0xFF;
+    } else {
+        var_r3 = 0;
+    }
+    sp0 = var_r3;
+    ov30_02385C54(arg0, &sp0, 1);
+}
+
+void ov30_02385DF8(struct DataSerializer *arg0, struct position *pos)
+{
+    ov30_02385C54(arg0, &pos->x, 1);
+    ov30_02385C54(arg0, &pos->y, 1);
+}
+
+void ov30_02385E20(struct DataSerializer *arg0, struct position *pos)
+{
+    ov30_02385C54(arg0, &pos->x, 2);
+    ov30_02385C54(arg0, &pos->y, 2);
+}
+
+
+void ov30_02385E48(struct DataSerializer *arg0, s32 *arg1)
+{
+    ov30_02385C54(arg0, arg1, 1);
+    ov30_02385C54(arg0, arg1 + 1, 1);
+    ov30_02385C54(arg0, arg1 + 2, 1);
+    ov30_02385C54(arg0, arg1 + 3, 1);
+}
+
+void ov30_02385E90(struct DataSerializer *arg0, u16 *arg1)
+{
+    ov30_02385C54(arg0, arg1, 1);
+    ov30_02385C54(arg0, arg1 + 1, 1);
+}
+
+void ov30_02385EB8(struct DataSerializer *arg0, u8 *arg1, s32 num)
+{
+    ov30_02385C54(arg0, arg1, num);
+}
+
+u16 ov30_02385EC4(struct DataSerializer *arg0)
+{
+    u16 sp0;
+    ov30_02385CA4(arg0, &sp0, 2);
+    return sp0;
+}
+
+s16 ov30_02385EDC(struct DataSerializer *arg0)
+{
+    s16 sp0;
+    ov30_02385CA4(arg0, &sp0, 2);
+    return sp0;
+}
+
+u8 ov30_02385EF4(struct DataSerializer *arg0)
+{
+    u8 sp0;
+    ov30_02385CA4(arg0, &sp0, 1);
+    return sp0;
+}
+
+u32 ov30_02385F0C(struct DataSerializer *arg0)
+{
+    u32 sp0;
+    ov30_02385CA4(arg0, &sp0, 4);
+    return sp0;
+}
+
+s32 ov30_02385F24(struct DataSerializer *arg0)
+{
+    s32 sp0;
+    ov30_02385CA4(arg0, &sp0, 4);
+    return sp0;
+}
+
+s32 ov30_02385F3C(struct DataSerializer *arg0)
+{
+    s32 sp0;
+    ov30_02385CA4(arg0, &sp0, 4);
+    return sp0;
+}
+
+u8 ov30_02385F54(struct DataSerializer *arg0)
+{
+    u8 sp0;
+    u8 var_r0;
+
+    ov30_02385CA4(arg0, &sp0, 1);
+    if (sp0 != 0) {
+        var_r0 = 1;
+    } else {
+        var_r0 = 0;
+    }
+    return var_r0;
+}
+
+void ov30_02385F7C(struct DataSerializer *arg0, struct position *pos)
+{
+    pos->x = 0;
+    pos->y = 0;
+
+    ov30_02385CA4(arg0, &pos->x, 1);
+    ov30_02385CA4(arg0, &pos->y, 1); 
+}
+
+void ov30_02385FB0(struct DataSerializer *arg0, struct position *pos)
+{
+    pos->x = 0;
+    pos->y = 0;
+
+    ov30_02385CA4(arg0, &pos->x, 2);
+    ov30_02385CA4(arg0, &pos->y, 2); 
+}
+
+
+void ov30_02385FE4(struct DataSerializer *arg0, s32 *arg1)
+{
+
+    *arg1 = 0;
+    *(arg1 + 1) = 0;
+    *(arg1 + 2) = 0;
+    *(arg1 + 3) = 0;
+
+    ov30_02385CA4(arg0, arg1, 1);
+    ov30_02385CA4(arg0, arg1 + 1, 1);
+    ov30_02385CA4(arg0, arg1 + 2, 1);
+    ov30_02385CA4(arg0, arg1 + 3, 1);
+}
+
+void ov30_02386040(struct DataSerializer *arg0, u16 *arg1)
+{
+    *arg1 = 0;
+    *(arg1 + 1) = 0;
+    ov30_02385CA4(arg0, arg1, 1);
+    ov30_02385CA4(arg0, arg1 + 1, 1);
+}
+
+
+void ov30_02386074(struct DataSerializer *arg0, u8 *arg1, s32 num)
+{
+    ov30_02385CA4(arg0, arg1, num);
+}
+
