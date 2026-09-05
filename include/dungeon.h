@@ -7,7 +7,7 @@
 
 #define MAX_TEAM_MEMBERS 4
 #define DUNGEON_MAX_WILD_POKEMON 16
-#define DUNGEON_MAX_POKEMON 20
+#define DUNGEON_MAX_POKEMON MAX_TEAM_MEMBERS + DUNGEON_MAX_WILD_POKEMON
 #define DUNGEON_MAX_SIZE_X 56
 #define DUNGEON_MAX_SIZE_Y 32
 #define CORRIDOR_ROOM 0xFF
@@ -100,8 +100,7 @@ struct dungeon_generation_info {
     // 0x8C24: Position of the Hidden Stairs spawn, or (-1, -1) if no Hidden Stairs
     struct position hidden_stairs_pos;
     // 0x8C28: Spawn position of each of the team members
-    struct position individual_team_spawn_positions[4];
-    // There's another 6 words that look like spawn positions right after these 4
+    struct position individual_team_spawn_positions[8];
 };
 
 // Thresholds are ascending cumulative weights (0-10000)
@@ -812,7 +811,8 @@ struct dungeon {
     // 0x7F2: May always just be a copy of dungeon::some_monster_sprite_to_load, but may also
     // have another purpose.
     enum monster_id some_monster_sprite;
-    struct monster monsters[20]; // 0x7F4: Info for all the monsters currently in the dungeon
+    struct monster monsters[MAX_TEAM_MEMBERS]; // 0x7F4: Info for all the team monsters currently in the dungeon
+    struct monster wild_monsters[DUNGEON_MAX_WILD_POKEMON]; // 0x10F4: Info for all the wild monsters currently in the dungeon
     // 0x34F4: Array that contains the spawn stats for enemies, which are only calculated
     // once at the start of the floor.
     // Since the enemy spawn list of a floor can only have a maximum of 16 entries,
@@ -1259,23 +1259,7 @@ struct dungeon {
     u8 field_0x3fc3;
     struct trap traps[64];                   // 0x3FC4: Info for all the traps on the floor
     struct dungeon_generation_info gen_info; // 0x40C4: Stuff involved with dungeon generation
-    u8 field_0xccfc;
-    u8 field_0xccfd;
-    u8 field_0xccfe;
-    u8 field_0xccff;
-    u8 field_0xcd00;
-    u8 field_0xcd01;
-    u8 field_0xcd02;
-    u8 field_0xcd03;
-    u8 field_0xcd04;
-    u8 field_0xcd05;
-    u8 field_0xcd06;
-    u8 field_0xcd07;
-    u8 field_0xcd08;
-    u8 field_0xcd09;
-    u8 field_0xcd0a;
-    u8 field_0xcd0b;
-    // 0xCD0C: Appears to be an array for the team. Likely only the first 4 entries are used.
+       // 0xCD0C: Appears to be an array for the team. Likely only the first 4 entries are used.
     // Possibly related to dungeon_generation_info::individual_team_spawn_positions? Possibly the
     // direction to spawn each team member in?
     enum direction_id unk_team_direction_array[8];
@@ -1297,134 +1281,7 @@ struct dungeon {
     struct weather weather; // 0xCD38
     // 0xCD60: Seems to be tile data for tiles within fixed rooms
     struct tile fixed_room_tiles[8][8];
-    u8 field_0xd260;
-    u8 field_0xd261;
-    u8 field_0xd262;
-    u8 field_0xd263;
-    u8 field_0xd264;
-    u8 field_0xd265;
-    u8 field_0xd266;
-    u8 field_0xd267;
-    u8 field_0xd268;
-    u8 field_0xd269;
-    u8 field_0xd26a;
-    u8 field_0xd26b;
-    u8 field_0xd26c;
-    u8 field_0xd26d;
-    u8 field_0xd26e;
-    u8 field_0xd26f;
-    u8 field_0xd270;
-    u8 field_0xd271;
-    u8 field_0xd272;
-    u8 field_0xd273;
-    u8 field_0xd274;
-    u8 field_0xd275;
-    u8 field_0xd276;
-    u8 field_0xd277;
-    u8 field_0xd278;
-    u8 field_0xd279;
-    u8 field_0xd27a;
-    u8 field_0xd27b;
-    u8 field_0xd27c;
-    u8 field_0xd27d;
-    u8 field_0xd27e;
-    u8 field_0xd27f;
-    u8 field_0xd280;
-    u8 field_0xd281;
-    u8 field_0xd282;
-    u8 field_0xd283;
-    u8 field_0xd284;
-    u8 field_0xd285;
-    u8 field_0xd286;
-    u8 field_0xd287;
-    u8 field_0xd288;
-    u8 field_0xd289;
-    u8 field_0xd28a;
-    u8 field_0xd28b;
-    u8 field_0xd28c;
-    u8 field_0xd28d;
-    u8 field_0xd28e;
-    u8 field_0xd28f;
-    u8 field_0xd290;
-    u8 field_0xd291;
-    u8 field_0xd292;
-    u8 field_0xd293;
-    u8 field_0xd294;
-    u8 field_0xd295;
-    u8 field_0xd296;
-    u8 field_0xd297;
-    u8 field_0xd298;
-    u8 field_0xd299;
-    u8 field_0xd29a;
-    u8 field_0xd29b;
-    u8 field_0xd29c;
-    u8 field_0xd29d;
-    u8 field_0xd29e;
-    u8 field_0xd29f;
-    u8 field_0xd2a0;
-    u8 field_0xd2a1;
-    u8 field_0xd2a2;
-    u8 field_0xd2a3;
-    u8 field_0xd2a4;
-    u8 field_0xd2a5;
-    u8 field_0xd2a6;
-    u8 field_0xd2a7;
-    u8 field_0xd2a8;
-    u8 field_0xd2a9;
-    u8 field_0xd2aa;
-    u8 field_0xd2ab;
-    u8 field_0xd2ac;
-    u8 field_0xd2ad;
-    u8 field_0xd2ae;
-    u8 field_0xd2af;
-    u8 field_0xd2b0;
-    u8 field_0xd2b1;
-    u8 field_0xd2b2;
-    u8 field_0xd2b3;
-    u8 field_0xd2b4;
-    u8 field_0xd2b5;
-    u8 field_0xd2b6;
-    u8 field_0xd2b7;
-    u8 field_0xd2b8;
-    u8 field_0xd2b9;
-    u8 field_0xd2ba;
-    u8 field_0xd2bb;
-    u8 field_0xd2bc;
-    u8 field_0xd2bd;
-    u8 field_0xd2be;
-    u8 field_0xd2bf;
-    u8 field_0xd2c0;
-    u8 field_0xd2c1;
-    u8 field_0xd2c2;
-    u8 field_0xd2c3;
-    u8 field_0xd2c4;
-    u8 field_0xd2c5;
-    u8 field_0xd2c6;
-    u8 field_0xd2c7;
-    u8 field_0xd2c8;
-    u8 field_0xd2c9;
-    u8 field_0xd2ca;
-    u8 field_0xd2cb;
-    u8 field_0xd2cc;
-    u8 field_0xd2cd;
-    u8 field_0xd2ce;
-    u8 field_0xd2cf;
-    u8 field_0xd2d0;
-    u8 field_0xd2d1;
-    u8 field_0xd2d2;
-    u8 field_0xd2d3;
-    u8 field_0xd2d4;
-    u8 field_0xd2d5;
-    u8 field_0xd2d6;
-    u8 field_0xd2d7;
-    u8 field_0xd2d8;
-    u8 field_0xd2d9;
-    u8 field_0xd2da;
-    u8 field_0xd2db;
-    u8 field_0xd2dc;
-    u8 field_0xd2dd;
-    u8 field_0xd2de;
-    u8 field_0xd2df;
+    s16 field_0xd260[8][8];
     // 0xD2E0: Appears to keep track of what tiles are the fixed room tiles when generating
     // a fixed room that isn't the whole floor.
     u8 fixed_room_room_index;
@@ -1654,7 +1511,7 @@ struct dungeon {
     // 0x2C9E4: The total number of spawn entries loaded or to be loaded?
     u16 number_sprites_loaded;
     // 0x2C9E6: Highest level among all the enemies that spawn on this floor
-    u16 highest_enemy_level;
+    s16 highest_enemy_level;
     // 0x2C9E8: ID of an item guaranteed to spawn on the floor, if applicable
     // (e.g., certain mission types)
     enum item_id guaranteed_item_id;

@@ -270,8 +270,7 @@ struct monster {
     s16 iq;          // 0xE
     s16 hp;          // 0x10: Current HP
     s16 max_hp_stat; // 0x12: Add to max_hp_boost for the actual max HP
-    u8 field_0x14;
-    u8 field_0x15;
+    s16 field_0x14;
     s16 max_hp_boost; // 0x16: From Life Seeds, Sitrus Berries, etc.
     u8 field_0x18;
     u8 field_0x19;
@@ -292,7 +291,7 @@ struct monster {
     struct item held_item;            // 0x62
     // 0x68: Previous held item. Used for whenever taking the X-Ray Specs or Y-Ray Specs on or off
     // in order to update the camera and minimap. Changed to held_item.id after checking.
-    enum item_id previous_held_item_id;
+    s16 previous_held_item_id;
     // Previous position data is used by the AI
     struct position prev_pos[NUM_PREV_POS];  // 0x6A: Position X turns ago
     struct ai_target ai_target; // 0x7A
@@ -309,8 +308,7 @@ struct monster {
     // and restored to entity::types after statuses::roost ends.
     enum type_id original_types[2];
     // 0xAC: The move id to be used if statuses::bide is 1.
-    u8 bide_move_id;
-    u8 field_0xad;
+    s16 bide_move_id;
     u8 field_0xae;
     u8 field_0xaf;
     // 0xB0: Unique number given to the monster when spawning to differentiate it from other
@@ -468,18 +466,13 @@ struct monster {
     // 0x167: Set to true when the monster receives a critical hit. If true when the monster
     // attacks, Anger Point will activate. Set to false after the monster attacks.
     bool8 anger_point_flag;
-    u8 field_0x168;
-    u8 field_0x169;
+    s16 field_0x168;
     // 0x16A: When not DIR_NONE, monster will turn in the specified direction and
     // its AI will be forced to target the tile next to it in that direction.
     // Used to prevent bosses from turning towards team members the moment the boss fight
     // starts (which would override their intended starting facing direction).
-    enum direction_id force_turn : 8;
-    u8 field_0x16b;
-    u8 field_0x16c;
-    u8 field_0x16d;
-    u8 field_0x16e;
-    u8 field_0x16f;
+    u8 force_turn;
+    u8 unk16B[5];
     // 0x170: Set to make the monster disappear when using the move U-turn.
     bool8 uturn_hide_monster_flag;
     // 0x171: Some kind of visual flag? Gets set to 0 temporarily when changing Shaymin form
@@ -495,9 +488,9 @@ struct monster {
     u8 field_0x175;
     u8 field_0x176;
     // 0x177: Appears to be the direction for using sleep talk? Set to DIR_NONE when awake.
-    enum direction_id sleep_talk_direction : 8;
+    u8 sleep_talk_direction;
     // 0x178: Appears to be the direction for using snore? Set to DIR_NONE when awake.
-    enum direction_id snore_direction : 8;
+    u8 snore_direction;
     // 0x179: Seems to be set to 4 when the monster initally throws something and probably
     // related to direction somehow. Checked in a loop for every monster.
     u8 field_0x179;
@@ -511,10 +504,7 @@ struct monster {
     struct position pixel_pos;  // 0x182: The monster's graphical position on screen?
     u8 field_0x186;
     u8 field_0x187;
-    u8 field_0x188;
-    u8 field_0x189;
-    u8 field_0x18a;
-    u8 field_0x18b;
+    u32 field_0x188;
     // 0x18C: Bitflags that cause non-damaging exclusive items to trigger on the
     // attacker after they have completed their move. For example, the Eclipse Robe
     // (Darkrai exclusive item) may afflict attacking enemies with the nightmare
@@ -648,8 +638,7 @@ struct monster {
     u8 field_0x20d;
     u8 field_0x20e;
     u8 field_0x20f;
-    u8 hp_fractional; // 0x210: 200 * fractional_part(HP)
-    u8 field_0x211;
+    s16 hp_fractional; // 0x210: 200 * fractional_part(HP)
     // 0x212: When a Pokémon can pass through walls in a hallway, this counts up to 200 before the Pokémon turns in a random direction.
     s16 mobile_turn_timer;
     // 0x214: Somehow related to gaining exp through a joy ribbon. Set to 0 after
@@ -726,10 +715,9 @@ struct entity {
     u8 field_0x2b;
     struct animation_control anim_ctrl;
     u16 sprite_index; // 0xA8
-    u8 field_0xaa;
+    s8 field_0xaa;
     u8 field_0xab;
-    u8 field_0xac;
-    u8 field_0xad;
+    s16 field_0xac;
     u8 animation_group_id;        // 0xAE
     u8 animation_group_id_mirror; // 0xAF
     u8 animation_id;              // 0xB0
@@ -1142,9 +1130,9 @@ struct trap {
     u8 team;
 
     // 0x2: flags: 1-byte bitfield
-    //u8 flags;
-    bool8 f_unbreakable : 1; // If true, the trap can't be broken (for example, using a Trapbust Orb)
-    u8 flags_unk1 : 7;
+    u8 flags;
+    //bool8 f_unbreakable : 1; // If true, the trap can't be broken (for example, using a Trapbust Orb)
+    //u8 flags_unk1 : 7;
 
     u8 field_0x3;
 };
