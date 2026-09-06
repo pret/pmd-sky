@@ -1165,10 +1165,7 @@ struct damage_calc_diag {
     u8 field_0x1;
     u8 field_0x2;
     u8 field_0x3;
-    enum move_category move_category; // 0x4: The category of the last move used
-    u8 field_0x5;
-    u8 field_0x6;
-    u8 field_0x7;
+    s32 move_category;
     // 0x8: The type matchup of the last move used against the individual types of the defender
     enum type_matchup move_indiv_type_matchups[2];
     // 0xA: The modified offensive stat stage of the attacker for the last move used
@@ -1222,29 +1219,29 @@ struct damage_calc_diag {
     s32 static_damage_mult;
     // 0x30: The net number of attack boosts to an attacker due to a Power Band or Munch Belt.
     // It seems like there's a bug in the code; aura bows do not contribute to this field.
-    s8 item_atk_modifier;
+    u8 item_atk_modifier;
     // 0x31: The net number of special attack boosts to an attacker due to a Special Band,
     // Munch Belt, or aura bow. It seems like there's a bug in the code; physical attack boosts
     // from aura bows also contribute to this field.
-    s8 item_sp_atk_modifier;
+    u8 item_sp_atk_modifier;
     // 0x32: The net number of offense boosts to an attacker due to Download, Rivalry,
     // Flower Gift, and Solar Power
-    s8 ability_offense_modifier;
+    u8 ability_offense_modifier;
     // 0x33: The net number of defense boosts to a defender due to Flower Gift
-    s8 ability_defense_modifier;
+    u8 ability_defense_modifier;
     // 0x34: The net number of offense boosts to an attacker due to Aggressor, Defender, and
     // Practice Swinger
-    s8 iq_skill_offense_modifier;
+    u8 iq_skill_offense_modifier;
     // 0x35: The net number of defense boosts to a defender due to Counter Basher, Aggressor, and
     // Defender
-    s8 iq_skill_defense_modifier;
+    u8 iq_skill_defense_modifier;
     // 0x36: The net number of defense boosts to a defender due to a Def Scarf or aura bow.
     // It seems like there's a bug in the code; special defense boosts from aura bows also
     // contribute to this field.
-    s8 item_def_modifier;
+    u8 item_def_modifier;
     // 0x37: The net number of special defense boosts to a defender due to a Zinc Band.
     // It seems like there's a bug in the code; aura bows do not contribute to this field.
-    s8 item_sp_def_modifier;
+    u8 item_sp_def_modifier;
     // 0x38: Whether or not Scope Lens or Sharpshooter boosted the critical hit rate of a move
     bool8 scope_lens_or_sharpshooter_activated;
     // 0x39: Whether or not the Patsy Band boosted the critical hit rate of a move
