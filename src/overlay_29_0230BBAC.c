@@ -101,78 +101,78 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
                 s32 power, s32 crit_chance, struct unk_02308FE0 *damage_out,
                 s32 damage_mult, enum move_id move_id, s32 a9)
 {
-    struct fixed_point_64 type_mult;
-    struct fixed_point_64 base;
-    struct fixed_point_64 flv_fp;
-    struct fixed_point_64 at_fp;
-    struct fixed_point_64 def_fp;
-    s32 calc[2];
-    struct fixed_point_64 tmp2;
-    struct fixed_point_64 tmp;
-    struct fixed_point_64 scratch;
-    struct fixed_point_64 tmp3;
-    struct fixed_point_64 mult_fp;
-    struct fixed_point_64 ln_fp;
-    struct fixed_point_64 mult32_fp;
-    struct fixed_point_64 hundred_fp;
-    struct monster *amon;
-    struct monster *dmon;
-    bool8 has_status;
-    s32 off_stage;
-    s32 ability_roll;
-    s32 off_mult;
-    s32 def_mult;
-    bool8 has_status2;
-    bool8 has_status3;
-    s32 not_physical2;
-    s32 def_ability_div;
-    s32 def_ability_mult;
-    s32 dv;
-    s32 p;
-    struct monster *info;
-    struct monster *info2;
-    int dmult;
-    s32 not_physical;
-    s32 is_team_member;
-    s32 def_stage;
-    s32 off_ability_mult;
-    s32 off_ability_div;
-    s32 off_mod;
-    s32 def_mod;
-    bool8 boosted;
-    s32 type_boosted;
-    s32 rate;
-    s32 flash;
-    volatile s32 *po;
-    volatile s32 *po2;
-    volatile s32 *pd;
+    struct fixed_point_64 fp1;
+    struct fixed_point_64 fp2;
+    struct fixed_point_64 fp3;
+    struct fixed_point_64 fp4;
+    struct fixed_point_64 fp5;
+    s32 arr[2];
+    struct fixed_point_64 fp6;
+    struct fixed_point_64 fp7;
+    struct fixed_point_64 fp8;
+    struct fixed_point_64 fp9;
+    struct fixed_point_64 fp10;
+    struct fixed_point_64 fp11;
+    struct fixed_point_64 fp12;
+    struct fixed_point_64 fp13;
+    struct monster *mon1;
+    struct monster *mon2;
+    bool8 f1;
+    s32 v1;
+    s32 v2;
+    s32 v3;
+    s32 v4;
+    bool8 f2;
+    bool8 f3;
+    s32 v5;
+    s32 v6;
+    s32 v7;
+    s32 v8;
+    s32 v9;
+    struct monster *mon3;
+    struct monster *mon4;
+    int v10;
+    s32 v11;
+    s32 v12;
+    s32 v13;
+    s32 v14;
+    s32 v15;
+    s32 v16;
+    s32 v17;
+    bool8 f4;
+    s32 v18;
+    s32 v19;
+    s32 v20;
+    volatile s32 *p1;
+    volatile s32 *p2;
+    volatile s32 *p3;
     struct damage_calc_diag *diag;
 
-    amon = GetEntInfo(attacker);
-    dmon = GetEntInfo(defender);
-    dmult = damage_mult;
+    mon1 = GetEntInfo(attacker);
+    mon2 = GetEntInfo(defender);
+    v10 = damage_mult;
     diag = &DUNGEON_PTR->last_damage_calc;
     ResetDamageData(damage_out);
 
-    if (amon->me_first_flag) {
-        dmult = MultiplyByFixedPoint(dmult, ME_FIRST_MULTIPLIER);
+    if (mon1->me_first_flag) {
+        v10 = MultiplyByFixedPoint(v10, ME_FIRST_MULTIPLIER);
     }
     if (AbilityIsActiveVeneer(attacker, ABILITY_RECKLESS) && IsRecoilMove(move_id)) {
-        dmult = dmult * 3 / 2;
+        v10 = v10 * 3 / 2;
     }
     if (AbilityIsActiveVeneer(attacker, ABILITY_IRON_FIST) && IsPunchMove(move_id)) {
-        dmult = MultiplyByFixedPoint(dmult, 0x180);
+        v10 = MultiplyByFixedPoint(v10, 0x180);
     }
     if (AbilityIsActiveVeneer(attacker, ABILITY_NORMALIZE)) {
         attack_type = TYPE_NORMAL;
     }
     if (move_id == 0x1D3) {
-        attack_type = amon->types[0];
+        attack_type = mon1->types[0];
     }
-    not_physical = MoveIsNotPhysical(move_id);
+    v11 = MoveIsNotPhysical(move_id);
     ResetDamageCalcDiagnostics();
 
-    if (!amon->is_team_leader && CeilFixedPoint(amon->belly) == 0) {
+    if (!mon1->is_team_leader && CeilFixedPoint(mon1->belly) == 0) {
         damage_out->field_0x0 = 1;
         damage_out->field_0x4 = 0;
         damage_out->field_0x8 = MATCHUP_NEUTRAL;
@@ -204,281 +204,281 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
     damage_out->field_0xc = attack_type;
     damage_out->field_0xd = GetMoveCategory(move_id);
     diag->move_type = attack_type;
-    off_mod = 0;
-    def_mod = 0;
-    diag->move_category = not_physical;
-    off_mult = amon->stat_modifiers.offensive_multipliers[not_physical];
-    def_mult = dmon->stat_modifiers.defensive_multipliers[not_physical];
+    v16 = 0;
+    v17 = 0;
+    diag->move_category = v11;
+    v3 = mon1->stat_modifiers.offensive_multipliers[v11];
+    v4 = mon2->stat_modifiers.defensive_multipliers[v11];
 
     if (AbilityIsActiveVeneer(attacker, ABILITY_DOWNLOAD)) {
-        if (dmon->defensive_stats[0] >= dmon->defensive_stats[1]) {
-            if (not_physical == 1) {
-                off_mod++;
+        if (mon2->defensive_stats[0] >= mon2->defensive_stats[1]) {
+            if (v11 == 1) {
+                v16++;
                 diag->ability_offense_modifier++;
             }
-        } else if (not_physical == 0) {
-            off_mod++;
+        } else if (v11 == 0) {
+            v16++;
             diag->ability_offense_modifier++;
         }
     }
 
-    off_stage = amon->stat_modifiers.offensive_stages[not_physical];
+    v1 = mon1->stat_modifiers.offensive_stages[v11];
     if (a9) {
         if (attack_type == TYPE_FIRE) {
-            s16 boost = amon->stat_modifiers.flash_fire_boost;
-            diag->flash_fire_boost = boost;
-            off_mod += boost;
+            s16 v21 = mon1->stat_modifiers.flash_fire_boost;
+            diag->flash_fire_boost = v21;
+            v16 += v21;
         }
     }
 
     if (IqSkillIsEnabled(attacker, IQ_AGGRESSOR)) {
-        off_mod++;
+        v16++;
         diag->iq_skill_offense_modifier++;
     }
     if (IqSkillIsEnabled(attacker, IQ_DEFENDER)) {
-        off_mod--;
+        v16--;
         diag->iq_skill_offense_modifier--;
     }
-    if (IqSkillIsEnabled(attacker, IQ_PRACTICE_SWINGER) && amon->practice_swinger_flag) {
-        off_mod++;
+    if (IqSkillIsEnabled(attacker, IQ_PRACTICE_SWINGER) && mon1->practice_swinger_flag) {
+        v16++;
         diag->iq_skill_offense_modifier++;
     }
     if (NearbyAllyIqSkillIsEnabled(attacker, IQ_CHEERLEADER)) {
-        off_mod++;
+        v16++;
     }
 
-    if (not_physical == 0) {
+    if (v11 == 0) {
         if (AbilityIsActiveVeneer(attacker, ABILITY_RIVALRY)) {
-            if (GendersEqualNotGenderless(amon->apparent_id, dmon->apparent_id)) {
-                off_mod++;
+            if (GendersEqualNotGenderless(mon1->apparent_id, mon2->apparent_id)) {
+                v16++;
                 diag->ability_offense_modifier++;
-            } else if (GetMonsterGenderVeneer(amon->apparent_id) != 3
-                       && GetMonsterGenderVeneer(dmon->apparent_id) != 3) {
-                off_mod--;
+            } else if (GetMonsterGenderVeneer(mon1->apparent_id) != 3
+                       && GetMonsterGenderVeneer(mon2->apparent_id) != 3) {
+                v16--;
                 diag->ability_offense_modifier--;
             }
         }
         if (GetApparentWeather(attacker) == WEATHER_SUNNY
             && (AbilityIsActiveVeneer(attacker, ABILITY_FLOWER_GIFT)
                 || OtherMonsterAbilityIsActive(attacker, ABILITY_FLOWER_GIFT))) {
-            off_mod++;
+            v16++;
             diag->ability_offense_modifier++;
         }
     } else {
         if (AbilityIsActiveVeneer(attacker, ABILITY_SOLAR_POWER)
             && GetApparentWeather(attacker) == WEATHER_SUNNY) {
-            off_mod += 2;
+            v16 += 2;
             diag->ability_offense_modifier += 2;
         }
         if (GetApparentWeather(defender) == WEATHER_SUNNY
             && (AbilityIsActiveVeneer(defender, ABILITY_FLOWER_GIFT)
                 || OtherMonsterAbilityIsActive(defender, ABILITY_FLOWER_GIFT))) {
-            def_mod++;
+            v17++;
             diag->ability_defense_modifier++;
         }
         if (GetApparentWeather(defender) == WEATHER_SANDSTORM
-            && (dmon->types[0] == TYPE_ROCK || dmon->types[1] == TYPE_ROCK)) {
-            def_mod += 2;
+            && (mon2->types[0] == TYPE_ROCK || mon2->types[1] == TYPE_ROCK)) {
+            v17 += 2;
         }
     }
 
-    if (amon->apparent_id == 0x1A3) {
-        off_mod += 2;
+    if (mon1->apparent_id == 0x1A3) {
+        v16 += 2;
     }
-    if (amon->apparent_id == 0x1A4) {
-        off_mod -= 2;
+    if (mon1->apparent_id == 0x1A4) {
+        v16 -= 2;
     }
-    if (amon->apparent_id == 0x1A5) {
-        off_mod -= 2;
+    if (mon1->apparent_id == 0x1A5) {
+        v16 -= 2;
     }
-    if (amon->apparent_id == 0x211) {
-        off_mod -= 2;
-    } else if (amon->apparent_id == 0x218) {
-        off_mod += 2;
-    }
-
-    off_stage += off_mod;
-    if (amon->anger_point_flag && AbilityIsActiveVeneer(attacker, ABILITY_ANGER_POINT)) {
-        off_stage = 20;
+    if (mon1->apparent_id == 0x211) {
+        v16 -= 2;
+    } else if (mon1->apparent_id == 0x218) {
+        v16 += 2;
     }
 
-    def_stage = dmon->stat_modifiers.defensive_stages[not_physical];
-    if (not_physical == 0) {
-        if (dmon->bide_class_status.bide == 6) {
+    v1 += v16;
+    if (mon1->anger_point_flag && AbilityIsActiveVeneer(attacker, ABILITY_ANGER_POINT)) {
+        v1 = 20;
+    }
+
+    v13 = mon2->stat_modifiers.defensive_stages[v11];
+    if (v11 == 0) {
+        if (mon2->bide_class_status.bide == 6) {
             diag->skull_bash_defense_boost_activated = TRUE;
-            def_mod++;
+            v17++;
         }
         if (IqSkillIsEnabled(defender, IQ_COUNTER_BASHER)) {
-            def_mod--;
+            v17--;
             diag->iq_skill_defense_modifier--;
         }
     }
     if (IqSkillIsEnabled(defender, IQ_AGGRESSOR)) {
-        def_mod--;
+        v17--;
         diag->iq_skill_defense_modifier--;
     }
     if (IqSkillIsEnabled(defender, IQ_DEFENDER)) {
-        def_mod++;
+        v17++;
         diag->iq_skill_defense_modifier++;
     }
-    if (dmon->apparent_id == 0x1A3) {
-        def_mod -= 2;
+    if (mon2->apparent_id == 0x1A3) {
+        v17 -= 2;
     }
-    if (dmon->apparent_id == 0x1A4) {
-        def_mod += 2;
+    if (mon2->apparent_id == 0x1A4) {
+        v17 += 2;
     }
-    if (dmon->apparent_id == 0x1A5) {
-        def_mod -= 2;
+    if (mon2->apparent_id == 0x1A5) {
+        v17 -= 2;
     }
 #ifdef JAPAN
-    if (amon->apparent_id == 0x211) {
-        def_mod += 2;
-    } else if (amon->apparent_id == 0x218) {
-        def_mod -= 2;
+    if (mon1->apparent_id == 0x211) {
+        v17 += 2;
+    } else if (mon1->apparent_id == 0x218) {
+        v17 -= 2;
     }
 #else
-    if (dmon->apparent_id == 0x211) {
-        def_mod += 2;
-    } else if (dmon->apparent_id == 0x218) {
-        def_mod -= 2;
+    if (mon2->apparent_id == 0x211) {
+        v17 += 2;
+    } else if (mon2->apparent_id == 0x218) {
+        v17 -= 2;
     }
 #endif
-    def_stage += def_mod;
+    v13 += v17;
 
     if (move_id == 0x1BD) {
-        s16 sum = 0;
+        s16 v22 = 0;
 
-        if (dmon->stat_modifiers.offensive_stages[0] > 10) {
-            sum += dmon->stat_modifiers.offensive_stages[0] - 10;
+        if (mon2->stat_modifiers.offensive_stages[0] > 10) {
+            v22 += mon2->stat_modifiers.offensive_stages[0] - 10;
         }
-        if (dmon->stat_modifiers.defensive_stages[0] > 10) {
-            sum += dmon->stat_modifiers.defensive_stages[0] - 10;
+        if (mon2->stat_modifiers.defensive_stages[0] > 10) {
+            v22 += mon2->stat_modifiers.defensive_stages[0] - 10;
         }
-        if (dmon->stat_modifiers.offensive_stages[1] > 10) {
-            sum += dmon->stat_modifiers.offensive_stages[1] - 10;
+        if (mon2->stat_modifiers.offensive_stages[1] > 10) {
+            v22 += mon2->stat_modifiers.offensive_stages[1] - 10;
         }
-        if (dmon->stat_modifiers.defensive_stages[1] > 10) {
-            sum += dmon->stat_modifiers.defensive_stages[1] - 10;
+        if (mon2->stat_modifiers.defensive_stages[1] > 10) {
+            v22 += mon2->stat_modifiers.defensive_stages[1] - 10;
         }
-        off_stage += sum;
+        v1 += v22;
     }
 
     if (AbilityIsActiveVeneer(attacker, ABILITY_UNAWARE)) {
-        def_stage = 10;
-        def_mult = 0x100;
+        v13 = 10;
+        v4 = 0x100;
 #ifdef JAPAN
     } else if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_UNAWARE)) {
 #else
     } else if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_UNAWARE, TRUE)) {
 #endif
-        off_stage = 10;
-        off_mult = 0x100;
+        v1 = 10;
+        v3 = 0x100;
     }
 
-    if (off_stage < 0) {
-        off_stage = 0;
+    if (v1 < 0) {
+        v1 = 0;
     }
-    if (off_stage > 20) {
-        off_stage = 20;
+    if (v1 > 20) {
+        v1 = 20;
     }
-    diag->offensive_stat_stage = off_stage;
-    diag->offensive_stat = amon->offensive_stats[not_physical];
-    calc[0] = MultiplyByFixedPoint(
-        MultiplyByFixedPoint(amon->offensive_stats[not_physical] << 8,
-                             OFFENSIVE_STAT_STAGE_MULTIPLIERS[off_stage]),
-        off_mult) >> 8;
+    diag->offensive_stat_stage = v1;
+    diag->offensive_stat = mon1->offensive_stats[v11];
+    arr[0] = MultiplyByFixedPoint(
+        MultiplyByFixedPoint(mon1->offensive_stats[v11] << 8,
+                             OFFENSIVE_STAT_STAGE_MULTIPLIERS[v1]),
+        v3) >> 8;
 
-    if (def_stage < 0) {
-        def_stage = 0;
+    if (v13 < 0) {
+        v13 = 0;
     }
-    if (def_stage > 20) {
-        def_stage = 20;
+    if (v13 > 20) {
+        v13 = 20;
     }
-    diag->defensive_stat_stage = def_stage;
-    diag->defensive_stat = dmon->defensive_stats[not_physical];
-    calc[1] = MultiplyByFixedPoint(
-        MultiplyByFixedPoint(dmon->defensive_stats[not_physical] << 8,
-                             DEFENSIVE_STAT_STAGE_MULTIPLIERS[def_stage]),
-        def_mult) >> 8;
+    diag->defensive_stat_stage = v13;
+    diag->defensive_stat = mon2->defensive_stats[v11];
+    arr[1] = MultiplyByFixedPoint(
+        MultiplyByFixedPoint(mon2->defensive_stats[v11] << 8,
+                             DEFENSIVE_STAT_STAGE_MULTIPLIERS[v13]),
+        v4) >> 8;
 
-    if (!amon->is_not_team_member) {
-        calc[0] += ExclusiveItemOffenseBoost(attacker, not_physical);
+    if (!mon1->is_not_team_member) {
+        arr[0] += ExclusiveItemOffenseBoost(attacker, v11);
     }
-    if (!dmon->is_not_team_member) {
-        calc[1] += ExclusiveItemDefenseBoost(defender, not_physical);
+    if (!mon2->is_not_team_member) {
+        arr[1] += ExclusiveItemDefenseBoost(defender, v11);
     }
 
-    if (not_physical == 0) {
+    if (v11 == 0) {
         if (ItemIsActive__0230A9DC(attacker, ITEM_POWER_BAND)) {
-            calc[0] += POWER_BAND_STAT_BOOST;
+            arr[0] += POWER_BAND_STAT_BOOST;
             diag->item_atk_modifier += POWER_BAND_STAT_BOOST;
         }
         if (ItemIsActive__0230A9DC(attacker, ITEM_MUNCH_BELT)) {
-            calc[0] += MUNCH_BELT_STAT_BOOST;
+            arr[0] += MUNCH_BELT_STAT_BOOST;
             diag->item_atk_modifier += MUNCH_BELT_STAT_BOOST;
         }
         if (AuraBowIsActive(attacker)) {
-            calc[0] += AURA_BOW_STAT_BOOST;
+            arr[0] += AURA_BOW_STAT_BOOST;
             diag->item_sp_atk_modifier += AURA_BOW_STAT_BOOST;
         }
         if (a9) {
             if (ItemIsActive__0230A9DC(defender, ITEM_DEF_SCARF)) {
-                calc[1] += DEF_SCARF_STAT_BOOST;
+                arr[1] += DEF_SCARF_STAT_BOOST;
                 diag->item_def_modifier += DEF_SCARF_STAT_BOOST;
             }
             if (AuraBowIsActive(defender)) {
-                calc[1] += AURA_BOW_STAT_BOOST;
+                arr[1] += AURA_BOW_STAT_BOOST;
                 diag->item_def_modifier += AURA_BOW_STAT_BOOST;
             }
         }
     } else {
         if (a9) {
             if (ItemIsActive__0230A9DC(defender, ITEM_ZINC_BAND)) {
-                calc[1] += ZINC_BAND_STAT_BOOST;
+                arr[1] += ZINC_BAND_STAT_BOOST;
                 diag->item_sp_def_modifier += ZINC_BAND_STAT_BOOST;
             }
             if (AuraBowIsActive(defender)) {
-                calc[1] += AURA_BOW_STAT_BOOST;
+                arr[1] += AURA_BOW_STAT_BOOST;
                 diag->item_def_modifier += AURA_BOW_STAT_BOOST;
             }
         }
         if (ItemIsActive__0230A9DC(attacker, ITEM_SPECIAL_BAND)) {
-            calc[0] += SPECIAL_BAND_STAT_BOOST;
+            arr[0] += SPECIAL_BAND_STAT_BOOST;
             diag->item_sp_atk_modifier += SPECIAL_BAND_STAT_BOOST;
         }
         if (ItemIsActive__0230A9DC(attacker, ITEM_MUNCH_BELT)) {
-            calc[0] += MUNCH_BELT_STAT_BOOST;
+            arr[0] += MUNCH_BELT_STAT_BOOST;
             diag->item_sp_atk_modifier += MUNCH_BELT_STAT_BOOST;
         }
         if (AuraBowIsActive(defender)) {
-            calc[0] += AURA_BOW_STAT_BOOST;
+            arr[0] += AURA_BOW_STAT_BOOST;
             diag->item_sp_atk_modifier += AURA_BOW_STAT_BOOST;
         }
     }
 
-    po = &calc[0];
-    po2 = &calc[0];
-    FixedPoint32To64(&at_fp,
+    p1 = &arr[0];
+    p2 = &arr[0];
+    FixedPoint32To64(&fp4,
                      MultiplyByFixedPoint(MultiplyByFixedPoint(power << 8,
-                                                               OFFENSIVE_STAT_STAGE_MULTIPLIERS[off_stage]),
-                                          off_mult));
-    ability_roll = DungeonRandInt(100);
-    amon->prev_state_flags &= ~0x100;
-    amon->state_flags &= ~0x100;
-    off_ability_mult = 1;
-    off_ability_div = 1;
-    def_ability_mult = 1;
-    def_ability_div = 1;
+                                                               OFFENSIVE_STAT_STAGE_MULTIPLIERS[v1]),
+                                          v3));
+    v2 = DungeonRandInt(100);
+    mon1->prev_state_flags &= ~0x100;
+    mon1->state_flags &= ~0x100;
+    v14 = 1;
+    v15 = 1;
+    v7 = 1;
+    v6 = 1;
 
-    not_physical2 = MoveIsNotPhysical(move_id);
-    if (not_physical2 == 0 && AbilityIsActiveVeneer(attacker, ABILITY_GUTS)) {
-        info = attacker->info;
-        has_status = MonsterHasNegativeStatus(attacker, TRUE);
-        boosted = UpdateStateFlags(info, 1, has_status);
-        if (has_status) {
-            off_ability_mult <<= 1;
+    v5 = MoveIsNotPhysical(move_id);
+    if (v5 == 0 && AbilityIsActiveVeneer(attacker, ABILITY_GUTS)) {
+        mon3 = attacker->info;
+        f1 = MonsterHasNegativeStatus(attacker, TRUE);
+        f4 = UpdateStateFlags(mon3, 1, f1);
+        if (f1) {
+            v14 <<= 1;
         }
-        if (boosted) {
+        if (f4) {
             PlayEffectAnimation0x1A9__022E6130(attacker);
             LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C53);
         }
@@ -486,142 +486,142 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
 
     if (AbilityIsActiveVeneer(attacker, ABILITY_HUGE_POWER)
         || AbilityIsActiveVeneer(attacker, ABILITY_PURE_POWER)) {
-        info = attacker->info;
-        has_status2 = (ability_roll < 0x21 && not_physical2 == 0);
-        boosted = UpdateStateFlags(info, 0x100, has_status2);
-        if (has_status2) {
-            off_ability_mult += off_ability_mult * 2;
-            off_ability_div <<= 1;
+        mon3 = attacker->info;
+        f2 = (v2 < 0x21 && v5 == 0);
+        f4 = UpdateStateFlags(mon3, 0x100, f2);
+        if (f2) {
+            v14 += v14 * 2;
+            v15 <<= 1;
         }
-        if (boosted) {
+        if (f4) {
             PlayEffectAnimation0x1A9__022E617C(attacker);
             LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C54);
         }
     }
 
-    if (AbilityIsActiveVeneer(attacker, ABILITY_HUSTLE) && not_physical2 == 0) {
-        off_ability_mult += off_ability_mult * 2;
-        off_ability_div <<= 1;
+    if (AbilityIsActiveVeneer(attacker, ABILITY_HUSTLE) && v5 == 0) {
+        v14 += v14 * 2;
+        v15 <<= 1;
     }
 
-    is_team_member = !((struct monster *)attacker->info)->is_not_team_member;
-    if (AbilityIsActiveVeneer(attacker, ABILITY_PLUS) && not_physical2 == 1
-        && DUNGEON_PTR->minus_is_active[is_team_member]) {
-        off_ability_mult = off_ability_mult * 16 - off_ability_mult;
-        off_ability_div *= 10;
+    v12 = !((struct monster *)attacker->info)->is_not_team_member;
+    if (AbilityIsActiveVeneer(attacker, ABILITY_PLUS) && v5 == 1
+        && DUNGEON_PTR->minus_is_active[v12]) {
+        v14 = v14 * 16 - v14;
+        v15 *= 10;
     }
-    if (AbilityIsActiveVeneer(attacker, ABILITY_MINUS) && not_physical2 == 1
-        && DUNGEON_PTR->plus_is_active[is_team_member]) {
-        off_ability_mult = off_ability_mult * 16 - off_ability_mult;
-        off_ability_div *= 10;
+    if (AbilityIsActiveVeneer(attacker, ABILITY_MINUS) && v5 == 1
+        && DUNGEON_PTR->plus_is_active[v12]) {
+        v14 = v14 * 16 - v14;
+        v15 *= 10;
     }
 
 #ifdef JAPAN
     if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_INTIMIDATE)
-        && not_physical2 == 0) {
+        && v5 == 0) {
 #else
     if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_INTIMIDATE, TRUE)
-        && not_physical2 == 0) {
+        && v5 == 0) {
 #endif
-        off_ability_mult <<= 2;
-        off_ability_div += off_ability_div * 4;
+        v14 <<= 2;
+        v15 += v15 * 4;
     }
 #ifdef JAPAN
     if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_MARVEL_SCALE)
-        && not_physical2 == 0) {
+        && v5 == 0) {
 #else
     if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_MARVEL_SCALE, TRUE)
-        && not_physical2 == 0) {
+        && v5 == 0) {
 #endif
-        info2 = defender->info;
-        has_status3 = MonsterHasNegativeStatus(defender, TRUE);
-        boosted = UpdateStateFlags(info2, 8, has_status3);
-        if (has_status3) {
-            def_ability_mult = def_ability_mult * 3;
-            def_ability_div <<= 1;
+        mon4 = defender->info;
+        f3 = MonsterHasNegativeStatus(defender, TRUE);
+        f4 = UpdateStateFlags(mon4, 8, f3);
+        if (f3) {
+            v7 = v7 * 3;
+            v6 <<= 1;
         }
-        if (boosted) {
+        if (f4) {
             PlayEffectAnimation0x18E(defender);
             LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C55);
         }
     }
 
-    pd = &calc[1];
-    p = *po * off_ability_mult;
-    dv = *pd;
-    *pd = dv * def_ability_mult;
-    *po2 = p;
-    if (off_ability_div != 1) {
-        *po2 = p / off_ability_div;
+    p3 = &arr[1];
+    v9 = *p1 * v14;
+    v8 = *p3;
+    *p3 = v8 * v7;
+    *p2 = v9;
+    if (v15 != 1) {
+        *p2 = v9 / v15;
     }
-    if (def_ability_div != 1) {
-        pd = &calc[1];
-        *pd = *pd / def_ability_div;
-    }
-
-    diag->offense_calc = calc[0];
-    diag->defense_calc = calc[1];
-    if (calc[0] < 0) {
-        calc[0] = 0;
-    }
-    if (calc[0] >= 999) {
-        calc[0] = 999;
-    }
-    diag->damage_calc_def = calc[1];
-    IntToFixedPoint64(&def_fp, calc[1]);
-    IntToFixedPoint64(&tmp2, calc[0] - calc[1]);
-    FixedPoint32To64(&tmp, DAMAGE_FORMULA_FLV_DEFICIT_DIVISOR);
-    DivideFixedPoint64(&tmp2, &tmp2, &tmp);
-    IntToFixedPoint64(&tmp, amon->level);
-    AddFixedPoint64(&flv_fp, &tmp, &tmp2);
-    IntToFixedPoint64(&tmp, calc[0]);
-    AddFixedPoint64(&at_fp, &at_fp, &tmp);
-    diag->damage_calc_at = FixedPoint64ToInt(&at_fp);
-    diag->attacker_level = amon->level;
-    diag->damage_calc_flv = FixedPoint64ToInt(&flv_fp);
-    Debug_Print0(ov29_02352984, FixedPoint64ToInt(&flv_fp));
-    Debug_Print0(ov29_02352990, FixedPoint64ToInt(&at_fp));
-    Debug_Print0(ov29_0235299C, FixedPoint64ToInt(&def_fp));
-
-    FixedPoint32To64(&tmp3, DAMAGE_FORMULA_AT_PREFACTOR);
-    MultiplyFixedPoint64(&tmp3, &at_fp, &tmp3);
-    FixedPoint32To64(&mult_fp, DAMAGE_FORMULA_DEF_PREFACTOR);
-    MultiplyFixedPoint64(&mult_fp, &def_fp, &mult_fp);
-    FixedPoint32To64(&scratch, DAMAGE_FORMULA_FLV_SHIFT);
-    AddFixedPoint64(&ln_fp, &flv_fp, &scratch);
-    FixedPoint32To64(&scratch, DAMAGE_FORMULA_LN_ARG_PREFACTOR);
-    MultiplyFixedPoint64(&ln_fp, &ln_fp, &scratch);
-    ClampedLn(&ln_fp, FixedPoint64ToInt(&ln_fp));
-    FixedPoint32To64(&scratch, DAMAGE_FORMULA_LN_PREFACTOR);
-    MultiplyFixedPoint64(&ln_fp, &ln_fp, &scratch);
-    AddFixedPoint64(&base, &mult_fp, &tmp3);
-    AddFixedPoint64(&base, &base, &ln_fp);
-    FixedPoint32To64(&scratch, DAMAGE_FORMULA_CONSTANT_SHIFT);
-    AddFixedPoint64(&base, &base, &scratch);
-
-    if (!FixedRoomIsSubstituteRoom() && amon->is_not_team_member) {
-        FixedPoint32To64(&scratch, DAMAGE_FORMULA_NON_TEAM_MEMBER_MODIFIER);
-        DivideFixedPoint64(&base, &base, &scratch);
+    if (v6 != 1) {
+        p3 = &arr[1];
+        *p3 = *p3 / v6;
     }
 
-    if (FixedPoint64CmpLt(&DAMAGE_FORMULA_MAX_BASE, &base)) {
-        base.lower = ((const struct fixed_point_64 *)&ov29_02352838[13])->lower;
-        base.upper = ((const struct fixed_point_64 *)&ov29_02352838[13])->upper;
+    diag->offense_calc = arr[0];
+    diag->defense_calc = arr[1];
+    if (arr[0] < 0) {
+        arr[0] = 0;
     }
-    if (FixedPoint64CmpLt(&base, &DAMAGE_FORMULA_MIN_BASE)) {
-        base.lower = ((const struct fixed_point_64 *)&ov29_02352838[17])->lower;
-        base.upper = ((const struct fixed_point_64 *)&ov29_02352838[17])->upper;
+    if (arr[0] >= 999) {
+        arr[0] = 999;
+    }
+    diag->damage_calc_def = arr[1];
+    IntToFixedPoint64(&fp5, arr[1]);
+    IntToFixedPoint64(&fp6, arr[0] - arr[1]);
+    FixedPoint32To64(&fp7, DAMAGE_FORMULA_FLV_DEFICIT_DIVISOR);
+    DivideFixedPoint64(&fp6, &fp6, &fp7);
+    IntToFixedPoint64(&fp7, mon1->level);
+    AddFixedPoint64(&fp3, &fp7, &fp6);
+    IntToFixedPoint64(&fp7, arr[0]);
+    AddFixedPoint64(&fp4, &fp4, &fp7);
+    diag->damage_calc_at = FixedPoint64ToInt(&fp4);
+    diag->attacker_level = mon1->level;
+    diag->damage_calc_flv = FixedPoint64ToInt(&fp3);
+    Debug_Print0(ov29_02352984, FixedPoint64ToInt(&fp3));
+    Debug_Print0(ov29_02352990, FixedPoint64ToInt(&fp4));
+    Debug_Print0(ov29_0235299C, FixedPoint64ToInt(&fp5));
+
+    FixedPoint32To64(&fp9, DAMAGE_FORMULA_AT_PREFACTOR);
+    MultiplyFixedPoint64(&fp9, &fp4, &fp9);
+    FixedPoint32To64(&fp10, DAMAGE_FORMULA_DEF_PREFACTOR);
+    MultiplyFixedPoint64(&fp10, &fp5, &fp10);
+    FixedPoint32To64(&fp8, DAMAGE_FORMULA_FLV_SHIFT);
+    AddFixedPoint64(&fp11, &fp3, &fp8);
+    FixedPoint32To64(&fp8, DAMAGE_FORMULA_LN_ARG_PREFACTOR);
+    MultiplyFixedPoint64(&fp11, &fp11, &fp8);
+    ClampedLn(&fp11, FixedPoint64ToInt(&fp11));
+    FixedPoint32To64(&fp8, DAMAGE_FORMULA_LN_PREFACTOR);
+    MultiplyFixedPoint64(&fp11, &fp11, &fp8);
+    AddFixedPoint64(&fp2, &fp10, &fp9);
+    AddFixedPoint64(&fp2, &fp2, &fp11);
+    FixedPoint32To64(&fp8, DAMAGE_FORMULA_CONSTANT_SHIFT);
+    AddFixedPoint64(&fp2, &fp2, &fp8);
+
+    if (!FixedRoomIsSubstituteRoom() && mon1->is_not_team_member) {
+        FixedPoint32To64(&fp8, DAMAGE_FORMULA_NON_TEAM_MEMBER_MODIFIER);
+        DivideFixedPoint64(&fp2, &fp2, &fp8);
     }
 
-    type_boosted = CalcTypeBasedDamageEffects(&type_mult, attacker, defender, power, attack_type,
+    if (FixedPoint64CmpLt(&DAMAGE_FORMULA_MAX_BASE, &fp2)) {
+        fp2.lower = ((const struct fixed_point_64 *)&ov29_02352838[13])->lower;
+        fp2.upper = ((const struct fixed_point_64 *)&ov29_02352838[13])->upper;
+    }
+    if (FixedPoint64CmpLt(&fp2, &DAMAGE_FORMULA_MIN_BASE)) {
+        fp2.lower = ((const struct fixed_point_64 *)&ov29_02352838[17])->lower;
+        fp2.upper = ((const struct fixed_point_64 *)&ov29_02352838[17])->upper;
+    }
+
+    v18 = CalcTypeBasedDamageEffects(&fp1, attacker, defender, power, attack_type,
                                          damage_out, IsRegularAttackOrProjectile(move_id) != 0);
 
     if (attack_type == TYPE_FIRE) {
-        flash = FlashFireShouldActivate(attacker, defender);
-        if (flash && !dmon->apply_flash_fire_boost && a9) {
-            dmon->apply_flash_fire_boost = TRUE;
+        v20 = FlashFireShouldActivate(attacker, defender);
+        if (v20 && !mon2->apply_flash_fire_boost && a9) {
+            mon2->apply_flash_fire_boost = TRUE;
             SubstitutePlaceholderStringTags(1, defender, 0);
-            if (flash == 1) {
+            if (v20 == 1) {
                 LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C58);
             } else {
                 LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C57);
@@ -630,88 +630,88 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
     }
 
     if (a9 && !ExclusiveItemEffectIsActive__0230A9B8(attacker, EXCLUSIVE_EFF_BYPASS_REFLECT_LIGHT_SCREEN)) {
-        if (not_physical == 0) {
-            if ((move_id != 0x48 && dmon->reflect_class_status.reflect == 1)
+        if (v11 == 0) {
+            if ((move_id != 0x48 && mon2->reflect_class_status.reflect == 1)
                 || ExclusiveItemEffectIsActive__0230A9B8(defender, EXCLUSIVE_EFF_HALVED_PHYSICAL_DAMAGE)) {
                 PlayEffectAnimation0x171(defender);
-                MultiplyFixedPoint64(&type_mult, &type_mult, &DAMAGE_MULTIPLIER_0_5);
+                MultiplyFixedPoint64(&fp1, &fp1, &DAMAGE_MULTIPLIER_0_5);
                 diag->half_physical_damage_activated = TRUE;
             }
         }
-        if (not_physical == 1
-            && (dmon->reflect_class_status.reflect == 3
+        if (v11 == 1
+            && (mon2->reflect_class_status.reflect == 3
                 || ExclusiveItemEffectIsActive__0230A9B8(defender, EXCLUSIVE_EFF_HALVED_SPECIAL_DAMAGE))) {
             PlayEffectAnimation0x171Full(defender);
-            MultiplyFixedPoint64(&type_mult, &type_mult, &DAMAGE_MULTIPLIER_0_5);
+            MultiplyFixedPoint64(&fp1, &fp1, &DAMAGE_MULTIPLIER_0_5);
             diag->half_special_damage_activated = TRUE;
         }
     }
 
 #ifdef JAPAN
-    if (dmon->reflect_class_status.reflect != 0x11
+    if (mon2->reflect_class_status.reflect != 0x11
         && !DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_BATTLE_ARMOR)
         && !DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_SHELL_ARMOR)
         && !IqSkillIsEnabled(defender, IQ_CRITICAL_DODGER)) {
 #else
-    if (dmon->reflect_class_status.reflect != 0x11
+    if (mon2->reflect_class_status.reflect != 0x11
         && !DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_BATTLE_ARMOR, TRUE)
         && !DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_SHELL_ARMOR, TRUE)
         && !IqSkillIsEnabled(defender, IQ_CRITICAL_DODGER)) {
 #endif
-        if (GetMonsterGenderVeneer(amon->id) == 2) {
-            rate = crit_chance;
+        if (GetMonsterGenderVeneer(mon1->id) == 2) {
+            v19 = crit_chance;
         } else {
-            rate = crit_chance + crit_chance / 2;
+            v19 = crit_chance + crit_chance / 2;
         }
-        if (amon->sure_shot_class_status.sure_shot == 4) {
-            rate = 999;
+        if (mon1->sure_shot_class_status.sure_shot == 4) {
+            v19 = 999;
             diag->focus_energy_activated = TRUE;
         } else {
             if (ItemIsActive__0230A9DC(attacker, ITEM_SCOPE_LENS)
                 || IqSkillIsEnabled(attacker, IQ_SHARPSHOOTER)) {
                 diag->scope_lens_or_sharpshooter_activated = TRUE;
-                rate += SCOPE_LENS_CRIT_RATE_BOOST;
+                v19 += SCOPE_LENS_CRIT_RATE_BOOST;
             }
             if (AbilityIsActiveVeneer(attacker, ABILITY_SUPER_LUCK)) {
                 diag->super_luck_activated = TRUE;
-                rate += SUPER_LUCK_CRIT_RATE_BOOST;
+                v19 += SUPER_LUCK_CRIT_RATE_BOOST;
             }
             if (ItemIsActive__0230A9DC(defender, ITEM_PATSY_BAND)) {
                 diag->patsy_band_activated = TRUE;
-                rate += SCOPE_LENS_CRIT_RATE_BOOST;
+                v19 += SCOPE_LENS_CRIT_RATE_BOOST;
             }
-            if (type_boosted && IqSkillIsEnabled(attacker, IQ_TYPE_ADVANTAGE_MASTER)) {
+            if (v18 && IqSkillIsEnabled(attacker, IQ_TYPE_ADVANTAGE_MASTER)) {
                 diag->type_advantage_master_activated = TRUE;
-                rate = TYPE_ADVANTAGE_MASTER_CRIT_RATE;
+                v19 = TYPE_ADVANTAGE_MASTER_CRIT_RATE;
             }
         }
-        if (DungeonRandInt(100) < rate
+        if (DungeonRandInt(100) < v19
             && !ExclusiveItemEffectIsActiveWithLogging(attacker, defender, TRUE, MESSAGE_DC1, EXCLUSIVE_EFF_NO_CRITICAL_HITS)) {
             damage_out->field_0xe = TRUE;
             if (AbilityIsActiveVeneer(attacker, ABILITY_SNIPER)) {
-                MultiplyFixedPoint64(&type_mult, &type_mult, &DAMAGE_MULTIPLIER_2);
+                MultiplyFixedPoint64(&fp1, &fp1, &DAMAGE_MULTIPLIER_2);
                 diag->sniper_activated = TRUE;
             } else {
-                MultiplyFixedPoint64(&type_mult, &type_mult, &DAMAGE_MULTIPLIER_1_5);
+                MultiplyFixedPoint64(&fp1, &fp1, &DAMAGE_MULTIPLIER_1_5);
             }
         }
     }
 
-    diag->damage_calc_base = FixedPoint64ToInt(&base);
-    MultiplyFixedPoint64(&base, &base, &type_mult);
-    diag->static_damage_mult = dmult;
-    FixedPoint32To64(&mult32_fp, dmult);
-    MultiplyFixedPoint64(&base, &base, &mult32_fp);
-    diag->damage_calc = FixedPoint64ToInt(&base);
+    diag->damage_calc_base = FixedPoint64ToInt(&fp2);
+    MultiplyFixedPoint64(&fp2, &fp2, &fp1);
+    diag->static_damage_mult = v10;
+    FixedPoint32To64(&fp12, v10);
+    MultiplyFixedPoint64(&fp2, &fp2, &fp12);
+    diag->damage_calc = FixedPoint64ToInt(&fp2);
 
-    type_mult.lower = DungeonRandInt(0x4000);
-    type_mult.upper = 0;
-    type_mult.lower += 0xE000;
-    MultiplyFixedPoint64(&base, &base, &type_mult);
-    IntToFixedPoint64(&hundred_fp, 100);
-    MultiplyFixedPoint64(&type_mult, &hundred_fp, &type_mult);
-    diag->damage_calc_random_mult_pct = FixedPoint64ToInt(&type_mult);
-    damage_out->field_0x0 = FixedPoint64ToInt(&base);
+    fp1.lower = DungeonRandInt(0x4000);
+    fp1.upper = 0;
+    fp1.lower += 0xE000;
+    MultiplyFixedPoint64(&fp2, &fp2, &fp1);
+    IntToFixedPoint64(&fp13, 100);
+    MultiplyFixedPoint64(&fp1, &fp13, &fp1);
+    diag->damage_calc_random_mult_pct = FixedPoint64ToInt(&fp1);
+    damage_out->field_0x0 = FixedPoint64ToInt(&fp2);
 
     if (move_id == 0x195) {
         damage_out->field_0x0 = RoundUpDiv256(MultiplyByFixedPoint(damage_out->field_0x0 << 8, 0x80));
@@ -730,5 +730,5 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
     if (damage_out->field_0x0 == 0) {
         damage_out->field_0xe = FALSE;
     }
-    dmon->anger_point_flag = damage_out->field_0xe;
+    mon2->anger_point_flag = damage_out->field_0xe;
 }

@@ -84,33 +84,33 @@ int CalcTypeBasedDamageEffects(struct fixed_point_64 *out, struct entity *attack
                                enum type_id attack_type,
                                struct unk_02308FE0 *damage_data, bool8 is_projectile)
 {
-    struct fixed_point_64 matchup_mult[4];
-    struct fixed_point_64 tmp;
-    s32 matchups[2];
-    struct monster *info;
+    struct fixed_point_64 fparr[4];
+    struct fixed_point_64 fp1;
+    s32 arr[2];
+    struct monster *mon1;
     enum weather_id weather;
-    s16 wonder_guard;
-    bool8 ghost_ineffective;
-    bool8 scrappy;
+    s16 v1;
+    bool8 f1;
+    bool8 f2;
     s32 result;
     s32 i;
-    s32 matchup;
-    s32 max_hp;
-    bool8 low_hp;
-    bool8 announce;
+    s32 v2;
+    s32 v3;
+    bool8 f3;
+    bool8 f4;
 
-    info = GetEntInfo(attacker);
-    matchups[0] = ov29_02352838[7];
-    matchups[1] = ov29_02352838[8];
+    mon1 = GetEntInfo(attacker);
+    arr[0] = ov29_02352838[7];
+    arr[1] = ov29_02352838[8];
     IntToFixedPoint64(out, 1);
-    wonder_guard = FALSE;
+    v1 = FALSE;
     damage_data->field_0xe = FALSE;
     damage_data->field_0xf = FALSE;
     if (!EntityIsValid__02308FBC(defender)) {
         return TRUE;
     }
 
-    ghost_ineffective = IsTypeIneffectiveAgainstGhost(attack_type);
+    f1 = IsTypeIneffectiveAgainstGhost(attack_type);
 #ifdef JAPAN
     if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_WONDER_GUARD)
         && attack_type != TYPE_NONE) {
@@ -118,60 +118,60 @@ int CalcTypeBasedDamageEffects(struct fixed_point_64 *out, struct entity *attack
     if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_WONDER_GUARD, TRUE)
         && attack_type != TYPE_NONE) {
 #endif
-        wonder_guard = TRUE;
+        v1 = TRUE;
     }
     damage_data->field_0x8 = MATCHUP_NEUTRAL;
-    scrappy = ScrappyShouldActivate(attacker, defender, attack_type);
+    f2 = ScrappyShouldActivate(attacker, defender, attack_type);
 
     for (i = 0; i < 2; i++) {
         if (!is_projectile
             && (IqSkillIsEnabled(attacker, IQ_ERRATIC_PLAYER)
                 || IqSkillIsEnabled(defender, IQ_ERRATIC_PLAYER))) {
-            FixedPoint32To64(&matchup_mult[0], MATCHUP_IMMUNE_MULTIPLIER_ERRATIC_PLAYER);
-            FixedPoint32To64(&matchup_mult[1], MATCHUP_NOT_VERY_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER);
-            FixedPoint32To64(&matchup_mult[2], MATCHUP_NEUTRAL_MULTIPLIER_ERRATIC_PLAYER);
-            FixedPoint32To64(&matchup_mult[3], MATCHUP_SUPER_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER);
+            FixedPoint32To64(&fparr[0], MATCHUP_IMMUNE_MULTIPLIER_ERRATIC_PLAYER);
+            FixedPoint32To64(&fparr[1], MATCHUP_NOT_VERY_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER);
+            FixedPoint32To64(&fparr[2], MATCHUP_NEUTRAL_MULTIPLIER_ERRATIC_PLAYER);
+            FixedPoint32To64(&fparr[3], MATCHUP_SUPER_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER);
         } else {
-            FixedPoint32To64(&matchup_mult[0], MATCHUP_IMMUNE_MULTIPLIER);
-            FixedPoint32To64(&matchup_mult[1], MATCHUP_NOT_VERY_EFFECTIVE_MULTIPLIER);
-            FixedPoint32To64(&matchup_mult[2], MATCHUP_NEUTRAL_MULTIPLIER);
-            FixedPoint32To64(&matchup_mult[3], MATCHUP_SUPER_EFFECTIVE_MULTIPLIER);
+            FixedPoint32To64(&fparr[0], MATCHUP_IMMUNE_MULTIPLIER);
+            FixedPoint32To64(&fparr[1], MATCHUP_NOT_VERY_EFFECTIVE_MULTIPLIER);
+            FixedPoint32To64(&fparr[2], MATCHUP_NEUTRAL_MULTIPLIER);
+            FixedPoint32To64(&fparr[3], MATCHUP_SUPER_EFFECTIVE_MULTIPLIER);
         }
         if (FixedPoint64IsZero(out)) {
             break;
         }
-        if (!scrappy && ghost_ineffective
+        if (!f2 && f1
             && GhostImmunityIsActive(attacker, defender, i)) {
             DUNGEON_PTR->last_damage_calc.ghost_immunity_activated = TRUE;
-            matchup = MATCHUP_IMMUNE;
+            v2 = MATCHUP_IMMUNE;
         } else {
-            matchup = GetTypeMatchup(attacker, defender, i, attack_type);
+            v2 = GetTypeMatchup(attacker, defender, i, attack_type);
         }
         if (IqSkillIsEnabled(attacker, IQ_ERRATIC_PLAYER)) {
-            MultiplyFixedPoint64(out, out, &matchup_mult[matchup]);
-        } else if (matchup != MATCHUP_NEUTRAL) {
-            MultiplyFixedPoint64(out, out, &matchup_mult[matchup]);
+            MultiplyFixedPoint64(out, out, &fparr[v2]);
+        } else if (v2 != MATCHUP_NEUTRAL) {
+            MultiplyFixedPoint64(out, out, &fparr[v2]);
         }
-        matchups[i] = matchup;
+        arr[i] = v2;
     }
 
-    DUNGEON_PTR->last_damage_calc.move_indiv_type_matchups[0] = (enum type_matchup)matchups[0];
-    DUNGEON_PTR->last_damage_calc.move_indiv_type_matchups[1] = (enum type_matchup)matchups[1];
-    matchup = TYPE_MATCHUP_COMBINATOR_TABLE[matchups[0]][matchups[1]];
-    damage_data->field_0x8 = matchup;
-    if (matchup == MATCHUP_SUPER_EFFECTIVE) {
+    DUNGEON_PTR->last_damage_calc.move_indiv_type_matchups[0] = (enum type_matchup)arr[0];
+    DUNGEON_PTR->last_damage_calc.move_indiv_type_matchups[1] = (enum type_matchup)arr[1];
+    v2 = TYPE_MATCHUP_COMBINATOR_TABLE[arr[0]][arr[1]];
+    damage_data->field_0x8 = v2;
+    if (v2 == MATCHUP_SUPER_EFFECTIVE) {
         result = TRUE;
     } else {
         result = FALSE;
-        if (wonder_guard) {
+        if (v1) {
             *out = *(const struct fixed_point_64 *)&ov29_02352838[15];
         }
     }
 
     if (AbilityIsActiveVeneer(attacker, ABILITY_TINTED_LENS)
         && damage_data->field_0x8 == MATCHUP_NOT_VERY_EFFECTIVE) {
-        FixedPoint32To64(&tmp, TINTED_LENS_MULTIPLIER);
-        MultiplyFixedPoint64(out, out, &tmp);
+        FixedPoint32To64(&fp1, TINTED_LENS_MULTIPLIER);
+        MultiplyFixedPoint64(out, out, &fp1);
     }
 
 #ifdef JAPAN
@@ -239,42 +239,42 @@ int CalcTypeBasedDamageEffects(struct fixed_point_64 *out, struct entity *attack
     }
 
     if (attack_type == TYPE_WATER && AbilityIsActiveVeneer(attacker, ABILITY_TORRENT)) {
-        max_hp = MIN(info->max_hp_stat + info->max_hp_boost, MAX_HP_LIMIT);
-        low_hp = max_hp / 4 >= info->hp;
-        announce = UpdateStateFlags(info, 0x80, low_hp);
-        if (low_hp) {
+        v3 = MIN(mon1->max_hp_stat + mon1->max_hp_boost, MAX_HP_LIMIT);
+        f3 = v3 / 4 >= mon1->hp;
+        f4 = UpdateStateFlags(mon1, 0x80, f3);
+        if (f3) {
             DUNGEON_PTR->last_damage_calc.torrent_boost_activated = TRUE;
             MultiplyFixedPoint64(out, out, &DAMAGE_MULTIPLIER_2);
         }
-        if (announce) {
+        if (f4) {
             PlayEffectAnimation0x1A9__022E6214(attacker);
             LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C4F);
         }
     }
 
     if (attack_type == TYPE_GRASS && AbilityIsActiveVeneer(attacker, ABILITY_OVERGROW)) {
-        max_hp = MIN(info->max_hp_stat + info->max_hp_boost, MAX_HP_LIMIT);
-        low_hp = max_hp / 4 >= info->hp;
-        announce = UpdateStateFlags(info, 2, low_hp);
-        if (low_hp) {
+        v3 = MIN(mon1->max_hp_stat + mon1->max_hp_boost, MAX_HP_LIMIT);
+        f3 = v3 / 4 >= mon1->hp;
+        f4 = UpdateStateFlags(mon1, 2, f3);
+        if (f3) {
             DUNGEON_PTR->last_damage_calc.overgrow_boost_activated = TRUE;
             MultiplyFixedPoint64(out, out, &DAMAGE_MULTIPLIER_2);
         }
-        if (announce) {
+        if (f4) {
             PlayEffectAnimation0x1A9__022E61C8(attacker);
             LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C50);
         }
     }
 
     if (attack_type == TYPE_BUG && AbilityIsActiveVeneer(attacker, ABILITY_SWARM)) {
-        max_hp = MIN(info->max_hp_stat + info->max_hp_boost, MAX_HP_LIMIT);
-        low_hp = max_hp / 4 >= info->hp;
-        announce = UpdateStateFlags(info, 0x10, low_hp);
-        if (low_hp) {
+        v3 = MIN(mon1->max_hp_stat + mon1->max_hp_boost, MAX_HP_LIMIT);
+        f3 = v3 / 4 >= mon1->hp;
+        f4 = UpdateStateFlags(mon1, 0x10, f3);
+        if (f3) {
             DUNGEON_PTR->last_damage_calc.swarm_boost_activated = TRUE;
             MultiplyFixedPoint64(out, out, &DAMAGE_MULTIPLIER_2);
         }
-        if (announce) {
+        if (f4) {
             PlayEffectAnimation0x1A9__022E64C4(attacker);
             LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C51);
         }
@@ -282,14 +282,14 @@ int CalcTypeBasedDamageEffects(struct fixed_point_64 *out, struct entity *attack
 
     if (attack_type == TYPE_FIRE) {
         if (AbilityIsActiveVeneer(attacker, ABILITY_BLAZE)) {
-            max_hp = MIN(info->max_hp_stat + info->max_hp_boost, MAX_HP_LIMIT);
-            low_hp = max_hp / 4 >= info->hp;
-            announce = UpdateStateFlags(info, 0x20, low_hp);
-            if (low_hp) {
+            v3 = MIN(mon1->max_hp_stat + mon1->max_hp_boost, MAX_HP_LIMIT);
+            f3 = v3 / 4 >= mon1->hp;
+            f4 = UpdateStateFlags(mon1, 0x20, f3);
+            if (f3) {
                 DUNGEON_PTR->last_damage_calc.fire_move_ability_boost_activated = TRUE;
                 MultiplyFixedPoint64(out, out, &DAMAGE_MULTIPLIER_2);
             }
-            if (announce) {
+            if (f4) {
                 PlayEffectAnimation0x1A9__022E6510(attacker);
                 LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C52);
             }
@@ -304,9 +304,9 @@ int CalcTypeBasedDamageEffects(struct fixed_point_64 *out, struct entity *attack
         }
     }
 
-    if (info->burn_class_status.burn == STATUS_BURN_BURN) {
-        FixedPoint32To64(&tmp, BURN_DAMAGE_MULTIPLIER);
-        MultiplyFixedPoint64(out, out, &tmp);
+    if (mon1->burn_class_status.burn == STATUS_BURN_BURN) {
+        FixedPoint32To64(&fp1, BURN_DAMAGE_MULTIPLIER);
+        MultiplyFixedPoint64(out, out, &fp1);
     }
 
     if (!FixedPoint64IsZero(out) && MonsterIsType(attacker, attack_type)) {
@@ -356,7 +356,7 @@ int CalcTypeBasedDamageEffects(struct fixed_point_64 *out, struct entity *attack
     }
 
     if (attack_type == TYPE_ELECTRIC
-        && info->bide_class_status.bide == STATUS_TWO_TURN_CHARGING) {
+        && mon1->bide_class_status.bide == STATUS_TWO_TURN_CHARGING) {
         DUNGEON_PTR->last_damage_calc.charge_boost_activated = TRUE;
         MultiplyFixedPoint64(out, out, &DAMAGE_MULTIPLIER_2);
     }
