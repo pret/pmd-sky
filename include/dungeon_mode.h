@@ -308,7 +308,7 @@ struct monster {
     // and restored to entity::types after statuses::roost ends.
     enum type_id original_types[2];
     // 0xAC: The move id to be used if statuses::bide is 1.
-    s16 bide_move_id;
+    enum move_id bide_move_id;
     u8 field_0xae;
     u8 field_0xaf;
     // 0xB0: Unique number given to the monster when spawning to differentiate it from other
