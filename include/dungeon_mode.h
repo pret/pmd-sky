@@ -1008,7 +1008,7 @@ struct tile {
 
     // 0x2: Seems to be used for spawning entities during dungeon generation, and for visibility
     // during dungeon play
-    union spawn_or_visibility_flags spawn_or_visibility_flags;
+    u16 spawn_or_visibility_flags;
     u16 texture_id; // 0x4: Maybe? Changing this causes the tile texture to change
     u8 field_0x6;
     // 0x7: Room index. 0xFF if not in a room, 0xFE on junctions during map generation (it gets set

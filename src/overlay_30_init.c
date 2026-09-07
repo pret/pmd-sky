@@ -775,7 +775,7 @@ void ov30_02384268(void *buffer, struct item *item)
 void ov30_023842B0(void *buffer, struct tile* tile)
 {
     ov30_02385D14(buffer, tile->terrain_flags);
-    ov30_02385D14(buffer, tile->spawn_or_visibility_flags.spawn);
+    ov30_02385D14(buffer, tile->spawn_or_visibility_flags);
     WriteBitsToDataSerializer(buffer, &tile->room, 1);
     WriteBitsToDataSerializer(buffer, &tile->field_0x6, 1);
 }
@@ -928,7 +928,7 @@ void ov30_0238483C(void *buffer, struct tile* tile)
 {
     memset(tile, 0, sizeof(struct tile));
     tile->terrain_flags = ov30_02385EC4(buffer);
-    tile->spawn_or_visibility_flags.spawn = ov30_02385EC4(buffer);
+    tile->spawn_or_visibility_flags = ov30_02385EC4(buffer);
     ReadBitsFromDataSerializer(buffer, &tile->room, 1);
     ReadBitsFromDataSerializer(buffer, &tile->field_0x6, 1);
     tile->monster = NULL;

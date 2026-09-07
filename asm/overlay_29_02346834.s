@@ -3,77 +3,7 @@
 
 	.text
 
-	arm_func_start GenerateMoneyQuantity
-GenerateMoneyQuantity: ; 0x02346834
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	mov r0, #0x64
-	mov r4, r1
-	bl DungeonRandInt
-	mov r3, #0
-	ldr r2, _02346884 ; =MONEY_QUANTITY_TABLE
-	b _02346870
-_02346854:
-	ldr r1, [r2, r0, lsl #2]
-	cmp r1, r4
-	strleh r0, [r5, #2]
-	ldmleia sp!, {r3, r4, r5, pc}
-	add r0, r0, r0, lsr #31
-	mov r0, r0, asr #1
-	add r3, r3, #1
-_02346870:
-	cmp r3, #0xc8
-	blt _02346854
-	mov r0, #1
-	strh r0, [r5, #2]
-	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
-_02346884: .word MONEY_QUANTITY_TABLE
-	arm_func_end GenerateMoneyQuantity
-
-	arm_func_start ov29_02346888
-ov29_02346888: ; 0x02346888
-	stmdb sp!, {r3, r4, lr}
-	sub sp, sp, #4
-	ldr r1, _023468F8 ; =DUNGEON_PTR
-	mov r0, #7
-	ldr r1, [r1]
-	ldrb r4, [r1, #0xc]
-	bl IsCurrentMissionType
-	ldr r1, _023468F8 ; =DUNGEON_PTR
-	mov r0, #0
-	ldr r2, [r1]
-	strb r0, [r2, #0xc]
-	ldr r1, [r1]
-	ldrb r1, [r1, #0xc]
-	cmp r1, #1
-	cmpeq r4, #0
-	bne _023468F0
-#ifdef JAPAN
-	ldr r1, _02347CAC ; =0x0000091F
-	mov r2, r0
-	mov r3, r0
-#else
-	mov r2, r0
-	mov r3, r0
-	mov r1, #0xbe0
-#endif
-	str r0, [sp]
-	bl YesNoMenu
-	cmp r0, #1
-	bne _023468F0
-	mov r0, #2
-	mov r1, #1
-	bl SetDungeonEscapeFields
-_023468F0:
-	add sp, sp, #4
-	ldmia sp!, {r3, r4, pc}
-	.align 2, 0
-_023468F8: .word DUNGEON_PTR
-#ifdef JAPAN
-_02347CAC: .word 0x0000091F
-#endif
-	arm_func_end ov29_02346888
+    .public GenerateMoneyQuantity
 
 	arm_func_start ov29_023468FC
 ov29_023468FC: ; 0x023468FC

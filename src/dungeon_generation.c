@@ -277,7 +277,7 @@ void GenerateSecondaryTerrainFormations(bool8 test_flag, struct floor_properties
 			// This really shouldn't happen since we only place terrain on wall tiles to begin with,
 			// but it provides additional safety
 
-			if (tile->terrain_flags & (TERRAIN_TYPE_SHOP | TERRAIN_TYPE_IN_MONSTER_HOUSE | TERRAIN_TYPE_UNBREAKABLE) || (tile->spawn_or_visibility_flags.spawn & SPAWN_FLAG_STAIRS)) {
+			if (tile->terrain_flags & (TERRAIN_TYPE_SHOP | TERRAIN_TYPE_IN_MONSTER_HOUSE | TERRAIN_TYPE_UNBREAKABLE) || (tile->spawn_or_visibility_flags & SPAWN_FLAG_STAIRS)) {
                 SetTerrainNormal(tile);
             }
             else {
