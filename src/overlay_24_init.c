@@ -1,4 +1,5 @@
 #include "overlay_24.h"
+#include "main_0203D538.h"
 
 extern void CloseCollectionMenu(s8);                          
 extern void CloseDialogueBox(s8);                             
@@ -23,7 +24,6 @@ extern void sub_0202F2C4(s8);
 extern s32 sub_02037468();                                 
 extern s32 sub_02039218();                                 
 extern s32 sub_0203931C();                                 
-extern s32 sub_0203D538();                                 
 
 
 s32 ov24_0238A140(void)
