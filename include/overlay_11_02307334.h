@@ -1,0 +1,6 @@
+#ifndef PMDSKY_OVERLAY_11_02307334_H
+#define PMDSKY_OVERLAY_11_02307334_H
+
+s32 ov11_02307334(void);
+
+#endif

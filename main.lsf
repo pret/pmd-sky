@@ -661,6 +661,8 @@ Overlay OVY_11
 	Object asm/overlay_11_022FE4AC.o
 	Object src/overlay_11_022FE58C.o
 	Object asm/overlay_11_022FE5F8.o
+	Object src/overlay_11_02307334.o
+	Object asm/overlay_11_02308D1C.o
 	Object src/overlay_11_0230CB88.o
 	Object src/overlay_11_0230CD48.o
 	Object asm/overlay_11_0230CE30.o

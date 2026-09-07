@@ -95,11 +95,11 @@ bool8 CheckInventoryMenuField0x1A0(s32 window_id)
     return w->field_0x1A0 == 0;
 }
 
-void ov10_022BCDA8(s32 window_id)
+s32 ov10_022BCDA8(s32 window_id)
 {
     struct unk_0202AAA8 *w = GetWindowContents(window_id);
 
-    sub_02033064((void *) w + 4);
+    return sub_02033064((void *) w + 4);
 }
 
 s32 ov10_022BCDBC(s32 window_id)
