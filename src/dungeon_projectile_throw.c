@@ -1,4 +1,5 @@
 #include "dungeon_projectile_throw.h"
+#include "overlay_29_0231CBC8.h"
 #include "dg_object.h"
 #include "dungeon.h"
 #include "dungeon_items.h"
@@ -35,7 +36,6 @@ extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity
 extern void ChangeMonsterAnimationToHurt(struct entity *monster, u32 direction);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
-extern void ApplyItemEffect(char param_1, u8 param_2, u8 param_3, struct entity *attacker, struct entity *defender, struct item *thrown_item);
 extern void SpawnDroppedItem(struct entity *entity, struct entity *item_entity, struct item *item, bool8 param_4, struct position *dir_xy, u32 param_6);
 
 bool8 ItemIsActive__02347B50(struct entity *entity, enum item_id item_id)
