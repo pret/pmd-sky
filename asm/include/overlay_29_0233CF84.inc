@@ -1,0 +1,15 @@
+#pragma once
+.public CORNER_CARDINAL_NEIGHBOR_IS_OPEN
+.public DIRECTIONS_XY
+.public DUNGEON_PTR
+.public DungeonRandInt
+.public DungeonRandRange
+.public FLOOR_GENERATION_STATUS
+.public GetFloorType
+.public GetTile
+.public GetTileSafe
+.public IsDestinationFloorWithMonster
+.public IsOutlawMonsterHouseFloor
+.public PosIsOutOfBounds
+.public _s32_div_f
+.public abs
