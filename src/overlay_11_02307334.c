@@ -166,15 +166,10 @@ s32 ov11_02307334(void)
     struct struct_2          menu_b;
     struct struct_2          menu_a;
     struct preprocessor_args args;
-    char                     buf[0x400];
-    struct unk_02309DAC      sel_18;
-    struct unk_02309DAC      sel_10;
-    u16                      btn_e;
-    u16                      btn_c;
 
     switch (ov11_02324D8C->field_0x0) {
     case 0: {
-        ov11_02324D8C->field_0x4 = CreateInventoryMenuOuter(GetNbItemsInBag(), 0, ov11_02324D8C->field_0x10, ov11_02324D8C->field_0x104, (void *)ov11_02307300, ov11_02324D8C->field_0x31c, 0);
+        ov11_02324D8C->field_0x4 = CreateInventoryMenuOuter(GetNbItemsInBag(), 0, ov11_02324D8C->field_0x10, ov11_02324D8C->field_0x104, ov11_02307300, ov11_02324D8C->field_0x31c, 0);
         ov11_02324D8C->field_0x5 = CreateTextBox(&ov11_02322C88, 0);
         ov11_02324D8C->field_0x18 = -1;
         ov11_02324D8C->field_0x0 = 1;
@@ -191,11 +186,13 @@ s32 ov11_02307334(void)
         break;
     }
     case 1: {
-        u8 v1;
+        u8   v1;
+        char buf[0x400];
+        u16  buttons;
 
-        GetPressedButtons(0, &btn_e);
+        GetPressedButtons(0, &buttons);
         v1 = PopInventoryMenuField0x1A3(ov11_02324D8C->field_0x4);
-        if ((btn_e & 4) || (btn_e & 0x800) || v1) {
+        if ((buttons & 4) || (buttons & 0x800) || v1) {
             if (!v1) {
                 PlaySeVolumeWrapper(5);
             }
@@ -217,14 +214,14 @@ s32 ov11_02307334(void)
                     sub_02027B1C(v2);
                     if ((bool8)((v4->flags & 1) != 0)) {
 #ifdef EUROPE
-                        strcpy((u8 *)buf, StringFromId((u16)(v4->id + 0x2f4b)));
+                        strcpy(buf, StringFromId((u16)(v4->id + 0x2f4b)));
 #elif defined(JAPAN)
-                        strcpy((u8 *)buf, StringFromId((u16)(v4->id + 0x1d41)));
+                        strcpy(buf, StringFromId((u16)(v4->id + 0x1d41)));
 #else
-                        strcpy((u8 *)buf, StringFromId((u16)(v4->id + 0x2f49)));
+                        strcpy(buf, StringFromId((u16)(v4->id + 0x2f49)));
 #endif
                     } else {
-                        strcpy((u8 *)buf, ov11_02322DB0);
+                        strcpy(buf, ov11_02322DB0);
                     }
                     DrawTextInWindow(v2, 2, 2, buf);
                     UpdateWindow(v2);
@@ -235,13 +232,15 @@ s32 ov11_02307334(void)
 
                 if (v5 >= 0) {
                     struct item *v6;
+                    bool8        v6f;
                     s32 v7;
                     s32 v8;
 
                     ov11_02324D8C->field_0x10 = v5;
                     v6 = GetItemAtIdx(ov11_02324D8C->field_0x10);
                     ov11_02324D8C->field_0x24e = v6->id;
-                    if ((bool8)((v6->flags & 1) != 0)) {
+                    v6f = (v6->flags & 1) != 0;
+                    if (v6f) {
                         ov11_02324D8C->field_0x24e = v6->id;
                     } else {
                         ov11_02324D8C->field_0x24e = 0;
@@ -258,6 +257,8 @@ s32 ov11_02307334(void)
                                 if (!ov11_02309E48(ov11_02324D8C->field_0x24e)) {
                                     ov11_02324D8C->field_0x276[i] = 3;
                                 }
+                                break;
+                            default:
                                 break;
                             }
                         }
@@ -276,8 +277,10 @@ s32 ov11_02307334(void)
                     ov11_02324D8C->field_0x0 = 0xe;
                 }
             } else {
-                GetPressedButtons(0, &btn_c);
-                if (btn_c & 8) {
+                u16 pressed;
+
+                GetPressedButtons(0, &pressed);
+                if (pressed & 8) {
                     PlaySeVolumeWrapper(0);
                     ov10_022BCDF4(ov11_02324D8C->field_0x4);
                     ov11_02324D8C->field_0x10 = ov10_022BCDA8(ov11_02324D8C->field_0x4);
@@ -334,6 +337,7 @@ s32 ov11_02307334(void)
         break;
     }
     case 18: {
+        struct unk_02309DAC  sel;
         struct unk_02308F4C *v2;
         s16 v3;
         s32 v4;
@@ -343,8 +347,8 @@ s32 ov11_02307334(void)
         }
         if (ov11_02309E24() != -1) {
             v2 = &ov11_02324D8C->field_0x238;
-            ov11_02309DAC(&sel_18);
-            ov11_02308F4C(v2, &sel_18);
+            ov11_02309DAC(&sel);
+            ov11_02308F4C(v2, &sel);
             ov11_02324D8C->field_0x30c = GetLearnableIqSkills(ov11_02324D8C->field_0x280, v2->field_0x8, *v2->field_0x10);
             ov11_02324D8C->field_0x250 = -1;
             ov11_02324D8C->field_0x318 = *v2->field_0x10;
@@ -446,7 +450,7 @@ s32 ov11_02307334(void)
                 ov11_02324D8C->field_0xb4.id_vals[0] = ov11_02324D8C->field_0x314;
                 sub_02017C50(4);
                 ov11_02308EDC();
-                ShowStringIdInDialogueBox(ov11_02324D8C->field_0x8, 0x18, 0x2BF + OV11_02307334_OFFSET, &ov11_02324D8C->field_0xb4);
+                ShowStringIdInDialogueBox(ov11_02324D8C->field_0x8, 0x18, 0x2bf + OV11_02307334_OFFSET, &ov11_02324D8C->field_0xb4);
                 EnableIqSkill(ov11_02324D8C->field_0x238.field_0xc, (u8)ov11_02324D8C->field_0x314);
                 ov11_02308FD0(&ov11_02324D8C->field_0x238);
                 ov11_02324D8C->field_0x314++;
@@ -468,19 +472,19 @@ s32 ov11_02307334(void)
             v1 = 0;
             break;
         case 1:
-            v1 = 0x2C1 + OV11_02307334_OFFSET;
+            v1 = 0x2c1 + OV11_02307334_OFFSET;
             break;
         case 2:
-            v1 = 0x2C2 + OV11_02307334_OFFSET;
+            v1 = 0x2c2 + OV11_02307334_OFFSET;
             break;
         case 4:
-            v1 = 0x2C3 + OV11_02307334_OFFSET;
+            v1 = 0x2c3 + OV11_02307334_OFFSET;
             break;
         case 8:
-            v1 = 0x2C4 + OV11_02307334_OFFSET;
+            v1 = 0x2c4 + OV11_02307334_OFFSET;
             break;
         default:
-            v1 = 0x2C0 + OV11_02307334_OFFSET;
+            v1 = 0x2c0 + OV11_02307334_OFFSET;
             break;
         }
         if (v1 == 0) {
@@ -488,7 +492,7 @@ s32 ov11_02307334(void)
             break;
         }
         ov11_02308EDC();
-        ShowStringIdInDialogueBox(ov11_02324D8C->field_0x8, 0x18, 0x2BF + OV11_02307334_OFFSET, &ov11_02324D8C->field_0xb4);
+        ShowStringIdInDialogueBox(ov11_02324D8C->field_0x8, 0x18, 0x2bf + OV11_02307334_OFFSET, &ov11_02324D8C->field_0xb4);
         ov11_02324D8C->field_0x314++;
         ov11_02324D8C->field_0x0 = 0x17;
         break;
@@ -513,9 +517,10 @@ s32 ov11_02307334(void)
         }
         if (ov11_02309E24() != -1) {
             struct unk_02324D8C *v1 = ov11_02324D8C;
+            struct unk_02309DAC  sel;
 
-            ov11_02309DAC(&sel_10);
-            ov11_02308F4C(&v1->field_0x238, &sel_10);
+            ov11_02309DAC(&sel);
+            ov11_02308F4C(&v1->field_0x238, &sel);
             ov11_02308FEC(&v1->field_0x238);
             if (sub_020415BC()) {
                 ov11_02324D8C->field_0x0 = 0x1d;
@@ -614,10 +619,8 @@ s32 ov11_02307334(void)
         {
             s32 v1 = 0x8d7 + OV11_02307334_OFFSET_2;
 
-            if (ov11_02324D8C->field_0x24c < 3) {
-                if (sub_02041364(ov11_02324D8C->field_0x24c)) {
-                    v1--;
-                }
+            if (ov11_02324D8C->field_0x24c < 3 && sub_02041364(ov11_02324D8C->field_0x24c)) {
+                v1 = 0x8d6 + OV11_02307334_OFFSET_2;
             }
             ov11_02308EDC();
             ShowStringIdInDialogueBox(ov11_02324D8C->field_0x8, 0x18, v1, &ov11_02324D8C->field_0xb4);
@@ -879,7 +882,7 @@ s32 ov11_02307334(void)
         ov11_02324D8C->field_0x0 = 0xf;
         break;
     }
-    case 15: {
+    case 15:
         if (!IsInventoryMenuActive(ov11_02324D8C->field_0x4)) {
             CloseTextBox2(ov11_02324D8C->field_0x5);
             ov11_02324D8C->field_0x5 = -2;
@@ -887,7 +890,6 @@ s32 ov11_02307334(void)
             ov11_02324D8C->field_0x4 = -2;
             ov11_02324D8C->field_0x0 = 0x10;
         }
-    }
     case 16:
         return 1;
     }

@@ -1,7 +1,9 @@
 #include "overlay_29_0233C9E8.h"
 #include "dg_random.h"
+#include "dungeon.h"
 #include "dungeon_map_access.h"
 #include "dungeon_util.h"
+#include "dungeon_util_static.h"
 
 void GenerateExtraHallways(struct unk_0233C9E8 (*grid)[15], s32 grid_size_x, s32 grid_size_y, s32 n_extra_hallways)
 {
@@ -10,7 +12,6 @@ void GenerateExtraHallways(struct unk_0233C9E8 (*grid)[15], s32 grid_size_x, s32
     s32 dir;
     s32 k;
     s32 oob;
-    s32 d;
 
     if (n_extra_hallways == 0) {
         return;
@@ -28,10 +29,8 @@ void GenerateExtraHallways(struct unk_0233C9E8 (*grid)[15], s32 grid_size_x, s32
         x = DungeonRandInt(grid_size_x);
         y = DungeonRandInt(grid_size_y);
         cell = &grid[x][y];
-        if (cell->field_0xa == 0 || cell->field_0xb == 0) {
-            continue;
-        }
-        if (cell->field_0x8 != 0 || cell->field_0x10 != 0) {
+        if (cell->field_0xa == 0 || cell->field_0xb == 0
+            || cell->field_0x8 != 0 || cell->field_0x10 != 0) {
             continue;
         }
         tx = DungeonRandRange(cell->field_0x0, cell->field_0x4);
@@ -60,19 +59,19 @@ void GenerateExtraHallways(struct unk_0233C9E8 (*grid)[15], s32 grid_size_x, s32
             ty += DIRECTIONS_XY[dir].y;
         }
         for (;;) {
-            if ((GetTile(tx, ty)->terrain_flags & 3) != 1) {
+            if (GetTerrainType(GetTile(tx, ty)) != TERRAIN_TYPE_NORMAL) {
                 break;
             }
             tx += DIRECTIONS_XY[dir].x;
             ty += DIRECTIONS_XY[dir].y;
         }
-        if ((GetTile(tx, ty)->terrain_flags & 3) == 2) {
+        if (GetTerrainType(GetTile(tx, ty)) == TERRAIN_TYPE_SECONDARY) {
             continue;
         }
         oob = 0;
         for (bx = tx - 2; bx <= tx + 2; bx++) {
             for (by = ty - 2; by <= ty + 2; by++) {
-                if (bx < 0 || bx >= 56 || by < 0 || by >= 32) {
+                if (bx < 0 || bx >= DUNGEON_MAX_SIZE_X || by < 0 || by >= DUNGEON_MAX_SIZE_Y) {
                     oob = 1;
                     break;
                 }
@@ -84,72 +83,66 @@ void GenerateExtraHallways(struct unk_0233C9E8 (*grid)[15], s32 grid_size_x, s32
         if (oob) {
             continue;
         }
-        d = (dir + 2) & 6;
-        if ((GetTile(tx + DIRECTIONS_XY[d].x, ty + DIRECTIONS_XY[d].y)->terrain_flags & 3) == 1) {
+        if (GetTerrainType(GetTile(tx + DIRECTIONS_XY[(dir + 2) & 6].x, ty + DIRECTIONS_XY[(dir + 2) & 6].y)) == TERRAIN_TYPE_NORMAL) {
             continue;
         }
-        d = (dir - 2) & 6;
-        if ((GetTile(tx + DIRECTIONS_XY[d].x, ty + DIRECTIONS_XY[d].y)->terrain_flags & 3) == 1) {
+        if (GetTerrainType(GetTile(tx + DIRECTIONS_XY[(dir - 2) & 6].x, ty + DIRECTIONS_XY[(dir - 2) & 6].y)) == TERRAIN_TYPE_NORMAL) {
             continue;
         }
         seg = DungeonRandInt(3) + 3;
         for (;;) {
-            int flag;
+            s32 flag;
 
             if (tx <= 1 || ty <= 1) {
                 break;
             }
-            if (tx >= 0x37 || ty >= 0x1f) {
+            if (tx >= DUNGEON_MAX_SIZE_X - 1 || ty >= DUNGEON_MAX_SIZE_Y - 1) {
                 break;
             }
-            if ((GetTile(tx, ty)->terrain_flags & 3) == 1) {
+            if (GetTerrainType(GetTile(tx, ty)) == TERRAIN_TYPE_NORMAL) {
                 break;
             }
-            if (GetTile(tx, ty)->terrain_flags & 0x10) {
+            if (GetTile(tx, ty)->terrain_flags & TERRAIN_TYPE_IMPASSABLE_WALL) {
                 break;
             }
             flag = 1;
-            if ((GetTile(tx + 1, ty)->terrain_flags & 3) == 1
-                && (GetTile(tx + 1, ty + 1)->terrain_flags & 3) == 1
-                && (GetTile(tx, ty + 1)->terrain_flags & 3) == 1) {
+            if (GetTerrainType(GetTile(tx + 1, ty)) == TERRAIN_TYPE_NORMAL
+                && GetTerrainType(GetTile(tx + 1, ty + 1)) == TERRAIN_TYPE_NORMAL
+                && GetTerrainType(GetTile(tx, ty + 1)) == TERRAIN_TYPE_NORMAL) {
                 flag = 0;
             }
-            if ((GetTile(tx + 1, ty)->terrain_flags & 3) == 1) {
+            if (GetTerrainType(GetTile(tx + 1, ty)) == TERRAIN_TYPE_NORMAL) {
                 s32 ym = ty - 1;
 
-                if ((GetTile(tx + 1, ym)->terrain_flags & 3) == 1
-                    && (GetTile(tx, ym)->terrain_flags & 3) == 1) {
+                if (GetTerrainType(GetTile(tx + 1, ym)) == TERRAIN_TYPE_NORMAL
+                    && GetTerrainType(GetTile(tx, ym)) == TERRAIN_TYPE_NORMAL) {
                     flag = 0;
                 }
             }
-            {
             s32 xm = tx - 1;
 
-            if ((GetTile(xm, ty)->terrain_flags & 3) == 1
-                && (GetTile(xm, ty + 1)->terrain_flags & 3) == 1
-                && (GetTile(tx, ty + 1)->terrain_flags & 3) == 1) {
+            if (GetTerrainType(GetTile(xm, ty)) == TERRAIN_TYPE_NORMAL
+                && GetTerrainType(GetTile(xm, ty + 1)) == TERRAIN_TYPE_NORMAL
+                && GetTerrainType(GetTile(tx, ty + 1)) == TERRAIN_TYPE_NORMAL) {
                 flag = 0;
             }
-            if ((GetTile(xm, ty)->terrain_flags & 3) == 1) {
+            if (GetTerrainType(GetTile(xm, ty)) == TERRAIN_TYPE_NORMAL) {
                 s32 ym = ty - 1;
 
-                if ((GetTile(xm, ym)->terrain_flags & 3) == 1
-                    && (GetTile(tx, ym)->terrain_flags & 3) == 1) {
+                if (GetTerrainType(GetTile(xm, ym)) == TERRAIN_TYPE_NORMAL
+                    && GetTerrainType(GetTile(tx, ym)) == TERRAIN_TYPE_NORMAL) {
                     flag = 0;
                 }
-            }
             }
             if (flag) {
                 struct tile *t = GetTileSafe(tx, ty);
-                t->terrain_flags &= ~3;
-                t->terrain_flags |= 1;
+                t->terrain_flags &= ~(TERRAIN_TYPE_NORMAL | TERRAIN_TYPE_SECONDARY);
+                t->terrain_flags |= TERRAIN_TYPE_NORMAL;
             }
-            d = (dir + 2) & 6;
-            if ((GetTile(tx + DIRECTIONS_XY[d].x, ty + DIRECTIONS_XY[d].y)->terrain_flags & 3) == 1) {
+            if (GetTerrainType(GetTile(tx + DIRECTIONS_XY[(dir + 2) & 6].x, ty + DIRECTIONS_XY[(dir + 2) & 6].y)) == TERRAIN_TYPE_NORMAL) {
                 break;
             }
-            d = (dir - 2) & 6;
-            if ((GetTile(tx + DIRECTIONS_XY[d].x, ty + DIRECTIONS_XY[d].y)->terrain_flags & 3) == 1) {
+            if (GetTerrainType(GetTile(tx + DIRECTIONS_XY[(dir - 2) & 6].x, ty + DIRECTIONS_XY[(dir - 2) & 6].y)) == TERRAIN_TYPE_NORMAL) {
                 break;
             }
             if (--seg == 0) {

@@ -14,9 +14,8 @@ bool8 ov11_022ED69C(GroundBg *dst, GroundBg *src)
     u16 *p1;
     s32 i2;
     s32 j2;
-    s32 idx;
     struct UnkStruct_2324CBC_Sub98 *unkSubPtr;
-    const void *data1;
+    const u8 *data1;
     const RGB_Array *rgb;
     const AnimationSpecification *spec;
     MapRender *render1;
@@ -25,7 +24,6 @@ bool8 ov11_022ED69C(GroundBg *dst, GroundBg *src)
     BplHeader *bpl2;
     BmaHeader *bma1;
     BmaHeader *bma2;
-    u16 v1;
 
     if (src->unk1BE == -1) {
         ov11_022EC08C(dst);
@@ -69,8 +67,8 @@ bool8 ov11_022ED69C(GroundBg *dst, GroundBg *src)
     bma1->hasCollision = bma2->hasCollision;
 
     unkSubPtr = &ov11_02324CBC->unk98[dst->unk2BC.unk0];
-    v1 = dst->unk2BC.unk6 * 16;
-    rgb = data1 + 4;
+    u16 v1 = dst->unk2BC.unk6 * 16;
+    rgb = (const RGB_Array *)(data1 + 4);
     for (i = 0; i < bpl1->numPalettes && i < dst->unk2BC.unk8; i++) {
         CopyColorToPaletteDataRgba(unkSubPtr, v1++, &ov11_02320BF4);
         FillPaletteDataRgba(unkSubPtr, v1, rgb, 15);
@@ -93,11 +91,9 @@ bool8 ov11_022ED69C(GroundBg *dst, GroundBg *src)
 
     if (bpl1->hasPalAnimations) {
         s32 v2 = bpl1->numPalettes * 15;
-        const void *data2;
 
-        spec = data1 + 4 + v2 * 4;
-        data2 = spec + bpl1->numPalettes;
-        rgb = data2;
+        spec = (const AnimationSpecification *)(data1 + 4 + v2 * 4);
+        rgb = (const RGB_Array *)(spec + bpl1->numPalettes);
         dst->animationSpecifications = spec;
         dst->unk1FB = 1;
         dst->unk1BC = 0;
@@ -173,7 +169,7 @@ bool8 ov11_022ED69C(GroundBg *dst, GroundBg *src)
             if (bpaName[0] != 0) {
                 struct BpaHeader *bpa;
                 s32 *p3;
-                void *p4;
+                u16 *p4;
                 s32 v6;
 
                 dstC4->bpaFile = srcC4->bpaFile;
@@ -183,9 +179,11 @@ bool8 ov11_022ED69C(GroundBg *dst, GroundBg *src)
                 dstC4->unk10 = bpa;
                 p3 = &bpa->durationPerFrame[0];
                 v6 = bpa->numFrames;
-                dstC4->unk14 = dstC4->unk18 = p3;
-                p4 = p3 + v6;
-                dstC4->unk1C = dstC4->unk20 = p4;
+                dstC4->unk18 = p3;
+                dstC4->unk14 = p3;
+                p4 = (u16 *)(p3 + v6);
+                dstC4->unk20 = p4;
+                dstC4->unk1C = p4;
                 dstC4->unk2 = 0;
                 dstC4->unk4 = *dstC4->unk18;
                 dstC4->unk24 = p1;
@@ -221,7 +219,7 @@ bool8 ov11_022ED69C(GroundBg *dst, GroundBg *src)
     render2 = dst->mapRender;
     for (i = 0; i < dst->unk1FC; i++, render2++, render1++) {
         *render2 = *render1;
-        idx = render2->unk2;
+        s32 idx = render2->unk2;
 
         for (j = 0; j < render2->numBgs && idx < dst->unk2BC.numLayers;
              j++, idx++) {

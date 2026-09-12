@@ -127,7 +127,6 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
     s32 v5;
     s32 v6;
     s32 v7;
-    s32 v8;
     s32 v9;
     struct monster *mon3;
     struct monster *mon4;
@@ -144,7 +143,6 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
     s32 v19;
     s32 v20;
     volatile s32 *p1;
-    volatile s32 *p2;
     volatile s32 *p3;
     struct damage_calc_diag *diag;
 
@@ -457,7 +455,6 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
     }
 
     p1 = &arr[0];
-    p2 = &arr[0];
     FixedPoint32To64(&fp4,
                      MultiplyByFixedPoint(MultiplyByFixedPoint(power << 8,
                                                                OFFENSIVE_STAT_STAGE_MULTIPLIERS[v1]),
@@ -476,7 +473,7 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
         f1 = MonsterHasNegativeStatus(attacker, TRUE);
         f4 = UpdateStateFlags(mon3, 1, f1);
         if (f1) {
-            v14 <<= 1;
+            v14 *= 2;
         }
         if (f4) {
             PlayEffectAnimation0x1A9__022E6130(attacker);
@@ -490,8 +487,8 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
         f2 = (v2 < 0x21 && v5 == 0);
         f4 = UpdateStateFlags(mon3, 0x100, f2);
         if (f2) {
-            v14 += v14 * 2;
-            v15 <<= 1;
+            v14 *= 3;
+            v15 *= 2;
         }
         if (f4) {
             PlayEffectAnimation0x1A9__022E617C(attacker);
@@ -500,19 +497,19 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
     }
 
     if (AbilityIsActiveVeneer(attacker, ABILITY_HUSTLE) && v5 == 0) {
-        v14 += v14 * 2;
-        v15 <<= 1;
+        v14 *= 3;
+        v15 *= 2;
     }
 
     v12 = !((struct monster *)attacker->info)->is_not_team_member;
     if (AbilityIsActiveVeneer(attacker, ABILITY_PLUS) && v5 == 1
         && DUNGEON_PTR->minus_is_active[v12]) {
-        v14 = v14 * 16 - v14;
+        v14 *= 15;
         v15 *= 10;
     }
     if (AbilityIsActiveVeneer(attacker, ABILITY_MINUS) && v5 == 1
         && DUNGEON_PTR->plus_is_active[v12]) {
-        v14 = v14 * 16 - v14;
+        v14 *= 15;
         v15 *= 10;
     }
 
@@ -523,8 +520,8 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
     if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_INTIMIDATE, TRUE)
         && v5 == 0) {
 #endif
-        v14 <<= 2;
-        v15 += v15 * 4;
+        v14 *= 4;
+        v15 *= 5;
     }
 #ifdef JAPAN
     if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_MARVEL_SCALE)
@@ -537,8 +534,8 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
         f3 = MonsterHasNegativeStatus(defender, TRUE);
         f4 = UpdateStateFlags(mon4, 8, f3);
         if (f3) {
-            v7 = v7 * 3;
-            v6 <<= 1;
+            v7 *= 3;
+            v6 *= 2;
         }
         if (f4) {
             PlayEffectAnimation0x18E(defender);
@@ -548,11 +545,10 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
 
     p3 = &arr[1];
     v9 = *p1 * v14;
-    v8 = *p3;
-    *p3 = v8 * v7;
-    *p2 = v9;
+    *p3 = *p3 * v7;
+    *p1 = v9;
     if (v15 != 1) {
-        *p2 = v9 / v15;
+        *p1 = v9 / v15;
     }
     if (v6 != 1) {
         p3 = &arr[1];

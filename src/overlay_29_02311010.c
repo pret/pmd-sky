@@ -109,6 +109,12 @@ void ActivateEndOfTurnEffects(struct entity *entity)
     s32 v1;
     s32 v2;
     s32 v3;
+    s32 v4;
+    s32 v5;
+    s32 v6;
+    s32 v7;
+    s32 v8;
+    s32 v9;
     struct fixed_point_64 f2;
     struct fixed_point_64 f1;
     struct fixed_point f3;
@@ -116,6 +122,7 @@ void ActivateEndOfTurnEffects(struct entity *entity)
     s16 i;
     struct monster *monster;
     bool8 b1;
+    bool8 b2;
     struct monster *mon1;
     struct move mv;
 
@@ -199,7 +206,7 @@ void ActivateEndOfTurnEffects(struct entity *entity)
                 v3 = 0;
             }
             TryEndPetrifiedOrSleepStatus(entity, entity);
-            ApplyDamageAndEffectsWrapper(entity, 1, 0xE, 0x250);
+            ApplyDamageAndEffectsWrapper(entity, 1, 0xE, DAMAGE_SOURCE_HUNGER);
             monster->famished = TRUE;
             if (CeilFixedPoint(monster->belly) != 0)
                 v2 = 0;
@@ -215,7 +222,9 @@ void ActivateEndOfTurnEffects(struct entity *entity)
             if (v3 != 0 && !DUNGEON_PTR->end_floor_no_death_check_flag &&
                 EntityIsValid__02311010(entity))
 #endif
+            {
                 PlaySeByIdIfNotSilence(0x1303);
+            }
             LogMessageByIdWithPopupCheckUser(entity, v2);
             ov29_022EA370(0x1E, 0x32);
         }
@@ -265,9 +274,9 @@ void ActivateEndOfTurnEffects(struct entity *entity)
         if (IsFloorOver())
             return;
     }
-    v1 = DungeonRandInt(100);
+    v4 = DungeonRandInt(100);
     if (AbilityIsActiveVeneer(entity, ABILITY_SHED_SKIN) &&
-        v1 < SHED_SKIN_ACTIVATION_CHANCE &&
+        v4 < SHED_SKIN_ACTIVATION_CHANCE &&
         MonsterHasNegativeStatus(entity, FALSE)) {
         DisplayActions(0);
         if (!EntityIsValid__02311010(entity))
@@ -288,72 +297,72 @@ void ActivateEndOfTurnEffects(struct entity *entity)
         EndNegativeStatusCondition(entity, entity, TRUE, FALSE, FALSE);
     }
 
-        if (AbilityIsActiveVeneer(entity, ABILITY_SPEED_BOOST)) {
-            monster->field_0x11f++;
-            if (monster->field_0x11f >= SPEED_BOOST_TURNS) {
-                monster->field_0x11f = 0;
-                BoostSpeedOneStage(entity, entity, 0x7f, FALSE);
-            }
+    if (AbilityIsActiveVeneer(entity, ABILITY_SPEED_BOOST)) {
+        monster->field_0x11f++;
+        if (monster->field_0x11f >= SPEED_BOOST_TURNS) {
+            monster->field_0x11f = 0;
+            BoostSpeedOneStage(entity, entity, 0x7f, FALSE);
         }
+    }
 
-        if (monster->sleep_class_status.sleep == STATUS_SLEEP_YAWNING) {
+    if (monster->sleep_class_status.sleep == STATUS_SLEEP_YAWNING) {
+        DisplayActions(0);
+        if (!EntityIsValid__02311010(entity))
+            return;
+        if (IsFloorOver())
+            return;
+        ov29_022E53F0(entity);
+    }
+
+    if (monster->burn_class_status.burn == STATUS_BURN_BURN) {
+        if (monster->burn_class_status.burn_damage_countdown != 0)
+            monster->burn_class_status.burn_damage_countdown--;
+        if (monster->burn_class_status.burn_damage_countdown == 0) {
             DisplayActions(0);
             if (!EntityIsValid__02311010(entity))
                 return;
             if (IsFloorOver())
                 return;
-            ov29_022E53F0(entity);
+            monster->burn_class_status.burn_damage_countdown = BURN_DAMAGE_COOLDOWN;
+            TryEndPetrifiedOrSleepStatus(entity, entity);
+            ApplyDamageAndEffectsWrapper(entity, BURN_DAMAGE, 1, DAMAGE_SOURCE_BURN);
         }
+        if (!EntityIsValid__02311010(entity))
+            return;
+        if (IsFloorOver())
+            return;
+    }
 
-        if (monster->burn_class_status.burn == STATUS_BURN_BURN) {
-            if (monster->burn_class_status.burn_damage_countdown != 0)
-                monster->burn_class_status.burn_damage_countdown--;
-            if (monster->burn_class_status.burn_damage_countdown == 0) {
-                DisplayActions(0);
-                if (!EntityIsValid__02311010(entity))
-                    return;
-                if (IsFloorOver())
-                    return;
-                monster->burn_class_status.burn_damage_countdown = BURN_DAMAGE_COOLDOWN;
-                TryEndPetrifiedOrSleepStatus(entity, entity);
-                ApplyDamageAndEffectsWrapper(entity, BURN_DAMAGE, 1, 0x247);
-            }
-            if (!EntityIsValid__02311010(entity))
-                return;
-            if (IsFloorOver())
-                return;
+    if (GravityIsActive()) {
+        if (IsFloating(entity)) {
+            EndMagnetRiseStatus(entity, entity);
+            EnsureCanStandCurrentTile(entity);
         }
+        if (!EntityIsValid__02311010(entity))
+            return;
+        if (IsFloorOver())
+            return;
+    }
 
-        if (GravityIsActive()) {
-            if (IsFloating(entity)) {
-                EndMagnetRiseStatus(entity, entity);
-                EnsureCanStandCurrentTile(entity);
-            }
-            if (!EntityIsValid__02311010(entity))
-                return;
-            if (IsFloorOver())
-                return;
-        }
+    if (AbilityIsActiveVeneer(entity, ABILITY_BAD_DREAMS)) {
+        TryActivateBadDreams(entity);
+        if (!EntityIsValid__02311010(entity))
+            return;
+        if (IsFloorOver())
+            return;
+    }
 
-        if (AbilityIsActiveVeneer(entity, ABILITY_BAD_DREAMS)) {
-            TryActivateBadDreams(entity);
-            if (!EntityIsValid__02311010(entity))
-                return;
-            if (IsFloorOver())
-                return;
+    if (!IsTileGround(GetTileAtEntity(entity))) {
+        v5 = monster->max_hp_stat + monster->max_hp_boost;
+        if (v5 > MAX_HP_LIMIT)
+            v5 = MAX_HP_LIMIT;
+        if (monster->hp < v5 &&
+            ExclusiveItemEffectIsActive__02311064(entity, EXCLUSIVE_EFF_RECOVER_HP_FROM_WATERY_TERRAIN)) {
+            TryIncreaseHp(entity, entity, ov10_022C4664, 0, FALSE);
         }
-
-        if (!IsTileGround(GetTileAtEntity(entity))) {
-            v1 = monster->max_hp_stat + monster->max_hp_boost;
-            if (v1 > 999)
-                v1 = 999;
-            if (monster->hp < v1 &&
-                ExclusiveItemEffectIsActive__02311064(entity, EXCLUSIVE_EFF_RECOVER_HP_FROM_WATERY_TERRAIN)) {
-                TryIncreaseHp(entity, entity, ov10_022C4664, 0, FALSE);
-            }
-            if (ExclusiveItemEffectIsActive__02311064(entity, EXCLUSIVE_EFF_HEAL_STATUS_FROM_WATERY_TERRAIN))
-                EndNegativeStatusConditionWrapper(entity, entity, TRUE, TRUE);
-        }
+        if (ExclusiveItemEffectIsActive__02311064(entity, EXCLUSIVE_EFF_HEAL_STATUS_FROM_WATERY_TERRAIN))
+            EndNegativeStatusConditionWrapper(entity, entity, TRUE, TRUE);
+    }
 
     if (ExclusiveItemEffectIsActive__02311064(entity, EXCLUSIVE_EFF_ABSORB_TEAMMATE_POISON)) {
         b1 = FALSE;
@@ -404,17 +413,17 @@ void ActivateEndOfTurnEffects(struct entity *entity)
             monster->burn_class_status.burn_damage_countdown--;
 
         if (monster->burn_class_status.burn_damage_countdown == 0) {
-            v1 = monster->burn_class_status.badly_poisoned_damage_count;
+            v6 = monster->burn_class_status.badly_poisoned_damage_count;
 
             if (monster->burn_class_status.badly_poisoned_damage_count < 0x1d)
                 monster->burn_class_status.badly_poisoned_damage_count++;
 
             monster->burn_class_status.burn_damage_countdown = BAD_POISON_DAMAGE_COOLDOWN;
 
-            if (v1 >= 0x1d)
-                v1 = 0x1d;
-            if (v1 < 0)
-                v1 = 0;
+            if (v6 >= 0x1d)
+                v6 = 0x1d;
+            if (v6 < 0)
+                v6 = 0;
 
             DisplayActions(0);
 
@@ -426,9 +435,9 @@ void ActivateEndOfTurnEffects(struct entity *entity)
             TryEndPetrifiedOrSleepStatus(entity, entity);
 
             if (AbilityIsActiveVeneer(entity, ABILITY_POISON_HEAL))
-                TryIncreaseHp(entity, entity, BAD_POISON_DAMAGE_TABLE[v1], 0, TRUE);
+                TryIncreaseHp(entity, entity, BAD_POISON_DAMAGE_TABLE[v6], 0, TRUE);
             else
-                ApplyDamageAndEffectsWrapper(entity, BAD_POISON_DAMAGE_TABLE[v1], 3,
+                ApplyDamageAndEffectsWrapper(entity, BAD_POISON_DAMAGE_TABLE[v6], 3,
                                              DAMAGE_SOURCE_POISON);
         }
 
@@ -450,7 +459,7 @@ void ActivateEndOfTurnEffects(struct entity *entity)
             monster->frozen_class_status.freeze_damage_countdown = ov10_022C4454;
             TryEndPetrifiedOrSleepStatus(entity, entity);
             PlayEffectAnimationEntityStandard(entity, monster->frozen_class_status.constriction_animation);
-            ApplyDamageAndEffectsWrapper(entity, CONSTRICTION_DAMAGE, 2, 0x248);
+            ApplyDamageAndEffectsWrapper(entity, CONSTRICTION_DAMAGE, 2, DAMAGE_SOURCE_CONSTRICTION);
         }
         if (!EntityIsValid__02311010(entity))
             return;
@@ -467,7 +476,7 @@ void ActivateEndOfTurnEffects(struct entity *entity)
                 return;
             monster->frozen_class_status.freeze_damage_countdown = WRAP_DAMAGE_COOLDOWN;
             TryEndPetrifiedOrSleepStatus(entity, entity);
-            ApplyDamageAndEffectsWrapper(entity, WRAP_DAMAGE, 5, 0x24A);
+            ApplyDamageAndEffectsWrapper(entity, WRAP_DAMAGE, 5, DAMAGE_SOURCE_WRAP);
         }
         if (!EntityIsValid__02311010(entity))
             return;
@@ -487,19 +496,17 @@ void ActivateEndOfTurnEffects(struct entity *entity)
         }
     }
 
-    if (monster->curse_class_status.curse == STATUS_CURSE_CURSED)
-    {
+    if (monster->curse_class_status.curse == STATUS_CURSE_CURSED) {
         if (monster->curse_class_status.curse_damage_countdown != 0)
             monster->curse_class_status.curse_damage_countdown--;
 
-        if (monster->curse_class_status.curse_damage_countdown == 0)
-        {
-            v1 = monster->max_hp_stat + monster->max_hp_boost;
-            if (v1 > 999)
-                v1 = 999;
-            v2 = v1 / 4;
-            if (v2 == 0)
-                v2++;
+        if (monster->curse_class_status.curse_damage_countdown == 0) {
+            v7 = monster->max_hp_stat + monster->max_hp_boost;
+            if (v7 > MAX_HP_LIMIT)
+                v7 = MAX_HP_LIMIT;
+            v8 = v7 / 4;
+            if (v8 == 0)
+                v8++;
 
             monster->curse_class_status.curse_damage_countdown = CURSE_DAMAGE_COOLDOWN;
             DisplayActions(0);
@@ -509,7 +516,7 @@ void ActivateEndOfTurnEffects(struct entity *entity)
                 return;
 
             TryEndPetrifiedOrSleepStatus(entity, entity);
-            ApplyDamageAndEffectsWrapper(entity, v2, 7, 0x24B);
+            ApplyDamageAndEffectsWrapper(entity, v8, 7, DAMAGE_SOURCE_CURSE);
         }
 
         if (!EntityIsValid__02311010(entity))
@@ -518,34 +525,26 @@ void ActivateEndOfTurnEffects(struct entity *entity)
             return;
     }
 
-    if (monster->leech_seed_class_status.leech_seed == STATUS_LEECH_SEED_LEECH_SEED)
-    {
+    if (monster->leech_seed_class_status.leech_seed == STATUS_LEECH_SEED_LEECH_SEED) {
         if (monster->leech_seed_class_status.leech_seed_damage_countdown != 0)
             monster->leech_seed_class_status.leech_seed_damage_countdown--;
 
-        if (monster->leech_seed_class_status.leech_seed_damage_countdown == 0)
-        {
+        if (monster->leech_seed_class_status.leech_seed_damage_countdown == 0) {
             e1 = DUNGEON_PTR->active_monster_ptrs[monster->leech_seed_class_status.leech_seed_source_monster_index];
-            v2 = LEECH_SEED_DAMAGE_COOLDOWN;
-            v3 = LEECH_SEED_HP_DRAIN;
+            v9 = LEECH_SEED_HP_DRAIN;
 
-            monster->leech_seed_class_status.leech_seed_damage_countdown = v2;
-            if (e1 == NULL)
-            {
+            monster->leech_seed_class_status.leech_seed_damage_countdown = LEECH_SEED_DAMAGE_COOLDOWN;
+            if (e1 == NULL) {
                 monster->leech_seed_class_status.leech_seed = STATUS_LEECH_SEED_NONE;
-            }
-            else if (monster->leech_seed_class_status.statuses_applier_id != GetEntInfo(e1)->unique_id)
-            {
+            } else if (monster->leech_seed_class_status.statuses_applier_id != GetEntInfo(e1)->unique_id) {
                 monster->leech_seed_class_status.leech_seed = STATUS_LEECH_SEED_NONE;
-            }
-            else
-            {
+            } else {
                 if (e1 != entity &&
                     (e1 == NULL ? FALSE : (bool8)(GetEntityType(e1) == ENTITY_MONSTER)) &&
                     AbilityIsActiveVeneer(e1, ABILITY_MOLD_BREAKER))
-                    b1 = FALSE;
+                    b2 = FALSE;
                 else
-                    b1 = AbilityIsActiveVeneer(entity, ABILITY_LIQUID_OOZE);
+                    b2 = AbilityIsActiveVeneer(entity, ABILITY_LIQUID_OOZE);
 
                 ov29_022EC62C(entity);
                 DisplayActions(0);
@@ -556,18 +555,14 @@ void ActivateEndOfTurnEffects(struct entity *entity)
                 if (IsFloorOver())
                     return;
 
-                if (monster->frozen_class_status.freeze != STATUS_FROZEN_FROZEN)
-                {
+                if (monster->frozen_class_status.freeze != STATUS_FROZEN_FROZEN) {
                     TryEndPetrifiedOrSleepStatus(entity, entity);
-                    ApplyDamageAndEffectsWrapper(entity, v3, 9, 0x24C);
-                    if (b1)
-                    {
+                    ApplyDamageAndEffectsWrapper(entity, v9, 9, DAMAGE_SOURCE_LEECH_SEED);
+                    if (b2) {
                         TryEndPetrifiedOrSleepStatus(e1, e1);
-                        ApplyDamageAndEffectsWrapper(e1, v3, 0xD, 0x239);
-                    }
-                    else if (!AbilityIsActiveVeneer(entity, ABILITY_MAGIC_GUARD))
-                    {
-                        TryIncreaseHp(e1, e1, v3, 0, TRUE);
+                        ApplyDamageAndEffectsWrapper(e1, v9, 0xD, DAMAGE_SOURCE_SLUDGE);
+                    } else if (!AbilityIsActiveVeneer(entity, ABILITY_MAGIC_GUARD)) {
+                        TryIncreaseHp(e1, e1, v9, 0, TRUE);
                     }
                 }
             }
@@ -593,7 +588,7 @@ void ActivateEndOfTurnEffects(struct entity *entity)
             if (monster->reflect_class_status.reflect == STATUS_REFLECT_PROTECT) {
                 LogMessageByIdWithPopupCheckUser(entity, MESSAGE_DEC);
             } else {
-                ApplyDamageAndEffectsWrapper(entity, 9999, 0xB, 0x24D);
+                ApplyDamageAndEffectsWrapper(entity, 9999, 0xB, DAMAGE_SOURCE_PERISH_SONG);
             }
             if (!EntityIsValid__02311010(entity))
                 return;
