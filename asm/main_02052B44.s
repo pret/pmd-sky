@@ -786,8 +786,8 @@ _0205351C:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020534BC
 
-	arm_func_start sub_02053568
-sub_02053568: ; 0x02053568
+	arm_func_start AddUniqueStarterMoveTo
+AddUniqueStarterMoveTo: ; 0x02053568
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, _0205361C ; =_020A3258
@@ -841,7 +841,7 @@ _02053604:
 _0205361C: .word _020A3258
 _02053620: .word 0x0000013B
 _02053624: .word _020A32D4
-	arm_func_end sub_02053568
+	arm_func_end AddUniqueStarterMoveTo
 
 	arm_func_start sub_02053628
 sub_02053628: ; 0x02053628
