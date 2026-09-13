@@ -19,6 +19,7 @@
 #include "position_util.h"
 #include "dungeon_util_2.h"
 #include "overlay_29_022EC7E8.h"
+#include "overlay_29_022E9FC0.h"
 
 #ifdef JAPAN
 #define SET_LEADER_ACTION_DATA_OFFSET -0x2C1
@@ -47,7 +48,6 @@ extern struct unk_0237C9A4 ov29_0237C9A4;
 extern u16 DUNGEON_BUTTON_INPUT[8];
 extern u16 ov29_0237C6A4;
 
-extern void AdvanceFrame(u32);
 extern bool8 CanSeeTarget(struct entity *user, struct entity *target);
 extern bool8 IsBlinded(struct entity *entity, bool8 check_held_item);
 extern void MemZero(u8 *ptr, s32 len);

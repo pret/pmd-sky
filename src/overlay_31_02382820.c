@@ -9,6 +9,7 @@
 #include "window.h"
 #include "main_02027AF0.h"
 #include "dungeon_util_2.h"
+#include "overlay_29_022E9FC0.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
@@ -28,7 +29,6 @@ extern struct struct_1 OVERLAY31_UNKNOWN_STRUCT__NA_2389E30;
 extern u16 ov31_02389E22[];
 
 
-extern void* MemAlloc(u32 size, u32 nmemb);
 
 extern u32 GetMoneyCarried(void);
 extern u32 sub_0204F9E0(void);
@@ -53,7 +53,6 @@ extern void CloseTextBox(s8);
 extern void CloseParentMenu(s8);
 
 extern void UnkMapRelatedFunc(u32, u32);
-extern void AdvanceFrame(u8);
 extern u32 GetLeaderActionId(void);
 extern void ov29_022E0C2C(u32);
 

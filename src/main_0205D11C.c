@@ -28,7 +28,6 @@ extern const char _020A3B18[];
 
 extern s32 RandIntSafe(s32 n);
 extern void ClearMissionData(struct mission *mission);
-extern void *MemAlloc(u32 len, u32 flags);
 extern struct mission_deliver_list MISSION_DELIVER_LIST_PTR;
 extern s32 CanDungeonBeUsedForMission(enum dungeon_id);
 extern s32 CountAndPopulateValidMissionTableMonsters(s16 **out, struct unk_0205DFAC *spec);

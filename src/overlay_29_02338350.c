@@ -3,6 +3,13 @@
 #include "dungeon_util.h"
 #include "dungeon_util_static.h"
 
+extern struct entity *ov29_023381C0(struct entity *entity, enum iq_skill_id iq_skill, bool8 param_3);
+
+bool8 NearbyAllyIqSkillIsEnabled(struct entity *entity, enum iq_skill_id iq_skill)
+{
+    return ov29_023381C0(entity, iq_skill, FALSE) != NULL;
+}
+
 struct entity* FindAdjacentEnemy(struct entity *monster)
 {
     s16 i;

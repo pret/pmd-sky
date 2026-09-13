@@ -1,5 +1,6 @@
 #include "overlay_29_02329664.h"
 #include "move_orb_effects.h"
+#include "overlay_29_0234B340.h"
 
 #ifdef JAPAN
 #define HELPING_HAND_LOG_MESSAGE 0xC1C
@@ -8,7 +9,6 @@
 #endif
 
 
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 
 extern const struct StatIndex ATK_STAT_IDX;
 

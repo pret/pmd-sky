@@ -6,5 +6,6 @@
 struct position* FindClosestUnoccupiedTileWithin2(struct position* out, struct position* origin, bool8 a);
 struct position* FindFarthestUnoccupiedTileWithin2(struct position* out, struct position* origin, bool8 a);
 struct position* FindUnoccupiedTileWithin3(struct position* out, struct position* origin, bool8 a);
+u8 TickStatusTurnCounter(u8 *counter);
 
 #endif

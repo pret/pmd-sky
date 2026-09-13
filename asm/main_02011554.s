@@ -1,22 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02011528.inc"
+	.include "main_02011554.inc"
 
 	.text
-
-	arm_func_start ApplyGummiBoostsToGroundMonster
-ApplyGummiBoostsToGroundMonster: ; 0x02011528
-	stmdb sp!, {lr}
-	sub sp, sp, #0xc
-	mov ip, r0
-	stmia sp, {r1, r2, r3}
-	add r0, ip, #4
-	add r1, ip, #8
-	add r2, ip, #0xc
-	add r3, ip, #0xe
-	bl ApplyGummiBoostsGroundMode
-	add sp, sp, #0xc
-	ldmia sp!, {pc}
-	arm_func_end ApplyGummiBoostsToGroundMonster
 
 	arm_func_start ApplyGummiBoostsToTeamMember
 ApplyGummiBoostsToTeamMember: ; 0x02011554

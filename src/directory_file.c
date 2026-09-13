@@ -4,8 +4,8 @@ extern const struct unk_02094C18 _02094C18;
 
 #include "file_rom.h"
 #include "debug.h"
+#include "main_02001188.h"
 
-extern void* MemAlloc(u32 len, u32 flags);
 
 extern char STRING_FILE_DIRECTORY_INIT;
 

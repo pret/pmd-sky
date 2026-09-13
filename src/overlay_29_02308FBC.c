@@ -47,6 +47,10 @@
 #include "overlay_29_02345A3C.h"
 #include "overlay_29_02306728.h"
 #include "overlay_29_02336F4C.h"
+#include "main_0205283C.h"
+#include "overlay_29_022E9FC0.h"
+#include "overlay_29_0234B340.h"
+#include "overlay_29_0234B4BC.h"
 
 struct unk_023535DC {
     u8 field_0x0;
@@ -95,7 +99,6 @@ extern s16 ov10_022C45C0;
 extern s16 ov10_022C4638;
 extern s16 ov10_022C467C;
 extern void AddExpSpecial(struct entity* attacker, struct entity* defender, s32 base_exp);
-extern void AdvanceFrame(u32);
 extern bool8 AftermathCheck(struct entity *attacker, struct entity *defender, s32 damage_source);
 extern void ChangeMonsterAnimation(struct entity *entity, s32 animation_id, s32 direction);
 extern void ChangeMonsterAnimationToIdle(struct entity* monster, enum direction_id direction);
@@ -106,13 +109,10 @@ extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity* user, struct 
 extern void FillRecruitInfo(void *recruit_info, struct entity *monster);
 extern void FreeOtherWrappedMonsters(u32 unique_id);
 extern struct team_member* GetActiveTeamMember(s32 roster_idx);
-extern s32 GetExp(enum monster_id monster_id, s32 level);
 extern s32 GetIdleAnimationId(struct entity *entity);
 extern void HandleFaint(struct entity *fainted_entity, s32 damage_source, struct entity *killer);
 extern bool8 IsMonsterIdInNormalRangeVeneer(enum monster_id monster_id);
-extern void LogMessageByIdWithPopup(struct entity* user, s32 message_id);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void MoveMonsterToPos(struct entity* entity, s32 x_pos, s32 y_pos, bool8 reset_prev_pos_fields);
 extern enum music_id MusicTableIdxToMusicId(s32 music_table_idx);
 extern s32 PlayEffectAnimationEntity(struct entity *entity, s32 id, s32 a, u8 b, s32 c, s32 d, s32 e, s32 f);

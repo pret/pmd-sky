@@ -1,6 +1,7 @@
 #ifndef PMDSKY_MAIN_02001188_H
 #define PMDSKY_MAIN_02001188_H
 
+void* MemAlloc(u32 len, u32 flags);
 // Unclear if these structs match, since they haven't been used other than in extern prototypes. Hopefully they do, though.
 struct mem_block {
     u32 content_flags; // Bit 0: in_use. Bit 1: object. Bit 2: arena. Bits 3-31: Unused?

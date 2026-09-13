@@ -7,7 +7,6 @@
 #define VRAM      0x6000000
 
 extern void FileClose(struct file_stream* file);
-extern void* MemAlloc(u32 len, u32 flags);
 extern s32 sprintf(u8* str, const u8* format, ...);
 extern void LoadFileFromRom(struct iovec* iov, const char* filepath, u32 flags);
 

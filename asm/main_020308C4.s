@@ -1,20 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_020308A0.inc"
+	.include "main_020308C4.inc"
 
 	.text
-
-	arm_func_start CloseAdvancedTextBox
-CloseAdvancedTextBox: ; 0x020308A0
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	bl GetWindowContents
-	mov r4, r0
-	mov r0, r5
-	bl DeleteWindow
-	mov r0, r4
-	bl MemFree
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end CloseAdvancedTextBox
 
 	arm_func_start IsAdvancedTextBoxActive
 IsAdvancedTextBoxActive: ; 0x020308C4

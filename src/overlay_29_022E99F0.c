@@ -23,3 +23,15 @@ struct position* FindUnoccupiedTileWithin3(struct position* out, struct position
 {
     return FindNearbyUnoccupiedTile(out, origin, DISPLACEMENTS_WITHIN_3, 0x31, a);
 }
+
+u8 TickStatusTurnCounter(u8 *counter)
+{
+    u8 turns = *counter;
+
+    if (turns == 0x7F)
+        return turns;
+    if (turns == 0)
+        return turns;
+    *counter = turns - 1;
+    return *counter;
+}

@@ -1,16 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02305C28.inc"
+	.include "overlay_29_02305C3C.inc"
 
 	.text
-
-	arm_func_start EndNegativeStatusConditionWrapper
-EndNegativeStatusConditionWrapper: ; 0x02305C28
-	stmdb sp!, {r3, lr}
-	mov ip, #0
-	str ip, [sp]
-	bl EndNegativeStatusCondition
-	ldmia sp!, {r3, pc}
-	arm_func_end EndNegativeStatusConditionWrapper
 
 	arm_func_start TransferNegativeStatusCondition
 TransferNegativeStatusCondition: ; 0x02305C3C

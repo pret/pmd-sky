@@ -3,6 +3,7 @@
 #include "dungeon_util_2.h"
 #include "overlay_29_022E3F20.h"
 #include "dungeon_util_static.h"
+#include "overlay_29_0234B340.h"
 
 #ifdef JAPAN
 #define JPN_MSG_OFFSET -0x2C0
@@ -10,7 +11,6 @@
 #define JPN_MSG_OFFSET 0
 #endif
 
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 
 void EndBurnClassStatus(struct entity *user, struct entity *target)
 {

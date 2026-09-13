@@ -23,6 +23,8 @@
 #include "dungeon_util_2.h"
 #include "overlay_29_022EC7E8.h"
 #include "overlay_29_023061A8.h"
+#include "overlay_29_022E99F0.h"
+#include "overlay_29_02305C04.h"
 
 #ifdef JAPAN
 #define MESSAGE_DE6 0xB26
@@ -58,12 +60,10 @@ extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
 extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
 extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_point_64 *a, const struct fixed_point_64 *b);
-extern void EndNegativeStatusConditionWrapper(struct entity *user, struct entity *target, bool8 displayMessage, bool8 fromMove);
 extern void ov29_022EA370(s32 a, s32 b);
 extern s32 ov29_022F2FE4();
 
 extern void WaitUntilAlertBoxTextIsLoadedWrapper(void);
-extern u8 TickStatusTurnCounter(u8 *counter);
 extern void EnsureCanStandCurrentTile(struct entity *entity);
 extern void ov29_022E543C(struct entity *entity);
 extern void ov29_022E53F0(struct entity *entity);

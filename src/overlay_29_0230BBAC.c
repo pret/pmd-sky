@@ -25,13 +25,14 @@
 #include "type_effectiveness.h"
 #include "weather.h"
 #include "dungeon_util_2.h"
+#include "overlay_29_02338350.h"
+#include "overlay_29_0234B340.h"
 
 extern struct dungeon *DUNGEON_PTR;
 extern u8 GetMonsterGenderVeneer(s16 monster_id);
 extern u8 ExclusiveItemOffenseBoost(struct entity *entity, s32 idx);
 extern u8 ExclusiveItemDefenseBoost(struct entity *entity, s32 idx);
 extern int MoveIsNotPhysical(enum move_id move_id);
-extern bool8 NearbyAllyIqSkillIsEnabled(struct entity *entity, enum iq_skill_id iq_skill);
 extern s32 FixedPoint64ToInt(struct fixed_point_64 *x);
 extern void AddFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64 *a, struct fixed_point_64 *b);
 extern void ClampedLn(struct fixed_point_64 *out, s32 x);
@@ -45,7 +46,6 @@ extern void DivideFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64
 extern void ResetDamageCalcDiagnostics(void);
 extern bool8 OtherMonsterAbilityIsActive(struct entity *entity, enum ability_id ability_id);
 extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_point_64 *a, const struct fixed_point_64 *b);
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern bool8 UpdateStateFlags(struct monster *info, s32 flag, bool8 value);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);

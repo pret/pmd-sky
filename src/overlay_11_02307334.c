@@ -18,6 +18,8 @@
 #include "main_02058E68.h"
 #include "overlay_10_022BCC60.h"
 #include "overlay_31_02382820.h"
+#include "main_020114F8.h"
+#include "main_0203088C.h"
 
 struct unk_02309DAC {
     s32 field_0x0;
@@ -100,9 +102,7 @@ extern void InitPreprocessorArgs(struct preprocessor_args *);
 extern s32 IsScrollBoxActive(s8);                                        extern void ShowDialogueBox(s8);                                         extern void ShowStringIdInDialogueBox(s8, s32, s32, void *);             extern void ov11_022DC504(void);
 extern u8 *strcpy(u8 *dest, const u8 *src);
 
-extern void ApplyGummiBoostsToGroundMonster(struct ground_monster *, s16, int, void *);
 extern void ApplyGummiBoostsToTeamMember(struct team_member *, s16, int, void *);
-extern void CloseAdvancedTextBox(s32 window_id);
 extern s8 CreateInventoryMenuOuter(s32, s32, s32, void *, void *, void *, u8);
 extern bool8 IsBagNotEmpty(void);
 extern u8 PopInventoryMenuField0x1A3(s32 window_id);

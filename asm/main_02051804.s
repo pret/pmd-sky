@@ -1,16 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_020517F4.inc"
+	.include "main_02051804.inc"
 
 	.text
-
-	arm_func_start GetRankUpEntry
-GetRankUpEntry: ; 0x020517F4
-	ldr r1, _02051800 ; =RANK_UP_TABLE
-	add r0, r1, r0, lsl #4
-	bx lr
-	.align 2, 0
-_02051800: .word RANK_UP_TABLE
-	arm_func_end GetRankUpEntry
 
 	arm_func_start sub_02051804
 sub_02051804: ; 0x02051804

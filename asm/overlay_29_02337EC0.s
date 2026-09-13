@@ -301,15 +301,3 @@ _02338274:
 	.align 2, 0
 _02338284: .word DIRECTIONS_XY
 	arm_func_end ov29_023381C0
-
-	arm_func_start NearbyAllyIqSkillIsEnabled
-NearbyAllyIqSkillIsEnabled: ; 0x02338288
-	stmdb sp!, {r3, lr}
-	mov r2, #0
-	bl ov29_023381C0
-	cmp r0, #0
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r3, pc}
-	arm_func_end NearbyAllyIqSkillIsEnabled

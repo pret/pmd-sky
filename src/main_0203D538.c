@@ -17,13 +17,7 @@
 #include "main_0203755C.h"
 #include "progression.h"
 #include "script_variable.h"
-
-struct unk_020517F4 {
-    u8 field_0x0[8];
-    s32 field_0x8;
-    s16 field_0xc;
-    u8 field_0xe[2];
-};
+#include "main_020517D4.h"
 
 struct unk_020AFE74 {
     s32 field_0x0;
@@ -98,7 +92,6 @@ extern void sub_02045FD0(struct item *out);
 extern bool8 AddItemToStorage(struct item *item);
 extern void InitUnkStorageStruct0x410(struct item *, u8);
 extern s32 GetRank(void);
-extern struct unk_020517F4 *GetRankUpEntry(s32 rank);
 extern void sub_0203F00C(void);
 extern void MissionRewardCloseAllBoxes(void);
 extern struct ground_monster *sub_02055D4C(struct ground_monster *mon);

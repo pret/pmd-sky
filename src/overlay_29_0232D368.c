@@ -1,5 +1,6 @@
 #include "overlay_29_0232D368.h"
 #include "dungeon_util_2.h"
+#include "overlay_29_0234B340.h"
 
 #ifdef JAPAN
 #define GUARD_SWAP_LOG_MESSAGE 0x2495
@@ -7,7 +8,6 @@
 #define GUARD_SWAP_LOG_MESSAGE 0xF2E
 #endif
 
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void SwapDefensiveStages(struct entity *attacker, struct entity *defender, s32 log_message);
 extern void SwapDefensiveMultipliers(struct entity *attacker, struct entity *defender, s32 log_message);
 extern void TryInflictLuckyChantStatus(struct entity *user, struct entity *target);

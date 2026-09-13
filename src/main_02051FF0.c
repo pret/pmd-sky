@@ -1,9 +1,9 @@
 #include "main_02051FF0.h"
 #include "main_02008BD4.h"
+#include "main_02001188.h"
 
 extern void LoadFileFromRom(struct iovec *handle, u32 fileId, s32 param2);
 extern s32 GetAtSize(void *data);
-extern void *MemAlloc(u32 size, u32 heapId);
 extern void DecompressAtNormalVeneer(void *dest, u32 size, void *src);
 
 s32 sub_02051FF0(u32 fileId, void **outPtr, s32 param2)

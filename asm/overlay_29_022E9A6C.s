@@ -1,21 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022E9A44.inc"
+	.include "overlay_29_022E9A6C.inc"
 
 	.text
-
-	arm_func_start TickStatusTurnCounter
-TickStatusTurnCounter: ; 0x022E9A44
-	ldrb r1, [r0]
-	cmp r1, #0x7f
-	moveq r0, r1
-	bxeq lr
-	cmp r1, #0
-	moveq r0, r1
-	subne r1, r1, #1
-	strneb r1, [r0]
-	andne r0, r1, #0xff
-	bx lr
-	arm_func_end TickStatusTurnCounter
 
 	arm_func_start ov29_022E9A6C
 ov29_022E9A6C: ; 0x022E9A6C

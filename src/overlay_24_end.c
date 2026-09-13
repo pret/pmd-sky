@@ -17,7 +17,6 @@ void GetNameRaw(unsigned char *, s32);
 void GetNameWithGender(unsigned char*, s32, char color_id);
 s8 GetUnkGameState0x13a6();   
 extern void InitPreprocessorArgs(void* args);
-void* MemAlloc(s32, s32);       
 s16 ReturnEggExclusiveItem(s32);
 void SetUnkGameState0x13a6(s32);
 void StrcpyName(const unsigned char*, const unsigned char*);

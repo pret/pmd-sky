@@ -1,23 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022E9FE0.inc"
+	.include "overlay_29_022EA008.inc"
 
 	.text
-
-	arm_func_start AdvanceFrame
-AdvanceFrame: ; 0x022E9FE0
-	stmdb sp!, {r3, lr}
-	ldr r1, _022EA004 ; =ov29_02353560
-	ldrb r1, [r1, #3]
-	cmp r1, #0
-	beq _022E9FFC
-	bl ov29_022EA2A4
-	ldmia sp!, {r3, pc}
-_022E9FFC:
-	bl ov29_022EA324
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_022EA004: .word ov29_02353560
-	arm_func_end AdvanceFrame
 
 	arm_func_start ov29_022EA008
 ov29_022EA008: ; 0x022EA008

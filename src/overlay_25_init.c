@@ -1,6 +1,7 @@
 #include "overlay_25.h"
 #include "main_0200C4FC.h"
 #include "item.h"
+#include "main_02001188.h"
 
 
 extern void CloseDialogueBox(s8);                             
@@ -50,7 +51,6 @@ extern void ShowPortraitInPortraitBox(s8, void*);
 extern void SwapShopInventoryManager(s32, s32);                   
 extern void ov11_022DC504();                                  
 extern void ov11_0230C910();
-extern void* MemAlloc(s32, s32);                               
 extern void MemFree(void *ptr);
 extern BOOL IsScriptMenuReturnDisabled();                   
 extern void ReturnScriptMenuResult(s32);                        

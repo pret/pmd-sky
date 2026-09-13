@@ -1,5 +1,6 @@
 #include "overlay_29_0234BA54.h"
 #include "overlay_29_0234B024.h"
+#include "overlay_29_022E9FC0.h"
 
 extern struct message_log_info MESSAGE_LOG_INFO;
 extern u16 DUNGEON_BUTTON_INPUT[8];
@@ -18,7 +19,6 @@ extern void sub_02047FFC(s32 a);
 extern void InitPortraitParams(portrait_params *portrait);
 extern void AllowPortraitDefault(portrait_params *portrait, bool32 allow);
 extern void WaitUntilAlertBoxTextIsLoaded(u32 param_1);
-extern void AdvanceFrame(u32 param_1);
 
 void WaitUntilAlertBoxPauseIsOver(u32 param_1)
 {

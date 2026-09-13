@@ -3,5 +3,6 @@
 
 u8 ov29_022E9FC0(void);
 void ov29_022E9FD0(u8 value);
+void AdvanceFrame(u32 param_1);
 
 #endif

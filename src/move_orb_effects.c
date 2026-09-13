@@ -11,6 +11,7 @@
 #include "overlay_29_02344AF8.h"
 #include "dungeon_util_2.h"
 #include "overlay_29_022E3F20.h"
+#include "overlay_29_0234B340.h"
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern void CopyStringFromId(u8* buf, u32 string_id);
@@ -26,7 +27,6 @@ extern void PlayDefensiveStatMultiplierDownEffect(struct entity *entity, struct 
 extern void PlayDefensiveStatMultiplierUpEffect(struct entity *entity, struct StatIndex stat_index);
 extern void PlayHitChanceUpEffect(struct entity *entity, struct StatIndex stat_index);
 extern void PlayHitChanceDownEffect(struct entity *entity, struct StatIndex stat_index);
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void ov29_022E4338(struct entity *);
 extern void PlayExclamationPointEffect__022E5D4C(struct entity *entity);
 extern void PlayParalysisEffect(struct entity *entity);
