@@ -34,3 +34,8 @@ bool8 CanMonsterBeUsedForMission(s16 id, bool8 flag)
     }
     return TRUE;
 }
+
+bool8 sub_02062AD0(s16 id)
+{
+    return IsMonsterMissionAllowedStory(FemaleToMaleForm(GetBaseForm(id)));
+}

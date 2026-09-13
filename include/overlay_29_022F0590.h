@@ -5,6 +5,7 @@
 
 #include "dungeon_mode.h"
 
+void UnfreezeAnim(struct entity *entity);
 void ov29_022F0534(bool8 freeze);
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValid__022F0590(struct entity *entity);

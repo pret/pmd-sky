@@ -1,51 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022E45CC.inc"
+	.include "overlay_29_022E465C.inc"
 
 	.text
-
-	arm_func_start ov29_022E45CC
-ov29_022E45CC: ; 0x022E45CC
-	bx lr
-	arm_func_end ov29_022E45CC
-
-	arm_func_start ov29_022E45D0
-ov29_022E45D0: ; 0x022E45D0
-	stmdb sp!, {r3, r4, r5, lr}
-	sub sp, sp, #0x10
-	mov r5, r0
-	mov r0, #0x2f
-	mov r4, r1
-	bl GetEffectAnimationWanOffset
-	mov r1, r0
-	and r3, r1, #0xff
-	mov r0, #2
-	mov ip, #0
-	stmia sp, {r0, ip}
-	sub r0, ip, #1
-	str r0, [sp, #8]
-	mov r0, r4
-	mov r1, #0x2f
-	mov r2, #1
-	str ip, [sp, #0xc]
-	bl PlayEffectAnimationEntity
-	mov r0, #0x30
-	bl GetEffectAnimationWanOffset
-	mov r1, r0
-	and r3, r1, #0xff
-	mov r1, #2
-	str r1, [sp]
-	mov r2, #0
-	str r2, [sp, #4]
-	sub r1, r2, #1
-	str r1, [sp, #8]
-	str r2, [sp, #0xc]
-	mov r0, r5
-	mov r1, #0x30
-	mov r2, #1
-	bl PlayEffectAnimationEntity
-	add sp, sp, #0x10
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022E45D0
 
 	arm_func_start ov29_022E465C
 ov29_022E465C: ; 0x022E465C

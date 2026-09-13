@@ -1,35 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0231EA04.inc"
+	.include "overlay_29_0231EA40.inc"
 
 	.text
-
-	arm_func_start InitMoveWrapper
-InitMoveWrapper: ; 0x0231EA04
-	ldr ip, _0231EA14 ; =InitMove
-	mov r0, r1
-	mov r1, r2
-	bx ip
-	.align 2, 0
-_0231EA14: .word InitMove
-	arm_func_end InitMoveWrapper
-
-	arm_func_start MoveIsNotPhysical
-MoveIsNotPhysical: ; 0x0231EA18
-	stmdb sp!, {r3, lr}
-	bl GetMoveCategory
-	cmp r0, #0
-	moveq r0, #0
-	movne r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end MoveIsNotPhysical
-
-	arm_func_start CategoryIsNotPhysical
-CategoryIsNotPhysical: ; 0x0231EA30
-	cmp r0, #0
-	moveq r0, #0
-	movne r0, #1
-	bx lr
-	arm_func_end CategoryIsNotPhysical
 
 	arm_func_start MakeFloorOneRoom
 MakeFloorOneRoom: ; 0x0231EA40

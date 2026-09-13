@@ -18,6 +18,7 @@
 #include "progression.h"
 #include "script_variable.h"
 #include "main_020517D4.h"
+#include "main_0202A66C.h"
 
 struct unk_020AFE74 {
     s32 field_0x0;
@@ -67,7 +68,6 @@ extern struct unk_020AFE74 *MISSION_REWARD_STRUCT_MAIN_PTR;
 
 extern void MaybeGetColoredFormattedItemName(void*, struct item*, void*);
 extern s8 CreateSimpleMenuFromStringIds(void*, s32, s32, void*, s32);
-extern u8 CreateParentMenuFromStringIds(void *, u32, void *, void *);
 extern void GetNameWithGender(char *dst, s16 monster_id, char color_id);
 extern void GetNameRaw(unsigned char *, s32);
 extern void StrncpySimpleNoPadSafe(u8* dest, const u8* src, u32 n);
@@ -257,7 +257,7 @@ s32 sub_0203D538(void)
         }
         case 8:
             if (sub_02046C78() != 0) {
-                MISSION_REWARD_STRUCT_MAIN_PTR->field_0x4 = CreateParentMenuFromStringIds(NULL, 0x11, NULL, &_0209C884);
+                MISSION_REWARD_STRUCT_MAIN_PTR->field_0x4 = CreateParentMenuFromStringIds(NULL, 0x11, NULL, (struct unk_0202A5CC *)&_0209C884);
                 MISSION_REWARD_STRUCT_MAIN_PTR->field_0x0 = 9;
             }
             break;

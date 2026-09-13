@@ -53,6 +53,8 @@
 #include "overlay_29_0234B4BC.h"
 #include "overlay_29_022EAC7C.h"
 #include "overlay_29_022ECDC0.h"
+#include "overlay_29_022E45B8.h"
+#include "overlay_29_0231E9F0.h"
 
 struct unk_023535DC {
     u8 field_0x0;
@@ -75,11 +77,9 @@ struct unk_022C593C {
 extern const struct StatIndex ATK_STAT_IDX;
 extern void ActivateMotorDrive(struct entity* entity);
 extern void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a, s32 b);
-extern bool8 CategoryIsNotPhysical(s32 category);
 extern bool8 IsEitherMonsterInvalid(struct entity *a, struct entity *b);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);
 extern void TryHurl(struct entity *user, struct entity *target);
-extern void ov29_022E45D0(struct entity *a, struct entity *b);
 extern void ov29_022E57D4(struct entity *entity);
 extern void ov29_022E5E84(struct entity *a, struct entity *b);
 extern void ov29_0230F728(struct entity *attacker, struct entity *defender, enum exclusive_item_effect_id effect_id, s32 a);
@@ -126,7 +126,6 @@ extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *ta
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
 extern bool8 TryRecruit(struct entity *user, struct entity *recruit, void *recruit_info);
 extern void TrySpawnEnemyItemDrop(struct entity* attacker, struct entity* defender);
-extern void UnfreezeAnim(struct entity *e);
 extern void UpdateShopkeeperModeAfterAttack(struct entity* attacker, struct entity* defender);
 extern s32 abs(s32 n);
 extern int ov10_022BDC68();
@@ -136,7 +135,6 @@ extern int ov29_022E5478();
 extern int ov29_022E550C();
 extern void ov29_022E81F8(void);
 extern void ov29_022EA370(s32 a, s32 b);
-extern int ov29_022EFB84();
 extern int ov29_022F0780();
 extern int ov29_022F9AF4();
 extern int ov29_022FB98C();

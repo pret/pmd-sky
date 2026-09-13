@@ -1,11 +1,9 @@
 #pragma once
 .public AbilityIsActiveVeneer
 .public DUNGEON_PTR
-.public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public ExclusiveItemEffectIsActive__0230F8AC
 .public GenerateStandardItem
-.public HasHeldItem
 .public IqSkillIsEnabled
 .public IsMonster__0230F980
 .public LogMessageByIdWithPopupCheckUser
@@ -14,7 +12,6 @@
 .public TreasureBoxDropsEnabled
 .public TryGenerateUnownStoneDrop
 .public ov10_022C4650
-.public ov10_022C4BE4
 .public ov29_02344B9C
 .public ov29_023460DC
 .public ov29_02347184

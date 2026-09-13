@@ -322,18 +322,3 @@ _020021C0:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end UDivideFixedPoint64
-
-	arm_func_start AddFixedPoint64
-AddFixedPoint64: ; 0x020021C8
-	stmdb sp!, {r3, lr}
-	ldr ip, [r1, #4]
-	ldr lr, [r1]
-	ldr r1, [r2]
-	ldr r3, [r2, #4]
-	add r1, lr, r1
-	add r2, ip, r3
-	cmp r2, ip
-	addlo r1, r1, #1
-	stmia r0, {r1, r2}
-	ldmia sp!, {r3, pc}
-	arm_func_end AddFixedPoint64

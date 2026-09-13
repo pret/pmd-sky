@@ -27,6 +27,9 @@
 #include "overlay_29_02305C04.h"
 #include "overlay_29_022E4338.h"
 
+extern s16 ov10_022C4BE4[20];
+extern void ov29_0230FB30(struct entity *entity);
+
 #ifdef JAPAN
 #define MESSAGE_DE6 0xB26
 #define MESSAGE_DE7 0xB27
@@ -51,6 +54,7 @@
 
 
 #ifdef EUROPE
+
 extern bool8 ov29_022E34A8_EU(struct entity *entity);
 #endif
 
@@ -70,7 +74,6 @@ extern void ov29_022E543C(struct entity *entity);
 extern void ov29_022E53F0(struct entity *entity);
 extern void ov29_022F42F8(struct entity *entity);
 extern void EndMagnetRiseStatus(struct entity *user, struct entity *target);
-extern void TickNoSlipCap(struct entity *entity);
 extern void ov29_022EC62C(struct entity *entity);
 extern void ov29_022FB718(struct entity *entity);
 extern void TryActivateBadDreams(struct entity *entity);
@@ -103,6 +106,33 @@ extern const s16 INGRAIN_BONUS_REGEN;
 extern const s16 CURSE_DAMAGE_COOLDOWN;
 extern const s16 LEECH_SEED_DAMAGE_COOLDOWN;
 extern const s16 LEECH_SEED_HP_DRAIN;
+
+void TickNoSlipCap(struct entity *entity)
+{
+    struct monster *monster;
+    bool8 has_no_slip_cap;
+
+    if (AbilityIsActiveVeneer(entity, ABILITY_KLUTZ))
+        has_no_slip_cap = FALSE;
+    else
+        has_no_slip_cap = HasHeldItem(entity, ITEM_NO_SLIP_CAP);
+
+    if (!has_no_slip_cap)
+        return;
+
+    monster = entity->info;
+    if (monster->is_not_team_member)
+        return;
+
+    monster->no_slip_cap_counter++;
+    if (monster->no_slip_cap_counter >= 20)
+        monster->no_slip_cap_counter = 19;
+
+    if (DungeonRandInt(100) < ov10_022C4BE4[monster->no_slip_cap_counter]) {
+        ov29_0230FB30(entity);
+        monster->no_slip_cap_counter = 0;
+    }
+}
 
 void ActivateEndOfTurnEffects(struct entity *entity)
 {

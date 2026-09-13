@@ -8,7 +8,6 @@
 .public EnqueueRender3dTiling
 .public FemaleToMaleForm
 .public FillPaletteDataRgba
-.public GetBaseForm
 .public GetDungeonMode
 .public GetExclusiveItem
 .public GetHero

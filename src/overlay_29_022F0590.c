@@ -1,10 +1,19 @@
 #include "overlay_29_022F0590.h"
 
 #include "dungeon.h"
+
+#include "main_0201D198.h"
+void UnfreezeAnim(struct entity *entity)
+{
+    struct monster *monster = entity->info;
+
+    monster->field_0x171 = FALSE;
+    SetAnimationControlPausedFlag(&entity->anim_ctrl, FALSE);
+}
+
 extern struct dungeon *DUNGEON_PTR[];
 extern bool8 EntityIsValid__022F0590(struct entity *entity);
 extern void FreezeAnim(struct entity *e);
-extern void UnfreezeAnim(struct entity *e);
 
 
 void ov29_022F0534(bool8 freeze)
@@ -38,7 +47,6 @@ extern s32 TalkToSecretBazaarNpc(s32 a, struct entity *b, s32 c, s32 d, s32 e);
 #include "dungeon_util_static.h"
 
 extern void FreezeAnim(struct entity *e);
-extern void UnfreezeAnim(struct entity *e);
 
 bool8 EntityIsValid__022F0590(struct entity *entity)
 {

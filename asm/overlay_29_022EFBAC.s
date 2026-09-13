@@ -1,21 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022EFB84.inc"
+	.include "overlay_29_022EFBAC.inc"
 
 	.text
-
-	arm_func_start ov29_022EFB84
-ov29_022EFB84: ; 0x022EFB84
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	mov r0, #0
-	bl ov29_0234D8A0
-	cmp r4, #0
-	ldmeqia sp!, {r4, pc}
-	mov r0, #0xa
-	mov r1, #0x62
-	bl ov29_022EA370
-	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022EFB84
 
 	arm_func_start ov29_022EFBAC
 ov29_022EFBAC: ; 0x022EFBAC
@@ -672,19 +658,3 @@ FreezeAnim: ; 0x022F04F0
 #endif
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end FreezeAnim
-
-	arm_func_start UnfreezeAnim
-UnfreezeAnim: ; 0x022F0518
-	ldr r2, [r0, #0xb4]
-	mov r1, #0
-	ldr ip, _022F0530 ; =SetAnimationControlPausedFlag
-	add r0, r0, #0x2c
-#ifdef JAPAN
-	strb r1, [r2, #0x16d]
-#else
-	strb r1, [r2, #0x171]
-#endif
-	bx ip
-	.align 2, 0
-_022F0530: .word SetAnimationControlPausedFlag
-	arm_func_end UnfreezeAnim

@@ -37,7 +37,6 @@ extern void *LoadMissionTemplates(void);
 extern s32 MtNext(void);
 extern void RollRandomItemReward(struct dungeon_floor_pair *, enum mission_type, s16 *out);
 extern void sub_02062900(u16, s16 *, void *out);
-extern bool8 sub_02062AD0(enum monster_id);
 extern bool8 sub_02062C4C(s32, u8 *, struct dungeon_floor_pair *, s32);
 extern s32 sub_02062814(void **out);
 extern s32 sub_0206282C(u8 *out);

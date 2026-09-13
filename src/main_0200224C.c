@@ -1,5 +1,17 @@
 #include "main_0200224C.h"
 
+void AddFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64 *a, struct fixed_point_64 *b)
+{
+    s32 upper = a->upper + b->upper;
+    u32 lower = a->lower + b->lower;
+
+    if (lower < a->lower) {
+        upper++;
+    }
+    out->upper = upper;
+    out->lower = lower;
+}
+
 extern s16 NATURAL_LOG_VALUE_TABLE[];
 
 

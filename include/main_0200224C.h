@@ -3,6 +3,7 @@
 
 #include "main_02001BB4.h"
 
+void AddFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64 *a, struct fixed_point_64 *b);
 void ClampedLn(struct fixed_point_64 *out, s32 x);
 void sub_02002228(u32 param_1);
 u16 GetRngSeed(void);

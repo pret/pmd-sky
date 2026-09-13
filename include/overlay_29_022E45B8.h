@@ -6,5 +6,7 @@
 #include "move.h"
 
 void ov29_022E45B8(struct entity *entity);
+void ov29_022E45CC(struct entity *entity);
+void ov29_022E45D0(struct entity *a, struct entity *b);
 
 #endif
