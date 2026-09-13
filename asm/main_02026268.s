@@ -1,51 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_020261F4.inc"
+	.include "main_02026268.inc"
 
 	.text
-
-	arm_func_start sub_020261F4
-sub_020261F4: ; 0x020261F4
-	ldr ip, _02026200 ; =sub_02020D7C
-	add r0, r0, #4
-	bx ip
-	.align 2, 0
-_02026200: .word sub_02020D7C
-	arm_func_end sub_020261F4
-
-	arm_func_start sub_02026204
-sub_02026204: ; 0x02026204
-	ldr ip, _02026210 ; =AnalyzeText
-	add r0, r0, #4
-	bx ip
-	.align 2, 0
-_02026210: .word AnalyzeText
-	arm_func_end sub_02026204
-
-	arm_func_start DrawTextInWindow
-DrawTextInWindow: ; 0x02026214
-	stmdb sp!, {r3, r4, lr}
-	sub sp, sp, #0x124
-	mov r4, r0
-	str r1, [sp]
-	mov r1, r4
-	add r0, sp, #8
-	mov r4, r3
-	str r2, [sp, #4]
-	bl sub_02025E84
-	add r0, sp, #0xc
-	add r1, sp, #0
-	bl sub_02020B60
-	ldr r1, _02026264 ; =0x0000C402
-	add r0, sp, #0xc
-	mov r2, r4
-	bl sub_02020BC4
-	add r0, sp, #0xc
-	bl AnalyzeText
-	add sp, sp, #0x124
-	ldmia sp!, {r3, r4, pc}
-	.align 2, 0
-_02026264: .word 0x0000C402
-	arm_func_end DrawTextInWindow
 
 	arm_func_start AppendStandardStringToMission
 AppendStandardStringToMission: ; 0x02026268

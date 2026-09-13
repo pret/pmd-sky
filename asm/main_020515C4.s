@@ -1,67 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02051504.inc"
+	.include "main_020515C4.inc"
 
 	.text
-
-	arm_func_start RetrieveFromItemList1
-RetrieveFromItemList1: ; 0x02051504
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	ldr r0, _02051564 ; =0x0000270F
-	mov r6, r1
-	bl RandIntSafe
-	mov r4, r0
-	ldr r0, _02051564 ; =0x0000270F
-	bl RandIntSafe
-	mov r5, r0
-	ldrb r0, [r7]
-	cmp r0, #0xb4
-	cmphs r0, #0xd3
-	movhs r0, #0x55
-	ldmhsia sp!, {r3, r4, r5, r6, r7, pc}
-	bl GetNbFloorsPlusOne
-	ldrb r1, [r7, #1]
-	cmp r1, r0
-	movhs r0, #0x55
-	ldmhsia sp!, {r3, r4, r5, r6, r7, pc}
-	mov r0, r6
-	mov r1, r4
-	mov r2, r5
-	bl GetItemIdFromList
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
-_02051564: .word 0x0000270F
-	arm_func_end RetrieveFromItemList1
-
-	arm_func_start IsForbiddenFloor
-IsForbiddenFloor: ; 0x02051568
-	stmdb sp!, {r3, lr}
-	mov r1, r0
-	add r0, sp, #0
-	bl DungeonFloorToGroupFloor
-	ldrb ip, [sp]
-	ldrb lr, [sp, #1]
-	ldr r1, _020515C0 ; =MISSION_FLOORS_FORBIDDEN
-	mov r3, #0
-_02051588:
-	ldrb r0, [r1, r3, lsl #1]
-	mov r2, r3, lsl #1
-	cmp r0, #0x64
-	beq _020515B8
-	cmp ip, r0
-	addeq r0, r1, r2
-	ldreqb r0, [r0, #1]
-	cmpeq lr, r0
-	moveq r0, #1
-	ldmeqia sp!, {r3, pc}
-	add r3, r3, #1
-	b _02051588
-_020515B8:
-	mov r0, #0
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_020515C0: .word MISSION_FLOORS_FORBIDDEN
-	arm_func_end IsForbiddenFloor
 
 	arm_func_start Copy16BitsTo
 Copy16BitsTo: ; 0x020515C4

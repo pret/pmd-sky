@@ -8,5 +8,7 @@ bool8 ExclusiveItemEffectIsActive__0230F8AC(struct entity *entity, enum exclusiv
 u8 FindDirectionOfAdjacentMonsterWithItem(struct entity *entity, enum item_id item_id);
 // Checks if an entity is a monster (entity type 1).
 bool8 IsMonster__0230F980(struct entity *entity);
+void ov29_0230F9A4(struct entity *entity, struct item *item);
+void TrySpawnEnemyItemDrop(struct entity *attacker, struct entity *defender);
 
 #endif //PMDSKY_OVERLAY_29_0230F8AC_H

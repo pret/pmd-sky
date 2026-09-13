@@ -4,10 +4,10 @@
 #include "overlay_29_022E3F20.h"
 #include "dungeon.h"
 #include "dungeon_util_static.h"
+#include "overlay_29_0234B104.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 extern s32 GetIdleAnimationId(struct entity *entity);
 extern int ov29_02304830();
 extern void TryRemoveSnatchedMonsterFromDungeonStruct(struct entity *user, struct entity *target);

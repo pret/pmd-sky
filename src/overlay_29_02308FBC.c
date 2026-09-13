@@ -55,6 +55,9 @@
 #include "overlay_29_022ECDC0.h"
 #include "overlay_29_022E45B8.h"
 #include "overlay_29_0231E9F0.h"
+#include "overlay_29_0230F8AC.h"
+#include "overlay_29_0231EDD8.h"
+#include "overlay_29_0234B104.h"
 
 struct unk_023535DC {
     u8 field_0x0;
@@ -79,7 +82,6 @@ extern void ActivateMotorDrive(struct entity* entity);
 extern void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a, s32 b);
 extern bool8 IsEitherMonsterInvalid(struct entity *a, struct entity *b);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);
-extern void TryHurl(struct entity *user, struct entity *target);
 extern void ov29_022E57D4(struct entity *entity);
 extern void ov29_022E5E84(struct entity *a, struct entity *b);
 extern void ov29_0230F728(struct entity *attacker, struct entity *defender, enum exclusive_item_effect_id effect_id, s32 a);
@@ -113,7 +115,6 @@ extern struct team_member* GetActiveTeamMember(s32 roster_idx);
 extern s32 GetIdleAnimationId(struct entity *entity);
 extern void HandleFaint(struct entity *fainted_entity, s32 damage_source, struct entity *killer);
 extern bool8 IsMonsterIdInNormalRangeVeneer(enum monster_id monster_id);
-extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 extern void MoveMonsterToPos(struct entity* entity, s32 x_pos, s32 y_pos, bool8 reset_prev_pos_fields);
 extern s32 PlayEffectAnimationEntity(struct entity *entity, s32 id, s32 a, u8 b, s32 c, s32 d, s32 e, s32 f);
 extern int PlayMissSfx__022E611C();
@@ -124,8 +125,6 @@ extern void RestoreRandomMovePP(struct entity* user, struct entity* target, s32 
 extern void SubInitMonster(struct monster* monster, bool8 flag);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
-extern bool8 TryRecruit(struct entity *user, struct entity *recruit, void *recruit_info);
-extern void TrySpawnEnemyItemDrop(struct entity* attacker, struct entity* defender);
 extern void UpdateShopkeeperModeAfterAttack(struct entity* attacker, struct entity* defender);
 extern s32 abs(s32 n);
 extern int ov10_022BDC68();
@@ -145,7 +144,6 @@ extern int ov29_02307C48();
 extern int ov29_0230D628();
 extern int ov29_0230D688();
 extern int ov29_0230D7D4();
-extern int ov29_0234B1A4();
 
 extern struct unk_023528A4 TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS[];
 extern s16 SET_DAMAGE_STATUS_DAMAGE;

@@ -6,6 +6,7 @@
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 #include "dungeon_util_2.h"
+#include "overlay_29_0234B104.h"
 
 #ifdef JAPAN
 #define HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET -0x2C1
@@ -20,7 +21,6 @@
 #define INFATUATED_MESSAGE (0xC2C + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET)
 #define BIDE_MESSAGE (0xC2D + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET)
 
-extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 
 bool8 HasStatusThatPreventsActing(struct entity *monster)
 {

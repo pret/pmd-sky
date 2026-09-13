@@ -19,6 +19,8 @@
 #include "script_variable.h"
 #include "main_020517D4.h"
 #include "main_0202A66C.h"
+#include "main_0200224C.h"
+#include "main_0202B558.h"
 
 struct unk_020AFE74 {
     s32 field_0x0;
@@ -70,8 +72,6 @@ extern void MaybeGetColoredFormattedItemName(void*, struct item*, void*);
 extern s8 CreateSimpleMenuFromStringIds(void*, s32, s32, void*, s32);
 extern void GetNameWithGender(char *dst, s16 monster_id, char color_id);
 extern void GetNameRaw(unsigned char *, s32);
-extern void StrncpySimpleNoPadSafe(u8* dest, const u8* src, u32 n);
-extern s32 GetSimpleMenuResult__0202B870(s8);
 extern s32 GetSimpleMenuResult__0202AEA4(s8);
 extern void InitPreprocessorArgs(struct preprocessor_args* args);
 extern bool8 IsMonsterIllegalForMissions(enum monster_id);
@@ -101,7 +101,6 @@ extern void ApplyLevelUpBoostsToGroundMonster(void *mon, s16 levels, s32 flag);
 extern void sub_02050C10(s32 delta);
 extern void sub_0203909C(u8 *name);
 extern void ShowKeyboard(s32 mode, u8 *, s32, u8 *);
-extern s32 RandIntSafe(s32 n);
 extern void ov11_023061CC(void *);
 extern void ov11_023061E4(void *, s32);
 extern void ov11_02310BDC(void);

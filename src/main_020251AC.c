@@ -78,3 +78,42 @@ int StrncmpSimple(const unsigned char* s1, const unsigned char* s2, s32 n)
     } while (bytes_compared < n);
     return 0;
 }
+
+#ifdef JAPAN
+struct unk_020B112C {
+    const u16 *field_0x0;
+    const u8 (*field_0x4)[2];
+};
+extern const struct unk_020B112C _020B112C_JP;
+#endif
+
+u16 sub_020251F0(u8 c)
+{
+#ifdef JAPAN
+    const u8 *row = _020B112C_JP.field_0x4[c];
+    return (row[0] << 8) + row[1];
+#else
+    return c;
+#endif
+}
+
+void StrncpySimpleNoPadSafe(unsigned char* dest, const unsigned char* src, s32 n)
+{
+    while (n-- > 0 && *src != 0) {
+#ifdef JAPAN
+        u16 c = sub_020251F0(*src++);
+        dest[0] = c >> 8;
+        dest[1] = c;
+        dest += 2;
+#else
+        u32 c = *src++;
+        if (c < 0x100) {
+            *dest++ = c;
+        }
+        else {
+            *dest++ = ' ';
+        }
+#endif
+    }
+    *dest = 0;
+}

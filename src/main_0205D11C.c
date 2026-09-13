@@ -13,6 +13,7 @@
 #include "main_0205E01C.h"
 #include "main_0205E288.h"
 #include "dungeon_recruitment_2.h"
+#include "main_020514CC.h"
 
 extern u8 _020A39C0;
 extern u8 _020A39D4;
@@ -26,7 +27,6 @@ extern const char _020A3AD4[];
 extern const char _020A3AF4[];
 extern const char _020A3B18[];
 
-extern s32 RandIntSafe(s32 n);
 extern void ClearMissionData(struct mission *mission);
 extern struct mission_deliver_list MISSION_DELIVER_LIST_PTR;
 extern s32 CanDungeonBeUsedForMission(enum dungeon_id);
@@ -45,7 +45,6 @@ extern s16 *sub_020627F4(void);
 
 extern enum monster_id GetBaseForm(enum monster_id);
 extern s32 GetBodySize(enum monster_id);
-extern bool8 IsForbiddenFloor(struct dungeon_floor_pair*);
 extern bool8 IsInvalidForMission(enum dungeon_id);
 extern bool8 IsItemValidVeneer(s16 item_id);
 extern bool8 IsMissionValid(struct mission *mission);

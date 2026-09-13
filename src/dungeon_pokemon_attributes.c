@@ -1,6 +1,10 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_02301A60.h"
+#include "overlay_29_023000E4.h"
+
+extern struct dungeon *DUNGEON_PTR[];
+extern bool8 ShouldTreatMonsterAsAlly(struct entity *monster, struct entity *other);
 
 bool8 NoGastroAcidStatus(struct entity *entity, enum ability_id ability_id)
 {
@@ -34,4 +38,22 @@ bool8 AbilityIsActive(struct entity *entity, enum ability_id ability_id)
 bool8 AbilityIsActiveVeneer(struct entity *entity, enum ability_id ability_id)
 {
     return AbilityIsActive(entity, ability_id);
+}
+
+bool8 OtherMonsterAbilityIsActive(struct entity *entity, enum ability_id ability_id)
+{
+    for (s16 i = 0; i < DUNGEON_MAX_POKEMON; i++)
+    {
+        struct entity *target = DUNGEON_PTR[0]->active_monster_ptrs[i];
+        if (EntityIsValid__023000E4(target) && entity != target &&
+            ShouldTreatMonsterAsAlly(entity, target) &&
+#ifdef JAPAN
+            DefenderAbilityIsActive__02301A0C(entity, target, ability_id))
+#else
+            DefenderAbilityIsActive__02301A0C(entity, target, ability_id, TRUE))
+#endif
+            return TRUE;
+    }
+
+    return FALSE;
 }

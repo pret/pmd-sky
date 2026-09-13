@@ -1,74 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_020251F0.inc"
+	.include "main_02025230.inc"
 
 	.text
-
-	arm_func_start sub_020251F0
-sub_020251F0: ; 0x020251F0
-#ifdef JAPAN
-	ldr r1, _02025264 ; =_020B112C_JP
-	ldr r1, [r1, #4]
-	add r2, r1, r0, lsl #1
-	ldrb r1, [r1, r0, lsl #1]
-	ldrb r0, [r2, #1]
-	add r0, r0, r1, lsl #8
-	mov r0, r0, lsl #0x10
-	mov r0, r0, lsr #0x10
-	bx lr
-	.align 2, 0
-_02025264: .word _020B112C_JP
-#else
-	bx lr
-#endif
-	arm_func_end sub_020251F0
-
-	arm_func_start StrncpySimpleNoPadSafe
-StrncpySimpleNoPadSafe: ; 0x020251F4
-#ifdef JAPAN
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r6, r0
-	mov r5, r1
-	mov r4, r2
-	b _02025294
-_0202527C:
-	ldrb r0, [r5], #1
-	bl sub_020251F0
-	mov r1, r0, asr #8
-	strb r1, [r6]
-	strb r0, [r6, #1]
-	add r6, r6, #2
-_02025294:
-	cmp r4, #0
-	sub r4, r4, #1
-	ble _020252AC
-	ldrb r0, [r5]
-	cmp r0, #0
-	bne _0202527C
-_020252AC:
-	mov r0, #0
-	strb r0, [r6]
-	ldmia sp!, {r4, r5, r6, pc}
-#else
-	mov ip, #0x20
-	b _0202520C
-_020251FC:
-	ldrb r3, [r1], #1
-	cmp r3, #0x100
-	strlob r3, [r0], #1
-	strhsb ip, [r0], #1
-_0202520C:
-	cmp r2, #0
-	sub r2, r2, #1
-	ble _02025224
-	ldrb r3, [r1]
-	cmp r3, #0
-	bne _020251FC
-_02025224:
-	mov r1, #0
-	strb r1, [r0]
-	bx lr
-#endif
-	arm_func_end StrncpySimpleNoPadSafe
 
 	arm_func_start StrcpyName
 StrcpyName: ; 0x02025230

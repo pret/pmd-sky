@@ -5,6 +5,19 @@
 #include "dungeon_util_static.h"
 #include "exclusive_item.h"
 #include "overlay_29_0230F810.h"
+#include "dg_random.h"
+#include "dungeon_pokemon_attributes.h"
+#include "dungeon_pokemon_attributes_1.h"
+#include "dungeon_recruitment_2.h"
+#include "overlay_29_02344BE4.h"
+#include "overlay_29_02345A3C.h"
+
+extern struct dungeon *DUNGEON_PTR;
+extern const s16 ov10_022C4650;
+
+extern bool8 TryGenerateUnownStoneDrop(struct item *item, s16 monster_id, s32 param_3);
+extern bool8 ov29_023460DC(struct item *item, struct entity *entity, bool8 param_3, s32 param_4);
+extern bool8 ov29_0234908C(struct item *item);
 
 bool8 ExclusiveItemEffectIsActive__0230F8AC(struct entity *entity, enum exclusive_item_effect_id effect_id)
 {
@@ -38,4 +51,52 @@ bool8 IsMonster__0230F980(struct entity *entity)
         return FALSE;
 
     return GetEntityType(entity) == ENTITY_MONSTER;
+}
+
+void ov29_0230F9A4(struct entity *entity, struct item *item)
+{
+    if (!IsMonster__0230F980(entity))
+        return;
+
+    if (GetEntInfo(entity)->is_not_team_member)
+        return;
+
+    ov29_0234908C(item);
+}
+
+void TrySpawnEnemyItemDrop(struct entity *attacker, struct entity *defender)
+{
+    struct item item;
+    struct monster *monster;
+    s16 n;
+
+    if (TreasureBoxDropsEnabled(DUNGEON_PTR->id) &&
+        (monster = GetEntInfo(defender))->is_not_team_member)
+    {
+        n = 0;
+        if (GetEntityType(attacker) == ENTITY_MONSTER)
+        {
+            if (IqSkillIsEnabled(attacker, IQ_COLLECTOR))
+                n++;
+            if (ExclusiveItemEffectIsActive__0230F8AC(attacker, EXCLUSIVE_EFF_MORE_TREASURE_DROPS))
+                n++;
+        }
+
+        if (TryGenerateUnownStoneDrop(&item, monster->id, n))
+        {
+            SpawnDroppedItemWrapper(defender, &defender->pos, &item, 1);
+        }
+        else if (ov29_023460DC(&item, defender,
+                               AbilityIsActiveVeneer(attacker, ABILITY_HONEY_GATHER), n))
+        {
+            SpawnDroppedItemWrapper(defender, &defender->pos, &item, 1);
+        }
+        else if (IsMonster__0230F980(attacker) &&
+                 ExclusiveItemEffectIsActive__0230F8AC(attacker, EXCLUSIVE_EFF_MORE_MONEY_DROPS) &&
+                 DungeonRandOutcome__022EAB20(ov10_022C4650))
+        {
+            GenerateStandardItem(&item, ITEM_POKE, 2);
+            SpawnDroppedItemWrapper(defender, &defender->pos, &item, 1);
+        }
+    }
 }

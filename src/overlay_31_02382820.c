@@ -11,6 +11,7 @@
 #include "dungeon_util_2.h"
 #include "overlay_29_022E9FC0.h"
 #include "main_0202A66C.h"
+#include "main_02026174.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
@@ -35,7 +36,6 @@ extern u32 GetMoneyCarried(void);
 extern u32 sub_0204F9E0(void);
 extern u8* StringFromId(u32);
 extern void PreprocessString(u8* dst, u32 dsize, const u8* src, u32 flags, struct PPStrValues* ptr);
-extern void DrawTextInWindow(s32, u32, u32, u8*);
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern s32 sub_020265A8(u8*); // Measures the text's width in pixels

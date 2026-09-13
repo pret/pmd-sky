@@ -5,11 +5,11 @@
 
 
 #include "overlay_29_0234BA54.h"
+#include "overlay_29_0234B104.h"
 
 extern void ov29_0234D8A0(s32 a);
 extern s16 ov29_022DE5F0(s32 index);
 extern void ov29_022EA370(s32 a, s32 b);
-extern int ov29_0234B1A4();
 extern void ov29_0234D630(void);
 extern s8 ov29_023535A4;
 extern s16 ov29_0237C9A0[2];

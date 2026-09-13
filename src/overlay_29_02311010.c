@@ -26,6 +26,8 @@
 #include "overlay_29_022E99F0.h"
 #include "overlay_29_02305C04.h"
 #include "overlay_29_022E4338.h"
+#include "overlay_29_0231B194.h"
+#include "overlay_29_0234B104.h"
 
 extern s16 ov10_022C4BE4[20];
 extern void ov29_0230FB30(struct entity *entity);
@@ -61,14 +63,12 @@ extern bool8 ov29_022E34A8_EU(struct entity *entity);
 extern void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a, s32 b);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
-extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
 extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
 extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_point_64 *a, const struct fixed_point_64 *b);
 extern void ov29_022EA370(s32 a, s32 b);
 extern s32 ov29_022F2FE4();
 
-extern void WaitUntilAlertBoxTextIsLoadedWrapper(void);
 extern void EnsureCanStandCurrentTile(struct entity *entity);
 extern void ov29_022E543C(struct entity *entity);
 extern void ov29_022E53F0(struct entity *entity);
@@ -76,7 +76,6 @@ extern void ov29_022F42F8(struct entity *entity);
 extern void EndMagnetRiseStatus(struct entity *user, struct entity *target);
 extern void ov29_022EC62C(struct entity *entity);
 extern void ov29_022FB718(struct entity *entity);
-extern void TryActivateBadDreams(struct entity *entity);
 extern void TryWeatherFormChange(struct entity *entity);
 extern s32 EndNegativeStatusCondition(struct entity *user, struct entity *target, bool8 a, bool8 b, bool8 c);
 extern s32 DisplayActions(s32 a);

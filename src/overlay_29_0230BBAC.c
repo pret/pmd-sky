@@ -43,7 +43,6 @@ extern bool8 AuraBowIsActive(struct entity *entity);
 extern bool8 FixedPoint64CmpLt(const struct fixed_point_64 *a, const struct fixed_point_64 *b);
 extern void DivideFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64 *a, struct fixed_point_64 *b);
 extern void ResetDamageCalcDiagnostics(void);
-extern bool8 OtherMonsterAbilityIsActive(struct entity *entity, enum ability_id ability_id);
 extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_point_64 *a, const struct fixed_point_64 *b);
 extern bool8 UpdateStateFlags(struct monster *info, s32 flag, bool8 value);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);

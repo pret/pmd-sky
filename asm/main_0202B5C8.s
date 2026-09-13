@@ -1,42 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0202B568.inc"
+	.include "main_0202B5C8.inc"
 
 	.text
-
-	arm_func_start sub_0202B568
-sub_0202B568: ; 0x0202B568
-	stmdb sp!, {r3, lr}
-	bl GetWindowContents
-	add r0, r0, #4
-	bl GetMaxItemsOnPage
-	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202B568
-
-	arm_func_start GetSimpleMenuResult__0202B870
-GetSimpleMenuResult__0202B870: ; 0x0202B57C
-	stmdb sp!, {r4, lr}
-	bl GetWindowContents
-	ldrb r1, [r0, #0x1a0]
-	ldr r4, [r0, #0x198]
-	cmp r1, #0
-	beq _0202B5C0
-	ldrb r1, [r0, #0x1a1]
-	add r0, r0, #4
-	cmp r1, #0
-	beq _0202B5AC
-	bl GetTotalNumMenuItems
-	b _0202B5B0
-_0202B5AC:
-	bl GetSelectedMenuItemIdx
-_0202B5B0:
-	add r0, r0, r0, lsl #6
-	add r0, r4, r0, lsl #2
-	ldr r0, [r0, #0x100]
-	ldmia sp!, {r4, pc}
-_0202B5C0:
-	mov r0, #0
-	ldmia sp!, {r4, pc}
-	arm_func_end GetSimpleMenuResult__0202B870
 
 	arm_func_start UpdateSimpleMenu
 UpdateSimpleMenu: ; 0x0202B5C8

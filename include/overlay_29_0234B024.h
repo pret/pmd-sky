@@ -18,7 +18,7 @@ struct alert_box_info {
     // (i.e. for which the scrolling is finished)
     u16 alert_box_current_loaded_idx;
     s16 frames_until_close; // 0xC90
-    u8 field_0xc92;
+    u16 field_0xc92;
     u8 field_0xc94;
     u8 field_0xc95;
     u8 field_0xc96;
@@ -27,7 +27,7 @@ struct alert_box_info {
     // 2 means a message is currently loading/scrolling.
     u32 loading_status;
     struct preprocessor_args preprocessor_args;
-    u8 alert_box_window_id; // 0xCEC
+    s8 alert_box_window_id;
     u8 field_0xced;
     u8 field_0xcee;
     u8 field_0xcef;

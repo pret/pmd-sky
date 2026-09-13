@@ -5,5 +5,6 @@
 
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValid__0231EDD8(struct entity *entity);
+void TryHurl(struct entity *user, struct entity *target);
 
 #endif //PMDSKY_OVERLAY_29_0231EDD8_H

@@ -23,6 +23,10 @@
 #include "main_02001188.h"
 #include "common.h"
 #include <stdarg.h>
+#include "main_020251AC.h"
+#include "main_020502B0.h"
+#include "main_02026174.h"
+#include "main_0202B558.h"
 extern void sub_02056094(char *dst, struct ground_monster *ground_monster,
                          bool8 is_leader);
 
@@ -40,7 +44,6 @@ struct unk_02324D90 {
 
 extern struct unk_02324D90 *ov11_02324D90;
 extern char ov11_02322DB8[];
-extern void StrncpySimpleNoPadSafe(u8 *dest, const u8 *src, u32 n);
 extern s32 sub_02055894(struct ground_monster *member);
 extern bool8 sub_020564B0(int idx);
 extern s32 vsprintf(u8 *str, const u8 *format, va_list ap);
@@ -107,10 +110,10 @@ extern s32 ov11_02322D60;
 extern s32 ov11_02322D88;
 extern u8 ov11_02322DB0[];
 
-extern void CloseScrollBox(s8);                                          extern void CloseTextBox2(s8);                                           extern u8 CreateParentMenuFromStringIds(void *, u32, void *, void *);    extern s8 CreateScrollBoxSingle(void *, s32, s32, s32, void *, s32, void *); extern s8 CreateSimpleMenuFromStringIds(void *, s32, s32, void *, s32);  extern s8 CreateTextBox(void *, void *);                                 extern void DrawTextInWindow(s32 window_id, s32 x, s32 y, char *string);
+extern void CloseScrollBox(s8);                                          extern void CloseTextBox2(s8);                                           extern u8 CreateParentMenuFromStringIds(void *, u32, void *, void *);    extern s8 CreateScrollBoxSingle(void *, s32, s32, s32, void *, s32, void *); extern s8 CreateSimpleMenuFromStringIds(void *, s32, s32, void *, s32);  extern s8 CreateTextBox(void *, void *);
 extern struct team_member *GetActiveTeamMember(s32 roster_idx);
 extern void GetPressedButtons(u32, u16 *);
-extern s32 GetSimpleMenuResult__0202AEA4(s8);                            extern s32 GetSimpleMenuResult__0202B870(s8);                            extern struct ground_monster *GetTeamMember(s32 member_idx);
+extern s32 GetSimpleMenuResult__0202AEA4(s8);extern struct ground_monster *GetTeamMember(s32 member_idx);
 extern void InitPreprocessorArgs(struct preprocessor_args *);
 extern s32 IsScrollBoxActive(s8);                                        extern void ShowDialogueBox(s8);                                         extern void ShowStringIdInDialogueBox(s8, s32, s32, void *);             extern void ov11_022DC504(void);
 extern u8 *strcpy(u8 *dest, const u8 *src);
@@ -118,7 +121,6 @@ extern u8 *strcpy(u8 *dest, const u8 *src);
 extern s8 CreateInventoryMenuOuter(s32, s32, s32, void *, void *, void *, u8);
 extern bool8 IsBagNotEmpty(void);
 extern u8 PopInventoryMenuField0x1A3(s32 window_id);
-extern void SetItemAcquired(struct item *);
 extern void SortItemsInBag(void);
 extern void *memcpy(void *, const void *, u32);
 extern int ov11_023090DC(void);

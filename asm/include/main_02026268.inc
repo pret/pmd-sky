@@ -1,15 +1,14 @@
 #pragma once
-.public _020AFD04
 .public AnalyzeText
 .public DrawChar
 .public GetColorCodePaletteOffset
 .public PreprocessStringFromId
+.public _020AFD04
 .public sub_02020B4C
 .public sub_02020B60
 .public sub_02020B74
 .public sub_02020B94
 .public sub_02020BC4
-.public sub_02020D7C
 .public sub_02022118
 .public sub_02025C7C
 .public sub_02025E84

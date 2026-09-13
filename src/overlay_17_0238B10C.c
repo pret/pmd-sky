@@ -1,5 +1,6 @@
 #include "overlay_17_0238B10C.h"
 #include "enums.h"
+#include "main_0202B558.h"
 
 extern void ov17_0238A278(void);
 
@@ -7,7 +8,6 @@ extern struct unk_0238BE00 *OVERLAY17_UNKNOWN_POINTER__NA_238BE00;
 
 extern u32 IsSimpleMenuActive(s32 window_id);
 
-extern s32 GetSimpleMenuResult__0202B870(s8 window_id);
 
 extern void ov17_0238B028(s32 a);
 

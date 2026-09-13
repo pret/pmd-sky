@@ -20,6 +20,7 @@
 #include "dungeon_util_2.h"
 #include "overlay_29_022EC7E8.h"
 #include "overlay_29_022E9FC0.h"
+#include "overlay_29_0234B104.h"
 
 #ifdef JAPAN
 #define SET_LEADER_ACTION_DATA_OFFSET -0x2C1
@@ -62,7 +63,6 @@ extern void GetPressedButtons(u32 param_1, u16 *pressed);
 extern s32 HasStatusThatPreventsLeaderActing();
 extern s32 HideTileGrid();
 extern s32 LogItemBlockedByEmbargo();
-extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 extern s32 MonsterHasEmbargoStatus();
 extern s32 OpenMenu(bool8 a, u8 b, s32 c);
 extern s32 OpenMessageLog();

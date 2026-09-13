@@ -54,9 +54,7 @@ struct ground_monster {
 // Stores information about active team members, including those from special episodes.
 // A lot of the fields seem to be analogous to fields on struct monster.
 struct team_member {
-    // 0x0: flags: 1-byte bitfield
-    u8 f_is_valid : 1;
-    u8 flags_unk1 : 7;
+    u8 flags;
 
     u8 is_leader;                // 0x1
     u8 level;                 // 0x2
