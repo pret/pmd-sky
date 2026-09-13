@@ -425,23 +425,3 @@ _022ECD0C:
 _022ECD7C: .word DUNGEON_PTR
 _022ECD80: .word 0x0000025D
 	arm_func_end DecrementWindCounter
-
-	arm_func_start ov29_022ECD84
-ov29_022ECD84: ; 0x022ECD84
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl EntityIsValid__022ECDC0
-	cmp r0, #0
-	ldmeqia sp!, {r4, pc}
-	ldr r0, [r4]
-	cmp r0, #1
-	ldmneia sp!, {r4, pc}
-	ldr r1, [r4, #0xb4]
-	cmp r1, #0
-	ldmeqia sp!, {r4, pc}
-	ldr r0, _022ECDBC ; =ov29_0237C974
-	bl GetMonsterName
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_022ECDBC: .word ov29_0237C974
-	arm_func_end ov29_022ECD84

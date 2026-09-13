@@ -1,48 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0230AA0C.inc"
+	.include "overlay_29_0230AA8C.inc"
 
 	.text
-
-	arm_func_start AftermathCheck
-AftermathCheck: ; 0x0230AA0C
-	stmdb sp!, {r4, r5, r6, lr}
-	sub sp, sp, #8
-	mov r4, r2
-	mov r2, #0x76
-#ifndef JAPAN
-	mov r3, #1
-#endif
-	mov r6, r0
-	mov r5, r1
-	bl DefenderAbilityIsActive__0230A940
-	cmp r0, #0
-	beq _0230AA78
-	ldr r0, _0230AA84 ; =AFTERMATH_CHANCE
-	ldrsh r0, [r0]
-	bl DungeonRandOutcome__022EAB20
-	cmp r0, #0
-	ldrne ip, _0230AA88 ; =0x0000026F
-	cmpne r4, ip
-	beq _0230AA78
-	mov r0, #0
-	str r0, [sp]
-	mov r0, r6
-	mov r1, r5
-	add r2, r5, #4
-	mov r3, #1
-	str ip, [sp, #4]
-	bl TryAftermathExplosion
-	mov r0, #1
-	b _0230AA7C
-_0230AA78:
-	mov r0, #0
-_0230AA7C:
-	add sp, sp, #8
-	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
-_0230AA84: .word AFTERMATH_CHANCE
-_0230AA88: .word 0x0000026F
-	arm_func_end AftermathCheck
 
 	arm_func_start GetTypeMatchupBothTypes
 GetTypeMatchupBothTypes: ; 0x0230AA8C

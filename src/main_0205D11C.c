@@ -30,7 +30,6 @@ extern s32 RandIntSafe(s32 n);
 extern void ClearMissionData(struct mission *mission);
 extern struct mission_deliver_list MISSION_DELIVER_LIST_PTR;
 extern s32 CanDungeonBeUsedForMission(enum dungeon_id);
-extern s32 CountAndPopulateValidMissionTableMonsters(s16 **out, struct unk_0205DFAC *spec);
 extern s32 GetAllPossibleMonsters(s16 **out);
 extern u8 GetMissionSpecificFixedRoom(enum mission_type, u32);
 extern bool8 IsAvailableItem(s16 item_id);
@@ -743,4 +742,30 @@ s32 GenerateMission(struct unk_0205D224 *tmpl, struct mission *mission)
     }
 
     return 0;
+}
+
+s32 CountAndPopulateValidMissionTableMonsters(s16 **out, struct unk_0205DFAC *spec)
+{
+    s16 *base;
+    s32 i;
+    s32 n;
+    s32 k;
+    s16 v;
+    s16 *buf;
+    s32 off;
+
+    n = spec->field_0x2;
+    off = (u16)spec->field_0x4;
+    k = 0;
+    base = sub_020627F4();
+    buf = (s16 *)MemAlloc(n * 2, 0xf);
+    for (i = 0; i < n; i++) {
+        v = base[off + i];
+        if (CanMonsterBeUsedForMissionWrapper(v) != 0) {
+            buf[k] = v;
+            k++;
+        }
+    }
+    *out = buf;
+    return k;
 }

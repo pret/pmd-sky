@@ -25,6 +25,7 @@
 #include "overlay_29_023061A8.h"
 #include "overlay_29_022E99F0.h"
 #include "overlay_29_02305C04.h"
+#include "overlay_29_022E4338.h"
 
 #ifdef JAPAN
 #define MESSAGE_DE6 0xB26
@@ -67,7 +68,6 @@ extern void WaitUntilAlertBoxTextIsLoadedWrapper(void);
 extern void EnsureCanStandCurrentTile(struct entity *entity);
 extern void ov29_022E543C(struct entity *entity);
 extern void ov29_022E53F0(struct entity *entity);
-extern void PlayEffectAnimationEntityStandard(struct entity *entity, s32 anim_id);
 extern void ov29_022F42F8(struct entity *entity);
 extern void EndMagnetRiseStatus(struct entity *user, struct entity *target);
 extern void TickNoSlipCap(struct entity *entity);

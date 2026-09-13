@@ -3,6 +3,7 @@
 
 #include "dungeon_mode.h"
 
+void PlayEffectAnimationEntityStandard(struct entity *entity, s32 anim_id);
 void ov29_022E4338(struct entity *entity);
 void ov29_022E4388(struct entity *entity);
 void ov29_022E43D8(struct entity *entity);

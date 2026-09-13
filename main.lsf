@@ -95,7 +95,7 @@ Static main
 	Object src/exclusive_item.o
 	Object asm/main_02010FC4.o
 	Object src/main_020114F8.o
-	Object asm/main_02011554.o
+	Object asm/main_02011580.o
 	Object src/main_02011830.o
 	Object asm/main_02011850.o
 	Object src/main_02011DF0.o
@@ -348,7 +348,6 @@ Static main
 	Object src/main_0205C73C.o
 	Object asm/main_0205CA40.o
 	Object src/main_0205D11C.o
-	Object asm/main_0205DFAC.o
 	Object src/main_0205E01C.o
 	Object src/main_0205E288.o
 	Object asm/main_0205E48C.o
@@ -363,7 +362,7 @@ Static main
 	Object src/main_0205ED84.o
 	Object asm/main_0205EDA4.o
 	Object src/main_02062A58.o
-	Object asm/main_02062A68.o
+	Object asm/main_02062AD0.o
 	Object src/main_02064FFC.o
 	Object src/main_02065974.o
 	Object asm/main_02065998.o
@@ -612,7 +611,7 @@ Overlay OVY_10
 	After main
 	Object asm/overlay_10.o
 	Object src/overlay_10_022BCC60.o
-	Object asm/overlay_10_022BCDF4.o
+	Object asm/overlay_10_022BCE44.o
 	Object src/overlay_10_022BFD58.o
 	Object asm/overlay_10_022BFF78.o
 	Object src/overlay_10_022C2574.o
@@ -850,7 +849,7 @@ Overlay OVY_29
 	Object asm/overlay_29_022EAB50.o
 	Object src/overlay_29_022EAC34.o
 	Object src/overlay_29_022EAC7C.o
-	Object asm/overlay_29_022EAD00.o
+	Object asm/overlay_29_022EAD68.o
 	Object src/overlay_29_022EAE14.o
 	Object asm/overlay_29_022EAE40.o
 	Object src/overlay_29_022EAEFC.o
@@ -884,7 +883,7 @@ Overlay OVY_29
 	Object asm/overlay_29_rodata_0235179C.o
 	Object src/overlay_29_022EFA6C.o
 	Object src/dungeon_logic_6.o
-	Object asm/overlay_29_022EFB20.o
+	Object asm/overlay_29_022EFB84.o
 	Object src/overlay_29_022F0590.o
 	Object asm/overlay_29_022F0654.o
 	Object src/overlay_29_022F0EDC.o
@@ -981,7 +980,7 @@ Overlay OVY_29
 	Object src/overlay_29_02308FBC.o
 	Object src/overlay_29_0230A994.o
 	Object src/overlay_29_0230A9DC.o
-	Object asm/overlay_29_0230AA0C.o
+	Object asm/overlay_29_0230AA8C.o
 	Object src/overlay_29_0230AB58.o
 	Object asm/overlay_29_0230ABF0.o
 	Object src/type_effectiveness.o

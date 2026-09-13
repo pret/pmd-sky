@@ -1,38 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022EFB20.inc"
+	.include "overlay_29_022EFB84.inc"
 
 	.text
-
-	arm_func_start ov29_022EFB20
-ov29_022EFB20: ; 0x022EFB20
-	stmdb sp!, {r3, lr}
-	cmp r0, #0
-	beq _022EFB48
-	mov r0, #0xa
-	bl WaitUntilAlertBoxPauseIsOver
-	mov r0, #0
-	bl ov29_0234B1A4
-	mov r0, #0xa
-	mov r1, #0x62
-	bl ov29_022EA370
-_022EFB48:
-	bl ov29_0234D630
-	ldr r1, _022EFB7C ; =ov29_023535A4
-	mvn r2, #1
-	mov r0, #1
-	strb r2, [r1]
-	bl ov29_022DE5F0
-	ldr r1, _022EFB80 ; =ov29_0237C9A0
-	strh r0, [r1, #2]
-	mov r0, #0
-	bl ov29_022DE5F0
-	ldr r1, _022EFB80 ; =ov29_0237C9A0
-	strh r0, [r1]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_022EFB7C: .word ov29_023535A4
-_022EFB80: .word ov29_0237C9A0
-	arm_func_end ov29_022EFB20
 
 	arm_func_start ov29_022EFB84
 ov29_022EFB84: ; 0x022EFB84
@@ -719,38 +688,3 @@ UnfreezeAnim: ; 0x022F0518
 	.align 2, 0
 _022F0530: .word SetAnimationControlPausedFlag
 	arm_func_end UnfreezeAnim
-
-	arm_func_start ov29_022F0534
-ov29_022F0534: ; 0x022F0534
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r4, _022F058C ; =DUNGEON_PTR
-	mov r7, r0
-	mov r5, #0
-_022F0544:
-	ldr r0, [r4]
-	add r0, r0, r5, lsl #2
-	add r0, r0, #0x12000
-#ifdef JAPAN
-	ldr r6, [r0, #0xad4]
-#else
-	ldr r6, [r0, #0xb78]
-#endif
-	mov r0, r6
-	bl EntityIsValid__022F0590
-	cmp r0, #0
-	beq _022F057C
-	cmp r7, #0
-	mov r0, r6
-	bne _022F0578
-	bl UnfreezeAnim
-	b _022F057C
-_022F0578:
-	bl FreezeAnim
-_022F057C:
-	add r5, r5, #1
-	cmp r5, #0x14
-	blt _022F0544
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
-_022F058C: .word DUNGEON_PTR
-	arm_func_end ov29_022F0534

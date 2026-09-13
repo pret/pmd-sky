@@ -3,10 +3,8 @@
 .public ChangeDungeonMusic
 .public DUNGEON_PTR
 .public DisplayActions
-.public EntityIsValid__022ECDC0
 .public GetForcedLossReason
 .public GetLeader
-.public GetMonsterName
 .public HandleFaint
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUser
@@ -19,4 +17,3 @@
 .public ov29_02352380
 .public ov29_02352390
 .public ov29_02353598
-.public ov29_0237C974

@@ -1,5 +1,4 @@
 #pragma once
-.public ApplyGummiBoostsGroundMode
 .public CALCIUM_STAT_BOOST
 .public GINSENG_CHANCE_3
 .public GetMoveBasePowerGround

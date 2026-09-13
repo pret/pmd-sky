@@ -14,5 +14,6 @@ s32 IsInventoryMenuActive(s32 window_id);
 bool8 CheckInventoryMenuField0x1A0(s32 window_id);
 s32 ov10_022BCDA8(s32 window_id);
 s32 ov10_022BCDBC(s32 window_id);
+void ov10_022BCDF4(s32 window_id);
 
 #endif //PMDSKY_OVERLAY_10_022BCC60_H

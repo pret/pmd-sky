@@ -1,32 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_10_022BCDF4.inc"
+	.include "overlay_10_022BCE44.inc"
 
 	.text
-
-	arm_func_start ov10_022BCDF4
-ov10_022BCDF4: ; 0x022BCDF4
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	bl GetWindowContents
-	mov r4, r0
-	mov r0, #1
-	mov r1, #0
-	strb r0, [r4, #0x1a0]
-	mov r0, r5
-	strb r1, [r4, #0x1a1]
-	sub r1, r1, #4
-	bl sub_0202830C
-	ldr r0, [r4, #0xf8]
-	tst r0, #0x400000
-	beq _022BCE38
-	mov r0, r5
-	add r1, r4, #4
-	bl sub_02028980
-_022BCE38:
-	mov r0, #5
-	str r0, [r4, #0x19c]
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov10_022BCDF4
 
 	arm_func_start ov10_022BCE44
 ov10_022BCE44: ; 0x022BCE44

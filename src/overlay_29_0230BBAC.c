@@ -27,6 +27,7 @@
 #include "dungeon_util_2.h"
 #include "overlay_29_02338350.h"
 #include "overlay_29_0234B340.h"
+#include "main_0200224C.h"
 
 extern struct dungeon *DUNGEON_PTR;
 extern u8 GetMonsterGenderVeneer(s16 monster_id);
@@ -35,7 +36,6 @@ extern u8 ExclusiveItemDefenseBoost(struct entity *entity, s32 idx);
 extern int MoveIsNotPhysical(enum move_id move_id);
 extern s32 FixedPoint64ToInt(struct fixed_point_64 *x);
 extern void AddFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64 *a, struct fixed_point_64 *b);
-extern void ClampedLn(struct fixed_point_64 *out, s32 x);
 extern int IsRecoilMove(enum move_id move_id);
 extern void PlayEffectAnimation0x1A9__022E6130(struct entity *entity);
 extern void PlayEffectAnimation0x1A9__022E617C(struct entity *entity);

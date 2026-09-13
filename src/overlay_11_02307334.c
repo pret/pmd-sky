@@ -102,14 +102,12 @@ extern void InitPreprocessorArgs(struct preprocessor_args *);
 extern s32 IsScrollBoxActive(s8);                                        extern void ShowDialogueBox(s8);                                         extern void ShowStringIdInDialogueBox(s8, s32, s32, void *);             extern void ov11_022DC504(void);
 extern u8 *strcpy(u8 *dest, const u8 *src);
 
-extern void ApplyGummiBoostsToTeamMember(struct team_member *, s16, int, void *);
 extern s8 CreateInventoryMenuOuter(s32, s32, s32, void *, void *, void *, u8);
 extern bool8 IsBagNotEmpty(void);
 extern u8 PopInventoryMenuField0x1A3(s32 window_id);
 extern void SetItemAcquired(struct item *);
 extern void SortItemsInBag(void);
 extern void *memcpy(void *, const void *, u32);
-extern void ov10_022BCDF4(s32 window_id);
 extern void ov11_02308D48(void);
 extern void *ov11_02308DD8(void *);
 extern void ov11_02308EDC(void);

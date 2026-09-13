@@ -5,5 +5,6 @@
 
 void SwapShopFreeDoublePointer(void** p);
 void ApplyGummiBoostsToGroundMonster(struct ground_monster *monster, s16 item_id, int a3, void *a4);
+void ApplyGummiBoostsToTeamMember(struct team_member *member, s16 item_id, int a3, void *a4);
 
 #endif

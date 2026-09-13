@@ -51,6 +51,8 @@
 #include "overlay_29_022E9FC0.h"
 #include "overlay_29_0234B340.h"
 #include "overlay_29_0234B4BC.h"
+#include "overlay_29_022EAC7C.h"
+#include "overlay_29_022ECDC0.h"
 
 struct unk_023535DC {
     u8 field_0x0;
@@ -99,7 +101,6 @@ extern s16 ov10_022C45C0;
 extern s16 ov10_022C4638;
 extern s16 ov10_022C467C;
 extern void AddExpSpecial(struct entity* attacker, struct entity* defender, s32 base_exp);
-extern bool8 AftermathCheck(struct entity *attacker, struct entity *defender, s32 damage_source);
 extern void ChangeMonsterAnimation(struct entity *entity, s32 animation_id, s32 direction);
 extern void ChangeMonsterAnimationToIdle(struct entity* monster, enum direction_id direction);
 extern void DisplayAnimatedNumbers(s32 amount, struct entity *entity, bool8 display_sign, s32 number_color);
@@ -114,7 +115,6 @@ extern void HandleFaint(struct entity *fainted_entity, s32 damage_source, struct
 extern bool8 IsMonsterIdInNormalRangeVeneer(enum monster_id monster_id);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 extern void MoveMonsterToPos(struct entity* entity, s32 x_pos, s32 y_pos, bool8 reset_prev_pos_fields);
-extern enum music_id MusicTableIdxToMusicId(s32 music_table_idx);
 extern s32 PlayEffectAnimationEntity(struct entity *entity, s32 id, s32 a, u8 b, s32 c, s32 d, s32 e, s32 f);
 extern int PlayMissSfx__022E611C();
 extern int PlayMissSfx__022E6150();
@@ -136,10 +136,7 @@ extern int ov29_022E5478();
 extern int ov29_022E550C();
 extern void ov29_022E81F8(void);
 extern void ov29_022EA370(s32 a, s32 b);
-extern int ov29_022ECD84();
-extern int ov29_022EFB20();
 extern int ov29_022EFB84();
-extern int ov29_022F0534();
 extern int ov29_022F0780();
 extern int ov29_022F9AF4();
 extern int ov29_022FB98C();

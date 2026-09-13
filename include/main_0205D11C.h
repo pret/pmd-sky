@@ -23,5 +23,6 @@ bool8 CheckMonsterForMissionType(enum mission_type type, union mission_subtype* 
 bool8 CheckItemForMissionType(u32 r0, union mission_subtype *r1, s16 r2);
 bool8 sub_0205D1F4(struct mission *mission);
 s32 GenerateMission(struct unk_0205D224 *tmpl, struct mission *mission);
+s32 CountAndPopulateValidMissionTableMonsters(s16 **out, struct unk_0205DFAC *spec);
 
 #endif //PMDSKY_MAIN_0205D11C_H

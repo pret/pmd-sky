@@ -3,6 +3,7 @@
 
 #include "item.h"
 
+u32 RemoveItemNoHoleCheck(s16 index);
 s16 GetFirstUnequippedItemOfType(s16 type);
 u32 RemoveItemNoHoleCheck(s16 index);
 

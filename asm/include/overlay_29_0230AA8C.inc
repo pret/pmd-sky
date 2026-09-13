@@ -1,12 +1,8 @@
 #pragma once
-.public AFTERMATH_CHANCE
-.public DefenderAbilityIsActive__0230A940
 .public DUNGEON_PTR
-.public DungeonRandOutcome__022EAB20
 .public GetTypeMatchup
 .public GhostImmunityIsActive
 .public IsTypeIneffectiveAgainstGhost
-.public ov29_02352838
 .public ScrappyShouldActivate
-.public TryAftermathExplosion
 .public TYPE_MATCHUP_COMBINATOR_TABLE
+.public ov29_02352838

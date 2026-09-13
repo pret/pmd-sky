@@ -1,6 +1,4 @@
 #pragma once
-.public _s32_div_f
-.public abs
 .public CreateInventoryMenu
 .public Debug_Print0
 .public DeleteWanTableEntryVeneer
@@ -25,6 +23,17 @@
 .public MemFree
 .public MemZero
 .public OBJ_GRAPHICS_CONTROLS_PTR
+.public PlaySeByIdVolumeWrapper
+.public SetAnimationControlPausedFlag
+.public SetAnimationForAnimationControl
+.public SetSpriteIdForAnimationControl
+.public SwitchAnimationControlToNextFrame
+.public TEAM_MEMBER_TABLE_PTR
+.public UnkMapRelatedFunc
+.public UpdateWindow
+.public WAN_TABLE
+.public _s32_div_f
+.public abs
 .public ov10_022BCCB0
 .public ov10_022BFE3C
 .public ov10_022BFE54
@@ -70,10 +79,6 @@
 .public ov11_023061CC
 .public ov11_02306C64
 .public ov11_02306C9C
-.public PlaySeByIdVolumeWrapper
-.public SetAnimationControlPausedFlag
-.public SetAnimationForAnimationControl
-.public SetSpriteIdForAnimationControl
 .public strcpy
 .public sub_02001808
 .public sub_0201C108
@@ -87,7 +92,6 @@
 .public sub_02027B1C
 .public sub_0202810C
 .public sub_0202812C
-.public sub_0202830C
 .public sub_020287C4
 .public sub_02028980
 .public sub_0202A0B0
@@ -118,9 +122,4 @@
 .public sub_020640DC
 .public sub_0206423C
 .public sub_020642A8
-.public SwitchAnimationControlToNextFrame
-.public TEAM_MEMBER_TABLE_PTR
-.public UnkMapRelatedFunc
-.public UpdateWindow
 .public vsprintf
-.public WAN_TABLE

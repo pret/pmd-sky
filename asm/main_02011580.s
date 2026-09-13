@@ -1,22 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02011554.inc"
+	.include "main_02011580.inc"
 
 	.text
-
-	arm_func_start ApplyGummiBoostsToTeamMember
-ApplyGummiBoostsToTeamMember: ; 0x02011554
-	stmdb sp!, {lr}
-	sub sp, sp, #0xc
-	mov ip, r0
-	stmia sp, {r1, r2, r3}
-	add r0, ip, #0xc
-	add r1, ip, #6
-	add r2, ip, #0x12
-	add r3, ip, #0x14
-	bl ApplyGummiBoostsGroundMode
-	add sp, sp, #0xc
-	ldmia sp!, {pc}
-	arm_func_end ApplyGummiBoostsToTeamMember
 
 	arm_func_start ApplySitrusBerryBoostToGroundMonster
 ApplySitrusBerryBoostToGroundMonster: ; 0x02011580

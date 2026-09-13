@@ -1,10 +1,10 @@
 #include "main_02000C6C.h"
 #include <nitro.h>
+#include "main_0200224C.h"
 
 extern u32 _02092448;
 extern u32 _02092460;
 
-extern void sub_02002228(u32);
 extern void sub_020024D4();
 extern void sub_020024E4();
 extern void sub_020028AC();

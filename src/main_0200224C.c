@@ -1,5 +1,24 @@
 #include "main_0200224C.h"
 
+extern s16 NATURAL_LOG_VALUE_TABLE[];
+
+
+void ClampedLn(struct fixed_point_64 *out, s32 x)
+{
+    if (x < 1) {
+        x = 1;
+    }
+    if (x >= 0x800) {
+        x = 0x7FF;
+    }
+    out->lower = NATURAL_LOG_VALUE_TABLE[x] << 4;
+    out->upper = 0;
+}
+
+void sub_02002228(u32 param_1)
+{
+}
+
 extern u16 PRNG_SEQUENCE_NUM;
 
 u16 GetRngSeed(void)

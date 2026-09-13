@@ -337,26 +337,3 @@ AddFixedPoint64: ; 0x020021C8
 	stmia r0, {r1, r2}
 	ldmia sp!, {r3, pc}
 	arm_func_end AddFixedPoint64
-
-	arm_func_start ClampedLn
-ClampedLn: ; 0x020021F4
-	cmp r1, #1
-	movlt r1, #1
-	cmp r1, #0x800
-	ldrge r1, _02002220 ; =0x000007FF
-	ldr r2, _02002224 ; =NATURAL_LOG_VALUE_TABLE
-	mov r1, r1, lsl #1
-	ldrsh r2, [r2, r1]
-	mov r1, #0
-	mov r2, r2, lsl #4
-	stmia r0, {r1, r2}
-	bx lr
-	.align 2, 0
-_02002220: .word 0x000007FF
-_02002224: .word NATURAL_LOG_VALUE_TABLE
-	arm_func_end ClampedLn
-
-	arm_func_start sub_02002228
-sub_02002228: ; 0x02002228
-	bx lr
-	arm_func_end sub_02002228

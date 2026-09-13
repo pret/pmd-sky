@@ -19,3 +19,9 @@ void ApplyGummiBoostsToGroundMonster(struct ground_monster *monster, s16 item_id
     ApplyGummiBoostsGroundMode(&monster->id, &monster->iq, monster->offensive_stats,
                                monster->defensive_stats, item_id, a3, a4);
 }
+
+void ApplyGummiBoostsToTeamMember(struct team_member *member, s16 item_id, int a3, void *a4)
+{
+    ApplyGummiBoostsGroundMode((s16 *)&member->id, &member->iq, member->offensive_stats,
+                               member->defensive_stats, item_id, a3, a4);
+}
