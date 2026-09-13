@@ -11,6 +11,7 @@
 #include "MSL_C/stdlib.h"
 #include "moves_1.h"
 #include "overlay_29_02344AF8.h"
+#include "dungeon_util_2.h"
 
 #ifdef JAPAN
 #define CURVED_PROJECTILE_LOG_MESSAGE_1 0x920
@@ -32,11 +33,10 @@ extern bool8 DisplayItem(struct entity *item, bool8 hallucinate, u8 on_floor, u8
 extern void AdvanceFrame(u32 param_1);
 extern bool8 TwoTurnMoveForcedMiss(struct entity *target, struct move *move);
 extern bool8 DoesProjectileHitTarget(struct entity *user, struct entity *target);
-extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
 extern void ChangeMonsterAnimationToHurt(struct entity *monster, u32 direction);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
-extern void SpawnDroppedItem(struct entity *entity, struct entity *item_entity, struct item *item, bool8 param_4, struct position *dir_xy, u32 param_6);
+extern bool8 SpawnDroppedItem(struct entity *entity, struct entity *item_entity, struct item *item, bool8 param_4, struct position *dir_xy, u32 param_6);
 
 bool8 ItemIsActive__02347B50(struct entity *entity, enum item_id item_id)
 {

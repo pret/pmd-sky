@@ -8,6 +8,7 @@
 #include "main_02001188.h"
 #include "window.h"
 #include "main_02027AF0.h"
+#include "dungeon_util_2.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
@@ -31,8 +32,6 @@ extern void* MemAlloc(u32 size, u32 nmemb);
 
 extern u32 GetMoneyCarried(void);
 extern u32 sub_0204F9E0(void);
-extern void GetMonsterOrTrapName(u8*, void*, u32); // The third argument isn't actually used in the
-                                     // function (../asm/overlay_29_022E1A40.s#L1378)
 extern u8* StringFromId(u32);
 extern void PreprocessString(u8* dst, u32 dsize, const u8* src, u32 flags, struct PPStrValues* ptr);
 extern void DrawTextInWindow(s32, u32, u32, u8*);

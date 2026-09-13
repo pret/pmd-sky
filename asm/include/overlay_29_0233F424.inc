@@ -1,6 +1,5 @@
 #pragma once
-.public CORNER_CARDINAL_NEIGHBOR_IS_OPEN
-.public DIRECTIONS_XY
+.public CreateHallway
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange

@@ -17,6 +17,8 @@
 #include "overlay_29_0234928C.h"
 #include "overlay_29_022FB538.h"
 #include "position_util.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_022EC7E8.h"
 
 #ifdef JAPAN
 #define SET_LEADER_ACTION_DATA_OFFSET -0x2C1
@@ -57,10 +59,8 @@ extern s32 GetEntityTouchscreenArea();
 extern s32 GetIdleAnimationId();
 extern struct entity *GetMonsterInFront();
 extern void GetPressedButtons(u32 param_1, u16 *pressed);
-extern s32 GetTeamMemberIndex();
 extern s32 HasStatusThatPreventsLeaderActing();
 extern s32 HideTileGrid();
-extern s32 IsFloorOver();
 extern s32 LogItemBlockedByEmbargo();
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 extern s32 MonsterHasEmbargoStatus();

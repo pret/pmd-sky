@@ -15,6 +15,7 @@
 #include "overlay_29_022FB538.h"
 #include "status_checks.h"
 #include "targeting.h"
+#include "dungeon_util_2.h"
 
 #ifdef JAPAN
 #define CANNOT_USE_ITEM_MESSAGE 0xB2D
@@ -27,7 +28,6 @@
 extern struct dungeon *DUNGEON_PTR[];
 
 extern void EndFrozenClassStatus(struct entity *user, struct entity *target, bool8 log);
-extern void SubstitutePlaceholderStringTags(s32 slot, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 
 void RunMonsterAi(struct entity *monster, u32 unused)

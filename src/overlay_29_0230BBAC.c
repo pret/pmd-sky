@@ -24,6 +24,7 @@
 #include "run_dungeon_1.h"
 #include "type_effectiveness.h"
 #include "weather.h"
+#include "dungeon_util_2.h"
 
 extern struct dungeon *DUNGEON_PTR;
 extern u8 GetMonsterGenderVeneer(s16 monster_id);
@@ -47,7 +48,6 @@ extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern bool8 UpdateStateFlags(struct monster *info, s32 flag, bool8 value);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);
-extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
 extern const u8 ov29_02352984[];
 extern const u8 ov29_02352990[];

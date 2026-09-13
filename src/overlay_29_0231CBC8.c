@@ -10,6 +10,8 @@
 #include "overlay_29_022EAC7C.h"
 #include "overlay_29_02344AF8.h"
 #include "overlay_29_0234BA54.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_02345A3C.h"
 
 #ifdef JAPAN
 #define MESSAGE_BE6 0x925
@@ -35,10 +37,8 @@ extern void ov29_022FB920(bool8 a);
 #endif
 
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
-extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
 extern void EndNegativeStatusConditionWrapper(struct entity *user, struct entity *target, bool8 displayMessage, bool8 fromMove);
-extern bool8 SpawnDroppedItemWrapper(struct entity *entity, struct position *pos, struct item *item, u32 a);
 extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
 extern void BoostIQ(struct entity *entity, s16 iq, bool8 a);
 extern void UpdateShopkeeperModeAfterAttack(struct entity *attacker, struct entity *defender);

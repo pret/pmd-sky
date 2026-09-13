@@ -43,6 +43,10 @@
 #include "overlay_29_022E3F20.h"
 #include "overlay_29_022E406C.h"
 #include "overlay_29_0233836C.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_02345A3C.h"
+#include "overlay_29_02306728.h"
+#include "overlay_29_02336F4C.h"
 
 struct unk_023535DC {
     u8 field_0x0;
@@ -96,7 +100,6 @@ extern bool8 AftermathCheck(struct entity *attacker, struct entity *defender, s3
 extern void ChangeMonsterAnimation(struct entity *entity, s32 animation_id, s32 direction);
 extern void ChangeMonsterAnimationToIdle(struct entity* monster, enum direction_id direction);
 extern void DisplayAnimatedNumbers(s32 amount, struct entity *entity, bool8 display_sign, s32 number_color);
-extern void EndCurseClassStatus(struct entity* user, struct entity* target, u8 next_curse_class_status_being_applied, bool8 log_message);
 extern void EndInvisibleClassStatus(struct entity* user, struct entity* target, bool8 no_slip_message);
 extern int EndLeechSeedStatusForAllTargets();
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity* user, struct entity* target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
@@ -118,17 +121,13 @@ extern int PlayMissSfx__022E6150();
 extern void RemoveHolderForItemInBag(struct item* item);
 extern void RestorePpAllMovesSetFlags(struct entity* entity);
 extern void RestoreRandomMovePP(struct entity* user, struct entity* target, s32 pp, bool8 log_message);
-extern bool8 SpawnDroppedItemWrapper(struct entity *entity, struct position *pos, struct item *item, u32 param_4);
 extern void SubInitMonster(struct monster* monster, bool8 flag);
-extern void SubstitutePlaceholderStringTags(s32 slot, struct entity *entity, u32 param_3);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
 extern bool8 TryRecruit(struct entity *user, struct entity *recruit, void *recruit_info);
 extern void TrySpawnEnemyItemDrop(struct entity* attacker, struct entity* defender);
 extern void UnfreezeAnim(struct entity *e);
 extern void UpdateShopkeeperModeAfterAttack(struct entity* attacker, struct entity* defender);
-extern void UpdateStatusIconFlags(struct entity *);
-extern void UpdateTrapsVisibility(void);
 extern s32 abs(s32 n);
 extern int ov10_022BDC68();
 extern int TerminateEffectWrapper();

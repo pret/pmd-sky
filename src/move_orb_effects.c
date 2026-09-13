@@ -9,12 +9,13 @@
 #include "overlay_29_023118B4.h"
 #include "overlay_29_02311BF8.h"
 #include "overlay_29_02344AF8.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_022E3F20.h"
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern void CopyStringFromId(u8* buf, u32 string_id);
 extern void SetMessageLogPreprocessorArgsString(u32 a, u8 *buf);
 extern bool8 IsProtectedFromStatDrops(struct entity *user, struct entity *target, bool8 log_message);
-extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
 extern void PlayOffensiveStatUpEffect(struct entity *entity, struct StatIndex stat_index);
 extern void PlayDefensiveStatDownEffect(struct entity *entity, struct StatIndex stat_index);
 extern void PlayDefensiveStatUpEffect(struct entity *entity, struct StatIndex stat_index);
@@ -26,7 +27,6 @@ extern void PlayDefensiveStatMultiplierUpEffect(struct entity *entity, struct St
 extern void PlayHitChanceUpEffect(struct entity *entity, struct StatIndex stat_index);
 extern void PlayHitChanceDownEffect(struct entity *entity, struct StatIndex stat_index);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
-extern void UpdateStatusIconFlags(struct entity *entity);
 extern void ov29_022E4338(struct entity *);
 extern void PlayExclamationPointEffect__022E5D4C(struct entity *entity);
 extern void PlayParalysisEffect(struct entity *entity);
@@ -40,7 +40,7 @@ extern void TryActivateQuickFeet(struct entity *attacker ,struct entity *defende
 extern s32 CalcStatusDuration(struct entity *entity, const s16 *turn_range, bool8 iq_skill_effects);
 extern bool8 GetExclusiveItemWithEffectFromBag(struct entity *, enum exclusive_item_effect_id effect_id, struct item *item);
 extern struct preprocessor_args* GetMessageLogPreprocessorArgs(void);
-extern void SetPreprocessorArgsStringToName(struct preprocessor_args* preprocessor_args, u8 pos, struct monster* monster, u8 param_4, u8 name_type);
+extern void SetPreprocessorArgsStringToName(struct preprocessor_args* preprocessor_args, s32 pos, struct monster* monster, u32 param_4, u8 name_type);
 extern int CalcSpeedStageWrapper(struct entity* entity);
 extern int CalcSpeedStage(struct entity *entity, s32 counter_weight);
 

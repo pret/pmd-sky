@@ -802,7 +802,7 @@ Overlay OVY_29
 	Object src/overlay_29_022E272C.o
 	Object src/dungeon_visibility.o
 	Object src/dungeon_util_2.o
-	Object asm/overlay_29_022E2978.o
+	Object asm/overlay_29_022E34A8.o
 	Object src/dg_camera.o
 	Object asm/overlay_29_022E335C.o
 	Object src/dg_effect.o
@@ -862,6 +862,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022EBCE8.o
 	Object src/overlay_29_022EC608.o
 	Object asm/overlay_29_022EC62C.o
+	Object src/overlay_29_022EC7E8.o
+	Object asm/overlay_29_022EC85C.o
 	Object src/overlay_29_022ECDC0.o
 	Object asm/overlay_29_022ECDE4.o
 	Object src/overlay_29_022ECF44.o
@@ -967,6 +969,10 @@ Overlay OVY_29
 	Object asm/overlay_29_023055B0.o
 	Object src/overlay_29_02305C04.o
 	Object asm/overlay_29_02305C28.o
+	Object src/overlay_29_023061A8.o
+	Object asm/overlay_29_02306258.o
+	Object src/overlay_29_02306728.o
+	Object asm/overlay_29_023068C4.o
 	Object src/overlay_29_02307EF8.o
 	Object asm/overlay_29_02307F4C.o
 	Object src/dungeon_ai_leader.o
@@ -1205,6 +1211,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02336224.o
 	Object src/overlay_29_02336428.o
 	Object asm/overlay_29_02336450.o
+	Object src/overlay_29_02336F4C.o
+	Object asm/overlay_29_0233711C.o
 	Object src/overlay_29_02337CA8.o
 	Object asm/overlay_29_02337CCC.o
 	Object src/dungeon_map_access_1.o
@@ -1229,7 +1237,7 @@ Overlay OVY_29
 	Object src/overlay_29_0233C9E8.o
 	Object asm/overlay_29_0233CF84.o
 	Object src/overlay_29_0233E43C.o
-	Object asm/overlay_29_0233ED34.o
+	Object asm/overlay_29_0233F424.o
 	Object src/overlay_29_02340CAC.o
 	Object asm/overlay_29_02340CE4.o
 	Object src/dungeon_generation.o
@@ -1245,6 +1253,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02344BF8.o
 	Object src/overlay_29_02345698.o
 	Object asm/overlay_29_023456BC.o
+	Object src/overlay_29_02345A3C.o
+	Object asm/overlay_29_02345AD8.o
 	Object src/dungeon_items.o
 	Object asm/overlay_29_02346834.o
 	Object src/dungeon_projectile_throw.o

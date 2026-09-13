@@ -20,6 +20,9 @@
 #include "overlay_29_0233836C.h"
 #include "overlay_29_0234B024.h"
 #include "weather.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_022EC7E8.h"
+#include "overlay_29_023061A8.h"
 
 #ifdef JAPAN
 #define MESSAGE_DE6 0xB26
@@ -49,13 +52,11 @@ extern bool8 ov29_022E34A8_EU(struct entity *entity);
 #endif
 
 extern void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a, s32 b);
-extern s32 IsFloorOver();
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
 extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
-extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
 extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_point_64 *a, const struct fixed_point_64 *b);
 extern void EndNegativeStatusConditionWrapper(struct entity *user, struct entity *target, bool8 displayMessage, bool8 fromMove);
 extern void ov29_022EA370(s32 a, s32 b);
@@ -70,7 +71,6 @@ extern void PlayEffectAnimationEntityStandard(struct entity *entity, s32 anim_id
 extern void ov29_022F42F8(struct entity *entity);
 extern void EndMagnetRiseStatus(struct entity *user, struct entity *target);
 extern void TickNoSlipCap(struct entity *entity);
-extern void EndBurnClassStatus(struct entity *user, struct entity *target);
 extern void ov29_022EC62C(struct entity *entity);
 extern void ov29_022FB718(struct entity *entity);
 extern void TryActivateBadDreams(struct entity *entity);
