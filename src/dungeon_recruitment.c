@@ -26,6 +26,7 @@
 #include "overlay_29_0234BA54.h"
 #include "position_util.h"
 #include "overlay_29_0234B104.h"
+#include "main_02056294.h"
 
 struct unk_0230E064 {
     s16 field_0x0;
@@ -52,7 +53,6 @@ void SetPreprocessorArgsStringToName(struct preprocessor_args *preprocessor_args
                                      u32 param_4, u8 name_type);
 void HandleFaint(struct entity *fainted_entity, s32 damage_source,
                  struct entity *killer);
-struct team_member *GetActiveTeamMember(s32 roster_idx);
 void GetRecoloredTeamMemberName(char *dst, struct team_member *team_member);
 void ov29_0234D630(void);
 void ov29_0234D838(void);

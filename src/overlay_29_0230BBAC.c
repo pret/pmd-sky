@@ -29,13 +29,14 @@
 #include "overlay_29_0234B340.h"
 #include "main_0200224C.h"
 #include "overlay_29_0231E9F0.h"
+#include "dungeon_logic_2.h"
+#include "moves_3.h"
 
 extern struct dungeon *DUNGEON_PTR;
 extern u8 GetMonsterGenderVeneer(s16 monster_id);
 extern u8 ExclusiveItemOffenseBoost(struct entity *entity, s32 idx);
 extern u8 ExclusiveItemDefenseBoost(struct entity *entity, s32 idx);
 extern s32 FixedPoint64ToInt(struct fixed_point_64 *x);
-extern int IsRecoilMove(enum move_id move_id);
 extern void PlayEffectAnimation0x1A9__022E6130(struct entity *entity);
 extern void PlayEffectAnimation0x1A9__022E617C(struct entity *entity);
 extern void PlayEffectAnimation0x18E(struct entity *entity);
@@ -44,7 +45,6 @@ extern bool8 FixedPoint64CmpLt(const struct fixed_point_64 *a, const struct fixe
 extern void DivideFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64 *a, struct fixed_point_64 *b);
 extern void ResetDamageCalcDiagnostics(void);
 extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_point_64 *a, const struct fixed_point_64 *b);
-extern bool8 UpdateStateFlags(struct monster *info, s32 flag, bool8 value);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
 extern const u8 ov29_02352984[];

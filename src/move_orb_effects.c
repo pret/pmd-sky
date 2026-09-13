@@ -12,6 +12,7 @@
 #include "dungeon_util_2.h"
 #include "overlay_29_022E3F20.h"
 #include "overlay_29_0234B340.h"
+#include "dungeon_logic_2.h"
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern void CopyStringFromId(u8* buf, u32 string_id);
@@ -33,7 +34,6 @@ extern void PlayParalysisEffect(struct entity *entity);
 extern void PlaySpeedUpEffect(struct entity *entity);
 extern void PlaySpeedDownEffect(struct entity *entity);
 extern fx32_8 MultiplyByFixedPoint(fx32_8 x, fx32_8 mult_fp);
-extern bool8 IsProtectedFromNegativeStatus(struct entity *user ,struct entity *target, bool8 log_message);
 extern bool8 SafeguardIsActive(struct entity *user ,struct entity *target, bool8 log_message);
 extern void TryActivateSteadfast(struct entity *attacker, struct entity *defender);
 extern void TryActivateQuickFeet(struct entity *attacker ,struct entity *defender);

@@ -2,6 +2,8 @@
 #include "move_data.h"
 #include "main_0202593C.h"
 
+extern u16 RECOIL_MOVE_LIST[];
+
 extern struct move_data_table_outer DUNGEON_MOVE_TABLES;
 
 bool8 IsThawingMove(struct move *move)
@@ -84,4 +86,86 @@ s32 GetNbMoves(struct moves *moves)
         
     }
     return num_moves;
+}
+
+s32 GetMovesetIdx__02013CAC(struct ground_move *moveset, enum move_id move_id)
+{
+    s32 i;
+
+    for (i = 0; i < 4; i++) {
+        if (GET_FLAG(moveset[i].flags0, MOVE_FLAG_EXISTS)) {
+            if (move_id == moveset[i].id) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}
+
+bool8 IsReflectedByMagicCoat(enum move_id move_id)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move_id].reflected_by_magic_coat;
+}
+
+bool8 CanBeSnatched(enum move_id move_id)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move_id].can_be_snatched;
+}
+
+bool8 FailsWhileMuzzled(enum move_id move_id)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move_id].fails_while_muzzled;
+}
+
+bool8 IsSoundMove(struct move *move)
+{
+    enum move_id id = move->id;
+
+    if (id == MOVE_GROWL) {
+        return TRUE;
+    }
+    if (id == MOVE_ROAR) {
+        return TRUE;
+    }
+    if (id == MOVE_METAL_SOUND) {
+        return TRUE;
+    }
+    if (id == MOVE_SING) {
+        return TRUE;
+    }
+    if (id == MOVE_GRASSWHISTLE) {
+        return TRUE;
+    }
+    if (id == MOVE_SUPERSONIC) {
+        return TRUE;
+    }
+    if (id == MOVE_PERISH_SONG) {
+        return TRUE;
+    }
+    if (id == MOVE_SCREECH) {
+        return TRUE;
+    }
+    if (id == MOVE_HYPER_VOICE) {
+        return TRUE;
+    }
+    if (id == MOVE_SNORE) {
+        return TRUE;
+    }
+    if (id == MOVE_HEAL_BELL) {
+        return TRUE;
+    }
+    if (id == MOVE_BUG_BUZZ) {
+        return TRUE;
+    }
+    return id == MOVE_CHATTER;
+}
+
+bool8 IsRecoilMove(enum move_id move_id)
+{
+    for (s16 i = 0; RECOIL_MOVE_LIST[i] != 0; i++) {
+        if (RECOIL_MOVE_LIST[i] == move_id) {
+            return TRUE;
+        }
+    }
+    return FALSE;
 }

@@ -14,10 +14,10 @@
 #include "weather.h"
 #include "overlay_29_0234B340.h"
 #include "overlay_29_0234B104.h"
+#include "dungeon_logic_2.h"
 
 extern struct dungeon *DUNGEON_PTR;
 
-extern bool8 UpdateStateFlags(struct monster *info, s32 flag, bool8 value);
 extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_point_64 *a, const struct fixed_point_64 *b);
 extern bool8 GhostImmunityIsActive(struct entity *attacker, struct entity *defender, s16 target_type_idx);
 extern bool8 IsTypeIneffectiveAgainstGhost(enum type_id type);

@@ -58,6 +58,10 @@
 #include "overlay_29_0230F8AC.h"
 #include "overlay_29_0231EDD8.h"
 #include "overlay_29_0234B104.h"
+#include "dungeon_logic_2.h"
+#include "main_02056294.h"
+#include "overlay_29_022FBBEC.h"
+#include "special_move_types.h"
 
 struct unk_023535DC {
     u8 field_0x0;
@@ -78,7 +82,6 @@ struct unk_022C593C {
 };
 
 extern const struct StatIndex ATK_STAT_IDX;
-extern void ActivateMotorDrive(struct entity* entity);
 extern void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a, s32 b);
 extern bool8 IsEitherMonsterInvalid(struct entity *a, struct entity *b);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);
@@ -102,7 +105,6 @@ extern s16 ov10_022C45B4;
 extern s16 ov10_022C45C0;
 extern s16 ov10_022C4638;
 extern s16 ov10_022C467C;
-extern void AddExpSpecial(struct entity* attacker, struct entity* defender, s32 base_exp);
 extern void ChangeMonsterAnimation(struct entity *entity, s32 animation_id, s32 direction);
 extern void ChangeMonsterAnimationToIdle(struct entity* monster, enum direction_id direction);
 extern void DisplayAnimatedNumbers(s32 amount, struct entity *entity, bool8 display_sign, s32 number_color);
@@ -111,7 +113,6 @@ extern int EndLeechSeedStatusForAllTargets();
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity* user, struct entity* target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
 extern void FillRecruitInfo(void *recruit_info, struct entity *monster);
 extern void FreeOtherWrappedMonsters(u32 unique_id);
-extern struct team_member* GetActiveTeamMember(s32 roster_idx);
 extern s32 GetIdleAnimationId(struct entity *entity);
 extern void HandleFaint(struct entity *fainted_entity, s32 damage_source, struct entity *killer);
 extern bool8 IsMonsterIdInNormalRangeVeneer(enum monster_id monster_id);
@@ -134,10 +135,8 @@ extern int ov29_022E5478();
 extern int ov29_022E550C();
 extern void ov29_022E81F8(void);
 extern void ov29_022EA370(s32 a, s32 b);
-extern int ov29_022F0780();
 extern int ov29_022F9AF4();
 extern int ov29_022FB98C();
-extern int ov29_022FBD24();
 extern int ov29_02303E0C();
 extern int ov29_02304830();
 extern int ov29_02307C48();

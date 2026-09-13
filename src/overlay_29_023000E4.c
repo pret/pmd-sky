@@ -1,5 +1,6 @@
 #include "overlay_29_023000E4.h"
 #include "dungeon_util_static.h"
+#include "main_02056294.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
@@ -26,7 +27,6 @@ extern void GetNameWithGender(char *dst, s16 monster_id, char color_id);
 extern struct ground_monster *GetExplorerMazeMonster(u8 entry_number);
 extern void GetRecoloredGroundMonsterName(char *dst, struct ground_monster *ground_monster, u8 unk);
 extern void GetRecoloredTeamMemberName(char *dst, struct team_member *team_member);
-extern struct team_member *GetActiveTeamMember(int roster_idx);
 
 void GetMonsterName(char *buffer, struct monster *target_info) {
 #ifndef JAPAN

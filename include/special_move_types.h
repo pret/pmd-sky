@@ -8,5 +8,9 @@ const struct natural_gift_item_info* GetEntityNaturalGiftInfo(struct entity* ent
 // Gets the current Weather Ball type for the given entity, based on the apparent weather.
 enum type_id GetEntityWeatherBallType(struct entity* entity);
 void UseMoveByMoveId(struct entity *entity, enum move_id move_id, bool8 add_move_if_not_exists);
+void ov29_0231AFB4(void);
+void ov29_0231B008(void);
+void ActivateMotorDrive(struct entity* entity);
+void TryActivateFrisk(struct entity* user, struct entity* target);
 
 #endif //PMDSKY_SPECIAL_MOVE_TYPES_H

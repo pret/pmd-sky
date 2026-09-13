@@ -1,7 +1,7 @@
 #include "main_0205A288.h"
 #include "common.h"
+#include "main_02055410.h"
 
-extern struct ground_monster* GetTeamMember(s32 member_idx);
 extern void sub_0205A340(s16 *ptr, struct ground_monster *data, s32 monster_id);
 extern const u8* GetNameString(enum monster_id monster_id);
 extern void StrncpyName(char *dest, const char *src, u32 n);

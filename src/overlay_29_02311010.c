@@ -28,6 +28,7 @@
 #include "overlay_29_022E4338.h"
 #include "overlay_29_0231B194.h"
 #include "overlay_29_0234B104.h"
+#include "overlay_29_023350D8.h"
 
 extern s16 ov10_022C4BE4[20];
 extern void ov29_0230FB30(struct entity *entity);
@@ -76,7 +77,6 @@ extern void ov29_022F42F8(struct entity *entity);
 extern void EndMagnetRiseStatus(struct entity *user, struct entity *target);
 extern void ov29_022EC62C(struct entity *entity);
 extern void ov29_022FB718(struct entity *entity);
-extern void TryWeatherFormChange(struct entity *entity);
 extern s32 EndNegativeStatusCondition(struct entity *user, struct entity *target, bool8 a, bool8 b, bool8 c);
 extern s32 DisplayActions(s32 a);
 extern s32 ov29_02322374(struct entity *entity, s32 a, s32 b, s32 c, s32 d, struct move *move);

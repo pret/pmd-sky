@@ -27,6 +27,8 @@
 #include "main_020502B0.h"
 #include "main_02026174.h"
 #include "main_0202B558.h"
+#include "main_02055410.h"
+#include "main_02056294.h"
 extern void sub_02056094(char *dst, struct ground_monster *ground_monster,
                          bool8 is_leader);
 
@@ -111,9 +113,8 @@ extern s32 ov11_02322D88;
 extern u8 ov11_02322DB0[];
 
 extern void CloseScrollBox(s8);                                          extern void CloseTextBox2(s8);                                           extern u8 CreateParentMenuFromStringIds(void *, u32, void *, void *);    extern s8 CreateScrollBoxSingle(void *, s32, s32, s32, void *, s32, void *); extern s8 CreateSimpleMenuFromStringIds(void *, s32, s32, void *, s32);  extern s8 CreateTextBox(void *, void *);
-extern struct team_member *GetActiveTeamMember(s32 roster_idx);
 extern void GetPressedButtons(u32, u16 *);
-extern s32 GetSimpleMenuResult__0202AEA4(s8);extern struct ground_monster *GetTeamMember(s32 member_idx);
+extern s32 GetSimpleMenuResult__0202AEA4(s8);
 extern void InitPreprocessorArgs(struct preprocessor_args *);
 extern s32 IsScrollBoxActive(s8);                                        extern void ShowDialogueBox(s8);                                         extern void ShowStringIdInDialogueBox(s8, s32, s32, void *);             extern void ov11_022DC504(void);
 extern u8 *strcpy(u8 *dest, const u8 *src);

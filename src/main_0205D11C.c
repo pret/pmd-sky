@@ -14,6 +14,7 @@
 #include "main_0205E288.h"
 #include "dungeon_recruitment_2.h"
 #include "main_020514CC.h"
+#include "number_util.h"
 
 extern u8 _020A39C0;
 extern u8 _020A39D4;
@@ -34,7 +35,6 @@ extern s32 GetAllPossibleMonsters(s16 **out);
 extern u8 GetMissionSpecificFixedRoom(enum mission_type, u32);
 extern bool8 IsAvailableItem(s16 item_id);
 extern void *LoadMissionTemplates(void);
-extern s32 MtNext(void);
 extern void RollRandomItemReward(struct dungeon_floor_pair *, enum mission_type, s16 *out);
 extern void sub_02062900(u16, s16 *, void *out);
 extern bool8 sub_02062C4C(s32, u8 *, struct dungeon_floor_pair *, s32);

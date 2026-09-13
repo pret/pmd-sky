@@ -111,6 +111,15 @@ struct item_spawn_weights {
     s16 unknown_2[0x40c];
 }; 
 
+struct unk_022FBD24 {
+    // 0x3DCC: Appears to be a table that holds the statuses::statuses_unique_id value for
+    // the monsters. Maybe just for convenience to avoid loading it from every monster?
+    u32 monster_unique_id[20];
+    // 0x3E1C: Appears to be be an index inside or length for
+    // dungeon::active_monsters_unique_statuses_ids.
+    u32 unique_id_index;
+};
+
 // Dungeon state
 struct dungeon {
     u8 field_0x0; // 0x0: Initialized to 0x0.
@@ -1213,12 +1222,7 @@ struct dungeon {
     // Species not on the floor have the value 1.
     u8 exp_yield_rankings[NUM_SPECIES];
 #ifndef JAPAN
-    // 0x3DCC: Appears to be a table that holds the statuses::statuses_unique_id value for
-    // the monsters. Maybe just for convenience to avoid loading it from every monster?
-    u32 monster_unique_id[20];
-    // 0x3E1C: Appears to be be an index inside or length for
-    // dungeon::active_monsters_unique_statuses_ids.
-    u32 unique_id_index;
+    struct unk_022FBD24 field_0x3dcc;
 #endif
     // 0x3E20: Number of valid monster spawn entries (see spawn_entries).
     int monster_spawn_entries_length;
