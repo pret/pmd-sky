@@ -4,17 +4,13 @@
 .public CheckTeamMemberIdx
 .public CloseAdvancedTextBox
 .public CloseCollectionMenu
-.public CloseDialogueBox
-.public CloseInventoryMenu
 .public CloseParentMenu
 .public CloseScrollBox
 .public CloseSynthBin
-.public CloseTextBox2
 .public CountNbItemsOfTypeInBag
 .public CountNbItemsOfTypeInStorage
 .public CreateAdvancedTextBox
 .public CreateCollectionMenu
-.public CreateDialogueBox
 .public CreateMonsterSummaryFromTeamMember
 .public CreateParentMenu
 .public CreateParentMenuFromStringIds
@@ -85,7 +81,6 @@
 .public ov11_0230D220
 .public ov11_0230D92C
 .public ov11_02310BDC
-.public ov11_02322DB8
 .public ov11_02322DC8
 .public ov11_02322DD0
 .public ov11_02322DE0
@@ -110,7 +105,6 @@
 .public ov11_02322FD4
 .public ov11_02322FE4
 .public ov11_02322FF4
-.public ov11_02324D8C
 .public ov11_02324D90
 .public ov11_02324D94
 .public ov11_02324D98
@@ -186,4 +180,3 @@
 .public sub_020564B0
 .public sub_020586F0
 .public sub_02058794
-.public vsprintf

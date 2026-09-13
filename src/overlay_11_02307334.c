@@ -20,22 +20,34 @@
 #include "overlay_31_02382820.h"
 #include "main_020114F8.h"
 #include "main_0203088C.h"
+#include "main_02001188.h"
+#include "common.h"
+#include <stdarg.h>
+extern void sub_02056094(char *dst, struct ground_monster *ground_monster,
+                         bool8 is_leader);
 
-struct unk_02309DAC {
+struct unk_02324D90 {
     s32 field_0x0;
-    s16 field_0x4;
+#ifdef JAPAN
+    u8 field_0x4[0xF0];
+#else
+    u8 field_0x4[0x110];
+#endif
+    s32 field_0x114;
+    s16 field_0x118;
+    u8 field_0x11a[0x67A];
 };
 
-struct unk_02308F4C {
-    s32 field_0x0;
-    s16 field_0x4;
-    u8 field_0x6[2];
-    s16 field_0x8;
-    u8 field_0xa;
-    u8 field_0xb;
-    u32 *field_0xc;
-    s16 *field_0x10;
-};
+extern struct unk_02324D90 *ov11_02324D90;
+extern char ov11_02322DB8[];
+extern void StrncpySimpleNoPadSafe(u8 *dest, const u8 *src, u32 n);
+extern s32 sub_02055894(struct ground_monster *member);
+extern bool8 sub_020564B0(int idx);
+extern s32 vsprintf(u8 *str, const u8 *format, va_list ap);
+extern s8 CreateDialogueBox(s8);
+extern void CloseDialogueBox(s8);
+extern void sub_0203FA64(s16 idx);
+extern void sub_0203FBD4(s16 idx);
 
 struct unk_02324D8C {
     s32 field_0x0;                      s8 field_0x4;
@@ -51,7 +63,8 @@ struct unk_02324D8C {
     s32 field_0x10;
     s32 field_0x14;
     s32 field_0x18;
-    struct struct_2 field_0x1c;         struct preprocessor_args field_0xb4; u8 field_0x104[0x134];
+    struct struct_2 field_0x1c;         struct preprocessor_args field_0xb4; u8 field_0x104[0x32];
+    char field_0x136[0x102];
     struct unk_02308F4C field_0x238;    s16 field_0x24c;
     s16 field_0x24e;
     s16 field_0x250;
@@ -108,16 +121,6 @@ extern u8 PopInventoryMenuField0x1A3(s32 window_id);
 extern void SetItemAcquired(struct item *);
 extern void SortItemsInBag(void);
 extern void *memcpy(void *, const void *, u32);
-extern void ov11_02308D48(void);
-extern void *ov11_02308DD8(void *);
-extern void ov11_02308EDC(void);
-extern void ov11_02308F14(void);
-extern void ov11_02308F4C(void *dst, const void *src);
-extern void ov11_02308FD0(void *);
-extern void ov11_02308FEC(void *);
-extern s32 ov11_0230901C(void *);
-extern int ov11_02309040(s32);
-extern int ov11_02309084(s16);
 extern int ov11_023090DC(void);
 extern void ov11_02309DAC(void *out);
 extern void ov11_02309DF8(void);
@@ -893,4 +896,149 @@ s32 ov11_02307334(void)
     }
 
     return 0;
+}
+
+void ov11_02308D1C(void)
+{
+    if (ov11_02324D8C != 0) {
+        MemFree(ov11_02324D8C);
+        ov11_02324D8C = 0;
+    }
+}
+
+void ov11_02308D48(void)
+{
+    if (ov11_02324D8C->field_0x6 != -2) {
+        CloseParentMenu(ov11_02324D8C->field_0x6);
+        ov11_02324D8C->field_0x6 = -2;
+    }
+    if (ov11_02324D8C->field_0x5 != -2) {
+        CloseTextBox2(ov11_02324D8C->field_0x5);
+        ov11_02324D8C->field_0x5 = -2;
+    }
+    if (ov11_02324D8C->field_0x4 != -2) {
+        CloseInventoryMenu(ov11_02324D8C->field_0x4);
+        ov11_02324D8C->field_0x4 = -2;
+    }
+}
+
+char* ov11_02308DD8(struct unk_02308F4C *a)
+{
+    u8 name[12];
+    struct ground_monster *ground_monster;
+    struct team_member *team_member;
+    u32 color;
+    bool8 f;
+    bool8 leader;
+
+    if (a->field_0x0 == 0) {
+        ground_monster = GetTeamMember(a->field_0x4);
+        sub_02056094(ov11_02324D8C->field_0x136, ground_monster,
+                     sub_020564B0(sub_02055894(ground_monster)));
+    } else if (a->field_0x0 == 1) {
+        team_member = GetActiveTeamMember(a->field_0x4);
+        StrncpySimpleNoPadSafe(name, (const u8 *)team_member->name, 10);
+        color = 0x44;
+        f = (*(u8 *)team_member & 2) != 0;
+        if (f) {
+            color = 0x46;
+        }
+        leader = team_member->is_leader != 0;
+        if (leader) {
+            color = 0x59;
+        }
+        ov11_02308EB4(ov11_02324D8C->field_0x136, ov11_02322DB8, color, name);
+    }
+    return ov11_02324D8C->field_0x136;
+}
+
+void ov11_02308EB4(char *str, const char *format, ...)
+{
+    va_list args;
+    va_start(args, format);
+    vsprintf(str, format, args);
+}
+
+void ov11_02308EDC(void)
+{
+    if (ov11_02324D8C->field_0x8 == -2) {
+        ov11_02324D8C->field_0x8 = CreateDialogueBox(0);
+    }
+}
+
+void ov11_02308F14(void)
+{
+    if (ov11_02324D8C->field_0x8 != -2) {
+        CloseDialogueBox(ov11_02324D8C->field_0x8);
+        ov11_02324D8C->field_0x8 = -2;
+    }
+}
+
+void ov11_02308F4C(struct unk_02308F4C *dst, const struct unk_02309DAC *src)
+{
+    *(struct unk_02309DAC *)dst = *src;
+    if (dst->field_0x0 == 0) {
+        struct ground_monster *mon = GetTeamMember(dst->field_0x4);
+
+        dst->field_0x8 = mon->id;
+        dst->field_0xa = mon->joined_at;
+        dst->field_0xc = mon->iq_skill_flags;
+        dst->field_0x10 = (s16 *)&mon->iq;
+    } else if (dst->field_0x0 == 1) {
+        struct team_member *mem = GetActiveTeamMember(dst->field_0x4);
+
+        dst->field_0x8 = *(s16 *)&mem->id;
+        dst->field_0xa = mem->joined_at;
+        dst->field_0xc = mem->iq_skill_flags;
+        dst->field_0x10 = (s16 *)&mem->iq;
+    }
+}
+
+void ov11_02308FD0(struct unk_02308F4C *a)
+{
+    if (a->field_0x0 == 1) {
+        sub_02058794(a->field_0x4);
+    }
+}
+
+void ov11_02308FEC(struct unk_02308F4C *a)
+{
+    if (a->field_0x0 == 0) {
+        sub_0203FA64(a->field_0x4);
+    } else if (a->field_0x0 == 1) {
+        sub_0203FBD4(a->field_0x4);
+    }
+}
+
+s32 ov11_0230901C(struct unk_02308F4C *a)
+{
+    if (a->field_0x0 == 0) {
+        return a->field_0x4 | 0x20000;
+    }
+    if (a->field_0x0 == 1) {
+        return a->field_0x4 | 0x30000;
+    }
+}
+
+int ov11_02309040(s32 param_1)
+{
+    ov11_02324D90 = MemAlloc(sizeof(struct unk_02324D90), 8);
+    if (ov11_02324D90 == 0) {
+        return 0;
+    }
+    ov11_02324D90->field_0x114 = param_1;
+    ov11_02324D90->field_0x0 = 0;
+    return 1;
+}
+
+int ov11_02309084(s16 param_1)
+{
+    ov11_02324D90 = MemAlloc(sizeof(struct unk_02324D90), 8);
+    if (ov11_02324D90 == NULL) {
+        return 0;
+    }
+    ov11_02324D90->field_0x114 = 2;
+    ov11_02324D90->field_0x0 = 0;
+    ov11_02324D90->field_0x118 = param_1;
+    return 1;
 }
