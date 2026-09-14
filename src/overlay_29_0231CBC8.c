@@ -1,4 +1,5 @@
 #include "overlay_29_0231CBC8.h"
+#include "overlay_29_02315118.h"
 #include "dungeon_util_static.h"
 #include "dungeon_capabilities_1.h"
 #include "dungeon_pokemon_attributes_1.h"
@@ -43,7 +44,6 @@ extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s3
 extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
 extern void BoostIQ(struct entity *entity, s16 iq, bool8 a);
 extern void UpdateShopkeeperModeAfterAttack(struct entity *attacker, struct entity *defender);
-extern void TryInflictConfusedStatus(struct entity *user, struct entity *target, bool8 a, bool8 b);
 extern void TryInflictInvisibleStatus(struct entity *user, struct entity *target);
 extern void TryInflictPetrifiedStatus(struct entity *user, struct entity *target);
 extern void TryInflictSleeplessStatus(struct entity *user, struct entity *target);

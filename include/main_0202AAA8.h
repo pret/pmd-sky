@@ -5,7 +5,8 @@
 #include "main_02028080.h"
 
 struct unk_0202AAA8 {
-    u8 field_0x0[8];
+    u32 field_0x0;
+    u8 field_0x4[4];
     u8 field_0x8;
     u8 field_0x9[0x17];
     u16 field_0x20;
@@ -13,16 +14,19 @@ struct unk_0202AAA8 {
     s32 field_0xA0;
     u8 field_0xA4[0x54];
     u32 field_0xF8;
-    u8 field_0xFC[8];
+    u32 field_0xFC;
+    s32 field_0x100;
     u32 field_0x104;
-    u8 field_0x108[0x90];
+    u8 field_0x108[0x58];
+    u8 *field_0x160;
+    u8 field_0x164[0x34];
     void *field_0x198;
     s32 field_0x19C;
     u8 field_0x1A0;
     u8 field_0x1A1;
     u8 field_0x1A2[2];
     s32 field_0x1A4;
-    u8 field_0x1A8[4];
+    s32 field_0x1A8;
     s32 field_0x1AC;
     s32 field_0x1B0;
     u8 field_0x1B4[8];

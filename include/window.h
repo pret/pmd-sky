@@ -4,6 +4,13 @@
 #include "enums.h"
 #include "util.h"
 
+struct struct_2 {
+    u32 b;        // 0x0
+    u8 PAD1[92];
+    u8* c;        // 0x60
+    u8 PAD2[50];
+};
+
 // Represents the state of a portrait to be displayed inside a window
 typedef struct {
     enum monster_id monster_id; // 0x0: The species id, or the set index inside kaomado.kao

@@ -69,10 +69,8 @@ struct unk_020AFE74 {
 extern struct unk_020AFE74 *MISSION_REWARD_STRUCT_MAIN_PTR;
 
 extern void MaybeGetColoredFormattedItemName(void*, struct item*, void*);
-extern s8 CreateSimpleMenuFromStringIds(void*, s32, s32, void*, s32);
 extern void GetNameWithGender(char *dst, s16 monster_id, char color_id);
 extern void GetNameRaw(unsigned char *, s32);
-extern s32 GetSimpleMenuResult__0202AEA4(s8);
 extern void InitPreprocessorArgs(struct preprocessor_args* args);
 extern bool8 IsMonsterIllegalForMissions(enum monster_id);
 extern void sub_02046BE8(s32 a, s32 b, struct preprocessor_args *c);
@@ -108,8 +106,8 @@ extern void ov11_02310BDC(void);
 extern const u8 _0209C844[2];
 extern const u16 _0209C846[4];
 extern s32 _0209C850;
-extern s32 _0209C85C;
-extern s32 _0209C86C;
+extern WindowTemplate _0209C85C;
+extern struct unk_0202A5CC _0209C86C[];
 extern s32 _0209C884;
 
 #ifdef JAPAN
@@ -336,7 +334,7 @@ s32 sub_0203D538(void)
         break;
     case 16:
         if (sub_02046C78() != 0) {
-            MISSION_REWARD_STRUCT_MAIN_PTR->field_0x1a0 = CreateSimpleMenuFromStringIds(&_0209C85C, 0x300011, 0, &_0209C86C, 2);
+            MISSION_REWARD_STRUCT_MAIN_PTR->field_0x1a0 = CreateSimpleMenuFromStringIds(&_0209C85C, 0x300011, 0, _0209C86C, 2);
             MISSION_REWARD_STRUCT_MAIN_PTR->field_0x0 = 0x11;
         }
         break;

@@ -100,7 +100,6 @@ extern void CreateMonsterSummaryFromTeamMember(struct monster_summary *monster_s
 extern s32 GetKeyboardStatus();
 extern int PreprocessString(char* output, int output_size, const char* format, u16 flags, struct preprocessor_args* args);
 extern void ShowKeyboard(s32 mode, u8 *, s32, u8 *);
-extern void sub_0202B030(s8);
 extern s32 sub_02037468();
 extern void sub_0203909C(u8 *name);
 extern s32 sub_02039218();
@@ -190,17 +189,16 @@ extern s32 ov11_02322C88;
 extern s32 ov11_02322C98;
 extern s32 ov11_02322CA8;
 extern s32 ov11_02322CB8;
-extern s32 ov11_02322CC8;
+extern WindowTemplate ov11_02322CC8;
 extern struct unk_0202A5CC ov11_02322CD8[];
-extern s32 ov11_02322CF0;
+extern struct unk_0202A5CC ov11_02322CF0[];
 extern struct unk_0202A5CC ov11_02322D10[];
 extern struct unk_0202A5CC ov11_02322D60[];
 extern struct unk_0202A5CC ov11_02322D88[];
 extern u8 ov11_02322DB0[];
 
-extern void CloseScrollBox(s8);                                          extern void CloseTextBox2(s8);extern s8 CreateScrollBoxSingle(void *, s32, s32, s32, void *, s32, void *); extern s8 CreateSimpleMenuFromStringIds(void *, s32, s32, void *, s32);  extern s8 CreateTextBox(void *, void *);
+extern void CloseScrollBox(s8);                                          extern void CloseTextBox2(s8);extern s8 CreateScrollBoxSingle(void *, s32, s32, s32, void *, s32, void *);  extern s8 CreateTextBox(void *, void *);
 extern void GetPressedButtons(u32, u16 *);
-extern s32 GetSimpleMenuResult__0202AEA4(s8);
 extern void InitPreprocessorArgs(struct preprocessor_args *);
 extern s32 IsScrollBoxActive(s8);                                        extern void ShowDialogueBox(s8);                                         extern void ShowStringIdInDialogueBox(s8, s32, s32, void *);             extern void ov11_022DC504(void);
 extern u8 *strcpy(u8 *dest, const u8 *src);
@@ -659,7 +657,8 @@ s32 ov11_02307334(void)
     }
     case 31: {
         ov11_02324D8C->field_0x1c.b = 1;
-        ov11_02324D8C->field_0xc = CreateSimpleMenuFromStringIds(&ov11_02322CC8, 0x33, (s32)&ov11_02324D8C->field_0x1c, &ov11_02322CF0, 3);
+        ov11_02324D8C->field_0xc = CreateSimpleMenuFromStringIds(&ov11_02322CC8, 0x33, &ov11_02324D8C->field_0x1c,
+                                                   ov11_02322CF0, 3);
         ov11_02324D8C->field_0x0 = 0x20;
         break;
     }
