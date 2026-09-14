@@ -29,23 +29,115 @@
 #include "main_0202B558.h"
 #include "main_02055410.h"
 #include "main_02056294.h"
+#include "main_020526EC.h"
+#include "main_0203755C.h"
+#include "main_0200330C.h"
+#include "main_020307A4.h"
+#include "main_0202A66C.h"
 extern void sub_02056094(char *dst, struct ground_monster *ground_monster,
                          bool8 is_leader);
 
+struct unk_0202A690 { char *field_0x0; s32 field_0x4; };
+struct unk_0230A044 { s32 field_0x0; s16 field_0x4; };
+struct unk_02309EE4 { struct unk_0230A044 field_0x0[6]; s32 field_0x30; };
+struct unk_023090DC {
+    struct unk_02309EE4 field_0x0;
+    s32 field_0x34;
+    struct unk_0202A690 field_0x38[7];
+    u8 field_0x70[6];
+    char field_0x76[6][0x100];
+};
+
 struct unk_02324D90 {
     s32 field_0x0;
+    s8 field_0x4;
+    s8 field_0x5;
+    u8 field_0x6[3];
+    s8 field_0x9;
+    s8 field_0xa;
+    s8 field_0xb;
+    u8 field_0xc[4];
+    s32 field_0x10;
+    s32 field_0x14;
+    s32 field_0x18;
+    s16 field_0x1c;
+    u8 field_0x1e[0x20];
 #ifdef JAPAN
-    u8 field_0x4[0xF0];
+    u8 field_0x3e[0xA];
+    u8 field_0x52[0xA];
+    u8 field_0x66[0xA];
 #else
-    u8 field_0x4[0x110];
+    u8 field_0x3e[0x14];
+    u8 field_0x52[0x14];
+    u8 field_0x66[0x14];
 #endif
+    u32 field_0x7c;
+    u8 field_0x80[4];
+    s16 field_0x84;
+    u8 field_0x86[2];
+    s32 field_0x88;
+    u8 field_0x8c[0x50];
+    u8 *field_0xdc;
+    u8 field_0xe0[0x34];
     s32 field_0x114;
     s16 field_0x118;
-    u8 field_0x11a[0x67A];
+    u8 field_0x11a[2];
+    struct unk_023090DC field_0x11c;
 };
 
 extern struct unk_02324D90 *ov11_02324D90;
 extern char ov11_02322DB8[];
+
+extern u8 ov11_02322DD0[];
+extern u8 ov11_02322DE0[];
+extern struct unk_0202A5CC ov11_02322E00[];
+extern struct unk_0202A5CC ov11_02322E28[];
+extern char ov11_02322E58[];
+extern char ov11_02322E7C[];
+extern char ov11_02322EA0[];
+
+extern void CreateMonsterSummaryFromTeamMember(struct monster_summary *monster_summary, struct team_member *team_member, bool8 is_leader);
+extern s32 GetKeyboardStatus();
+extern int PreprocessString(char* output, int output_size, const char* format, u16 flags, struct preprocessor_args* args);
+extern void ShowKeyboard(s32 mode, u8 *, s32, u8 *);
+extern void sub_0202B030(s8);
+extern s32 sub_02037468();
+extern void sub_0203909C(u8 *name);
+extern s32 sub_02039218();
+extern s32 sub_0203931C();
+extern u8 CreateParentMenu(void *a, u32 b, void *c, struct unk_0202A690 *items);
+extern void ResumeParentMenu(s8 menu_id);
+extern void PrintIqSkillsMenu(s16 monster_id, u32 *iq_skill_flags, s16 iq, s32 d);
+extern void RecolorNameString(char *dst, const char *src, s32 mode);
+extern s32 StrcmpMonsterName(u8 *name, s16 monster_id);
+extern s32 sub_02028354(s8);
+extern s8 sub_0203F150(struct monster_summary *summary, s32 b);
+extern s32 sub_0203F398(void);
+extern void sub_0203F974(void);
+extern void sub_0203F990(void);
+extern s8 sub_0204018C(s32 a, s32 b, s32 c);
+extern s32 sub_02041A18(void);
+extern s32 sub_02041B7C(void);
+extern void sub_020420F4(void);
+extern s32 sub_02053D1C(u16 move_id, s16 monster_id);
+extern s32 sub_02055FCC(s16 a, s16 b);
+extern s32 sub_020586F0(s16 a, s16 b);
+
+extern s32 ov11_02309EE4(struct unk_02309EE4 *out, s32 mode);
+extern u8 *ov11_0230A044(struct unk_0230A044 *entry);
+extern void ov11_0230D000(void);
+extern s32 ov11_0230D220(void);
+extern void ov11_0230D92C(void);
+extern void ov11_02310BDC(void);
+
+#ifdef JAPAN
+#define OV11_023090DC_CONST_1 0x2FF2
+#define OV11_023090DC_CONST_2 0x875
+#else
+#define OV11_023090DC_CONST_1 0x2F2
+#define OV11_023090DC_CONST_2 0xA3A
+#endif
+
 extern s32 sub_02055894(struct ground_monster *member);
 extern bool8 sub_020564B0(int idx);
 extern s32 vsprintf(u8 *str, const u8 *format, va_list ap);
@@ -92,27 +184,21 @@ struct unk_02324D8C {
 
 extern struct unk_02324D8C *ov11_02324D8C;
 
-struct unk_02322D38 {
-    u16 field_0x0;
-    u16 field_0x2;
-    u32 field_0x4;
-};
-
-extern struct unk_02322D38 ov11_02322D38[];
+extern struct unk_0202A5CC ov11_02322D38[];
 extern s32 ov11_02322C78;
 extern s32 ov11_02322C88;
 extern s32 ov11_02322C98;
 extern s32 ov11_02322CA8;
 extern s32 ov11_02322CB8;
 extern s32 ov11_02322CC8;
-extern s32 ov11_02322CD8;
+extern struct unk_0202A5CC ov11_02322CD8[];
 extern s32 ov11_02322CF0;
-extern s32 ov11_02322D10;
-extern s32 ov11_02322D60;
-extern s32 ov11_02322D88;
+extern struct unk_0202A5CC ov11_02322D10[];
+extern struct unk_0202A5CC ov11_02322D60[];
+extern struct unk_0202A5CC ov11_02322D88[];
 extern u8 ov11_02322DB0[];
 
-extern void CloseScrollBox(s8);                                          extern void CloseTextBox2(s8);                                           extern u8 CreateParentMenuFromStringIds(void *, u32, void *, void *);    extern s8 CreateScrollBoxSingle(void *, s32, s32, s32, void *, s32, void *); extern s8 CreateSimpleMenuFromStringIds(void *, s32, s32, void *, s32);  extern s8 CreateTextBox(void *, void *);
+extern void CloseScrollBox(s8);                                          extern void CloseTextBox2(s8);extern s8 CreateScrollBoxSingle(void *, s32, s32, s32, void *, s32, void *); extern s8 CreateSimpleMenuFromStringIds(void *, s32, s32, void *, s32);  extern s8 CreateTextBox(void *, void *);
 extern void GetPressedButtons(u32, u16 *);
 extern s32 GetSimpleMenuResult__0202AEA4(s8);
 extern void InitPreprocessorArgs(struct preprocessor_args *);
@@ -124,11 +210,6 @@ extern bool8 IsBagNotEmpty(void);
 extern u8 PopInventoryMenuField0x1A3(s32 window_id);
 extern void SortItemsInBag(void);
 extern void *memcpy(void *, const void *, u32);
-extern int ov11_023090DC(void);
-extern void ov11_02309DAC(void *out);
-extern void ov11_02309DF8(void);
-extern s16 ov11_02309E24(void);
-extern int ov11_02309E48(s16);
 extern s32 ov11_02307300(s32, s32, s32);
 extern s32 sub_020037A4(void);
 extern void sub_0203FD14(u16 move_id);
@@ -269,11 +350,11 @@ s32 ov11_02307334(void)
                         menu_a.c = ov11_02324D8C->field_0x276;
                         ov11_02324D8C->field_0x6 = CreateParentMenuFromStringIds(&ov11_02322CB8, 0x400213, &menu_a, ov11_02322D38);
                     } else if (IsGummi(ov11_02324D8C->field_0x24e) && v8 != 4 && v8 != 5) {
-                        ov11_02324D8C->field_0x6 = CreateParentMenuFromStringIds(&ov11_02322CB8, 0x400013, 0, &ov11_02322D88);
+                        ov11_02324D8C->field_0x6 = CreateParentMenuFromStringIds(&ov11_02322CB8, 0x400013, 0, ov11_02322D88);
                     } else if (v6->held_by) {
-                        ov11_02324D8C->field_0x6 = CreateParentMenuFromStringIds(&ov11_02322CA8, 0x400013, 0, &ov11_02322D10);
+                        ov11_02324D8C->field_0x6 = CreateParentMenuFromStringIds(&ov11_02322CA8, 0x400013, 0, ov11_02322D10);
                     } else {
-                        ov11_02324D8C->field_0x6 = CreateParentMenuFromStringIds(&ov11_02322CA8, 0x400013, 0, &ov11_02322D60);
+                        ov11_02324D8C->field_0x6 = CreateParentMenuFromStringIds(&ov11_02322CA8, 0x400013, 0, ov11_02322D60);
                     }
                     ov11_02324D8C->field_0x0 = 3;
                 } else {
@@ -315,7 +396,7 @@ s32 ov11_02307334(void)
                     ov11_02324D8C->field_0x0 = 9;
                 } else if (v1 == 2) {
                     menu_b.b = 5;
-                    ov11_02324D8C->field_0x7 = CreateParentMenuFromStringIds(&ov11_02322C98, 0x33, &menu_b, &ov11_02322CD8);
+                    ov11_02324D8C->field_0x7 = CreateParentMenuFromStringIds(&ov11_02322C98, 0x33, &menu_b, ov11_02322CD8);
                     ov11_02324D8C->field_0x0 = 4;
                 } else if (v1 == 6) {
                     ov11_02308D48();
@@ -640,7 +721,7 @@ s32 ov11_02307334(void)
     }
     case 37: {
         menu_b.b = 5;
-        ov11_02324D8C->field_0x7 = CreateParentMenuFromStringIds(0, 0x33, &menu_b, &ov11_02322CD8);
+        ov11_02324D8C->field_0x7 = CreateParentMenuFromStringIds(0, 0x33, &menu_b, ov11_02322CD8);
         ov11_02324D8C->field_0x0 = 0x26;
         break;
     }
@@ -1044,4 +1125,528 @@ int ov11_02309084(s16 param_1)
     ov11_02324D90->field_0x0 = 0;
     ov11_02324D90->field_0x118 = param_1;
     return 1;
+}
+
+int ov11_023090DC(void)
+{
+    struct monster_summary summary;
+    struct preprocessor_args args;
+    char buf[0x42];
+    u16 buttons;
+
+    switch (ov11_02324D90->field_0x0) {
+    case 0: {
+        struct unk_02324D90 *p = ov11_02324D90;
+        struct unk_023090DC *lst;
+        s32 mode;
+        struct unk_0230A044 *e;
+        u16 move_id;
+        struct unk_0202A690 *w;
+        s32 n;
+        s32 k;
+        s32 i;
+        s32 q;
+        u32 flags;
+        s16 item_id;
+        s16 monster_id;
+        s32 v_sel;
+        bool8 v_flag;
+
+        mode = p->field_0x114;
+        v_flag = 0;
+        n = v_flag;
+        lst = &p->field_0x11c;
+        v_sel = n;
+        item_id = p->field_0x118;
+        flags = 0x00401833;
+        w = lst->field_0x38;
+        ov11_02309EE4(&lst->field_0x0, mode);
+
+        for (i = 0; i < lst->field_0x0.field_0x30; i++) {
+            lst->field_0x70[i] = 0;
+        }
+
+        if (mode == 2) {
+            for (i = 0; i < lst->field_0x0.field_0x30; i++) {
+                e = &lst->field_0x0.field_0x0[i];
+                move_id = GetItemMoveId16(item_id);
+
+                if (e->field_0x0 == 1) {
+                    struct ground_monster *gm = GetTeamMember(e->field_0x4);
+
+                    monster_id = gm->id;
+                    for (k = 0; k < 4; k++) {
+                        bool8 exists = (gm->moves[k].flags0 & 1) != 0;
+
+                        if (exists) {
+                            if (move_id == gm->moves[k].id) {
+                                break;
+                            }
+                        }
+                    }
+                } else if (e->field_0x0 == 2) {
+                    struct team_member *tm = GetActiveTeamMember(e->field_0x4);
+
+                    monster_id = tm->id;
+                    for (k = 0; k < 4; k++) {
+                        bool8 exists = (tm->moves[k].flags0 & 1) != 0;
+
+                        if (exists) {
+                            if (move_id == tm->moves[k].id) {
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (sub_02053D1C(move_id, monster_id)) {
+                    if (k < 4) {
+                        lst->field_0x70[i] = 3;
+                    }
+                } else {
+                    lst->field_0x70[i] = 3;
+                }
+            }
+        }
+
+        for (i = 0; i < lst->field_0x0.field_0x30; i++) {
+            e = &lst->field_0x0.field_0x0[i];
+
+            if (e->field_0x0 == 1) {
+                struct ground_monster *gm = GetTeamMember(e->field_0x4);
+
+                args.flag_vals[0] = e->field_0x4 | 0x20000;
+                args.number_vals[0] = GetDexNumber(gm->id);
+                RecolorNameString(buf, gm->name, 0);
+                args.strings[0] = buf;
+            } else if (e->field_0x0 == 2) {
+                struct team_member *tm = GetActiveTeamMember(e->field_0x4);
+
+                args.flag_vals[0] = e->field_0x4 | 0x30000;
+                args.number_vals[0] = GetDexNumber(tm->id);
+                RecolorNameString(buf, tm->name, 0);
+                args.strings[0] = buf;
+            }
+
+            if (mode == 1) {
+                q = n * 0x100;
+                PreprocessString(lst->field_0x76[n], 0x100, ov11_02322E58, 0, &args);
+            } else if (mode == 2) {
+                if (lst->field_0x70[i] & 2) {
+                    q = n * 0x100;
+                    PreprocessString(lst->field_0x76[n], 0x100, ov11_02322E7C, 0, &args);
+                } else {
+                    q = n * 0x100;
+                    PreprocessString(lst->field_0x76[n], 0x100, ov11_02322E58, 0, &args);
+                }
+            } else {
+                q = n * 0x100;
+                PreprocessString(lst->field_0x76[n], 0x100, ov11_02322EA0, 0, &args);
+            }
+
+            if (lst->field_0x70[i] == 0 && v_flag == 0) {
+                v_flag = 1;
+                v_sel = i;
+            }
+            n++;
+            w->field_0x0 = lst->field_0x76[0] + q;
+            w->field_0x4 = i;
+            w++;
+        }
+        w->field_0x0 = 0;
+        w->field_0x4 = -1;
+        lst->field_0x34 = v_sel;
+
+        ov11_02324D90->field_0x88 = 0x10;
+        ov11_02324D90->field_0x7c = 0;
+        if (ov11_02324D90->field_0x114 == 1) {
+            ov11_02324D90->field_0x84 = OV11_023090DC_CONST_1;
+        } else if (ov11_02324D90->field_0x114 == 2) {
+            ov11_02324D90->field_0x84 = OV11_023090DC_CONST_1;
+            flags |= 0x200;
+            ov11_02324D90->field_0xdc = ov11_02324D90->field_0x11c.field_0x70;
+            ov11_02324D90->field_0x7c = ov11_02324D90->field_0x11c.field_0x34;
+        } else {
+            ov11_02324D90->field_0x84 = OV11_023090DC_CONST_2;
+        }
+        ov11_02324D90->field_0x4 =
+            CreateParentMenu(ov11_02322DD0, flags, &ov11_02324D90->field_0x7c,
+                             ov11_02324D90->field_0x11c.field_0x38);
+        ov11_02324D90->field_0x0 = 1;
+        break;
+    }
+
+    case 2:
+        if (sub_02028354(ov11_02324D90->field_0x4) == 3) {
+            sub_0202810C(ov11_02324D90->field_0x4);
+        }
+        ResumeParentMenu(ov11_02324D90->field_0x4);
+        ov11_02324D90->field_0x0 = 1;
+        break;
+
+    case 1: {
+        s32 mode = ov11_02324D90->field_0x114;
+        s32 r;
+        s32 cond;
+
+        GetPressedButtons(0, &buttons);
+        cond = (buttons & 8) && mode == 0;
+        if (cond) {
+            ov11_02324D90->field_0x10 =
+                ov11_02324D90->field_0x11c.field_0x38[GetWindowIdSelectedItemOnPage(
+                    ov11_02324D90->field_0x4)].field_0x4;
+            sub_0202B030(ov11_02324D90->field_0x4);
+            sub_0202812C(ov11_02324D90->field_0x4);
+            ov11_02324D90->field_0x0 = 4;
+            break;
+        }
+        if (IsParentMenuActive(ov11_02324D90->field_0x4)) {
+            break;
+        }
+        r = GetSimpleMenuResult__0202AEA4(ov11_02324D90->field_0x4);
+        if (r >= 0) {
+            struct unk_0230A044 *e;
+            s16 id;
+            u8 *name;
+
+            ov11_02324D90->field_0x10 = r;
+            e = &ov11_02324D90->field_0x11c.field_0x0.field_0x0[r];
+            if (e->field_0x0 == 1) {
+                id = GetTeamMember(e->field_0x4)->id;
+            } else if (e->field_0x0 == 2) {
+                id = GetActiveTeamMember(e->field_0x4)->id;
+            }
+            name = ov11_0230A044(e);
+            if (ov11_02324D90->field_0x114 == 1 || ov11_02324D90->field_0x114 == 2) {
+                ov11_02324D90->field_0x0 = 0x1a;
+                break;
+            }
+            if (GetGameMode() != GAME_MODE_5 && id == 0x140 &&
+                StrcmpMonsterName(name, id)) {
+                ov11_02324D90->field_0x5 = CreateParentMenuFromStringIds(
+                    ov11_02322DE0, 0x13, 0, ov11_02322E28);
+            } else {
+                ov11_02324D90->field_0x5 = CreateParentMenuFromStringIds(
+                    ov11_02322DE0, 0x13, 0, ov11_02322E00);
+            }
+            ov11_02324D90->field_0x0 = 3;
+        } else {
+            ov11_02324D90->field_0x0 = 0x1a;
+            ov11_02324D90->field_0x10 = -1;
+        }
+        break;
+    }
+
+    case 3: {
+        s32 r;
+
+        if (IsParentMenuActive(ov11_02324D90->field_0x5)) {
+            break;
+        }
+        r = GetSimpleMenuResult__0202AEA4(ov11_02324D90->field_0x5);
+        if (r != -1) {
+            ov11_02324D90->field_0x14 = r;
+            switch (r) {
+            case 0:
+                ov11_02324D90->field_0x0 = 4;
+                break;
+            case 1:
+                ov11_02324D90->field_0x0 = 7;
+                break;
+            case 2:
+                ov11_02324D90->field_0x0 = 0xc;
+                break;
+            case 3:
+                ov11_02324D90->field_0x0 = 0xe;
+                break;
+            }
+            sub_0202812C(ov11_02324D90->field_0x4);
+        } else {
+            ov11_02324D90->field_0x0 = 2;
+        }
+        CloseParentMenu(ov11_02324D90->field_0x5);
+        break;
+    }
+
+    case 4: {
+        struct unk_0230A044 *e =
+            &ov11_02324D90->field_0x11c.field_0x0.field_0x0[ov11_02324D90->field_0x10];
+        s32 leader = GetActiveTeamMember(e->field_0x4)->is_leader != 0;
+
+        CreateMonsterSummaryFromTeamMember(&summary,
+                                          GetActiveTeamMember(e->field_0x4),
+                                          leader);
+        ov11_02324D90->field_0x9 = sub_0203F150(&summary, 3);
+        ov11_02324D90->field_0x0 = 5;
+    }
+
+    case 5:
+        if (sub_0203F398() != 1) {
+            break;
+        }
+        sub_0203F974();
+        ov11_02324D90->field_0x18 = 1;
+        ov11_02324D90->field_0x0 = 6;
+        break;
+
+    case 6:
+        if (ov11_02324D90->field_0x18-- != 0) {
+            break;
+        }
+        sub_0203F990();
+        ov11_02324D90->field_0x0 = 2;
+        break;
+
+    case 7:
+#ifdef JAPAN
+        sub_0203FBD4(ov11_02324D90->field_0x10);
+#else
+        sub_0203FBD4(ov11_02324D90->field_0x11c.field_0x0
+                         .field_0x0[ov11_02324D90->field_0x10]
+                         .field_0x4);
+#endif
+        ov11_02324D90->field_0xa = sub_0204018C(9, 0, 0);
+        ov11_02324D90->field_0x0 = 8;
+
+    case 8: {
+        s32 r = sub_020407EC();
+
+        if (r == 1) {
+            sub_0203FDEC(ov11_02324D90->field_0x11c.field_0x0
+                             .field_0x0[ov11_02324D90->field_0x10]
+                             .field_0x4);
+            sub_020407C0();
+            CloseAdvancedTextBox(ov11_02324D90->field_0xa);
+            ov11_02324D90->field_0x0 = 2;
+            break;
+        }
+        if (r == 2 || r == 7) {
+            struct unk_0230A044 *e =
+                &ov11_02324D90->field_0x11c.field_0x0.field_0x0[ov11_02324D90->field_0x10];
+
+            MemcpySimple(ov11_02324D90->field_0x1e, sub_0203FD38(), 0x20);
+            ov11_02324D90->field_0x1c = sub_02041094();
+            sub_0203FDEC(e->field_0x4);
+            sub_020407C0();
+            CloseAdvancedTextBox(ov11_02324D90->field_0xa);
+            ov11_02324D90->field_0x0 = 0xa;
+        }
+        break;
+    }
+
+    case 9:
+        sub_020307EC(ov11_02324D90->field_0xa);
+        ov11_02324D90->field_0x0 = 8;
+        break;
+
+    case 10:
+        ov11_02324D90->field_0xb = sub_020417A8(ov11_02324D90->field_0x1e, 4,
+                                                ov11_02324D90->field_0x1c, 1);
+        ov11_02324D90->field_0x0 = 0xb;
+
+    case 11:
+        if (sub_02041A18() != 1) {
+            break;
+        }
+        sub_02041A00();
+        CloseScrollBox(ov11_02324D90->field_0xb);
+        ov11_02324D90->field_0x0 = 7;
+        break;
+
+    case 12: {
+        struct team_member *tm =
+            GetActiveTeamMember(ov11_02324D90->field_0x11c.field_0x0
+                                    .field_0x0[ov11_02324D90->field_0x10]
+                                    .field_0x4);
+
+        PrintIqSkillsMenu(tm->id, tm->iq_skill_flags, tm->iq, 0);
+        ov11_02324D90->field_0x0 = 0xd;
+    }
+
+    case 13:
+        if (sub_02041B7C() != 1) {
+            break;
+        }
+        sub_020420F4();
+        ov11_02324D90->field_0x0 = 2;
+        break;
+
+    case 14:
+        ov11_0230D92C();
+        CloseParentMenu(ov11_02324D90->field_0x4);
+        ov11_02324D90->field_0x0 = 0xf;
+        break;
+
+    case 15:
+        if (ov11_0230D220() == 0) {
+            ov11_02324D90->field_0x0 = 0x10;
+        }
+        break;
+
+    case 16:
+        StrncpySimpleNoPad(
+            ov11_02324D90->field_0x3e,
+            ov11_0230A044(&ov11_02324D90->field_0x11c.field_0x0
+                               .field_0x0[ov11_02324D90->field_0x10]),
+            10);
+        StrcpySimple(ov11_02324D90->field_0x52, ov11_02324D90->field_0x3e);
+        ShowKeyboard(2, ov11_02324D90->field_0x3e, 0, ov11_02324D90->field_0x52);
+        ov11_02310BDC();
+        ov11_02324D90->field_0x0 = 0x11;
+        break;
+
+    case 17:
+        if (ov11_0230D220() == 0) {
+            ov11_02324D90->field_0x0 = 0x12;
+        }
+        break;
+
+    case 18:
+        if (GetKeyboardStatus() != 3) {
+            break;
+        }
+        ov11_02324D90->field_0x18 = 0xa;
+        StrcpySimple(ov11_02324D90->field_0x3e, (u8 *)GetKeyboardStringResult());
+        ov11_02324D90->field_0x0 = 0x13;
+        break;
+
+    case 19:
+        if (!sub_02037468()) {
+            break;
+        }
+        if (ov11_02324D90->field_0x18-- > 0) {
+            break;
+        }
+        StrncpySimpleNoPadSafe(ov11_02324D90->field_0x66,
+                               ov11_02324D90->field_0x3e, 10);
+        sub_0203909C(ov11_02324D90->field_0x66);
+        ov11_02324D90->field_0x0 = 0x14;
+        break;
+
+    case 20: {
+        struct unk_0230A044 *e =
+            &ov11_02324D90->field_0x11c.field_0x0.field_0x0[ov11_02324D90->field_0x10];
+        u8 *name = ov11_0230A044(e);
+        s32 r = sub_0203931C();
+
+        if (r == -1) {
+            break;
+        }
+        if (r != 0) {
+            if (r == 1) {
+                ov11_02324D90->field_0x0 = 0x15;
+            }
+            break;
+        }
+        StrncpySimple(name, ov11_02324D90->field_0x3e, 10);
+        StrncpySimple(name, ov11_02324D90->field_0x3e, 10);
+        if (e->field_0x0 == 2) {
+            sub_02058794(e->field_0x4);
+        }
+        ov11_02324D90->field_0x0 = 0x16;
+        break;
+    }
+
+    case 21:
+        if (!sub_02039218()) {
+            break;
+        }
+        ShowKeyboard(2, ov11_02324D90->field_0x3e, 0, ov11_02324D90->field_0x52);
+        ov11_02324D90->field_0x0 = 0x12;
+        break;
+
+    case 22:
+        ov11_0230D92C();
+        ov11_02324D90->field_0x0 = 0x17;
+        break;
+
+    case 23:
+        if (ov11_0230D220() != 0) {
+            break;
+        }
+        if (sub_02039218() != 0) {
+            ov11_02324D90->field_0x0 = 0x18;
+        }
+        break;
+
+    case 24:
+        ov11_0230D000();
+        ov11_02324D90->field_0x0 = 0x19;
+        break;
+
+    case 25:
+        if (ov11_0230D220() == 0) {
+            ov11_02324D90->field_0x0 = 0;
+        }
+        break;
+
+    case 26:
+        CloseParentMenu(ov11_02324D90->field_0x4);
+        ov11_02324D90->field_0x0 = 0x1b;
+
+    case 27:
+        return 1;
+    }
+    return 0;
+}
+
+void ov11_02309DAC(struct unk_02309DAC *out)
+{
+    struct unk_02324D90 *p = ov11_02324D90;
+    struct unk_0230A044 *list = p->field_0x11c.field_0x0.field_0x0;
+    struct unk_0230A044 *e = &list[p->field_0x10];
+
+    if (e->field_0x0 == 1) {
+        out->field_0x0 = 0;
+        out->field_0x4 = e->field_0x4;
+        return;
+    }
+    if (e->field_0x0 == 2) {
+        out->field_0x0 = 1;
+        out->field_0x4 = e->field_0x4;
+    }
+}
+
+void ov11_02309DF8(void)
+{
+    if (ov11_02324D90 == NULL) {
+        return;
+    }
+    MemFree(ov11_02324D90);
+    ov11_02324D90 = NULL;
+}
+
+s16 ov11_02309E24(void)
+{
+    if (ov11_02324D90 != NULL) {
+        return ov11_02324D90->field_0x10;
+    }
+    return -1;
+}
+
+int ov11_02309E48(s16 param_1)
+{
+    struct unk_02309EE4 *p;
+    int found = 1;
+    s32 i;
+
+    p = MemAlloc(sizeof(struct unk_02309EE4), 0);
+    ov11_02309EE4(p, 2);
+    for (i = 0; i < p->field_0x30; i++) {
+        struct unk_0230A044 *e = &p->field_0x0[i];
+
+        if (e->field_0x0 == 1) {
+            if (sub_02055FCC(e->field_0x4, param_1)) {
+                break;
+            }
+        } else if (e->field_0x0 == 2) {
+            if (sub_020586F0(e->field_0x4, param_1)) {
+                break;
+            }
+        }
+    }
+    if (i == p->field_0x30) {
+        found = 0;
+    }
+    MemFree(p);
+    return found;
 }

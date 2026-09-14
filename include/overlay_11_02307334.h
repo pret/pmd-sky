@@ -32,5 +32,10 @@ void ov11_02308FEC(struct unk_02308F4C *a);
 s32 ov11_0230901C(struct unk_02308F4C *a);
 int ov11_02309040(s32 param_1);
 int ov11_02309084(s16 param_1);
+int ov11_023090DC(void);
+void ov11_02309DAC(struct unk_02309DAC *out);
+void ov11_02309DF8(void);
+s16 ov11_02309E24(void);
+int ov11_02309E48(s16 param_1);
 
 #endif
