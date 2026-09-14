@@ -4,10 +4,10 @@
 #include "dungeon_visibility.h"
 #include "overlay_29_0231B318.h"
 #include "overlay_29_0234B024.h"
+#include "overlay_29_0230BBAC.h"
 
 extern struct dungeon *DUNGEON_PTR;
 extern const s16 ov10_022C4530;
-extern void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a, s32 b);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 
 bool8 EntityIsValid__0231B194(struct entity *entity)

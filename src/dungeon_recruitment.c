@@ -81,7 +81,6 @@ extern bool8 IsLegendaryChallengeFloor(void);
 extern bool8 IsMonsterOnTeam(s16 monsterId, s32 checkType);
 extern void ov29_022E1B28(s32);
 extern void ov29_022E81F8(void);
-extern s32 GetFirstEmptyMemberIdx(u32);
 
 extern const s16 FRIEND_BOW_FAST_FRIEND_BOOST;
 extern const s16 GOLDEN_MASK_RECRUIT_BOOST;

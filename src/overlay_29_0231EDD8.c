@@ -19,6 +19,7 @@
 #include "overlay_29_0234B340.h"
 #include "position_util.h"
 #include "util.h"
+#include "overlay_29_0230BBAC.h"
 
 #ifdef JAPAN
 #define MESSAGE_E45 0xB86
@@ -41,14 +42,12 @@ struct unk_022E9298 {
 
 extern struct dungeon *DUNGEON_PTR[];
 extern const s16 HURL_DAMAGE;
-extern void CalcDamageFixedNoCategory(struct entity *attacker, struct entity *defender, s16 fixed_damage, s32 a, bool8 *flag, s32 b, s32 damage_source, s32 c, s32 d, s32 e);
 extern void ChangeMonsterAnimation(struct entity *entity, s32 animation_id, s32 direction);
 extern void ChangeMonsterAnimationToIdle(struct entity *monster, s32 direction);
 extern void MoveMonsterToPos(struct entity *entity, s32 x_pos, s32 y_pos, bool8 reset_prev_pos_fields);
 extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
 extern bool8 TwoTurnMoveForcedMiss(struct entity *target, struct move *move);
 extern void ov29_022E9298(struct position *pos, struct unk_022E9298 *bounds, bool8 a);
-extern void ov29_022EA370(s32 a, s32 b);
 extern bool8 CannotMoveToTile(struct entity *entity, struct position *pos);
 extern void ov29_0232033C(struct entity *entity, struct position *pos);
 
@@ -251,13 +250,13 @@ void TryHurl(struct entity *user, struct entity *target)
 
         InitMove(&move, MOVE_REGULAR_ATTACK);
         if (!TwoTurnMoveForcedMiss(occupant, &move))
-            CalcDamageFixedNoCategory(user, occupant, HURL_DAMAGE, 0, NULL, 0,
+            CalcDamageFixedNoCategory(user, occupant, HURL_DAMAGE, 0, NULL, TYPE_NONE,
                                       DAMAGE_SOURCE_FLYING_MONSTER, 0, 0, 0);
         if (EntityIsValid__0231F570(occupant))
             ChangeMonsterAnimationToIdle(occupant, GetEntInfo(occupant)->action.direction);
     }
 
-    CalcDamageFixedNoCategory(user, target, HURL_DAMAGE, 0, NULL, 0,
+    CalcDamageFixedNoCategory(user, target, HURL_DAMAGE, 0, NULL, TYPE_NONE,
                               DAMAGE_SOURCE_KNOCKED_FLYING, 0, 0, 0);
     if (EntityIsValid__0231F570(target))
         ChangeMonsterAnimationToIdle(target, GetEntInfo(target)->action.direction);

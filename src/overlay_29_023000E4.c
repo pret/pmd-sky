@@ -25,7 +25,6 @@ enum display_name_type GetMonsterDisplayNameType(struct monster *monster) {
 
 extern void GetNameWithGender(char *dst, s16 monster_id, char color_id);
 extern struct ground_monster *GetExplorerMazeMonster(u8 entry_number);
-extern void GetRecoloredGroundMonsterName(char *dst, struct ground_monster *ground_monster, u8 unk);
 extern void GetRecoloredTeamMemberName(char *dst, struct team_member *team_member);
 
 void GetMonsterName(char *buffer, struct monster *target_info) {

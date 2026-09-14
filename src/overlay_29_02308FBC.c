@@ -65,6 +65,7 @@
 #include "main_02056294.h"
 #include "overlay_29_022FBBEC.h"
 #include "special_move_types.h"
+#include "overlay_29_0230BBAC.h"
 
 struct unk_023535DC {
     u8 field_0x0;
@@ -85,8 +86,6 @@ struct unk_022C593C {
 };
 
 extern const struct StatIndex ATK_STAT_IDX;
-extern void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a, s32 b);
-extern bool8 IsEitherMonsterInvalid(struct entity *a, struct entity *b);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);
 extern void ov29_022E57D4(struct entity *entity);
 extern void ov29_022E5E84(struct entity *a, struct entity *b);
@@ -108,7 +107,6 @@ extern s16 ov10_022C4638;
 extern s16 ov10_022C467C;
 extern void ChangeMonsterAnimation(struct entity *entity, s32 animation_id, s32 direction);
 extern void ChangeMonsterAnimationToIdle(struct entity* monster, enum direction_id direction);
-extern void DisplayAnimatedNumbers(s32 amount, struct entity *entity, bool8 display_sign, s32 number_color);
 extern void EndInvisibleClassStatus(struct entity* user, struct entity* target, bool8 no_slip_message);
 extern int EndLeechSeedStatusForAllTargets();
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity* user, struct entity* target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
@@ -126,7 +124,6 @@ extern void RestoreRandomMovePP(struct entity* user, struct entity* target, s32 
 extern void SubInitMonster(struct monster* monster, bool8 flag);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
-extern void UpdateShopkeeperModeAfterAttack(struct entity* attacker, struct entity* defender);
 extern s32 abs(s32 n);
 extern int ov10_022BDC68();
 extern int TerminateEffectWrapper();
@@ -134,15 +131,10 @@ extern int ov10_022BF964();
 extern int ov29_022E5478();
 extern int ov29_022E550C();
 extern void ov29_022E81F8(void);
-extern void ov29_022EA370(s32 a, s32 b);
 extern int ov29_022F9AF4();
 extern int ov29_02303E0C();
 extern int ov29_02304830();
 extern int ov29_02307C48();
-extern int ov29_0230D628();
-extern int ov29_0230D688();
-extern int ov29_0230D7D4();
-
 extern struct unk_023528A4 TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS[];
 extern s16 SET_DAMAGE_STATUS_DAMAGE;
 extern s16 ov10_022C45C4;

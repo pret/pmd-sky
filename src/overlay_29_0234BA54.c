@@ -6,7 +6,6 @@ extern struct message_log_info MESSAGE_LOG_INFO;
 extern u16 DUNGEON_BUTTON_INPUT[8];
 
 extern void ov29_022E0B60(s32 a);
-extern void UnkMapRelatedFunc(u32 switch_case, u32 param_2);
 extern void ov29_0233A248(s32 a);
 extern void sub_0204833C(void);
 extern s32 sub_02048360(void);

@@ -32,14 +32,14 @@ struct ground_move {
 
 struct ground_monster {
     u8 is_valid;            // 0x0: True if the entry is valid
-    s8 level;               // 0x1: Monster level
+    u8 level;
     u8 joined_at;           // 0x2
     u8 joined_at_floor;     // 0x3: See struct monster::joined_at_floor
     s16 id;                 // 0x4: Monster ID
-    s8 level_at_first_evo;  // 0x6: Level upon first evolution, or 0 if not applicable
-    s8 level_at_second_evo; // 0x7: Level upon second evolution, or 0 if not applicable
-    u16 iq;                 // 0x8
-    u16 max_hp;             // 0xA
+    u8 level_at_first_evo;
+    u8 level_at_second_evo;
+    s16 iq;
+    s16 max_hp;
     u8 offensive_stats[2];  // 0xC: {atk, sp_atk}
     u8 defensive_stats[2];  // 0xE: {def, sp_def}
     s32 exp;                // 0x10

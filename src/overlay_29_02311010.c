@@ -30,6 +30,7 @@
 #include "overlay_29_0234B104.h"
 #include "overlay_29_023350D8.h"
 #include "dungeon_logic_4.h"
+#include "overlay_29_0230BBAC.h"
 
 extern s16 ov10_022C4BE4[20];
 extern void ov29_0230FB30(struct entity *entity);
@@ -61,8 +62,6 @@ extern void ov29_0230FB30(struct entity *entity);
 
 extern bool8 ov29_022E34A8_EU(struct entity *entity);
 #endif
-
-extern void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a, s32 b);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);

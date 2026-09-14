@@ -34,8 +34,6 @@
 #include "main_0200330C.h"
 #include "main_020307A4.h"
 #include "main_0202A66C.h"
-extern void sub_02056094(char *dst, struct ground_monster *ground_monster,
-                         bool8 is_leader);
 
 struct unk_0202A690 { char *field_0x0; s32 field_0x4; };
 struct unk_0230A044 { s32 field_0x0; s16 field_0x4; };
@@ -119,7 +117,6 @@ extern s32 sub_02041A18(void);
 extern s32 sub_02041B7C(void);
 extern void sub_020420F4(void);
 extern s32 sub_02053D1C(u16 move_id, s16 monster_id);
-extern s32 sub_02055FCC(s16 a, s16 b);
 extern s32 sub_020586F0(s16 a, s16 b);
 
 extern s32 ov11_02309EE4(struct unk_02309EE4 *out, s32 mode);
@@ -137,7 +134,6 @@ extern void ov11_02310BDC(void);
 #define OV11_023090DC_CONST_2 0xA3A
 #endif
 
-extern s32 sub_02055894(struct ground_monster *member);
 extern bool8 sub_020564B0(int idx);
 extern s32 vsprintf(u8 *str, const u8 *format, va_list ap);
 extern s8 CreateDialogueBox(s8);

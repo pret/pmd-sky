@@ -199,8 +199,7 @@ struct dungeon {
     // a mission. dungeon::end_floor_no_death_check_flag gets set whenever this is changed.
     u32 successful_exit_tracker;
     // 0x1C: Increased once per frame until 0x64. Resets to 0 when the leader acts.
-    u8 field_0x1c;
-    u8 field_0x1d;
+    s16 field_0x1c;
     // 0x1E: Number of floors completed? (Guess). Initialized to 0.
     // If this is a floor tracker, odd it is not a u16 like the others.
     s16 number_completed_floors;

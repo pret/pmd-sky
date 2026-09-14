@@ -32,6 +32,14 @@
 #include "overlay_29_0231E9F0.h"
 #include "dungeon_logic_2.h"
 #include "moves_3.h"
+#include "main_0200330C.h"
+#include "main_0200F14C.h"
+#include "main_0200F370.h"
+#include "main_020502B0.h"
+#include "overlay_29_02344BE4.h"
+#include "dg_effect.h"
+#include "overlay_29_022E9FC0.h"
+#include "dungeon_logic_3.h"
 
 extern struct dungeon *DUNGEON_PTR;
 extern u8 GetMonsterGenderVeneer(s16 monster_id);
@@ -41,7 +49,6 @@ extern void PlayEffectAnimation0x1A9__022E617C(struct entity *entity);
 extern void PlayEffectAnimation0x18E(struct entity *entity);
 extern bool8 FixedPoint64CmpLt(const struct fixed_point_64 *a, const struct fixed_point_64 *b);
 extern void DivideFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64 *a, struct fixed_point_64 *b);
-extern void ResetDamageCalcDiagnostics(void);
 extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_point_64 *a, const struct fixed_point_64 *b);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
@@ -76,6 +83,14 @@ extern const struct fixed_point_64 DAMAGE_FORMULA_MIN_BASE;
 extern const struct fixed_point_64 DAMAGE_MULTIPLIER_0_5;
 extern const struct fixed_point_64 DAMAGE_MULTIPLIER_1_5;
 extern const struct fixed_point_64 DAMAGE_MULTIPLIER_2;
+extern void CreateTemporaryEntity(struct entity *entity);
+extern void PointCameraToMonster(struct entity *entity, bool8 update_minimap);
+extern void TerminateEffectWrapper(s32 param_1);
+extern bool8 ov10_022BF964(s32 param_1);
+extern s16 ov10_022C45B4;
+extern s16 ov29_023535D4;
+extern const s32 ov29_02352894[4];
+extern const s32 TYPE_MATCHUP_COMBINATOR_TABLE[4][4];
 
 #ifdef JAPAN
 #define MESSAGE_C53 0x992
@@ -91,6 +106,22 @@ extern const struct fixed_point_64 DAMAGE_MULTIPLIER_2;
 #define MESSAGE_C57 0xC57
 #define MESSAGE_C58 0xC58
 #define MESSAGE_DC1 0xDC1
+#endif
+
+#ifdef JAPAN
+#define MESSAGE_F2B 0x2492
+#define MESSAGE_F2C 0x2493
+#define MESSAGE_F2D 0x2494
+#define MESSAGE_F2E 0x2495
+#define MESSAGE_F2F 0x2496
+#define MESSAGE_F30 0x2497
+#else
+#define MESSAGE_F2B 0xF2B
+#define MESSAGE_F2C 0xF2C
+#define MESSAGE_F2D 0xF2D
+#define MESSAGE_F2E 0xF2E
+#define MESSAGE_F2F 0xF2F
+#define MESSAGE_F30 0xF30
 #endif
 
 void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id attack_type,
@@ -723,4 +754,439 @@ void CalcDamage(struct entity *attacker, struct entity *defender, enum type_id a
         damage_out->field_0xe = FALSE;
     }
     mon2->anger_point_flag = damage_out->field_0xe;
+}
+
+void ov29_0230D088(struct entity *attacker, struct entity *defender, enum type_id attack_type,
+                   u8 category, s32 power, struct unk_02308FE0 *damage_out)
+{
+    struct fixed_point_64 fp2;
+    struct fixed_point_64 fp1;
+    s32 clamped;
+
+    clamped = power;
+    if (clamped < 1) {
+        clamped = 1;
+    }
+    if (clamped > 999) {
+        clamped = 999;
+    }
+    damage_out->field_0xc = attack_type;
+    damage_out->field_0xd = category;
+    CalcTypeBasedDamageEffects(&fp2, attacker, defender, clamped, attack_type, damage_out, FALSE);
+    IntToFixedPoint64(&fp1, clamped);
+    MultiplyFixedPoint64(&fp1, &fp1, &fp2);
+    damage_out->field_0x0 = FixedPoint64ToInt(&fp1);
+    damage_out->field_0x4 = 0;
+}
+
+void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a3, s16 damage_source)
+{
+    struct unk_02308FE0 damage_data;
+    struct entity temp;
+
+    ResetDamageData(&damage_data);
+    CreateTemporaryEntity(&temp);
+    damage_data.field_0x0 = damage;
+    damage_data.field_0x4 = a3;
+    damage_data.field_0x8 = 2;
+    damage_data.field_0xc = 0;
+    damage_data.field_0xe = FALSE;
+    damage_data.field_0xf = FALSE;
+    damage_data.field_0x10 = FALSE;
+    ApplyDamageAndEffects(&temp, entity, &damage_data, 0, 0, damage_source, 0, 0);
+}
+
+void CalcRecoilDamageFixed(struct entity *entity, s32 fixed_damage, s32 a3, bool8 *out_flag,
+                           s32 a5, enum type_id attack_type, s16 damage_source, s32 a8, s32 a9,
+                           s32 a10)
+{
+    if (!EntityIsValid__02308FBC(entity)) {
+        return;
+    }
+    if (entity->type == ENTITY_MONSTER) {
+        if (GetEntInfo(entity)->hp == 0) {
+            return;
+        }
+        if (AbilityIsActiveVeneer(entity, ABILITY_RECKLESS)) {
+            fixed_damage = MultiplyByFixedPoint(fixed_damage << 8, 0x180) >> 8;
+        }
+    }
+    CalcDamageFixed(entity, entity, fixed_damage, a3, out_flag, attack_type, 3, damage_source,
+                    a8, a9, a10);
+}
+
+void CalcDamageFixed(struct entity *attacker, struct entity *defender, s32 fixed_damage, s32 a4,
+                     bool8 *out_flag, enum type_id attack_type, u8 category, s16 damage_source,
+                     s32 a9, s32 a10, s32 a11)
+{
+    s32 matchups[2];
+    struct unk_02308FE0 damage_data;
+    s32 i;
+
+    ResetDamageData(&damage_data);
+    damage_data.field_0x8 = 2;
+    damage_data.field_0x4 = a9;
+    damage_data.field_0xc = attack_type;
+    damage_data.field_0xe = FALSE;
+    damage_data.field_0xf = FALSE;
+    damage_data.field_0xd = category;
+    if (attack_type != TYPE_NONE) {
+        for (i = 0; i < 2; i++) {
+            matchups[i] = GetTypeMatchup(attacker, defender, i, attack_type);
+        }
+#ifdef JAPAN
+        if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_WONDER_GUARD)
+#else
+        if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_WONDER_GUARD, TRUE)
+#endif
+            && TYPE_MATCHUP_COMBINATOR_TABLE[matchups[0]][matchups[1]]
+                   != MATCHUP_SUPER_EFFECTIVE) {
+            fixed_damage = 0;
+        }
+    }
+    fixed_damage <<= 8;
+    if (damage_source == DAMAGE_SOURCE_THROWN_ITEM
+        && IqSkillIsEnabled(attacker, IQ_POWER_PITCHER)) {
+        fixed_damage = MultiplyByFixedPoint(fixed_damage, POWER_PITCHER_DAMAGE_MULTIPLIER);
+    }
+    damage_data.field_0x0 = RoundUpDiv256(fixed_damage);
+    if (fixed_damage == 0) {
+        damage_data.field_0x10 = TRUE;
+    } else {
+        damage_data.field_0x10 = FALSE;
+    }
+    ApplyDamageAndEffects(attacker, defender, &damage_data, 0, a4, damage_source, a10, a11);
+    if (out_flag != NULL) {
+        *out_flag = damage_data.field_0x10;
+    }
+}
+
+void CalcDamageFixedNoCategory(struct entity *attacker, struct entity *defender, s16 fixed_damage,
+                               s32 a4, bool8 *out_flag, enum type_id attack_type,
+                               s16 damage_source, s32 a8, s32 a9, s32 a10)
+{
+    CalcDamageFixed(attacker, defender, fixed_damage, a4, out_flag, attack_type, 3,
+                    damage_source, a8, a9, a10);
+}
+
+void CalcDamageFixedWrapper(struct entity *attacker, struct entity *defender, s32 fixed_damage,
+                            s32 a4, bool8 *out_flag, enum type_id attack_type, u8 category,
+                            s16 damage_source, s32 a9, s32 a10, s32 a11)
+{
+    CalcDamageFixed(attacker, defender, fixed_damage, a4, out_flag, attack_type, category,
+                    damage_source, a9, a10, a11);
+}
+
+void UpdateShopkeeperModeAfterAttack(struct entity *attacker, struct entity *defender)
+{
+    struct monster *defender_info = GetEntInfo(defender);
+
+    if (defender_info->shopkeeper != SHOPKEEPER_MODE_NORMAL
+        && attacker->type == ENTITY_MONSTER) {
+        if (GetEntInfo(attacker)->is_not_team_member) {
+            defender_info->shopkeeper = SHOPKEEPER_MODE_ATTACK_ENEMIES;
+        } else {
+            defender_info->shopkeeper = SHOPKEEPER_MODE_ATTACK_TEAM;
+        }
+    }
+}
+
+void UpdateShopkeeperModeAfterTrap(struct entity *entity, bool8 is_enemy)
+{
+    struct monster *info = GetEntInfo(entity);
+
+    if (info->shopkeeper != SHOPKEEPER_MODE_NORMAL) {
+        if (is_enemy) {
+            info->shopkeeper = SHOPKEEPER_MODE_ATTACK_ENEMIES;
+        } else {
+            info->shopkeeper = SHOPKEEPER_MODE_ATTACK_TEAM;
+        }
+    }
+}
+
+bool8 ov29_0230D4A4(struct entity *attacker, struct entity *defender, enum type_id attack_type)
+{
+    struct monster *info = GetEntInfo(defender);
+    s32 i;
+
+    if (MonsterIsType(defender, TYPE_GHOST)
+        && (attack_type == TYPE_NORMAL || attack_type == TYPE_FIGHTING) && !info->exposed) {
+        return FALSE;
+    }
+    for (i = 0; i < 2; i++) {
+        if (GetTypeMatchup(attacker, defender, i, attack_type) == MATCHUP_IMMUNE) {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+void ResetDamageCalcDiagnostics(void)
+{
+    struct damage_calc_diag *diag = &DUNGEON_PTR->last_damage_calc;
+
+    MemZero((u8 *)diag, sizeof(struct damage_calc_diag));
+    diag->move_type = TYPE_NONE;
+    diag->move_category = 0;
+    diag->move_indiv_type_matchups[0] = MATCHUP_IMMUNE;
+    diag->move_indiv_type_matchups[1] = MATCHUP_IMMUNE;
+    diag->offensive_stat_stage = 10;
+    diag->defensive_stat_stage = 10;
+    diag->offensive_stat = 1;
+    diag->defensive_stat = 1;
+    diag->flash_fire_boost = 0;
+    diag->defense_calc = 0;
+    diag->offense_calc = 0;
+    diag->attacker_level = 0;
+    diag->damage_calc_flv = 0;
+    diag->damage_calc = 0;
+    diag->damage_calc_random_mult_pct = 0;
+    diag->static_damage_mult = 0;
+    diag->item_atk_modifier = 0;
+    diag->item_sp_atk_modifier = 0;
+    diag->item_def_modifier = 0;
+    diag->item_sp_def_modifier = 0;
+    diag->iq_skill_offense_modifier = 0;
+    diag->iq_skill_defense_modifier = 0;
+    diag->scope_lens_or_sharpshooter_activated = FALSE;
+    diag->patsy_band_activated = FALSE;
+    diag->half_physical_damage_activated = FALSE;
+    diag->half_special_damage_activated = FALSE;
+    diag->focus_energy_activated = FALSE;
+    diag->type_advantage_master_activated = FALSE;
+    diag->cloudy_drop_activated = FALSE;
+    diag->sunny_multiplier_activated = FALSE;
+    diag->rain_multiplier_activated = FALSE;
+    diag->fire_move_ability_drop_activated = FALSE;
+    diag->flash_fire_activated = FALSE;
+    diag->levitate_activated = FALSE;
+    diag->torrent_boost_activated = FALSE;
+    diag->overgrow_boost_activated = FALSE;
+    diag->swarm_boost_activated = FALSE;
+    diag->fire_move_ability_boost_activated = FALSE;
+    diag->scrappy_activated = FALSE;
+    diag->stab_boost_activated = FALSE;
+    diag->electric_move_dampened = FALSE;
+    diag->water_sport_drop_activated = FALSE;
+    diag->charge_boost_activated = FALSE;
+    diag->field_0x4f = 0;
+    diag->ghost_immunity_activated = FALSE;
+    diag->skull_bash_defense_boost_activated = FALSE;
+    diag->ability_offense_modifier = 0;
+    diag->ability_defense_modifier = 0;
+}
+
+s32 ov29_0230D618(s32 idx)
+{
+    return ov29_02352894[idx];
+}
+
+void ov29_0230D628(struct entity *entity)
+{
+    if (DUNGEON_PTR->display_data.camera_target == entity) {
+        PointCameraToMonster(entity, TRUE);
+    }
+}
+
+bool8 IsEitherMonsterInvalid(struct entity *a, struct entity *b)
+{
+    if (!EntityIsValid__02308FBC(a) || !EntityIsValid__02308FBC(b)) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void ov29_0230D688(struct item *item)
+{
+    struct item old_item;
+    s16 idx;
+
+    old_item = *item;
+    GenerateStandardItem(item, ITEM_PLAIN_SEED, 2);
+    SetItemAcquired(item);
+    item->held_by = old_item.held_by;
+    if (item->held_by != 0) {
+        idx = GetEquivItemIndex(&old_item);
+        if (idx >= 0) {
+            *GetItemAtIdx(idx) = *item;
+        }
+    }
+}
+
+bool8 ov29_0230D704(struct entity *attacker, struct entity *defender, s32 a3)
+{
+    return FALSE;
+}
+
+bool8 ov29_0230D70C(struct entity *attacker, struct entity *defender, s32 a3)
+{
+    return DungeonRandInt(100) < ov10_022C45B4;
+}
+
+bool8 ov29_0230D738(struct entity *attacker, struct entity *defender, s32 a3)
+{
+    if (a3 == 0 && DungeonRandInt(100) < ov10_022C45B4) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 ov29_0230D76C(struct entity *attacker, struct entity *defender, s32 a3)
+{
+    if (!IsMonster__0230A994(attacker) || !IsMonster__0230A994(defender)) {
+        return FALSE;
+    }
+    if (!GendersNotEqualNotGenderless(GetEntInfo(attacker)->id, GetEntInfo(defender)->id)) {
+        return FALSE;
+    }
+    return ov29_0230D738(attacker, defender, a3);
+}
+
+void ov29_0230D7D4(struct entity *entity)
+{
+    const s16 *prev;
+    s16 anim_id;
+
+    prev = &ov29_023535D4;
+    if (*prev != -1) {
+        TerminateEffectWrapper(ov29_023535D4);
+        ov29_023535D4 = -1;
+    }
+    anim_id = PlayEffectAnimationEntity(entity, 0x2B7, 0, 3, 0, 1, 0, NULL);
+    if (anim_id != -1) {
+        while (ov10_022BF964(anim_id)) {
+            AdvanceFrame(0x18);
+        }
+        TerminateEffectWrapper(anim_id);
+    }
+}
+
+void SwapDefensiveStages(struct entity *user, struct entity *target, s32 log_message)
+{
+    struct monster *user_info = GetEntInfo(user);
+    struct monster *target_info = GetEntInfo(target);
+    s16 def;
+    s16 sp_def;
+
+    def = user_info->stat_modifiers.defensive_stages[0];
+    sp_def = user_info->stat_modifiers.defensive_stages[1];
+    user_info->stat_modifiers.defensive_stages[0] =
+        target_info->stat_modifiers.defensive_stages[0];
+    user_info->stat_modifiers.defensive_stages[1] =
+        target_info->stat_modifiers.defensive_stages[1];
+    target_info->stat_modifiers.defensive_stages[0] = def;
+    target_info->stat_modifiers.defensive_stages[1] = sp_def;
+    if (log_message) {
+        SubstitutePlaceholderStringTags(0, user, 0);
+        SubstitutePlaceholderStringTags(1, target, 0);
+        LogMessageByIdWithPopupCheckUserTarget(user, target, MESSAGE_F2D);
+    }
+}
+
+void SwapDefensiveMultipliers(struct entity *user, struct entity *target, s32 log_message)
+{
+    struct monster *user_info = GetEntInfo(user);
+    struct monster *target_info = GetEntInfo(target);
+    fx32_8 def;
+    fx32_8 sp_def;
+
+    def = user_info->stat_modifiers.defensive_multipliers[0];
+    sp_def = user_info->stat_modifiers.defensive_multipliers[1];
+    user_info->stat_modifiers.defensive_multipliers[0] =
+        target_info->stat_modifiers.defensive_multipliers[0];
+    user_info->stat_modifiers.defensive_multipliers[1] =
+        target_info->stat_modifiers.defensive_multipliers[1];
+    target_info->stat_modifiers.defensive_multipliers[0] = def;
+    target_info->stat_modifiers.defensive_multipliers[1] = sp_def;
+    if (log_message) {
+        SubstitutePlaceholderStringTags(0, user, 0);
+        SubstitutePlaceholderStringTags(1, target, 0);
+        LogMessageByIdWithPopupCheckUserTarget(user, target, MESSAGE_F2E);
+    }
+}
+
+void SwapOffensiveStages(struct entity *user, struct entity *target, s32 log_message)
+{
+    struct monster *user_info = GetEntInfo(user);
+    struct monster *target_info = GetEntInfo(target);
+    s16 atk;
+    s16 sp_atk;
+
+    atk = user_info->stat_modifiers.offensive_stages[0];
+    sp_atk = user_info->stat_modifiers.offensive_stages[1];
+    user_info->stat_modifiers.offensive_stages[0] =
+        target_info->stat_modifiers.offensive_stages[0];
+    user_info->stat_modifiers.offensive_stages[1] =
+        target_info->stat_modifiers.offensive_stages[1];
+    target_info->stat_modifiers.offensive_stages[0] = atk;
+    target_info->stat_modifiers.offensive_stages[1] = sp_atk;
+    if (log_message) {
+        SubstitutePlaceholderStringTags(0, user, 0);
+        SubstitutePlaceholderStringTags(1, target, 0);
+        LogMessageByIdWithPopupCheckUserTarget(user, target, MESSAGE_F2B);
+    }
+}
+
+void SwapOffensiveMultipliers(struct entity *user, struct entity *target, s32 log_message)
+{
+    struct monster *user_info = GetEntInfo(user);
+    struct monster *target_info = GetEntInfo(target);
+    fx32_8 atk;
+    fx32_8 sp_atk;
+
+    atk = user_info->stat_modifiers.offensive_multipliers[0];
+    sp_atk = user_info->stat_modifiers.offensive_multipliers[1];
+    user_info->stat_modifiers.offensive_multipliers[0] =
+        target_info->stat_modifiers.offensive_multipliers[0];
+    user_info->stat_modifiers.offensive_multipliers[1] =
+        target_info->stat_modifiers.offensive_multipliers[1];
+    target_info->stat_modifiers.offensive_multipliers[0] = atk;
+    target_info->stat_modifiers.offensive_multipliers[1] = sp_atk;
+    if (log_message) {
+        SubstitutePlaceholderStringTags(0, user, 0);
+        SubstitutePlaceholderStringTags(1, target, 0);
+        LogMessageByIdWithPopupCheckUserTarget(user, target, MESSAGE_F2C);
+    }
+}
+
+void SwapHitChanceStages(struct entity *user, struct entity *target, s32 log_message)
+{
+    struct monster *user_info = GetEntInfo(user);
+    struct monster *target_info = GetEntInfo(target);
+    s16 accuracy;
+    s16 evasion;
+
+    accuracy = user_info->stat_modifiers.hit_chance_stages[0];
+    evasion = user_info->stat_modifiers.hit_chance_stages[1];
+    user_info->stat_modifiers.hit_chance_stages[0] =
+        target_info->stat_modifiers.hit_chance_stages[0];
+    user_info->stat_modifiers.hit_chance_stages[1] =
+        target_info->stat_modifiers.hit_chance_stages[1];
+    target_info->stat_modifiers.hit_chance_stages[0] = accuracy;
+    target_info->stat_modifiers.hit_chance_stages[1] = evasion;
+    if (log_message) {
+        SubstitutePlaceholderStringTags(0, user, 0);
+        SubstitutePlaceholderStringTags(1, target, 0);
+        LogMessageByIdWithPopupCheckUserTarget(user, target, MESSAGE_F2F);
+    }
+}
+
+void SwapUserAtkAndDefModifiers(struct entity *user, struct entity *target, s32 log_message)
+{
+    struct monster *user_info = GetEntInfo(user);
+    fx32_8 atk_mult;
+    s16 atk;
+
+    atk_mult = user_info->stat_modifiers.offensive_multipliers[0];
+    atk = user_info->stat_modifiers.offensive_stages[0];
+    user_info->stat_modifiers.offensive_multipliers[0] =
+        user_info->stat_modifiers.defensive_multipliers[0];
+    user_info->stat_modifiers.offensive_stages[0] =
+        user_info->stat_modifiers.defensive_stages[0];
+    user_info->stat_modifiers.defensive_multipliers[0] = atk_mult;
+    user_info->stat_modifiers.defensive_stages[0] = atk;
+    if (log_message) {
+        SubstitutePlaceholderStringTags(0, user, 0);
+        LogMessageByIdWithPopupCheckUserTarget(user, target, MESSAGE_F30);
+    }
 }

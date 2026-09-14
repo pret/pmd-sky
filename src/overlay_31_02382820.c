@@ -52,7 +52,6 @@ extern struct struct_1* GetSimpleMenuResult__0202AEA4(s8);
 extern void CloseTextBox(s8);
 extern void CloseParentMenu(s8);
 
-extern void UnkMapRelatedFunc(u32, u32);
 extern u32 GetLeaderActionId(void);
 extern void ov29_022E0C2C(u32);
 

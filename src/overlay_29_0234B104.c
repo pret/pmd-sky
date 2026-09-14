@@ -8,7 +8,6 @@
 
 extern void InitPreprocessorArgs(struct preprocessor_args *args);
 extern void LogMessage(struct entity *user, const char *message, bool8 show_popup);
-extern void UnkMapRelatedFunc(u32 switch_case, u32 param_2);
 extern void WaitUntilAlertBoxTextIsLoaded(u32 param_1);
 extern int FullyCloseAlertBox(void);
 

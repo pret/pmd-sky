@@ -17,6 +17,7 @@
 #include "overlay_29_0234B340.h"
 #include "overlay_29_0230F8AC.h"
 #include "dungeon_logic_4.h"
+#include "overlay_29_0230BBAC.h"
 
 #ifdef JAPAN
 #define MESSAGE_BE6 0x925
@@ -43,13 +44,10 @@
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
 extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
 extern void BoostIQ(struct entity *entity, s16 iq, bool8 a);
-extern void UpdateShopkeeperModeAfterAttack(struct entity *attacker, struct entity *defender);
 extern void TryInflictInvisibleStatus(struct entity *user, struct entity *target);
 extern void TryInflictPetrifiedStatus(struct entity *user, struct entity *target);
 extern void TryInflictSleeplessStatus(struct entity *user, struct entity *target);
 extern s32 CalcStatusDuration(struct entity *entity, const s16 *turn_range, bool8 iq_skill_effects);
-
-extern void CalcDamageFixedNoCategory(struct entity *attacker, struct entity *defender, s16 fixed_damage, s32 a, bool8 *flag, s32 b, s32 damage_source, s32 c, s32 d, s32 e);
 extern void DealDamageProjectile(struct entity *attacker, struct entity *defender, struct move *move, s16 power, s32 a, s32 b);
 extern void ApplyGummiBoostsDungeonMode(struct entity *user, struct entity *target, s32 type, s16 boost);
 extern void TryIncreaseBelly(struct entity *user, struct entity *target, s32 a, s32 b, s32 c);
@@ -175,7 +173,7 @@ void ApplyItemEffect(char param_1, u8 param_2, u8 param_3,
         LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_BE7);
         if (param_1) {
             bool8 b;
-            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4574, 1, &b, 0,
+            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4574, 1, &b, TYPE_NONE,
                                       DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
             EnemyEvolution(attacker);
             return;
@@ -192,7 +190,7 @@ void ApplyItemEffect(char param_1, u8 param_2, u8 param_3,
         GetItemCategoryVeneer(item->id) == CATEGORY_LINK_BOX) {
         if (param_1) {
             bool8 b;
-            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &b, 0,
+            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &b, TYPE_NONE,
                                       DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
         } else {
             LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_BE8);
@@ -242,10 +240,10 @@ void ApplyItemEffect(char param_1, u8 param_2, u8 param_3,
             break;
         }
         case ITEM_GEO_PEBBLE:
-            CalcDamageFixedNoCategory(attacker, defender, GEO_PEBBLE_DAMAGE, 1, NULL, 0, DAMAGE_SOURCE_THROWN_ROCK, 0, 0, 0);
+            CalcDamageFixedNoCategory(attacker, defender, GEO_PEBBLE_DAMAGE, 1, NULL, TYPE_NONE, DAMAGE_SOURCE_THROWN_ROCK, 0, 0, 0);
             break;
         case ITEM_GRAVELEROCK:
-            CalcDamageFixedNoCategory(attacker, defender, GRAVELEROCK_DAMAGE, 1, NULL, 0, DAMAGE_SOURCE_THROWN_ROCK, 0, 0, 0);
+            CalcDamageFixedNoCategory(attacker, defender, GRAVELEROCK_DAMAGE, 1, NULL, TYPE_NONE, DAMAGE_SOURCE_THROWN_ROCK, 0, 0, 0);
             break;
         case ITEM_GOLD_THORN: {
             struct move move;
@@ -255,7 +253,7 @@ void ApplyItemEffect(char param_1, u8 param_2, u8 param_3,
             break;
         }
         case ITEM_RARE_FOSSIL:
-            CalcDamageFixedNoCategory(attacker, defender, RARE_FOSSIL_DAMAGE, 1, NULL, 0, DAMAGE_SOURCE_THROWN_ROCK, 0, 0, 0);
+            CalcDamageFixedNoCategory(attacker, defender, RARE_FOSSIL_DAMAGE, 1, NULL, TYPE_NONE, DAMAGE_SOURCE_THROWN_ROCK, 0, 0, 0);
             break;
         case ITEM_HEAL_SEED:
             EndNegativeStatusConditionWrapper(attacker, defender, TRUE, param_3);
@@ -437,7 +435,7 @@ void ApplyItemEffect(char param_1, u8 param_2, u8 param_3,
     case ITEM_KEY:
         if (param_1) {
             bool8 flag;
-            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, 0,
+            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
                                       DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
         }
         else {
@@ -460,7 +458,7 @@ case ITEM_MIX_ELIXIR:
     ApplyMixElixirEffect(attacker, defender);
     break;
 case ITEM_OREN_BERRY:
-    CalcDamageFixedNoCategory(attacker, defender, OREN_BERRY_DAMAGE, 1, NULL, 0,
+    CalcDamageFixedNoCategory(attacker, defender, OREN_BERRY_DAMAGE, 1, NULL, TYPE_NONE,
                               DAMAGE_SOURCE_OREN_BERRY, 0, 0, 0);
     break;
 case ITEM_DOUGH_SEED:
@@ -478,7 +476,7 @@ case ITEM_WANDER_GUMMI:
 case ITEM_PRIZE_TICKET:
     if (param_1) {
         bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, 0,
+        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
                                   DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
     } else {
         SubstitutePlaceholderStringTags(0, defender, 0);
@@ -488,7 +486,7 @@ case ITEM_PRIZE_TICKET:
 case ITEM_SILVER_TICKET:
     if (param_1) {
         bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, 0,
+        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
                                   DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
     } else {
         SubstitutePlaceholderStringTags(0, defender, 0);
@@ -498,7 +496,7 @@ case ITEM_SILVER_TICKET:
 case ITEM_GOLD_TICKET:
     if (param_1) {
         bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, 0,
+        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
                                   DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
     } else {
         SubstitutePlaceholderStringTags(0, defender, 0);
@@ -508,7 +506,7 @@ case ITEM_GOLD_TICKET:
 case ITEM_PRISM_TICKET:
     if (param_1) {
         bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, 0,
+        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
                                   DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
     } else {
         SubstitutePlaceholderStringTags(0, defender, 0);
@@ -518,7 +516,7 @@ case ITEM_PRISM_TICKET:
 case ITEM_SKY_GIFT:
     if (param_1) {
         bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, 0,
+        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
                                   DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
     } else {
         LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C76);
@@ -559,7 +557,7 @@ case ITEM_GRACIDEA:
     case ITEM_QUESTION_STONE:
     if (param_1) {
         bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C44EC, 1, &flag, 0,
+        CalcDamageFixedNoCategory(attacker, defender, ov10_022C44EC, 1, &flag, TYPE_NONE,
                                   DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
     } else {
         LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_BE8);
@@ -569,7 +567,7 @@ case ITEM_GRACIDEA:
     default:
         if (param_1) {
             bool8 flag;
-            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, 0, DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
+            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE, DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
         }
         else {
             LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_BE8);
