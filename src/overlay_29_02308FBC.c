@@ -1,4 +1,7 @@
 #include "overlay_29_02308FBC.h"
+#include "dg_effect.h"
+#include "overlay_29_0230F810.h"
+#include "overlay_29_02338350.h"
 #include "common.h"
 #include "dg_object.h"
 #include "dg_random.h"
@@ -87,8 +90,6 @@ extern bool8 IsEitherMonsterInvalid(struct entity *a, struct entity *b);
 extern void ResetDamageData(struct unk_02308FE0 *damage_data);
 extern void ov29_022E57D4(struct entity *entity);
 extern void ov29_022E5E84(struct entity *a, struct entity *b);
-extern void ov29_0230F728(struct entity *attacker, struct entity *defender, enum exclusive_item_effect_id effect_id, s32 a);
-extern s32 ov29_023380FC(struct entity *entity, struct entity **targets);
 extern struct unk_023535DC ov29_023535DC[];
 extern s16 ARENA_TRAP_ACTIVATION_CHANCE;
 extern s16 CUTE_CHARM_INFATUATE_CHANCE;
@@ -117,7 +118,6 @@ extern s32 GetIdleAnimationId(struct entity *entity);
 extern void HandleFaint(struct entity *fainted_entity, s32 damage_source, struct entity *killer);
 extern bool8 IsMonsterIdInNormalRangeVeneer(enum monster_id monster_id);
 extern void MoveMonsterToPos(struct entity* entity, s32 x_pos, s32 y_pos, bool8 reset_prev_pos_fields);
-extern s32 PlayEffectAnimationEntity(struct entity *entity, s32 id, s32 a, u8 b, s32 c, s32 d, s32 e, s32 f);
 extern int PlayMissSfx__022E611C();
 extern int PlayMissSfx__022E6150();
 extern void RemoveHolderForItemInBag(struct item* item);

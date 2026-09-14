@@ -120,6 +120,33 @@ struct unk_022FBD24 {
     u32 unique_id_index;
 };
 
+struct unk_02337EE8 {
+    // 0x286B0: Initialized to 0xFF, then set to a copy of dungeon::group_id
+    enum dungeon_group_id group_id_copy;
+    // 0x286B1: Initialized to 0xFF, then set to a copy of dungeon::0x74B
+    u8 field_0x286b1;
+    struct floor_properties floor_properties; // 0x286B2: Properties about the current floor
+    // Spawn weights for items in different contexts. 
+    // 0 = regular, 1 = Kecleon shop, 2 = monster house, 3  buried, 
+    // 4 = bazaar, 5 = secret room
+    struct item_spawn_weights item_spawn_weights[6];
+    // 0x2C932: Spawn weights for traps.
+    u16 trap_weights[25];
+    // 0x2C964: List of spawn entries on this floor
+    // This is used during initialization, enemies are spawned using the copy at 0x3974
+    struct monster_spawn_entry spawn_entries_master[16];
+    // 0x2C9E4: The total number of spawn entries loaded or to be loaded?
+    u16 number_sprites_loaded;
+    // 0x2C9E6: Highest level among all the enemies that spawn on this floor
+    s16 highest_enemy_level;
+    // 0x2C9E8: ID of an item guaranteed to spawn on the floor, if applicable
+    // (e.g., certain mission types)
+    enum item_id guaranteed_item_id;
+    // 0x2C9EA: List of the indices in the complete monster spawn table for this floor that were
+    // chosen to spawn on it. It gets rerandomized at the start of each new floor.
+    u16 spawn_table_entries_chosen[16];
+};
+
 // Dungeon state
 struct dungeon {
     u8 field_0x0; // 0x0: Initialized to 0x0.
@@ -176,9 +203,7 @@ struct dungeon {
     u8 field_0x1d;
     // 0x1E: Number of floors completed? (Guess). Initialized to 0.
     // If this is a floor tracker, odd it is not a u16 like the others.
-    u8 number_completed_floors;
-    // 0x1F: Turn counter, Speed Boost triggers every 250 turns, then the counter is reset.
-    u8 speed_boost_counter;
+    s16 number_completed_floors;
     // 0x20: Total amount of floors summed by all the previous dungeons in its group
     u16 number_preceding_floors;
     // 0x22: Total amount of floors passed including those in its group? (Guess)
@@ -1498,30 +1523,7 @@ struct dungeon {
     // 0x1A21C: Data about the map, the camera and the touchscreen numbers
     struct display_data display_data;
     struct minimap_display_data minimap_display_data; // 0x1A264: Data used to display the minimap
-    // 0x286B0: Initialized to 0xFF, then set to a copy of dungeon::group_id
-    enum dungeon_group_id group_id_copy;
-    // 0x286B1: Initialized to 0xFF, then set to a copy of dungeon::0x74B
-    u8 field_0x286b1;
-    struct floor_properties floor_properties; // 0x286B2: Properties about the current floor
-    // Spawn weights for items in different contexts. 
-    // 0 = regular, 1 = Kecleon shop, 2 = monster house, 3  buried, 
-    // 4 = bazaar, 5 = secret room
-    struct item_spawn_weights item_spawn_weights[6];
-    // 0x2C932: Spawn weights for traps.
-    u16 trap_weights[25];
-    // 0x2C964: List of spawn entries on this floor
-    // This is used during initialization, enemies are spawned using the copy at 0x3974
-    struct monster_spawn_entry spawn_entries_master[16];
-    // 0x2C9E4: The total number of spawn entries loaded or to be loaded?
-    u16 number_sprites_loaded;
-    // 0x2C9E6: Highest level among all the enemies that spawn on this floor
-    s16 highest_enemy_level;
-    // 0x2C9E8: ID of an item guaranteed to spawn on the floor, if applicable
-    // (e.g., certain mission types)
-    enum item_id guaranteed_item_id;
-    // 0x2C9EA: List of the indices in the complete monster spawn table for this floor that were
-    // chosen to spawn on it. It gets rerandomized at the start of each new floor.
-    u16 spawn_table_entries_chosen[16];
+    struct unk_02337EE8 field_0x286b0;
     u8 field_0x2ca0a;
     u8 field_0x2ca0b;
     // 0x2CA0C: Holds the name for the entity that caused the faint. The exact size is a guess.

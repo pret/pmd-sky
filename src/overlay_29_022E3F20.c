@@ -9,9 +9,6 @@ extern void PlaySeByIdIfShouldDisplayEntity(struct entity *entity, s32 se_id);
 
 extern s32 GetEffectAnimationWanOffset(s32 id);
 
-extern void PlayEffectAnimationEntity(struct entity *entity, s32 id, s32 a, u8 b,
-        s32 c, s32 d, s32 e, s32 f);
-
 extern const u64 STATUS_ICON_ARRAY_SLEEP[];
 extern const u64 STATUS_ICON_ARRAY_BURN[];
 extern const u64 STATUS_ICON_ARRAY_FREEZE[];

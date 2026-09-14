@@ -1,4 +1,5 @@
 #include "dungeon_pokemon_attributes.h"
+#include "overlay_29_0230F810.h"
 #include "dungeon_map_access.h"
 #include "dungeon_util_static.h"
 #include "dungeon_util.h"
@@ -38,7 +39,6 @@ extern bool8 SafeguardIsActive(struct entity *user ,struct entity *target, bool8
 extern void TryActivateSteadfast(struct entity *attacker, struct entity *defender);
 extern void TryActivateQuickFeet(struct entity *attacker ,struct entity *defender);
 extern s32 CalcStatusDuration(struct entity *entity, const s16 *turn_range, bool8 iq_skill_effects);
-extern bool8 GetExclusiveItemWithEffectFromBag(struct entity *, enum exclusive_item_effect_id effect_id, struct item *item);
 extern struct preprocessor_args* GetMessageLogPreprocessorArgs(void);
 extern void SetPreprocessorArgsStringToName(struct preprocessor_args* preprocessor_args, s32 pos, struct monster* monster, u32 param_4, u8 name_type);
 extern int CalcSpeedStageWrapper(struct entity* entity);

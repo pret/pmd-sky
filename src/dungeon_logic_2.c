@@ -1,4 +1,5 @@
 #include "dungeon_logic_2.h"
+#include "overlay_29_0230F810.h"
 #include "main_0205283C.h"
 #include "dungeon.h"
 #include "dungeon_pokemon_attributes_1.h"
@@ -29,7 +30,6 @@ extern const s16 EXCLUSIVE_ITEM_EXP_BOOST;
 
 extern bool8 LeafGuardIsActive(struct entity *user, struct entity *target, bool8 log_message);
 extern bool8 ov29_02301A84(struct entity *user, struct entity *target, bool8 log_message);
-extern bool8 GetExclusiveItemWithEffectFromBag(struct entity *, enum exclusive_item_effect_id effect_id, struct item *item);
 
 bool8 MonsterCanThrowItems(struct monster *monster)
 {

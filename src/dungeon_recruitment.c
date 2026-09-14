@@ -4,6 +4,7 @@
 #include "dungeon_mode.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_recruitment.h"
+#include "dungeon_map_access_1.h"
 #include "dungeon_recruitment_2.h"
 #include "dg_random.h"
 #include "dungeon_visibility.h"
@@ -66,7 +67,6 @@ s32 ov29_0234D7C0(s32 message_id, struct preprocessor_args *args, s32 param_3,
 void ov29_0234D8A0(s32 param_1);
 struct entity *ov29_0234EE10(struct entity *entity, char *name);
 bool8 DungeonModeSetupAndShowNameKeyboard(char *name, char *param_2, s32 param_3);
-void RemoveMonsterFromTile(struct entity *entity, s32 x, s32 y);
 bool8 ov29_0230E5A8(struct entity *user, struct entity *target, s32 x, s32 y);
 s32 ov29_0230E5FC(struct team_member *member, s32 param_2);
 void ov29_0230E658(s32 message_id);

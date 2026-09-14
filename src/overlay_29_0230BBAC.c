@@ -1,4 +1,5 @@
 #include "overlay_29_0230BBAC.h"
+#include "overlay_29_0230F810.h"
 #include "debug.h"
 #include "dg_random.h"
 #include "dungeon.h"
@@ -34,13 +35,10 @@
 
 extern struct dungeon *DUNGEON_PTR;
 extern u8 GetMonsterGenderVeneer(s16 monster_id);
-extern u8 ExclusiveItemOffenseBoost(struct entity *entity, s32 idx);
-extern u8 ExclusiveItemDefenseBoost(struct entity *entity, s32 idx);
 extern s32 FixedPoint64ToInt(struct fixed_point_64 *x);
 extern void PlayEffectAnimation0x1A9__022E6130(struct entity *entity);
 extern void PlayEffectAnimation0x1A9__022E617C(struct entity *entity);
 extern void PlayEffectAnimation0x18E(struct entity *entity);
-extern bool8 AuraBowIsActive(struct entity *entity);
 extern bool8 FixedPoint64CmpLt(const struct fixed_point_64 *a, const struct fixed_point_64 *b);
 extern void DivideFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64 *a, struct fixed_point_64 *b);
 extern void ResetDamageCalcDiagnostics(void);

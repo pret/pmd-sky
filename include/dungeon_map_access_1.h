@@ -8,5 +8,8 @@
 bool8 IsTileGround(struct tile *tile);
 // Returns flag tileset_property::is_water_tileset for the current tileset
 bool8 IsWaterTileset();
+void RemoveMonsterFromTile(struct entity *entity, s32 x, s32 y);
+s16 ov29_02337EE8(void);
+s16 GetRandomSpawnMonsterID(void);
 
 #endif //PMDSKY_DUNGEON_MAP_ACCESS_1_H
