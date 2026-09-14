@@ -196,7 +196,7 @@ extern u8 ov11_02322DB0[];
 extern void CloseScrollBox(s8);                                          extern void CloseTextBox2(s8);extern s8 CreateScrollBoxSingle(void *, s32, s32, s32, void *, s32, void *);  extern s8 CreateTextBox(void *, void *);
 extern void GetPressedButtons(u32, u16 *);
 extern void InitPreprocessorArgs(struct preprocessor_args *);
-extern s32 IsScrollBoxActive(s8);                                        extern void ShowDialogueBox(s8);                                         extern void ShowStringIdInDialogueBox(s8, s32, s32, void *);             extern void ov11_022DC504(void);
+extern s32 IsScrollBoxActive(s8);                                        extern void ov11_022DC504(void);
 extern u8 *strcpy(u8 *dest, const u8 *src);
 
 extern s8 CreateInventoryMenuOuter(s32, s32, s32, void *, void *, void *, u8);

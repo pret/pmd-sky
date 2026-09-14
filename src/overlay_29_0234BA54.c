@@ -49,8 +49,8 @@ void InitPortraitDungeon(portrait_params *portrait, enum monster_id monster_id, 
     portrait->monster_id = monster_id;
     portrait->portrait_emotion = emotion;
     portrait->layout_idx = 0;
-    portrait->offset_x = 2;
-    portrait->offset_y = 9;
+    portrait->offset.x = 2;
+    portrait->offset.y = 9;
     portrait->try_flip = FALSE;
     portrait->has_flip = FALSE;
     portrait->hw_flip = FALSE;

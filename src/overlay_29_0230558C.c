@@ -1,4 +1,5 @@
 #include "overlay_29_0230558C.h"
+#include "overlay_29_023047B8.h"
 #include "dg_uty.h"
 #include "dungeon_capabilities.h"
 #include "dungeon_items.h"
@@ -30,8 +31,6 @@
 extern struct dungeon *DUNGEON_PTR[];
 extern const u16 ov29_02353318[];
 
-extern s32 GetIdleAnimationId(struct entity *entity);
-extern void ChangeMonsterAnimation(struct entity *entity, s32 animation_id, s32 direction);
 extern void ov29_02337D68(struct position *pos);
 extern struct trap *GetTrapInfo(struct entity *entity);
 extern void TryTriggerTrap(struct entity *entity, struct position *pos, s32 a, s32 b);
