@@ -22,5 +22,8 @@ enum type_id GetType(s16 monster_id, u8 type_idx);
 enum ability_id GetAbility(s16 monster_id, u8 ability_idx);
 s16 GetRecruitRate2(s16 monster_id);
 s16 GetRecruitRate1(s16 monster_id);
+s32 GetExp(s16 monster_id, s32 level);
+void GetEvoParameters(u8 *evo_params, s16 monster_id);
+void GetTreasureBoxChances(s16 monster_id, u8 *chances);
 
 #endif //PMDSKY_MAIN_0205283C_H

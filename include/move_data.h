@@ -102,9 +102,17 @@ struct move_data_table
     struct move_data moves[559]; // 0x8
 };
 
+struct moveset
+{
+    u8 *levelup_moves;
+    u8 *hmtm_moves;
+    u8 *egg_moves;
+};
+
 struct move_data_table_outer
 {
-    u8 fill0[8];
+    struct moveset *movesets;
+    u8 fill4[4];
     struct move_data_table *moves;
 };
 
