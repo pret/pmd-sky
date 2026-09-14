@@ -15,6 +15,7 @@
 #include "overlay_29_02305C04.h"
 #include "overlay_29_0234B340.h"
 #include "overlay_29_0230F8AC.h"
+#include "dungeon_logic_4.h"
 
 #ifdef JAPAN
 #define MESSAGE_BE6 0x925
@@ -36,7 +37,6 @@
 
 
 #ifdef EUROPE
-extern void ov29_022FB920(bool8 a);
 #endif
 
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
@@ -83,7 +83,6 @@ extern void TryInflictEyedropStatus(struct entity *user, struct entity *target);
 extern bool8 TryInflictSlipStatus(struct entity *user, struct entity *target);
 extern void ov29_022E5A00(struct entity *entity, struct item *item);
 extern void ov29_022E5AE4(struct entity *entity, struct item *item);
-extern bool8 ov29_022FB9BC(struct entity *entity);
 extern void ov29_022F9EA0(struct entity *entity);
 extern void EnemyEvolution(struct entity *entity);
 extern bool8 AddHeldItemToBag(struct monster *monster);

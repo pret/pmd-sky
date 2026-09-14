@@ -211,7 +211,6 @@ extern u8 PopInventoryMenuField0x1A3(s32 window_id);
 extern void SortItemsInBag(void);
 extern void *memcpy(void *, const void *, u32);
 extern s32 ov11_02307300(s32, s32, s32);
-extern s32 sub_020037A4(void);
 extern void sub_0203FD14(u16 move_id);
 extern struct move *sub_0203FD2C(void);
 extern void *sub_0203FD38(void);

@@ -136,7 +136,6 @@ extern int ov29_022E550C();
 extern void ov29_022E81F8(void);
 extern void ov29_022EA370(s32 a, s32 b);
 extern int ov29_022F9AF4();
-extern int ov29_022FB98C();
 extern int ov29_02303E0C();
 extern int ov29_02304830();
 extern int ov29_02307C48();

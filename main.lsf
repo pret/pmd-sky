@@ -28,7 +28,7 @@ Static main
 	Object src/main_020027E8.o
 	Object asm/main_02002910.o
 	Object src/main_0200330C.o
-	Object asm/main_02003328.o
+	Object src/main_020037B4.o
 	Object src/main_0200383C.o
 	Object asm/main_020038D8.o
 	Object src/main_02003D2C.o
@@ -907,7 +907,6 @@ Overlay OVY_29
 	Object asm/overlay_29_022FACBC.o
 	Object src/overlay_29_022FB538.o
 	Object src/dungeon_logic_4.o
-	Object asm/overlay_29_022FB678.o
 	Object src/overlay_29_022FBA54.o
 	Object src/joined_at_checks.o
 	Object asm/overlay_29_022FBB1C.o

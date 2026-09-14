@@ -6,6 +6,7 @@
 
 // Item ID
 enum item_id {
+    ITEM_INVALID = -1,
     ITEM_NOTHING = 0,
     ITEM_STICK = 1,
     ITEM_IRON_THORN = 2,

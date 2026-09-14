@@ -5,13 +5,13 @@
 #include "dungeon.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_0234B104.h"
+#include "dungeon_logic_4.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
 extern s32 GetIdleAnimationId(struct entity *entity);
 extern int ov29_02304830();
 extern void TryRemoveSnatchedMonsterFromDungeonStruct(struct entity *user, struct entity *target);
-extern void ov29_022FB984(struct entity *entity);
 
 #ifdef JAPAN
 #define JPN_MSG_OFFSET -0x2C0
