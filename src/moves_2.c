@@ -18,7 +18,7 @@ u8 *GetMovesetLevelUpPtr(s16 monster_id)
     s16 id = monster_id;
     if (id >= 0x258)
         id = (s16)(id - 0x258);
-    if (IsInvalidMoveset(id) != 0)
+    if (IsInvalidMoveset(id))
         return _02098D64;
     return DUNGEON_MOVE_TABLES.movesets[id].levelup_moves;
 }
@@ -40,7 +40,7 @@ u8 *GetMovesetHmTmPtr(s16 monster_id)
     s16 id = monster_id;
     if (id >= 0x258)
         id = (s16)(id - 0x258);
-    if (IsInvalidMoveset(id) != 0)
+    if (IsInvalidMoveset(id))
         return _02098D64;
     return DUNGEON_MOVE_TABLES.movesets[id].hmtm_moves;
 }
@@ -50,7 +50,7 @@ u8 *GetMovesetEggPtr(s16 monster_id)
     s16 id = monster_id;
     if (id >= 0x258)
         id = (s16)(id - 0x258);
-    if (IsInvalidMoveset(id) != 0)
+    if (IsInvalidMoveset(id))
         return _02098D64;
     return DUNGEON_MOVE_TABLES.movesets[id].egg_moves;
 }

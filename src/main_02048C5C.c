@@ -8,7 +8,7 @@ extern char _022AAE78;
 
 void sub_02048C5C(void)
 {
-    MemsetSimple((u8 *)0x022AAE74, 0, 0x30);
+    MemsetSimple((u8 *)(&_022AAE78 - 4), 0, 0x30);
     _022AAE74.field_0x24 = 0x09011416;
     ReadStringSave(&_022AAE78);
     _022AAE74.field_0x28 = 0x000F1206;

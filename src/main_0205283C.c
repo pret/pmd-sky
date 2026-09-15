@@ -97,15 +97,14 @@ s32 GetExp(s16 monster_id, s32 level)
     return exp_yield + exp_yield * (level - 1) / 10;
 }
 
-void GetEvoParameters(u8 *evo_params, s16 monster_id)
+void GetEvoParameters(struct monster_evolution_parameters *evo_params, s16 monster_id)
 {
-    *(struct monster_evolution_parameters *)evo_params =
-        MONSTER_DATA_TABLE_PTR->entries[monster_id].evolution_param;
+    *evo_params = MONSTER_DATA_TABLE_PTR->entries[monster_id].evolution_param;
 }
 
-void GetTreasureBoxChances(s16 monster_id, u8 *chances)
+void GetTreasureBoxChances(s16 monster_id, s16 *chances)
 {
     s16 i;
     for (i = 0; i < 4; i++)
-        ((s16 *)chances)[i] = (&MONSTER_DATA_TABLE_PTR->entries[monster_id].unk_0x3c)[i];
+        chances[i] = (&MONSTER_DATA_TABLE_PTR->entries[monster_id].unk_0x3c)[i];
 }
