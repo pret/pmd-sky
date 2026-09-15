@@ -1,4 +1,5 @@
 #include "dungeon_util_2.h"
+#include "overlay_29_022ED01C.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_range.h"
 #include "dungeon.h"
@@ -108,3 +109,11 @@ void SubstitutePlaceholderStringTags(s32 pos, struct entity* entity, u32 param_3
             break;
     }
 }
+
+#ifdef EUROPE
+bool8 ov29_022E34A8_EU(struct entity *entity)
+{
+    return EntityIsValid__022E1A1C(entity) && !DUNGEON_PTR->end_floor_no_death_check_flag &&
+           GetForcedLossReason() != FORCED_LOSS_PARTNER_FAINTED;
+}
+#endif

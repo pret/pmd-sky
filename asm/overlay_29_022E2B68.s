@@ -1,33 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022E34A8.inc"
+	.include "overlay_29_022E2B68.inc"
 
 	.text
-
-#ifdef EUROPE
-	arm_func_start ov29_022E34A8_EU
-ov29_022E34A8_EU: ; 0x022E34A8
-	stmdb sp!, {r3, lr}
-	bl EntityIsValid__022E1A1C
-	cmp r0, #0
-	beq _022E34DC
-	ldr r0, _022E34E8 ; =0x02354138
-	ldr r0, [r0]
-	ldrb r0, [r0, #8]
-	cmp r0, #0
-	bne _022E34DC
-	bl GetForcedLossReason
-	cmp r0, #1
-	movne r0, #1
-	bne _022E34E0
-_022E34DC:
-	mov r0, #0
-_022E34E0:
-	and r0, r0, #0xff
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_022E34E8: .word 0x02354138
-	arm_func_end ov29_022E34A8_EU
-#endif
 
 	arm_func_start ov29_022E2B68
 ov29_022E2B68: ; 0x022E2B68

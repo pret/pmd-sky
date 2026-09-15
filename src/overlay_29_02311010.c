@@ -31,6 +31,7 @@
 #include "overlay_29_023350D8.h"
 #include "dungeon_logic_4.h"
 #include "overlay_29_0230BBAC.h"
+#include "overlay_29_02320764.h"
 
 extern s16 ov10_022C4BE4[20];
 extern void ov29_0230FB30(struct entity *entity);
@@ -60,17 +61,14 @@ extern void ov29_0230FB30(struct entity *entity);
 
 #ifdef EUROPE
 
-extern bool8 ov29_022E34A8_EU(struct entity *entity);
 #endif
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 extern bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
-extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
 extern void MultiplyFixedPoint64(struct fixed_point_64 *out, const struct fixed_point_64 *a, const struct fixed_point_64 *b);
 extern void ov29_022EA370(s32 a, s32 b);
 extern s32 ov29_022F2FE4();
 
-extern void EnsureCanStandCurrentTile(struct entity *entity);
 extern void ov29_022E543C(struct entity *entity);
 extern void ov29_022E53F0(struct entity *entity);
 extern void ov29_022F42F8(struct entity *entity);

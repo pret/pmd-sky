@@ -21,5 +21,19 @@ s32 GetDisplayedSellPrice(struct item* item);
 s32 GetActualBuyPrice(struct item* item);
 s32 GetActualSellPrice(struct item* item);
 
+s32 sub_0200D1F0(s16 a);
+u8 sub_0200D1FC(s16 item_id);
+u8 sub_0200D208(s16 item_id);
+void sub_0200D214(u8* buf, s16 item_id, struct unk_0209C850* a);
+s32 FindItemInInventory(s16 item_id);
+bool8 MaybeGetFormattedItemName(u8* buf, struct item* item, struct unk_0209C850* a,
+                                bool8 colored, bool8 forceBrackets);
+void SprintfStatic__0200D634(u8* buf, const char* fmt, ...);
+bool8 MaybeGetUncoloredFormattedItemName(u8* buf, struct item* item,
+                                         struct unk_0209C850* a);
+bool8 MaybeGetColoredFormattedItemName(u8* buf, struct item* item,
+                                       struct unk_0209C850* a);
+void sub_0200D688(u8* buf, u8* name, struct item* item, struct unk_0209C850* a);
+
 #endif //PMDSKY_ITEM_UTIL_4_H
 

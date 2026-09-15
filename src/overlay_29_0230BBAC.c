@@ -861,7 +861,7 @@ void CalcDamageFixed(struct entity *attacker, struct entity *defender, s32 fixed
     }
 }
 
-void CalcDamageFixedNoCategory(struct entity *attacker, struct entity *defender, s16 fixed_damage,
+void CalcDamageFixedNoCategory(struct entity *attacker, struct entity *defender, s32 fixed_damage,
                                s32 a4, bool8 *out_flag, enum type_id attack_type,
                                s16 damage_source, s32 a8, s32 a9, s32 a10)
 {

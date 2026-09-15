@@ -14,7 +14,7 @@ void ov29_0230D088(struct entity *attacker, struct entity *defender, enum type_i
 void ApplyDamageAndEffectsWrapper(struct entity *entity, s32 damage, s32 a3, s16 damage_source);
 void CalcRecoilDamageFixed(struct entity *entity, s32 fixed_damage, s32 a3, bool8 *out_flag, s32 a5, enum type_id attack_type, s16 damage_source, s32 a8, s32 a9, s32 a10);
 void CalcDamageFixed(struct entity *attacker, struct entity *defender, s32 fixed_damage, s32 a4, bool8 *out_flag, enum type_id attack_type, u8 category, s16 damage_source, s32 a9, s32 a10, s32 a11);
-void CalcDamageFixedNoCategory(struct entity *attacker, struct entity *defender, s16 fixed_damage, s32 a4, bool8 *out_flag, enum type_id attack_type, s16 damage_source, s32 a8, s32 a9, s32 a10);
+void CalcDamageFixedNoCategory(struct entity *attacker, struct entity *defender, s32 fixed_damage, s32 a4, bool8 *out_flag, enum type_id attack_type, s16 damage_source, s32 a8, s32 a9, s32 a10);
 void CalcDamageFixedWrapper(struct entity *attacker, struct entity *defender, s32 fixed_damage, s32 a4, bool8 *out_flag, enum type_id attack_type, u8 category, s16 damage_source, s32 a9, s32 a10, s32 a11);
 void UpdateShopkeeperModeAfterAttack(struct entity *attacker, struct entity *defender);
 void UpdateShopkeeperModeAfterTrap(struct entity *entity, bool8 is_enemy);

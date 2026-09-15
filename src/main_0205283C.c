@@ -3,108 +3,108 @@
 
 u8 GetShadowSize(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].shadow_size;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].shadow_size;
 }
 
 s16 GetSpeedStatus(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].base_movement_speed;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].base_movement_speed;
 }
 
 enum mobility_type GetMobilityType(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].movement_type;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].movement_type;
 }
 
 u8 GetRegenSpeed(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].hp_regeneration << 1;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].hp_regeneration << 1;
 }
 
 bool8 GetCanMoveFlag(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].flags & 0b00010000 ? TRUE : FALSE;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].flags & 0b00010000 ? TRUE : FALSE;
 }
 
 u8 GetChanceAsleep(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].spawn_asleep_chance;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].spawn_asleep_chance;
 }
 
 u16 GetWeightMultiplier(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].weight;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].weight;
 }
 
 u16 GetSize(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].size;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].size;
 }
 
 u16 GetBaseHp(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].base_hp;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].base_hp;
 }
 
 bool8 CanThrowItems(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].flags & 0b00100000 ? TRUE : FALSE;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].flags & 0b00100000 ? TRUE : FALSE;
 }
 
 bool8 CanEvolve(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].flags & 0b01000000 ? TRUE : FALSE;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].flags & 0b01000000 ? TRUE : FALSE;
 }
 
 s16 GetMonsterPreEvolution(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].evolution_param.pre_evolution_idx;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].evolution_param.pre_evolution_idx;
 }
 
 u8 GetBaseOffensiveStat(s16 monster_id, u8 stat_idx)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].base_atk[stat_idx];
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].base_atk[stat_idx];
 }
 
 u8 GetBaseDefensiveStat(s16 monster_id, u8 stat_idx)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].base_def[stat_idx];
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].base_def[stat_idx];
 }
 
 enum type_id GetType(s16 monster_id, u8 type_idx)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].types[type_idx];
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].types[type_idx];
 }
 
 enum ability_id GetAbility(s16 monster_id, u8 ability_idx)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].abilities[ability_idx];
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].abilities[ability_idx];
 }
 
 s16 GetRecruitRate2(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].recruit_rate_2;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].recruit_rate_2;
 }
 
 s16 GetRecruitRate1(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].recruit_rate_1;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].recruit_rate_1;
 }
 
 s32 GetExp(s16 monster_id, s32 level)
 {
-    s16 exp_yield = MONSTER_DATA_TABLE_PTR->entries[monster_id].exp_yield;
+    s16 exp_yield = MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].exp_yield;
     return exp_yield + exp_yield * (level - 1) / 10;
 }
 
 void GetEvoParameters(struct monster_evolution_parameters *evo_params, s16 monster_id)
 {
-    *evo_params = MONSTER_DATA_TABLE_PTR->entries[monster_id].evolution_param;
+    *evo_params = MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].evolution_param;
 }
 
 void GetTreasureBoxChances(s16 monster_id, s16 *chances)
 {
     s16 i;
     for (i = 0; i < 4; i++)
-        chances[i] = (&MONSTER_DATA_TABLE_PTR->entries[monster_id].unk_0x3c)[i];
+        chances[i] = (&MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].unk_0x3c)[i];
 }

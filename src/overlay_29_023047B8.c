@@ -17,6 +17,7 @@
 #include "overlay_29_02311010.h"
 #include "position_util.h"
 #include "secondary_terrain_types.h"
+#include "overlay_29_02320764.h"
 
 extern struct dungeon *DUNGEON_PTR[2];
 extern const u8 ov29_02352808[4];
@@ -32,7 +33,6 @@ extern void HandleShopTransaction(s32 a);
 extern void ov29_02346888(void);
 extern void ActivateTerrainEffects(struct entity *entity);
 extern void ov29_022EF9BC(void);
-extern void EnsureCanStandCurrentTile(struct entity *entity);
 extern void EnemyEvolution(struct entity *entity);
 extern void CheckLeaderTile(void);
 extern void IsFloorOver2(void);

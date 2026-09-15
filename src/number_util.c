@@ -1,4 +1,41 @@
 #include "number_util.h"
+#include "main_020504A4.h"
+
+void ResetPlayTimer(struct unk_022AB694 *timer)
+{
+    timer->field_0x4 = 0;
+    timer->field_0x0 = 0;
+}
+
+void PlayTimerTick(struct unk_022AB694 *timer)
+{
+    if (++timer->field_0x4 < 60)
+    {
+        return;
+    }
+    timer->field_0x4 = 0;
+    if (timer->field_0x0 < 0x22550ff)
+    {
+        timer->field_0x0++;
+    }
+}
+
+s32 GetPlayTimeSeconds(struct unk_022AB694 *timer)
+{
+    return timer->field_0x0;
+}
+
+void sub_02050E5C(struct unk_022AB694 *timer, struct bitstream *stream)
+{
+    CopyBitsTo(stream, &timer->field_0x4, 6);
+    CopyBitsTo(stream, &timer->field_0x0, 0x20);
+}
+
+void sub_02050E8C(struct unk_022AB694 *timer, struct bitstream *stream)
+{
+    CopyBitsFrom(stream, &timer->field_0x4, 6);
+    CopyBitsFrom(stream, &timer->field_0x0, 0x20);
+}
 
 extern void CopyBitsTo(struct bitstream *stream, void *buf_write, s32 nbits);
 extern void CopyBitsFrom(struct bitstream *stream, void *buf_read, s32 nbits);

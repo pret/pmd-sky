@@ -112,3 +112,41 @@ s16 GetFirstEmptyMemberIdx(s16 monster_id)
     }
     return -1;
 }
+
+void sub_020559D8(s16 *idxs)
+{
+    struct ground_monster *m = TEAM_MEMBER_TABLE_PTR->members;
+    s32 i;
+    struct ground_monster *dst;
+    s32 j;
+    for (i = 0; i < 5; i++, m++) {
+        bool8 valid = (m->is_valid & 1) != 0;
+        if (valid) {
+            idxs[i] = i;
+        } else {
+            idxs[i] = -1;
+        }
+    }
+    for (; i < MAX_GROUND_TEAM_MEMBERS; i++, m++) {
+        bool8 valid = (m->is_valid & 1) != 0;
+        if (!valid) {
+            idxs[i] = -1;
+            dst = m;
+            j = i;
+            for (m++, i++; i < MAX_GROUND_TEAM_MEMBERS; i++, m++) {
+                bool8 v = (m->is_valid & 1) != 0;
+                if (v) {
+                    *dst++ = *m;
+                    idxs[i] = j++;
+                } else {
+                    idxs[i] = -1;
+                }
+            }
+            for (; j < MAX_GROUND_TEAM_MEMBERS; j++) {
+                dst++->is_valid = 0;
+            }
+            return;
+        }
+        idxs[i] = i;
+    }
+}

@@ -68,7 +68,6 @@ struct unk_020AFE74 {
 
 extern struct unk_020AFE74 *MISSION_REWARD_STRUCT_MAIN_PTR;
 
-extern void MaybeGetColoredFormattedItemName(void*, struct item*, void*);
 extern void GetNameWithGender(char *dst, s16 monster_id, char color_id);
 extern void GetNameRaw(unsigned char *, s32);
 extern void InitPreprocessorArgs(struct preprocessor_args* args);
@@ -105,7 +104,7 @@ extern void ov11_02310BDC(void);
 
 extern const u8 _0209C844[2];
 extern const u16 _0209C846[4];
-extern s32 _0209C850;
+extern struct unk_0209C850 _0209C850;
 extern WindowTemplate _0209C85C;
 extern struct unk_0202A5CC _0209C86C[];
 extern s32 _0209C884;

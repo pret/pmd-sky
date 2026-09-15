@@ -2,9 +2,7 @@
 .public CanSeeInvisibleMonsters
 .public DUNGEON_PTR
 .public DrawMinimapTile
-.public EntityIsValid__022E1A1C
 .public EntityIsValid__022E32E8
-.public GetForcedLossReason
 .public HasDropeyeStatus
 .public IsBlinded
 .public IsPositionActuallyInSight

@@ -20,6 +20,7 @@
 #include "position_util.h"
 #include "util.h"
 #include "overlay_29_0230BBAC.h"
+#include "overlay_29_02320764.h"
 
 #ifdef JAPAN
 #define MESSAGE_E45 0xB86
@@ -45,7 +46,6 @@ extern const s16 HURL_DAMAGE;
 extern void ChangeMonsterAnimation(struct entity *entity, s32 animation_id, s32 direction);
 extern void ChangeMonsterAnimationToIdle(struct entity *monster, s32 direction);
 extern void MoveMonsterToPos(struct entity *entity, s32 x_pos, s32 y_pos, bool8 reset_prev_pos_fields);
-extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
 extern bool8 TwoTurnMoveForcedMiss(struct entity *target, struct move *move);
 extern void ov29_022E9298(struct position *pos, struct unk_022E9298 *bounds, bool8 a);
 extern bool8 CannotMoveToTile(struct entity *entity, struct position *pos);

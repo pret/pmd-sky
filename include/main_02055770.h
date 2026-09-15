@@ -45,5 +45,6 @@ struct ground_monster* GetMainCharacter3(void);
 s16 sub_02055894(struct ground_monster *member);
 s16 GetFirstMatchingMemberIdx(s16 monster_id);
 s16 GetFirstEmptyMemberIdx(s16 monster_id);
+void sub_020559D8(s16 *idxs);
 
 #endif

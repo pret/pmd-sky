@@ -1653,6 +1653,17 @@ struct bulk_item
     /* 0x2 */ u16 quantity;
 };
 
+struct unk_0209C850 {
+    s32 field_0x0;
+    u8 field_0x4;
+    u8 field_0x5;
+    s16 field_0x6;
+    u8 field_0x8;
+    u8 field_0x9;
+    u8 field_0xa;
+    u8 field_0xb;
+};
+
 struct bag_items {
     // Indexes:
     // 0x0 - Main, default

@@ -2,8 +2,7 @@
 #define PMDSKY_MONSTER_DATA_TABLE_PTR_H
 
 #include "enums.h"
-
-extern struct monster_data_table *MONSTER_DATA_TABLE_PTR;
+#include <file.h>
 
 struct monster_evolution_parameters {
     s16 pre_evolution_idx;            // 0x8: The pre-evolution of the monster.
@@ -64,5 +63,19 @@ struct monster_file_contents {
     u32 nb_entries;                  // 0x4: The number of entries in the body of the table.
     struct monster_data_table table; // 0x8: The main contents of the data table.
 };
+
+struct unk_020B09B4 {
+    struct monster_data_table *field_0x0;
+#ifdef EUROPE
+    void *field_0x4;
+    struct monster_file_contents *field_0x8;
+#else
+    struct monster_file_contents *field_0x4;
+    void *field_0x8;
+#endif
+    struct iovec field_0xc;
+};
+
+extern struct unk_020B09B4 MONSTER_DATA_TABLE_PTR;
 
 #endif //PMDSKY_MONSTER_DATA_TABLE_PTR_H

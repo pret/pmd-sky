@@ -28,6 +28,7 @@
 #include "position_util.h"
 #include "overlay_29_0234B104.h"
 #include "main_02056294.h"
+#include "overlay_29_02320764.h"
 
 struct unk_0230E064 {
     s16 field_0x0;
@@ -59,7 +60,6 @@ void ov29_0234D630(void);
 void ov29_0234D838(void);
 const u8 *GetNameString(enum monster_id monster_id);
 void StrncpyName(char *dest, const char *src, u32 n);
-void EnsureCanStandCurrentTile(struct entity *entity);
 void ov29_02305F60(struct entity *user, struct entity *target);
 void ChangeMonsterAnimationToIdle(struct entity *monster, s32 direction);
 s32 ov29_0234D7C0(s32 message_id, struct preprocessor_args *args, s32 param_3,

@@ -5,7 +5,8 @@
 u32 GetBagCapacity(s32 scenario_balance);
 u32 GetBagCapacitySpecialEpisode(s32 se_type);
 struct unk_020517F4 {
-    u8 field_0x0[8];
+    u8 field_0x0[4];
+    s32 field_0x4;
     s32 field_0x8;
     s16 field_0xc;
     u8 field_0xe[2];

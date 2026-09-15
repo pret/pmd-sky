@@ -4,6 +4,16 @@
 #include "util.h"
 #include "save.h"
 
+struct unk_022AB694 {
+    u32 field_0x0;
+    u8 field_0x4;
+};
+
+void ResetPlayTimer(struct unk_022AB694 *timer);
+void PlayTimerTick(struct unk_022AB694 *timer);
+s32 GetPlayTimeSeconds(struct unk_022AB694 *timer);
+void sub_02050E5C(struct unk_022AB694 *timer, struct bitstream *stream);
+void sub_02050E8C(struct unk_022AB694 *timer, struct bitstream *stream);
 struct fixed_point sub_02050EBC(struct fixed_point a, struct fixed_point b);
 struct fixed_point SubFixedPoint(struct fixed_point a, struct fixed_point b);
 struct fixed_point sub_02050F78(struct fixed_point a, struct fixed_point b);

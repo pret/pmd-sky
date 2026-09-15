@@ -18,6 +18,7 @@
 #include "overlay_29_0230F8AC.h"
 #include "dungeon_logic_4.h"
 #include "overlay_29_0230BBAC.h"
+#include "overlay_29_02320764.h"
 
 #ifdef JAPAN
 #define MESSAGE_BE6 0x925
@@ -42,7 +43,6 @@
 #endif
 
 extern void TryIncreaseHp(struct entity *user, struct entity *target, s32 hp, s32 a, bool8 b);
-extern void TryWarp(struct entity *user, struct entity *target, s32 a, s32 b);
 extern void BoostIQ(struct entity *entity, s16 iq, bool8 a);
 extern void TryInflictInvisibleStatus(struct entity *user, struct entity *target);
 extern void TryInflictPetrifiedStatus(struct entity *user, struct entity *target);
