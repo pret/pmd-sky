@@ -588,7 +588,7 @@
                                              44](sub_02026184,func) found in global main_02026174.o
                                             43](sub_0202F16C,func) found in global main_0202D0EC.o
                                              44](sub_02026174,func) found in global main_02026174.o
-                                             44](sub_0202614C,func) found in global main_0202614C.o
+                                             44](sub_0202614C,func) found in global main_0202613C.o
                                              44](GetCurrentPage,func) found in global main_02032558.o
                                              44](IsEmptyString,func) found in global main_0202A66C.o
                                             43](IsDialogueBoxActive,func) found in global main_0202F180.o
@@ -626,7 +626,7 @@
                                               45](sub_0203C784,func) found in global main_0203C774.o
                                               45](GetEvolutionPossibilities,func) found in global main_02059B18.o
                                                46](JoinedAtRangeCheck2,func) found in global main_02051760.o
-                                               46](GetEvoParameters,func) found in global main_02052A7C.o
+                                               46](GetEvoParameters,func) found in global main_0205283C.o
                                                46](CanEvolve,func) found in global main_0205283C.o
                                               45](GetPartnerMemberIdx,func) found in global main_0205567C.o
                                               45](GetHeroMemberIdx,func) found in global main_0205567C.o
@@ -1358,6 +1358,7 @@
                                                                                                                               125](DungeonRngSetSecondary,func) found in global overlay_29_022EAC34.o
                                                                                                                               125](InitMoveCheckId,func) found in global moves_1.o
                                                                                                                               125](GetMonsterMoves,func) found in global overlay_29_02302A5C.o
+                                                                                                                              125](GetExp,func) found in global main_0205283C.o
                                                                                                                               125](IsCurrentMissionType,func) found in global overlay_29_02349208.o
                                                                                                                               125](IsDestinationFloorWithMonster,func) found in global overlay_29_02349314.o
                                                                                                                                126](FloorHasMissionMonster,func) found in global overlay_29_023496EC.o
@@ -1435,6 +1436,7 @@
                                                                                                                                126](IncrementEntityPixelPosXY,func) found in global dg_object.o
                                                                                                                                126](SetEntityPixelPosXY,func) found in global dg_object.o
                                                                                                                                126](ov10_022C48EC,notype) found in global overlay_10_rodata_022C48E4.o
+                                                                                                                               126](GetTreasureBoxChances,func) found in global main_0205283C.o
                                                                                                                                126](IsMarowakTrainingMaze,func) found in global run_dungeon_1.o
                                                                                                                                126](ov29_022FB51C,func) found in global overlay_29_022FACBC.o
                                                                                                                                126](DungeonRandOutcome__022EAB20,func) found in global dg_random.o
@@ -1548,7 +1550,7 @@
                                                                                                                                            138](IsMoveRangeStringUser,func) found in global moves_3.o
                                                                                                                                            138](ExclusiveItemEffectIsActive__0231A87C,func) found in global overlay_29_0231A87C.o
                                                                                                                                           137](GetCheckDirectionOption,func) found in global options.o
-                                                                                                                                          137](ResetTriggerFlags,func) found in global overlay_29_022FBA70.o
+                                                                                                                                          137](ResetTriggerFlags,func) found in global overlay_29_022FBA54.o
                                                                                                                                           137](CanBeTalkedTo,func) found in global overlay_29_023009A0.o
                                                                                                                                            138](IsChargingAnyTwoTurnMove,func) found in global dungeon_move.o
                                                                                                                                             139](TWO_TURN_STATUSES,object) found in global dungeon_move.o
@@ -1896,6 +1898,7 @@
                                                                                                                               125](TestItemAiFlag,func) found in global item_util_1.o
                                                                                                                               125](DisplayThrownItemShadow,func) found in global overlay_29_022E9488.o
                                                                                                                               125](sub_0200D894,func) found in global main_0200D81C.o
+                                                                                                                              125](IsSpecialStoryAllyOrClient,func) found in global overlay_29_022FBA54.o
                                                                                                                              124](GetChanceAsleep,func) found in global main_0205283C.o
                                                                                                                              124](SetTargetMonsterNotFoundFlag,func) found in global overlay_29_023496D8.o
                                                                                                                              124](FindClosestUnoccupiedTileWithin2,func) found in global overlay_29_022E99F0.o
@@ -2123,7 +2126,8 @@
                                                                                                                    114](IsOnMonsterSpawnList,func) found in global spawn_2.o
                                                                                                                    114](ov29_022EAC9C,func) found in global overlay_29_022EAC7C.o
                                                                                                                    114](ov29_022E6724,func) found in global overlay_29_022E66C4.o
-                                                                                                                   114](GetMovesetLevelUpPtr,func) found in global main_02013884.o
+                                                                                                                   114](GetMovesetLevelUpPtr,func) found in global moves_2.o
+                                                                                                                    115](IsInvalidMoveset,func) found in global moves_2.o
                                                                                                                    114](EntityIsValid__02302A38,func) found in global overlay_29_02302A38.o
                                                                                                                    114](PlayLevelUpSound,func) found in global overlay_29_022EAC7C.o
                                                                                                                    114](IsSpecialEpisodeDungeon,func) found in global main_020514CC.o
@@ -2164,8 +2168,9 @@
                                                                                                      100](ov29_022E4718,func) found in global overlay_29_022E4704.o
                                                                                                      100](ov29_022E4714,func) found in global overlay_29_022E4704.o
                                                                                                      100](PlayInvisifySeIfShouldDisplayEntity,func) found in global overlay_29_022E4704.o
-                                                                                                     100](DisplayStockpileNumbers,func) found in global overlay_29_022E46D0.o
+                                                                                                     100](DisplayStockpileNumbers,func) found in global overlay_29_022E46C0.o
                                                                                                      100](ov29_022E442C,func) found in global overlay_29_022E4338.o
+                                                                                                     100](ov29_022E46D0,func) found in global overlay_29_022E46C0.o
                                                                                                      100](ov29_022E46C0,func) found in global overlay_29_022E46C0.o
                                                                                                      100](ov29_022E45B8,func) found in global overlay_29_022E45B8.o
                                                                                                      100](ov29_022E456C,func) found in global overlay_29_022E4338.o
@@ -2856,6 +2861,8 @@
             11](MI_DmaCopy16Async,func) found in global mi_dma.o
          8](sub_02051FF0,func) found in global main_02051FF0.o
         7](sub_02015090,func) found in global main_02015090.o
+        7](GetMovesetHmTmPtr,func) found in global moves_2.o
+        7](GetMovesetEggPtr,func) found in global moves_2.o
         7](GetNbMoves,func) found in global moves_3.o
       5](FSi_CloseFileCommand,func) found in global fs_command_default_1.o
       5](FSi_OpenFileDirectCommand,func) found in global fs_command_default_1.o
@@ -4690,19 +4697,18 @@
   02013864 00000000 .text   $a	(moves_2.o)
   02013864 00000020 .text   GetMoveType	(moves_2.o)
   02013880 00000000 .text   $d	(moves_2.o)
-  02013884 00000048 .text   GetMovesetLevelUpPtr	(main_02013884.o)
-  02013884 00000000 .text   $a	(main_02013884.o)
-  02013884 00000108 .text   .text	(main_02013884.o)
-  020138C4 00000000 .text   $d	(main_02013884.o)
-  020138CC 00000000 .text   $a	(main_02013884.o)
-  020138CC 00000028 .text   IsInvalidMoveset	(main_02013884.o)
-  020138F0 00000000 .text   $d	(main_02013884.o)
-  020138F4 0000004C .text   GetMovesetHmTmPtr	(main_02013884.o)
-  020138F4 00000000 .text   $a	(main_02013884.o)
-  02013938 00000000 .text   $d	(main_02013884.o)
-  02013940 00000000 .text   $a	(main_02013884.o)
-  02013940 0000004C .text   GetMovesetEggPtr	(main_02013884.o)
-  02013984 00000000 .text   $d	(main_02013884.o)
+  02013884 00000000 .text   $a	(moves_2.o)
+  02013884 00000048 .text   GetMovesetLevelUpPtr	(moves_2.o)
+  020138C4 00000000 .text   $d	(moves_2.o)
+  020138CC 00000000 .text   $a	(moves_2.o)
+  020138CC 00000028 .text   IsInvalidMoveset	(moves_2.o)
+  020138F0 00000000 .text   $d	(moves_2.o)
+  020138F4 00000000 .text   $a	(moves_2.o)
+  020138F4 0000004C .text   GetMovesetHmTmPtr	(moves_2.o)
+  02013938 00000000 .text   $d	(moves_2.o)
+  02013940 00000000 .text   $a	(moves_2.o)
+  02013940 0000004C .text   GetMovesetEggPtr	(moves_2.o)
+  02013984 00000000 .text   $d	(moves_2.o)
   0201398C 00000000 .text   $a	(main_0201398C.o)
   0201398C 00000020 .text   GetMoveAiWeight	(main_0201398C.o)
   020139A8 00000000 .text   $d	(main_0201398C.o)
@@ -5983,9 +5989,8 @@
   0202613C 00000000 .text   $a	(main_0202613C.o)
   0202613C 00000010 .text   sub_0202613C	(main_0202613C.o)
   02026148 00000000 .text   $d	(main_0202613C.o)
-  0202614C 00000028 .text   .text	(main_0202614C.o)
-  0202614C 00000028 .text   sub_0202614C	(main_0202614C.o)
-  0202614C 00000000 .text   $a	(main_0202614C.o)
+  0202614C 00000028 .text   sub_0202614C	(main_0202613C.o)
+  0202614C 00000000 .text   $a	(main_0202613C.o)
   02026174 00000000 .text   $a	(main_02026174.o)
   02026174 00000010 .text   sub_02026174	(main_02026174.o)
   02026180 00000000 .text   $d	(main_02026174.o)
@@ -7973,7 +7978,6 @@
   02048C4C 00000010 .text   sub_02048C4C	(main_02048BB4.o)
   02048C58 00000000 .text   $d	(main_02048BB4.o)
   02048C5C 00000000 .text   $a	(main_02048C5C.o)
-  02048C5C 0000005C .text   .text	(main_02048C5C.o)
   02048C5C 0000005C .text   sub_02048C5C	(main_02048C5C.o)
   02048CA4 00000000 .text   $d	(main_02048C5C.o)
   02048CB8 00000000 .text   $a	(main_02048CB8.o)
@@ -9023,16 +9027,15 @@
   02052A60 00000000 .text   $a	(main_0205283C.o)
   02052A60 0000001C .text   GetRecruitRate1	(main_0205283C.o)
   02052A78 00000000 .text   $d	(main_0205283C.o)
-  02052A7C 000000AC .text   .text	(main_02052A7C.o)
-  02052A7C 00000000 .text   $a	(main_02052A7C.o)
-  02052A7C 00000034 .text   GetExp	(main_02052A7C.o)
-  02052AAC 00000000 .text   $d	(main_02052A7C.o)
-  02052AB0 00000000 .text   $a	(main_02052A7C.o)
-  02052AB0 00000030 .text   GetEvoParameters	(main_02052A7C.o)
-  02052ADC 00000000 .text   $d	(main_02052A7C.o)
-  02052AE0 00000048 .text   GetTreasureBoxChances	(main_02052A7C.o)
-  02052AE0 00000000 .text   $a	(main_02052A7C.o)
-  02052B24 00000000 .text   $d	(main_02052A7C.o)
+  02052A7C 00000000 .text   $a	(main_0205283C.o)
+  02052A7C 00000034 .text   GetExp	(main_0205283C.o)
+  02052AAC 00000000 .text   $d	(main_0205283C.o)
+  02052AB0 00000000 .text   $a	(main_0205283C.o)
+  02052AB0 00000030 .text   GetEvoParameters	(main_0205283C.o)
+  02052ADC 00000000 .text   $d	(main_0205283C.o)
+  02052AE0 00000000 .text   $a	(main_0205283C.o)
+  02052AE0 00000048 .text   GetTreasureBoxChances	(main_0205283C.o)
+  02052B24 00000000 .text   $d	(main_0205283C.o)
   02052B28 00000000 .text   $a	(main_02052B28.o)
   02052B28 0000001C .text   GetIqGroup	(main_02052B28.o)
   02052B40 00000000 .text   $d	(main_02052B28.o)
@@ -37148,10 +37151,10 @@
   022E46C0 00000000 .text   $a	(overlay_29_022E46C0.o)
   022E46C0 00000010 .text   ov29_022E46C0	(overlay_29_022E46C0.o)
   022E46CC 00000000 .text   $d	(overlay_29_022E46C0.o)
-  022E46D0 00000000 .text   $a	(overlay_29_022E46D0.o)
-  022E46D0 00000004 .text   ov29_022E46D0	(overlay_29_022E46D0.o)
-  022E46D0 00000034 .text   .text	(overlay_29_022E46D0.o)
-  022E46D4 00000030 .text   DisplayStockpileNumbers	(overlay_29_022E46D0.o)
+  022E46D0 00000004 .text   ov29_022E46D0	(overlay_29_022E46C0.o)
+  022E46D0 00000000 .text   $a	(overlay_29_022E46C0.o)
+  022E46D4 00000030 .text   DisplayStockpileNumbers	(overlay_29_022E46C0.o)
+  022E46D4 00000000 .text   $a	(overlay_29_022E46C0.o)
   022E4704 00000000 .text   $a	(overlay_29_022E4704.o)
   022E4704 00000010 .text   PlayInvisifySeIfShouldDisplayEntity	(overlay_29_022E4704.o)
   022E4710 00000000 .text   $d	(overlay_29_022E4704.o)
@@ -38554,10 +38557,10 @@
   022FB9E0 00000000 .text   $a	(overlay_29_022FBA54.o)
   022FBA54 0000001C .text   DoesMonsterHaveMove	(overlay_29_022FBA54.o)
   022FBA54 00000000 .text   $a	(overlay_29_022FBA54.o)
-  022FBA70 00000000 .text   $a	(overlay_29_022FBA70.o)
-  022FBA70 00000044 .text   IsSpecialStoryAllyOrClient	(overlay_29_022FBA70.o)
-  022FBA70 00000060 .text   .text	(overlay_29_022FBA70.o)
-  022FBAB4 0000001C .text   ResetTriggerFlags	(overlay_29_022FBA70.o)
+  022FBA70 00000044 .text   IsSpecialStoryAllyOrClient	(overlay_29_022FBA54.o)
+  022FBA70 00000000 .text   $a	(overlay_29_022FBA54.o)
+  022FBAB4 0000001C .text   ResetTriggerFlags	(overlay_29_022FBA54.o)
+  022FBAB4 00000000 .text   $a	(overlay_29_022FBA54.o)
   022FBAD0 00000020 .text   IsSpecialStoryAlly	(joined_at_checks.o)
   022FBAD0 00000000 .text   $a	(joined_at_checks.o)
   022FBAF0 0000002C .text   IsExperienceLocked	(joined_at_checks.o)
@@ -43753,5 +43756,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Sep 10 23:33:28 2026
-# Link end time: Thu Sep 10 23:33:29 2026
+# Link start time: Wed Sep 16 21:56:43 2026
+# Link end time: Wed Sep 16 21:56:45 2026
