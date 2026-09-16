@@ -67,7 +67,7 @@ typedef struct {
     u16 unk1C;
     u16 padding_1E;
     u32 unk20;
-    u32 unk24;
+    void *unk24;
     u16 padding_28;
     u16 unk2A;
     u8 unk2C;
@@ -118,6 +118,11 @@ struct unk_022A7A6C {
     u8 field_0x0[8];
     u16 field_0x8;
     u16 field_0xA;
+    u8 field_0xC[0x3C];
+    u16 field_0x48;
+    u8 field_0x4A[0xA];
+    u32 field_0x54;
+    s16 field_0x58;
 };
 
 extern struct unk_022A7A6C _022A7A6C;

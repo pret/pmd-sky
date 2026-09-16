@@ -1640,10 +1640,7 @@ struct dungeon {
     u8 field_0x2cb09;
     u8 field_0x2cb0a;
     u8 field_0x2cb0b;
-    u8 field_0x2cb0c;
-    u8 field_0x2cb0d;
-    u8 field_0x2cb0e;
-    u8 field_0x2cb0f;
+    u32 field_0x2cb0c;
     // 0x2CB10: Somehow related to display_data::hallucinating and seems to maybe control
     // the sleeping animations when the camera is pointed away from a hallucinating monster?
     // Initialized to 0x1.

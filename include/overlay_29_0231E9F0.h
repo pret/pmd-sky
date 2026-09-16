@@ -11,5 +11,6 @@ s16 GetMaxPpWrapper(struct move *move);
 void InitMoveWrapper(struct entity *entity, struct move *move, enum move_id move_id);
 int MoveIsNotPhysical(enum move_id move_id);
 bool8 CategoryIsNotPhysical(s32 category);
+void MakeFloorOneRoom(struct entity *user, struct entity *target);
 
 #endif //PMDSKY_OVERLAY_29_0231E9F0_H

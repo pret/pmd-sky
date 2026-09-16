@@ -1,9 +1,0 @@
-#pragma once
-.public GetLvlUpEntry
-.public GetNameString
-.public StrcpyName
-.public StrncmpSimple
-.public StrncpyName
-.public sub_02025304_JP
-.public sub_02055CCC
-.public sub_02055D7C

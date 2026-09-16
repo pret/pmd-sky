@@ -3,6 +3,13 @@
 
 #include "dungeon_mode.h"
 
+struct unk_022E9298 {
+    s32 field_0x0;
+    s32 field_0x4;
+    s32 field_0x8;
+    s32 field_0xc;
+};
+
 // Checks if a given target position is in sight from a given origin position.
 // If the origin position is on a hallway or r2 is true, checks if both positions are within <dungeon::display_data::visibility_range> tiles of each other.
 // If the origin position is on a room, checks that the target position is within the boundaries of said room.
@@ -14,5 +21,6 @@ bool8 IsPositionActuallyInSight(struct position *origin, struct position *target
 // Checks if a given target position is in sight from a given origin position.
 // There's multiple factors that affect this check, but generally, it's true if both positions are in the same room (by checking if the target position is within the boundaries of the room where the origin position is) or within 2 tiles of each other.
 bool8 IsPositionInSight(struct position *origin, struct position *target, bool8 user_has_dropeye);
+void ov29_022E9298(struct position *pos, struct unk_022E9298 *bounds, bool8 a);
 
 #endif //PMDSKY_DUNGEON_RANGE_H

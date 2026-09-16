@@ -10,5 +10,6 @@ u8 FindDirectionOfAdjacentMonsterWithItem(struct entity *entity, enum item_id it
 bool8 IsMonster__0230F980(struct entity *entity);
 void ov29_0230F9A4(struct entity *entity, struct item *item);
 void TrySpawnEnemyItemDrop(struct entity *attacker, struct entity *defender);
+void ov29_0230FB30(struct entity *entity);
 
 #endif //PMDSKY_OVERLAY_29_0230F8AC_H

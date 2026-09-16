@@ -11,6 +11,18 @@
 #include "dungeon_recruitment_2.h"
 #include "overlay_29_02344BE4.h"
 #include "overlay_29_02345A3C.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_02344B9C.h"
+#include "overlay_29_0234B104.h"
+
+#ifdef JAPAN
+#define MESSAGE_F62 0x9B6
+#else
+#define MESSAGE_F62 0xF62
+#endif
+
+extern const struct unk_023529A8 ov29_023529A8;
+extern s32 ov29_02347184(const s16 *item_ids);
 
 extern struct dungeon *DUNGEON_PTR;
 extern const s16 ov10_022C4650;
@@ -99,4 +111,26 @@ void TrySpawnEnemyItemDrop(struct entity *attacker, struct entity *defender)
             SpawnDroppedItemWrapper(defender, &defender->pos, &item, 1);
         }
     }
+}
+
+struct unk_023529A8 {
+    s16 field_0x0[2];
+};
+
+
+
+void ov29_0230FB30(struct entity *entity)
+{
+    struct unk_023529A8 item_ids;
+    s32 item_id;
+
+    item_ids = ov29_023529A8;
+
+    item_id = ov29_02347184(item_ids.field_0x0);
+    if (item_id == 0)
+        return;
+
+    SubstitutePlaceholderStringTags(0, entity, 0);
+    ov29_02344B9C(0, item_id);
+    LogMessageByIdWithPopupCheckUser(entity, MESSAGE_F62);
 }

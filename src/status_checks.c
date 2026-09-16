@@ -1,11 +1,13 @@
 #include "status_checks.h"
 #include "dg_random.h"
 #include "dungeon_action.h"
+#include "dungeon_move.h"
 #include "dungeon_ai_itcm.h"
 #include "dungeon_capabilities_3.h"
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 #include "dungeon_util_2.h"
+#include "overlay_29_022EBC50.h"
 #include "overlay_29_0234B104.h"
 
 #ifdef JAPAN
@@ -20,7 +22,10 @@
 #define PAUSED_MESSAGE (0xC2B + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET)
 #define INFATUATED_MESSAGE (0xC2C + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET)
 #define BIDE_MESSAGE (0xC2D + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET)
+#define ASLEEP_MESSAGE (0xC2E + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET)
+#define CONFUSED_MESSAGE (0xC2F + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET)
 
+extern void EndTwoTurnMove(struct entity *entity);
 
 bool8 HasStatusThatPreventsActing(struct entity *monster)
 {
@@ -104,6 +109,101 @@ bool8 HasStatusThatPreventsActing(struct entity *monster)
         SetActionPassTurnOrWalk(&pokemon_info->action, pokemon_info->id);
         pokemon_info->action.direction = DungeonRandInt(NUM_DIRECTIONS);
         return TRUE;
+    }
+
+    return FALSE;
+}
+
+bool8 HasStatusThatPreventsLeaderActing(struct entity *monster)
+{
+    struct monster *pokemon_info = GetEntInfo(monster);
+    struct move *move;
+    bool8 confused = FALSE;
+    s32 i;
+
+    SubstitutePlaceholderStringTags(0, monster, 0);
+    SetMonsterActionFields(&pokemon_info->action, ACTION_PASS_TURN);
+
+    switch (pokemon_info->sleep_class_status.sleep)
+    {
+        case STATUS_SLEEP_SLEEP:
+        case STATUS_SLEEP_NIGHTMARE:
+        case STATUS_SLEEP_NAPPING:
+            LogMessageByIdWithPopupCheckUser(monster, ASLEEP_MESSAGE);
+            return TRUE;
+    }
+
+    switch (pokemon_info->frozen_class_status.freeze)
+    {
+        case STATUS_FROZEN_FROZEN:
+            LogMessageByIdWithPopupCheckUser(monster, FROZEN_MESSAGE);
+            return TRUE;
+        case STATUS_FROZEN_WRAP:
+            LogMessageByIdWithPopupCheckUser(monster, WRAPPED_AROUND_MESSAGE);
+            return TRUE;
+        case STATUS_FROZEN_WRAPPED:
+            LogMessageByIdWithPopupCheckUser(monster, WRAPPED_BY_MESSAGE);
+            return TRUE;
+        case STATUS_FROZEN_PETRIFIED:
+            return TRUE;
+    }
+
+    switch (pokemon_info->cringe_class_status.cringe)
+    {
+        case STATUS_CRINGE_CONFUSED:
+            confused = TRUE;
+            break;
+        case STATUS_CRINGE_PAUSED:
+            LogMessageByIdWithPopupCheckUser(monster, PAUSED_MESSAGE);
+            return TRUE;
+        case STATUS_CRINGE_INFATUATED:
+            LogMessageByIdWithPopupCheckUser(monster, INFATUATED_MESSAGE);
+            return TRUE;
+        case 8:
+            break;
+    }
+
+    if (pokemon_info->bide_class_status.bide == STATUS_TWO_TURN_BIDE)
+    {
+        LogMessageByIdWithPopupCheckUser(monster, BIDE_MESSAGE);
+        return TRUE;
+    }
+
+    if (pokemon_info->bide_class_status.bide != STATUS_TWO_TURN_NONE &&
+        pokemon_info->bide_class_status.bide != STATUS_TWO_TURN_CHARGING &&
+        pokemon_info->bide_class_status.bide != STATUS_TWO_TURN_ENRAGED)
+    {
+        if (confused)
+        {
+            LogMessageByIdWithPopupCheckUser(monster, CONFUSED_MESSAGE);
+        }
+        else
+        {
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {
+                move = &pokemon_info->moves.moves[i];
+                if (MoveExists(move) &&
+                    IsChargingTwoTurnMove(monster, move) &&
+                    pokemon_info->bide_class_status.bide_move_slot == i)
+                {
+                    while (i > 0)
+                    {
+                        if (!(pokemon_info->moves.moves[i].flags0 &
+                              MOVE_FLAG_SUBSEQUENT_IN_LINK_CHAIN))
+                        {
+                            break;
+                        }
+                        i--;
+                    }
+                    SetActionUseMovePlayer(&pokemon_info->action,
+                                           pokemon_info->action.action_parameters[0].action_use_idx,
+                                           i);
+                    return TRUE;
+                }
+            }
+        }
+
+        EndTwoTurnMove(monster);
     }
 
     return FALSE;
