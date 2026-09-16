@@ -6,5 +6,7 @@
 #include "move.h"
 
 void ov29_022E46C0(struct entity *entity);
+void ov29_022E46D0(struct entity *entity);
+void DisplayStockpileNumbers(struct entity *entity);
 
 #endif

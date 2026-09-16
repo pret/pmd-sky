@@ -5,5 +5,7 @@
 
 s16 FindMoveOnMonster(struct entity* entity, enum move_id move_id);
 bool8 DoesMonsterHaveMove(struct entity* entity, enum move_id move_id);
+bool8 IsSpecialStoryAllyOrClient(struct entity *entity);
+void ResetTriggerFlags(struct entity *entity);
 
 #endif //PMDSKY_OVERLAY_29_022FBA54_H

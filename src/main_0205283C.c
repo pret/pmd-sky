@@ -90,3 +90,21 @@ s16 GetRecruitRate1(s16 monster_id)
 {
     return MONSTER_DATA_TABLE_PTR->entries[monster_id].recruit_rate_1;
 }
+
+s32 GetExp(s16 monster_id, s32 level)
+{
+    s16 exp_yield = MONSTER_DATA_TABLE_PTR->entries[monster_id].exp_yield;
+    return exp_yield + exp_yield * (level - 1) / 10;
+}
+
+void GetEvoParameters(struct monster_evolution_parameters *evo_params, s16 monster_id)
+{
+    *evo_params = MONSTER_DATA_TABLE_PTR->entries[monster_id].evolution_param;
+}
+
+void GetTreasureBoxChances(s16 monster_id, s16 *chances)
+{
+    s16 i;
+    for (i = 0; i < 4; i++)
+        chances[i] = (&MONSTER_DATA_TABLE_PTR->entries[monster_id].unk_0x3c)[i];
+}
