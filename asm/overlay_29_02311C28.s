@@ -537,7 +537,7 @@ _02312260:
 	add r1, r0, #1
 	mov r0, r4
 	strb r1, [r6, #0xd1]
-	bl ov29_022E4C00
+	bl PlayAttractHitEffect
 	ldr r2, _02312330 ; =0x00000D1A
 	mov r0, r5
 	mov r1, r4

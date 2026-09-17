@@ -26,8 +26,8 @@ ov29_022E4BB4: ; 0x022E4BB4
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4BB4
 
-	arm_func_start ov29_022E4C00
-ov29_022E4C00: ; 0x022E4C00
+	arm_func_start PlayAttractHitEffect
+PlayAttractHitEffect: ; 0x022E4C00
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -47,7 +47,7 @@ ov29_022E4C00: ; 0x022E4C00
 	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022E4C00
+	arm_func_end PlayAttractHitEffect
 
 	arm_func_start ov29_022E4C4C
 ov29_022E4C4C: ; 0x022E4C4C

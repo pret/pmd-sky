@@ -790,7 +790,7 @@ _0205351C:
 AddUniqueStarterMoveTo: ; 0x02053568
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	ldr r4, _0205361C ; =_020A3258
+	ldr r4, _0205361C ; =STARTER_MOVES_ARRAY
 	b _0205358C
 _02053578:
 	ldrsh r1, [r5, #4]
@@ -838,7 +838,7 @@ _02053604:
 	bl GetInfoMoveGround
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0205361C: .word _020A3258
+_0205361C: .word STARTER_MOVES_ARRAY
 _02053620: .word 0x0000013B
 _02053624: .word _020A32D4
 	arm_func_end AddUniqueStarterMoveTo

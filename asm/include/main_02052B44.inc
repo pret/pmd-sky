@@ -6,7 +6,6 @@
 .public _020A3210
 .public _020A322C
 .public _020A3248
-.public _020A3258
 .public _020A327C
 .public _020A328C
 .public _020A32D4
@@ -67,6 +66,7 @@
 .public RemoveActiveMembersFromRescueTeam
 .public RemoveActiveMembersFromSpecialEpisodeTeam
 .public SprintfStatic__02052418
+.public STARTER_MOVES_ARRAY
 .public StrcpyName
 .public StrncmpSimple
 .public StrncpyName
