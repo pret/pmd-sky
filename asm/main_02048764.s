@@ -94,7 +94,7 @@ _02048828:
 	mov r2, #0
 	bl ApplyLevelUpBoostsToGroundMonster
 	mov r0, r4
-	bl sub_02053568
+	bl AddUniqueStarterMoveTo
 	mov r4, #1
 _02048898:
 	bl GetPartnerMemberIdx
@@ -123,7 +123,7 @@ _02048898:
 	mov r2, #0
 	bl ApplyLevelUpBoostsToGroundMonster
 	mov r0, r4
-	bl sub_02053568
+	bl AddUniqueStarterMoveTo
 	mov r4, #1
 _02048908:
 	cmp r4, #0

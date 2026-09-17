@@ -37,11 +37,11 @@
 .public ov29_022E4B8C
 .public ov29_022E4BA0
 .public ov29_022E4BB4
-.public ov29_022E4C00
 .public ov29_022E4C4C
 .public ov29_022E4D24
 .public ov29_022E53EC
 .public PETRIFIED_TURN_RANGE
+.public PlayAttractHitEffect
 .public PLAYER_PETRIFIED_TURN_RANGE
 .public POISONED_TURN_RANGE
 .public SafeguardIsActive

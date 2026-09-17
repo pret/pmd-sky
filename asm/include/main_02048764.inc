@@ -5,6 +5,7 @@
 .public _020A28A8
 .public _020AFF00
 .public _020AFF14
+.public AddUniqueStarterMoveTo
 .public ApplyLevelUpBoostsToGroundMonster
 .public DEFAULT_HERO_ID
 .public EnableAllLearnableIqSkills
@@ -32,5 +33,4 @@
 .public sub_02048C0C
 .public sub_02048C3C
 .public sub_02048C4C
-.public sub_02053568
 .public sub_02055B78
