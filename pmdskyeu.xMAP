@@ -9113,7 +9113,7 @@
   02053830 00000000 .text   $d	(main_02052B44.o)
   02053838 00000000 .text   $a	(main_02052B44.o)
   02053838 000000AC .text   sub_020534BC	(main_02052B44.o)
-  020538E4 000000C0 .text   sub_02053568	(main_02052B44.o)
+  020538E4 000000C0 .text   AddUniqueStarterMoveTo	(main_02052B44.o)
   02053998 00000000 .text   $d	(main_02052B44.o)
   020539A4 00000000 .text   $a	(main_02052B44.o)
   020539A4 00000024 .text   sub_02053628	(main_02052B44.o)
@@ -14351,7 +14351,7 @@
   020A3824 00000000 .rodata _020A3200	(main_rodata_020A2808.o)
   020A3834 00000000 .rodata _020A3210	(main_rodata_020A2808.o)
   020A3848 00000000 .rodata _020A3248	(main_rodata_020A2808.o)
-  020A3858 00000000 .rodata _020A3258	(main_rodata_020A2808.o)
+  020A3858 00000000 .rodata STARTER_MOVES_ARRAY	(main_rodata_020A2808.o)
   020A387C 00000000 .rodata _020A327C	(main_rodata_020A2808.o)
   020A388C 00000000 .rodata _020A328C	(main_rodata_020A2808.o)
   020A38D4 00000000 .rodata _020A32D4	(main_rodata_020A2808.o)
@@ -37254,7 +37254,7 @@
   022E5564 0000004C .text   ov29_022E4BB4	(overlay_29_022E4BB4.o)
   022E5564 00000A88 .text   .text	(overlay_29_022E4BB4.o)
   022E5564 00000000 .text   $a	(overlay_29_022E4BB4.o)
-  022E55B0 0000004C .text   ov29_022E4C00	(overlay_29_022E4BB4.o)
+  022E55B0 0000004C .text   PlayAttractHitEffect	(overlay_29_022E4BB4.o)
   022E55FC 00000038 .text   ov29_022E4C4C	(overlay_29_022E4BB4.o)
   022E5634 00000050 .text   ov29_022E4C84	(overlay_29_022E4BB4.o)
   022E5680 00000000 .text   $d	(overlay_29_022E4BB4.o)
@@ -43792,5 +43792,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Sep 16 22:00:11 2026
-# Link end time: Wed Sep 16 22:00:12 2026
+# Link start time: Thu Sep 17 23:53:50 2026
+# Link end time: Thu Sep 17 23:53:51 2026
