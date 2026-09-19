@@ -3,8 +3,9 @@
 
 #include "item.h"
 
-struct item *GetFirstUnequippedItemOfType(s16 type);
-u32 RemoveItemNoHoleCheck(struct item *item);
+u32 RemoveItemNoHoleCheck(s16 index);
+s16 GetFirstUnequippedItemOfType(s16 type);
+u32 RemoveItemNoHoleCheck(s16 index);
 
 u32 RemoveFirstUnequippedItemOfType(s16 type);
 

@@ -39,5 +39,13 @@ bool8 ExclusiveItemEffectIsActive__023147EC(struct entity *entity, enum exclusiv
 void BoostSpeed(struct entity *user, struct entity *target, s32 n_stages, s32 turns, bool8 log_failure);
 void BoostSpeedOneStage(struct entity *user, struct entity *target, s32 turns, bool8 log_failure);
 void LowerSpeed(struct entity *user, struct entity *target, s32 n_stages, bool8 log_failure);
+bool8 TrySealMove(struct entity *user, struct entity *target, bool8 check_only);
+bool8 BoostOrLowerSpeed(struct entity *user, struct entity *target);
+void ResetHitChanceStat(struct entity *user, struct entity *target, s32 stat_idx, s32 play_effect_anyway);
+bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id);
+void LogMessageWithTargetAndExclusiveItemName(struct entity *user, struct entity *target, s32 message_id, enum exclusive_item_effect_id effect_id);
+bool8 TryActivateQuickFeet(struct entity *user, struct entity *target);
+void TryInflictTerrifiedStatus(struct entity *user, struct entity *target);
+bool8 TryInflictGrudgeStatus(struct entity *user, struct entity *target, bool8 log_message);
 
 #endif //PMDSKY_MOVE_ORB_EFFECTS_H

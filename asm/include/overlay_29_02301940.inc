@@ -1,5 +1,0 @@
-#pragma once
-.public DefenderAbilityIsActive__02301A0C
-.public GetApparentWeather
-.public LogMessageByIdWithPopupCheckUserTarget
-.public SubstitutePlaceholderStringTags

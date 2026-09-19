@@ -3,12 +3,12 @@
 
 u8 GetMonsterGender(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].gender;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].gender;
 }
 
 u8 GetBodySize(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].body_size;
+    return MONSTER_DATA_TABLE_PTR.field_0x0->entries[monster_id].body_size;
 }
 
 u8 GetSpriteSize(s16 monster_id)

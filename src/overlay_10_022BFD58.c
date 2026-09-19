@@ -1,8 +1,8 @@
 #include "overlay_10_022BFD58.h"
+#include "main_02001188.h"
 
 extern struct unk_022DC1C4 *ov10_022DC1C4;
 
-extern void *MemAlloc(u32 size, u32 flags);
 
 extern void MemZero(void *p, s32 n);
 

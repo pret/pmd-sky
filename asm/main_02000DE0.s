@@ -283,14 +283,3 @@ _02001148:
 _02001168: .word _02090B40
 _0200116C: .word _02090BA0
 	arm_func_end SplitMemBlock
-
-	arm_func_start MemAlloc
-MemAlloc: ; 0x02001170
-	ldr ip, _02001184 ; =MemLocateSet
-	mov r2, r1
-	mov r1, r0
-	mov r0, #0
-	bx ip
-	.align 2, 0
-_02001184: .word MemLocateSet
-	arm_func_end MemAlloc

@@ -3,6 +3,7 @@
 
 #include "dungeon_mode.h"
 
+void ov29_022ECD84(struct entity *entity);
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValid__022ECDC0(struct entity *entity);
 

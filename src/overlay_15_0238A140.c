@@ -1,8 +1,8 @@
 #include "overlay_15_0238A140.h"
+#include "main_02001188.h"
 
 extern unkBankStruct* DUSKULL_BANK_STRUCT_PTR;
 
-extern void* MemAlloc(u32 len, u32 flags);
 extern void InitPreprocessorArgs(preprocessor_args*);
 extern u32 CreateDialogueBox(u32);
 extern u32 CreatePortraitBox(u32, u32, u32);

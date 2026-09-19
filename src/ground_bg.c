@@ -4,50 +4,11 @@
 #include "main_02001188.h"
 #include "main_02008BD4.h"
 
-// TODO: Move these to headers
-#define RGB_R 0
-#define RGB_G 1
-#define RGB_B 2
-#define RGB_UNK 3
-#define RGB_FIELDS_COUNT 4
-
 #define VRAM      0x6000000
 
-typedef struct RGB_Array
-{
-    u8 c[RGB_FIELDS_COUNT];
-} RGB_Array;
-
-struct UnkStruct_2324CBC_Sub98
-{
-    u8 fill0[7];
-    u8 unk8;
-    u8 fill9[0x18 - 0x9];
-    RGB_Array *unk18;
-    u8 fill1C[0x28-0x1c];
-};
-
-struct UnkStruct_2324CBC_Sub0
-{
-    u8 fill0[0x1C];
-};
-
-struct UnkStruct_2324CBC
-{
-    struct UnkStruct_2324CBC_Sub0 unk0[2][2];
-    u8 fill70[0x28];
-    struct UnkStruct_2324CBC_Sub98 unk98[2];
-};
-
-extern struct UnkStruct_2324CBC *ov11_02324CBC;
-
 extern void FileClose(struct file_stream* file);
-extern void* MemAlloc(u32 len, u32 flags);
-extern void CopyColorToPaletteDataRgba(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src);
-extern void MarkPaletteDataAsNeedingUpdate(struct UnkStruct_2324CBC_Sub98 *);
 extern s32 sprintf(u8* str, const u8* format, ...);
 extern void LoadFileFromRom(struct iovec* iov, const char* filepath, u32 flags);
-extern void FillPaletteDataRgba(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src, s32);
 
 #define FREE_AND_SET_NULL(ptr)          \
 {                                       \
@@ -63,7 +24,6 @@ extern const char ov11_02320C58[];
 extern const char ov11_02320C94[];
 extern const char ov11_02320C6C[];
 extern const char ov11_02320C80[];
-extern void *ov11_02320C18[][2]; // Vram ptrs
 
 // Todo: make these static
 const RGB_Array ov11_02320BF4 = {0, 0, 0, 0};
@@ -472,8 +432,8 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
             u16 *tilemapR7, *tilemapR3, *tilemapR12;
             LayerSpecs *layerSpecs = &groundBg->layerSpecs[i]; // r9
             s32 r3 = groundBg->unk2BC.unk0;
-            u16 *dstR11 = ov11_02320C18[r3][sp20] + groundBg->unk2BC.unkA * 32; // r11 fp
-            u16 *dstSP10 = ov11_02320C18[r3][sp20] + layerSpecs->numTiles * 32; // sp 10
+            u16 *dstR11 = ov11_02320C18[r3][sp20] + groundBg->unk2BC.unkA * 16;
+            u16 *dstSP10 = ov11_02320C18[r3][sp20] + layerSpecs->numTiles * 16;
             const u8 *src = srcStart; // r6
             u16 leftoverVal2 = 0; // r7
             u16 leftoverBuf = 0; // sp #0x14
@@ -716,7 +676,7 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
     for (r5 = 0; r5 < groundBg->unk2BC.unk4; r5++, r7++) {
         LayerSpecs *layerSpecs = &groundBg->layerSpecs[r5];
         s32 vramId = (groundBg->unk2BC.unkA + layerSpecs->numTiles);
-        void *vramPtr = ov11_02320C18[groundBg->unk2BC.unk0][r7] + (vramId * 32);
+        void *vramPtr = ov11_02320C18[groundBg->unk2BC.unk0][r7] + (vramId * 16);
         s32 r8 = (r5 == 0) ? 0 : 2;
         s32 r9 = (r5 == 0) ? 0 : 4;
         layerSpecs = &groundBg->layerSpecs[r5];
@@ -726,8 +686,8 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
 
             UnkGroundBg_C4 *subC4 = &groundBg->unkC4[r8];
             if (entry.others_bpa[r9].name[0] != '\0' && groundBg->unk2BC.unk0 == 0) {
-                const struct BpaHeader *bpaHeader;
-                const void *r1, *r0;
+                struct BpaHeader *bpaHeader;
+                void *r1, *r0;
 
                 sprintf(textBuf, ov11_02320C94, entry.others_bpa[r9].name);
                 LoadFileFromRom(&subC4->bpaFile, textBuf, flags);
@@ -740,7 +700,7 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
                 subC4->unk14 = subC4->unk18 = r1;
                 subC4->unk1C = subC4->unk20 = r0;
                 subC4->unk2 = 0;
-                subC4->unk4 = *((u32 *)subC4->unk18); // hm...
+                subC4->unk4 = *subC4->unk18;
                 subC4->unk24 = vramPtr;
                 subC4->unk28 = layerSpecs->bpaSlotNumTiles[r6] * 32;
 

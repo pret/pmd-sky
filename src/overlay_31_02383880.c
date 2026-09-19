@@ -4,17 +4,17 @@
 #include "overlay_31_02383478.h"
 #include "main_02001188.h"
 #include "main_020282F4.h"
+#include "overlay_29_022E9FC0.h"
+#include "main_02026174.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
 
 extern u8 PositionHasItem(struct position* pos);
 extern bool8 ov10_022BCD10(s8);
-extern void AdvanceFrame(u8);
 extern void CloseInventoryMenu(s8);
 extern void ov29_0234E988(u8*);
 extern void CloseTextBox2();
-extern void DrawTextInWindow(struct window*, u32, u32, u8*);
 
 u8 ov31_0238372C(struct position* x)
 {
@@ -58,9 +58,9 @@ void ov31_023837C8(void)
 void ov31_02383854(struct window* w)
 {
     #ifdef JAPAN
-    DrawTextInWindow(w, 2, 2, StringFromId(0x1d3e));
+    DrawTextInWindow((s32)w, 2, 2, StringFromId(0x1d3e));
     #else
-    DrawTextInWindow(w, 2, 2, StringFromId(0x08e6));
+    DrawTextInWindow((s32)w, 2, 2, StringFromId(0x08e6));
     #endif
 }
 

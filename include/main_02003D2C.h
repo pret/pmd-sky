@@ -11,5 +11,7 @@ void CardPullOut(void);
 // Sets some global flag that maybe indicates a save error?
 // This function prints the debug string "card backup error".
 void CardBackupError(void);
+void HaltProcessDisp(s32 a);
+void sub_02003ECC(void);
 
 #endif //PMDSKY_MAIN_02003D2C_H

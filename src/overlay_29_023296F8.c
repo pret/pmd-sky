@@ -1,5 +1,6 @@
 #include "overlay_29_023296F8.h"
 #include "move_orb_effects.h"
+#include "overlay_29_02320764.h"
 
 extern const struct StatIndex ATK_STAT_IDX;
 
@@ -12,7 +13,6 @@ bool8 DoMoveBoostDefense2(struct entity* attacker, struct entity* defender, stru
     return TRUE;
 }
 
-extern void TryWarp(struct entity *user, struct entity *target, s32, s32);
 
 bool8 DoMoveWarp(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)
 {

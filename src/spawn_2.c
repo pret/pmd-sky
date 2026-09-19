@@ -1,9 +1,15 @@
 #include "dg_random.h"
 #include "dungeon.h"
+#include "main_02001188.h"
+#include "main_0200330C.h"
+#include "overlay_29_022E869C.h"
 #include "overlay_29_022F73B4.h"
 #include "spawn_2.h"
 
 extern struct dungeon *DUNGEON_PTR[];
+extern struct unk_02353554 *TOP_SCREEN_STATUS_PTR;
+
+extern void ov29_022E8708(void);
 
 extern s32 GetMonsterIdFromSpawnEntry(struct monster_spawn_entry *);
 extern s32 GetMonsterLevelFromSpawnEntry(struct monster_spawn_entry *);
@@ -11,7 +17,7 @@ extern s32 GetMonsterLevelFromSpawnEntry(struct monster_spawn_entry *);
 s32 IsOnMonsterSpawnList(s32 monster_id) {
     for(s32 i = 0; i < 16; i++) {
         s32 entity_monster_id = GetMonsterIdFromSpawnEntry(
-            &DUNGEON_PTR[0]->spawn_entries_master[i]);
+            &DUNGEON_PTR[0]->field_0x286b0.spawn_entries_master[i]);
         
         if(entity_monster_id == 0) {
             break;
@@ -57,4 +63,19 @@ s32 GetMonsterLevelToSpawn(s32 monster_id) {
     }
 
     return 1;
+}
+
+void AllocTopScreenStatus(void)
+{
+    TOP_SCREEN_STATUS_PTR = MemAlloc(0x230, 0);
+    MemZero((u8 *) TOP_SCREEN_STATUS_PTR, 0x230);
+    TOP_SCREEN_STATUS_PTR->field_0x0 = 0;
+    TOP_SCREEN_STATUS_PTR->field_0x29 = 0;
+    TOP_SCREEN_STATUS_PTR->field_0x2c = 0;
+    TOP_SCREEN_STATUS_PTR->field_0x2b = 0;
+    TOP_SCREEN_STATUS_PTR->field_0x4 = 0;
+    TOP_SCREEN_STATUS_PTR->field_0x228 = 0;
+    ov29_022E8708();
+    TOP_SCREEN_STATUS_PTR->field_0x4 = 2;
+    TOP_SCREEN_STATUS_PTR->field_0x229 = 0;
 }

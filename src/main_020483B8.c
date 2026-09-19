@@ -1,13 +1,12 @@
 #include "main_020483B8.h"
 #include "script_variable.h"
+#include "main_02048B48.h"
 
 extern struct unk_020AFEF4 *_020AFEF4;
 
 extern void sub_020476EC(s16 a);
 
 extern bool8 sub_0204771C(void);
-
-extern void sub_02048B74(void);
 
 extern void sub_02048B48(void);
 

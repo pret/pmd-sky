@@ -2,7 +2,6 @@
 #include "overlay_13_0238BDA8.h"
 #include "main_02001188.h"
 
-extern void* MemAlloc(u32 len, u32 flags);
 void sub_0201F2E4(void);
 void InitMenu(const u8 *);
 extern void ReturnScriptMenuResult(u32);

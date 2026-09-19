@@ -2,6 +2,7 @@
 #define PMDSKY_DG_RANDOM_H
 
 #include "util.h"
+#include "dungeon_mode.h"
 
 typedef struct prng_state {
     bool8 use_secondary;
@@ -29,5 +30,6 @@ bool8 DungeonRandOutcome__022EAB20(s32 percentChance);
 // percentChance: success percentage (100*p)
 // return: true with probability p, false with probability (1-p)
 bool8 DungeonRandOutcome__022EAB50(s32 percentChance);
+s32 CalcStatusDuration(struct entity *entity, const s16 *turn_range, bool8 iq_skill_effects);
 
 #endif //PMDSKY_DG_RANDOM_H

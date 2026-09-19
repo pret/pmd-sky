@@ -90,27 +90,3 @@ ov29_022E42E0: ; 0x022E42E0
 ov29_022E42E4: ; 0x022E42E4
 	bx lr
 	arm_func_end ov29_022E42E4
-
-	arm_func_start PlayEffectAnimationEntityStandard
-PlayEffectAnimationEntityStandard: ; 0x022E42E8
-	stmdb sp!, {r3, r4, r5, lr}
-	sub sp, sp, #0x10
-	mov r4, r1
-	mov r5, r0
-	mov r0, r4
-	bl GetEffectAnimationWanOffset
-	mov r2, r0
-	and r3, r2, #0xff
-	mov r0, #2
-	mov ip, #0
-	stmia sp, {r0, ip}
-	sub r0, ip, #1
-	str r0, [sp, #8]
-	mov r0, r5
-	mov r1, r4
-	mov r2, #1
-	str ip, [sp, #0xc]
-	bl PlayEffectAnimationEntity
-	add sp, sp, #0x10
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end PlayEffectAnimationEntityStandard

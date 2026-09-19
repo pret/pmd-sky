@@ -5,5 +5,6 @@
 
 // Returns true if the monster has any status problem that prevents it from acting
 bool8 HasStatusThatPreventsActing(struct entity *monster);
+bool8 HasStatusThatPreventsLeaderActing(struct entity *monster);
 
 #endif //PMDSKY_STATUS_CHECKS_H

@@ -15,7 +15,7 @@ s16 GetItemIdToSpawn(enum spawn_weight_type spawn_type) {
     s32 rnd = DungeonRandInt(10000);
     enum item_category category = CATEGORY_DUMMY;
     for(idx = 0; idx < 16; idx++) {
-        s16 threshold = DUNGEON_PTR->item_spawn_weights[spawn_type].category_threshold[idx];
+        s16 threshold = DUNGEON_PTR->field_0x286b0.item_spawn_weights[spawn_type].category_threshold[idx];
         if(threshold == 0) {
             continue;
         }
@@ -32,7 +32,7 @@ s16 GetItemIdToSpawn(enum spawn_weight_type spawn_type) {
 
     rnd = DungeonRandInt(10000);
     for(idx = 0; idx < 0x16c; idx++) {
-        s16 threshold = DUNGEON_PTR->item_spawn_weights[spawn_type].item_threshold[idx];
+        s16 threshold = DUNGEON_PTR->field_0x286b0.item_spawn_weights[spawn_type].item_threshold[idx];
         if(threshold == 0) {
             continue;
         }
@@ -41,7 +41,7 @@ s16 GetItemIdToSpawn(enum spawn_weight_type spawn_type) {
             continue;
         }
 
-        threshold = DUNGEON_PTR->item_spawn_weights[spawn_type].item_threshold[idx];
+        threshold = DUNGEON_PTR->field_0x286b0.item_spawn_weights[spawn_type].item_threshold[idx];
         if(threshold >= rnd) {
             return idx;
         }
@@ -68,12 +68,12 @@ s32 GetRandomSecretRoomItem() {
 
 s32 CopySpawnEntriesMaster(struct monster_spawn_entry out[], s32 idx_out) {
     for(s32 i = 0; i < 16; i++) {
-        s32 monster_id = GetMonsterIdFromSpawnEntry(&(DUNGEON_PTR->spawn_entries_master[i]));
+        s32 monster_id = GetMonsterIdFromSpawnEntry(&(DUNGEON_PTR->field_0x286b0.spawn_entries_master[i]));
         if(monster_id == 0) {
             break;
         }
 
-        out[idx_out] = DUNGEON_PTR->spawn_entries_master[i];
+        out[idx_out] = DUNGEON_PTR->field_0x286b0.spawn_entries_master[i];
         idx_out++;
     }
 
@@ -82,7 +82,7 @@ s32 CopySpawnEntriesMaster(struct monster_spawn_entry out[], s32 idx_out) {
 
 s32 MonsterSpawnListPartialCopy(struct monster_spawn_entry entry_out[], s32 idx_out) {
     for(s32 i = 0; i < 16; i++) {
-        s32 monster_id = GetMonsterIdFromSpawnEntry(&(DUNGEON_PTR->spawn_entries_master[i]));
+        s32 monster_id = GetMonsterIdFromSpawnEntry(&(DUNGEON_PTR->field_0x286b0.spawn_entries_master[i]));
         if(monster_id == 0) {
             break;
         }
@@ -91,11 +91,11 @@ s32 MonsterSpawnListPartialCopy(struct monster_spawn_entry entry_out[], s32 idx_
             continue;
         }
 
-        if(DUNGEON_PTR->spawn_entries_master[i].incremental_spawn_weight[0] == 0) {
+        if(DUNGEON_PTR->field_0x286b0.spawn_entries_master[i].incremental_spawn_weight[0] == 0) {
             continue;
         }
 
-        entry_out[idx_out] = DUNGEON_PTR->spawn_entries_master[i];
+        entry_out[idx_out] = DUNGEON_PTR->field_0x286b0.spawn_entries_master[i];
         idx_out++;
     }
     return idx_out;

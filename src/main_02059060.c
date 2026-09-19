@@ -3,11 +3,11 @@
 #include "save.h"
 #include "main_0202593C.h"
 #include "main_02058FA4.h"
+#include "main_020251AC.h"
 
 extern struct team_member_table *TEAM_MEMBER_TABLE_PTR;
 
 extern s32 GetLanguageType(void);
-extern void StrncpySimpleNoPadSafe(u8* dest, const u8* src, u32 n);
 extern void InitBitstreamForRead(struct bitstream *ptr, void *start_addr, u32 total_len);
 extern void WriteMonsterToSave(struct bitstream *stream, struct ground_monster *monster);
 extern void CopyBitsTo(void *ctx, void *src, s32 nbits);

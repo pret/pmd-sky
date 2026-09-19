@@ -3,6 +3,11 @@
 
 #include "dungeon_mode.h"
 
+void UpdateStatusIconFlags(struct entity *entity);
+void PlayQuestionMarkEffect(struct entity *entity);
+void PlayExclamationPointEffect__022E47D4(struct entity *entity);
+void ov29_022E3E74(struct entity *entity);
+void PlayExclamationPointEffect__022E4880(struct entity *entity);
 void ov29_022E3F20(void);
 void ov29_022E3F24(struct entity *entity);
 void ov29_022E3F74(void);

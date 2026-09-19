@@ -3,6 +3,7 @@
 
 #include "dungeon_mode.h"
 
+bool8 TryInflictConfusedStatus(struct entity *user, struct entity *target, bool8 log_failure, bool8 check_only);
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValid__02315118(struct entity *entity);
 // Checks if a monster is holding a certain item that isn't disabled by Klutz.

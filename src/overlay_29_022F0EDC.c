@@ -17,6 +17,10 @@
 #include "overlay_29_0234928C.h"
 #include "overlay_29_022FB538.h"
 #include "position_util.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_022EC7E8.h"
+#include "overlay_29_022E9FC0.h"
+#include "overlay_29_0234B104.h"
 
 #ifdef JAPAN
 #define SET_LEADER_ACTION_DATA_OFFSET -0x2C1
@@ -45,7 +49,6 @@ extern struct unk_0237C9A4 ov29_0237C9A4;
 extern u16 DUNGEON_BUTTON_INPUT[8];
 extern u16 ov29_0237C6A4;
 
-extern void AdvanceFrame(u32);
 extern bool8 CanSeeTarget(struct entity *user, struct entity *target);
 extern bool8 IsBlinded(struct entity *entity, bool8 check_held_item);
 extern void MemZero(u8 *ptr, s32 len);
@@ -57,12 +60,9 @@ extern s32 GetEntityTouchscreenArea();
 extern s32 GetIdleAnimationId();
 extern struct entity *GetMonsterInFront();
 extern void GetPressedButtons(u32 param_1, u16 *pressed);
-extern s32 GetTeamMemberIndex();
 extern s32 HasStatusThatPreventsLeaderActing();
 extern s32 HideTileGrid();
-extern s32 IsFloorOver();
 extern s32 LogItemBlockedByEmbargo();
-extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 extern s32 MonsterHasEmbargoStatus();
 extern s32 OpenMenu(bool8 a, u8 b, s32 c);
 extern s32 OpenMessageLog();
@@ -74,7 +74,6 @@ extern s32 ShouldLeaderKeepRunning();
 extern s32 StairsMenuAfterStep();
 extern s32 TalkToTeamMemberInFront();
 extern s32 TryPointCameraToMonster();
-extern void UnkMapRelatedFunc(u32, u32);
 extern s32 WaitUntilAlertBoxPauseIsOver();
 extern s32 YesNoMenu();
 extern s32 abs();
@@ -82,8 +81,6 @@ extern s32 ov29_022E0B44();
 extern void ov29_022E0C2C(u32);
 extern s32 ov29_022E0C3C();
 extern void ov29_022E81F8(void);
-extern s32 ov29_022EA370();
-extern s32 ov29_022EA3B4();
 extern s32 ov29_022EB944();
 extern s32 ov29_022F0C1C();
 extern s32 ov29_022F0C3C();

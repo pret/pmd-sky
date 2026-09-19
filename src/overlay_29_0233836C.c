@@ -2,10 +2,10 @@
 #include "dungeon.h"
 #include "main_0200330C.h"
 #include "overlay_29_02337CA8.h"
+#include "overlay_29_0234B104.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
 extern void ov29_02306D54(struct entity *);
 
 void ResetGravity(void)

@@ -6,5 +6,6 @@
 s32 GetMonsterIdToSpawn(s32 weight_type_idx);
 s32 GetMonsterLevelToSpawn(s32 monster_id);
 s32 IsOnMonsterSpawnList(s32 monster_id);
+void AllocTopScreenStatus(void);
 
 #endif //PMDSKY_SPAWN_2_H

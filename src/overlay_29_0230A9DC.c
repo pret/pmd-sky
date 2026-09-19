@@ -2,10 +2,32 @@
 #include "dungeon_items.h"
 #include "dungeon_pokemon_attributes.h"
 
+
+
+#include "overlay_29_0230A994.h"
+#include "enums.h"
+#include "overlay_29_02320764.h"
+extern bool8 DungeonRandOutcome__022EAB20(s32 percentChance);
+extern const s16 AFTERMATH_CHANCE;
 bool8 ItemIsActive__0230A9DC(struct entity *entity, enum item_id item_id)
 {
     if (AbilityIsActiveVeneer(entity, ABILITY_KLUTZ))
         return FALSE;
 
     return HasHeldItem(entity, item_id);
+}
+
+bool8 AftermathCheck(struct entity *attacker, struct entity *defender, s32 damage_source)
+{
+#ifdef JAPAN
+    if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_AFTERMATH)
+#else
+    if (DefenderAbilityIsActive__0230A940(attacker, defender, ABILITY_AFTERMATH, TRUE)
+#endif
+        && DungeonRandOutcome__022EAB20(AFTERMATH_CHANCE)
+        && damage_source != DAMAGE_SOURCE_EXPLOSION) {
+        TryAftermathExplosion(attacker, defender, &defender->pos, 1, TYPE_NONE, DAMAGE_SOURCE_EXPLOSION);
+        return TRUE;
+    }
+    return FALSE;
 }

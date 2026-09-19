@@ -3,7 +3,7 @@
 
 struct unk_02026130 {
     u8 field_0x0[4];
-    u8 field_0x4[4];
+    u8 field_0x4[0x118];
 };
 
 void sub_0202613C(struct unk_02026130* p);

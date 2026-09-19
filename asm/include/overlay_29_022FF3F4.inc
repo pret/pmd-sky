@@ -1,7 +1,0 @@
-#pragma once
-.public EndTwoTurnMove
-.public IsChargingTwoTurnMove
-.public LogMessageByIdWithPopupCheckUser
-.public SetActionUseMovePlayer
-.public SetMonsterActionFields
-.public SubstitutePlaceholderStringTags

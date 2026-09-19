@@ -3,6 +3,7 @@
 #include "item.h"
 #include "move.h"
 #include "move_orb_effects.h"
+#include "overlay_29_02305C04.h"
 
 extern const s16 BUBBLE_LOWER_SPEED_CHANCE;
 
@@ -10,7 +11,6 @@ extern s32 DealDamage(struct entity *attacker, struct entity *defender, struct m
 
 extern bool8 DungeonRandOutcomeUserTargetInteraction(struct entity *user, struct entity *target, s16 chance);
 
-extern void EndNegativeStatusConditionWrapper(struct entity *user, struct entity *target, bool8 displayMessage, bool8 fromMove);
 
 bool8 DoMoveHealStatus(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)
 {

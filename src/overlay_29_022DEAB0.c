@@ -1,9 +1,9 @@
 #include "overlay_29_022DEAB0.h"
 #include "dungeon.h"
+#include "main_02001188.h"
 
 void MemFree(void* ptr);
 void MemZero(void* ptr, u32 len);
-void* MemAlloc(u32 len, u32 flags);
 void ov29_0234C654(s32);
 void sub_020091B0(s32, s32);
 void sub_02009194(s32, s32);

@@ -1,5 +1,6 @@
 #include "overlay_29_0232A480.h"
 #include "dungeon_util_static.h"
+#include "overlay_29_0234B340.h"
 
 #ifdef JAPAN
 #define SWALLOW_LOG_MESSAGE 0xC26
@@ -8,7 +9,6 @@
 #endif
 
 
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 
 extern const s32 ov10_022C49D4[];
 

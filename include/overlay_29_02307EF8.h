@@ -7,5 +7,6 @@
 bool8 EntityIsValid__02307EF8(struct entity *entity);
 // Checks if a monster is holding a certain item that isn't disabled by Klutz.
 bool8 ItemIsActive__02307F1C(struct entity *entity, enum item_id item_id);
+void TryTriggerMonsterHouse(struct entity *entity, bool8 a);
 
 #endif //PMDSKY_OVERLAY_29_02307EF8_H

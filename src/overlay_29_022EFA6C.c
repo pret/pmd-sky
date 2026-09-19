@@ -1,9 +1,9 @@
 #include "overlay_29_022EFA6C.h"
+#include "overlay_29_0230F810.h"
 #include "dungeon.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern s32 TeamMemberHasItemActive(struct entity **buf, enum item_id item_id);
 
 extern void BoostIQ(struct entity *entity, s16 iq, bool8 a);
 
@@ -19,7 +19,7 @@ void TryActivateIqBooster(void)
     s32 n;
     s32 i;
 
-    iq = DUNGEON_PTR[0]->floor_properties.iq_booster_value;
+    iq = DUNGEON_PTR[0]->field_0x286b0.floor_properties.iq_booster_value;
     if (iq <= 0) {
         return;
     }

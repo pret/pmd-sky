@@ -27,6 +27,7 @@
 #include "overlay_29_0231A9D4.h"
 #include "overlay_29_0231ACAC.h"
 #include "targeting.h"
+#include "special_move_types.h"
 
 #ifdef SDK_ARM9
 #include <nitro/itcm_begin.h>
@@ -791,7 +792,6 @@ _01FFBD0C:
 #endif
 
 extern bool8 sub_01FFBF78(struct entity *pokemon, struct entity *target);
-extern void ov29_0231B008(); 
 
 void sub_01FFBD20(struct entity *monster, struct entity *target)
 {

@@ -1,11 +1,11 @@
 #include "overlay_29_0234BA54.h"
 #include "overlay_29_0234B024.h"
+#include "overlay_29_022E9FC0.h"
 
 extern struct message_log_info MESSAGE_LOG_INFO;
 extern u16 DUNGEON_BUTTON_INPUT[8];
 
 extern void ov29_022E0B60(s32 a);
-extern void UnkMapRelatedFunc(u32 switch_case, u32 param_2);
 extern void ov29_0233A248(s32 a);
 extern void sub_0204833C(void);
 extern s32 sub_02048360(void);
@@ -18,7 +18,6 @@ extern void sub_02047FFC(s32 a);
 extern void InitPortraitParams(portrait_params *portrait);
 extern void AllowPortraitDefault(portrait_params *portrait, bool32 allow);
 extern void WaitUntilAlertBoxTextIsLoaded(u32 param_1);
-extern void AdvanceFrame(u32 param_1);
 
 void WaitUntilAlertBoxPauseIsOver(u32 param_1)
 {
@@ -50,8 +49,8 @@ void InitPortraitDungeon(portrait_params *portrait, enum monster_id monster_id, 
     portrait->monster_id = monster_id;
     portrait->portrait_emotion = emotion;
     portrait->layout_idx = 0;
-    portrait->offset_x = 2;
-    portrait->offset_y = 9;
+    portrait->offset.x = 2;
+    portrait->offset.y = 9;
     portrait->try_flip = FALSE;
     portrait->has_flip = FALSE;
     portrait->hw_flip = FALSE;

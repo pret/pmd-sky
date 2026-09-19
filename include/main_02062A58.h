@@ -6,5 +6,7 @@
 bool8 CanMonsterBeUsedForMission(s16 id, bool8 flag);
 
 bool8 CanMonsterBeUsedForMissionWrapper(s16 id);
+bool8 CanMonsterBeUsedForMission(s16 id, bool8 flag);
+bool8 sub_02062AD0(s16 id);
 
 #endif

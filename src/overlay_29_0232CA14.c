@@ -1,7 +1,7 @@
 #include "overlay_29_0232CA14.h"
+#include "dg_camera.h"
 #include "move_orb_effects.h"
 
-extern void RevealWholeFloor(struct entity *user, struct entity *target);
 extern void TryInflictPetrifiedStatus(struct entity *user, struct entity *target);
 extern void TryPounce(struct entity *user, struct entity *target, s32);
 extern void TryTrawl(struct entity *user, struct entity *target);

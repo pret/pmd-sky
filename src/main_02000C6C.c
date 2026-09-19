@@ -1,10 +1,11 @@
 #include "main_02000C6C.h"
 #include <nitro.h>
+#include "main_0200224C.h"
+#include "main_0200330C.h"
 
 extern u32 _02092448;
 extern u32 _02092460;
 
-extern void sub_02002228(u32);
 extern void sub_020024D4();
 extern void sub_020024E4();
 extern void sub_020028AC();
@@ -31,7 +32,6 @@ extern void Card_SetPulledOutCallback(void (*));
 extern void Debug_Init();
 extern void Debug_Print0(u32*, u32, u32);
 extern void InitMemAllocTableVeneer();
-extern void TaskProcBoot();
 extern void WaitForInterrupt();
 
 void NitroMain(void)
