@@ -69,10 +69,10 @@
 
 struct unk_023535DC {
     u8 field_0x0;
-    u8 filler1[3];
+    u8 field_0x1[3];
     s32 field_0x4;
     bool8 (*field_0x8)(struct entity *attacker, struct entity *defender, s32 a);
-    u8 filler2[4];
+    u8 field_0xc[4];
 };
 
 struct unk_023528A4 {
@@ -82,7 +82,7 @@ struct unk_023528A4 {
 
 struct unk_022C593C {
     s16 field_0x0;
-    u8 filler[10];
+    u8 field_0x2[10];
 };
 
 extern const struct StatIndex ATK_STAT_IDX;
