@@ -216,7 +216,6 @@ Static main
 	Object src/main_02048758.o
 	Object asm/main_02048764.o
 	Object src/main_02048B48.o
-	Object asm/main_02048B74.o
 	Object src/main_02048BB4.o
 	Object src/main_02048C5C.o
 	Object src/main_02048CB8.o
@@ -765,7 +764,6 @@ Overlay OVY_29
 	Object asm/overlay_29_data_023534E0.o
 	Object asm/overlay_29_bss_02353860.o
 	Object src/poly_text.o
-	Object asm/overlay_29_022DC314.o
 	Object src/overlay_29_022DC61C.o
 	Object src/overlay_29_022DC684.o
 	Object asm/overlay_29_022DC7E4.o
@@ -816,7 +814,7 @@ Overlay OVY_29
 	Object src/dungeon_range.o
 	Object src/dungeon_range_2.o
 	Object src/dg_uty.o
-	Object asm/overlay_29_022E9628.o
+	Object src/overlay_29_022E9628.o
 	Object src/overlay_29_022E99F0.o
 	Object asm/overlay_29_022E9A6C.o
 	Object src/overlay_29_022E9FC0.o
@@ -1203,7 +1201,7 @@ Overlay OVY_29
 	Object src/overlay_29_02344BE4.o
 	Object asm/overlay_29_02344BF8.o
 	Object src/overlay_29_02345698.o
-	Object asm/overlay_29_023456BC.o
+	Object src/overlay_29_023456BC.o
 	Object src/overlay_29_02345A3C.o
 	Object asm/overlay_29_02345AD8.o
 	Object src/dungeon_items.o

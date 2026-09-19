@@ -21,6 +21,7 @@
 #include "overlay_29_02344AF8.h"
 #include "overlay_29_02348D00.h"
 #include "overlay_29_0234B4BC.h"
+#include "overlay_29_023456BC.h"
 
 #ifdef JAPAN
 #define MESSAGE_C5E 0x99D
@@ -42,7 +43,6 @@ extern struct dungeon *DUNGEON_PTR[];
 
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
-extern void RemoveGroundItem(struct position *pos, bool8 a);
 extern bool8 GetExclusiveItemForMonsterFromBag(struct item *item,
                                                enum exclusive_item_effect_id effect_id,
                                                s16 monster_id, enum type_id type1,

@@ -24,6 +24,8 @@
 #include "overlay_29_02336F4C.h"
 #include "overlay_29_0234B340.h"
 #include "overlay_29_02344088.h"
+#include "overlay_29_022E9628.h"
+#include "overlay_29_023456BC.h"
 
 #ifdef JAPAN
 #define MESSAGE_BFB 0x93A
@@ -52,14 +54,12 @@ extern u32 DUNGEON_FRAMES_PASSED;
 extern struct position *ov29_023529B8[];
 extern s32 EXPLOSION_FIXED_DAMAGES[];
 
-extern void RemoveGroundItem(struct position *pos, bool8 a);
 extern void ov29_02336694(s32 x, s32 y);
 extern void DetermineTileWalkableNeighbors(s32 x, s32 y);
 extern void UpdateMinimap(void);
 extern bool8 TwoTurnMoveForcedMiss(struct entity *target, struct move *move);
 extern void TryInflictPetrifiedStatus(struct entity *user, struct entity *target);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
-extern bool8 GetRandomTile(struct position *out, bool8 a);
 extern void MoveMonsterToPos(struct entity *entity, s32 x_pos, s32 y_pos,
                              bool8 reset_prev_pos_fields);
 extern void UpdateCamera(s32 a);
