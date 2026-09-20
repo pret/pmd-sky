@@ -56,3 +56,24 @@ bool8 IsPositionInSight(struct position *origin, struct position *target, bool8 
 
     return TRUE;
 }
+
+void ov29_022E9298(struct position *pos, struct unk_022E9298 *bounds, bool8 a)
+{
+    struct tile *tile = GetTile(pos->x, pos->y);
+    s16 visibility = GetVisibilityRange();
+    u8 origin_room = tile->room;
+
+    if (a || origin_room == CORRIDOR_ROOM) {
+        bounds->field_0x0 = pos->x - visibility;
+        bounds->field_0x8 = pos->x + visibility + 1;
+        bounds->field_0x4 = pos->y - visibility;
+        bounds->field_0xc = pos->y + visibility + 1;
+    }
+    else {
+        struct room_data *room = &DUNGEON_PTR[0]->room_data[origin_room];
+        bounds->field_0x0 = room->bottom_right_corner.x - 1;
+        bounds->field_0x8 = room->top_left_corner.x + 2;
+        bounds->field_0x4 = room->bottom_right_corner.y - 1;
+        bounds->field_0xc = room->top_left_corner.y + 2;
+    }
+}

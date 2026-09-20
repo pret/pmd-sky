@@ -1,7 +1,7 @@
 #include "dungeon_ai_targeting.h"
 #include "util.h"
+#include "dungeon_logic_2.h"
 
-extern bool8 UpdateStateFlags(struct monster *info, s32 flag, bool8 value);
 
 extern void PlayEffectAnimation0x29(struct entity *entity);
 #include "dungeon_pokemon_attributes.h"

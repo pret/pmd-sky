@@ -1,7 +1,7 @@
 #include "directory_file_mngr.h"
 #include "directory_file.h"
+#include "main_02001188.h"
 
-extern void* MemAlloc(u32 len, u32 flags);
 extern void MemZero(void* ptr, u32 len);
 
 extern struct directory *DIRECTORY_FILES_EXTRACTED;

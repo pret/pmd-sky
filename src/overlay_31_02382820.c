@@ -8,6 +8,10 @@
 #include "main_02001188.h"
 #include "window.h"
 #include "main_02027AF0.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_022E9FC0.h"
+#include "main_0202A66C.h"
+#include "main_02026174.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
@@ -27,20 +31,15 @@ extern struct struct_1 OVERLAY31_UNKNOWN_STRUCT__NA_2389E30;
 extern u16 ov31_02389E22[];
 
 
-extern void* MemAlloc(u32 size, u32 nmemb);
 
 extern u32 GetMoneyCarried(void);
 extern u32 sub_0204F9E0(void);
-extern void GetMonsterOrTrapName(u8*, void*, u32); // The third argument isn't actually used in the
-                                     // function (../asm/overlay_29_022E1A40.s#L1378)
 extern u8* StringFromId(u32);
 extern void PreprocessString(u8* dst, u32 dsize, const u8* src, u32 flags, struct PPStrValues* ptr);
-extern void DrawTextInWindow(s32, u32, u32, u8*);
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern s32 sub_020265A8(u8*); // Measures the text's width in pixels
 
-extern u8 CreateParentMenuFromStringIds(u32*, u32, struct struct_2*, u32*);
 extern u8 CreateTextBox(u32*, void (*fun)(s32));
 extern u32 IsParentMenuActive(s8);
 extern u32 GetWindowIdSelectedItemOnPage(s8);
@@ -53,8 +52,6 @@ extern struct struct_1* GetSimpleMenuResult__0202AEA4(s8);
 extern void CloseTextBox(s8);
 extern void CloseParentMenu(s8);
 
-extern void UnkMapRelatedFunc(u32, u32);
-extern void AdvanceFrame(u8);
 extern u32 GetLeaderActionId(void);
 extern void ov29_022E0C2C(u32);
 
@@ -181,7 +178,7 @@ u32 DungeonMenuLoop(void)
             sp.c = OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b;
             sp.b = Arm9LoadUnkFieldNa0x2029EC8(5, sp.c);
 
-            OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0] = CreateParentMenuFromStringIds(&DUNGEON_WINDOW_PARAMS_1, OV31_02382B54_CONST_1, &sp, &DUNGEON_MAIN_MENU_ITEMS);
+            OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0] = CreateParentMenuFromStringIds(&DUNGEON_WINDOW_PARAMS_1, OV31_02382B54_CONST_1, &sp, (struct unk_0202A5CC *)&DUNGEON_MAIN_MENU_ITEMS);
 
             OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[2] = CreateTextBox(&DUNGEON_WINDOW_PARAMS_4, DrawDungeonMenuStatusWindow);
             OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[1] = CreateTextBox(&DUNGEON_WINDOW_PARAMS_2, DungeonMenuSwitch);

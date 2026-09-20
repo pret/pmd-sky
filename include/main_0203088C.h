@@ -2,5 +2,6 @@
 #define PMDSKY_MAIN_0203088C_H
 
 void SetAdvancedTextBoxState5(s32 window_id);
+void CloseAdvancedTextBox(s32 window_id);
 
 #endif

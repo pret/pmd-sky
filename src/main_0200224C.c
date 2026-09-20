@@ -1,5 +1,36 @@
 #include "main_0200224C.h"
 
+void AddFixedPoint64(struct fixed_point_64 *out, struct fixed_point_64 *a, struct fixed_point_64 *b)
+{
+    s32 upper = a->upper + b->upper;
+    u32 lower = a->lower + b->lower;
+
+    if (lower < a->lower) {
+        upper++;
+    }
+    out->upper = upper;
+    out->lower = lower;
+}
+
+extern s16 NATURAL_LOG_VALUE_TABLE[];
+
+
+void ClampedLn(struct fixed_point_64 *out, s32 x)
+{
+    if (x < 1) {
+        x = 1;
+    }
+    if (x >= 0x800) {
+        x = 0x7FF;
+    }
+    out->lower = NATURAL_LOG_VALUE_TABLE[x] << 4;
+    out->upper = 0;
+}
+
+void sub_02002228(u32 param_1)
+{
+}
+
 extern u16 PRNG_SEQUENCE_NUM;
 
 u16 GetRngSeed(void)
@@ -27,4 +58,24 @@ s32 RandRange(s32 x, s32 y) {
 
 u32 Rand32Bit() {
     return (Rand16Bit() << 0x10) | Rand16Bit();
+}
+
+void sub_020022C4(u32 *param_1)
+{
+    *param_1 = 1;
+}
+
+u32 sub_020022D0(u32 *param_1, u32 param_2)
+{
+    u32 value = *param_1 * 0x5D588B65 + 1;
+    *param_1 = value;
+    return ((value >> 0x10) * param_2) >> 0x10;
+}
+
+s32 RandIntSafe(s32 n)
+{
+    s32 entropy = Rand16Bit();
+    entropy &= 0xFFFF;
+    entropy *= n;
+    return entropy >> 0x10;
 }

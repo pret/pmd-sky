@@ -85,7 +85,7 @@ struct dungeon_generation_info {
     enum hidden_stairs_type hidden_floor_type;
     s16 tileset_id; // 0x10
     // 0x12: Music table index (see the same field in struct floor_properties)
-    u16 music_table_idx;
+    s16 music_table_idx;
     // 0x14: Controls which trap graphics to use for the staircase. Usually 0x2B (27) and
     // 0x2C (28) for down and up respectively.
     u16 staircase_visual_idx;
@@ -110,6 +110,42 @@ struct item_spawn_weights {
     s16 item_threshold[0x16c]; 
     s16 unknown_2[0x40c];
 }; 
+
+struct unk_022FBD24 {
+    // 0x3DCC: Appears to be a table that holds the statuses::statuses_unique_id value for
+    // the monsters. Maybe just for convenience to avoid loading it from every monster?
+    u32 monster_unique_id[20];
+    // 0x3E1C: Appears to be be an index inside or length for
+    // dungeon::active_monsters_unique_statuses_ids.
+    u32 unique_id_index;
+};
+
+struct unk_02337EE8 {
+    // 0x286B0: Initialized to 0xFF, then set to a copy of dungeon::group_id
+    enum dungeon_group_id group_id_copy;
+    // 0x286B1: Initialized to 0xFF, then set to a copy of dungeon::0x74B
+    u8 field_0x286b1;
+    struct floor_properties floor_properties; // 0x286B2: Properties about the current floor
+    // Spawn weights for items in different contexts. 
+    // 0 = regular, 1 = Kecleon shop, 2 = monster house, 3  buried, 
+    // 4 = bazaar, 5 = secret room
+    struct item_spawn_weights item_spawn_weights[6];
+    // 0x2C932: Spawn weights for traps.
+    u16 trap_weights[25];
+    // 0x2C964: List of spawn entries on this floor
+    // This is used during initialization, enemies are spawned using the copy at 0x3974
+    struct monster_spawn_entry spawn_entries_master[16];
+    // 0x2C9E4: The total number of spawn entries loaded or to be loaded?
+    u16 number_sprites_loaded;
+    // 0x2C9E6: Highest level among all the enemies that spawn on this floor
+    s16 highest_enemy_level;
+    // 0x2C9E8: ID of an item guaranteed to spawn on the floor, if applicable
+    // (e.g., certain mission types)
+    enum item_id guaranteed_item_id;
+    // 0x2C9EA: List of the indices in the complete monster spawn table for this floor that were
+    // chosen to spawn on it. It gets rerandomized at the start of each new floor.
+    u16 spawn_table_entries_chosen[16];
+};
 
 // Dungeon state
 struct dungeon {
@@ -163,13 +199,10 @@ struct dungeon {
     // a mission. dungeon::end_floor_no_death_check_flag gets set whenever this is changed.
     u32 successful_exit_tracker;
     // 0x1C: Increased once per frame until 0x64. Resets to 0 when the leader acts.
-    u8 field_0x1c;
-    u8 field_0x1d;
+    s16 field_0x1c;
     // 0x1E: Number of floors completed? (Guess). Initialized to 0.
     // If this is a floor tracker, odd it is not a u16 like the others.
-    u8 number_completed_floors;
-    // 0x1F: Turn counter, Speed Boost triggers every 250 turns, then the counter is reset.
-    u8 speed_boost_counter;
+    s16 number_completed_floors;
     // 0x20: Total amount of floors summed by all the previous dungeons in its group
     u16 number_preceding_floors;
     // 0x22: Total amount of floors passed including those in its group? (Guess)
@@ -1213,12 +1246,7 @@ struct dungeon {
     // Species not on the floor have the value 1.
     u8 exp_yield_rankings[NUM_SPECIES];
 #ifndef JAPAN
-    // 0x3DCC: Appears to be a table that holds the statuses::statuses_unique_id value for
-    // the monsters. Maybe just for convenience to avoid loading it from every monster?
-    u32 monster_unique_id[20];
-    // 0x3E1C: Appears to be be an index inside or length for
-    // dungeon::active_monsters_unique_statuses_ids.
-    u32 unique_id_index;
+    struct unk_022FBD24 field_0x3dcc;
 #endif
     // 0x3E20: Number of valid monster spawn entries (see spawn_entries).
     int monster_spawn_entries_length;
@@ -1494,30 +1522,7 @@ struct dungeon {
     // 0x1A21C: Data about the map, the camera and the touchscreen numbers
     struct display_data display_data;
     struct minimap_display_data minimap_display_data; // 0x1A264: Data used to display the minimap
-    // 0x286B0: Initialized to 0xFF, then set to a copy of dungeon::group_id
-    enum dungeon_group_id group_id_copy;
-    // 0x286B1: Initialized to 0xFF, then set to a copy of dungeon::0x74B
-    u8 field_0x286b1;
-    struct floor_properties floor_properties; // 0x286B2: Properties about the current floor
-    // Spawn weights for items in different contexts. 
-    // 0 = regular, 1 = Kecleon shop, 2 = monster house, 3  buried, 
-    // 4 = bazaar, 5 = secret room
-    struct item_spawn_weights item_spawn_weights[6];
-    // 0x2C932: Spawn weights for traps.
-    u16 trap_weights[25];
-    // 0x2C964: List of spawn entries on this floor
-    // This is used during initialization, enemies are spawned using the copy at 0x3974
-    struct monster_spawn_entry spawn_entries_master[16];
-    // 0x2C9E4: The total number of spawn entries loaded or to be loaded?
-    u16 number_sprites_loaded;
-    // 0x2C9E6: Highest level among all the enemies that spawn on this floor
-    s16 highest_enemy_level;
-    // 0x2C9E8: ID of an item guaranteed to spawn on the floor, if applicable
-    // (e.g., certain mission types)
-    enum item_id guaranteed_item_id;
-    // 0x2C9EA: List of the indices in the complete monster spawn table for this floor that were
-    // chosen to spawn on it. It gets rerandomized at the start of each new floor.
-    u16 spawn_table_entries_chosen[16];
+    struct unk_02337EE8 field_0x286b0;
     u8 field_0x2ca0a;
     u8 field_0x2ca0b;
     // 0x2CA0C: Holds the name for the entity that caused the faint. The exact size is a guess.
@@ -1635,10 +1640,7 @@ struct dungeon {
     u8 field_0x2cb09;
     u8 field_0x2cb0a;
     u8 field_0x2cb0b;
-    u8 field_0x2cb0c;
-    u8 field_0x2cb0d;
-    u8 field_0x2cb0e;
-    u8 field_0x2cb0f;
+    u32 field_0x2cb0c;
     // 0x2CB10: Somehow related to display_data::hallucinating and seems to maybe control
     // the sleeping animations when the camera is pointed away from a hallucinating monster?
     // Initialized to 0x1.

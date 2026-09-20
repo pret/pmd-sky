@@ -253,6 +253,18 @@ struct ai_target
 };
 
 // Monster info
+struct unk_02304D20 {
+    struct position pos;
+    s32 field_0x4;
+    s32 field_0x8;
+    s32 field_0xc;
+    s32 field_0x10;
+    s32 field_0x14;
+    s16 field_0x18;
+    u8 field_0x1a;
+    u8 field_0x1b;
+};
+
 struct monster {
     // 0x0: flags: 2-byte bitfield
     u16 flags;
@@ -308,7 +320,7 @@ struct monster {
     // and restored to entity::types after statuses::roost ends.
     enum type_id original_types[2];
     // 0xAC: The move id to be used if statuses::bide is 1.
-    s16 bide_move_id;
+    enum move_id bide_move_id;
     u8 field_0xae;
     u8 field_0xaf;
     // 0xB0: Unique number given to the monster when spawning to differentiate it from other
@@ -319,7 +331,7 @@ struct monster {
     // 0xB4: Unique number between the wrapped and wrapping target to connect them.
     u32 wrap_pair_unique_id;
     // 0xB8: Tracks the damage taken to deal when bide status ends. Max 0x3E7 (999).
-    u32 bide_damage_tally;
+    s32 bide_damage_tally;
     enum monster_behavior monster_behavior; // 0xBC
     struct sleep_class_status sleep_class_status; // 0xBD
     struct burn_class_status burn_class_status; // 0xBF
@@ -526,118 +538,9 @@ struct monster {
     u8 field_0x199;
     u8 field_0x19a;
     u8 field_0x19b;
-    struct position pos; // 0x19C: Mirror of the position on the entity struct
-    u8 field_0x1a0;
-    u8 field_0x1a1;
-    u8 field_0x1a2;
-    u8 field_0x1a3;
-    u8 field_0x1a4;
-    u8 field_0x1a5;
-    u8 field_0x1a6;
-    u8 field_0x1a7;
-    u8 field_0x1a8;
-    u8 field_0x1a9;
-    u8 field_0x1aa;
-    u8 field_0x1ab;
-    u8 field_0x1ac;
-    u8 field_0x1ad;
-    u8 field_0x1ae;
-    u8 field_0x1af;
-    u8 field_0x1b0;
-    u8 field_0x1b1;
-    u8 field_0x1b2;
-    u8 field_0x1b3;
-    u16 walk_anim_frames_left; // 0x1B4: Number of frames left in walking animation?
-    u8 field_0x1b6;
-    u8 field_0x1b7;
-    u8 field_0x1b8;
-    u8 field_0x1b9;
-    u8 field_0x1ba;
-    u8 field_0x1bb;
-    u8 field_0x1bc;
-    u8 field_0x1bd;
-    u8 field_0x1be;
-    u8 field_0x1bf;
-    u8 field_0x1c0;
-    u8 field_0x1c1;
-    u8 field_0x1c2;
-    u8 field_0x1c3;
-    u8 field_0x1c4;
-    u8 field_0x1c5;
-    u8 field_0x1c6;
-    u8 field_0x1c7;
-    u8 field_0x1c8;
-    u8 field_0x1c9;
-    u8 field_0x1ca;
-    u8 field_0x1cb;
-    u8 field_0x1cc;
-    u8 field_0x1cd;
-    u8 field_0x1ce;
-    u8 field_0x1cf;
-    u8 field_0x1d0;
-    u8 field_0x1d1;
-    u8 field_0x1d2;
-    u8 field_0x1d3;
-    u8 field_0x1d4;
-    u8 field_0x1d5;
-    u8 field_0x1d6;
-    u8 field_0x1d7;
-    u8 field_0x1d8;
-    u8 field_0x1d9;
-    u8 field_0x1da;
-    u8 field_0x1db;
-    u8 field_0x1dc;
-    u8 field_0x1dd;
-    u8 field_0x1de;
-    u8 field_0x1df;
-    u8 field_0x1e0;
-    u8 field_0x1e1;
-    u8 field_0x1e2;
-    u8 field_0x1e3;
-    u8 field_0x1e4;
-    u8 field_0x1e5;
-    u8 field_0x1e6;
-    u8 field_0x1e7;
-    u8 field_0x1e8;
-    u8 field_0x1e9;
-    u8 field_0x1ea;
-    u8 field_0x1eb;
-    u8 field_0x1ec;
-    u8 field_0x1ed;
-    u8 field_0x1ee;
-    u8 field_0x1ef;
-    u8 field_0x1f0;
-    u8 field_0x1f1;
-    u8 field_0x1f2;
-    u8 field_0x1f3;
-    u8 field_0x1f4;
-    u8 field_0x1f5;
-    u8 field_0x1f6;
-    u8 field_0x1f7;
-    u8 field_0x1f8;
-    u8 field_0x1f9;
-    u8 field_0x1fa;
-    u8 field_0x1fb;
-    u8 field_0x1fc;
-    u8 field_0x1fd;
-    u8 field_0x1fe;
-    u8 field_0x1ff;
-    u8 field_0x200;
-    u8 field_0x201;
-    u8 field_0x202;
-    u8 field_0x203;
-    u8 field_0x204;
-    u8 field_0x205;
-    u8 field_0x206;
-    u8 field_0x207;
-    u8 field_0x208;
-    u8 field_0x209;
-    u8 field_0x20a;
-    u8 field_0x20b;
-    u8 field_0x20c;
-    u8 field_0x20d;
-    u8 field_0x20e;
-    u8 field_0x20f;
+    struct unk_02304D20 field_0x19c[4];
+    s16 field_0x20c;
+    s16 field_0x20e;
     s16 hp_fractional; // 0x210: 200 * fractional_part(HP)
     // 0x212: When a Pokémon can pass through walls in a hallway, this counts up to 200 before the Pokémon turns in a random direction.
     s16 mobile_turn_timer;
@@ -1165,7 +1068,7 @@ struct damage_calc_diag {
     u8 field_0x1;
     u8 field_0x2;
     u8 field_0x3;
-    enum move_category move_category; // 0x4: The category of the last move used
+    s32 move_category;
     // 0x8: The type matchup of the last move used against the individual types of the defender
     enum type_matchup move_indiv_type_matchups[2];
     // 0xA: The modified offensive stat stage of the attacker for the last move used
@@ -1219,29 +1122,29 @@ struct damage_calc_diag {
     s32 static_damage_mult;
     // 0x30: The net number of attack boosts to an attacker due to a Power Band or Munch Belt.
     // It seems like there's a bug in the code; aura bows do not contribute to this field.
-    s8 item_atk_modifier;
+    u8 item_atk_modifier;
     // 0x31: The net number of special attack boosts to an attacker due to a Special Band,
     // Munch Belt, or aura bow. It seems like there's a bug in the code; physical attack boosts
     // from aura bows also contribute to this field.
-    s8 item_sp_atk_modifier;
+    u8 item_sp_atk_modifier;
     // 0x32: The net number of offense boosts to an attacker due to Download, Rivalry,
     // Flower Gift, and Solar Power
-    s8 ability_offense_modifier;
+    u8 ability_offense_modifier;
     // 0x33: The net number of defense boosts to a defender due to Flower Gift
-    s8 ability_defense_modifier;
+    u8 ability_defense_modifier;
     // 0x34: The net number of offense boosts to an attacker due to Aggressor, Defender, and
     // Practice Swinger
-    s8 iq_skill_offense_modifier;
+    u8 iq_skill_offense_modifier;
     // 0x35: The net number of defense boosts to a defender due to Counter Basher, Aggressor, and
     // Defender
-    s8 iq_skill_defense_modifier;
+    u8 iq_skill_defense_modifier;
     // 0x36: The net number of defense boosts to a defender due to a Def Scarf or aura bow.
     // It seems like there's a bug in the code; special defense boosts from aura bows also
     // contribute to this field.
-    s8 item_def_modifier;
+    u8 item_def_modifier;
     // 0x37: The net number of special defense boosts to a defender due to a Zinc Band.
     // It seems like there's a bug in the code; aura bows do not contribute to this field.
-    s8 item_sp_def_modifier;
+    u8 item_sp_def_modifier;
     // 0x38: Whether or not Scope Lens or Sharpshooter boosted the critical hit rate of a move
     bool8 scope_lens_or_sharpshooter_activated;
     // 0x39: Whether or not the Patsy Band boosted the critical hit rate of a move

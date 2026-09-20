@@ -1,4 +1,5 @@
 #include "overlay_29_0232CE40.h"
+#include "overlay_29_0234B340.h"
 
 #ifdef JAPAN
 #define REVIVER_LOG_MESSAGE 0xC4B
@@ -7,7 +8,6 @@
 #endif
 
 
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 
 extern s16 ov10_022C456C;
 

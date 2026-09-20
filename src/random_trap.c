@@ -9,7 +9,7 @@ u8 GetRandomSpawnTrapId() {
     s32 rnd = DungeonRandInt(10000);
 
     for(s32 i = 0; i < TRAP_NONE; i++) {
-        u16 weight = DUNGEON_PTR[0]->trap_weights[i];
+        u16 weight = DUNGEON_PTR[0]->field_0x286b0.trap_weights[i];
         if(weight == 0) {
             continue;
         }

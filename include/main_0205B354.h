@@ -11,5 +11,6 @@ struct unkStruct_0205B354 {
 };
 
 bool8 sub_0205B354(struct unkStruct_0205B354 *ptr);
+u8* sub_0205B39C(const s8 *table, s32 value);
 
 #endif //PMDSKY_MAIN_0205B354_H

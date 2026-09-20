@@ -6,5 +6,7 @@ void StrcpySimple(unsigned char* dest, const unsigned char* src);
 void StrncpySimple(unsigned char* dest, const unsigned char* src, s32 n);
 void StrncpySimpleNoPad(unsigned char* dest, const unsigned char* src, s32 n);
 int StrncmpSimple(const unsigned char* c1, const unsigned char* c2, s32 n);
+u16 sub_020251F0(u8 c);
+void StrncpySimpleNoPadSafe(unsigned char* dest, const unsigned char* src, s32 n);
 
 #endif //PMDSKY_MAIN_020251AC_H

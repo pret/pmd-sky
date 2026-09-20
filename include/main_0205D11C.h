@@ -5,9 +5,24 @@
 #include "util.h"
 #include "mission.h"
 
+struct unk_0205DFAC {
+    u16 field_0x0;
+    u16 field_0x2;
+    s16 field_0x4;
+};
+
+struct unk_0205D224 {
+    u16 field_0x0;
+    struct unk_0205DFAC field_0x2[5];
+    enum mission_type field_0x20;
+    union mission_subtype field_0x21;
+};
+
 bool8 sub_0205CF58(enum mission_type type, union mission_subtype* subtype, struct dungeon_floor_pair* df_pair);
 bool8 CheckMonsterForMissionType(enum mission_type type, union mission_subtype* subtype, enum monster_id outlaw_backup_species, bool8 arg3);
-bool8 CheckItemForMissionType(u32 r0, u32 r1, s16 r2);
+bool8 CheckItemForMissionType(u32 r0, union mission_subtype *r1, s16 r2);
 bool8 sub_0205D1F4(struct mission *mission);
+s32 GenerateMission(struct unk_0205D224 *tmpl, struct mission *mission);
+s32 CountAndPopulateValidMissionTableMonsters(s16 **out, struct unk_0205DFAC *spec);
 
 #endif //PMDSKY_MAIN_0205D11C_H

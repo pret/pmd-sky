@@ -6,6 +6,7 @@ typedef struct {
     int unk4;
     char pad[0x1C];
     short unk24;
+    u8 unk26;
 } unkStruct_02029A50;
 
 void sub_02029A50(unkStruct_02029A50 *arg0);

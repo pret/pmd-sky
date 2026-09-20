@@ -320,6 +320,8 @@ ov29_02353228:
 	.global ov29_02353218
 ov29_02353218:
 	.byte 0x33, 0x0B, 0x34, 0x0B
+	.global ov29_02353E44
+ov29_02353E44:
 	.byte 0x63, 0x0F, 0x64, 0x0F
 	.global ov29_0235322C
 ov29_0235322C:

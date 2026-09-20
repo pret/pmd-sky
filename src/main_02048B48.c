@@ -1,4 +1,13 @@
 #include "main_02048B48.h"
+#include "main_02048BB4.h"
+
+extern struct unk_020AFF38 _020AFF38[];
+
+extern const char _0209CD4C[];
+
+extern s32 _022AAE70;
+
+extern void Debug_Print0(const char *fmt, s32 a, s32 b);
 
 extern void InitOptions(void);
 
@@ -29,4 +38,11 @@ void sub_02048B48(void)
     sub_0205B478();
     sub_0205C75C();
     ClearCroagunkItems();
+}
+
+void sub_02048B74(void)
+{
+    Debug_Print0(_0209CD4C, _020AFF38[0].field_0x4, 0);
+    _020AFF38[0].field_0x4 = 0;
+    _022AAE70 = -1;
 }

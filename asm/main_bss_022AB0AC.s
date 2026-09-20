@@ -34,6 +34,8 @@ _022AB69C:
 	.space 0x27C
 	.global TEAM_NAME
 TEAM_NAME:
+	.global _022AB918
+_022AB918:
 #ifdef JAPAN
 	.space 0x8
 #else

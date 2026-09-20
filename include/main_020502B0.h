@@ -4,5 +4,6 @@
 #include "adventure_log.h"
 void IncrementNbFainted(void);
 u32 GetNbFainted(void);
+void SetItemAcquired(struct item *item);
 
 #endif

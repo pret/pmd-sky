@@ -1,0 +1,9 @@
+#pragma once
+.public DungeonRandInt
+.public DungeonRandRange
+.public FLOOR_GENERATION_STATUS
+.public GenerateMaze
+.public GetTileSafe
+.public IsNextToHallway
+.public SetSpawnFlag5
+.public _s32_div_f

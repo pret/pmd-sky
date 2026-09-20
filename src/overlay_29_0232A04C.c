@@ -2,11 +2,9 @@
 #include "moves_2.h"
 #include "main_0201514C.h"
 #include "dungeon_util_static.h"
-
-extern void CalcDamageFixedWrapper(struct entity *attacker, struct entity *defender, s32 fixed_damage, s32 a, bool8 *flag, s32 type, s32 category, s32 damage_source, s32 b, s32 c, s32 d);
-
-extern s32 GetDamageSourceWrapper(struct move *move, enum item_id item_id);
+extern s16 GetDamageSourceWrapper(struct move *move, enum item_id item_id);
 #include "move_orb_effects.h"
+#include "overlay_29_0230BBAC.h"
 
 extern const struct StatIndex ATK_STAT_IDX;
 
@@ -30,9 +28,9 @@ bool8 DoMoveNightShade(struct entity* attacker, struct entity* defender, struct 
 {
     bool8 flag = FALSE;
     s32 level = GetEntInfo(attacker)->level;
-    s32 type = GetMoveType(move);
-    s32 category = GetMoveCategory(move->id);
-    s32 source = GetDamageSourceWrapper(move, item_id);
+    enum type_id type = GetMoveType(move);
+    u8 category = GetMoveCategory(move->id);
+    s16 source = GetDamageSourceWrapper(move, item_id);
 
     CalcDamageFixedWrapper(attacker, defender, level, 1, &flag, type, category, source,
                            0, 1, 0);

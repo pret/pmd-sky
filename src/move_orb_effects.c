@@ -1,4 +1,5 @@
 #include "dungeon_pokemon_attributes.h"
+#include "overlay_29_0230F810.h"
 #include "dungeon_map_access.h"
 #include "dungeon_util_static.h"
 #include "dungeon_util.h"
@@ -9,12 +10,16 @@
 #include "overlay_29_023118B4.h"
 #include "overlay_29_02311BF8.h"
 #include "overlay_29_02344AF8.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_022E3F20.h"
+#include "overlay_29_0234B340.h"
+#include "dungeon_logic_2.h"
+#include "dg_random.h"
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern void CopyStringFromId(u8* buf, u32 string_id);
 extern void SetMessageLogPreprocessorArgsString(u32 a, u8 *buf);
 extern bool8 IsProtectedFromStatDrops(struct entity *user, struct entity *target, bool8 log_message);
-extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
 extern void PlayOffensiveStatUpEffect(struct entity *entity, struct StatIndex stat_index);
 extern void PlayDefensiveStatDownEffect(struct entity *entity, struct StatIndex stat_index);
 extern void PlayDefensiveStatUpEffect(struct entity *entity, struct StatIndex stat_index);
@@ -25,35 +30,38 @@ extern void PlayDefensiveStatMultiplierDownEffect(struct entity *entity, struct 
 extern void PlayDefensiveStatMultiplierUpEffect(struct entity *entity, struct StatIndex stat_index);
 extern void PlayHitChanceUpEffect(struct entity *entity, struct StatIndex stat_index);
 extern void PlayHitChanceDownEffect(struct entity *entity, struct StatIndex stat_index);
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
-extern void UpdateStatusIconFlags(struct entity *entity);
 extern void ov29_022E4338(struct entity *);
 extern void PlayExclamationPointEffect__022E5D4C(struct entity *entity);
 extern void PlayParalysisEffect(struct entity *entity);
 extern void PlaySpeedUpEffect(struct entity *entity);
 extern void PlaySpeedDownEffect(struct entity *entity);
 extern fx32_8 MultiplyByFixedPoint(fx32_8 x, fx32_8 mult_fp);
-extern bool8 IsProtectedFromNegativeStatus(struct entity *user ,struct entity *target, bool8 log_message);
 extern bool8 SafeguardIsActive(struct entity *user ,struct entity *target, bool8 log_message);
 extern void TryActivateSteadfast(struct entity *attacker, struct entity *defender);
-extern void TryActivateQuickFeet(struct entity *attacker ,struct entity *defender);
 extern s32 CalcStatusDuration(struct entity *entity, const s16 *turn_range, bool8 iq_skill_effects);
-extern bool8 GetExclusiveItemWithEffectFromBag(struct entity *, enum exclusive_item_effect_id effect_id, struct item *item);
 extern struct preprocessor_args* GetMessageLogPreprocessorArgs(void);
-extern void SetPreprocessorArgsStringToName(struct preprocessor_args* preprocessor_args, u8 pos, struct monster* monster, u8 param_4, u8 name_type);
+extern void SetPreprocessorArgsStringToName(struct preprocessor_args* preprocessor_args, s32 pos, struct monster* monster, u32 param_4, u8 name_type);
 extern int CalcSpeedStageWrapper(struct entity* entity);
 extern int CalcSpeedStage(struct entity *entity, s32 counter_weight);
+extern void SetPreprocessorArgsIdVal(s32 pos, u32 val);
+extern void ov29_022E543C(struct entity *entity);
+extern void ov29_022E60E4(struct entity *entity);
 
 extern const s16 CRINGE_TURN_RANGE[];
 extern const s16 PARALYSIS_TURN_RANGE[];
 extern const s16 SPEED_LOWER_TURN_RANGE[];
 extern const s16 SPEED_BOOST_TURN_RANGE[];
 extern const u16 ov29_02353318[];
+extern const s16 ov10_022C4618;
 
 #ifdef JAPAN
 #define JPN_MSG_OFFSET -0x2C0
+#define MESSAGE_ED0 0xC12
+#define MESSAGE_ED1 0xC13
 #else
 #define JPN_MSG_OFFSET 0
+#define MESSAGE_ED0 0xED0
+#define MESSAGE_ED1 0xED1
 #endif // JAPAN
 
 void LowerOffensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 n_stages, bool8 check_is_protected_from_stat_drops, bool8 log_message_if_protected_from_stat_drops)
@@ -791,6 +799,171 @@ void LowerSpeed(struct entity *user, struct entity *target, s32 n_stages, bool8 
     }
 
     UpdateStatusIconFlags(target);
+}
+
+bool8 TrySealMove(struct entity *user, struct entity *target, bool8 check_only)
+{
+    struct monster *entityInfo;
+    struct move *sealableMoves[MAX_MON_MOVES];
+    s32 nSealable;
+    s32 i;
+    bool8 sealed = FALSE;
+
+    if (target == NULL)
+        return FALSE;
+
+    if (SafeguardIsActive(user, target, TRUE))
+        return FALSE;
+
+    if (IsProtectedFromNegativeStatus(user, target, TRUE))
+        return FALSE;
+
+    entityInfo = GetEntInfo(target);
+    nSealable = 0;
+    for (i = 0; i < MAX_MON_MOVES; i++) {
+        struct move *move = &entityInfo->moves.moves[i];
+        if (MoveExists(move)) {
+            if (!(move->flags2 & MOVE_FLAG_SEALED)) {
+                sealableMoves[nSealable] = move;
+                nSealable++;
+            }
+        }
+    }
+
+    if (check_only && nSealable == 0)
+        return FALSE;
+
+    if (nSealable != 0) {
+        struct move *move;
+
+        if (ExclusiveItemEffectIsActiveWithLogging(user, target, TRUE, 0xdbe + JPN_MSG_OFFSET, EXCLUSIVE_EFF_NO_MOVE_DISABLING))
+            return FALSE;
+
+        if (check_only)
+            return TRUE;
+
+        move = sealableMoves[DungeonRandInt(nSealable)];
+        move->flags2 |= MOVE_FLAG_SEALED;
+        SetPreprocessorArgsIdVal(0, move->id);
+        sealed = TRUE;
+        TryActivateQuickFeet(user, target);
+    }
+
+    if (sealed)
+        LogMessageByIdWithPopupCheckUserTarget(user, target, 0xde3 + JPN_MSG_OFFSET);
+    else
+        LogMessageByIdWithPopupCheckUserTarget(user, target, 0xde4 + JPN_MSG_OFFSET);
+
+    return TRUE;
+}
+
+bool8 BoostOrLowerSpeed(struct entity *user, struct entity *target)
+{
+    if (!EntityIsValid__023118B4(target))
+        return FALSE;
+
+    if (DungeonRandOutcome__022EAB20(50))
+        LowerSpeed(user, target, 1, TRUE);
+    else
+        BoostSpeed(user, target, 1, 0, TRUE);
+
+    return TRUE;
+}
+
+void ResetHitChanceStat(struct entity *user, struct entity *target, s32 stat_idx, s32 play_effect_anyway)
+{
+    struct monster *entityInfo;
+    bool8 changed = FALSE;
+
+    if (!EntityIsValid__023118B4(target))
+        return;
+
+    entityInfo = GetEntInfo(target);
+    if (entityInfo->stat_modifiers.hit_chance_stages[stat_idx] != 10) {
+        entityInfo->stat_modifiers.hit_chance_stages[stat_idx] = 10;
+        changed = TRUE;
+    }
+
+    if (changed)
+        ov29_022E543C(target);
+    else if (play_effect_anyway)
+        ov29_022E543C(target);
+
+    SubstitutePlaceholderStringTags(0, target, 0);
+    if (changed)
+        LogMessageByIdWithPopupCheckUserTarget(user, target, 0xd60 + JPN_MSG_OFFSET);
+    else
+        LogMessageByIdWithPopupCheckUserTarget(user, target, 0xd61 + JPN_MSG_OFFSET);
+
+    UpdateStatusIconFlags(target);
+}
+
+bool8 ExclusiveItemEffectIsActiveWithLogging(struct entity *user, struct entity *target, bool8 should_log, s32 message_id, enum exclusive_item_effect_id effect_id)
+{
+    struct item item;
+
+    if (ExclusiveItemEffectIsActive__023147EC(target, effect_id)) {
+        if (should_log) {
+            SubstitutePlaceholderStringTags(0, target, 0);
+            GetExclusiveItemWithEffectFromBag(target, effect_id, &item);
+            PrepareItemForPrinting__02345728(1, &item);
+            LogMessageByIdWithPopupCheckUserTarget(user, target, message_id);
+        }
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void LogMessageWithTargetAndExclusiveItemName(struct entity *user, struct entity *target, s32 message_id, enum exclusive_item_effect_id effect_id)
+{
+    struct item item;
+
+    SubstitutePlaceholderStringTags(0, target, 0);
+    GetExclusiveItemWithEffectFromBag(target, effect_id, &item);
+    PrepareItemForPrinting__02345728(1, &item);
+    LogMessageByIdWithPopupCheckUserTarget(user, target, message_id);
+}
+
+bool8 TryActivateQuickFeet(struct entity *user, struct entity *target)
+{
+    if (!AbilityIsActiveVeneer(target, ABILITY_QUICK_FEET))
+        return FALSE;
+
+    BoostSpeed(user, target, 1, 0, FALSE);
+    return TRUE;
+}
+
+void TryInflictTerrifiedStatus(struct entity *user, struct entity *target)
+{
+    struct monster *entityInfo = GetEntInfo(target);
+
+    entityInfo->terrified = 1;
+    entityInfo->terrified_turns = ov10_022C4618;
+    ov29_022E60E4(target);
+    SubstitutePlaceholderStringTags(0, target, 0);
+    LogMessageByIdWithPopupCheckUserTarget(user, target, 0xde5 + JPN_MSG_OFFSET);
+}
+
+bool8 TryInflictGrudgeStatus(struct entity *user, struct entity *target, bool8 log_message)
+{
+    bool8 inflicted = FALSE;
+    struct monster *entityInfo = GetEntInfo(target);
+
+    SubstitutePlaceholderStringTags(1, target, 0);
+    if (entityInfo->grudge) {
+        if (log_message)
+            LogMessageByIdWithPopupCheckUserTarget(user, target, MESSAGE_ED1);
+    }
+    else {
+        entityInfo->grudge = TRUE;
+        inflicted = TRUE;
+        UpdateStatusIconFlags(target);
+        if (log_message)
+            LogMessageByIdWithPopupCheckUserTarget(user, target, MESSAGE_ED0);
+    }
+
+    return inflicted;
 }
 
 // If Red's file boundaries are anything to go by, this file should end just before TryInflictConfusedStatus.

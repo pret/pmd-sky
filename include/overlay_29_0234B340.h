@@ -6,5 +6,6 @@
 #include "move.h"
 
 void LogMessageQuiet(struct entity *user, const char *message);
+void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 
 #endif

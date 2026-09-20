@@ -1,0 +1,10 @@
+#pragma once
+.public AdvanceFrame
+.public ChangeDungeonMusic
+.public DUNGEON_PTR
+.public FIXED_ROOM_PROPERTIES_TABLE
+.public IsCurrentFixedRoomBossFight
+.public MusicTableIdxToMusicId
+.public ov29_022EAE40
+.public sub_02017B18
+.public sub_02017C68

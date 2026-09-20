@@ -2,7 +2,6 @@
 #include "main_02042AF8.h"
 #include "main_02001188.h"
 
-void *MemAlloc(u32 size, u32 nmemb);
 
 s32 IsBagItemIndexSelected(s32 idx)
 {

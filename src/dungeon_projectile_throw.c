@@ -1,4 +1,5 @@
 #include "dungeon_projectile_throw.h"
+#include "overlay_29_0231CBC8.h"
 #include "dg_object.h"
 #include "dungeon.h"
 #include "dungeon_items.h"
@@ -10,6 +11,10 @@
 #include "MSL_C/stdlib.h"
 #include "moves_1.h"
 #include "overlay_29_02344AF8.h"
+#include "dungeon_util_2.h"
+#include "overlay_29_022E9FC0.h"
+#include "overlay_29_0234B340.h"
+#include "overlay_29_023456BC.h"
 
 #ifdef JAPAN
 #define CURVED_PROJECTILE_LOG_MESSAGE_1 0x920
@@ -27,16 +32,11 @@ extern bool8 ov29_022E2CA0(struct position *pos);
 extern void ov29_0234B4CC(bool8 val);
 extern s32 SinAbs4096(s32 x);
 extern bool8 DisplayThrownItemShadow(s32 x, s32 y, u8 index);
-extern bool8 DisplayItem(struct entity *item, bool8 hallucinate, u8 on_floor, u8 dir, u8 priority);
-extern void AdvanceFrame(u32 param_1);
 extern bool8 TwoTurnMoveForcedMiss(struct entity *target, struct move *move);
 extern bool8 DoesProjectileHitTarget(struct entity *user, struct entity *target);
-extern void SubstitutePlaceholderStringTags(s32 string_id, struct entity *entity, u32 param_3);
 extern void ChangeMonsterAnimationToHurt(struct entity *monster, u32 direction);
-extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
-extern void ApplyItemEffect(char param_1, u8 param_2, u8 param_3, struct entity *attacker, struct entity *defender, struct item *thrown_item);
-extern void SpawnDroppedItem(struct entity *entity, struct entity *item_entity, struct item *item, bool8 param_4, struct position *dir_xy, u32 param_6);
+extern bool8 SpawnDroppedItem(struct entity *entity, struct entity *item_entity, struct item *item, bool8 param_4, struct position *dir_xy, u32 param_6);
 
 bool8 ItemIsActive__02347B50(struct entity *entity, enum item_id item_id)
 {

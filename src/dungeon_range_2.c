@@ -1,7 +1,23 @@
 #include "dungeon_range_2.h"
 #include "dungeon.h"
 #include "dungeon_map_access.h"
+#include "main_0201BCCC.h"
 #include "MSL_C/stdlib.h"
+
+struct unk_0237C888 {
+    u16 field_0x0;
+    u16 field_0x2;
+    u16 field_0x4;
+    u16 field_0x6;
+    s16 field_0x8;
+    s16 field_0xa;
+};
+
+extern struct dungeon *DUNGEON_PTR[];
+extern struct unk_0201BCCC *OBJ_GRAPHICS_CONTROLS_PTR;
+extern struct unk_0237C888 ov29_0237C888[2][6];
+
+extern s32 AddSimpleObjToOam(void *controls, void *oam_data, s32 x);
 
 bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target)
 {
@@ -63,6 +79,29 @@ bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target)
             if (!(tile->terrain_flags & (TERRAIN_TYPE_NORMAL | TERRAIN_TYPE_SECONDARY)))
                 return FALSE;
         }
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 DisplayThrownItemShadow(s32 x, s32 y, u8 index)
+{
+    struct dungeon *dungeon = DUNGEON_PTR[0];
+    s32 dx = x - dungeon->display_data.camera_pixel_pos.x;
+    s32 dy = y - dungeon->display_data.camera_pixel_pos.y;
+
+    if (dx >= -16 && dy >= -16 && dx < 271 && dy < 208)
+    {
+        s32 sx;
+        s32 sy;
+
+        sx = dx + ov29_0237C888[0][index].field_0x8;
+        ov29_0237C888[0][index].field_0x2 &= ~0x1FF;
+        ov29_0237C888[0][index].field_0x2 |= sx & 0x1FF;
+        sy = dy + ov29_0237C888[0][index].field_0xa;
+        ov29_0237C888[0][index].field_0x6 &= ~0xFFF0;
+        ov29_0237C888[0][index].field_0x6 |= (sy & 0xFFF) << 4;
+        AddSimpleObjToOam(OBJ_GRAPHICS_CONTROLS_PTR, &ov29_0237C888[0][index], 0);
         return TRUE;
     }
     return FALSE;

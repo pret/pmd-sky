@@ -3,6 +3,7 @@
 #include "main_02001188.h"
 #include "main_02028080.h"
 #include "main_020282F4.h"
+extern void sub_02028980(s32 window_id, void *p);
 
 extern void sub_020333FC(void *p);
 
@@ -95,11 +96,11 @@ bool8 CheckInventoryMenuField0x1A0(s32 window_id)
     return w->field_0x1A0 == 0;
 }
 
-void ov10_022BCDA8(s32 window_id)
+s32 ov10_022BCDA8(s32 window_id)
 {
     struct unk_0202AAA8 *w = GetWindowContents(window_id);
 
-    sub_02033064((void *) w + 4);
+    return sub_02033064((void *) w + 4);
 }
 
 s32 ov10_022BCDBC(s32 window_id)
@@ -115,4 +116,17 @@ s32 ov10_022BCDBC(s32 window_id)
     }
 
     return -1;
+}
+
+void ov10_022BCDF4(s32 window_id)
+{
+    struct unk_0202AAA8 *w = GetWindowContents(window_id);
+
+    w->field_0x1A0 = 1;
+    w->field_0x1A1 = 0;
+    sub_0202830C(window_id, -4);
+    if (w->field_0xF8 & 0x400000) {
+        sub_02028980(window_id, (void *) w + 4);
+    }
+    w->field_0x19C = 5;
 }

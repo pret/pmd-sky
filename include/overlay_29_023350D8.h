@@ -5,5 +5,7 @@
 
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValid__023350D8(struct entity *entity);
+void ov29_023350FC(void);
+void TryWeatherFormChange(struct entity *entity);
 
 #endif //PMDSKY_OVERLAY_29_023350D8_H

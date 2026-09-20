@@ -68,11 +68,11 @@ typedef struct UnkGroundBg_C4
     s16 unk4;
     struct iovec bpaFile;
     const struct BpaHeader *unk10;
-    const void *unk14;
-    const void *unk18;
-    const void *unk1C;
-    void *unk20;
-    void *unk24;
+    const s32 *unk14;
+    const s32 *unk18;
+    u16 *unk1C;
+    u16 *unk20;
+    u16 *unk24;
     u32 unk28;
 } UnkGroundBg_C4;
 
@@ -145,6 +145,10 @@ typedef struct MapRender
     s32 heightChunks;
     PixelPos mapSizePixels;
     void (*tilemapRenderFunc)(struct MapRender *);
+    u16 *unk1C[2];
+    u16 *unk24[2];
+    u16 *unk2C[2];
+    u8 fillerForNow[0x20];
 } MapRender;
 
 #define MAX_BPA_SLOTS 4
@@ -173,9 +177,9 @@ typedef struct BmaHeader
     u8 mapWidthChunks;
     u8 mapHeightChunks;
 
-    u16 numLayers; // Number of layers in this map. Must match BPC layer size. Allowed values are only 1 or 2.
-    u16 hasDataLayer; // Seems to be a boolean flag (0 or 1). If >0, the Unknown Data Layer exists.
-    u16 hasCollision; // Number of Collision layers. 0, 1 or 2.
+    s16 numLayers; // Number of layers in this map. Must match BPC layer size. Allowed values are only 1 or 2.
+    s16 hasDataLayer; // Seems to be a boolean flag (0 or 1). If >0, the Unknown Data Layer exists.
+    s16 hasCollision; // Number of Collision layers. 0, 1 or 2.
 } BmaHeader;
 
 typedef struct BplHeader
@@ -225,13 +229,9 @@ typedef struct GroundBg
     u8 unk1F9;
     u8 unk1FA;
     u8 unk1FB;
-    u8 unk1FC;
-    u8 unk1FD;
-    u8 unk1FE;
-    u8 unk1FF;
+    s32 unk1FC;
     PixelPos cameraPixelPosition[NUM_LAYERS]; // 0x200
     MapRender mapRender[NUM_LAYERS]; // 0x210
-    u8 fillerForNow2[112];
     s16 unk2B8;
     u8 unk2BA;
     UnkGroundBg_2BC unk2BC; // 2bc
@@ -240,6 +240,47 @@ typedef struct GroundBg
     u16 *unk2E4[2];
     u16 *unk2EC[2];
 } GroundBg;
+
+#define RGB_R 0
+#define RGB_G 1
+#define RGB_B 2
+#define RGB_UNK 3
+#define RGB_FIELDS_COUNT 4
+
+typedef struct RGB_Array
+{
+    u8 c[RGB_FIELDS_COUNT];
+} RGB_Array;
+
+struct UnkStruct_2324CBC_Sub98
+{
+    u8 fill0[7];
+    u8 unk8;
+    u8 fill9[0x18 - 0x9];
+    RGB_Array *unk18;
+    u8 fill1C[0x28-0x1c];
+};
+
+struct UnkStruct_2324CBC_Sub0
+{
+    u8 fill0[0x1C];
+};
+
+struct UnkStruct_2324CBC
+{
+    struct UnkStruct_2324CBC_Sub0 unk0[2][2];
+    u8 fill70[0x28];
+    struct UnkStruct_2324CBC_Sub98 unk98[2];
+};
+
+extern struct UnkStruct_2324CBC *ov11_02324CBC;
+extern u16 *ov11_02320C18[][2];
+extern const RGB_Array ov11_02320BF4;
+extern const RGB_Array ov11_02320BE8;
+
+extern void CopyColorToPaletteDataRgba(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src);
+extern void MarkPaletteDataAsNeedingUpdate(struct UnkStruct_2324CBC_Sub98 *);
+extern void FillPaletteDataRgba(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src, s32);
 
 void LoadBackgroundAttributes(struct bg_list_entry* entry, int bgId);
 void GroundBg_Init(GroundBg *groundBg, const UnkGroundBg_2BC *a1);

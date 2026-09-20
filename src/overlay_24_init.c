@@ -1,4 +1,7 @@
 #include "overlay_24.h"
+#include "main_0203D538.h"
+#include "main_020251AC.h"
+#include "main_0202B558.h"
 
 extern void CloseCollectionMenu(s8);                          
 extern void CloseDialogueBox(s8);                             
@@ -6,12 +9,10 @@ extern void FreeMissionRewardStructMain();
 extern s32 GetEggHatchTimer();                             
 extern s32 GetKeyboardStatus();                            
 extern const u8 *GetKeyboardStringResult();                      
-extern s32 GetSimpleMenuResult__0202B870(s8);              
 extern void HidePortraitBox(s8);                              
 extern s32 IsDialogueBoxActive(s8);                        
 extern void ShowDialogueBox(s8);                              
 extern void StrcpySimple(unsigned char* dest, const unsigned char* src);                         
-extern void StrncpySimpleNoPadSafe(u8* dest, const u8* src, u32 n);          
 extern void ov11_022DC504();                                  
 extern struct overlay_24_unk1E8_sub *ov11_02306C64();                                
 extern s32 ov11_02306C9C();                                
@@ -23,7 +24,6 @@ extern void sub_0202F2C4(s8);
 extern s32 sub_02037468();                                 
 extern s32 sub_02039218();                                 
 extern s32 sub_0203931C();                                 
-extern s32 sub_0203D538();                                 
 
 
 s32 ov24_0238A140(void)

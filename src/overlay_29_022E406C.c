@@ -1,9 +1,7 @@
 #include "overlay_29_022E406C.h"
+#include "dg_effect.h"
 
 extern s32 GetEffectAnimationWanOffset(s32 id);
-
-extern void PlayEffectAnimationEntity(struct entity *entity, s32 id, s32 a, u8 b,
-        s32 c, s32 d, s32 e, s32 f);
 
 void PlayEffectAnimation0x171(struct entity *entity)
 {

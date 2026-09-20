@@ -5,5 +5,6 @@
 void SetAdventureLogStructLocation(void);
 void SetAdventureLogDungeonFloor(struct dungeon_floor_pair* floor);
 struct dungeon_floor_pair* GetAdventureLogDungeonFloor(void);
+void ClearAdventureLogStruct(void);
 
 #endif

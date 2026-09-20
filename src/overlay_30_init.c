@@ -255,10 +255,10 @@ void WriteQuicksaveData(void *buffer, s32 size)
     ov30_02385CE0(&sp4, OVERLAY30_JP_STRING_1);
     WriteBitsToDataSerializer(&sp4, &DUNGEON_PTR->id, 0xAC);
     ov30_02385CE0(&sp4, OVERLAY30_JP_STRING_1);
-    ov30_02385D34(&sp4, DUNGEON_PTR->highest_enemy_level);
+    ov30_02385D34(&sp4, DUNGEON_PTR->field_0x286b0.highest_enemy_level);
     for(index = 0; index < 0x10; index++)
     {
-        ov30_02385D14(&sp4, DUNGEON_PTR->spawn_table_entries_chosen[index]);
+        ov30_02385D14(&sp4, DUNGEON_PTR->field_0x286b0.spawn_table_entries_chosen[index]);
 
     }
     ov30_02383C70(&sp4);
@@ -806,11 +806,11 @@ void ov30_023842F4(void *buffer, s32 arg1)
     ReadBitsFromDataSerializer(&sp4, &DUNGEON_PTR->id, 0xAC);
     ov30_02385CF0(&sp4, OVERLAY30_JP_STRING_1);
 
-    DUNGEON_PTR->highest_enemy_level = ov30_02385EDC(&sp4);
+    DUNGEON_PTR->field_0x286b0.highest_enemy_level = ov30_02385EDC(&sp4);
 
     for(int var_r4 = 0; var_r4 < 0x10; var_r4++)
     {
-        DUNGEON_PTR->spawn_table_entries_chosen[var_r4] = ov30_02385EC4(&sp4);
+        DUNGEON_PTR->field_0x286b0.spawn_table_entries_chosen[var_r4] = ov30_02385EC4(&sp4);
     }
 
     ov30_02384400(&sp4);

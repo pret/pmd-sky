@@ -1,6 +1,6 @@
 #include "enums.h"
+#include "main_020251AC.h"
 
-extern void StrncpySimpleNoPadSafe(u8 *dest, const u8 *src, u32 n);
 
 extern u8 _022B7310[];
 

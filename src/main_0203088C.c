@@ -8,3 +8,12 @@ void SetAdvancedTextBoxState5(s32 window_id)
 
     w->field_0x1BC = 5;
 }
+
+void CloseAdvancedTextBox(s32 window_id)
+{
+    void *contents;
+
+    contents = GetWindowContents(window_id);
+    DeleteWindow(window_id);
+    MemFree(contents);
+}

@@ -1,5 +1,6 @@
 #include "overlay_29_0232D1DC.h"
 #include "move_orb_effects.h"
+#include "overlay_29_0231EDD8.h"
 
 extern s32 DealDamage(struct entity *attacker, struct entity *defender, struct move *move, s32 damageMultiplier, enum item_id item_id);
 
@@ -11,7 +12,6 @@ extern void RevealStairs(struct entity *user, struct entity *target);
 
 extern void TryInflictMobileStatus(struct entity *user, struct entity *target);
 
-extern void TryHurl(struct entity *user, struct entity *target);
 
 bool8 DoMoveHurl(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)
 {

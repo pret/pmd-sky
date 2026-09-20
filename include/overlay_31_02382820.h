@@ -34,13 +34,6 @@ void EntryOverlay31(void);
 void DrawDungeonMenuStatusWindow(s32 window_id);
 void DungeonMenuSwitch(s32 window_id);
 
-struct struct_2 {
-    u32 b;        // 0x0
-    u8 PAD1[92];
-    u8* c;        // 0x60
-    u8 PAD2[50];
-};
-
 struct struct_3 {
     s8                e[4]; // 0x0
     u32               f;    // 0x4

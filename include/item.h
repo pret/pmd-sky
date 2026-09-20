@@ -6,6 +6,7 @@
 
 // Item ID
 enum item_id {
+    ITEM_INVALID = -1,
     ITEM_NOTHING = 0,
     ITEM_STICK = 1,
     ITEM_IRON_THORN = 2,
@@ -1646,6 +1647,23 @@ struct bag_items_inner {
 #define RESCUE_INVENTORY_INDEX 2
 #define NUM_INVENTORIES 3
 
+struct bulk_item
+{
+    /* 0x0 */ s16 id;
+    /* 0x2 */ u16 quantity;
+};
+
+struct unk_0209C850 {
+    s32 field_0x0;
+    u8 field_0x4;
+    u8 field_0x5;
+    s16 field_0x6;
+    u8 field_0x8;
+    u8 field_0x9;
+    u8 field_0xa;
+    u8 field_0xb;
+};
+
 struct bag_items {
     // Indexes:
     // 0x0 - Main, default
@@ -1654,11 +1672,15 @@ struct bag_items {
     /* 0x0   */ struct bag_items_inner inventories[NUM_INVENTORIES];
     /* 0x384 */ struct bag_items_inner *bag_items;
     /* 0x388 */ u8 active_inventory_idx;
-    u8 fill2[0xFA3];
-    u32 *field_0x132C;
-    u8 fill3[0x40];
-    u32 *field_0x1370;
-    u8 fill4[0x1E];
+    u8 field_0x389;
+    s16 field_0x38A[1000];
+    u16 field_0xB5A[1000];
+    u8 field_0x132A;
+    u8 field_0x132B;
+    struct bulk_item *field_0x132C;
+    struct bulk_item field_0x1330[2][8];
+    struct bulk_item *field_0x1370;
+    struct bulk_item field_0x1374[2][4];
     u32 maybeMoney[NUM_INVENTORIES]; // indexed with an u8, uses same indexes as Inventory
     u32 field_0x13A0;
     s16 field_0x13A4;
@@ -1668,12 +1690,6 @@ struct bag_items {
     u32 field_0x13AC;
     s16 field_0x13B0;
     s16 field_0x13B2;
-};
-
-struct bulk_item
-{
-    /* 0x0 */ s16 id;
-    /* 0x2 */ u16 quantity;
 };
 
 struct item_data

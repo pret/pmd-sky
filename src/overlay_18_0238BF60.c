@@ -1,11 +1,11 @@
 #include "overlay_18_0238BF60.h"
 #include "overlay_18_0238C950.h"
+#include "main_0202B558.h"
 
 extern void ov18_0238BE28(s32 a);
 
 extern u32 IsSimpleMenuActive(s32 window_id);
 
-extern s32 GetSimpleMenuResult__0202B870(s8 window_id);
 
 extern struct unk_0238C950 *LINK_SHOP_PTR;
 

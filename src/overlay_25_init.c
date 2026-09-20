@@ -1,6 +1,9 @@
 #include "overlay_25.h"
 #include "main_0200C4FC.h"
 #include "item.h"
+#include "main_02001188.h"
+#include "main_02026174.h"
+#include "main_0202B558.h"
 
 
 extern void CloseDialogueBox(s8);                             
@@ -12,7 +15,6 @@ extern void CloseTextBox(s8);
 extern s32 GetMoneyCarried();                              
 extern s32 GetNbItemsInBag();                              
 extern void GetPressedButtons(void *, u16*);                       
-extern s32 GetSimpleMenuResult__0202B870(s8);              
 extern void HidePortraitBox(s8);                              
 extern s32 IsDialogueBoxActive(s8);                        
 extern s32 IsScrollBoxActive(s8);                          
@@ -50,7 +52,6 @@ extern void ShowPortraitInPortraitBox(s8, void*);
 extern void SwapShopInventoryManager(s32, s32);                   
 extern void ov11_022DC504();                                  
 extern void ov11_0230C910();
-extern void* MemAlloc(s32, s32);                               
 extern void MemFree(void *ptr);
 extern BOOL IsScriptMenuReturnDisabled();                   
 extern void ReturnScriptMenuResult(s32);                        
@@ -58,7 +59,6 @@ extern void ReturnScriptMenuResultZero(void);
 extern void UpdateWindow(char *);                                  
 extern void sub_02027B1C(char *);                                   
 extern void AppendStandardStringToMission(char *, s32, s32, s32);      
-extern void DrawTextInWindow(char *, s32, s32, void*);                    
 
 extern s32 APPRAISAL_MAIN_MENU_ITEMS;
 extern s32 APPRAISAL_MENU_ITEMS_CONFIRM;
@@ -617,6 +617,6 @@ void ov25_0238B414(char *output)
 #else
     AppendStandardStringToMission(output, 4, 2, 0x225);
 #endif
-    DrawTextInWindow(output, 0x10, 0x10, buffer);
+    DrawTextInWindow((s32)output, 0x10, 0x10, buffer);
     UpdateWindow(output);
 }

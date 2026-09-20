@@ -1,4 +1,8 @@
 #pragma once
+.public DEFAULT_MEMORY_ARENA_MEMORY
+.public Debug_FatalError
+.public Debug_Print0
+.public MEMORY_ALLOCATION_ARENA_GETTERS
 .public _02090B40
 .public _02090B70
 .public _02090BA0
@@ -7,11 +11,6 @@
 .public _020B3384
 .public _020B33A0
 .public _020B33C0
-.public Debug_FatalError
-.public Debug_Print0
-.public DEFAULT_MEMORY_ARENA_MEMORY
-.public MemLocateSet
-.public MEMORY_ALLOCATION_ARENA_GETTERS
 .public sub_02002C40
 .public sub_02002CAC
 .public sub_02002CB4

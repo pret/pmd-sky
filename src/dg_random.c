@@ -1,4 +1,8 @@
 #include "dg_random.h"
+#include "dungeon_util_static.h"
+#include "dungeon_pokemon_attributes.h"
+#include "dungeon_pokemon_attributes_1.h"
+#include "main_02001894.h"
 
 extern prng_state DUNGEON_PRNG_STATE;
 extern u32 DUNGEON_PRNG_STATE_SECONDARY_VALUES[];
@@ -79,4 +83,32 @@ bool8 DungeonRandOutcome__022EAB50(s32 percentChance)
         return TRUE;
     }
     return FALSE;
+}
+
+s32 CalcStatusDuration(struct entity *entity, const s16 *turn_range, bool8 iq_skill_effects)
+{
+    bool8 valid;
+    s32 duration = DungeonRandRange(turn_range[0], turn_range[1]);
+
+    if (entity == NULL)
+        valid = FALSE;
+    else
+        valid = GetEntityType(entity) != ENTITY_NOTHING;
+
+    if (valid && GetEntityType(entity) == ENTITY_MONSTER && iq_skill_effects)
+    {
+        if (IqSkillIsEnabled(entity, IQ_SELF_CURER) && duration != 127)
+            duration = RoundUpDiv256(duration * 256 / 2);
+
+        if (AbilityIsActiveVeneer(entity, ABILITY_NATURAL_CURE) && duration != 127)
+        {
+            if (duration >= 5)
+                duration = 5;
+        }
+    }
+
+    if (duration < 1)
+        duration = 1;
+
+    return duration;
 }
