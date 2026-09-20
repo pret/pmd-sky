@@ -321,258 +321,258 @@ void ApplyItemEffect(char param_1, u8 param_2, u8 param_3,
         case ITEM_BLAST_SEED:
             ApplyBlastSeedEffect(attacker, defender, param_1);
             break;
-    case ITEM_MAX_ELIXIR:
-        RestoreAllMovePP(attacker, defender, 999, 0);
-        break;
-    case ITEM_PROTEIN:
-        ApplyProteinEffect(attacker, defender, PROTEIN_STAT_BOOST);
-        break;
-    case ITEM_CALCIUM:
-        ApplyCalciumEffect(attacker, defender, CALCIUM_STAT_BOOST);
-        break;
-    case ITEM_IRON:
-        ApplyIronEffect(attacker, defender, IRON_STAT_BOOST);
-        break;
-    case ITEM_ZINC:
-        ApplyZincEffect(attacker, defender, ZINC_STAT_BOOST);
-        break;
-    case ITEM_GABITE_SCALE:
-        EndNegativeStatusConditionWrapper(attacker, defender, TRUE, FALSE);
-        break;
-    case ITEM_GOLDEN_SEED:
-        LevelUpItemEffect(attacker, defender, 5, 1, 1);
-        break;
-    case ITEM_VILE_SEED:
-        ApplyVileSeedEffect(attacker, defender);
-        break;
-    case ITEM_PURE_SEED:
-        TryWarp(attacker, defender, 4, 0);
-        break;
-    case ITEM_VIOLENT_SEED:
-        ApplyViolentSeedEffect(attacker, defender);
-        break;
-    case ITEM_VANISH_SEED:
-        TryInflictInvisibleStatus(attacker, defender);
-        break;
-    case ITEM_NECTAR:
-        BoostIQ(defender, 10, FALSE);
-        break;
-    case ITEM_APPLE:
-        TryIncreaseBelly(attacker, defender, 50, 5, 1);
-        break;
-    case ITEM_BIG_APPLE:
-        TryIncreaseBelly(attacker, defender, 100, 10, 1);
-        break;
-    case ITEM_HUGE_APPLE:
-        TryIncreaseBelly(attacker, defender, 999, 10, 1);
-        break;
-    case ITEM_GRIMY_FOOD:
-        ApplyGrimyFoodEffect(attacker, defender);
-        break;
-    case ITEM_WHITE_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_NORMAL, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_RED_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_FIRE, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_BLUE_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_WATER, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_GRASS_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_GRASS, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_YELLOW_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_ELECTRIC, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_CLEAR_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_ICE, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_ORANGE_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_FIGHTING, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_PINK_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_POISON, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_BROWN_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_GROUND, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_SKY_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_FLYING, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_GOLD_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_PSYCHIC, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_GREEN_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_BUG, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_GRAY_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_ROCK, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_PURPLE_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_GHOST, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_ROYAL_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_DRAGON, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_BLACK_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_DARK, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_SILVER_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_STEEL, GUMMI_STAT_BOOST);
-        break;
-    case ITEM_WONDER_GUMMI:
-        ApplyGummiBoostsDungeonMode(attacker, defender, 0xFF, WONDER_GUMMI_STAT_BOOST);
-        break;
-    case ITEM_UNNAMED_0x71:
-        TryIncreaseBelly(attacker, defender, 50, 5, 1);
-        break;
-    case ITEM_UNNAMED_0x72:
-        TryIncreaseBelly(attacker, defender, 10, 0, 1);
-        break;
-    case ITEM_GOLDEN_APPLE:
-        TryIncreaseBelly(attacker, defender, 999, 50, 1);
-        break;
-    case ITEM_KEY:
+        case ITEM_MAX_ELIXIR:
+            RestoreAllMovePP(attacker, defender, 999, 0);
+            break;
+        case ITEM_PROTEIN:
+            ApplyProteinEffect(attacker, defender, PROTEIN_STAT_BOOST);
+            break;
+        case ITEM_CALCIUM:
+            ApplyCalciumEffect(attacker, defender, CALCIUM_STAT_BOOST);
+            break;
+        case ITEM_IRON:
+            ApplyIronEffect(attacker, defender, IRON_STAT_BOOST);
+            break;
+        case ITEM_ZINC:
+            ApplyZincEffect(attacker, defender, ZINC_STAT_BOOST);
+            break;
+        case ITEM_GABITE_SCALE:
+            EndNegativeStatusConditionWrapper(attacker, defender, TRUE, FALSE);
+            break;
+        case ITEM_GOLDEN_SEED:
+            LevelUpItemEffect(attacker, defender, 5, 1, 1);
+            break;
+        case ITEM_VILE_SEED:
+            ApplyVileSeedEffect(attacker, defender);
+            break;
+        case ITEM_PURE_SEED:
+            TryWarp(attacker, defender, 4, 0);
+            break;
+        case ITEM_VIOLENT_SEED:
+            ApplyViolentSeedEffect(attacker, defender);
+            break;
+        case ITEM_VANISH_SEED:
+            TryInflictInvisibleStatus(attacker, defender);
+            break;
+        case ITEM_NECTAR:
+            BoostIQ(defender, 10, FALSE);
+            break;
+        case ITEM_APPLE:
+            TryIncreaseBelly(attacker, defender, 50, 5, 1);
+            break;
+        case ITEM_BIG_APPLE:
+            TryIncreaseBelly(attacker, defender, 100, 10, 1);
+            break;
+        case ITEM_HUGE_APPLE:
+            TryIncreaseBelly(attacker, defender, 999, 10, 1);
+            break;
+        case ITEM_GRIMY_FOOD:
+            ApplyGrimyFoodEffect(attacker, defender);
+            break;
+        case ITEM_WHITE_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_NORMAL, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_RED_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_FIRE, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_BLUE_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_WATER, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_GRASS_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_GRASS, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_YELLOW_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_ELECTRIC, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_CLEAR_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_ICE, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_ORANGE_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_FIGHTING, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_PINK_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_POISON, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_BROWN_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_GROUND, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_SKY_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_FLYING, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_GOLD_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_PSYCHIC, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_GREEN_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_BUG, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_GRAY_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_ROCK, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_PURPLE_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_GHOST, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_ROYAL_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_DRAGON, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_BLACK_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_DARK, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_SILVER_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, TYPE_STEEL, GUMMI_STAT_BOOST);
+            break;
+        case ITEM_WONDER_GUMMI:
+            ApplyGummiBoostsDungeonMode(attacker, defender, 0xFF, WONDER_GUMMI_STAT_BOOST);
+            break;
+        case ITEM_UNNAMED_0x71:
+            TryIncreaseBelly(attacker, defender, 50, 5, 1);
+            break;
+        case ITEM_UNNAMED_0x72:
+            TryIncreaseBelly(attacker, defender, 10, 0, 1);
+            break;
+        case ITEM_GOLDEN_APPLE:
+            TryIncreaseBelly(attacker, defender, 999, 50, 1);
+            break;
+        case ITEM_KEY:
+            if (param_1) {
+                bool8 flag;
+                CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
+                                          DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
+            }
+            else {
+                ApplyKeyEffect(attacker);
+            }
+            break;
+        case ITEM_DROPEYE_SEED:
+            TryInflictDropeyeStatus(attacker, defender);
+            break;
+        case ITEM_SLIP_SEED:
+            if (!TryInflictSlipStatus(attacker, defender)) {
+                SubstitutePlaceholderStringTags(0, defender, 0);
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C75);
+            }
+            break;
+        case ITEM_VIA_SEED:
+            ApplyViaSeedEffect(attacker, defender);
+            break;
+        case ITEM_MIX_ELIXIR:
+            ApplyMixElixirEffect(attacker, defender);
+            break;
+        case ITEM_OREN_BERRY:
+            CalcDamageFixedNoCategory(attacker, defender, OREN_BERRY_DAMAGE, 1, NULL, TYPE_NONE,
+                                      DAMAGE_SOURCE_OREN_BERRY, 0, 0, 0);
+            break;
+        case ITEM_DOUGH_SEED:
+            ApplyDoughSeedEffect(attacker, defender);
+            break;
+        case ITEM_GRAVELYROCK:
+            ApplyGravelyrockEffect(attacker, defender);
+            break;
+        case ITEM_GONE_PEBBLE:
+            ApplyGonePebbleEffect(attacker, defender);
+            break;
+        case ITEM_WANDER_GUMMI:
+            TryInflictBlinkerStatus(attacker, defender, 0, 0);
+            break;
+        case ITEM_PRIZE_TICKET:
+            if (param_1) {
+                bool8 flag;
+                CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
+                                          DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
+            } else {
+                SubstitutePlaceholderStringTags(0, defender, 0);
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C67);
+            }
+            break;
+        case ITEM_SILVER_TICKET:
+            if (param_1) {
+                bool8 flag;
+                CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
+                                          DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
+            } else {
+                SubstitutePlaceholderStringTags(0, defender, 0);
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C67);
+            }
+            break;
+        case ITEM_GOLD_TICKET:
+            if (param_1) {
+                bool8 flag;
+                CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
+                                          DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
+            } else {
+                SubstitutePlaceholderStringTags(0, defender, 0);
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C67);
+            }
+            break;
+        case ITEM_PRISM_TICKET:
+            if (param_1) {
+                bool8 flag;
+                CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
+                                          DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
+            } else {
+                SubstitutePlaceholderStringTags(0, defender, 0);
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C67);
+            }
+            break;
+        case ITEM_SKY_GIFT:
+            if (param_1) {
+                bool8 flag;
+                CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
+                                          DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
+            } else {
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C76);
+            }
+            break;
+        case ITEM_GRACIDEA:
+            ApplyGracideaEffect(attacker, defender);
+            break;
+        case ITEM_UNNAMED_0x16B:
+            break;
+        case ITEM_A_STONE:
+        case ITEM_B_STONE:
+        case ITEM_C_STONE:
+        case ITEM_D_STONE:
+        case ITEM_E_STONE:
+        case ITEM_F_STONE:
+        case ITEM_G_STONE:
+        case ITEM_H_STONE:
+        case ITEM_I_STONE:
+        case ITEM_J_STONE:
+        case ITEM_K_STONE:
+        case ITEM_L_STONE:
+        case ITEM_M_STONE:
+        case ITEM_N_STONE:
+        case ITEM_O_STONE:
+        case ITEM_P_STONE:
+        case ITEM_Q_STONE:
+        case ITEM_R_STONE:
+        case ITEM_S_STONE:
+        case ITEM_T_STONE:
+        case ITEM_U_STONE:
+        case ITEM_V_STONE:
+        case ITEM_W_STONE:
+        case ITEM_X_STONE:
+        case ITEM_Y_STONE:
+        case ITEM_Z_STONE:
+        case ITEM_EXCLAMATION_STONE:
+        case ITEM_QUESTION_STONE:
         if (param_1) {
             bool8 flag;
-            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
+            CalcDamageFixedNoCategory(attacker, defender, ov10_022C44EC, 1, &flag, TYPE_NONE,
                                       DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
-        }
-        else {
-            ApplyKeyEffect(attacker);
-        }
-        break;
-    case ITEM_DROPEYE_SEED:
-        TryInflictDropeyeStatus(attacker, defender);
-        break;
-case ITEM_SLIP_SEED:
-    if (!TryInflictSlipStatus(attacker, defender)) {
-        SubstitutePlaceholderStringTags(0, defender, 0);
-        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C75);
-    }
-    break;
-case ITEM_VIA_SEED:
-    ApplyViaSeedEffect(attacker, defender);
-    break;
-case ITEM_MIX_ELIXIR:
-    ApplyMixElixirEffect(attacker, defender);
-    break;
-case ITEM_OREN_BERRY:
-    CalcDamageFixedNoCategory(attacker, defender, OREN_BERRY_DAMAGE, 1, NULL, TYPE_NONE,
-                              DAMAGE_SOURCE_OREN_BERRY, 0, 0, 0);
-    break;
-case ITEM_DOUGH_SEED:
-    ApplyDoughSeedEffect(attacker, defender);
-    break;
-case ITEM_GRAVELYROCK:
-    ApplyGravelyrockEffect(attacker, defender);
-    break;
-case ITEM_GONE_PEBBLE:
-    ApplyGonePebbleEffect(attacker, defender);
-    break;
-case ITEM_WANDER_GUMMI:
-    TryInflictBlinkerStatus(attacker, defender, 0, 0);
-    break;
-case ITEM_PRIZE_TICKET:
-    if (param_1) {
-        bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
-                                  DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
-    } else {
-        SubstitutePlaceholderStringTags(0, defender, 0);
-        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C67);
-    }
-    break;
-case ITEM_SILVER_TICKET:
-    if (param_1) {
-        bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
-                                  DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
-    } else {
-        SubstitutePlaceholderStringTags(0, defender, 0);
-        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C67);
-    }
-    break;
-case ITEM_GOLD_TICKET:
-    if (param_1) {
-        bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
-                                  DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
-    } else {
-        SubstitutePlaceholderStringTags(0, defender, 0);
-        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C67);
-    }
-    break;
-case ITEM_PRISM_TICKET:
-    if (param_1) {
-        bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
-                                  DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
-    } else {
-        SubstitutePlaceholderStringTags(0, defender, 0);
-        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C67);
-    }
-    break;
-case ITEM_SKY_GIFT:
-    if (param_1) {
-        bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE,
-                                  DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
-    } else {
-        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_C76);
-    }
-    break;
-case ITEM_GRACIDEA:
-    ApplyGracideaEffect(attacker, defender);
-    break;
-    case ITEM_UNNAMED_0x16B:
-        break;
-    case ITEM_A_STONE:
-    case ITEM_B_STONE:
-    case ITEM_C_STONE:
-    case ITEM_D_STONE:
-    case ITEM_E_STONE:
-    case ITEM_F_STONE:
-    case ITEM_G_STONE:
-    case ITEM_H_STONE:
-    case ITEM_I_STONE:
-    case ITEM_J_STONE:
-    case ITEM_K_STONE:
-    case ITEM_L_STONE:
-    case ITEM_M_STONE:
-    case ITEM_N_STONE:
-    case ITEM_O_STONE:
-    case ITEM_P_STONE:
-    case ITEM_Q_STONE:
-    case ITEM_R_STONE:
-    case ITEM_S_STONE:
-    case ITEM_T_STONE:
-    case ITEM_U_STONE:
-    case ITEM_V_STONE:
-    case ITEM_W_STONE:
-    case ITEM_X_STONE:
-    case ITEM_Y_STONE:
-    case ITEM_Z_STONE:
-    case ITEM_EXCLAMATION_STONE:
-    case ITEM_QUESTION_STONE:
-    if (param_1) {
-        bool8 flag;
-        CalcDamageFixedNoCategory(attacker, defender, ov10_022C44EC, 1, &flag, TYPE_NONE,
-                                  DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
-    } else {
-        LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_BE8);
-    }
-    break;
-    case ITEM_NOTHING:
-    default:
-        if (param_1) {
-            bool8 flag;
-            CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE, DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
-        }
-        else {
+        } else {
             LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_BE8);
         }
         break;
+        case ITEM_NOTHING:
+        default:
+            if (param_1) {
+                bool8 flag;
+                CalcDamageFixedNoCategory(attacker, defender, ov10_022C4558, 1, &flag, TYPE_NONE, DAMAGE_SOURCE_THROWN_ITEM, 0, 0, 0);
+            }
+            else {
+                LogMessageByIdWithPopupCheckUserTarget(attacker, defender, MESSAGE_BE8);
+            }
+            break;
     }
     }
 

@@ -177,9 +177,9 @@ typedef struct BmaHeader
     u8 mapWidthChunks;
     u8 mapHeightChunks;
 
-    s16 numLayers;
-    s16 hasDataLayer;
-    s16 hasCollision;
+    s16 numLayers; // Number of layers in this map. Must match BPC layer size. Allowed values are only 1 or 2.
+    s16 hasDataLayer; // Seems to be a boolean flag (0 or 1). If >0, the Unknown Data Layer exists.
+    s16 hasCollision; // Number of Collision layers. 0, 1 or 2.
 } BmaHeader;
 
 typedef struct BplHeader

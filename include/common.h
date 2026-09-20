@@ -32,14 +32,14 @@ struct ground_move {
 
 struct ground_monster {
     u8 is_valid;            // 0x0: True if the entry is valid
-    u8 level;
+    u8 level;               // 0x1: Monster level
     u8 joined_at;           // 0x2
     u8 joined_at_floor;     // 0x3: See struct monster::joined_at_floor
     s16 id;                 // 0x4: Monster ID
-    u8 level_at_first_evo;
-    u8 level_at_second_evo;
-    s16 iq;
-    s16 max_hp;
+    u8 level_at_first_evo;  // 0x6: Level upon first evolution, or 0 if not applicable
+    u8 level_at_second_evo; // 0x7: Level upon second evolution, or 0 if not applicable
+    s16 iq;                 // 0x8
+    s16 max_hp;             // 0xA
     u8 offensive_stats[2];  // 0xC: {atk, sp_atk}
     u8 defensive_stats[2];  // 0xE: {def, sp_def}
     s32 exp;                // 0x10
@@ -54,7 +54,10 @@ struct ground_monster {
 // Stores information about active team members, including those from special episodes.
 // A lot of the fields seem to be analogous to fields on struct monster.
 struct team_member {
+    // 0x0: flags: 1-byte bitfield
     u8 flags;
+    // u8 f_is_valid : 1;
+    // u8 flags_unk1 : 7;
 
     u8 is_leader;                // 0x1
     u8 level;                 // 0x2

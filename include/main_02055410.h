@@ -1,9 +1,8 @@
 #ifndef PMDSKY_MAIN_02055410_H
 #define PMDSKY_MAIN_02055410_H
 
+#include "common.h"
 #include "util.h"
-
-struct ground_monster;
 
 bool8 sub_02055410(int idx);
 bool8 sub_02055474(int idx);
