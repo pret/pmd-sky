@@ -83,7 +83,7 @@ void TryOpenKeyDoor(struct entity* arg0, struct tile* arg1, s32 arg2, s32 arg3)
                                         tile->spawn_or_visibility_flags = DUNGEON_PTR->fixed_room_tiles[x_diff][y_diff].spawn_or_visibility_flags;
                                     }
                                     PlaceFixedRoomTile(tile, DUNGEON_PTR->field_0xd260[x_diff][y_diff], x_coord, y_coord, 1);
-                                    tile->spawn_or_visibility_flags |= 3; // STAIRS and ITEM?
+                                    tile->spawn_or_visibility_flags.spawn |= 3; // STAIRS and ITEM?
                                     if (room_idx != 0xFF) {
                                         tile->room = room_idx;
                                     }

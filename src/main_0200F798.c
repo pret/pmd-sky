@@ -3,15 +3,6 @@
 #include "main_0200D81C.h"
 #include "main_0200F874.h"
 
-extern struct bag_items* BAG_ITEMS_PTR_MIRROR;
-
-void RemoveEmptyItems(struct item *, s32);
-void sub_020582E0();
-
-
-
-#include "main_0200D81C.h"
-#include "item.h"
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 extern u32 RemoveEmptyItems(struct item *items, s32 count);
 extern void sub_020582E0(u8 held_by);
@@ -57,7 +48,7 @@ void RemoveAllItemsStartingAt(s32 _index)
     for(index = _index, item = &BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[index]; index < INVENTORY_SIZE; index++, item++)
     {
         if (item->held_by != 0) {
-            sub_020582E0();
+            sub_020582E0(item->held_by);
         }
         ItemZInit(&BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[index]);
     }
