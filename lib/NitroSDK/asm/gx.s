@@ -96,8 +96,8 @@ _020761B8: .word 0x04000020
 _020761BC: .word 0x04001026
 	arm_func_end GX_Init
 
-	arm_func_start GX_HBlankIntr
-GX_HBlankIntr: ; 0x020761C0
+	arm_func_start GX_SetVCountEqVal
+GX_SetVCountEqVal: ; 0x020761C0
 	ldr r3, _020761E4 ; =0x04000004
 	mov r1, r0, lsl #0x18
 	ldrh r2, [r3]
@@ -109,7 +109,7 @@ GX_HBlankIntr: ; 0x020761C0
 	bx lr
 	.align 2, 0
 _020761E4: .word 0x04000004
-	arm_func_end GX_HBlankIntr
+	arm_func_end GX_SetVCountEqVal
 
 	arm_func_start GX_VBlankIntr
 GX_VBlankIntr: ; 0x020761E8

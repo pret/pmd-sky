@@ -7,8 +7,8 @@
     .public string_fill_char
     .public string_put_string
 
-	arm_func_start OS_VsNPrintfEx
-OS_VsNPrintfEx: ; 0x02085BD4
+	arm_func_start STD_TVSNPrintf
+STD_TVSNPrintf: ; 0x02085BD4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
 	mov sb, r2
@@ -632,5 +632,5 @@ _02086438:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0208644C: .word 0xCCCCCCCD
-	arm_func_end OS_VsNPrintfEx
+	arm_func_end STD_TVSNPrintf
 

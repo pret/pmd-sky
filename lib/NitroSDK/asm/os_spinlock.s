@@ -351,30 +351,30 @@ _020790C0:
 _020790D8: .word 0x027FFFB0
 	arm_func_end OS_ReleaseLockId
 
-	arm_func_start OS_VsPrintf
-OS_VsPrintf: ; 0x020790DC
+	arm_func_start OS_SPrintf
+OS_SPrintf: ; 0x020790DC
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r2, sp, #0xc
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl OS_VsNPrintf
+	bl OS_VSPrintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end OS_VsPrintf
+	arm_func_end OS_SPrintf
 
-	arm_func_start OS_VsNPrintf
-OS_VsNPrintf: ; 0x02079104
-	ldr ip, _02079118 ; =OS_VsNPrintfExStub
+	arm_func_start OS_VSPrintf
+OS_VSPrintf: ; 0x02079104
+	ldr ip, _02079118 ; =OS_VSNPrintf
 	mov r3, r2
 	mov r2, r1
 	mvn r1, #0x80000000
 	bx ip
 	.align 2, 0
-_02079118: .word OS_VsNPrintfExStub
-	arm_func_end OS_VsNPrintf
+_02079118: .word OS_VSNPrintf
+	arm_func_end OS_VSPrintf
 
 	arm_func_start OS_SnPrintf
 OS_SnPrintf: ; 0x0207911C
@@ -384,17 +384,17 @@ OS_SnPrintf: ; 0x0207911C
 	bic r3, r3, #3
 	ldr r2, [sp, #0x10]
 	add r3, r3, #4
-	bl OS_VsNPrintfExStub
+	bl OS_VSNPrintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
 	arm_func_end OS_SnPrintf
 
-	arm_func_start OS_VsNPrintfExStub
-OS_VsNPrintfExStub: ; 0x02079144
-	ldr ip, _0207914C ; =OS_VsNPrintfEx
+	arm_func_start OS_VSNPrintf
+OS_VSNPrintf: ; 0x02079144
+	ldr ip, _0207914C ; =STD_TVSNPrintf
 	bx ip
 	.align 2, 0
-_0207914C: .word OS_VsNPrintfEx
-	arm_func_end OS_VsNPrintfExStub
+_0207914C: .word STD_TVSNPrintf
+	arm_func_end OS_VSNPrintf
 

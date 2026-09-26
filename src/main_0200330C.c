@@ -82,7 +82,6 @@ void sub_02006098(void);
 void sub_02006D4C(void);
 void sub_02006DEC(void);
 void sub_020082E0(void);
-void sub_020820E8(s32 a, s32 b, s32 c);
 void sub_02017D20(void);
 void sub_0201849C(void);
 
@@ -257,7 +256,7 @@ void TaskProcBoot(void)
             if (sub_02003B5C()) {
                 if (_020AEF7C.field_0x1 != 0) {
                     _020AEF7C.field_0xb = 0;
-                    sub_020820E8(0xC, 0, 0);
+                    PM_GoSleepMode(0xC, 0, 0);
                 } else if (_020AEF7C.field_0x14 == 0) {
                     if (PM_SetLcdPower(0)) {
                         _020AEF7C.field_0x14 = 1;

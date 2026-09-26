@@ -100,8 +100,8 @@
 .public LoadOverlay
 .public MATH_CalcCRC16
 .public Math_CountPopulation
-.public MATHi_CRC16InitTable
-.public MATHi_CRC16Update
+.public MATHi_CRC16InitTableRev
+.public MATHi_CRC16UpdateRev
 .public MD5_Digest
 .public MD5_Init
 .public MD5_Update

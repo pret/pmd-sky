@@ -60,7 +60,6 @@
 .public MTi_CpuCopy32
 .public OS_InitReset
 .public OS_IRQTable
-.public OS_VsNPrintfEx
 .public OSi_ConsoleTypeCache
 .public OSi_DebuggerHandler
 .public OSi_DisplayExContext_Helper
@@ -84,6 +83,7 @@
 .public SetIrqFlag
 .public sIsDispOn
 .public sSubBGExtPltt
+.public STD_TVSNPrintf
 .public sTexPlttStartAddrTable
 .public sTexStartAddrTable
 .public sub_0206F808

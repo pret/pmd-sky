@@ -163,7 +163,7 @@ OSi_SetNextVAlarm: ; 0x0207B544
 	mov r0, #4
 	bl OS_SetIrqFunction
 	ldrsh r0, [r4, #0x10]
-	bl GX_HBlankIntr
+	bl GX_SetVCountEqVal
 	ldr r2, _0207B580 ; =0x04000004
 	mov r0, #4
 	ldrh r1, [r2]

@@ -15,6 +15,7 @@
 .public ArrayNth_Gsi
 .public ArrayRemoveAt_Gsi
 .public atoi
+.public bind
 .public BucketAdd_Gsi
 .public BucketAvg_Gsi
 .public BucketConcat_Gsi
@@ -64,7 +65,7 @@
 .public memset
 .public msleep_gsi
 .public OS_SnPrintf
-.public OS_VsPrintf
+.public OS_SPrintf
 .public ov00_02317FC0
 .public ov00_02317FD4
 .public ov00_02317FE8
@@ -266,19 +267,18 @@
 .public PlayerOpInt
 .public PlayerOpString
 .public rand
+.public sendto
 .public ServerOpFloat
 .public ServerOpInt
 .public ServerOpString
 .public Soc_GetHostByName
 .public Soc_InetNtoA
-.public SocketBind
 .public SocketClose
 .public SocketConnect
 .public SocketCreate
 .public SocketRecv
 .public SocketRecvFrom
 .public SocketSend
-.public SocketSendTo
 .public SocketShutDown_Gsi
 .public SocketStartUp_Ghi
 .public srand

@@ -497,8 +497,8 @@ _020815F0:
 _02081618: .word _022BB670
 	arm_func_end TP_RequestAutoSamplingStartAsync
 
-	arm_func_start sub_0208161C
-sub_0208161C: ; 0x0208161C
+	arm_func_start TP_RequestAutoSamplingStopAsync
+TP_RequestAutoSamplingStopAsync: ; 0x0208161C
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
 	mov r4, r0
@@ -539,7 +539,7 @@ _02081684:
 	.align 2, 0
 _020816AC: .word 0x03000200
 _020816B0: .word _022BB670
-	arm_func_end sub_0208161C
+	arm_func_end TP_RequestAutoSamplingStopAsync
 
 	arm_func_start TP_GetLatestIndexInAuto
 TP_GetLatestIndexInAuto: ; 0x020816B4
@@ -781,13 +781,13 @@ _020819D8:
 _020819E8: .word _022BB670
 	arm_func_end TP_WaitBusy
 
-	arm_func_start TP_CheckBusy
-TP_CheckBusy: ; 0x020819EC
+	arm_func_start TP_CheckError
+TP_CheckError: ; 0x020819EC
 	ldr r1, _020819FC ; =_022BB670
 	ldrh r1, [r1, #0x38]
 	and r0, r1, r0
 	bx lr
 	.align 2, 0
 _020819FC: .word _022BB670
-	arm_func_end TP_CheckBusy
+	arm_func_end TP_CheckError
 

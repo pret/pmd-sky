@@ -45,8 +45,8 @@ _02085028:
 	ldmia sp!, {r4, pc}
 	arm_func_end MATHi_CRC8Update
 
-	arm_func_start MATHi_CRC16InitTable
-MATHi_CRC16InitTable: ; 0x02085030
+	arm_func_start MATHi_CRC16InitTableRev
+MATHi_CRC16InitTableRev: ; 0x02085030
 	stmdb sp!, {r3, lr}
 	mov lr, #0
 	mov r3, lr
@@ -66,10 +66,10 @@ _02085044:
 	cmp lr, #0x100
 	blo _0208503C
 	ldmia sp!, {r3, pc}
-	arm_func_end MATHi_CRC16InitTable
+	arm_func_end MATHi_CRC16InitTableRev
 
-	arm_func_start MATHi_CRC16Update
-MATHi_CRC16Update: ; 0x02085074
+	arm_func_start MATHi_CRC16UpdateRev
+MATHi_CRC16UpdateRev: ; 0x02085074
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldrh lr, [r1]
@@ -88,10 +88,10 @@ _02085088:
 _020850AC:
 	strh lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end MATHi_CRC16Update
+	arm_func_end MATHi_CRC16UpdateRev
 
-	arm_func_start MATHi_CRC32InitTable
-MATHi_CRC32InitTable: ; 0x020850B4
+	arm_func_start MATHi_CRC32InitTableRev
+MATHi_CRC32InitTableRev: ; 0x020850B4
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	mov r2, ip
@@ -110,10 +110,10 @@ _020850C8:
 	cmp ip, #0x100
 	blo _020850C0
 	ldmia sp!, {r3, pc}
-	arm_func_end MATHi_CRC32InitTable
+	arm_func_end MATHi_CRC32InitTableRev
 
-	arm_func_start MATHi_CRC32Update
-MATHi_CRC32Update: ; 0x020850F4
+	arm_func_start MATHi_CRC32UpdateRev
+MATHi_CRC32UpdateRev: ; 0x020850F4
 	stmdb sp!, {r4, lr}
 	cmp r3, #0
 	ldr lr, [r1]
@@ -131,7 +131,7 @@ _02085108:
 _02085128:
 	str lr, [r1]
 	ldmia sp!, {r4, pc}
-	arm_func_end MATHi_CRC32Update
+	arm_func_end MATHi_CRC32UpdateRev
 
 	arm_func_start MATH_CalcCRC8
 MATH_CalcCRC8: ; 0x02085130
@@ -156,7 +156,7 @@ MATH_CalcCRC16: ; 0x02085158
 	add r1, sp, #0
 	mov r2, lr
 	strh ip, [sp]
-	bl MATHi_CRC16Update
+	bl MATHi_CRC16UpdateRev
 	ldrh r0, [sp]
 	ldmia sp!, {r3, pc}
 	arm_func_end MATH_CalcCRC16
@@ -170,14 +170,14 @@ MATH_CalcCRC32: ; 0x02085180
 	add r1, sp, #0
 	mov r2, lr
 	str ip, [sp]
-	bl MATHi_CRC32Update
+	bl MATHi_CRC32UpdateRev
 	ldr r0, [sp]
 	mvn r0, r0
 	ldmia sp!, {r3, pc}
 	arm_func_end MATH_CalcCRC32
 
-	arm_func_start sub_020851AC
-sub_020851AC: ; 0x020851AC
+	arm_func_start CHT_IsPictochatParent
+CHT_IsPictochatParent: ; 0x020851AC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	movs r4, r0
@@ -218,5 +218,5 @@ _02085230:
 	.align 2, 0
 _0208523C: .word 0x00002348
 _02085240: .word 0x0000BD8A
-	arm_func_end sub_020851AC
+	arm_func_end CHT_IsPictochatParent
 

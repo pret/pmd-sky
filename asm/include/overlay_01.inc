@@ -10,6 +10,7 @@
 .public BitstreamDebug
 .public CheckParentMenuField0x1A0
 .public CheckSimpleMenuField0x1A0
+.public CHT_IsPictochatParent
 .public CLEAR_MARK_PERFORMANCE_PROGRESS_FLAGS
 .public CloseAdvancedMenu
 .public CloseAdvancedTextBox
@@ -360,7 +361,6 @@
 .public sub_0205B554
 .public sub_0205B5A8
 .public sub_0205BBA4
-.public sub_020851AC
 .public SUBMENU
 .public UpdateWindow
 .public vsprintf

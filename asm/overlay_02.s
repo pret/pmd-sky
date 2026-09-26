@@ -1124,8 +1124,8 @@ _0232A2B0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end Nnsi_G2dFontGetTextHeight
 
-	arm_func_start Nnsi_G2dFontGetTextWidth
-Nnsi_G2dFontGetTextWidth: ; 0x0232A2CC
+	arm_func_start NNSi_G2dFontGetTextRect
+NNSi_G2dFontGetTextRect: ; 0x0232A2CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #8
 	mov r6, r2
@@ -1165,7 +1165,7 @@ _0232A334:
 	stmia r8, {r0, r1}
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end Nnsi_G2dFontGetTextWidth
+	arm_func_end NNSi_G2dFontGetTextRect
 
 	arm_func_start GetCharIndex1D
 GetCharIndex1D: ; 0x0232A360
@@ -2676,7 +2676,7 @@ Nnsi_G2dTextCanvasDrawText: ; 0x0232B870
 	mov r5, r3
 	ldmib r8, {r1, r2, r3}
 	ldr r4, [sp, #0x40]
-	bl Nnsi_G2dFontGetTextWidth
+	bl NNSi_G2dFontGetTextRect
 	ldr r2, [sp, #0x18]
 	ldr r0, [sp, #0x1c]
 	str r2, [sp, #0x10]
@@ -3271,7 +3271,7 @@ Nns_SndPlayerSetChannelPriority: ; 0x0232BFCC
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl Snd_SetPlayerVolume
+	bl SND_SetPlayerChannelPriority
 	ldmia sp!, {r3, pc}
 	arm_func_end Nns_SndPlayerSetChannelPriority
 
@@ -3283,7 +3283,7 @@ Nns_SndPlayerSetTrackPitch: ; 0x0232BFEC
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x3c]
-	bl Snd_SetTrackPan
+	bl SND_SetTrackPitch
 	ldmia sp!, {r3, pc}
 	arm_func_end Nns_SndPlayerSetTrackPitch
 
@@ -3424,7 +3424,7 @@ _0232C1D8:
 	beq _0232C1F4
 	ldrb r0, [r6, #0x3c]
 	mov r1, r8
-	bl Snd_SetPlayerTempoRatio
+	bl SND_SetPlayerVolume
 	strh r8, [r6, #0x3e]
 _0232C1F4:
 	ldrb r0, [r6, #0x2c]
@@ -3669,7 +3669,7 @@ ForceStopSeq: ; 0x0232C4D0
 	bne _0232C4F0
 	ldrb r0, [r4, #0x3c]
 	ldr r1, _0232C504 ; =0xFFFFFD2D
-	bl Snd_SetPlayerTempoRatio
+	bl SND_SetPlayerVolume
 _0232C4F0:
 	ldrb r0, [r4, #0x3c]
 	bl Snd_StopSeq
@@ -4966,7 +4966,7 @@ BankDisposeCallback: ; 0x0232D560
 	bl DisposeCallback
 	mov r0, r5
 	add r1, r5, r4
-	bl Snd_InvalidateSeqData
+	bl SND_InvalidateBankData
 	mov r0, r5
 	bl Snd_DestroyBank
 	ldmia sp!, {r3, r4, r5, pc}
@@ -4982,7 +4982,7 @@ WaveArcDisposeCallback: ; 0x0232D590
 	bl DisposeCallback
 	mov r0, r5
 	add r1, r5, r4
-	bl Snd_InvalidateBankData
+	bl SND_InvalidateWaveData
 	mov r0, r5
 	bl Snd_DestroyWaveArc
 	ldmia sp!, {r3, r4, r5, pc}
@@ -5019,7 +5019,7 @@ SingleWaveDisposeCallback: ; 0x0232D5E0
 _0232D618:
 	mov r0, r7
 	add r1, r7, r6
-	bl Snd_InvalidateBankData
+	bl SND_InvalidateWaveData
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end SingleWaveDisposeCallback
 
@@ -9815,7 +9815,7 @@ Aoss_Recvfrom: ; 0x0232FE08
 	ldr r4, [sp, #0x10]
 	strb r5, [r4]
 	str r4, [sp]
-	blx recvfrom
+	blx SOC_RecvFrom
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 	thumb_func_end Aoss_Recvfrom
@@ -9869,7 +9869,7 @@ Aoss_Sendto: ; 0x0232FE70
 	ldr r4, [sp, #0x10]
 	strb r5, [r4]
 	str r4, [sp]
-	blx sendto
+	blx SOC_SendTo
 	pop {r3, r4, r5, pc}
 	thumb_func_end Aoss_Sendto
 
@@ -9881,19 +9881,19 @@ Aoss_Setsockopt: ; 0x0232FE80
 
 	thumb_func_start Aoss_Socket
 Aoss_Socket: ; 0x0232FE84
-	ldr r3, _0232FE88 ; =socket
+	ldr r3, _0232FE88 ; =SOC_Socket
 	bx r3
 	.align 2, 0
-_0232FE88: .word socket
+_0232FE88: .word SOC_Socket
 	thumb_func_end Aoss_Socket
 
 	thumb_func_start Aoss_Bind
 Aoss_Bind: ; 0x0232FE8C
-	ldr r3, _0232FE94 ; =bind
+	ldr r3, _0232FE94 ; =SOC_Bind
 	strb r2, [r1]
 	bx r3
 	nop
-_0232FE94: .word bind
+_0232FE94: .word SOC_Bind
 	thumb_func_end Aoss_Bind
 
 	thumb_func_start Aoss_Close
@@ -13648,7 +13648,7 @@ SendFrameViaInterface: ; 0x02331A48
 	str r1, [sp]
 	add r1, r3, #0
 	mov r3, #0
-	blx sendto
+	blx SOC_SendTo
 	cmp r0, #0
 	bge _02331A5E
 	mov r0, #3
@@ -15018,7 +15018,7 @@ _02332442:
 	mov r0, #2
 	add r1, r0, #0
 	mov r2, #0
-	blx socket
+	blx SOC_Socket
 	add r4, r0, #0
 	bpl _0233245A
 	mov r0, #1
@@ -15040,7 +15040,7 @@ _0233245A:
 	strh r3, [r2, #0x16]
 	str r1, [sp, #0x28]
 	add r1, r5, #0
-	blx bind
+	blx SOC_Bind
 	str r0, [sp, #8]
 	cmp r0, #0
 	bge _02332488
@@ -15081,7 +15081,7 @@ _023324AC:
 	add r0, r4, #0
 	lsl r2, r2, #0xa
 	mov r3, #4
-	blx recvfrom
+	blx SOC_RecvFrom
 	cmp r0, #0
 	ble _023325AA
 	ldr r0, _02332718 ; =ov02_0235A204
@@ -15138,7 +15138,7 @@ _02332538:
 	add r0, r4, #0
 	lsl r2, r2, #0xa
 	mov r3, #4
-	blx recvfrom
+	blx SOC_RecvFrom
 	cmp r0, #0
 	ble _023325AC
 	ldr r0, _02332718 ; =ov02_0235A204
@@ -15251,7 +15251,7 @@ _02332622:
 	add r0, r4, #0
 	lsl r2, r2, #0xa
 	mov r3, #4
-	blx recvfrom
+	blx SOC_RecvFrom
 	cmp r0, #0
 	ble _02332678
 	ldr r0, _02332718 ; =ov02_0235A204
@@ -42705,7 +42705,7 @@ Dwci_SettignlInit: ; 0x023474C0
 	str r0, [r1]
 	ldr r1, _02347500 ; =0x0000A001
 	add r0, r2, #0x400
-	bl MATHi_CRC16InitTable
+	bl MATHi_CRC16InitTableRev
 	ldr r0, _023474FC ; =ov02_0235AB48
 	ldr r0, [r0]
 	bl Dwci_BackuplRead
@@ -42904,8 +42904,8 @@ _02347730: .word ov02_0235AB48
 _02347734: .word Dwci_SettinglConvAddress
 	arm_func_end ov02_0234771C
 
-	arm_func_start Dwci_SettinglSetIp
-Dwci_SettinglSetIp: ; 0x02347738
+	arm_func_start DWCi_SETTINGlSetNetMask
+DWCi_SETTINGlSetNetMask: ; 0x02347738
 	ldr r1, _0234774C ; =ov02_0235AB48
 	ldr ip, _02347750 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
@@ -42914,10 +42914,10 @@ Dwci_SettinglSetIp: ; 0x02347738
 	.align 2, 0
 _0234774C: .word ov02_0235AB48
 _02347750: .word Dwci_SettinglConvAddress
-	arm_func_end Dwci_SettinglSetIp
+	arm_func_end DWCi_SETTINGlSetNetMask
 
-	arm_func_start Dwci_SettinglSetNetMask
-Dwci_SettinglSetNetMask: ; 0x02347754
+	arm_func_start DWCi_SETTINGlSetGateway
+DWCi_SETTINGlSetGateway: ; 0x02347754
 	ldr r1, _0234776C ; =ov02_0235AB48
 	ldr ip, _02347770 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
@@ -42927,10 +42927,10 @@ Dwci_SettinglSetNetMask: ; 0x02347754
 	.align 2, 0
 _0234776C: .word ov02_0235AB48
 _02347770: .word Dwci_SettinglConvAddress
-	arm_func_end Dwci_SettinglSetNetMask
+	arm_func_end DWCi_SETTINGlSetGateway
 
-	arm_func_start Dwci_SettinglSetGateway
-Dwci_SettinglSetGateway: ; 0x02347774
+	arm_func_start DWCi_SETTINGlSetDnsP
+DWCi_SETTINGlSetDnsP: ; 0x02347774
 	ldr r1, _0234778C ; =ov02_0235AB48
 	ldr ip, _02347790 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
@@ -42940,10 +42940,10 @@ Dwci_SettinglSetGateway: ; 0x02347774
 	.align 2, 0
 _0234778C: .word ov02_0235AB48
 _02347790: .word Dwci_SettinglConvAddress
-	arm_func_end Dwci_SettinglSetGateway
+	arm_func_end DWCi_SETTINGlSetDnsP
 
-	arm_func_start Dwci_SettinglSetDnsP
-Dwci_SettinglSetDnsP: ; 0x02347794
+	arm_func_start DWCi_SETTINGlSetDnsS
+DWCi_SETTINGlSetDnsS: ; 0x02347794
 	ldr r1, _023477AC ; =ov02_0235AB48
 	ldr ip, _023477B0 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
@@ -42953,7 +42953,7 @@ Dwci_SettinglSetDnsP: ; 0x02347794
 	.align 2, 0
 _023477AC: .word ov02_0235AB48
 _023477B0: .word Dwci_SettinglConvAddress
-	arm_func_end Dwci_SettinglSetDnsP
+	arm_func_end DWCi_SETTINGlSetDnsS
 
 	arm_func_start Dwci_SettinglGetSsid
 Dwci_SettinglGetSsid: ; 0x023477B4
@@ -42982,7 +42982,7 @@ Dwci_SettinglGetIp: ; 0x023477D8
 	str r2, [sp, #4]
 	ldrb r2, [r3, #0x4c0]
 	ldrb r3, [r3, #0x4c1]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -43003,7 +43003,7 @@ Dwci_SettinglGetNetMask: ; 0x02347818
 	str r2, [sp, #4]
 	ldrb r2, [r3, #0x4f0]
 	ldrb r3, [r3, #0x4f1]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -43025,7 +43025,7 @@ Dwci_SettinglGetGateway: ; 0x02347858
 	str r2, [sp, #4]
 	ldrb r2, [ip, #0x4c4]
 	ldrb r3, [r3, #0x401]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -43047,7 +43047,7 @@ Dwci_SettinglGetDnsP: ; 0x0234789C
 	str r2, [sp, #4]
 	ldrb r2, [ip, #0x4c8]
 	ldrb r3, [r3, #0x401]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -43069,7 +43069,7 @@ Dwci_SettinglGetDnsS: ; 0x023478E0
 	str r2, [sp, #4]
 	ldrb r2, [ip, #0x4cc]
 	ldrb r3, [r3, #0x401]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -46942,14 +46942,14 @@ _0234ACD0:
 	ldr r0, [r0, #0x3ac]
 	cmp r0, #0
 	beq _0234AD00
-	bl Dwci_Mov_WH_StateInStartParent
+	bl DWCi_MOV_WH_StateInSetParentWEPKey
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
 	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234AD00:
-	bl Dwci_Mov_WH_StateInSetParentWepKey
+	bl DWCi_MOV_WH_StateInStartParent
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
@@ -46959,8 +46959,8 @@ _0234AD00:
 _0234AD18: .word ov02_0235AB64
 	arm_func_end Dwci_Mov_WH_StateOutSetParentParam
 
-	arm_func_start Dwci_Mov_WH_StateInStartParent
-Dwci_Mov_WH_StateInStartParent: ; 0x0234AD1C
+	arm_func_start DWCi_MOV_WH_StateInSetParentWEPKey
+DWCi_MOV_WH_StateInSetParentWEPKey: ; 0x0234AD1C
 	stmdb sp!, {r3, lr}
 	mov r0, #3
 	bl Dwci_Mov_WH_ChangeSysState
@@ -46987,7 +46987,7 @@ Dwci_Mov_WH_StateInStartParent: ; 0x0234AD1C
 	.align 2, 0
 _0234AD78: .word ov02_0235AB64
 _0234AD7C: .word Dwci_Mov_WH_StateOutSetParentWepKey
-	arm_func_end Dwci_Mov_WH_StateInStartParent
+	arm_func_end DWCi_MOV_WH_StateInSetParentWEPKey
 
 	arm_func_start Dwci_Mov_WH_StateOutSetParentWepKey
 Dwci_Mov_WH_StateOutSetParentWepKey: ; 0x0234AD80
@@ -47000,7 +47000,7 @@ Dwci_Mov_WH_StateOutSetParentWepKey: ; 0x0234AD80
 	bl Dwci_Mov_WH_ChangeSysState
 	ldmia sp!, {r3, pc}
 _0234ADA0:
-	bl Dwci_Mov_WH_StateInSetParentWepKey
+	bl DWCi_MOV_WH_StateInStartParent
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
@@ -47008,8 +47008,8 @@ _0234ADA0:
 	ldmia sp!, {r3, pc}
 	arm_func_end Dwci_Mov_WH_StateOutSetParentWepKey
 
-	arm_func_start Dwci_Mov_WH_StateInSetParentWepKey
-Dwci_Mov_WH_StateInSetParentWepKey: ; 0x0234ADB8
+	arm_func_start DWCi_MOV_WH_StateInStartParent
+DWCi_MOV_WH_StateInStartParent: ; 0x0234ADB8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234AE14 ; =ov02_0235AB64
 	ldr r0, [r0, #4]
@@ -47037,7 +47037,7 @@ _0234ADF4:
 	.align 2, 0
 _0234AE14: .word ov02_0235AB64
 _0234AE18: .word Dwci_Mov_WH_StateOutStartParent
-	arm_func_end Dwci_Mov_WH_StateInSetParentWepKey
+	arm_func_end DWCi_MOV_WH_StateInStartParent
 
 	arm_func_start Dwci_Mov_WH_StateOutStartParent
 Dwci_Mov_WH_StateOutStartParent: ; 0x0234AE1C
@@ -49432,7 +49432,7 @@ _0234CC98:
 	ldr r2, _0234CD24 ; =ov02_02352F18
 	str r0, [r3, #0x84]
 	add r0, sp, #0x20
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r0, sp, #0x20
 	bl FS_ChangeDir
 	add sp, sp, #0xe8
@@ -51587,7 +51587,7 @@ _0234E888:
 	mov r0, #2
 	bl TP_WaitBusy
 	mov r0, #2
-	bl TP_CheckBusy
+	bl TP_CheckError
 	cmp r0, #0
 	beq _0234E8C4
 	bl WaitForever2
@@ -51605,11 +51605,11 @@ Dwci_IptlEnd: ; 0x0234E8D4
 	mov r5, #4
 	mov r4, r5
 _0234E8E0:
-	bl sub_0208161C
+	bl TP_RequestAutoSamplingStopAsync
 	mov r0, r5
 	bl TP_WaitBusy
 	mov r0, r4
-	bl TP_CheckBusy
+	bl TP_CheckError
 	cmp r0, #0
 	bne _0234E8E0
 	ldr r0, _0234E908 ; =ov02_0235AB90
@@ -54122,10 +54122,10 @@ ov02_02352A74:
 	.global ov02_02352A88
 ov02_02352A88:
 	.word ov02_0234771C
-	.word Dwci_SettinglSetIp
-	.word Dwci_SettinglSetNetMask
-	.word Dwci_SettinglSetGateway
-	.word Dwci_SettinglSetDnsP
+	.word DWCi_SETTINGlSetNetMask
+	.word DWCi_SETTINGlSetGateway
+	.word DWCi_SETTINGlSetDnsP
+	.word DWCi_SETTINGlSetDnsS
 	.global ov02_02352A9C
 ov02_02352A9C:
 	.byte 0x31, 0x3D, 0x49, 0x5A, 0x66, 0x72, 0x83, 0x8F, 0x9B, 0xAC, 0xB8, 0xC4

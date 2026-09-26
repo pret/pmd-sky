@@ -74,8 +74,8 @@ _02083D70: .word 0x040001A4
 _02083D74: .word 0x040001A1
 	arm_func_end CARDi_SetRomOp
 
-	arm_func_start sub_02083D78
-sub_02083D78: ; 0x02083D78
+	arm_func_start CARDi_SetCardDma
+CARDi_SetCardDma: ; 0x02083D78
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, _02083DBC ; =_022BB7E0
 	ldr r1, _02083DC0 ; =0x04100010
@@ -98,10 +98,10 @@ _02083DBC: .word _022BB7E0
 _02083DC0: .word 0x04100010
 _02083DC4: .word _022BBE20
 _02083DC8: .word 0x040001A4
-	arm_func_end sub_02083D78
+	arm_func_end CARDi_SetCardDma
 
-	arm_func_start sub_02083DCC
-sub_02083DCC: ; 0x02083DCC
+	arm_func_start CARDi_OnReadCard
+CARDi_OnReadCard: ; 0x02083DCC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r0, _02083E98 ; =_022BB7E0
 	ldr r0, [r0, #0x28]
@@ -125,7 +125,7 @@ sub_02083DCC: ; 0x02083DCC
 	mov r0, #0x80000
 	bl OS_ResetRequestIrqMask
 	ldr r4, _02083E98 ; =_022BB7E0
-	bl sub_02084118
+	bl CARDi_ReadRomIDCore
 	bl Cardi_CheckPulledOutCore
 	ldr r0, [r4]
 	mov r1, #0
@@ -153,11 +153,11 @@ _02083E74:
 	blx r5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02083E90:
-	bl sub_02083D78
+	bl CARDi_SetCardDma
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02083E98: .word _022BB7E0
-	arm_func_end sub_02083DCC
+	arm_func_end CARDi_OnReadCard
 
 	arm_func_start Cardi_TryReadCardDma
 Cardi_TryReadCardDma: ; 0x02083E9C
@@ -263,7 +263,7 @@ _02083FE4:
 	bl OS_EnableIrqMask
 	mov r0, r7
 	bl SetIrqFlag
-	bl sub_02083D78
+	bl CARDi_SetCardDma
 _0208400C:
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -272,7 +272,7 @@ _02084014: .word _022BB7E0
 _02084018: .word CopyAndInterleave
 _0208401C: .word 0x000001FF
 _02084020: .word _020B2ED0
-_02084024: .word sub_02083DCC
+_02084024: .word CARDi_OnReadCard
 	arm_func_end Cardi_TryReadCardDma
 
 	arm_func_start CARDi_ReadCard
@@ -346,8 +346,8 @@ _02084110: .word 0x040001A4
 _02084114: .word 0x04100010
 	arm_func_end CARDi_ReadCard
 
-	arm_func_start sub_02084118
-sub_02084118: ; 0x02084118
+	arm_func_start CARDi_ReadRomIDCore
+CARDi_ReadRomIDCore: ; 0x02084118
 	stmdb sp!, {r3, lr}
 	mov r0, #0xb8000000
 	mov r1, #0
@@ -373,7 +373,7 @@ _02084150:
 _02084168: .word _020B2ED0
 _0208416C: .word 0x040001A4
 _02084170: .word 0x04100010
-	arm_func_end sub_02084118
+	arm_func_end CARDi_ReadRomIDCore
 
 	arm_func_start Cardi_ReadRomSyncCore
 Cardi_ReadRomSyncCore: ; 0x02084174
@@ -388,7 +388,7 @@ Cardi_ReadRomSyncCore: ; 0x02084174
 	blx r1
 _02084198:
 	ldr r4, _02084208 ; =_022BB7E0
-	bl sub_02084118
+	bl CARDi_ReadRomIDCore
 	bl Cardi_CheckPulledOutCore
 	ldr r0, [r4]
 	mov r1, #0

@@ -1,8 +1,8 @@
 #include "main_0206C0D8.h"
 
-extern void sub_0207A8F4(s32 a, s32 b, s32 c);
+extern void OS_FreeToHeap(s32 a, s32 b, s32 c);
 
-extern void sub_0207A7EC(s32 a, s32 b, s32 c);
+extern void OS_AllocFromHeap(s32 a, s32 b, s32 c);
 
 extern struct unk_020B0B70 _020B0B70;
 
@@ -62,12 +62,12 @@ void sub_0206C164(u8 *src)
 
 void sub_0206C184(s32 unused, s32 a)
 {
-    sub_0207A7EC(0, -1, a);
+    OS_AllocFromHeap(0, -1, a);
 }
 
 s32 sub_0206C19C(s32 unused, s32 a)
 {
-    sub_0207A8F4(0, -1, a);
+    OS_FreeToHeap(0, -1, a);
 
     return a;
 }
