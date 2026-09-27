@@ -415,7 +415,7 @@
                                     35](UnloadOverlay,func) found in global main_020040AC.o
                                      36](MATH_CalcCRC32,func) found in global math_crc.o
                                       37](DC_StoreRange,func) found in global os_cache.o
-                                     36](GetDsFirmwareUserSettings,func) found in global os_ownerinfo.o
+                                     36](GetDsFirmwareUserSettings,func) found in global os_ownerInfo.o
                                      36](_02092558,object) found in global main_02003ED0.o
                                       37](_02092580,notype) found in global main_rodata_02092580.o
                                      36](FS_UnloadOverlay,func) found in global fs_overlay.o
@@ -2445,7 +2445,7 @@
                                                                                            90](.rodata,section) found in local overlay_08.o
                                                                                            90](.bss,section) found in local overlay_08.o
                                                                                            90](.data,section) found in local overlay_08.o
-                                                                                           90](OS_GetMacAddress,func) found in global os_ownerinfo.o
+                                                                                           90](OS_GetMacAddress,func) found in global os_ownerInfo.o
                                                                                         87](ov00_023289E8,notype) found in global overlay_00_0230E460.o
                                                                                         87](Std_TsScanf,func) found in overload string.o
                                                                                          88](Std_TvsScanf,func) found in global std_string.o
@@ -12624,12 +12624,12 @@
   0207B904 00000000 .text   $a	(os_reset.o)
   0207B930 000000BC .text   OS_ResetSystem	(os_reset.o)
   0207B9C0 00000000 .text   $d	(os_reset.o)
-  0207B9EC 00000000 .text   $a	(os_ownerinfo.o)
-  0207B9EC 0000001C .text   OS_GetMacAddress	(os_ownerinfo.o)
-  0207BA00 00000000 .text   $d	(os_ownerinfo.o)
-  0207BA08 00000000 .text   $a	(os_ownerinfo.o)
-  0207BA08 00000084 .text   GetDsFirmwareUserSettings	(os_ownerinfo.o)
-  0207BA88 00000000 .text   $d	(os_ownerinfo.o)
+  0207B9EC 00000000 .text   $a	(os_ownerInfo.o)
+  0207B9EC 0000001C .text   OS_GetMacAddress	(os_ownerInfo.o)
+  0207BA00 00000000 .text   $d	(os_ownerInfo.o)
+  0207BA08 00000000 .text   $a	(os_ownerInfo.o)
+  0207BA08 00000084 .text   GetDsFirmwareUserSettings	(os_ownerInfo.o)
+  0207BA88 00000000 .text   $d	(os_ownerInfo.o)
   0207BA8C 00000008 .text   OsCountZeroBits	(os_vramExclusive.o)
   0207BA8C 00000000 .text   $a	(os_vramExclusive.o)
   0207BA94 00000000 .text   $a	(os_vramExclusive.o)
@@ -44348,5 +44348,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Sep 20 15:49:10 2026
-# Link end time: Sun Sep 20 15:49:10 2026
+# Link start time: Mon May 22 18:35:44 1905
+# Link end time: Mon May 22 18:35:44 1905
