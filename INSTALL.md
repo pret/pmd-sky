@@ -104,6 +104,29 @@ There are targets for building and testing changes to individual components with
 
 At the end of building each of these, there is a checksum verification step. This makes sure that the final product is byte-for-byte equivalent to the retail ROM. To disable this, append `COMPARE=0` to your command.
 
+### Building with wibo instead of wine
+
+You can use [wibo](https://github.com/decompals/wibo) instead of wine on Linux (and x86 macOS, though untested). wibo is a minimal and faster Win32 loader for decompilation work specifically.
+
+```shell
+make install_wibo   # download wibo into tools/wibo/
+make USE_WIBO=1     # build
+```
+
+To use wibo already on your `PATH`, pass `WIBO=wibo`:
+
+```shell
+make USE_WIBO=1 WIBO=wibo
+```
+
+Likewise, to use your own build, replace that with `WIBO=<path to your wibo binary>`.
+
+If the Nitro SDK tools (`makerom`, `makelcf`, `makebanner`) cause issues under wibo, you can use wine for those while keeping wibo on the Metrowerks binaries:
+
+```shell
+make USE_WIBO=1 NITROWINE=wine
+```
+
 ### Windows
 
 If you get an error in saving configuration settings when specifying the license file, you need to add a system environment variable called `LM_LICENSE_FILE` and point it to the `license.dat` file. Alternatively, run `mwccarm.exe` from an Administrator command prompt, PowerShell, or WSL session.

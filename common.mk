@@ -251,7 +251,7 @@ clean-tools:
 	$(foreach tool,$(TOOLDIRS),$(MAKE) -C $(tool) clean;)
 
 $(LCF): $(LSF) $(LCF_TEMPLATE)
-	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
+	$(NITROWINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
 ifeq ($(PROC),arm946e)
 	$(SED) -i '1i KEEP_SECTION\n{\n\t.exceptix\n}' $@
 else
@@ -262,7 +262,7 @@ RESPONSE_TEMPLATE    := $(PROJECT_ROOT)/mwldarm.response.template
 RESPONSE_TEMPLATE_NT := $(PROJECT_ROOT_NT)/mwldarm.response.template
 
 $(RESPONSE): $(LSF) $(RESPONSE_TEMPLATE)
-	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(RESPONSE_TEMPLATE_NT) $@
+	$(NITROWINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(RESPONSE_TEMPLATE_NT) $@
 
 # Locate crt0.o
 CRT0_OBJ := lib/asm/crt0.o
