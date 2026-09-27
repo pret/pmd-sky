@@ -44,3 +44,34 @@ ifeq ($(NOWINE),1)
 else
   WINPATH := winepath
 endif
+
+# Win32 runner selection, using wibo when USE_WIBO=1 and regular wine otherwise.
+#
+#   make install_wibo      # download wibo in tools/wibo/
+#   make USE_WIBO=1        # build
+#
+# WIBO overrides which binary is used; it defaults to tools/wibo/* when present and otherwise to `wibo` on PATH.
+#
+# Nitro SDK tools are run using NITROWINE. It can be set separately like so:
+#
+#   make USE_WIBO=1 NITROWINE=wine
+#
+# if you find that WIBO doesn't work as well with those tools as compared to the Metrowerks compilers.
+
+USE_WIBO ?= 0
+
+ifneq ($(USE_WIBO),0)
+  TOOLS_WIBO    := $(TOOLSDIR)/wibo/wibo
+  WIBO          ?= $(if $(wildcard $(TOOLS_WIBO)),$(TOOLS_WIBO),wibo)
+  # Make the path absolute as long as it's not just "wibo" (from PATH)
+  WIBO_CMD      := $(if $(findstring /,$(WIBO)),$(abspath $(WIBO)),$(WIBO))
+  WINE          := $(WIBO_CMD)
+  WINPATH       := $(WIBO_CMD) path      # use `wibo path` under wibo instead of winepath
+endif
+
+NITROWINE ?= $(WINE)
+
+# USE_METROSKREW overrides WINE for the Metrowerks compilers only,
+# skipping wine entirely, using the metroskrew native re-link.
+
+USE_METROSKREW ?= 0

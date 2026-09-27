@@ -31,9 +31,19 @@ include $(WORK_DIR)/platform.mk
 include $(WORK_DIR)/binutils.mk
 
 # NitroSDK tools
-MWCC          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwccarm.exe
-MWAS          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwasmarm.exe
-MWLD          = $(BACK_REL)/$(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
+MWAS_EXE      = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwasmarm.exe
+ifneq ($(USE_METROSKREW),0)
+  SKREWRAP     := $(abspath $(TOOLSDIR)/metroskrew/bin/skrewrap)
+  SKREW_SDK     = $(TOOLSDIR)/metroskrew/share/metroskrew/sdk/ds/$(MWCCVER)
+  skrew_ver     = $(patsubst $(1)-%.exe,%,$(shell cat $(SKREW_SDK)/$(1).exe.txt))
+  MWCC          = $(SKREWRAP) mwccarm -wrap:ver $(call skrew_ver,mwccarm)
+  MWAS          = $(SKREWRAP) mwasmarm -wrap:ver $(call skrew_ver,mwasmarm)
+  MWLD          = $(SKREWRAP) mwldarm -wrap:ver $(call skrew_ver,mwldarm)
+else
+  MWCC          = $(WINE) $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwccarm.exe
+  MWAS          = $(WINE) $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwasmarm.exe
+  MWLD          = $(WINE) $(BACK_REL)/$(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
+endif
 MAKEROM      := $(TOOLSDIR)/bin/makerom.exe
 MAKELCF      := $(TOOLSDIR)/bin/makelcf.exe
 MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
@@ -146,11 +156,11 @@ LIBRARY_INCLUDE_FLAGS := -I$(WORK_DIR)/lib/msl/include/MSL_C $(foreach dname,$(L
 SRC_INCLUDE_FLAGS := -i ./include -i ./include/library -i $(WORK_DIR)/files $(LIBRARY_INCLUDE_FLAGS)
 SDK_INCLUDE_FLAGS := $(LIBRARY_INCLUDE_FLAGS)
 
-MW_COMPILE_SRC = $(WINE) $(MWCC) $(OPTFLAGS) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
-MW_COMPILE_LIB = $(WINE) $(MWCC) $(OPTFLAGS_SDK) $(MWCFLAGS_LIB) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
-MW_COMPILE_SRC_PRECOMPILE = $(WINE) $(MWCC) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS)
+MW_COMPILE_SRC = $(MWCC) $(OPTFLAGS) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
+MW_COMPILE_LIB = $(MWCC) $(OPTFLAGS_SDK) $(MWCFLAGS_LIB) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
+MW_COMPILE_SRC_PRECOMPILE = $(MWCC) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS)
 
-MW_ASSEMBLE = $(WINE) $(MWAS) $(MWASFLAGS)
+MW_ASSEMBLE = $(MWAS) $(MWASFLAGS)
 
 export MWCIncludes := lib/include
 
@@ -171,8 +181,8 @@ DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS) $(PRECOMPILE_OBJ_DIR))
 .PRECIOUS: $(SBIN)
 .NOTPARALLEL:
 
-.PHONY: $(MWAS)
-$(MWAS):
+.PHONY: $(MWAS_EXE)
+$(MWAS_EXE):
 	$(ASPATCH) -q $@
 
 ifeq ($(NODEP),)
@@ -224,7 +234,7 @@ $(BUILD_DIR)/lib/%.o: lib/%.c $(BUILD_DIR)/lib/%.d $(NITRO_PRECOMPILE_OBJ)
 
 $(BUILD_DIR)/%.o: %.s
 $(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
-	$(WINE) $(MWAS) $(MWASFLAGS) -I$(dir $<) $(DEPFLAGS) -o $@ $<
+	$(MWAS) $(MWASFLAGS) -I$(dir $<) $(DEPFLAGS) -o $@ $<
 	@$(call fixdep,$(BUILD_DIR)/$*.d)
 
 include $(wildcard $(DEPFILES))
@@ -237,12 +247,12 @@ $(BUILD_DIR)/%.o: %.c
 	$(BUILD_C) $@ $<
 
 $(BUILD_DIR)/%.o: %.s
-	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<
+	$(MWAS) $(MWASFLAGS) -o $@ $<
 endif
 
 $(NATIVE_TOOLS): tools
 
-tools: $(TOOLDIRS) $(MWAS)
+tools: $(TOOLDIRS) $(MWAS_EXE)
 
 $(TOOLDIRS):
 	@$(MAKE) -C $@
@@ -251,7 +261,7 @@ clean-tools:
 	$(foreach tool,$(TOOLDIRS),$(MAKE) -C $(tool) clean;)
 
 $(LCF): $(LSF) $(LCF_TEMPLATE)
-	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
+	$(NITROWINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@
 ifeq ($(PROC),arm946e)
 	$(SED) -i '1i KEEP_SECTION\n{\n\t.exceptix\n}' $@
 else
@@ -262,13 +272,13 @@ RESPONSE_TEMPLATE    := $(PROJECT_ROOT)/mwldarm.response.template
 RESPONSE_TEMPLATE_NT := $(PROJECT_ROOT_NT)/mwldarm.response.template
 
 $(RESPONSE): $(LSF) $(RESPONSE_TEMPLATE)
-	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(RESPONSE_TEMPLATE_NT) $@
+	$(NITROWINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(RESPONSE_TEMPLATE_NT) $@
 
 # Locate crt0.o
 CRT0_OBJ := lib/asm/crt0.o
 
 $(NEF): $(LCF) $(RESPONSE) $(ALL_OBJS)
-	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
+	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
 
 .INTERMEDIATE: $(BUILD_DIR)/obj.list
 

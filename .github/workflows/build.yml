@@ -27,48 +27,33 @@ jobs:
           sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
           sudo ppa-purge -y ppa:ubuntu-toolchain-r/test || true
           sudo dpkg --add-architecture i386
-          sudo mkdir -pm755 /etc/apt/keyrings
-          sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-          sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
-          sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
           sudo apt update
-          sudo apt -y --allow-downgrades install --install-recommends winehq-stable
+          sudo apt -y --allow-downgrades install libc6:i386
 
       - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Set up repo
         run: |
-          mkdir -p ~/download
-          cd ~/download
-          wget https://github.com/pret/pmd-sky/raw/workflows/assets/mwccarm.zip
-          wget https://github.com/pret/pmd-sky/raw/workflows/assets/NitroSDK-4_2-071210-jp.7z
-          unzip mwccarm.zip
-          mv mwccarm $GITHUB_WORKSPACE/tools
-          7z x NitroSDK-4_2-071210-jp.7z
-          mv tools/bin $GITHUB_WORKSPACE/tools
-          mv include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
-          mv include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
-          mv include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
-        working-directory: ~
+          make install_toolchain install_wibo install_metroskrew
 
       - name: Build North America
         env:
           GAME_LANGUAGE: NORTH_AMERICA
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j${nproc} USE_WIBO=1 USE_METROSKREW=1
 
       - name: Build Europe
         env:
           GAME_LANGUAGE: EUROPE
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j${nproc} USE_WIBO=1 USE_METROSKREW=1
 
       - name: Build Japan
         env:
           GAME_LANGUAGE: JAPAN
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j${nproc} USE_WIBO=1 USE_METROSKREW=1
 
       - name: Webhook
         if: ${{ github.event_name == 'push' && env.CALCROM_WEBHOOK_URL != '' }}

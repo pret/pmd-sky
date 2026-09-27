@@ -9,6 +9,12 @@ tools/bin/**
 *.lcf.template
 *.response.template
 
+# wibo
+tools/wibo/**
+
+# metroskrew
+tools/metroskrew/**
+
 # Build folder
 build/**
 sub/build/**

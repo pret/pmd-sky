@@ -445,7 +445,7 @@ Static main
     Object lib/NitroSDK/asm/os_valarm.o
 	Object lib/NitroSDK/src/os/os_system.o
 	object lib/NitroSDK/asm/os_reset.o
-	object lib/NitroSDK/src/os/os_ownerinfo.o
+	object lib/NitroSDK/src/os/os_ownerInfo.o
 	Object lib/NitroSDK/src/os/os_vramExclusive.o
 	Object lib/NitroSDK/src/os/os_entropy.o
 	Object lib/NitroSDK/src/os/os_terminate_proc.o

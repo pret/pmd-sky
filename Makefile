@@ -56,14 +56,14 @@ $(BUILD_DIR)/component.files: main ;
 $(HEADER_TEMPLATE): ;
 
 $(ROM): $(ROMSPEC) tools filesystem main sub $(BANNER)
-	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -M$(NITROFS_FILES_FILE) -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
+	$(NITROWINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -M$(NITROFS_FILES_FILE) -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) -c $(buildname)/rom.sha1
 endif
 
 $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
-	$(WINE) $(MAKEBNR) $< $@
+	$(NITROWINE) $(MAKEBNR) $< $@
 
 us: ; @$(MAKE) GAME_LANGUAGE=NORTH_AMERICA
 eu: ; @$(MAKE) GAME_LANGUAGE=EUROPE
@@ -88,4 +88,25 @@ install_toolchain:
 	mv toolchain_tmp/nitro_sdk/include/nitro/specfiles/mwldarm.response.template .
 	rm -r toolchain_tmp
 
-.PHONY: compare install_toolchain
+WIBO_VERSION := 1.2.0
+WIBO_ARCH    := $(if $(filter aarch64 arm64,$(shell uname -m)),,$(if $(filter Darwin,$(shell uname -s)),macos,x86_64))
+
+install_wibo:
+ifeq ($(WIBO_ARCH),)
+	$(error No prebuilt wibo binaries are available for $(shell uname -s)/$(shell uname -m), build it from https://github.com/decompals/wibo and install it manually)
+endif
+	rm -rf tools/wibo
+	mkdir -p tools/wibo
+	wget -O tools/wibo/wibo https://github.com/decompals/wibo/releases/download/$(WIBO_VERSION)/wibo-$(WIBO_ARCH)
+	chmod +x tools/wibo/wibo
+	tools/wibo/wibo --version
+
+METROSKREW_VER ?= 0.1.3
+METROSKREW_URL := https://github.com/mid-kid/metroskrew/releases/download/$(METROSKREW_VER)/metroskrew-linux.tar.xz
+
+install_metroskrew:
+	rm -rf tools/metroskrew
+	mkdir -p tools/metroskrew
+	wget -O- $(METROSKREW_URL) | tar -xJ -C tools/metroskrew --strip-components=1
+
+.PHONY: compare install_toolchain install_wibo install_metroskrew
