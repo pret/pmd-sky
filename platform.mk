@@ -70,3 +70,8 @@ ifneq ($(USE_WIBO),0)
 endif
 
 NITROWINE ?= $(WINE)
+
+# USE_METROSKREW overrides WINE for the Metrowerks compilers only,
+# skipping wine entirely, using the metroskrew native re-link.
+
+USE_METROSKREW ?= 0

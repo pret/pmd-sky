@@ -12,6 +12,9 @@ tools/bin/**
 # wibo
 tools/wibo/**
 
+# metroskrew
+tools/metroskrew/**
+
 # Build folder
 build/**
 sub/build/**

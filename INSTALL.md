@@ -104,9 +104,9 @@ There are targets for building and testing changes to individual components with
 
 At the end of building each of these, there is a checksum verification step. This makes sure that the final product is byte-for-byte equivalent to the retail ROM. To disable this, append `COMPARE=0` to your command.
 
-### Building with wibo instead of wine
+### Building with wibo and Metroskrew instead of wine
 
-You can use [wibo](https://github.com/decompals/wibo) instead of wine on Linux (and x86 macOS, though untested). wibo is a minimal and faster Win32 loader for decompilation work specifically.
+**[wibo](https://github.com/decompals/wibo)** is a minimal and fast Win32 loader for decompilation work specifically. You can use it instead of wine on Linux (and x86 macOS, though untested).
 
 ```shell
 make install_wibo   # download wibo into tools/wibo/
@@ -125,6 +125,22 @@ If the Nitro SDK tools (`makerom`, `makelcf`, `makebanner`) cause issues under w
 
 ```shell
 make USE_WIBO=1 NITROWINE=wine
+```
+
+**[Metroskrew](https://github.com/mid-kid/metroskrew)** is a port of the Metrowerks ARM compiler to Linux by relinking, which means that you can run the compilers directly as native Linux binaries using it.
+
+You will still need either Wine or Wibo for the SDK tools (which are separate from the compiler).
+
+In addition, Metroskrew's binaries are 32-bit x86, so you will need 32-bit glibc installed. That's:
+
+* libc6-i386 on Debian/Ubuntu
+* lib32-glibc on Arch (multilib)
+* glibc.i686 on Fedora
+
+```shell
+make install_metroskrew                  # download Metroskrew into tools/metroskrew/
+#make install_wibo                       # download wibo into tools/wibo/, from earlier
+make USE_WIBO=1 USE_METROSKREW=1         # build
 ```
 
 ### Windows

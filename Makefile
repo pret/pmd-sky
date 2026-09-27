@@ -95,9 +95,18 @@ install_wibo:
 ifeq ($(WIBO_ARCH),)
 	$(error No prebuilt wibo binaries are available for $(shell uname -s)/$(shell uname -m), build it from https://github.com/decompals/wibo and install it manually)
 endif
+	rm -rf tools/wibo
 	mkdir -p tools/wibo
 	wget -O tools/wibo/wibo https://github.com/decompals/wibo/releases/download/$(WIBO_VERSION)/wibo-$(WIBO_ARCH)
 	chmod +x tools/wibo/wibo
 	tools/wibo/wibo --version
 
-.PHONY: compare install_toolchain install_wibo
+METROSKREW_VER ?= 0.1.3
+METROSKREW_URL := https://github.com/mid-kid/metroskrew/releases/download/$(METROSKREW_VER)/metroskrew-linux.tar.xz
+
+install_metroskrew:
+	rm -rf tools/metroskrew
+	mkdir -p tools/metroskrew
+	wget -O- $(METROSKREW_URL) | tar -xJ -C tools/metroskrew --strip-components=1
+
+.PHONY: compare install_toolchain install_wibo install_metroskrew
