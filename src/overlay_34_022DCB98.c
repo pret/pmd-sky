@@ -1,7 +1,43 @@
 #include "overlay_34_022DCB98.h"
 #include "debug.h"
+#include "main_02001188.h"
+#include "main_0202A66C.h"
+#include "main_0202AAA8.h"
+#include "main_0202AB40.h"
+#include "main_0202F180.h"
+
+// TODO: types aren't final.. this is just prelimary moving them to src/rodata from asm
+const u8 ov34_022DCFF4[] = {0x42, 0x41, 0x43, 0x4B, 0x2F, 0x6E, 0x5F, 0x6C, 0x6F, 0x67, 0x6F, 0x2E, 0x62, 0x67, 0x70, 0x00};
+
+#ifdef NORTH_AMERICA
+const u8 ov34_022DD004[] = {0x42, 0x41, 0x43, 0x4B, 0x2F, 0x77, 0x5F, 0x65, 0x73, 0x72, 0x62, 0x2E, 0x62, 0x67, 0x70, 0x00};
+#endif
+
+
+struct Overlay34_22DD084_sub {
+    u8 parent_menu_id;
+    s8 dialogue_box_id;
+    u32 unk4;
+};
+
+struct Overlay34_22DD084 {
+    struct Overlay34_22DD084_sub *unk0;
+    s32 unk4;
+};
+
+
+extern struct Overlay34_22DD084 OVERLAY34_UNKNOWN_POINTER__NA_22DD08C;
+extern struct Overlay34_22DD084 OVERLAY34_UNKNOWN_POINTER__NA_22DD084;
+extern struct unk_0202A5CC START_MENU_ITEMS_CONFIRM;
+extern struct unk_0202A5CC DUNGEON_DEBUG_MENU_ITEMS;
+extern u32 OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C;
+extern u32 OVERLAY34_UNKNOWN_STRUCT__NA_22DD014;
 
 extern void sub_02008F3C(s32, s32);
+extern s8 CreateDialogueBox(s8);   
+extern void CloseDialogueBox(s8);
+void ov34_022DC718(s32);
+s32 InitMenu(u32*);
 
 void ov34_022DCB64(s32 arg0)
 {
@@ -19,4 +55,167 @@ void ov34_022DCB98(s32 arg0)
         return;
     }
     sub_02008F3C(1, arg0);
+}
+
+void ov34_022DCBCC(void)
+{
+    if (InitMenu(&OVERLAY34_UNKNOWN_STRUCT__NA_22DD014) != 0) {
+        OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk4 = 0;
+    }
+}
+
+s32 ov34_022DCBF4(void)
+{
+    s32 sp0[0x26];
+
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0 = MemAlloc(8, 8);
+    sp0[0] = 1;
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->parent_menu_id = CreateParentMenuFromStringIds(0, 0x31, &sp0, &START_MENU_ITEMS_CONFIRM);
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->dialogue_box_id = CreateDialogueBox(0);
+#ifdef JAPAN
+    ShowStringIdInDialogueBox(OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->dialogue_box_id, 0x408, 0x4E6, 0);
+#else
+    ShowStringIdInDialogueBox(OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->dialogue_box_id, 0x408, 0x255, 0);
+#endif
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->unk4 = 0;
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk4 = 0;
+    return 1;
+}
+
+void ov34_022DCC94(void)
+{
+    if (OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0 == NULL) {
+        return;
+    }
+    CloseParentMenu((s8)OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->parent_menu_id);
+    CloseDialogueBox(OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->dialogue_box_id);
+    MemFree(OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0);
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0 = NULL;
+}
+
+s32 ov34_022DCCE0(void)
+{
+    s32 var_r0;
+
+    switch (OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->unk4) {
+        case 0:
+            if (CheckParentMenuField0x1A0((s8)OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->parent_menu_id) == 0) {
+                OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk4 = GetSimpleMenuResult__0202AEA4((s8)OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->parent_menu_id);
+                sub_0202F334(OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->dialogue_box_id);
+                OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->unk4 = 1;
+            }
+            break;
+        case 1:
+            if (IsParentMenuActive((s8)OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->parent_menu_id) == 0) {
+                if (IsDialogueBoxActive(OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->dialogue_box_id) == 0) {
+                    OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->unk4 = 2;
+                }
+            }
+            break;
+        case 2:
+            OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk0->unk4 = 3;
+
+            switch(OVERLAY34_UNKNOWN_POINTER__NA_22DD084.unk4)
+            {
+                case 2:
+                    var_r0 = 2;
+                    break;
+                default:
+                    var_r0 = 1;
+                    break;
+            }
+
+            if (var_r0 != 0) {
+                ov34_022DC718(var_r0);
+            }
+            return 4;
+        default:
+            break;
+    }
+    return 1;
+}
+
+void ov34_022DCDCC(void)
+{
+    if (InitMenu(&OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C) != 0) {
+        OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk4 = 0;
+    }
+}
+
+s32 ov34_022DCDF4(void)
+{
+    s32 sp0[0x26];
+
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0 = MemAlloc(8, 8);
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->parent_menu_id = CreateParentMenuFromStringIds(0, 0x11, &sp0, &DUNGEON_DEBUG_MENU_ITEMS);
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->dialogue_box_id = CreateDialogueBox(0);
+#ifdef EUROPE
+     ShowStringIdInDialogueBox(OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->dialogue_box_id, 0x408, 0x3D1E, 0);
+#elif defined(JAPAN)
+     ShowStringIdInDialogueBox(OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->dialogue_box_id, 0x408, 0x50E, 0);
+#else
+     ShowStringIdInDialogueBox(OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->dialogue_box_id, 0x408, 0x3D1C, 0);
+#endif
+   
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->unk4 = 0;
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk4 = 0;
+    return 1;
+}
+
+void ov34_022DCE8C(void)
+{
+    if (OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0 == NULL) {
+        return;
+    }
+    CloseParentMenu((s8)OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->parent_menu_id);
+    CloseDialogueBox(OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->dialogue_box_id);
+    MemFree(OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0);
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0 = NULL;
+}
+
+s32 ov34_022DCED8(void)
+{
+
+    switch (OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->unk4) {                           
+        case 0:                                         
+            if (CheckParentMenuField0x1A0((s8)OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->parent_menu_id) == 0) {
+                OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk4 = GetSimpleMenuResult__0202AEA4((s8)OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->parent_menu_id);
+                sub_0202F334(OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->dialogue_box_id);
+                OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->unk4 = 1;
+            }
+            break;
+        default:                                        
+            break;
+        case 1:                                         
+            if (IsParentMenuActive((s8)OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->parent_menu_id) == 0) {
+                if (IsDialogueBoxActive(OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->dialogue_box_id) == 0) {
+                    OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->unk4 = 2;
+                }
+            }
+            break;
+        case 2:                                         
+            OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk0->unk4 = 3;
+            s32 var_r0 = 0;
+            switch (OVERLAY34_UNKNOWN_POINTER__NA_22DD08C.unk4) { 
+                default:                                    
+                    break;
+                case 2:                                     
+                    var_r0 = 3;
+                    break;
+                case 3:                                     
+                    var_r0 = 4;
+                    break;
+                case 4:                                     
+                    var_r0 = 5;
+                    break;
+                case 5:                                     
+                    var_r0 = 6;
+                    break;
+            }
+            if (var_r0 != 0) {
+                ov34_022DC718(var_r0);
+            }
+            return 4;
+    }
+    return 1;
 }
