@@ -10,7 +10,6 @@
 .public Card_UnlockRom
 .public Cardi_ReadRom
 .public ClearIrqFlag
-.public CloseVeneer
 .public DC_FlushRange
 .public DC_InvalidateRange
 .public DC_StoreRange
@@ -217,6 +216,7 @@
 .public Snd_UnlockChannel
 .public Snd_WaitForCommandProc
 .public SOC_Bind
+.public SOC_Close
 .public Soc_Poll
 .public SOC_RecvFrom
 .public SOC_SendTo

@@ -15,7 +15,6 @@
 .public abs
 .public atof
 .public atoi
-.public CloseVeneer
 .public Cps_GetSslLowThreadPriority
 .public Cps_Resolve
 .public Cps_SetRootCa
@@ -937,6 +936,7 @@
 .public SetIrqFlag
 .public snprintf
 .public SOC_Bind
+.public SOC_Close
 .public SOC_Connect
 .public Soc_GetHostByName
 .public Soc_GetHostID

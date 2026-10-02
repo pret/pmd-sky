@@ -21902,8 +21902,8 @@ _022CE8CC:
 	ldmia sp!, {r4, pc}
 	arm_func_end Socl_IsClosed
 
-	arm_func_start close
-close: ; 0x022CE8D4
+	arm_func_start SOCL_Close
+SOCL_Close: ; 0x022CE8D4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	cmp r4, #0
@@ -21959,7 +21959,7 @@ _022CE974:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022CE9A0: .word Socli_CloseCallBack
-	arm_func_end close
+	arm_func_end SOCL_Close
 
 	arm_func_start Socli_CloseCallBack
 Socli_CloseCallBack: ; 0x022CE9A4
@@ -22224,7 +22224,7 @@ _022CECFC:
 	cmp r6, #0
 	beq _022CED14
 	mov r0, r6
-	bl close
+	bl SOCL_Close
 	b _022CECC8
 _022CED14:
 	ldr r0, _022CED5C ; =ov00_0232692C
@@ -22264,7 +22264,7 @@ Socl_CalmDown: ; 0x022CED64
 	bne _022CEDB0
 	ldr r0, _022CEDDC ; =ov00_023268CC
 	ldr r0, [r0]
-	bl close
+	bl SOCL_Close
 	ldr r0, _022CEDDC ; =ov00_023268CC
 	ldr r0, [r0]
 	bl Socl_IsClosed
@@ -22792,13 +22792,13 @@ Soc_Shutdown: ; 0x022CF3BC
 _022CF3C4: .word Socl_Shutdown
 	arm_func_end Soc_Shutdown
 
-	arm_func_start CloseVeneer
-CloseVeneer: ; 0x022CF3C8
-	ldr ip, _022CF3D0 ; =close
+	arm_func_start SOC_Close
+SOC_Close: ; 0x022CF3C8
+	ldr ip, _022CF3D0 ; =SOCL_Close
 	bx ip
 	.align 2, 0
-_022CF3D0: .word close
-	arm_func_end CloseVeneer
+_022CF3D0: .word SOCL_Close
+	arm_func_end SOC_Close
 
 	arm_func_start Soc_GetHostByName
 Soc_GetHostByName: ; 0x022CF3D4

@@ -27790,7 +27790,7 @@ Nhttpi_SocOpen: ; 0x022F29B8
 	cmp r0, #0
 	bge _022F2A2C
 	mov r0, r4
-	bl CloseVeneer
+	bl SOC_Close
 	mvn r4, #0
 _022F2A2C:
 	mov r0, r4
@@ -27801,11 +27801,11 @@ _022F2A34: .word SslAuthCallback
 
 	arm_func_start Nhttpi_SocClose
 Nhttpi_SocClose: ; 0x022F2A38
-	ldr ip, _022F2A44 ; =CloseVeneer
+	ldr ip, _022F2A44 ; =SOC_Close
 	mov r0, r1
 	bx ip
 	.align 2, 0
-_022F2A44: .word CloseVeneer
+_022F2A44: .word SOC_Close
 	arm_func_end Nhttpi_SocClose
 
 	arm_func_start Nhttpi_SocCloseWait
@@ -27813,7 +27813,7 @@ Nhttpi_SocCloseWait: ; 0x022F2A48
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r1
 	mov r0, r6
-	bl CloseVeneer
+	bl SOC_Close
 	mvn r4, #0x19
 	cmp r0, r4
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -27822,7 +27822,7 @@ _022F2A68:
 	mov r0, r5
 	bl OS_Sleep
 	mov r0, r6
-	bl CloseVeneer
+	bl SOC_Close
 	cmp r0, r4
 	beq _022F2A68
 	ldmia sp!, {r4, r5, r6, pc}
@@ -30614,7 +30614,7 @@ SocketCreate: ; 0x022F4FA0
 	arm_func_start SocketClose
 SocketClose: ; 0x022F4FB4
 	stmdb sp!, {r3, lr}
-	bl CloseVeneer
+	bl SOC_Close
 	mvn r1, #0
 	bl SocketCastError
 	ldmia sp!, {r3, pc}

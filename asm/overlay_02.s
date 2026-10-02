@@ -9898,10 +9898,10 @@ _0232FE94: .word SOC_Bind
 
 	thumb_func_start Aoss_Close
 Aoss_Close: ; 0x0232FE98
-	ldr r3, _0232FE9C ; =CloseVeneer
+	ldr r3, _0232FE9C ; =SOC_Close
 	bx r3
 	.align 2, 0
-_0232FE9C: .word CloseVeneer
+_0232FE9C: .word SOC_Close
 	thumb_func_end Aoss_Close
 
 	thumb_func_start Aoss_Htonl
@@ -15061,7 +15061,7 @@ _02332490:
 	cmp r0, r1
 	blo _023324AC
 	add r0, r4, #0
-	blx CloseVeneer
+	blx SOC_Close
 	mov r0, #2
 	mvn r0, r0
 	str r0, [sp, #8]
@@ -15124,7 +15124,7 @@ _0233251C:
 	cmp r0, r1
 	blo _02332538
 	add r0, r4, #0
-	blx CloseVeneer
+	blx SOC_Close
 	mov r0, #3
 	mvn r0, r0
 	str r0, [sp, #8]
@@ -15300,7 +15300,7 @@ _02332678:
 	cmp r0, #0xa
 	blt _023326A2
 	add r0, r4, #0
-	blx CloseVeneer
+	blx SOC_Close
 	mov r0, #1
 	mvn r0, r0
 	str r0, [sp, #8]
@@ -15404,7 +15404,7 @@ _02332780:
 	cmp r4, #0
 	beq _0233278A
 	add r0, r4, #0
-	blx CloseVeneer
+	blx SOC_Close
 _0233278A:
 	ldr r0, _023327A0 ; =ov02_023594D0
 	ldr r0, [r0, #0x10]
@@ -42892,8 +42892,8 @@ _023476FC:
 _02347718: .word ov02_0235AB48
 	arm_func_end Dwci_SettinglSetWep
 
-	arm_func_start ov02_0234771C
-ov02_0234771C: ; 0x0234771C
+	arm_func_start DWCi_SETTINGlSetIp
+DWCi_SETTINGlSetIp: ; 0x0234771C
 	ldr r1, _02347730 ; =ov02_0235AB48
 	ldr ip, _02347734 ; =Dwci_SettinglConvAddress
 	ldr r1, [r1]
@@ -42902,7 +42902,7 @@ ov02_0234771C: ; 0x0234771C
 	.align 2, 0
 _02347730: .word ov02_0235AB48
 _02347734: .word Dwci_SettinglConvAddress
-	arm_func_end ov02_0234771C
+	arm_func_end DWCi_SETTINGlSetIp
 
 	arm_func_start DWCi_SETTINGlSetNetMask
 DWCi_SETTINGlSetNetMask: ; 0x02347738
@@ -54121,7 +54121,7 @@ ov02_02352A74:
 	.word Dwci_SettinglGetDnsS
 	.global ov02_02352A88
 ov02_02352A88:
-	.word ov02_0234771C
+	.word DWCi_SETTINGlSetIp
 	.word DWCi_SETTINGlSetNetMask
 	.word DWCi_SETTINGlSetGateway
 	.word DWCi_SETTINGlSetDnsP
