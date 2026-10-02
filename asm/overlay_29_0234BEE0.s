@@ -222,10 +222,10 @@ ov29_0234C1D8: ; 0x0234C1D8
 	stmdb sp!, {r4, lr}
 	bl sub_0201BF64
 	bl sub_02028E40
-	bl sub_020038D8
+	bl Sys_IsMailboxPending
 	cmp r0, #0
 	beq _0234C1F4
-	bl sub_02003990
+	bl Task_AbortSync
 _0234C1F4:
 	bl GetAndStoreButtonInput
 	bl ov29_022DDE24
@@ -277,17 +277,17 @@ _0234C274:
 	bl GroupOamAttributesBothScreens
 	bl sub_0201BE84
 	bl sub_0204F9CC
-	bl sub_02003A40
+	bl Sys_WaitForVBlank
 	ldr r1, _0234C2F0 ; =ov29_023537D8
 	mov r4, r0
 	ldrb r0, [r1]
 	cmp r0, #0
 	beq _0234C2B8
 	mov r0, #0
-	bl sub_02008ED0
+	bl GraphicsEngine_SetState
 _0234C2B8:
 	bl G3X_Reset
-	bl sub_02008F88
+	bl GraphicsEngine_ApplyState
 	bl sub_0201DE10
 	bl ov10_022BF7D4
 	bl ov29_0233992C

@@ -77,17 +77,17 @@ extern void sub_0200B8D4(struct screen_fade*, s32);
 extern void sub_0200B8B8(struct screen_fade*); 
 
 extern void sub_02028E40(void);
-extern u32 sub_020038D8(void);
-extern void sub_02003990(void);
+extern u32 Sys_IsMailboxPending(void);
+extern void Task_AbortSync(void);
 extern void sub_0201DD48(void);
 extern void sub_0201F464(void);
 extern void sub_02008F84(void);
 extern void sub_02017A80(void);
-extern u32 sub_02003A40(void);
+extern u32 Sys_WaitForVBlank(void);
 extern void sub_0201DDFC(void);
-extern void sub_02008ED0(u32); 
+extern void GraphicsEngine_SetState(u32); 
 extern void sub_02008F64(u32, u32);
-extern void sub_02008F88(void);
+extern void GraphicsEngine_ApplyState(void);
 extern void sub_0201DE10(void);
 extern void sub_02028E88(void);
 extern void sub_02051C24(void);
@@ -98,9 +98,9 @@ u32 ov34_022DC5B0(void)
     sub_0201BF64(); 
     sub_02028E40();
 
-    if (sub_020038D8()) { //Sys_IsMailboxPending
+    if (Sys_IsMailboxPending()) {
         ov34_022DC9CC();
-        sub_02003990(); //Task_AbortSync
+        Task_AbortSync();
     }
 
     ov34_022DCA70();
@@ -115,14 +115,14 @@ u32 ov34_022DC5B0(void)
     sub_0201BE28(); 
     sub_02017A80(); 
     
-    u32 ret_val = sub_02003A40(); //Sys_WaitForVBlank
+    u32 ret_val = Sys_WaitForVBlank();
 
     if (OVERLAY34_UNKNOWN_POINTER__NA_22DD080 != 0 && ov34_022DD0A0.unk8 != 1) {
         
         if (ov34_022DD0A0.unk8 == 2) {
             sub_02008F3C(0, 0x100);
             sub_02008F3C(1, 0x100);
-            sub_02008ED0(0); //GraphicsEngine_SetState
+            GraphicsEngine_SetState(0);
         } else if (ov34_022DD0A0.unk8 == 3) {
 #ifdef NORTH_AMERICA
             sub_02008F3C(0, 0);
@@ -130,7 +130,7 @@ u32 ov34_022DC5B0(void)
             sub_02008F3C(0, 0x100);
 #endif
             sub_02008F3C(1, 0);
-            sub_02008ED0(0); //GraphicsEngine_SetState
+            GraphicsEngine_SetState(0);
         } else {
 #ifdef NORTH_AMERICA
             sub_02008F3C(0, -0x100);
@@ -138,7 +138,7 @@ u32 ov34_022DC5B0(void)
             sub_02008F3C(0, 0);
 #endif
             sub_02008F3C(1, -0x100);
-            sub_02008ED0(0); //GraphicsEngine_SetState
+            GraphicsEngine_SetState(0);
             sub_02008F64(0, 2);
             sub_02008F64(0, 3);
             sub_02008F64(1, 2);
@@ -146,7 +146,7 @@ u32 ov34_022DC5B0(void)
         }
     }
 
-    sub_02008F88(); //GraphicsEngine_ApplyState
+    GraphicsEngine_ApplyState();
     sub_02028A64(ret_val);
     GroupOamAttributesBothScreens(); 
     sub_0201BE84(); 
