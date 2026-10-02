@@ -3,6 +3,7 @@
 
 #include "util.h"
 
+u32 ov34_022DC5B0(void);
 bool8 ov34_022DC718(s32 arg0);
 bool8 ov34_022DC738(void);
 void ov34_022DC748(void);

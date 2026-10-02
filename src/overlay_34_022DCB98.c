@@ -4,10 +4,12 @@
 #include "main_020027E8.h"
 #include "main_0200BC54.h"
 #include "main_0200BD2C.h"
+#include "main_0201BCCC.h"
 #include "main_0202A66C.h"
 #include "main_0202AAA8.h"
 #include "main_0202AB40.h"
 #include "main_0202F180.h"
+#include "nitro.h"
 
 // TODO: types aren't final.. this is just prelimary moving them to src/rodata from asm
 const u8 ov34_022DCFF4[] = {0x42, 0x41, 0x43, 0x4B, 0x2F, 0x6E, 0x5F, 0x6C, 0x6F, 0x67, 0x6F, 0x2E, 0x62, 0x67, 0x70, 0x00};
@@ -41,6 +43,16 @@ extern s8 CreateDialogueBox(s8);
 extern void CloseDialogueBox(s8);
 s32 InitMenu(u32*);
 
+
+struct Overlay_34_022DD0A0 {
+    s32 unk0;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+};
+
+extern struct Overlay_34_022DD0A0 ov34_022DD0A0;
+
 typedef struct {
     u8 field_0;
     u8 field_01;
@@ -55,11 +67,7 @@ extern UNK_ov34_022DD0B0 ov34_022DD0B0;
 extern struct screen_fade ov34_022DD104;
 extern struct screen_fade ov34_022DD0C0;
 
-struct Overlay_34_022DD0A0 {
-    s32 unk0;
-};
-
-extern struct Overlay_34_022DD0A0 ov34_022DD0A0;
+extern u8 OVERLAY34_UNKNOWN_POINTER__NA_22DD080;
 
 extern void sub_0200BB74(struct screen_fade *, s32, s32);
 extern void sub_0200BB60(struct screen_fade *, s32);
@@ -67,6 +75,95 @@ extern s32 sub_02008F4C(s32);
 extern void sub_0200B894(struct screen_fade*, s32);  
 extern void sub_0200B8D4(struct screen_fade*, s32);  
 extern void sub_0200B8B8(struct screen_fade*); 
+
+extern void sub_02028E40(void);
+extern u32 sub_020038D8(void);
+extern void sub_02003990(void);
+extern void sub_0201DD48(void);
+extern void sub_0201F464(void);
+extern void sub_02008F84(void);
+extern void sub_02017A80(void);
+extern u32 sub_02003A40(void);
+extern void sub_0201DDFC(void);
+extern void sub_02008ED0(u32); 
+extern void sub_02008F64(u32, u32);
+extern void sub_02008F88(void);
+extern void sub_0201DE10(void);
+extern void sub_02028E88(void);
+extern void sub_02051C24(void);
+extern void sub_02028A64(u32);
+
+u32 ov34_022DC5B0(void)
+{
+    sub_0201BF64(); 
+    sub_02028E40();
+
+    if (sub_020038D8()) { //Sys_IsMailboxPending
+        ov34_022DC9CC();
+        sub_02003990(); //Task_AbortSync
+    }
+
+    ov34_022DCA70();
+    sub_0201DD48(); 
+    sub_0201F464(); 
+
+    if (OVERLAY34_UNKNOWN_POINTER__NA_22DD080 == 0) {
+        sub_0201DDFC(); 
+    }
+
+    sub_02008F84();
+    sub_0201BE28(); 
+    sub_02017A80(); 
+    
+    u32 ret_val = sub_02003A40(); //Sys_WaitForVBlank
+
+    if (OVERLAY34_UNKNOWN_POINTER__NA_22DD080 != 0 && ov34_022DD0A0.unk8 != 1) {
+        
+        if (ov34_022DD0A0.unk8 == 2) {
+            sub_02008F3C(0, 0x100);
+            sub_02008F3C(1, 0x100);
+            sub_02008ED0(0); //GraphicsEngine_SetState
+        } else if (ov34_022DD0A0.unk8 == 3) {
+#ifdef NORTH_AMERICA
+            sub_02008F3C(0, 0);
+#else
+            sub_02008F3C(0, 0x100);
+#endif
+            sub_02008F3C(1, 0);
+            sub_02008ED0(0); //GraphicsEngine_SetState
+        } else {
+#ifdef NORTH_AMERICA
+            sub_02008F3C(0, -0x100);
+#else
+            sub_02008F3C(0, 0);
+#endif
+            sub_02008F3C(1, -0x100);
+            sub_02008ED0(0); //GraphicsEngine_SetState
+            sub_02008F64(0, 2);
+            sub_02008F64(0, 3);
+            sub_02008F64(1, 2);
+            sub_02008F64(1, 3);
+        }
+    }
+
+    sub_02008F88(); //GraphicsEngine_ApplyState
+    sub_02028A64(ret_val);
+    GroupOamAttributesBothScreens(); 
+    sub_0201BE84(); 
+    G3X_Reset();
+    sub_0201DE10(); 
+    sub_02028E88();
+
+    if (ov34_022DD0A0.unk8 != 3) {
+        sub_02051C24();
+    }
+
+    sub_0201BF4C(); 
+
+    OVERLAY34_UNKNOWN_POINTER__NA_22DD080 = 0;
+
+    return ret_val;
+}
 
 bool8 ov34_022DC718(s32 arg0)
 {

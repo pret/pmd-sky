@@ -17,6 +17,7 @@
     .public ov34_022DC778
     .public ov34_022DC748
     .public ov34_022DC738
+    .public ov34_022DC5B0
 
 	arm_func_start ExplorersOfSkyMain
 ExplorersOfSkyMain: ; 0x022DC240
@@ -295,113 +296,4 @@ _022DC5A8: .word ov34_022DCFF4
 _022DC5AC: .word ov34_022DD004
 #endif
 	arm_func_end ExplorersOfSkyMain
-
-	arm_func_start ov34_022DC5B0
-ov34_022DC5B0: ; 0x022DC5B0
-	stmdb sp!, {r4, lr}
-	bl sub_0201BF64
-	bl sub_02028E40
-	bl sub_020038D8
-	cmp r0, #0
-	beq _022DC5D0
-	bl ov34_022DC9CC
-	bl sub_02003990
-_022DC5D0:
-	bl ov34_022DCA70
-	bl sub_0201DD48
-	bl sub_0201F464
-	ldr r0, _022DC710 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
-	ldrb r0, [r0]
-	cmp r0, #0
-	bne _022DC5F0
-	bl sub_0201DDFC
-_022DC5F0:
-	bl sub_02008F84
-	bl sub_0201BE28
-	bl sub_02017A80
-	bl sub_02003A40
-	ldr r1, _022DC710 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
-	mov r4, r0
-	ldrb r0, [r1]
-	cmp r0, #0
-	ldrne r0, _022DC714 ; =ov34_022DD0A0
-	ldrne r0, [r0, #8]
-	cmpne r0, #1
-	beq _022DC6C4
-	cmp r0, #2
-	bne _022DC64C
-	mov r0, #0
-	mov r1, #0x100
-	bl sub_02008F3C
-	mov r0, #1
-	mov r1, #0x100
-	bl sub_02008F3C
-	mov r0, #0
-	bl sub_02008ED0
-	b _022DC6C4
-_022DC64C:
-	cmp r0, #3
-	mov r0, #0
-	bne _022DC678
-#ifdef NORTH_AMERICA
-	mov r1, r0
-#else
-	mov r1, #0x100
-#endif
-	bl sub_02008F3C
-	mov r0, #1
-	mov r1, #0
-	bl sub_02008F3C
-	mov r0, #0
-	bl sub_02008ED0
-	b _022DC6C4
-_022DC678:
-#ifdef NORTH_AMERICA
-	sub r1, r0, #0x100
-#else
-	mov r1, r0
-#endif
-	bl sub_02008F3C
-	mov r0, #1
-	mvn r1, #0xff
-	bl sub_02008F3C
-	mov r0, #0
-	bl sub_02008ED0
-	mov r0, #0
-	mov r1, #2
-	bl sub_02008F64
-	mov r0, #0
-	mov r1, #3
-	bl sub_02008F64
-	mov r0, #1
-	mov r1, #2
-	bl sub_02008F64
-	mov r0, #1
-	mov r1, #3
-	bl sub_02008F64
-_022DC6C4:
-	bl sub_02008F88
-	mov r0, r4
-	bl sub_02028A64
-	bl GroupOamAttributesBothScreens
-	bl sub_0201BE84
-	bl G3X_Reset
-	bl sub_0201DE10
-	bl sub_02028E88
-	ldr r0, _022DC714 ; =ov34_022DD0A0
-	ldr r0, [r0, #8]
-	cmp r0, #3
-	beq _022DC6F8
-	bl sub_02051C24
-_022DC6F8:
-	bl sub_0201BF4C
-	ldr r1, _022DC710 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
-	mov r2, #0
-	mov r0, r4
-	strb r2, [r1]
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_022DC710: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD080
-_022DC714: .word ov34_022DD0A0
-	arm_func_end ov34_022DC5B0
 
