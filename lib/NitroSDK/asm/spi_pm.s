@@ -571,8 +571,8 @@ _020820CC:
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end PMi_SendPxiData
 
-	arm_func_start sub_020820E8
-sub_020820E8: ; 0x020820E8
+	arm_func_start PM_GoSleepMode
+PM_GoSleepMode: ; 0x020820E8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	ldr r3, _0208230C ; =_022BB6AC
@@ -729,7 +729,7 @@ _02082318: .word 0x027FFC40
 _0208231C: .word 0x027FFC3C
 _02082320: .word 0x04000214
 _02082324: .word 0x00708100
-	arm_func_end sub_020820E8
+	arm_func_end PM_GoSleepMode
 
 	arm_func_start PMi_SetLcdPower
 PMi_SetLcdPower: ; 0x02082328

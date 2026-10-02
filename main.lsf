@@ -514,7 +514,7 @@ Autoload ITCM
 {
 	Address 0x01FF8000
 	Object asm/itcm.o (.itcm)
-	Object asm/os_reset_itcm.o (.itcm)
+	Object lib/NitroSDK/asm/os_reset_itcm.o (.itcm)
 	Object lib/NitroSDK/src/mi/mi_dma.o (.itcm)
 	Object asm/itcm_1.o (.itcm)
 	Object src/dungeon_ai_movement.o (.itcm)
@@ -535,7 +535,7 @@ Overlay OVY_0
 	Object lib/src/overlay_00_022DB1A4.o
 	Object asm/overlay_00_022DB2F8.o
 	Object src/overlay_00_0230D388.o
-	Object asm/overlay_00_0230D398.o
+	Object lib/NitroDWC/asm/overlay_00_0230D398.o
 	Object src/overlay_00_0230E3E8.o
 	Object asm/overlay_00_0230E460.o
 }

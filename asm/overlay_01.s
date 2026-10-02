@@ -1210,7 +1210,7 @@ _0232A3F0:
 	cmp r0, #0
 	ldr r0, [r1, #0x6c]
 	beq _0232A458
-	bl sub_020851AC
+	bl CHT_IsPictochatParent
 	cmp r0, #0
 	ldrne r0, _0232A524 ; =ov01_0233C240
 	ldrne r1, [r0, #0x64]

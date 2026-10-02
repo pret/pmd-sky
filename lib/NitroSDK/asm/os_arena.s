@@ -283,8 +283,8 @@ sub_0207A700: ; 0x0207A700
 	bx lr
 	arm_func_end sub_0207A700
 
-	arm_func_start OS_AllocFromArenaLo
-OS_AllocFromArenaLo: ; 0x0207A71C
+	arm_func_start DLExtract
+DLExtract: ; 0x0207A71C
 	ldr r3, [r1, #4]
 	cmp r3, #0
 	ldrne r2, [r1]
@@ -295,10 +295,10 @@ OS_AllocFromArenaLo: ; 0x0207A71C
 	ldrne r1, [r1, #4]
 	strne r1, [r2, #4]
 	bx lr
-	arm_func_end OS_AllocFromArenaLo
+	arm_func_end DLExtract
 
-	arm_func_start sub_0207A744
-sub_0207A744: ; 0x0207A744
+	arm_func_start DLInsert
+DLInsert: ; 0x0207A744
 	stmdb sp!, {r3, lr}
 	mov lr, r0
 	cmp r0, #0
@@ -345,10 +345,10 @@ _0207A7AC:
 _0207A7E4:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207A744
+	arm_func_end DLInsert
 
-	arm_func_start sub_0207A7EC
-sub_0207A7EC: ; 0x0207A7EC
+	arm_func_start OS_AllocFromHeap
+OS_AllocFromHeap: ; 0x0207A7EC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r5, r1
@@ -394,7 +394,7 @@ _0207A87C:
 	cmp r1, #0x40
 	bhs _0207A89C
 	mov r1, r5
-	bl OS_AllocFromArenaLo
+	bl DLExtract
 	str r0, [r4, #4]
 	b _0207A8D0
 _0207A89C:
@@ -422,10 +422,10 @@ _0207A8D0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0207A8F0: .word _022B98CC
-	arm_func_end sub_0207A7EC
+	arm_func_end OS_AllocFromHeap
 
-	arm_func_start sub_0207A8F4
-sub_0207A8F4: ; 0x0207A8F4
+	arm_func_start OS_FreeToHeap
+OS_FreeToHeap: ; 0x0207A8F4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -442,21 +442,21 @@ sub_0207A8F4: ; 0x0207A8F4
 	sub r5, r5, #0x20
 	ldr r0, [r7, #8]
 	mov r1, r5
-	bl OS_AllocFromArenaLo
+	bl DLExtract
 	str r0, [r7, #8]
 	ldr r0, [r7, #4]
 	mov r1, r5
-	bl sub_0207A744
+	bl DLInsert
 	str r0, [r7, #4]
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0207A958: .word _022B98CC
-	arm_func_end sub_0207A8F4
+	arm_func_end OS_FreeToHeap
 
-	arm_func_start sub_0207A95C
-sub_0207A95C: ; 0x0207A95C
+	arm_func_start OS_SetCurrentHeap
+OS_SetCurrentHeap: ; 0x0207A95C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
@@ -470,10 +470,10 @@ sub_0207A95C: ; 0x0207A95C
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0207A988: .word _022B98CC
-	arm_func_end sub_0207A95C
+	arm_func_end OS_SetCurrentHeap
 
-	arm_func_start sub_0207A98C
-sub_0207A98C: ; 0x0207A98C
+	arm_func_start OS_InitAlloc
+OS_InitAlloc: ; 0x0207A98C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r5, r1
@@ -519,10 +519,10 @@ _0207AA00:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0207AA30: .word _022B98CC
-	arm_func_end sub_0207A98C
+	arm_func_end OS_InitAlloc
 
-	arm_func_start sub_0207AA34
-sub_0207AA34: ; 0x0207AA34
+	arm_func_start OS_CreateHeap
+OS_CreateHeap: ; 0x0207AA34
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	mov r6, r1
@@ -565,5 +565,5 @@ _0207AABC:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207AAC8: .word _022B98CC
-	arm_func_end sub_0207AA34
+	arm_func_end OS_CreateHeap
 

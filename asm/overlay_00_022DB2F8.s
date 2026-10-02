@@ -251,7 +251,7 @@ Dwci_Acc_CreateUserData: ; 0x022DB5B8
 	bl Dwci_Acc_SetFlag_DataType
 	ldr r1, _022DB630 ; =0xEDB88320
 	add r0, sp, #0
-	bl MATHi_CRC32InitTable
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #0
 	mov r1, r5
 	mov r2, #0x3c
@@ -407,7 +407,7 @@ Dwc_CheckUserData: ; 0x022DB7BC
 	ldr r1, _022DB7FC ; =0xEDB88320
 	mov r4, r0
 	add r0, sp, #0
-	bl MATHi_CRC32InitTable
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x3c
@@ -481,7 +481,7 @@ Dwci_Acc_SetLoginIdToUserData: ; 0x022DB898
 	ldr r1, _022DB8EC ; =0xEDB88320
 	add r0, sp, #0
 	str ip, [r4, #0x1c]
-	bl MATHi_CRC32InitTable
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x3c
@@ -532,7 +532,7 @@ Dwci_Acc_ClearDirty: ; 0x022DB920
 	bic r2, r1, #1
 	ldr r1, _022DB960 ; =0xEDB88320
 	str r2, [r4, #0x20]
-	bl MATHi_CRC32InitTable
+	bl MATHi_CRC32InitTableRev
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0x3c
@@ -1903,7 +1903,7 @@ _022DCBB8:
 	ldrb r2, [r7], #1
 	mov r0, r8
 	mov r1, r5
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r6, r6, #1
 	cmp r6, #6
 	add r8, r8, #2
@@ -1973,7 +1973,7 @@ _022DCCC8:
 	ldrb r2, [r7, sb]
 	mov r0, r8
 	mov r1, r5
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add sb, sb, #1
 	cmp sb, #6
 	add r8, r8, #2
@@ -6183,8 +6183,8 @@ _022E06C4: .word Dwc_Free
 _022E06C8: .word 0xFFFF3BE9
 	arm_func_end Dwc_ConnectInetAsync
 
-	arm_func_start Dwc_DebugConnectInetAsync
-Dwc_DebugConnectInetAsync: ; 0x022E06CC
+	arm_func_start DWC_DebugConnectInetExAsync
+DWC_DebugConnectInetExAsync: ; 0x022E06CC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -6205,11 +6205,11 @@ Dwc_DebugConnectInetAsync: ; 0x022E06CC
 	mov r2, r5
 	mov r3, r4
 	str ip, [sp]
-	bl Dwc_AC_SetSpecifyAp
+	bl DWC_AC_SetSpecifyApEx
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022E0724: .word ov00_02326D7C
-	arm_func_end Dwc_DebugConnectInetAsync
+	arm_func_end DWC_DebugConnectInetExAsync
 
 	arm_func_start Dwc_CheckInet
 Dwc_CheckInet: ; 0x022E0728
@@ -6275,7 +6275,7 @@ _022E07D8:
 	add r0, r3, #0x14
 	add r1, r3, #0x34
 	add r3, r3, #0x58
-	bl Dwc_DebugConnectInetAsync
+	bl DWC_DebugConnectInetExAsync
 	ldr r0, _022E0898 ; =ov00_02326D7C
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -21040,8 +21040,8 @@ _022ED0F4: .word GhttpProgressCallback
 _022ED0F8: .word GhttpCompletedCallback
 	arm_func_end Dwci_GhttpGetEx
 
-	arm_func_start Dwc_GetGhttpDataEx2
-Dwc_GetGhttpDataEx2: ; 0x022ED0FC
+	arm_func_start DWC_GetGHTTPDataEx
+DWC_GetGHTTPDataEx: ; 0x022ED0FC
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	ldr lr, [sp, #0x10]
@@ -21052,7 +21052,7 @@ Dwc_GetGhttpDataEx2: ; 0x022ED0FC
 	bl Dwci_GhttpGetEx
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
-	arm_func_end Dwc_GetGhttpDataEx2
+	arm_func_end DWC_GetGHTTPDataEx
 
 	arm_func_start Dwc_CancelGhttpRequest
 Dwc_CancelGhttpRequest: ; 0x022ED124
@@ -21393,7 +21393,7 @@ Dwci_BM_SetWiFiInfo: ; 0x022ED540
 	bl Dwci_BackuplConvWifiInfo
 	ldr r1, _022ED614 ; =0x0000A001
 	add r0, sl, #0x200
-	bl MATHi_CRC16InitTable
+	bl MATHi_CRC16InitTableRev
 	mov r5, #0x100
 	ldr r6, _022ED618 ; =ov00_023276E0
 	mov r8, #0
@@ -22225,7 +22225,7 @@ Dwc_BM_Init: ; 0x022EE018
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	ldr r1, _022EE310 ; =0x0000A001
 	add r0, r8, #0x500
-	bl MATHi_CRC16InitTable
+	bl MATHi_CRC16InitTableRev
 	mov r0, r8
 	bl Dwci_BackuplRead
 	cmp r0, #0
@@ -23641,7 +23641,7 @@ _022EF3DC:
 	ldr r0, [r0, #0x58]
 	ldr r3, _022EF4A8 ; =Dwci_RankingSessionProgressCallback
 	mov r2, r1
-	bl Dwc_GetGhttpDataEx2
+	bl DWC_GetGHTTPDataEx
 	ldr r1, _022EF49C ; =ov00_0231A2C4
 	cmp r0, #0
 	str r0, [r1, #0xc]
@@ -23666,7 +23666,7 @@ _022EF438:
 	ldr r0, [r0, #0x58]
 	ldr r3, _022EF4A8 ; =Dwci_RankingSessionProgressCallback
 	mov r2, r1
-	bl Dwc_GetGhttpDataEx2
+	bl DWC_GetGHTTPDataEx
 	ldr r1, _022EF49C ; =ov00_0231A2C4
 	cmp r0, #0
 	str r0, [r1, #0xc]
@@ -27768,7 +27768,7 @@ Nhttpi_SocOpen: ; 0x022F29B8
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
-	bl socket
+	bl SOC_Socket
 	movs r4, r0
 	bmi _022F2A2C
 	ldr r0, [r5, #8]
@@ -27790,7 +27790,7 @@ Nhttpi_SocOpen: ; 0x022F29B8
 	cmp r0, #0
 	bge _022F2A2C
 	mov r0, r4
-	bl CloseVeneer
+	bl SOC_Close
 	mvn r4, #0
 _022F2A2C:
 	mov r0, r4
@@ -27801,11 +27801,11 @@ _022F2A34: .word SslAuthCallback
 
 	arm_func_start Nhttpi_SocClose
 Nhttpi_SocClose: ; 0x022F2A38
-	ldr ip, _022F2A44 ; =CloseVeneer
+	ldr ip, _022F2A44 ; =SOC_Close
 	mov r0, r1
 	bx ip
 	.align 2, 0
-_022F2A44: .word CloseVeneer
+_022F2A44: .word SOC_Close
 	arm_func_end Nhttpi_SocClose
 
 	arm_func_start Nhttpi_SocCloseWait
@@ -27813,7 +27813,7 @@ Nhttpi_SocCloseWait: ; 0x022F2A48
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r1
 	mov r0, r6
-	bl CloseVeneer
+	bl SOC_Close
 	mvn r4, #0x19
 	cmp r0, r4
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -27822,7 +27822,7 @@ _022F2A68:
 	mov r0, r5
 	bl OS_Sleep
 	mov r0, r6
-	bl CloseVeneer
+	bl SOC_Close
 	cmp r0, r4
 	beq _022F2A68
 	ldmia sp!, {r4, r5, r6, pc}
@@ -27848,7 +27848,7 @@ Nhttpi_SocConnect: ; 0x022F2A84
 	strb lr, [sp, #1]
 	strh r3, [sp, #2]
 	str r2, [sp, #4]
-	bl connect
+	bl SOC_Connect
 	cmp r0, #0
 	bge _022F2AF0
 	ldr r0, [r4, #4]
@@ -27873,7 +27873,7 @@ Nhttpi_SocRecv: ; 0x022F2B00
 	mov r1, r2
 	mov r2, r3
 	ldr r3, [sp, #8]
-	bl recv
+	bl SOC_Recv
 	cmp r0, #0
 	ldmgeia sp!, {r4, pc}
 	ldr r1, [r4, #4]
@@ -27897,7 +27897,7 @@ Nhttpi_SocSend: ; 0x022F2B4C
 	mov r1, r2
 	mov r2, r3
 	ldr r3, [sp, #8]
-	bl send
+	bl SOC_Send
 	cmp r0, #0
 	ldmgeia sp!, {r4, pc}
 	ldr r1, [r4, #4]
@@ -30605,7 +30605,7 @@ _022F4F9C: .word ov00_02328788
 	arm_func_start SocketCreate
 SocketCreate: ; 0x022F4FA0
 	stmdb sp!, {r3, lr}
-	bl socket
+	bl SOC_Socket
 	mvn r1, #0
 	bl SocketCastError
 	ldmia sp!, {r3, pc}
@@ -30614,7 +30614,7 @@ SocketCreate: ; 0x022F4FA0
 	arm_func_start SocketClose
 SocketClose: ; 0x022F4FB4
 	stmdb sp!, {r3, lr}
-	bl CloseVeneer
+	bl SOC_Close
 	mvn r1, #0
 	bl SocketCastError
 	ldmia sp!, {r3, pc}
@@ -30629,8 +30629,8 @@ shutdown_gsi: ; 0x022F4FC8
 	ldmia sp!, {r3, pc}
 	arm_func_end shutdown_gsi
 
-	arm_func_start SocketBind
-SocketBind: ; 0x022F4FDC
+	arm_func_start bind
+bind: ; 0x022F4FDC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldrh r3, [r1, #2]
@@ -30651,12 +30651,12 @@ _022F5000:
 	bne _022F5000
 	add r1, sp, #0
 	strb r2, [sp]
-	bl bind
+	bl SOC_Bind
 	mvn r1, #0
 	bl SocketCastError
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
-	arm_func_end SocketBind
+	arm_func_end bind
 
 	arm_func_start SocketConnect
 SocketConnect: ; 0x022F503C
@@ -30675,7 +30675,7 @@ _022F504C:
 	bne _022F504C
 	add r1, sp, #0
 	strb r2, [sp]
-	bl connect
+	bl SOC_Connect
 	mvn r1, #0
 	bl SocketCastError
 	add sp, sp, #8
@@ -30685,7 +30685,7 @@ _022F504C:
 	arm_func_start SocketRecv
 SocketRecv: ; 0x022F5088
 	stmdb sp!, {r3, lr}
-	bl recv
+	bl SOC_Recv
 	mvn r1, #0
 	bl SocketCastError
 	ldmia sp!, {r3, pc}
@@ -30699,7 +30699,7 @@ SocketRecvFrom: ; 0x022F509C
 	ldr ip, [r4]
 	strb ip, [r5]
 	str r5, [sp]
-	bl recvfrom
+	bl SOC_RecvFrom
 	ldrb r2, [r5]
 	mvn r1, #0
 	str r2, [r4]
@@ -30710,14 +30710,14 @@ SocketRecvFrom: ; 0x022F509C
 	arm_func_start SocketSend
 SocketSend: ; 0x022F50CC
 	stmdb sp!, {r3, lr}
-	bl send
+	bl SOC_Send
 	mvn r1, #0
 	bl SocketCastError
 	ldmia sp!, {r3, pc}
 	arm_func_end SocketSend
 
-	arm_func_start SocketSendTo
-SocketSendTo: ; 0x022F50E0
+	arm_func_start sendto
+sendto: ; 0x022F50E0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0xc
 	ldr r5, [sp, #0x20]
@@ -30736,12 +30736,12 @@ _022F50F4:
 	add ip, sp, #4
 	strb lr, [sp, #4]
 	str ip, [sp]
-	bl sendto
+	bl SOC_SendTo
 	mvn r1, #0
 	bl SocketCastError
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end SocketSendTo
+	arm_func_end sendto
 
 	arm_func_start setsockopt_gsi
 setsockopt_gsi: ; 0x022F5138
@@ -31080,8 +31080,8 @@ _022F5540:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end goastrdup
 
-	arm_func_start strlwr
-strlwr: ; 0x022F5548
+	arm_func_start _strlwr
+_strlwr: ; 0x022F5548
 	ldrsb r3, [r0]
 	mov r2, r0
 	cmp r3, #0
@@ -31103,7 +31103,7 @@ _022F5580:
 	bx lr
 	.align 2, 0
 _022F5588: .word _020AECB0
-	arm_func_end strlwr
+	arm_func_end _strlwr
 
 	arm_func_start SocketStartUp_Ghi
 SocketStartUp_Ghi: ; 0x022F558C
@@ -31629,7 +31629,7 @@ SendPacket_Gsi: ; 0x022F5BA8
 	ldr r2, [r1, #0x4c]
 	ldr r1, _022F5BF4 ; =ov00_02328890
 	mov r3, #0
-	bl SocketSendTo
+	bl sendto
 	bl current_time_gsi
 	ldr r1, _022F5BF0 ; =ov00_02328884
 	str r0, [r1, #0x50]
@@ -31660,7 +31660,7 @@ ResolveAvailableNintendoWifi: ; 0x022F5BF8
 	ldr r1, _022F5CE0 ; =ov00_0231A7BC
 	add r0, sp, #0
 	mov r2, r4
-	bl OS_VsPrintf
+	bl OS_SPrintf
 _022F5C40:
 	cmp r5, #0
 	ldrne r0, _022F5CDC ; =ov00_02328844
@@ -35632,7 +35632,7 @@ GhiAppendIntToBuffer: ; 0x022F924C
 	mov r4, r0
 	ldr r1, _022F9280 ; =ov00_0231A7EC
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r1, sp, #0
 	mov r0, r4
 	mov r2, #0
@@ -39953,11 +39953,11 @@ GhiPostStateDoPosting: ; 0x022FCEDC
 	ldr r2, [r1, #4]
 	beq _022FCF3C
 	ldr r1, _022FD580 ; =ov00_0231A9D8
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	b _022FD450
 _022FCF3C:
 	ldr r1, _022FD584 ; =ov00_0231A9DC
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	b _022FD450
 _022FCF48:
 	ldr sl, [r8]
@@ -39970,7 +39970,7 @@ _022FCF48:
 	ldreq r2, _022FD58C ; =ov00_0231AA0C
 	ldr r1, _022FD590 ; =ov00_0231AA38
 	add r0, sp, #0x20
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	b _022FD450
 _022FCF78:
 	cmp r1, #3
@@ -40296,7 +40296,7 @@ _022FD430:
 	ldreq r2, _022FD58C ; =ov00_0231AA0C
 	ldr r1, _022FD59C ; =ov00_0231AA68
 	add r0, sp, #0x20
-	bl OS_VsPrintf
+	bl OS_SPrintf
 _022FD450:
 	ldr r0, [r7, #0x194]
 	cmp r0, #0
@@ -41169,7 +41169,7 @@ _022FE054:
 	ldr r2, [r5, #0x170]
 	ldr r1, _022FE1B4 ; =ov00_0231AB7C
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _022FE1B8 ; =ov00_0231AB80
 	add r2, sp, #0
 	mov r0, r4
@@ -42000,7 +42000,7 @@ _022FEB8C:
 	ldr r0, [sl, #0x12c]
 	ldr r2, [sl, #0x18]
 	ldr r1, _022FEDC8 ; =ov00_0231ABCC
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	b _022FEDA0
 _022FEBF0:
 	mov r0, r4
@@ -46144,7 +46144,7 @@ GpiAppendIntToBuffer: ; 0x02302668
 	mov r5, r0
 	ldr r1, _0230269C ; =ov00_0231AFC0
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r2, sp, #0
 	mov r0, r5
 	mov r1, r4
@@ -47342,7 +47342,7 @@ _023036C0:
 	mov r2, #0x1f
 	bl strzcpy_gsi
 	add r0, r4, #0x144
-	bl strlwr
+	bl _strlwr
 	mov r0, #0x308
 	bl gsimalloc
 	movs r4, r0
@@ -47460,7 +47460,7 @@ GpiSendLogin: ; 0x02303860
 	beq _023038CC
 	ldr r1, _02303C30 ; =ov00_0231B1F8
 	add r0, sp, #0x14
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	b _023038DC
 _023038CC:
 	ldr r0, _02303C34 ; =ov00_0231B1FC
@@ -47481,7 +47481,7 @@ _023038DC:
 	add r3, r4, #0x2f
 	ldr r1, _02303C38 ; =ov00_0231B200
 	add r3, r3, #0x100
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r0, sp, #0x40
 	b _02303934
 _0230391C:
@@ -47489,7 +47489,7 @@ _0230391C:
 	add ip, r4, #0x144
 	add r3, r4, #0x110
 	str ip, [sp]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r0, sp, #0x40
 _02303934:
 	str r0, [sp]
@@ -47501,7 +47501,7 @@ _02303934:
 	str r5, [sp, #8]
 	add r2, r5, #0xa1
 	str r2, [sp, #0xc]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r0, sp, #0x92
 	bl strlen
 	mov r1, r0
@@ -48171,7 +48171,7 @@ _023042E0:
 	beq _02304348
 	ldr r1, _02304590 ; =ov00_0231B1F8
 	add r0, sp, #0x18
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	b _02304358
 _02304348:
 	ldr r0, _02304594 ; =ov00_0231B1FC
@@ -48192,7 +48192,7 @@ _02304358:
 	add r3, r5, #0x2f
 	ldr r1, _02304598 ; =ov00_0231B200
 	add r3, r3, #0x100
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r0, sp, #0x59
 	b _023043B0
 _02304398:
@@ -48200,7 +48200,7 @@ _02304398:
 	add ip, r5, #0x144
 	add r3, r5, #0x110
 	str ip, [sp]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r0, sp, #0x59
 _023043B0:
 	stmia sp, {r0, r4}
@@ -48211,7 +48211,7 @@ _023043B0:
 	ldr r3, _023045A4 ; =ov00_0231B220
 	add r0, sp, #0xab
 	str r2, [sp, #0xc]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r0, sp, #0xab
 	bl strlen
 	mov r1, r0
@@ -49563,7 +49563,7 @@ _023056D8:
 _023056F4:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305AC4 ; =ov00_0231B4FC
 	add r2, sp, #0
 	mov r0, r4
@@ -49615,7 +49615,7 @@ _02305798:
 _023057AC:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305AE0 ; =ov00_0231B4E4
 	add r2, sp, #0
 	mov r0, r4
@@ -49627,7 +49627,7 @@ _023057AC:
 _023057D8:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305AE4 ; =ov00_0231B628
 	add r2, sp, #0
 	mov r0, r4
@@ -49639,7 +49639,7 @@ _023057D8:
 _02305804:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305AE8 ; =ov00_0231B638
 	add r2, sp, #0
 	mov r0, r4
@@ -49654,7 +49654,7 @@ _02305830:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
 	mov r2, r2, asr #4
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305AEC ; =ov00_0231B644
 	add r2, sp, #0
 	mov r0, r4
@@ -49669,7 +49669,7 @@ _02305868:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
 	mov r2, r2, asr #2
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305AF0 ; =ov00_0231B650
 	add r2, sp, #0
 	mov r0, r4
@@ -49684,7 +49684,7 @@ _023058A0:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
 	mov r2, r2, asr #2
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305AF4 ; =ov00_0231B660
 	add r2, sp, #0
 	mov r0, r4
@@ -49696,7 +49696,7 @@ _023058A0:
 _023058D8:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305AF8 ; =ov00_0231B670
 	add r2, sp, #0
 	mov r0, r4
@@ -49708,7 +49708,7 @@ _023058D8:
 _02305904:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305AFC ; =ov00_0231B680
 	add r2, sp, #0
 	mov r0, r4
@@ -49722,7 +49722,7 @@ _02305930:
 	cmp r2, #0
 	movne r2, #1
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305B00 ; =ov00_0231B694
 	add r2, sp, #0
 	mov r0, r4
@@ -49734,7 +49734,7 @@ _02305930:
 _02305964:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305B04 ; =ov00_0231B554
 	add r2, sp, #0
 	mov r0, r4
@@ -49746,7 +49746,7 @@ _02305964:
 _02305990:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305B08 ; =ov00_0231B55C
 	add r2, sp, #0
 	mov r0, r4
@@ -49758,7 +49758,7 @@ _02305990:
 _023059BC:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305B0C ; =ov00_0231B564
 	add r2, sp, #0
 	mov r0, r4
@@ -49770,7 +49770,7 @@ _023059BC:
 _023059E8:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305B10 ; =ov00_0231B56C
 	add r2, sp, #0
 	mov r0, r4
@@ -49782,7 +49782,7 @@ _023059E8:
 _02305A14:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305B14 ; =ov00_0231B574
 	add r2, sp, #0
 	mov r0, r4
@@ -49794,7 +49794,7 @@ _02305A14:
 _02305A40:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305B18 ; =ov00_0231B57C
 	add r2, sp, #0
 	mov r0, r4
@@ -49806,7 +49806,7 @@ _02305A40:
 _02305A6C:
 	ldr r1, _02305AC0 ; =ov00_0231B608
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, _02305B1C ; =ov00_0231B584
 	add r2, sp, #0
 	mov r0, r4
@@ -49973,7 +49973,7 @@ _02305CC0:
 	mov r2, #0x33
 	bl strzcpy_gsi
 	add r0, sp, #0x2d
-	bl strlwr
+	bl _strlwr
 	add r1, sp, #0x2d
 	add r0, r4, #0x144
 	mov r2, #0x33
@@ -50887,7 +50887,7 @@ GpiSaveKeysToBuffer: ; 0x02306958
 	ldr r1, _02306C74 ; =ov00_0231B778
 	add r0, sp, #8
 	mov r2, r4
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	cmp r4, #0
 	mov sb, r8
 	ble _02306AA4
@@ -50981,7 +50981,7 @@ _02306AA4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02306AE0:
 	add r1, sp, #8
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr r1, [sp, #4]
 	cmp r4, #0
 	ldr r1, [r1]
@@ -51866,7 +51866,7 @@ _0230770C:
 	ldr r1, _02307818 ; =ov00_0231B830
 	add r0, sp, #0x81
 	add r2, r2, #0x100
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r0, sp, #0x81
 	bl strlen
 	mov r1, r0
@@ -52776,7 +52776,7 @@ GpiPeerStartTransferMessage: ; 0x0230834C
 	add r0, sp, #8
 	mov r3, lr
 	str ip, [sp, #4]
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r2, sp, #8
 	mov r0, r5
 	mov r1, r4
@@ -52810,7 +52810,7 @@ _023083EC:
 	ldr r1, _02308478 ; =ov00_0231B8B0
 	add r0, sp, #0
 	mov r2, r4
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r2, sp, #0
 	mov r0, r7
 	mov r1, r6
@@ -53910,7 +53910,7 @@ _02309278:
 _0230928C:
 	ldr r0, [sp, #4]
 	add r0, r0, #0x5c
-	bl strlwr
+	bl _strlwr
 	cmp r5, #0
 	bne _023092B0
 	ldr r0, [sp, #4]
@@ -56349,7 +56349,7 @@ GpiSendTransferReply: ; 0x0230B600
 	add r0, sp, #0
 	mov r3, r4
 	mov r2, #1
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r2, sp, #0
 	mov r0, r6
 	mov r1, r5
@@ -58198,7 +58198,7 @@ TeamOpInt: ; 0x0230CE5C
 	ldr r1, _0230CEB4 ; =ov00_0231BEC4
 	add r0, sp, #4
 	mov r2, r6
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr ip, [sp, #0x58]
 	mov r0, r7
 	mov r2, r5
@@ -58227,7 +58227,7 @@ TeamOpFloat: ; 0x0230CEB8
 	ldr r1, _0230CF14 ; =ov00_0231BEC4
 	add r0, sp, #8
 	mov r2, r7
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr ip, [sp, #0x64]
 	mov r3, r5
 	mov r0, r8
@@ -58255,7 +58255,7 @@ TeamOpString: ; 0x0230CF18
 	ldr r1, _0230CF70 ; =ov00_0231BEC4
 	add r0, sp, #4
 	mov r2, r6
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr ip, [sp, #0x58]
 	mov r0, r7
 	mov r2, r5
@@ -58283,7 +58283,7 @@ PlayerOpInt: ; 0x0230CF74
 	ldr r1, _0230CFCC ; =ov00_0231BECC
 	add r0, sp, #4
 	mov r2, r6
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr ip, [sp, #0x58]
 	mov r0, r7
 	mov r2, r5
@@ -58316,7 +58316,7 @@ PlayerOpFloat: ; 0x0230CFD0
 	arm_func_start ov00_0230D000
 ov00_0230D000: ; 0x0230D000
 	mov r2, r7
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr ip, [sp, #0x64]
 	mov r3, r5
 	mov r0, r8
@@ -58344,7 +58344,7 @@ PlayerOpString: ; 0x0230D030
 	ldr r1, _0230D088 ; =ov00_0231BECC
 	add r0, sp, #4
 	mov r2, r6
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	ldr ip, [sp, #0x58]
 	mov r0, r7
 	mov r2, r5

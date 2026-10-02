@@ -14,12 +14,12 @@
 .public MI_WaitDma
 .public MTi_CpuCopy16
 .public MTi_CpuCopy32
-.public OS_VsNPrintfEx
 .public PM_Init
 .public PXI_Init
 .public sClrImg
 .public sDispMode
 .public sSubBGExtPltt
+.public STD_TVSNPrintf
 .public sTexPlttStartAddrTable
 .public sTexStartAddrTable
 .public sub_0206F808

@@ -1077,7 +1077,7 @@ sub_02004F80: ; 0x02004F80
 	bl MemAlloc
 	ldr r1, _02004FC8 ; =0xEDB88320
 	mov r5, r0
-	bl MATHi_CRC32InitTable
+	bl MATHi_CRC32InitTableRev
 	mov r0, r5
 	mov r1, r6
 	mov r2, r4

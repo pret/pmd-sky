@@ -100,7 +100,7 @@ PRECOMPILE_DEPFILE := $(BUILD_DIR)/precompile/global.d
 # Directories
 NITROSDK_SRC_SUBDIRS      := os mi snd fs gx fx rtc math std
 
-LIB_SUBDIRS               := DSE NitroSDK MSL_C
+LIB_SUBDIRS               := DSE NitroSDK MSL_C NitroDWC
 SRC_SUBDIR                := src
 ASM_SUBDIR                := asm
 LIB_SRC_SUBDIR            := lib/src $(LIB_SUBDIRS:%=lib/%/src) $(NITROSDK_SRC_SUBDIRS:%=lib/NitroSDK/src/%)

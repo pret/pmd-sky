@@ -15,6 +15,6 @@
 .public IC_InvalidateAll
 .public LOADED_OVERLAY_GROUP_0
 .public MATH_CalcCRC32
-.public MATHi_CRC32InitTable
+.public MATHi_CRC32InitTableRev
 .public MemAlloc
 .public MemFree

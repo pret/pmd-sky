@@ -41,8 +41,8 @@ Snd_StartPreparedSeq: ; 0x0207C824
 	ldmia sp!, {r3, pc}
 	arm_func_end Snd_StartPreparedSeq
 
-	arm_func_start Snd_SetPlayerTempoRatio
-Snd_SetPlayerTempoRatio: ; 0x0207C844
+	arm_func_start SND_SetPlayerVolume
+SND_SetPlayerVolume: ; 0x0207C844
 	ldr ip, _0207C858 ; =Sndi_SetPlayerParam
 	mov r2, r1
 	mov r1, #6
@@ -50,10 +50,10 @@ Snd_SetPlayerTempoRatio: ; 0x0207C844
 	bx ip
 	.align 2, 0
 _0207C858: .word Sndi_SetPlayerParam
-	arm_func_end Snd_SetPlayerTempoRatio
+	arm_func_end SND_SetPlayerVolume
 
-	arm_func_start Snd_SetPlayerVolume
-Snd_SetPlayerVolume: ; 0x0207C85C
+	arm_func_start SND_SetPlayerChannelPriority
+SND_SetPlayerChannelPriority: ; 0x0207C85C
 	ldr ip, _0207C870 ; =Sndi_SetPlayerParam
 	mov r2, r1
 	mov r1, #4
@@ -61,10 +61,10 @@ Snd_SetPlayerVolume: ; 0x0207C85C
 	bx ip
 	.align 2, 0
 _0207C870: .word Sndi_SetPlayerParam
-	arm_func_end Snd_SetPlayerVolume
+	arm_func_end SND_SetPlayerChannelPriority
 
-	arm_func_start Snd_SetTrackPan
-Snd_SetTrackPan: ; 0x0207C874
+	arm_func_start SND_SetTrackPitch
+SND_SetTrackPitch: ; 0x0207C874
 	stmdb sp!, {r3, lr}
 	mov r3, r2
 	mov ip, #2
@@ -72,7 +72,7 @@ Snd_SetTrackPan: ; 0x0207C874
 	str ip, [sp]
 	bl Sndi_SetTrackParam
 	ldmia sp!, {r3, pc}
-	arm_func_end Snd_SetTrackPan
+	arm_func_end SND_SetTrackPitch
 
 	arm_func_start Snd_SetTrackAllocatableChannel
 Snd_SetTrackAllocatableChannel: ; 0x0207C890
@@ -291,8 +291,8 @@ Snd_SetupChannelNoise: ; 0x0207CAE0
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end Snd_SetupChannelNoise
 
-	arm_func_start Snd_InvalidateSeqData
-Snd_InvalidateSeqData: ; 0x0207CB14
+	arm_func_start SND_InvalidateBankData
+SND_InvalidateBankData: ; 0x0207CB14
 	stmdb sp!, {r3, lr}
 	mov r2, r1
 	mov r3, #0
@@ -301,10 +301,10 @@ Snd_InvalidateSeqData: ; 0x0207CB14
 	str r3, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end Snd_InvalidateSeqData
+	arm_func_end SND_InvalidateBankData
 
-	arm_func_start Snd_InvalidateBankData
-Snd_InvalidateBankData: ; 0x0207CB34
+	arm_func_start SND_InvalidateWaveData
+SND_InvalidateWaveData: ; 0x0207CB34
 	stmdb sp!, {r3, lr}
 	mov r2, r1
 	mov r3, #0
@@ -313,7 +313,7 @@ Snd_InvalidateBankData: ; 0x0207CB34
 	str r3, [sp]
 	bl PushCommand_impl
 	ldmia sp!, {r3, pc}
-	arm_func_end Snd_InvalidateBankData
+	arm_func_end SND_InvalidateWaveData
 
 	arm_func_start Snd_SetOutputSelector
 Snd_SetOutputSelector: ; 0x0207CB54

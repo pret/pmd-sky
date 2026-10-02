@@ -172,8 +172,8 @@ _02079310:
 _0207933C: .word THREAD_INFO_STRUCT
 	arm_func_end OSi_RemoveThreadFromList
 
-	arm_func_start OS_RescheduleThread
-OS_RescheduleThread: ; 0x02079340
+	arm_func_start OSi_RescheduleThread
+OSi_RescheduleThread: ; 0x02079340
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _02079400 ; =THREAD_INFO_STRUCT
 	ldr r1, [r0, #4]
@@ -230,7 +230,7 @@ _020793EC:
 	.align 2, 0
 _02079400: .word THREAD_INFO_STRUCT
 _02079404: .word OSi_ThreadInfo
-	arm_func_end OS_RescheduleThread
+	arm_func_end OSi_RescheduleThread
 
 	arm_func_start OS_InitThread
 OS_InitThread: ; 0x02079408
@@ -578,7 +578,7 @@ OS_SleepThreadDirect: ; 0x02079844
 _02079870:
 	mov r0, #0
 	str r0, [r6, #0x64]
-	bl OS_RescheduleThread
+	bl OSi_RescheduleThread
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, pc}
@@ -602,7 +602,7 @@ OS_SleepThread: ; 0x02079888
 _020798BC:
 	mov r0, #0
 	str r0, [r5, #0x64]
-	bl OS_RescheduleThread
+	bl OSi_RescheduleThread
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, pc}
@@ -636,7 +636,7 @@ _02079924:
 	mov r0, #0
 	str r0, [r7, #4]
 	str r0, [r7]
-	bl OS_RescheduleThread
+	bl OSi_RescheduleThread
 _02079934:
 	mov r0, r6
 	bl SetIrqFlag
@@ -651,7 +651,7 @@ OS_WakeupThreadDirect: ; 0x02079940
 	mov r1, #1
 	mov r4, r0
 	str r1, [r5, #0x64]
-	bl OS_RescheduleThread
+	bl OSi_RescheduleThread
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, pc}
@@ -679,7 +679,7 @@ sub_02079990: ; 0x02079990
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
 	mov r4, r0
-	bl OS_RescheduleThread
+	bl OSi_RescheduleThread
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, pc}
@@ -733,7 +733,7 @@ _02079A44:
 	ldr r0, [r5, #0x68]
 	str r0, [r8, #0x68]
 	str r8, [r5, #0x68]
-	bl OS_RescheduleThread
+	bl OSi_RescheduleThread
 	mov r0, r7
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
@@ -782,7 +782,7 @@ _02079AE4:
 	mov r0, r7
 	str r6, [r7, #0x70]
 	bl InsertThreadIntoList
-	bl OS_RescheduleThread
+	bl OSi_RescheduleThread
 _02079AF4:
 	mov r0, r5
 	bl SetIrqFlag

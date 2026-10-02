@@ -2441,7 +2441,7 @@ _023104C8:
 	beq _02310550
 	ldr r0, [r4]
 	mov r2, #8
-	bl SocketBind
+	bl bind
 	mvn r1, #0
 	cmp r0, r1
 	bne _02310550
@@ -2758,7 +2758,7 @@ _02310928:
 	ldr r0, [r6]
 	ldr r1, [sp, #0x34]
 	ldr r2, [sp, #0x38]
-	bl SocketSendTo
+	bl sendto
 	mvn r1, #0
 	cmp r0, r1
 	bne _02310A70
@@ -2972,14 +2972,14 @@ _02310C20:
 	ldr r1, _02310C98 ; =ov00_0231BF04
 	mov r0, r4
 	mov r3, r5
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	b _02310C88
 _02310C50:
 	bl Soc_InetNtoA
 	mov r2, r0
 	ldr r1, _02310C9C ; =ov00_0231BF0C
 	mov r0, r4
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	b _02310C88
 _02310C68:
 	cmp r5, #0
@@ -2989,7 +2989,7 @@ _02310C68:
 	ldr r1, _02310CA0 ; =ov00_0231BF10
 	mov r0, r4
 	mov r2, r5
-	bl OS_VsPrintf
+	bl OS_SPrintf
 _02310C88:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
@@ -3735,7 +3735,7 @@ SendPacket_NN: ; 0x02311630
 	ldr r2, [sp, #0x18]
 	mov r3, #0
 	str ip, [sp, #4]
-	bl SocketSendTo
+	bl sendto
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	arm_func_end SendPacket_NN
@@ -5089,7 +5089,7 @@ _02312908:
 	ldr r1, _023129A8 ; =ov00_0231CD20
 	add r0, sp, #0
 	mov r2, r7
-	bl OS_VsPrintf
+	bl OS_SPrintf
 _02312960:
 	cmp r4, #0
 	ldrne r0, _023129A4 ; =ov00_023293B4
@@ -5397,7 +5397,7 @@ qr2_buffer_add_int: ; 0x02312D10
 	mov r4, r0
 	ldr r1, _02312D40 ; =ov00_0231CD78
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r1, sp, #0
 	mov r0, r4
 	bl Qr2_Buffer_AddA
@@ -6268,7 +6268,7 @@ _02313920:
 	ldr r2, [r5, #0x578]
 	mov r1, r5
 	mov r3, r8
-	bl SocketSendTo
+	bl sendto
 	str r7, [r5, #0x578]
 	ldr r0, [sp, #0x14]
 	cmp r0, #7
@@ -6298,7 +6298,7 @@ _0231396C:
 	ldr r2, [r5, #0x578]
 	mov r1, r5
 	mov r3, #0
-	bl SocketSendTo
+	bl sendto
 	add sp, sp, #0x128
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end qr_process_query
@@ -6837,7 +6837,7 @@ _02314124:
 	ldr r2, [sp, #0x588]
 	add r1, sp, #0x10
 	mov r3, #0
-	bl SocketSendTo
+	bl sendto
 	add sp, sp, #0x18c
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
@@ -6866,7 +6866,7 @@ send_keepalive: ; 0x02314158
 	ldr r2, [sp, #0x580]
 	add r1, sp, #8
 	mov r3, #0
-	bl SocketSendTo
+	bl sendto
 	bl current_time_gsi
 	str r0, [r4, #0xb0]
 	add sp, sp, #0x184
@@ -6900,7 +6900,7 @@ _02314208:
 	mov r0, r7
 	mov r1, fp
 	mov r2, r8
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	mov r0, r6
 	mov r1, r7
 	bl Qr2_Buffer_AddA
@@ -7022,7 +7022,7 @@ _023143C4:
 	ldr r2, [sp, #0xb18]
 	add r1, sp, #0x5a0
 	mov r3, #0
-	bl SocketSendTo
+	bl sendto
 	bl current_time_gsi
 	str r0, [sl, #0xac]
 	str r0, [sl, #0xb0]
@@ -7205,8 +7205,8 @@ _023145D4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end GoaCryptInit
 
-	arm_func_start GoaEncryptByte
-GoaEncryptByte: ; 0x02314648
+	arm_func_start GOADecryptByte
+GOADecryptByte: ; 0x02314648
 	stmdb sp!, {r4, lr}
 	ldrb r4, [r0, #0x100]
 	add r2, r4, #1
@@ -7258,7 +7258,7 @@ GoaEncryptByte: ; 0x02314648
 	strb r1, [r0, #0x104]
 	ldrb r0, [r0, #0x103]
 	ldmia sp!, {r4, pc}
-	arm_func_end GoaEncryptByte
+	arm_func_end GOADecryptByte
 
 	arm_func_start GoaEncrypt
 GoaEncrypt: ; 0x02314714
@@ -7272,7 +7272,7 @@ GoaEncrypt: ; 0x02314714
 _02314730:
 	ldrb r1, [r6, r4]
 	mov r0, r7
-	bl GoaEncryptByte
+	bl GOADecryptByte
 	strb r0, [r6, r4]
 	add r4, r4, #1
 	cmp r4, r5
@@ -7536,7 +7536,7 @@ _02314AAC:
 	ldr r0, [r5, #0x20]
 	add r1, sp, #0x14
 	mov r3, #0
-	bl SocketSendTo
+	bl sendto
 	mov r6, #1
 _02314AD0:
 	cmp r6, #0
@@ -8095,7 +8095,7 @@ SbServerAddIntKeyValue: ; 0x023151CC
 	mov r5, r0
 	ldr r1, _02315200 ; =ov00_0231D3A0
 	add r0, sp, #0
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r2, sp, #0
 	mov r0, r5
 	mov r1, r4
@@ -8465,7 +8465,7 @@ _02315644:
 	add r0, sp, #0xa
 	mov r2, r8
 	mov r3, r6
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	mov r0, fp
 	add r1, sp, #0xa
 	mov r2, sl
@@ -8625,7 +8625,7 @@ _02315888:
 	add sb, sb, r0
 	sub r8, r8, r0
 	mov r0, r4
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	mov r2, r7
 	mov r0, sl
 	mov r1, r4
@@ -8786,12 +8786,12 @@ SbServerSetFlags: ; 0x02315A90
 	bx lr
 	arm_func_end SbServerSetFlags
 
-	arm_func_start SbServerSetPublicAddr
-SbServerSetPublicAddr: ; 0x02315A98
+	arm_func_start SBServerSetPrivateAddr
+SBServerSetPrivateAddr: ; 0x02315A98
 	str r1, [r0, #8]
 	strh r2, [r0, #0xc]
 	bx lr
-	arm_func_end SbServerSetPublicAddr
+	arm_func_end SBServerSetPrivateAddr
 
 	arm_func_start SbServerSetIcmpIp
 SbServerSetIcmpIp: ; 0x02315AA4
@@ -8875,7 +8875,7 @@ _02315B5C:
 	ldr r1, _02315C28 ; =ov00_0231D3C4
 	mov r2, r7
 	add r0, fp, r5
-	bl OS_VsPrintf
+	bl OS_SPrintf
 	add r5, r5, r0
 	ldrb r1, [sb, r6]
 	mov r0, sl
@@ -9389,7 +9389,7 @@ ServerListConnect: ; 0x02316190
 _023161C8:
 	ldr r1, _023162B4 ; =ov00_0231D3E0
 	add r2, r4, #0xc
-	bl OS_VsPrintf
+	bl OS_SPrintf
 _023161D4:
 	ldr r1, _023162B8 ; =0x0000EE70
 	mov r2, #2
@@ -10180,7 +10180,7 @@ _02316C60:
 	ldrh r2, [sp, #4]
 	ldr r1, [sp, #8]
 	mov r0, sb
-	bl SbServerSetPublicAddr
+	bl SBServerSetPrivateAddr
 	tst r5, #8
 	beq _02316CB0
 	ldrb r2, [r8]

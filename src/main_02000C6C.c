@@ -21,9 +21,9 @@ extern void FX_Init();
 extern u32 OS_GetArenaHi(u32);
 extern u32 OS_GetArenaLo(u32);
 extern u32 OS_SetArenaLo(u32, u32);
-extern void sub_0207A95C(u32, u32);
-extern u32 sub_0207A98C(u32, u32, u32, u32);
-extern u32 sub_0207AA34(u32, u32, u32);
+extern void OS_SetCurrentHeap(u32, u32);
+extern u32 OS_InitAlloc(u32, u32, u32, u32);
+extern u32 OS_CreateHeap(u32, u32, u32);
 extern void OS_InitTick();
 extern void FS_Init(u32);
 extern void sub_02008DAC();
@@ -61,11 +61,11 @@ void NitroMain(void)
   uVar4 = OS_GetArenaHi(0);
   if (OS_GetArenaLo(0) < uVar4) {
     uVar5 = OS_GetArenaHi(0);
-    uVar7 = sub_0207A98C(0,OS_GetArenaLo(0),uVar5,1);
+    uVar7 = OS_InitAlloc(0,OS_GetArenaLo(0),uVar5,1);
     OS_SetArenaLo(0,uVar7);
     uVar6 = OS_GetArenaHi(0);
-    uVar7 = sub_0207AA34(0,OS_GetArenaLo(0),uVar6);
-    sub_0207A95C(0,uVar7);
+    uVar7 = OS_CreateHeap(0,OS_GetArenaLo(0),uVar6);
+    OS_SetCurrentHeap(0,uVar7);
   }
   old_ime = reg_OS_IME;
   reg_OS_IME = 1;

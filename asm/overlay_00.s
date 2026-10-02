@@ -9555,7 +9555,7 @@ _022C4248:
 	add r0, r0, #0xce0
 	add r6, r0, #0x7000
 	mov r0, r6
-	bl MBi_ReadFromCache
+	bl MBi_IsTaskBusy
 	cmp r0, #0
 	bne _022C440C
 	ldr r0, [r5]
@@ -13762,15 +13762,15 @@ MBi_InitTaskInfo: ; 0x022C7C48
 _022C7C58: .word MI_CpuFill8
 	arm_func_end MBi_InitTaskInfo
 
-	arm_func_start MBi_ReadFromCache
-MBi_ReadFromCache: ; 0x022C7C5C
+	arm_func_start MBi_IsTaskBusy
+MBi_IsTaskBusy: ; 0x022C7C5C
 	ldr r0, [r0, #4]
 	mov r0, r0, lsl #0x1f
 	movs r0, r0, lsr #0x1f
 	movne r0, #1
 	moveq r0, #0
 	bx lr
-	arm_func_end MBi_ReadFromCache
+	arm_func_end MBi_IsTaskBusy
 
 	arm_func_start MBi_SetTask
 MBi_SetTask: ; 0x022C7C74
@@ -14716,7 +14716,7 @@ send_packet: ; 0x022C8824
 	add r1, r7, #6
 	sub r2, r6, #6
 	str r4, [sp]
-	bl Wcm_SendDcfData
+	bl WCM_SendDCFDataEx
 	cmp r0, #0
 	movlt r1, #1
 	ldr r0, _022C887C ; =ov00_02325078
@@ -21902,8 +21902,8 @@ _022CE8CC:
 	ldmia sp!, {r4, pc}
 	arm_func_end Socl_IsClosed
 
-	arm_func_start close
-close: ; 0x022CE8D4
+	arm_func_start SOCL_Close
+SOCL_Close: ; 0x022CE8D4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	cmp r4, #0
@@ -21959,7 +21959,7 @@ _022CE974:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022CE9A0: .word Socli_CloseCallBack
-	arm_func_end close
+	arm_func_end SOCL_Close
 
 	arm_func_start Socli_CloseCallBack
 Socli_CloseCallBack: ; 0x022CE9A4
@@ -22148,8 +22148,8 @@ _022CEC08:
 _022CEC14: .word ov00_02326930
 	arm_func_end Socli_TrashSocket
 
-	arm_func_start Soc_Cleanup
-Soc_Cleanup: ; 0x022CEC18
+	arm_func_start SOCL_Cleanup
+SOCL_Cleanup: ; 0x022CEC18
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _022CECAC ; =ov00_023268C4
 	ldr r0, [r1]
@@ -22196,7 +22196,7 @@ _022CECAC: .word ov00_023268C4
 _022CECB0: .word ov00_023250C8
 _022CECB4: .word ov00_02318868
 _022CECB8: .word ov00_023268D0
-	arm_func_end Soc_Cleanup
+	arm_func_end SOCL_Cleanup
 
 	arm_func_start Socl_CloseAll
 Socl_CloseAll: ; 0x022CECBC
@@ -22224,7 +22224,7 @@ _022CECFC:
 	cmp r6, #0
 	beq _022CED14
 	mov r0, r6
-	bl close
+	bl SOCL_Close
 	b _022CECC8
 _022CED14:
 	ldr r0, _022CED5C ; =ov00_0232692C
@@ -22264,7 +22264,7 @@ Socl_CalmDown: ; 0x022CED64
 	bne _022CEDB0
 	ldr r0, _022CEDDC ; =ov00_023268CC
 	ldr r0, [r0]
-	bl close
+	bl SOCL_Close
 	ldr r0, _022CEDDC ; =ov00_023268CC
 	ldr r0, [r0]
 	bl Socl_IsClosed
@@ -22620,8 +22620,8 @@ Socl_SocketIsInTrash: ; 0x022CF188
 _022CF1A8: .word ov00_02326930
 	arm_func_end Socl_SocketIsInTrash
 
-	arm_func_start socket
-socket: ; 0x022CF1AC
+	arm_func_start SOC_Socket
+SOC_Socket: ; 0x022CF1AC
 	stmdb sp!, {r3, lr}
 	cmp r1, #1
 	bne _022CF1C4
@@ -22635,10 +22635,10 @@ _022CF1C4:
 	.align 2, 0
 _022CF1D0: .word ov00_02318888
 _022CF1D4: .word ov00_02318870
-	arm_func_end socket
+	arm_func_end SOC_Socket
 
-	arm_func_start bind
-bind: ; 0x022CF1D8
+	arm_func_start SOC_Bind
+SOC_Bind: ; 0x022CF1D8
 	ldrh r1, [r1, #2]
 	ldr ip, _022CF200 ; =Socl_Bind
 	mov r2, r1, asr #8
@@ -22651,10 +22651,10 @@ bind: ; 0x022CF1D8
 	bx ip
 	.align 2, 0
 _022CF200: .word Socl_Bind
-	arm_func_end bind
+	arm_func_end SOC_Bind
 
-	arm_func_start connect
-connect: ; 0x022CF204
+	arm_func_start SOC_Connect
+SOC_Connect: ; 0x022CF204
 	stmdb sp!, {r4, lr}
 	ldrh r2, [r1, #2]
 	ldr lr, [r1, #4]
@@ -22678,10 +22678,10 @@ connect: ; 0x022CF204
 	orr r2, r3, r2
 	bl Socl_Connect
 	ldmia sp!, {r4, pc}
-	arm_func_end connect
+	arm_func_end SOC_Connect
 
-	arm_func_start recv
-recv: ; 0x022CF260
+	arm_func_start SOC_Recv
+SOC_Recv: ; 0x022CF260
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	mov ip, #0
@@ -22691,10 +22691,10 @@ recv: ; 0x022CF260
 	bl Socl_ReadFrom
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
-	arm_func_end recv
+	arm_func_end SOC_Recv
 
-	arm_func_start recvfrom
-recvfrom: ; 0x022CF284
+	arm_func_start SOC_RecvFrom
+SOC_RecvFrom: ; 0x022CF284
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
 	add ip, sp, #0xc
@@ -22731,10 +22731,10 @@ recvfrom: ; 0x022CF284
 	str r2, [r1, #4]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
-	arm_func_end recvfrom
+	arm_func_end SOC_RecvFrom
 
-	arm_func_start send
-send: ; 0x022CF314
+	arm_func_start SOC_Send
+SOC_Send: ; 0x022CF314
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	mov ip, #0
@@ -22744,10 +22744,10 @@ send: ; 0x022CF314
 	bl Socl_WriteTo
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
-	arm_func_end send
+	arm_func_end SOC_Send
 
-	arm_func_start sendto
-sendto: ; 0x022CF338
+	arm_func_start SOC_SendTo
+SOC_SendTo: ; 0x022CF338
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r5, [sp, #0x20]
@@ -22782,7 +22782,7 @@ _022CF3A4:
 	bl Socl_WriteTo
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sendto
+	arm_func_end SOC_SendTo
 
 	arm_func_start Soc_Shutdown
 Soc_Shutdown: ; 0x022CF3BC
@@ -22792,13 +22792,13 @@ Soc_Shutdown: ; 0x022CF3BC
 _022CF3C4: .word Socl_Shutdown
 	arm_func_end Soc_Shutdown
 
-	arm_func_start CloseVeneer
-CloseVeneer: ; 0x022CF3C8
-	ldr ip, _022CF3D0 ; =close
+	arm_func_start SOC_Close
+SOC_Close: ; 0x022CF3C8
+	ldr ip, _022CF3D0 ; =SOCL_Close
 	bx ip
 	.align 2, 0
-_022CF3D0: .word close
-	arm_func_end CloseVeneer
+_022CF3D0: .word SOCL_Close
+	arm_func_end SOC_Close
 
 	arm_func_start Soc_GetHostByName
 Soc_GetHostByName: ; 0x022CF3D4
@@ -23102,10 +23102,10 @@ _022CF7E4: .word ov00_02326974
 
 	arm_func_start ov00_022CF7E8
 ov00_022CF7E8: ; 0x022CF7E8
-	ldr ip, _022CF7F0 ; =Soc_Cleanup
+	ldr ip, _022CF7F0 ; =SOCL_Cleanup
 	bx ip
 	.align 2, 0
-_022CF7F0: .word Soc_Cleanup
+_022CF7F0: .word SOCL_Cleanup
 	arm_func_end ov00_022CF7E8
 
 	arm_func_start Soc_InetNtoA
@@ -24666,8 +24666,8 @@ _022D0C44:
 _022D0C50: .word 0x55555556
 	arm_func_end client_hello_v2
 
-	arm_func_start ov00_022D0C54
-ov00_022D0C54: ; 0x022D0C54
+	arm_func_start client_hello
+client_hello: ; 0x022D0C54
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r1
 	mov r4, r0
@@ -24708,7 +24708,7 @@ _022D0CB4:
 	movne r0, #1
 	strneb r0, [r4, #0x455]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov00_022D0C54
+	arm_func_end client_hello
 
 	arm_func_start decrypt_premaster_secret
 decrypt_premaster_secret: ; 0x022D0CF0
@@ -25731,7 +25731,7 @@ _022D1B44:
 	bne _022D1BC4
 	mov r0, sb
 	mov r1, r5
-	bl ov00_022D0C54
+	bl client_hello
 	b _022D1BC4
 _022D1B68:
 	mov r0, sb
@@ -26433,8 +26433,8 @@ mustget_change_cipher_spec_and_finished: ; 0x022D2520
 	ldmia sp!, {r4, pc}
 	arm_func_end mustget_change_cipher_spec_and_finished
 
-	arm_func_start ssl_listen_try
-ssl_listen_try: ; 0x022D2550
+	arm_func_start ssl_connect_try
+ssl_connect_try: ; 0x022D2550
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xc]
@@ -26491,7 +26491,7 @@ _022D260C:
 	strb r0, [r4, #0x455]
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ssl_listen_try
+	arm_func_end ssl_connect_try
 
 	arm_func_start Cpsi_SslConnect
 Cpsi_SslConnect: ; 0x022D261C
@@ -26515,7 +26515,7 @@ _022D2644:
 	add r0, r4, #0x3a4
 	bl Cpsi_Md5_Init
 	mov r0, r5
-	bl ssl_listen_try
+	bl ssl_connect_try
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end Cpsi_SslConnect
 
@@ -32147,8 +32147,8 @@ Wcm_SetRecvDcfCallback: ; 0x022D71E4
 _022D7200: .word ov00_02326C50
 	arm_func_end Wcm_SetRecvDcfCallback
 
-	arm_func_start Wcm_SendDcfData
-Wcm_SendDcfData: ; 0x022D7204
+	arm_func_start WCM_SendDCFDataEx
+WCM_SendDCFDataEx: ; 0x022D7204
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, r0
 	mov sb, r1
@@ -32257,7 +32257,7 @@ _022D737C: .word ov00_02326C5C
 _022D7380: .word WcmCpsifWmCallback
 _022D7384: .word ov00_02326C54
 _022D7388: .word ov00_02326C50
-	arm_func_end Wcm_SendDcfData
+	arm_func_end WCM_SendDCFDataEx
 
 	arm_func_start WcmCpsifWmCallback
 WcmCpsifWmCallback: ; 0x022D738C
@@ -32736,8 +32736,8 @@ _022D797C:
 	ldmia sp!, {r3, pc}
 	arm_func_end Dwc_AC_Destroy
 
-	arm_func_start Dwc_AC_SetSpecifyAp
-Dwc_AC_SetSpecifyAp: ; 0x022D7994
+	arm_func_start DWC_AC_SetSpecifyApEx
+DWC_AC_SetSpecifyApEx: ; 0x022D7994
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r5, r3
@@ -32763,12 +32763,12 @@ _022D79DC:
 	mov r1, r7
 	mov r2, r6
 	strb r3, [r4, #0x22]
-	bl Dwc_AC_SetSpecifyApEx
+	bl DWC_AC_SetSpecifyAp
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end Dwc_AC_SetSpecifyAp
+	arm_func_end DWC_AC_SetSpecifyApEx
 
-	arm_func_start Dwc_AC_SetSpecifyApEx
-Dwc_AC_SetSpecifyApEx: ; 0x022D79F8
+	arm_func_start DWC_AC_SetSpecifyAp
+DWC_AC_SetSpecifyAp: ; 0x022D79F8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r0, #0x10
@@ -32819,7 +32819,7 @@ _022D7A88:
 	orr r0, r1, r0
 	strb r0, [r4, #0xe6]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end Dwc_AC_SetSpecifyApEx
+	arm_func_end DWC_AC_SetSpecifyAp
 
 	arm_func_start Dwci_AC_InsertApInfo
 Dwci_AC_InsertApInfo: ; 0x022D7AB0
@@ -36235,7 +36235,7 @@ _022DA63C:
 	add r0, r0, #0x1a00
 	add r1, r1, #0x1800
 	add r2, r4, r7
-	bl MATHi_CRC16Update
+	bl MATHi_CRC16UpdateRev
 	ldr r0, _022DA86C ; =ov00_02326CA4
 	add r1, r4, r7
 	ldr r0, [r0]
@@ -36364,7 +36364,7 @@ Wds_Initialize: ; 0x022DA884
 	ldr r0, [r2]
 	add r0, r0, #0x96
 	add r0, r0, #0x1a00
-	bl MATHi_CRC16InitTable
+	bl MATHi_CRC16InitTableRev
 	ldr r0, _022DA914 ; =ov00_02326CA4
 	mov r1, r6
 	ldr r0, [r0]
