@@ -1,6 +1,8 @@
 #include "overlay_34_022DCB98.h"
 #include "debug.h"
 #include "main_02001188.h"
+#include "main_0200BC54.h"
+#include "main_0200BD2C.h"
 #include "main_0202A66C.h"
 #include "main_0202AAA8.h"
 #include "main_0202AB40.h"
@@ -38,6 +40,52 @@ extern s8 CreateDialogueBox(s8);
 extern void CloseDialogueBox(s8);
 void ov34_022DC718(s32);
 s32 InitMenu(u32*);
+
+typedef struct {
+    u8 field_0;
+    u8 padding[0xB];
+    u32 field_C;
+} UNK_ov34_022DD0B0;
+
+
+extern UNK_ov34_022DD0B0 ov34_022DD0B0;
+extern struct screen_fade ov34_022DD104;
+extern struct screen_fade ov34_022DD0C0;
+
+extern void sub_0200BB74(struct screen_fade *, bool8, s32);
+
+void ov34_022DCA70(void)
+{
+    BOOL isFinished = TRUE;
+
+    if (ov34_022DD0B0.field_0 != 0) {
+        if (GetFadeStatus(&ov34_022DD104) == 0) {
+            sub_0200BB74(&ov34_022DD104, TRUE, ov34_022DD0B0.field_C);
+            isFinished = FALSE;
+        } else if (HandleFadesVeneer(&ov34_022DD104) != 0) {
+            isFinished = FALSE;
+        }
+        ov34_022DCB64(ov34_022DD104.delta_brightness);
+
+        if (GetFadeStatus(&ov34_022DD0C0) == 0) {
+            sub_0200BB74(&ov34_022DD0C0, TRUE, ov34_022DD0B0.field_C);
+            isFinished = FALSE;
+        } else if (HandleFadesVeneer(&ov34_022DD0C0) != 0) {
+            isFinished = FALSE;
+        }
+        ov34_022DCB98(ov34_022DD0C0.delta_brightness);
+
+        if (isFinished != 0) {
+            ov34_022DD0B0.field_0 = FALSE;
+        }
+    } else {
+        HandleFadesVeneer(&ov34_022DD104);
+        ov34_022DCB64(ov34_022DD104.delta_brightness);
+        
+        HandleFadesVeneer(&ov34_022DD0C0);
+        ov34_022DCB98(ov34_022DD0C0.delta_brightness);
+    }
+}
 
 void ov34_022DCB64(s32 arg0)
 {

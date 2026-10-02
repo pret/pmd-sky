@@ -3,6 +3,8 @@
 
 	.text
 
+    .public ov34_022DCA70
+
 	arm_func_start ExplorersOfSkyMain
 ExplorersOfSkyMain: ; 0x022DC240
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -687,74 +689,3 @@ _022DCA48:
 _022DCA68: .word ov34_022DD0B0
 _022DCA6C: .word ov34_022DD104
 	arm_func_end ov34_022DC9CC
-
-	arm_func_start ov34_022DCA70
-ov34_022DCA70: ; 0x022DCA70
-	stmdb sp!, {r4, lr}
-	ldr r0, _022DCB58 ; =ov34_022DD0B0
-	mov r4, #1
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _022DCB2C
-	ldr r0, _022DCB5C ; =ov34_022DD104
-	bl GetFadeStatus
-	cmp r0, #0
-	bne _022DCAB4
-	ldr r1, _022DCB58 ; =ov34_022DD0B0
-	ldr r0, _022DCB5C ; =ov34_022DD104
-	ldr r2, [r1, #0xc]
-	mov r1, r4
-	bl sub_0200BB74
-	mov r4, #0
-	b _022DCAC4
-_022DCAB4:
-	ldr r0, _022DCB5C ; =ov34_022DD104
-	bl HandleFadesVeneer
-	cmp r0, #0
-	movne r4, #0
-_022DCAC4:
-	ldr r0, _022DCB5C ; =ov34_022DD104
-	ldrsh r0, [r0, #0x14]
-	bl ov34_022DCB64
-	ldr r0, _022DCB60 ; =ov34_022DD0C0
-	bl GetFadeStatus
-	cmp r0, #0
-	bne _022DCAFC
-	ldr r1, _022DCB58 ; =ov34_022DD0B0
-	ldr r0, _022DCB60 ; =ov34_022DD0C0
-	ldr r2, [r1, #0xc]
-	mov r1, #1
-	bl sub_0200BB74
-	mov r4, #0
-	b _022DCB0C
-_022DCAFC:
-	ldr r0, _022DCB60 ; =ov34_022DD0C0
-	bl HandleFadesVeneer
-	cmp r0, #0
-	movne r4, #0
-_022DCB0C:
-	ldr r0, _022DCB60 ; =ov34_022DD0C0
-	ldrsh r0, [r0, #0x14]
-	bl ov34_022DCB98
-	cmp r4, #0
-	ldrne r0, _022DCB58 ; =ov34_022DD0B0
-	movne r1, #0
-	strneb r1, [r0]
-	ldmia sp!, {r4, pc}
-_022DCB2C:
-	ldr r0, _022DCB5C ; =ov34_022DD104
-	bl HandleFadesVeneer
-	ldr r0, _022DCB5C ; =ov34_022DD104
-	ldrsh r0, [r0, #0x14]
-	bl ov34_022DCB64
-	ldr r0, _022DCB60 ; =ov34_022DD0C0
-	bl HandleFadesVeneer
-	ldr r0, _022DCB60 ; =ov34_022DD0C0
-	ldrsh r0, [r0, #0x14]
-	bl ov34_022DCB98
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_022DCB58: .word ov34_022DD0B0
-_022DCB5C: .word ov34_022DD104
-_022DCB60: .word ov34_022DD0C0
-	arm_func_end ov34_022DCA70
