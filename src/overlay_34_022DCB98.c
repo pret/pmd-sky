@@ -1,6 +1,7 @@
 #include "overlay_34_022DCB98.h"
 #include "debug.h"
 #include "main_02001188.h"
+#include "main_020027E8.h"
 #include "main_0200BC54.h"
 #include "main_0200BD2C.h"
 #include "main_0202A66C.h"
@@ -38,7 +39,6 @@ extern u32 OVERLAY34_UNKNOWN_STRUCT__NA_22DD014;
 extern void sub_02008F3C(s32, s32);
 extern s8 CreateDialogueBox(s8);   
 extern void CloseDialogueBox(s8);
-void ov34_022DC718(s32);
 s32 InitMenu(u32*);
 
 typedef struct {
@@ -55,8 +55,138 @@ extern UNK_ov34_022DD0B0 ov34_022DD0B0;
 extern struct screen_fade ov34_022DD104;
 extern struct screen_fade ov34_022DD0C0;
 
+struct Overlay_34_022DD0A0 {
+    s32 unk0;
+};
+
+extern struct Overlay_34_022DD0A0 ov34_022DD0A0;
+
 extern void sub_0200BB74(struct screen_fade *, s32, s32);
 extern void sub_0200BB60(struct screen_fade *, s32);
+extern s32 sub_02008F4C(s32);   
+extern void sub_0200B894(struct screen_fade*, s32);  
+extern void sub_0200B8D4(struct screen_fade*, s32);  
+extern void sub_0200B8B8(struct screen_fade*); 
+
+bool8 ov34_022DC718(s32 arg0)
+{
+    if (ov34_022DD0A0.unk0 == 0) {
+        ov34_022DD0A0.unk0 = arg0;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 ov34_022DC738(void)
+{
+    return ov34_022DC718(1);
+}
+
+void ov34_022DC748(void)
+{
+    sub_0200B894(&ov34_022DD104, 1);
+    sub_0200B894(&ov34_022DD0C0, 1);
+    ov34_022DC798();
+    ov34_022DC810();
+}
+
+void ov34_022DC778(void)
+{
+    sub_0200B8B8(&ov34_022DD104);
+    sub_0200B8B8(&ov34_022DD0C0);
+}
+
+void ov34_022DC798(void) 
+{
+    ov34_022DD0B0.field_0 = 0;
+    ov34_022DD0B0.field_C = 0;
+    ov34_022DD0B0.field_08 = 0;
+    ov34_022DD0B0.field_01 = 1;
+    
+    if (sub_02008F4C(0) == 0x100) {
+        sub_0200B8D4(&ov34_022DD104, 2);
+        return;
+    }
+    if (sub_02008F4C(0) == -0x100) {
+        sub_0200B8D4(&ov34_022DD104, 1);
+        return;
+    }
+    sub_0200B8D4(&ov34_022DD104, 0);
+}
+
+void ov34_022DC810(void)
+{
+    if (sub_02008F4C(1) == 0x100) {
+        sub_0200B8D4(&ov34_022DD0C0, 2);
+        return;
+    }
+    if (sub_02008F4C(1) == -0x100) {
+        sub_0200B8D4(&ov34_022DD0C0, 1);
+        return;
+    }
+    sub_0200B8D4(&ov34_022DD0C0, 0);
+}
+
+void ov34_022DC86C(s32 arg0)
+{
+    if (sub_02002878(2) == 0) {
+        ov34_022DD0B0.field_08 = 1;
+        ov34_022DD0B0.field_04 = arg0;
+        ov34_022DD0B0.field_01 = 1;
+    } else {
+        sub_0200BB60(&ov34_022DD104, arg0);
+        ov34_022DD0B0.field_01 = 1;
+    }
+}
+
+void ov34_022DC8B8(s32 arg0)
+{
+    if (sub_02002878(2) == 0) {
+        ov34_022DD0B0.field_08 = 2;
+        ov34_022DD0B0.field_04 = arg0;
+        ov34_022DD0B0.field_01 = 1;
+    } else {
+        sub_0200BB74(&ov34_022DD104, 1, arg0);
+        ov34_022DD0B0.field_01 = 1;
+    }
+}
+
+#ifdef NORTH_AMERICA
+void ov34_022DC908(s32 arg0) {
+    if (sub_02002878(2) == 0) {
+        ov34_022DD0B0.field_08 = 3;
+        ov34_022DD0B0.field_04 = arg0;
+        ov34_022DD0B0.field_01 = 1;
+    } else {
+        sub_0200BB74(&ov34_022DD104, 2, arg0);
+        ov34_022DD0B0.field_01 = 1;
+    }
+}
+#endif // NORTH_AMERICA
+
+void ov34_022DC958(s32 r1)
+{
+    sub_0200BB60(&ov34_022DD0C0, r1);
+}
+
+
+void ov34_022DC970(s32 r2)
+{
+    sub_0200BB74(&ov34_022DD0C0, 2, r2);
+}
+
+bool8 ov34_022DC98C(void)
+{
+    if (ov34_022DD0B0.field_0 != 0) {
+        return 1;
+    }
+    return sub_0200BD14(&ov34_022DD104);
+}
+
+bool8 ov34_022DC9B8(void)
+{
+    return sub_0200BD14(&ov34_022DD0C0);
+}
 
 void ov34_022DC9CC(void)
 {
