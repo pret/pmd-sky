@@ -4,6 +4,7 @@
 	.text
 
     .public ov34_022DCA70
+    .public ov34_022DC9CC
 
 	arm_func_start ExplorersOfSkyMain
 ExplorersOfSkyMain: ; 0x022DC240
@@ -638,54 +639,3 @@ ov34_022DC9B8: ; 0x022DC9B8
 _022DC9C4: .word sub_0200BD14
 _022DC9C8: .word ov34_022DD0C0
 	arm_func_end ov34_022DC9B8
-
-	arm_func_start ov34_022DC9CC
-ov34_022DC9CC: ; 0x022DC9CC
-	stmdb sp!, {r3, lr}
-	ldr r0, _022DCA68 ; =ov34_022DD0B0
-	ldr r1, [r0, #8]
-	cmp r1, #0
-	beq _022DCA48
-	cmp r1, #1
-	beq _022DC9FC
-	cmp r1, #2
-	beq _022DCA0C
-	cmp r1, #3
-	beq _022DCA20
-	b _022DCA30
-_022DC9FC:
-	ldr r1, [r0, #4]
-	ldr r0, _022DCA6C ; =ov34_022DD104
-	bl sub_0200BB60
-	b _022DCA30
-_022DCA0C:
-	ldr r2, [r0, #4]
-	ldr r0, _022DCA6C ; =ov34_022DD104
-	mov r1, #1
-	bl sub_0200BB74
-	b _022DCA30
-_022DCA20:
-	ldr r2, [r0, #4]
-	ldr r0, _022DCA6C ; =ov34_022DD104
-	mov r1, #2
-	bl sub_0200BB74
-_022DCA30:
-	ldr r0, _022DCA68 ; =ov34_022DD0B0
-	mov r1, #0
-	str r1, [r0, #8]
-	mov r1, #1
-	strb r1, [r0, #1]
-	ldmia sp!, {r3, pc}
-_022DCA48:
-	ldr r0, _022DCA6C ; =ov34_022DD104
-	ldr r0, [r0, #4]
-	cmp r0, #0
-	movne r1, #1
-	ldr r0, _022DCA68 ; =ov34_022DD0B0
-	moveq r1, #0
-	strb r1, [r0, #1]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_022DCA68: .word ov34_022DD0B0
-_022DCA6C: .word ov34_022DD104
-	arm_func_end ov34_022DC9CC

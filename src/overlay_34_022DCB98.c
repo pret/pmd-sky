@@ -43,7 +43,10 @@ s32 InitMenu(u32*);
 
 typedef struct {
     u8 field_0;
-    u8 padding[0xB];
+    u8 field_01;
+    u8 unk_02[2];
+    u32 field_04;
+    u32 field_08;
     u32 field_C;
 } UNK_ov34_022DD0B0;
 
@@ -52,7 +55,39 @@ extern UNK_ov34_022DD0B0 ov34_022DD0B0;
 extern struct screen_fade ov34_022DD104;
 extern struct screen_fade ov34_022DD0C0;
 
-extern void sub_0200BB74(struct screen_fade *, bool8, s32);
+extern void sub_0200BB74(struct screen_fade *, s32, s32);
+extern void sub_0200BB60(struct screen_fade *, s32);
+
+void ov34_022DC9CC(void)
+{
+    u32 action = ov34_022DD0B0.field_08;
+
+    if (action == 0) goto state_0;
+    if (action == 1) goto state_1;
+    if (action == 2) goto state_2;
+    if (action == 3) goto state_3;
+    goto state_end;
+
+state_1:
+    sub_0200BB60(&ov34_022DD104, ov34_022DD0B0.field_04);
+    goto state_end;
+
+state_2:
+    sub_0200BB74(&ov34_022DD104, 1, ov34_022DD0B0.field_04);
+    goto state_end;
+
+state_3:
+    sub_0200BB74(&ov34_022DD104, 2, ov34_022DD0B0.field_04);
+
+state_end:
+    ov34_022DD0B0.field_08 = 0;
+    ov34_022DD0B0.field_01 = 1;
+    return;
+
+state_0:
+    ov34_022DD0B0.field_01 = (ov34_022DD104.status != 0);
+    return;
+}
 
 void ov34_022DCA70(void)
 {
@@ -60,7 +95,7 @@ void ov34_022DCA70(void)
 
     if (ov34_022DD0B0.field_0 != 0) {
         if (GetFadeStatus(&ov34_022DD104) == 0) {
-            sub_0200BB74(&ov34_022DD104, TRUE, ov34_022DD0B0.field_C);
+            sub_0200BB74(&ov34_022DD104, 1, ov34_022DD0B0.field_C);
             isFinished = FALSE;
         } else if (HandleFadesVeneer(&ov34_022DD104) != 0) {
             isFinished = FALSE;
@@ -68,7 +103,7 @@ void ov34_022DCA70(void)
         ov34_022DCB64(ov34_022DD104.delta_brightness);
 
         if (GetFadeStatus(&ov34_022DD0C0) == 0) {
-            sub_0200BB74(&ov34_022DD0C0, TRUE, ov34_022DD0B0.field_C);
+            sub_0200BB74(&ov34_022DD0C0, 1, ov34_022DD0B0.field_C);
             isFinished = FALSE;
         } else if (HandleFadesVeneer(&ov34_022DD0C0) != 0) {
             isFinished = FALSE;
