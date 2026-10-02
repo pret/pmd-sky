@@ -3,14 +3,14 @@
 
 	.text
 
-	arm_func_start sub_020038D8
-sub_020038D8: ; 0x020038D8
+	arm_func_start Sys_IsMailboxPending
+Sys_IsMailboxPending: ; 0x020038D8
 	ldr r0, _020038E4 ; =_020AEF7C
 	ldrb r0, [r0, #3]
 	bx lr
 	.align 2, 0
 _020038E4: .word _020AEF7C
-	arm_func_end sub_020038D8
+	arm_func_end Sys_IsMailboxPending
 
 	arm_func_start sub_020038E8
 sub_020038E8: ; 0x020038E8
@@ -63,8 +63,8 @@ _02003988: .word _020AEF7C
 _0200398C: .word _020AF000
 	arm_func_end sub_020038E8
 
-	arm_func_start sub_02003990
-sub_02003990: ; 0x02003990
+	arm_func_start Task_AbortSync
+Task_AbortSync: ; 0x02003990
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r0, _020039DC ; =_020AEF7C
@@ -88,7 +88,7 @@ _020039D4:
 	.align 2, 0
 _020039DC: .word _020AEF7C
 _020039E0: .word _020AF000
-	arm_func_end sub_02003990
+	arm_func_end Task_AbortSync
 
 	arm_func_start sub_020039E4
 sub_020039E4: ; 0x020039E4
@@ -119,8 +119,8 @@ _02003A38: .word _020AF028
 _02003A3C: .word _020AF000
 	arm_func_end sub_020039E4
 
-	arm_func_start sub_02003A40
-sub_02003A40: ; 0x02003A40
+	arm_func_start Sys_WaitForVBlank
+Sys_WaitForVBlank: ; 0x02003A40
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
@@ -152,7 +152,7 @@ _02003A90:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02003AAC: .word _020AEF7C
-	arm_func_end sub_02003A40
+	arm_func_end Sys_WaitForVBlank
 
 	arm_func_start sub_02003AB0
 sub_02003AB0: ; 0x02003AB0

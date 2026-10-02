@@ -75,7 +75,7 @@ void sub_020029B8(struct unk_020AF000 *a);
 void sub_02002A44(struct unk_020AF000 *a);
 void sub_02002C40(struct unk_020AEFDC *a);
 void sub_020025F8(u32 a);
-void sub_02003A40(void);
+void Sys_WaitForVBlank(void);
 bool8 sub_02003B5C(void);
 void sub_02005EAC(void);
 void sub_02006098(void);
@@ -241,7 +241,7 @@ void TaskProcBoot(void)
             _020AEF7C.field_0x6 = fn();
         } else {
             sub_020026B8();
-            sub_02003A40();
+            Sys_WaitForVBlank();
             sub_02002670();
             _020AEF7C.field_0x18 = NULL;
             _020AEF7C.field_0x6 = 1;

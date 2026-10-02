@@ -30,5 +30,6 @@ extern struct fixed_room_properties_entry FIXED_ROOM_PROPERTIES_TABLE[];
 
 // Checks if moves (excluding the regular attack) are usable in the given fixed room.
 bool8 AreMovesEnabled(enum fixed_room_id fixed_room_id);
+bool8 IsRoomIlluminated(enum fixed_room_id fixed_room_id);
 
 #endif //PMDSKY_FIXED_ROOM_DATA_H

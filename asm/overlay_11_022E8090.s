@@ -1318,7 +1318,7 @@ _022E9254: .word ov11_02320AC8
 	arm_func_start ov11_022E9258
 ov11_022E9258: ; 0x022E9258
 	stmdb sp!, {r4, lr}
-	bl sub_020038D8
+	bl Sys_IsMailboxPending
 	cmp r0, #0
 	beq _022E9294
 	bl sub_02006E14
@@ -1330,7 +1330,7 @@ ov11_022E9258: ; 0x022E9258
 	bl HandleUnlocks
 	bl ov11_022DC81C
 	bl ov11_022EA024
-	bl sub_02003990
+	bl Task_AbortSync
 	b _022E92A8
 _022E9294:
 	bl ov11_022F2178
@@ -1357,16 +1357,16 @@ _022E92E0:
 	bl sub_02008F84
 	bl sub_0201BE28
 	bl sub_02017A80
-	bl sub_02003A40
+	bl Sys_WaitForVBlank
 	ldr r1, _022E9358 ; =ov11_02324CB0
 	mov r4, r0
 	ldrb r0, [r1]
 	cmp r0, #0
 	beq _022E930C
 	mov r0, #0
-	bl sub_02008ED0
+	bl GraphicsEngine_SetState
 _022E930C:
-	bl sub_02008F88
+	bl GraphicsEngine_ApplyState
 	bl G3X_Reset
 	bl sub_0201DE10
 	bl ov11_022F2244

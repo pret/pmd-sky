@@ -200,7 +200,7 @@ sub_02008DAC: ; 0x02008DAC
 	str r2, [r0]
 	str r1, [r0, #4]
 	str r1, [r0, #8]
-	bl sub_02008F88
+	bl GraphicsEngine_ApplyState
 	mov r4, #1
 _02008E98:
 	mov r0, r4
@@ -220,8 +220,8 @@ _02008EC8: .word 0x05000400
 _02008ECC: .word _022A37A0
 	arm_func_end sub_02008DAC
 
-	arm_func_start sub_02008ED0
-sub_02008ED0: ; 0x02008ED0
+	arm_func_start GraphicsEngine_SetState
+GraphicsEngine_SetState: ; 0x02008ED0
 	stmdb sp!, {r4, lr}
 	ldr r1, _02008F30 ; =_020AF694
 	mov r4, r0
@@ -252,7 +252,7 @@ _02008F24:
 _02008F30: .word _020AF694
 _02008F34: .word _02092AB8
 _02008F38: .word 0x04001000
-	arm_func_end sub_02008ED0
+	arm_func_end GraphicsEngine_SetState
 
 	arm_func_start sub_02008F3C
 sub_02008F3C: ; 0x02008F3C
@@ -292,8 +292,8 @@ sub_02008F84: ; 0x02008F84
 	bx lr
 	arm_func_end sub_02008F84
 
-	arm_func_start sub_02008F88
-sub_02008F88: ; 0x02008F88
+	arm_func_start GraphicsEngine_ApplyState
+GraphicsEngine_ApplyState: ; 0x02008F88
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #0
 	bl sub_02009DCC
@@ -368,7 +368,7 @@ _02009090: .word _02092A38
 _02009094: .word _02092A58
 _02009098: .word _02092A78
 _0200909C: .word _02092A98
-	arm_func_end sub_02008F88
+	arm_func_end GraphicsEngine_ApplyState
 
 	arm_func_start sub_020090A0
 sub_020090A0: ; 0x020090A0

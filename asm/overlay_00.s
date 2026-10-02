@@ -2475,11 +2475,11 @@ ov00_022BE3CC: ; 0x022BE3CC
 	stmdb sp!, {r4, lr}
 	bl sub_0201BF64
 	bl sub_02028E40
-	bl sub_020038D8
+	bl Sys_IsMailboxPending
 	cmp r0, #0
 	beq _022BE3EC
 	bl ov00_022BE6D0
-	bl sub_02003990
+	bl Task_AbortSync
 _022BE3EC:
 	bl ov01_0232BE98
 	bl ov01_0233103C
@@ -2498,14 +2498,14 @@ _022BE420:
 	bl sub_02008F84
 	bl sub_0201BE28
 	bl sub_02017A80
-	bl sub_02003A40
+	bl Sys_WaitForVBlank
 	ldr r1, _022BE4A4 ; =ov00_023187EC
 	mov r4, r0
 	ldrb r0, [r1]
 	cmp r0, #0
 	beq _022BE464
 	mov r0, #0
-	bl sub_02008ED0
+	bl GraphicsEngine_SetState
 	mov r0, #0
 	mov r1, #2
 	bl sub_02008F64
@@ -2523,7 +2523,7 @@ _022BE464:
 	bl sub_02028E88
 	bl sub_02051C24
 	bl sub_0201BF4C
-	bl sub_02008F88
+	bl GraphicsEngine_ApplyState
 	ldr r1, _022BE4A4 ; =ov00_023187EC
 	mov r2, #0
 	mov r0, r4

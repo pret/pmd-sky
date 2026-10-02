@@ -3,17 +3,6 @@
 
 	.text
 
-	arm_func_start IsRoomIlluminated
-IsRoomIlluminated: ; 0x02344178
-	mov r1, #0xc
-	mul r1, r0, r1
-	ldr r0, _0234418C ; =ov10_022C6C74
-	ldrb r0, [r0, r1]
-	bx lr
-	.align 2, 0
-_0234418C: .word ov10_022C6C74
-	arm_func_end IsRoomIlluminated
-
 	arm_func_start GetMatchingMonsterId
 GetMatchingMonsterId: ; 0x02344190
 	stmdb sp!, {r4, lr}
