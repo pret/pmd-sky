@@ -3,7 +3,7 @@ import re
 from typing import List
 
 from pmdsky_debug_reader import read_pmdsky_debug_symbols
-from symbol_details import NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_OFFSET
+from symbol_details import ARM7_RAM_OFFSET, ARM7_RAM_ROM_END, ARM7_RAM_ROM_START, NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_OFFSET, WRAM_ROM_END, WRAM_ROM_START
 from xmap_reader import HEADER_FOLDER, read_xmap_symbols
 
 # Syncs symbols from pmdsky-debug (https://github.com/UsernameFodder/pmdsky-debug) to the decomp.
@@ -52,9 +52,13 @@ for language, pmdsky_debug_language_symbols in pmdsky_debug_symbols.items():
             xmap_section = {}
 
         for address, symbol in pmdsky_debug_section.items():
-            if section_name == 'arm7' and address < 0x27E0000:
-                # Shift ARM7 WRAM to its RAM location.
-                address += WRAM_OFFSET
+            if section_name == 'arm7':
+                if address >= WRAM_ROM_START and address < WRAM_ROM_END:
+                    # Shift ARM7 WRAM to its RAM location.
+                    address += WRAM_OFFSET
+                elif address >= ARM7_RAM_ROM_START and address < ARM7_RAM_ROM_END:
+                    # Shift ARM7 RAM to its RAM location.
+                    address += ARM7_RAM_OFFSET
             if address not in xmap_section:
                 continue
             old_symbol = xmap_section[address]

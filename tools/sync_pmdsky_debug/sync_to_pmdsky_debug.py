@@ -7,7 +7,7 @@ from ruamel.yaml.comments import CommentedMap
 from ruamel.yaml.scalarint import HexCapsInt, HexInt
 
 from pmdsky_debug_reader import LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG, SYMBOLS_FOLDER, get_pmdsky_debug_location, read_pmdsky_debug_symbols
-from symbol_details import ITCM_RAM_START_ADDRESSES, NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_OFFSET, SymbolDetails
+from symbol_details import ARM7_RAM_END, ARM7_RAM_START, ITCM_RAM_START_ADDRESSES, NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_ADDRESS, WRAM_OFFSET, ARM7_RAM_OFFSET, SymbolDetails
 from xmap_reader import HEADER_FOLDER, read_xmap_symbols
 from yaml_writer import YamlManager, yaml
 
@@ -64,10 +64,16 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
     base_symbol_name = get_base_symbol_name(symbol.name)
 
     wram_address = None
-    if section_name == 'arm7' and address >= 0x37F8000:
-        # Shift ARM 7 WRAM to its ROM location.
-        wram_address = address
-        address -= WRAM_OFFSET
+    arm7_ram_address = None
+    if section_name == 'arm7':
+        if address >= WRAM_ADDRESS:
+            # Shift ARM 7 WRAM to its ROM location.
+            wram_address = address
+            address -= WRAM_OFFSET
+        if address >= ARM7_RAM_START and address < ARM7_RAM_END:
+            # Shift ARM 7 RAM to its ROM location.
+            arm7_ram_address = address
+            address -= ARM7_RAM_OFFSET
 
     path_prefix = os.path.join(pmdsky_debug_location, SYMBOLS_FOLDER)
     if base_symbol_name in symbol_file_paths[section_name]:
@@ -216,6 +222,11 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
             symbol_entry_language_addresses[language_key + '-WRAM'] = HexCapsInt(wram_address)
             if reorder_languages:
                 symbol_entry_language_addresses.move_to_end('NA-WRAM')
+
+        if arm7_ram_address is not None:
+            symbol_entry_language_addresses[language_key + '-RAM'] = HexCapsInt(arm7_ram_address)
+            if reorder_languages:
+                symbol_entry_language_addresses.move_to_end('NA-RAM')
 
     if symbol_preexisting:
         print(f'Updating address of {base_symbol_name} (region {language_key}) in {symbol_path}')
