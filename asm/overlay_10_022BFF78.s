@@ -352,8 +352,8 @@ _022C03BC:
 _022C03F0: .word ov10_022DC1C4
 	arm_func_end ov10_022C039C
 
-	arm_func_start ov10_022C03F4
-ov10_022C03F4: ; 0x022C03F4
+	arm_func_start LoadEffectWanTableEntry
+LoadEffectWanTableEntry: ; 0x022C03F4
 	stmdb sp!, {r3, lr}
 	cmp r0, #5
 	addls pc, pc, r0, lsl #2
@@ -381,7 +381,7 @@ _022C042C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022C044C: .word WAN_TABLE
-	arm_func_end ov10_022C03F4
+	arm_func_end LoadEffectWanTableEntry
 
 	arm_func_start ov10_022C0450
 ov10_022C0450: ; 0x022C0450

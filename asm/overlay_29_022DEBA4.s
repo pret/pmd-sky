@@ -443,7 +443,7 @@ _022DF0AC:
 	bl ov29_022E8104
 	bl ov29_022E7F7C
 	bl ov29_022E1304
-	bl ov29_022E6E40
+	bl FreeAllMonsterMoveEffects
 	bl ov29_022FE4A8
 	bl ov29_023480FC
 	mov r0, #2
@@ -841,7 +841,7 @@ _022DF778:
 	bl ov29_022FA524
 _022DF780:
 	mov r0, #1
-	bl ov29_022E3A58
+	bl UpdateStatusIconFlagsAllMonsters
 	cmp r5, #0
 	bne _022DF798
 	bl ov29_022EF8A4

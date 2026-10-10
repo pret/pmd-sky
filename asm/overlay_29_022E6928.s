@@ -101,7 +101,7 @@ _022E6A60:
 	b _022E6BDC
 _022E6A74:
 	add r0, sp, #0xc
-	bl ov10_022BF274
+	bl InitEffectDisplayInfo
 	ldr r0, _022E6BF8 ; =ov29_0235354C
 	ldr r2, _022E6C00 ; =ov29_02351464
 	ldr r7, [r0, #4]
@@ -172,7 +172,7 @@ _022E6B78:
 	bne _022E6B78
 	add r0, sp, #0xc
 	mov r1, #0
-	bl ov10_022BF2B4
+	bl InitAndPlayEffectSetWanOffset
 	ldr r1, _022E6BF8 ; =ov29_0235354C
 	add r5, r5, #1
 	ldr r2, [r1, #4]
@@ -313,8 +313,8 @@ _022E6D34:
 _022E6D64: .word ov29_0235354C
 	arm_func_end ov29_022E6CE0
 
-	arm_func_start ov29_022E6D68
-ov29_022E6D68: ; 0x022E6D68
+	arm_func_start InitMonsterMoveEffect
+InitMonsterMoveEffect: ; 0x022E6D68
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _022E6DCC ; =DUNGEON_PTR
 	mov r4, #0
@@ -334,7 +334,7 @@ _022E6D88:
 	ldr r0, [r5]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov10_022BEFD8
+	bl GetLiveEffectWanOffset
 	strb r0, [r5, #8]
 	ldmia sp!, {r3, r4, r5, pc}
 _022E6DBC:
@@ -345,10 +345,10 @@ _022E6DC0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022E6DCC: .word DUNGEON_PTR
-	arm_func_end ov29_022E6D68
+	arm_func_end InitMonsterMoveEffect
 
-	arm_func_start ov29_022E6DD0
-ov29_022E6DD0: ; 0x022E6DD0
+	arm_func_start FreeMonsterMoveEffects
+FreeMonsterMoveEffects: ; 0x022E6DD0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sb, #0
 	ldr r4, _022E6E3C ; =DUNGEON_PTR
@@ -380,10 +380,10 @@ _022E6E2C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _022E6E3C: .word DUNGEON_PTR
-	arm_func_end ov29_022E6DD0
+	arm_func_end FreeMonsterMoveEffects
 
-	arm_func_start ov29_022E6E40
-ov29_022E6E40: ; 0x022E6E40
+	arm_func_start FreeAllMonsterMoveEffects
+FreeAllMonsterMoveEffects: ; 0x022E6E40
 	mov ip, #0
 	ldr r1, _022E6E7C ; =DUNGEON_PTR
 	mvn r3, #0
@@ -402,10 +402,10 @@ _022E6E50:
 	bx lr
 	.align 2, 0
 _022E6E7C: .word DUNGEON_PTR
-	arm_func_end ov29_022E6E40
+	arm_func_end FreeAllMonsterMoveEffects
 
-	arm_func_start ov29_022E6E80
-ov29_022E6E80: ; 0x022E6E80
+	arm_func_start UpdateLiveEffectsFromMonsterMoveEffects
+UpdateLiveEffectsFromMonsterMoveEffects: ; 0x022E6E80
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1c
 	ldr r2, _022E6F8C ; =ov29_0235118C
@@ -479,7 +479,7 @@ _022E6F78:
 	.align 2, 0
 _022E6F8C: .word ov29_0235118C
 _022E6F90: .word DUNGEON_PTR
-	arm_func_end ov29_022E6E80
+	arm_func_end UpdateLiveEffectsFromMonsterMoveEffects
 
 	arm_func_start ov29_022E6F94
 ov29_022E6F94: ; 0x022E6F94

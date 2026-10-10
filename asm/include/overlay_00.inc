@@ -90,6 +90,8 @@
 .public GetFadeStatus
 .public GetLanguage
 .public GetProcessorMode
+.public GraphicsEngine_ApplyState
+.public GraphicsEngine_SetState
 .public GroupOamAttributesBothScreens
 .public GsiMemoryCallbacksSet
 .public HandleFadesVeneer
@@ -337,17 +339,12 @@
 .public sub_020024C0
 .public sub_02002878
 .public sub_0200383C
-.public Sys_IsMailboxPending
 .public sub_020038E8
-.public Task_AbortSync
 .public sub_020039E4
-.public Sys_WaitForVBlank
 .public sub_02006E14
-.public GraphicsEngine_SetState
 .public sub_02008F3C
 .public sub_02008F64
 .public sub_02008F84
-.public GraphicsEngine_ApplyState
 .public sub_0200B894
 .public sub_0200B8B8
 .public sub_0200B8D4
@@ -386,5 +383,8 @@
 .public sub_0205B77C
 .public sub_0205B80C
 .public sub_02079990
+.public Sys_IsMailboxPending
+.public Sys_WaitForVBlank
+.public Task_AbortSync
 .public UnloadOverlay
 .public WaitForever2

@@ -1,6 +1,8 @@
 #pragma once
 .public G3X_Reset
 .public GetFadeStatus
+.public GraphicsEngine_ApplyState
+.public GraphicsEngine_SetState
 .public GroupOamAttributesBothScreens
 .public HandleFadesVeneer
 .public HandleMenus
@@ -17,18 +19,13 @@
 .public OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 .public sub_02002878
 .public sub_0200383C
-.public Sys_IsMailboxPending
 .public sub_020038E8
-.public Task_AbortSync
 .public sub_020039E4
-.public Sys_WaitForVBlank
 .public sub_02006E14
-.public GraphicsEngine_SetState
 .public sub_02008F3C
 .public sub_02008F4C
 .public sub_02008F64
 .public sub_02008F84
-.public GraphicsEngine_ApplyState
 .public sub_0200B894
 .public sub_0200B8B8
 .public sub_0200B8D4
@@ -60,3 +57,6 @@
 .public sub_02051B44
 .public sub_02051C24
 .public sub_02052060
+.public Sys_IsMailboxPending
+.public Sys_WaitForVBlank
+.public Task_AbortSync

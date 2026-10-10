@@ -46,7 +46,7 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MONEY_QUANTITY_TABLE
 .public MonsterHasEmbargoStatus
-.public ov10_022C4CD8
+.public NATURE_GIFTER_RESTRICTED_ITEMS
 .public ov29_022EBB8C
 .public ov29_022EBB98
 .public ov29_022FB920

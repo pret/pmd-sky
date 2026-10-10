@@ -2,8 +2,8 @@
 .public AbilityIsActiveVeneer
 .public AnimationDelayOrSomething
 .public BoostSpeedOneStage
-.public DUNGEON_PTR
 .public DetermineMonsterShadow
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public FemaleToMaleForm
 .public FreezeAnim
@@ -11,9 +11,6 @@
 .public GetIdleAnimationId
 .public IsShaymin
 .public IsSkyExclusiveDungeon
-.public SetMonsterTypeAndAbility
-.public SwapMonsterWanFileIndex
-.public UnfreezeAnim
 .public ov10_022C457C
 .public ov29_022E3590
 .public ov29_022E60E4
@@ -21,5 +18,8 @@
 .public ov29_022E9FD0
 .public ov29_022EA370
 .public ov29_02304830
+.public SetMonsterTypeAndAbility
 .public sub_020017EC
 .public sub_0201CF80
+.public SwapMonsterWanFileIndex
+.public UnfreezeAnim

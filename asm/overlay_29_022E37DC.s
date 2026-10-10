@@ -32,7 +32,7 @@ PlayEffectAnimationPixelPos: ; 0x022E3820
 	add r0, sp, #0
 	mov r6, r1
 	mov r4, r2
-	bl ov10_022BF274
+	bl InitEffectDisplayInfo
 	mov ip, #0
 	sub r3, ip, #1
 	str r6, [sp]
@@ -53,7 +53,7 @@ PlayEffectAnimationPixelPos: ; 0x022E3820
 	bl InitOamAdjustmentInfo
 	add r0, sp, #0
 	mov r1, #0
-	bl ov10_022BF2B4
+	bl InitAndPlayEffectSetWanOffset
 	cmp r4, #0
 	beq _022E38D4
 	mov r0, r0, lsl #0x10
@@ -184,7 +184,7 @@ _022E3A0C:
 	mov r1, #0
 	strb r1, [r0]
 _022E3A30:
-	bl ov29_022E6E40
+	bl FreeAllMonsterMoveEffects
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022E3A38: .word DUNGEON_PTR
@@ -206,8 +206,8 @@ CopyStatusIconFlags: ; 0x022E3A40
 	bx lr
 	arm_func_end CopyStatusIconFlags
 
-	arm_func_start ov29_022E3A58
-ov29_022E3A58: ; 0x022E3A58
+	arm_func_start UpdateStatusIconFlagsAllMonsters
+UpdateStatusIconFlagsAllMonsters: ; 0x022E3A58
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r6, _022E3AB0 ; =DUNGEON_PTR
 	mov r5, r0
@@ -242,4 +242,4 @@ _022E3AA0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022E3AB0: .word DUNGEON_PTR
-	arm_func_end ov29_022E3A58
+	arm_func_end UpdateStatusIconFlagsAllMonsters

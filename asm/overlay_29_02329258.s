@@ -64,7 +64,7 @@ DoMoveSeismicToss: ; 0x02329258
 	mov r2, #0
 	bl StartFadeDungeonWrapper
 	mov r0, #1
-	bl ov29_022ECAFC
+	bl ShakeScreen
 	mov r0, #0
 	bl WaitUntilFadeIsFinished
 _02329350:

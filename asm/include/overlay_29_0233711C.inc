@@ -1,11 +1,11 @@
 #pragma once
-.public CanSeePosition
 .public CannotStandOnTileNoMonsterCheck
-.public DIRECTIONS_XY
-.public DUNGEON_PTR
+.public CanSeePosition
 .public DetermineMonsterShadow
 .public DetermineTileWalkableNeighbors
+.public DIRECTIONS_XY
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public EntityIsValid__02337CA8
 .public GetGridsOption
 .public GetLeader
@@ -13,7 +13,6 @@
 .public GetTileSafe
 .public GetVisibilityRange
 .public IsSecretBazaar
-.public UpdateTrapsVisibility
 .public ov29_022E66C4
 .public ov29_02336694
 .public ov29_02336DB0
@@ -21,3 +20,4 @@
 .public ov29_02352D58
 .public sub_02051D8C
 .public sub_02051E60
+.public UpdateTrapsVisibility

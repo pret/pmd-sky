@@ -17,13 +17,13 @@
 .public IncrementEntityPixelPosXY
 .public InitMove
 .public IsFloorOver
+.public IsPositionVisibleAndOnScreen
 .public ItemZInit
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerDefensiveStat
 .public LowerOffensiveStat
 .public MoveMonsterToPos
 .public ov10_022C44B4
-.public ov29_022E2CA0
 .public ov29_022FFB90
 .public ov29_02321164
 .public ov29_02321260

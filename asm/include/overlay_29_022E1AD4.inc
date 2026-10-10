@@ -9,11 +9,11 @@
 .public HasDropeyeStatus
 .public HiddenStairsPresent
 .public IsPositionActuallyInSight
+.public IsPositionVisibleAndOnScreen
 .public ov29_022DE954
 .public ov29_022DE9F8
 .public ov29_022DEA10
 .public ov29_022DEA1C
-.public ov29_022E2CA0
 .public ov29_022E2D3C
 .public ov29_02304830
 .public ov29_0237C754

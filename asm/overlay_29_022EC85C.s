@@ -241,8 +241,8 @@ _022ECAF4: .word 0x00000C04
 _022ECAF8: .word ov29_02352380
 	arm_func_end ov29_022EC9A4
 
-	arm_func_start ov29_022ECAFC
-ov29_022ECAFC: ; 0x022ECAFC
+	arm_func_start ShakeScreen
+ShakeScreen: ; 0x022ECAFC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	mov r4, r0
@@ -258,7 +258,7 @@ ov29_022ECAFC: ; 0x022ECAFC
 	bl ov29_022EC8A8
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022ECAFC
+	arm_func_end ShakeScreen
 
 	arm_func_start ov29_022ECB38
 ov29_022ECB38: ; 0x022ECB38

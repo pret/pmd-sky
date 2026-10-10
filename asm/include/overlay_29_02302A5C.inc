@@ -51,7 +51,6 @@
 .public ov29_022E273C
 .public ov29_022E3570
 .public ov29_022E6724
-.public ov29_022E6E80
 .public ov29_022EA370
 .public ov29_022EAC9C
 .public ov29_022EBCE8
@@ -96,4 +95,5 @@
 .public SwitchAnimationControlToNextFrame
 .public TryPointCameraToMonster
 .public UpdateIqSkillsWrapper
+.public UpdateLiveEffectsFromMonsterMoveEffects
 .public Weather3DEffectActive

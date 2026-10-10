@@ -1,4 +1,5 @@
 #pragma once
+.public abs
 .public CreateHallway
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -10,4 +11,3 @@
 .public IsDestinationFloorWithMonster
 .public IsOutlawMonsterHouseFloor
 .public PosIsOutOfBounds
-.public abs

@@ -23,7 +23,7 @@
 extern s32 GetEffectAnimationWanOffset(s32 id);
 extern struct dungeon *DUNGEON_PTR[];
 
-extern bool8 ov29_022E2CA0(struct position *pos);
+extern bool8 IsPositionVisibleAndOnScreen(struct position *pos);
 extern void ChangeMonsterAnimation(struct entity *entity, s32 animation_id, s32 direction);
 extern bool8 AnimationHasMoreFrames(s16 param_1);
 extern void FillPixelOffsetArrayFromSprite(struct position *offsets, u8 count,
@@ -38,8 +38,8 @@ extern s32 ov10_022BDC68(void);
 extern s32 ov10_022BEC08(s32 trap_id, struct position *pos);
 extern s32 ov10_022BEC94(s32 item_id, struct position *pos, struct position *offsets,
                          s32 param_4, s32 param_5);
-extern void ov10_022BF274(struct unk_022BF274 *params);
-extern s32 ov10_022BF2B4(struct unk_022BF274 *params, s32 param_2);
+extern void InitEffectDisplayInfo(struct unk_022BF274 *params);
+extern s32 InitAndPlayEffectSetWanOffset(struct unk_022BF274 *params, s32 param_2);
 extern void ov10_022BF45C(s16 handle, struct position *pos, struct position *param_3,
                           s32 param_4, s32 param_5);
 
@@ -77,7 +77,7 @@ void PlaySeByIdIfShouldDisplayEntity(struct entity *entity, s32 se_id)
 
 void ov29_022E56D4(struct position *pos, s32 se_id)
 {
-    if (!ov29_022E2CA0(pos))
+    if (!IsPositionVisibleAndOnScreen(pos))
         return;
     PlaySeByIdIfNotSilence(se_id);
 }
@@ -143,7 +143,7 @@ void ov29_022E58B0(struct entity *entity, struct position *pos, s32 trap_id)
 
     if (trap_id == 0x11)
         return;
-    if (!ov29_022E2CA0(pos))
+    if (!IsPositionVisibleAndOnScreen(pos))
         return;
 
     p.x = (pos->x * 24 + 12) << 8 >> 8;
@@ -253,7 +253,7 @@ s32 ov29_022E5BD8(struct entity *entity)
         pos.y = (s32)entity->pixel_pos.y >> 8;
         dy = (pos.y - DUNGEON_PTR[0]->display_data.camera_pixel_pos.y) / 2;
 
-        ov10_022BF274(&params);
+        InitEffectDisplayInfo(&params);
         params.field_0x0 = 0x165;
         params.field_0x4 = 0;
         params.field_0x8 = direction;
@@ -264,7 +264,7 @@ s32 ov29_022E5BD8(struct entity *entity)
         params.field_0x14 = -1;
         params.field_0x18 = dy;
         InitOamAdjustmentInfo(&params.field_0x1c);
-        handle = ov10_022BF2B4(&params, 0);
+        handle = InitAndPlayEffectSetWanOffset(&params, 0);
 
         dir = DIRECTIONS_XY[direction];
         for (i = 0; i < 6; i++) {

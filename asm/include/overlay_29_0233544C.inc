@@ -1,4 +1,6 @@
 #pragma once
+.public _020AFC70
+.public _s32_div_f
 .public CalcStatusDuration
 .public CeilFixedPoint
 .public DUNGEON_FRAMES_PASSED
@@ -13,13 +15,6 @@
 .public LoadWteFromFileDirectory
 .public LoadWtuFromBin
 .public LogMessageByIdWithPopupCheckUser
-.public ProcessWte
-.public SPORT_CONDITION_TURN_RANGE
-.public SetBothScreensWindowColorToDefault
-.public SetScreenWindowsColor
-.public TickStatusTurnCounter
-.public _020AFC70
-.public _s32_div_f
 .public ov29_022E9A6C
 .public ov29_02334E70
 .public ov29_02352B4C
@@ -28,6 +23,11 @@
 .public ov29_0237CA8C
 .public ov29_0237CA90
 .public ov29_0237CA96
+.public ProcessWte
+.public SetBothScreensWindowColorToDefault
+.public SetScreenWindowsColor
+.public SPORT_CONDITION_TURN_RANGE
 .public sub_0201E020
 .public sub_0201E080
 .public sub_0201F2A0
+.public TickStatusTurnCounter

@@ -25,6 +25,7 @@
 .public FillMissionDestinationInfo
 .public FIXED_ROOM_REVISIT_OVERRIDES
 .public FreeAlertBoxInfo
+.public FreeAllMonsterMoveEffects
 .public FreeLoadedAttackSpriteAndMore
 .public FreeTopScreenStatus
 .public GenerateDungeonRngSeed
@@ -97,9 +98,7 @@
 .public ov29_022E2B68
 .public ov29_022E2DFC
 .public ov29_022E34B0
-.public ov29_022E3A58
 .public ov29_022E5F20
-.public ov29_022E6E40
 .public ov29_022E6F94
 .public ov29_022E7CFC
 .public ov29_022E7F7C
@@ -255,6 +254,7 @@
 .public UpdateMinimap
 .public UpdateShouldBoostHiddenStairsSpawnChance
 .public UpdateShouldBoostKecleonShopSpawnChance
+.public UpdateStatusIconFlagsAllMonsters
 .public UpdateTrapsVisibility
 .public WaitUntilAlertBoxPauseIsOver
 .public WaitUntilAlertBoxTextIsLoaded

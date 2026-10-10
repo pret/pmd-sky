@@ -25,6 +25,7 @@
 .public GetHero
 .public GetIdleAnimationId
 .public GetItemCategoryVeneer
+.public GetItemHolderTeamIndex
 .public GetItemIndex
 .public GetItemInfo
 .public GetItemToUse
@@ -42,6 +43,7 @@
 .public HiddenStairsTrigger
 .public IqSkillIsEnabled
 .public IsFloorOver
+.public IsPositionVisibleAndOnScreen
 .public IsValidTargetEntity
 .public ItemZInit
 .public LEADER_PTR
@@ -52,7 +54,6 @@
 .public ov29_022E0C64
 .public ov29_022E0C80
 .public ov29_022E0C9C
-.public ov29_022E2CA0
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EB568
@@ -66,7 +67,6 @@
 .public ov29_02300FCC
 .public ov29_02321164
 .public ov29_02337D68
-.public ov29_02346FB8
 .public ov29_02348D3C
 .public ov29_02348ECC
 .public ov29_023491B8

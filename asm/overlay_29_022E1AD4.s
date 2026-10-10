@@ -993,7 +993,7 @@ _022E2654:
 	movne r0, #1
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	add r0, r0, #4
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	bne _022E2714
 	mov r0, #0
@@ -1024,7 +1024,7 @@ _022E267C:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022E26DC:
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	bne _022E2714
 	mov r0, #0

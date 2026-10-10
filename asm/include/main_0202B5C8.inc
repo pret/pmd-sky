@@ -5,7 +5,6 @@
 .public GetSelectedMenuItemIdx
 .public IsMenuOptionActive
 .public PlayWindowInputSound
-.public UpdateWindow
 .public sub_020263C8
 .public sub_02027B1C
 .public sub_0202810C
@@ -21,3 +20,4 @@
 .public sub_0203250C
 .public sub_02032684
 .public sub_02033758
+.public UpdateWindow

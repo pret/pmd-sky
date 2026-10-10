@@ -104,7 +104,7 @@ _02323A6C:
 	strh r3, [sp, #0x32]
 	strh r2, [sp, #0x34]
 	strh r1, [sp, #0x36]
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	beq _02323BB0
 	ldr r0, _02323C3C ; =DUNGEON_PTR

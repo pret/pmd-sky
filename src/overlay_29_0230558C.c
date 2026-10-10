@@ -35,8 +35,8 @@ extern void ov29_02337D68(struct position *pos);
 extern struct trap *GetTrapInfo(struct entity *entity);
 extern void TryTriggerTrap(struct entity *entity, struct position *pos, s32 a, s32 b);
 extern void TryTriggerMonsterHouse(struct entity *entity, bool8 a);
-extern void ov29_022E3A58(bool8 a);
-extern bool8 ov29_022E2CA0(struct position *pos);
+extern void UpdateStatusIconFlagsAllMonsters(bool8 a);
+extern bool8 IsPositionVisibleAndOnScreen(struct position *pos);
 extern void ov29_022EA370(s32 a, s32 b);
 extern void EndSleepClassStatus(struct entity *user, struct entity *target, bool8 a, bool8 b, bool8 c);
 extern void EndFrozenClassStatus(struct entity *user, struct entity *target, bool8 log);
@@ -169,8 +169,8 @@ void ov29_02305814(struct entity *entity, bool8 a)
     LogMessageByIdWithPopupCheckUser(GetLeader(), 0xC82 + JPN_MSG_OFFSET);
     DUNGEON_PTR[0]->monster_house_triggered_event = TRUE;
     TryTriggerMonsterHouse(entity, a);
-    ov29_022E3A58(FALSE);
-    if (ov29_022E2CA0(&entity->pos))
+    UpdateStatusIconFlagsAllMonsters(FALSE);
+    if (IsPositionVisibleAndOnScreen(&entity->pos))
         ov29_022EA370(0x78, 0x39);
 }
 

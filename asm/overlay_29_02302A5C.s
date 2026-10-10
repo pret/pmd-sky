@@ -1899,7 +1899,7 @@ _02304310:
 	bl ov29_022DD7D8
 	mov r0, r7
 	mov r1, sl
-	bl ov29_022E6E80
+	bl UpdateLiveEffectsFromMonsterMoveEffects
 	mov r0, r7
 	bl AnimateFlyingMoves
 	cmp r4, #0

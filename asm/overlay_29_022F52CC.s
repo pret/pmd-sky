@@ -101,7 +101,7 @@ _022F5334:
 	cmp r0, #0
 	beq _022F5498
 	ldrsh r0, [sp, #0xc]
-	bl ov29_02347000
+	bl IsNatureGifterRestrictedItem
 	cmp r0, #0
 	beq _022F5498
 	mov r7, #0
@@ -278,7 +278,7 @@ _022F566C:
 	cmp r0, #0x80
 	beq _022F56F4
 	mov r0, r4
-	bl ov29_02346FB8
+	bl GetItemHolderTeamIndex
 	cmp r0, #0
 	blt _022F5698
 	mov r0, r4
@@ -301,7 +301,7 @@ _022F56A8:
 	b _022F56F4
 _022F56D0:
 	mov r0, r4
-	bl ov29_02346FB8
+	bl GetItemHolderTeamIndex
 	cmp r0, #0
 	blt _022F56E8
 	mov r0, r4

@@ -8,10 +8,8 @@
 .public LoadFileFromRom
 .public MarkPaletteDataAsNeedingUpdate
 .public MemAlloc
-.public MemFree
 .public Memcpy16
-.public PointsToZero
-.public UnloadFile
+.public MemFree
 .public ov11_022EC08C
 .public ov11_022EE620
 .public ov11_02320BF0
@@ -19,6 +17,7 @@
 .public ov11_02320C28
 .public ov11_02320C80
 .public ov11_02324CBC
+.public PointsToZero
 .public sprintf
 .public sub_02015328
 .public sub_02016300
@@ -26,3 +25,4 @@
 .public sub_020163E4
 .public sub_0201641C
 .public sub_02016468
+.public UnloadFile

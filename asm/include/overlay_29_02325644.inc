@@ -7,14 +7,14 @@
 .public GetMoveAnimation
 .public GetPixelOffsetFromSprite
 .public GetTileAtEntity
+.public InitMonsterMoveEffect
 .public IsChargingTwoTurnMove
 .public IsMonsterSleeping
+.public IsPositionVisibleAndOnScreen
 .public IsTileGround
 .public ov10_022BED90
 .public ov10_022BF160
 .public ov10_022BFC5C
-.public ov29_022E2CA0
-.public ov29_022E6D68
 .public ov29_02352AD8
 .public ShouldDisplayEntityAdvanced
 .public UnkMapRelatedFunc

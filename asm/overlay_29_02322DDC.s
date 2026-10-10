@@ -474,7 +474,7 @@ _023233FC:
 	strh r0, [sp, #0xba]
 _0232347C:
 	add r0, sp, #0xbc
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	beq _02323740
 	ldr r0, _0232390C ; =DUNGEON_PTR
@@ -771,7 +771,7 @@ _023238B4:
 	cmp r6, #1
 	bne _023238EC
 	add r0, sp, #0xbc
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	beq _023238EC
 	mov r0, #1

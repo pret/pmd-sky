@@ -27,6 +27,8 @@
 .public GroundBg_FreeAll
 .public GroundBg_Init
 .public InitAnimationControlWithSet__0201C0B0
+.public InitEffectDisplayInfo
+.public InitEffectSetWanOffset
 .public InitOamAdjustmentInfo
 .public InitPartnerFollowData
 .public InitRender3dElement64
@@ -49,8 +51,6 @@
 .public ov10_022BDB80
 .public ov10_022BDC0C
 .public ov10_022BF00C
-.public ov10_022BF274
-.public ov10_022BF2E4
 .public ov10_022BF35C
 .public ov10_022BF394
 .public ov10_022BF3EC

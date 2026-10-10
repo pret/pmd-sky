@@ -7,7 +7,7 @@ from ruamel.yaml.comments import CommentedMap
 from ruamel.yaml.scalarint import HexCapsInt, HexInt
 
 from pmdsky_debug_reader import LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG, SYMBOLS_FOLDER, get_pmdsky_debug_location, read_pmdsky_debug_symbols
-from symbol_details import ITCM_RAM_START_ADDRESSES, NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_OFFSET, SymbolDetails
+from symbol_details import ARM7_RAM_END, ARM7_RAM_START, ITCM_RAM_START_ADDRESSES, NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_ADDRESS, WRAM_OFFSET, ARM7_RAM_OFFSET, SymbolDetails
 from xmap_reader import HEADER_FOLDER, read_xmap_symbols
 from yaml_writer import YamlManager, yaml
 
@@ -34,7 +34,7 @@ def read_symbol_array(symbol_path: str, symbol_type_key: str, yaml_manager: Yaml
     symbols_yaml: Dict[str, Any] = symbols_yaml_outer[list(symbols_yaml_outer.keys())[0]]
     return symbols_yaml[symbol_type_key]
 
-def find_symbol_in_header(symbol_name: str, is_data: bool, header_contents: List[str]) -> int:
+def find_symbol_in_header(symbol_name: str, is_data: bool, header_contents: List[str]) -> int | None:
     for i, line in enumerate(header_contents):
         if is_data and re.search(fr' {symbol_name}[\[;]', line) or not is_data and f' {symbol_name}(' in line:
             return i
@@ -63,11 +63,20 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
 
     base_symbol_name = get_base_symbol_name(symbol.name)
 
+    if base_symbol_name == 'InitWfcSettingsOverlay':
+        pass
+
     wram_address = None
-    if section_name == 'arm7' and address >= 0x37F8000:
-        # Shift ARM 7 WRAM to its ROM location.
-        wram_address = address
-        address -= WRAM_OFFSET
+    arm7_ram_address = None
+    if section_name == 'arm7':
+        if address >= WRAM_ADDRESS:
+            # Shift ARM 7 WRAM to its ROM location.
+            wram_address = address
+            address -= WRAM_OFFSET
+        if address >= ARM7_RAM_START and address < ARM7_RAM_END:
+            # Shift ARM 7 RAM to its ROM location.
+            arm7_ram_address = address
+            address -= ARM7_RAM_OFFSET
 
     path_prefix = os.path.join(pmdsky_debug_location, SYMBOLS_FOLDER)
     if base_symbol_name in symbol_file_paths[section_name]:
@@ -142,10 +151,11 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
     # Add the symbol to the correspond header file.
     base_symbol_path = base_symbol_path.replace('.yml', '.h')
     header_path = symbol_path.replace(SYMBOLS_FOLDER, os.path.join('headers', symbol_type_key)).replace('.yml', '.h')
-    if not os.path.exists(header_path):
-        return
-    with open(header_path, 'r') as header_file:
-        header_contents = header_file.readlines()
+    if os.path.exists(header_path):
+        with open(header_path, 'r') as header_file:
+            header_contents = header_file.readlines()
+    else:
+        header_contents = ''
 
     # Find the existing symbol and replace its address, or make a new one if it isn't there.
     symbol_preexisting = False
@@ -217,6 +227,11 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
             if reorder_languages:
                 symbol_entry_language_addresses.move_to_end('NA-WRAM')
 
+        if arm7_ram_address is not None:
+            symbol_entry_language_addresses[language_key + '-RAM'] = HexCapsInt(arm7_ram_address)
+            if reorder_languages:
+                symbol_entry_language_addresses.move_to_end('NA-RAM')
+
     if symbol_preexisting:
         print(f'Updating address of {base_symbol_name} (region {language_key}) in {symbol_path}')
     else:
@@ -256,42 +271,43 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
                             symbol_length += 4 - symbol_length % 4
                     break
 
-    # Write the new symbol within the header file.
-    symbol_header_path = os.path.join(HEADER_FOLDER, symbol.file_path.replace('.o', '.h'))
-    if not os.path.exists(symbol_header_path):
-        symbol_header_path = os.path.join('lib', 'DSE', symbol_header_path)
-    symbol_header = None
-    if symbol.is_data:
-        if string_length is not None:
-            symbol_header = f'extern char {base_symbol_name}[{string_length}];\n'
+    if os.path.exists(header_path):
+        # Write the new symbol within the header file.
+        symbol_header_path = os.path.join(HEADER_FOLDER, symbol.file_path.replace('.o', '.h'))
+        if not os.path.exists(symbol_header_path):
+            symbol_header_path = os.path.join('lib', 'DSE', symbol_header_path)
+        symbol_header = None
+        if symbol.is_data:
+            if string_length is not None:
+                symbol_header = f'extern char {base_symbol_name}[{string_length}];\n'
+            else:
+                symbol_header = f'extern undefined {base_symbol_name};\n'
+        elif os.path.exists(symbol_header_path):
+            with open(symbol_header_path, 'r') as symbol_header_file:
+                symbol_header_contents = symbol_header_file.readlines()
+            for line in symbol_header_contents:
+                if f' {base_symbol_name}(' in line:
+                    symbol_header = line
+                    break
+            # Match the typedefs used in pmdsky-debug.
+            if symbol_header is not None:
+                symbol_header = symbol_header.replace('u32', 'uint32_t')
+                symbol_header = symbol_header.replace('u16', 'uint16_t')
+                symbol_header = symbol_header.replace('u8', 'uint8_t')
+                symbol_header = symbol_header.replace('s32', 'int')
+                symbol_header = symbol_header.replace('s16', 'int16_t')
+                symbol_header = symbol_header.replace('s8', 'int8_t')
+                symbol_header = symbol_header.replace('bool8', 'bool')
+                symbol_header = symbol_header.replace(' *', '* ')
         else:
-            symbol_header = f'extern undefined {base_symbol_name};\n'
-    elif os.path.exists(symbol_header_path):
-        with open(symbol_header_path, 'r') as symbol_header_file:
-            symbol_header_contents = symbol_header_file.readlines()
-        for line in symbol_header_contents:
-            if f' {base_symbol_name}(' in line:
-                symbol_header = line
-                break
-        # Match the typedefs used in pmdsky-debug.
-        if symbol_header is not None:
-            symbol_header = symbol_header.replace('u32', 'uint32_t')
-            symbol_header = symbol_header.replace('u16', 'uint16_t')
-            symbol_header = symbol_header.replace('u8', 'uint8_t')
-            symbol_header = symbol_header.replace('s32', 'int')
-            symbol_header = symbol_header.replace('s16', 'int16_t')
-            symbol_header = symbol_header.replace('s8', 'int8_t')
-            symbol_header = symbol_header.replace('bool8', 'bool')
-            symbol_header = symbol_header.replace(' *', '* ')
-    else:
-        symbol_header = f'void {base_symbol_name}(void);\n'
+            symbol_header = f'void {base_symbol_name}(void);\n'
 
-    header_contents[target_header_line] += symbol_header
+        header_contents[target_header_line] += symbol_header
 
-    print(f'Adding {base_symbol_name} to {header_path}')
+        print(f'Adding {base_symbol_name} to {header_path}')
 
-    with open(header_path, 'w') as header_file:
-        header_file.writelines(header_contents)
+        with open(header_path, 'w') as header_file:
+            header_file.writelines(header_contents)
 
 # Extract all pmdsky-debug file paths for symbols between all languages.
 symbol_file_paths: Dict[str, Dict[str, str]] = defaultdict(dict)

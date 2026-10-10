@@ -393,11 +393,11 @@ _0232A9B8:
 	bl _s32_div_f
 	mov r4, r0
 	add r0, sb, #4
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	bne _0232AA20
 	add r0, sp, #0x24
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	beq _0232AA4C
 _0232AA20:
@@ -490,11 +490,11 @@ _0232AB5C:
 	moveq r0, #1
 	beq _0232AC30
 	add r0, sb, #4
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	bne _0232AB90
 	add r0, sp, #0x24
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	beq _0232ABDC
 _0232AB90:

@@ -21,13 +21,13 @@
 .public GetTile
 .public IqSkillIsEnabled
 .public IsChargingTwoTurnMove
+.public IsPositionVisibleAndOnScreen
 .public LogMessageQuiet
 .public LogMessageWithPopup
 .public ov10_022BE9E8
 .public ov10_022BEB2C
 .public ov10_022BF01C
 .public ov10_022BFDAC
-.public ov29_022E2CA0
 .public ov29_022EA370
 .public ov29_023024E0
 .public ov29_023243B4

@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public DungeonRandInt
 .public DungeonRandRange
 .public FLOOR_GENERATION_STATUS
@@ -6,4 +7,3 @@
 .public GetTileSafe
 .public IsNextToHallway
 .public SetSpawnFlag5
-.public _s32_div_f

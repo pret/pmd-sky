@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public AssignGridCellConnections
 .public AssignRooms
 .public CreateGridCellConnections
@@ -7,8 +8,8 @@
 .public DungeonRandInt
 .public DungeonRandRange
 .public EnsureConnectedGrid
-.public FLOOR_GENERATION_STATUS
 .public FinalizeJunctions
+.public FLOOR_GENERATION_STATUS
 .public GenerateExtraHallways
 .public GenerateKecleonShop
 .public GenerateMazeRoom
@@ -22,8 +23,7 @@
 .public HIDDEN_STAIRS_SPAWN_BLOCKED
 .public InitDungeonGrid
 .public IsCurrentTilesetBackground
-.public PlaceFixedRoomTile
-.public ResetHiddenStairsSpawn
-.public _s32_div_f
 .public ov29_0234217C
 .public ov29_02342594
+.public PlaceFixedRoomTile
+.public ResetHiddenStairsSpawn
