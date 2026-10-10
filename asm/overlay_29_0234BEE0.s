@@ -245,7 +245,7 @@ _0234C1F4:
 	add r0, r0, #0x1a000
 #endif
 	bl ov10_022BF764
-	bl ov29_022E6DD0
+	bl FreeMonsterMoveEffects
 	b _0234C238
 _0234C230:
 	mov r0, #0

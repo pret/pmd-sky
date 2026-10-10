@@ -13,6 +13,7 @@
 .public FloorNumberIsEven
 .public GetEffectAnimationWanOffset
 .public GetLeader
+.public GetLiveEffectWanOffset
 .public GetMonsterGenderVeneer
 .public GetMonsterIdFromSpawnEntry
 .public GetMonsterLevelFromSpawnEntry
@@ -23,6 +24,8 @@
 .public GetSecondFormIfValid
 .public GetSpriteFileSize
 .public HandleSir0Translation
+.public InitAndPlayEffectSetWanOffset
+.public InitEffectDisplayInfo
 .public IsBossFight
 .public IsCurrentMissionType
 .public IsDestinationFloorWithFixedRoom
@@ -37,9 +40,6 @@
 .public MemFree
 .public NeedsItemToSpawn
 .public ov10_022BDC68
-.public ov10_022BEFD8
-.public ov10_022BF274
-.public ov10_022BF2B4
 .public ov10_022BF45C
 .public ov10_022BFB6C
 .public ov29_02349378

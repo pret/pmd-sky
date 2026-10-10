@@ -564,8 +564,8 @@ _02346FA4:
 _02346FB4: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end AddHeldItemToBag
 
-	arm_func_start ov29_02346FB8
-ov29_02346FB8: ; 0x02346FB8
+	arm_func_start GetItemHolderTeamIndex
+GetItemHolderTeamIndex: ; 0x02346FB8
 	ldr r1, _02346FFC ; =DUNGEON_PTR
 #ifdef JAPAN
 	mov ip, #0
@@ -609,11 +609,11 @@ _02346FEC:
 	bx lr
 	.align 2, 0
 _02346FFC: .word DUNGEON_PTR
-	arm_func_end ov29_02346FB8
+	arm_func_end GetItemHolderTeamIndex
 
-	arm_func_start ov29_02347000
-ov29_02347000: ; 0x02347000
-	ldr r1, _0234702C ; =ov10_022C4CD8
+	arm_func_start IsNatureGifterRestrictedItem
+IsNatureGifterRestrictedItem: ; 0x02347000
+	ldr r1, _0234702C ; =NATURE_GIFTER_RESTRICTED_ITEMS
 	b _02347018
 _02347008:
 	cmp r0, r2
@@ -627,8 +627,8 @@ _02347018:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0234702C: .word ov10_022C4CD8
-	arm_func_end ov29_02347000
+_0234702C: .word NATURE_GIFTER_RESTRICTED_ITEMS
+	arm_func_end IsNatureGifterRestrictedItem
 
 	arm_func_start RemoveEmptyItemsInBagWrapper
 RemoveEmptyItemsInBagWrapper: ; 0x02347030

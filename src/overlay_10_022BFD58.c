@@ -20,7 +20,7 @@ extern struct move_anim_info MOVE_ANIMATION_INFO[];
 
 extern struct anim_1C EFFECT_ANIMATION_INFO[];
 
-extern struct unk_022DC1C0 *ov10_022DC1C0;
+extern struct unk_022DC1C0 *EFFECT_CONTROL_PTR;
 
 extern s32 sub_02001808(void);
 
@@ -49,7 +49,7 @@ bool8 ov10_022BFDCC(s32 move_id)
     return (GetMoveAnimation(move_id)->field_0x8 & 0x40) != 0;
 }
 
-s32 ov10_022BFDEC(s32 a)
+s32 IsBlizzardTailwindOrPowderSnow(s32 a)
 {
     return a == 0x65 || a == 0x10E || a == 0x1BC;
 }
@@ -69,12 +69,12 @@ u16 ov10_022BFE28(s32 a)
     return a + 0x122;
 }
 
-bool8 ov10_022BFE3C(u32 a)
+bool8 IsWanOrWat(u32 a)
 {
     return a - 1 <= 3;
 }
 
-bool8 ov10_022BFE54(u32 a)
+bool8 IsScreenOrWba(u32 a)
 {
     return a - 5 <= 1;
 }
@@ -82,7 +82,7 @@ bool8 ov10_022BFE54(u32 a)
 bool8 ov10_022BFE6C(s32 a)
 {
     if (sub_02001808() < a) {
-        ov10_022DC1C0->field_0x27A0 = TRUE;
+        EFFECT_CONTROL_PTR->field_0x27A0 = TRUE;
 
         return TRUE;
     }

@@ -1,12 +1,12 @@
 #pragma once
+.public _020B09B0
 .public CopyColorToPaletteDataRgba
-.public MTi_CpuClear32
-.public MTi_CpuCopy32
 .public MarkPaletteDataAsNeedingUpdate
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public _020B09B0
+.public MTi_CpuClear32
+.public MTi_CpuCopy32
 .public sub_0200302C
 .public sub_020030FC
 .public sub_0200A124

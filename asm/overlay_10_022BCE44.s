@@ -681,13 +681,13 @@ _022BD740: .word ov10_022DC220
 ; https://decomp.me/scratch/bBFFj
 	arm_func_start ov10_022BD744
 ov10_022BD744: ; 0x022BD744
-	ldr r0, _022BD758 ; =ov10_022DC1C0
+	ldr r0, _022BD758 ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x784]
 	bx lr
 	.align 2, 0
-_022BD758: .word ov10_022DC1C0
+_022BD758: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BD744
 
 	arm_func_start LoadPaletteBase
@@ -754,7 +754,7 @@ _022BD828: .word OBJ_GRAPHICS_CONTROLS_PTR
 ov10_022BD82C: ; 0x022BD82C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
-	ldr r1, _022BDA78 ; =ov10_022DC1C0
+	ldr r1, _022BDA78 ; =EFFECT_CONTROL_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	cmp r0, #0
@@ -764,12 +764,12 @@ _022BD84C:
 	ldr r0, _022BDA7C ; =0x000027A4
 	mov r1, #0xb
 	bl MemAlloc
-	ldr r2, _022BDA78 ; =ov10_022DC1C0
+	ldr r2, _022BDA78 ; =EFFECT_CONTROL_PTR
 	ldr r1, _022BDA7C ; =0x000027A4
 	str r0, [r2]
 	bl MemZero
 	bl sub_0206395C
-	ldr r1, _022BDA78 ; =ov10_022DC1C0
+	ldr r1, _022BDA78 ; =EFFECT_CONTROL_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x2000
@@ -782,7 +782,7 @@ _022BD888:
 	cmp r2, #0x20
 	add r1, r1, #0x13c
 	blt _022BD888
-	ldr r2, _022BDA78 ; =ov10_022DC1C0
+	ldr r2, _022BDA78 ; =EFFECT_CONTROL_PTR
 	ldr r3, [sp, #0x10]
 	ldr r0, [r2]
 	ldr r1, [sp, #0x14]
@@ -804,7 +804,7 @@ _022BD888:
 	strb r3, [r1, #0x7a0]
 	bl ov10_022BFF30
 	bl ov10_022C04D8
-	ldr r0, _022BDA78 ; =ov10_022DC1C0
+	ldr r0, _022BDA78 ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x784]
@@ -838,7 +838,7 @@ _022BD888:
 	mov r2, #0
 	str r2, [sp]
 	str r2, [sp, #4]
-	ldr r1, _022BDA78 ; =ov10_022DC1C0
+	ldr r1, _022BDA78 ; =EFFECT_CONTROL_PTR
 	mov r3, #1
 	ldr r1, [r1]
 	add r1, r1, #0x2000
@@ -850,7 +850,7 @@ _022BD888:
 	mov r1, #1
 	ldrsh r2, [sp, #0x18]
 	bl LoadPaletteBase
-	ldr r1, _022BDA78 ; =ov10_022DC1C0
+	ldr r1, _022BDA78 ; =EFFECT_CONTROL_PTR
 	ldrsh r2, [sp, #0x18]
 	ldr r0, [r1]
 	add r0, r0, #0x2700
@@ -867,7 +867,7 @@ _022BD9D0:
 	mov r1, #3
 	mov r2, #0x124
 	bl LoadWanTableEntryFromPack
-	ldr r1, _022BDA78 ; =ov10_022DC1C0
+	ldr r1, _022BDA78 ; =EFFECT_CONTROL_PTR
 	mov r2, #0
 	ldr r1, [r1]
 	mov r3, r2
@@ -892,7 +892,7 @@ _022BD9D0:
 	ldr r0, [r0]
 	mov r3, r2
 	bl LoadWanTableEntryFromPack
-	ldr r2, _022BDA78 ; =ov10_022DC1C0
+	ldr r2, _022BDA78 ; =EFFECT_CONTROL_PTR
 	mov r3, #0
 	ldr r1, [r2]
 	add r1, r1, #0x2700
@@ -904,7 +904,7 @@ _022BDA70:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022BDA78: .word ov10_022DC1C0
+_022BDA78: .word EFFECT_CONTROL_PTR
 _022BDA7C: .word 0x000027A4
 _022BDA80: .word WAN_TABLE
 	arm_func_end ov10_022BD82C
@@ -943,7 +943,7 @@ ov10_022BDAB0: ; 0x022BDAB0
 ov10_022BDADC: ; 0x022BDADC
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r0, _022BDB50 ; =ov10_022DC1C0
+	ldr r0, _022BDB50 ; =EFFECT_CONTROL_PTR
 	ldr r3, [r0]
 	add r1, r3, #0x2000
 	ldr r0, [r1, #0x784]
@@ -961,7 +961,7 @@ ov10_022BDADC: ; 0x022BDADC
 	mov r1, r1, lsr #0x10
 	mov r3, #1
 	bl sub_0201D9C8
-	ldr r0, _022BDB50 ; =ov10_022DC1C0
+	ldr r0, _022BDB50 ; =EFFECT_CONTROL_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r2, r0, #0x2700
@@ -972,7 +972,7 @@ _022BDB48:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BDB50: .word ov10_022DC1C0
+_022BDB50: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BDADC
 
 	arm_func_start ov10_022BDB54
@@ -999,7 +999,7 @@ _022BDB7C: .word sub_020639B4
 
 	arm_func_start ov10_022BDB80
 ov10_022BDB80: ; 0x022BDB80
-	ldr r3, _022BDBA0 ; =ov10_022DC1C0
+	ldr r3, _022BDBA0 ; =EFFECT_CONTROL_PTR
 	ldr r2, [r3]
 	add r2, r2, #0x2000
 	str r0, [r2, #0x798]
@@ -1008,7 +1008,7 @@ ov10_022BDB80: ; 0x022BDB80
 	strh r1, [r0, #0x9c]
 	bx lr
 	.align 2, 0
-_022BDBA0: .word ov10_022DC1C0
+_022BDBA0: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BDB80
 
 	arm_func_start ov10_022BDBA4
@@ -1021,19 +1021,19 @@ _022BDBAC: .word sub_020639E8
 
 	arm_func_start ov10_022BDBB0
 ov10_022BDBB0: ; 0x022BDBB0
-	ldr r1, _022BDBC4 ; =ov10_022DC1C0
+	ldr r1, _022BDBC4 ; =EFFECT_CONTROL_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x2000
 	strb r0, [r1, #0x7a0]
 	bx lr
 	.align 2, 0
-_022BDBC4: .word ov10_022DC1C0
+_022BDBC4: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BDBB0
 
 	arm_func_start TerminateAllEffects
 TerminateAllEffects: ; 0x022BDBC8
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r0, _022BDC08 ; =ov10_022DC1C0
+	ldr r0, _022BDC08 ; =EFFECT_CONTROL_PTR
 	mov r6, #0
 	ldr r5, [r0]
 	mvn r4, #0
@@ -1051,14 +1051,14 @@ _022BDBF4:
 	blt _022BDBDC
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022BDC08: .word ov10_022DC1C0
+_022BDC08: .word EFFECT_CONTROL_PTR
 	arm_func_end TerminateAllEffects
 
 	arm_func_start ov10_022BDC0C
 ov10_022BDC0C: ; 0x022BDC0C
 	stmdb sp!, {r3, lr}
 	bl TerminateAllEffects
-	ldr r0, _022BDC60 ; =ov10_022DC1C0
+	ldr r0, _022BDC60 ; =EFFECT_CONTROL_PTR
 	ldr r1, _022BDC64 ; =WAN_TABLE
 	ldr r2, [r0]
 	ldr r0, [r1]
@@ -1067,19 +1067,19 @@ ov10_022BDC0C: ; 0x022BDC0C
 	bl DeleteWanTableEntryVeneer
 	bl ov10_022C055C
 	bl ov10_022BFF78
-	ldr r0, _022BDC60 ; =ov10_022DC1C0
+	ldr r0, _022BDC60 ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _022BDC58
 	bl MemFree
-	ldr r0, _022BDC60 ; =ov10_022DC1C0
+	ldr r0, _022BDC60 ; =EFFECT_CONTROL_PTR
 	mov r1, #0
 	str r1, [r0]
 _022BDC58:
 	bl sub_02063DE4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BDC60: .word ov10_022DC1C0
+_022BDC60: .word EFFECT_CONTROL_PTR
 _022BDC64: .word WAN_TABLE
 	arm_func_end ov10_022BDC0C
 
@@ -1087,7 +1087,7 @@ _022BDC64: .word WAN_TABLE
 ov10_022BDC68: ; 0x022BDC68
 	stmdb sp!, {r3, lr}
 	bl TerminateAllEffects
-	ldr r0, _022BDCA0 ; =ov10_022DC1C0
+	ldr r0, _022BDCA0 ; =EFFECT_CONTROL_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	mvn r0, #0
@@ -1101,7 +1101,7 @@ _022BDC80:
 	bl ov10_022C0588
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BDCA0: .word ov10_022DC1C0
+_022BDCA0: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BDC68
 
 	arm_func_start ov10_022BDCA4
@@ -1122,7 +1122,7 @@ TerminateEffect: ; 0x022BDCBC
 	mvn r1, #0
 	cmp r0, r1
 	ldmeqia sp!, {r4, r5, r6, pc}
-	ldr r2, _022BDE44 ; =ov10_022DC1C0
+	ldr r2, _022BDE44 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r2, [r2]
 	mla r4, r0, r1, r2
@@ -1133,7 +1133,7 @@ TerminateEffect: ; 0x022BDCBC
 	mov r0, #0
 	bl ov10_022BDCA4
 	bl sub_02063E44
-	ldr r2, _022BDE44 ; =ov10_022DC1C0
+	ldr r2, _022BDE44 ; =EFFECT_CONTROL_PTR
 	mov r0, #0
 	ldr r1, [r2]
 	add r1, r1, #0x2000
@@ -1220,10 +1220,10 @@ _022BDE1C:
 _022BDE34:
 	mov r0, r4
 	mov r1, r5
-	bl ov10_022BDEC4
+	bl UnloadEffect
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022BDE44: .word ov10_022DC1C0
+_022BDE44: .word EFFECT_CONTROL_PTR
 _022BDE48: .word ov10_022C79D8
 _022BDE4C: .word ov10_022C7A18
 	arm_func_end TerminateEffect
@@ -1236,7 +1236,7 @@ TerminateEffectWrapper: ; 0x022BDE50
 	mvn r2, #0
 	cmp r0, r2
 	ldmeqia sp!, {r4, pc}
-	ldr r3, _022BDEB0 ; =ov10_022DC1C0
+	ldr r3, _022BDEB0 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r3, [r3]
 	mla r1, r0, r1, r3
@@ -1256,7 +1256,7 @@ _022BDEA4:
 	bl TerminateEffect
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022BDEB0: .word ov10_022DC1C0
+_022BDEB0: .word EFFECT_CONTROL_PTR
 	arm_func_end TerminateEffectWrapper
 
 	arm_func_start GetEffectAnimationWanOffset
@@ -1267,8 +1267,8 @@ GetEffectAnimationWanOffset: ; 0x022BDEB4
 	ldmia sp!, {r3, pc}
 	arm_func_end GetEffectAnimationWanOffset
 
-	arm_func_start ov10_022BDEC4
-ov10_022BDEC4: ; 0x022BDEC4
+	arm_func_start UnloadEffect
+UnloadEffect: ; 0x022BDEC4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mvn r0, #0
@@ -1300,7 +1300,7 @@ _022BDF24:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022BDF30: .word WAN_TABLE
-	arm_func_end ov10_022BDEC4
+	arm_func_end UnloadEffect
 
 	arm_func_start ov10_022BDF34
 ov10_022BDF34: ; 0x022BDF34
@@ -1312,8 +1312,8 @@ ov10_022BDF34: ; 0x022BDF34
 	bne _022BDFB4
 	mov r0, r4
 	mov r1, #1
-	bl ov10_022BDEC4
-	ldr r2, _022BDFBC ; =ov10_022DC1C0
+	bl UnloadEffect
+	ldr r2, _022BDFBC ; =EFFECT_CONTROL_PTR
 	ldr r0, [r4]
 	ldr r3, [r2]
 	mov r1, #0
@@ -1341,7 +1341,7 @@ _022BDFB4:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022BDFBC: .word ov10_022DC1C0
+_022BDFBC: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BDF34
 
 	arm_func_start PlayEffect
@@ -1418,7 +1418,7 @@ _022BE0B0: ; jump table
 	b _022BE124 ; case 5
 	b _022BE18C ; case 6
 _022BE0CC:
-	ldr r0, _022BE448 ; =ov10_022DC1C0
+	ldr r0, _022BE448 ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x794]
@@ -1427,12 +1427,12 @@ _022BE0CC:
 	str r0, [r7, #0x48]
 	b _022BE1F0
 _022BE0EC:
-	ldr r0, _022BE448 ; =ov10_022DC1C0
+	ldr r0, _022BE448 ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x798]
 	bl sub_0201E184
-	ldr r1, _022BE448 ; =ov10_022DC1C0
+	ldr r1, _022BE448 ; =EFFECT_CONTROL_PTR
 	str r0, [r7, #0x54]
 	ldr r0, [r1]
 	mov r1, #0
@@ -1447,7 +1447,7 @@ _022BE124:
 	mvn r0, #0
 	str r0, [r7, #0x54]
 	ldr r1, [r4, #8]
-	ldr r0, _022BE448 ; =ov10_022DC1C0
+	ldr r0, _022BE448 ; =EFFECT_CONTROL_PTR
 	str r1, [r7, #0x48]
 	ldr r0, [r0]
 	ldrb r1, [r4, #0x18]
@@ -1461,7 +1461,7 @@ _022BE158:
 	mvn r0, #0
 	str r0, [r7, #0x54]
 	ldr r1, [r4, #8]
-	ldr r0, _022BE448 ; =ov10_022DC1C0
+	ldr r0, _022BE448 ; =EFFECT_CONTROL_PTR
 	str r1, [r7, #0x48]
 	ldr r0, [r0]
 	ldrb r1, [r4, #0x18]
@@ -1477,7 +1477,7 @@ _022BE18C:
 	streq r0, [r7, #0x48]
 	b _022BE1F0
 _022BE1A4:
-	ldr r1, _022BE448 ; =ov10_022DC1C0
+	ldr r1, _022BE448 ; =EFFECT_CONTROL_PTR
 	ldr r0, [r1]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x78c]
@@ -1490,7 +1490,7 @@ _022BE1A4:
 	str r0, [r7, #0x48]
 	b _022BE1F0
 _022BE1D4:
-	ldr r0, _022BE448 ; =ov10_022DC1C0
+	ldr r0, _022BE448 ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x78c]
@@ -1557,7 +1557,7 @@ _022BE280:
 	mov r3, r3, lsl #0x10
 	mov r3, r3, asr #0x10
 	bl SetAnimationForAnimationControl
-	ldr r0, _022BE448 ; =ov10_022DC1C0
+	ldr r0, _022BE448 ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x2700
 	ldrsh r0, [r0, #0x90]
@@ -1657,11 +1657,11 @@ _022BE440:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022BE448: .word ov10_022DC1C0
+_022BE448: .word EFFECT_CONTROL_PTR
 	arm_func_end PlayEffect
 
-	arm_func_start ov10_022BE44C
-ov10_022BE44C: ; 0x022BE44C
+	arm_func_start InitEffect
+InitEffect: ; 0x022BE44C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sb, r1
 	mov sl, r0
@@ -1676,7 +1676,7 @@ ov10_022BE44C: ; 0x022BE44C
 	ldr r1, [r7]
 	cmp r1, #2
 	bne _022BE4A0
-	ldr r0, _022BE72C ; =ov10_022DC1C0
+	ldr r0, _022BE72C ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x784]
@@ -1686,7 +1686,7 @@ ov10_022BE44C: ; 0x022BE44C
 _022BE4A0:
 	cmp r1, #1
 	bne _022BE4C4
-	ldr r0, _022BE72C ; =ov10_022DC1C0
+	ldr r0, _022BE72C ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x784]
@@ -1696,7 +1696,7 @@ _022BE4A0:
 _022BE4C4:
 	cmp r1, #3
 	bne _022BE53C
-	ldr r0, _022BE72C ; =ov10_022DC1C0
+	ldr r0, _022BE72C ; =EFFECT_CONTROL_PTR
 	mov r5, #0
 	ldr r6, [r0]
 	mov fp, #1
@@ -1719,7 +1719,7 @@ _022BE4E0:
 	beq _022BE528
 	mov r0, r6
 	mov r1, fp
-	bl ov10_022BDEC4
+	bl UnloadEffect
 _022BE528:
 	add r5, r5, #1
 	cmp r5, #0x20
@@ -1729,7 +1729,7 @@ _022BE528:
 _022BE53C:
 	cmp r1, #4
 	bne _022BE59C
-	ldr r0, _022BE72C ; =ov10_022DC1C0
+	ldr r0, _022BE72C ; =EFFECT_CONTROL_PTR
 	mov r5, #0
 	ldr r4, [r0]
 	mov r7, #1
@@ -1747,14 +1747,14 @@ _022BE558:
 	beq _022BE58C
 	mov r0, r4
 	mov r1, r7
-	bl ov10_022BDEC4
+	bl UnloadEffect
 _022BE58C:
 	add r5, r5, #1
 	cmp r5, #0x20
 	add r4, r4, #0x13c
 	blt _022BE558
 _022BE59C:
-	ldr r0, _022BE72C ; =ov10_022DC1C0
+	ldr r0, _022BE72C ; =EFFECT_CONTROL_PTR
 	mov r2, #0
 	ldr r5, [r0]
 	mvn r0, #0
@@ -1803,13 +1803,13 @@ _022BE618:
 _022BE64C:
 	sub r1, r0, #1
 	cmp r1, #1
-	ldrls r0, _022BE72C ; =ov10_022DC1C0
+	ldrls r0, _022BE72C ; =EFFECT_CONTROL_PTR
 	ldrls r0, [r0]
 	addls r0, r0, #0x2700
 	ldrlssh r0, [r0, #0x88]
 	bls _022BE670
 	ldr r1, [r4, #4]
-	bl ov10_022C03F4
+	bl LoadEffectWanTableEntry
 _022BE670:
 	strh r0, [r5, #0x64]
 	ldrsh r0, [r5, #0x64]
@@ -1822,7 +1822,7 @@ _022BE670:
 	bhi _022BE6B8
 	mov r1, #0
 	str r1, [sp]
-	ldr r2, _022BE72C ; =ov10_022DC1C0
+	ldr r2, _022BE72C ; =EFFECT_CONTROL_PTR
 	ldr r1, [r4]
 	ldr r3, [r2]
 	ldr r2, [r4, #4]
@@ -1831,7 +1831,7 @@ _022BE670:
 	bl ov10_022C0114
 _022BE6B8:
 	ldr r1, [r4]
-	ldr r0, _022BE72C ; =ov10_022DC1C0
+	ldr r0, _022BE72C ; =EFFECT_CONTROL_PTR
 	str r1, [r5, #8]
 	str sl, [r5, #4]
 	ldr r0, [r0]
@@ -1863,13 +1863,13 @@ _022BE71C:
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022BE72C: .word ov10_022DC1C0
-	arm_func_end ov10_022BE44C
+_022BE72C: .word EFFECT_CONTROL_PTR
+	arm_func_end InitEffect
 
-	arm_func_start ov10_022BE730
-ov10_022BE730: ; 0x022BE730
+	arm_func_start InitAndPlayEffect
+InitAndPlayEffect: ; 0x022BE730
 	stmdb sp!, {r4, lr}
-	bl ov10_022BE44C
+	bl InitEffect
 	mov r4, r0
 	mvn r0, #0
 	cmp r4, r0
@@ -1878,7 +1878,7 @@ ov10_022BE730: ; 0x022BE730
 	mov r0, r0, asr #0x10
 	bl GetLiveEffectIdx
 	mov r1, #0x13c
-	ldr r2, _022BE77C ; =ov10_022DC1C0
+	ldr r2, _022BE77C ; =EFFECT_CONTROL_PTR
 	mul r3, r0, r1
 	ldr r0, [r2]
 	ldr r1, [r0, r3]
@@ -1888,14 +1888,14 @@ ov10_022BE730: ; 0x022BE730
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022BE77C: .word ov10_022DC1C0
-	arm_func_end ov10_022BE730
+_022BE77C: .word EFFECT_CONTROL_PTR
+	arm_func_end InitAndPlayEffect
 
-	arm_func_start ov10_022BE780
-ov10_022BE780: ; 0x022BE780
+	arm_func_start InitAndPlayEffectWithChecks
+InitAndPlayEffectWithChecks: ; 0x022BE780
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x5c
-	ldr r3, _022BE998 ; =ov10_022DC1C0
+	ldr r3, _022BE998 ; =EFFECT_CONTROL_PTR
 	mov sl, r0
 	ldr r0, [r3]
 	mov sb, r1
@@ -1908,7 +1908,7 @@ ov10_022BE780: ; 0x022BE780
 	mov r4, r0
 	ldr r0, [sb]
 	bl GetEffectAnimation
-	ldr r1, _022BE998 ; =ov10_022DC1C0
+	ldr r1, _022BE998 ; =EFFECT_CONTROL_PTR
 	mov r5, r0
 	ldr r0, [r1]
 	ldr r1, [sb]
@@ -1966,12 +1966,12 @@ _022BE86C:
 	mov r0, sl
 	mov r2, r8
 	str r3, [sp, #0x30]
-	bl ov10_022BE730
+	bl InitAndPlayEffect
 	b _022BE990
 _022BE8A0:
 	cmp r0, #3
 	bne _022BE980
-	ldr r0, _022BE998 ; =ov10_022DC1C0
+	ldr r0, _022BE998 ; =EFFECT_CONTROL_PTR
 	mov fp, #0
 	ldr r6, [r0]
 	mvn r0, #0
@@ -2028,27 +2028,27 @@ _022BE94C:
 	mov r0, sl
 	mov r2, r8
 	str r3, [sp, #4]
-	bl ov10_022BE730
+	bl InitAndPlayEffect
 	b _022BE990
 _022BE980:
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov10_022BE730
+	bl InitAndPlayEffect
 _022BE990:
 	add sp, sp, #0x5c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022BE998: .word ov10_022DC1C0
+_022BE998: .word EFFECT_CONTROL_PTR
 _022BE99C: .word 0x00000287
-	arm_func_end ov10_022BE780
+	arm_func_end InitAndPlayEffectWithChecks
 
 	arm_func_start GetLiveEffectIdx
 GetLiveEffectIdx: ; 0x022BE9A0
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BE9DC
-	ldr r1, _022BE9E4 ; =ov10_022DC1C0
+	ldr r1, _022BE9E4 ; =EFFECT_CONTROL_PTR
 	mov r2, #0
 	ldr r3, [r1]
 	b _022BE9D4
@@ -2066,7 +2066,7 @@ _022BE9DC:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_022BE9E4: .word ov10_022DC1C0
+_022BE9E4: .word EFFECT_CONTROL_PTR
 	arm_func_end GetLiveEffectIdx
 
 	arm_func_start ov10_022BE9E8
@@ -2116,7 +2116,7 @@ _022BEA78:
 	add r1, sp, #0
 	mov r0, #2
 	mov r2, #0
-	bl ov10_022BE780
+	bl InitAndPlayEffectWithChecks
 	mov r4, r0
 	mvn r0, #0
 	cmp r4, r0
@@ -2128,7 +2128,7 @@ _022BEA78:
 	cmp r0, r1
 	moveq r0, r1
 	beq _022BEB18
-	ldr r2, _022BEB28 ; =ov10_022DC1C0
+	ldr r2, _022BEB28 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r3, [r2]
 	ldrh r2, [r6, #4]
@@ -2155,7 +2155,7 @@ _022BEB18:
 	.align 2, 0
 _022BEB20: .word ov10_022C78D0
 _022BEB24: .word ov10_022C7884
-_022BEB28: .word ov10_022DC1C0
+_022BEB28: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BE9E8
 
 	arm_func_start ov10_022BEB2C
@@ -2167,7 +2167,7 @@ ov10_022BEB2C: ; 0x022BEB2C
 	mvn r1, #0
 	cmp r0, r1
 	ldmeqia sp!, {r4, r5, r6, pc}
-	ldr r2, _022BEC04 ; =ov10_022DC1C0
+	ldr r2, _022BEC04 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r3, [r2]
 	ldrh r2, [r6]
@@ -2215,7 +2215,7 @@ ov10_022BEB2C: ; 0x022BEB2C
 	str r5, [r4, #0x2c]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022BEC04: .word ov10_022DC1C0
+_022BEC04: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BEB2C
 
 	arm_func_start ov10_022BEC08
@@ -2252,7 +2252,7 @@ _022BEC64:
 	add r1, sp, #0
 	mov r0, #3
 	mov r2, #0
-	bl ov10_022BE780
+	bl InitAndPlayEffectWithChecks
 	add sp, sp, #0x2c
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
@@ -2326,7 +2326,7 @@ _022BED70:
 	add r1, sp, #0
 	mov r0, #4
 	mov r2, #0
-	bl ov10_022BE780
+	bl InitAndPlayEffectWithChecks
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -2366,7 +2366,7 @@ _022BEDE8:
 	add r5, sp, #0x58
 	add r8, r5, r4
 	mov r0, r8
-	bl ov10_022BF274
+	bl InitEffectDisplayInfo
 	ldrh r0, [sb]
 	bl GetMoveAnimation
 	ldrsh r0, [r0, #2]
@@ -2416,7 +2416,7 @@ _022BEEA0:
 	mov r1, r8
 	mov r0, #1
 	str r2, [r8, #0x28]
-	bl ov10_022BE780
+	bl InitAndPlayEffectWithChecks
 	mov r4, r0
 	mov r0, r4, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -2424,7 +2424,7 @@ _022BEEA0:
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BEEFC
-	ldr r2, _022BEFD0 ; =ov10_022DC1C0
+	ldr r2, _022BEFD0 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r2, [r2]
 	mov r3, #6
@@ -2482,7 +2482,7 @@ _022BEF9C:
 	add r1, sp, #0xc
 	mov r0, #1
 	mov r2, #0
-	bl ov10_022BE780
+	bl InitAndPlayEffectWithChecks
 _022BEFBC:
 	add sp, sp, #0x1b8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -2490,18 +2490,18 @@ _022BEFBC:
 _022BEFC4: .word ov10_022C78B0
 _022BEFC8: .word ov10_022C7884
 _022BEFCC: .word 0x0000FFFF
-_022BEFD0: .word ov10_022DC1C0
+_022BEFD0: .word EFFECT_CONTROL_PTR
 _022BEFD4: .word ov10_022C7954
 	arm_func_end ov10_022BED90
 
-	arm_func_start ov10_022BEFD8
-ov10_022BEFD8: ; 0x022BEFD8
+	arm_func_start GetLiveEffectWanOffset
+GetLiveEffectWanOffset: ; 0x022BEFD8
 	stmdb sp!, {r3, lr}
 	bl GetLiveEffectIdx
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BF000
-	ldr r2, _022BF008 ; =ov10_022DC1C0
+	ldr r2, _022BF008 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r2, [r2]
 	mla r1, r0, r1, r2
@@ -2510,8 +2510,8 @@ _022BF000:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BF008: .word ov10_022DC1C0
-	arm_func_end ov10_022BEFD8
+_022BF008: .word EFFECT_CONTROL_PTR
+	arm_func_end GetLiveEffectWanOffset
 
 	arm_func_start ov10_022BF00C
 ov10_022BF00C: ; 0x022BF00C
@@ -2700,8 +2700,8 @@ ov10_022BF1FC: ; 0x022BF1FC
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov10_022BF1FC
 
-	arm_func_start ov10_022BF274
-ov10_022BF274: ; 0x022BF274
+	arm_func_start InitEffectDisplayInfo
+InitEffectDisplayInfo: ; 0x022BF274
 	stmdb sp!, {r4, lr}
 	mov r1, #0x2c
 	mov r4, r0
@@ -2718,10 +2718,10 @@ ov10_022BF274: ; 0x022BF274
 	strh r0, [r4, #0x24]
 	strh r0, [r4, #0x26]
 	ldmia sp!, {r4, pc}
-	arm_func_end ov10_022BF274
+	arm_func_end InitEffectDisplayInfo
 
-	arm_func_start ov10_022BF2B4
-ov10_022BF2B4: ; 0x022BF2B4
+	arm_func_start InitAndPlayEffectSetWanOffset
+InitAndPlayEffectSetWanOffset: ; 0x022BF2B4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5]
@@ -2732,12 +2732,12 @@ ov10_022BF2B4: ; 0x022BF2B4
 	mov r2, r4
 	mov r0, #7
 	strb r3, [r5, #0x14]
-	bl ov10_022BE780
+	bl InitAndPlayEffectWithChecks
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov10_022BF2B4
+	arm_func_end InitAndPlayEffectSetWanOffset
 
-	arm_func_start ov10_022BF2E4
-ov10_022BF2E4: ; 0x022BF2E4
+	arm_func_start InitEffectSetWanOffset
+InitEffectSetWanOffset: ; 0x022BF2E4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5]
@@ -2748,19 +2748,19 @@ ov10_022BF2E4: ; 0x022BF2E4
 	mov r2, r4
 	mov r0, #7
 	strb r3, [r5, #0x14]
-	bl ov10_022BE44C
+	bl InitEffect
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov10_022BF2E4
+	arm_func_end InitEffectSetWanOffset
 
-	arm_func_start ov10_022BF314
-ov10_022BF314: ; 0x022BF314
+	arm_func_start GetLiveEffect
+GetLiveEffect: ; 0x022BF314
 	stmdb sp!, {r3, lr}
 	mvn r1, #0
 	cmp r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl GetLiveEffectIdx
-	ldr r2, _022BF358 ; =ov10_022DC1C0
+	ldr r2, _022BF358 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r2, [r2]
 	mla r0, r1, r0, r2
@@ -2772,14 +2772,14 @@ ov10_022BF314: ; 0x022BF314
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BF358: .word ov10_022DC1C0
-	arm_func_end ov10_022BF314
+_022BF358: .word EFFECT_CONTROL_PTR
+	arm_func_end GetLiveEffect
 
 	arm_func_start ov10_022BF35C
 ov10_022BF35C: ; 0x022BF35C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov10_022BF314
+	bl GetLiveEffect
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldrb r1, [r0, #0x13a]
@@ -2797,13 +2797,13 @@ _022BF388:
 	arm_func_start ov10_022BF394
 ov10_022BF394: ; 0x022BF394
 	stmdb sp!, {r4, lr}
-	bl ov10_022BF314
+	bl GetLiveEffect
 	movs r4, r0
 	ldmeqia sp!, {r4, pc}
 	mov r0, #1
 	strb r0, [r4, #0x13a]
 	ldr r0, [r4, #0x40]
-	bl ov10_022BFE54
+	bl IsScreenOrWba
 	cmp r0, #0
 	beq _022BF3CC
 	add r0, r4, #0xe8
@@ -2812,7 +2812,7 @@ ov10_022BF394: ; 0x022BF394
 	ldmia sp!, {r4, pc}
 _022BF3CC:
 	ldr r0, [r4, #0x40]
-	bl ov10_022BFE3C
+	bl IsWanOrWat
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	add r0, r4, #0x68
@@ -2824,13 +2824,13 @@ _022BF3CC:
 	arm_func_start ov10_022BF3EC
 ov10_022BF3EC: ; 0x022BF3EC
 	stmdb sp!, {r4, lr}
-	bl ov10_022BF314
+	bl GetLiveEffect
 	movs r4, r0
 	ldmeqia sp!, {r4, pc}
 	mov r0, #0
 	strb r0, [r4, #0x13a]
 	ldr r0, [r4, #0x40]
-	bl ov10_022BFE54
+	bl IsScreenOrWba
 	cmp r0, #0
 	beq _022BF424
 	add r0, r4, #0xe8
@@ -2839,7 +2839,7 @@ ov10_022BF3EC: ; 0x022BF3EC
 	ldmia sp!, {r4, pc}
 _022BF424:
 	ldr r0, [r4, #0x40]
-	bl ov10_022BFE3C
+	bl IsWanOrWat
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	add r0, r4, #0x68
@@ -2851,7 +2851,7 @@ _022BF424:
 	arm_func_start ov10_022BF444
 ov10_022BF444: ; 0x022BF444
 	stmdb sp!, {r3, lr}
-	bl ov10_022BF314
+	bl GetLiveEffect
 	cmp r0, #0
 	ldrneb r0, [r0, #0x13a]
 	moveq r0, #0
@@ -2868,7 +2868,7 @@ ov10_022BF45C: ; 0x022BF45C
 	mvn r1, #0
 	cmp r0, r1
 	ldmeqia sp!, {r4, r5, r6, pc}
-	ldr r2, _022BF4E8 ; =ov10_022DC1C0
+	ldr r2, _022BF4E8 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r2, [r2]
 	cmp r6, #0
@@ -2897,7 +2897,7 @@ _022BF4D4:
 	bne _022BF4D4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022BF4E8: .word ov10_022DC1C0
+_022BF4E8: .word EFFECT_CONTROL_PTR
 _022BF4EC: .word 0x0000FFFF
 	arm_func_end ov10_022BF45C
 
@@ -3044,7 +3044,7 @@ _022BF6D4:
 	ldr r0, [r6, #0x5c]
 	cmp r0, #0
 	bne _022BF730
-	ldr r0, _022BF760 ; =ov10_022DC1C0
+	ldr r0, _022BF760 ; =EFFECT_CONTROL_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x2000
 	ldr r0, [r0, #0x784]
@@ -3072,14 +3072,14 @@ _022BF750:
 	.align 2, 0
 _022BF758: .word ov10_022C7870
 _022BF75C: .word 0x0000FFFF
-_022BF760: .word ov10_022DC1C0
+_022BF760: .word EFFECT_CONTROL_PTR
 	arm_func_end DisplayEffect
 
 	arm_func_start ov10_022BF764
 ov10_022BF764: ; 0x022BF764
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
-	ldr r1, _022BF7CC ; =ov10_022DC1C0
+	ldr r1, _022BF7CC ; =EFFECT_CONTROL_PTR
 	mov r4, r0
 	ldr r6, [r1]
 	cmp r6, #0
@@ -3106,7 +3106,7 @@ _022BF7C4:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_022BF7CC: .word ov10_022DC1C0
+_022BF7CC: .word EFFECT_CONTROL_PTR
 _022BF7D0: .word ov10_022C7870
 	arm_func_end ov10_022BF764
 
@@ -3121,7 +3121,7 @@ _022BF7DC: .word ov10_022C039C
 	arm_func_start ov10_022BF7E0
 ov10_022BF7E0: ; 0x022BF7E0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _022BF85C ; =ov10_022DC1C0
+	ldr r1, _022BF85C ; =EFFECT_CONTROL_PTR
 	mov r6, r0
 	ldr r5, [r1]
 	cmp r5, #0
@@ -3139,7 +3139,7 @@ ov10_022BF7E0: ; 0x022BF7E0
 	strh r0, [sp, #2]
 _022BF824:
 	ldr r0, [r5, #0x40]
-	bl ov10_022BFE3C
+	bl IsWanOrWat
 	cmp r0, #0
 	beq _022BF844
 	mov r0, r5
@@ -3154,14 +3154,14 @@ _022BF844:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022BF85C: .word ov10_022DC1C0
+_022BF85C: .word EFFECT_CONTROL_PTR
 _022BF860: .word ov10_022C7870
 	arm_func_end ov10_022BF7E0
 
 	arm_func_start ov10_022BF864
 ov10_022BF864: ; 0x022BF864
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _022BF8E0 ; =ov10_022DC1C0
+	ldr r1, _022BF8E0 ; =EFFECT_CONTROL_PTR
 	mov r6, r0
 	ldr r5, [r1]
 	cmp r5, #0
@@ -3179,7 +3179,7 @@ ov10_022BF864: ; 0x022BF864
 	strh r0, [sp, #2]
 _022BF8A8:
 	ldr r0, [r5, #0x40]
-	bl ov10_022BFE54
+	bl IsScreenOrWba
 	cmp r0, #0
 	beq _022BF8C8
 	mov r0, r5
@@ -3194,20 +3194,20 @@ _022BF8C8:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022BF8E0: .word ov10_022DC1C0
+_022BF8E0: .word EFFECT_CONTROL_PTR
 _022BF8E4: .word ov10_022C7870
 	arm_func_end ov10_022BF864
 
 	arm_func_start ScreenEffectActive
 ScreenEffectActive: ; 0x022BF8E8
-	ldr r1, _022BF900 ; =ov10_022DC1C0
+	ldr r1, _022BF900 ; =EFFECT_CONTROL_PTR
 	ldr r1, [r1]
 	add r0, r1, r0
 	add r0, r0, #0x2000
 	ldrb r0, [r0, #0x79e]
 	bx lr
 	.align 2, 0
-_022BF900: .word ov10_022DC1C0
+_022BF900: .word EFFECT_CONTROL_PTR
 	arm_func_end ScreenEffectActive
 
 	arm_func_start AnimationHasMoreFrames
@@ -3216,7 +3216,7 @@ AnimationHasMoreFrames: ; 0x022BF904
 	cmp r0, r1
 	moveq r0, #0
 	bxeq lr
-	ldr r1, _022BF960 ; =ov10_022DC1C0
+	ldr r1, _022BF960 ; =EFFECT_CONTROL_PTR
 	mov r2, #0
 	ldr r3, [r1]
 	b _022BF950
@@ -3239,7 +3239,7 @@ _022BF950:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_022BF960: .word ov10_022DC1C0
+_022BF960: .word EFFECT_CONTROL_PTR
 	arm_func_end AnimationHasMoreFrames
 
 	arm_func_start ov10_022BF964
@@ -3249,7 +3249,7 @@ ov10_022BF964: ; 0x022BF964
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BF9C0
-	ldr r2, _022BF9C8 ; =ov10_022DC1C0
+	ldr r2, _022BF9C8 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r2, [r2]
 	mla r1, r0, r1, r2
@@ -3271,13 +3271,13 @@ _022BF9C0:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BF9C8: .word ov10_022DC1C0
+_022BF9C8: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BF964
 
 	arm_func_start ov10_022BF9CC
 ov10_022BF9CC: ; 0x022BF9CC
 	stmdb sp!, {r3, lr}
-	ldr r2, _022BFA38 ; =ov10_022DC1C0
+	ldr r2, _022BFA38 ; =EFFECT_CONTROL_PTR
 	mov ip, #0
 	ldr lr, [r2]
 	mvn r2, #0
@@ -3308,7 +3308,7 @@ _022BFA14:
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BFA38: .word ov10_022DC1C0
+_022BFA38: .word EFFECT_CONTROL_PTR
 	arm_func_end ov10_022BF9CC
 
 	arm_func_start ov10_022BFA3C
@@ -3392,7 +3392,7 @@ _022BFB3C:
 	add r1, sp, #0
 	mov r0, #5
 	mov r2, #0
-	bl ov10_022BE780
+	bl InitAndPlayEffectWithChecks
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
@@ -3411,7 +3411,7 @@ ov10_022BFB6C: ; 0x022BFB6C
 	mvn r1, #0
 	cmp r0, r1
 	beq _022BFC4C
-	ldr r2, _022BFC54 ; =ov10_022DC1C0
+	ldr r2, _022BFC54 ; =EFFECT_CONTROL_PTR
 	mov r1, #0x13c
 	ldr r2, [r2]
 	mla ip, r0, r1, r2
@@ -3463,7 +3463,7 @@ _022BFC4C:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022BFC54: .word ov10_022DC1C0
+_022BFC54: .word EFFECT_CONTROL_PTR
 _022BFC58: .word ov10_022C7890
 	arm_func_end ov10_022BFB6C
 
@@ -3515,7 +3515,7 @@ _022BFCF0:
 	add r1, sp, #0
 	mov r0, #6
 	mov r2, #0
-	bl ov10_022BE780
+	bl InitAndPlayEffectWithChecks
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0

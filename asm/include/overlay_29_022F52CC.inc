@@ -10,11 +10,13 @@
 .public ExclusiveItemEffectFlagTest
 .public GetCurvedProjectileTargetPos
 .public GetItemCategoryVeneer
+.public GetItemHolderTeamIndex
 .public GetItemToUse
 .public GetMessageLogPreprocessorArgs
 .public HandleCurvedProjectileThrow
 .public HandleRegularProjectileThrow
 .public IqSkillIsEnabled
+.public IsNatureGifterRestrictedItem
 .public ItemIsActive__022F5994
 .public ItemZInit
 .public LogItemBlockedByEmbargo
@@ -24,8 +26,6 @@
 .public ov29_022EB378
 .public ov29_022F3B8C
 .public ov29_0230F9A4
-.public ov29_02346FB8
-.public ov29_02347000
 .public PlayItemThrowSfx
 .public PlaySeByIdIfShouldDisplayEntity
 .public PrepareItemForPrinting__02345728

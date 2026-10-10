@@ -251,7 +251,7 @@ ov29_02324E78: ; 0x02324E78
 	beq _023250C8
 	mov r0, r7
 	mov r1, r6
-	bl ov29_02325D20
+	bl IsMoveBlockedByTerrain
 	cmp r0, #0
 	movne r0, sl
 	bne _023250C8
@@ -317,14 +317,14 @@ _02324F98:
 	mov r1, r7
 	mov r2, #5
 	mov r8, r0
-	bl ov29_022E6D68
+	bl InitMonsterMoveEffect
 	mov r0, #1
 	bl ov29_022DE5F0
 	mov r7, r0
 	cmp sb, #0
 	bne _0232506C
 	ldrh r0, [r6, #4]
-	bl ov10_022BFDEC
+	bl IsBlizzardTailwindOrPowderSnow
 	cmp r0, #0
 	beq _0232506C
 	mov r6, #0
@@ -496,7 +496,7 @@ _02325228:
 	beq _02325600
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02325D20
+	bl IsMoveBlockedByTerrain
 	cmp r0, #0
 	bne _02325600
 	ldrh r0, [sb, #4]

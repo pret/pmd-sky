@@ -25,7 +25,6 @@
 .public MoveMonsterToPos
 .public ov10_022C4F3C
 .public ov10_022C4F3D
-.public ov29_022E3A58
 .public ov29_022E81F8
 .public ov29_022EB944
 .public ov29_022EC85C
@@ -67,6 +66,7 @@
 .public TryPointCameraToFarOffTeammate
 .public TrySpawnTrapperTrap
 .public TryTriggerTrap
+.public UpdateStatusIconFlagsAllMonsters
 .public UseRegularAttackOrStruggle
 .public UseSingleUseItemWrapper
 .public UseThrowableItem

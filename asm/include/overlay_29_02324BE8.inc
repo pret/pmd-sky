@@ -14,7 +14,10 @@
 .public GetMoveAnimationId
 .public GetPixelOffsetFromSprite
 .public GetSpriteIndex__02052708
+.public InitMonsterMoveEffect
 .public Is2TurnsMove
+.public IsBlizzardTailwindOrPowderSnow
+.public IsMoveBlockedByTerrain
 .public IsUsableWhileTaunted
 .public LogMessageByIdWithPopupCheckUser
 .public ov10_022BF01C
@@ -25,16 +28,13 @@
 .public ov10_022BFD58
 .public ov10_022BFD8C
 .public ov10_022BFDCC
-.public ov10_022BFDEC
 .public ov29_022DE5D8
 .public ov29_022DE5F0
 .public ov29_022E3560
-.public ov29_022E6D68
 .public ov29_022EA370
 .public ov29_022ED0C4
 .public ov29_022ED0D4
 .public ov29_02325644
-.public ov29_02325D20
 .public ov29_02325D7C
 .public ov29_02352AD8
 .public ov29_02352B1C

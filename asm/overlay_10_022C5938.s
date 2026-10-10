@@ -6219,8 +6219,8 @@ ov10_022DC190:
 	.byte 0x69, 0x6E, 0x00, 0x00
 
 	.data
-	.global ov10_022DC1C0
-ov10_022DC1C0:
+	.global EFFECT_CONTROL_PTR
+EFFECT_CONTROL_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov10_022DC1C4
 ov10_022DC1C4:

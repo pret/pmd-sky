@@ -101,8 +101,8 @@ ov29_022E2C6C: ; 0x022E2C6C
 _022E2C9C: .word DUNGEON_PTR
 	arm_func_end ov29_022E2C6C
 
-	arm_func_start ov29_022E2CA0
-ov29_022E2CA0: ; 0x022E2CA0
+	arm_func_start IsPositionVisibleAndOnScreen
+IsPositionVisibleAndOnScreen: ; 0x022E2CA0
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _022E2D34 ; =DUNGEON_PTR
 	mov r4, r0
@@ -128,7 +128,7 @@ ov29_022E2CA0: ; 0x022E2CA0
 	cmp r0, #5
 	bgt _022E2D2C
 	mov r0, r5
-	bl ov29_022E3534
+	bl IsFloorWithoutDarkness
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -152,7 +152,7 @@ _022E2D38: .word 0x0001A178
 #else
 _022E2D38: .word 0x0001A21C
 #endif
-	arm_func_end ov29_022E2CA0
+	arm_func_end IsPositionVisibleAndOnScreen
 
 	arm_func_start ov29_022E2D3C
 ov29_022E2D3C: ; 0x022E2D3C
@@ -181,7 +181,7 @@ ov29_022E2D3C: ; 0x022E2D3C
 	cmp r0, #6
 	bgt _022E2DC8
 	mov r0, r5
-	bl ov29_022E3534
+	bl IsFloorWithoutDarkness
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -499,7 +499,7 @@ _022E3168:
 	cmp r7, #0
 	beq _022E3178
 	mov r0, #0
-	bl ov29_022E3A58
+	bl UpdateStatusIconFlagsAllMonsters
 _022E3178:
 	ldr r0, [sp]
 	cmp r0, #0

@@ -1,7 +1,7 @@
 #pragma once
+.public Debug_Print0
 .public DEFAULT_TILE
 .public DUNGEON_PTR
-.public Debug_Print0
 .public FloorSecondaryTerrainIsChasm
 .public GetBgRegionArea
 .public GetTile
@@ -9,8 +9,6 @@
 .public InitTilesetBuffer
 .public IsCurrentFixedRoomBossFight
 .public MOBILITY_TYPE_TO_DUNGEON_MOBILITY_TYPE
-.public RandIntSafe
-.public SECONDARY_TERRAIN_TYPES
 .public ov10_022C2588
 .public ov10_022C25EC
 .public ov10_022C2638
@@ -25,3 +23,5 @@
 .public ov29_02352F14
 .public ov29_0237CAA0
 .public ov29_0237CAAC
+.public RandIntSafe
+.public SECONDARY_TERRAIN_TYPES

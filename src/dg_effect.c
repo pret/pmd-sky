@@ -9,8 +9,8 @@ extern bool8 ShouldDisplayEntityAdvanced(struct entity *entity);
 extern void AnimationDelayOrSomething(bool8 param_1);
 extern void GetPixelOffsetFromSprite(struct position *offset,
                                      struct animation_control *anim_ctrl, u32 idx);
-extern void ov10_022BF274(struct unk_022BF274 *params);
-extern s32 ov10_022BF2B4(struct unk_022BF274 *params, s32 param_2);
+extern void InitEffectDisplayInfo(struct unk_022BF274 *params);
+extern s32 InitAndPlayEffectSetWanOffset(struct unk_022BF274 *params, s32 param_2);
 extern void InitOamAdjustmentInfo(struct unk_0201C000 *oam);
 extern bool8 AnimationHasMoreFrames(s16 param_1);
 
@@ -51,7 +51,7 @@ s32 PlayEffectAnimationEntity(struct entity *entity, s32 id, s32 param_3, u8 par
     dy = ((s32)entity->pixel_pos.y >> 8) -
          DUNGEON_PTR[0]->display_data.camera_pixel_pos.y;
 
-    ov10_022BF274(&params);
+    InitEffectDisplayInfo(&params);
     params.field_0x0 = id;
     params.field_0x4 = 0;
     if (param_7 < 0 || param_7 > 8)
@@ -69,7 +69,7 @@ s32 PlayEffectAnimationEntity(struct entity *entity, s32 id, s32 param_3, u8 par
     else
         params.field_0x1c = *param_8;
 
-    handle = ov10_022BF2B4(&params, 0);
+    handle = InitAndPlayEffectSetWanOffset(&params, 0);
     if (param_3 == 0)
         return handle;
 

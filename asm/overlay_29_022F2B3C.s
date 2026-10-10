@@ -1447,7 +1447,7 @@ _022F3F58:
 	mov r6, #1
 _022F3F5C:
 	mov r0, sb
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	cmpeq r6, #0
 	beq _022F40A0
@@ -2349,7 +2349,7 @@ _022F4B24:
 	strh r0, [r6, #2]
 	mov r0, r6
 	strh r1, [r6, #4]
-	bl ov29_02346FB8
+	bl GetItemHolderTeamIndex
 	cmp r0, #0
 	movlt r0, #0
 	strltb r0, [r6, #1]
@@ -2695,7 +2695,7 @@ _022F4F68:
 	b _022F4FDC
 _022F4F94:
 	mov r0, r7
-	bl ov29_02346FB8
+	bl GetItemHolderTeamIndex
 	cmp r0, #0
 	blt _022F4FD0
 #ifdef JAPAN

@@ -5,9 +5,9 @@
 .public GetMoveCategory
 .public GetMoveType
 .public ov29_022EA370
-.public ov29_022ECAFC
 .public PlaySeByIdIfShouldDisplayEntity
 .public SetTwoTurnInvincibility
+.public ShakeScreen
 .public ShouldDisplayEntityAdvanced
 .public StartFadeDungeonWrapper
 .public WaitUntilFadeIsFinished

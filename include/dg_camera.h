@@ -12,7 +12,7 @@ void ov29_022E335C(void);
 void RevealWholeFloor(struct entity *user, struct entity *target);
 void ov29_022E34B0(u8 param_1);
 void ov29_022E34C8(void);
-bool8 ov29_022E3534(struct display_data *display);
+bool8 IsFloorWithoutDarkness(struct display_data *display);
 void ov29_022E3560(u8 param_1);
 u8 ov29_022E3570(void);
 bool8 DungeonScreenEffectActive(void);

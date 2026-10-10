@@ -62,7 +62,7 @@ LogMessageByIdWithPopupCheckUserUnknown: ; 0x0234B444
 	cmp r0, #0
 	movne r4, #1
 	mov r0, r6
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	movne r4, #1
 	cmp r4, #0

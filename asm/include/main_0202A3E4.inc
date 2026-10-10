@@ -1,4 +1,7 @@
 #pragma once
+.public _0209AE34
+.public _0209AE44
+.public _020AFDAC
 .public CreateTextBox
 .public FileClose
 .public FileRom_HandleOpen
@@ -9,10 +12,7 @@
 .public FileRom_Veneer_FileInit
 .public MemAlloc
 .public MemFree
-.public UpdateWindow
-.public _0209AE34
-.public _0209AE44
-.public _020AFDAC
 .public sub_02026E3C
 .public sub_02027040
 .public sub_02027A08
+.public UpdateWindow

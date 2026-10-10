@@ -8,6 +8,7 @@ NONMATCHING_SYMBOLS_ARM9 = {
     '_secure': 'SECURE',
     '_start_AutoloadDoneCallback': 'StartAutoloadDoneCallback',
     '_start_ModuleParams': 'START_MODULE_PARAMS',
+    '_strlwr': 'strlwr',
     'bind': 'bind_gsi',
     'CARD_Enable': 'Card_Enable',
     'CARD_Init': 'Card_Init',
@@ -51,6 +52,7 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'DWCi_SETTINGlSetDnsP': 'Dwci_SettinglSetDnsP',
     'DWCi_SETTINGlSetDnsS': 'Dwci_SettinglSetDnsS',
     'DWCi_SETTINGlSetGateway': 'Dwci_SettinglSetGateway',
+    'DWCi_SETTINGlSetIp': 'Dwci_SettinglSetIp',
     'DWCi_SETTINGlSetNetMask': 'Dwci_SettinglSetNetMask',
     'FifoCtrlInit': 'FIFO_CTRL_INIT',
     'fsi_arc_rom': 'FSI_ARC_ROM',
@@ -179,6 +181,7 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'SND_SetTrackPitch': 'Snd_SetTrackPitch',
     'SNDi_SharedWork': 'SNDI_SHARED_WORK',
     'SOC_Bind': 'Soc_Bind',
+    'SOC_Close': 'Soc_Close',
     'SOC_Connect': 'Soc_Connect',
     'SOC_Recv': 'Soc_Recv',
     'SOC_RecvFrom': 'Soc_RecvFrom',
@@ -187,6 +190,7 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'SOC_Socket': 'Soc_Socket',
     'SOC_Startup': 'Soc_Startup',
     'SOCL_Cleanup': 'Socl_Cleanup',
+    'SOCL_Close': 'Socl_Close',
     'SOCL_Startup': 'Socl_Startup',
     'sReserveList': 'RESERVE_LIST',
     'sSndMutex': 'SND_MUTEX',
@@ -203,7 +207,6 @@ NONMATCHING_SYMBOLS_ARM9 = {
     'VEC_Normalize': 'Vec_Normalize',
     'VolumeTable': 'VOLUME_TABLE',
     'WCM_SendDCFDataEx': 'Wcm_SendDcfDataEx',
-    '_strlwr': 'strlwr'
 }
 
 NONMATCHING_SYMBOLS_ARM7 = {

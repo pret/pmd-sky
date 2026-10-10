@@ -5,8 +5,11 @@
 .public DungeonAlloc
 .public DungeonFree
 .public DungeonZInit
+.public FreeMonsterMoveEffects
 .public G3X_Reset
 .public GetAndStoreButtonInput
+.public GraphicsEngine_ApplyState
+.public GraphicsEngine_SetState
 .public GroupOamAttributesBothScreens
 .public HandleMenus
 .public InitDungeonPaletteStruct
@@ -31,7 +34,6 @@
 .public ov29_022E0CFC
 .public ov29_022E0E8C
 .public ov29_022E0F14
-.public ov29_022E6DD0
 .public ov29_022E9F9C
 .public ov29_022EA008
 .public ov29_022EAFB0
@@ -44,16 +46,11 @@
 .public ov30_02382A34
 .public OverlayIsLoaded
 .public sub_0200383C
-.public Sys_IsMailboxPending
 .public sub_020038E8
-.public Task_AbortSync
 .public sub_020039E4
-.public Sys_WaitForVBlank
 .public sub_02006EC4
-.public GraphicsEngine_SetState
 .public sub_02008F3C
 .public sub_02008F84
-.public GraphicsEngine_ApplyState
 .public sub_02009120
 .public sub_020091CC
 .public sub_020091F8
@@ -84,4 +81,7 @@
 .public sub_02028E88
 .public sub_02034710
 .public sub_0204F9CC
+.public Sys_IsMailboxPending
+.public Sys_WaitForVBlank
+.public Task_AbortSync
 .public UnloadOverlay

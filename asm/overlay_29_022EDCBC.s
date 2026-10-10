@@ -353,7 +353,7 @@ _022EE110:
 	cmp r8, #0
 	beq _022EE1D8
 	mov r0, sb
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	beq _022EE12C
 	bl UpdateTrapsVisibility
@@ -393,7 +393,7 @@ _022EE1A4:
 	cmp r7, #0
 	beq _022EE1D8
 	mov r0, sb
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	beq _022EE1C0
 	bl UpdateTrapsVisibility
@@ -406,7 +406,7 @@ _022EE1C0:
 	beq _022EE2F4
 _022EE1D8:
 	mov r0, sb
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	beq _022EE264
 	mov r0, #0

@@ -28,7 +28,7 @@
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern bool8 ov29_022E2CA0(struct position *pos);
+extern bool8 IsPositionVisibleAndOnScreen(struct position *pos);
 extern void ov29_0234B4CC(bool8 val);
 extern s32 SinAbs4096(s32 x);
 extern bool8 DisplayThrownItemShadow(s32 x, s32 y, u8 index);
@@ -95,10 +95,10 @@ void HandleCurvedProjectileThrow(struct entity *user, struct item *item, struct 
     }
 
     r4 = FALSE;
-    if (ov29_022E2CA0(start_pos)) {
+    if (IsPositionVisibleAndOnScreen(start_pos)) {
         r4 = TRUE;
     }
-    if (ov29_022E2CA0(target_pos)) {
+    if (IsPositionVisibleAndOnScreen(target_pos)) {
         r4 = TRUE;
     }
 

@@ -8829,7 +8829,7 @@ _022F54E8:
 	cmp r1, r0
 	bne _022F55A8
 	add r0, sp, #8
-	bl ov10_022BF274
+	bl InitEffectDisplayInfo
 	ldrsh r1, [r5, #0x9e]
 	mov r0, #0
 	ldr ip, _022F58F0 ; =0x0000FFFF
@@ -8867,7 +8867,7 @@ _022F5568:
 	movne r1, #1
 	moveq r1, #0
 	add r0, sp, #8
-	bl ov10_022BF2E4
+	bl InitEffectSetWanOffset
 	strh r0, [r5, #0xa2]
 	ldrsh r0, [r5, #0xa2]
 	bl ov10_022BF35C

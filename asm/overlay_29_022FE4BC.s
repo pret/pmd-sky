@@ -527,7 +527,7 @@ _022FF5E0:
 	bl EndTwoTurnMove
 _022FF61C:
 	mov r0, #0
-	bl ov29_022E3A58
+	bl UpdateStatusIconFlagsAllMonsters
 	mov r0, r6
 	bl EntityIsValid__022FED98
 	cmp r0, #0
@@ -590,7 +590,7 @@ _022FF6E0:
 	bl ov29_02346888
 _022FF704:
 	mov r0, #0
-	bl ov29_022E3A58
+	bl UpdateStatusIconFlagsAllMonsters
 	mov r0, r6
 	bl EntityIsValid__022FED98
 	cmp r0, #0
@@ -1193,7 +1193,7 @@ _022FEBB4:
 	bl EndTwoTurnMove
 _022FEBF0:
 	mov r0, #0
-	bl ov29_022E3A58
+	bl UpdateStatusIconFlagsAllMonsters
 	mov r0, sb
 	bl EntityIsValid__022FED98
 	cmp r0, #0
@@ -1256,7 +1256,7 @@ _022FECB4:
 	bl ov29_02346888
 _022FECD8:
 	mov r0, #0
-	bl ov29_022E3A58
+	bl UpdateStatusIconFlagsAllMonsters
 	mov r0, sb
 	bl EntityIsValid__022FED98
 	cmp r0, #0

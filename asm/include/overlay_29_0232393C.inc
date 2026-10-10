@@ -23,12 +23,12 @@
 .public HasHeldItem
 .public IqSkillIsEnabled
 .public IsChargingTwoTurnMove
+.public IsPositionVisibleAndOnScreen
 .public IsValidTargetEntity
 .public MALE_ACCURACY_STAGE_MULTIPLIERS
 .public MALE_EVASION_STAGE_MULTIPLIERS
 .public MoveIsNotPhysical
 .public ov10_022BEB2C
-.public ov29_022E2CA0
 .public ov29_022EA370
 .public ov29_022F8830
 .public ov29_022F88C0

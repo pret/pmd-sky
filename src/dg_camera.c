@@ -137,7 +137,7 @@ void ov29_022E34C8(void)
     }
 }
 
-bool8 ov29_022E3534(struct display_data *display)
+bool8 IsFloorWithoutDarkness(struct display_data *display)
 {
     if (display->field_0x34 == 0) {
         if (display->luminous || display->natural_lighting)

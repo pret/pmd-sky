@@ -6,7 +6,7 @@
 .public GetLeader
 .public IsFloorOver
 .public IsFloorOver2
+.public ov29_023522B6
 .public RunMonsterAi
 .public TryForcedLoss
 .public TrySpawnMonsterAndTickSpawnCounter
-.public ov29_023522B6

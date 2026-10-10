@@ -5,8 +5,8 @@
 .public FreeOtherWrappedMonsters
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ov29_022E65F4
+.public ov29_022E6798
 .public ResetTypeChanges
 .public SubstitutePlaceholderStringTags
 .public UpdateStatusIconFlags
-.public ov29_022E65F4
-.public ov29_022E6798

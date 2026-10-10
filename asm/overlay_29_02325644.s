@@ -31,7 +31,7 @@ ov29_02325644: ; 0x02325644
 	bl ov10_022BED90
 	mov r1, r6
 	mov r2, #1
-	bl ov29_022E6D68
+	bl InitMonsterMoveEffect
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_02325644
 
@@ -70,7 +70,7 @@ PlayMoveAnimation: ; 0x023256B4
 	b _023258E0
 _02325730:
 	mov r0, r7
-	bl ov29_022E2CA0
+	bl IsPositionVisibleAndOnScreen
 	cmp r0, #0
 	beq _023258E0
 _02325740:
@@ -79,7 +79,7 @@ _02325740:
 	beq _023258E0
 	mov r0, sl
 	mov r1, r8
-	bl ov29_02325D20
+	bl IsMoveBlockedByTerrain
 	cmp r0, #0
 	bne _023258E0
 	cmp r5, #0
@@ -172,7 +172,7 @@ _02325894:
 	mov r0, r4
 	mov r1, sb
 	mov r2, #6
-	bl ov29_022E6D68
+	bl InitMonsterMoveEffect
 	mov r0, r4, lsl #0x10
 	mov r4, r0, asr #0x10
 	mov r5, #0x28
@@ -234,7 +234,7 @@ _02325958:
 	beq _02325B04
 	mov r0, r5
 	mov r1, sl
-	bl ov29_02325D20
+	bl IsMoveBlockedByTerrain
 	cmp r0, #0
 	bne _02325B04
 	cmp r8, #0
@@ -317,11 +317,11 @@ _02325A9C:
 	mov r0, r7
 	mov r1, r4
 	mov r2, #6
-	bl ov29_022E6D68
+	bl InitMonsterMoveEffect
 	mov r0, r6
 	mov r1, r5
 	mov r2, #6
-	bl ov29_022E6D68
+	bl InitMonsterMoveEffect
 	mov r0, r7, lsl #0x10
 	mov r4, r0, asr #0x10
 	mov r5, #0x28
@@ -505,8 +505,8 @@ _02325D04:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ShouldMovePlayAlternativeAnimation
 
-	arm_func_start ov29_02325D20
-ov29_02325D20: ; 0x02325D20
+	arm_func_start IsMoveBlockedByTerrain
+IsMoveBlockedByTerrain: ; 0x02325D20
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	ldrh r1, [r4, #4]
@@ -532,7 +532,7 @@ _02325D4C:
 _02325D74:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02325D20
+	arm_func_end IsMoveBlockedByTerrain
 
 	arm_func_start ov29_02325D7C
 ov29_02325D7C: ; 0x02325D7C

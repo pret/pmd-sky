@@ -1,4 +1,5 @@
 #pragma once
+.public abs
 .public AdvanceFrame
 .public CalcSpeedStageWrapper
 .public ChangeMonsterAnimationToIdle
@@ -14,9 +15,15 @@
 .public GetIdleAnimationId
 .public GetMonsterApparentId
 .public GetType
+.public HandleShopTransaction
 .public ItemIsActive__02307F1C
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ov29_022FA1D8
+.public ov29_022FB984
+.public ov29_02304830
+.public ov29_02311C28
+.public ov29_02321134
 .public SubstitutePlaceholderStringTags
 .public TryInflictBadlyPoisonedStatus
 .public TryInflictBlinkerStatus
@@ -46,10 +53,3 @@
 .public UpdateMinimap
 .public UpdateStatusIconFlags
 .public UpdateTrapsVisibility
-.public abs
-.public HandleShopTransaction
-.public ov29_022FA1D8
-.public ov29_022FB984
-.public ov29_02304830
-.public ov29_02311C28
-.public ov29_02321134

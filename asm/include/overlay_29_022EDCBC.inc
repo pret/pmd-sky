@@ -15,11 +15,11 @@
 .public GetTrapInfo
 .public IqSkillIsEnabled
 .public IsFullFloorFixedRoom
+.public IsPositionVisibleAndOnScreen
 .public ItemIsActive__022EE318
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LogMessageByIdWithPopupCheckUserUnknown
-.public ov29_022E2CA0
 .public ov29_022E58B0
 .public PlaySeByIdIfShouldDisplayEntity
 .public SpawnTrap

@@ -24,6 +24,8 @@
 .public GetReleasedStylus
 .public GetResolvedPerformanceProgressFlag
 .public GetScenarioBalance
+.public GraphicsEngine_ApplyState
+.public GraphicsEngine_SetState
 .public GROUND_MEMORY_ARENA_1
 .public GroupOamAttributesBothScreens
 .public HandleMenus
@@ -151,17 +153,12 @@
 .public sub_020012D8
 .public sub_020017B4
 .public sub_0200383C
-.public Sys_IsMailboxPending
 .public sub_020038E8
-.public Task_AbortSync
 .public sub_020039E4
-.public Sys_WaitForVBlank
 .public sub_02006BFC
 .public sub_02006C8C
 .public sub_02006E14
-.public GraphicsEngine_SetState
 .public sub_02008F84
-.public GraphicsEngine_ApplyState
 .public sub_02017A68
 .public sub_02017A80
 .public sub_02017ACC
@@ -207,6 +204,9 @@
 .public sub_02062DC4
 .public sub_0206309C
 .public sub_0206C0D8
+.public Sys_IsMailboxPending
+.public Sys_WaitForVBlank
+.public Task_AbortSync
 .public UpdateRecycleShop
 .public WasMissionCompletedToday
 .public ZeroInitScriptVariable

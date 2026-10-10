@@ -1,15 +1,14 @@
 #pragma once
+.public _s32_div_f
 .public AdvanceFrame
 .public ChangeDungeonMusic
-.public DUNGEON_PTR
 .public DisplayActions
+.public DUNGEON_PTR
 .public GetForcedLossReason
 .public GetLeader
 .public HandleFaint
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUser
-.public TryPointCameraToMonster
-.public _s32_div_f
 .public ov10_022C6320
 .public ov29_022E5DBC
 .public ov29_022EAEF0
@@ -17,3 +16,4 @@
 .public ov29_02352380
 .public ov29_02352390
 .public ov29_02353598
+.public TryPointCameraToMonster
