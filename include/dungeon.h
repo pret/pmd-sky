@@ -2,6 +2,7 @@
 #define PMDSKY_DUNGEON_H
 
 #include "dungeon_mode.h"
+#include "dungeon_location_seed.h"
 #include "enums.h"
 #include "item.h"
 
@@ -663,19 +664,13 @@ struct dungeon {
     enum dungeon_group_id group_id; // 0x74A: Same for different segments of a dungeon
     u8 field_0x74b;
     // 0x74C: Used as an input to GetDungeonMode, and uses output to determine if the
-    // override fixed room should be loaded?
-    u16 field_0x74c;
+    // override fixed room should be loaded
+    s16 dungeon_idx;
     u8 field_0x74e;
     u8 field_0x74f;
-    // 0x750: A ldr instruction is used at this address? Maybe used for something else before
-    // the rescue floor number is set?
-    u8 field_0x750;
-    u8 rescue_floor; // 0x751: Floor number where the rescue point is, if applicable
-    u8 field_0x752;
-    u8 field_0x753;
-    // 0x754: Should also be prng_pressed_23_bit? dungeon_init::prng_preseed_23_bit gets copied
-    // here, but might not be used?
-    u32 prng_preseed_23_bit;
+    // 0x750: Rescue parameters copied from dungeon_init::rescue_location_seed.
+    // The seed at 0x754 is a redundant copy; the active seed is at 0x7A0.
+    dungeon_location_seed rescue_location_seed;
     // 0x758: Whether the current floor should continue or end and why
     enum floor_loop_status floor_loop_status;
     bool8 recruiting_enabled; // 0x759: Recruitment is allowed in this dungeon
@@ -1512,9 +1507,7 @@ struct dungeon {
     // 0x1990C: Stores statuses::unique_id for the monster pointed to by dungeon::snatch_monster.
     u32 snatch_status_unique_id;
     // 0x19910: Spawn genid of the monster to be spawned by the effect of Illuminate
-    u16 illuminate_spawn_genid;
-    u8 field_0x19912;
-    u8 field_0x19913;
+    u32 illuminate_spawn_genid;
     // 0x19914: List that matches monster IDs with their sprite index on this floor
     enum monster_id sprite_indexes[1155];
     u8 field_0x1a21a;

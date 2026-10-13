@@ -11,7 +11,7 @@ void ov29_022EA2A4(u32 param_1);
 void ov29_022EA324(u32 param_1);
 void ov29_022EA370(s32 a, s32 b);
 void ov29_022EA3B4(s32 param_1);
-void ov29_022EA3F8(void);
+void ov29_022EA3F8(s32 unused0, s32 unused1);
 s32 ov29_022EA408(void);
 void ov29_022EA418(u8 param_1);
 void UnkMapRelatedFunc(s32 switch_case, u32 param_2);

@@ -11,9 +11,9 @@ extern void sub_0204833C(void);
 extern s32 sub_02048360(void);
 extern void sub_02048240(s32 a);
 extern void sub_02048150(s32 a);
-extern void sub_02048134(s32 a);
-extern void sub_020480CC(s32 a);
-extern void sub_0204804C(s32 a);
+extern void sub_02048134(void);
+extern void sub_020480CC(void);
+extern void sub_0204804C(void);
 extern void sub_02047FFC(s32 a);
 extern void InitPortraitParams(portrait_params *portrait);
 extern void AllowPortraitDefault(portrait_params *portrait, bool32 allow);
@@ -62,19 +62,19 @@ void ov29_0234BB10(void)
     sub_02047FFC(0);
 }
 
-void ov29_0234BB20(s32 a)
+void ov29_0234BB20(void)
 {
-    sub_0204804C(a);
+    sub_0204804C();
 }
 
-void ov29_0234BB2C(s32 a)
+void ov29_0234BB2C(void)
 {
-    sub_020480CC(a);
+    sub_020480CC();
 }
 
-void ov29_0234BB38(s32 a)
+void ov29_0234BB38(void)
 {
-    sub_02048134(a);
+    sub_02048134();
 }
 
 void ov29_0234BB44(s32 a)

@@ -3,6 +3,8 @@
 #include "overlay_29_022DC61C.h"
 #include "overlay_29_0234CA68.h"
 #include "util.h"
+#include "dg.h"
+#include "overlay_29_022DEAB0.h"
 
 struct unk_ov29_023537DC {
     s32 v0;
@@ -31,8 +33,6 @@ void sub_02051DD0(s32, s32);
 void sub_02051E60(s32, s32);
 void ov29_0234BEE0(s32);
 void ov29_0234BF04(s32);
-s32 GetDungeonPtrMaster();
-void RunDungeon(void *, s32);
 s32 sub_0205BAB0(void *);
 void ov29_022DE418();
 void sub_020091B0(s32, s32);
@@ -54,6 +54,7 @@ void ov29_0234BBE8(void)
     s32 uVar4;
     s32 uVar5;
     s32 iVar6;
+    struct dungeon *dungeon;
     bool8 bVar1 = FALSE;
     struct unk_ov29_023537DC *iVar7 = ov29_023537D8.v4;
     ov29_022DC61C(); // mem init?
@@ -106,8 +107,8 @@ void ov29_0234BBE8(void)
                 ov29_0234BEE0(1);
                 ov29_0234BF04(0);
                 ov29_0234BF04(1);
-                uVar3 = GetDungeonPtrMaster();
-                RunDungeon(&(ov29_023537D8.v4[1]), uVar3);
+                dungeon = GetDungeonPtrMaster();
+                RunDungeon((struct dungeon_init *)&ov29_023537D8.v4[1], dungeon);
                 bVar1 = TRUE;
                 break;
             case 2:
