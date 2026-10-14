@@ -760,6 +760,8 @@ Overlay OVY_29
 {
 	After OVY_10
 	Object asm/overlay_29_rodata_0234FD04.o
+	Object src/deoxys_form_data.o
+	Object asm/overlay_29_rodata_023510C8.o
 	Object asm/overlay_29_data_023534E0.o
 	Object asm/overlay_29_bss_02353860.o
 	Object src/poly_text.o

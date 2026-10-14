@@ -236,7 +236,7 @@ void ov29_022EA3B4(s32 param_1)
     } while (DUNGEON_BUTTON_INPUT[0] & 0xF0);
 }
 
-void ov29_022EA3F8(void)
+void ov29_022EA3F8(s32 unused0, s32 unused1)
 {
     ov29_022DE638(0x100);
 }
