@@ -1255,11 +1255,11 @@
                                                                                                                               125](DefenderAbilityIsActive__022F96CC,func) found in global overlay_29_022F9720.o
                                                                                                                               125](TryEndStatusWithAbility,func) found in global overlay_29_022FA524.o
                                                                                                                                126](ExclusiveItemEffectIsActive__022FAC98,func) found in global overlay_29_022FAC98.o
-                                                                                                                               126](ov29_022E68BC,func) found in global overlay_29_022E68BC.o
-                                                                                                                                127](ov29_022E67E4,func) found in global overlay_29_022E6798.o
+                                                                                                                               126](PlayStandardEscapeEffect__022E726C,func) found in global overlay_29_022E68BC.o
+                                                                                                                                127](PlayEscapeEffect,func) found in global overlay_29_022E6798.o
                                                                                                                                126](IsMonsterIdInNormalRange,func) found in global main_02056294.o
                                                                                                                                126](GetSuccessfulExitTracker,func) found in global overlay_29_022E0A04.o
-                                                                                                                               126](ov29_022E68D8,func) found in global overlay_29_022E68BC.o
+                                                                                                                               126](PlayEscapeOrbEscapeEffect,func) found in global overlay_29_022E68BC.o
                                                                                                                                126](CanMonsterSpawn,func) found in global main_0204D188.o
                                                                                                                               125](ov29_022E6260,func) found in global overlay_29_022E563C.o
                                                                                                                               125](LowerSpeed,func) found in global move_orb_effects.o
@@ -1884,7 +1884,7 @@
                                                                                                                    114](OpenFixedBin,func) found in global overlay_29_02343980.o
                                                                                                                    114](InitAlertBoxInfo,func) found in global overlay_29_0234AEE8.o
                                                                                                                     115](ov29_0234B130,func) found in global overlay_29_0234B104.o
-                                                                                                                    115](ov29_022E68F0,func) found in global overlay_29_022E68BC.o
+                                                                                                                    115](PlayStandardEscapeEffect__022E72A0,func) found in global overlay_29_022E68BC.o
                                                                                                                     115](ov29_022EAEFC,func) found in global overlay_29_022EAEFC.o
                                                                                                                    114](ov29_0234BB10,func) found in global overlay_29_0234BA54.o
                                                                                                                    114](DungeonRngUnsetSecondary,func) found in global overlay_29_022EAC34.o
@@ -2008,7 +2008,7 @@
                                                                                                                       117](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
                                                                                                                       117](ShouldUsePp,func) found in global overlay_29_0231A7A0.o
                                                                                                                        118](PlayExclamationPointEffect__022E4880,func) found in global overlay_29_022E3F20.o
-                                                                                                                      117](ov29_022E690C,func) found in global overlay_29_022E68BC.o
+                                                                                                                      117](PlayStandardEscapeEffect__022E72BC,func) found in global overlay_29_022E68BC.o
                                                                                                                       117](MakeMonsterIdleInDirection,func) found in global overlay_29_023047B8.o
                                                                                                                      116](ov29_0231A9F8,func) found in global overlay_29_0231A9F8.o
                                                                                                                       117](ov29_02321274,func) found in global overlay_29_02321274.o
@@ -9010,22 +9010,22 @@
   0204E9FC 00000058 .text   sub_0204E6A4	(main_0204DE7C.o)
   0204EA50 00000000 .text   $d	(main_0204DE7C.o)
   0204EA54 00000000 .text   $a	(main_0204DE7C.o)
-  0204EA54 00000010 .text   sub_0204E6FC	(main_0204DE7C.o)
+  0204EA54 00000010 .text   GetDungeonObjective	(main_0204DE7C.o)
   0204EA60 00000000 .text   $d	(main_0204DE7C.o)
   0204EA64 00000000 .text   $a	(main_0204DE7C.o)
   0204EA64 00000054 .text   sub_0204E70C	(main_0204DE7C.o)
   0204EAB4 00000000 .text   $d	(main_0204DE7C.o)
   0204EAB8 00000000 .text   $a	(main_0204DE7C.o)
-  0204EAB8 00000010 .text   sub_0204E760	(main_0204DE7C.o)
+  0204EAB8 00000010 .text   GetDungeonIdx	(main_0204DE7C.o)
   0204EAC4 00000000 .text   $d	(main_0204DE7C.o)
-  0204EAC8 00000010 .text   sub_0204E770	(main_0204DE7C.o)
+  0204EAC8 00000010 .text   GetDungeonId	(main_0204DE7C.o)
   0204EAC8 00000000 .text   $a	(main_0204DE7C.o)
   0204EAD4 00000000 .text   $d	(main_0204DE7C.o)
-  0204EAD8 00000010 .text   sub_0204E780	(main_0204DE7C.o)
+  0204EAD8 00000010 .text   GetDungeonStartingFloor	(main_0204DE7C.o)
   0204EAD8 00000000 .text   $a	(main_0204DE7C.o)
   0204EAE4 00000000 .text   $d	(main_0204DE7C.o)
   0204EAE8 00000000 .text   $a	(main_0204DE7C.o)
-  0204EAE8 00000028 .text   sub_0204E790	(main_0204DE7C.o)
+  0204EAE8 00000028 .text   LoadDungeonInitMain	(main_0204DE7C.o)
   0204EB0C 00000000 .text   $d	(main_0204DE7C.o)
   0204EB10 00000000 .text   $a	(main_0204DE7C.o)
   0204EB10 00000134 .text   sub_0204E7B8	(main_0204DE7C.o)
@@ -9676,7 +9676,7 @@
   02053E98 00000000 .text   $a	(main_02052B44.o)
   02053FD8 0000007C .text   sub_02053CA0	(main_02052B44.o)
   02054050 00000000 .text   $d	(main_02052B44.o)
-  02054054 000000B4 .text   sub_02053D1C	(main_02052B44.o)
+  02054054 000000B4 .text   CanMonsterLearnMove	(main_02052B44.o)
   02054054 00000000 .text   $a	(main_02052B44.o)
   02054104 00000000 .text   $d	(main_02052B44.o)
   02054108 000000B8 .text   GetEvoFamily	(main_02052B44.o)
@@ -10476,7 +10476,7 @@
   0205F11C 00000000 .text   $d	(main_0205EDA4.o)
   0205F120 00000000 .text   $a	(main_0205EDA4.o)
   0205F120 00000020 .text   AnyDungeonRequestsDone	(main_0205EDA4.o)
-  0205F140 000001CC .text   sub_0205EE40	(main_0205EDA4.o)
+  0205F140 000001CC .text   GetUnfulfilledMissionRestrictions	(main_0205EDA4.o)
   0205F304 00000000 .text   $d	(main_0205EDA4.o)
   0205F30C 000000AC .text   sub_0205F00C	(main_0205EDA4.o)
   0205F30C 00000000 .text   $a	(main_0205EDA4.o)
@@ -14987,7 +14987,7 @@
   020A2C60 00000000 .rodata .rodata	(dungeon_parameters_3.o)
   020A2C64 00000000 .rodata WONDER_GUMMI_IQ_GAIN	(main_rodata_020A1894.o)
   020A2C64 00000014 .rodata .rodata	(main_rodata_020A1894.o)
-  020A2C68 00000000 .rodata _020A1894	(main_rodata_020A1894.o)
+  020A2C68 00000000 .rodata WONDER_GUMMI_BELLY_RESTORE	(main_rodata_020A1894.o)
   020A2C6C 00000000 .rodata AURA_BOW_STAT_BOOST	(main_rodata_020A1894.o)
   020A2C70 00000000 .rodata _020A189C	(main_rodata_020A1894.o)
   020A2C74 00000000 .rodata MULTITALENT_PP_BOOST_AMOUNT	(main_rodata_020A1894.o)
@@ -16605,7 +16605,7 @@
   022ACCB4 00000000 .bss    _022AB4F8	(main_bss_022AB0AC.o)
   022ACCB8 00000000 .bss    PENDING_DUNGEON_ID	(main_bss_022AB0AC.o)
   022ACCCC 00000000 .bss    _022AB510	(main_bss_022AB0AC.o)
-  022ACCD4 00000000 .bss    _022AB518	(main_bss_022AB0AC.o)
+  022ACCD4 00000000 .bss    PENDING_MISSION_CLIENT	(main_bss_022AB0AC.o)
   022ACD64 00000000 .bss    _022AB5A8	(main_bss_022AB0AC.o)
   022ACD68 00000000 .bss    _022AB5AC	(main_bss_022AB0AC.o)
   022ACE50 00000000 .bss    PLAY_TIME_SECONDS	(main_bss_022AB0AC.o)
@@ -30049,7 +30049,7 @@
   022C5BA8 00000000 .rodata ov10_022C44C0	(overlay_10_022C4394.o)
   022C5BAC 00000000 .rodata STEEL_WING_BOOST_DEFENSE_CHANCE	(overlay_10_022C4394.o)
   022C5BB0 00000000 .rodata ov10_022C44C8	(overlay_10_022C4394.o)
-  022C5BB4 00000000 .rodata ov10_022C44CC	(overlay_10_022C4394.o)
+  022C5BB4 00000000 .rodata GUMMI_STAT_BOOST_CHANCE	(overlay_10_022C4394.o)
   022C5BB8 00000000 .rodata GOLD_THORN_POWER	(overlay_10_022C4394.o)
   022C5BBC 00000000 .rodata BURN_DAMAGE	(overlay_10_022C4394.o)
   022C5BC0 00000000 .rodata POISON_DAMAGE	(overlay_10_022C4394.o)
@@ -38254,19 +38254,19 @@
   022E7E08 00000000 .text   $a	(overlay_29_022E6798.o)
   022E7E08 00000124 .text   .text	(overlay_29_022E6798.o)
   022E7E08 0000004C .text   ov29_022E6798	(overlay_29_022E6798.o)
-  022E7E54 000000D8 .text   ov29_022E67E4	(overlay_29_022E6798.o)
+  022E7E54 000000D8 .text   PlayEscapeEffect	(overlay_29_022E6798.o)
   022E7F24 00000000 .text   $d	(overlay_29_022E6798.o)
   022E7F2C 00000000 .text   $a	(overlay_29_022E68BC.o)
-  022E7F2C 0000001C .text   ov29_022E68BC	(overlay_29_022E68BC.o)
+  022E7F2C 0000001C .text   PlayStandardEscapeEffect__022E726C	(overlay_29_022E68BC.o)
   022E7F40 00000000 .text   $d	(overlay_29_022E68BC.o)
   022E7F48 00000000 .text   $a	(overlay_29_022E68BC.o)
-  022E7F48 00000018 .text   ov29_022E68D8	(overlay_29_022E68BC.o)
+  022E7F48 00000018 .text   PlayEscapeOrbEscapeEffect	(overlay_29_022E68BC.o)
   022E7F5C 00000000 .text   $d	(overlay_29_022E68BC.o)
   022E7F60 00000000 .text   $a	(overlay_29_022E68BC.o)
-  022E7F60 0000001C .text   ov29_022E68F0	(overlay_29_022E68BC.o)
+  022E7F60 0000001C .text   PlayStandardEscapeEffect__022E72A0	(overlay_29_022E68BC.o)
   022E7F74 00000000 .text   $d	(overlay_29_022E68BC.o)
   022E7F7C 00000000 .text   $a	(overlay_29_022E68BC.o)
-  022E7F7C 0000001C .text   ov29_022E690C	(overlay_29_022E68BC.o)
+  022E7F7C 0000001C .text   PlayStandardEscapeEffect__022E72BC	(overlay_29_022E68BC.o)
   022E7F90 00000000 .text   $d	(overlay_29_022E68BC.o)
   022E7F98 000000D8 .text   PlayStairSensorArrowEffect	(overlay_29_022E6928.o)
   022E7F98 00000000 .text   $a	(overlay_29_022E6928.o)
