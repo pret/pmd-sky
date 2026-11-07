@@ -9,7 +9,7 @@
 .public MESSAGE_LOG_INFO
 .public MissionExitPrompt
 .public MusicTableIdxToMusicId
-.public ov29_022E68F0
 .public ov29_022EAEFC
 .public ov29_0234B130
+.public PlayStandardEscapeEffect__022E72A0
 .public SetUnkMusicFlag

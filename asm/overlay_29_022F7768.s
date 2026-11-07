@@ -966,7 +966,7 @@ _022F8240:
 	cmp r4, #0
 	beq _022F8284
 	mov r0, sl
-	bl ov29_022E68BC
+	bl PlayStandardEscapeEffect__022E726C
 	b _022F8284
 _022F825C:
 #ifdef EUROPE

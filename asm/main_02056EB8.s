@@ -1881,7 +1881,7 @@ _02058770:
 	cmp ip, #4
 	blt _0205878C
 	ldrsh r1, [r4, #0xc]
-	bl sub_02053D1C
+	bl CanMonsterLearnMove
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}

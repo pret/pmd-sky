@@ -19,6 +19,7 @@
 .public GetNbItemsInBag
 .public GetPartyMembers
 .public GetResolvedPerformanceProgressFlag
+.public GetUnfulfilledMissionRestrictions
 .public GuestMonsterToGroundMonster
 .public IsLevelResetDungeon
 .public IsMoneyAllowed
@@ -30,5 +31,4 @@
 .public SECONDARY_TERRAIN_TYPES
 .public StrncpyName
 .public sub_0204CEE0
-.public sub_0205EE40
 .public TEAM_MEMBER_TABLE_PTR

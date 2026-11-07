@@ -384,7 +384,7 @@ bool8 TryRecruit(struct entity *user, struct entity *recruit, void *recruit_info
                 } while (response == -1);
                 if (response != 2 && ent != NULL) {
                     ov29_0230E658(0xC81 + TRY_RECRUIT_MESSAGE_OFFSET);
-                    ov29_022E68BC(ent);
+                    PlayStandardEscapeEffect__022E726C(ent);
                     HandleFaint(ent, DAMAGE_SOURCE_TRANSFORM_FRIEND, user);
                     if (ent == recruit) {
                         ret = TRUE;

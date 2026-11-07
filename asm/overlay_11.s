@@ -6420,7 +6420,7 @@ _022E1BE0:
 	mov r7, r0
 	cmp r1, r6, asr #16
 	bne _022E1C5C
-	bl sub_0204E760
+	bl GetDungeonIdx
 	mov r5, r0
 	ldr r1, _022E2284 ; =ov11_0231958C
 	mov r2, r5

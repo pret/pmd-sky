@@ -54,6 +54,7 @@
 .public _022AADF8
 .public _s32_div_f
 .public AppendStandardStringToMission
+.public CanMonsterLearnMove
 .public CloseAdvancedMenu
 .public CloseAdvancedTextBox
 .public CloseDialogueBox
@@ -160,7 +161,6 @@
 .public sub_0204E210
 .public sub_0204E3C8
 .public sub_02052FF8
-.public sub_02053D1C
 .public sub_02054F18
 .public sub_02056410
 .public sub_02056460

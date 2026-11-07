@@ -24,6 +24,7 @@
 .public GetActiveTeamMember
 .public GetActorMatchingStorageId
 .public GetCoroutineInfo
+.public GetDungeonIdx
 .public GetDungeonMode
 .public GetGameMode
 .public GetHero
@@ -342,7 +343,6 @@
 .public sub_0204CE48
 .public sub_0204D018
 .public sub_0204E70C
-.public sub_0204E760
 .public sub_0204E8EC
 .public sub_02055410
 .public sub_02055474

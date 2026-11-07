@@ -10,8 +10,11 @@
 .public DoesNotSaveWhenEntering
 .public ExplorersOfSkyMain
 .public GetDungeonGroup
+.public GetDungeonId
+.public GetDungeonIdx
 .public GetDungeonMode
 .public GetDungeonModeSpecial
+.public GetDungeonObjective
 .public GetGameMode
 .public GetMoneyCarried
 .public GetNbFloors
@@ -26,6 +29,7 @@
 .public IsLosableItem
 .public IsNoLossPenaltyDungeon
 .public ItemZInit
+.public LoadDungeonInitMain
 .public LoadFileFromRom
 .public LoadOverlay
 .public LoadScriptVariableValue
@@ -64,10 +68,6 @@
 .public sub_02048CB8
 .public sub_0204AFD0
 .public sub_0204E1E4
-.public sub_0204E6FC
-.public sub_0204E760
-.public sub_0204E770
-.public sub_0204E790
 .public sub_0204E7B8
 .public sub_0204E8EC
 .public sub_0204F050

@@ -49,7 +49,6 @@
 .public OpenMessageLog
 .public ov29_022DDB68
 .public ov29_022E1C0C
-.public ov29_022E68BC
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
@@ -63,6 +62,7 @@
 .public ov29_0234B1A4
 .public ov29_0234EF24
 .public ov29_0237C9B0
+.public PlayStandardEscapeEffect__022E726C
 .public PopulateActiveMonsterPtrs
 .public RemoveHolderForItemInBag
 .public RemoveMonsterFromTile

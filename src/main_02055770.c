@@ -20,7 +20,7 @@ extern u8 _020A3350[];
 extern void sub_02052CF4(struct ground_monster *mon, s16 monster_id, const char *name,
                          u8 *joined, u16 *moves, u8 flag);
 extern void sub_02053F10(struct ground_move *moves, s16 monster_id, s32 flag);
-extern bool8 sub_02053D1C(u16 move_id, s16 monster_id);
+extern bool8 CanMonsterLearnMove(u16 move_id, s16 monster_id);
 extern bool8 IsValidTeamMember(s16 member_idx);
 extern s16 TryAddMonsterToActiveTeam(s16 member_idx);
 extern s16 sub_02056554(s16 member_idx);

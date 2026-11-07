@@ -6,6 +6,8 @@
 .public Debug_Print0
 .public FreeMissionRewardStructMain
 .public GetAcceptedMission
+.public GetDungeonId
+.public GetDungeonStartingFloor
 .public GetGameMode
 .public GetMaxItemsAllowed
 .public GetOutlawLeaderLevel
@@ -45,8 +47,6 @@
 .public sub_02046698
 .public sub_0204677C
 .public sub_0204AFD0
-.public sub_0204E770
-.public sub_0204E780
 .public sub_0204F0A0
 .public sub_0204F1B4
 .public sub_0204F244

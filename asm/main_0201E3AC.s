@@ -8585,7 +8585,7 @@ _02024F2C:
 	bl sub_02023DC0
 	mov r0, r5
 	mov r1, r8
-	bl sub_02053D1C
+	bl CanMonsterLearnMove
 	cmp r0, #0
 	ldrne r3, [sp]
 	ldr r1, _02024FB0 ; =_02099E20

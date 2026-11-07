@@ -2,7 +2,6 @@
 .public _0209E264
 .public _022AB4F8
 .public _022AB510
-.public _022AB518
 .public _022AB5A8
 .public _022AB5AC
 .public _s32_div_f
@@ -26,6 +25,7 @@
 .public LoadScriptVariableValueAtIndex
 .public MemcpySimple
 .public PENDING_DUNGEON_ID
+.public PENDING_MISSION_CLIENT
 .public SaveOptionsToCtx
 .public SaveScriptVariableValue
 .public StringFromId

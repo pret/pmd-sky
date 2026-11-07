@@ -1,10 +1,10 @@
 #pragma once
-.public _020A1894
 .public AbilityIsActiveVeneer
 .public ATK_STAT_IDX
 .public BoostIQ
 .public BoostOffensiveStat
 .public CalcDamageFixedNoCategory
+.public CanMonsterLearnMove
 .public CeilFixedPoint
 .public ChangeDungeonMusic
 .public ChangeShayminForme
@@ -39,6 +39,7 @@
 .public GUMMI_BELLY_RESTORE_TABLE
 .public GUMMI_IQ_STRING_IDS
 .public GUMMI_LIKE_STRING_IDS
+.public GUMMI_STAT_BOOST_CHANCE
 .public HandleMovesMenuWrapper0
 .public HandleMovesMenuWrapper1
 .public HandleSir0Translation
@@ -54,7 +55,6 @@
 .public LowerDefensiveStat
 .public LowerOffensiveStat
 .public MusicTableIdxToMusicId
-.public ov10_022C44CC
 .public ov10_022C45E4
 .public ov10_022C4680
 .public ov10_022C47E0
@@ -95,7 +95,6 @@
 .public ShouldDisplayEntityWrapper
 .public SPATK_STAT_IDX
 .public sub_02050FF8
-.public sub_02053D1C
 .public SubstitutePlaceholderStringTags
 .public THROWN_BLAST_SEED_DAMAGE_BOSS
 .public THROWN_BLAST_SEED_DAMAGE_NORMAL
@@ -113,5 +112,6 @@
 .public UpdateIqSkillsWrapper
 .public UpdateMinimap
 .public WaitUntilAlertBoxPauseIsOver
+.public WONDER_GUMMI_BELLY_RESTORE
 .public WONDER_GUMMI_IQ_GAIN
 .public YesNoMenu

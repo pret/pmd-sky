@@ -151,10 +151,10 @@ _022FA65C:
 	cmp r0, #1
 	mov r0, r8
 	bne _022FA6B8
-	bl ov29_022E68D8
+	bl PlayEscapeOrbEscapeEffect
 	b _022FA6BC
 _022FA6B8:
-	bl ov29_022E68BC
+	bl PlayStandardEscapeEffect__022E726C
 _022FA6BC:
 	strb r5, [r8, #0x20]
 	b _022FA730
@@ -188,7 +188,7 @@ _022FA70C:
 	bl ov29_022E8104
 	bl ov29_022E81F8
 	mov r0, r8
-	bl ov29_022E68BC
+	bl PlayStandardEscapeEffect__022E726C
 	mov r0, #0
 	strb r0, [r8, #0x20]
 _022FA730:

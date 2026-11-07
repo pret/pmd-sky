@@ -1385,8 +1385,8 @@ _02053D08:
 _02053D18: .word FORBIDDEN_FORGOT_MOVE_LIST
 	arm_func_end sub_02053CA0
 
-	arm_func_start sub_02053D1C
-sub_02053D1C: ; 0x02053D1C
+	arm_func_start CanMonsterLearnMove
+CanMonsterLearnMove: ; 0x02053D1C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	ldr r2, _02053DCC ; =0x00000229
@@ -1438,7 +1438,7 @@ _02053DC4:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02053DCC: .word 0x00000229
-	arm_func_end sub_02053D1C
+	arm_func_end CanMonsterLearnMove
 
 	arm_func_start GetEvoFamily
 GetEvoFamily: ; 0x02053DD0

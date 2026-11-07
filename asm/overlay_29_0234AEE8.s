@@ -41,11 +41,11 @@ ov29_0234AF34: ; 0x0234AF34
 	mov r5, r1
 	mov r4, r3
 	strb ip, [r2, #0x48]
-	bl ov29_022E68F0
+	bl PlayStandardEscapeEffect__022E72A0
 	cmp r5, #0
 	beq _0234AF64
 	mov r0, r5
-	bl ov29_022E68F0
+	bl PlayStandardEscapeEffect__022E72A0
 _0234AF64:
 	ldr r1, _0234AFA0 ; =0x0000025B
 	mov r0, r6

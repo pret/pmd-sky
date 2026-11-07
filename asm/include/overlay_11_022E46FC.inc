@@ -17,6 +17,7 @@
 .public FileRom_StopDataTransfer
 .public FileRom_Veneer_FileInit
 .public GetAcceptedMission
+.public GetDungeonId
 .public GetExecuteSpecialEpisodeType
 .public GetFirstUnequippedItemOfType
 .public GetGameMode
@@ -233,7 +234,6 @@
 .public sub_02049338
 .public sub_0204964C
 .public sub_0204E70C
-.public sub_0204E770
 .public sub_0204E974
 .public sub_0204F1B4
 .public sub_0204F1F0
