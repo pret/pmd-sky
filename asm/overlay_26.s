@@ -650,10 +650,10 @@ _0238A9FC:
 	bl GetGameMode
 	cmp r0, #4
 	bne _0238AA10
-	bl sub_0204E780
+	bl GetDungeonStartingFloor
 	b _0238AA14
 _0238AA10:
-	bl sub_0204E770
+	bl GetDungeonId
 _0238AA14:
 	mov r4, r0
 	mov r0, r4

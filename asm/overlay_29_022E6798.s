@@ -26,8 +26,8 @@ ov29_022E6798: ; 0x022E6798
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E6798
 
-	arm_func_start ov29_022E67E4
-ov29_022E67E4: ; 0x022E67E4
+	arm_func_start PlayEscapeEffect
+PlayEscapeEffect: ; 0x022E67E4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x10
 	mov r6, r1
@@ -91,4 +91,4 @@ _022E68B8: .word 0x0001A182
 #else
 _022E68B8: .word 0x0001A226
 #endif
-	arm_func_end ov29_022E67E4
+	arm_func_end PlayEscapeEffect

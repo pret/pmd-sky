@@ -3293,7 +3293,7 @@ _022E7284:
 	bl sub_0204E70C
 	cmp r0, #1
 	bne _022E72A4
-	bl sub_0204E770
+	bl GetDungeonId
 	bl DungeonRequestsDoneWrapper
 	cmp r0, #0
 	movgt r0, #1

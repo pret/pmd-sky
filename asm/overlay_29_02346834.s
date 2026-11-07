@@ -43,7 +43,7 @@ _0234694C:
 	ldr r1, [sl, #0xb4]
 	mov r0, r8
 	ldrsh r1, [r1, #2]
-	bl sub_02053D1C
+	bl CanMonsterLearnMove
 	mov sb, r0
 	mov r0, sl
 	bl ov29_023009A0

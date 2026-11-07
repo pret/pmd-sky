@@ -5,9 +5,9 @@
 #include "item.h"
 #include "move.h"
 
-void ov29_022E68BC(struct entity *entity);
-void ov29_022E68D8(struct entity *entity);
-void ov29_022E68F0(struct entity *entity);
-void ov29_022E690C(struct entity *entity);
+void PlayStandardEscapeEffect__022E726C(struct entity *entity);
+void PlayEscapeOrbEscapeEffect(struct entity *entity);
+void PlayStandardEscapeEffect__022E72A0(struct entity *entity);
+void PlayStandardEscapeEffect__022E72BC(struct entity *entity);
 
 #endif

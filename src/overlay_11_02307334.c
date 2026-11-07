@@ -116,7 +116,7 @@ extern s8 sub_0204018C(s32 a, s32 b, s32 c);
 extern s32 sub_02041A18(void);
 extern s32 sub_02041B7C(void);
 extern void sub_020420F4(void);
-extern s32 sub_02053D1C(u16 move_id, s16 monster_id);
+extern s32 CanMonsterLearnMove(u16 move_id, s16 monster_id);
 extern s32 sub_020586F0(s16 a, s16 b);
 
 extern s32 ov11_02309EE4(struct unk_02309EE4 *out, s32 mode);
@@ -1192,7 +1192,7 @@ int ov11_023090DC(void)
                         }
                     }
                 }
-                if (sub_02053D1C(move_id, monster_id)) {
+                if (CanMonsterLearnMove(move_id, monster_id)) {
                     if (k < 4) {
                         lst->field_0x70[i] = 3;
                     }

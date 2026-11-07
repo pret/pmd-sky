@@ -142,6 +142,7 @@
 .public _022A5970
 .public _s32_div_f
 .public _u32_div_f
+.public CanMonsterLearnMove
 .public CopyStringFromId
 .public Debug_FatalError
 .public Debug_GetDebugFlag
@@ -211,7 +212,6 @@
 .public sub_0204E530
 .public sub_0204F6F8
 .public sub_0204F77C
-.public sub_02053D1C
 .public sub_020564B0
 .public sub_02058C30
 .public sub_0206549C

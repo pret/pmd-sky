@@ -756,7 +756,7 @@ _022E8A24:
 _022E8A3C:
 	bl sub_0204E70C
 	mov r5, r0
-	bl sub_0204E760
+	bl GetDungeonIdx
 	mov r4, r0
 	mov r2, r4
 	mov r0, #0
@@ -866,7 +866,7 @@ _022E8BC4:
 	str r1, [r0, #0xc]
 	b _022E8CD4
 _022E8BEC:
-	bl sub_0204E760
+	bl GetDungeonIdx
 	mov r4, r0
 	mov r2, r4
 	mov r0, #0
@@ -1221,9 +1221,9 @@ _022E90E4:
 	mov r1, #0x2b
 	mov r2, #0xf
 	bl SaveScriptVariableValue
-	bl sub_0204E6FC
+	bl GetDungeonObjective
 	mov r5, r0
-	bl sub_0204E760
+	bl GetDungeonIdx
 	mov r4, r0
 	mov r0, #0
 	mov r1, #0x27
@@ -1240,9 +1240,9 @@ _022E90E4:
 	mov r0, #4
 	b _022E91E0
 _022E914C:
-	bl sub_0204E6FC
+	bl GetDungeonObjective
 	mov r4, r0
-	bl sub_0204E760
+	bl GetDungeonIdx
 	mov r2, r0
 	ldr r0, _022E9248 ; =ov11_02320A94
 	mov r1, r4

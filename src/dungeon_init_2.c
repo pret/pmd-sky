@@ -2,11 +2,11 @@
 #include "script_variable.h"
 #include "special_episode.h"
 
-extern s32 sub_0204E6FC(void);
+extern s32 GetDungeonObjective(void);
 
-extern s32 sub_0204E780(void);
+extern s32 GetDungeonStartingFloor(void);
 
-extern s32 sub_0204E770(void);
+extern s32 GetDungeonId(void);
 #include "enums.h"
 
 extern u8 DUNGEON_SWAP_ID_TABLE[];
@@ -62,10 +62,10 @@ s16 sub_0206A7CC(s16 a)
     if (a == 0x3E8) {
         a = (s16) LoadScriptVariableValue(NULL, 0x20);
     } else if (a == 0x3E9) {
-        if (sub_0204E6FC() == 2) {
-            v = sub_0204E780();
+        if (GetDungeonObjective() == 2) {
+            v = GetDungeonStartingFloor();
         } else {
-            v = sub_0204E770();
+            v = GetDungeonId();
         }
 
         if (v == 0xFF) {

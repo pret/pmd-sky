@@ -22,11 +22,11 @@
 .public IsMonsterIdInNormalRange
 .public IsMonsterSleeping
 .public LogMessageByIdWithPopupCheckUser
-.public ov29_022E68BC
-.public ov29_022E68D8
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
+.public PlayEscapeOrbEscapeEffect
+.public PlayStandardEscapeEffect__022E726C
 .public PrepareItemForPrinting__02345728
 .public RestoreAllMovePP
 .public SetPreprocessorArgsIdVal

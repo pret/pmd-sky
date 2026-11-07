@@ -4211,7 +4211,7 @@ _0203A7FC:
 	blt _0203A7C8
 _0203A804:
 	ldrsh r1, [r4, #4]
-	bl sub_02053D1C
+	bl CanMonsterLearnMove
 	cmp r0, #0
 	beq _0203A844
 	cmp r5, #4

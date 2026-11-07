@@ -268,7 +268,7 @@ CheckMissionRestrictions: ; 0x0204F3C4
 	add r1, sp, #2
 	add r2, sp, #0
 	mov r0, r5
-	bl sub_0205EE40
+	bl GetUnfulfilledMissionRestrictions
 	cmp r0, #0
 	beq _0204F424
 	ldrsh r0, [sp]

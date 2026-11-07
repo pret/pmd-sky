@@ -17,7 +17,9 @@
 .public GenerateDailyMissions
 .public GenerateKecleonItems1
 .public GenerateKecleonItems2
+.public GetDungeonIdx
 .public GetDungeonModeSpecial
+.public GetDungeonObjective
 .public GetGameMode
 .public GetNameRaw
 .public GetPressedButtons
@@ -183,9 +185,7 @@
 .public sub_02047FFC
 .public sub_0204804C
 .public sub_02049338
-.public sub_0204E6FC
 .public sub_0204E70C
-.public sub_0204E760
 .public sub_0204F024
 .public sub_0204F034
 .public sub_0204F050

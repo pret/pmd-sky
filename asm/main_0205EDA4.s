@@ -59,8 +59,8 @@ AnyDungeonRequestsDone: ; 0x0205EE20
 	ldmia sp!, {r3, pc}
 	arm_func_end AnyDungeonRequestsDone
 
-	arm_func_start sub_0205EE40
-sub_0205EE40: ; 0x0205EE40
+	arm_func_start GetUnfulfilledMissionRestrictions
+GetUnfulfilledMissionRestrictions: ; 0x0205EE40
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	str r0, [sp]
@@ -191,7 +191,7 @@ _0205EFFC:
 	.align 2, 0
 _0205F004: .word MISSION_DELIVER_LIST_PTR
 _0205F008: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_0205EE40
+	arm_func_end GetUnfulfilledMissionRestrictions
 
 	arm_func_start sub_0205F00C
 sub_0205F00C: ; 0x0205F00C

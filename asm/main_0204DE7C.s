@@ -690,14 +690,14 @@ _0204E6F0:
 _0204E6F8: .word 0x000F1207
 	arm_func_end sub_0204E6A4
 
-	arm_func_start sub_0204E6FC
-sub_0204E6FC: ; 0x0204E6FC
+	arm_func_start GetDungeonObjective
+GetDungeonObjective: ; 0x0204E6FC
 	ldr r0, _0204E708 ; =PENDING_DUNGEON_ID
 	ldrsb r0, [r0, #0xd]
 	bx lr
 	.align 2, 0
 _0204E708: .word PENDING_DUNGEON_ID
-	arm_func_end sub_0204E6FC
+	arm_func_end GetDungeonObjective
 
 	arm_func_start sub_0204E70C
 sub_0204E70C: ; 0x0204E70C
@@ -728,35 +728,35 @@ _0204E754:
 _0204E75C: .word PENDING_DUNGEON_ID
 	arm_func_end sub_0204E70C
 
-	arm_func_start sub_0204E760
-sub_0204E760: ; 0x0204E760
+	arm_func_start GetDungeonIdx
+GetDungeonIdx: ; 0x0204E760
 	ldr r0, _0204E76C ; =PENDING_DUNGEON_ID
 	ldrsh r0, [r0, #2]
 	bx lr
 	.align 2, 0
 _0204E76C: .word PENDING_DUNGEON_ID
-	arm_func_end sub_0204E760
+	arm_func_end GetDungeonIdx
 
-	arm_func_start sub_0204E770
-sub_0204E770: ; 0x0204E770
+	arm_func_start GetDungeonId
+GetDungeonId: ; 0x0204E770
 	ldr r0, _0204E77C ; =PENDING_DUNGEON_ID
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
 _0204E77C: .word PENDING_DUNGEON_ID
-	arm_func_end sub_0204E770
+	arm_func_end GetDungeonId
 
-	arm_func_start sub_0204E780
-sub_0204E780: ; 0x0204E780
+	arm_func_start GetDungeonStartingFloor
+GetDungeonStartingFloor: ; 0x0204E780
 	ldr r0, _0204E78C ; =PENDING_DUNGEON_ID
 	ldrb r0, [r0, #0x14]
 	bx lr
 	.align 2, 0
 _0204E78C: .word PENDING_DUNGEON_ID
-	arm_func_end sub_0204E780
+	arm_func_end GetDungeonStartingFloor
 
-	arm_func_start sub_0204E790
-sub_0204E790: ; 0x0204E790
+	arm_func_start LoadDungeonInitMain
+LoadDungeonInitMain: ; 0x0204E790
 	stmdb sp!, {r4, lr}
 	ldr lr, _0204E7B4 ; =PENDING_DUNGEON_ID
 	mov r4, r0
@@ -769,7 +769,7 @@ _0204E7A0:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0204E7B4: .word PENDING_DUNGEON_ID
-	arm_func_end sub_0204E790
+	arm_func_end LoadDungeonInitMain
 
 	arm_func_start sub_0204E7B8
 sub_0204E7B8: ; 0x0204E7B8
@@ -813,7 +813,7 @@ _0204E83C:
 	mov r2, #0xd7
 	bl SaveScriptVariableValue
 	ldr r0, _0204E8E0 ; =PENDING_DUNGEON_ID
-	ldr r1, _0204E8E4 ; =_022AB518
+	ldr r1, _0204E8E4 ; =PENDING_MISSION_CLIENT
 	ldrb r0, [r0]
 	bl sub_0205F00C
 	cmp r0, #0
@@ -829,7 +829,7 @@ _0204E83C:
 	ldrsh r1, [r1, r0]
 	ldr r3, _0204E8E0 ; =PENDING_DUNGEON_ID
 	mov ip, #1
-	ldr r0, _0204E8E4 ; =_022AB518
+	ldr r0, _0204E8E4 ; =PENDING_MISSION_CLIENT
 	mov r2, #0
 	strb ip, [r3, #0x1d]
 	bl ApplyLevelUpBoostsToGroundMonster
@@ -854,7 +854,7 @@ _0204E8D4:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0204E8E0: .word PENDING_DUNGEON_ID
-_0204E8E4: .word _022AB518
+_0204E8E4: .word PENDING_MISSION_CLIENT
 _0204E8E8: .word CLIENT_LEVEL_TABLE
 	arm_func_end sub_0204E7B8
 

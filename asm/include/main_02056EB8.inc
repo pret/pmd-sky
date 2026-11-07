@@ -12,6 +12,7 @@
 .public _022B578C
 .public AddMoneyCarried
 .public AddSimpleObjToOam
+.public CanMonsterLearnMove
 .public CheckTeamMemberIdx
 .public CleanStickyItemsInBag
 .public CopyAndInterleaveWrapper
@@ -55,7 +56,6 @@
 .public sub_02053174
 .public sub_0205349C
 .public sub_020534BC
-.public sub_02053D1C
 .public sub_02055410
 .public sub_02055474
 .public sub_020554D8

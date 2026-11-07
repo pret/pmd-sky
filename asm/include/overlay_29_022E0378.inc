@@ -17,8 +17,8 @@
 .public IsJirachiChallengeFloor
 .public IsMoneyAllowed
 .public ov29_022E0A18
-.public ov29_022E68BC
 .public ov29_0237CFC0
+.public PlayStandardEscapeEffect__022E726C
 .public RemoveAllItems
 .public SECONDARY_TERRAIN_TYPES
 .public SetMessageLogPreprocessorArgsString

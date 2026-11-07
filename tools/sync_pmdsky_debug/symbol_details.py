@@ -434,7 +434,7 @@ NONMATCHING_SYMBOLS_ARM7 = {
     'PARAMSET_MaxConnReqCmd': 'ParamSet_MaxConnReqCmd',
     'PARAMSET_ModeReqCmd': 'ParamSet_ModeReqCmd',
     'PARAMSET_SSIDReqCmd': 'ParamSet_SsidReqCmd',
-    'PMi_SetLED': 'Pmi_SetLed',
+    'PMi_SetLED': 'Pmi_SetLedArm7',
     'PXI_InitFifo': 'Pxi_InitFifo',
     'PXI_IsCallbackReady': 'Pxi_IsCallbackReady',
     'PXI_SendWordByFifo': 'Pxi_SendWordByFifo',

@@ -440,7 +440,7 @@ _022F5E84:
 	mov r2, #0x40
 	bl strncpy
 	mov r0, r7
-	bl ov29_022E690C
+	bl PlayStandardEscapeEffect__022E72BC
 	mov r0, r7
 	mov r1, #0x25c
 	mov r2, #0

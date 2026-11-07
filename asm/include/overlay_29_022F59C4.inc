@@ -36,7 +36,6 @@
 .public IsSecretBazaarNpcBehavior
 .public LogMessageByIdWithPopupCheckUser
 .public MakeMonsterIdleInDirection
-.public ov29_022E690C
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022F3B8C
@@ -52,6 +51,7 @@
 .public ov29_02352750
 .public ov29_02352758
 .public ov29_0237CA80
+.public PlayStandardEscapeEffect__022E72BC
 .public RevealAttackedTile
 .public SetMessageLogPreprocessorArgsString
 .public SetPreprocessorArgsStringToName

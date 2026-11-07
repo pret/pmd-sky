@@ -314,7 +314,7 @@ _022C2984:
 	bne _022C29C8
 	bl GetGameMode
 	mov r4, r0
-	bl sub_0204E760
+	bl GetDungeonIdx
 	bl GetDungeonModeSpecial
 	cmp r4, #5
 	cmpne r0, #3
@@ -578,7 +578,7 @@ _022C2D1C:
 	bne _022C2D74
 	bl sub_0204E7B8
 	add r0, sp, #0xf0
-	bl sub_0204E790
+	bl LoadDungeonInitMain
 	ldrsb r1, [sp, #0xfd]
 	ldrsh r2, [sp, #0xf2]
 	ldr r0, _022C3124 ; =ov10_022DC094
@@ -664,13 +664,13 @@ _022C2E88:
 _022C2E8C:
 	cmp r5, #3
 	bne _022C2EE4
-	bl sub_0204E6FC
+	bl GetDungeonObjective
 	and r0, r0, #0xff
 	cmp r0, #1
 	mov r5, #1
 	mov sb, #0xa
 	bhi _022C2EF0
-	bl sub_0204E770
+	bl GetDungeonId
 	cmp r0, #0xff
 	beq _022C2EF0
 	bl DoesNotSaveWhenEntering
@@ -719,7 +719,7 @@ _022C2F08:
 	bl UnloadOverlay
 	b _022C2F84
 _022C2F5C:
-	bl sub_0204E770
+	bl GetDungeonId
 	bl DoesNotSaveWhenEntering
 	cmp r0, #0
 	bne _022C2F84

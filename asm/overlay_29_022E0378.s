@@ -347,7 +347,7 @@ _022E06C8:
 	bl DisplayMessage2
 _022E0718:
 	mov r0, r4
-	bl ov29_022E68BC
+	bl PlayStandardEscapeEffect__022E726C
 	ldr r1, _022E080C ; =0x00000261
 	mov r0, r4
 	mov r2, r4
@@ -383,7 +383,7 @@ _022E0774:
 	bl DisplayMessage2
 _022E079C:
 	mov r0, r4
-	bl ov29_022E68BC
+	bl PlayStandardEscapeEffect__022E726C
 _022E07A4:
 	ldr r1, _022E0814 ; =0x00000266
 	mov r0, r4
@@ -401,7 +401,7 @@ _022E07BC:
 	cmp r0, #0
 	beq _022E07F8
 	mov r0, r4
-	bl ov29_022E68BC
+	bl PlayStandardEscapeEffect__022E726C
 	ldr r1, _022E0818 ; =0x00000265
 	mov r0, r4
 	mov r2, r4
